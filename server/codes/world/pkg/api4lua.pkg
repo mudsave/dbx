@@ -1,0 +1,11 @@
+// filename : api4lua.pkg
+// pkg总入口
+
+$#include "lindef.h"
+$#include "vsdef.h"
+$#include "Entity.h"
+
+typedef unsigned int handle;
+
+$pfile "msg.pkg"
+$pfile "entity.pkg"

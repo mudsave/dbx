@@ -1,0 +1,7 @@
+--[[ConfSystem.lua
+√Ë ˆ£∫
+	œµÕ≥º”‘ÿ
+--]]
+
+function LoadSystem()
+end

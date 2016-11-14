@@ -1,0 +1,35 @@
+// filename : api4lua.pkg
+// pkg总入口
+
+$#include "lindef.h"
+$#include "vsdef.h"
+
+typedef unsigned int handle;
+
+enum
+{
+	MSG_W_G_PLAYER_LOGIN,
+	MSG_W_G_PLAYER_LOGOUT
+};
+
+struct AppMsg
+{
+	unsigned short msgLen;          // 消息长度
+	unsigned char msgFlags;         // 消息保留位
+	unsigned char msgCls;           // 消息类别
+	unsigned short msgId;           // 消息id
+	int context;					// 兼容db协议
+};
+
+struct _MsgGW_PlayerLoginInfo : public AppMsg
+{
+	int			roleId;
+	int			gatewayId;
+	handle		hClientLink;
+};
+
+struct _MsgGW_PlayerLogoutInfo : public AppMsg
+{
+	int			roleId;
+	int			reason;
+};

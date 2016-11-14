@@ -1,0 +1,54 @@
+// filename : entity.pkg
+// 实体相关pkg
+
+enum EntityType
+{
+	eLogicNone = 0,
+	eLogicPlayer,
+	eLogicNpc,
+	eLogicPet,
+	eLogicMonster,
+	eLogicFollow,
+	eLogicMineNpc,
+	eLogicMpw,
+	eLogicMagic,
+	eLogicFarmLand,
+	eLogicCrop,
+	MAX_LOGIC_TYPE
+};
+
+enum EntityPropType
+{
+	eClsTypeNone = 0,
+	eClsTypePlayer,
+	eClsTypeNpc,
+	eClsTypePet,
+	eClsTypeMpw,
+	eClsTypeMagic,
+	eClsTypeFarmLand,
+	eClsTypeCrop,
+	MAX_CLASS_TYPE
+};
+
+class CoEntity
+{
+public:
+	static CoEntity* Create(EntityType type, EntityPropType propType);
+
+public:
+	short correctMovePath(short x, short y);
+	
+	short correctFollowMovePath(short refIdx, short refPathLen);
+
+	short getPathLen() const;
+
+	void moveByPath(lua_State* pState, _PropPosData* pPropPosData);
+
+	bool move(short x = 0, short y = 0, int flags = 0x10);
+
+	void moveFollowEntity(lua_State* pState, short offset, _PropPosData* pPropPosData);
+
+	void stopMove(short x = 0, short y = 0);
+
+	bool isInView(handle hand);
+};

@@ -1,0 +1,33 @@
+"
+" filename : vimrc.zl
+"
+"
+
+set nu
+
+syntax enable
+colorscheme zellner
+
+"set background=dark
+"set background=light
+"colorscheme solarized
+
+set foldenable
+set foldlevel=3
+set foldmethod=syntax
+
+set fileformats=unix,dos
+set fileformat=unix
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,latin1
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set cindent
+
+set tags=/systags/sys
+set tags+=/systags/c++
+set tags+=/root/server/codes/tags
+
+set path+=/root/server/codes/**

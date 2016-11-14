@@ -1,0 +1,8 @@
+--track-fds=yes
+--read-var-info=yes
+--vgdb=yes
+--vgdb-error=1
+
+--memcheck:leak-check=full
+--memcheck:malloc-fill=0x00
+--memcheck:free-fill=0xFF
