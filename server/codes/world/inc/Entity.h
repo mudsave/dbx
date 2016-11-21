@@ -8,6 +8,7 @@
 
 #include "LuaFunctor.h"
 #include "HandleMgr.h"
+#include "PropertySet.h"
 
 #include <time.h>
 #include <set>
@@ -25,13 +26,14 @@ class CoScene;
 
 #define _MaxEnumCount 4096
 
+
+
 #define _EntityFromHandle(h) ( (CoEntity*)( CoEntity::s_hMgr.getHandleData(h) ) )
 
-typedef _CountedArray<BYTE> _PropRefList;
 typedef HashTable<> _AroundSet;
 typedef std::deque<short> MovePath;
 
-class CoEntity
+class CoEntity:public PropertySet
 {
 public:
     CoEntity();
@@ -79,10 +81,12 @@ public:
 public:
 	AppMsg* genExitMessage();
 	AppMsg* genPropUpdateMessage(int propId);
+	int serializePath(char *p);
 
 public:
 	void flushMessage(const AppMsg* pMsg);
 	bool bcAMessage(const AppMsg* pMsg, bool pub = true);
+	bool bcAMessageEx(const AppMsg* pMsg, bool pub , bool bGroup = true);
 
 public:
 	bool bcMyEnter();
@@ -92,7 +96,7 @@ public:
 	bool bcPropUpdates();
 
 public:
-	bool enterScene(CoScene* pScene, const GridVct* pInit);
+	bool enterScene(CoScene* pScene, short x, short y);
 	bool quitScene();
 
 public:
@@ -163,9 +167,6 @@ public:
 	_AroundSet				m_myAround;
 	_AroundSet				m_aroundMe;
 	GridVct					m_ringOrg[_SyncRingCount];
-
-public:
-	_PropRefList			m_publicProps;
 
 public:
 	bool					m_inSync;

@@ -3,20 +3,20 @@
 	游戏的主服务器脚本
 --]]
 
-package.path = "../resource/script/?.lua"
+package.path = "../resource/script/?.lua;../../../share/lua/?.lua;" .. package.path
+print("[Lua] package.path = ", package.path)
 
+require "prop.PropEntry"
 require "config.ConfCore"
 require "config.ConfDB"
 require "config.ConfSystem"
 
 ManagedApp = {}
 function ManagedApp.start(serverID)
-	LoadCore(serverID)
-	LoadSystem()
-end
-
-function ManagedApp.onPlayerMessage(hLink, msg)
-	g_playerMgr:onPlayerMessage(hLink, msg)
+	loadCore(serverID)
+	loadSystem()
+	loadUnitConfig()
+	g_SceneMgr:loadPublicScenes()
 end
 
 function ManagedApp.timerFired(timerID, state)
@@ -27,8 +27,16 @@ function ManagedApp.timerFired(timerID, state)
 	end
 end
 
-function ManagedApp.exeSP(params, bNoCallback, level)
+function ManagedApp.onExeSP(operationID, recordList, errorCode)
+	LuaDBAccess.onExeSP(operationID, recordList, errorCode)
 end
 
-function ManagedApp.onExeSP(operationID, recordList, errorCode)
+function ManagedApp.EntityStartMove(entityId)
+end
+
+function ManagedApp.EntityEndMove(entityId)
+end
+
+function ManagedApp.onPlayerMessage(hLink, msg)
+	g_playerMgr:onPlayerMessage(hLink, msg)
 end

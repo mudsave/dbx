@@ -1,5 +1,5 @@
 /**
- * filename : ScriptTimer.h
+ * filename : ScriptTimer.cpp
  */
 
 #include "lindef.h"
@@ -9,14 +9,8 @@
 
 ScriptTimer* ScriptTimer::s_pScriptTimer = NULL;
 lua_State* ScriptTimer::s_pLuaState = NULL;
-const unsigned int SCRIPT_FARME_TICK_TIMER = 500;		// 每一帧，处理定时器队列的时间限制
-
-enum ScriptTimerState
-{
-	ScriptTimerNormal, //正常
-	ScriptTimerExpire, //过期
-	ScriptTimerStop, //被注销
-};
+// 每一帧，处理定时器队列的时间限制
+const unsigned int SCRIPT_FARME_TICK_TIMER = 500;
 
 int ScriptTimer::init(lua_State* pState)
 {
@@ -25,6 +19,7 @@ int ScriptTimer::init(lua_State* pState)
 	toluaScriptTimerOpen(s_pLuaState);
 	return 0;
 }
+
 int ScriptTimer::release()
 {
 	delete s_pScriptTimer;
@@ -32,7 +27,6 @@ int ScriptTimer::release()
 	return 0;
 }
 
-//long long llTimeId, long long llElapse, long long llPeriod
 int ScriptTimer::RegTimer(lua_State* pState)
 {
 	long long llTimeId = tolua_tonumber(pState, 1, 0);
@@ -50,7 +44,6 @@ int ScriptTimer::RegTimer(lua_State* pState)
 	return 0;
 }
 
-//long long llTimeId
 int ScriptTimer::UnregTimer(lua_State* pState)
 {
 	long long llTimeId = tolua_tonumber(pState, 1, 0);
@@ -121,7 +114,8 @@ int ScriptTimer::addTimer(ScriptTimerInfo* p)
 	if(m_timerMap[p->sn])
 		return -1;
 	m_timerQueue.push(p);
-	m_timerMap.insert(map<long long, ScriptTimerInfo*>::value_type(p->sn, p));
+	//m_timerMap.insert(map<long long, ScriptTimerInfo*>::value_type(p->sn, p));
+	m_timerMap[p->sn] = p;
 	s_pScriptTimer->m_timerCount++;
 	return 0;
 }
@@ -134,7 +128,6 @@ int ScriptTimer::delTimer(long long llTimeId)
 	m_timerMap.erase(llTimeId);
 	return 0;
 }
-
 
 int ScriptTimer::toluaScriptTimerOpen(lua_State* pState)
 {

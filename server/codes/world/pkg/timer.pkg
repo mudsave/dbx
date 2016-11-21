@@ -1,0 +1,9 @@
+// filename : timer.pkg
+// 脚本定时器相关的
+
+enum ScriptTimerState
+{
+	ScriptTimerNormal, //正常
+	ScriptTimerExpire, //过期
+	ScriptTimerStop, //被注销
+};

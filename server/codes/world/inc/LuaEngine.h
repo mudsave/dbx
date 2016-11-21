@@ -5,7 +5,7 @@
 #include <string>
 #include <cstring>
 #include <cstdio>
-
+#define MaxPrintBuffLength 10*1024
 class CLuaEngine{
 	public:
 		/*
@@ -16,6 +16,7 @@ class CLuaEngine{
 			if(m_pState){
 				luaL_openlibs(m_pState);
 				lua_checkstack(m_pState,1024);
+				registerUtilsFunction();
 				return true;
 			}
 			return false;
@@ -30,7 +31,6 @@ class CLuaEngine{
 				lua_close(m_pState);
 				m_pState = 0;
 			}
-			printf("LuaEngine已经释放\n");
 		}
 
 		/*
@@ -127,6 +127,58 @@ class CLuaEngine{
 			}
 			return &s_LuaEngine;
 		}
+		static int luaA_Trace(lua_State *L)
+		{
+			int n = lua_gettop(L);  /* 参数个数 */
+			int i;
+			lua_getglobal(L, "tostring");
+			static char buff[MaxPrintBuffLength]={0};
+			int count = 0;
+			if(buff[0] == '\0')memcpy(buff,"[lua:]",7);
+			memset(buff+6,0,MaxPrintBuffLength-6);
+			count = 6;
+			for (i=1; i<=n; i++) {
+				const char *s;
+				lua_pushvalue(L, -1);  /* function to be called */
+				lua_pushvalue(L, i);   /* value to print */
+				lua_call(L, 1, 1);
+				s = lua_tostring(L, -1);  /* get result */
+				
+				if (s == NULL)
+					return luaL_error(L, "`tostring' must return a string to `print'");
+
+				int len = strlen(s);
+				if ((count + len + 1)> MaxPrintBuffLength)
+				{
+					return luaL_error(L, "`tostring' length too long!");
+				}
+				
+				if (i>1) 
+				{
+					
+					strcat(buff,"\t");
+				}
+				strcat(buff,s);
+				count = count + len + 1;
+				lua_pop(L, 1);  /* pop result */
+			}
+			if ((count + 1)> MaxPrintBuffLength)
+			{
+				return luaL_error(L, "`tostring' length too long!");
+			}
+			else
+			{
+				strcat(buff,"\n");
+			}
+			TRACE0_L2(buff);
+			return 0;
+		}
+	private:
+		void registerUtilsFunction()
+		{
+			lua_register(m_pState, "print", luaA_Trace);
+		}
+		
 	private:
 		lua_State *		m_pState;		//lua环境
 		std::string		m_sLastErr;		//最后一次出错信息

@@ -220,6 +220,20 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				TRACE1_L2("\tport  = %i\n", pContext->port);
 			}
 			break;
+		case MSG_CLS_SCENE_RPC:
+			{
+				if ( pContext->state != LINK_CONTEXT_RUNNING ) return;
+				PlayerInfo* player = pContext->pPlayer;
+				if ( !player )
+				{
+					TRACE0_L2("CGateway::OnClientMsg(), MSG_CLS_SCENE_RPC throw exception\n");
+					pContext->_Close(CLOSE_RELEASE);
+					return;
+				}
+				pMsg->context = hLink;
+				IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(player->hWorldLink, pMsg);
+			}
+			break;
 		default:
 			{
 				TRACE0_L2("CGateway::OnClientMsg(), Invalid Msg..\n");
@@ -359,7 +373,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			{
 				if ( msgId == MSG_G_W_SINK_PEER )
 				{
-					_MsgWG_SinkMsg* pSinkMsg = (_MsgWG_SinkMsg*)(pMsg);
+					_MsgWG_SinkPeer* pSinkMsg = (_MsgWG_SinkPeer*)(pMsg);
 					handle hClient = pSinkMsg->hClient;
 					LinkContext_Client* pClient = getClientLink(hClient);
 					if ( !pClient)
@@ -377,7 +391,58 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						TRACE2_L2("CGateway::OnWorldMsg(), MSG_G_W_SINK_PEER, client[%u] is not the state of LINK_CONTEXT_RUNNING\n", hClient, pClient->state);
 						return;
 					}
-					IMsgLinksImpl<IID_IMsgLinksCG_L>::SendData(hClient, (BYTE*)pSinkMsg + sizeof(_MsgWG_SinkMsg), pSinkMsg->msgLen - sizeof(_MsgWG_SinkMsg));
+					int offset = sizeof(_MsgWG_SinkPeer);
+					IMsgLinksImpl<IID_IMsgLinksCG_L>::SendData(hClient, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset);
+					return;
+				}
+
+				if ( msgId == MSG_G_W_SINK_PEERS )
+				{
+					_MsgWG_SinkPeers* pSinkMsg = (_MsgWG_SinkPeers*)(pMsg);
+					for ( int i = 0; i < pSinkMsg->count; i++ )
+					{
+						PeerHandle& peer = pSinkMsg->hPeers[i];
+						if ( m_gatewayId != peer.gatewayId ) continue;
+						LinkContext_Client* pClient = getClientLink(peer.hClient);
+						if ( !pClient ) continue;
+						int offset = sizeof(_MsgWG_SinkPeers) + sizeof(PeerHandle) * pSinkMsg->count;
+						IMsgLinksImpl<IID_IMsgLinksCG_L>::SendData( peer.hClient, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset );
+					}
+					return;
+				}
+
+				if ( msgId == MSG_G_W_SINK_WORLD_PEERS )
+				{
+					_MsgWG_SinkWorldPeers* pSinkMsg = (_MsgWG_SinkWorldPeers*)(pMsg);
+					short worldId = pSinkMsg->worldId;
+					PlayerMgr::PlayerMapIter iter = g_playerMgr.begin();
+					PlayerMgr::PlayerMapIter iterEnd = g_playerMgr.end();
+					for( ; iter != iterEnd; iter++ )
+					{
+						PlayerInfo& player = iter->second;
+						if ( player.status != PLAYER_STATUS_LOADED ) continue; 
+						if ( player.worldId!= worldId ) continue; 
+						if ( player.hLink == (handle)INVALID_HANDLE ) continue;
+						int offset = sizeof(_MsgWG_SinkWorldPeers);
+						IMsgLinksImpl<IID_IMsgLinksCG_L>::SendData( player.hLink, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset );
+					}
+					return;
+				}
+
+				if ( msgId == MSG_G_W_SINK_WORLD )
+				{
+					_MsgWG_SinkWorld* pSinkMsg = (_MsgWG_SinkWorld*)(pMsg);
+					int offset = sizeof(_MsgWG_SinkWorld);
+					short worldId = pSinkMsg->worldId;
+					if ( worldId == -1 )
+					{
+						IMsgLinksImpl<IID_IMsgLinksWG_L>::SendData( (handle)INVALID_HANDLE, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset );
+						return;
+					}
+
+					LinkContext_World* pWorld = getWorldLinkById(worldId);
+					if ( !pWorld ) return;
+					IMsgLinksImpl<IID_IMsgLinksWG_L>::SendData( pWorld->hLink, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset );
 					return;
 				}
 				TRACE0_L2("CGateway::OnWorldMsg(), Invalid msgId for MSG_CLS_DEFAULT..\n");

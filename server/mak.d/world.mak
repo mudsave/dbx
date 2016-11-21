@@ -14,7 +14,7 @@ SRC_DIR = ../codes/world/src
 MACROS =
 
 # 附加编译选项
-CMPL_EX = -Wno-multichar -Wno-deprecated
+CMPL_EX = -Wno-multichar -Wno-deprecated -DTOLUA_RELEASE
 
 # 附加链接选项
 LINK_EX =

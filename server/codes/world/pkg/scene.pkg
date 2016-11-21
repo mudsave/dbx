@@ -1,0 +1,24 @@
+// filename : scene.pkg
+// 场景
+
+$#include "Scene.h"
+
+enum SceneType
+{
+	ePublicScene,
+	ePrivateScene
+};
+
+struct GridVct
+{
+	short x;
+	short y;
+};
+
+class CoScene
+{
+public:
+	static CoScene* Create(SceneType type, short mapId, char* fname);
+	static bool PosValidate(short mapId, int x, int y);
+	static GridVct FindRandomTile(int mapId);
+};

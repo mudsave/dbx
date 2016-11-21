@@ -29,7 +29,6 @@ public:
 
 	void createThread(void)
 	{
-		TRACE0_L0("----------createThread start\n");
 		try
 		{
 			_doContext* pLinkContext=new _doContext(NULL,0,eThread);
@@ -39,7 +38,6 @@ public:
 		catch (...) 
 		{
 		}
-		TRACE0_L0("----------createThread end\n");
 	}
 	void destroyThread(void)
 	{

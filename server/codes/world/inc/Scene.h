@@ -38,7 +38,10 @@ private:
 
 public:
 	static CoScene* Create(SceneType type, short mapId, char* fname);
-	static bool PosValidate(short mapId, int x, int y, int flag);
+	static bool PosValidate(short mapId, int x, int y);
+	static GridVct FindRandomTile(int mapId);
+	
+private:
 	static bool FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVct &ptResult,
     	const GridVct* pPtExclude = NULL);
 public:

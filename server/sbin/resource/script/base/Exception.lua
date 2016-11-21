@@ -38,9 +38,9 @@ function Exception:getCause()
 end
 
 function Exception:printStackTrace()
-	logger:error("--------------------------------")
-	logger:error(self.trace)
-	logger:error("--------------------------------")
+	g_logger:error("--------------------------------")
+	g_logger:error(self.trace)
+	g_logger:error("--------------------------------")
 end
 
 function Exception:tostring()

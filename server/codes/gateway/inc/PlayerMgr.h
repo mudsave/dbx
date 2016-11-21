@@ -96,6 +96,11 @@ public:
 	typedef std::map<int, PlayerInfo> PlayerMap;
 	typedef PlayerMap::iterator PlayerMapIter;
 
+public:
+	PlayerMapIter begin() { return m_players.begin(); }
+
+	PlayerMapIter end() { return m_players.end(); }
+
 private:
 	PlayerMap		m_players;
 };

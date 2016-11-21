@@ -11,12 +11,6 @@ TimerManager = class(nil, Singleton)
 
 -- 无效的定时器ID
 local INVALID_TIMER_ID = -1
---正常
-ScriptTimerNormal = 0
---过期
-ScriptTimerExpire = 1
---注销
-ScriptTimerStop = 2
 
 -- 初始化
 function TimerManager:__init()

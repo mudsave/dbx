@@ -1,7 +1,18 @@
 // filename : msg.pkg
 // œ˚œ¢¿‡pkg
 
-enum
+enum PlayerStatus
+{
+	ePlayerNone,
+	ePlayerLoading,
+	ePlayerNormal,
+	ePlayerFight,
+	ePlayerInactive,
+	ePlayerClosing,
+	ePlayerClosed
+};
+
+enum _AppMsgID
 {
 	MSG_W_G_PLAYER_LOGIN,
 	MSG_W_G_PLAYER_LOGOUT

@@ -1,0 +1,11 @@
+// filename : world.pkg
+// world服相关pkg
+
+$#include "world.h"
+
+class CWorld{
+public:
+	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int result);
+};
+
+CWorld g_world;

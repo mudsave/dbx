@@ -3,12 +3,14 @@
 	player管理器
 --]]
 
-require "base.base"
-
 PlayerManager = class(nil, Singleton)
 
 function PlayerManager:__init()
 	self._players = {}
+end
+
+function PlayerManager:getPlayer(id)
+	return self._players[dbId]
 end
 
 function PlayerManager:onPlayerMessage(hLink, msg)
@@ -32,27 +34,30 @@ function PlayerManager:onPlayerLogin(hGateLink, pLoginInfo)
 	local player = g_entityFct:createPlayer(roleId, gatewayId, hClientLink, hGateLink)
 	self._players[roleId] = player
 	g_entityMgr:addPlayer(player)
-
 	player:setStatus(ePlayerLoading)
 	LuaDBAccess.loadPlayer(dbId, PlayerManager.onPlayerLoaded, dbId)
 end
 
-function PlayerManager:onPlayerLogout(hGateLink, pLogoutInfo)
+function PlayerManager:onPlayerLogout(pLogoutInfo)
 	local roleId = pLogoutInfo.roleId
 	local reason = pLogoutInfo.reason
+	self._players[roleId] = nil
+	local player = g_entityMgr:getPlayerByDBID(roleId)
+	g_entityMgr:removePlayer(player:getID())
 end
 
 function PlayerManager.onPlayerLoaded(recordList, dbId)
-	local player = self._players[dbId]
+	local player = g_playerMgr:getPlayer(dbId)
 	if not player then
-		printf(" PlayerManager.onPlayerLoaded(), error(no player), dbId = ", dbId)
+		print("[ERROR]PlayerManager.onPlayerLoaded(), error(no player), dbId = ", dbId)
+		return
 	end
 
-	--从recordList加载玩家信息
-	--同步玩家信息到propset
+	player:loadBasicData(recordList)
 	player:setStatus(eEntityNormal)
-	--发送MSG_G_W_ACK_PLAYER_LOGIN到gateway
-	--加入视野管理，同步信息到客户端
+	g_world:send_MsgWG_PlayerLogin_ResultInfo(player._hGateLink, dbId, 1)
+	g_sceneMgr:enterPublicScene()
+	System.OnPlayerLogined()
 end
 
 function PlayerManager.getInstance()

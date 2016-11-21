@@ -1,0 +1,11 @@
+$#include "UnitConfig.h"
+
+#define PROP_PRIVATE
+#define PROP_PUBLIC
+
+class CUnitConfig
+{
+	static CUnitConfig &Instance();
+	void initPropSet(int cls);
+	int addProperty(int cls,const char *type,const char *def,int isPublic);
+};

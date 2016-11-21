@@ -11,7 +11,7 @@
 #include "gateway.h"
 #include <string.h>
 
-/// 参数形式 : ./Gateway -loginAddr 172.16.2.220:20015 -worldAddr 172.16.2.220:2700 -sessionAddr 172.16.2.220:2300 -gatewayId 0
+/// 参数形式 : ./Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0
 int main(int argc, char* argv[])
 {
 	InitTraceServer();
@@ -24,22 +24,22 @@ int main(int argc, char* argv[])
 	if ( argc < 7 )
 	{
 		TRACE0_L0("error args, the format is :\n");
-		TRACE0_L0("\t./Gateway -loginAddr 172.16.2.220:20015 -worldAddr 172.16.2.220:2700 -sessionAddr 172.16.2.220:2300 -gatewayId 0\n");
+		TRACE0_L0("\t./Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0\n");
 		return 1;
 	}
 	for( int i = 1; i < argc; i++ )
 	{
-		if ( strcasecmp(argv[i], "-loginAddr") == 0 )
+		if ( strcasecmp(argv[i], "-loginAddrL") == 0 )
 		{
 			i++; ASSERT_(i < argc);
 			ParseAddr(argv[i], loginIP, loginPort);
 		}
-		else if ( strcasecmp(argv[i], "-worldAddr") == 0 )
+		else if ( strcasecmp(argv[i], "-worldAddrL") == 0 )
 		{
 			i++; ASSERT_(i < argc);
 			ParseAddr(argv[i], worldIP_Listen, worldPort);
 		}
-		else if ( strcasecmp(argv[i], "-sessionAddr") == 0 )
+		else if ( strcasecmp(argv[i], "-sessionAddrC") == 0 )
 		{
 			i++; ASSERT_(i < argc);
 			ParseAddr(argv[i], sessionIP, sessionPort);

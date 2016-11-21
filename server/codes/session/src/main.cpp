@@ -24,12 +24,12 @@ int main(int argc, char* argv[])
 	if ( argc != 9 )
 	{
 		TRACE0_L0("error args for Session, the format is :\n");
-		TRACE0_L0("\t./Session -loginAddr 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000\n");
+		TRACE0_L0("\t./Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000\n");
 		return 1;
 	}
 	for( int i = 1; i < argc; i++ )
 	{
-		if ( strcasecmp(argv[i], "-loginAddr" ) == 0 )
+		if ( strcasecmp(argv[i], "-loginAddrL" ) == 0 )
 		{
 			i++; ASSERT_(i < argc);
 			ParseAddr(argv[i], loginIP, loginPort);

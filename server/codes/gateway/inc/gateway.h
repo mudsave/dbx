@@ -317,16 +317,30 @@ public:
 		}
 		return NULL;
 		*/
-		HANDLE hContext = IMsgLinksImpl<IID_IMsgLinksWG_L>::GetLinkContext(h);
+		HANDLE hContext = IMsgLinksImpl<IID_IMsgLinksCG_L>::GetLinkContext(h);
 		return (LinkContext_Client*)hContext;
 	}
 
 	LinkContext_World* getWorldLink(handle h)
 	{
+		/**
 		WorldMap::iterator iter = m_worlds.find(h);
 		if ( iter != m_worlds.end() )
 		{
 			return iter->second;
+		}
+		return NULL;
+		*/
+		HANDLE hContext = IMsgLinksImpl<IID_IMsgLinksWG_L>::GetLinkContext(h);
+		return (LinkContext_World*)hContext;
+	}
+
+	LinkContext_World* getWorldLinkById(short id)
+	{
+		for ( WorldMap::iterator iter = m_worlds.begin(); iter != m_worlds.end(); iter++ )
+		{
+			LinkContext_World* pWorld = iter->second;
+			if ( pWorld->worldId == id ) return pWorld;
 		}
 		return NULL;
 	}

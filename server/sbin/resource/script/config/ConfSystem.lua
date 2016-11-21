@@ -3,5 +3,5 @@
 	œµÕ≥º”‘ÿ
 --]]
 
-function LoadSystem()
+function loadSystem()
 end

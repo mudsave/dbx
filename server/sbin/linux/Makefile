@@ -31,23 +31,23 @@ clean :
 # 前台运行程序
 client :
 	@set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/test_client 172.16.2.220 20013 1>$(WORK_DIR)/logs/test_client.txt 2>&1
+	$(WORK_DIR)/test_client 172.16.2.220 20013
 
 server :
 	@set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/test_server 172.16.2.220 20013 1>$(WORK_DIR)/logs/test_server.txt 2>&1
+	$(WORK_DIR)/test_server 172.16.2.220 20013
 
 session :
 	@set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/Session -loginAddr 172.16.2.220:20013 -gateAddr 172.16.2.220:2300 -worldAddr 172.16.2.220:2500 1>$(WORK_DIR)/logs/session.txt 2>&1
+	$(WORK_DIR)/Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000
 
 gateway :
 	@set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/Gateway -loginAddr 172.16.2.220:20015 -worldAddr 172.16.2.220:2700 -sessionAddr 172.16.2.220:2300 -gatewayId 0 1>$(WORK_DIR)/logs/gateway.txt 2>&1
+	$(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0
 
 world :
 	@set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/World -sessionAddr 172.16.2.220:2500 -worldId 0 1>$(WORK_DIR)/logs/world.txt 2>&1
+	$(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 0
 
 
 # 后台运行程序
@@ -62,47 +62,47 @@ _server :
 
 _session :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Session -loginAddr 172.16.2.220:20013 -gateAddr 172.16.2.220:2300 -worldAddr 172.16.2.220:2500 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
+	( $(WORK_DIR)/Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
 	echo "Session has been runned.."; sleep 2s
 
 _gateway :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Gateway -loginAddr 172.16.2.220:20015 -worldAddr 172.16.2.220:2700 -sessionAddr 172.16.2.220:2300 -gatewayId 0 1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
+	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0 1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
 	echo "Gateway 0 has been runned.."; sleep 2s
 
 _gateway_1 :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Gateway -loginAddr 172.16.2.220:20017 -worldAddr 172.16.2.220:2900 -sessionAddr 172.16.2.220:2300 -gatewayId 1 1>$(WORK_DIR)/logs/_gateway_1.txt 2>&1 & ); \
+	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20017 -worldAddrL 172.16.2.220:2900 -sessionAddrC 172.16.2.220:2300 -gatewayId 1 1>$(WORK_DIR)/logs/_gateway_1.txt 2>&1 & ); \
 	echo "Gateway 1 has been runned.."; sleep 2s
 
 _world :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddr 172.16.2.220:2500 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
 	echo "World 0 has been runned.."; sleep 2s
 
 _world_1 :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddr 172.16.2.220:2500 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
 	echo "World 1 has been runned.."; sleep 2s
 
 
 # 用valgrind运行程序
 client_v :
 	@set -e; ulimit -c 0; \
-	valgrind --log-file=$(WORK_DIR)/vlog/client_v.txt $(WORK_DIR)/test_client 172.16.2.220 20013
+	valgrind --log-file=$(WORK_DIR)/vlogs/client_v.txt $(WORK_DIR)/test_client 172.16.2.220 20013
 
 server_v :
 	@set -e; ulimit -c 0; \
-	valgrind --log-file=$(WORK_DIR)/vlog/server_v.txt $(WORK_DIR)/test_server 172.16.2.220 20013
+	valgrind --log-file=$(WORK_DIR)/vlogs/server_v.txt $(WORK_DIR)/test_server 172.16.2.220 20013
 
 session_v:
 	@set -e; ulimit -c 0; \
-	valgrind --log-file=$(WORK_DIR)/vlog/session_v.txt $(WORK_DIR)/Session -loginAddr 172.16.2.220:20013 -gateAddr 172.16.2.220:2300 -worldAddr 172.16.2.220:2500
+	valgrind --log-file=$(WORK_DIR)/vlogs/session_v.txt $(WORK_DIR)/Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000
 
 gateway_v:
 	@set -e; ulimit -c 0; \
-	valgrind --log-file=$(WORK_DIR)/vlog/gateway_v.txt $(WORK_DIR)/Gateway -loginAddr 172.16.2.220:20015 -worldAddr 172.16.2.220:2700 -sessionAddr 172.16.2.220:2300 -gatewayId 0
+	valgrind --log-file=$(WORK_DIR)/vlogs/gateway_v.txt $(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0
 	
 world_v :
 	@set -e; ulimit -c 0; \
-	valgrind --log-file=$(WORK_DIR)/vlog/world_v.txt $(WORK_DIR)/World -sessionAddr 172.16.2.217:2500 -worldId 0
+	valgrind --log-file=$(WORK_DIR)/vlogs/world_v.txt $(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 0

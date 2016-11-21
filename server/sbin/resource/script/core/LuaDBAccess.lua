@@ -14,20 +14,13 @@ local function clearParams()
 	end
 end
 
-function LuaDBAccess.loadPlayer(dbId, callbackFunction, callbackArgs)
-	clearParams()
-	params[1]["spName"] = "sp_LoadAll"
-	params[1]["dataBase"] = 1
-	params[1]["sort"] = "rId"
-	params[1]["rId"] = dbId
-
-	local operationID = ManagedApp.exeSP(params, false)
-
-	local callback = {
-		func = callbackFunction,
-		args = callbackArgs
-	}
-	DB_CallbackContext[operationID] = callback
+function LuaDBAccess.exeSP(params, bNoCallback, level)
+	level = level or 20
+	local la = CLuaArray:createLuaArray()
+	la:setResult(nil, 0, params)
+	opId = CDBProxy:callSP(la, bNoCallback, level)
+	la:destroyLuaArray()
+	return opId
 end
 
 function LuaDBAccess.onExeSP(operationID, recordResult, errorCode)
@@ -50,4 +43,35 @@ function LuaDBAccess.onExeSP(operationID, recordResult, errorCode)
 		callback.func(recordList, callback.args)
 		DB_CallbackContext[operationID] = nil
 	end
+end
+
+function LuaDBAccess.loadPlayer(dbId, callbackFunction, callbackArgs)
+	clearParams()
+	params[1]["spName"] = "sp_LoadPlayer"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "rId"
+	params[1]["rId"] = dbId
+
+	local operationID = LuaDBAccess.exeSP(params, false)
+
+	local callback = {
+		func = callbackFunction,
+		args = callbackArgs
+	}
+	DB_CallbackContext[operationID] = callback
+end
+
+function LuaDBAccess.loadSystem(system, dbId, callbackFunction, callbackArgs)
+	clearParams()
+	params[1]["spName"] = system
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "rId"
+	params[1]["rId"] = dbId
+	
+	local operationID = LuaDBAccess.exeSP(params, false)
+	local callback = {
+		func = callbackFunction,
+		args = callbackArgs
+	}
+	DB_CallbackContext[operationID] = callback	
 end

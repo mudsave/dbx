@@ -10,6 +10,13 @@
 
 using namespace std;
 
+enum ScriptTimerState
+{
+	ScriptTimerNormal, //正常
+	ScriptTimerExpire, //过期
+	ScriptTimerStop, //被注销
+};
+
 struct ScriptTimerInfo
 {
 public:

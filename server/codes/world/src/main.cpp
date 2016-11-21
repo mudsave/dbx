@@ -19,18 +19,25 @@ int main(int argc, char* argv[])
 	short worldId = 0;
 	char sessionIP[64] = {0};
 	int sessionPort = 2500;
-	if ( argc < 3 )
+	char dbIP[64] = {0};
+	int dbPort = 2500;
+	if ( argc < 7 )
 	{
 		TRACE0_L0("error args, the format is :\n");
-		TRACE0_L0("\t./World -sessionAddr 172.16.2.220:2500 -worldId 0\n");
+		TRACE0_L0("\t./World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000 -worldId 0\n");
 		return 1;
 	}
 	for( int i = 1; i < argc; i++ )
 	{
-		if ( strcasecmp(argv[i], "-sessionAddr") == 0 )
+		if ( strcasecmp(argv[i], "-sessionAddrC") == 0 )
 		{
 			i++; ASSERT_(i < argc);
 			ParseAddr(argv[i], sessionIP, sessionPort);
+		}
+		else if ( strcasecmp(argv[i], "-dbAddrC") == 0 )
+		{
+			i++; ASSERT_(i < argc);
+			ParseAddr(argv[i], dbIP, dbPort);
 		}
 		else if ( strcasecmp(argv[i], "-worldId") == 0 )
 		{
@@ -43,7 +50,7 @@ int main(int argc, char* argv[])
 
 	GenerateSignalThread();
 
-	g_world.Init( worldId, sessionIP, sessionPort );
+	g_world.Init( worldId, sessionIP, sessionPort, dbIP, dbPort );
 
 	HRESULT hr = pThreadsPool->Running();
 	if ( hr == S_OK )

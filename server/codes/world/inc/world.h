@@ -43,7 +43,7 @@ public:
 	~CWorld();
 
 public:
-	void Init( short worldId, const char* sessionIP, int sessionPort );
+	void Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort );
 
 	void Close();
 
@@ -137,14 +137,31 @@ private:
 	}
 
 public:
-	void sendMsgToClient(handle hGate, handle hClient, const AppMsg* pMsg)
+	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int result)
+	{
+		ASSERT_(hLink > 0);
+		ASSERT_(roleId > 0);
+		_MsgWG_PlayerLogin_ResultInfo msg;
+		msg.msgFlags = 0;
+		msg.msgCls = MSG_CLS_LOGIN;
+		msg.msgId = MSG_G_W_ACK_PLAYER_LOGIN;
+		msg.roleId = roleId;
+		msg.result = result;
+		msg.msgLen = sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksWG_C>::SendMsg(hLink, &msg);
+		return 0;
+	}
+
+public:
+	void sendMsgToPeer(handle hGate, handle hClient, const AppMsg* pMsg)
 	{
 		if ( IMsgLinksImpl<IID_IMsgLinksWG_C>::IsValidLink(hGate) )
 		{
-			_MsgWG_SinkMsg msg;
+			_MsgWG_SinkPeer msg;
 			msg.msgFlags	= 0;
 			msg.msgCls		= MSG_CLS_DEFAULT;
 			msg.msgId		= MSG_G_W_SINK_PEER;
+			msg.context		= 0;
 			msg.msgLen		= sizeof(msg) + pMsg->msgLen;
 			msg.hClient		= hClient;
 			HRESULT hr = S_OK;
@@ -153,20 +170,74 @@ public:
 		}
 		else
 		{
-			TRACE1_L2("CWorld::sendMsgToClient(), error for hGate(%u)\n", hGate);
+			TRACE1_L2("CWorld::sendMsgToPeer(), error for hGate(%u)\n", hGate);
 		}
 	}
 
-private:
-	bool ExportCToLua(lua_State* pLuaState)
+	void sendMsgToPeers(PeerHandle* pPeers, int count, const AppMsg* pMsg)
 	{
-		return true;
+		ASSERT_( pPeers );
+		ASSERT_( count > 0 || count < 500 );
+
+		if ( !pPeers ) return;
+		if ( count <= 0 || count >= 500 ) return;
+
+		static char buff[_MaxMsgLength] = {0};
+		_MsgWG_SinkPeers* msg = (_MsgWG_SinkPeers*)buff;
+		msg->msgFlags	= 0;
+		msg->msgCls		= MSG_CLS_DEFAULT;
+		msg->msgId		= MSG_G_W_SINK_PEERS;
+		msg->context	= 0;
+		msg->count		= count;
+		msg->msgLen		= sizeof(_MsgWG_SinkPeers) + sizeof(PeerHandle) * count + pMsg->msgLen;
+		memcpy(msg->hPeers, pPeers, count);
+
+		HRESULT hr = S_OK;
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)msg, sizeof(_MsgWG_SinkPeers) + sizeof(PeerHandle) * count ); ASSERT_( SUCCEEDED(hr) );
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)pMsg, pMsg->msgLen ); ASSERT_( SUCCEEDED(hr) );
+	}
+
+	void sendMsgToWorldPeers(short worldId, AppMsg* pMsg)
+	{
+		_MsgWG_SinkWorldPeers msg;
+		msg.msgFlags	= 0;
+		msg.msgCls		= MSG_CLS_DEFAULT;
+		msg.msgId		= MSG_G_W_SINK_PEER;
+		msg.context		= 0;
+		msg.msgLen		= sizeof(msg) + pMsg->msgLen;
+		msg.worldId		= worldId;
+
+		HRESULT hr = S_OK;
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)&msg, sizeof(msg)); ASSERT_( SUCCEEDED(hr) );
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)pMsg, pMsg->msgLen); ASSERT_( SUCCEEDED(hr) );
+	}
+
+	void sendMsgToWorld(short worldId, AppMsg* pMsg)
+	{
+		_MsgWG_SinkWorld msg;
+		msg.msgFlags	= 0;
+		msg.msgCls		= MSG_CLS_DEFAULT;
+		msg.msgId		= MSG_G_W_SINK_PEER;
+		msg.context		= 0;
+		msg.msgLen		= sizeof(msg) + pMsg->msgLen;
+		msg.worldId		= worldId < 0 ? -1 : worldId;
+
+		handle hLink = IMsgLinksImpl<IID_IMsgLinksWG_C>::RandomGetLink();
+		if ( hLink != (handle)INVALID_HANDLE )
+		{
+			HRESULT hr = S_OK;
+			hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData(hLink, (BYTE*)&msg, sizeof(msg)); ASSERT_( SUCCEEDED(hr) );
+			hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData(hLink, (BYTE*)pMsg, pMsg->msgLen); ASSERT_( SUCCEEDED(hr) );
+		}
+		else
+		{
+			TRACE1_L2("CWorld::sendMsgToWorld(), error for hLink(%u)\n", hLink);
+		}
 	}
 
 private:
 	bool luaStart(lua_State* pLuaState)
 	{
-		
 		LuaFunctor<TypeNull, int> startFunc(pLuaState, "ManagedApp.start");
 		if ( !startFunc( TypeNull::nil(), m_worldId ) )
 		{
@@ -178,9 +249,11 @@ private:
 	}
 
 public:
-	short getWorldId(){
+	short getWorldId()
+	{
 		return m_worldId;
 	}
+
     lua_State* getLuaState()
     {
     	return m_pLuaEngine->GetLuaState();
@@ -250,6 +323,8 @@ private:
 private:
 	std::string				m_sessionIP;
 	short					m_sessionPort;
+	std::string				m_dbIP;
+	short					m_dbPort;
 
 private:
 	HRESULT					m_sessionSock;

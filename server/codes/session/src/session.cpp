@@ -533,7 +533,6 @@ void CSession::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
 	int port			= pContext->port;
 	int state			= pContext->state; unused(state);
 
-	printf("----------linkType = %d\n",linkType);
 	TRACE0_L3("CSession::DefaultMsgProc()\n");
 	TRACE1_L3("\tLinkType	= %s\n", translateLinkType(linkType));
 	TRACE2_L3("\taddr = %s:%i\n", addr, port);

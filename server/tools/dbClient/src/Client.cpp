@@ -8,12 +8,12 @@
 //#define		LOADPLAYER		2
 //#define		UPDATEPLAYER	3
 
-struct _LinkContext
+struct _LinkContext_DB
 {
 	int linkType;
 	handle hLink;
 	int idx;
-	_LinkContext(int type, handle h): linkType(type), hLink(h), idx(-1){}
+	_LinkContext_DB(int type, handle h): linkType(type), hLink(h), idx(-1){}
 };
 
 IDBANetEvent* CClient::s_pNetEventHandle=NULL;	
@@ -62,7 +62,7 @@ void CClient::doFunciton(void)
 void CClient::OnClosed(HANDLE hLinkContext, HRESULT reason)
 {
     if(!hLinkContext) return;
-    _LinkContext* pContext = (_LinkContext*)hLinkContext;
+    _LinkContext_DB* pContext = (_LinkContext_DB*)hLinkContext;
      m_hLink = NULL;
      m_bLink = false;
     delete pContext;
@@ -86,7 +86,7 @@ HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
                 m_hLink = hLink;
 		//s_pLinkPort=pPort;
 		if (s_pNetEventHandle) s_pNetEventHandle->onConnected(true);
-                _LinkContext* pNew = new _LinkContext(i_link_type, hLink);
+                _LinkContext_DB* pNew = new _LinkContext_DB(i_link_type, hLink);
                 return pNew;
 	}
 	else

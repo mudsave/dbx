@@ -2,7 +2,6 @@
 #define __MAP_INFO_H_
 
 #include "SceneCoord.h"
-#include "lindef.h"
 
 enum _BlockFlag
 {

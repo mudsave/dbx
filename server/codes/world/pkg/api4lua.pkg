@@ -3,9 +3,12 @@
 
 $#include "lindef.h"
 $#include "vsdef.h"
-$#include "Entity.h"
 
 typedef unsigned int handle;
 
 $pfile "msg.pkg"
+$pfile "UnitConfig.pkg"
 $pfile "entity.pkg"
+$pfile "world.pkg"
+$pfile "timer.pkg"
+$pfile "scene.pkg"

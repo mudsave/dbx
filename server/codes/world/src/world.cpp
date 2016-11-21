@@ -11,6 +11,9 @@
 #include "LinkContext.h"
 #include "world.h"
 
+TOLUA_API int tolua_api4lua_open(lua_State* tolua_S);
+TOLUA_API int lua_PropertySet_open(lua_State* tolua_S);
+
 CWorld::CWorld()
 {
 	TRACE0_L0("CWorld construct..\n");
@@ -38,19 +41,21 @@ CWorld::~CWorld()
 	TRACE0_L0("CWorld destruct..\n");
 }
 
-void CWorld::Init( short worldId, const char* sessionIP, int sessionPort )
+void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort )
 {
 	HRESULT hr;
 	m_pLinkCtrl = CreateLinkCtrl();
 	m_pThreadsPool = GlobalThreadsPool();
 
-	ILinkSink* pSessionSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWS_C>* >(this);
-	hr = m_pLinkCtrl->Connect(sessionIP, sessionPort, pSessionSink,	0); ASSERT_( SUCCEEDED(hr) ); 
-	m_sessionSock	= hr;
+	m_worldId		= worldId;
+	m_dbIP			= dbIP;
+	m_dbPort		= dbPort;
 	m_sessionIP		= sessionIP;
 	m_sessionPort	= sessionPort;
 
-	m_worldId		= worldId;
+	ILinkSink* pSessionSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWS_C>* >(this);
+	hr = m_pLinkCtrl->Connect(sessionIP, sessionPort, pSessionSink,	0); ASSERT_( SUCCEEDED(hr) ); 
+	m_sessionSock	= hr;
 
 	m_hFastFrameTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eFastFrameHandle, 0, eFastFrameInterval, eFastFrameInterval, "world fast frame timer");
 	ASSERT_(m_hFastFrameTimer);
@@ -62,11 +67,22 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort )
 	ASSERT_(m_hUpdateWorldStateTimer);
 
 	m_pLuaEngine = CLuaEngine::CreateLuaEngineProc();
+
 	lua_State* pLuaState = m_pLuaEngine->GetLuaState();
-	CDBProxy::init("172.16.4.159", 3000, pLuaState);
+	tolua_api4lua_open(pLuaState);
+
+	lua_PropertySet_open(pLuaState);
+
 	ScriptTimer::init(pLuaState);
-	ExportCToLua(pLuaState);
-	ASSERT_( m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") );
+
+	CDBProxy::init(dbIP, dbPort, pLuaState);
+
+	if ( !m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") )
+	{
+		TRACE0_L2("LoadLuaFile(../resource/script/appEntry.lua) error\n");
+		exit(-1);
+	}
+
 	luaStart(pLuaState);
 }
 
@@ -223,6 +239,20 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				TRACE0_L2("CWorld::OnGatewayMsg(), Invalid msgId for MSG_CLS_STARTUP..\n");
 				TRACE1_L2("\tmsgId = %i\n", msgId);
 				
+			}
+			break;
+		case MSG_CLS_SCENE_RPC:
+			{
+				//handle hClient = pMsg->context;
+				//handle hGate = hLink;
+				//short gatewayId = pContext->gatewayId;
+			}
+			break;
+		case MSG_CLS_WORLD_RPC:
+			{
+				//short srcId = pMsg->context;
+				//handle hGate = hLink;
+				//short gatewayId = pContext->gatewayId;
 			}
 			break;
 		default:

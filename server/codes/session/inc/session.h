@@ -84,6 +84,7 @@ public:
 		msg.msgCls		= MSG_CLS_STARTUP;
 		msg.msgId		= MSG_G_S_ACK_GATEWAY_INFO;
 		msg.msgLen		= sizeof(msg);
+		msg.context		= 0;
 
 		IMsgLinksImpl<IID_IMsgLinksGS_L>::SendMsg(hLink, &msg);
 	}
@@ -95,6 +96,7 @@ public:
 		msg.msgCls		= MSG_CLS_STARTUP;
 		msg.msgId		= MSG_W_S_ACK_WORLD_INFO;
 		msg.msgLen		= sizeof(msg);
+		msg.context		= 0;
 
 		IMsgLinksImpl<IID_IMsgLinksWS_L>::SendMsg(hLink, &msg);
 	}
@@ -107,6 +109,7 @@ public:
 		pMsg->msgFlags		= 0;
 		pMsg->msgCls        = MSG_CLS_STARTUP;
 		pMsg->msgId         = MSG_W_S_UPDATE_GATEWAY_LIST;
+		pMsg->context		= 0;
 
 		int i = 0;
 		_Gateway_Element* pElements = pMsg->gateElements;
@@ -190,6 +193,7 @@ public:
 			msg.msgId = MSG_C_S_ACK_USER_LOGIN;
 			msg.msgLen = sizeof(_MsgSC_Login_ResultInfo);
 			msg.msgFlags = 0;
+			msg.context	= 0;
 			msg.result = 1;	
 			msg.reason = reason;
 			IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
@@ -202,6 +206,7 @@ public:
 		msg->msgId = MSG_C_S_ACK_USER_LOGIN;
 		msg->msgLen = sizeof(_MsgSC_Login_ResultInfo) + pRet->roleNum*(sizeof(_Role_Element));
 		msg->msgFlags = 0;
+		msg->context	= 0;
 		msg->result = 0;
 		msg->reason = pRet->roleNum;
 		for( int i = 0; i < pRet->roleNum; i++)
@@ -224,6 +229,7 @@ public:
 		msg.msgId = MSG_C_S_ACK_CHOOSE_ROLE;
 		msg.msgLen = sizeof(_MsgSC_ChooseRole_ResultInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		msg.hLink = hLink;
 		msg.accountId = accountId;
 		bool isExit = false;
@@ -251,6 +257,7 @@ public:
 		msg.msgId = MSG_C_S_ACCOUNT_KICKED;
 		msg.msgLen = sizeof(_MsgSC_AccountKickedInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
@@ -261,9 +268,10 @@ public:
 		msg.msgId = MSG_G_S_KICK_ACCOUNT;
 		msg.msgLen = sizeof(_MsgSG_KickAccountInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		msg.accountId = account.accountId;
 		msg.roleId = account.roleId;
-		LinkContext_Gate* pContext = getGatewayLink(account.gatewayId);
+		LinkContext_Gate* pContext = getGateLinkById(account.gatewayId);
 		IMsgLinksImpl<IID_IMsgLinksGS_L>::SendMsg(pContext->hLink, &msg);
 	}
 
@@ -275,6 +283,7 @@ public:
 		msg.msgId = MSG_C_S_ACK_USER_CREATE;
 		msg.msgLen = sizeof(_MsgSC_CreateUser_ResultInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		if ( pRet == NULL )
 			msg.ret = 1;
 		else
@@ -289,6 +298,7 @@ public:
 		msg.msgId = MSG_C_S_ACK_ROLE_CREATE;
 		msg.msgLen = sizeof(_MsgSC_CreateRole_ResultInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		msg.ret = pRet->result;
 		msg.roleId = pRet->roleId;
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
@@ -301,6 +311,7 @@ public:
 		msg.msgId = MSG_C_S_ACK_ROLE_DELETE;
 		msg.msgLen = sizeof(_MsgSC_DeleteRole_ResultInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		msg.roleId = pRet->roleId;
 		msg.ret = pRet->result;	
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
@@ -313,6 +324,7 @@ public:
 		msg.msgId = MSG_C_S_ACK_ROLE_CHECK;
 		msg.msgLen = sizeof(_MsgSC_CheckName_ResultInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		msg.ret = result;	
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
@@ -324,6 +336,7 @@ public:
 		msg.msgId = MSG_G_S_ACK_USER_VERIFY;
 		msg.msgLen = sizeof(_MsgSG_UserVerify_ResultInfo);
 		msg.msgFlags = 0;
+		msg.context	= 0;
 		msg.roleId = roleId;
 		msg.result = ret;
 		IMsgLinksImpl<IID_IMsgLinksGS_L>::SendMsg(hLink, &msg);
@@ -409,21 +422,52 @@ private:
 public:
 	LinkContext_Client* getClientLink(handle h)
 	{
+		/**
 		ClientMap::iterator iter = m_clients.find(h);
 		if ( iter != m_clients.end() )
 		{
 			return iter->second;
 		}
 		return NULL;
+		*/
+		HANDLE hContext = IMsgLinksImpl<IID_IMsgLinksCS_L>::GetLinkContext(h);
+		return (LinkContext_Client*)hContext;
 	}
 
-	LinkContext_Gate* getGatewayLink(short id)
+	LinkContext_World* getWorldLink(handle h)
+	{
+		/**
+		WorldMap::iterator iter = m_worlds.find(h);
+		if ( iter != m_worlds.end() )
+		{
+			return iter->second;
+		}
+		return NULL;
+		*/
+		HANDLE hContext = IMsgLinksImpl<IID_IMsgLinksWS_L>::GetLinkContext(h);
+		return (LinkContext_World*)hContext;
+	}
+
+	LinkContext_Gate* getGateLink(handle h)
+	{
+		/**
+		GateMap::iterator iter = m_gates.find(h);
+		if ( iter != m_gates.end() )
+		{
+			return iter->second;
+		}
+		return NULL;
+		*/
+		HANDLE hContext = IMsgLinksImpl<IID_IMsgLinksGS_L>::GetLinkContext(h);
+		return (LinkContext_Gate*)hContext;
+	}
+
+	LinkContext_Gate* getGateLinkById(short id)
 	{
 		for ( GateMap::iterator iter = m_gates.begin(); iter != m_gates.end(); iter++ )
 		{
-			LinkContext_Gate* pGateInfo = iter->second;
-			if ( pGateInfo->gatewayId == id )
-				return pGateInfo;
+			LinkContext_Gate* pGate = iter->second;
+			if ( pGate->gatewayId == id ) return pGate;
 		}
 		return NULL; 
 	}

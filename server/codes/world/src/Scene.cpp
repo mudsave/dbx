@@ -158,7 +158,7 @@ CoScene* CoScene::Create(SceneType type, short mapId, char* fname)
     return pScene;
 }
 
-bool CoScene::PosValidate(short mapId, int x, int y, int flag)
+bool CoScene::PosValidate(short mapId, int x, int y)
 {
 	if(mapId<0 || mapId >= MAX_MAP_COUNT)
     	return false;
@@ -210,4 +210,16 @@ bool CoScene::FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVc
         }		
     }    
     return false;
+}
+
+GridVct CoScene::FindRandomTile(int mapId)
+{
+	CMapInfo* mapConfig = g_MapManager.GetMap(mapId);
+    int lenX = mapConfig->GetXTileLen();
+    int lenY = mapConfig->GetYTileLen();
+	GridVct center(lenX / 2, lenY / 2);
+	GridVct gv(0, 0);
+    int radius = lenX > lenY ? lenX : lenY;
+	FindEmptyTile(mapId, center, radius, gv, NULL);
+    return gv;
 }

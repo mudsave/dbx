@@ -12,6 +12,20 @@
 #define IN
 #define OUT
 
+struct RECT
+{
+    int    left;
+    int    top;
+    int    right;
+    int    bottom;
+};
+
+struct POINT 
+{
+	int x;
+	int y;
+};
+
 inline bool IntersectRect(RECT* prcDst, const RECT* prcSrc1, const RECT* prcSrc2)
 {
 	prcDst->left = prcSrc1->left < prcSrc2->left ? prcSrc2->left : prcSrc1->left;

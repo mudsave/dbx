@@ -70,6 +70,11 @@ public:
 		count = 0;
 		if (p) delete[] p;
 	}
+
+	T* operator[](size_t index)const{
+		assert(index<(unsigned)count);
+		return index<(unsigned)count?p+index:0;
+	}
 };
 
 #endif
