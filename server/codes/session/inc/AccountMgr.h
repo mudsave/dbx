@@ -21,7 +21,7 @@ enum _AccountState
 enum _AccountStateIntervals
 {
 	eAccountLoginedInterval		= -1,
-	eAccountLoadingInterval		= 1000 * 1,
+	eAccountLoadingInterval		= 5000 * 1,
 	eAccountLoadingOneInterval	= 1000 * 1,
 	eAccountLoadedInterval		= -1,
 	eAccountKickingInterval		= 1000 * 1,

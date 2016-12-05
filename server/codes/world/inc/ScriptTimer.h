@@ -84,4 +84,5 @@ private:
 	int m_timerCount;
 };
 
+int getLuaTick();
 #endif

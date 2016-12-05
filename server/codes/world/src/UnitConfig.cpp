@@ -51,6 +51,12 @@ bool CUnitConfig::CopyPropSet(int cls,_PropSet &out){
 	return true;
 }
 
+char CUnitConfig::GetPropType(int cls,int propID){
+	_PropSet &set = auxCheckValidSet(m_propSets,cls);
+	_Property *p = set[propID];
+	return p->val.type;
+}
+
 const _RefList& CUnitConfig::GetPublicProps(int cls){
 	ASSERT_(cls>=0 && cls<MAX_CLASS_TYPE);
 	return m_refLists[cls];

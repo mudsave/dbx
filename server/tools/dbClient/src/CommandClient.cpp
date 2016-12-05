@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "Client.h"
 
- 
+
 CCommandClient::CCommandClient(void):INIT_THREAD_SAFETY_MEMBER_FAST(MapMsg)
 {
     #ifdef UseMutiThread
@@ -19,18 +19,18 @@ void CCommandClient::doFunciton()
 {
 
 	while (this->getSemaphore()->Wait())
-	{	
+	{
 		ENTER_CRITICAL_SECTION_MEMBER(MapMsg);
 		if(m_mapMsg.size()!=0)
 		{
-			
+
 			MAPMSG::iterator iter = m_mapMsg.begin();
 			for(; iter != m_mapMsg.end(); iter++){
 				parseMsg(*iter);
 			}
 			m_mapMsg.clear();
 		}
-		LEAVE_CRITICAL_SECTION_MEMBER;	
+		LEAVE_CRITICAL_SECTION_MEMBER;
 	}
 
 }
@@ -47,7 +47,7 @@ void CCommandClient::OnRecv(AppMsg* pMsg) {
 	this->getSemaphore()->Post();
 #else
         ParseMsg(pMsg);
-#endif        
+#endif
 	return;
 }
 
@@ -63,7 +63,7 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 	{
 		return;
 	}
-	
+
 	CSCResultMsg* pDataMsg=pTempMsg;
  	pTempMsg->getInit();
  	pDataMsg=(CSCResultMsg*)pTempMsg->uncompressData(NonCompress);
@@ -71,7 +71,7 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 	switch(pMsg->msgId){
 	case S_DOACTION_RESULT:
 		{
-			printf("S_DOACTION_RESULT %d\n",pDataMsg->m_nTempObjId);
+			//printf("S_DOACTION_RESULT %d\n",pDataMsg->m_nTempObjId);
 			if(setResult(pDataMsg->m_nTempObjId,pDataMsg))
 			{
 				if(pDataMsg->m_bEnd)
@@ -92,12 +92,12 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 		}
 		break;
 	}
- 	
+
 	if ((pDataMsg!=NULL)&&(pDataMsg!=pMsg)){
 		free(pMsg);
 		pDataMsg=NULL;
 	}
-	
+
 }
 
 bool CCommandClient::ValidateMsg(AppMsg* pMsg) {

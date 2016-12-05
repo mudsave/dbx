@@ -30,6 +30,8 @@ struct TypeTable{
 	int self;
 	TypeTable(int s):self(s){
 	}
+	TypeTable():self(LUA_NOREF){
+	}
 };
 
 //空类型，默认值

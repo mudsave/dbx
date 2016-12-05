@@ -1,6 +1,6 @@
 --[[interface.lua
-ÃèÊö£º
-	Ìá¹©½Ó¿Ú»úÖÆ
+æè¿°ï¼š
+	æä¾›æ¥å£æœºåˆ¶
 
 Exported API:
 	interface(super, ...)
@@ -21,12 +21,12 @@ require "base.string"
 local interfaceMap = define { __mode = "k" }
 local instanceMT = {}
 
---@note£ºĞé½Ó¿ÚµÄµ÷ÓÃ
+--@noteï¼šè™šæ¥å£çš„è°ƒç”¨
 local function dummy()
 	error("Don't execute an interface method.")
 end
 
---@note£º
+--@noteï¼š
 local function undefined(interface, method)
 	if interface then
 		return interface[method] == nil
@@ -34,7 +34,7 @@ local function undefined(interface, method)
 	return true
 end
 
---@note£º±éÀúËùÓĞ½Ó¿ÚµÄµü´ú×Ó
+--@noteï¼šéå†æ‰€æœ‰æ¥å£çš„è¿­ä»£å­
 local function iterator(interface)
 	local methods = {}
 	local index = 0
@@ -58,7 +58,7 @@ local function iterator(interface)
 	return iter
 end
 
---@note£ºÉú³ÉÒ»¸öºÍobjectÏà¹ØµÄÊµÀı
+--@noteï¼šç”Ÿæˆä¸€ä¸ªå’Œobjectç›¸å…³çš„å®ä¾‹
 local function cast(interface, object)
 	local class = classof(object)
 	local ret, _ = implemented(class, interface)
@@ -74,7 +74,7 @@ local function cast(interface, object)
 	end
 end
 
---@note£º½Ó¿ÚµÄ×Ö·û´®×ª»»º¯Êı
+--@noteï¼šæ¥å£çš„å­—ç¬¦ä¸²è½¬æ¢å‡½æ•°
 local function interfaceToString(interface)
 	local members = {}
 	local separator = ""
@@ -93,7 +93,7 @@ local function interfaceToString(interface)
 	return tostring(ret)
 end
 
---note£º½Ó¿Ú¶¨Òåº¯Êı
+--noteï¼šæ¥å£å®šä¹‰å‡½æ•°
 function interface(super, ...)
 	local methods = {}
 	for i = 1, select("#", ...) do
@@ -114,7 +114,7 @@ function interface(super, ...)
 	return interface
 end
 
---@note£ºÅĞ¶ÏÒ»¸öÀàÊÇ·ñÊµÏÖÁËËûµÄËùÓĞ½Ó¿Ú
+--@noteï¼šåˆ¤æ–­ä¸€ä¸ªç±»æ˜¯å¦å®ç°äº†ä»–çš„æ‰€æœ‰æ¥å£
 function implemented(class, ...)
 	class = isclass(class) and class or classof(class)
 	if class then
@@ -136,22 +136,22 @@ function implemented(class, ...)
 	return false
 end
 
---@note£ºÅĞ¶Ï¸Ã¶ÔÏóÊÇ·ñÊÇÒ»¸ö½Ó¿Ú
+--@noteï¼šåˆ¤æ–­è¯¥å¯¹è±¡æ˜¯å¦æ˜¯ä¸€ä¸ªæ¥å£
 function isInterface(interface)
 	return interfaceMap[interface] == true
 end
 
---@note£ºÅĞ¶Ï¶ÔÏóÊÇ·ñÊÇÒ»¸ö½Ó¿ÚµÄÊµÀı
+--@noteï¼šåˆ¤æ–­å¯¹è±¡æ˜¯å¦æ˜¯ä¸€ä¸ªæ¥å£çš„å®ä¾‹
 function isInterfaceInstance(object)
 	return getmetatable(object) == instanceMT
 end
 
---@note£º²éÕÒ¸¸½Ó¿Ú
+--@noteï¼šæŸ¥æ‰¾çˆ¶æ¥å£
 function superinterface(interface)
 	return getmetatable(interface).__index
 end
 
---@note£ºÅĞ¶Ï½Ó¿ÚÊÇ·ñ´Ósuper¼Ì³Ğ
+--@noteï¼šåˆ¤æ–­æ¥å£æ˜¯å¦ä»superç»§æ‰¿
 function subinterfaceof(interface, super)
 	while interface do
 		if interface == super then return true end

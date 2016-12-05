@@ -10,6 +10,7 @@
 #include "MsgLinksImpl.h"
 #include "LinkContext.h"
 #include "world.h"
+#include "RPCEngine.h"
 
 TOLUA_API int tolua_api4lua_open(lua_State* tolua_S);
 TOLUA_API int lua_PropertySet_open(lua_State* tolua_S);
@@ -32,7 +33,7 @@ CWorld::CWorld()
 	m_worldId					= -1;
 	m_playerCount				= 0;
 	m_castedPlayerCount			= -1;
-	
+
 	m_pLuaEngine				= NULL;
 }
 
@@ -54,7 +55,7 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	m_sessionPort	= sessionPort;
 
 	ILinkSink* pSessionSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWS_C>* >(this);
-	hr = m_pLinkCtrl->Connect(sessionIP, sessionPort, pSessionSink,	0); ASSERT_( SUCCEEDED(hr) ); 
+	hr = m_pLinkCtrl->Connect(sessionIP, sessionPort, pSessionSink,	0); ASSERT_( SUCCEEDED(hr) );
 	m_sessionSock	= hr;
 
 	m_hFastFrameTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eFastFrameHandle, 0, eFastFrameInterval, eFastFrameInterval, "world fast frame timer");
@@ -79,11 +80,12 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 
 	if ( !m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") )
 	{
-		TRACE0_L2("LoadLuaFile(../resource/script/appEntry.lua) error\n");
+		TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());
 		exit(-1);
 	}
 
 	luaStart(pLuaState);
+	RPCEngine::init(pLuaState);
 }
 
 void CWorld::Close()
@@ -163,9 +165,9 @@ void CWorld::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						conn.addr		= addr;
 						conn.port		= port;
 						conn.status		= eConnInit;
-						
+
 						ILinkSink* pGatewaySink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWG_C>* >(this);
-						HRESULT	hr		= m_pLinkCtrl->Connect(addr.c_str(), port, pGatewaySink, 0); ASSERT_( SUCCEEDED(hr) ); 
+						HRESULT	hr		= m_pLinkCtrl->Connect(addr.c_str(), port, pGatewaySink, 0); ASSERT_( SUCCEEDED(hr) );
 
 						conn.sock		= hr;
 						conn.status		= eConnConnecting;
@@ -226,7 +228,7 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			break;
 		case MSG_CLS_LOGIN:
 			{
-				
+
 				if ( msgId == MSG_W_G_PLAYER_LOGIN || msgId == MSG_W_G_PLAYER_LOGOUT )
 				{
 					static LuaFunctor<TypeNull, handle, TypeUser> playerMsgFunc(m_pLuaEngine->GetLuaState(), "ManagedApp.onPlayerMessage");
@@ -238,21 +240,23 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				}
 				TRACE0_L2("CWorld::OnGatewayMsg(), Invalid msgId for MSG_CLS_STARTUP..\n");
 				TRACE1_L2("\tmsgId = %i\n", msgId);
-				
+
 			}
 			break;
 		case MSG_CLS_SCENE_RPC:
 			{
-				//handle hClient = pMsg->context;
-				//handle hGate = hLink;
-				//short gatewayId = pContext->gatewayId;
+				handle hClient = pMsg->context; unused(hClient);
+				handle hGate = hLink; unused(hGate);
+				short gatewayId = pContext->gatewayId; unused(gatewayId);
+				RPCEngine::onReceive(pMsg);
 			}
 			break;
 		case MSG_CLS_WORLD_RPC:
 			{
-				//short srcId = pMsg->context;
-				//handle hGate = hLink;
-				//short gatewayId = pContext->gatewayId;
+				short srcId = pMsg->context; unused(srcId);
+				handle hGate = hLink; unused(hGate);
+				short gatewayId = pContext->gatewayId; unused(gatewayId);
+				RPCEngine::onWorldReceive(pMsg);
 			}
 			break;
 		default:
@@ -269,9 +273,9 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 void CWorld::OnSessionClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Session* pContext = (LinkContext_Session*)hLinkContext;
-	int linkType = pContext->linkType; unused(linkType); 
+	int linkType = pContext->linkType; unused(linkType);
 	handle hLink = pContext->hLink; unused(hLink);
-	
+
 	LinkContext_Session* pSession = m_pSession; ASSERT_( pContext == pSession );
 	m_pSession = NULL;
 
@@ -281,7 +285,7 @@ void CWorld::OnSessionClosed(HANDLE hLinkContext, HRESULT reason)
 void CWorld::OnGatewayClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Gate* pContext = (LinkContext_Gate*)hLinkContext;
-	int linkType	= pContext->linkType;	unused(linkType); 
+	int linkType	= pContext->linkType;	unused(linkType);
 	handle hLink	= pContext->hLink;		unused(hLink);
 	short id		= pContext->gatewayId;	unused(id);
 
@@ -320,7 +324,7 @@ void CWorld::handleSessionReconnect()
 	m_hReconnectSessionTimer = NULL;
 
 	ILinkSink* pSessionSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWS_C>* >(this);
-	HRESULT hr = m_pLinkCtrl->Connect(m_sessionIP.c_str(), m_sessionPort, pSessionSink, 0); ASSERT_( SUCCEEDED(hr) ); 
+	HRESULT hr = m_pLinkCtrl->Connect(m_sessionIP.c_str(), m_sessionPort, pSessionSink, 0); ASSERT_( SUCCEEDED(hr) );
 
 	m_sessionSock = hr;
 
@@ -372,7 +376,7 @@ HANDLE CWorld::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPor
 	int iPort = 0;
 	char strbuf[1024] = {0};
 	pPort->GetRemoteAddr(strbuf, 1024, &iPort);
-	
+
 	TRACE4_L2("(%i)CWorld::OnConnects(), %s( %s:%d ) comes\n", operaterId, translateLinkType(iLinkType), strbuf, iPort);
 
 	if ( iLinkType == IID_IMsgLinksWG_C )

@@ -6,6 +6,19 @@ $#include "world.h"
 class CWorld{
 public:
 	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int result);
+	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int result, int reason);
+	int send_MsgWG_WorldPlayersLogout_ResultInfo(short worldId);
 };
 
 CWorld g_world;
+
+enum _LogoutReason
+{
+	LOGOUT_REASON_INIT				= -2,		// the value of init
+	LOGOUT_REASON_EXCEPTION			= -1,		// exception
+	LOGOUT_REASON_CLIENT_NORMAL,				// normal from client
+	LOGOUT_REASON_CLIENT_FORCE,					// force from client
+	LOGOUT_REASON_SESSION_KICK,					// kick from session
+	LOGOUT_REASON_WORLD_KICK,					// kick form world
+	LOGOUT_REASON_GATEWAY_HEART,				// heart from gateway
+};

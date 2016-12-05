@@ -1,6 +1,6 @@
---[[ÓÃÓÚÊı×éÏà¼õµÄº¯Êı
+--[[ç”¨äºæ•°ç»„ç›¸å‡çš„å‡½æ•°
 ]]
---·µ»ØÒ»¸öÆ¥Åäº¯Êı£¬ÓÃÒÔ²éÑ¯Ä³¸öÔªËØÊÇ·ñÔÚÊı×éÖĞ
+--è¿”å›ä¸€ä¸ªåŒ¹é…å‡½æ•°ï¼Œç”¨ä»¥æŸ¥è¯¢æŸä¸ªå…ƒç´ æ˜¯å¦åœ¨æ•°ç»„ä¸­
 local function ContainMatcher(set)
 	return function(value)
 		for index,v in ipairs(set) do
@@ -11,7 +11,7 @@ local function ContainMatcher(set)
 	end
 end
 
---·µ»ØÒ»¸öÆ¥Åäº¯Êı£¬ÓÃÒÔ²éÑ¯Ä³¸öÔªËØÊÇ·ñÔÚÊı×éÖĞ£¬¶ÔÍ¬Ò»¸öÖµµÄ¶ş´Î²éÑ¯²»»áÃüÖĞ
+--è¿”å›ä¸€ä¸ªåŒ¹é…å‡½æ•°ï¼Œç”¨ä»¥æŸ¥è¯¢æŸä¸ªå…ƒç´ æ˜¯å¦åœ¨æ•°ç»„ä¸­ï¼Œå¯¹åŒä¸€ä¸ªå€¼çš„äºŒæ¬¡æŸ¥è¯¢ä¸ä¼šå‘½ä¸­
 local function OnceContainMatcher(set)
 	return function(value)
 		local length=#set
@@ -26,7 +26,7 @@ local function OnceContainMatcher(set)
 	end
 end
 
---·µ»ØÒ»¸öÆ¥Åäº¯Êı£¬ÓÃÒÔ²éÑ¯Ä³¸öÔªËØÊÇ·ñÔÚÊı×éÖĞ£¬
+--è¿”å›ä¸€ä¸ªåŒ¹é…å‡½æ•°ï¼Œç”¨ä»¥æŸ¥è¯¢æŸä¸ªå…ƒç´ æ˜¯å¦åœ¨æ•°ç»„ä¸­ï¼Œ
 local function SaveContainMatcher(set)
 	local copy={}
 	for k,v in ipairs(set) do
@@ -35,7 +35,7 @@ local function SaveContainMatcher(set)
 	return OnceContainMatcher(copy)
 end
 
---·µ»ØÒ»¸öÆ¥Åäº¯Êı£¬
+--è¿”å›ä¸€ä¸ªåŒ¹é…å‡½æ•°ï¼Œ
 local function TwiceMatcher()
 	local set = {}
 	return function(value)
@@ -48,7 +48,7 @@ local function TwiceMatcher()
 	end
 end
 
---É¾³ıÊı×éÖĞµÄÔªËØ
+--åˆ é™¤æ•°ç»„ä¸­çš„å…ƒç´ 
 local function Remove(list,can_remove,...)
 	if type(can_remove) ~= "function" then
 		error(("#2 excepted a function,got %s"):format(type(can_remove)))
@@ -85,7 +85,7 @@ local function clear(t)
 	return t
 end
 
---ºÏ²¢Êı×é
+--åˆå¹¶æ•°ç»„
 local function Combine(a,b)
 	local temp = clear(temp)
 	for _,value in ipairs(a) do

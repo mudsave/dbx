@@ -22,7 +22,7 @@ class CoScene;
 
 #define _SyncRadius 16
 
-#define _SyncRingCount 2	
+#define _SyncRingCount 2
 
 #define _MaxEnumCount 4096
 
@@ -59,14 +59,19 @@ public:
 	char getDirection(){ return m_direction; }
 	bool getAutoCast(){ return m_autoCast; }
 
+
 public:
 	void setDBID(int dbId){ m_dbid = dbId; }
 	void setPosition(int x, int y);
 	void setPosition(const GridVct& pos);
 	void setDirection(char direction){ m_direction = direction; }
-	void setAutoCast(bool toCast){ m_autoCast = toCast; }	
+	void setAutoCast(bool toCast){ m_autoCast = toCast; }
+	void setGateLink(handle hGate){ m_gatewayLink = hGate;}
+    void setGatewayID(short gatewayId){m_gatewayId = gatewayId;}
+	void setClientLink(handle hClient){ m_clientLink = hClient;}
 
 public:
+	void setFriendWatchee(handle hand){ m_hFriend = hand; }
 	bool addWatchee(handle hand){ return m_myAround.insert(hand); }
 	bool removeWatchee(handle hand){ return m_myAround.erase(hand); }
 	bool addWatcher(handle hand){ return m_aroundMe.insert(hand); }
@@ -86,7 +91,7 @@ public:
 public:
 	void flushMessage(const AppMsg* pMsg);
 	bool bcAMessage(const AppMsg* pMsg, bool pub = true);
-	bool bcAMessageEx(const AppMsg* pMsg, bool pub , bool bGroup = true);
+	bool bcAMessageToGroup(const AppMsg* pMsg);
 
 public:
 	bool bcMyEnter();
@@ -130,10 +135,12 @@ public:
 	{
 		m_Move = value;
 	}
+	short getMoveSpeed();
+	void setMoveSpeed(short sp);
 
 private:
 	void moveByPath(_PropPosData* pPosData);
-	
+
 	bool move(const GridVct* pDest, int flags = 0x10);
 
 	void resetMove();
@@ -142,7 +149,7 @@ private:
 	{
 		return m_Move;
 	}
-	
+
 	//view relation function
 public:
 	bool isInView(handle hand) const;
@@ -166,6 +173,7 @@ public:
 public:
 	_AroundSet				m_myAround;
 	_AroundSet				m_aroundMe;
+	handle					m_hFriend;
 	GridVct					m_ringOrg[_SyncRingCount];
 
 public:

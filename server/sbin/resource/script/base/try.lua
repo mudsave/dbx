@@ -1,6 +1,6 @@
 --[[try.lua
 Note:
-	用于捕获异常,安全运行代码,提供类似try..catch..finally机制.
+	鐢ㄤ簬鎹曡幏寮傚父,瀹夊叏杩愯浠ｇ爜,鎻愪緵绫讳技try..catch..finally鏈哄埗.
 
 Exported API:
 	throw(exception)

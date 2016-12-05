@@ -1,6 +1,6 @@
 --[[MineNpc.lua
-ÃèÊö£º
-	MineNpcÀà
+æè¿°ï¼š
+	MineNpcç±»
 --]]
 
 require "base.base"

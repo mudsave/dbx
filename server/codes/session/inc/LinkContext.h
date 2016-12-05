@@ -26,12 +26,12 @@ enum _ClientStateIntervals
 {
 	eClientInitInterval				= -1,
 	eClientConnectedInterval		= 1000 * 60 * 1,
-	eClientLoginingInterval			= 100,
-	eClientLoginingPendingInterval	= 100,
+	eClientLoginingInterval			= 1000,
+	eClientLoginingPendingInterval	= 1000,
 	eClientLoginedInterval			= 1000 * 60 * 2,
 	eClientRoleCreateingInterval	= -1,
 	eClientRoleDeleteingInterval	= -1,
-	eClientDisconnectedInterval		= 100
+	eClientDisconnectedInterval		= 10000
 };
 
 struct _LinkContext

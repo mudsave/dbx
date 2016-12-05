@@ -19,7 +19,7 @@ CDBProxy::CDBProxy(void)
 
 }
 
-CDBProxy::~CDBProxy(void) 
+CDBProxy::~CDBProxy(void)
 {
 
 }
@@ -31,8 +31,8 @@ void CDBProxy::init(const char* dbIp, int dbPort)
 }
 
 void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
-{	
-	if (!pClient) 
+{
+	if (!pClient)
 		return;
 	int ErrorCode = 0;
 	if (!result) ErrorCode = -1;
@@ -48,7 +48,7 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 	for (int j=0; j < MAXRESNUM-1; j++)
 	{
 		CSCResultMsg* pTemp = (CSCResultMsg*)pClient->getAttributeSet(operId, j);
-		if (!pTemp) 
+		if (!pTemp)
 			break;
 		int row_count = pTemp->getResCount();
 		int field_count = pTemp->m_nAttriNameCount;
@@ -71,7 +71,7 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 }
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
-{	
+{
 	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 	query_client->buildQuery();
 	query_client->addParam("spName", "sp_LoginTest");
@@ -93,22 +93,22 @@ void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hL
 	//角色返回数据
 	TRACE0_L2("角色返回数据\n");
 	int accountId = 0;
-	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager(); 
+	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager();
 	std::list<int>::iterator iter = record_indexs.begin();
 	//第一个结果集
 	IRecordSet* pRecordSet = record_mgr->findRecordSet(*iter);
 	//第一条记录
 	IRecord* pRecord=pRecordSet->readRecord(0);
-	if ( pRecord==NULL ) 
+	if ( pRecord==NULL )
 		return;
 	void* pAttri=NULL;
 	int attritype;
 	char* attrname;
 	pAttri = pRecord->readAttribute(0, &attritype, &attrname);
-	if ( pAttri == NULL ) 
+	if ( pAttri == NULL )
 		return;
 	accountId = *(int*)pAttri;
-	DBMsg_LoginResult* pRoleMsg = DBMsg_LoginResult::CreateLoginResult(); 
+	DBMsg_LoginResult* pRoleMsg = DBMsg_LoginResult::CreateLoginResult();
 	pRoleMsg->actionType = DB_MSG_LOGIN;
 	pRoleMsg->accountId = accountId;
 	if ( accountId == 0 )
@@ -122,20 +122,20 @@ void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hL
 	{
 		IRecordSet* pRecordSet = record_mgr->findRecordSet(*iter);
 		pRoleMsg->roleNum = pRecordSet->getRecordCount();
-		
-		for (int i=0;;i++) 
+
+		for (int i=0;;i++)
 		{
 			IRecord* pRecord=pRecordSet->readRecord(i);
-			if ( pRecord==NULL ) 
+			if ( pRecord==NULL )
 				break;
 			void* pAttri=NULL;
 			//printf("Field Name: ");
-			for (int j=0;;j++) 
+			for (int j=0;;j++)
 			{
 				int attritype;
 				char* attrname;
 				pAttri = pRecord->readAttribute(j, &attritype, &attrname);
-				if (pAttri == NULL) 
+				if (pAttri == NULL)
 					break;
 				switch(j)
 				{
@@ -156,7 +156,7 @@ void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hL
 						{
 							short level = (short)*(int*)pAttri;
 							pRoleMsg->role[i].level = level;
-							
+
 						}
 						break;
 					case 3:
@@ -177,7 +177,7 @@ void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hL
 								int modelID = (int)*(float*)pAttri;
 								pRoleMsg->role[i].modelId = modelID;
 							}
-							
+
 						}
 						break;
 					case 5:
@@ -223,19 +223,19 @@ void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
 void CDBProxy::doCreateAccountResult(int operId, std::list<int>&record_indexs, handle hLink, std::string accountName)
 {
 	int accountId = 0;
-	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager(); 
+	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager();
 	std::list<int>::iterator iter = record_indexs.begin();
 	//第一个结果集
 	IRecordSet* pRecordSet = record_mgr->findRecordSet(*iter);
 	//第一条记录
 	IRecord* pRecord=pRecordSet->readRecord(0);
-	if (pRecord==NULL) 
+	if (pRecord==NULL)
 		return;
 	void* pAttri=NULL;
 	int attritype;
 	char* attrname;
 	pAttri = pRecord->readAttribute(0, &attritype, &attrname);
-	if (pAttri == NULL) 
+	if (pAttri == NULL)
 		return;
 	accountId = *(int*)pAttri;
 	DBMsg_CreateAccountResult ret;
@@ -243,7 +243,7 @@ void CDBProxy::doCreateAccountResult(int operId, std::list<int>&record_indexs, h
 	strcpy(ret.accountName, accountName.c_str());
 	ret.accountId = accountId;
 	ret.result = accountId > 0 ? true :false;
-	g_session.OnDBReturn(&ret, hLink);	
+	g_session.OnDBReturn(&ret, hLink);
 }
 
 void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo* pRoleInfo)
@@ -271,7 +271,7 @@ void CDBProxy::doCreateRoleResult(int operId, std::list<int>&record_indexs, hand
 {
 	//创建角色返回数据
 	int roleID = 0;
-	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager(); 
+	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager();
 	std::list<int>::iterator iter = record_indexs.begin();
 	//第一个结果集
 	IRecordSet* pRecordSet = record_mgr->findRecordSet(*iter);
@@ -287,10 +287,10 @@ void CDBProxy::doCreateRoleResult(int operId, std::list<int>&record_indexs, hand
 	roleID = *(int*)pAttri;
 	//返回客户端
 	DBMsg_CreateRoleResult ret;
-	ret.actionType = DB_MSG_CREATEROLE; 
+	ret.actionType = DB_MSG_CREATEROLE;
 	ret.roleId = roleID;
 	ret.result = roleID > 0 ? true : false;
-	g_session.OnDBReturn(&ret, hLink);	
+	g_session.OnDBReturn(&ret, hLink);
 }
 
 void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
@@ -314,7 +314,7 @@ void CDBProxy::doDeleteRoleResult(int operId, std::list<int>&record_indexs, hand
 	//删除角色名返回数据
 	int roleID = 0;
 	int result = 0;
-	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager(); 
+	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager();
 	std::list<int>::iterator iter = record_indexs.begin();
 	//第一个结果集
 	IRecordSet* pRecordSet = record_mgr->findRecordSet(*iter);
@@ -334,10 +334,10 @@ void CDBProxy::doDeleteRoleResult(int operId, std::list<int>&record_indexs, hand
 	result = *(int*)pAttri;
 	//返回客户端
 	DBMsg_DeleteRoleResult ret;
-	ret.actionType = DB_MSG_DELETEROLE; 
+	ret.actionType = DB_MSG_DELETEROLE;
 	ret.roleId = roleID;
 	ret.result = roleID > 0 ? true : false;
-	g_session.OnDBReturn(&ret, hLink);	
+	g_session.OnDBReturn(&ret, hLink);
 }
 
 void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
@@ -359,7 +359,7 @@ void CDBProxy::doCheckRoleNameResult(int operId, std::list<int>&record_indexs, h
 {
 	//校验角色名返回数据
 	int result = 0;
-	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager(); 
+	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager();
 	std::list<int>::iterator iter = record_indexs.begin();
 	//第一个结果集
 	IRecordSet* pRecordSet = record_mgr->findRecordSet(*iter);
@@ -375,7 +375,7 @@ void CDBProxy::doCheckRoleNameResult(int operId, std::list<int>&record_indexs, h
 	result = *(int*)pAttri;
 	DBMsg_CheckNameResult ret;
 	ret.actionType = DB_MSG_CHECKNAME;
-	ret.result = result > 0 ? true : false;
+	ret.result = result == 0 ? true : false;
 	 g_session.OnDBReturn(&ret, hLink);
 }
 
@@ -399,7 +399,7 @@ void CDBProxy::onDBReturn(int operId,int errorCode, std::list<int>&record_indexs
 	switch(storeType)
 	{
 		case eStoreLogin:
-			doLoginResult(operId, record_indexs, it->second.hLink);			
+			doLoginResult(operId, record_indexs, it->second.hLink);
 			break;
 		case eStoreCreateAccount:
 			doCreateAccountResult(operId, record_indexs, it->second.hLink, it->second.accountName);
@@ -419,7 +419,7 @@ void CDBProxy::onDBReturn(int operId,int errorCode, std::list<int>&record_indexs
 	}
 }
 
-HRESULT CDBProxy::Do(HANDLE hContext) 
+HRESULT CDBProxy::Do(HANDLE hContext)
 {
     return S_OK;
 }

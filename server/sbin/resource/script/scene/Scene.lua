@@ -1,5 +1,5 @@
 --[[Scene.lua
-ÃèÊö£º	³¡¾°µÄ½Å±¾²ã
+æè¿°ï¼š	åœºæ™¯çš„è„šæœ¬å±‚
 --]]
 
 Scene = class()
@@ -71,7 +71,7 @@ function Scene:detachEntity(entity)
 	entity:setScene(nil)
 	self.entityList[entity:getID()] = nil
 	if peer then 
-		peer:quitScene() 
+		peer:quitScene()
 	end
 	return true
 end

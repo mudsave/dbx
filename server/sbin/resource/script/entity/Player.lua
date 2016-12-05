@@ -1,7 +1,11 @@
 --[[Player.lua
-ÃèÊö£º
-	Íæ¼ÒºËĞÄÊı¾İ
+æè¿°ï¼š
+	ç©å®¶æ ¸å¿ƒæ•°æ®
 --]]
+
+local setPropValue		= setPropValue		-- è®¾ç½®peerä¸­å±æ€§å€¼,ä¸ä¼šå¯¼è‡´å‘é€
+local getPropValue		= getPropValue		-- è·å¾—peerä¸­å±æ€§å€¼
+local flushPropBatch	= flushPropBatch	-- å‘é€peerä¸­æ‰€æœ‰æœ€æ–°çš„å±æ€§å€¼
 
 Player = class(Entity)
 
@@ -11,50 +15,18 @@ function Player:__init(roleId, gatewayId, hClientLink, hGateLink)
 	self._hClientLink	= hClientLink
 	self._hGateLink		= hGateLink
 	self._status		= ePlayerNone
+	self:__init_basic()
 	self:__init_logic()
-
-	self._loadPriority = {
-		["LoadAttr"] = {1, false, "sp_LoadPlayerAttr"},
-	}
 end
 
 function Player:__release()
 	self:__release_logic()
+	self:__release_basic()
 end
 
 function Player:getDBID()
 	return self._dbId
 end
 
-function Player:setStatus(status)
-	if self._status ~= status then
-		self._status = status
-		--Í¬²½µ½CoEntity
-	end
-end
-
-function Player:getStatus()
-	return self._status
-end
-
---@param recordList£¬Íæ¼ÒÊı¾İ¿âµÄ»ù´¡Êı¾İ
-function Player:loadBasicData(recordList)
-	local rs = recordList[1][1]
-	--[[
-	self:setName(rs.name)
-	self:setModelID(rs.modelID)
-	self:initShowParts(rs.showParts)
-	self:setShowParts(rs.showParts)
-	self:setSex(rs.sex and 1 or 0)
-	self:setMoney(rs.money)
-	self:setSubMoney(rs.subMoney)
-	self:setDepotMoney(rs.depotMoney)
-	self:setSchool(rs.school)
-	self:setDepotCapacity(rs.depotCapacity)
-	self:setCashMoney(rs.cashMoney)
-	self:setGoldCoin(rs.goldCoin)
-	self:setPos({rs.mapID, rs.posX, rs.posY})
-	--]]
-end
-
+require "entity.PlayerBasic"
 require "entity.PlayerLogic"

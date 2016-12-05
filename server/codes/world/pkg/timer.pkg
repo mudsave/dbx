@@ -7,3 +7,5 @@ enum ScriptTimerState
 	ScriptTimerExpire, //过期
 	ScriptTimerStop, //被注销
 };
+
+int getLuaTick();

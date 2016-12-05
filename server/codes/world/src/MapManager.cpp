@@ -87,6 +87,6 @@ bool CMapManager::findPath(short mapID, const GridVct& ptFrom, const GridVct& pt
 	{
 		TRACE0_L1("SceneManager::findPath error: find move path failed!\n");
 		return false;
-	}	
+	}
 	return true;
 }

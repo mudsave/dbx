@@ -1,81 +1,42 @@
 --[[PlayerLogic.lua
-ÃèÊö£º
-	Íæ¼ÒÒµÎñÂß¼­²¿·Ö
+æè¿°ï¼š
+	ç©å®¶ä¸šåŠ¡é€»è¾‘éƒ¨åˆ†
 --]]
-require "entity.attribute.Attribute"
+
+
+
 
 function Player:__init_logic()
-	self._name		= nil
-	self._sex		= nil
-	self._modelId	= nil
-	self._showParts	= nil
-	self._school	= nil
-	self.level		= nil
-	self.attrSet	= {}
-
-	self:createAttributeSet()
+	
+	self._ectypeMapID	= false
 end
 
 function Player:__release_logic()
 	--todo
+	
+	self._ectypeMapID = nil
 end
 
--- ´´½¨Íæ¼ÒÊôĞÔ¼¯ºÏ
-function Player:createAttributeSet()
-	local attrSet = self.attrSet
-	for attrName,detail in pairs(PlayerAttrDefine) do
-		if not attrSet[attrName] then
-			attrSet[attrName] = PlayerAttribute(self,attrName,detail.expr,0)
-		end
+
+
+-- è®¾ç½®ç©å®¶å‰¯æœ¬åŠ¨æ€ID
+function Player:setEctypeMapID(ectypeMapID)
+	self._ectypeMapID = ectypeMapID
+end
+
+-- è·å–ç©å®¶å‰¯æœ¬åŠ¨æ€ID
+function Player:getEctypeMapID()
+	return self._ectypeMapID
+end
+
+--player is can move 
+function Player:isCanMove()
+	--[[
+	if self:getActionState() == PlayerStates.Follow then
+		return false
+	elseif self:isFighting() then
+		return false
 	end
-end
-
--- »ñÈ¡Ä³Ò»ÏîÊôĞÔ
-function Player:getAttribute(attrName)
-	return attrName and self.attrSet[attrName]
-end
-
--- »ñµÃÊôĞÔ¼¯ºÏ
-function Player:getAttrSet()
-	return self.attrSet
-end
-
--- ÉèÖÃÊôĞÔÖµ
-function Player:setAttrValue(attrName,value)
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		print(("[Player:setAttrValue] Ã»ÓĞ%sÕâÏîÊôĞÔ!"):format(attrName or "nil"))
-	end
-	if attribute:isExpr() then
-		print(("[Player:setAttrValue] ²»ÄÜ¸ø¹«Ê½ÊôĞÔ%sÉèÖµ"):format(attribute:getName()))
-	end
-	attribute:setValue(value)
-end
-
--- »ñµÃÄ³ÏîÊôĞÔµÄÖµ
-function Player:getAttrValue(attrName)
-	local attribute = attrName and self.attrSet[attrName]
-	if attribute then
-		return attribute:getValue()
-	else
-		print(("[Player:getAttrValue()] Ã»ÓĞ%sÕâÏîÊôĞÔ!"):format(attrName or "nil"))
-		return nil
-	end
-end
-
--- ¸øÄ³ÏîÊôĞÔ¼ÓÖµ
-function Player:addAttrValue(attrName,value)
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		print(("[Player:addAttrValue] Ã»ÓĞ%sÕâÏîÊôĞÔ!"):format(attrName or "nil"))
-	end
-	if attribute:isExpr() then
-		print(("[Player:addAttrValue] ²»ÄÜ¸ø¹«Ê½ÊôĞÔ%sÉèÖµ"):format(attribute:getName()))
-	end
-	attribute:setValue(attribute:getValue() + value)
-end
-
--- ÊôĞÔ¸Ä±äÊÂ¼şÍ¨Öª
-function Player:onAttrChanged(attrName)
-	print("[Player:onAttrChanged]")
+	]]
+	return true
 end

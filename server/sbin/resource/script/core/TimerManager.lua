@@ -1,25 +1,33 @@
 --[[TimerManager.lua
-ÃèÊö£º
-	¶¨Ê±Æ÷¹ÜÀíÀà
+æè¿°ï¼š
+	å®šæ—¶å™¨ç®¡ç†ç±»
 --]]
 
--- ¶¨Ê±Æ÷½Ó¿Ú
+-- å®šæ—¶å™¨æ¥å£
 Timer = interface(nil, "update")
 
--- ¶¨Ê±Æ÷¹ÜÀíÀà
+-- å®šæ—¶å™¨ç®¡ç†ç±»
 TimerManager = class(nil, Singleton)
 
--- ÎŞĞ§µÄ¶¨Ê±Æ÷ID
+-- æ— æ•ˆçš„å®šæ—¶å™¨ID
 local INVALID_TIMER_ID = -1
 
--- ³õÊ¼»¯
+-- åˆå§‹åŒ–
 function TimerManager:__init()
 	self.curTimerID = 0
 	self.regTimers = {}
 	self.timerDebugInfo = {}
 end
 
--- ¶¨Ê±Æ÷»Øµ÷
+function TimerManager:__release()
+	for idx,_ in pairs(self.regTimers) do
+		self:unRegTimer(idx)
+		self.regTimers[idx] = nil
+		self.timerDebugInfo[idx] = nil
+	end
+end
+
+-- å®šæ—¶å™¨å›è°ƒ
 function TimerManager:update(timerID)
 	local timer = self.regTimers[timerID]
 	if timer then
@@ -27,7 +35,7 @@ function TimerManager:update(timerID)
 	end
 end
 
---C++ ·µ»Ø×¢²á ×¢Ïú¹ıÆÚÍ¨Öª
+--C++ è¿”å›æ³¨å†Œ æ³¨é”€è¿‡æœŸé€šçŸ¥
 function TimerManager:notify(timerID, state)
 	if state == ScriptTimerExpire then
 		print ("[ScriptTimer]["..timerID.."] [" .. self.timerDebugInfo[timerID] .. "]expire succeed!");
@@ -37,19 +45,19 @@ function TimerManager:notify(timerID, state)
 	self.timerDebugInfo[timerID] = nil
 end
 
--- Éú³É¶¨Ê±Æ÷ID
--- CAUTION: ¶¨Ê±Æ÷idÔ½½ç
+-- ç”Ÿæˆå®šæ—¶å™¨ID
+-- CAUTION: å®šæ—¶å™¨idè¶Šç•Œ
 function TimerManager:generateTimerID()
 	self.curTimerID = self.curTimerID + 1
 	return self.curTimerID
 end
 
--- ×¢²á¶¨Ê±Æ÷
--- args:timer ÊµÏÖTimer½Ó¿ÚµÄ»Øµ÷
--- args:elapse µÚÒ»´ÎÖ´ĞĞÊ±¼ä
--- args:period ÖÜÆÚ
--- args:debugInfo µ÷ÊÔĞÅÏ¢
--- return:·µ»Ø¶¨Ê±Æ÷id
+-- æ³¨å†Œå®šæ—¶å™¨
+-- args:timer å®ç°Timeræ¥å£çš„å›è°ƒ
+-- args:elapse ç¬¬ä¸€æ¬¡æ‰§è¡Œæ—¶é—´
+-- args:period å‘¨æœŸ
+-- args:debugInfo è°ƒè¯•ä¿¡æ¯
+-- return:è¿”å›å®šæ—¶å™¨id
 function TimerManager:regTimer(timer, elapse, period, debugInfo)
 	if instanceof(timer, Timer) then
 		local timerID = self:generateTimerID()
@@ -59,12 +67,13 @@ function TimerManager:regTimer(timer, elapse, period, debugInfo)
 		end
 		self.regTimers[timerID] = timer
 		self.timerDebugInfo[timerID] = debugInfo
+		print ("[ScriptTimer]["..timerID.."] reg succeed!");
 		return timerID
 	end
 	return INVALID_TIMER_ID
 end
 
--- ×¢Ïú¶¨Ê±Æ÷
+-- æ³¨é”€å®šæ—¶å™¨
 function TimerManager:unRegTimer(timerID)
 	local timer = self.regTimers[timerID]
 	if timer then

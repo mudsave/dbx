@@ -1,6 +1,6 @@
 --[[PvpPlayerAttrFormula.lua
-ÃèÊö£º
-	Î±pvpÊôĞÔ¹«Ê½
+æè¿°ï¼š
+	ä¼ªpvpå±æ€§å…¬å¼
 ]]
 
 require "misc.constant"
@@ -8,34 +8,34 @@ require "misc.constant"
 PvpPlayerAttrFormula = {}
 
 -----------------------------------------------------------------------
---²ß»®ÅäÖÃ
+--ç­–åˆ’é…ç½®
 -----------------------------------------------------------------------
---ÉúÃüÉÏÏŞ
+--ç”Ÿå‘½ä¸Šé™
 function PvpPlayerAttrFormula.pvp_player_max_hp(monster)
 	return 1000
 end
 
---¹ÖÎï¹«Ê½¶ÔÕÕ±í
+--æ€ªç‰©å…¬å¼å¯¹ç…§è¡¨
 g_AttributePvpPlayerFormat =
 {
 	[pvp_max_hp]						= PvpPlayerAttrFormula.pvp_player_max_hp,
 }
 
---ÊôĞÔÓ°Ïì¹ØÏµ
+--å±æ€§å½±å“å…³ç³»
 g_AttrPvpPlayerInfluenceTable =
 {
 	[pvp_hp]							= {pvp_max_hp},
 }
 
 -----------------------------------------------------------------------
---³ÌĞòÅäÖÃ
+--ç¨‹åºé…ç½®
 -----------------------------------------------------------------------
---ÊôĞÔ¶ÔÓ¦µÄÊôĞÔÍ¬²½
+--å±æ€§å¯¹åº”çš„å±æ€§åŒæ­¥
 g_AttrPvpPlayerToProp =
 {
 }
 
---ĞèÒªÁ¢¼´¸üĞÂµÄÊôĞÔ
+--éœ€è¦ç«‹å³æ›´æ–°çš„å±æ€§
 g_AttrPvpPlayerSyncTable =
 {
 }

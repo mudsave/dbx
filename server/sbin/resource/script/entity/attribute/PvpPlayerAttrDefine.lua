@@ -1,9 +1,9 @@
 -- PvpPlayerAttrDefine.lua
--- BossÊôĞÔ¶¨Òå
+-- Bosså±æ€§å®šä¹‰
 
 PvpPlayerAttrDefine = {}
 
--- defineAttr(ÊôĞÔÖµ, ÊôĞÔÃû, ÊôĞÔÃèÊö, ÊÇ·ñÓĞ¹«Ê½, ÄÜ·ñĞè³Ö¾Ã»¯)
+-- defineAttr(å±æ€§å€¼, å±æ€§å, å±æ€§æè¿°, æ˜¯å¦æœ‰å…¬å¼, èƒ½å¦éœ€æŒä¹…åŒ–)
 local function defineAttr(name, desc, bExpr, bSave)
 	local base = #PvpPlayerAttrDefine + 1
 	PvpPlayerAttrDefine[base] = {
@@ -16,10 +16,10 @@ end
 
 ----------------------------------------------------------------------------
 ----------------------------------------------------------------------------
-defineAttr("pvp_in_str", "ÏÈÌìÎäÁ¦", true)
-defineAttr("pvp_in_int", "ÏÈÌìÖÇÁ¦", true)
-defineAttr("pvp_in_sta", "ÏÈÌì¸ù¹Ç", true)
-defineAttr("pvp_in_spi", "ÏÈÌìÁéĞÔ", true)
-defineAttr("pvp_in_dex", "ÏÈÌìÉí·¨", true)
-defineAttr("pvp_hp", "ÉúÃü", true)
-defineAttr("pvp_max_hp", "ÉúÃüÉÏÏŞ", true)
+defineAttr("pvp_in_str", "å…ˆå¤©æ­¦åŠ›", true)
+defineAttr("pvp_in_int", "å…ˆå¤©æ™ºåŠ›", true)
+defineAttr("pvp_in_sta", "å…ˆå¤©æ ¹éª¨", true)
+defineAttr("pvp_in_spi", "å…ˆå¤©çµæ€§", true)
+defineAttr("pvp_in_dex", "å…ˆå¤©èº«æ³•", true)
+defineAttr("pvp_hp", "ç”Ÿå‘½", true)
+defineAttr("pvp_max_hp", "ç”Ÿå‘½ä¸Šé™", true)

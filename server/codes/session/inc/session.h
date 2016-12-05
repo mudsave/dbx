@@ -69,7 +69,7 @@ public:
 public:
 	virtual HRESULT Do(HANDLE hContext);
 
-public: 
+public:
 	virtual HANDLE OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int iLinkType);
 
 	virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
@@ -188,13 +188,13 @@ public:
 	{
 		if ( reason > 0 )
 		{
-			_MsgSC_Login_ResultInfo msg; 
+			_MsgSC_Login_ResultInfo msg;
 			msg.msgCls =  MSG_CLS_LOGIN;
 			msg.msgId = MSG_C_S_ACK_USER_LOGIN;
 			msg.msgLen = sizeof(_MsgSC_Login_ResultInfo);
 			msg.msgFlags = 0;
 			msg.context	= 0;
-			msg.result = 1;	
+			msg.result = 1;
 			msg.reason = reason;
 			IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 			return;
@@ -252,7 +252,7 @@ public:
 public:
 	void send_MsgSC_AccountKickedInfo(handle hLink)
 	{
-		_MsgSC_AccountKickedInfo msg; 
+		_MsgSC_AccountKickedInfo msg;
 		msg.msgCls = MSG_CLS_LOGIN;
 		msg.msgId = MSG_C_S_ACCOUNT_KICKED;
 		msg.msgLen = sizeof(_MsgSC_AccountKickedInfo);
@@ -293,7 +293,7 @@ public:
 
 	void send_MsgSC_CreateRole_ResultInfo(handle hLink, DBMsg_CreateRoleResult* pRet)
 	{
-		_MsgSC_CreateRole_ResultInfo msg; 
+		_MsgSC_CreateRole_ResultInfo msg;
 		msg.msgCls = MSG_CLS_LOGIN;
 		msg.msgId = MSG_C_S_ACK_ROLE_CREATE;
 		msg.msgLen = sizeof(_MsgSC_CreateRole_ResultInfo);
@@ -306,26 +306,26 @@ public:
 
 	void send_MsgSC_DeleteRole_ResultInfo(handle hLink, DBMsg_DeleteRoleResult* pRet)
 	{
-		_MsgSC_DeleteRole_ResultInfo msg; 
+		_MsgSC_DeleteRole_ResultInfo msg;
 		msg.msgCls = MSG_CLS_LOGIN;
 		msg.msgId = MSG_C_S_ACK_ROLE_DELETE;
 		msg.msgLen = sizeof(_MsgSC_DeleteRole_ResultInfo);
 		msg.msgFlags = 0;
 		msg.context	= 0;
 		msg.roleId = pRet->roleId;
-		msg.ret = pRet->result;	
+		msg.ret = pRet->result;
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
 	void send_MsgSC_CheckName_ResultInfo(handle hLink, bool result)
 	{
-		_MsgSC_CheckName_ResultInfo msg; 
+		_MsgSC_CheckName_ResultInfo msg;
 		msg.msgCls = MSG_CLS_LOGIN;
 		msg.msgId = MSG_C_S_ACK_ROLE_CHECK;
 		msg.msgLen = sizeof(_MsgSC_CheckName_ResultInfo);
 		msg.msgFlags = 0;
 		msg.context	= 0;
-		msg.ret = result;	
+		msg.ret = result;
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
@@ -390,7 +390,7 @@ private:
 private:
 	const char* translateLinkType(int linkType)
 	{
-		if ( linkType == IID_IMsgLinksCS_L ) 
+		if ( linkType == IID_IMsgLinksCS_L )
 			return "Session<--Client";
 
 		if ( linkType == IID_IMsgLinksGS_L )
@@ -469,7 +469,7 @@ public:
 			LinkContext_Gate* pGate = iter->second;
 			if ( pGate->gatewayId == id ) return pGate;
 		}
-		return NULL; 
+		return NULL;
 	}
 
 public:

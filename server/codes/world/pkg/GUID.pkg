@@ -1,0 +1,3 @@
+$#include "GUID.h"
+
+const char *NEW_GUID_LUA(short world,short type);

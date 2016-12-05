@@ -38,11 +38,11 @@ int CDBProxy::callSP(lua_State* pState)
 		pData->getResMsg()->m_bNeedCallback = !bNonNeedCallback;
 		pData->getResMsg()->m_nLevel = nLevel;
 		int operationId = s_pDBAClient->callDBProc(pData->getResMsg());
-		tolua_pushnumber(pState, operationId); 
+		tolua_pushnumber(pState, operationId);
 	}
 	else
 	{
-		tolua_pushnumber(pState, 0); 
+		tolua_pushnumber(pState, 0);
 	}
 	return 1;
 }
@@ -82,8 +82,7 @@ void CDBProxy::onExeDBProc(int id, IInitClient* pInitClient, bool result)
 	}
 
 	static LuaFunctor<TypeNull, int, TypeUser, int> DBReturnToLua(s_pLuaState, "ManagedApp.onExeSP");
-	TypeNull _null;
-	bool rt = DBReturnToLua(_null, id, TypeUser(LuaArray, "CLuaArray"), ErrorCode);
+	bool rt = DBReturnToLua(TypeNull::nil(), id, TypeUser(LuaArray, "CLuaArray"), ErrorCode);
 	if (!rt)
 		TRACE1_L0("%s\n", DBReturnToLua.getLastError());
 

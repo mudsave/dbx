@@ -18,6 +18,7 @@ public:
 	void	Close();
 	bool	CopyPropSet(int cls,_PropSet &out);
 	const	_RefList& GetPublicProps(int cls);
+	char	GetPropType(int cls,int propID);
 public:
 	void	initPropSet(int cls);
 	int		addProperty(int cls,const char *type,const char *def,int isPublic);

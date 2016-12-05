@@ -1,10 +1,10 @@
 --[[Exception.lua
-ÃèÊö£º
-	Òì³£Àà
+æè¿°ï¼š
+	å¼‚å¸¸ç±»
 --]]
 
 
---Òì³£»ùÀà
+--å¼‚å¸¸åŸºç±»
 Exception = class()
 
 function Exception:__init(msg, ex)
@@ -47,7 +47,7 @@ function Exception:tostring()
 	return string.format("Exception: %s", self:getCauseMessage())
 end
 
---ÔËĞĞÊ±Òì³£
+--è¿è¡Œæ—¶å¼‚å¸¸
 RuntimeException = class(Exception)
 
 function RuntimeException:__init()
@@ -58,7 +58,7 @@ function RuntimeException:tostring()
 	return string.format("RuntimeException: %s", self:getCauseMessage())
 end
 
---assertÅĞ¶ÏÌõ¼ş²»³ÉÁ¢Òì³£
+--assertåˆ¤æ–­æ¡ä»¶ä¸æˆç«‹å¼‚å¸¸
 AssertException = class(RuntimeException)
 
 function RuntimeException:__init()

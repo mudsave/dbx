@@ -3,6 +3,8 @@
 
 $#include "Entity.h"
 
+_PropPosData g_PosData;
+
 enum _UnitPropId
 {
 	UNIT_STATUS,
@@ -10,7 +12,7 @@ enum _UnitPropId
 	UNIT_MOVE_SPEED,
 	UNIT_BASE,
 };
-
+struct GridVct;
 enum EntityType
 {
 	eLogicNone = 0,
@@ -47,7 +49,7 @@ public:
 
 public:
 	short correctMovePath(short x, short y);
-	
+
 	short correctFollowMovePath(short refIdx, short refPathLen);
 
 	short getPathLen() const;
@@ -55,6 +57,10 @@ public:
 	void moveByPath(lua_State* pState, _PropPosData* pPropPosData);
 
 	bool move(short x = 0, short y = 0, int flags = 0x10);
+
+	void setMoveSpeed(short sp);
+
+	short getMoveSpeed();
 
 	void moveFollowEntity(lua_State* pState, short offset, _PropPosData* pPropPosData);
 
@@ -65,9 +71,19 @@ public:
 	void setDBID(int dbId);
 
 	handle getHandle();
-	
+
+	void setGateLink(handle hGate);
+
+	void setGatewayID(short gatewayId);
+
+	void setClientLink(handle hClient);
+
+	GridVct getPosition();
 public:
 	bool enterScene(CoScene* pScene, short x, short y);
 
 	bool quitScene();
+
+	void release();
+
 };

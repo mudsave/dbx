@@ -1,6 +1,6 @@
 --[[PlayerAttrFormula.lua
-ÃèÊö£º
-	Íæ¼ÒÊôĞÔ¹«Ê½
+æè¿°ï¼š
+	ç©å®¶å±æ€§å…¬å¼
 ]]
 
 require "misc.constant"
@@ -12,56 +12,56 @@ local math_floor	= math.floor
 PlayerAttrbuteFormula = {}
 
 -----------------------------------------------------------------------
---²ß»®ÅäÖÃ
+--ç­–åˆ’é…ç½®
 -----------------------------------------------------------------------
---Íæ¼ÒÉı¼¶µÄÏÂÒ»¼¶¾­Ñé
+--ç©å®¶å‡çº§çš„ä¸‹ä¸€çº§ç»éªŒ
 
 function PlayerAttrbuteFormula.player_next_xp(player)
 	local level = player:getAttrValue(player_lvl)
 	return PlayerLevelUpDB[level] or 0
 end
 
---ÏÈÌìÎäÁ¦
+--å…ˆå¤©æ­¦åŠ›
 function PlayerAttrbuteFormula.player_in_str(player)
 	local level = player:getAttrValue(player_lvl)
 	return level + 10;
 end
 
---ÏÈÌìÖÇÁ¦
+--å…ˆå¤©æ™ºåŠ›
 function PlayerAttrbuteFormula.player_in_int(player)
 	local level = player:getAttrValue(player_lvl)
 	return level + 10;
 end
 
---ÏÈÌì¸ù¹Ç
+--å…ˆå¤©æ ¹éª¨
 function PlayerAttrbuteFormula.player_in_sta(player)
 	local level = player:getAttrValue(player_lvl)
 	return level + 10;
 end
 
---ÏÈÌìÁéĞÔ
+--å…ˆå¤©çµæ€§
 function PlayerAttrbuteFormula.player_in_spi(player)
 	local level = player:getAttrValue(player_lvl)
 	return level + 10;
 end
 
---ÏÈÌìÉí·¨
+--å…ˆå¤©èº«æ³•
 function PlayerAttrbuteFormula.player_in_dex(player)
 	local level = player:getAttrValue(player_lvl)
 	return level + 10;
 end
 
---ÎäÁ¦ = ÏÈÌìÎäÁ¦ +ÎäÁ¦¼Óµã + ÎäÁ¦¼ÓÖµ + ËùÓĞÊôĞÔ¼ÓÖµ
+--æ­¦åŠ› = å…ˆå¤©æ­¦åŠ› +æ­¦åŠ›åŠ ç‚¹ + æ­¦åŠ›åŠ å€¼ + æ‰€æœ‰å±æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_str(player)
 	local player_in_str = player:getAttrValue(player_in_str)
 	local player_str_point = player:getAttrValue(player_str_point)
 	local player_add_str = player:getAttrValue(player_add_str)
 	local player_add_base_attr = player:getAttrValue(player_add_base_attr)
-	--print("ÎäÁ¦£ºplayer_in_str,player_str_point,player_add_str,player_add_base_attr",player_in_str,player_str_point,player_add_str,player_add_base_attr)
+	--print("æ­¦åŠ›ï¼šplayer_in_str,player_str_point,player_add_str,player_add_base_attr",player_in_str,player_str_point,player_add_str,player_add_base_attr)
 	return player_in_str+player_str_point+player_add_str+player_add_base_attr
 end
 
---ÖÇÁ¦ = ÏÈÌìÖÇÁ¦ +ÖÇÁ¦¼Óµã + ÖÇÁ¦¼ÓÖµ + ËùÓĞÊôĞÔ¼ÓÖµ
+--æ™ºåŠ› = å…ˆå¤©æ™ºåŠ› +æ™ºåŠ›åŠ ç‚¹ + æ™ºåŠ›åŠ å€¼ + æ‰€æœ‰å±æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_int(player)
 	local player_in_int = player:getAttrValue(player_in_int)
 	local player_int_point = player:getAttrValue(player_int_point)
@@ -70,17 +70,17 @@ function PlayerAttrbuteFormula.player_int(player)
 	return player_in_int+player_int_point+player_add_int+player_add_base_attr
 end
 
---¸ù¹Ç = ÏÈÌì¸ù¹Ç +¸ù¹Ç¼Óµã + ¸ù¹Ç¼ÓÖµ + ËùÓĞÊôĞÔ¼ÓÖµ
+--æ ¹éª¨ = å…ˆå¤©æ ¹éª¨ +æ ¹éª¨åŠ ç‚¹ + æ ¹éª¨åŠ å€¼ + æ‰€æœ‰å±æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_sta(player)
 	local player_in_sta = player:getAttrValue(player_in_sta)
 	local player_sta_point = player:getAttrValue(player_sta_point)
 	local player_add_sta = player:getAttrValue(player_add_sta)
 	local player_add_base_attr = player:getAttrValue(player_add_base_attr)
-	--print("¸ù¹Ç£ºplayer_in_sta,player_sta_point,player_add_sta,player_add_base_attr",player_in_sta,player_sta_point,player_add_sta,player_add_base_attr)
+	--print("æ ¹éª¨ï¼šplayer_in_sta,player_sta_point,player_add_sta,player_add_base_attr",player_in_sta,player_sta_point,player_add_sta,player_add_base_attr)
 	return player_in_sta+player_sta_point+player_add_sta+player_add_base_attr
 end
 
---ÃôÈñ = ÏÈÌìÃôÈñ +ÃôÈñ¼Óµã + ÃôÈñ¼ÓÖµ + ËùÓĞÊôĞÔ¼ÓÖµ
+--æ•é” = å…ˆå¤©æ•é” +æ•é”åŠ ç‚¹ + æ•é”åŠ å€¼ + æ‰€æœ‰å±æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_spi(player)
 	local player_in_spi = player:getAttrValue(player_in_spi)
 	local player_spi_point = player:getAttrValue(player_spi_point)
@@ -89,7 +89,7 @@ function PlayerAttrbuteFormula.player_spi(player)
 	return player_in_spi+player_spi_point+player_add_spi+player_add_base_attr
 end
 
---Éí·¨ = ÏÈÌìÉí·¨ +Éí·¨¼Óµã + Éí·¨¼ÓÖµ + ËùÓĞÊôĞÔ¼ÓÖµ
+--èº«æ³• = å…ˆå¤©èº«æ³• +èº«æ³•åŠ ç‚¹ + èº«æ³•åŠ å€¼ + æ‰€æœ‰å±æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_dex(player)
 	local player_in_dex = player:getAttrValue(player_in_dex)
 	local player_dex_point = player:getAttrValue(player_dex_point)
@@ -98,16 +98,16 @@ function PlayerAttrbuteFormula.player_dex(player)
 	return player_in_dex+player_dex_point+player_add_dex+player_add_base_attr
 end
 
---·çÏàĞÔ = ·çÏàĞÔ¼Óµã + ·çÏàĞÔ¼ÓÖµ + ËùÓĞÏàĞÔ¼ÓÖµ
+--é£ç›¸æ€§ = é£ç›¸æ€§åŠ ç‚¹ + é£ç›¸æ€§åŠ å€¼ + æ‰€æœ‰ç›¸æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_win_phase(player)
 	local player_win_phase_point = player:getAttrValue(player_win_phase_point)
 	local player_add_win_phase = player:getAttrValue(player_add_win_phase)
 	local player_add_all_phase = player:getAttrValue(player_add_all_phase)
-	--print("·çÏàĞÔ£ºplayer_win_phase_point,player_add_win_phase,player_add_all_phase",player_win_phase_point,player_add_win_phase,player_add_all_phase)
+	--print("é£ç›¸æ€§ï¼šplayer_win_phase_point,player_add_win_phase,player_add_all_phase",player_win_phase_point,player_add_win_phase,player_add_all_phase)
 	return player_win_phase_point+player_add_win_phase+player_add_all_phase
 end
 
---À×ÏàĞÔ = À×ÏàĞÔ¼Óµã + À×ÏàĞÔ¼ÓÖµ + ËùÓĞÏàĞÔ¼ÓÖµ
+--é›·ç›¸æ€§ = é›·ç›¸æ€§åŠ ç‚¹ + é›·ç›¸æ€§åŠ å€¼ + æ‰€æœ‰ç›¸æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_thu_phase(player)
 	local player_thu_phase_point = player:getAttrValue(player_thu_phase_point)
 	local player_add_thu_phase = player:getAttrValue(player_add_thu_phase)
@@ -115,16 +115,16 @@ function PlayerAttrbuteFormula.player_thu_phase(player)
 	return player_thu_phase_point+player_add_thu_phase+player_add_all_phase
 end
 
---±ùÏàĞÔ = ±ùÏàĞÔ¼Óµã + ±ùÏàĞÔ¼ÓÖµ + ËùÓĞÏàĞÔ¼ÓÖµ
+--å†°ç›¸æ€§ = å†°ç›¸æ€§åŠ ç‚¹ + å†°ç›¸æ€§åŠ å€¼ + æ‰€æœ‰ç›¸æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_ice_phase(player)
 	local player_ice_phase_point = player:getAttrValue(player_ice_phase_point)
 	local player_add_ice_phase = player:getAttrValue(player_add_ice_phase)
 	local player_add_all_phase = player:getAttrValue(player_add_all_phase)
-	--print("±ùÏàĞÔ£ºplayer_ice_phase_point,player_add_ice_phase,player_add_all_phase",player_ice_phase_point,player_add_ice_phase,player_add_all_phase)
+	--print("å†°ç›¸æ€§ï¼šplayer_ice_phase_point,player_add_ice_phase,player_add_all_phase",player_ice_phase_point,player_add_ice_phase,player_add_all_phase)
 	return player_ice_phase_point+player_add_ice_phase+player_add_all_phase
 end
 
---ÍÁÏàĞÔ = ÍÁÏàĞÔ¼Óµã + ÍÁÏàĞÔ¼ÓÖµ + ËùÓĞÏàĞÔ¼ÓÖµ
+--åœŸç›¸æ€§ = åœŸç›¸æ€§åŠ ç‚¹ + åœŸç›¸æ€§åŠ å€¼ + æ‰€æœ‰ç›¸æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_soi_phase(player)
 	local player_soi_phase_point = player:getAttrValue(player_soi_phase_point)
 	local player_add_soi_phase = player:getAttrValue(player_add_soi_phase)
@@ -132,7 +132,7 @@ function PlayerAttrbuteFormula.player_soi_phase(player)
 	return player_soi_phase_point+player_add_soi_phase+player_add_all_phase
 end
 
---»ğÏàĞÔ = »ğÏàĞÔ¼Óµã + »ğÏàĞÔ¼ÓÖµ + ËùÓĞÏàĞÔ¼ÓÖµ
+--ç«ç›¸æ€§ = ç«ç›¸æ€§åŠ ç‚¹ + ç«ç›¸æ€§åŠ å€¼ + æ‰€æœ‰ç›¸æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_fir_phase(player)
 	local player_fir_phase_point = player:getAttrValue(player_fir_phase_point)
 	local player_add_fir_phase = player:getAttrValue(player_add_fir_phase)
@@ -140,7 +140,7 @@ function PlayerAttrbuteFormula.player_fir_phase(player)
 	return player_fir_phase_point+player_add_fir_phase+player_add_all_phase
 end
 
---¶¾ÏàĞÔ = ¶¾ÏàĞÔ¼Óµã + ¶¾ÏàĞÔ¼ÓÖµ + ËùÓĞÏàĞÔ¼ÓÖµ
+--æ¯’ç›¸æ€§ = æ¯’ç›¸æ€§åŠ ç‚¹ + æ¯’ç›¸æ€§åŠ å€¼ + æ‰€æœ‰ç›¸æ€§åŠ å€¼
 function PlayerAttrbuteFormula.player_poi_phase(player)
 	local player_poi_phase_point = player:getAttrValue(player_poi_phase_point)
 	local player_add_poi_phase = player:getAttrValue(player_add_poi_phase)
@@ -148,7 +148,7 @@ function PlayerAttrbuteFormula.player_poi_phase(player)
 	return player_poi_phase_point+player_add_poi_phase+player_add_all_phase
 end
 
---·ç¹¥»÷ =£¨·çÏà0.01+·ç¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ£©
+--é£æ”»å‡» =ï¼ˆé£ç›¸0.01+é£æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼ï¼‰
 function PlayerAttrbuteFormula.player_win_at(player)
 	local player_win_phase = player:getAttrValue(player_win_phase)
 	local player_inc_win_at = player:getAttrValue(player_inc_win_at)
@@ -156,7 +156,7 @@ function PlayerAttrbuteFormula.player_win_at(player)
 	return math_floor(player_win_phase*0.01+player_inc_win_at+player_inc_phase_at)
 end
 
---À×¹¥»÷ = £¨À×ÏàĞÔ*0.01+À×¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ£©
+--é›·æ”»å‡» = ï¼ˆé›·ç›¸æ€§*0.01+é›·æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼ï¼‰
 function PlayerAttrbuteFormula.player_thu_at(player)
 	local player_thu_phase = player:getAttrValue(player_thu_phase)
 	local player_inc_thu_at = player:getAttrValue(player_inc_thu_at)
@@ -164,7 +164,7 @@ function PlayerAttrbuteFormula.player_thu_at(player)
 	return math_floor(player_thu_phase*0.01+player_inc_thu_at+player_inc_phase_at)
 end
 
---±ù¹¥»÷ =£¨±ùÏàĞÔ*0.01+±ù¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ£©
+--å†°æ”»å‡» =ï¼ˆå†°ç›¸æ€§*0.01+å†°æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼ï¼‰
 function PlayerAttrbuteFormula.player_ice_at(player)
 	local player_ice_phase = player:getAttrValue(player_ice_phase)
 	local player_inc_ice_at = player:getAttrValue(player_inc_ice_at)
@@ -172,7 +172,7 @@ function PlayerAttrbuteFormula.player_ice_at(player)
 	return math_floor(player_ice_phase*0.01+player_inc_ice_at+player_inc_phase_at)
 end
 
---»ğ¹¥»÷ = (»ğÏàĞÔ*0.01+»ğ¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ)
+--ç«æ”»å‡» = (ç«ç›¸æ€§*0.01+ç«æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼)
 function PlayerAttrbuteFormula.player_fir_at(player)
 	local player_fir_phase = player:getAttrValue(player_fir_phase)
 	local player_inc_fir_at = player:getAttrValue(player_inc_fir_at)
@@ -180,7 +180,7 @@ function PlayerAttrbuteFormula.player_fir_at(player)
 	return math_floor(player_fir_phase*0.01+player_inc_fir_at+player_inc_phase_at)
 end
 
---ÍÁ¹¥»÷ = (ÍÁÏàĞÔ*0.01+ÍÁ¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ)
+--åœŸæ”»å‡» = (åœŸç›¸æ€§*0.01+åœŸæ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼)
 function PlayerAttrbuteFormula.player_soi_at(player)
 	local player_soi_phase = player:getAttrValue(player_soi_phase)
 	local player_inc_soi_at = player:getAttrValue(player_inc_soi_at)
@@ -188,7 +188,7 @@ function PlayerAttrbuteFormula.player_soi_at(player)
 	return math_floor(player_soi_phase*0.01+player_inc_soi_at+player_inc_phase_at)
 end
 
---¶¾¹¥»÷ = (¶¾ÏàĞÔ*0.01+¶¾¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ)
+--æ¯’æ”»å‡» = (æ¯’ç›¸æ€§*0.01+æ¯’æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼)
 function PlayerAttrbuteFormula.player_poi_at(player)
 	local player_poi_phase = player:getAttrValue(player_poi_phase)
 	local player_inc_poi_at = player:getAttrValue(player_inc_poi_at)
@@ -196,7 +196,7 @@ function PlayerAttrbuteFormula.player_poi_at(player)
 	return math_floor(player_poi_phase*0.01+player_inc_poi_at+player_inc_phase_at)
 end
 
---·ç¿¹ = (·çÏàĞÔ*0.01+·ç¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ)
+--é£æŠ— = (é£ç›¸æ€§*0.01+é£æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼)
 function PlayerAttrbuteFormula.player_win_resist(player)
 	local player_win_phase = player:getAttrValue(player_win_phase)
 	local player_inc_win_resist = player:getAttrValue(player_inc_win_resist)
@@ -204,7 +204,7 @@ function PlayerAttrbuteFormula.player_win_resist(player)
 	return math_floor(player_win_phase*0.01+player_inc_win_resist+player_inc_phase_resist)
 end
 
---À×¿¹ = (À×ÏàĞÔ*0.01+À×¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ)
+--é›·æŠ— = (é›·ç›¸æ€§*0.01+é›·æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼)
 function PlayerAttrbuteFormula.player_thu_resist(player)
 	local player_thu_phase = player:getAttrValue(player_thu_phase)
 	local player_inc_thu_resist = player:getAttrValue(player_inc_thu_resist)
@@ -212,7 +212,7 @@ function PlayerAttrbuteFormula.player_thu_resist(player)
 	return math_floor(player_thu_phase*0.01+player_inc_thu_resist+player_inc_phase_resist)
 end
 
---±ù¿¹ = (±ùÏàĞÔ*0.01+±ù¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ)
+--å†°æŠ— = (å†°ç›¸æ€§*0.01+å†°æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼)
 function PlayerAttrbuteFormula.player_ice_resist(player)
 	local player_ice_phase = player:getAttrValue(player_ice_phase)
 	local player_inc_ice_resist = player:getAttrValue(player_inc_ice_resist)
@@ -220,7 +220,7 @@ function PlayerAttrbuteFormula.player_ice_resist(player)
 	return math_floor(player_ice_phase*0.01+player_inc_ice_resist+player_inc_phase_resist)
 end
 
---»ğ¿¹ = (»ğÏàĞÔ*0.01+»ğ¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ)
+--ç«æŠ— = (ç«ç›¸æ€§*0.01+ç«æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼)
 function PlayerAttrbuteFormula.player_fir_resist(player)
 	local player_fir_phase = player:getAttrValue(player_fir_phase)
 	local player_inc_fir_resist = player:getAttrValue(player_inc_fir_resist)
@@ -228,7 +228,7 @@ function PlayerAttrbuteFormula.player_fir_resist(player)
 	return math_floor(player_fir_phase*0.01+player_inc_fir_resist+player_inc_phase_resist)
 end
 
---ÍÁ¿¹ = (ÍÁÏàĞÔ*0.01+ÍÁ¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ)
+--åœŸæŠ— = (åœŸç›¸æ€§*0.01+åœŸæŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼)
 function PlayerAttrbuteFormula.player_soi_resist(player)
 	local player_soi_phase = player:getAttrValue(player_soi_phase)
 	local player_inc_ice_resist = player:getAttrValue(player_inc_ice_resist)
@@ -236,7 +236,7 @@ function PlayerAttrbuteFormula.player_soi_resist(player)
 	return math_floor(player_soi_phase*0.01+player_inc_ice_resist+player_inc_phase_resist)
 end
 
---¶¾¿¹ = (¶¾ÏàĞÔ*0.01+¶¾¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ)
+--æ¯’æŠ— = (æ¯’ç›¸æ€§*0.01+æ¯’æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼)
 function PlayerAttrbuteFormula.player_poi_resist(player)
 	local player_poi_phase = player:getAttrValue(player_poi_phase)
 	local player_inc_poi_resist = player:getAttrValue(player_inc_poi_resist)
@@ -244,7 +244,7 @@ function PlayerAttrbuteFormula.player_poi_resist(player)
 	return math_floor(player_poi_phase*0.01+player_inc_poi_resist+player_inc_phase_resist)
 end
 
---ÉúÃüÉÏÏŞ =£¨¸ù¹Ç*20+±ùÏàĞÔ*30+µÈ¼¶^2/5-µÈ¼¶+ÉúÃüÉÏÏŞ¼ÓÖµ + ºìÀ¶ÉÏÏŞ¼ÓÖµ£©*£¨1+ÉúÃüÖµÉÏÏŞ¼Ó³É + ºìÀ¶ÉÏÏß¼Ó³É£©
+--ç”Ÿå‘½ä¸Šé™ =ï¼ˆæ ¹éª¨*20+å†°ç›¸æ€§*30+ç­‰çº§^2/5-ç­‰çº§+ç”Ÿå‘½ä¸Šé™åŠ å€¼ + çº¢è“ä¸Šé™åŠ å€¼ï¼‰*ï¼ˆ1+ç”Ÿå‘½å€¼ä¸Šé™åŠ æˆ + çº¢è“ä¸Šçº¿åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_max_hp(player)
 	local player_sta = player:getAttrValue(player_sta)
 	local player_ice_phase = player:getAttrValue(player_ice_phase)
@@ -256,7 +256,7 @@ function PlayerAttrbuteFormula.player_max_hp(player)
 	return math_floor((player_sta*20+player_ice_phase*30+math_pow(level,2)/5-level+player_add_max_hp+player_add_max_hm)*(1+player_inc_max_hp+player_inc_max_hm))
 end
 
---·¨Á¦ÉÏÏŞ =£¨ÎäÁ¦*10+ÖÇÁ¦*10+±ùÏàĞÔ*30+µÈ¼¶^2/5-µÈ¼¶+ ·¨Á¦ÉÏÏŞ¼ÓÖµ + ºìÀ¶ÉÏÏŞ¼ÓÖµ£©*£¨1+·¨Á¦ÖµÉÏÏŞ¼Ó³É+ºìÀ¶ÉÏÏß¼Ó³É£©
+--æ³•åŠ›ä¸Šé™ =ï¼ˆæ­¦åŠ›*10+æ™ºåŠ›*10+å†°ç›¸æ€§*30+ç­‰çº§^2/5-ç­‰çº§+ æ³•åŠ›ä¸Šé™åŠ å€¼ + çº¢è“ä¸Šé™åŠ å€¼ï¼‰*ï¼ˆ1+æ³•åŠ›å€¼ä¸Šé™åŠ æˆ+çº¢è“ä¸Šçº¿åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_max_mp(player)
 	local player_str = player:getAttrValue(player_str)
 	local player_int = player:getAttrValue(player_int)
@@ -269,7 +269,7 @@ function PlayerAttrbuteFormula.player_max_mp(player)
 	return math_floor((player_str*10+player_int*10+player_ice_phase*30+math_pow(level,2)/5-level+player_add_max_mp+player_add_max_hm)*(1+player_inc_max_mp+player_inc_max_hm))
 end
 
---ÎïÀí¹¥»÷Á¦ =£¨ÎäÁ¦*10+»ğÏàĞÔ*7+µÈ¼¶^2/10-µÈ¼¶+ÎïÀí¹¥»÷Á¦¼ÓÖµ+È«²¿¹¥»÷Á¦¼ÓÖµ£©*£¨1+ÎïÀí¹¥»÷Á¦¼Ó³É+È«²¿¹¥»÷Á¦¼Ó³É£©
+--ç‰©ç†æ”»å‡»åŠ› =ï¼ˆæ­¦åŠ›*10+ç«ç›¸æ€§*7+ç­‰çº§^2/10-ç­‰çº§+ç‰©ç†æ”»å‡»åŠ›åŠ å€¼+å…¨éƒ¨æ”»å‡»åŠ›åŠ å€¼ï¼‰*ï¼ˆ1+ç‰©ç†æ”»å‡»åŠ›åŠ æˆ+å…¨éƒ¨æ”»å‡»åŠ›åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_at(player)
 	local player_str = player:getAttrValue(player_str)
 	local player_fir_phase = player:getAttrValue(player_fir_phase)
@@ -281,7 +281,7 @@ function PlayerAttrbuteFormula.player_at(player)
 	return math_floor((player_str*10+player_fir_phase*7+math_pow(level,2)/10-level)*(1+player_inc_at+player_inc_at_mt)+player_add_at+player_add_at_mt)
 end
 
---·¨Êõ¹¥»÷Á¦ =£¨ÖÇÁ¦*10+À×ÏàĞÔ*7+µÈ¼¶^2/10-µÈ¼¶+·¨Êõ¹¥»÷Á¦¼ÓÖµ+È«²¿¹¥»÷Á¦¼ÓÖµ£©*£¨1+·¨Êõ¹¥»÷Á¦¼Ó³É+È«²¿¹¥»÷Á¦¼Ó³É£©
+--æ³•æœ¯æ”»å‡»åŠ› =ï¼ˆæ™ºåŠ›*10+é›·ç›¸æ€§*7+ç­‰çº§^2/10-ç­‰çº§+æ³•æœ¯æ”»å‡»åŠ›åŠ å€¼+å…¨éƒ¨æ”»å‡»åŠ›åŠ å€¼ï¼‰*ï¼ˆ1+æ³•æœ¯æ”»å‡»åŠ›åŠ æˆ+å…¨éƒ¨æ”»å‡»åŠ›åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_mt(player)
 	local player_int = player:getAttrValue(player_int)
 	local player_thu_phase = player:getAttrValue(player_thu_phase)
@@ -293,7 +293,7 @@ function PlayerAttrbuteFormula.player_mt(player)
 	return math_floor((player_int*10+player_thu_phase*7+math_pow(level,2)/10-level+player_add_mt+player_add_at_mt)*(1+player_inc_mt+player_inc_at_mt))
 end
 
---ÎïÀí·ÀÓùÁ¦ =£¨¸ù¹Ç*5+ÍÁÏàĞÔ*4+µÈ¼¶^2/10-µÈ¼¶+ÎïÀí·ÀÓùÁ¦¼ÓÖµ+È«²¿·ÀÓùÁ¦¼ÓÖµ£©*£¨1+ÎïÀí·ÀÓùÁ¦¼Ó³É+È«²¿·ÀÓùÁ¦¼Ó³É£©
+--ç‰©ç†é˜²å¾¡åŠ› =ï¼ˆæ ¹éª¨*5+åœŸç›¸æ€§*4+ç­‰çº§^2/10-ç­‰çº§+ç‰©ç†é˜²å¾¡åŠ›åŠ å€¼+å…¨éƒ¨é˜²å¾¡åŠ›åŠ å€¼ï¼‰*ï¼ˆ1+ç‰©ç†é˜²å¾¡åŠ›åŠ æˆ+å…¨éƒ¨é˜²å¾¡åŠ›åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_af(player)
 	local player_sta = player:getAttrValue(player_sta)
 	local player_soi_phase = player:getAttrValue(player_soi_phase)
@@ -305,7 +305,7 @@ function PlayerAttrbuteFormula.player_af(player)
 	return math_floor((player_sta*5+player_soi_phase*4+math_pow(level,2)/10-level+player_add_af+player_add_af_mf)*(1+player_inc_af+player_inc_af_mf))
 end
 
---·¨Êõ·ÀÓùÁ¦ =£¨¸ù¹Ç*5+ÍÁÏàĞÔ*4+µÈ¼¶^2/10-µÈ¼¶+·¨Êõ·ÀÓùÁ¦¼ÓÖµ+È«²¿·ÀÓùÁ¦¼ÓÖµ£©*£¨1+·¨Êõ·ÀÓùÁ¦¼Ó³É+È«²¿·ÀÓùÁ¦¼Ó³É£©
+--æ³•æœ¯é˜²å¾¡åŠ› =ï¼ˆæ ¹éª¨*5+åœŸç›¸æ€§*4+ç­‰çº§^2/10-ç­‰çº§+æ³•æœ¯é˜²å¾¡åŠ›åŠ å€¼+å…¨éƒ¨é˜²å¾¡åŠ›åŠ å€¼ï¼‰*ï¼ˆ1+æ³•æœ¯é˜²å¾¡åŠ›åŠ æˆ+å…¨éƒ¨é˜²å¾¡åŠ›åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_mf(player)
 	local player_sta = player:getAttrValue(player_sta)
 	local player_soi_phase = player:getAttrValue(player_soi_phase)
@@ -317,7 +317,7 @@ function PlayerAttrbuteFormula.player_mf(player)
 	return math_floor((player_sta*5+player_soi_phase*4+math_pow(level,2)/10-level+player_add_mf+player_add_af_mf)*(1+player_inc_mf+player_inc_af_mf))
 end
 
---ÃüÖĞ =£¨ÎäÁ¦*0.5+ÖÇÁ¦*0.5+ÃôÈñ*1+µÈ¼¶*0.5+ÃüÖĞ¼ÓÖµ£©*£¨1+ÃüÖĞ¼Ó³É£©
+--å‘½ä¸­ =ï¼ˆæ­¦åŠ›*0.5+æ™ºåŠ›*0.5+æ•é”*1+ç­‰çº§*0.5+å‘½ä¸­åŠ å€¼ï¼‰*ï¼ˆ1+å‘½ä¸­åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_hit(player)
 	local player_str = player:getAttrValue(player_str)
 	local player_int = player:getAttrValue(player_int)
@@ -328,7 +328,7 @@ function PlayerAttrbuteFormula.player_hit(player)
 	return math_floor((player_str*0.5+player_int*0.5+player_spi*1+level*0.5+player_add_hit)*(1+player_inc_hit))
 end
 
---ÉÁ±Ü =£¨Éí·¨*2+µÈ¼¶*0.5+ÉÁ±Ü¼ÓÖµ£©*£¨1+ÉÁ±Ü¼Ó³É£©
+--é—ªé¿ =ï¼ˆèº«æ³•*2+ç­‰çº§*0.5+é—ªé¿åŠ å€¼ï¼‰*ï¼ˆ1+é—ªé¿åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_dodge(player)
 	local player_dex = player:getAttrValue(player_dex)
 	local level = player:getAttrValue(player_lvl)
@@ -337,7 +337,7 @@ function PlayerAttrbuteFormula.player_dodge(player)
 	return math_floor((player_dex*2+level*0.5+player_add_dodge)*(1+player_inc_dodge))
 end
 
---±©»÷ =£¨ÃôÈñ*2+·çÏàĞÔ*3+µÈ¼¶/2+±©»÷¼ÓÖµ£©*£¨1+±©»÷¼Ó³É£©
+--æš´å‡» =ï¼ˆæ•é”*2+é£ç›¸æ€§*3+ç­‰çº§/2+æš´å‡»åŠ å€¼ï¼‰*ï¼ˆ1+æš´å‡»åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_critical(player)
 	local player_spi = player:getAttrValue(player_spi)
 	local player_win_phase = player:getAttrValue(player_win_phase)
@@ -347,7 +347,7 @@ function PlayerAttrbuteFormula.player_critical(player)
 	return math_floor((player_spi*2+player_win_phase*3+level/2+player_add_critical)*(1+player_inc_critical))
 end
 
---¿¹±© =£¨ÃôÈñ*2+µÈ¼¶/2+¿¹±©¼ÓÖµ£©*£¨1+¿¹±©¼Ó³É£©
+--æŠ—æš´ =ï¼ˆæ•é”*2+ç­‰çº§/2+æŠ—æš´åŠ å€¼ï¼‰*ï¼ˆ1+æŠ—æš´åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_tenacity(player)
 	local player_spi = player:getAttrValue(player_spi)
 	local level = player:getAttrValue(player_lvl)
@@ -356,7 +356,7 @@ function PlayerAttrbuteFormula.player_tenacity(player)
 	return math_floor((player_spi*2+level/2+player_add_tenacity)*(1+player_inc_tenacity))
 end
 
---ËÙ¶È=£¨Éí·¨*1+µÈ¼¶*0.5+ËÙ¶È¼ÓÖµ£©*£¨1+ËÙ¶È¼Ó³É£©
+--é€Ÿåº¦=ï¼ˆèº«æ³•*1+ç­‰çº§*0.5+é€Ÿåº¦åŠ å€¼ï¼‰*ï¼ˆ1+é€Ÿåº¦åŠ æˆï¼‰
 function PlayerAttrbuteFormula.player_speed(player)
 	local player_dex = player:getAttrValue(player_dex)
 	local level = player:getAttrValue(player_lvl)
@@ -365,28 +365,28 @@ function PlayerAttrbuteFormula.player_speed(player)
 	return math_floor((player_dex*1+level*0.5+player_add_speed)*(1+player_inc_speed))
 end
 
---·´ÕğÂÊ
+--åéœ‡ç‡
 function PlayerAttrbuteFormula.player_counter(player)
 	return 0
 end
 
---±©»÷Ğ§¹û¼Ó³É
+--æš´å‡»æ•ˆæœåŠ æˆ
 --[[function PlayerAttrbuteFormula.player_inc_critical_effect(player)
 	local player_inc_critical_effect = player:getAttrValue(player_inc_critical_effect)
 	return player_inc_critical_effect
 end]]
 
---ÒÆ¶¯ËÙ¶È
+--ç§»åŠ¨é€Ÿåº¦
 function PlayerAttrbuteFormula.player_mobile_speed(player)
 	return 4
 end
 
---×î´óÅ­Æø
+--æœ€å¤§æ€’æ°”
 function PlayerAttrbuteFormula.player_max_anger(player)
 	return 100
 end
 
---×î´óÌåÁ¦Öµ
+--æœ€å¤§ä½“åŠ›å€¼
 function PlayerAttrbuteFormula.player_max_vigor(player)
 	local level = player:getAttrValue(player_lvl)
 	if level <= 20 then
@@ -396,7 +396,7 @@ function PlayerAttrbuteFormula.player_max_vigor(player)
 	end
 end
 
--- ±ê×¼µÀĞĞ
+-- æ ‡å‡†é“è¡Œ
 function PlayerAttrbuteFormula.player_stand_tao(player)
 	local level = player:getAttrValue(player_lvl)
 	return math_floor(math_pow(level,3)*0.29 + 73)
@@ -404,7 +404,7 @@ end
 
 g_AttrPlayerInfluenceTable =
 {
-	-- Ò»¼¶ÊôĞÔ
+	-- ä¸€çº§å±æ€§
 	[player_str]						= {player_at,player_hit,player_max_mp},
 	[player_int]						= {player_mt,player_max_mp,player_hit},
 	[player_sta]						= {player_max_hp,player_af,player_mf,player_tenacity},
@@ -431,7 +431,7 @@ g_AttrPlayerInfluenceTable =
 	[player_ice_phase]					= {player_ice_at,player_ice_resist,player_max_hp,player_max_mp},
 	[player_soi_phase]					= {player_soi_at,player_soi_resist,player_af,player_mf},
 	[player_fir_phase]					= {player_fir_at,player_fir_resist,player_at},
-	[player_poi_phase]					= {player_poi_at,player_poi_resist},--»¹»áÓ°ÏìdotĞ§¹û
+	[player_poi_phase]					= {player_poi_at,player_poi_resist},--è¿˜ä¼šå½±å“dotæ•ˆæœ
 	[player_add_all_phase]				= {player_win_phase,player_thu_phase,player_ice_phase,player_soi_phase,player_fir_phase,player_poi_phase},
 	[player_win_phase_point]			= {player_win_phase},
 	[player_thu_phase_point]			= {player_thu_phase},
@@ -440,7 +440,7 @@ g_AttrPlayerInfluenceTable =
 	[player_fir_phase_point]			= {player_fir_phase},
 	[player_poi_phase_point]			= {player_poi_phase},
 
-	-- ¶ş¼¶ÊôĞÔ
+	-- äºŒçº§å±æ€§
 	[player_add_max_hp]					= {player_max_hp},
 	[player_inc_max_hp]					= {player_max_hp},
 	[player_add_max_mp]					= {player_max_mp},
@@ -485,14 +485,14 @@ g_AttrPlayerInfluenceTable =
 	[player_inc_poi_resist]				= {player_poi_resist},
 	[player_inc_phase_resist]			= {player_win_resist,player_thu_resist,player_ice_resist,player_fir_resist,player_soi_resist,player_poi_resist},
 
-	-- Èı¼¶ÊôĞÔ
+	-- ä¸‰çº§å±æ€§
 	[player_add_mobile_speed]           = {player_mobile_speed},
 	[player_lvl]						= {player_next_xp, player_in_str,player_in_int,player_in_sta,player_in_spi,player_in_dex,player_max_vigor,player_stand_tao},
 	[player_inc_counter]				= {player_counter},
 	[player_inc_escape]					= {player_escape},
 }
 
---ÊôĞÔ¹«Ê½¶ÔÕÕ±í
+--å±æ€§å…¬å¼å¯¹ç…§è¡¨
 g_AttributePlayerFormat =
 {
 	[player_str]						= PlayerAttrbuteFormula.player_str,
@@ -545,100 +545,20 @@ g_AttributePlayerFormat =
 }
 
 -----------------------------------------------------------------------
---³ÌĞòÅäÖÃ
+--ç¨‹åºé…ç½®
 -----------------------------------------------------------------------
---ÊôĞÔ¶ÔÓ¦µÄÊôĞÔÍ¬²½
+--å±æ€§å¯¹åº”çš„å±æ€§åŒæ­¥
 g_AttributePlayerToProp =
 {
-	-- Ò»¼¶ÊôĞÔ
-	[player_attr_point]					= PLAYER_ATTR_POINT,
-	[player_str_point]					= PLAYER_ATTR_STR_POINT,
-	[player_int_point]					= PLAYER_ATTR_INT_POINT,
-	[player_sta_point]					= PLAYER_ATTR_STA_POINT,
-	[player_spi_point]					= PLAYER_ATTR_SPI_POINT,
-	[player_dex_point]					= PLAYER_ATTR_DEX_POINT,
-	[player_add_str]                    = PLAYER_ATTR_ADD_STR,
-	[player_add_int]                    = PLAYER_ATTR_ADD_INT,
-	[player_add_sta]                    = PLAYER_ATTR_ADD_STA,
-	[player_add_spi]                    = PLAYER_ATTR_ADD_SPI,
-	[player_add_dex]                    = PLAYER_ATTR_ADD_DEX,
-	[player_add_base_attr]              = PLAYER_ATTR_ADD_BASE_ATTR,
-	[player_add_all_phase]              = PLAYER_ATTR_ADD_ALL_PHASE,
-	[player_win_phase_point]			= PLAYER_ATTR_WIN_POINT,
-	[player_thu_phase_point]			= PLAYER_ATTR_THU_POINT,
-	[player_ice_phase_point]			= PLAYER_ATTR_ICE_POINT,
-	[player_soi_phase_point]			= PLAYER_ATTR_SOI_POINT,
-	[player_fir_phase_point]			= PLAYER_ATTR_FIR_POINT,
-	[player_poi_phase_point]			= PLAYER_ATTR_POI_POINT,
-	[player_add_win_phase]              = PLAYER_ATTR_ADD_WIN,
-	[player_add_thu_phase]              = PLAYER_ATTR_ADD_THU,
-	[player_add_ice_phase]              = PLAYER_ATTR_ADD_ICE,
-	[player_add_soi_phase]              = PLAYER_ATTR_ADD_SOI,
-	[player_add_fir_phase]              = PLAYER_ATTR_ADD_FIR,
-	[player_add_poi_phase]              = PLAYER_ATTR_ADD_POI,
-	[player_phase_point]				= PLAYER_PHASE_POINT,
-	[player_max_pet]					= PLAYER_ATTR_MAX_PET,
-
-	-- ¶ş¼¶ÊôĞÔ
-	[player_hp]							= PLAYER_ATTR_HP,
-	[player_mp]							= PLAYER_ATTR_MP,
-	[player_add_max_hp]                 = PLAYER_ATTR_ADD_MAXHP,
-	[player_inc_max_hp]                 = PLAYER_ATTR_INC_MAXHP,
-	[player_add_max_mp]                 = PLAYER_ATTR_ADD_MAXMP,
-	[player_inc_max_mp]                 = PLAYER_ATTR_INC_MAXMP,
-	[player_add_at]                     = PLAYER_ATTR_ADD_AT,
-	[player_inc_at]                     = PLAYER_ATTR_INC_AT,
-	[player_add_mt]                     = PLAYER_ATTR_ADD_MT,
-	[player_inc_mt]                     = PLAYER_ATTR_INC_MT,
-	[player_add_at_mt]                  = PLAYER_ATTR_ADD_AT_MT,
-	[player_inc_at_mt]                  = PLAYER_ATTR_INC_AT_MT,
-	[player_add_af]                     = PLAYER_ATTR_ADD_AF,
-	[player_inc_af]                     = PLAYER_ATTR_INC_AF,
-	[player_add_mf]                     = PLAYER_ATTR_ADD_MF,
-	[player_inc_mf]                     = PLAYER_ATTR_INC_MF,
-	[player_add_af_mf]                  = PLAYER_ATTR_ADD_AF_MF,
-	[player_inc_af_mf]                  = PLAYER_ATTR_INC_AF_MF,
-	[player_add_critical]               = PLAYER_ATTR_ADD_CRITICAL,
-	[player_inc_critical]               = PLAYER_ATTR_INC_CRITICAL,
-	[player_add_tenacity]               = PLAYER_ATTR_ADD_TENACITY,
-	[player_inc_tenacity]               = PLAYER_ATTR_INC_TENACITY,
-	[player_add_speed]                  = PLAYER_ATTR_ADD_SPEED,
-	[player_inc_speed]                  = PLAYER_ATTR_INC_SPEED,
-	[player_inc_taunt_resist]           = PLAYER_ATTR_INC_TAUNT_RESIST,
-	[player_inc_sopor_resist]           = PLAYER_ATTR_INC_SOPOR_RESIST,
-	[player_inc_chaos_resist]           = PLAYER_ATTR_INC_CHAOS_RESIST,
-	[player_inc_freeze_resist]          = PLAYER_ATTR_INC_FREEZE_RESIST,
-	[player_inc_silent_resist]          = PLAYER_ATTR_INC_SILENT_RESIST,
-	[player_inc_toxicosis_resist]       = PLAYER_ATTR_INC_TOXICOSIS_RESIST,
-	[player_inc_win_at]                 = PLAYER_ATTR_INC_WIN_AT,
-	[player_inc_thu_at]                 = PLAYER_ATTR_INC_THU_AT,
-	[player_inc_ice_at]                 = PLAYER_ATTR_INC_ICE_AT,
-	[player_inc_soi_at]                 = PLAYER_ATTR_INC_SOI_AT,
-	[player_inc_fir_at]                 = PLAYER_ATTR_INC_FIR_AT,
-	[player_inc_poi_at]                 = PLAYER_ATTR_INC_POI_AT,
-	[player_inc_phase_at]               = PLAYER_ATTR_INC_PHASE_AT,
-	[player_inc_win_resist]             = PLAYER_ATTR_INC_WIN_RESIST,
-	[player_inc_thu_resist]             = PLAYER_ATTR_INC_THU_RESIST,
-	[player_inc_ice_resist]             = PLAYER_ATTR_INC_ICE_RESIST,
-	[player_inc_soi_resist]             = PLAYER_ATTR_INC_SOI_RESIST,
-	[player_inc_fir_resist]             = PLAYER_ATTR_INC_FIR_RESIST,
-	[player_inc_poi_resist]             = PLAYER_ATTR_INC_POI_RESIST,
-	[player_inc_phase_resist]           = PLAYER_ATTR_INC_PHASE_RESIST,
-	[player_add_max_hm]					= PLAYER_ATTR_ADD_MAX_HM,
-	[player_inc_max_hm]					= PLAYER_ATTR_INC_MAX_HM,
-
-	-- Èı¼¶ÊôĞÔ
-	[player_xp]							= PLAYER_ATTR_XP,
-	[player_pot]						= PLAYER_ATTR_POT,
-	[player_expoint]					= PLAYER_ATTR_EXPOINT,
-	[player_vigor]						= PLAYER_ATTR_VIGOR,
-	[player_tao]						= PLAYER_ATTR_TAO,
-	[player_anger]						= PLAYER_ATTR_ANGER,
-	[player_combat]						= PLAYER_ATTR_COMBAT,
-	[player_kill]						= PLAYER_ATTR_KILL,
+	[player_xp]							= PLAYER_XP,
+	[player_lvl]						= PLAYER_LEVEL,
+	[player_hp]							= PLAYER_HP,
+	[player_mp]							= PLAYER_MP,
+	[player_max_hp]						= PLAYER_MAX_HP,
+	[player_max_mp]						= PLAYER_MAX_MP,
 }
 
---ĞèÒªÁ¢¿Ì¸üĞÂµÄÊôĞÔ
+--éœ€è¦ç«‹åˆ»æ›´æ–°çš„å±æ€§
 g_AttrPlayerSyncTable =
 {
 	[player_in_str] = true,

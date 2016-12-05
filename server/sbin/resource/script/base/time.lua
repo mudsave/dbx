@@ -2,8 +2,8 @@
 --/*-----------------------------------------------------------------
  --* Module:  time.lua
  --* Author:  Huang YingTian
- --* Modified: 2008Äê5ÔÂ23ÈÕ 16:03:57
- --* Purpose: time¹¦ÄÜº¯Êı¼¯ºÏ:Ä¿Ç°½öÖ§³Öformat: t="2009-05-15 09:10:44"
+ --* Modified: 2008å¹´5æœˆ23æ—¥ 16:03:57
+ --* Purpose: timeåŠŸèƒ½å‡½æ•°é›†åˆ:ç›®å‰ä»…æ”¯æŒformat: t="2009-05-15 09:10:44"
  -------------------------------------------------------------------*/
 
 time = {}
@@ -45,18 +45,18 @@ end
 
 function time.weekday(day)
 	local daysw = {
-		[1] = "ĞÇÆÚÈÕ",
-		[2] = "ĞÇÆÚÒ»",
-		[3] = "ĞÇÆÚ¶ş",
-		[4] = "ĞÇÆÚÈı",
-		[5] = "ĞÇÆÚËÄ",
-		[6] = "ĞÇÆÚÎå",
-		[7] = "ĞÇÆÚÁù",
+		[1] = "æ˜ŸæœŸæ—¥",
+		[2] = "æ˜ŸæœŸä¸€",
+		[3] = "æ˜ŸæœŸäºŒ",
+		[4] = "æ˜ŸæœŸä¸‰",
+		[5] = "æ˜ŸæœŸå››",
+		[6] = "æ˜ŸæœŸäº”",
+		[7] = "æ˜ŸæœŸå…­",
 	}
 	return daysw[day]
 end
 
---(format :"2009-05-15 09:10:44")×Ö·û´®×ª»»Îªlua time
+--(format :"2009-05-15 09:10:44")å­—ç¬¦ä¸²è½¬æ¢ä¸ºlua time
 function time.totime(timeStr)
 	local y=time.year(timeStr)
 	local m=time.month(timeStr)
@@ -71,7 +71,7 @@ function time.totime(timeStr)
 	end
 end
 
---lua time×ª»»Îª×Ö·û´®(format :"2009-05-15 09:10:44")
+--lua timeè½¬æ¢ä¸ºå­—ç¬¦ä¸²(format :"2009-05-15 09:10:44")
 function time.tostring(lua_time)
 	local t=os.date("*t",lua_time)
 	if (type(t)=="table" and table.size(t)==9) then
@@ -79,15 +79,15 @@ function time.tostring(lua_time)
 	end
 end
 
---lua time×ª»»Îª×Ö·û´®(format :"2011Äê09ÔÂ16ÈÕ 13:28:21 ĞÇÆÚÎå")
+--lua timeè½¬æ¢ä¸ºå­—ç¬¦ä¸²(format :"2011å¹´09æœˆ16æ—¥ 13:28:21 æ˜ŸæœŸäº”")
 function time.totext(lua_time)
 	local t=os.date("*t",lua_time)
 	if (type(t)=="table" and table.size(t)==9) then
-		return string.format("%dÄê%.2dÔÂ%.2dÈÕ %.2d:%.2d:%.2d %s", t.year, t.month, t.day, t.hour, t.min, t.sec, time.weekday(t.wday))
+		return string.format("%då¹´%.2dæœˆ%.2dæ—¥ %.2d:%.2d:%.2d %s", t.year, t.month, t.day, t.hour, t.min, t.sec, time.weekday(t.wday))
 	end
 end
 
-local __EditionBaseTime=time.totime("2011-07-31 00:00:00")	--ÖÜÈÕÎªÃ¿ÖÜµÚÒ»Ìì
+local __EditionBaseTime=time.totime("2011-07-31 00:00:00")	--å‘¨æ—¥ä¸ºæ¯å‘¨ç¬¬ä¸€å¤©
 local __WeekSeconds=60*60*24*7
 function time.toedition(period,lua_time)
 	local edition=0
@@ -186,7 +186,7 @@ function time.tominute()
 	return t["min"], t["sec"]
 end
 
--- ÅĞ¶ÏÖ¸¶¨ÃëÊı¸úµ±Ç°ÊÇ²»ÊÇÍ¬Ò»Ìì
+-- åˆ¤æ–­æŒ‡å®šç§’æ•°è·Ÿå½“å‰æ˜¯ä¸æ˜¯åŒä¸€å¤©
 function time.isSameDay(second)
 	local tDate = os.date("*t", second)
 	local tCurDate = os.date("*t")
@@ -196,7 +196,7 @@ function time.isSameDay(second)
 	return false
 end
 
--- ÅĞ¶ÏÖ¸¶¨ÃëÊı¸úµ±Ç°ÊÇ²»ÊÇÍ¬Ò»ÖÜ
+-- åˆ¤æ–­æŒ‡å®šç§’æ•°è·Ÿå½“å‰æ˜¯ä¸æ˜¯åŒä¸€å‘¨
 function time.isSameWeek(second)
 	if time.toedition("week", second) == time.toedition("week") then
 		return true

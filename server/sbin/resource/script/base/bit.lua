@@ -1,6 +1,6 @@
 --[[bit.lua
-ÃèÊö£º
-	Ìá¹©Î»ÔËËã
+æè¿°ï¼š
+	æä¾›ä½è¿ç®—
 --]]
 
 if BIT_MASK == nil then
@@ -11,9 +11,9 @@ local power = BIT_POWER or 32
 local data = {}
 for i = 1, power do data[i] = 2^(power-i) end
 
---@note£º½«ÕûĞÍÊı×Ö×ª»»³É2½øÖÆÎ»Êı×é
---@param n£ºÕûĞÍÊı×Ö
---@ret£º2½øÖÆÎ»Êı×é
+--@noteï¼šå°†æ•´å‹æ•°å­—è½¬æ¢æˆ2è¿›åˆ¶ä½æ•°ç»„
+--@param nï¼šæ•´å‹æ•°å­—
+--@retï¼š2è¿›åˆ¶ä½æ•°ç»„
 local function d2b(n)
 	local ret = {}
 	for i = 1, power do
@@ -27,9 +27,9 @@ local function d2b(n)
 	return ret
 end
 
---@note£º½«2½øÖÆÊı×é×ª»»³ÉÕûĞÍÊı×Ö
---@param b£º2½øÖÆÊı×é
---@ret£ºÕûĞÍÊı×Ö
+--@noteï¼šå°†2è¿›åˆ¶æ•°ç»„è½¬æ¢æˆæ•´å‹æ•°å­—
+--@param bï¼š2è¿›åˆ¶æ•°ç»„
+--@retï¼šæ•´å‹æ•°å­—
 local function b2d(b)
 	local ret = 0
 	for i = 1, power do
@@ -40,7 +40,7 @@ local function b2d(b)
 	return  ret
 end
 
---@note£ºÎ»ÓëÔËËã£¬ÓÅÏÈÊ¹ÓÃµ×²ãÔËËã
+--@noteï¼šä½ä¸è¿ç®—ï¼Œä¼˜å…ˆä½¿ç”¨åº•å±‚è¿ç®—
 local _and = BIT_AND
 if _and == nil then
 	_and = function(a, b)
@@ -66,7 +66,7 @@ if _and == nil then
 	end
 end
 
---@note£ºÎ»»òÔËËã£¬ÓÅÏÈÊ¹ÓÃµ×²ãÔËËã
+--@noteï¼šä½æˆ–è¿ç®—ï¼Œä¼˜å…ˆä½¿ç”¨åº•å±‚è¿ç®—
 local _or = BIT_OR
 if _or == nil then
 	_or = function(a, b)
@@ -92,7 +92,7 @@ if _or == nil then
 	end
 end
 
---@note£º·ÇÔËËã£¬ÓÅÏÈÊ¹ÓÃµ×²ãÔËËã
+--@noteï¼šéè¿ç®—ï¼Œä¼˜å…ˆä½¿ç”¨åº•å±‚è¿ç®—
 bit_not = BIT_NOT
 if bit_not == nil then
 	bit_not = function(a)
@@ -111,7 +111,7 @@ if bit_not == nil then
 	end
 end
 
---@note£ºÒì»òÔËËã£¬ÓÅÏÈÊ¹ÓÃµ×²ãÔËËã
+--@noteï¼šå¼‚æˆ–è¿ç®—ï¼Œä¼˜å…ˆä½¿ç”¨åº•å±‚è¿ç®—
 bit_xor = BIT_XOR
 if bit_xor == nil then
 	bit_xor = function(a, b)
@@ -137,7 +137,7 @@ if bit_xor == nil then
 	end
 end
 
---@note£º×óÒÆÔËËã£¬ÓÅÏÈÊ¹ÓÃµ×²ãÔËËã
+--@noteï¼šå·¦ç§»è¿ç®—ï¼Œä¼˜å…ˆä½¿ç”¨åº•å±‚è¿ç®—
 bit_lshift = BIT_LSHIFT
 if bit_lshift == nil then
 	bit_lshift = function(a, n)
@@ -158,7 +158,7 @@ if bit_lshift == nil then
 	end
 end
 
---@note£ºÓÒÒÆÔËËã£¬ÓÅÏÈÊ¹ÓÃµ×²ãÔËËã
+--@noteï¼šå³ç§»è¿ç®—ï¼Œä¼˜å…ˆä½¿ç”¨åº•å±‚è¿ç®—
 bit_rshift = BIT_RSHIFT
 if bit_rshift == nil then
 	bit_rshift = function(a, n)
@@ -179,7 +179,7 @@ if bit_rshift == nil then
 	end
 end
 
---@note£ºÎ»Óë£¬Ìá¹©¶à¸öÊıÖµÍ¬Ê±²ÎÓëÔËËã
+--@noteï¼šä½ä¸ï¼Œæä¾›å¤šä¸ªæ•°å€¼åŒæ—¶å‚ä¸è¿ç®—
 function bit_and(...)
 	local ret = select(1, ...)
 	for i = 2, select("#", ...) do
@@ -189,7 +189,7 @@ function bit_and(...)
 	return ret
 end
 
---@note£ºÎ»»ò£¬Ìá¹©¶à¸öÊıÖµÍ¬Ê±²ÎÓëÔËËã
+--@noteï¼šä½æˆ–ï¼Œæä¾›å¤šä¸ªæ•°å€¼åŒæ—¶å‚ä¸è¿ç®—
 function bit_or(...)
 	local ret = select(1, ...)
 	for i = 2, select("#", ...) do
@@ -199,7 +199,7 @@ function bit_or(...)
 	return ret
 end
 
---@note£º½²ÕûĞÍÊıÖµ×ª»»³ÉÎ»×Ö·û´®
+--@noteï¼šè®²æ•´å‹æ•°å€¼è½¬æ¢æˆä½å­—ç¬¦ä¸²
 function bit_tostring(a)
 	local b = d2b(a)
 	local s = ""

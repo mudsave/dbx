@@ -1,5 +1,5 @@
 -- PetAttrFormula.lua
--- ³èÎïÎïÊôĞÔ¹«Ê½
+-- å® ç‰©ç‰©å±æ€§å…¬å¼
 
 local math_pow		= math.pow
 local math_ceil		= math.ceil
@@ -8,9 +8,9 @@ local math_floor	= math.floor
 PetAttrbuteFormula = {}
 
 -----------------------------------------------------------------------
---²ß»®ÅäÖÃ
+--ç­–åˆ’é…ç½®
 -----------------------------------------------------------------------
---³èÎïÉı¼¶µÄÏÂÒ»¼¶¾­Ñé
+--å® ç‰©å‡çº§çš„ä¸‹ä¸€çº§ç»éªŒ
 function PetAttrbuteFormula.pet_next_xp(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	if level < 20 then
@@ -38,37 +38,37 @@ function PetAttrbuteFormula.pet_next_xp(pet)
 	end
 end
 
---ÏÈÌìÎäÁ¦
+--å…ˆå¤©æ­¦åŠ›
 function PetAttrbuteFormula.pet_in_str(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	return level-1+pet:getAttrValue(pet_inborn_str)
 end
 
---ÏÈÌìÖÇÁ¦
+--å…ˆå¤©æ™ºåŠ›
 function PetAttrbuteFormula.pet_in_int(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	return level-1+pet:getAttrValue(pet_inborn_int)
 end
 
---ÏÈÌì¸ù¹Ç
+--å…ˆå¤©æ ¹éª¨
 function PetAttrbuteFormula.pet_in_sta(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	return level-1+pet:getAttrValue(pet_inborn_sta)
 end
 
---ÏÈÌìÃôÈñ
+--å…ˆå¤©æ•é”
 function PetAttrbuteFormula.pet_in_spi(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	return level-1+pet:getAttrValue(pet_inborn_spi)
 end
 
---ÏÈÌìÉí·¨
+--å…ˆå¤©èº«æ³•
 function PetAttrbuteFormula.pet_in_dex(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	return level-1+pet:getAttrValue(pet_inborn_dex)
 end
 
---ÎäÁ¦:ÎäÁ¦¼Óµã+ÏÈÌìÎäÁ¦+ËùÓĞÊôĞÔ¼ÓÖµ+ÎäÁ¦¼ÓÖµ
+--æ­¦åŠ›:æ­¦åŠ›åŠ ç‚¹+å…ˆå¤©æ­¦åŠ›+æ‰€æœ‰å±æ€§åŠ å€¼+æ­¦åŠ›åŠ å€¼
 function PetAttrbuteFormula.pet_str(pet)
 	local pet_add_str = pet:getAttrValue(pet_add_str)
 	local pet_add_base_attr = pet:getAttrValue(pet_add_base_attr)
@@ -77,7 +77,7 @@ function PetAttrbuteFormula.pet_str(pet)
 	return pet_str_point+pet_in_str+pet_add_base_attr+pet_add_str
 end
 
---ÖÇÁ¦:ÖÇÁ¦¼Óµã+ÏÈÌìÖÇÁ¦+ËùÓĞÊôĞÔ¼ÓÖµ+ÖÇÁ¦¼ÓÖµ
+--æ™ºåŠ›:æ™ºåŠ›åŠ ç‚¹+å…ˆå¤©æ™ºåŠ›+æ‰€æœ‰å±æ€§åŠ å€¼+æ™ºåŠ›åŠ å€¼
 function PetAttrbuteFormula.pet_int(pet)
 	local pet_add_int = pet:getAttrValue(pet_add_int)
 	local pet_add_base_attr = pet:getAttrValue(pet_add_base_attr)
@@ -86,7 +86,7 @@ function PetAttrbuteFormula.pet_int(pet)
 	return pet_int_point+pet_in_int+pet_add_base_attr+pet_add_int
 end
 
---¸ù¹Ç:¸ù¹Ç¼Óµã+ÏÈÌì¸ù¹Ç+ËùÓĞÊôĞÔ¼ÓÖµ+¸ù¹Ç¼ÓÖµ
+--æ ¹éª¨:æ ¹éª¨åŠ ç‚¹+å…ˆå¤©æ ¹éª¨+æ‰€æœ‰å±æ€§åŠ å€¼+æ ¹éª¨åŠ å€¼
 function PetAttrbuteFormula.pet_sta(pet)
 	local pet_add_sta = pet:getAttrValue(pet_add_sta)
 	local pet_add_base_attr = pet:getAttrValue(pet_add_base_attr)
@@ -95,7 +95,7 @@ function PetAttrbuteFormula.pet_sta(pet)
 	return pet_sta_point+pet_in_sta+pet_add_base_attr+pet_add_sta
 end
 
---ÃôÈñ:ÃôÈñ¼Óµã+ÏÈÌìÃôÈñ+ËùÓĞÊôĞÔ¼ÓÖµ+ÃôÈñ¼ÓÖµ
+--æ•é”:æ•é”åŠ ç‚¹+å…ˆå¤©æ•é”+æ‰€æœ‰å±æ€§åŠ å€¼+æ•é”åŠ å€¼
 function PetAttrbuteFormula.pet_spi(pet)
 	local pet_add_spi = pet:getAttrValue(pet_add_spi)
 	local pet_add_base_attr = pet:getAttrValue(pet_add_base_attr)
@@ -104,7 +104,7 @@ function PetAttrbuteFormula.pet_spi(pet)
 	return pet_spi_point+pet_in_spi+pet_add_base_attr+pet_add_spi
 end
 
---Éí·¨:Éí·¨¼Óµã+ÏÈÌìÉí·¨+ËùÓĞÊôĞÔ¼ÓÖµ+Éí·¨¼ÓÖµ
+--èº«æ³•:èº«æ³•åŠ ç‚¹+å…ˆå¤©èº«æ³•+æ‰€æœ‰å±æ€§åŠ å€¼+èº«æ³•åŠ å€¼
 function PetAttrbuteFormula.pet_dex(pet)
 	local pet_add_dex = pet:getAttrValue(pet_add_dex)
 	local pet_add_base_attr = pet:getAttrValue(pet_add_base_attr)
@@ -113,49 +113,49 @@ function PetAttrbuteFormula.pet_dex(pet)
 	return pet_dex_point+pet_in_dex+pet_add_base_attr+pet_add_dex
 end
 
---·ç¹¥»÷:·ç¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--é£æ”»å‡»:é£æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_win_at(pet)
 	local pet_add_phase_at = pet:getAttrValue(pet_add_phase_at)
 	local pet_add_win_at = pet:getAttrValue(pet_add_win_at)
 	return pet_add_phase_at+pet_add_win_at
 end
 
---À×¹¥»÷:À×¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--é›·æ”»å‡»:é›·æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_thu_at(pet)
 	local pet_add_phase_at = pet:getAttrValue(pet_add_phase_at)
 	local pet_add_thu_at = pet:getAttrValue(pet_add_thu_at)
 	return pet_add_phase_at+pet_add_thu_at
 end
 
---±ù¹¥»÷:±ù¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--å†°æ”»å‡»:å†°æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_ice_at(pet)
 	local pet_add_phase_at = pet:getAttrValue(pet_add_phase_at)
 	local pet_add_ice_at = pet:getAttrValue(pet_add_ice_at)
 	return pet_add_phase_at+pet_add_ice_at
 end
 
---»ğ¹¥»÷:»ğ¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--ç«æ”»å‡»:ç«æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_fir_at(pet)
 	local pet_add_phase_at = pet:getAttrValue(pet_add_phase_at)
 	local pet_add_fir_at = pet:getAttrValue(pet_add_fir_at)
 	return pet_add_phase_at+pet_add_fir_at
 end
 
---ÍÁ¹¥»÷:ÍÁ¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--åœŸæ”»å‡»:åœŸæ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_soi_at(pet)
 	local pet_add_phase_at = pet:getAttrValue(pet_add_phase_at)
 	local pet_add_soi_at = pet:getAttrValue(pet_add_soi_at)
 	return pet_add_phase_at+pet_add_soi_at
 end
 
---¶¾¹¥»÷:¶¾¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--æ¯’æ”»å‡»:æ¯’æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_poi_at(pet)
 	local pet_add_phase_at = pet:getAttrValue(pet_add_phase_at)
 	local pet_add_poi_at = pet:getAttrValue(pet_add_poi_at)
 	return pet_add_phase_at+pet_add_poi_at
 end
 
---·ç¿¹:·ç¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--é£æŠ—:é£æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function PetAttrbuteFormula.pet_win_resist(pet)
 	local pet_add_phase_resist = pet:getAttrValue(pet_add_phase_resist)
 	local pet_add_win_resist = pet:getAttrValue(pet_add_win_resist)
@@ -163,7 +163,7 @@ function PetAttrbuteFormula.pet_win_resist(pet)
 	return pet_add_phase_resist+pet_add_win_resist + pet_win_phase_point * 20
 end
 
---À×¿¹:À×¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--é›·æŠ—:é›·æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function PetAttrbuteFormula.pet_thu_resist(pet)
 	local pet_add_phase_resist = pet:getAttrValue(pet_add_phase_resist)
 	local pet_add_thu_resist = pet:getAttrValue(pet_add_thu_resist)
@@ -171,7 +171,7 @@ function PetAttrbuteFormula.pet_thu_resist(pet)
 	return pet_add_phase_resist+pet_add_thu_resist + pet_thu_phase_point * 20
 end
 
---±ù¿¹:±ù¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--å†°æŠ—:å†°æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function PetAttrbuteFormula.pet_ice_resist(pet)
 	local pet_add_phase_resist = pet:getAttrValue(pet_add_phase_resist)
 	local pet_add_ice_resist = pet:getAttrValue(pet_add_ice_resist)
@@ -179,7 +179,7 @@ function PetAttrbuteFormula.pet_ice_resist(pet)
 	return pet_add_phase_resist+pet_add_ice_resist + pet_ice_phase_point * 20
 end
 
---»ğ¿¹:»ğ¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--ç«æŠ—:ç«æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function PetAttrbuteFormula.pet_fir_resist(pet)
 	local pet_add_phase_resist = pet:getAttrValue(pet_add_phase_resist)
 	local pet_add_fir_resist = pet:getAttrValue(pet_add_fir_resist)
@@ -187,7 +187,7 @@ function PetAttrbuteFormula.pet_fir_resist(pet)
 	return pet_add_phase_resist+pet_add_fir_resist + pet_fir_phase_point * 20
 end
 
---ÍÁ¿¹:ÍÁ¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--åœŸæŠ—:åœŸæŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function PetAttrbuteFormula.pet_soi_resist(pet)
 	local pet_add_phase_resist = pet:getAttrValue(pet_add_phase_resist)
 	local pet_add_soi_resist = pet:getAttrValue(pet_add_soi_resist)
@@ -195,7 +195,7 @@ function PetAttrbuteFormula.pet_soi_resist(pet)
 	return pet_add_phase_resist+pet_add_soi_resist + pet_soi_phase_point * 20
 end
 
---¶¾¿¹:¶¾¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--æ¯’æŠ—:æ¯’æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function PetAttrbuteFormula.pet_poi_resist(pet)
 	local pet_add_phase_resist = pet:getAttrValue(pet_add_phase_resist)
 	local pet_add_poi_resist = pet:getAttrValue(pet_add_poi_resist)
@@ -203,7 +203,7 @@ function PetAttrbuteFormula.pet_poi_resist(pet)
 	return pet_add_phase_resist+pet_add_poi_resist + pet_poi_phase_point * 20
 end
 
---¿¹³°·í:¿¹³°·í¼ÓÖµ*(1+¿¹³°·í¼Ó³É£©+ËùÓĞÕÏ°­¿¹ĞÔ¼ÓÖµ+³°·íÏàĞÔ¼Óµã
+--æŠ—å˜²è®½:æŠ—å˜²è®½åŠ å€¼*(1+æŠ—å˜²è®½åŠ æˆï¼‰+æ‰€æœ‰éšœç¢æŠ—æ€§åŠ å€¼+å˜²è®½ç›¸æ€§åŠ ç‚¹
 function PetAttrbuteFormula.pet_taunt_resist(pet)
 	local pet_add_taunt_resist = pet:getAttrValue(pet_add_taunt_resist)
 	local pet_inc_taunt_resist = pet:getAttrValue(pet_inc_taunt_resist)
@@ -212,7 +212,7 @@ function PetAttrbuteFormula.pet_taunt_resist(pet)
 	return pet_add_taunt_resist*(1+pet_inc_taunt_resist)+pet_add_obstacle_resist + pet_taunt_phase_point * 20
 end
 
---¿¹»èË¯:¿¹»èË¯¼ÓÖµ*(1+¿¹»èË¯¼Ó³É£©+ËùÓĞÕÏ°­¿¹ĞÔ¼ÓÖµ+»èË¯ÏàĞÔ¼Óµã
+--æŠ—æ˜ç¡:æŠ—æ˜ç¡åŠ å€¼*(1+æŠ—æ˜ç¡åŠ æˆï¼‰+æ‰€æœ‰éšœç¢æŠ—æ€§åŠ å€¼+æ˜ç¡ç›¸æ€§åŠ ç‚¹
 function PetAttrbuteFormula.pet_sopor_resist(pet)
 	local pet_add_sopor_resist = pet:getAttrValue(pet_add_sopor_resist)
 	local pet_inc_sopor_resist = pet:getAttrValue(pet_inc_sopor_resist)
@@ -221,7 +221,7 @@ function PetAttrbuteFormula.pet_sopor_resist(pet)
 	return pet_add_sopor_resist*(1+pet_inc_sopor_resist)+pet_add_obstacle_resist + pet_sopor_phase_point * 20
 end
 
---¿¹»ìÂÒ:¿¹»ìÂÒ¼ÓÖµ*£¨1+¿¹»ìÂÒ¼Ó³É£©+ËùÓĞÕÏ°­¿¹ĞÔ¼ÓÖµ+»ìÂÒÏàĞÔ¼Óµã
+--æŠ—æ··ä¹±:æŠ—æ··ä¹±åŠ å€¼*ï¼ˆ1+æŠ—æ··ä¹±åŠ æˆï¼‰+æ‰€æœ‰éšœç¢æŠ—æ€§åŠ å€¼+æ··ä¹±ç›¸æ€§åŠ ç‚¹
 function PetAttrbuteFormula.pet_chaos_resist(pet)
 	local pet_add_chaos_resist = pet:getAttrValue(pet_add_chaos_resist)
 	local pet_inc_chaos_resist = pet:getAttrValue(pet_inc_chaos_resist)
@@ -230,7 +230,7 @@ function PetAttrbuteFormula.pet_chaos_resist(pet)
 	return pet_add_chaos_resist*(1+pet_inc_chaos_resist)+pet_add_obstacle_resist + pet_chaos_phase_point * 20
 end
 
---¿¹±ù¶³:¿¹±ù¶³¼ÓÖµ*(1+¿¹±ù¶³¼Ó³É£©+ËùÓĞÕÏ°­¿¹ĞÔ¼ÓÖµ+±ù¶³ÏàĞÔ¼Óµã
+--æŠ—å†°å†»:æŠ—å†°å†»åŠ å€¼*(1+æŠ—å†°å†»åŠ æˆï¼‰+æ‰€æœ‰éšœç¢æŠ—æ€§åŠ å€¼+å†°å†»ç›¸æ€§åŠ ç‚¹
 function PetAttrbuteFormula.pet_freeze_resist(pet)
 	local pet_add_freeze_resist = pet:getAttrValue(pet_add_freeze_resist)
 	local pet_inc_freeze_resist = pet:getAttrValue(pet_inc_freeze_resist)
@@ -239,7 +239,7 @@ function PetAttrbuteFormula.pet_freeze_resist(pet)
 	return pet_add_freeze_resist*(1+pet_inc_freeze_resist)+pet_add_obstacle_resist + pet_freeze_phase_point * 20
 end
 
---¿¹³ÁÄ¬:¿¹³ÁÄ¬¼ÓÖµ*(1+¿¹³ÁÄ¬¼Ó³É£©+ËùÓĞÕÏ°­¿¹ĞÔ¼ÓÖµ+³ÁÄ¬ÏàĞÔ¼Óµã
+--æŠ—æ²‰é»˜:æŠ—æ²‰é»˜åŠ å€¼*(1+æŠ—æ²‰é»˜åŠ æˆï¼‰+æ‰€æœ‰éšœç¢æŠ—æ€§åŠ å€¼+æ²‰é»˜ç›¸æ€§åŠ ç‚¹
 function PetAttrbuteFormula.pet_silent_resist(pet)
 	local pet_add_silent_resist = pet:getAttrValue(pet_add_silent_resist)
 	local pet_inc_silent_resist = pet:getAttrValue(pet_inc_silent_resist)
@@ -248,7 +248,7 @@ function PetAttrbuteFormula.pet_silent_resist(pet)
 	return pet_add_silent_resist*(1+pet_inc_silent_resist)+pet_add_obstacle_resist + pet_silent_phase_point * 20
 end
 
---¿¹ÖĞ¶¾:¿¹ÖĞ¶¾¼ÓÖµ*(1+¿¹ÖĞ¶¾¼Ó³É£©+ËùÓĞÕÏ°­¿¹ĞÔ¼ÓÖµ+ÖĞ¶¾ÏàĞÔ¼Óµã
+--æŠ—ä¸­æ¯’:æŠ—ä¸­æ¯’åŠ å€¼*(1+æŠ—ä¸­æ¯’åŠ æˆï¼‰+æ‰€æœ‰éšœç¢æŠ—æ€§åŠ å€¼+ä¸­æ¯’ç›¸æ€§åŠ ç‚¹
 function PetAttrbuteFormula.pet_toxicosis_resist(pet)
 	local pet_add_toxicosis_resist = pet:getAttrValue(pet_add_toxicosis_resist)
 	local pet_inc_toxicosis_resist = pet:getAttrValue(pet_inc_toxicosis_resist)
@@ -257,7 +257,7 @@ function PetAttrbuteFormula.pet_toxicosis_resist(pet)
 	return pet_add_toxicosis_resist*(1+pet_inc_toxicosis_resist)+pet_add_obstacle_resist + pet_toxicosis_phase_point * 20
 end
 
---ÉúÃüÉÏÏŞ=(¸ù¹Ç*Ìì×Ê*25/400+µÈ¼¶*ÉúÃü³É³¤*25/300)*(1+ÉúÃüÉÏÏŞ¼Ó³É£©+ÉúÃüÉÏÏŞ¼ÓÖµ
+--ç”Ÿå‘½ä¸Šé™=(æ ¹éª¨*å¤©èµ„*25/400+ç­‰çº§*ç”Ÿå‘½æˆé•¿*25/300)*(1+ç”Ÿå‘½ä¸Šé™åŠ æˆï¼‰+ç”Ÿå‘½ä¸Šé™åŠ å€¼
 function PetAttrbuteFormula.pet_max_hp(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_sta = pet:getAttrValue(pet_sta)
@@ -268,7 +268,7 @@ function PetAttrbuteFormula.pet_max_hp(pet)
 	return math_floor((pet_sta*pet_capacity*25/400+level*pet_hp_grow*25/300)*(1+pet_inc_max_hp)+pet_add_max_hp)
 end
 
---·¨Á¦ÉÏÏŞ=£¨µÈ¼¶^2/5+ÖÇÁ¦*20+ÎäÁ¦*20£©*£¨1+·¨Á¦ÖµÉÏÏŞ¼Ó³É£©+·¨Á¦ÉÏÏŞ¼ÓÖµ
+--æ³•åŠ›ä¸Šé™=ï¼ˆç­‰çº§^2/5+æ™ºåŠ›*20+æ­¦åŠ›*20ï¼‰*ï¼ˆ1+æ³•åŠ›å€¼ä¸Šé™åŠ æˆï¼‰+æ³•åŠ›ä¸Šé™åŠ å€¼
 function PetAttrbuteFormula.pet_max_mp(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_int = pet:getAttrValue(pet_int)
@@ -278,7 +278,7 @@ function PetAttrbuteFormula.pet_max_mp(pet)
 	return math_floor((math_pow(level,2)/5+pet_int*20+pet_str*20)*(1+pet_inc_max_mp)+pet_add_max_mp)
 end
 
---ÎïÀí¹¥»÷=£¨ÎäÁ¦*Ìì×Ê³É³¤*5/400+µÈ¼¶*Îï¹¥³É³¤*7/400£©*£¨1+ÎïÀí¹¥»÷Á¦¼Ó³É£©+ÎïÀí¹¥»÷Á¦¼ÓÖµ
+--ç‰©ç†æ”»å‡»=ï¼ˆæ­¦åŠ›*å¤©èµ„æˆé•¿*5/400+ç­‰çº§*ç‰©æ”»æˆé•¿*7/400ï¼‰*ï¼ˆ1+ç‰©ç†æ”»å‡»åŠ›åŠ æˆï¼‰+ç‰©ç†æ”»å‡»åŠ›åŠ å€¼
 function PetAttrbuteFormula.pet_at(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_str = pet:getAttrValue(pet_str)
@@ -289,7 +289,7 @@ function PetAttrbuteFormula.pet_at(pet)
 	return math_floor((pet_str*pet_capacity*5/400+level*pet_at_grow*7/400)*(1+pet_inc_at)+pet_add_at)
 end
 
---·¨Êõ¹¥»÷=£¨ÖÇÁ¦*Ìì×Ê³É³¤*5/400+µÈ¼¶*·¨¹¥³É³¤*7/400£©*£¨1+·¨Êõ¹¥»÷Á¦¼Ó³É£©+·¨Êõ¹¥»÷Á¦¼ÓÖµ
+--æ³•æœ¯æ”»å‡»=ï¼ˆæ™ºåŠ›*å¤©èµ„æˆé•¿*5/400+ç­‰çº§*æ³•æ”»æˆé•¿*7/400ï¼‰*ï¼ˆ1+æ³•æœ¯æ”»å‡»åŠ›åŠ æˆï¼‰+æ³•æœ¯æ”»å‡»åŠ›åŠ å€¼
 function PetAttrbuteFormula.pet_mt(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_int = pet:getAttrValue(pet_int)
@@ -300,7 +300,7 @@ function PetAttrbuteFormula.pet_mt(pet)
 	return math_floor((pet_int*pet_capacity*5/400+level*pet_mt_grow*7/400)*(1+pet_inc_mt)+pet_add_mt)
 end
 
---ÎïÀí·ÀÓù=£¨¸ù¹Ç*Ìì×Ê³É³¤*5/400+µÈ¼¶*Îï·À³É³¤*5/400£©*£¨1+ÎïÀí·ÀÓùÁ¦¼Ó³É£©+ÎïÀí·ÀÓùÁ¦¼ÓÖµ
+--ç‰©ç†é˜²å¾¡=ï¼ˆæ ¹éª¨*å¤©èµ„æˆé•¿*5/400+ç­‰çº§*ç‰©é˜²æˆé•¿*5/400ï¼‰*ï¼ˆ1+ç‰©ç†é˜²å¾¡åŠ›åŠ æˆï¼‰+ç‰©ç†é˜²å¾¡åŠ›åŠ å€¼
 function PetAttrbuteFormula.pet_af(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_sta = pet:getAttrValue(pet_sta)
@@ -311,7 +311,7 @@ function PetAttrbuteFormula.pet_af(pet)
 	return math_floor((pet_sta*pet_capacity*5/400+level*pet_df_grow*5/400)*(1+pet_inc_af)+pet_add_af)
 end
 
---·¨Êõ·ÀÓù=£¨¸ù¹Ç*Ìì×Ê³É³¤*5/400+µÈ¼¶*·¨·À³É³¤*5/400£©*£¨1+·¨Êõ·ÀÓùÁ¦¼Ó³É£©+·¨Êõ·ÀÓùÁ¦¼ÓÖµ
+--æ³•æœ¯é˜²å¾¡=ï¼ˆæ ¹éª¨*å¤©èµ„æˆé•¿*5/400+ç­‰çº§*æ³•é˜²æˆé•¿*5/400ï¼‰*ï¼ˆ1+æ³•æœ¯é˜²å¾¡åŠ›åŠ æˆï¼‰+æ³•æœ¯é˜²å¾¡åŠ›åŠ å€¼
 function PetAttrbuteFormula.pet_mf(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_sta = pet:getAttrValue(pet_sta)
@@ -322,7 +322,7 @@ function PetAttrbuteFormula.pet_mf(pet)
 	return math_floor((pet_sta*pet_capacity*5/400+level*pet_mf_grow*5/400)*(1+pet_inc_mf)+pet_add_mf)
 end
 
---ÃüÖĞ=£¨ÎäÁ¦*0.5+ÖÇÁ¦*0.5+ÃôÈñ*1+µÈ¼¶*0.5£©*£¨1+ÃüÖĞ¼Ó³É£©+ÃüÖĞ¼ÓÖµ
+--å‘½ä¸­=ï¼ˆæ­¦åŠ›*0.5+æ™ºåŠ›*0.5+æ•é”*1+ç­‰çº§*0.5ï¼‰*ï¼ˆ1+å‘½ä¸­åŠ æˆï¼‰+å‘½ä¸­åŠ å€¼
 function PetAttrbuteFormula.pet_hit(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_str = pet:getAttrValue(pet_str)
@@ -333,7 +333,7 @@ function PetAttrbuteFormula.pet_hit(pet)
 	return math_floor((pet_str*0.5+pet_int*0.5+pet_spi*1+level*0.5)*(1+pet_inc_hit)+pet_add_hit)
 end
 
---ÉÁ±Ü=£¨Éí·¨*1.5+µÈ¼¶*0.2£©*£¨1+ÉÁ±Ü¼Ó³É£©+ÉÁ±Ü¼ÓÖµ
+--é—ªé¿=ï¼ˆèº«æ³•*1.5+ç­‰çº§*0.2ï¼‰*ï¼ˆ1+é—ªé¿åŠ æˆï¼‰+é—ªé¿åŠ å€¼
 function PetAttrbuteFormula.pet_dodge(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_dex = pet:getAttrValue(pet_dex)
@@ -342,7 +342,7 @@ function PetAttrbuteFormula.pet_dodge(pet)
 	return math_floor((pet_dex*1.5+level*0.2)*(1+pet_inc_dodge)+pet_add_dodge)
 end
 
---±©»÷=£¨ÃôÈñ*2+µÈ¼¶*0.6£©*£¨1+±©»÷¼Ó³É£©+±©»÷¼ÓÖµ
+--æš´å‡»=ï¼ˆæ•é”*2+ç­‰çº§*0.6ï¼‰*ï¼ˆ1+æš´å‡»åŠ æˆï¼‰+æš´å‡»åŠ å€¼
 function PetAttrbuteFormula.pet_critical(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_spi = pet:getAttrValue(pet_spi)
@@ -351,7 +351,7 @@ function PetAttrbuteFormula.pet_critical(pet)
 	return math_floor((pet_spi*2+level*0.6)*(1+pet_inc_critical)+pet_add_critical)
 end
 
---¿¹±©=£¨ÃôÈñ*1.5+µÈ¼¶/2£©*£¨1+¿¹±©¼Ó³É£©+¿¹±©¼ÓÖµ
+--æŠ—æš´=ï¼ˆæ•é”*1.5+ç­‰çº§/2ï¼‰*ï¼ˆ1+æŠ—æš´åŠ æˆï¼‰+æŠ—æš´åŠ å€¼
 function PetAttrbuteFormula.pet_tenacity(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_spi = pet:getAttrValue(pet_spi)
@@ -360,7 +360,7 @@ function PetAttrbuteFormula.pet_tenacity(pet)
 	return math_floor((pet_spi*1.5+level/2)*(1+pet_inc_tenacity)+pet_add_tenacity)
 end
 
---ËÙ¶È=£¨Éí·¨*Ìì×Ê³É³¤*1/850+µÈ¼¶*ËÙ¶È³É³¤/850£©*£¨1+ËÙ¶È¼Ó³É£©+ËÙ¶È¼ÓÖµ
+--é€Ÿåº¦=ï¼ˆèº«æ³•*å¤©èµ„æˆé•¿*1/850+ç­‰çº§*é€Ÿåº¦æˆé•¿/850ï¼‰*ï¼ˆ1+é€Ÿåº¦åŠ æˆï¼‰+é€Ÿåº¦åŠ å€¼
 function PetAttrbuteFormula.pet_speed(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_dex = pet:getAttrValue(pet_dex)
@@ -371,32 +371,32 @@ function PetAttrbuteFormula.pet_speed(pet)
 	return math_floor((pet_dex*pet_capacity*1/850+level*pet_at_speed_grow/850)*(1+pet_inc_speed)+pet_add_speed)
 end
 
---·´Õğ
+--åéœ‡
 function PetAttrbuteFormula.pet_counter(pet)
 	return 0
 end
 
---±©»÷Ğ§¹û¼Ó³É=1.5
+--æš´å‡»æ•ˆæœåŠ æˆ=1.5
 function PetAttrbuteFormula.pet_critical_effect(pet)
 	return 1.5 + pet:getAttrValue(pet_inc_critical_effect)
 end
 
---·´»÷ÂÊ=0.01+·´»÷ÂÊ¼ÓÖµ
+--åå‡»ç‡=0.01+åå‡»ç‡åŠ å€¼
 function PetAttrbuteFormula.pet_unhit_rate(pet)
 	local add_rate = pet:getAttrValue(pet_add_unhit_rate)
 	return 0.01 + add_rate
 end
 
--- ±ê×¼µÀĞĞ
+-- æ ‡å‡†é“è¡Œ
 function PetAttrbuteFormula.pet_stand_tao(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	return math_floor(math_pow(level,3)*0.29 + 73)
 end
 
---ÊôĞÔÓ°Ïì¹ØÏµ
+--å±æ€§å½±å“å…³ç³»
 g_AttrPetInfluenceTable =
 {
-	-- Ò»¼¶ÊôĞÔ
+	-- ä¸€çº§å±æ€§
 	[pet_str]						= {pet_at,pet_hit,pet_max_mp},
 	[pet_int]						= {pet_mt,pet_max_mp,pet_hit},
 	[pet_sta]						= {pet_max_hp,pet_af,pet_mf,pet_tenacity},
@@ -444,7 +444,7 @@ g_AttrPetInfluenceTable =
 	[pet_freeze_phase_point]		= {pet_freeze_resist},
 	[pet_toxicosis_phase_point]		= {pet_toxicosis_resist},
 	
-	-- ¶ş¼¶ÊôĞÔ
+	-- äºŒçº§å±æ€§
 	[pet_add_max_hp]					= {pet_max_hp},
 	[pet_inc_max_hp]					= {pet_max_hp},
 	[pet_add_max_mp]					= {pet_max_mp},
@@ -499,14 +499,14 @@ g_AttrPetInfluenceTable =
 	[pet_inc_toxicosis_resist] 			= {pet_toxicosis_resist},
 	[pet_add_unhit_rate]				= {pet_unhit_rate},
 	
-	-- Èı¼¶ÊôĞÔ
+	-- ä¸‰çº§å±æ€§
 	[pet_add_mobile_speed]				= {pet_mobile_speed},
 	[pet_lvl]							= {pet_next_xp,pet_in_str,pet_in_int,pet_in_sta,pet_in_spi,pet_in_dex,pet_at,pet_af,pet_mt,pet_mf,pet_max_hp,pet_speed,pet_hit,pet_dodge,pet_critical,pet_tenacity,pet_stand_tao},
 	[pet_inc_counter]					= {pet_counter},
 	[pet_inc_escape]					= {pet_escape},
 }
 
---ÊôĞÔ¹«Ê½¶Ô×Å±í
+--å±æ€§å…¬å¼å¯¹ç€è¡¨
 g_AttributePetFormat =
 {
 	[pet_str]						= PetAttrbuteFormula.pet_str,
@@ -568,9 +568,9 @@ g_AttributePetFormat =
 }
 
 -----------------------------------------------------------------------
---³ÌĞòÅäÖÃ
+--ç¨‹åºé…ç½®
 -----------------------------------------------------------------------
---ÊôĞÔ¶ÔÓ¦µÄÊôĞÔÍ¬²½
+--å±æ€§å¯¹åº”çš„å±æ€§åŒæ­¥
 g_AttributePetToProp =
 {
 	[pet_lvl]					= PET_LEVEL,
@@ -718,7 +718,7 @@ g_AttributePetToProp =
 	[pet_skill_max]				= PET_SKILL_MAX,
 }
 
---ĞèÒªÁ¢¿Ì¸üĞÂµÄÊôĞÔ
+--éœ€è¦ç«‹åˆ»æ›´æ–°çš„å±æ€§
 g_AttrPetSyncTable =
 {
 	[pet_in_str] = true,

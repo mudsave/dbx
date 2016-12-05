@@ -1,8 +1,8 @@
 --[[base.lua
-ÃèÊö£º
-	luaÀ©Õ¹µÄÈë¿Ú
-ËµÃ÷£º
-	×÷ÎªÍâ²¿Ê¹ÓÃµÄ×ÜÈë¿Ú
+æè¿°ï¼š
+	luaæ‰©å±•çš„å…¥å£
+è¯´æ˜Žï¼š
+	ä½œä¸ºå¤–éƒ¨ä½¿ç”¨çš„æ€»å…¥å£
 --]]
 
 require "base.common"

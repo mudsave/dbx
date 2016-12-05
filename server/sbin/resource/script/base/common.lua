@@ -1,16 +1,16 @@
 --[[common.lua
-ÃèÊö£º
-	luaÈ«¾Ö·½·¨À©Õ¹
-ËµÃ÷£º
-	²»ÒÀÀµÈÎºÎÆäËûÎÄ¼şµÄ»ù±¾¿â
+æè¿°ï¼š
+	luaå…¨å±€æ–¹æ³•æ‰©å±•
+è¯´æ˜ï¼š
+	ä¸ä¾èµ–ä»»ä½•å…¶ä»–æ–‡ä»¶çš„åŸºæœ¬åº“
 --]]
 
---@note£ºÔª±íµÄÉèÖÃ
+--@noteï¼šå…ƒè¡¨çš„è®¾ç½®
 function define(class, object)
 	return setmetatable(object or {}, class)
 end
 
---@note£º»ñµÃÈ«¾Ö¶ÔÏóµÄÃû³Æ
+--@noteï¼šè·å¾—å…¨å±€å¯¹è±¡çš„åç§°
 function getGlobalName(object)
 	if object then
 		for k, v in pairs(_G) do
@@ -22,13 +22,13 @@ function getGlobalName(object)
 	return tostring(nil)
 end
 
---@note£º×ª»»³ÉÊı×Ö£¬Èç²»ÄÜ×ª»»Ôò·µ»ØÈ±Ê¡Öµ
+--@noteï¼šè½¬æ¢æˆæ•°å­—ï¼Œå¦‚ä¸èƒ½è½¬æ¢åˆ™è¿”å›ç¼ºçœå€¼
 function toNumber(value, default)
 	local ret = tonumber(value)
 	return ret and ret or (default or 0)
 end
 
---@note£º×ª»»³É²¼¶ûÖµ
+--@noteï¼šè½¬æ¢æˆå¸ƒå°”å€¼
 function toBool(value)
 	if type(value) == "boolean" then
 		return value
@@ -50,7 +50,7 @@ function toBool(value)
 	end
 end
 
---@note£º×ª»»³É×Ö·û´®
+--@noteï¼šè½¬æ¢æˆå­—ç¬¦ä¸²
 local function toStringBase(value, default)
 	local str = StringBuffer()
 	if type(value) ~= "table" then
@@ -84,7 +84,7 @@ local function toStringBase(value, default)
 	return tostring(str)
 end
 
---@note£º×ª»»³É×Ö·û´®£¬ÌØÊâ´¦Àíclass
+--@noteï¼šè½¬æ¢æˆå­—ç¬¦ä¸²ï¼Œç‰¹æ®Šå¤„ç†class
 function toString(value)
 	local sb = StringBuffer()
 	if isclass(value) or isInterface(value) or classof(value) then

@@ -18,7 +18,8 @@ CoEntity::CoEntity() :
 	m_logicType(eLogicNone), m_propType(eClsTypeNone),
 	m_direction(-1), m_speed(-1),
 	m_pScene(NULL),
-	m_inSync(false), m_firstCast(true), m_autoCast(false)
+	m_inSync(false), m_firstCast(true), m_autoCast(false),
+	m_Move(false)
 {
 	m_hand = s_hMgr.createHandle(this);
 	resetMove();
@@ -35,7 +36,7 @@ void CoEntity::release()
 }
 
 void CoEntity::setPosition(int x, int y)
-{ 
+{
 	GridVct pos;
 	pos.x = x;
 	pos.y = y;
@@ -43,12 +44,12 @@ void CoEntity::setPosition(int x, int y)
 }
 
 void CoEntity::setPosition(const GridVct& pos)
-{ 
+{
 	if ( pos.x != m_position.x || pos.y != m_position.y )
-	{	
+	{
 		GridVct last = m_position;
-		m_position = pos; 
-		PosChanged(last); 
+		m_position = pos;
+		PosChanged(last);
 	}
 }
 
@@ -152,7 +153,7 @@ AppMsg* CoEntity::genPropUpdateMessage(int propId)
 	}
 	else
 	{
-		size =  m_propSet[propId]->val.Save(p,_MaxMsgLength-(signed)(p-s_propUpdateBuf),0); 
+		size =  m_propSet[propId]->val.Save(p,_MaxMsgLength-(signed)(p-s_propUpdateBuf),0);
 	}
 	ASSERT_(size > 0);
 	p += size;
@@ -164,14 +165,15 @@ int CoEntity::serializePath(char *pStart)
 {
 	char *p = pStart;
 	const _PropPosData *pPos = (const _PropPosData *)m_propSet[UNIT_POS]->val.dataVal;
-	
-	auxWrite(p,short,0);		//长度
+
+	auxWrite(p,short,0);		//数据报长度
+	auxWrite(p,BYTE,pPos->bMove);
 	auxWrite(p,BYTE,pPos->len);
 	auxWrite(p,BYTE,pPos->idx);
-	//auxWrite(p,BYTE,pPos->delay);
-	//auxWrite(p,BYTE,pPos->step);
-	//auxWrite(p,BYTE,pPos->endPath);
-	
+	auxWrite(p,BYTE,pPos->delay);
+	auxWrite(p,BYTE,pPos->step);
+	auxWrite(p,BYTE,pPos->endPath);
+
 	const GridVct *path = pPos->path;
 	auxWrite(p,short,path->x);
 	auxWrite(p,short,path->y);
@@ -196,7 +198,7 @@ int CoEntity::serializePath(char *pStart)
 		auxWrite(p,BYTE,dir);
 	}
 	int len = p - pStart;
-	auxWrite(pStart,short,len);
+	auxWrite(pStart,short,len - sizeof(short));
 	return len;
 }
 
@@ -255,127 +257,73 @@ bool CoEntity::bcAMessage(const AppMsg* pMsg, bool bPublic)
 	return true;
 }
 
-/*
-bool CoEntity::bcAMessageEx(const AppMsg* pMsg, bool bPublic, bool bGroup)
+bool CoEntity::bcAMessageToGroup(const AppMsg* pMsg)
 {
-	if (!bGroup)
+	static PeerHandle pPeers[500];
+	int peer_count = 0;
+	pPeers[peer_count].hGate = m_gatewayLink;
+	pPeers[peer_count].hClient = m_clientLink;
+	pPeers[peer_count].gatewayId = m_gatewayId;
+	peer_count++;
+
+	int count = 0;
+	for( handle h = m_aroundMe.begin(); h != (handle)INVALID_HANDLE; )
 	{
-		bool bRet = bcAMessage( pMsg, bPublic);
-		return bRet;
-	}
-	
-	std::map<handle,_MsgWG_SinksMsg> mpMsg;
-	std::map<handle,int> mpCount;
-	//首先将自己放入
-	_MsgWG_SinksMsg myMsg;
-	myMsg.msgFlags	= 0;
-	myMsg.msgCls		= MSG_CLS_DEFAULT;
-	myMsg.msgId		= MSG_G_W_SINK_PEERS;
-	myMsg.msgLen		= sizeof(myMsg) + pMsg->msgLen;
-	myMsg.hClients[0] = m_clientLink;
-	mpCount.insert(std::make_pair(m_gatewayLink,1));
-	mpMsg.insert(std::make_pair(m_gatewayLink,myMsg));
-	//将周围的同步半径内的人放入
-	if ( bPublic )
-	{
-		int count = 0;
-		for( handle h = m_aroundMe.begin(); h != (handle)INVALID_HANDLE; )
+		CoEntity* pEntity = _EntityFromHandle(h);
+		ASSERT_( pEntity );
+		ASSERT_( pEntity->inSync() );
+		if( pEntity && pEntity->inSync() )
 		{
-			CoEntity* pEntity = _EntityFromHandle(h);
-			ASSERT_( pEntity );
-			ASSERT_( pEntity->inSync() );
-			if( pEntity && pEntity->inSync() )
+			bool toErease = GridDistance( X(), Y(), pEntity->X(), pEntity->Y() ) > _SyncRadius;
+			if( toErease )
 			{
-				bool toErease = GridDistance( X(), Y(), pEntity->X(), pEntity->Y() ) > _SyncRadius;
-				if( toErease )
-				{
-					s_exitList[count++] = pEntity;
-					h = m_aroundMe.erase();
-				}
-				//打包
-				else
-				{
-					//pEntity->flushMessage(pMsg);
-					h = m_aroundMe.next();
-					if(pEntity->inSync())
-					{
-						handle hGate = pEntity->m_gatewayLink ;
-						handle hClient = pEntity->m_clientLink;
-						std::map<handle,int>::iterator it = mpCount.find(hGate);
-						if(it != mpCount.end())
-						{
-							std::map<handle,_MsgWG_SinksMsg>::iterator itMsg = mpMsg.find(hGate);
-							if(itMsg != mpMsg.end())
-							{
-								int count = it->second;
-								//包满了发走
-								if (count >= _MaxSinksMsgCount  )
-								{
-									g_world.sendMsgToPeers(it->first, &(itMsg->second) , pMsg);
-									it->second = 1;
-									memset(itMsg->second.hClients,0 ,_MaxSinksMsgCount*sizeof(int));
-									itMsg->second.hClients[0] = hClient;
-								}
-								else
-								{
-									itMsg->second.hClients[count] = hClient;
-									it->second = count + 1;
-								}
-							}
-						}
-						else
-						{
-							_MsgWG_SinksMsg msg;
-							msg.msgFlags	= 0;
-							msg.msgCls		= MSG_CLS_DEFAULT;
-							msg.msgId		= MSG_G_W_SINK_PEERS;
-							msg.msgLen		= sizeof(msg) + pMsg->msgLen;
-							msg.hClients[0] = hClient;
-							mpCount.insert(std::make_pair(hGate,1));
-							mpMsg.insert(std::make_pair(hGate,msg));
-
-						}
-					}
-
-				}
+				s_exitList[count++] = pEntity;
+				h = m_aroundMe.erase();
 			}
 			else
 			{
-				h = m_aroundMe.erase();
-			}
-		}
-		//将剩余的发走
-		for(std::map<handle,_MsgWG_SinksMsg>::iterator it = mpMsg.begin();it!= mpMsg.end();it++)
-		{
-			handle hGate = it->first;
-			std::map<handle,int>::iterator itCount = mpCount.find(hGate);
-			if(itCount != mpCount.end())
-			{
-				if(itCount->second > 0)
-				{
-					g_world.sendMsgToPeers(hGate, &(it->second) , pMsg);
-				}
-			}
+				pPeers[peer_count].hGate = pEntity->m_gatewayLink;
+				pPeers[peer_count].hClient = pEntity->m_clientLink;
+				pPeers[peer_count].gatewayId = pEntity->m_gatewayId;
+				peer_count++;
+				ASSERT_(peer_count <= 500);
 
-		}
-		if(count > 0)
-		{
-			AppMsg* pExitMsg = genExitMessage();
-			if( pExitMsg )
-			{
-				for( int i = 0; i < count; i++ )
-				{
-					CoEntity* pEntity = s_exitList[i];
-					pEntity->flushMessage(pExitMsg);
-					pEntity->removeWatchee(m_hand);
-				}
+				h = m_aroundMe.next();
 			}
+		}
+		else
+		{
+			h = m_aroundMe.erase();
+		}
+	}
+
+	if (peer_count > 0)
+		g_world.sendMsgToPeers(pPeers, peer_count, pMsg);
+	if(count > 0)
+	{
+		AppMsg* pExitMsg = genExitMessage();
+		if( pExitMsg )
+		{
+			peer_count = 0;
+			for( int i = 0; i < count; i++ )
+			{
+				CoEntity* pEntity = s_exitList[i];
+				pPeers[peer_count].hGate = pEntity->m_gatewayLink;
+				pPeers[peer_count].hClient = pEntity->m_clientLink;
+				pPeers[peer_count].gatewayId = pEntity->m_gatewayId;
+				peer_count++;
+				ASSERT_(peer_count <= 500);
+
+				pEntity->removeWatchee(m_hand);
+			}
+			if (peer_count > 0)
+				g_world.sendMsgToPeers(pPeers, peer_count, pExitMsg);
 		}
 	}
 	return true;
 }
-*/
 
+#include "bytebuffer.h"
 bool CoEntity::bcMyEnter()
 {
 	_MsgWC_PropSetEnter* pMsg = (_MsgWC_PropSetEnter*)s_propUpdateBuf;
@@ -421,7 +369,6 @@ bool CoEntity::bcMyEnter()
 		}
 		nPropCount++;
 	}
-
 	ASSERT_( offset > head );
 	if(offset > head){
 		pMsg->propCount = nPropCount;
@@ -450,39 +397,46 @@ bool CoEntity::bcSceneSwitch()
 bool CoEntity::bcEntityEnter(handle hand)
 {
 	CoEntity* pEntity = _EntityFromHandle(hand); ASSERT_(pEntity);
-	if(!pEntity) return false;
+	if(!pEntity)
+	{
+		return false;
+	}
+
 	_MsgWC_PropSetEnter* pMsg = (_MsgWC_PropSetEnter*)s_propUpdateBuf;
-	pMsg->msgFlags = 0;
-	pMsg->msgCls = MSG_CLS_PROP;
-	pMsg->msgId = MSG_C_W_PROPSET_ENTER;
-	pMsg->isMe = (char)0;
-	pMsg->unitId = hand;
-	pMsg->dbId = pEntity->m_dbid;
-	pMsg->scene = pEntity->m_sceneInfo;
-	pMsg->pos = pEntity->m_position;
-	pMsg->dir = pEntity->m_direction;
-	pMsg->status = 0;
-	pMsg->entityType = pEntity->m_logicType;
-	pMsg->propSetId = pEntity->m_propType;
-	pMsg->propCount = 0;
+	pMsg->msgFlags		= 0;
+	pMsg->msgCls		= MSG_CLS_PROP;
+	pMsg->msgId			= MSG_C_W_PROPSET_ENTER;
+	pMsg->isMe			= (char)0;
+	pMsg->unitId		= hand;
+	pMsg->dbId			= pEntity->m_dbid;
+	pMsg->scene			= pEntity->m_sceneInfo;
+	pMsg->pos			= pEntity->m_position;
+	pMsg->dir			= pEntity->m_direction;
+	pMsg->status		= 0;
+	pMsg->entityType	= pEntity->m_logicType;
+	pMsg->propSetId		= pEntity->m_propType;
+	pMsg->propCount		= 0;
+
 	int offset = sizeof(_MsgWC_PropSetEnter);
-	int head = offset;
-	
+
 	int nPropCount = 0;
 	const _RefList &refList = CUnitConfig::Instance().GetPublicProps(pEntity->m_propType);
 	for(int i=0;i<refList.count;i++)
 	{
-		BYTE propID = refList.p[i];
+		BYTE propID = *refList[i];
 		_Property *property = pEntity->m_propSet[propID];
+
+		//we don't wanna send default or NULL value
 		if(VAR_NULL == property->val.type || 0 == property->update)
 		{
 			continue;
 		}
+		//put prop id
 		*(char *)(s_propUpdateBuf + offset) = propID,offset += sizeof(char);
 		int size = 0;
 		if(UNIT_POS == propID)
 		{
-			size = serializePath(s_propUpdateBuf + offset);
+			size = pEntity->serializePath(s_propUpdateBuf + offset);
 		}
 		else
 		{
@@ -495,12 +449,11 @@ bool CoEntity::bcEntityEnter(handle hand)
 		nPropCount++;
 	}
 
-	if ( offset > head )
-	{
-		pMsg->propCount = nPropCount;
-		pMsg->msgLen = offset;
-		flushMessage(pMsg);
-	}
+	pMsg->propCount	= nPropCount;
+	pMsg->msgLen	= offset;
+
+	flushMessage(pMsg);
+
 	return true;
 }
 
@@ -537,7 +490,7 @@ bool CoEntity::bcEntityExit(handle* exitList, long count)
 
 #define auxSetPropCount(p,count) (*(char *)((char *)p + sizeof(_MsgWC_PropsUpdate) + sizeof(unsigned int)) = count,\
 		(char *)p + sizeof(_MsgWC_PropsUpdate) + sizeof(unsigned int) + sizeof(char))
-#define auxSetEntityID(p,handle) *(unsigned int *)((char *)p + sizeof(_MsgWC_PropsUpdate)) = handle 
+#define auxSetEntityID(p,handle) *(unsigned int *)((char *)p + sizeof(_MsgWC_PropsUpdate)) = handle
 
 bool CoEntity::bcPropUpdates()
 {
@@ -554,7 +507,7 @@ bool CoEntity::bcPropUpdates()
 	int nPropCount = 0;
 
 	auxSetEntityID(s_propUpdateBuf,m_hand);//insert Entity ID
-	char *p = auxSetPropCount(s_propUpdateBuf,0);//insert Prop Count 
+	char *p = auxSetPropCount(s_propUpdateBuf,0);//insert Prop Count
 
 	const _RefList &refList = CUnitConfig::Instance().GetPublicProps(m_propType);
 	for(int i = 0;i < refList.count;i++){
@@ -575,11 +528,13 @@ bool CoEntity::bcPropUpdates()
 			property->casted = property->update;
 		}
 	}
+	TRACE1_L0("there is %d public prop(s)\n",nPropCount);
 	if(nPropCount > 0)
 	{
 		auxSetPropCount(s_propUpdateBuf,nPropCount);
 		pMsg->msgLen = p - s_propUpdateBuf;
-		bcAMessage(pMsg,true);//wanna a function to broadcast message only to the public,self not included
+		//bcAMessage(pMsg,true);//wanna a function to broadcast message only to the public,self not included
+		bcAMessageToGroup(pMsg);
 	}
 
 	if(!m_inSync)
@@ -605,13 +560,14 @@ bool CoEntity::bcPropUpdates()
 			property->casted = property->update;
 		}
 	}
+	TRACE1_L0("there is %d private prop(s)\n",nPropCount);
 	if(nPropCount > 0)
 	{
 		auxSetPropCount(s_propUpdateBuf,nPropCount);
 		pMsg->msgLen = p - s_propUpdateBuf;
 		bcAMessage(pMsg,false);
 	}
-	
+
 	return true;
 }
 
@@ -624,13 +580,19 @@ bool CoEntity::enterScene(CoScene* pScene, short x, short y)
 	m_pScene = pScene;
 	m_sceneInfo = m_pScene->getSceneInfo();
 
-	_PropPosData data;
-	data.bMove = false;
-	data.len = 1; 
-	data.idx = 0; 
+	static _PropPosData data =
+	{
+		false,	//bMove
+		1,		//len
+		0,		//idx
+		0,		//delay
+		0,		//step
+		true,	//endPath
+	};
 	data.path[0] = grid;
-	// SetPropData(UINT_POS, (BYTE*)&data, sizeof(data));
 	m_position = grid;
+
+	SetPropData(UNIT_POS, (BYTE*)&data, sizeof(data));
 
 	for( int i = 0; i < _SyncRingCount; i++ )
 	{
@@ -668,6 +630,12 @@ bool CoEntity::enterScene(CoScene* pScene, short x, short y)
 	{
 		adjustSights(pHandle, count);
 	}
+	//clean update flags to ensure next flush operation won't send same copy
+	for(int i = 0;i<m_propSet.count;i++)
+	{
+		_Property *property = m_propSet[i];
+		property->casted = property->update;
+	}
 
 	return true;
 }
@@ -696,9 +664,8 @@ void CoEntity::PosChanged(GridVct& old)
 		TRACE1_L0("CoEntity::PosChanged FATAL ERROR: entity(%i) is not in a scene\n", m_hand);
 		return;
 	}
-
 	m_pScene->moveUnit(this, old);
-	
+
 	int m = 0;
 	int radius = 0;
 	int x = m_position.x;
@@ -715,13 +682,13 @@ void CoEntity::PosChanged(GridVct& old)
 	{
 		int count = 0;
 		handle* pHandle = m_pScene->getEntities(m_position, radius, count);
-		if ( pHandle && count > 0 ) 
+		if ( pHandle && count > 0 )
 		{
 			adjustSights(pHandle, count);
 		}
 		for( int i = 0; i < m; i++ )
 		{
-			m_ringOrg[i].x = x; 
+			m_ringOrg[i].x = x;
 			m_ringOrg[i].y = y;
 		}
 	}
@@ -731,10 +698,19 @@ void CoEntity::PropValChanged(int propId)
 {
 	_Property *property = m_propSet[propId];
 	property->update++;
-	if(m_autoCast && (m_inSync || !m_aroundMe.empty())){
+	//如果没有开启自动同步，则属性变动后一般不立即发送同步事件
+	//特殊处理的是位置信息，只要实体已经在场景中，则位置信息需要立即同步
+	//可以接受属性同步的后续条件有两个
+	//1，是自己可以接受同步数据
+	//2，是周围有可以接受同步数据的实体
+	if((m_autoCast||(UNIT_POS==propId&&!m_firstCast)) && (m_inSync||!m_aroundMe.empty()))
+	{
 		AppMsg *pMsg = genPropUpdateMessage(propId);
 		if(pMsg){
-			bcAMessage(pMsg,property->radius);
+			if (property->radius > 0)
+				bcAMessageToGroup(pMsg);
+			else
+				bcAMessage(pMsg, false);
 			property->casted = property->update;
 		}
 	}
@@ -752,14 +728,17 @@ HRESULT CoEntity::InitPropSet(int type)
 
 bool CoEntity::isInView(handle hand) const
 {
-	DWORD count = 0;
-	//handle* pHandle = m_pScene->getEntities(m_position, _SyncRadius, count);
-	handle* pHandle = 0;
+	if (m_pScene == 0)
+	{
+		return false;
+	}
+	int count = 0;
+	handle* pHandle = m_pScene->getEntities(m_position, _SyncRadius, count);
 	if (pHandle == 0)
 	{
 		return false;
 	}
-	for (DWORD i = 0; i < count; ++i)
+	for (int i = 0; i < count; ++i)
 	{
 		if (pHandle[i] == hand)
 		{

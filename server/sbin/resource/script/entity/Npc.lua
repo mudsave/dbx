@@ -1,6 +1,6 @@
 --[[Npc.lua
-ÃèÊö£º
-	NPCÀà
+æè¿°ï¼š
+	NPCç±»
 --]]
 
 require "base.base"

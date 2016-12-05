@@ -1,5 +1,5 @@
 -- MonsterAttrFormula.lua
--- ¹ÖÎïÊôĞÔ¹«Ê½
+-- æ€ªç‰©å±æ€§å…¬å¼
 
 
 require "misc.constant"
@@ -11,67 +11,67 @@ local math_floor	= math.floor
 MonsterAttrbuteFormula = {}
 
 -----------------------------------------------------------------------
---²ß»®ÅäÖÃ
+--ç­–åˆ’é…ç½®
 -----------------------------------------------------------------------
 
---ÏÈÌìÎäÁ¦
+--å…ˆå¤©æ­¦åŠ›
 function MonsterAttrbuteFormula.monster_in_str(monster)
 	return 10
 end
 
---ÏÈÌìÖÇÁ¦
+--å…ˆå¤©æ™ºåŠ›
 function MonsterAttrbuteFormula.monster_in_int(monster)
 	return 10
 end
 
---ÏÈÌì¸ù¹Ç
+--å…ˆå¤©æ ¹éª¨
 function MonsterAttrbuteFormula.monster_in_sta(monster)
 	return 10
 end
 
---ÏÈÌìÃôÈñ
+--å…ˆå¤©æ•é”
 function MonsterAttrbuteFormula.monster_in_spi(monster)
 	return 10
 end
 
---ÏÈÌìÉí·¨
+--å…ˆå¤©èº«æ³•
 function MonsterAttrbuteFormula.monster_in_dex(monster)
 	return 10
 end
 
---ÎäÁ¦¼Óµã
+--æ­¦åŠ›åŠ ç‚¹
 function MonsterAttrbuteFormula.monster_str_point(monster)
 	return 1
 end
 
---ÖÇÁ¦¼Óµã
+--æ™ºåŠ›åŠ ç‚¹
 function MonsterAttrbuteFormula.monster_int_point(monster)
 	return 1
 end
 
---¸ù¹Ç¼Óµã
+--æ ¹éª¨åŠ ç‚¹
 function MonsterAttrbuteFormula.monster_sta_point(monster)
 	return 1
 end
 
---ÃôÈñ¼Óµã
+--æ•é”åŠ ç‚¹
 function MonsterAttrbuteFormula.monster_spi_point(monster)
 	return 1
 end
 
---Éí·¨¼Óµã
+--èº«æ³•åŠ ç‚¹
 function MonsterAttrbuteFormula.monster_dex_point(monster)
 	return 1
 end
 
---µÀĞĞ£ºµÈ¼¶^3*µÀĞĞÏµÊı
+--é“è¡Œï¼šç­‰çº§^3*é“è¡Œç³»æ•°
 function MonsterAttrbuteFormula.monster_tao(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_tao_coffi = monster:getAttrValue(monster_tao_coffi)
 	return math_pow(level,3) * monster_tao_coffi
 end
 
---ÎäÁ¦£ºÏÈÌìÎäÁ¦+£¨¹ÖÎïµÈ¼¶-1£©*ÎäÁ¦¼Óµã+£¨¹ÖÎïµÈ¼¶-1£©*5*ÎäÁ¦ÏµÊı
+--æ­¦åŠ›ï¼šå…ˆå¤©æ­¦åŠ›+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*æ­¦åŠ›åŠ ç‚¹+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*5*æ­¦åŠ›ç³»æ•°
 function MonsterAttrbuteFormula.monster_str(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_in_str = monster:getAttrValue(monster_in_str)
@@ -80,7 +80,7 @@ function MonsterAttrbuteFormula.monster_str(monster)
 	return math_floor(monster_in_str+(level-1)*monster_str_point+(level-1)*5*monster_str_coffi)
 end
 
---ÖÇÁ¦£ºÏÈÌìÖÇÁ¦+£¨¹ÖÎïµÈ¼¶-1£©*ÖÇÁ¦¼Óµã+£¨¹ÖÎïµÈ¼¶-1£©*5*ÖÇÁ¦ÏµÊı
+--æ™ºåŠ›ï¼šå…ˆå¤©æ™ºåŠ›+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*æ™ºåŠ›åŠ ç‚¹+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*5*æ™ºåŠ›ç³»æ•°
 function MonsterAttrbuteFormula.monster_int(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_in_int = monster:getAttrValue(monster_in_int)
@@ -89,7 +89,7 @@ function MonsterAttrbuteFormula.monster_int(monster)
 	return math_floor(monster_in_int+(level-1)*monster_int_point+(level-1)*5*monster_int_coffi)
 end
 
---¸ù¹Ç£ºÏÈÌì¸ù¹Ç+£¨¹ÖÎïµÈ¼¶-1£©*¸ù¹Ç¼Óµã+£¨¹ÖÎïµÈ¼¶-1£©*5*¸ù¹ÇÏµÊı
+--æ ¹éª¨ï¼šå…ˆå¤©æ ¹éª¨+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*æ ¹éª¨åŠ ç‚¹+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*5*æ ¹éª¨ç³»æ•°
 function MonsterAttrbuteFormula.monster_sta(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_in_sta = monster:getAttrValue(monster_in_sta)
@@ -98,7 +98,7 @@ function MonsterAttrbuteFormula.monster_sta(monster)
 	return math_floor(monster_in_sta+(level-1)*monster_sta_point+(level-1)*5*monster_sta_coffi)
 end
 
---ÃôÈñ£ºÏÈÌìÃôÈñ+£¨¹ÖÎïµÈ¼¶-1£©*ÃôÈñ¼Óµã+£¨¹ÖÎïµÈ¼¶-1£©*5*ÃôÈñÏµÊı
+--æ•é”ï¼šå…ˆå¤©æ•é”+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*æ•é”åŠ ç‚¹+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*5*æ•é”ç³»æ•°
 function MonsterAttrbuteFormula.monster_spi(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_in_spi = monster:getAttrValue(monster_in_spi)
@@ -107,7 +107,7 @@ function MonsterAttrbuteFormula.monster_spi(monster)
 	return math_floor(monster_in_spi+(level-1)*monster_spi_point+(level-1)*5*monster_spi_coffi)
 end
 
---Éí·¨£ºÏÈÌìÉí·¨+£¨¹ÖÎïµÈ¼¶-1£©*Éí·¨¼Óµã+£¨¹ÖÎïµÈ¼¶-1£©*5*Éí·¨ÏµÊı
+--èº«æ³•ï¼šå…ˆå¤©èº«æ³•+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*èº«æ³•åŠ ç‚¹+ï¼ˆæ€ªç‰©ç­‰çº§-1ï¼‰*5*èº«æ³•ç³»æ•°
 function MonsterAttrbuteFormula.monster_dex(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_in_dex = monster:getAttrValue(monster_in_dex)
@@ -116,91 +116,91 @@ function MonsterAttrbuteFormula.monster_dex(monster)
 	return math_floor(monster_in_dex+(level-1)*monster_dex_point+(level-1)*5*monster_dex_coffi)
 end
 
---·ç¹¥»÷:·ç¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--é£æ”»å‡»:é£æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_win_at(monster)
 	local monster_add_win_at = monster:getAttrValue(monster_add_win_at)
 	local monster_add_phase_at = monster:getAttrValue(monster_add_phase_at)
 	return math_floor(monster_add_win_at+monster_add_phase_at)
 end
 
---À×¹¥»÷:À×¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--é›·æ”»å‡»:é›·æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_thu_at(monster)
 	local monster_add_thu_at = monster:getAttrValue(monster_add_thu_at)
 	local monster_add_phase_at = monster:getAttrValue(monster_add_phase_at)
 	return math_floor(monster_add_thu_at+monster_add_phase_at)
 end
 
---±ù¹¥»÷:±ù¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--å†°æ”»å‡»:å†°æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_ice_at(monster)
 	local monster_add_ice_at = monster:getAttrValue(monster_add_ice_at)
 	local monster_add_phase_at = monster:getAttrValue(monster_add_phase_at)
 	return math_floor(monster_add_ice_at+monster_add_phase_at)
 end
 
---»ğ¹¥»÷:»ğ¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--ç«æ”»å‡»:ç«æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_fir_at(monster)
 	local monster_add_fir_at = monster:getAttrValue(monster_add_fir_at)
 	local monster_add_phase_at = monster:getAttrValue(monster_add_phase_at)
 	return math_floor(monster_add_fir_at+monster_add_phase_at)
 end
 
---ÍÁ¹¥»÷:ÍÁ¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--åœŸæ”»å‡»:åœŸæ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_soi_at(monster)
 	local monster_add_soi_at = monster:getAttrValue(monster_add_soi_at)
 	local monster_add_phase_at = monster:getAttrValue(monster_add_phase_at)
 	return math_floor(monster_add_soi_at+monster_add_phase_at)
 end
 
---¶¾¹¥»÷:¶¾¹¥»÷¼ÓÖµ+ËùÓĞÏàĞÔ¹¥»÷¼ÓÖµ
+--æ¯’æ”»å‡»:æ¯’æ”»å‡»åŠ å€¼+æ‰€æœ‰ç›¸æ€§æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_poi_at(monster)
 	local monster_add_poi_at = monster:getAttrValue(monster_add_poi_at)
 	local monster_add_phase_at = monster:getAttrValue(monster_add_phase_at)
 	return math_floor(monster_add_poi_at+monster_add_phase_at)
 end
 
---·ç¿¹:·ç¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--é£æŠ—:é£æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function MonsterAttrbuteFormula.monster_win_resist(monster)
 	local monster_add_win_resist = monster:getAttrValue(monster_add_win_resist)
 	local monster_add_phase_resist = monster:getAttrValue(monster_add_phase_resist)
 	return math_floor(monster_add_win_resist+monster_add_phase_resist)
 end
 
---À×¿¹:À×¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--é›·æŠ—:é›·æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function MonsterAttrbuteFormula.monster_thu_resist(monster)
 	local monster_add_thu_resist = monster:getAttrValue(monster_add_thu_resist)
 	local monster_add_phase_resist = monster:getAttrValue(monster_add_phase_resist)
 	return math_floor(monster_add_thu_resist+monster_add_phase_resist)
 end
 
---±ù¿¹:±ù¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--å†°æŠ—:å†°æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function MonsterAttrbuteFormula.monster_ice_resist(monster)
 	local monster_add_ice_resist = monster:getAttrValue(monster_add_ice_resist)
 	local monster_add_phase_resist = monster:getAttrValue(monster_add_phase_resist)
 	return math_floor(monster_add_ice_resist+monster_add_phase_resist)
 end
 
---»ğ¿¹:»ğ¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--ç«æŠ—:ç«æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function MonsterAttrbuteFormula.monster_fir_resist(monster)
 	local monster_add_fir_resist = monster:getAttrValue(monster_add_fir_resist)
 	local monster_add_phase_resist = monster:getAttrValue(monster_add_phase_resist)
 	return math_floor(monster_add_fir_resist+monster_add_phase_resist)
 end
 
---ÍÁ¿¹:ÍÁ¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--åœŸæŠ—:åœŸæŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function MonsterAttrbuteFormula.monster_soi_resist(monster)
 	local monster_add_soi_resist = monster:getAttrValue(monster_add_soi_resist)
 	local monster_add_phase_resist = monster:getAttrValue(monster_add_phase_resist)
 	return math_floor(monster_add_soi_resist+monster_add_phase_resist)
 end
 
---¶¾¿¹:¶¾¿¹¼ÓÖµ+ËùÓĞÏàĞÔ¿¹ĞÔ¼ÓÖµ
+--æ¯’æŠ—:æ¯’æŠ—åŠ å€¼+æ‰€æœ‰ç›¸æ€§æŠ—æ€§åŠ å€¼
 function MonsterAttrbuteFormula.monster_poi_resist(monster)
 	local monster_add_poi_resist = monster:getAttrValue(monster_add_poi_resist)
 	local monster_add_phase_resist = monster:getAttrValue(monster_add_phase_resist)
 	return math_floor(monster_add_poi_resist+monster_add_phase_resist)
 end
 
---ÉúÃüÉÏÏŞ:(¸ù¹Ç*30+µÈ¼¶^2/5)*(1+ÉúÃüÉÏÏŞ¼Ó³É£©+ÉúÃüÉÏÏŞ¼ÓÖµ
+--ç”Ÿå‘½ä¸Šé™:(æ ¹éª¨*30+ç­‰çº§^2/5)*(1+ç”Ÿå‘½ä¸Šé™åŠ æˆï¼‰+ç”Ÿå‘½ä¸Šé™åŠ å€¼
 function MonsterAttrbuteFormula.monster_max_hp(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_sta = monster:getAttrValue(monster_sta)
@@ -209,7 +209,7 @@ function MonsterAttrbuteFormula.monster_max_hp(monster)
 	return math_floor((monster_sta*30+math_pow(level,2)/5)*(1+monster_inc_max_hp)+monster_add_max_hp)
 end
 
---ÎïÀí¹¥»÷Á¦:(µÈ¼¶^2/5+ÎäÁ¦*12-50)*(1+ÎïÀí¹¥»÷¼Ó³É£©+ÎïÀí¹¥»÷¼ÓÖµ
+--ç‰©ç†æ”»å‡»åŠ›:(ç­‰çº§^2/5+æ­¦åŠ›*12-50)*(1+ç‰©ç†æ”»å‡»åŠ æˆï¼‰+ç‰©ç†æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_at(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_str = monster:getAttrValue(monster_str)
@@ -218,7 +218,7 @@ function MonsterAttrbuteFormula.monster_at(monster)
 	return math_floor((math_pow(level,2)/5+monster_str*12-50)*(1+monster_inc_at)+monster_add_at)
 end
 
---·¨Êõ¹¥»÷Á¦:(µÈ¼¶^2/5+ÖÇÁ¦*12-50)*(1+·¨Êõ¹¥»÷¼Ó³É£©+·¨Êõ¹¥»÷¼ÓÖµ
+--æ³•æœ¯æ”»å‡»åŠ›:(ç­‰çº§^2/5+æ™ºåŠ›*12-50)*(1+æ³•æœ¯æ”»å‡»åŠ æˆï¼‰+æ³•æœ¯æ”»å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_mt(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_int = monster:getAttrValue(monster_int)
@@ -227,7 +227,7 @@ function MonsterAttrbuteFormula.monster_mt(monster)
 	return math_floor((math_pow(level,2)/5+monster_int*12-50)*(1+monster_inc_mt)+monster_add_mt)
 end
 
---ÎïÀí·ÀÓùÁ¦£º(µÈ¼¶^2/5+¸ù¹Ç*8-40)*(1+ÎïÀí·ÀÓù¼Ó³É)+ÎïÀí·ÀÓù¼ÓÖµ
+--ç‰©ç†é˜²å¾¡åŠ›ï¼š(ç­‰çº§^2/5+æ ¹éª¨*8-40)*(1+ç‰©ç†é˜²å¾¡åŠ æˆ)+ç‰©ç†é˜²å¾¡åŠ å€¼
 function MonsterAttrbuteFormula.monster_af(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_sta = monster:getAttrValue(monster_sta)
@@ -236,7 +236,7 @@ function MonsterAttrbuteFormula.monster_af(monster)
 	return math_floor((math_pow(level,2)/5+monster_sta*8-40)*(1+monster_inc_af)+monster_add_af)
 end
 
---·¨Êõ·ÀÓùÁ¦£º(µÈ¼¶^2/5+¸ù¹Ç*8-40)*(1+·¨Êõ·ÀÓù¼Ó³É)+·¨Êõ·ÀÓù¼ÓÖµ
+--æ³•æœ¯é˜²å¾¡åŠ›ï¼š(ç­‰çº§^2/5+æ ¹éª¨*8-40)*(1+æ³•æœ¯é˜²å¾¡åŠ æˆ)+æ³•æœ¯é˜²å¾¡åŠ å€¼
 function MonsterAttrbuteFormula.monster_mf(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_sta = monster:getAttrValue(monster_sta)
@@ -245,7 +245,7 @@ function MonsterAttrbuteFormula.monster_mf(monster)
 	return math_floor((math_pow(level,2)/5+monster_sta*8-40)*(1+monster_inc_mf)+monster_add_mf)
 end
 
---ÃüÖĞ:(ÎäÁ¦*0.5+ÖÇÁ¦*0.5+ÃôÈñ*1+µÈ¼¶*0.5)*(1+ÃüÖĞ¼Ó³É)+ÃüÖĞ¼ÓÖµ
+--å‘½ä¸­:(æ­¦åŠ›*0.5+æ™ºåŠ›*0.5+æ•é”*1+ç­‰çº§*0.5)*(1+å‘½ä¸­åŠ æˆ)+å‘½ä¸­åŠ å€¼
 function MonsterAttrbuteFormula.monster_hit(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_str = monster:getAttrValue(monster_str)
@@ -256,7 +256,7 @@ function MonsterAttrbuteFormula.monster_hit(monster)
 	return math_floor((monster_str*0.5+monster_int*0.5+monster_spi*1+level*0.5)*(1+monster_inc_hit)+monster_add_hit)
 end
 
---ÉÁ±Ü:£¨Éí·¨*1.2+µÈ¼¶*0.5£©*£¨1+ÉÁ±Ü¼Ó³É£©+ÉÁ±Ü¼ÓÖµ
+--é—ªé¿:ï¼ˆèº«æ³•*1.2+ç­‰çº§*0.5ï¼‰*ï¼ˆ1+é—ªé¿åŠ æˆï¼‰+é—ªé¿åŠ å€¼
 function MonsterAttrbuteFormula.monster_dodge(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_dex = monster:getAttrValue(monster_dex)
@@ -265,7 +265,7 @@ function MonsterAttrbuteFormula.monster_dodge(monster)
 	return math_floor((monster_dex*1.2+level*0.5)*(1+monster_inc_dodge)+monster_add_dodge)
 end
 
---±©»÷:£¨ÃôÈñ*1.5+µÈ¼¶/2£©*£¨1+±©»÷¼Ó³É£©+±©»÷¼ÓÖµ
+--æš´å‡»:ï¼ˆæ•é”*1.5+ç­‰çº§/2ï¼‰*ï¼ˆ1+æš´å‡»åŠ æˆï¼‰+æš´å‡»åŠ å€¼
 function MonsterAttrbuteFormula.monster_critical(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_spi = monster:getAttrValue(monster_spi)
@@ -274,7 +274,7 @@ function MonsterAttrbuteFormula.monster_critical(monster)
 	return math_floor((monster_spi*1.5+level/2)*(1+monster_inc_critical)+monster_add_critical)
 end
 
---¿¹±©:£¨ÃôÈñ*0.8+µÈ¼¶/2£©*£¨1+¿¹±©¼Ó³É£©+¿¹±©¼ÓÖµ
+--æŠ—æš´:ï¼ˆæ•é”*0.8+ç­‰çº§/2ï¼‰*ï¼ˆ1+æŠ—æš´åŠ æˆï¼‰+æŠ—æš´åŠ å€¼
 function MonsterAttrbuteFormula.monster_tenacity(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_spi = monster:getAttrValue(monster_spi)
@@ -283,7 +283,7 @@ function MonsterAttrbuteFormula.monster_tenacity(monster)
 	return math_floor((level/2+monster_spi*0.8)*(1+monster_inc_tenacity)+monster_add_tenacity)
 end
 
---ËÙ¶È:£¨Éí·¨*1.2+µÈ¼¶*0.5£©*£¨1+ËÙ¶È¼Ó³É£©+ËÙ¶È¼ÓÖµ
+--é€Ÿåº¦:ï¼ˆèº«æ³•*1.2+ç­‰çº§*0.5ï¼‰*ï¼ˆ1+é€Ÿåº¦åŠ æˆï¼‰+é€Ÿåº¦åŠ å€¼
 function MonsterAttrbuteFormula.monster_speed(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	local monster_inc_speed = monster:getAttrValue(monster_inc_speed)
@@ -292,27 +292,27 @@ function MonsterAttrbuteFormula.monster_speed(monster)
 	return math_floor((monster_dex*1.2+level*0.5)*(1+monster_inc_speed)+monster_add_speed)
 end
 
---·´Õğ
+--åéœ‡
 function MonsterAttrbuteFormula.monster_counter(monster)
 	return 0
 end
 
---·´»÷
+--åå‡»
 function MonsterAttrbuteFormula.monster_unhit_rate(monster)
 	return 0
 end
 
--- ±ê×¼µÀĞĞ
+-- æ ‡å‡†é“è¡Œ
 function MonsterAttrbuteFormula.monster_stand_tao(monster)
 	local level = monster:getAttrValue(monster_lvl)
 	return math_floor(math_pow(level,3)*0.29 + 73)
 end
 
 
---ÊôĞÔÓ°Ïì¹ØÏµ
+--å±æ€§å½±å“å…³ç³»
 g_AttrMonsterInfluenceTable =
 {
-	-- Ò»¼¶ÊôĞÔ
+	-- ä¸€çº§å±æ€§
 	[monster_str]						= {monster_hit,monster_at},
 	[monster_int]						= {monster_hit,monster_mt},
 	[monster_sta]						= {monster_tenacity,monster_mf,monster_af,monster_max_hp},
@@ -335,7 +335,7 @@ g_AttrMonsterInfluenceTable =
 	[monster_add_dex]					= {monster_dex},
 	[monster_add_base_attr]				= {monster_str,monster_int,monster_sta,monster_spi,monster_dex},
 
-	-- ¶ş¼¶ÊôĞÔ
+	-- äºŒçº§å±æ€§
 	[monster_add_max_hp]				= {monster_max_hp},
 	[monster_inc_max_hp]				= {monster_max_hp},
 	[monster_inc_at]					= {monster_at},
@@ -376,11 +376,11 @@ g_AttrMonsterInfluenceTable =
 	[monster_add_poi_resist]			= {monster_poi_resist},
 	[monster_add_phase_resist]			= {monster_win_resist,monster_thu_resist,monster_ice_resist,monster_fir_resist,monster_soi_resist,monster_poi_resist},
 
-	-- Èı¼¶ÊôĞÔ
+	-- ä¸‰çº§å±æ€§
 	[monster_lvl]			            = {monster_tao,monster_str,monster_int,monster_sta,monster_spi,monster_dex,monster_max_hp,monster_at,monster_mt,monster_af,monster_mf,monster_hit,monster_dodge,monster_critical,monster_tenacity,monster_speed, monster_stand_tao},
 }
 
---ÊôĞÔ¹«Ê½¶ÔÕÕ±í
+--å±æ€§å…¬å¼å¯¹ç…§è¡¨
 g_AttributeMonsterFormat =
 {
 	[monster_str]						= MonsterAttrbuteFormula.monster_str,
@@ -427,15 +427,15 @@ g_AttributeMonsterFormat =
 }
 
 -----------------------------------------------------------------------
---³ÌĞòÅäÖÃ
+--ç¨‹åºé…ç½®
 -----------------------------------------------------------------------
---ÊôĞÔ¶ÔÓ¦µÄÊôĞÔÍ¬²½
+--å±æ€§å¯¹åº”çš„å±æ€§åŒæ­¥
 g_AttributeMonsterToProp =
 {
 	
 }
 
---ĞèÒªÁ¢¿Ì¸üĞÂµÄÊôĞÔ
+--éœ€è¦ç«‹åˆ»æ›´æ–°çš„å±æ€§
 g_AttrMonsterSyncTable =
 {
 	[monster_in_str] = true,

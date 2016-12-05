@@ -1,12 +1,12 @@
 --[[class.lua
-ÃèÊö£º
-	Ìá¹©ÀàµÄ¼Ì³Ğ»úÖÆ
+æè¿°ï¼š
+	æä¾›ç±»çš„ç»§æ‰¿æœºåˆ¶
 --]]
 
 local advance = true
 local classMap = define { __mode = "k" }
 
---@note£º³õÊ¼»¯ÊµÀı¶ÔÏó
+--@noteï¼šåˆå§‹åŒ–å®ä¾‹å¯¹è±¡
 local function rawnew(class, object, ...)
 	if isclass(class.__super) then
 		rawnew(class.__super, object, ...)
@@ -17,7 +17,7 @@ local function rawnew(class, object, ...)
 	return object
 end
 
---@note£º¸ù¾İclassÉú³ÉÒ»¸öÊµÀı¶ÔÏó
+--@noteï¼šæ ¹æ®classç”Ÿæˆä¸€ä¸ªå®ä¾‹å¯¹è±¡
 local function new(class, ...)
 	if not class.__implemented then
 		local interfaces = getInterfaces(class)
@@ -45,7 +45,7 @@ local function new(class, ...)
 	end
 end
 
---@note£ºÏú»ÙÊµÀı¶ÔÏóµÄ³ÉÔ±
+--@noteï¼šé”€æ¯å®ä¾‹å¯¹è±¡çš„æˆå‘˜
 local function rawrelease(class, object)
 	if type(class.__release) == "function" then
 		class.__release(object)
@@ -55,7 +55,7 @@ local function rawrelease(class, object)
 	end
 end
 
---@note£º¶ÔÏóµÄtostring
+--@noteï¼šå¯¹è±¡çš„tostring
 local function object_tostring(object)
 	if type(object.tostring) == "function" then
 		return object:tostring()
@@ -76,7 +76,7 @@ local function object_tostring(object)
 	return tostring(ret)
 end
 
---@note£ºclassµÄÔª±í
+--@noteï¼šclassçš„å…ƒè¡¨
 local classMT = {
 	__call = new,
 	__index = function(class, field)
@@ -111,7 +111,7 @@ local classMT = {
 	end
 }
 
---@note£ºExport API£¬ÊÍ·ÅÒ»¸ö¶ÔÏóµÄ³ÉÔ±
+--@noteï¼šExport APIï¼Œé‡Šæ”¾ä¸€ä¸ªå¯¹è±¡çš„æˆå‘˜
 function release(object)
 	local class = classof(object)
 	if class then
@@ -119,7 +119,7 @@ function release(object)
 	end
 end
 
---@note£ºExport API£¬Éú³ÉÒ»¸öÀàĞÍ
+--@noteï¼šExport APIï¼Œç”Ÿæˆä¸€ä¸ªç±»å‹
 function class(super, ...)
 	local interfaces = {}
 	for i = 1, select("#", ...) do
@@ -154,7 +154,7 @@ function class(super, ...)
 	return class
 end
 
---@note£ºExport API£¬ÅĞ¶ÏÊÇ·ñÊÇclass£¬ÊµÀıÒ²ÈÏÎªÊÇclass
+--@noteï¼šExport APIï¼Œåˆ¤æ–­æ˜¯å¦æ˜¯classï¼Œå®ä¾‹ä¹Ÿè®¤ä¸ºæ˜¯class
 function isclass(class)
 	local mt = getmetatable(class)
 	if classMap[mt] or mt == classMT then
@@ -163,31 +163,31 @@ function isclass(class)
 	return false
 end
 
---@note£ºExport API£¬·µ»ØÒ»¸ö¶ÔÏóµÄÀàĞÍ
+--@noteï¼šExport APIï¼Œè¿”å›ä¸€ä¸ªå¯¹è±¡çš„ç±»å‹
 function classof(object)
 	local mt = getmetatable(object)
 	return classMap[mt]
 end
 
---@note£ºExport API£¬ÅĞ¶ÏÊÇ·ñÊÇÊµÀı
+--@noteï¼šExport APIï¼Œåˆ¤æ–­æ˜¯å¦æ˜¯å®ä¾‹
 function isClassInstance(object)
 	--return classof(object) ~= nil
 	local mt = getmetatable(object)
 	return (classMap[mt] ~= nil)
 end
 
---@note£ºExport API£¬·µ»ØÒ»¸öÀàĞÍµÄËùÓĞ½Ó¿Ú
+--@noteï¼šExport APIï¼Œè¿”å›ä¸€ä¸ªç±»å‹çš„æ‰€æœ‰æ¥å£
 function getInterfaces(class)
 	class = isclass(class) and class or classof(class)
 	return class.__interfaces
 end
 
---@note£ºExport API£¬·µ»Ø»ùÀà
+--@noteï¼šExport APIï¼Œè¿”å›åŸºç±»
 function superclass(class)
 	return rawget(class, "__super")
 end
 
---@note£ºExport API£¬ÊÇ·ñÊÇ¼Ì³Ğ¹ØÏµ
+--@noteï¼šExport APIï¼Œæ˜¯å¦æ˜¯ç»§æ‰¿å…³ç³»
 function subclassof(class, super)
 	while class do
 		if class == super then return true end
@@ -196,7 +196,7 @@ function subclassof(class, super)
 	return false
 end
 
---@note£ºExport API£¬ÅĞ¶ÏÊÇ·ñÊÇclassµÄÊµÀı
+--@noteï¼šExport APIï¼Œåˆ¤æ–­æ˜¯å¦æ˜¯classçš„å®ä¾‹
 function instanceof(object, class)
 	if object then
 		if isClassInstance(object) then
@@ -230,7 +230,7 @@ function instanceof(object, class)
 	return false
 end
 
---@note£ºExport API£¬¸ù¾İ×Ö·û´®µÃµ½Õâ¸öÀà
+--@noteï¼šExport APIï¼Œæ ¹æ®å­—ç¬¦ä¸²å¾—åˆ°è¿™ä¸ªç±»
 function getClass(classStr)
 	local code, cls = pcall(loadstring("local rst="..classStr.." return rst"))
 	if isclass(cls) then

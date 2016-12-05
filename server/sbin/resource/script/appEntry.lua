@@ -1,22 +1,22 @@
 --[[appEntry.lua
-ÃèÊö£º
-	ÓÎÏ·µÄÖ÷·şÎñÆ÷½Å±¾
+æè¿°ï¼š
+	æ¸¸æˆçš„ä¸»æœåŠ¡å™¨è„šæœ¬
 --]]
 
 package.path = "../resource/script/?.lua;../../../share/lua/?.lua;" .. package.path
 print("[Lua] package.path = ", package.path)
 
-require "prop.PropEntry"
-require "config.ConfCore"
-require "config.ConfDB"
-require "config.ConfSystem"
-
 ManagedApp = {}
+
 function ManagedApp.start(serverID)
+	require "prop.PropEntry"
+	require "config.ConfCore"
+	require "config.ConfDB"
+	require "config.ConfSystem"
+
 	loadCore(serverID)
 	loadSystem()
-	loadUnitConfig()
-	g_SceneMgr:loadPublicScenes()
+	g_sceneMgr:loadPublicScenes()
 end
 
 function ManagedApp.timerFired(timerID, state)
@@ -39,4 +39,10 @@ end
 
 function ManagedApp.onPlayerMessage(hLink, msg)
 	g_playerMgr:onPlayerMessage(hLink, msg)
+end
+
+function ManagedApp.close(reason)
+	release(g_timerMgr)
+	release(g_sceneMgr)
+	release(g_entityMgr)
 end

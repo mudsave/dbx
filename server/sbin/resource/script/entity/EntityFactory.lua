@@ -1,7 +1,8 @@
 --[[EntityFactory.lua
-ÃèÊö£º
-	ÊµÌå¹¤³§
+æè¿°ï¼š
+	å®ä½“å·¥å‚
 --]]
+require "entity.handler.MoveHandler"
 
 EntityFactory = class(nil, Singleton)
 
@@ -17,8 +18,22 @@ function EntityFactory:createPlayer(roleId, gatewayId, hClientLink, hGateLink)
 	local player = Player(roleId, gatewayId, hClientLink, hGateLink)
 	local peer = CoEntity:Create(eLogicPlayer, eClsTypePlayer)
 	peer:setDBID(roleId)
+	peer:setGateLink(hGateLink)
+	peer:setClientLink(hClientLink)
+	peer:setGatewayID(gatewayId)
 	player:setPeer(peer)
 	player:setID(peer:getHandle())
+	player:setMoveSpeed(DefaultSpeed)
+	
+	--æ·»åŠ è¯¥å®ä½“ç±»å‹çš„handler
+	player:addHandler(HandlerDef_Packet, PacketHandler(player))
+	player:addHandler(HandlerDef_Depot, DepotHandler(player))
+	player:addHandler(HandlerDef_Equip, EquipHandler(player))
+	player:addHandler(HandlerDef_Team, TeamHandler(player))
+	player:addHandler(HandlerDef_Ride, RideHandler(player))
+	player:addHandler(HandlerDef_Move, MoveHandler(player))
+	player:addHandler(HandlerDef_Follow,FollowHandler(player))
+
 	return player
 end
 
@@ -35,8 +50,12 @@ function EntityFactory:createDynamicNpc(dbID)
 	local peer = CoEntity:Create(eLogicNpc, eClsTypeNpc)
 	peer:setDBID(dbID)
 	npc:setPeer(peer)
+	npc:setMoveSpeed(DefaultSpeed)
 	npc:setID(peer:getHandle())
 	g_entityMgr:addNpc(npc)
+
+	--handler add
+	npc:addHandler(HandlerDef_Move, MoveHandler(npc))
 	return npc
 end
 
@@ -46,20 +65,25 @@ function EntityFactory:createPet(configID)
 	end
 	local pet = Pet()
 	pet:setPeer(CoEntity:Create(eLogicPet, eClsTypePet))
+	pet:setMoveSpeed(DefaultSpeed)
 	g_entityMgr:addPet(pet)
+
+	--handler add
+	pet:addHandler(HandlerDef_Move, MoveHandler(pet))
 	return pet
 end
 
 ---------------------------------------------------------
---ÏÂ±ßÎª×Ô¶¨ÒåÊµÌå
+--ä¸‹è¾¹ä¸ºè‡ªå®šä¹‰å®ä½“
 function EntityFactory:createMineNpc(dbID)
 	local mineNpc = MineNpc()
 	mineNpc:setDBID(dbID)
 	local peer = CoEntity:Create(eLogicMineNpc, eClsTypeNpc)
 	peer:setDBID(dbID)
 	mineNpc:setPeer(peer)
+	mineNpc:setMoveSpeed(DefaultSpeed)
 	mineNpc:setID(peer:getHandle())
-	--mineNpc:addHandler(HandlerDef_Move, MoveHandler(mineNpc))
+	mineNpc:addHandler(HandlerDef_Move, MoveHandler(mineNpc))
 	mineNpc:setEntityType(eLogicMineNpc)
 	g_entityMgr:addMineNpc(mineNpc)
 	return mineNpc

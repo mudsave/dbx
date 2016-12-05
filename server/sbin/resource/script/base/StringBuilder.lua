@@ -48,15 +48,15 @@ function StringBuilder:pushTable(tb)
 			list[#list+1]=tb
 		else			
 			for i=1,his_len do
-				list[#list+1]=his_list[i]--²»Ê¹ÓÃpushµÄÔµ¹ÊÊÇ£¬ÔÚpushº¯ÊıÖĞÒÑ¾­½«±í·Ö½âÁË
+				list[#list+1]=his_list[i]--ä¸ä½¿ç”¨pushçš„ç¼˜æ•…æ˜¯ï¼Œåœ¨pushå‡½æ•°ä¸­å·²ç»å°†è¡¨åˆ†è§£äº†
 			end
 		end
 	else
 		local tb_len=#tb
 		if tb_len>0 then
-			for i=1,tb_len do self:push(tb[i]) end--Ê¹ÓÃpush£¬ÒòÎªÒ»¸öÍâ²¿Êı×éÄãÊÇÃ»ÓĞ°ì·¨È·¶¨ÀïÃæÊÇÃ»ÓĞÇ¶Ì×±íµÄ
+			for i=1,tb_len do self:push(tb[i]) end--ä½¿ç”¨pushï¼Œå› ä¸ºä¸€ä¸ªå¤–éƒ¨æ•°ç»„ä½ æ˜¯æ²¡æœ‰åŠæ³•ç¡®å®šé‡Œé¢æ˜¯æ²¡æœ‰åµŒå¥—è¡¨çš„
 		else
-			list[#list+1]=tb--Ï£ÍûÕâ¸ö±íÓĞÉèÖÃmetatable£¬²»È»²»ÄÜ×ª»»³É×Ö·û´®°¡
+			list[#list+1]=tb--å¸Œæœ›è¿™ä¸ªè¡¨æœ‰è®¾ç½®metatableï¼Œä¸ç„¶ä¸èƒ½è½¬æ¢æˆå­—ç¬¦ä¸²å•Š
 		end
 	end
 end
@@ -70,7 +70,7 @@ function StringBuilder:push(value)
 	elseif vtype=='table' then
 		self:pushTable(value)
 	else
-		list[#list+1]=value	--¿¼ÂÇµ½Ä³Ğ©userdataÉèÖÃÁËÔª±í£¬Ò²¿ÉÒÔ×ª»»³É×Ö·û´®
+		list[#list+1]=value	--è€ƒè™‘åˆ°æŸäº›userdataè®¾ç½®äº†å…ƒè¡¨ï¼Œä¹Ÿå¯ä»¥è½¬æ¢æˆå­—ç¬¦ä¸²
 	end
 end
 

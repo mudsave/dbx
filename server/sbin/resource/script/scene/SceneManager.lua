@@ -1,6 +1,6 @@
 --[[SceneManager.lua
-ÃèÊö£º
-	³¡¾°¹ÜÀíÆ÷
+æè¿°ï¼š
+	åœºæ™¯ç®¡ç†å™¨
 --]]
 
 require "base.base"
@@ -12,6 +12,14 @@ function SceneManager:__init()
 	self.scene = {}
 	self.ectypeScene = {}
 	self.factionScene = {}
+end
+
+function SceneManager:__release()
+	for idx,iter in pairs(self.scene) do
+		release(iter)
+		self.scene[idx] = nil
+	end
+	self.scene = nil
 end
 
 function SceneManager:getSceneByID(mapID)
@@ -40,7 +48,7 @@ function SceneManager:enterPublicScene(mapID, role, x, y)
 	end
 end
 
---ÅĞ¶ÏÕâ¸ö³¡¾°µØÍ¼µÄµãÊÇ·ñ¿ÉÒÔÓÃ
+--åˆ¤æ–­è¿™ä¸ªåœºæ™¯åœ°å›¾çš„ç‚¹æ˜¯å¦å¯ä»¥ç”¨
 function SceneManager:isPosValidate(mapID, x, y)
 	local scene = self.scene[mapID]
 	if not scene then
@@ -49,7 +57,6 @@ function SceneManager:isPosValidate(mapID, x, y)
 	local peer = scene:getPeer()
 	return peer:PosValidate(mapID, x, y)
 end
-
 
 function SceneManager.getInstance()
 	return SceneManager()

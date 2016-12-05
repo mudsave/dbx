@@ -1,9 +1,9 @@
 --[[StringBuffer.lua
-ÃèÊö£º
-	Ìá¹©ÁËStringBufferÀà,ÓÃÓÚÓÅ»¯Ğ¡×Ö·û´®µÄÆ´½Ó²Ù×÷
+æè¿°ï¼š
+	æä¾›äº†StringBufferç±»,ç”¨äºä¼˜åŒ–å°å­—ç¬¦ä¸²çš„æ‹¼æ¥æ“ä½œ
 --]]
 
---@note£º×·¼Ó×Ö·û´®
+--@noteï¼šè¿½åŠ å­—ç¬¦ä¸²
 local function sb_append(sb, s)
 	table.insert(sb, tostring(s))
 	for i = #sb-1, 1, -1 do
@@ -21,7 +21,7 @@ local classMT = {
 	__tostring = table.concat
 }
 
---@note£º¹¹Ôìº¯Êı
+--@noteï¼šæ„é€ å‡½æ•°
 local function sb_new(_, s)
 	local sb = define(classMT, {
 		append = function(self, s)

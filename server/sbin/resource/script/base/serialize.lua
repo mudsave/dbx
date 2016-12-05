@@ -1,6 +1,6 @@
 --[[serialize.lua
-ÃèÊö£º
-	ÉùÃ÷ĞòÁĞ»¯½Ó¿Ú,²¢Ìá¹©serializeºÍunserializeº¯ÊıÓÃÓÚ¶ÔTable¶ÔÏó½øĞĞĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯²Ù×÷
+æè¿°ï¼š
+	å£°æ˜åºåˆ—åŒ–æ¥å£,å¹¶æä¾›serializeå’Œunserializeå‡½æ•°ç”¨äºå¯¹Tableå¯¹è±¡è¿›è¡Œåºåˆ—åŒ–å’Œååºåˆ—åŒ–æ“ä½œ
 --]]
 
 require "base.interface"
@@ -11,7 +11,7 @@ Serializable = interface(nil,
 
 local EMPTY_TABLE = {}
 
---@note£ºĞòÁĞ»¯Ò»¸öTable
+--@noteï¼šåºåˆ—åŒ–ä¸€ä¸ªTable
 function serialize(t)
 	local mark={}
 	local assign={}
@@ -86,7 +86,7 @@ function serialize(t)
 	end
 end
 
---@note£º·´ĞòÁĞ»¯Ò»¸öTable
+--@noteï¼šååºåˆ—åŒ–ä¸€ä¸ªTable
 function unserialize(str)
 	if str == nil or str == "nil" then
 		return nil
@@ -108,7 +108,7 @@ function unserialize(str)
 	end
 end
 
---@note£º¸øDBID¼ÓÃÜ
+--@noteï¼šç»™DBIDåŠ å¯†
 function encodeDBID(dbid)
 	local dbid = tonumber(dbid)
 	if dbid then
@@ -124,7 +124,7 @@ function encodeDBID(dbid)
 	end
 end
 
---@note£º¸øDBID½âÃÜ
+--@noteï¼šç»™DBIDè§£å¯†
 function decodeDBID(dbid)
 	local dbid = tonumber(dbid)
 	if dbid and dbid > 0 then

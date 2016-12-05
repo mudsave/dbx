@@ -45,3 +45,15 @@ struct _MsgWG_PlayerLogin_ResultInfo : AppMsg
 	int			roleId;
 	int			result;
 };
+
+struct _PropPosData
+{
+	bool bMove;
+	short len;
+	short idx;
+	short delay;
+	short step;
+	bool endPath;
+	GridVct path[1];
+};
+

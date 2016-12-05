@@ -51,7 +51,7 @@ void CGateway::Init(	short gatewayId,
 
 	hr = m_pLinkCtrl->Listen(loginIP,		&loginPort,		pClientSink,	0);	ASSERT_( SUCCEEDED(hr) );
 	hr = m_pLinkCtrl->Listen(worldIP,		&worldPort,		pWorldSink,		0);	ASSERT_( SUCCEEDED(hr) );
-	hr = m_pLinkCtrl->Connect(sessionIP,	sessionPort,	pSessionSink,	0); ASSERT_( SUCCEEDED(hr) ); 
+	hr = m_pLinkCtrl->Connect(sessionIP,	sessionPort,	pSessionSink,	0); ASSERT_( SUCCEEDED(hr) );
 
 	m_sessionSock	= hr;
 	m_sessionIP		= sessionIP;
@@ -206,7 +206,7 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						TRACE1_L2("\tlogout = %i\t", player->logoutReason);
 						return;
 					}
-					
+
 					TRACE1_L2("CGateway::OnClientMsg(), MSG_G_C_PLAYER_LOGOUT, the player[%i] normal logout\n", player->roleId);
 					send_MsgGW_PlayerLogoutInfo(player, LOGOUT_REASON_CLIENT_NORMAL);
 					return;
@@ -278,7 +278,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			{
 				if ( msgId == MSG_G_W_SYN_WORLD_INFO )
 				{
-					_MsgWG_SYN_WorldInfo* pInfo = static_cast<_MsgWG_SYN_WorldInfo*>(pMsg); 
+					_MsgWG_SYN_WorldInfo* pInfo = static_cast<_MsgWG_SYN_WorldInfo*>(pMsg);
 					pContext->worldId	= pInfo->worldId;
 					pContext->state		= LINK_CONTEXT_INIT_2;
 					send_MsgGW_SYN_GatewayInfo(hLink);
@@ -355,6 +355,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					}
 					send_MsgGS_UserLogoutInfo(player, pInfo->result, pInfo->reason);
 					send_MsgGC_PlayerLogout_ResultInfo(player, pInfo->result, pInfo->reason);
+					player->_SwitchStatus(PLAYER_STATUS_UNLOADED);
 					TRACE0_L2("CGateway::OnWorldMsg(), player logout\t");
 					TRACE1_L2("\troleId = %i\n", pInfo->roleId);
 					TRACE1_L2("\tclient = %u\n", player->hLink);
@@ -362,6 +363,31 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					TRACE1_L2("\tsrc reason = %i\n", player->logoutReason);
 					TRACE1_L2("\tdes reason = %i\n", pInfo->reason);
 					if ( pInfo->result == 0 ) g_playerMgr.unregPlayer(pInfo->roleId);
+					return;
+				}
+
+				if ( msgId == MSG_W_G_WORLD_PLAYERS_LOGOUT )
+				{
+					_MsgWG_WorldPlayersLogout_ResultInfo* pInfo = (_MsgWG_WorldPlayersLogout_ResultInfo*)pMsg;
+					short worldId = pInfo->worldId;
+					PlayerMgr::PlayerMapIter iter = g_playerMgr.begin();
+					PlayerMgr::PlayerMapIter iterEnd = g_playerMgr.end();
+					TRACE1_L2("CGateway::OnWorldMsg(), world [%i] kick players!\n", worldId);
+					for( ; iter != iterEnd; iter++ )
+					{
+						PlayerInfo& player = iter->second;
+						if ( player.worldId!= worldId )
+							continue;
+						if ( player.status == PLAYER_STATUS_LOADING || player.status == PLAYER_STATUS_LOADED
+							|| player.status == PLAYER_STATUS_UNLOADING)
+						{
+							send_MsgGS_UserLogoutInfo(&player, 0, LOGOUT_REASON_WORLD_KICK);
+						}
+						send_MsgGC_PlayerLogout_ResultInfo(&player, 0, LOGOUT_REASON_WORLD_KICK);
+						player._SwitchStatus(PLAYER_STATUS_UNLOADED);
+						TRACE1_L2("\troleId = %i is kicked out!\n", player.roleId);
+						g_playerMgr.unregPlayer(player.roleId);
+					}
 					return;
 				}
 
@@ -420,8 +446,8 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					for( ; iter != iterEnd; iter++ )
 					{
 						PlayerInfo& player = iter->second;
-						if ( player.status != PLAYER_STATUS_LOADED ) continue; 
-						if ( player.worldId!= worldId ) continue; 
+						if ( player.status != PLAYER_STATUS_LOADED ) continue;
+						if ( player.worldId!= worldId ) continue;
 						if ( player.hLink == (handle)INVALID_HANDLE ) continue;
 						int offset = sizeof(_MsgWG_SinkWorldPeers);
 						IMsgLinksImpl<IID_IMsgLinksCG_L>::SendData( player.hLink, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset );
@@ -537,7 +563,7 @@ void CGateway::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						pClient->_Close(CLOSE_RELEASE);
 						return;
 					}
-					LinkContext_World* pWorld = getWorldLink(player->worldId);
+					LinkContext_World* pWorld = getWorldLinkById(player->worldId);
 					ASSERT_(pWorld);
 					if ( !pWorld )
 					{
@@ -571,7 +597,7 @@ void CGateway::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 void CGateway::OnClientClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Client* pContext = (LinkContext_Client*)hLinkContext;
-	int linkType = pContext->linkType;	unused(linkType); 
+	int linkType = pContext->linkType;	unused(linkType);
 	handle hLink = pContext->hLink;		unused(hLink);
 
 	ClientMap::iterator iter = m_clients.find(hLink);
@@ -592,7 +618,7 @@ void CGateway::OnClientClosed(HANDLE hLinkContext, HRESULT reason)
 void CGateway::OnWorldClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_World* pContext = (LinkContext_World*)hLinkContext;
-	int linkType = pContext->linkType;	unused(linkType); 
+	int linkType = pContext->linkType;	unused(linkType);
 	handle hLink = pContext->hLink;		unused(hLink);
 
 	WorldMap::iterator iter = m_worlds.find(hLink);
@@ -612,9 +638,9 @@ void CGateway::OnWorldClosed(HANDLE hLinkContext, HRESULT reason)
 void CGateway::OnSessionClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Session* pContext = (LinkContext_Session*)hLinkContext;
-	int linkType = pContext->linkType; unused(linkType); 
+	int linkType = pContext->linkType; unused(linkType);
 	handle hLink = pContext->hLink; unused(hLink);
-	
+
 	LinkContext_Session* pSession = m_pSession; ASSERT_( pContext == pSession );
 	m_pSession = NULL;
 
@@ -636,7 +662,7 @@ void CGateway::handleSessionReconnect()
 	m_hReconnectSessionTimer = NULL;
 
 	ILinkSink* pSessionSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksGS_C>* >(this);
-	HRESULT hr = m_pLinkCtrl->Connect(m_sessionIP.c_str(), m_sessionPort, pSessionSink, 0); ASSERT_( SUCCEEDED(hr) ); 
+	HRESULT hr = m_pLinkCtrl->Connect(m_sessionIP.c_str(), m_sessionPort, pSessionSink, 0); ASSERT_( SUCCEEDED(hr) );
 
 	m_sessionSock = hr;
 
@@ -684,7 +710,7 @@ HANDLE CGateway::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkP
 	int iPort = 0;
 	char strbuf[1024] = {0};
 	pPort->GetRemoteAddr(strbuf, 1024, &iPort);
-	
+
 	TRACE4_L2("(%i)CGateway::OnConnects(), %s( %s:%d ) comes\n", operaterId, translateLinkType(iLinkType), strbuf, iPort);
 
 	if ( iLinkType == IID_IMsgLinksCG_L )

@@ -1,15 +1,15 @@
 --[[math.lua
-ÃèÊö£º
-	math¿âµÄÀ©Õ¹
+æè¿°ï¼š
+	mathåº“çš„æ‰©å±•
 ]]
 
 
---@note£º4Éá5Èë
+--@noteï¼š4èˆ5å…¥
 function math.round(n)
 	return math.floor(0.5 + n)
 end
 
---@note£ºËæ¼´Ğ¡Êı
+--@noteï¼šéšå³å°æ•°
 function math.rand(n1, n2)
 	return math.random(n1 * 1000000, n2 * 1000000)/1000000
 end
@@ -19,7 +19,7 @@ function math.rand4Attribute(n1, n2)
 	return math.random(n1 * 10000, n2 * 10000)/10000
 end
 
---È¡Ò»¸öÊıµÄÕûÊı²¿·Ö
+--å–ä¸€ä¸ªæ•°çš„æ•´æ•°éƒ¨åˆ†
 function math.getIntPart(x)
 	if x <= 0 then
 	   return math.ceil(x);

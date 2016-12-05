@@ -6,6 +6,8 @@
 #include "LuaFunctor.h"
 #include "LuaEngine.h"
 #include "ScriptTimer.h"
+#include <time.h>  
+int gettimeofday(struct timeval *tv, struct timezone *tz);  
 
 ScriptTimer* ScriptTimer::s_pScriptTimer = NULL;
 lua_State* ScriptTimer::s_pLuaState = NULL;
@@ -142,4 +144,12 @@ int ScriptTimer::toluaScriptTimerOpen(lua_State* pState)
 	tolua_endmodule(pState);
 	tolua_endmodule(pState);
 	return 1;
+}
+
+int getLuaTick()
+{
+	struct timeval tv;
+	gettimeofday(&tv,NULL); 
+	int nTick = tv.tv_sec*1000+tv.tv_usec/1000;
+	return nTick;
 }

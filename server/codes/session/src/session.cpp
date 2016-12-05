@@ -228,7 +228,7 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						AccountInfo* pAccount = g_accountMgr.getAccountPtr(pInfo->accountId);
 						ASSERT_( pAccount );
 						ASSERT_( pAccount->roleId == pInfo->roleId );
-						ASSERT_( pAccount->status == ACCOUNT_STATE_LOADING_1 );
+						ASSERT_( pAccount->status == ACCOUNT_STATE_LOADING );
 						pAccount->_SwitchStatus(ACCOUNT_STATE_LOADED);
 						return;
 					}
@@ -495,7 +495,7 @@ HANDLE CSession::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkP
 		pClient->port			= iPort;
 		pClient->pThreadsPool	= m_pThreadsPool;
 		pClient->_SwitchState(LINK_CONTEXT_CONNECTED);
-		TRACE1_L0("=--------%d\n",LINK_CONTEXT_CONNECTED);
+		TRACE0_L0("connect client ok\n");
 		m_clients.insert( ClientMap::value_type(hLink, pClient) );
 		send_MsgSC_WorldListInfo(hLink);	
 		return pClient;
@@ -506,6 +506,7 @@ HANDLE CSession::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkP
 		LinkContext_Gate* pGate = new LinkContext_Gate(iLinkType, hLink);
 		pGate->addr = strbuf;
 		pGate->port = iPort;
+		TRACE0_L0("connect gateway ok\n");
 		m_gates.insert( GateMap::value_type(hLink, pGate) );
 		return pGate;
 	}
@@ -515,6 +516,7 @@ HANDLE CSession::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkP
 		LinkContext_World* pWorld = new LinkContext_World(iLinkType, hLink);
 		pWorld->addr = strbuf;
 		pWorld->port = iPort;
+		TRACE0_L0("connect world ok\n");
 		m_worlds.insert( WorldMap::value_type(hLink, pWorld) );
 		return pWorld;
 	}

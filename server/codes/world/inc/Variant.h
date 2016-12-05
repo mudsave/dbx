@@ -3,7 +3,7 @@
 
 #include "lindef.h"
 
-#define auxWrite(p,type,value) *(type *)p = (value),p+=sizeof(type)
+#define auxWrite(p,type,value) *(type *)p = (type)(value),p+=sizeof(type)
 #define auxRead(lv,type,p) lv = *(type *)p,p+=sizeof(type)			//lv 左值
 
 enum VariantType{
@@ -129,11 +129,11 @@ public:
 				ASSERT_(0);
 		}
 	}
-	int Save(void *pBuff,int len,bool bSaveType = true){
-		ASSERT_(len >= (signed)sizeof(Variant) && pBuff);
+	int Save(void *pBuff,int len,bool bSaveType = false){
+		ASSERT_(len >= (signed)sizeof(long long) && pBuff);
 		char *p = (char *)pBuff;
 		if(bSaveType){
-			*p++ = type;
+			auxWrite(p,char,type);
 		}
 		switch(type){
 			case VAR_NULL:
@@ -155,14 +155,14 @@ public:
 				break;
 			case VAR_STRING:{
 					int slen = strlen((const char *)dataVal);
-					ASSERT_(len >= slen + (signed)sizeof(long long) + (signed)sizeof(short));
+					ASSERT_(len >= slen + (signed)sizeof(short));
 					auxWrite(p,short,slen);
 					memcpy(p,dataVal,slen);
 					p+=slen;
 				}
 				break;
 			case VAR_DATA:
-				ASSERT_(len >= length + (signed)sizeof(long long) + (signed)sizeof(short));
+				ASSERT_(len >= length + (signed)sizeof(short));
 				auxWrite(p,short,length);
 				memcpy(p,dataVal,length);
 				p+=length;
@@ -172,7 +172,7 @@ public:
 		}
 		return (int)(p - (char *)pBuff);
 	}
-	int Load(const void *pData,int len,bool bTypeSaved = true){
+	int Load(const void *pData,int len,bool bTypeSaved = false){
 		Clear(bTypeSaved);
 		const char *p = (char *)pData;
 		if(bTypeSaved){
@@ -195,20 +195,20 @@ public:
 				break;
 			case VAR_STRING:
 				auxRead(length,short,p);
-				ASSERT_(length > 0 && len >= length + (signed)sizeof(long long) + (signed)sizeof(short) + 1);
+				ASSERT_(length > 0 && len >= length + (signed)sizeof(short));
 				dataVal = memcpy(new char[length + 1],p,length);
 				*((char *)dataVal + length) = 0;
 				p += length;
 				break;
 			case VAR_DATA:
 				auxRead(length,short,p);
-				ASSERT_(length > 0 && len >= length + (signed)sizeof(long long) + (signed)sizeof(short));
+				ASSERT_(length > 0 && len >= length + (signed)sizeof(short));
 				dataVal = memcpy(new char[length],p,length);
 				p += length;
 				break;
 			case VAR_VECTOR:
 				auxRead(length,short,p);
-				ASSERT_(length > 0 && len > (signed)sizeof(long long) * length + (signed)sizeof(short));
+				ASSERT_(length > 0 && len > (signed)sizeof(short));
 				vctVal = new Variant[length];
 				for(int i=0;i<length;i++){
 					 p += vctVal[i].Load(p,len - (int)(p - (const char *)pData),bTypeSaved);

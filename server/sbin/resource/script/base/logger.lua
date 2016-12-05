@@ -1,6 +1,6 @@
 --[[logger.lua
-ÃèÊö£º
-	Ìá¹©ÈÕÖ¾ÏûÏ¢Êä³ö
+æè¿°ï¼š
+	æä¾›æ—¥å¿—æ¶ˆæ¯è¾“å‡º
 --]]
 
 require "base.common"
@@ -13,23 +13,23 @@ local ERROR = "ERROR"
 local FATAL = "FATAL"
 local OFF   = "OFF"
 
---@note£ºÊä³öµÈ¼¶µÄ¶¨Òå£¬Ö»ÓĞÊä³ö·½Ê½µÄµÈ¼¶´óÓÚµÈÓÚµ±Ç°µÈ¼¶£¬Êä³ö²Å»á½øĞĞ
+--@noteï¼šè¾“å‡ºç­‰çº§çš„å®šä¹‰ï¼Œåªæœ‰è¾“å‡ºæ–¹å¼çš„ç­‰çº§å¤§äºç­‰äºå½“å‰ç­‰çº§ï¼Œè¾“å‡ºæ‰ä¼šè¿›è¡Œ
 local LEVEL = {
-	[ALL]   = 0,                          --ÔÊĞíËùÓĞµÈ¼¶ÏûÏ¢Êä³ö
-	[DEBUG] = 1,                          --ÓÃÓÚµ÷ÊÔÏûÏ¢µÄÊä³ö
-	[INFO]  = 2,                          --ÓÃÓÚ¸ú×Ù³ÌĞòÔËĞĞ½ø¶È
-	[WARN]  = 3,                          --³ÌĞòÔËĞĞÊ±·¢ÉúÒì³£
-	[ERROR] = 4,                          --³ÌĞòÔËĞĞÊ±·¢Éú¿ÉÔ¤ÁÏµÄ´íÎó,´ËÊ±Í¨¹ı´íÎó´¦Àí,¿ÉÒÔÈÃ³ÌĞò»Ö¸´Õı³£ÔËĞĞ
-	[FATAL] = 5,                          --³ÌĞòÔËĞĞÊ±·¢Éú²»¿ÉÔ¤ÁÏµÄÑÏÖØ´íÎó,Ò»°ã½«ÖÕÖ¹³ÌĞòÔËĞĞ
-	[OFF]   = 100,                        --¹Ø±ÕËùÓĞÏûÏ¢Êä³ö
+	[ALL]   = 0,                          --å…è®¸æ‰€æœ‰ç­‰çº§æ¶ˆæ¯è¾“å‡º
+	[DEBUG] = 1,                          --ç”¨äºè°ƒè¯•æ¶ˆæ¯çš„è¾“å‡º
+	[INFO]  = 2,                          --ç”¨äºè·Ÿè¸ªç¨‹åºè¿è¡Œè¿›åº¦
+	[WARN]  = 3,                          --ç¨‹åºè¿è¡Œæ—¶å‘ç”Ÿå¼‚å¸¸
+	[ERROR] = 4,                          --ç¨‹åºè¿è¡Œæ—¶å‘ç”Ÿå¯é¢„æ–™çš„é”™è¯¯,æ­¤æ—¶é€šè¿‡é”™è¯¯å¤„ç†,å¯ä»¥è®©ç¨‹åºæ¢å¤æ­£å¸¸è¿è¡Œ
+	[FATAL] = 5,                          --ç¨‹åºè¿è¡Œæ—¶å‘ç”Ÿä¸å¯é¢„æ–™çš„ä¸¥é‡é”™è¯¯,ä¸€èˆ¬å°†ç»ˆæ­¢ç¨‹åºè¿è¡Œ
+	[OFF]   = 100,                        --å…³é—­æ‰€æœ‰æ¶ˆæ¯è¾“å‡º
 }
 
---@note£ºÉèÖÃµ±Ç°Êä³öµÈ¼¶
+--@noteï¼šè®¾ç½®å½“å‰è¾“å‡ºç­‰çº§
 local function log_setLevel(logger, level)
 	logger.level = level
 end
 
---@note£ºÊä³öº¯Êı£¬½«ĞÅÏ¢Êä³öµ½Ö¸¶¨µÄloggerÉÏÃæ
+--@noteï¼šè¾“å‡ºå‡½æ•°ï¼Œå°†ä¿¡æ¯è¾“å‡ºåˆ°æŒ‡å®šçš„loggerä¸Šé¢
 local function log_output(logger, level, message, ...)
 	if logger == nil or level == nil then
 		return false
@@ -41,8 +41,8 @@ local function log_output(logger, level, message, ...)
 	return logger:append(level, string.format(tostring(message), unpack({...})))
 end
 
---@note£ºÉú³ÉÒ»¸öĞÂµÄlogger
---@param append£ºlogger³ÖÓĞµÄĞÅÏ¢´¦Àíº¯Êı
+--@noteï¼šç”Ÿæˆä¸€ä¸ªæ–°çš„logger
+--@param appendï¼šloggeræŒæœ‰çš„ä¿¡æ¯å¤„ç†å‡½æ•°
 local function log_new(_, append)
 	if type(append) ~= "function" then
 		return nil, "Appender must be a function."
@@ -69,7 +69,7 @@ local function log_new(_, append)
 	return logger
 end
 
---@note£ºloggerÀà
+--@noteï¼šloggerç±»
 Logger = define({ __call = log_new }, {
 	OFF   = OFF,
 	ALL   = ALL,
@@ -80,12 +80,12 @@ Logger = define({ __call = log_new }, {
 	FATAL = FATAL,
 })
 
-----------------------------------------ÏÂÃæÊÇ¶¨ÖÆlogger--------------------------------------------
---note£º¶¨ÖÆÒ»¸ö¿ØÖÆÌ¨logger
+----------------------------------------ä¸‹é¢æ˜¯å®šåˆ¶logger--------------------------------------------
+--noteï¼šå®šåˆ¶ä¸€ä¸ªæ§åˆ¶å°logger
 local MAX_STRING_LENGTH = 512
 local _print = print
 
---@note£º°Ñ×Ö·û´®°´×î´ó³¤¶È²ğ·ÖÊä³ö
+--@noteï¼šæŠŠå­—ç¬¦ä¸²æŒ‰æœ€å¤§é•¿åº¦æ‹†åˆ†è¾“å‡º
 local function output(str)
 	if str == nil then
 		_print(nil)
@@ -105,7 +105,7 @@ local function output(str)
 	end
 end
 
---@note£ºÖØĞÂ¶¨Òåprint£¬Ìæ»»%,±ÜÃâ³öÏÖTrace²ÎÊı¸öÊıÓë¸ñÊ½²»Æ¥Åä
+--@noteï¼šé‡æ–°å®šä¹‰printï¼Œæ›¿æ¢%,é¿å…å‡ºç°Traceå‚æ•°ä¸ªæ•°ä¸æ ¼å¼ä¸åŒ¹é…
 function print(...)
 	local t = {}
 	for i = 1, select("#", ...) do
@@ -115,8 +115,8 @@ function print(...)
 	output(str)
 end
 
---@note£º¶¨ÖÆµÄappendº¯Êı£¬"%d %p %m"·Ö±ğ¶ÔÓ¦ÈÕÆÚ£¬µÈ¼¶£¬ÄÚÈİ
---param message£ºÊÇ¾­¹ıstring.format¸ñÊ½»¯ºóµÄ×Ö·û´®
+--@noteï¼šå®šåˆ¶çš„appendå‡½æ•°ï¼Œ"%d %p %m"åˆ†åˆ«å¯¹åº”æ—¥æœŸï¼Œç­‰çº§ï¼Œå†…å®¹
+--param messageï¼šæ˜¯ç»è¿‡string.formatæ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
 local function appendFun(self, level, message)
 	message = string.gsub(message, "%%", "%%%%")
 	local logMsg = "[%p] %m"
@@ -140,7 +140,7 @@ end
 
 g_logger = Logger.getLogger()
 
------------------------------------------logµÄÈ«¾Öº¯Êı---------------------------------------------------
+-----------------------------------------logçš„å…¨å±€å‡½æ•°---------------------------------------------------
 function debuglog(...)
 	if LEVEL[DEBUG] < LEVEL[logger.level] then
 		return

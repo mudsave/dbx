@@ -1,6 +1,6 @@
 --[[Guid.lua
-ÃèÊö£º
-	Éú³ÉÎïÆ·µÈÊµÌåµÄÈ«¾ÖÎ¨Ò»±êÊ¶
+æè¿°ï¼š
+	ç”Ÿæˆç‰©å“ç­‰å®ä½“çš„å…¨å±€å”¯ä¸€æ ‡è¯†
 --]]
 
 local last_guids = {}
@@ -25,7 +25,7 @@ function createGUID(clz)
 		return 0
 	end
 	if guid == last_guids[clz] then
-		--²»Ó¦¸Ã»áÖØ¸´£¿
+		--ä¸åº”è¯¥ä¼šé‡å¤ï¼Ÿ
 		guid = createGUID(clz)
 	end
 	last_guids[clz] = guid

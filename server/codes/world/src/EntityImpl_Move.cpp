@@ -9,6 +9,7 @@
 #include "MoveManager.h"
 #include "Entity.h"
 #include "MapManager.h"
+#include "Scene.h"
 
 bool CoEntity::move(short x, short y, int flags)
 {
@@ -27,7 +28,7 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 		TRACE0_ERROR("Entity move failed: the scene is not exist!!!\n");
 		return false;
 	}
-	//if (pDest == 0 && !m_pScene->inMap(*pDest))
+	if (pDest == 0 && !m_pScene->inMap(*pDest))
 	{
 		TRACE0_ERROR("Entity move failed: the target pos is not correct!!!\n");
 		return false;
@@ -57,6 +58,10 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 		TRACE0_WARNING("Entity move failed: the path len is error\n");
 		return false;
 	}
+	if (len >= MAX_PATH_LEN)
+	{
+		len = MAX_PATH_LEN;
+	}
 	GridVct *tPath = pPos->path;
 	for (int i = 0; i <= len; i++)
 	{
@@ -70,7 +75,7 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 	pPos->delay = 0;
 	pPos->step = 0;
 	pPos->endPath = true;
-	//SetPropData(UINT_POS, buf, sizeof(_PropPosData) + (len - 1) * sizeof(GridVct));
+	SetPropData(UNIT_POS, buf, sizeof(_PropPosData) + (len - 1) * sizeof(GridVct));
 	m_dTimeOrigin = ::GetTickCount();
 	if (!m_Move)
 	{
@@ -131,7 +136,7 @@ void CoEntity::moveByPath(_PropPosData* pPosData)
 		return;
 	}
 			
-	if (pPosData->len > MAX_PATH_LEN + 8)
+	if (pPosData->len > MAX_PATH_LEN)
 	{
 		TRACE2_WARNING("[CoEntity:MoveByPath] WARNING: entity(%d) move path too long, len=%i\n", m_hand, pPosData->len);
 	}
@@ -149,19 +154,17 @@ void CoEntity::moveByPath(_PropPosData* pPosData)
 	// 更新位置
 	setPosition(pPosData->path[0]);
 	// 更新路径并通知客户端
-	//SetPropData(UINT_POS, pPosData, sizeof(_PropPosData) + (pPosData->len - 1) * sizeof(GridVct));
+	SetPropData(UNIT_POS, pPosData, sizeof(_PropPosData) + (pPosData->len - 1) * sizeof(GridVct));
 }
 
 void CoEntity::onMove()
 {
 	static float fTileWidth = 64.0 ;
-	//_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UINT_POS].val.dataVal;
-	_PropPosData* pPosData = 0;
-	DWORD dwNow = GetTickCount();
+	_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
+	DWORD dwNow = ::GetTickCount();
 	m_clipping += dwNow - m_dTimeOrigin;
 	m_dTimeOrigin = dwNow;
 	m_stepTime = 1.0 / (float)(m_speed / 100.0);
-
 	if (!m_bDelayEnable)
 	{
 		if (pPosData->delay > 0 && pPosData->idx >= 1)
@@ -180,7 +183,6 @@ void CoEntity::onMove()
 			m_bDelayEnable = false;
 		}
 	}
-
 	if (!m_bDelayEnable && m_clipping >= m_stepTime)
 	{
 		bool bTileChanged = false ;
@@ -209,13 +211,13 @@ void CoEntity::onMove()
 				m_clipping -= m_stepTime;
 			}
 		}
-	}
-	else
-	{
-		if (m_Move)
+		else
 		{
-			resetMove();
-			g_MoveManager.RemoveMoveEntity(m_hand);
+			if (m_Move)
+			{
+				resetMove();
+				g_MoveManager.RemoveMoveEntity(m_hand);
+			}
 		}
 	}
 }
@@ -293,19 +295,37 @@ void CoEntity::moveFollowEntity(lua_State* pState, short offset, _PropPosData* p
 
 void CoEntity::stopMove(short x, short y )
 {
+	GridVct pos;
+	if (x == 0 && y == 0)
+	{
+		pos = getPosition();
+	}
+	else
+	{
+		pos.x = x;
+		pos.y = y;
+	}
+	if (m_Move)
+	{
+			resetMove();
+			g_MoveManager.RemoveMoveEntity(m_hand);
+	}
+	_PropPosData data;
+	data.bMove = false;
+	data.len = 1;
+	data.idx = 0;
+	data.delay = 0;
+	data.step = 0;
+	data.endPath = true;
+	data.path[0] = pos;
+	SetPropData(UNIT_POS, (BYTE*)&data, sizeof(data));
 	if (x == 0 && y == 0)
 	{
 		return;
 	}
 	else
 	{
-		GridVct grid(x, y);
-		setPosition(grid);
-	}
-	if (m_Move)
-	{
-		resetMove();
-		g_MoveManager.RemoveMoveEntity(m_hand);
+		setPosition(pos);
 	}
 }
 
@@ -314,38 +334,47 @@ short CoEntity::correctMovePath(short x, short y)
 	short realIdx = -1;
 	GridVct curPos(x, y);
 	GridVct realPos = curPos;
-//	_PropPosData* pPosData = (_PropPosData)m_propSet.p[UINT_POS].val.dataVal;
-	_PropPosData* pPosData = 0;
-	if (m_position != curPos)
+	_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
+	if (m_Move)
 	{
-		short curIdx = pPosData->idx;
-		short difIdx = 0;
-		//往后找
-		for (int i = curIdx + 1; i < pPosData->len; ++i)
+		if (m_position != curPos)
 		{
-			if (pPosData->path[i] == curPos)
+			short curIdx = pPosData->idx;
+			short difIdx = 0;
+			//往后找
+			for (int i = curIdx + 1; i < pPosData->len; ++i)
 			{
-				realIdx = i;
-				difIdx = realIdx - curIdx;
-				break;
-			}
-		}
-		//往前找
-		if (difIdx != 1)
-		{
-			for(int i = curIdx - 1; i >= 0; i--)
-			{
-				if ( pPosData->path[i] == curPos ) 
+				if (pPosData->path[i] == curPos)
 				{
-					realIdx = (difIdx == 0) ? i : ((difIdx > curIdx - i) ? i : realIdx);
+					realIdx = i;
+					difIdx = realIdx - curIdx;
 					break;
 				}
 			}
+			//往前找
+			if (difIdx != 1)
+			{
+				for(int i = curIdx - 1; i >= 0; i--)
+				{
+					if ( pPosData->path[i] == curPos ) 
+					{
+						realIdx = (difIdx == 0) ? i : ((difIdx > curIdx - i) ? i : realIdx);
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			realIdx = (pPosData->idx == pPosData->len) ? (pPosData->idx - 1) : pPosData->idx;
 		}
 	}
 	else
 	{
-		realIdx = (pPosData->idx == pPosData->len) ? (pPosData->idx - 1) : pPosData->idx;
+		if (m_position != curPos)
+		{
+			realPos = m_position;
+		}
 	}
 	if (realIdx != -1)
 	{
@@ -361,26 +390,28 @@ short CoEntity::correctFollowMovePath( short refIdx, short refPathLen )
 	short realIdx = 0;
 	if (refIdx >= 0)
 	{
-		//_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UINT_POS].val.dataVal;
-		_PropPosData* pPosData = 0;
-		short delay = refPathLen - pPosData->len;
-		if (refIdx == 0)
+		if (m_Move)
 		{
-			realIdx = 0;
+			_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
+			short delay = refPathLen - pPosData->len;
+			if (refIdx == 0)
+			{
+				realIdx = 0;
+			}	
+			else if (refIdx < delay + 1)
+			{
+				m_bDelayEnable = pPosData->delay > 0;
+				realIdx = (m_Move && m_bDelayEnable) ? 1: 0;
+			}
+			else
+			{
+				realIdx = refIdx - delay;
+			}	
+			realIdx = (realIdx < 0) ? 0 : realIdx;
+			realIdx = (realIdx >= pPosData->len) ? (pPosData->len - 1) : realIdx;
+			pPosData->idx = realIdx;
+			setPosition(pPosData->path[realIdx]);
 		}
-		else if (refIdx < delay + 1)
-		{
-			m_bDelayEnable = pPosData->delay > 0;
-			realIdx = (m_Move && m_bDelayEnable) ? 1: 0;
-		}
-		else
-		{
-			realIdx = refIdx - delay;
-		}
-		realIdx = (realIdx < 0) ? 0 : realIdx;
-		realIdx = (realIdx >= pPosData->len) ? (pPosData->len - 1) : realIdx;
-		pPosData->idx = realIdx;
-		setPosition(pPosData->path[realIdx]);
 	}
 	return realIdx;
 }
@@ -448,23 +479,26 @@ void CoEntity::fillMovePathByDistance( MovePath& path, bool bFilled )
 		short dy = ::abs(path[3] - path[1]);
 		if ( bFilled || ( (!bFilled && (dx >= 2 && dx <= 4)) || (dy >= 2 && dy <= 4) ) )
 		{
-			//POINT* pPath = 0;
-			//int nPathLen = 0;
-			//if (g_MapManager.findPath(m_sceneInfo.mapId, GridVct(path[0], path[1]), GridVct(path[2], path[3]), true, true, pPath, nPathLen))
-			//{
-			//	path.pop_front();
-			//	path.pop_front();
+			POINT* pPath = 0;
+			short nPathLen = 0;
+			int nBlockOption = BLOCK_OPTION_GROUND | BLOCK_OPTION_FLY;
+			GridVct pos1(path[0], path[1]);
+			GridVct pos2(path[2], path[2]);
+			if (g_MapManager.findPath(m_sceneInfo.mapId, pos1, pos2, nBlockOption, pPath, nPathLen))
+			{
+				path.pop_front();
+				path.pop_front();
 				// 插入新路径点
-			//	for (int i = nPathLen - 2; (nPathLen >= 3 && i >= 0); i--)
-			//	{
-			//		path.push_front(pPath[i].y);
-			//		path.push_front(pPath[i].x);
-			//	}
-			//}
-			//else
-			//{
-			//	bDiscard = true;
-			//}
+			for (int i = nPathLen - 2; (nPathLen >= 3 && i >= 0); i--)
+			{
+				path.push_front(pPath[i].y);
+				path.push_front(pPath[i].x);
+			}
+		}
+		else
+		{
+			bDiscard = true;
+		}
 		}
 		else if ( dx > 4 || dy > 4 )
 		{
@@ -481,19 +515,17 @@ void CoEntity::fillMovePathByDistance( MovePath& path, bool bFilled )
 
 short CoEntity::getPathLen() const
 {
-	//_PropPosData const* pPosData = (_PropPosData const*)m_propSet.p[UINT_POS].val.dataVal;
-	//return pPosData->len;
-	return 0;
+	_PropPosData const* pPosData = (_PropPosData const*)m_propSet.p[UNIT_POS].val.dataVal;
+	return pPosData->len;
 }
 
 GridVct CoEntity::getPathByCurIndex( short index )
 {
-	//_PropPosData const* pPosData = (_PropPosData const*)m_propSet.p[UINT_POS].val.dataVal;
-	//short idx = pPosData->idx + index;
-	//idx = (idx < 0) ? 0 : idx;
-	//idx = (idx > pPosData->len - 1) ? (pPosData->len - 1) : idx;
-	//return pPosData->path[idx];
-	return GridVct(0, 0);
+	_PropPosData const* pPosData = (_PropPosData const*)m_propSet.p[UNIT_POS].val.dataVal;
+	short idx = pPosData->idx + index;
+	idx = (idx < 0) ? 0 : idx;
+	idx = (idx > pPosData->len - 1) ? (pPosData->len - 1) : idx;
+	return pPosData->path[idx];
 }
 
 void CoEntity::resetMove()
@@ -502,4 +534,15 @@ void CoEntity::resetMove()
 	m_dTimeOrigin = 0;
 	m_clipping = 0;
 	m_bDelayEnable = false;
+}
+
+void CoEntity::setMoveSpeed(short speed)
+{
+	m_speed = speed;
+	SetPropShort(UNIT_MOVE_SPEED,speed);
+}
+
+short CoEntity::getMoveSpeed()
+{
+	return m_speed;
 }

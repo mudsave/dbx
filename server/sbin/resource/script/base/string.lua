@@ -1,12 +1,12 @@
 --[[string.lua
-ÃèÊö£º
-	table¿âµÄÀ©Õ¹
+æè¿°ï¼š
+	tableåº“çš„æ‰©å±•
 ]]
 
---@note£ºÅĞ¶¨Ò»¸ö×Ö·û´®ÒÔÆ«ÒÆÁ¿ÎªÆğÊ¼Î»ÖÃ£¬ÊÇ·ñÊÇÒÔprefixÎªÇ°×ºµÄ×Ö·û´®
---@param value£ºÒªÅĞ¶¨µÄ×Ö·û´®
---@param prefix£ºÇ°×º×Ö·û´®
---@param toffset£ºÒªÅĞ¶¨µÄ×Ö·û´®µÄÆ«ÒÆÁ¿
+--@noteï¼šåˆ¤å®šä¸€ä¸ªå­—ç¬¦ä¸²ä»¥åç§»é‡ä¸ºèµ·å§‹ä½ç½®ï¼Œæ˜¯å¦æ˜¯ä»¥prefixä¸ºå‰ç¼€çš„å­—ç¬¦ä¸²
+--@param valueï¼šè¦åˆ¤å®šçš„å­—ç¬¦ä¸²
+--@param prefixï¼šå‰ç¼€å­—ç¬¦ä¸²
+--@param toffsetï¼šè¦åˆ¤å®šçš„å­—ç¬¦ä¸²çš„åç§»é‡
 function string.startsWith(value, prefix, toffset)
 	if value and prefix then
 		toffset = (toffset or 1) > 0 and toffset or 1
@@ -15,7 +15,7 @@ function string.startsWith(value, prefix, toffset)
 	return false
 end
 
---@note£ºÅĞ¶¨Ò»¸ö×Ö·û´®ÊÇ·ñÒÔsuffixÎªºó×º
+--@noteï¼šåˆ¤å®šä¸€ä¸ªå­—ç¬¦ä¸²æ˜¯å¦ä»¥suffixä¸ºåç¼€
 function string.endsWith(value, suffix)
 	if value and suffix then
 		return string.sub(value, -#suffix) == suffix
@@ -23,12 +23,12 @@ function string.endsWith(value, suffix)
 	return false
 end
 
---@note£º½«×Ö·û´®¸Ä³ÉÊ××Ö·û´óĞ´
+--@noteï¼šå°†å­—ç¬¦ä¸²æ”¹æˆé¦–å­—ç¬¦å¤§å†™
 function string.title(value)
 	return string.upper(string.sub(value, 1, 1)) .. string.sub(value, 2, #value)
 end
 
---@note£º·µ»Ø×Ö·û´®valueÔÚposition´¦µÄ×Ö·û
+--@noteï¼šè¿”å›å­—ç¬¦ä¸²valueåœ¨positionå¤„çš„å­—ç¬¦
 function string.charAt(value, position)
 	if value and position and position > 0 then
 		local b = string.byte(value, position, position + 1)
@@ -36,7 +36,7 @@ function string.charAt(value, position)
 	end
 end
 
---@note£ºÅĞ¶¨Ò»¸ö×Ö·û´®ÊÇ·ñ¿Õ¸ñ·ûµÄ¼¯ºÏ
+--@noteï¼šåˆ¤å®šä¸€ä¸ªå­—ç¬¦ä¸²æ˜¯å¦ç©ºæ ¼ç¬¦çš„é›†åˆ
 function string.isWhitespace(value)
 	if value then
 		local len = #value
@@ -51,8 +51,8 @@ function string.isWhitespace(value)
 	return false
 end
 
---@note£º½«×Ö·û´®×ª»»³É×Ö·ûÊı×é£¬°üÀ¨·ÇÓ¢ÎÄ×Ö·û
---@ret£º{char1, char2, ...}
+--@noteï¼šå°†å­—ç¬¦ä¸²è½¬æ¢æˆå­—ç¬¦æ•°ç»„ï¼ŒåŒ…æ‹¬éè‹±æ–‡å­—ç¬¦
+--@retï¼š{char1, char2, ...}
 function string.toArray(value)
 	local ret = {}
 	if value then
@@ -72,7 +72,7 @@ function string.toArray(value)
 	return ret
 end
 
---@note£º½«×Ö·û´®×ª»»³É¶ÔÓ¦µÄascii×Ö·û´®£¬ÒÔ¿Õ¸ñÎª·Ö½â
+--@noteï¼šå°†å­—ç¬¦ä¸²è½¬æ¢æˆå¯¹åº”çš„asciiå­—ç¬¦ä¸²ï¼Œä»¥ç©ºæ ¼ä¸ºåˆ†è§£
 function string.bytecode(value)
 	if value then
 		local bytes = {}
@@ -95,7 +95,7 @@ function string.bytecode(value)
 	return ""
 end
 
---@note£ºÈ¡×Ö·û´®µÄ×Ö´®
+--@noteï¼šå–å­—ç¬¦ä¸²çš„å­—ä¸²
 function string.substr(value, index, length)
 	if value then
 		local ret = {}
@@ -118,7 +118,7 @@ function string.substr(value, index, length)
 	end
 end
 
--------------colen:¸ù¾İÄ³¸ö·ûºÏ²ğ·Ö×Ö·û´®ÎªÊı×é(È±Ê¡Îª&,×Ö·û´®ĞÎÊ½:"a=v1&b-v2&c=v3", -------------------
+-------------colen:æ ¹æ®æŸä¸ªç¬¦åˆæ‹†åˆ†å­—ç¬¦ä¸²ä¸ºæ•°ç»„(ç¼ºçœä¸º&,å­—ç¬¦ä¸²å½¢å¼:"a=v1&b-v2&c=v3", -------------------
 function string.split(str, split)
 	local strTab={}
 	local sp=split or "&"

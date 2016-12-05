@@ -93,9 +93,9 @@ bool AccountMgr::unregAccount(int id)
 	{
 		AccountInfo& info = iter->second;
 		handle hPending = info.hPendingLink;
+		m_accounts.erase(iter);
 		LinkContext_Client* pOtherClient = g_session.getClientLink(hPending);
 		if ( pOtherClient ) pOtherClient->OnPendingOver();
-		m_accounts.erase(iter);
 		return true;
 	}
 

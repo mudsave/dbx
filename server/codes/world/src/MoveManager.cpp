@@ -41,9 +41,11 @@ HRESULT MoveManager::Do(HANDLE hContext)
 		case eMoveHandle:
 			{
 				_EntityMap::iterator iter = m_mapEntitys.begin();
-				for (; iter != m_mapEntitys.end(); ++iter)
+				for (; iter != m_mapEntitys.end();)
 				{
 					CoEntity* pEntity = _EntityFromHandle(iter->first);
+					//because on move will be erased in m_mapEntitys
+					++iter;
 					if (pEntity)
 					{
 						pEntity->onMove();

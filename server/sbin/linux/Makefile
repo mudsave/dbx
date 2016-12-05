@@ -102,7 +102,9 @@ session_v:
 gateway_v:
 	@set -e; ulimit -c 0; \
 	valgrind --log-file=$(WORK_DIR)/vlogs/gateway_v.txt $(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0
-	
+
 world_v :
 	@set -e; ulimit -c 0; \
 	valgrind --log-file=$(WORK_DIR)/vlogs/world_v.txt $(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 0
+
+include ./devel.mak

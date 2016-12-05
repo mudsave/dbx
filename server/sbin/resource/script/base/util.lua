@@ -29,7 +29,7 @@ function dice(rate)
 	return num < rate
 end
 
---@note：用字符串执行类方法
+--@note锛氱敤瀛楃涓叉墽琛岀被鏂规硶
 function execMethod(methodName,...)
 	local index=string.find(methodName,"[.]")
 	if (not index) then	return	end

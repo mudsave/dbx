@@ -2,68 +2,66 @@
 
 require "base.class"
 
--- keep global function to enchance performance
+-- 暂存全局函数,减少全局表搜索
 local tonumber = tonumber
 
--- module notice functions
+-- 文件内提示函数
 local function format(text,...)	return text and text:format(...) or ""		end
 local function notice(text,...) print("Attribute:"..format(text,...) )		end
 
--- define an attribute class
+-- 属性类定义函数
 function DefineAttribute(AttrDefine,Exprs,InfRef,SyncRef,PropRef)
 	local Attribute = class()
 
 	function Attribute:__init(entity,attrName,isDirty,value)
-		self.type		= attrName			-- attribute's id
-		self.value		= tonumber(value)	-- default value
-		self.entity		= entity			-- possessor
-		self.dirty		= isDirty			-- should update or not
-		self.changed	= false				-- up-to-date or not
+		self.type		= attrName			-- 属性名称
+		self.value		= tonumber(value)	-- 属性默认值
+		self.entity		= entity			-- 所有者
+		self.dirty		= isDirty			-- 是否需要更新
+		self.changed	= false				-- 从创建后是否有更新
 
 		local detail	= AttrDefine[attrName]
-		self.db			= detail.db			-- would keep in database
-		self.expr		= detail.expr		-- is an expr attribute
-		self.name		= detail.name		-- name in string format
+		self.db			= detail.db			-- 是否需要存数据库
+		self.expr		= detail.expr		-- 是不是公式属性
+		self.name		= detail.name		-- 名称
 	end
 
-	-- set attribute's value and make influence
+	-- 加载值
+	function Attribute:loadValue(value)
+		value = tonumber(value)
+		self.value		= value
+		self.dirty		= false
+		self.changed	= false
+
+		self:notifyInfluenceChanged()
+		self.entity:onAttrChanged(self.type,prev,value)
+	end
+
+	-- 设置值并通知到prop
 	function Attribute:setValue(value)
 		value = tonumber(value)
 		if self.value == value then
 			return
 		end
+
+		local prev		= self.value
+
 		self.value		= value
-		self.changed	= true
 		self.dirty		= false
+		self.changed	= true
 
-		local owner = self.entity
-
-		if not self:isExpr() then
+		local attrName	= self.type
+		local owner		= self.entity
+		local propID	= PropRef[attrName]
+		if propID then
 			local peer = owner:getPeer()
-			local propID = PropRef[self.type]
-
 			setPropValue(peer,propID,value)
 		end
-		
-		local inf = InfRef[self.type]
-		if inf then
-			for _,attrName in ipairs(inf) do
-				local attribute = owner:getAttribute(attrName)
-				if attribute:isExpr() then
-					if SyncRef[attrName] then
-						attribute.dirty = true
-					else
-						attribute:getValue()
-					end
-				else
-					notice("not an expression attribute:%s %s",self:getName(),attribute:getName())
-				end
-			end
-		end
-		owner:onAttrChanged(self.type)
+		self:notifyInfluenceChanged()
+		owner:onAttrChanged(attrName,prev,value)
 	end
 
-	-- attain attribute's latest value
+	-- 获取最新的数据
 	function Attribute:getValue()
 		if not self.dirty then
 			return self.value
@@ -71,7 +69,7 @@ function DefineAttribute(AttrDefine,Exprs,InfRef,SyncRef,PropRef)
 
 		local expr = Exprs[self.type]
 		if not expr then
-			notice("configure error:dirty attribute %s without expression",self:getName())
+			notice("配置错误,脏属性%s没有公式",self:getName())
 			return nil
 		end
 		local value = expr(self.entity)
@@ -79,12 +77,32 @@ function DefineAttribute(AttrDefine,Exprs,InfRef,SyncRef,PropRef)
 		return value
 	end
 
-	-- is to save to db
-	function Attribute:isSaveDB()
-		return self.db
+	-- 更新被当前属性影响的属性
+	function Attribute:notifyInfluenceChanged()
+		local inf = InfRef[self.type]
+		if not inf then
+			return
+		end
+		local owner = self.entity
+		for _,attrName in ipairs(inf) do
+			local attribute = owner:getAttribute(attrName)
+			if attribute:isExpr() then
+				attribute.dirty = true
+				if SyncRef[attrName] then
+					attribute:getValue()
+				end
+			else
+				notice("不是一个公式属性:%s %s",self:getName(),attribute:getName())
+			end
+		end
 	end
 
-	-- is an expression value
+	-- 是否需要存到数据库
+	function Attribute:isSaveDB()
+		return self.db and self.changed
+	end
+
+	-- 是不是一个公式属性
 	function Attribute:isExpr()
 		return self.expr
 	end

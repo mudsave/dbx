@@ -16,7 +16,7 @@ struct _LinkContext_DB
 	_LinkContext_DB(int type, handle h): linkType(type), hLink(h), idx(-1){}
 };
 
-IDBANetEvent* CClient::s_pNetEventHandle=NULL;	
+IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 
 CClient::CClient():m_bLink(false),INIT_THREAD_SAFETY_MEMBER_FAST(sock),INIT_THREAD_SAFETY_MEMBER_FAST(Attr)
 {
@@ -81,7 +81,7 @@ HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 {
 
 	if (result == S_OK)
-	{	
+	{
 		m_bLink=true;
                 m_hLink = hLink;
 		//s_pLinkPort=pPort;
@@ -102,7 +102,7 @@ HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 
 void CClient::setAttributeSet(int index,CSCResultMsg *pInfo)
 {
-	
+
 	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	m_MapAttrSet.insert(std::make_pair(index,pInfo));
        	LEAVE_CRITICAL_SECTION_MEMBER;
@@ -116,7 +116,7 @@ void* CClient::getAttributeSet(int attriIndex,int index)
 			return iter->second;
 		}
 	}
-       
+
 	LEAVE_CRITICAL_SECTION_MEMBER;
 }
 
@@ -141,11 +141,13 @@ int CClient::callDBProc(AppMsg *pMsg) {
 		if(pDataMsg->m_nTempObjId==0) pDataMsg->m_nTempObjId=nOperationId;
 		else
 			nOperationId=pDataMsg->m_nTempObjId;
-                
+
 		 if(m_hLink)
                 {
-                    IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
-					printf("callDBProc ed\n");
+                    TRACE0_L0("begin callDBProc !\n");
+					IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
+					//printf("callDBProc ed\n");
+					TRACE0_L0("callDBProc ed!\n");
                 }
                 else
                 {
@@ -165,7 +167,7 @@ int CClient::callDBSQL(AppMsg *pMsg) {
 		if(pDataMsg->m_nTempObjId==0) pDataMsg->m_nTempObjId=nOperationId;
 		else
 			nOperationId=pDataMsg->m_nTempObjId;
-                
+
                 if(m_hLink)
                 {
                     IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
@@ -196,7 +198,7 @@ int CClient::generateOperationId() {
 }
 
 bool CClient::closeLink(DWORD dwFlags) {
-	
+
 	if (m_bLink ) {
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::CloseLink(m_hLink,CLOSE_UNGRACEFUL);
                 m_hLink = NULL;
@@ -204,7 +206,7 @@ bool CClient::closeLink(DWORD dwFlags) {
 		return true;
 	}else
 		return false;
-	
+
 }
 
 HRESULT CClient::Do(HANDLE hContext) {
@@ -213,7 +215,7 @@ HRESULT CClient::Do(HANDLE hContext) {
 	HRESULT res=E_FAIL;
 	switch (pContext->flag) {
 	case eSend: {
-			
+
 		}
 		break;
 	case eThread: {

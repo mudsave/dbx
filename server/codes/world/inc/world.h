@@ -69,7 +69,7 @@ public:
 public:
 	virtual HRESULT Do(HANDLE hContext);
 
-public: 
+public:
 	virtual HANDLE OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int iLinkType);
 
 	virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
@@ -121,7 +121,7 @@ private:
 		msg.msgId		= MSG_G_W_SYN_WORLD_INFO;
 		msg.worldId		= m_worldId;
 		msg.msgLen		= sizeof(msg);
-		
+
 		IMsgLinksImpl<IID_IMsgLinksWG_C>::SendMsg(hLink, &msg);
 	}
 
@@ -147,8 +147,41 @@ public:
 		msg.msgId = MSG_G_W_ACK_PLAYER_LOGIN;
 		msg.roleId = roleId;
 		msg.result = result;
+		msg.context	= 0;
 		msg.msgLen = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWG_C>::SendMsg(hLink, &msg);
+		return 0;
+	}
+
+	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int result, int reason)
+	{
+		ASSERT_(hLink > 0);
+		ASSERT_(roleId > 0);
+		_MsgWG_PlayerLogout_ResultInfo msg;
+		msg.msgFlags = 0;
+		msg.msgCls = MSG_CLS_LOGIN;
+		msg.msgId = MSG_G_W_ACK_PLAYER_LOGOUT;
+		msg.roleId = roleId;
+		msg.result = result;
+		msg.reason = reason;
+		msg.context	= 0;
+		msg.msgLen = sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksWG_C>::SendMsg(hLink, &msg);
+		return 0;
+	}
+
+	int send_MsgWG_WorldPlayersLogout_ResultInfo(short worldId)
+	{
+		_MsgWG_WorldPlayersLogout_ResultInfo msg;
+		msg.msgFlags = 0;
+		msg.msgCls = MSG_CLS_LOGIN;
+		msg.msgId = MSG_W_G_WORLD_PLAYERS_LOGOUT;
+		msg.worldId = worldId;
+		msg.context	= 0;
+		msg.msgLen = sizeof(msg);
+		HRESULT hr = S_OK;
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)&msg, sizeof(msg) );
+		ASSERT_( SUCCEEDED(hr) );
 		return 0;
 	}
 
@@ -190,7 +223,7 @@ public:
 		msg->context	= 0;
 		msg->count		= count;
 		msg->msgLen		= sizeof(_MsgWG_SinkPeers) + sizeof(PeerHandle) * count + pMsg->msgLen;
-		memcpy(msg->hPeers, pPeers, count);
+		memcpy(msg->hPeers, pPeers, sizeof(PeerHandle) * count);
 
 		HRESULT hr = S_OK;
 		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)msg, sizeof(_MsgWG_SinkPeers) + sizeof(PeerHandle) * count ); ASSERT_( SUCCEEDED(hr) );
@@ -202,7 +235,7 @@ public:
 		_MsgWG_SinkWorldPeers msg;
 		msg.msgFlags	= 0;
 		msg.msgCls		= MSG_CLS_DEFAULT;
-		msg.msgId		= MSG_G_W_SINK_PEER;
+		msg.msgId		= MSG_G_W_SINK_WORLD_PEERS;
 		msg.context		= 0;
 		msg.msgLen		= sizeof(msg) + pMsg->msgLen;
 		msg.worldId		= worldId;
@@ -217,7 +250,7 @@ public:
 		_MsgWG_SinkWorld msg;
 		msg.msgFlags	= 0;
 		msg.msgCls		= MSG_CLS_DEFAULT;
-		msg.msgId		= MSG_G_W_SINK_PEER;
+		msg.msgId		= MSG_G_W_SINK_WORLD;
 		msg.context		= 0;
 		msg.msgLen		= sizeof(msg) + pMsg->msgLen;
 		msg.worldId		= worldId < 0 ? -1 : worldId;
@@ -244,7 +277,7 @@ private:
 			TRACE2_L1("[CWorld::luaStart] failed in worldID %d because of:%s\n", m_worldId, startFunc.getLastError());
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -262,7 +295,7 @@ public:
 private:
 	const char* translateLinkType(int linkType)
 	{
-		if ( linkType == IID_IMsgLinksWS_C ) 
+		if ( linkType == IID_IMsgLinksWS_C )
 			return "World-->Session";
 
 		if ( linkType == IID_IMsgLinksWG_C )

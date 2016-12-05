@@ -31,7 +31,7 @@ void LinkContext_Client::doLoginAccount(DBMsg_LoginResult* pRet)
 	ASSERT_(roleList);
 	accountId = roleList->accountId;
 	g_accountMgr.regAccount(accountId, hLink);
-	g_session.send_MsgSC_Login_ResultInfo(hLink, 0, pRet);
+	g_session.send_MsgSC_Login_ResultInfo(hLink, 0, roleList);
 	_SwitchState(LINK_CONTEXT_LOGINED);
 }
 
@@ -99,7 +99,7 @@ void LinkContext_Client::_SwitchState(int s)
 }
 
 void LinkContext_Client::OnPendingOver()
-{	
+{
 	ASSERT_( state == LINK_CONTEXT_LOGINING_PENDING );
 	doLoginAccount();
 }
@@ -142,12 +142,7 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 			_MsgCS_ChooseRoleInfo* pInfo = (_MsgCS_ChooseRoleInfo*)pMsg;
 			int roleId = pInfo->roleId;
 			short worldId = pInfo->worldId;
-			if ( IsValidRole(roleId))
-			{
-				g_session.IMsgLinksImpl<IID_IMsgLinksCS_L>::CloseLink(hLink, CLOSE_RELEASE);
-				return;
-			}
-						short gatewayId	= g_session.getRanGatewayId(worldId);
+			short gatewayId	= g_session.getRanGatewayId(worldId);
 			ASSERT_( gatewayId >= 0 );
 			AccountInfo& account = g_accountMgr.getAccount(accountId);
 			account.roleId = roleId;
@@ -162,7 +157,7 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 		if ( msgId == MSG_S_C_ROLE_CREATE )
 		{
 			_MsgCS_CreateRoleInfo* pInfo = (_MsgCS_CreateRoleInfo*)pMsg;
-			LinkContext_Client* pClient = g_session.getClientLink(hLink); ASSERT_(pClient); 
+			LinkContext_Client* pClient = g_session.getClientLink(hLink); ASSERT_(pClient);
 			g_DBProxy.doCreateRole(hLink, pClient->accountId, pInfo);
 			_SwitchState(LINK_CONTEXT_ROLE_CREATEING);
 			return;
@@ -209,8 +204,10 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 			}
 
 			bool flag = g_accountMgr.isRegistered(pRet->accountId);
+			TRACE1_L0("pRet->accountId is %d\n",pRet->accountId);
 			if ( !flag )
 			{
+				TRACE1_L0("resiget success %d\n",pRet->accountId);
 				doLoginAccount(pRet);
 				return;
 			}

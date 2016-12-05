@@ -1,6 +1,6 @@
 --[[Property.lua
-ÃèÊö£º
-	ÓÃÓÚÊôĞÔ·½·¨ÉùÃ÷
+æè¿°ï¼š
+	ç”¨äºå±æ€§æ–¹æ³•å£°æ˜
 
 Exported API:
 	Property(class)
@@ -34,7 +34,7 @@ local classMT = {
 	end
 }
 
---@note£ºÊôĞÔ·½·¨´úÀí
+--@noteï¼šå±æ€§æ–¹æ³•ä»£ç†
 local function prop_accessor(prop, class, name, default, rfunc, wfunc, mode)
 	assert(class, "error Class type.")
 	assert(name, "error Name attribute.")
@@ -92,7 +92,7 @@ local function prop_accessor(prop, class, name, default, rfunc, wfunc, mode)
 	end
 end
 
---@note£ºclass¶ÔÓ¦µÄPropertyÉú³Éº¯Êı
+--@noteï¼šclasså¯¹åº”çš„Propertyç”Ÿæˆå‡½æ•°
 local function prop_new(_, class, observer)
 	assert(class, "error Class type.")
 

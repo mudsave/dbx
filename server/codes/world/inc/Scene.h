@@ -25,26 +25,6 @@ public:
     	short classType = eClsTypeNone);
 
 public:
-	static handle s_entitiesBuf[_MaxEnumCount];
-
-private:
-	typedef std::set<handle> _EntitySet;
-	typedef _CountedArray<_EntitySet> _AxisPt;
-	_CountedArray<_AxisPt> m_yAxis;
-	_PropSceneData m_SceneInfo;
-	CMapInfo* m_pMapInfo;
-	int m_unitCount;
-	GridVct m_mapSize;
-
-public:
-	static CoScene* Create(SceneType type, short mapId, char* fname);
-	static bool PosValidate(short mapId, int x, int y);
-	static GridVct FindRandomTile(int mapId);
-	
-private:
-	static bool FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVct &ptResult,
-    	const GridVct* pPtExclude = NULL);
-public:
 	bool inMap(short x, short y)
     {
     	return (x >= 0 && x < m_mapSize.x && y >= 0 && y < m_mapSize.y);
@@ -65,6 +45,27 @@ public:
     {
     	return (SceneType)(m_SceneInfo.sceneType);
     }
+
+public:
+	static handle s_entitiesBuf[_MaxEnumCount];
+
+private:
+	typedef std::set<handle> _EntitySet;
+	typedef _CountedArray<_EntitySet> _AxisPt;
+	_CountedArray<_AxisPt> m_yAxis;
+	_PropSceneData m_SceneInfo;
+	CMapInfo* m_pMapInfo;
+	int m_unitCount;
+	GridVct m_mapSize;
+
+public:
+	static CoScene* Create(SceneType type, short mapId, char* fname);
+	static bool PosValidate(short mapId, int x, int y);
+	static GridVct FindRandomTile(int mapId);
+
+private:
+	static bool FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVct &ptResult,
+    	const GridVct* pPtExclude = NULL);
 };
 
 #endif

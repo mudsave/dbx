@@ -1,6 +1,22 @@
 --[[ConfDB.lua
-ÃèÊö£º
-	ÅäÖÃÊı¾İ¼ÓÔØ
+æè¿°ï¼?
+	é…ç½®æ•°æ®åŠ è½½
 --]]
 
 require "data.MapDB"
+require "data.SchoolPlayerDB"
+require "data.WarrantDB"
+require "data.MedicamentDB"
+require "data.EquipDB.EquipmentDB"
+require "data.EquipDB.AddAttrTypeDB"
+require "data.EquipDB.AddAttrValueDB"
+require "data.EquipDB.BindAttrValueDB"
+require "data.EquipDB.EquipMoneyConsumeDB"
+require "data.EquipDB.EquipItemConsumeDB"
+require "data.EquipDB.EquipRemouldDB"
+require "data.EquipDB.EquipFormulaDB"
+require "data.EquipDB.RefiningEffectDB"
+require "data.EquipDB.ModelIDByClothDB"
+require "data.OpenTreasureChestDB"
+require "data.RideDB"
+

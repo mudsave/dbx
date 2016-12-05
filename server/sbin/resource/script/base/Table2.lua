@@ -20,8 +20,8 @@ function Table2.String2Table(tbstr)
 end
 
 --[[
-	使用这个函数的时候，不允许使用嵌套了自己的表，会导致堆栈溢出
-	表中的键尽量使用数字或者字符串
+	浣跨敤杩欎釜鍑芥暟鐨勬椂鍊欙紝涓嶅厑璁镐娇鐢ㄥ祵濂椾簡鑷繁鐨勮〃锛屼細瀵艰嚧鍫嗘爤婧㈠嚭
+	琛ㄤ腑鐨勯敭灏介噺浣跨敤鏁板瓧鎴栬�呭瓧绗︿覆
 ]]
 function Table2.Table2String(tb)
 	builder:clear()

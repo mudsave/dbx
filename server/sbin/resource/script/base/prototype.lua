@@ -1,6 +1,6 @@
 --[[prototype.lua
-ÃèÊö£º
-	Ìá¹©»ùÓÚÔ­ĞÍ/Ä£°åÊı¾İ²Ù×÷»úÖÆ
+æè¿°ï¼š
+	æä¾›åŸºäºåŸå‹/æ¨¡æ¿æ•°æ®æ“ä½œæœºåˆ¶
 --]]
 
 local ACCESSOR = 1
@@ -9,7 +9,7 @@ local READER = 3
 
 local classMT = {}
 
---@note£ºÔ­ĞÍ·½·¨´úÀí
+--@noteï¼šåŸå‹æ–¹æ³•ä»£ç†
 local function prototype_accessor(prototype, class, name, default, rfunc, wfunc, mode)
 	--assert(class, "error Class type.")
 	--assert(name, "error Name attribute.")
@@ -81,7 +81,7 @@ local function prototype_accessor(prototype, class, name, default, rfunc, wfunc,
 	end
 end
 
---@note£ºclass¶ÔÓ¦µÄÔ­ĞÍµÄÉú³É
+--@noteï¼šclasså¯¹åº”çš„åŸå‹çš„ç”Ÿæˆ
 local function prototype_new(_, class, prop, method, modified)
 	--assert(class, "error Class type.")
 

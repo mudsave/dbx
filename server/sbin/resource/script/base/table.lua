@@ -1,12 +1,12 @@
 --[[table.lua
-ÃèÊö£º
-	table¿âµÄÀ©Õ¹
+æè¿°ï¼š
+	tableåº“çš„æ‰©å±•
 ]]
 
---@note È«¾ÖÖ»¶Á¿Õ±íµÄ¶¨Òå
+--@note å…¨å±€åªè¯»ç©ºè¡¨çš„å®šä¹‰
 table.empty = define({ __newindex = function(s, f, v) print("This is a read-only table") end }, {})
 
---@note£ºÂÖÅÌ,´«ÈëÈ¨ÖØÖµ,·µ»Ø±»Ñ¡ÖĞµÄkeyÖµ,t = {[1]=60,[2]=100,...}
+--@noteï¼šè½®ç›˜,ä¼ å…¥æƒé‡å€¼,è¿”å›è¢«é€‰ä¸­çš„keyå€¼,t = {[1]=60,[2]=100,...}
 function table.wheel(t)
 	local sum = 0
 	for _,v in pairs(t) do
@@ -22,7 +22,7 @@ function table.wheel(t)
 	end
 end
 
---@note£º»ñµÃtabÀïÃæ¼üÖµ = valueµÄkeyÖµ
+--@noteï¼šè·å¾—tabé‡Œé¢é”®å€¼ = valueçš„keyå€¼
 function table.getKeyName(tab, value)
 	for k, v in pairs(tab or table.empty) do
 		if v == value then
@@ -32,7 +32,7 @@ function table.getKeyName(tab, value)
 	return ""
 end
 
---@note£ºtableÊÇÊı×éĞÎÊ½
+--@noteï¼štableæ˜¯æ•°ç»„å½¢å¼
 function table.isArray(tab)
 	if not tab then
 		return false
@@ -54,7 +54,7 @@ function table.isArray(tab)
 	return ret
 end
 
---@note£ºtableÊÇmapĞÎÊ½
+--@noteï¼štableæ˜¯mapå½¢å¼
 function table.isMap(tab)
 	if not tab then
 		return false
@@ -62,8 +62,8 @@ function table.isMap(tab)
 	return table.isArray(tab) ~= true
 end
 
---@note£º½«tableµÄÔªËØÖğ¸öÈ¡³ö(Êı×éºÍ·ÇÊı×é»ìºÏ´¦Àí)
---@ret£ºele1,ele2...
+--@noteï¼šå°†tableçš„å…ƒç´ é€ä¸ªå–å‡º(æ•°ç»„å’Œéæ•°ç»„æ··åˆå¤„ç†)
+--@retï¼šele1,ele2...
 function table.unpack(tab)
 	local ret
 	if table.isArray(tab) then
@@ -83,7 +83,7 @@ function table.unpack(tab)
 	return unpack(ret)
 end
 
---@note£ºÊÇ·ñ°üº¬Ä³¸öÔªËØ,Ö§³ÖÊı×é(±ØĞëk,vÍ¬Ê±ÏàµÈ)
+--@noteï¼šæ˜¯å¦åŒ…å«æŸä¸ªå…ƒç´ ,æ”¯æŒæ•°ç»„(å¿…é¡»k,våŒæ—¶ç›¸ç­‰)
 function table.include(tab, element)
 	for k, v in pairs(tab or table.empty) do
 		local done = false
@@ -108,7 +108,7 @@ function table.include(tab, element)
 	return false
 end
 
---@note£ºtable.includeµÄÀ©³ä
+--@noteï¼štable.includeçš„æ‰©å……
 function table.includes(tab,elements)
 	for k,v in pairs(elements or table.empty) do
 		if not table.include(tab,v) then
@@ -118,7 +118,7 @@ function table.includes(tab,elements)
 	return true
 end
 
---@note£ºÅĞ¶ÏtableÀïÃæÊÇ·ñ°üº¬¸ÃÔªËØ
+--@noteï¼šåˆ¤æ–­tableé‡Œé¢æ˜¯å¦åŒ…å«è¯¥å…ƒç´ 
 function table.contains(tab, object)
 	if tab and object then
 		for field, value in pairs(tab) do
@@ -128,7 +128,7 @@ function table.contains(tab, object)
 	return false
 end
 
---@note£º»ñµÃÊı×éÀàĞÍµÄtableµÄ³¤¶È
+--@noteï¼šè·å¾—æ•°ç»„ç±»å‹çš„tableçš„é•¿åº¦
 function table.len(tab)
 	if type(tab) == "table" then
 		return #tab
@@ -136,7 +136,7 @@ function table.len(tab)
 	return 0
 end
 
---@note£º»ñµÃtableËùÓĞÀàĞÍÔªËØµÄ´óĞ¡
+--@noteï¼šè·å¾—tableæ‰€æœ‰ç±»å‹å…ƒç´ çš„å¤§å°
 function table.size(tab)
 	local size = 0
 	if type(tab) == "table" then
@@ -147,7 +147,7 @@ function table.size(tab)
 	return size
 end
 
---@note£ºÒÆ³ıarray»òÕßmapÀïÃæµÄÔªËØ
+--@noteï¼šç§»é™¤arrayæˆ–è€…mapé‡Œé¢çš„å…ƒç´ 
 function table.removeValue(tab, value)
 	if tab then
 		if table.isArray(tab) then
@@ -171,7 +171,7 @@ function table.removeValue(tab, value)
 	return tab
 end
 
---@note£ºÇå¿Õtable
+--@noteï¼šæ¸…ç©ºtable
 function table.clear(tab)
 	if tab then
 		for k,_ in pairs(tab) do
@@ -181,9 +181,9 @@ function table.clear(tab)
 	return tab
 end
 
---@note£ºÁªºÏËùÓĞµÄ±íÎªÒ»ÕÅ±í
---@param£ºtable1,table2...
---@ret£ºÁªºÏÒÔºóµÄ±í
+--@noteï¼šè”åˆæ‰€æœ‰çš„è¡¨ä¸ºä¸€å¼ è¡¨
+--@paramï¼štable1,table2...
+--@retï¼šè”åˆä»¥åçš„è¡¨
 function table.join(...)
 	local ret = {}
 	for i = 1, select("#", ...) do
@@ -195,8 +195,8 @@ function table.join(...)
 	return ret
 end
 
---@note£ºtableµÄÇ³copy
---@param overlay£ºµ±Ä¿±êtableÓĞÖØ¸´keyÖµÊ±ÊÇ·ñ±»¸²¸Çµô£¬false²»¸²¸Ç£¬ÆäËû¶¼¸²¸Ç
+--@noteï¼štableçš„æµ…copy
+--@param overlayï¼šå½“ç›®æ ‡tableæœ‰é‡å¤keyå€¼æ—¶æ˜¯å¦è¢«è¦†ç›–æ‰ï¼Œfalseä¸è¦†ç›–ï¼Œå…¶ä»–éƒ½è¦†ç›–
 function table.copy(source, destiny, overlay)
 	if source then
 		overlay = overlay ~= false
@@ -212,7 +212,7 @@ function table.copy(source, destiny, overlay)
 	return destiny
 end
 
---@note£ºÉî¶Ècopy£¨×¢Òâ£ºÔ´table key,valueÓëÄ¿±êÖØ¸´Ê±£¬Ê¹ÓÃtable.insert,Ô´key²»ÔÙ±£Áô,copyÊı¾İ£©
+--@noteï¼šæ·±åº¦copyï¼ˆæ³¨æ„ï¼šæºtable key,valueä¸ç›®æ ‡é‡å¤æ—¶ï¼Œä½¿ç”¨table.insert,æºkeyä¸å†ä¿ç•™,copyæ•°æ®ï¼‰
 function table.deepCopy(source, destiny)
 	local destiny = destiny or {}
 	for key, value in pairs(source or table.empty) do
@@ -229,7 +229,7 @@ function table.deepCopy(source, destiny)
 	return destiny
 end
 
---@note£º°ÑÒ»¸ötable¸´ÖÆµ½ÁíÒ»¸ö, ²»»á±£ÁôkeyÖµ£¬µ«Ä¿±êtable²»»áÊÕµ½Ó°Ïì
+--@noteï¼šæŠŠä¸€ä¸ªtableå¤åˆ¶åˆ°å¦ä¸€ä¸ª, ä¸ä¼šä¿ç•™keyå€¼ï¼Œä½†ç›®æ ‡tableä¸ä¼šæ”¶åˆ°å½±å“
 function table.copyTable(source, destiny)
 	local destiny = destiny or {}
 	for _, value in pairs(source or table.empty) do
@@ -248,7 +248,7 @@ function table.isEmpty(t)
 	end
 	return true
 end
-------------------------------------ÈçÏÂÎªµü´ú×Ó£¬¸ù¾İĞèÒª×Ô¼ºÀ©³ä---------------------------------------
+------------------------------------å¦‚ä¸‹ä¸ºè¿­ä»£å­ï¼Œæ ¹æ®éœ€è¦è‡ªå·±æ‰©å……---------------------------------------
 local empty_fun = function() end
 function table.iterator(tab)
 	if type(tab) == "table" then

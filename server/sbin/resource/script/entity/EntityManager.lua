@@ -1,6 +1,6 @@
 --[[EntityManager.lua
-ÃèÊö£º
-	ÊµÌå¹ÜÀí
+æè¿°ï¼š
+	å®ä½“ç®¡ç†
 --]]
 
 EntityManager = class(nil, Singleton)
@@ -22,7 +22,7 @@ function EntityManager:__release()
 end
 
 function EntityManager:addPlayer(player)
-	local id = player:getID()
+	local playerID = player:getID()
 	local dbId = player:getDBID()
 	if self.playerList[playerID] then
 		print("EntityManager:addPlayer() error, id = ", playerID)
@@ -55,7 +55,7 @@ function EntityManager:getPlayers()
 	return self.playerList
 end
 
---Ìí¼ÓNpc¶ÔÏó
+--æ·»åŠ Npcå¯¹è±¡
 function EntityManager:addNpc(npc)
 	local npcID = npc:getID()
 	if not self.npcList[npcID] then
@@ -64,14 +64,14 @@ function EntityManager:addNpc(npc)
 
 end
 
---É¾³ıNpc¶ÔÏó
+--åˆ é™¤Npcå¯¹è±¡
 function EntityManager:removeNpc(npcID)
 	if self.npcList[npcID] then
 		self.npcList[npcID] = nil
 	end
 end
 
---Ìí¼ÓPet¶ÔÏó
+--æ·»åŠ Petå¯¹è±¡
 function EntityManager:addPet(pet)
 	local petID = pet:getID()
 	if not self.petList[petID] then
@@ -79,14 +79,14 @@ function EntityManager:addPet(pet)
 	end
 end
 
---É¾³ıPet¶ÔÏó
+--åˆ é™¤Petå¯¹è±¡
 function EntityManager:removePet(petID)
 	if self.petList[petID] then
 		self.petList[petID] = nil
 	end
 end
 
---Ìí¼Ó³¡¾°Ã÷À×¶ÔÏó
+--æ·»åŠ åœºæ™¯æ˜é›·å¯¹è±¡
 function EntityManager:addMineNpc(mineNpc)
 	local mineNpcID = mineNpc:getID()
 	if not self.mineNpcList[mineNpcID] then
@@ -94,7 +94,7 @@ function EntityManager:addMineNpc(mineNpc)
 	end
 end
 
---É¾³ı³¡¾°Ã÷À×¶ÔÏó
+--åˆ é™¤åœºæ™¯æ˜é›·å¯¹è±¡
 function EntityManager:removeMineNpc(mineNpcID)
 	if self.mineNpcList[mineNpcID] then
 		self.mineNpcList[mineNpcID] = nil

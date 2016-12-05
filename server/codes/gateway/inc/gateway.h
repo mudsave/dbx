@@ -71,7 +71,7 @@ public:
 public:
 	virtual HRESULT Do(HANDLE hContext);
 
-public: 
+public:
 	virtual HANDLE OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int iLinkType);
 
 	virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
@@ -86,7 +86,7 @@ private:
 		CastedState t_castedState;
 		t_castedState.clientCount = m_clients.size();
 		t_castedState.worldCount = 0;
-		
+
 		for ( WorldMap::iterator iter = m_worlds.begin(); iter != m_worlds.end(); iter++ )
 		{
 			LinkContext_World* pWorld = iter->second;
@@ -198,6 +198,7 @@ public:
 		msg.msgId       = MSG_W_G_PLAYER_LOGOUT;
 		msg.roleId		= player->roleId;
 		msg.reason		= player->logoutReason;
+		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(player->hWorldLink, &msg);
 	}
 
@@ -210,6 +211,7 @@ public:
 		msg.msgCls      = MSG_CLS_LOGIN;
 		msg.msgId		= MSG_C_G_ACK_PLAYER_LOGIN;
 		msg.result		= result;
+		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksCG_L>::SendMsg(player->hLink, &msg);
 	}
 
@@ -224,6 +226,7 @@ public:
 		msg.roleId		= player->roleId;
 		msg.result		= result;
 		msg.reason		= reason;
+		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksCG_L>::SendMsg(player->hLink, &msg);
 
 		LinkContext_Client* pClient = getClientLink(player->hLink); ASSERT_(pClient);
@@ -241,6 +244,7 @@ public:
 		msg.accountId	= player->accountId;
 		msg.roleId		= player->roleId;
 		msg.result		= result;
+		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
 
@@ -255,6 +259,7 @@ public:
 		msg.roleId		= player->roleId;
 		msg.result		= result;
 		msg.reason		= reason;
+		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
 
@@ -277,7 +282,7 @@ public:
 private:
 	const char* translateLinkType(int linkType)
 	{
-		if ( linkType == IID_IMsgLinksCG_L ) 
+		if ( linkType == IID_IMsgLinksCG_L )
 			return "Gateway<--Client";
 
 		if ( linkType == IID_IMsgLinksWG_L )
@@ -384,7 +389,7 @@ public:
 
 			for( int i = 0; i < MAX_GATEWAYS; i++ )
 			{
-				if( (worldIds[i] == 1 && castedState.worldIds[i] == 0)|| 
+				if( (worldIds[i] == 1 && castedState.worldIds[i] == 0)||
 					(worldIds[i] == 0 && castedState.worldIds[i] == 1))
 				{
 					return true;
@@ -398,7 +403,7 @@ public:
 			worldCount = castedState.worldCount;
 			memset((void*) worldIds, 0 , sizeof(worldIds));
 			for( int worldId = 0; worldId < MAX_GATEWAYS; worldId++ )
-			{   
+			{
 			     if( castedState.worldIds[worldId] == 1 )
 				 {
 					 worldIds[worldId] = 1;
@@ -407,7 +412,7 @@ public:
 			return *this;
 		}
 	};
-	
+
 	CastedState				m_castedState;
 
 private:
