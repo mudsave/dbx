@@ -3,3 +3,4 @@
 /dbx/*.sdf
 /dbx/*.suo
 /DBEngine/*.user
+__pycache__
