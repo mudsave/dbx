@@ -4,3 +4,4 @@
 /dbx/*.suo
 /DBEngine/*.user
 __pycache__
+*.user
