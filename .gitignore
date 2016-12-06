@@ -5,3 +5,6 @@
 /DBEngine/*.user
 __pycache__
 *.user
+*.opensdf
+*.sdf
+*.suo
