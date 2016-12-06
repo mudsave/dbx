@@ -11,7 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DBSession.cpp" />
     <ClCompile Include="src\DBAServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DBSession.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}</ProjectGuid>
@@ -47,6 +51,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../server/codes/sock/inc;../server/codes/share;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -59,6 +64,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../server/codes/sock/inc;../server/codes/share;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
