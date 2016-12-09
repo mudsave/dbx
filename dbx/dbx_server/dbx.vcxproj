@@ -11,11 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DBSession.cpp" />
-    <ClCompile Include="src\DBAServer.cpp" />
+    <ClInclude Include="src\DBManager.h" />
+    <ClInclude Include="src\DBSession.h" />
+    <ClInclude Include="src\NetworkInterface.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DBSession.h" />
+    <ClCompile Include="src\DBManager.cpp" />
+    <ClCompile Include="src\DBSession.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\NetworkInterface.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}</ProjectGuid>
@@ -51,7 +55,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../server/codes/sock/inc;../server/codes/share;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -64,7 +68,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../server/codes/sock/inc;../server/codes/share;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

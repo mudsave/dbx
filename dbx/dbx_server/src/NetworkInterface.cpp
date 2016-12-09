@@ -1,4 +1,4 @@
-#include "NetWorkInterface.h"
+#include "NetworkInterface.h"
 
 #include "Sock.h"
 #include "trace.h"
