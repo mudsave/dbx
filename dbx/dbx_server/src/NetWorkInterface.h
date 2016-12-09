@@ -1,9 +1,10 @@
 #ifndef __NETWORK_INTERFACE_H__
 #define __NETWORK_INTERFACE_H__
 
+#include "msgdef.h"
 #include "types.h"
 
-//class AppMsg;	// 没找到AppMsg定义在哪里，暂时如此
+
 class ILinkCtrl;
 class ILinkSink;
 
@@ -15,7 +16,7 @@ public:
 
 	void Listen(const BYTE *p_addr, int *p_port, ILinkSink *p_sink, DWORD p_dwFlags);
 
-	HRESULT Send(BYTE *p_appMsg);	// 没找到AppMsg定义在哪里，为了让程序跑起来，暂时使用BYTE
+	HRESULT Send(AppMsg *p_appMsg);
 
 	HRESULT Recv(BYTE *p_buff, int p_size);
 

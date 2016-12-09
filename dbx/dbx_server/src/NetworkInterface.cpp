@@ -15,7 +15,7 @@ void NetworkInterface::Listen(const BYTE *p_addr, int *p_port, ILinkSink *p_sink
 
 }
 
-HRESULT NetworkInterface::Send(BYTE *p_appMsg)
+HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
 {
 }
 
