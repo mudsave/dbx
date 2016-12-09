@@ -1,9 +1,11 @@
 #include "NetWorkInterface.h"
 
 #include "Sock.h"
+#include "trace.h"
 
 NetworkInterface::NetworkInterface()
 {
+	TRACE0_L2( "NetworkInterface init..." );
 	m_linkCtrl = CreateLinkCtrl();
 
 }

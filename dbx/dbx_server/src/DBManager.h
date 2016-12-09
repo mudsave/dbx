@@ -15,7 +15,4 @@ protected:
 };
 
 
-
-
-
 #endif // __DBMANAGER_H__

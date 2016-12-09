@@ -8,7 +8,6 @@ class ILinkCtrl;
 class ILinkSink;
 
 
-
 class NetworkInterface
 {
 public:
