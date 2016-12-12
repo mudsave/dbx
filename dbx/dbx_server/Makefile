@@ -26,3 +26,10 @@ LIBS +=-lrt -lstdc++ -pthread -lSock
 target: (wildcard *.cpp)
 	$(CXX) CFLAGS $(SRC_DIR)/*.cpp $(LIBS)
 
+.PHONY: clean
+
+test:
+	@echo "wsf makefile test."
+
+clean:
+	rm *.o
