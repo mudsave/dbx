@@ -1,35 +1,34 @@
-
-# ¹¤³ÌÃû×Ö
+ï»¿
+# å·¥ç¨‹åå­—
 PROJECT_NAME = dbx
 
-# Ô´´úÂëÄ¿Â¼
+# æºä»£ç ç›®å½•
 SRC_DIR = ./src
 
-# default.makÒÑ°üº¬ÁËÒ»Ğ©¹«ÓÃµÄÄ¿Â¼£¬ÕâÀï¼ÓÉÏÏîÄ¿±¾ÉíÎÄ¼şÄ¿Â¼
+# default.makå·²åŒ…å«äº†ä¸€äº›å…¬ç”¨çš„ç›®å½•ï¼Œè¿™é‡ŒåŠ ä¸Šé¡¹ç›®æœ¬èº«æ–‡ä»¶ç›®å½•
 INCLUDE_DIR = -I../codes/dbx/inc
 
-# ±àÒëÑ¡Ïî
+# ç¼–è¯‘é€‰é¡¹
 CFLAGS = $(INCLUDE_DIR) -Xlinker -export-dynamic
 
 # --------------- default.mak start -------------------------------------------------------
-# ÕâÀïÊ¹ÓÃgcc£¬gcc -lstdc++ µÈÍ¬ÓÚ g++
+# è¿™é‡Œä½¿ç”¨gccï¼Œgcc -lstdc++ ç­‰åŒäº g++
 CXX = gcc
 
-# Í·ÎÄ¼ş°üº¬Ä¿Â¼
+# å¤´æ–‡ä»¶åŒ…å«ç›®å½•
 INCLUDE_DIR += -I../../share -I../../server/codes/share -I../../server/codes/sock/inc
 
-# ¹²Ïí¿â£¨exeÁ´½ÓĞèÒªµÄ¿â£¬¶ÔÓÚsoÔòÖ±½Ó¶¨ÒåÁ´½ÓÏî£¬²»Ê¹ÓÃ¸Ã¶¨Òå£©£¬Sock¿âÊÇÏîÄ¿Éú³ÉµÄ¿â
+# å…±äº«åº“ï¼ˆexeé“¾æ¥éœ€è¦çš„åº“ï¼Œå¯¹äºsoåˆ™ç›´æ¥å®šä¹‰é“¾æ¥é¡¹ï¼Œä¸ä½¿ç”¨è¯¥å®šä¹‰ï¼‰ï¼ŒSockåº“æ˜¯é¡¹ç›®ç”Ÿæˆçš„åº“
 LIBS +=-lrt -lstdc++ -pthread -lSock
 
 # --------------- default.mak end ---------------------------------------------------------
 
-target: (wildcard *.cpp)
+target: $(wildcard *.cpp)
 	$(CXX) CFLAGS $(SRC_DIR)/*.cpp $(LIBS)
-
-.PHONY: clean
 
 test:
 	@echo "wsf makefile test."
 
+.PHONY: clean
 clean:
 	rm *.o
