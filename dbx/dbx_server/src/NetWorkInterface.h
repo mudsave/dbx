@@ -1,7 +1,11 @@
 #ifndef __NETWORK_INTERFACE_H__
 #define __NETWORK_INTERFACE_H__
 
-#include "msgdef.h"
+// @note by wangshufeng.
+// AppMsg在头文件msgdef.h中，应该包含msgdef.h才对，但头文件依赖关系错误。
+// msgdef.h用到了vsdef.h中的声明却没有包含vsdef.h。包含msgdef.h会出错。
+// 把msgdef.h和vsdef.h视作一个文件即可，使用时包含vsdef.h.
+#include "vsdef.h"
 #include "types.h"
 
 
