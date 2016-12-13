@@ -1,6 +1,9 @@
 #ifndef __DBMANAGER_H__
 #define __DBMANAGER_H__
 
+#include "lindef.h"
+#include "Sock.h"
+
 #include "NetworkInterface.h"
 
 class DBManager
