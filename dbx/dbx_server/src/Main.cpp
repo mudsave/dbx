@@ -5,17 +5,33 @@
 #include "DBManager.h"
 
 
-int main( int argc, char *argv[] )
+void ParseMainCommandArgs(int argc, char *argv[])
 {
-	//const unsigned short int DBX_PORT = 3000;
+}
 
-	InitTraceServer();
+int main(int argc, char *argv[])
+{
+	
+	InitTraceServer(true);
+    TRACE0_L2("DBX start...");
 
-	TRACE0_L2("DBSession start...");
+    ParseMainCommandArgs(argc, argv);
 
-	DBManager app;
-	app.Running();
+    const unsigned short int DBX_PORT = 3000;
+    DBManager app(DBX_PORT);
+    HRESULT result = app.Running();
+    if(result == S_OK)
+    {
+        TRACE0_L2("Dbx stop [ normal ].");
+    }
+    else
+    {
+        TRACE0_L2("Dbx stop [ timeout ].");
+    }
 
+    Sleep(1000 * 5);
+    app.RunOut();
+    Sleep(1000 * 5);
 	return 0;
 }
 

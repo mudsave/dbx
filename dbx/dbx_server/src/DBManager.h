@@ -6,9 +6,10 @@
 class DBManager
 {
 public:
-	DBManager();
+	DBManager(unsigned short p_port = 3000);
 
-	void Running();
+	HRESULT Running();
+    void RunOut();
 
 protected:
 	NetworkInterface m_networkInterface;

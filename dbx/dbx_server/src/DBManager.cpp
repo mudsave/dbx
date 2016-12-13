@@ -6,12 +6,18 @@
 
 #include "lindef.h"
 
-DBManager::DBManager()
+DBManager::DBManager(unsigned short p_port)
 {
 	m_networkInterface = NetworkInterface();
 }
 
-void DBManager::Running()
+HRESULT DBManager::Running()
 {
-	TRACE0_L2( "DBManager is Running..." );
+	TRACE0_L2( "DBManager is Running...\n" );
+
+}
+
+void DBManager::RunOut()
+{
+    TRACE0_L2("DBManager had run out...\n");
 }
