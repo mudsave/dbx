@@ -24,7 +24,7 @@ LIBS +=-lrt -lstdc++ -pthread -lSock
 # --------------- default.mak end ---------------------------------------------------------
 
 target: $(wildcard *.cpp)
-	$(CXX) CFLAGS $(SRC_DIR)/*.cpp $(LIBS)
+	$(CXX) $(CFLAGS) $(SRC_DIR)/*.cpp $(LIBS)
 
 test:
 	@echo "wsf makefile test."
