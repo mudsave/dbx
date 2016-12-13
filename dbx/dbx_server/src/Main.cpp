@@ -12,7 +12,6 @@ void ParseMainCommandArgs(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	
 	InitTraceServer(true);
     TRACE0_L2("DBX start...\n");
 
@@ -20,7 +19,7 @@ int main(int argc, char *argv[])
 
     const int DBX_PORT = 3000;
     DBManager app;
-    HRESULT result = app.Running();
+    HRESULT result = app.Running(DBX_PORT);
     if(result == S_OK)
     {
         TRACE0_L2("Dbx stop [ normal ].\n");

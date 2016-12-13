@@ -13,6 +13,7 @@ public:
 
 protected:
 	NetworkInterface m_networkInterface;
+    IThreadsPool *m_threadsPoll;
 };
 
 
