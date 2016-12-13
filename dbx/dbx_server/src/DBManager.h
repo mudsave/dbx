@@ -8,7 +8,7 @@ class DBManager
 public:
 	DBManager();
 
-    HRESULT Running(unsigned short p_port = 3000);
+    HRESULT Running(int p_port = 3000);
     void RunOut();
 
 protected:
