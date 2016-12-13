@@ -1,7 +1,7 @@
 #ifndef __DBMANAGER_H__
 #define __DBMANAGER_H__
 
-#include "NetWorkInterface.h"
+#include "NetworkInterface.h"
 
 class DBManager
 {
