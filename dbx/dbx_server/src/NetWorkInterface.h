@@ -2,9 +2,9 @@
 #define __NETWORK_INTERFACE_H__
 
 // @note by wangshufeng.
-// AppMsgÔÚÍ·ÎÄ¼şmsgdef.hÖĞ£¬Ó¦¸Ã°üº¬msgdef.h²Å¶Ô£¬µ«Í·ÎÄ¼şÒÀÀµ¹ØÏµ´íÎó¡£
-// msgdef.hÓÃµ½ÁËvsdef.hÖĞµÄÉùÃ÷È´Ã»ÓĞ°üº¬vsdef.h¡£°üº¬msgdef.h»á³ö´í¡£
-// °Ñmsgdef.hºÍvsdef.hÊÓ×÷Ò»¸öÎÄ¼ş¼´¿É£¬Ê¹ÓÃÊ±°üº¬vsdef.h.
+// AppMsgåœ¨å¤´æ–‡ä»¶msgdef.hä¸­ï¼Œåº”è¯¥åŒ…å«msgdef.hæ‰å¯¹ï¼Œä½†å¤´æ–‡ä»¶ä¾èµ–å…³ç³»é”™è¯¯ã€‚
+// msgdef.hç”¨åˆ°äº†vsdef.hä¸­çš„å£°æ˜å´æ²¡æœ‰åŒ…å«vsdef.hã€‚åŒ…å«msgdef.hä¼šå¯¼è‡´æ‰¾ä¸åˆ°æŸäº›å£°æ˜è€Œå‡ºé”™ã€‚
+// æŠŠmsgdef.hå’Œvsdef.hè§†ä½œä¸€ä¸ªæ–‡ä»¶å³å¯ï¼Œä½¿ç”¨æ—¶åŒ…å«vsdef.h.
 #include "vsdef.h"
 #include "types.h"
 
