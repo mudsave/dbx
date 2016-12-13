@@ -7,16 +7,16 @@
 #include "lindef.h"	// 包含lindef.h来使用trace.h
 #include "Sock.h"	// 使用Sock.h必先包含lindef.h，依赖其中的声明
 
-NetworkInterface::NetworkInterface()
+NetworkInterface::NetworkInterface(unsigned short p_port)
 {
 	TRACE0_L2( "NetworkInterface init..." );
 	m_linkCtrl = CreateLinkCtrl();
 
 }
 
-void NetworkInterface::Listen(const BYTE *p_addr, int *p_port, ILinkSink *p_sink, DWORD p_dwFlags)
+void NetworkInterface::Listen(int p_port)
 {
-
+    //m_linkCtrl->Listen(NULL, &p_port, this, 0);
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)

@@ -6,9 +6,9 @@
 class DBManager
 {
 public:
-	DBManager(unsigned short p_port = 3000);
+	DBManager();
 
-	HRESULT Running();
+    HRESULT Running(unsigned short p_port = 3000);
     void RunOut();
 
 protected:

@@ -13,12 +13,12 @@ class ILinkCtrl;
 class ILinkSink;
 
 
-class NetworkInterface
+class NetworkInterface//: public ILinkSink
 {
 public:
-	NetworkInterface();
+	NetworkInterface(unsigned short p_port = 3000);
 
-	void Listen(const BYTE *p_addr, int *p_port, ILinkSink *p_sink, DWORD p_dwFlags);
+    void Listen(int p_port);
 
 	HRESULT Send(AppMsg *p_appMsg);
 
