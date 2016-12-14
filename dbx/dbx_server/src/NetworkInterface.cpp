@@ -14,6 +14,7 @@ NetworkInterface::NetworkInterface(int p_port)
 void NetworkInterface::Listen(int p_port)
 {
     HRESULT result = m_linkCtrl->Listen(NULL, &p_port, this, 0);
+    TRACE1_L2("NetworkInterface::Listen result(%i)", result);
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
