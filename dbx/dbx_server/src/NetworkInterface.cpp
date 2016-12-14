@@ -29,10 +29,10 @@ HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkID, HRESULT p_
     if(FAILED(p_result))
     {
         TRACE1_L2("NetworkInterface::OnConnects Failed(%i)", p_result);
-        return;
+        return NULL;
     }
     TRACE1_L0("NetworkInterface::OnConnects success(%i)", p_result);
-
+    return NULL;
 
 }
 
