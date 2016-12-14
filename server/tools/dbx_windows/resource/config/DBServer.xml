@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<scheme>
+<database databaseid = '1'>
+	<baseinfor servername = '172.16.2.218' port = '3306' databasename = 'dream' databasenickname = 'dream'></baseinfor>
+	<popedom username = 'root' password = 'linux3'></popedom>
+	<asynqueue num = '1'></asynqueue>
+	<retry retrylevel = '30' retryinternal = '2' retrymaxnum = '3' retryqueuemaxsize = '128'></retry>
+	<throw throwlevel = '12' throwqueuemaxsize = '2048'></throw>
+</database>
+</scheme>
