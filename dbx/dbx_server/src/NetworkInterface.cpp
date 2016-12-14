@@ -13,7 +13,7 @@ NetworkInterface::NetworkInterface(int p_port)
 
 void NetworkInterface::Listen(int p_port)
 {
-    m_linkCtrl->Listen(NULL, &p_port, this, 0);
+    HRESULT result = m_linkCtrl->Listen(NULL, &p_port, this, 0);
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
