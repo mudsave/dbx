@@ -15,8 +15,8 @@ DBManager::DBManager()
 HRESULT DBManager::Running(int p_port)
 {
 	TRACE0_L2( "DBManager is Running...\n" );
-    m_threadsPoll->Running();
     m_networkInterface.Listen(p_port);
+    m_threadsPoll->Running();
 }
 
 void DBManager::RunOut()
