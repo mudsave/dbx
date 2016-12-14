@@ -5,7 +5,7 @@
 // for AppMsg。AppMsg在msgdef.h中声明，但却需要包含vsdef.h，因为vsdef.h在文件尾包含了msgdef.h，而msgdef.h中的一些声明依赖于vsdef.h。
 #include "lindef.h"
 #include "vsdef.h"
-
+#include "Sock.h"
 #include "MsgLinksImpl.h"
 
 class ILinkCtrl;
