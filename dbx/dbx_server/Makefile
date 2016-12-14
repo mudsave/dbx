@@ -9,7 +9,7 @@ SRC_DIR = ./src
 INCLUDE_DIR = -I../codes/dbx/inc
 
 # 编译选项
-CFLAGS = $(INCLUDE_DIR) -Xlinker -export-dynamic
+CFLAGS = $(INCLUDE_DIR) -L../../server/sbin/linux -export-dynamic
 
 # --------------- default.mak start -------------------------------------------------------
 # 这里使用gcc，gcc -lstdc++ 等同于 g++
