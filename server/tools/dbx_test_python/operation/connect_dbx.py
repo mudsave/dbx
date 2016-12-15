@@ -12,7 +12,7 @@ def connect_test(ip = "127.0.0.1", port = 3000):
 	Usage: connect_test ip(default 127.0.0.1) port(default 3000)
 	"""
 	c = client.Client()
-	c.connect(ip, port)
+	c.connect(ip, int(port))
 	
 	message = dbx_build_msg.default_sql_message("show tables")
 	
@@ -68,6 +68,9 @@ def on_connect_test_recv(stream):
 	f = open("connect_test_data.txt", "w", encoding="latin1")
 	#f.writelines(message.m_objDoMsg.dataList)
 	for d in message.m_objDoMsg.dataList:
+		f.write(str(d) + "\n")
+		continue
+		
 		if type(d) is str:
 			f.write(d + "\n")
 		else:
@@ -157,9 +160,10 @@ def exec_sql(*args):
 	port = 3000
 	
 	sql_args = []
-	index = 0
+	index = -1
 	skip_next = False
 	for arg in args:
+		index += 1
 		if skip_next:
 			skip_next = False
 			continue
@@ -168,11 +172,10 @@ def exec_sql(*args):
 			host = args[index + 1]
 			skip_next = True
 		elif arg == "-p":
-			port = args[index + 1]
+			port = int(args[index + 1])
 			skip_next = True
 		else:
 			sql_args.append(arg)
-		index += 1
 	
 	print("sql_args =", sql_args)
 	sql = sql_args[0] % tuple(eval(i) for i in sql_args[1:])
@@ -199,9 +202,10 @@ def exec_sp(*args):
 	port = 3000
 	
 	sp_args = []
-	index = 0
+	index = -1
 	skip_next = False
 	for arg in args:
+		index += 1
 		if skip_next:
 			skip_next = False
 			continue
@@ -210,11 +214,10 @@ def exec_sp(*args):
 			host = args[index + 1]
 			skip_next = True
 		elif arg == "-p":
-			port = args[index + 1]
+			port = int(args[index + 1])
 			skip_next = True
 		else:
 			sp_args.append(arg)
-		index += 1
 	
 	print("sp_args =", sp_args)
 	sp_name = sp_args[0]
