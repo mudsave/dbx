@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbx", "dbx.vcxproj", "{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{3016E4BD-E71B-493C-B20A-31BDD868C088}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "db_interface", "..\lib\db_interface\db_interface.vcxproj", "{86D1A7D5-9800-4CC2-AD14-7C03457B8033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,8 +19,15 @@ Global
 		{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}.Debug|Win32.Build.0 = Debug|Win32
 		{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}.Release|Win32.ActiveCfg = Release|Win32
 		{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}.Release|Win32.Build.0 = Release|Win32
+		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Debug|Win32.ActiveCfg = Debug|Win32
+		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Debug|Win32.Build.0 = Debug|Win32
+		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Release|Win32.ActiveCfg = Release|Win32
+		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{86D1A7D5-9800-4CC2-AD14-7C03457B8033} = {3016E4BD-E71B-493C-B20A-31BDD868C088}
 	EndGlobalSection
 EndGlobal

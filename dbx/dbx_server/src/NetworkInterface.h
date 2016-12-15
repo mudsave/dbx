@@ -2,27 +2,31 @@
 #define __NETWORK_INTERFACE_H__
 
 // @note by wangshufeng.
-// AppMsg在头文件msgdef.h中，应该包含msgdef.h才对，但头文件依赖关系错误。
-// msgdef.h用到了vsdef.h中的声明却没有包含vsdef.h。包含msgdef.h会导致找不到某些声明而出错。
-// 把msgdef.h和vsdef.h视作一个文件即可，使用时包含vsdef.h.
+// for AppMsg。AppMsg在msgdef.h中声明，但却需要包含vsdef.h，因为vsdef.h在文件尾包含了msgdef.h，而msgdef.h中的一些声明依赖于vsdef.h。
+#include "lindef.h"
 #include "vsdef.h"
-#include "types.h"
-
+#include "Sock.h"
+#include "MsgLinksImpl.h"
 
 class ILinkCtrl;
 class ILinkSink;
 
 
-class NetworkInterface//: public ILinkSink
+class NetworkInterface : public IMsgLinksImpl<1>    // 暂且用类型1
 {
 public:
-	NetworkInterface(unsigned short p_port = 3000);
+	NetworkInterface(int p_port = 3000);
 
     void Listen(int p_port);
 
 	HRESULT Send(AppMsg *p_appMsg);
 
 	HRESULT Recv(BYTE *p_buff, int p_size);
+
+public:
+    virtual HANDLE OnConnects(SOCKET p_socket, handle p_linkID, HRESULT p_result, ILinkPort* p_connPort, int p_linkType);
+    virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
+    virtual void OnClosed(HANDLE hLinkContext, HRESULT p_reason);
 
 protected:
 	ILinkCtrl* m_linkCtrl;

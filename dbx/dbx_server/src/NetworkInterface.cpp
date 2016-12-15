@@ -1,22 +1,20 @@
 #include "NetworkInterface.h"
 
-
-// 头文件规则有问题，存在隐性依赖，必须包含lindef.h才能正确使用lindef.h中包含的某个头文件，这些头文件是相互依赖的。
-// 任何一个头文件的修改都会引起所有的文件重新编译，不仅仅是包含这个头文件的编译单元。隐性依赖的逻辑混乱也让使用者莫名其妙。
 //#include "trace.h"
 #include "lindef.h"	// 包含lindef.h来使用trace.h
 #include "Sock.h"	// 使用Sock.h必先包含lindef.h，依赖其中的声明
 
-NetworkInterface::NetworkInterface(unsigned short p_port)
+NetworkInterface::NetworkInterface(int p_port)
 {
-	TRACE0_L2( "NetworkInterface init..." );
+	TRACE0_L2( "NetworkInterface init...\n" );
 	m_linkCtrl = CreateLinkCtrl();
 
 }
 
 void NetworkInterface::Listen(int p_port)
 {
-    //m_linkCtrl->Listen(NULL, &p_port, this, 0);
+    HRESULT result = m_linkCtrl->Listen(NULL, &p_port, this, 0);
+    TRACE1_L2("NetworkInterface::Listen result(%i)", result);
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
@@ -24,5 +22,25 @@ HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
 }
 
 HRESULT NetworkInterface::Recv(BYTE *p_buff, int p_size)
-{}
+{
+}
 
+HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkID, HRESULT p_result, ILinkPort* p_connPort, int p_linkType)
+{
+    if(FAILED(p_result))
+    {
+        TRACE1_L2("NetworkInterface::OnConnects Failed(%i)", p_result);
+        return NULL;
+    }
+    TRACE1_L0("NetworkInterface::OnConnects success(%i)", p_result);
+    return NULL;
+
+}
+
+void NetworkInterface::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
+{
+}
+
+void NetworkInterface::OnClosed(HANDLE hLinkContext, HRESULT p_reason)
+{
+}
