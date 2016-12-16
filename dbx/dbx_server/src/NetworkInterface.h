@@ -24,7 +24,7 @@ public:
 	HRESULT Recv(BYTE *p_buff, int p_size);
 
 public:
-    virtual HANDLE OnConnects(SOCKET p_socket, handle p_linkID, HRESULT p_result, ILinkPort* p_connPort, int p_linkType);
+    virtual HANDLE OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT p_result, ILinkPort* p_linkPort, int p_linkType);
     virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
     virtual void OnClosed(HANDLE hLinkContext, HRESULT p_reason);
 

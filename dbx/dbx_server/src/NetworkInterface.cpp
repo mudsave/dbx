@@ -14,7 +14,7 @@ NetworkInterface::NetworkInterface(int p_port)
 void NetworkInterface::Listen(int p_port)
 {
     HRESULT result = m_linkCtrl->Listen(NULL, &p_port, this, 0);
-    TRACE1_L2("NetworkInterface::Listen result(%i)", result);
+    TRACE1_L2("NetworkInterface::Listen result(%i)\n", result);
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
@@ -25,14 +25,14 @@ HRESULT NetworkInterface::Recv(BYTE *p_buff, int p_size)
 {
 }
 
-HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkID, HRESULT p_result, ILinkPort* p_connPort, int p_linkType)
+HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT p_result, ILinkPort* p_linkPort, int p_linkType)
 {
     if(FAILED(p_result))
     {
-        TRACE1_L2("NetworkInterface::OnConnects Failed(%i)", p_result);
+        TRACE1_L2("NetworkInterface::OnConnects Failed(%i)\n", p_result);
         return NULL;
     }
-    TRACE1_L0("NetworkInterface::OnConnects success(%i)", p_result);
+    TRACE1_L0("NetworkInterface::OnConnects success(%i)\n", p_result);
     return NULL;
 
 }

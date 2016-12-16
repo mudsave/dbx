@@ -5,11 +5,12 @@
 #include "Sock.h"
 
 #include "NetworkInterface.h"
+#include "Singleton.h"
 
-class DBManager
+class DBManager: public Singleton<DBManager>
 {
 public:
-	DBManager();
+    DBManager();
 
     HRESULT Running(int p_port = 3000);
     void RunOut();
