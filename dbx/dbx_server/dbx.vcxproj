@@ -11,9 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ContextDefine.h" />
     <ClInclude Include="src\DBManager.h" />
     <ClInclude Include="src\DBSession.h" />
     <ClInclude Include="src\NetworkInterface.h" />
+    <ClInclude Include="src\Singleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp" />

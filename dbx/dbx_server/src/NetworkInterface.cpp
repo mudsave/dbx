@@ -4,6 +4,8 @@
 #include "lindef.h"	// 包含lindef.h来使用trace.h
 #include "Sock.h"	// 使用Sock.h必先包含lindef.h，依赖其中的声明
 
+#include "ContextDefine.h"
+
 NetworkInterface::NetworkInterface(int p_port)
 {
 	TRACE0_L2( "NetworkInterface init...\n" );
@@ -32,15 +34,19 @@ HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT
         TRACE1_L2("NetworkInterface::OnConnects Failed(%i)\n", p_result);
         return NULL;
     }
-    TRACE1_L0("NetworkInterface::OnConnects success(%i)\n", p_result);
-    return NULL;
-
+    TRACE1_L0("NetworkInterface::OnConnects success(%i)\n", p_linkIndex);
+    OnConnectsContext *context = new OnConnectsContext(p_linkIndex, p_linkPort, p_linkType);
+    return context;
 }
 
 void NetworkInterface::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
 {
+    OnConnectsContext *context = (OnConnectsContext *)hLinkContext;
+    
+    TRACE2_L0("NetworkInterface::DefaultMsgProc m_linkIndex(%i), pMsg->msgLen(%i)\n", context->m_linkIndex, pMsg->msgLen);
 }
 
 void NetworkInterface::OnClosed(HANDLE hLinkContext, HRESULT p_reason)
 {
+    TRACE1_L0("NetworkInterface::OnClosed reason(%i)\n", p_reason);
 }

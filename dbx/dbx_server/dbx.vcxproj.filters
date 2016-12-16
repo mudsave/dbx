@@ -20,6 +20,12 @@
     <ClInclude Include="src\NetworkInterface.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ContextDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
