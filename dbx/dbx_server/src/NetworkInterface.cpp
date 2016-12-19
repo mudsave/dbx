@@ -39,9 +39,9 @@ HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT
     return context;
 }
 
-void NetworkInterface::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
+void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
 {
-    OnConnectsContext *context = (OnConnectsContext *)hLinkContext;
+    OnConnectsContext *context = static_cast<OnConnectsContext *>(hLinkContext);
     
     TRACE2_L0("NetworkInterface::DefaultMsgProc m_linkIndex(%i), pMsg->msgLen(%i)\n", context->m_linkIndex, pMsg->msgLen);
 }
