@@ -1,5 +1,5 @@
-#ifndef __DBMANAGER_H__
-#define __DBMANAGER_H__
+#ifndef __DBMANAGER_H_
+#define __DBMANAGER_H_
 
 #include "lindef.h"
 #include "Sock.h"
@@ -21,4 +21,4 @@ protected:
 };
 
 
-#endif // __DBMANAGER_H__
+#endif // __DBMANAGER_H_

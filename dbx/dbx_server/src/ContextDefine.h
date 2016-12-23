@@ -1,5 +1,5 @@
-#ifndef __DBX_CONTEXT_DEFINE__
-#define __DBX_CONTEXT_DEFINE__
+#ifndef __DBX_CONTEXT_DEFINE_
+#define __DBX_CONTEXT_DEFINE_
 
 #include "lindef.h"
 #include "vsdef.h"
@@ -17,4 +17,4 @@ struct OnConnectsContext
 };
 
 
-#endif // __DBX_CONTEXT_DEFINE__
+#endif // __DBX_CONTEXT_DEFINE_

@@ -1,8 +1,8 @@
-#ifndef __NETWORK_INTERFACE_H__
-#define __NETWORK_INTERFACE_H__
+#ifndef __NETWORK_INTERFACE_H_
+#define __NETWORK_INTERFACE_H_
 
 // @note by wangshufeng.
-// for AppMsg。AppMsg在msgdef.h中声明，但却需要包含vsdef.h，因为vsdef.h在文件尾包含了msgdef.h，而msgdef.h中的一些声明依赖于vsdef.h。
+// for AppMsg。AppMsg在msgdef.h中声明，但却需要包含vsdef.h，因为msgdef.h中的一些声明依赖于vsdef.h，不能独立使用，vsdef.h在文件尾包含了msgdef.h。
 #include "lindef.h"
 #include "vsdef.h"
 #include "Sock.h"
@@ -33,4 +33,4 @@ protected:
 };
 
 
-#endif // __NETWORK_INTERFACE_H__
+#endif // __NETWORK_INTERFACE_H_

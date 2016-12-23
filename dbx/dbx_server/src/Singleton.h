@@ -1,5 +1,5 @@
-#ifndef __DBX_SINGLETON_H__
-#define __DBX_SINGLETON_H__
+#ifndef __DBX_SINGLETON_H_
+#define __DBX_SINGLETON_H_
 
 template<typename T>
 class Singleton
@@ -44,4 +44,4 @@ public:
 template<typename T>
 T* Singleton<T>::m_instance = NULL;
 
-#endif   // __DBX_SINGLETON_H__
+#endif   // __DBX_SINGLETON_H_

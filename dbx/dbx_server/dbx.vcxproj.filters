@@ -9,6 +9,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="MsgDefine">
+      <UniqueIdentifier>{88ebeecd-ced0-4d2c-91e4-4f8681e98692}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DBManager.h">
@@ -25,6 +28,18 @@
     </ClInclude>
     <ClInclude Include="src\ContextDefine.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\message_define\MessageBase.h">
+      <Filter>MsgDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\message_define\DBMessageDefine.h">
+      <Filter>MsgDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\message_define\AppMessge.h">
+      <Filter>MsgDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\message_define\DBXMessage.h">
+      <Filter>MsgDefine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
