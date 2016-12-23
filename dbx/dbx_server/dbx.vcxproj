@@ -12,9 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\message_define\AppMessge.h" />
+    <ClInclude Include="..\lib\message_define\DBXClientMessage.h" />
     <ClInclude Include="..\lib\message_define\DBMessageDefine.h" />
     <ClInclude Include="..\lib\message_define\DBXMessage.h" />
     <ClInclude Include="..\lib\message_define\MessageBase.h" />
+    <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
+    <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
     <ClInclude Include="src\ContextDefine.h" />
     <ClInclude Include="src\DBManager.h" />
     <ClInclude Include="src\DBSession.h" />

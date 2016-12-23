@@ -41,6 +41,15 @@
     <ClInclude Include="..\lib\message_define\DBXMessage.h">
       <Filter>MsgDefine</Filter>
     </ClInclude>
+    <ClInclude Include="..\lib\message_define\DBMessageBuilder.h">
+      <Filter>MsgDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\message_define\DBXClientMessage.h">
+      <Filter>MsgDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\message_define\DBXCmdMessage.h">
+      <Filter>MsgDefine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
