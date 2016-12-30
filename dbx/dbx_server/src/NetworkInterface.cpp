@@ -5,6 +5,7 @@
 #include "Sock.h"	// 使用Sock.h必先包含lindef.h，依赖其中的声明
 
 #include "ContextDefine.h"
+#include "DBManager.h"
 
 NetworkInterface::NetworkInterface(int p_port)
 {
@@ -50,6 +51,9 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
 
     char* contents = (char*)pMsg + sizeof(AppMsg);
     TRACE1_L2("AppMsg : <<< %s\n", contents);
+
+    //DBManager::InstancePtr()
+
     SendMsg(context->m_linkIndex, pMsg);
 }
 

@@ -15,6 +15,12 @@ public:
     HRESULT Running(int p_port = 3000);
     void RunOut();
 
+    void CallSP(AppMsg *m_appMsg);
+    void CallSQL(AppMsg *m_appMsg);
+
+protected:
+    void InitDB();
+
 protected:
 	NetworkInterface m_networkInterface;
     IThreadsPool *m_threadsPoll;

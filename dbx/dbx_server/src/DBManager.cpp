@@ -21,3 +21,18 @@ void DBManager::RunOut()
 {
     TRACE0_L2("DBManager had run out...\n");
 }
+
+void DBManager::InitDB()
+{
+
+}
+
+void DBManager::CallSP(AppMsg *p_appMsg)
+{
+
+}
+
+void DBManager::CallSQL(AppMsg *p_appMsg)
+{
+
+}
