@@ -1,43 +1,43 @@
 #-*- coding: utf-8 -*-
 
 from . import operation
+from . import connect_analyze
 from conn import client
 from common import MessageStream
 from dbx_interface import dbx_msg_define
 from dbx_interface import dbx_build_msg
 
 @operation.resgisterOperation("connect_test")
-def connect_test(ip = "127.0.0.1", port = 3000):
+def connect_test(*args):
 	"""
-	Usage: connect_test ip(default 127.0.0.1) port(default 3000)
+	Usage: connect_test [-h 127.0.0.1] [-p 3000] 
 	"""
-	c = client.Client()
-	c.connect(ip, int(port))
+	host = "127.0.0.1"
+	port = 3000
+	
+	connect_args = []
+	index = -1
+	skip_next = False
+	for arg in args:
+		index += 1
+		if skip_next:
+			skip_next = False
+			continue
+		
+		if arg == "-h":
+			host = args[index + 1]
+			skip_next = True
+		elif arg == "-p":
+			port = int(args[index + 1])
+			skip_next = True
+		else:
+			connect_args.append(arg)
+	
+	print("connect_args =", connect_args)
 	
 	message = dbx_build_msg.default_sql_message("show tables")
-	
-	print("Size of message %i" % message.size())
-	print("Size of ObjDoMsg %i" % message.m_objDoMsg.size())
-	
-	print("message msgLen %i" % message.msgLen)
-	print("message msgFlags %i" % message.msgFlags)
-	print("message msgCls %i" % message.msgCls)
-	print("message msgId %i" % message.msgId)
-	print("message context %i" % message.context)
-	print("message m_nAttriIndex %i" % message.m_nAttriIndex)
-	print("message m_nAttriNameCount %i" % message.m_nAttriNameCount)
-	print("message m_nAttriCount %i" % message.m_nAttriCount)
-	print("message m_nTempObjId %i" % message.m_nTempObjId)
-	print("message m_nSessionId %i" % message.m_nSessionId)
-	print("message m_spId %i" % message.m_spId)
-	print("message m_bEnd %i" % message.m_bEnd)
-	print("message m_bNeedCallback %i" % message.m_bNeedCallback)
-	print("message m_nLevel %i" % message.m_nLevel)
-	print("message m_objDoMsg.object_id %i" % message.m_objDoMsg.object_id)
-	print("message m_objDoMsg.paramCount %i" % message.m_objDoMsg.paramCount)
-	print("message m_objDoMsg.typeList %s" % message.m_objDoMsg.typeList)
-	print("message m_objDoMsg.dataList %s" % message.m_objDoMsg.dataList)
-	
+	c = client.Client()
+	c.connect(host, int(port))
 	c.send(message.getIOBytes())
 	c.recvMessage(on_connect_test_recv, 3)
 
@@ -247,3 +247,121 @@ def exec_sp(*args):
 def on_exec_sp_recv(stream):
 	on_connect_test_recv(stream)
 
+
+@operation.resgisterOperation("parallel_connect[or:pc]")
+def parallel_connect_test(*args):
+	"""
+	并发连接测试
+	Usage: parallel_connect [-h 127.0.0.1] [-p 3000] [-n 50]
+			-n 表示并发连接的数量。
+	"""
+	host = "127.0.0.1"
+	port = 3000
+	count = 50
+	
+	cmd_args = []
+	index = -1
+	skip_next = False
+	for arg in args:
+		index += 1
+		if skip_next:
+			skip_next = False
+			continue
+			
+		if arg == "-h":
+			host = args[index + 1]
+			skip_next = True
+		elif arg == "-p":
+			port = int(args[index + 1])
+			skip_next = True
+		elif arg == "-n":
+			count = int(args[index + 1])
+			skip_next = True
+		else:
+			cmd_args.append(arg)
+	
+	print("cmd_args =", cmd_args)
+	analyst = connect_analyze.g_AnalystSet.forceNew("parallel_connect_analyze")
+	analyst.parallel_connect_analyze(host, port, count)
+	
+
+@operation.resgisterOperation("parallel_connect_monitor[or:pcm]")
+def parallel_connect_monitor(*args):
+	"""
+	并发连接，并持续监控连接中断情况
+	Usage: parallel_connect_monitor [-h 127.0.0.1] [-p 3000] [-n 50] [-d 0]
+			-n 表示并发连接的数量;
+			-d 表示监控持续时间（秒），小于等于0表示监控不会超时停止。
+	"""
+	host = "127.0.0.1"
+	port = 3000
+	count = 50
+	duration = 0
+	
+	cmd_args = []
+	index = -1
+	skip_next = False
+	for arg in args:
+		index += 1
+		if skip_next:
+			skip_next = False
+			continue
+			
+		if arg == "-h":
+			host = args[index + 1]
+			skip_next = True
+		elif arg == "-p":
+			port = int(args[index + 1])
+			skip_next = True
+		elif arg == "-n":
+			count = int(args[index + 1])
+			skip_next = True
+		elif arg == "-d":
+			duration = int(args[index + 1])
+			skip_next = True
+		else:
+			cmd_args.append(arg)
+	
+	print("cmd_args =", cmd_args)
+	analyst = connect_analyze.g_AnalystSet.forceNew("parallel_connect_monitor")
+	analyst.parallel_connect_monitor(host, port, count, duration)
+	
+	
+@operation.resgisterOperation("parallel_io[or:pio]")
+def parallel_io_test(*args):
+	"""
+	并发连接测试
+	Usage: parallel_io [-h 127.0.0.1] [-p 3000] [-n 50]
+			-n 表示并发连接的数量。
+	"""
+	host = "127.0.0.1"
+	port = 3000
+	count = 50
+	
+	cmd_args = []
+	index = -1
+	skip_next = False
+	for arg in args:
+		index += 1
+		if skip_next:
+			skip_next = False
+			continue
+			
+		if arg == "-h":
+			host = args[index + 1]
+			skip_next = True
+		elif arg == "-p":
+			port = int(args[index + 1])
+			skip_next = True
+		elif arg == "-n":
+			count = int(args[index + 1])
+			skip_next = True
+		else:
+			cmd_args.append(arg)
+	
+	print("cmd_args =", cmd_args)
+	analyst = connect_analyze.g_AnalystSet.forceNew("parallel_io_analyze")
+	analyst.parallel_io_analyze(host, port, count, connect_analyze.active_message)
+	
+	
+	

@@ -36,11 +36,20 @@ class Client:
 	
 	def connected(self):
 		return self._socket is not None
+	
+	def message(self):
+		return self._buffer
+	
+	def socket(self):
+		return self._socket
+	
+	def fileno(self):
+		return self._socket.fileno()
 		
 	def send(self, message):
 		if self.connected():
 			self._request = message
-			self._socket.send(BytesIO.ensureBytes(message))
+			self._socket.sendall(BytesIO.ensureBytes(message))
 	
 	def parseMessage(self, bytes):
 		self._buffer += bytes
@@ -73,8 +82,5 @@ class Client:
 			if timeout > 0 and time.time() - start  > timeout:
 				print("Time out")
 				break
-	
-	def message(self):
-		return self._buffer
 	
 	
