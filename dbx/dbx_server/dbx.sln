@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{3016E4BD-E71
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "db_interface", "..\lib\db_interface\db_interface.vcxproj", "{86D1A7D5-9800-4CC2-AD14-7C03457B8033}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MysqlApiTest", "..\MysqlApiTest\MysqlApiTest.vcxproj", "{AFFDC546-91F1-42BD-977B-04CE9A910BBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -23,6 +25,10 @@ Global
 		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Debug|Win32.Build.0 = Debug|Win32
 		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Release|Win32.ActiveCfg = Release|Win32
 		{86D1A7D5-9800-4CC2-AD14-7C03457B8033}.Release|Win32.Build.0 = Release|Win32
+		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Debug|Win32.Build.0 = Debug|Win32
+		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Release|Win32.ActiveCfg = Release|Win32
+		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

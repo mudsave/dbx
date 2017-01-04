@@ -4,7 +4,7 @@
 #include "Sock.h"
 
 #include "DBManager.h"
-
+#include "DBXConfig.h"
 
 void ParseMainCommandArgs(int argc, char *argv[])
 {
@@ -15,11 +15,12 @@ int main(int argc, char *argv[])
 	InitTraceServer(true);
     TRACE0_L2("DBX start...\n");
 
+    g_dbxServerConfig.LoadConfig("dbxServer.xml");
+
     ParseMainCommandArgs(argc, argv);
 
     const int DBX_PORT = 3000;
-    DBManager app;
-    HRESULT result = app.Running(DBX_PORT);
+    HRESULT result = DBManager::InstancePtr()->Running(DBX_PORT);
     if(result == S_OK)
     {
         TRACE0_L2("Dbx stop [ normal ].\n");
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
     GenerateSignalThread();
 
     Sleep(1000 * 5);
-    app.RunOut();
+    DBManager::InstancePtr()->RunOut();
     Sleep(1000 * 5);
 	return 0;
 }

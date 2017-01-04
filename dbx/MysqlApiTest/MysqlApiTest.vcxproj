@@ -10,31 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\lib\message_define\AppMessge.h" />
-    <ClInclude Include="..\lib\message_define\DBXClientMessage.h" />
-    <ClInclude Include="..\lib\message_define\DBMessageDefine.h" />
-    <ClInclude Include="..\lib\message_define\DBXMessage.h" />
-    <ClInclude Include="..\lib\message_define\MessageBase.h" />
-    <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
-    <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
-    <ClInclude Include="src\ContextDefine.h" />
-    <ClInclude Include="src\DBManager.h" />
-    <ClInclude Include="src\DBSession.h" />
-    <ClInclude Include="src\DBXConfig.h" />
-    <ClInclude Include="src\NetworkInterface.h" />
-    <ClInclude Include="src\Singleton.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\DBManager.cpp" />
-    <ClCompile Include="src\DBSession.cpp" />
-    <ClCompile Include="src\DBXConfig.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\NetworkInterface.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}</ProjectGuid>
-    <RootNamespace>dbx</RootNamespace>
+    <ProjectGuid>{AFFDC546-91F1-42BD-977B-04CE9A910BBD}</ProjectGuid>
+    <RootNamespace>MysqlApiTest</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -66,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share;../lib/message_define</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../lib/dependencies/mysql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -79,7 +57,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share;../lib/message_define</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../lib/dependencies/mysql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -87,6 +65,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
