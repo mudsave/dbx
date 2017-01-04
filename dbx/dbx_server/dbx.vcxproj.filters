@@ -50,6 +50,9 @@
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h">
       <Filter>MsgDefine</Filter>
     </ClInclude>
+    <ClInclude Include="src\DBXConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
@@ -62,6 +65,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\NetworkInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBXConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

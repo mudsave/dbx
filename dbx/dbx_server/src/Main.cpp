@@ -4,7 +4,7 @@
 #include "Sock.h"
 
 #include "DBManager.h"
-
+#include "DBXConfig.h"
 
 void ParseMainCommandArgs(int argc, char *argv[])
 {
@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 {
 	InitTraceServer(true);
     TRACE0_L2("DBX start...\n");
+
+    g_dbxServerConfig.LoadConfig("dbxServer.xml");
 
     ParseMainCommandArgs(argc, argv);
 

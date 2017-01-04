@@ -31,7 +31,7 @@ public:
         return m_instance;
     }
 
-    static T& Instance()
+    static T &Instance()
     {
         if (m_instance == NULL)
         {
