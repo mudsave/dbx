@@ -13,9 +13,9 @@ void ParseMainCommandArgs(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	InitTraceServer(true);
-    TRACE0_L2("DBX start...\n");
+    TRACE0_L0("DBX start...\n");
 
-    g_dbxServerConfig.LoadConfig("dbxServer.xml");
+    g_dbxConfig.LoadConfig("dbxServer.xml");
 
     ParseMainCommandArgs(argc, argv);
 
@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
     HRESULT result = DBManager::InstancePtr()->Running(DBX_PORT);
     if(result == S_OK)
     {
-        TRACE0_L2("Dbx stop [ normal ].\n");
+        TRACE0_L0("Dbx stop [ normal ].\n");
     }
     else
     {
-        TRACE0_L2("Dbx stop [ timeout ].\n");
+        TRACE0_L0("Dbx stop [ timeout ].\n");
     }
 
     GenerateSignalThread();

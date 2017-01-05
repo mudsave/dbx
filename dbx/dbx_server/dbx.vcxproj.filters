@@ -12,6 +12,9 @@
     <Filter Include="MsgDefine">
       <UniqueIdentifier>{88ebeecd-ced0-4d2c-91e4-4f8681e98692}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XML">
+      <UniqueIdentifier>{d183ab41-40f8-4835-b92e-a86c34d463b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DBManager.h">
@@ -53,6 +56,12 @@
     <ClInclude Include="src\DBXConfig.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\lib\dependencies\tinyxml\tinyxml.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\dependencies\tinyxml\tinystr.h">
+      <Filter>XML</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
@@ -69,6 +78,18 @@
     </ClCompile>
     <ClCompile Include="src\DBXConfig.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\dependencies\tinyxml\tinystr.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\dependencies\tinyxml\tinyxml.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\dependencies\tinyxml\tinyxmlerror.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\dependencies\tinyxml\tinyxmlparser.cpp">
+      <Filter>XML</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

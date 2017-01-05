@@ -9,7 +9,7 @@
 
 NetworkInterface::NetworkInterface(int p_port)
 {
-	TRACE0_L2( "NetworkInterface init...\n" );
+	TRACE0_L0( "NetworkInterface init...\n" );
 	m_linkCtrl = CreateLinkCtrl();
 
 }
@@ -17,7 +17,7 @@ NetworkInterface::NetworkInterface(int p_port)
 void NetworkInterface::Listen(int p_port)
 {
     HRESULT result = m_linkCtrl->Listen(NULL, &p_port, this, 0);
-    TRACE1_L2("NetworkInterface::Listen result(%i)\n", result);
+    TRACE1_L0("NetworkInterface::Listen result(%i)\n", result);
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
@@ -32,7 +32,7 @@ HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT
 {
     if(FAILED(p_result))
     {
-        TRACE1_L2("NetworkInterface::OnConnects Failed(%i)\n", p_result);
+        TRACE1_L0("NetworkInterface::OnConnects Failed(%i)\n", p_result);
         return NULL;
     }
     TRACE1_L0("NetworkInterface::OnConnects success(%i)\n", p_linkIndex);
@@ -50,7 +50,7 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
     TRACE4_L0("NetworkInterface::DefaultMsgProc m_linkIndex(%i), pMsg->msgLen(%i) from:%s:%d\n", context->m_linkIndex, pMsg->msgLen, addr, port);
 
     char* contents = (char*)pMsg + sizeof(AppMsg);
-    TRACE1_L2("AppMsg : <<< %s\n", contents);
+    TRACE1_L0("AppMsg : <<< %s\n", contents);
 
     //DBManager::InstancePtr()
 

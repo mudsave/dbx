@@ -5,11 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbx", "dbx.vcxproj", "{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{3016E4BD-E71B-493C-B20A-31BDD868C088}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{3016E4BD-E71B-493C-B20A-31BDD868C088}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "db_interface", "..\lib\db_interface\db_interface.vcxproj", "{86D1A7D5-9800-4CC2-AD14-7C03457B8033}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MysqlApiTest", "..\MysqlApiTest\MysqlApiTest.vcxproj", "{AFFDC546-91F1-42BD-977B-04CE9A910BBD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xml", "..\lib\xml\xml.vcxproj", "{C7D71912-0172-4F68-B558-35F0AA68D98C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,11 +31,16 @@ Global
 		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Debug|Win32.Build.0 = Debug|Win32
 		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Release|Win32.ActiveCfg = Release|Win32
 		{AFFDC546-91F1-42BD-977B-04CE9A910BBD}.Release|Win32.Build.0 = Release|Win32
+		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Debug|Win32.Build.0 = Debug|Win32
+		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Release|Win32.ActiveCfg = Release|Win32
+		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{86D1A7D5-9800-4CC2-AD14-7C03457B8033} = {3016E4BD-E71B-493C-B20A-31BDD868C088}
+		{C7D71912-0172-4F68-B558-35F0AA68D98C} = {3016E4BD-E71B-493C-B20A-31BDD868C088}
 	EndGlobalSection
 EndGlobal
