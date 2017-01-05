@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	InitTraceServer(true);
     TRACE0_L0("DBX start...\n");
 
-    g_dbxConfig.LoadConfig("dbxServer.xml");
+    g_dbxConfig.LoadConfig("DBServer.xml");
 
     ParseMainCommandArgs(argc, argv);
 
