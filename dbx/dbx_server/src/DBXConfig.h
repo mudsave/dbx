@@ -57,7 +57,7 @@ protected:
     }
 };
 
-
 #define g_dbxConfig DBXConfig::Instance()
 
-#endif  // __DBX_CONFIG_H_
+
+#endif  // end of __DBX_CONFIG_H_

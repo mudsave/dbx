@@ -12,14 +12,14 @@ bool DBXConfig::LoadConfig(std::string p_filePath)
     bool loadOK = doc.LoadFile(p_filePath.c_str());
     if (!loadOK)
     {
-        TRACE2_L0("DBXConfig::LoadConfig:[Error]:Cant load xml file %s:%s.\n", p_filePath.c_str(), doc.ErrorDesc());
+        TRACE2_ERROR("DBXConfig::LoadConfig:Cant load xml file %s:%s.\n", p_filePath.c_str(), doc.ErrorDesc());
         return false;
     }
 
     TiXmlElement *rootElement = doc.RootElement();
     if (rootElement == NULL)
     {
-        TRACE1_L0("DBXConfig::LoadConfig:[Error]:%s has not root element.\n", p_filePath.c_str());
+        TRACE1_ERROR("DBXConfig::LoadConfig:%s has not root element.\n", p_filePath.c_str());
         return false;
     }
 

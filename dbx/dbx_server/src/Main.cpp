@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
 	InitTraceServer(true);
     TRACE0_L0("DBX start...\n");
 
-    g_dbxConfig.LoadConfig("DBServer.xml");
-
     ParseMainCommandArgs(argc, argv);
+
+    g_dbxConfig.LoadConfig("DBServer.xml");
 
     const int DBX_PORT = 3000;
     HRESULT result = DBManager::InstancePtr()->Running(DBX_PORT);
