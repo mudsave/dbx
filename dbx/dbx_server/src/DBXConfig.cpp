@@ -28,12 +28,12 @@ bool DBXConfig::LoadConfig(std::string p_filePath)
     {
         DBInterfaceInfo dbinfo;
         dbinfo.id = GetElementAttributeInt(databaseElem, "databaseid");
-        TiXmlElement *baseinfor = databaseElem->FirstChildElement("baseinfo");
-        if (baseinfor != NULL)
+        TiXmlElement *baseinfo = databaseElem->FirstChildElement("baseinfo");
+        if (baseinfo != NULL)
         {
-            strncpy((char *)&dbinfo.db_ip, GetElementAttributeStr(baseinfor, "servername").c_str(), DBX_MAX_BUF);
-            strncpy((char *)&dbinfo.db_name, GetElementAttributeStr(baseinfor, "databasename").c_str(), DBX_MAX_NAME);
-            dbinfo.db_port = GetElementAttributeInt(baseinfor, "port");
+            strncpy((char *)&dbinfo.db_ip, GetElementAttributeStr(baseinfo, "servername").c_str(), DBX_MAX_BUF);
+            strncpy((char *)&dbinfo.db_name, GetElementAttributeStr(baseinfo, "databasename").c_str(), DBX_MAX_NAME);
+            dbinfo.db_port = GetElementAttributeInt(baseinfo, "port");
         }
 
         TiXmlElement *popedom = databaseElem->FirstChildElement("popedom");
