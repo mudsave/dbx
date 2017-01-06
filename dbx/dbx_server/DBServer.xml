@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <scheme>
 	<database databaseid = '1'>
-		<baseinfor servername = '172.16.2.173' port = '3306' databasename = 'dream' ></baseinfor>
+		<baseinfo servername = '172.16.2.173' port = '3306' databasename = 'dream' ></baseinfo>
 		<popedom username = 'kbe' password = 'kbe'></popedom>
 		<asynqueue num = '5'></asynqueue>
 	</database>

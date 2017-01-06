@@ -4,27 +4,31 @@
 #include "lindef.h"
 #include "Sock.h"
 
-DBManager::DBManager()
+#include "DBPoolMgr.h"
+
+DBManager::DBManager():
+m_networkInterface()
 {
-	m_networkInterface = NetworkInterface();
-    m_threadsPoll = GlobalThreadsPool();
 }
 
 HRESULT DBManager::Running(int p_port)
 {
-	TRACE0_L2( "DBManager is Running...\n" );
+	TRACE0_L0( "DBManager is Running...\n" );
     m_networkInterface.Listen(p_port);
-    m_threadsPoll->Running();
+
+    InitDB();
 }
 
 void DBManager::RunOut()
 {
-    TRACE0_L2("DBManager had run out...\n");
+    TRACE0_L0("DBManager had run out.\n");
 }
 
 void DBManager::InitDB()
 {
+    TRACE0_L0("DBManager::InitDB...\n");
 
+    DBPoolMgr::InstancePtr()->Initialize();
 }
 
 void DBManager::CallSP(AppMsg *p_appMsg)

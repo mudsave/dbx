@@ -27,12 +27,11 @@ bool DBXConfig::LoadConfig(std::string p_filePath)
     for (; databaseElem != NULL; databaseElem = databaseElem->NextSiblingElement())
     {
         DBInterfaceInfo dbinfo;
-
         dbinfo.id = GetElementAttributeInt(databaseElem, "databaseid");
-        TiXmlElement *baseinfor = databaseElem->FirstChildElement("baseinfor");
+        TiXmlElement *baseinfor = databaseElem->FirstChildElement("baseinfo");
         if (baseinfor != NULL)
         {
-            strncpy((char *)&dbinfo.db_ip, GetElementAttributeStr(baseinfor, "servername").c_str(), DBX_MAX_NAME);
+            strncpy((char *)&dbinfo.db_ip, GetElementAttributeStr(baseinfor, "servername").c_str(), DBX_MAX_BUF);
             strncpy((char *)&dbinfo.db_name, GetElementAttributeStr(baseinfor, "databasename").c_str(), DBX_MAX_NAME);
             dbinfo.db_port = GetElementAttributeInt(baseinfor, "port");
         }
@@ -41,18 +40,39 @@ bool DBXConfig::LoadConfig(std::string p_filePath)
         if (popedom != NULL)
         {
             strncpy((char *)&dbinfo.db_username, GetElementAttributeStr(popedom, "username").c_str(), DBX_MAX_NAME);
-            strncpy((char *)&dbinfo.db_password, GetElementAttributeStr(popedom, "password").c_str(), DBX_MAX_NAME);
+            strncpy((char *)&dbinfo.db_password, GetElementAttributeStr(popedom, "password").c_str(), DBX_MAX_BUF);
         }
 
         TiXmlElement *asynqueue = databaseElem->FirstChildElement("asynqueue");
         if (asynqueue != NULL)
-        {
             dbinfo.db_connectionsNum = GetElementAttributeInt(asynqueue, "num");
-        }
 
         m_interfaceInfos.push_back(dbinfo);
     }
 
     return true;
 
+}
+
+std::string DBXConfig::GetElementAttributeStr(TiXmlElement *p_element, const char *p_key)
+{
+    const char *attr = p_element->Attribute(p_key);
+    if (attr == NULL)
+    {
+        TRACE2_ERROR("DBXConfig::GetElementAttributeStr:cant find attribute %s from element %s\n", p_key, p_element->Value());
+        return "";
+    }
+        
+    return attr;
+}
+
+int DBXConfig::GetElementAttributeInt(TiXmlElement *p_element, const char *p_key)
+{
+    const char *attr = p_element->Attribute(p_key);
+    if (attr == NULL)
+    {
+        TRACE2_ERROR("DBXConfig::GetElementAttributeInt: cant find attribute %s from element %s\n", p_key, p_element->Value());
+        return 0;
+    }
+    return atoi(attr);
 }

@@ -1,6 +1,9 @@
 #ifndef __DBX_SINGLETON_H_
 #define __DBX_SINGLETON_H_
 
+#include <assert.h>
+#include <stdio.h>
+
 template<typename T>
 class Singleton
 {

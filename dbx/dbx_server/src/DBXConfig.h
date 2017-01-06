@@ -40,21 +40,9 @@ public:
     std::vector<DBInterfaceInfo> m_interfaceInfos;
 
 protected:
-    std::string GetElementAttributeStr(TiXmlElement *p_element, const char *p_key)
-    {
-        const char *attr = p_element->Attribute(p_key);
-        if (attr == NULL)
-            return "";
-        return attr;
-    }
+    std::string GetElementAttributeStr(TiXmlElement *p_element, const char *p_key);
 
-    int GetElementAttributeInt(TiXmlElement *p_element, const char *p_key)
-    {
-        const char *attr = p_element->Attribute(p_key);
-        if (attr == NULL)
-            return 0;
-        return atoi(attr);
-    }
+    int GetElementAttributeInt(TiXmlElement *p_element, const char *p_key);
 };
 
 #define g_dbxConfig DBXConfig::Instance()

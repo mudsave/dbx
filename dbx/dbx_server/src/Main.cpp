@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
     {
         TRACE0_L0("Dbx stop [ timeout ].\n");
     }
+    
+    GlobalThreadsPool()->Running();
 
     GenerateSignalThread();
 
