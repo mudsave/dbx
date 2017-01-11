@@ -62,6 +62,9 @@
     <ClInclude Include="src\tinyxml.h">
       <Filter>XML</Filter>
     </ClInclude>
+    <ClInclude Include="src\DBTaskPoolMgr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
@@ -90,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="src\tinyxmlparser.cpp">
       <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBTaskPoolMgr.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

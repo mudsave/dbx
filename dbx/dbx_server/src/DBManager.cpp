@@ -4,7 +4,7 @@
 #include "lindef.h"
 #include "Sock.h"
 
-#include "DBPoolMgr.h"
+#include "DBTaskPoolMgr.h"
 
 DBManager::DBManager():
 m_networkInterface()
@@ -28,7 +28,7 @@ void DBManager::InitDB()
 {
     TRACE0_L0("DBManager::InitDB...\n");
 
-    DBPoolMgr::InstancePtr()->Initialize();
+    DBTaskPoolMgr::InstancePtr()->Initialize();
 }
 
 void DBManager::CallSP(AppMsg *p_appMsg)
