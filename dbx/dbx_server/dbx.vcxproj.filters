@@ -65,6 +65,21 @@
     <ClInclude Include="src\DBTaskPoolMgr.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\DBIssue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBTaskPool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBInterface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBInterfaceMysql.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
@@ -95,6 +110,15 @@
       <Filter>XML</Filter>
     </ClCompile>
     <ClCompile Include="src\DBTaskPoolMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBTask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBTaskPool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBInterfaceMysql.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

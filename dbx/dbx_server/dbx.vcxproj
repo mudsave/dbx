@@ -19,7 +19,12 @@
     <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
     <ClInclude Include="src\ContextDefine.h" />
+    <ClInclude Include="src\DBInterface.h" />
+    <ClInclude Include="src\DBInterfaceMysql.h" />
+    <ClInclude Include="src\DBIssue.h" />
     <ClInclude Include="src\DBManager.h" />
+    <ClInclude Include="src\DBTask.h" />
+    <ClInclude Include="src\DBTaskPool.h" />
     <ClInclude Include="src\DBTaskPoolMgr.h" />
     <ClInclude Include="src\DBSession.h" />
     <ClInclude Include="src\DBXConfig.h" />
@@ -29,7 +34,10 @@
     <ClInclude Include="src\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\DBInterfaceMysql.cpp" />
     <ClCompile Include="src\DBManager.cpp" />
+    <ClCompile Include="src\DBTask.cpp" />
+    <ClCompile Include="src\DBTaskPool.cpp" />
     <ClCompile Include="src\DBTaskPoolMgr.cpp" />
     <ClCompile Include="src\DBSession.cpp" />
     <ClCompile Include="src\DBXConfig.cpp" />
