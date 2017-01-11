@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     GenerateSignalThread();
 
     Sleep(1000 * 5);
-    DBManager::InstancePtr()->RunOut();
+    DBManager::InstancePtr()->finalise();
     Sleep(1000 * 5);
 	return 0;
 }

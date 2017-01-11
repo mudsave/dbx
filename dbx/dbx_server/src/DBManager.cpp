@@ -19,7 +19,7 @@ HRESULT DBManager::Running(int p_port)
     InitDB();
 }
 
-void DBManager::RunOut()
+void DBManager::finalise()
 {
     TRACE0_L0("DBManager had run out.\n");
 }

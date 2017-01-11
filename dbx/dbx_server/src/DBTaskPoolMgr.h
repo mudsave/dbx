@@ -11,6 +11,7 @@ class DBTaskPoolMgr : public Singleton<DBTaskPoolMgr>
 {
 public:
     bool Initialize();
+    void finalise();
 
     typedef std::map<int, DBTaskPool *> DBTaskPoolMap;
     DBTaskPool *GetTaskPool(int p_id)

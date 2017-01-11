@@ -6,6 +6,7 @@
 #include "lindef.h"
 
 #include "DBXConfig.h"
+#include "DBTaskPool.h"
 
 bool DBTaskPoolMgr::Initialize()
 {
@@ -21,7 +22,19 @@ bool DBTaskPoolMgr::Initialize()
     for (; dbInterfaceInfo != g_dbxConfig.m_interfaceInfos.end(); ++dbInterfaceInfo)
     {
         TRACE1_L0("DBTaskPoolMgr::Initialize DBInterface %i.\n", dbInterfaceInfo->id);
+        m_taskPoolMap[dbInterfaceInfo->id] = new DBTaskPool(dbInterfaceInfo->id);
     }
 
     return true;
+}
+
+void DBTaskPoolMgr::finalise()
+{
+    TRACE0_L0("DBTaskPoolMgr::finalise:%i.\n");
+    DBTaskPoolMgr::DBTaskPoolMap::iterator iter = m_taskPoolMap.begin();
+    for (; iter != m_taskPoolMap.end(); ++iter)
+    {
+        iter->second->finalise();
+        delete iter->second;    // todo：定义安全释放宏
+    }
 }

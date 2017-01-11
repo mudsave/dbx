@@ -13,7 +13,7 @@ public:
     DBManager();
 
     HRESULT Running(int p_port = 3000);
-    void RunOut();
+    void finalise();
 
     void CallSP(AppMsg *m_appMsg);
     void CallSQL(AppMsg *m_appMsg);

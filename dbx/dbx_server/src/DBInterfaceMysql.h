@@ -7,7 +7,7 @@
 class DBInterfaceMysql : public DBInterface
 {
 public:
-    virtual bool Query(const char *p_cmd, int p_size, AppMsg *p_appMsg);
+    virtual bool Query(const char *p_cmd, int p_size, AppMsg *p_appMsg = NULL);
 };
 
 #endif  // end of __DB_INTERFACE_MYSQL_H_

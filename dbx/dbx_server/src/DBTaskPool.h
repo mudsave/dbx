@@ -13,13 +13,17 @@ class DBTask;
 class DBTaskPool
 {
 public:
-    DBTaskPool();
+    DBTaskPool(int p_dbInterfaceID);
     ~DBTaskPool();
 
     bool InitTasks(int p_taskNum);
 
+    void finalise();
+
     virtual ITask *CreateThread();
 protected:
+    int m_dbInterfaceID;
+
     std::list<DBTask *> m_freeTaskList;
     std::list<DBTask *> m_busyTaskList;
     std::list<DBTask *> m_totalTaskList;

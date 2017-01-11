@@ -1,19 +1,28 @@
 #include "DBTaskPool.h"
 
+#include "lindef.h"
 
-DBTaskPool::DBTaskPool()
+DBTaskPool::DBTaskPool(int p_dbInterfaceID):
+m_dbInterfaceID(p_dbInterfaceID),
+m_freeTaskList(),
+m_busyTaskList(),
+m_totalTaskList()
 {
-
 }
 
 DBTaskPool::~DBTaskPool()
 {
+}
 
+void DBTaskPool::finalise()
+{
+    TRACE1_L0("DBTaskPool::finalise:%i.\n", m_dbInterfaceID );
 }
 
 // 根据p_taskNum创建线程池
 bool DBTaskPool::InitTasks(int p_taskNum)
 {
+    TRACE2_L0("DBTaskPool::InitTasks:%i,task count:%i.\n", m_dbInterfaceID, p_taskNum);
     return true;
 }
 
