@@ -28,6 +28,8 @@ bool DBXConfig::LoadConfig(std::string p_filePath)
     {
         DBInterfaceInfo dbinfo;
         dbinfo.id = GetElementAttributeInt(databaseElem, "databaseid");
+        strncpy((char *)&dbinfo.db_type, GetElementAttributeStr(databaseElem, "type").c_str(), DBX_MAX_BUF);
+
         TiXmlElement *baseinfo = databaseElem->FirstChildElement("baseinfo");
         if (baseinfo != NULL)
         {

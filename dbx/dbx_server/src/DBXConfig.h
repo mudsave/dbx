@@ -24,6 +24,7 @@ struct DBInterfaceInfo
     }
 
     int id;                             // 数据库接口id
+    char db_type[DBX_MAX_BUF];          // 数据库类型
     char db_ip[DBX_MAX_BUF];            // 数据库ip地址
     int db_port;                        // 数据库端口
     char db_name[DBX_MAX_NAME];         // 数据库名字
