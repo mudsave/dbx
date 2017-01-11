@@ -1,5 +1,5 @@
-#ifndef __DBMANAGER_H_
-#define __DBMANAGER_H_
+#ifndef __DB_MANAGER_H_
+#define __DB_MANAGER_H_
 
 #include "lindef.h"
 #include "Sock.h"
@@ -13,7 +13,7 @@ public:
     DBManager();
 
     HRESULT Running(int p_port = 3000);
-    void finalise();
+    void Finalise();
 
     void CallSP(AppMsg *m_appMsg);
     void CallSQL(AppMsg *m_appMsg);
@@ -26,4 +26,4 @@ protected:
 };
 
 
-#endif // __DBMANAGER_H_
+#endif // __DB_MANAGER_H_

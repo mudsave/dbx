@@ -26,7 +26,6 @@
     <ClInclude Include="src\DBTask.h" />
     <ClInclude Include="src\DBTaskPool.h" />
     <ClInclude Include="src\DBTaskPoolMgr.h" />
-    <ClInclude Include="src\DBSession.h" />
     <ClInclude Include="src\DBXConfig.h" />
     <ClInclude Include="src\NetworkInterface.h" />
     <ClInclude Include="src\Singleton.h" />
@@ -39,7 +38,6 @@
     <ClCompile Include="src\DBTask.cpp" />
     <ClCompile Include="src\DBTaskPool.cpp" />
     <ClCompile Include="src\DBTaskPoolMgr.cpp" />
-    <ClCompile Include="src\DBSession.cpp" />
     <ClCompile Include="src\DBXConfig.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\NetworkInterface.cpp" />

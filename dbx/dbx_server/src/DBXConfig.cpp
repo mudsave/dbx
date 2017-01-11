@@ -78,3 +78,17 @@ int DBXConfig::GetElementAttributeInt(TiXmlElement *p_element, const char *p_key
     }
     return atoi(attr);
 }
+
+DBInterfaceInfo *DBXConfig::GetDBInterfaceInfo(int p_dbInterfaceID)
+{
+    std::vector<DBInterfaceInfo>::iterator iter = m_interfaceInfos.begin();
+    for (; iter != m_interfaceInfos.end(); ++iter)
+    {
+        if (iter->id == p_dbInterfaceID)
+        {
+            return &(*iter);
+        }
+    }
+
+    return NULL;
+}

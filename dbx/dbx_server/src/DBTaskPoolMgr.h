@@ -1,5 +1,5 @@
-#ifndef __DB_TASK_POOL_MGR_
-#define __DB_TASK_POOL_MGR_
+#ifndef __DB_TASK_POOL_MGR_H_
+#define __DB_TASK_POOL_MGR_H_
 
 #include <map>
 
@@ -11,7 +11,7 @@ class DBTaskPoolMgr : public Singleton<DBTaskPoolMgr>
 {
 public:
     bool Initialize();
-    void finalise();
+    void Finalise();
 
     typedef std::map<int, DBTaskPool *> DBTaskPoolMap;
     DBTaskPool *GetTaskPool(int p_id)
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif // end of __DB_TASK_POOL_MGR_
+#endif // end of __DB_TASK_POOL_MGR_H_

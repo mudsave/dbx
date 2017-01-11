@@ -8,7 +8,22 @@
 
 class DBInterface
 {
+public:
+    DBInterface(int p_dbInterfaceID):
+        m_dbInterfaceID(p_dbInterfaceID)
+
+    {
+
+    }
+
+
+    ~DBInterface();
+
     virtual bool Query(const char *p_cmd, int p_size, AppMsg *p_appMsg) = 0;
+
+protected:
+    int m_dbInterfaceID;
+
 };
 
 

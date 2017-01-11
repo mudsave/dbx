@@ -20,9 +20,6 @@
     <ClInclude Include="src\DBManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\DBSession.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\NetworkInterface.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -83,9 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DBSession.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Main.cpp">

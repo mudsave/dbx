@@ -28,13 +28,13 @@ bool DBTaskPoolMgr::Initialize()
     return true;
 }
 
-void DBTaskPoolMgr::finalise()
+void DBTaskPoolMgr::Finalise()
 {
     TRACE0_L0("DBTaskPoolMgr::finalise:%i.\n");
     DBTaskPoolMgr::DBTaskPoolMap::iterator iter = m_taskPoolMap.begin();
     for (; iter != m_taskPoolMap.end(); ++iter)
     {
-        iter->second->finalise();
+        iter->second->Finalise();
         delete iter->second;    // todo：定义安全释放宏
     }
 }

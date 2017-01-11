@@ -6,8 +6,8 @@
 
 #include "DBInterface.h"
 
-
 class DBTaskPool;
+
 class DBTask : public ITask
 {
 public:

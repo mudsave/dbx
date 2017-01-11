@@ -19,9 +19,9 @@ HRESULT DBManager::Running(int p_port)
     InitDB();
 }
 
-void DBManager::finalise()
+void DBManager::Finalise()
 {
-    TRACE0_L0("DBManager had run out.\n");
+    TRACE0_L0("DBManager::Finalise.\n");
 }
 
 void DBManager::InitDB()

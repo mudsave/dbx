@@ -4,12 +4,9 @@
 #include <string>
 #include <vector>
 
+#include "DBCommon.h"
 #include "tinyxml.h"
 #include "Singleton.h"
-
-
-#define DBX_MAX_BUF 256     // 常规buff的最大长度
-#define DBX_MAX_NAME 256    // 名称字符串的最大长度
 
 
 struct DBInterfaceInfo
@@ -37,6 +34,8 @@ class DBXConfig: public Singleton<DBXConfig>
 {
 public:
     bool LoadConfig(std::string p_filePath);
+
+    DBInterfaceInfo *GetDBInterfaceInfo(int p_dbInterfaceID);
 
     std::vector<DBInterfaceInfo> m_interfaceInfos;
 

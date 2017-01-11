@@ -16,7 +16,7 @@ HRESULT DBTask::Do(HANDLE hContext)
 {
     while (true)
     {
-        TRACE0_L0("DBTask::Do");
+        TRACE0_L0("DBTask::Do\n");
 
         // todo：
         // 1. 尝试从TaskPool获得新的issue并执行，注意使用线程锁

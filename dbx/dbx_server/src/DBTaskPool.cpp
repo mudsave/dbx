@@ -14,7 +14,7 @@ DBTaskPool::~DBTaskPool()
 {
 }
 
-void DBTaskPool::finalise()
+void DBTaskPool::Finalise()
 {
     TRACE1_L0("DBTaskPool::finalise:%i.\n", m_dbInterfaceID );
 }
@@ -29,4 +29,9 @@ bool DBTaskPool::InitTasks(int p_taskNum)
 ITask *DBTaskPool::CreateThread()
 {
     return NULL;
+}
+
+bool DBTaskPool::AddIssue(DBIssue *p_issue)
+{
+    return true;
 }
