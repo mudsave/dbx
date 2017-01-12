@@ -14,10 +14,16 @@ NetworkInterface::NetworkInterface(int p_port)
 
 }
 
-void NetworkInterface::Listen(int p_port)
+bool NetworkInterface::Listen(int p_port)
 {
+    TRACE1_L0("NetworkInterface::Listen at(%i)\n", p_port);
     HRESULT result = m_linkCtrl->Listen(NULL, &p_port, this, 0);
-    TRACE1_L0("NetworkInterface::Listen result(%i)\n", result);
+    if (result != S_OK)
+    {
+        TRACE1_ERROR( "NetworkInterface::Listen:result(%i).\n", result );
+        return false;
+    }
+    return true;
 }
 
 HRESULT NetworkInterface::Send(AppMsg *p_appMsg)

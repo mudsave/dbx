@@ -17,7 +17,7 @@ class NetworkInterface : public IMsgLinksImpl<1>    // 暂且用类型1
 public:
 	NetworkInterface(int p_port = 3000);
 
-    void Listen(int p_port);
+    bool Listen(int p_port);
 
 	HRESULT Send(AppMsg *p_appMsg);
 

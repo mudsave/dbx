@@ -12,14 +12,16 @@ class DBManager: public Singleton<DBManager>
 public:
     DBManager();
 
-    HRESULT Running(int p_port = 3000);
+    bool Initialize(int p_port = 3000);
     void Finalise();
+
+    HRESULT Run();
 
     void CallSP(AppMsg *m_appMsg);
     void CallSQL(AppMsg *m_appMsg);
 
 protected:
-    void InitDB();
+    bool InitDB();
 
 protected:
 	NetworkInterface m_networkInterface;

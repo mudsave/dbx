@@ -23,7 +23,8 @@ bool DBTaskPoolMgr::Initialize()
     {
         TRACE1_L0("DBTaskPoolMgr::Initialize DBInterface %i.\n", dbInterfaceInfo->id);
         m_taskPoolMap[dbInterfaceInfo->id] = new DBTaskPool(dbInterfaceInfo->id);
-        m_taskPoolMap[dbInterfaceInfo->id]->InitTasks(dbInterfaceInfo->db_connectionsNum);
+        if (!m_taskPoolMap[dbInterfaceInfo->id]->InitTasks(dbInterfaceInfo->db_connectionsNum))
+            return false;
     }
 
     return true;
