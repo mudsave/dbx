@@ -19,6 +19,7 @@
     <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
     <ClInclude Include="src\ContextDefine.h" />
+    <ClInclude Include="src\DBCommon.h" />
     <ClInclude Include="src\DBInterface.h" />
     <ClInclude Include="src\DBInterfaceMysql.h" />
     <ClInclude Include="src\DBIssue.h" />

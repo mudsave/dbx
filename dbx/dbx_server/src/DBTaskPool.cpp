@@ -22,7 +22,7 @@ void DBTaskPool::Finalise()
 // 根据p_taskNum创建线程池
 bool DBTaskPool::InitTasks(int p_taskNum)
 {
-    TRACE2_L0("DBTaskPool::InitTasks:%i,task count:%i.\n", m_dbInterfaceID, p_taskNum);
+    TRACE2_L0("DBTaskPool::InitTasks:DB(%i),task count:%i.\n", m_dbInterfaceID, p_taskNum);
     return true;
 }
 

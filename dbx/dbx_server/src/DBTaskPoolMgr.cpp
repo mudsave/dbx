@@ -23,6 +23,7 @@ bool DBTaskPoolMgr::Initialize()
     {
         TRACE1_L0("DBTaskPoolMgr::Initialize DBInterface %i.\n", dbInterfaceInfo->id);
         m_taskPoolMap[dbInterfaceInfo->id] = new DBTaskPool(dbInterfaceInfo->id);
+        m_taskPoolMap[dbInterfaceInfo->id]->InitTasks(dbInterfaceInfo->db_connectionsNum);
     }
 
     return true;
@@ -30,7 +31,7 @@ bool DBTaskPoolMgr::Initialize()
 
 void DBTaskPoolMgr::Finalise()
 {
-    TRACE0_L0("DBTaskPoolMgr::finalise:%i.\n");
+    TRACE0_L0("DBTaskPoolMgr::Finalise:%i.\n");
     DBTaskPoolMgr::DBTaskPoolMap::iterator iter = m_taskPoolMap.begin();
     for (; iter != m_taskPoolMap.end(); ++iter)
     {
