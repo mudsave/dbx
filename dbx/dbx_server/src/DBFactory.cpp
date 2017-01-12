@@ -1,12 +1,14 @@
 #include "DBFactory.h"
 
 #include <vector>
+#include <string>
 
 //#include "trace.h"
 #include "lindef.h"
 
 #include "DBXConfig.h"
 #include "DBTaskPool.h"
+#include "DBInterfaceMysql.h"
 
 bool DBFactory::Initialize()
 {
@@ -39,4 +41,22 @@ void DBFactory::Finalise()
         iter->second->Finalise();
         delete iter->second;    // todo：定义安全释放宏
     }
+}
+
+DBInterface *DBFactory::CreateDBInterface(int p_dbInterfaceID)
+{
+    DBInterfaceInfo *dbInfo = g_dbxConfig.GetDBInterfaceInfo(p_dbInterfaceID);
+    if (dbInfo == NULL)
+    {
+        TRACE1_ERROR("DBFactory::CreateDBInterface: there is no DBInfo for Interface ID(%i).", p_dbInterfaceID);
+        return NULL;
+    }
+
+    DBInterface *dbInterface = NULL;
+    if (strcmp(dbInfo->db_type, "mysql"))
+    {
+        dbInterface = new DBInterfaceMysql(p_dbInterfaceID);
+    }
+
+    return NULL;
 }

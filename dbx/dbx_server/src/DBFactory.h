@@ -6,12 +6,15 @@
 #include "Singleton.h"
 #include "DBTaskPool.h"
 
+class DBInterface;
 
 class DBFactory : public Singleton<DBFactory>
 {
 public:
     bool Initialize();
     void Finalise();
+
+    DBInterface *CreateDBInterface(int p_dbInterfaceID);
 
     typedef std::map<int, DBTaskPool *> DBTaskPoolMap;
     DBTaskPool *GetTaskPool(int p_id)

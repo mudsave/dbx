@@ -2,6 +2,12 @@
 
 #include "lindef.h"
 
+#include "DBInterface.h"
+
+DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID):
+DBInterface(p_dbInterfaceID)
+{
+}
 
 bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, AppMsg *p_appMsg)
 {

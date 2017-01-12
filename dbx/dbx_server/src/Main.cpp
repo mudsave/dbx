@@ -1,3 +1,6 @@
+/*
+Written by wangshufeng
+*/
 
 //#include "trace.h"
 #include "lindef.h"
@@ -18,7 +21,7 @@ int main(int argc, char *argv[])
     g_dbxConfig.LoadConfig("DBServer.xml");
     GenerateSignalThread();
 
-    const int DBX_PORT = 3000;
+    const int DBX_PORT = 3000;  // todo£º·Åµ½DBServer.xmlÅäÖÃ
     if (!DBManager::InstancePtr()->Initialize(DBX_PORT))
     {
         TRACE0_ERROR("DBManager::Initialize(): initialization failed!\n");
