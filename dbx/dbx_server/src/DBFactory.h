@@ -1,5 +1,5 @@
-#ifndef __DB_TASK_POOL_MGR_H_
-#define __DB_TASK_POOL_MGR_H_
+#ifndef __DB_FACTORY_H_
+#define __DB_FACTORY_H_
 
 #include <map>
 
@@ -7,7 +7,7 @@
 #include "DBTaskPool.h"
 
 
-class DBTaskPoolMgr : public Singleton<DBTaskPoolMgr>
+class DBFactory : public Singleton<DBFactory>
 {
 public:
     bool Initialize();
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif // end of __DB_TASK_POOL_MGR_H_
+#endif // end of __DB_FACTORY_H_
