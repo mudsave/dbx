@@ -27,9 +27,10 @@ bool DBFactory::Initialize()
         TRACE1_L0("DBFactory::Initialize DBInterface %i.\n", dbInterfaceInfo->id);
         m_taskPoolMap[dbInterfaceInfo->id] = new DBTaskPool(dbInterfaceInfo->id);
         if (!m_taskPoolMap[dbInterfaceInfo->id]->InitTasks(dbInterfaceInfo->db_connectionsNum))
+        {
+            TRACE1_ERROR("DBFactory::Initialize:Cant initTasks for db interface(id:%i).\n", dbInterfaceInfo->id);
             return false;
-
-        DBInterface *dbInterface = CreateDBInterface(dbInterfaceInfo->id);
+        }            
     }
 
     return true;

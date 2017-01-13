@@ -9,10 +9,12 @@ DBTask::DBTask(int p_dbInterfaceID, DBTaskPool *p_dbTaskPool):
     m_dbInterfaceID(p_dbInterfaceID),
     m_taskPool(p_dbTaskPool),
     m_dbInterface(NULL)
-{}
+{
+}
 
 DBTask::~DBTask()
-{}
+{
+}
 
 HRESULT DBTask::Do(HANDLE hContext)
 {
@@ -21,6 +23,7 @@ HRESULT DBTask::Do(HANDLE hContext)
     if (m_dbInterface == NULL)
     {
         TRACE1_ERROR("DBTask::Do:cant create db InterfaceID(%i)\n", m_dbInterfaceID);
+        return S_FALSE;
     }
     
     while (0)
@@ -30,5 +33,5 @@ HRESULT DBTask::Do(HANDLE hContext)
         // 2. 如果没有新的issue，那么通知TaskPool空闲状态，并进入等待wait
         // 3. TaskPool分配新的任务时会Post通知
     }
-    return 1;
+    return S_OK;
 }
