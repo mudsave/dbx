@@ -5,6 +5,8 @@
 #include "vsdef.h"
 #include "Sock.h"
 
+class DBTaskPool;
+
 struct OnConnectsContext
 {
     handle m_linkIndex;
@@ -13,6 +15,15 @@ struct OnConnectsContext
 
     OnConnectsContext(handle p_linkIndex, ILinkPort *p_linkPort, int p_linkType)
         :m_linkIndex(p_linkIndex), m_linkPort(p_linkPort), m_linkType(p_linkType)
+    {}
+};
+
+struct DBTaskContext
+{
+    DBTaskPool *m_dbThreadPool;
+
+    DBTaskContext(DBTaskPool *p_dbThreadPool)
+        :m_dbThreadPool(p_dbThreadPool)
     {}
 };
 

@@ -11,7 +11,7 @@ public:
 
     virtual bool Query(const char *p_cmd, int p_size, AppMsg *p_appMsg = NULL);
 
-    virtual bool Connect(int p_dbInterfaceID);
+    virtual bool Connect();
 
     virtual void Disconnect();
 

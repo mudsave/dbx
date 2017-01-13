@@ -10,6 +10,7 @@
 #include "DBTaskPool.h"
 #include "DBInterfaceMysql.h"
 
+
 bool DBFactory::Initialize()
 {
     TRACE0_L0("DBFactory::Initialize.\n");
@@ -27,6 +28,8 @@ bool DBFactory::Initialize()
         m_taskPoolMap[dbInterfaceInfo->id] = new DBTaskPool(dbInterfaceInfo->id);
         if (!m_taskPoolMap[dbInterfaceInfo->id]->InitTasks(dbInterfaceInfo->db_connectionsNum))
             return false;
+
+        DBInterface *dbInterface = CreateDBInterface(dbInterfaceInfo->id);
     }
 
     return true;
@@ -34,7 +37,7 @@ bool DBFactory::Initialize()
 
 void DBFactory::Finalise()
 {
-    TRACE0_L0("DBFactory::Finalise:%i.\n");
+    TRACE0_L0("DBFactory::Finalise.\n");
     DBFactory::DBTaskPoolMap::iterator iter = m_taskPoolMap.begin();
     for (; iter != m_taskPoolMap.end(); ++iter)
     {
@@ -48,15 +51,27 @@ DBInterface *DBFactory::CreateDBInterface(int p_dbInterfaceID)
     DBInterfaceInfo *dbInfo = g_dbxConfig.GetDBInterfaceInfo(p_dbInterfaceID);
     if (dbInfo == NULL)
     {
-        TRACE1_ERROR("DBFactory::CreateDBInterface: there is no DBInfo for Interface ID(%i).", p_dbInterfaceID);
+        TRACE1_ERROR("DBFactory::CreateDBInterface: there is no DBInfo for DBInterface ID(%i).", p_dbInterfaceID);
         return NULL;
     }
 
     DBInterface *dbInterface = NULL;
-    if (strcmp(dbInfo->db_type, "mysql"))
+    if (strcmp(dbInfo->db_type, "mysql") == 0)
     {
         dbInterface = new DBInterfaceMysql(p_dbInterfaceID);
+        if (!dbInterface->Initialize())
+        {
+            TRACE1_ERROR("DBFactory::CreateDBInterface: DBInterfaceMysql Initialize error.(id:%i).", p_dbInterfaceID);
+            return NULL;
+        }
     }
 
-    return NULL;
+    if (!dbInterface->Connect())
+    {
+        TRACE1_ERROR("DBFactory::CreateDBInterface:DB interface(id:%i) Connect Error.\n", p_dbInterfaceID);
+        return NULL;
+    }
+
+    TRACE1_L0("DBFactory::CreateDBInterface:%i.\n", p_dbInterfaceID);
+    return dbInterface;
 }

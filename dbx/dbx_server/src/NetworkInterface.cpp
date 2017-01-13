@@ -4,7 +4,7 @@
 #include "lindef.h"	// 包含lindef.h来使用trace.h
 #include "Sock.h"	// 使用Sock.h必先包含lindef.h，依赖其中的声明
 
-#include "ContextDefine.h"
+#include "DBXContextDefine.h"
 #include "DBManager.h"
 
 NetworkInterface::NetworkInterface(int p_port)
