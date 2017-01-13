@@ -26,9 +26,6 @@
     <ClInclude Include="src\Singleton.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\ContextDefine.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\message_define\MessageBase.h">
       <Filter>MsgDefine</Filter>
     </ClInclude>
@@ -59,9 +56,6 @@
     <ClInclude Include="src\tinyxml.h">
       <Filter>XML</Filter>
     </ClInclude>
-    <ClInclude Include="src\DBTaskPoolMgr.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\DBIssue.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -75,6 +69,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\DBInterfaceMysql.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBCommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBXContextDefine.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -103,9 +106,6 @@
     <ClCompile Include="src\tinyxmlparser.cpp">
       <Filter>XML</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBTaskPoolMgr.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\DBTask.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -113,6 +113,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\DBInterfaceMysql.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBXCommon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBIssue.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

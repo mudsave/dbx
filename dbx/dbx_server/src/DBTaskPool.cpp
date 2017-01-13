@@ -23,6 +23,7 @@ DBTaskPool::~DBTaskPool()
 void DBTaskPool::Finalise()
 {
     TRACE1_L0("DBTaskPool::finalise:%i.\n", m_dbInterfaceID );
+    // todo:清理线程，清理new对象。
 }
 
 // 根据p_taskNum创建线程池

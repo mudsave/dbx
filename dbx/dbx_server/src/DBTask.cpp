@@ -22,7 +22,7 @@ HRESULT DBTask::Do(HANDLE hContext)
     m_dbInterface = DBFactory::InstancePtr()->CreateDBInterface(m_dbInterfaceID);
     if (m_dbInterface == NULL)
     {
-        TRACE1_ERROR("DBTask::Do:cant create db InterfaceID(%i)\n", m_dbInterfaceID);
+        TRACE1_ERROR("DBTask::Do:cant create db InterfaceID(%i).\n", m_dbInterfaceID);
         return S_FALSE;
     }
     
