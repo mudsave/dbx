@@ -14,8 +14,6 @@ public:
     virtual bool Connect();
 
     virtual void Disconnect();
-
-    virtual bool Initialize();
 };
 
 #endif  // end of __DB_INTERFACE_MYSQL_H_

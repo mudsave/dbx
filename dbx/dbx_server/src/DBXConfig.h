@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "DBCommon.h"
+#include "DBXCommon.h"
 #include "tinyxml.h"
 #include "Singleton.h"
 

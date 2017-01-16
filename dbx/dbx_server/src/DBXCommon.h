@@ -8,9 +8,6 @@
 
 namespace DBXCommon
 {
-    // 安全的字符串复制，确保最后一个字符是'\0'
-    char *DBXStrncpy(char *dststr, const char *srcstr, size_t size);
-
 
 }   // end of namespace DBXCommon
 

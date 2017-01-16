@@ -4,7 +4,7 @@
 
 #include "lindef.h"
 
-#include "DBCommon.h"
+#include "DBXCommon.h"
 #include "DBInterface.h"
 #include "DBXConfig.h"
 
@@ -37,26 +37,4 @@ void DBInterfaceMysql::Disconnect()
     TRACE0_L0("DBInterfaceMysql::Disconnect.\n" );
 }
 
-bool DBInterfaceMysql::Initialize()
-{
-    TRACE1_L0("DBInterfaceMysql::Initialize p_dbInterfaceID(%i)\n", m_dbInterfaceID);
-    DBInterface::Initialize();
-
-    DBInterfaceInfo *dbInfo = g_dbxConfig.GetDBInterfaceInfo(m_dbInterfaceID);
-    if (dbInfo == NULL)
-    {
-        TRACE1_ERROR("DBInterfaceMysql::Initialize:g_dbxConfig.GetDBInterfaceInfo error:cant find database info for ID(%id).\n", m_dbInterfaceID);
-        return false;
-    }
-
-    m_dbPort = dbInfo->db_port;
-    
-    DBXCommon::DBXStrncpy(m_dbType, dbInfo->db_type, DBX_MAX_BUF);
-    DBXCommon::DBXStrncpy(m_dbIP, dbInfo->db_ip, DBX_MAX_BUF);
-    DBXCommon::DBXStrncpy(m_dbUserName, dbInfo->db_username, DBX_MAX_NAME);
-    DBXCommon::DBXStrncpy(m_dbPassword, dbInfo->db_password, DBX_MAX_BUF);
-    DBXCommon::DBXStrncpy(m_dbName, dbInfo->db_name, DBX_MAX_NAME);
-
-    return true;
-}
 
