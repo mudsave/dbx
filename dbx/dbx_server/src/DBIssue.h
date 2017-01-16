@@ -25,4 +25,10 @@ public:
 };
 
 
+class DBIssueCallSQL :public DBIssueBase
+{
+public:
+    virtual void OnProgress();
+};
+
 #endif // end of __DB_ISSUE_H_

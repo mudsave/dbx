@@ -2,6 +2,8 @@
 
 #include "lindef.h"
 
+
+// -----------------------------------------------------------------------------------
 DBIssueBase::DBIssueBase()
     :m_dbInterface(NULL)
 {
@@ -9,7 +11,7 @@ DBIssueBase::DBIssueBase()
 
 void DBIssueBase::Progress()
 {
-    TRACE0_L0("DBIssueCallSP::Progress");
+    TRACE0_L0("DBIssueBase::Progress");
     OnProgress();
 }
 
@@ -25,3 +27,9 @@ void DBIssueCallSP::OnProgress()
     TRACE0_L0( "DBIssueCallSP::OnProgress" );
 }
 
+
+// -----------------------------------------------------------------------------------
+void DBIssueCallSQL::OnProgress()
+{
+    TRACE0_L0("DBIssueCallSQL::OnProgress");
+}

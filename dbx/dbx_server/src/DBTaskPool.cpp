@@ -1,6 +1,7 @@
 #include "DBTaskPool.h"
 
 #include <algorithm>
+#include <list>
 
 #include "lindef.h"
 #include "Sock.h"
@@ -35,7 +36,7 @@ bool DBTaskPool::InitTasks(int p_taskNum)
     TRACE2_L0("DBTaskPool::InitTasks:DB(%i),task count:%i.\n", m_dbInterfaceID, p_taskNum);
     for (int i = 0; i < p_taskNum; ++i)
     {
-        ITask *task = CreateThread();
+        DBTask *task = CreateThread();
         if (task == NULL)
         {
             return false;
@@ -49,7 +50,7 @@ bool DBTaskPool::InitTasks(int p_taskNum)
     return true;
 }
 
-ITask *DBTaskPool::CreateThread()
+DBTask *DBTaskPool::CreateThread()
 {
     DBTaskContext *taskContext = new DBTaskContext(this);
     DBTask *task = new DBTask(m_dbInterfaceID, this);
@@ -63,6 +64,13 @@ ITask *DBTaskPool::CreateThread()
 
 bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
 {
+    m_mutex.Lock();
+
+    if (m_freeTaskCount > 0)
+    {
+        std::list<DBTask *>::iterator iter = m_freeTaskList.begin();
+        DBTask *task = *iter;
+    }
     return true;
 }
 
@@ -71,11 +79,11 @@ void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
     TRACE0_L0("DBTaskPool::OnIssueFinish\n");
 }
 
-void DBTaskPool::AddFreeTask(ITask *p_task)
+void DBTaskPool::AddFreeTask(DBTask *p_task)
 {
     m_mutex.Lock();
 
-    std::list<ITask *>::iterator iter;
+    std::list<DBTask *>::iterator iter;
     iter = find(m_busyTaskList.begin(), m_busyTaskList.end(), p_task);
     if (iter == m_busyTaskList.end())
     {

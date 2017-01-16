@@ -10,7 +10,8 @@ DBTask::DBTask(int p_dbInterfaceID, DBTaskPool *p_dbTaskPool):
     m_taskPool(p_dbTaskPool),
     m_dbInterface(NULL),
     m_currentIssue(NULL),
-    m_semaphore()
+    m_semaphore(),
+    m_isDestroyed(false)
 {
 }
 
@@ -28,12 +29,17 @@ HRESULT DBTask::Do(HANDLE hContext)
         return S_FALSE;
     }
     
-    bool running = true;
-    while (running)
+    while (!IsDestroyed())
     {
         if (GetCurrIssue() == NULL)
         {
             Wait();
+        }
+
+        if (!IsDestroyed())
+        {
+            DoEnd();
+            return S_OK;
         }
 
         DBIssueBase *issue = GetCurrIssue();
@@ -44,6 +50,7 @@ HRESULT DBTask::Do(HANDLE hContext)
             if (!nextIssue)
             {
                 ProgressEnd();
+                break;
             }
             else
             {
@@ -52,11 +59,6 @@ HRESULT DBTask::Do(HANDLE hContext)
                 SetIssue(issue);
             }
         }
-        //// todo：
-        //// 1. 尝试从TaskPool获得新的issue并执行，注意使用线程锁
-        //// 2. 如果没有新的issue，那么通知TaskPool空闲状态，并进入等待wait
-        //// 3. TaskPool分配新的任务时会Post通知
-        //// 4. 检查退出条件：例如pool是否已经被销毁，线程运行的条件是否还满足，不满足则退出
     }
 
     DoEnd();
@@ -109,4 +111,14 @@ void DBTask::ProgressEnd()
 void DBTask::DoEnd()
 {
     TRACE1_L0("DBTask::DoEnd:cancel for DBInterface(id:%i)...\n", m_dbInterfaceID);
+}
+
+void DBTask::Destroy()
+{
+    m_isDestroyed = true;
+}
+
+bool DBTask::IsDestroyed()
+{
+    return m_isDestroyed;
 }

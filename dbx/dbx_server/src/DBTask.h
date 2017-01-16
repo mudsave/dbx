@@ -27,6 +27,9 @@ public:
     void Start();
 
     void ProgressIssue(DBIssueBase *p_issue);
+
+    void Destroy();
+    bool IsDestroyed();
 protected:
     void DoEnd();
 
@@ -39,9 +42,9 @@ protected:
     DBIssueBase *m_currentIssue;
 
     Semaphore m_semaphore;
+
+    bool m_isDestroyed;
 };
-
-
 
 
 #endif // end of __DB_TASK_H_
