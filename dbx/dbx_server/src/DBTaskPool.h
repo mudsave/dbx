@@ -6,7 +6,8 @@
 #include "lindef.h"
 #include "Sock.h"
 
-class DBIssue;
+#include "DBIssue.h"
+
 
 // DB线程池，负责管理线程，分配空闲线程，缓冲DB查询任务
 // 线程有空闲、忙碌
@@ -22,7 +23,11 @@ public:
 
     virtual ITask *CreateThread();
 
-    bool AddIssue(DBIssue *p_issue);
+    bool AddIssue(DBIssueBase *p_issue);
+
+    void OnIssueFinish(DBIssueBase *p_issue);
+
+    void AddFreeTask(ITask *p_task);
 protected:
     int m_dbInterfaceID;
 
@@ -32,6 +37,8 @@ protected:
 
     int m_freeTaskCount;
     int m_totalTaskCount;
+
+    Mutex m_mutex;
 };
 
 

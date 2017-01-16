@@ -1,5 +1,7 @@
 #include "DBTaskPool.h"
 
+#include <algorithm>
+
 #include "lindef.h"
 #include "Sock.h"
 
@@ -12,7 +14,8 @@ m_freeTaskList(),
 m_busyTaskList(),
 m_totalTaskList(),
 m_freeTaskCount(0),
-m_totalTaskCount(0)
+m_totalTaskCount(0),
+m_mutex()
 {
 }
 
@@ -58,7 +61,30 @@ ITask *DBTaskPool::CreateThread()
     return task;
 }
 
-bool DBTaskPool::AddIssue(DBIssue *p_issue)
+bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
 {
     return true;
+}
+
+void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
+{
+    TRACE0_L0("DBTaskPool::OnIssueFinish\n");
+}
+
+void DBTaskPool::AddFreeTask(ITask *p_task)
+{
+    m_mutex.Lock();
+
+    std::list<ITask *>::iterator iter;
+    iter = find(m_busyTaskList.begin(), m_busyTaskList.end(), p_task);
+    if (iter == m_busyTaskList.end())
+    {
+        TRACE1_ERROR("DBTaskPool::AddFreeTask:Cant find task(%x) in Busy task List.\n", &p_task);
+        return;
+    }
+    m_busyTaskList.erase(iter);
+    m_freeTaskList.push_back(p_task);
+    m_freeTaskCount++;
+
+    m_mutex.Unlock();
 }
