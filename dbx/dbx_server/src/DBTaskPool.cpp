@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <list>
+#include <vector>
 
 #include "lindef.h"
 #include "Sock.h"
@@ -135,4 +136,27 @@ void DBTaskPool::AddFreeTask(DBTask *p_task)
     m_freeTaskCount++;
 
     m_freeBusyListMutex.Unlock();
+}
+
+void DBTaskPool::MainTick()
+{
+    TRACE1_L0("DBTaskPool::MainTick:%i.\n", m_dbInterfaceID);
+    m_finishIssueMutex.Lock();
+
+    if (m_finishIssueList.size() == 0)
+    {
+        TRACE0_L0("DBTaskPool::MainTick:Has no finished issue.\n");
+        m_finishIssueMutex.Unlock();
+        return;
+    }
+
+    std::vector<DBIssueBase *> issueList;
+    std::copy(m_finishIssueList.begin(), m_finishIssueList.end(), std::back_inserter(issueList));
+    m_finishIssueList.clear();
+
+    m_finishIssueMutex.Unlock();
+
+    std::vector<DBIssueBase *>::iterator iter = issueList.begin();
+    for (; iter != issueList.end(); ++iter)
+        (*iter)->MainProgress();
 }

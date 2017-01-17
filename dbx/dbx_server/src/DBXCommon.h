@@ -8,6 +8,7 @@
 
 #define DBX_TASK_BUSY_SIZE 32      // 任务是否繁忙临界值
 
+#define DBX_DEFALT_DATABASE_ID 1   // 默认数据库id
 
 namespace DBXCommon
 {

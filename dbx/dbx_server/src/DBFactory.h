@@ -13,6 +13,7 @@ class DBFactory : public Singleton<DBFactory>
 public:
     bool Initialize();
     void Finalise();
+    void MainTick();
 
     DBInterface *CreateDBInterface(int p_dbInterfaceID);
 

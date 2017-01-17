@@ -76,3 +76,10 @@ DBInterface *DBFactory::CreateDBInterface(int p_dbInterfaceID)
     TRACE1_L0("DBFactory::CreateDBInterface:%i.\n", p_dbInterfaceID);
     return dbInterface;
 }
+
+void DBFactory::MainTick()
+{
+    DBFactory::DBTaskPoolMap::iterator iter = m_taskPoolMap.begin();
+    for (; iter != m_taskPoolMap.end(); ++iter)
+        iter->second->MainTick();
+}

@@ -7,7 +7,7 @@
 #include "NetworkInterface.h"
 #include "Singleton.h"
 
-class DBManager: public Singleton<DBManager>
+class DBManager: public Singleton<DBManager>, ITask
 {
 public:
     DBManager();
@@ -20,10 +20,13 @@ public:
     void CallSP(AppMsg *m_appMsg);
     void CallSQL(AppMsg *m_appMsg);
 
+    virtual HRESULT Do(HANDLE hContext);
 protected:
     bool InitDB();
 
 protected:
+    HANDLE m_mainProcessTimer;
+
 	NetworkInterface m_networkInterface;
 };
 

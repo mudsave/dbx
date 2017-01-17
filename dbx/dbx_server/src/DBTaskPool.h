@@ -20,8 +20,8 @@ public:
     ~DBTaskPool();
 
     bool InitTasks(int p_taskNum);
-
     void Finalise();
+    void MainTick();
 
     virtual DBTask *CreateThread();
 
