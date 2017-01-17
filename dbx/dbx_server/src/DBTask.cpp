@@ -21,7 +21,7 @@ DBTask::~DBTask()
 
 HRESULT DBTask::Do(HANDLE hContext)
 {
-    TRACE1_L0("DBTask::Do:db InterfaceID(%i).\n", m_dbInterfaceID);
+    TRACE0_L0("DBTask::Do:DoStart...\n");
     m_dbInterface = DBFactory::InstancePtr()->CreateDBInterface(m_dbInterfaceID);
     if (m_dbInterface == NULL)
     {
@@ -35,8 +35,7 @@ HRESULT DBTask::Do(HANDLE hContext)
         {
             Wait();
         }
-
-        if (!IsDestroyed())
+        if (IsDestroyed())
         {
             DoEnd();
             return S_OK;

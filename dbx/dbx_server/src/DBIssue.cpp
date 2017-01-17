@@ -35,12 +35,12 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg)
 
 void DBIssueCallSP::OnProgress()
 {
-    TRACE0_L0( "DBIssueCallSP::OnProgress.\n" );
+    TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
 }
 
 void DBIssueCallSP::MainProgress()
 {
-    TRACE0_L0("DBIssueCallSP::MainProgress.\n");
+    TRACE0_L0("DBIssueCallSP::MainProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n");
 }
 
 
@@ -53,11 +53,11 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg)
 
 void DBIssueCallSQL::OnProgress()
 {
-    TRACE0_L0("DBIssueCallSQL::OnProgress.\n");
+    TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
 }
 
 void DBIssueCallSQL::MainProgress()
 {
-    TRACE0_L0("DBIssueCallSQL::MainProgress.\n");
+    TRACE0_L0("DBIssueCallSQL::MainProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
 }
 

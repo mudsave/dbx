@@ -71,13 +71,13 @@
     <ClInclude Include="src\DBInterfaceMysql.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\DBCommon.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\DBFactory.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\DBXContextDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DBXCommon.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

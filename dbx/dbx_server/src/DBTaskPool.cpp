@@ -17,8 +17,6 @@ DBTaskPool::DBTaskPool(int p_dbInterfaceID)
     m_totalTaskList(),
     m_issueBufferList(),
     m_finishIssueList(),
-    m_freeTaskCount(0),
-    m_totalTaskCount(0),
     m_freeBusyListMutex(),
     m_bufferListMutex(),
     m_finishIssueMutex()
@@ -35,7 +33,6 @@ void DBTaskPool::Finalise()
     // todo:清理线程，清理new对象。
 }
 
-// 根据p_taskNum创建线程池
 bool DBTaskPool::InitTasks(int p_taskNum)
 {
     TRACE2_L0("DBTaskPool::InitTasks:DB(%i),task count:%i.\n", m_dbInterfaceID, p_taskNum);
@@ -49,8 +46,6 @@ bool DBTaskPool::InitTasks(int p_taskNum)
 
         m_freeTaskList.push_back(task);
         m_totalTaskList.push_back(task);
-        m_freeTaskCount++;
-        m_totalTaskCount++;
     }
     return true;
 }
@@ -70,12 +65,11 @@ DBTask *DBTaskPool::CreateThread()
 bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
 {
     m_freeBusyListMutex.Lock();
-    if (m_freeTaskCount > 0)
+    if (m_freeTaskList.size() > 0)
     {
         std::list<DBTask *>::iterator iter = m_freeTaskList.begin();
         DBTask *task = *iter;
         m_freeTaskList.remove(task);
-        m_freeTaskCount--;
         m_busyTaskList.push_back(task);
         task->SetIssue(p_issue);
         task->Start();
@@ -133,7 +127,6 @@ void DBTaskPool::AddFreeTask(DBTask *p_task)
     }
     m_busyTaskList.erase(iter);
     m_freeTaskList.push_back(p_task);
-    m_freeTaskCount++;
 
     m_freeBusyListMutex.Unlock();
 }
@@ -153,10 +146,13 @@ void DBTaskPool::MainTick()
     std::vector<DBIssueBase *> issueList;
     std::copy(m_finishIssueList.begin(), m_finishIssueList.end(), std::back_inserter(issueList));
     m_finishIssueList.clear();
-
     m_finishIssueMutex.Unlock();
 
     std::vector<DBIssueBase *>::iterator iter = issueList.begin();
-    for (; iter != issueList.end(); ++iter)
+    for (; iter != issueList.end();)
+    {
         (*iter)->MainProgress();
+        delete (*iter);
+        iter = issueList.erase(iter);
+    }
 }

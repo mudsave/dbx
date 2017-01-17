@@ -38,8 +38,6 @@ protected:
     std::list<DBTask *> m_freeTaskList;
     std::list<DBTask *> m_busyTaskList;
     std::list<DBTask *> m_totalTaskList;
-    int m_freeTaskCount;
-    int m_totalTaskCount;
 
     std::queue<DBIssueBase *> m_issueBufferList;
     std::list<DBIssueBase *> m_finishIssueList;

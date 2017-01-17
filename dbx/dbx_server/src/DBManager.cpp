@@ -5,8 +5,8 @@
 #include "Sock.h"
 
 #include "DBFactory.h"
-#include "DBXCommon.h"
 
+#define DBX_DEFALT_DATABASE_ID 1   // Ä¬ÈÏÊý¾Ý¿âid
 
 DBManager::DBManager():
 m_networkInterface()
@@ -21,7 +21,7 @@ bool DBManager::Initialize(int p_port)
     m_mainProcessTimer = pThreadsPool->RegTimer(this, NULL, 0, 1000, 1000, "DBX_Main_Process_Timer");
     if (m_mainProcessTimer == NULL)
     {
-        TRACE0_ERROR("DBManager::Initialize...RegTimer error.\n");
+        TRACE0_ERROR("DBManager::Initialize...Register timer error.\n");
         return false;
     }
 
@@ -65,4 +65,6 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
+    DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
 }

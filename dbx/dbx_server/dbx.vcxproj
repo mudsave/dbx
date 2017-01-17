@@ -19,7 +19,7 @@
     <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
     <ClInclude Include="src\DBXContextDefine.h" />
-    <ClInclude Include="src\DBCommon.h" />
+    <ClInclude Include="src\DBXCommon.h" />
     <ClInclude Include="src\DBInterface.h" />
     <ClInclude Include="src\DBInterfaceMysql.h" />
     <ClInclude Include="src\DBIssue.h" />
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share;../lib/message_define;../lib/dependencies/tinyxml</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share;../lib/message_define;../lib/dependencies/mysql/mysql/include;../lib/dependencies/tinyxml</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
