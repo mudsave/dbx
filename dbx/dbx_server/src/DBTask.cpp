@@ -77,7 +77,7 @@ DBIssueBase *DBTask::GetCurrIssue()
 
 DBIssueBase *DBTask::GetNextIssue()
 {
-    return NULL;
+    return m_taskPool->PopBufferIssue();
 }
 
 DBTaskPool *DBTask::GetTaskPool()
@@ -87,11 +87,13 @@ DBTaskPool *DBTask::GetTaskPool()
 
 void DBTask::Wait()
 {
+    TRACE0_L0("DBTask::Wait.\n");
     m_semaphore.Wait();
 }
 
 void DBTask::Start()
 {
+    TRACE0_L0("DBTask::Start.\n");
     m_semaphore.Post();
 }
 

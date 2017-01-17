@@ -26,14 +26,14 @@ public:
     void Wait();
     void Start();
 
-    void ProgressIssue(DBIssueBase *p_issue);
+    virtual void ProgressIssue(DBIssueBase *p_issue);
 
     void Destroy();
     bool IsDestroyed();
 protected:
-    void DoEnd();
+    virtual void DoEnd();
 
-    void ProgressEnd();
+    virtual void ProgressEnd();
 protected:
     int m_dbInterfaceID;
     DBTaskPool *m_taskPool;

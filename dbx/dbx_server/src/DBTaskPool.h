@@ -2,6 +2,7 @@
 #define __DB_TASK_POOL_H_
 
 #include <list>
+#include <queue>
 
 #include "lindef.h"
 #include "Sock.h"
@@ -26,6 +27,8 @@ public:
 
     bool AddIssue(DBIssueBase *p_issue);
 
+    DBIssueBase *PopBufferIssue();
+
     void OnIssueFinish(DBIssueBase *p_issue);
 
     void AddFreeTask(DBTask *p_task);
@@ -35,11 +38,15 @@ protected:
     std::list<DBTask *> m_freeTaskList;
     std::list<DBTask *> m_busyTaskList;
     std::list<DBTask *> m_totalTaskList;
-
     int m_freeTaskCount;
     int m_totalTaskCount;
 
-    Mutex m_mutex;
+    std::queue<DBIssueBase *> m_issueBufferList;
+    std::list<DBIssueBase *> m_finishIssueList;
+
+    Mutex m_freeBusyListMutex;
+    Mutex m_bufferListMutex;
+    Mutex m_finishIssueMutex;
 };
 
 
