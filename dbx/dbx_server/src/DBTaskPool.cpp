@@ -10,6 +10,8 @@
 #include "DBTask.h"
 #include "DBXContextDefine.h"
 
+#define DB_TASK_DESTROY_TIME 300
+
 DBTaskPool::DBTaskPool(int p_dbInterfaceID)
     :m_dbInterfaceID(p_dbInterfaceID),
     m_freeTaskList(),
@@ -30,7 +32,7 @@ DBTaskPool::~DBTaskPool()
 
 void DBTaskPool::Finalise()
 {
-    TRACE1_L0("DBTaskPool::finalise:%i.\n", m_dbInterfaceID );
+    TRACE1_L0("DBTaskPool::Finalise:%i.\n", m_dbInterfaceID );
     
     m_isDestroyed = true;
     m_freeBusyListMutex.Lock();
@@ -44,7 +46,7 @@ void DBTaskPool::Finalise()
 
     m_freeBusyListMutex.Unlock();
 
-    Sleep(300);     // 等待全部线程销毁
+    Sleep(DB_TASK_DESTROY_TIME);     // 等待全部线程销毁
 
     m_freeBusyListMutex.Lock();
     taskIter = m_totalTaskList.begin();

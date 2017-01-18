@@ -16,7 +16,7 @@ void ParseMainCommandArgs(int argc, char *argv[])
 void CleanUp()
 {
     TRACE0_L0("DBX CleanUp...\n");
-    DBManager::InstancePtr()->Finalise();
+    DBManager::InstancePtr()->Shutdown();
 }
 
 int main(int argc, char *argv[])

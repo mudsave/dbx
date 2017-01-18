@@ -7,7 +7,7 @@
 #include "DBFactory.h"
 
 #define DBX_DEFALT_DATABASE_ID 1   // Ä¬ÈÏÊý¾Ý¿âid
-#define DBX_MAIN_TICK_TIME 500
+#define DBX_MAIN_TICK_TIME 3000
 
 DBManager::DBManager():
 m_networkInterface()
@@ -41,6 +41,12 @@ HRESULT DBManager::Run()
 {
     TRACE0_L0("DBManager::Run.\n");
     return GlobalThreadsPool()->Running();
+}
+
+void DBManager::Shutdown()
+{
+    Finalise();
+    GlobalThreadsPool()->Shutdown();
 }
 
 bool DBManager::InitDB()

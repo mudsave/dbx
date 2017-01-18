@@ -16,6 +16,7 @@ public:
     void Finalise();
 
     HRESULT Run();
+    void Shutdown();
 
     void CallSP(AppMsg *m_appMsg);
     void CallSQL(AppMsg *m_appMsg);
