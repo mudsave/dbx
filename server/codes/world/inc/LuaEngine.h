@@ -132,10 +132,10 @@ class CLuaEngine{
 			int n = lua_gettop(L);  /* 参数个数 */
 			int i;
 			lua_getglobal(L, "tostring");
-			static char buff[MaxPrintBuffLength]={0};
+			static char buff[MaxPrintBuffLength] = {0};
 			int count = 0;
-			if(buff[0] == '\0')memcpy(buff,"[lua:]",7);
-			memset(buff+6,0,MaxPrintBuffLength-6);
+			if(buff[0] == '\0')memcpy(buff, "[Lua] ", 6);
+			memset(buff + 6, 0, MaxPrintBuffLength - 6);
 			count = 6;
 			for (i=1; i<=n; i++) {
 				const char *s;

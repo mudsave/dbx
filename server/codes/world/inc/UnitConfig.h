@@ -3,8 +3,6 @@
 
 #include "PropertySet.h"
 
-#define PosDataLen (sizeof(_PropPosData) + (MAX_PATH_LEN - 1) * sizeof(GridVct))
-
 #define PROP_PRIVATE	0
 #define PROP_PUBLIC		1
 
@@ -21,7 +19,7 @@ public:
 	char	GetPropType(int cls,int propID);
 public:
 	void	initPropSet(int cls);
-	int		addProperty(int cls,const char *type,const char *def,int isPublic);
+	int		addProperty(int cls,const char *type,const char *def,int bPub,int bSync);
 private:
 	void	addPublicProp(int cls,int propID);
 	void	addSharedProps(int cls);

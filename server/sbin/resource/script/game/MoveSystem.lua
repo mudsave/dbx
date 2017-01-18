@@ -34,7 +34,7 @@ local function dirToPath(dirPath, x, y)
 	local paths = {}
 	table.insert(paths, x)
 	table.insert(paths, y)
-	for _, dir in pairs(dirPath) do
+	for _, dir in ipairs(dirPath) do
 		x, y = dirToPos(dir, x, y)
 		table.insert(paths, x)
 		table.insert(paths, y)
@@ -42,39 +42,43 @@ local function dirToPath(dirPath, x, y)
 	return paths
 end
 
-local function correctFollowMovePath(player, followPeer)
-		local mapID = player:getScene():getMapID()
-		local mapType = mapDB[mapID].mapType
-		local followHandler = player:getHandler(HandlerDef_Follow)
+local function correctFollowMovePath(player, followPeer, curIdx)
+	local mapID = player:getScene():getMapID()
+	local mapType = mapDB[mapID].mapType
+	local followHandler = player:getHandler(HandlerDef_Follow)
+	if followHandler then
 		local followList = followHandler:getMembers()
 		for _, member in pairs (followList) do
-			if mapType == MapType.Task or mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
-				local memPeer = member:getPeer()
-				curIdx = memPeer:correctFollowMovePath(curIdx, followPeer:getPathLen())
-				followPeer = memPeer
-			end
-		end
-		--[[
-		local ectypFollowList = followHandler:getEctypeMembers()
-		for _, member in pairs(ectypeFollowList) do
-			if member:getTaskType() == TaskType2.Copy then
-				local memPeer = member:getPeer()
-				curIdx = memPeer:correctFollowMovePath(curIdx, followPeer:getPathLen())
-				followPeer = memPeer
-			end
-		end
-		]]
-		
-		--[[
-		local petID = player:getFollowPetID()
-		if petID then
-			local pet = g_entityMgr:getPet(petID)
-				if pet and pet:isVisible() then
-					pet:getPeer():correctFollowMovePath(curIdx, followPeer:getPathLen)
+			if member:isVisible() then
+				if mapType == MapType.Task or mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+					local memPeer = member:getPeer()
+					curIdx = memPeer:correctFollowMovePath(curIdx, followPeer:getPathLen())
+					followPeer = memPeer
 				end
 			end
 		end
-		 ]]
+	
+		local ectypeFollowList = followHandler:getEctypeMembers()
+		for _, member in pairs(ectypeFollowList) do
+			if member:isVisible() then
+				if member:getTaskType() == TaskType2.Copy then
+					local memPeer = member:getPeer()
+					curIdx = memPeer:correctFollowMovePath(curIdx, followPeer:getPathLen())
+					followPeer = memPeer
+				end
+			end
+		end
+	end
+	
+	if player:getEntityType() == eClsTypePlayer then
+		local petID = player:getFollowPetID()
+		if petID then
+			local pet = g_entityMgr:getPet(petID)
+			if pet and pet:isVisible() then
+				pet:getPeer():correctFollowMovePath(curIdx, followPeer:getPathLen())
+			end
+		end
+	end
 end
 
 local function correctMovePath(roleID, x, y)
@@ -90,23 +94,25 @@ local function correctMovePath(roleID, x, y)
 
 	local followPeer = peer
 	local teamHandler = player:getHandler(HandlerDef_Team)
-	local teamID = teamHandler:getTeamID()
-	local team = g_teamMgr:getTeam(teamID)
-	if team and team:getLeaderID() == player:getID() then
-		local teamList = team:getMemberList()
-		if teamList and table.size(teamList) > 1 then
-			for _, memberInfo in pairs(teamList) do
-				if memberInfo.memberState == MemberState.Follow then
-					local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
-					curIdx = member:getPeer():correctFollowMovePath(curIdx, followPeer:getPathLen())
-					followPeer = member:getPeer()
+	if teamHandler then
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		if team and team:getLeaderID() == player:getID() then
+			local teamList = team:getMemberList()
+			if teamList and table.size(teamList) > 1 then
+				for _, memberInfo in pairs(teamList) do
+					if memberInfo.memberState == MemberState.Follow then
+						local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+						curIdx = member:getPeer():correctFollowMovePath(curIdx, followPeer:getPathLen())
+						followPeer = member:getPeer()
+					end
 				end
 			end
 		end
 	end
 	
 	--self follow correct
-	correctFollowMovePath(player, followPeer)
+	correctFollowMovePath(player, followPeer, curIdx)
 	
 	-- team member follow correct
 	-- todo now is not need
@@ -128,6 +134,7 @@ end
 function MoveSystem:__release()
 
 end
+
 function MoveSystem:doMoveTo(event)
 	local params = event:getParams()
 	local roleID = params[1]
@@ -160,6 +167,7 @@ function MoveSystem:doMoveTo(event)
 
 	local x = params[6]
 	local y = params[7]
+	
 	local dirPath = params[8]
 	local realPath = dirToPath(dirPath, x, y)
 	if realPath and table.size(realPath) >= 2 then
@@ -179,13 +187,13 @@ end
 function MoveSystem:doStopMove(event)
 	local params = event:getParams()
 	local roleID = params[1]
-	local player = g_entityMgr:getPlayer(roleID)
+	local player = g_entityMgr:getPlayerByID(roleID)
 	if not player then
 		return
 	end
 
 	local moveHandler = player:getHandler(HandlerDef_Move)
-	if moveHandler and moveHandler:getIsMove() then
+	if moveHandler and moveHandler:GetIsInMove() then
 		moveHandler:DoStopMove()
 	end
 end
@@ -234,16 +242,22 @@ function MoveSystem:doServerStopMove(evnet)
 	local entity = g_entityMgr:getEntity(entityType, roleID)
 	if entity then
 		local handler = entity:getHandler(HandlerDef_Move)
-		if handler and handler:GetIsMove() then
+		if handler and handler:GetIsInMove() then
 			handler:DoStopMove(nil, targetTile)
 		end
 	end
 end
 
-function MoveSystem:onServerStopMove(entityID)
+function MoveSystem:onServerStopMove(event)
+	local params = event:getParams()
+	local entityID = params[1]
 	local mineNpc = g_entityMgr:getMineNpc(entityID)
 	if mineNpc then
 		mineNpc:moveNext()
+	end
+	local patrolNpc = g_entityMgr:getPatrolNpc(entityID)
+	if patrolNpc then
+		patrolNpc:moveNext()
 	end
 end
 

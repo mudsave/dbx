@@ -144,10 +144,9 @@ int CClient::callDBProc(AppMsg *pMsg) {
 
 		 if(m_hLink)
                 {
-                    TRACE0_L0("begin callDBProc !\n");
+                    //TRACE0_L0("begin callDBProc !\n");
 					IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
-					//printf("callDBProc ed\n");
-					TRACE0_L0("callDBProc ed!\n");
+					//TRACE0_L0("callDBProc ed!\n");
                 }
                 else
                 {
@@ -260,7 +259,7 @@ int CClient::addParam(const char* name, int value) {
 
 void CClient::buildQuery(){
 	m_buffer_length = 0;
-	delete m_query_msg;
+	delete[] m_query_msg;
 	m_param_num = 0;
 	m_param_names.clear();
 	m_param_types.clear();

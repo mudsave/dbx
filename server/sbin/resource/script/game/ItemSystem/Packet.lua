@@ -1,16 +1,16 @@
 --[[Packet.lua
-ÃèÊö£º
-	±³°ü
+æè¿°ï¼š
+	èƒŒåŒ…
 ]]
 
 Packet = class()
 
 function Packet:__init(owner)
-	-- ÓµÓĞÕß
+	-- æ‹¥æœ‰è€…
 	self.owner = owner;
-	-- ËùÓĞ°ü¹ü
+	-- æ‰€æœ‰åŒ…è£¹
 	self.packs = {}
-	-- ³õÊ¼»¯°ü¹ü
+	-- åˆå§‹åŒ–åŒ…è£¹
 	self:initPack()
 end
 
@@ -23,22 +23,22 @@ function Packet:__release()
 	end
 end
 
--- ¼ì²â¼ÆÊ±µÀ¾ßÊÇ·ñµ½ÆÚ
+-- æ£€æµ‹è®¡æ—¶é“å…·æ˜¯å¦åˆ°æœŸ
 function Packet:checkItemExpire()
 	for packindex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = self:getPack(packindex)
 		if pack then
-			-- »ñµÃ°ü¹ü´æÔÚ¼ÆÊ±µÄµÀ¾ß
+			-- è·å¾—åŒ…è£¹å­˜åœ¨è®¡æ—¶çš„é“å…·
 			local tTimeItems = pack:getTimeItems()
 			for i = 1, table.getn(tTimeItems) do
 				local gridItem = tTimeItems[i]
 				if gridItem then
 					if os.time() >= gridItem:getExpireTime() then
-						-- É¾³ıµÀ¾ß
+						-- åˆ é™¤é“å…·
 						local result = self:removeItem(gridItem:getGuid(), 0, true)
 						if result == RemoveItemsResult.SucceedClean then
-							-- ÌáÊ¾¿Í»§¶ËµÀ¾ß¹ıÆÚ£¬ÒÑÉ¾³ı
+							-- æç¤ºå®¢æˆ·ç«¯é“å…·è¿‡æœŸï¼Œå·²åˆ é™¤
 						end
 					end
 				end
@@ -47,12 +47,12 @@ function Packet:checkItemExpire()
 	end
 end
 
--- »ñµÃÈİÆ÷ID
+-- è·å¾—å®¹å™¨ID
 function Packet:getContainerID()
 	return PackContainerID.Packet
 end
 
--- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 function Packet:updateItemToClient()
 	for packIndex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
 		if self.packs[packIndex] then
@@ -61,11 +61,11 @@ function Packet:updateItemToClient()
 	end
 end
 
--- Ìí¼Ó°ü¹ü
+-- æ·»åŠ åŒ…è£¹
 function Packet:addPack(packIndex, pack)
 	if instanceof(pack, Pack) then
 		if self.packs[packIndex] then
-			-- ÒÑ¾­´æÔÚ
+			-- å·²ç»å­˜åœ¨
 			return false
 		else
 			pack:setOwner(self.owner)
@@ -78,52 +78,52 @@ function Packet:addPack(packIndex, pack)
 	return false
 end
 
--- ¹Ø±Õ°ü¹ü
+-- å…³é—­åŒ…è£¹
 function Packet:stopPack(packIndex)
 	local pack = self:getPack(packIndex)
 	if not pack then
-		-- °ü¹üÎ´¿ªÆô
+		-- åŒ…è£¹æœªå¼€å¯
 		return
 	end
 	release(self.packs[packIndex])
 	self.packs[packIndex] = nil
 end
 
--- »ñµÃ°ü¹ü
+-- è·å¾—åŒ…è£¹
 function Packet:getPack(packIndex)
 	return self.packs[packIndex]
 end
 
--- ³õÊ¼»¯°ü¹ü
+-- åˆå§‹åŒ–åŒ…è£¹
 function Packet:initPack()
-	-- Ä¬ÈÏ°ü¹ü
+	-- é»˜è®¤åŒ…è£¹
 	local defaultPack = Pack()
 	defaultPack:setCapability(PacketPackDefaultCapacity)
 	defaultPack:setPackContainerID(PackContainerID.Packet)
 	self:addPack(PacketPackIndex.Default, defaultPack)
 
-	-- ÈÎÎñ°ü¹ü
+	-- ä»»åŠ¡åŒ…è£¹
 	local taskPack = Pack()
 	taskPack:setCapability(PacketPackDefaultCapacity)
 	self:addPack(PacketPackIndex.Task, taskPack)
 end
 
--- µÃµ½°ü¹ü¿Õ¸ñË÷Òı
+-- å¾—åˆ°åŒ…è£¹ç©ºæ ¼ç´¢å¼•
 function Packet:getSpaceIndex(item)
 	local itemConfig = tItemDB[item:getItemID()]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return false, -1, -1
 	end
 
 	if itemConfig.SubClass == ItemSubClass.Task then
-		-- È¥ÈÎÎñ°ü¹üÀïÈ¥ÕÒ
+		-- å»ä»»åŠ¡åŒ…è£¹é‡Œå»æ‰¾
 		local gridIndex = self.packs[PacketPackIndex.Task]:getFirstSpace()
 		if gridIndex > 0 then
 			return true, PacketPackIndex.Task, gridIndex
 		end
 	else
-		-- ÏÈÔÚ±¾µÀ¾ßËùÔÚµÄ°ü¹üÀï²éÕÒ
+		-- å…ˆåœ¨æœ¬é“å…·æ‰€åœ¨çš„åŒ…è£¹é‡ŒæŸ¥æ‰¾
 		local packIndex = item:getPackIndex()
 		if self.packs[packIndex] then
 			local gridIndex = self.packs[packIndex]:getFirstSpace()
@@ -131,7 +131,7 @@ function Packet:getSpaceIndex(item)
 				return true, packIndex, gridIndex
 			end
 		end
-		-- ÔÙÔÚÆäËû°ü¹üÀï²éÕÒ
+		-- å†åœ¨å…¶ä»–åŒ…è£¹é‡ŒæŸ¥æ‰¾
 		for packIndex = PacketPackIndex.Default, PacketPackIndex.Horse do
 			if self.packs[packIndex] then
 				local gridIndex = self.packs[packIndex]:getFirstSpace()
@@ -145,10 +145,10 @@ function Packet:getSpaceIndex(item)
 	return false, -1, -1
 end
 
--- »ñµÃÖ¸¶¨Î»ÖÃµÄµÀ¾ß
+-- è·å¾—æŒ‡å®šä½ç½®çš„é“å…·
 function Packet:getItems(packIndex, gridIndex)
 	if packIndex < PacketPackIndex.Default or packIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return -1, nil
 	end
 
@@ -157,18 +157,18 @@ function Packet:getItems(packIndex, gridIndex)
 			return 0, self.packs[packIndex]:getGridItem(gridIndex)
 		end
 	end
-	-- Âß¼­´íÎó
+	-- é€»è¾‘é”™è¯¯
 	return -1, nil
 end
 
--- »ñµÃÖ¸¶¨IDµÄµÀ¾ßÁĞ±í
+-- è·å¾—æŒ‡å®šIDçš„é“å…·åˆ—è¡¨
 function Packet:getItemsByID(itemID)
 	local itemList = {}
 	for packindex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = self:getPack(packindex)
 		if pack then
-			-- »ñµÃ°ü¹üµÀ¾ß
+			-- è·å¾—åŒ…è£¹é“å…·
 			for gridIndex = 1, pack:getCapability() do
 				local item = pack:getGridItem(gridIndex)
 				if item and item:getItemID() == itemID then
@@ -180,24 +180,24 @@ function Packet:getItemsByID(itemID)
 	return itemList
 end
 
--- Ìí¼ÓµÀ¾ß
+-- æ·»åŠ é“å…·
 function Packet:addItems(itemGuid, bUpdateClient)
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return AddItemsResult.SrcInvalid
 	end
 	local itemConfig = tItemDB[item:getItemID()]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return AddItemsResult.SrcInvalid
 	end
 
-	-- ÅĞ¶ÏÊÇ·ñĞèÒª·ÅÈÎÎñ±³°ü
+	-- åˆ¤æ–­æ˜¯å¦éœ€è¦æ”¾ä»»åŠ¡èƒŒåŒ…
 	if itemConfig.SubClass == ItemSubClass.Task then
 		local result = self.packs[PacketPackIndex.Task]:addItems(item, bUpdateClient)
 		if result == AddItemsResult.SucceedPile then
-			-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+			-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 			g_itemMgr:destroyItem(itemGuid)
 		end
 		return result
@@ -210,26 +210,26 @@ function Packet:addItems(itemGuid, bUpdateClient)
 				local addNum = tAddPacks[i][2]
 				result = self.packs[packIndex]:addItemsLimitNums(item, addNum, bUpdateClient)
 				if result ~= AddItemsResult.Succeed and result ~= AddItemsResult.SucceedPile then
-					-- Õı³£Çé¿ö²»»á³öÏÖÕâÖÖ½á¹û£¬ÒòÎªÇ°ÃæÒÑ¾­ÅĞ¶Ï¿ÉÒÔÌí¼Ó³É¹¦ÁË
+					-- æ­£å¸¸æƒ…å†µä¸ä¼šå‡ºç°è¿™ç§ç»“æœï¼Œå› ä¸ºå‰é¢å·²ç»åˆ¤æ–­å¯ä»¥æ·»åŠ æˆåŠŸäº†
 					return result
 				end
 			end
-			-- Èç¹ûÔ´µÀ¾ß·Ö²ğ·ÅÈë¶à¸ö°ü¹ü»òÕßÍ¬Ò»¸ö°ü¹üµş¼Ó´æ·Å£¬¾ÍÒªÏú»ÙÔ´µÀ¾ß
+			-- å¦‚æœæºé“å…·åˆ†æ‹†æ”¾å…¥å¤šä¸ªåŒ…è£¹æˆ–è€…åŒä¸€ä¸ªåŒ…è£¹å åŠ å­˜æ”¾ï¼Œå°±è¦é”€æ¯æºé“å…·
 			if #tAddPacks > 1 or result == AddItemsResult.SucceedPile then
-				-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+				-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 				g_itemMgr:destroyItem(itemGuid)
 				return AddItemsResult.SucceedPile
 			else
 				return AddItemsResult.Succeed
 			end
 		else
-			-- ·Å²»ÏÂ
+			-- æ”¾ä¸ä¸‹
 			return AddItemsResult.Full
 		end
 	end
 end
 
--- ÅĞ¶Ï¿É·ñ·ÅÈë°ü¹ü£¬×¢Òâ£ºÕâÀïÊÇ³ıÁËÈÎÎñ°ü¹ü¡¢À©Õ¹°ü¹üµÄÆäËû°ü¹ü
+-- åˆ¤æ–­å¯å¦æ”¾å…¥åŒ…è£¹ï¼Œæ³¨æ„ï¼šè¿™é‡Œæ˜¯é™¤äº†ä»»åŠ¡åŒ…è£¹ã€æ‰©å±•åŒ…è£¹çš„å…¶ä»–åŒ…è£¹
 function Packet:canAddItems(item)
 	local canAdd = false
 	local tAddPacks = {}
@@ -238,21 +238,21 @@ function Packet:canAddItems(item)
 
 	for packIndex = PacketPackIndex.Default, PacketPackIndex.Horse do
 		if self.packs[packIndex] then
-			-- µ±Ç°°ü¹ü¿ÉÒÔ·ÅÈëµÄÊıÄ¿
+			-- å½“å‰åŒ…è£¹å¯ä»¥æ”¾å…¥çš„æ•°ç›®
 			local curAddNumber = self.packs[packIndex]:canAddNumber(item)
 			if curAddNumber > 0 then
-				-- ¼ÇÂ¼µ±Ç°ÒÑ¾­¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿
+				-- è®°å½•å½“å‰å·²ç»å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®
 				canAddNumber = canAddNumber + curAddNumber
 				if needAddNumber - canAddNumber <= 0 then
-					-- ¼ÇÂ¼ÏÂµ±Ç°°ü¹üË÷ÒıºÍµ±Ç°°ü¹ü¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿£¬ÕâÀïÖ»¼ÇÂ¼Âú×ã·ÅÈëµÄÊıÄ¿
+					-- è®°å½•ä¸‹å½“å‰åŒ…è£¹ç´¢å¼•å’Œå½“å‰åŒ…è£¹å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®ï¼Œè¿™é‡Œåªè®°å½•æ»¡è¶³æ”¾å…¥çš„æ•°ç›®
 					table.insert(tAddPacks, {packIndex, needAddNumber})
-					-- ÒÑ¾­¿ÉÒÔ·ÅÏÂÁË
+					-- å·²ç»å¯ä»¥æ”¾ä¸‹äº†
 					canAdd = true
 					break
 				else
-					-- ¼ÇÂ¼ÏÂµ±Ç°°ü¹üË÷ÒıºÍµ±Ç°°ü¹ü¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿
+					-- è®°å½•ä¸‹å½“å‰åŒ…è£¹ç´¢å¼•å’Œå½“å‰åŒ…è£¹å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®
 					table.insert(tAddPacks, {packIndex, curAddNumber})
-					-- ¼ÆËã»¹ĞèÒª·ÅÈëµÄÊıÄ¿
+					-- è®¡ç®—è¿˜éœ€è¦æ”¾å…¥çš„æ•°ç›®
 					needAddNumber = needAddNumber - canAddNumber
 				end
 			end
@@ -262,46 +262,46 @@ function Packet:canAddItems(item)
 	return canAdd, tAddPacks
 end
 
--- ÒÆ³ıµÀ¾ß
+-- ç§»é™¤é“å…·
 function Packet:removeItem(itemGuid, removeNum, bUpdateClient)
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return RemoveItemsResult.SrcInvalid
 	end
 
-	-- »ñµÃµÀ¾ßËùÔÚµÄ°ü¹üË÷Òı
+	-- è·å¾—é“å…·æ‰€åœ¨çš„åŒ…è£¹ç´¢å¼•
 	local packIndex = item:getPackIndex()
 	if packIndex < PacketPackIndex.Default or packIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return RemoveItemsResult.Failed
 	end
 
 	local result = self.packs[packIndex]:removeItem(item, removeNum, bUpdateClient)
 	if result == RemoveItemsResult.SucceedClean then
-		-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+		-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 		g_itemMgr:destroyItem(itemGuid)
 	end
 
 	return result
 end
 
--- Ôö¼ÓµÀ¾ßµ½Ö¸¶¨°ü¹ü
+-- å¢åŠ é“å…·åˆ°æŒ‡å®šåŒ…è£¹
 function Packet:addItemsToPack(srcItem, dstPackIndex)
 	if dstPackIndex < PacketPackIndex.Default or dstPackIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return AddItemsResult.LocInvalid
 	end
 
-	-- ÅĞ¶ÏÊÇ·ñÊÇÈÎÎñµÀ¾ß
+	-- åˆ¤æ–­æ˜¯å¦æ˜¯ä»»åŠ¡é“å…·
 	if srcItem:isTaskItem() then
 		if dstPackIndex ~= PacketPackIndex.Task then
-			-- ÈÎÎñµÀ¾ßÖ»ÄÜ·ÅÈÎÎñ°ü¹ü
+			-- ä»»åŠ¡é“å…·åªèƒ½æ”¾ä»»åŠ¡åŒ…è£¹
 			return AddItemsResult.LocInvalid
 		end
 	else
 		if dstPackIndex == PacketPackIndex.Task then
-			-- ·ÇÈÎÎñµÀ¾ß²»ÄÜ·ÅÈÎÎñ°ü¹ü
+			-- éä»»åŠ¡é“å…·ä¸èƒ½æ”¾ä»»åŠ¡åŒ…è£¹
 			return AddItemsResult.LocInvalid
 		end
 	end
@@ -309,42 +309,42 @@ function Packet:addItemsToPack(srcItem, dstPackIndex)
 	if self.packs[dstPackIndex] then
 		local result = self.packs[dstPackIndex]:addItems(srcItem, true)
 		if result == AddItemsResult.SucceedPile then
-			-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+			-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 			g_itemMgr:destroyItem(srcItem:getGuid())
 		end
 
 		return result
 	else
-		-- °ü¹ü»¹Î´¿ªÆô
+		-- åŒ…è£¹è¿˜æœªå¼€å¯
 		return AddItemsResult.LocInvalid
 	end
 end
 
---Ìí¼ÓÖ¸¶¨ÊıÁ¿µÄÎïÆ·µ½°ü¹ü
+--æ·»åŠ æŒ‡å®šæ•°é‡çš„ç‰©å“åˆ°åŒ…è£¹
 function Packet:addNumberItemsToPack(srcItem, dstPackIndex, itemNum)
 	if dstPackIndex ~= PacketPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	return self.packs[dstPackIndex]:addItemsLimitNums(srcItem, itemNum, true)
 end
 
--- Ìí¼ÓµÀ¾ßµ½Ö¸¶¨ÎïÆ·¸ñ
+-- æ·»åŠ é“å…·åˆ°æŒ‡å®šç‰©å“æ ¼
 function Packet:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 	if packIndex < PacketPackIndex.Default or packIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
-	-- ÅĞ¶ÏÊÇ·ñÊÇÈÎÎñµÀ¾ß
+	-- åˆ¤æ–­æ˜¯å¦æ˜¯ä»»åŠ¡é“å…·
 	if item:isTaskItem() then
 		if packIndex ~= PacketPackIndex.Task then
-			-- ÈÎÎñµÀ¾ßÖ»ÄÜ·ÅÈÎÎñ°ü¹ü
+			-- ä»»åŠ¡é“å…·åªèƒ½æ”¾ä»»åŠ¡åŒ…è£¹
 			return false
 		end
 	else
 		if packIndex == PacketPackIndex.Task then
-			-- ·ÇÈÎÎñµÀ¾ß²»ÄÜ·ÅÈÎÎñ°ü¹ü
+			-- éä»»åŠ¡é“å…·ä¸èƒ½æ”¾ä»»åŠ¡åŒ…è£¹
 			return false
 		end
 	end
@@ -352,67 +352,67 @@ function Packet:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 	if self.packs[packIndex] then
 		return self.packs[packIndex]:addItemsToGrid(item, gridIndex, bUpdateClient)
 	else
-		-- °ü¹ü»¹Î´¿ªÆô
+		-- åŒ…è£¹è¿˜æœªå¼€å¯
 		return false
 	end
 end
 
--- ´ÓÖ¸¶¨ÎïÆ·¸ñÒÆ³ıµÀ¾ß£¬²¢²»Ïú»ÙµÀ¾ß
+-- ä»æŒ‡å®šç‰©å“æ ¼ç§»é™¤é“å…·ï¼Œå¹¶ä¸é”€æ¯é“å…·
 function Packet:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient)
 	if packIndex < PacketPackIndex.Default or packIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	if self.packs[packIndex] then
 		return self.packs[packIndex]:removeItemsFromGrid(gridIndex, bUpdateClient)
 	else
-		-- °ü¹ü»¹Î´¿ªÆô
+		-- åŒ…è£¹è¿˜æœªå¼€å¯
 		return false
 	end
 end
 
--- µş¼ÓµÀ¾ßµ½Ö¸¶¨ÎïÆ·¸ñ
+-- å åŠ é“å…·åˆ°æŒ‡å®šç‰©å“æ ¼
 function Packet:pileItemsToGrid(srcItem, dstPackIndex, dstGridIndex)
 	if dstPackIndex < PacketPackIndex.Default or dstPackIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	if self.packs[dstPackIndex] then
 		return self.packs[dstPackIndex]:pileItemsToGrid(srcItem, dstGridIndex)
 	else
-		-- °ü¹ü»¹Î´¿ªÆô
+		-- åŒ…è£¹è¿˜æœªå¼€å¯
 		return false
 	end
 end
 
--- µş¼ÓµÀ¾ßµ½°ü¹üÖ¸¶¨ÎïÆ·¸ñ£¬×¢ÒâÕâÀïÊÇÄÜµş¼Ó¶àÉÙ¾Íµş¼Ó¶àÉÙ
+-- å åŠ é“å…·åˆ°åŒ…è£¹æŒ‡å®šç‰©å“æ ¼ï¼Œæ³¨æ„è¿™é‡Œæ˜¯èƒ½å åŠ å¤šå°‘å°±å åŠ å¤šå°‘
 function Packet:pileItemsToGridEx(srcItem, dstPackIndex, dstGridIndex)
 	if dstPackIndex < PacketPackIndex.Default or dstPackIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	if self.packs[dstPackIndex] then
 		return self.packs[dstPackIndex]:pileItemsToGridEx(srcItem, dstGridIndex)
 	else
-		-- °ü¹ü»¹Î´¿ªÆô
+		-- åŒ…è£¹è¿˜æœªå¼€å¯
 		return false
 	end
 end
 
--- »ñµÃÖ¸¶¨IDµÀ¾ßµÄ¸öÊı
+-- è·å¾—æŒ‡å®šIDé“å…·çš„ä¸ªæ•°
 function Packet:getNumByItemID(itemId)
 	local itemConfig = tItemDB[itemId]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return 0
 	end
 
 	local itemNum = 0
 	if itemConfig.SubClass == ItemSubClass.Task then
-		-- ÔÚÈÎÎñ°ü¹üÀïÕÒ
+		-- åœ¨ä»»åŠ¡åŒ…è£¹é‡Œæ‰¾
 		itemNum = self.packs[PacketPackIndex.Task]:getNumByItemID(itemId)
 	else
 		for packIndex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
@@ -427,18 +427,18 @@ function Packet:getNumByItemID(itemId)
 	return itemNum
 end
 
---[[ÎÒÃÇÓÎÏ·Éè¶¨ÎïÆ·°ó¶¨·Ç°ó¶¨ÊÇÓÉÅäÖÃÊÇ·ñ½»Ò×ÓĞ¹Ø£¬²»ÄÜ¸ü¸Ä£¬ËùÒÔÕâ´úÂëÓÃ²»×Å£¬µ«±£Áô
---»ñµÃÖ¸¶¨IDµÄ°ó¶¨µÀ¾ßµÄ¸öÊı
+--[[æˆ‘ä»¬æ¸¸æˆè®¾å®šç‰©å“ç»‘å®šéç»‘å®šæ˜¯ç”±é…ç½®æ˜¯å¦äº¤æ˜“æœ‰å…³ï¼Œä¸èƒ½æ›´æ”¹ï¼Œæ‰€ä»¥è¿™ä»£ç ç”¨ä¸ç€ï¼Œä½†ä¿ç•™
+--è·å¾—æŒ‡å®šIDçš„ç»‘å®šé“å…·çš„ä¸ªæ•°
 function Packet:getBindItemNum(itemId)
 	local itemConfig = tItemDB[itemId]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return 0
 	end
 
 	local itemNum = 0
 	if itemConfig.SubClass == ItemSubClass.Task then
-		-- ÔÚÈÎÎñ°ü¹üÀïÕÒ
+		-- åœ¨ä»»åŠ¡åŒ…è£¹é‡Œæ‰¾
 		itemNum = self.packs[PacketPackIndex.Task]:getBindItemNum(itemId)
 	else
 		for packIndex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
@@ -453,17 +453,17 @@ function Packet:getBindItemNum(itemId)
 	return itemNum
 end
 
--- »ñµÃÖ¸¶¨IDµÄÎ´°ó¶¨µÀ¾ßµÄ¸öÊı
+-- è·å¾—æŒ‡å®šIDçš„æœªç»‘å®šé“å…·çš„ä¸ªæ•°
 function Packet:getNoBindItemNum(itemId)
 	local itemConfig = tItemDB[itemId]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return 0
 	end
 
 	local itemNum = 0
 	if itemConfig.SubClass == ItemSubClass.Task then
-		-- ÔÚÈÎÎñ°ü¹üÀïÕÒ
+		-- åœ¨ä»»åŠ¡åŒ…è£¹é‡Œæ‰¾
 		itemNum = self.packs[PacketPackIndex.Task]:getNoBindItemNum(itemId)
 	else
 		for packIndex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
@@ -478,9 +478,9 @@ function Packet:getNoBindItemNum(itemId)
 	return itemNum
 end
 
--- ÒÆ³ıÖ¸¶¨IDµÄ°ó¶¨µÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDçš„ç»‘å®šé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function Packet:removeBindItem(itemId, itemNum)
-	-- ÏÈÅĞ¶ÏÏÂÊıÁ¿¹»²»¹»
+	-- å…ˆåˆ¤æ–­ä¸‹æ•°é‡å¤Ÿä¸å¤Ÿ
 	if self:getBindItemNum(itemId) < itemNum then
 		return 0
 	end
@@ -491,7 +491,7 @@ function Packet:removeBindItem(itemId, itemNum)
 			local nRemoveNum = self.packs[packIndex]:removeBindItem(itemId, needRemoveNum)
 			needRemoveNum = needRemoveNum - nRemoveNum
 			if needRemoveNum <= 0 then
-				-- ÒÑ¾­¿Û³ı¹»ÊıÄ¿ÁË
+				-- å·²ç»æ‰£é™¤å¤Ÿæ•°ç›®äº†
 				return itemNum
 			end
 		end
@@ -499,9 +499,9 @@ function Packet:removeBindItem(itemId, itemNum)
 	return 0
 end
 
--- ÒÆ³ıÖ¸¶¨IDµÄÎ´°ó¶¨µÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDçš„æœªç»‘å®šé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function Packet:removeNoBindItem(itemId, itemNum)
-	-- ÏÈÅĞ¶ÏÏÂÊıÁ¿¹»²»¹»
+	-- å…ˆåˆ¤æ–­ä¸‹æ•°é‡å¤Ÿä¸å¤Ÿ
 	if self:getNoBindItemNum(itemId) < itemNum then
 		return 0
 	end
@@ -512,7 +512,7 @@ function Packet:removeNoBindItem(itemId, itemNum)
 			local nRemoveNum = self.packs[packIndex]:removeNoBindItem(itemId, needRemoveNum)
 			needRemoveNum = needRemoveNum - nRemoveNum
 			if needRemoveNum <= 0 then
-				-- ÒÑ¾­¿Û³ı¹»ÊıÄ¿ÁË
+				-- å·²ç»æ‰£é™¤å¤Ÿæ•°ç›®äº†
 				return itemNum
 			end
 		end
@@ -522,9 +522,9 @@ end
 
 ]]
 
--- ÒÆ³ıÖ¸¶¨IDµÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function Packet:removeByItemId(itemId, itemNum)
-	-- ÏÈÅĞ¶ÏÏÂÊıÁ¿¹»²»¹»
+	-- å…ˆåˆ¤æ–­ä¸‹æ•°é‡å¤Ÿä¸å¤Ÿ
 	if self:getNumByItemID(itemId) < itemNum then
 		return 0
 	end
@@ -535,7 +535,7 @@ function Packet:removeByItemId(itemId, itemNum)
 			local nRemoveNum = self.packs[packIndex]:removeByItemId(itemId, needRemoveNum)
 			needRemoveNum = needRemoveNum - nRemoveNum
 			if needRemoveNum <= 0 then
-				-- ÒÑ¾­¿Û³ı¹»ÊıÄ¿ÁË
+				-- å·²ç»æ‰£é™¤å¤Ÿæ•°ç›®äº†
 				return itemNum
 			end
 		end
@@ -543,14 +543,14 @@ function Packet:removeByItemId(itemId, itemNum)
 	return 0
 end
 
--- ½»»»µÀ¾ßÎ»ÖÃ
+-- äº¤æ¢é“å…·ä½ç½®
 function Packet:swapItem(srcPackIndex, srcGridIndex, dstPackIndex, dstGridIndex)
 	if srcPackIndex < PacketPackIndex.Default or srcPackIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	if dstPackIndex < PacketPackIndex.Default or dstPackIndex >= PacketPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
@@ -565,59 +565,59 @@ function Packet:swapItem(srcPackIndex, srcGridIndex, dstPackIndex, dstGridIndex)
 		return false
 	end
 
-	-- ½»»»µÄÁ½¸öµÀ¾ßÒªÃ´¶¼ÊÇÈÎÎñµÀ¾ß£¬ÒªÃ´¶¼²»ÊÇ£¬·ñÔò²»ÄÜ½»»»
+	-- äº¤æ¢çš„ä¸¤ä¸ªé“å…·è¦ä¹ˆéƒ½æ˜¯ä»»åŠ¡é“å…·ï¼Œè¦ä¹ˆéƒ½ä¸æ˜¯ï¼Œå¦åˆ™ä¸èƒ½äº¤æ¢
 	if srcGridItem:isTaskItem() ~= dstGridItem:isTaskItem() then
 		return false
 	end
 
-	-- Ô´°ü¹üÒÆ³ıÔ­À´µÄµÀ¾ß
+	-- æºåŒ…è£¹ç§»é™¤åŸæ¥çš„é“å…·
 	srcPack:removeItemsFromGrid(srcGridIndex, false)
-	-- Ô´°ü¹üÌí¼ÓĞÂµÀ¾ß
+	-- æºåŒ…è£¹æ·»åŠ æ–°é“å…·
 	srcPack:addItemsToGrid(dstGridItem, srcGridIndex, true)
-	-- Ä¿±ê°ü¹üÒÆ³ıÔ­À´µÄµÀ¾ß
+	-- ç›®æ ‡åŒ…è£¹ç§»é™¤åŸæ¥çš„é“å…·
 	dstPack:removeItemsFromGrid(dstGridIndex, false)
-	-- Ä¿±ê°ü¹üÌí¼ÓĞÂµÀ¾ß
+	-- ç›®æ ‡åŒ…è£¹æ·»åŠ æ–°é“å…·
 	dstPack:addItemsToGrid(srcGridItem, dstGridIndex, true)
 
 	return true
 end
 
--- ÕûÀí±³°ü
+-- æ•´ç†èƒŒåŒ…
 function Packet:packUp()
 	for packIndex = PacketPackIndex.Default, PacketPackIndex.Task do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = self.packs[packIndex]
 		if pack then
-			-- Ã¿Ò»¸ö°ü¹üµ¥¶ÀÕûÀí
+			-- æ¯ä¸€ä¸ªåŒ…è£¹å•ç‹¬æ•´ç†
 			pack:packUp()
 		end
 	end
-	-- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+	-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 	self:updateItemToClient()
 end
 
--- µÃµ½Õ½¶·°ü¹ü£¬¹©Õ½¶··şÊ¹ÓÃ
+-- å¾—åˆ°æˆ˜æ–—åŒ…è£¹ï¼Œä¾›æˆ˜æ–—æœä½¿ç”¨
 function Packet:getBattlePack()
-	-- ÄÜ·ñÊ¹ÓÃÖÎÁÆÀàµÀ¾ßµÄ±ê¼Ç
+	-- èƒ½å¦ä½¿ç”¨æ²»ç–—ç±»é“å…·çš„æ ‡è®°
 	local canUseHealItemFlag = true
 	local mapID = self.owner:getCurPos()
 	if mapID >= EctypeMap_StartID then
 		local ectype = g_ectypeMgr:getEctype(mapID)
 		if ectype and not ectype:canUseHealItems() then
-			-- µ±Ç°¸±±¾ÎŞ·¨Ê¹ÓÃÖÎÁÆÀàµÀ¾ß
+			-- å½“å‰å‰¯æœ¬æ— æ³•ä½¿ç”¨æ²»ç–—ç±»é“å…·
 			canUseHealItemFlag = false
 		end
 	end
 	local playerDBID = self.owner:getDBID()
 	local battlePack = {}
 	for packIndex = PacketPackIndex.Default, PacketPackIndex.Horse do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = self.packs[packIndex]
 		if pack then
-			-- »ñµÃ°ü¹üµÀ¾ß
+			-- è·å¾—åŒ…è£¹é“å…·
 			for gridIndex = 1, pack:getCapability() do
 				local item = pack:getGridItem(gridIndex)
-				-- Ö»µÃµ½Õ½¶·ÖĞ¿ÉÊ¹ÓÃµÄÒ©Æ·ÀàµÀ¾ß
+				-- åªå¾—åˆ°æˆ˜æ–—ä¸­å¯ä½¿ç”¨çš„è¯å“ç±»é“å…·
 				if item and item:isBattleItem() then
 					if not canUseHealItemFlag and item:isHealItem() then
 					else
@@ -632,35 +632,35 @@ function Packet:getBattlePack()
 	return battlePack
 end
 
--- ÉèÖÃÕ½¶·°ü¹ü£¬Õ½¶··ş·µ»ØµÄ£¬ÕâÀïÒª¸ù¾İĞÅÏ¢ÖØÉèÍæ¼ÒµÀ¾ßÊı¾İ
+-- è®¾ç½®æˆ˜æ–—åŒ…è£¹ï¼Œæˆ˜æ–—æœè¿”å›çš„ï¼Œè¿™é‡Œè¦æ ¹æ®ä¿¡æ¯é‡è®¾ç©å®¶é“å…·æ•°æ®
 function Packet:setBattlePack(battlePack)
 	for itemGuid, itemInfo in pairs(battlePack or {}) do
 		if itemGuid then
-			-- Õ½¶·ÖĞ¿ÉÓÃµÄµÀ¾ß£¬ÊôÓÚ±³°üÒÑÓĞµÀ¾ß£¬ÖØÉèµÀ¾ßÊı¾İ
+			-- æˆ˜æ–—ä¸­å¯ç”¨çš„é“å…·ï¼Œå±äºèƒŒåŒ…å·²æœ‰é“å…·ï¼Œé‡è®¾é“å…·æ•°æ®
 			local item = g_itemMgr:getItem(itemGuid)
 			if item then
 				if itemInfo.useTimes > 0 then
-					-- ÖØÉèÊ¹ÓÃ´ÎÊı
+					-- é‡è®¾ä½¿ç”¨æ¬¡æ•°
 					g_itemMgr:resetItemUseTimes(self.owner:getDBID(), itemInfo.itemID, itemInfo.useTimes)
 				end
-				-- Èç¹ûÊ¹ÓÃÍêÁË£¬ÊıÄ¿Îª0£¬ÔòÒªÏú»ÙµÀ¾ß
+				-- å¦‚æœä½¿ç”¨å®Œäº†ï¼Œæ•°ç›®ä¸º0ï¼Œåˆ™è¦é”€æ¯é“å…·
 				if itemInfo.itemNum == 0 then
 					self:removeItem(itemGuid, 0, false)
 				else
-					-- »ñµÃµÀ¾ßËùÔÚµÄ°ü¹ü
+					-- è·å¾—é“å…·æ‰€åœ¨çš„åŒ…è£¹
 					local packIndex = item:getPackIndex()
 					local pack = self.packs[packIndex]
 					if pack then
 						pack:updateItem(item:getGridIndex(), itemInfo.itemID, itemInfo.itemNum)
 					else
-						-- Âß¼­´íÎó
+						-- é€»è¾‘é”™è¯¯
 					end
 				end
 			else
-				-- Âß¼­´íÎó
+				-- é€»è¾‘é”™è¯¯
 			end
 		else
-			-- Õ½¶·½±Àø»ñµÃµÄµÀ¾ß£¬Ìí¼Ó½ø±³°ü
+			-- æˆ˜æ–—å¥–åŠ±è·å¾—çš„é“å…·ï¼Œæ·»åŠ è¿›èƒŒåŒ…
 			local item = g_itemMgr:createItem(itemInfo.itemID, itemInfo.itemNum)
 			if item then
 				self:addItems(item:getGuid(), false)
@@ -668,11 +668,11 @@ function Packet:setBattlePack(battlePack)
 		end
 	end
 
-	-- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+	-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 	self:updateItemToClient()
 end
 
--- ÅĞ¶ÏÖ¸¶¨µÀ¾ßIDºÍÊıÄ¿ÄÜ·ñ·ÅÈë±³°ü
+-- åˆ¤æ–­æŒ‡å®šé“å…·IDå’Œæ•°ç›®èƒ½å¦æ”¾å…¥èƒŒåŒ…
 function Packet:canAddPacket(itemID, itemNum, bindFlag)
 	local itemConfig = tItemDB[itemID]
 	if not itemConfig or itemNum <= 0 then
@@ -682,12 +682,12 @@ function Packet:canAddPacket(itemID, itemNum, bindFlag)
 	if itemConfig.SubClass == ItemSubClass.Task then
 		local taskPack = self.packs[PacketPackIndex.Task]
 		if taskPack then
-			-- ÏÈÕÒ¿Õ¸ñÄÜ´æ·ÅµÄÊıÄ¿
+			-- å…ˆæ‰¾ç©ºæ ¼èƒ½å­˜æ”¾çš„æ•°ç›®
 			curCanAddNum = taskPack:getAllSpaceNum() * itemConfig.MaxPileNum
 			if curCanAddNum >= itemNum then
 				return true
 			end
-			-- ÔÙÕÒµş¼ÓÄÜ´æ·ÅµÄÊıÄ¿
+			-- å†æ‰¾å åŠ èƒ½å­˜æ”¾çš„æ•°ç›®
 			curCanAddNum = curCanAddNum + taskPack:getCanPileNum(itemID)
 			if curCanAddNum >= itemNum then
 				return true
@@ -697,12 +697,12 @@ function Packet:canAddPacket(itemID, itemNum, bindFlag)
 		for packIndex = PacketPackIndex.Default, PacketPackIndex.Horse do
 			local pack = self.packs[packIndex]
 			if pack then
-				-- ÏÈÕÒ¿Õ¸ñÄÜ´æ·ÅµÄÊıÄ¿
+				-- å…ˆæ‰¾ç©ºæ ¼èƒ½å­˜æ”¾çš„æ•°ç›®
 				curCanAddNum = pack:getAllSpaceNum() * itemConfig.MaxPileNum
 				if curCanAddNum >= itemNum then
 					return true
 				end
-				-- ÔÙÕÒµş¼ÓÄÜ´æ·ÅµÄÊıÄ¿
+				-- å†æ‰¾å åŠ èƒ½å­˜æ”¾çš„æ•°ç›®
 				curCanAddNum = curCanAddNum + pack:getCanPileNum(itemID)
 				if curCanAddNum >= itemNum then
 					return true

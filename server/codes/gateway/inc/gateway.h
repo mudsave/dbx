@@ -228,9 +228,6 @@ public:
 		msg.reason		= reason;
 		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksCG_L>::SendMsg(player->hLink, &msg);
-
-		LinkContext_Client* pClient = getClientLink(player->hLink); ASSERT_(pClient);
-		pClient->_SwitchState(LINK_CONTEXT_DISCONNECTED);
 	}
 
 public:
@@ -276,6 +273,20 @@ public:
 		msg.gatewayId	= pInfo->gatewayId;
 		msg.worldId		= pInfo->worldId;
 		msg.msgLen      = sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
+	}
+
+	void send_MsgGS_OfflineInFight(int accountId, int roleId)
+	{
+		if ( !m_pSession ) return;
+		_MsgGS_OfflineInFight msg;
+		msg.msgFlags    = 0;
+		msg.msgCls      = MSG_CLS_OFFLINE;
+		msg.msgId		= MSG_G_S_OFFLINE_IN_FIGHT;
+		msg.context		= 0;
+		msg.accountId  	= accountId;
+		msg.roleId		= roleId;
+		msg.msgLen		= sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
 

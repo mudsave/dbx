@@ -13,7 +13,6 @@
 #define PropAllocSize 64
 #define IdAllocSize 32
 
-
 CUnitConfig::CUnitConfig(){
 }
 
@@ -25,7 +24,7 @@ CUnitConfig &CUnitConfig::Instance(){
 bool CUnitConfig::Init(lua_State *L){
 	bool bSuccess = LuaFunctor<>::Call(L,"loadUnitConfig");
 	if(!bSuccess){
-		TRACE1_L0("%s\n",LuaFunctor<>::getLastError());
+		TRACE1_L0("CUnitConfig::Init() error:%s\n",LuaFunctor<>::getLastError());
 	}
 	return bSuccess;
 }
@@ -91,7 +90,7 @@ void CUnitConfig::addPublicProp(int cls,int propID){
 	set.p[set.count++] = (BYTE)propID;
 }
 
-int CUnitConfig::addProperty(int cls,const char *type,const char *def,int pub){
+int CUnitConfig::addProperty(int cls,const char *type,const char *def,int bPub,int bSync){
 	_PropSet &set = auxCheckValidSet(m_propSets,cls);
 	ASSERT_(type);
 
@@ -184,10 +183,12 @@ int CUnitConfig::addProperty(int cls,const char *type,const char *def,int pub){
 
 	prop->radius	= 0;
 
-	if(pub > 0){//whether it be a public property
+	if(bPub > 0){//whether it be a public property
 		prop->radius = 1;
 		addPublicProp(cls,count);
 	}
+	
+	prop->sync = bSync?1:0;
 	return count;
 }
 
@@ -197,9 +198,9 @@ int CUnitConfig::addProperty(int cls,const char *type,const char *def,int pub){
 void CUnitConfig::addSharedProps(int cls){
 	ASSERT_(cls >= 0 && cls < MAX_CLASS_TYPE);
 
-	auxAddProperty(UNIT_STATUS,     cls,"BYTE",	   "0",PROP_PUBLIC);
-	auxAddProperty(UNIT_POS,        cls,"POSDATA", "0",PROP_PUBLIC);
-	auxAddProperty(UNIT_MOVE_SPEED, cls,"SHORT",  "40",PROP_PUBLIC);
+	auxAddProperty(UNIT_STATUS,     cls,"BYTE",	   "0",PROP_PUBLIC,	1);
+	auxAddProperty(UNIT_POS,        cls,"POSDATA", "0",PROP_PUBLIC,	1);
+	auxAddProperty(UNIT_MOVE_SPEED, cls,"SHORT",  "40",PROP_PUBLIC,	1);
 }
 
 void CUnitConfig::Close(){

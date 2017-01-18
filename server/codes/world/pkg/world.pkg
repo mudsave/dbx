@@ -8,17 +8,24 @@ public:
 	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int result);
 	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int result, int reason);
 	int send_MsgWG_WorldPlayersLogout_ResultInfo(short worldId);
+	int send_MsgWG_OfflineInFight(handle hLink, int roleId);
+	int send_MsgWS_ClearOffFightInfo(int accountId);
+	int send_MsgWS_StartFight(int accountId);
+	int send_MsgWS_StopFight(int accountId);
 };
 
 CWorld g_world;
 
 enum _LogoutReason
 {
-	LOGOUT_REASON_INIT				= -2,		// the value of init
-	LOGOUT_REASON_EXCEPTION			= -1,		// exception
+	LOGOUT_REASON_INIT				= -2,	// the value of init
+	LOGOUT_REASON_EXCEPTION				= -1,	// exception
 	LOGOUT_REASON_CLIENT_NORMAL,				// normal from client
-	LOGOUT_REASON_CLIENT_FORCE,					// force from client
-	LOGOUT_REASON_SESSION_KICK,					// kick from session
-	LOGOUT_REASON_WORLD_KICK,					// kick form world
-	LOGOUT_REASON_GATEWAY_HEART,				// heart from gateway
+	LOGOUT_REASON_CLIENT_FORCE,				// force from client
+	LOGOUT_REASON_SESSION_KICK,				// kick from session
+	LOGOUT_REASON_WORLD_KICK,				// kick form world
+	LOGOUT_REASON_WORLD_KICK_ALL,				// kick all player form world
+	LOGOUT_REASON_WORLD_HEART,				// heart from world
+	LOGOUT_REASON_RELOGIN_OTHER_GATE,			// relogin from other gateway
+	LOGOUT_REASON_CLIENT_LITTLEBACK,			// heart from client
 };

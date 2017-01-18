@@ -6,7 +6,7 @@
  *			2. 接收数据用的静态缓冲区。这个要改进，直接用recvBufQueue里面的缓冲区
  *			3. 发送数据时，发送一部分的时候，是否退出循环，需要测试一下，看效果
  *			4. 发送数据时，可能会出现小段的数据（因为每次都是从bufQueue头部pop出来的数据，感觉策略有点简单）
- *			
+ *
  */
 
 #include "lindef.h"
@@ -16,7 +16,7 @@
 CTcpPort::CTcpPort()
 {
 	m_s = INVALID_SOCKET;
-	
+
 	m_regKey = E_FAIL;
 	m_pPortSink = NULL;
 	m_hClosingTimer = NULL;
@@ -291,7 +291,7 @@ HRESULT CTcpPort::OnClose(_CloseContext* pContext)
 			m_pPortSink->OnClose(E_FAIL);
 			m_pPortSink = NULL;
 		}
-		
+
 		ASSERT_(m_regKey);
 		HRESULT hr = m_pIoWorker->UnregIoTask(m_regKey);
 		ASSERT_(SUCCEEDED(hr));
@@ -345,7 +345,7 @@ HRESULT CTcpPort::SendData(const BYTE* pData, int len)
 		iSended = send(m_s, (char*)pData, len, MSG_NOSIGNAL);
 		if(iSended >= 0)
 		{
-			TRACE3_L2("--(%i)CTcpPort::SendData(), len=(%i,%i)\n", m_s, len, iSended);
+			//TRACE3_L2("--(%i)CTcpPort::SendData(), len=(%i,%i)\n", m_s, len, iSended);
 			if(iSended == len) return S_OK;
 		}
 		else
@@ -359,7 +359,7 @@ HRESULT CTcpPort::SendData(const BYTE* pData, int len)
 			iSended = 0;
 			TRACE2_L2("--(%i)CTcpPort::SendData(),send blocked, %s\n", m_s, strerror(errno));
 		}
-		
+
 		TRACE1_L3("--(%i)CTcpPort::SendData(), attach write io event\n", m_s);
 		HRESULT hr = m_pIoWorker->AttachIoEvents(m_regKey, ASYN_IO_WRITE);
 		ASSERT_( SUCCEEDED(hr) );
@@ -382,10 +382,8 @@ HRESULT CTcpPort::do_io_read()
 	if ( m_stateRecv == LINK_CLOSING || m_stateRecv == LINK_CLOSED )
 	{
 		TRACE1_L0("--(%i)CTcpPort::do_io_read(), has already read eof, buf still want to read\n", m_s);
-		int oldno = errno;
-		errno = EPIPE;
 		async_sock_error("CTcpPort::do_io_read(), already eof");
-		errno = oldno;
+		return S_FALSE;
 	}
 
 	while(1)

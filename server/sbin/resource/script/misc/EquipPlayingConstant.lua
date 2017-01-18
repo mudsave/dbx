@@ -1,52 +1,13 @@
 --[[EquipPlayingConstant.lua
-ÃèÊö£º
-	×°±¸Íæ·¨³£Á¿¶¨Òå
+æè¿°ï¼š
+	è£…å¤‡ç©æ³•å¸¸é‡å®šä¹‰
 ]]
 
--- ×°±¸Íæ·¨ÀàĞÍ
-EquipPlaying =
-{
-	-- ×°±¸ÖÆ×÷
-	EquipMake      = 1,
-	-- ×°±¸²ğ½â
-	EquipAnalyse   = 2,
-	-- ×°±¸¸ÄÔì
-	EquipRemould   = 3,
-	-- ×°±¸ÊôĞÔÖØÖÃ
-	AttrReset      = 4,
-	-- ×°±¸ÊôĞÔÇ¿»¯
-	AttrImprove    = 5,
-	-- ×°±¸Á¶»¯
-	EquipRefining  = 6,
-	-- ÊÎÆ·ÖÆ×÷
-	AdornMake      = 7,
-	-- ÊÎÆ·ºÏ³É
-	AdornSynthetic = 8,
-}
-
--- ×°±¸¸ÄÔìµÈ¼¶ÉÏÏŞ
+-- è£…å¤‡æ”¹é€ ç­‰çº§ä¸Šé™
 EquipRemouldMaxLevel = 10
 
---×°±¸ÖÆ×÷ÏûºÄÕÛ¿Û
+--è£…å¤‡åˆ¶ä½œæ¶ˆè€—æŠ˜æ‰£
 EquipDiscount = 0.8
-
---×°±¸¸ÄÔìÓë»ØÍË
-EquipRemouldType = 
-{
-	remould = 1,
-	rollBack = 2,
-}
-
---×°±¸¸ÄÔìÊôĞÔÑÕÉ«
-EquipRemouldColour = 
-{
-	null = 0,
-	White = 1,
-	Blue = 2,
-	Pink = 3,
-	Gold = 4,
-	Green = 5,
-}
 
 EquipMakeAddattrType = 
 {
@@ -57,36 +18,7 @@ EquipMakeAddattrType =
 	Random = 5,
 }
 
-EquipRefiningphase = 
-{
-	win_phase = 1,
-	thu_phase = 2,
-	ice_phase = 3,
-	soi_phase = 4,
-	fir_phase = 5,
-	poi_phase = 6,
-}
-
---Ì××°¼şÊı
-Suit = {
-	twoPieceSuit	= 2,
-	fourPieceSuit	= 4,
-	sixPieceSuit	= 6,
-}
-
---×°±¸ÊôĞÔÑÕÉ«
-EquipAttrColor = {
-	-- À¶
-	Blue   = 1,
-	-- ·Û
-	Pink = 2,
-	-- ½ğ
-	Gold   = 3,
-	-- ÂÌ
-	Green  = 4,
-}
-
---×°±¸ÊôĞÔÎ»ÖÃ¶ÔÓÚÊôĞÔÑÕÉ«
+--è£…å¤‡å±æ€§ä½ç½®å¯¹äºå±æ€§é¢œè‰²
 AttrPositionToColor =
 {
 	[1] = EquipAttrColor.Blue,

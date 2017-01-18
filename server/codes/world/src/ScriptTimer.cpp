@@ -6,8 +6,8 @@
 #include "LuaFunctor.h"
 #include "LuaEngine.h"
 #include "ScriptTimer.h"
-#include <time.h>  
-int gettimeofday(struct timeval *tv, struct timezone *tz);  
+#include <time.h>
+int gettimeofday(struct timeval *tv, struct timezone *tz);
 
 ScriptTimer* ScriptTimer::s_pScriptTimer = NULL;
 lua_State* ScriptTimer::s_pLuaState = NULL;
@@ -91,6 +91,7 @@ int ScriptTimer::OnTimeClick(){
 		if (!timerFired(TypeNull::nil(), p->sn, ScriptTimerNormal))
 			TRACE1_L0("%s\n", timerFired.getLastError());
 		count++;
+		// getDebugInfo(p->sn);
 
 		if(p->uiPeriod <= 0)
 		{
@@ -146,10 +147,35 @@ int ScriptTimer::toluaScriptTimerOpen(lua_State* pState)
 	return 1;
 }
 
+int ScriptTimer::getDebugInfo(int timerId)
+{
+	static int ref = LUA_NOREF;
+	if (ref == LUA_NOREF)
+		ref = PushMethod(s_pLuaState, "TimerManager.getDebugInfo");
+	ASSERT_(ref != LUA_NOREF);
+	lua_rawgeti(s_pLuaState, LUA_REGISTRYINDEX, ref);
+	lua_pushnumber(s_pLuaState, timerId);
+	int rt = lua_pcall(s_pLuaState, 1, 1, 0);
+	if (rt)
+	{
+		const char* errMsg = luaL_checkstring(s_pLuaState, -1);
+		TRACE2_L0("[ScriptTimer::getDebugInfo] error No:%d, error Msg:%s\n",
+		rt, errMsg);
+		return -1;
+	}
+	static char _debugInfo[100];
+	size_t len = 0;
+	const char* info = luaL_checklstring(s_pLuaState, -1, &len);
+	ASSERT_(len >= 0);
+	memcpy((void*)_debugInfo, (void*)info, len + 1);
+	TRACE2_L0("Timer: %d debugInfo: %s\n", timerId, _debugInfo);
+	return 0;
+}
+
 int getLuaTick()
 {
 	struct timeval tv;
-	gettimeofday(&tv,NULL); 
+	gettimeofday(&tv,NULL);
 	int nTick = tv.tv_sec*1000+tv.tv_usec/1000;
 	return nTick;
 }

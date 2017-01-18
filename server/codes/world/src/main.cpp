@@ -10,6 +10,7 @@
 #include "world.h"
 #include <string.h>
 
+void CleanUp();
 
 /// 参数形式 : ./World -sessionAddr 172.16.2.220:2500 -worldId 0
 int main(int argc, char* argv[])
@@ -48,6 +49,8 @@ int main(int argc, char* argv[])
 
 	IThreadsPool* pThreadsPool	= GlobalThreadsPool();
 
+	SetCleanup(CleanUp);
+
 	GenerateSignalThread();
 
 	g_world.Init( worldId, sessionIP, sessionPort, dbIP, dbPort );
@@ -70,4 +73,9 @@ int main(int argc, char* argv[])
 	Sleep( 1000 * 5);
 
 	return 0;
+}
+
+void CleanUp()
+{
+	g_world.CleanUp();
 }

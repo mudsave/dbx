@@ -1,5 +1,5 @@
 --[[TeamSystem.lua
-描述��?
+描述：
 	玩家组队系统
 --]]
 
@@ -47,7 +47,7 @@ function TeamSystem:onDissolveTeam(event)
 	g_teamMgr:dissolveTeam(playerID)
 end
 
---邀请玩家加入队��?
+--邀请玩家加入队伍
 function TeamSystem:onInviteJoinTeam(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -55,7 +55,7 @@ function TeamSystem:onInviteJoinTeam(event)
 	g_teamMgr:inviteJoinTeam(playerID,targetID)
 end
 
---回答邀��?
+--回答邀请
 function TeamSystem:onAnswerInvite(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -81,7 +81,7 @@ function TeamSystem:onAnswerRequest(event)
 	g_teamMgr:answerRequest(leaderID,targetID,isAccept)
 end
 
---玩家退出队��?
+--玩家退出队伍
 function TeamSystem:onQuitTeam(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -135,7 +135,7 @@ function TeamSystem:onSearchTeamList(event)
 	g_teamMgr:searchTeamList(playerID,minLevel,maxLevel,actionTable)
 end
 
---非队伍玩家自动组��?
+--非队伍玩家自动组队
 function TeamSystem:onAutoTeam(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -147,7 +147,7 @@ function TeamSystem:onAutoTeam(event)
 	end
 end
 
---非队伍玩家取消自动组��?
+--非队伍玩家取消自动组队
 function TeamSystem:onCancelAutoTeam(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -182,7 +182,7 @@ function TeamSystem:teamPlayerOnline( event )
 	local playerDBID = params[2]
 	local role = g_entityMgr:getPlayerByDBID(roleDBID)
 	if roleDBID == playerDBID then
-		local msg = "无法和自己组��?"
+		local msg = "无法和自己组队"
         local notifyParams = {msg = msg}
 		local event_ErrorNotify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.NormalNotify,notifyParams)
 		g_eventMgr:fireRemoteEvent(event_ErrorNotify,role)
@@ -205,7 +205,7 @@ function TeamSystem:teamPlayerOnline( event )
 	end
 end
 
---收到别的玩家申请队长的请��?
+--收到别的玩家申请队长的请求
 function TeamSystem:applyForLeader(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -215,7 +215,7 @@ function TeamSystem:applyForLeader(event)
 	g_eventMgr:fireRemoteEvent(event,leader)
 end
 
---收到拒绝信息，提示给申请��?
+--收到拒绝信息，提示给申请人
 function TeamSystem:refuseApply(event)
 	local params = event:getParams()
 	local playerID = params[1]

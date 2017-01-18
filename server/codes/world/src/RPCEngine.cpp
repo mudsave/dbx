@@ -9,6 +9,7 @@
 
 int RPCEngine::_rpc_ref;
 int RPCEngine::_wrpc_ref;
+int RPCEngine::_debug_ref;
 ByteBuffer RPCEngine::_s_buffer;
 lua_State* RPCEngine::m_pLuaState;
 
@@ -17,38 +18,56 @@ void RPCEngine::init(lua_State* L)
     m_pLuaState = L;
     _rpc_ref = 0;
     _wrpc_ref = 0;
+    _debug_ref = 0;
     ASSERT_(pushluafunction(L, "RemoteEventProxy.receive"));
     _rpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
     ASSERT_(pushluafunction(L, "RemoteEventProxy.wreceive"));
     _wrpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
+    ASSERT_(pushluafunction(L, "RemoteEventProxy.debug"));
+    _debug_ref = luaL_ref(L, LUA_REGISTRYINDEX);
     toluaRPCOpen(L);
 }
 
 int RPCEngine::sendToPeer(lua_State* L)
 {
-    handle playerID = (handle)luaL_checknumber(L, 2);
-    CoEntity* entity = _EntityFromHandle(playerID);
-    AppMsg* msg = genRPC(L);
-    g_world.sendMsgToPeer(entity->m_gatewayLink, entity->m_clientLink, msg);
+    short gatewayID = (handle)luaL_checknumber(L, 2);
+    handle gatewayLink = g_world.getGateLinkById(gatewayID);
+    if (gatewayLink == 0)
+        return -1;
+    handle clientLink = (handle)luaL_checknumber(L, 3);
+    AppMsg* msg = genRPC(L, 4);
+    msg->msgCls = MSG_CLS_SCENE_RPC;
+    g_world.sendMsgToPeer(gatewayLink, clientLink, msg);
     return 0;
 }
 
 int RPCEngine::sendToWorld(lua_State* L)
 {
     short worldID = (short)luaL_checknumber(L, 2);
-    AppMsg* msg = genRPC(L);
+    AppMsg* msg = genRPC(L, 3);
+    msg->msgCls = MSG_CLS_WORLD_RPC;
     g_world.sendMsgToWorld(worldID, msg);
     return 0;
 }
 
 int RPCEngine::bcToWorldPeers(lua_State* L)
 {
-    //short worldID = (short)luaL_checknumber(L, 1);
+    short worldID = (short)luaL_checknumber(L, 2);
+    AppMsg* msg = genRPC(L, 3);
+    msg->msgCls = MSG_CLS_SCENE_RPC;
+    g_world.sendMsgToWorldPeers(worldID, msg);
     return 0;
 }
+
 int RPCEngine::sendToAround(lua_State* L)
 {
-    //handle playerID = (handle)luaL_checknumber(L, 1);
+    handle playerID = (handle)luaL_checknumber(L, 2);
+    CoEntity* player = _EntityFromHandle(playerID);
+    AppMsg* msg = genRPC(L, 3);
+    msg->msgCls = MSG_CLS_SCENE_RPC;
+    int peer_count = 0;
+    PeerHandle* pPeers = player->getAroundMe(peer_count);
+    g_world.sendMsgToPeers(pPeers, peer_count, msg);
     return 0;
 }
 
@@ -88,7 +107,7 @@ int RPCEngine::toluaRPCOpen(lua_State* pState)
 	return 1;
 }
 
-AppMsg* RPCEngine::genRPC(lua_State *L)
+AppMsg* RPCEngine::genRPC(lua_State *L, int offset)
 {
     ByteBuffer& buffer = _s_buffer;
 	buffer.clear();
@@ -96,15 +115,15 @@ AppMsg* RPCEngine::genRPC(lua_State *L)
 	buffer.append((char*)&rpcHead, sizeof(rpcHead));
 
     int top = lua_gettop(L);
-	int nEventID = (int) luaL_checknumber(L, 3);
-	int nSrcID = (int) luaL_checknumber(L, 4);
+	int nEventID = (int) luaL_checknumber(L, offset);
+	int nSrcID = (int) luaL_checknumber(L, offset + 1);
 	buffer << nEventID << nSrcID;
-	buffer << top - 4;
+	buffer << top - (offset + 1);
 
     lua_Number nValue;
 	size_t sLen;
 	const char *sValue;
-	for(int i = 5; i <= top ; i++)
+	for(int i = offset + 2; i <= top ; i++)
     {
 		switch(lua_type(L, i))
         {
@@ -133,7 +152,7 @@ AppMsg* RPCEngine::genRPC(lua_State *L)
 		}
 	}
     AppMsg* pMsg = (AppMsg*)buffer.contents();
-    pMsg->msgCls = MSG_CLS_SCENE_RPC;
+    pMsg->msgCls = 0;
     pMsg->msgFlags = 0;
     pMsg->msgId = 0;
     pMsg->context = g_world.getWorldId();
@@ -144,6 +163,7 @@ AppMsg* RPCEngine::genRPC(lua_State *L)
 void RPCEngine::parseRPC(lua_State *L, ByteBuffer& buffer, int index)
 {
     int top = lua_gettop(L);
+    lua_rawgeti(L, LUA_REGISTRYINDEX, _debug_ref);
     lua_rawgeti(L, LUA_REGISTRYINDEX, index);
     int nEventID = 0;
     int nSrcID = 0;
@@ -185,13 +205,15 @@ void RPCEngine::parseRPC(lua_State *L, ByteBuffer& buffer, int index)
                 break;
         }
     }
-    int rt = lua_pcall(L, nCount + 2, 0, 0);
+    int rt = lua_pcall(L, nCount + 2, 0, -(nCount + 4));
+    unused(rt);
+    /*
     if (rt)
     {
         const char* errMsg = luaL_checkstring(L, -1);
-        TRACE2_L0("[RPCEngine::parseRPC] RPC PARSE ERROR error No:%d, error Msg:%s\n",
-        rt, errMsg);
+        TRACE1_L0("!!! [RPC ERROR] -- %s\n", errMsg);
     }
+    */
     lua_settop(L, top);
 }
 

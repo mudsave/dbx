@@ -1,23 +1,12 @@
 --[[constant.lua
-鎻忚堪锛?	瀹炰綋甯搁噺
-	--misc.constant鑴氭湰涓嬫枃浠?]]
---闂ㄦ淳绫诲埆
-SchoolType = {
-	PM          = 0x00,
-	QYD         = 0x01,
-	JXS         = 0x02,
-	ZYM         = 0x03,
-	YXG         = 0x04,
-	TYD         = 0x05,
-	PLG         = 0x06,
-}
+描述：
+	实体常量
+	--misc.constant脚本下文件
+]]
+SocialWorldID = 200
 
---玩家性别的类型
-PlayerSexType = {
-	Females         = 0x00, --女性
-	Males           = 0x01, --男性
-}
 RightPos4Error = {mapID = 10,x = 200 ,y = 198,}
+PlayerBornPos  = {mapID = 8,x = 95 ,y = 220}
 --玩家的状态
 PlayerStates =
 {
@@ -32,6 +21,32 @@ PlayerStates =
 	P2PTradeAndTeam	= 0x100,--P2p交易和组队
 }
 
+--门派初始模型配置
+SchoolModelSwitch = {
+	[PlayerSexType.Females] = {
+		[SchoolType.QYD] = 2,
+		[SchoolType.JXS] = 8,
+		[SchoolType.ZYM] = 6,
+		[SchoolType.YXG] = 10,
+		[SchoolType.TYD] = 4,
+		[SchoolType.PLG] = 12,
+	},
+	[PlayerSexType.Males] = {
+		[SchoolType.QYD] = 1,
+		[SchoolType.JXS] = 7,
+		[SchoolType.ZYM] = 5,
+		[SchoolType.YXG] = 9,
+		[SchoolType.TYD] = 3,
+		[SchoolType.PLG] = 11,
+	},
+}
+
+MemCollectPeriod = 60
+OnlineReason = {
+	Normal = 1,
+	Reattach = 2,
+	Relogin	 = 3,
+}
 require "misc.EntityConstant"
 require "misc.EctypeConstant"
 require "misc.ItemConstant"
@@ -39,3 +54,20 @@ require "misc.EquipPlayingConstant"
 require "misc.HandlerConstant"
 require "misc.RideConstant"
 require "misc.TeamConstant"
+require "misc.TaskConstant"
+require "misc.DialogConstant"
+require "misc.PKConstant"
+require "misc.BuffConstant"
+require "misc.TradeConstant"
+require "misc.SkillConstant"
+require "misc.MindConstant"
+require "misc.LifeSkillConstant"
+require "misc.TreasureConstant"
+require "misc.EffectConstant"
+require "misc.FightConstant"
+require "misc.PractiseConstant"
+require "misc.TransportationConstant"
+require "misc.SocialServerConstant"
+require "misc.MeetMonsterConstant"
+require "misc.PetDepotConstant"
+

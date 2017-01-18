@@ -12,18 +12,18 @@ export LD_LIBRARY_PATH = $(WORK_DIR)
 
 .PHONY : all clean
 .PHONY : session gateway world
-.PHONY : _session _gateway _world
+.PHONY : _session _gateway _world _fight _social
 .PHONY : session_v gateway_v world_v
 
 # 启动入口
 test : _server _client
 	@echo "--test client and server are running in background.."
 
-all : _session _gateway _world
+all : _session _gateway _world _fight _social
 	@echo "--servers are running in background.."
 
 clean :
-	@set -e; ../../sh.d/kill_server
+	@set -e; ./kill_server
 	@echo "--server is clean.."
 	@sleep 3s
 
@@ -49,6 +49,14 @@ world :
 	@set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 0
 
+fight :
+	@set -e; ulimit -c unlimited; \
+	$(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 100
+
+fight_1 :
+	@set -e; ulimit -c unlimited; \
+	$(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 101
+
 
 # 后台运行程序
 _client :
@@ -62,29 +70,42 @@ _server :
 
 _session :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
+	( $(WORK_DIR)/Session -loginAddrL 172.16.2.218:20013 -gateAddrL 172.16.2.218:2300 -worldAddrL 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
 	echo "Session has been runned.."; sleep 2s
 
 _gateway :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20015 -worldAddrL 172.16.2.220:2700 -sessionAddrC 172.16.2.220:2300 -gatewayId 0 1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
+	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.218:20015 -worldAddrL 172.16.2.218:2700 -sessionAddrC 172.16.2.218:2300 -gatewayId 0 1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
 	echo "Gateway 0 has been runned.."; sleep 2s
 
 _gateway_1 :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.220:20017 -worldAddrL 172.16.2.220:2900 -sessionAddrC 172.16.2.220:2300 -gatewayId 1 1>$(WORK_DIR)/logs/_gateway_1.txt 2>&1 & ); \
+	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.218:20017 -worldAddrL 172.16.2.218:2900 -sessionAddrC 172.16.2.218:2300 -gatewayId 1 1>$(WORK_DIR)/logs/_gateway_1.txt 2>&1 & ); \
 	echo "Gateway 1 has been runned.."; sleep 2s
 
 _world :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
 	echo "World 0 has been runned.."; sleep 2s
 
 _world_1 :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.220:2500 -dbAddrC 172.16.4.159:3000 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
 	echo "World 1 has been runned.."; sleep 2s
+_fight :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 100 1>$(WORK_DIR)/logs/_world100.txt 2>&1 & ); \
+	echo "fight 100 has been runned.."; sleep 2s
 
+_fight_1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 101 1>$(WORK_DIR)/logs/_world_101.txt 2>&1 & ); \
+	echo "fight 101 has been runned.."; sleep 2s
+
+_social :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 200 1>$(WORK_DIR)/logs/_world200.txt 2>&1 & ); \
+	echo "social 200 has been runned.."; sleep 2s
 
 # 用valgrind运行程序
 client_v :

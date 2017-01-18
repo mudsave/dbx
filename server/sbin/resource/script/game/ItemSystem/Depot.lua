@@ -1,21 +1,21 @@
 --[[Depot.lua
-ÃèÊö:
-	²Ö¿â
+æè¿°:
+	ä»“åº“
 ]]
 
 Depot = class()
 
 function Depot:__init(owner)
-	-- ÓµÓĞÕß
+	-- æ‹¥æœ‰è€…
 	self.owner = owner;
-	-- ËùÓĞ°ü¹ü
+	-- æ‰€æœ‰åŒ…è£¹
 	self.packs = {}
 
-	-- µÚÒ»¸ö°ü¹ü
+	-- ç¬¬ä¸€ä¸ªåŒ…è£¹
 	local firstPack = Pack()
 	firstPack:setCapability(DepotDefaultCapacity)
 	self:addPack(DepotPackIndex.First, firstPack)
-	-- µÚ¶ş¸ö°ü¹ü
+	-- ç¬¬äºŒä¸ªåŒ…è£¹
 	local secondPack = Pack()
 	secondPack:setCapability(0)
 	self:addPack(DepotPackIndex.Second, secondPack)
@@ -30,22 +30,22 @@ function Depot:__release()
 	end
 end
 
--- ¼ì²â¼ÆÊ±µÀ¾ßÊÇ·ñµ½ÆÚ
+-- æ£€æµ‹è®¡æ—¶é“å…·æ˜¯å¦åˆ°æœŸ
 function Depot:checkItemExpire()
 	for packIndex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = self:getPack(packIndex)
 		if pack then
-			-- »ñµÃ°ü¹ü´æÔÚ¼ÆÊ±µÄµÀ¾ß
+			-- è·å¾—åŒ…è£¹å­˜åœ¨è®¡æ—¶çš„é“å…·
 			local tTimeItems = pack:getTimeItems()
 			for i = 1, table.getn(tTimeItems) do
 				local gridItem = tTimeItems[i]
 				if gridItem then
 					if os.time() >= gridItem:getExpireTime() then
-						-- É¾³ıµÀ¾ß
+						-- åˆ é™¤é“å…·
 						local result = self:removeItem(gridItem:getGuid(), 0, true)
 						if result == RemoveItemsResult.SucceedClean then
-							-- ÌáÊ¾¿Í»§¶ËµÀ¾ß¹ıÆÚ£¬ÒÑÉ¾³ı
+							-- æç¤ºå®¢æˆ·ç«¯é“å…·è¿‡æœŸï¼Œå·²åˆ é™¤
 						end
 					end
 				end
@@ -54,12 +54,12 @@ function Depot:checkItemExpire()
 	end
 end
 
--- »ñµÃÈİÆ÷ID
+-- è·å¾—å®¹å™¨ID
 function Depot:getContainerID()
 	return PackContainerID.Depot
 end
 
--- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 function Depot:updateItemToClient()
 	for packIndex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
 		if self.packs[packIndex] then
@@ -68,11 +68,11 @@ function Depot:updateItemToClient()
 	end
 end
 
--- Ìí¼Ó°ü¹ü
+-- æ·»åŠ åŒ…è£¹
 function Depot:addPack(packIndex, pack)
 	if instanceof(pack, Pack) then
 		if self.packs[packIndex] then
-			-- ÒÑ¾­´æÔÚ
+			-- å·²ç»å­˜åœ¨
 			return false
 		else
 			pack:setOwner(self.owner)
@@ -85,15 +85,15 @@ function Depot:addPack(packIndex, pack)
 	return false
 end
 
--- »ñµÃ°ü¹ü
+-- è·å¾—åŒ…è£¹
 function Depot:getPack(packIndex)
 	return self.packs[packIndex]
 end
 
--- »ñµÃÖ¸¶¨Î»ÖÃµÄµÀ¾ß
+-- è·å¾—æŒ‡å®šä½ç½®çš„é“å…·
 function Depot:getItems(packIndex, gridIndex)
 	if packIndex < DepotPackIndex.First or packIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return -1, nil
 	end
 
@@ -103,21 +103,21 @@ function Depot:getItems(packIndex, gridIndex)
 		end
 	end
 
-	-- Âß¼­´íÎó
+	-- é€»è¾‘é”™è¯¯
 	return -1, nil
 end
 
--- Ìí¼ÓµÀ¾ß
+-- æ·»åŠ é“å…·
 function Depot:addItems(itemGuid, bUpdateClient)
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return AddItemsResult.SrcInvalid
 	end
 
 	local itemConfig = tItemDB[item:getItemID()]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return AddItemsResult.SrcInvalid
 	end
 
@@ -128,13 +128,13 @@ function Depot:addItems(itemGuid, bUpdateClient)
 			local addNum = tAddPacks[i][2]
 			result = self.packs[packIndex]:addItemsLimitNums(item, addNum, bUpdateClient)
 			if result ~= AddItemsResult.Succeed and result ~= AddItemsResult.SucceedPile then
-				-- Õı³£Çé¿ö²»»á³öÏÖÕâÖÖ½á¹û£¬ÒòÎªÇ°ÃæÒÑ¾­ÅĞ¶Ï¿ÉÒÔÌí¼Ó³É¹¦ÁË
+				-- æ­£å¸¸æƒ…å†µä¸ä¼šå‡ºç°è¿™ç§ç»“æœï¼Œå› ä¸ºå‰é¢å·²ç»åˆ¤æ–­å¯ä»¥æ·»åŠ æˆåŠŸäº†
 				return result
 			end
 		end
-		-- Èç¹ûÔ´µÀ¾ß·Ö²ğ·ÅÈë¶à¸ö°ü¹ü»òÕßÍ¬Ò»¸ö°ü¹üµş¼Ó´æ·Å£¬¾ÍÒªÏú»ÙÔ´µÀ¾ß
+		-- å¦‚æœæºé“å…·åˆ†æ‹†æ”¾å…¥å¤šä¸ªåŒ…è£¹æˆ–è€…åŒä¸€ä¸ªåŒ…è£¹å åŠ å­˜æ”¾ï¼Œå°±è¦é”€æ¯æºé“å…·
 		if #tAddPacks > 1 or result == AddItemsResult.SucceedPile then
-			-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+			-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 			g_itemMgr:destroyItem(itemGuid)
 			return AddItemsResult.SucceedPile
 		else
@@ -147,7 +147,7 @@ function Depot:addItems(itemGuid, bUpdateClient)
 	return result
 end
 
--- ÅĞ¶Ï¿É·ñ·ÅÈë°ü¹ü
+-- åˆ¤æ–­å¯å¦æ”¾å…¥åŒ…è£¹
 function Depot:canAddItems(item)
 	local canAdd = false
 	local result = nil
@@ -157,22 +157,22 @@ function Depot:canAddItems(item)
 
 	for packIndex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
 		if self.packs[packIndex] then
-			-- µ±Ç°°ü¹ü¿ÉÒÔ·ÅÈëµÄÊıÄ¿
+			-- å½“å‰åŒ…è£¹å¯ä»¥æ”¾å…¥çš„æ•°ç›®
 			local curAddNumber = self.packs[packIndex]:canAddNumber(item)
 			if curAddNumber > 0 then
-				-- ¼ÇÂ¼µ±Ç°ÒÑ¾­¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿
+				-- è®°å½•å½“å‰å·²ç»å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®
 				canAddNumber = canAddNumber + curAddNumber
 				if needAddNumber - canAddNumber <= 0 then
-					-- ¼ÇÂ¼ÏÂµ±Ç°°ü¹üË÷ÒıºÍµ±Ç°°ü¹ü¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿£¬ÕâÀïÖ»¼ÇÂ¼Âú×ã·ÅÈëµÄÊıÄ¿
+					-- è®°å½•ä¸‹å½“å‰åŒ…è£¹ç´¢å¼•å’Œå½“å‰åŒ…è£¹å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®ï¼Œè¿™é‡Œåªè®°å½•æ»¡è¶³æ”¾å…¥çš„æ•°ç›®
 					table.insert(tAddPacks, {packIndex, needAddNumber})
-					-- ÒÑ¾­¿ÉÒÔ·ÅÏÂÁË
+					-- å·²ç»å¯ä»¥æ”¾ä¸‹äº†
 					canAdd = true
 					result = AddItemsResult.Succeed
 					break
 				else
-					-- ¼ÇÂ¼ÏÂµ±Ç°°ü¹üË÷ÒıºÍµ±Ç°°ü¹ü¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿
+					-- è®°å½•ä¸‹å½“å‰åŒ…è£¹ç´¢å¼•å’Œå½“å‰åŒ…è£¹å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®
 					table.insert(tAddPacks, {packIndex, curAddNumber})
-					-- ¼ÆËã»¹ĞèÒª·ÅÈëµÄÊıÄ¿
+					-- è®¡ç®—è¿˜éœ€è¦æ”¾å…¥çš„æ•°ç›®
 					needAddNumber = needAddNumber - canAddNumber
 				end
 			end
@@ -182,10 +182,10 @@ function Depot:canAddItems(item)
 		local depotHandler = self.owner:getHandler(HandlerDef_Depot)
 		local curCapacity = depotHandler:getDepotCapability()
 		if curCapacity >= DepotMaxCapacity then
-			--ÄúµÄ²Ö¿âÒÑ´æÂú£¬ÎŞ·¨´æÈëÎïÆ·£¡
+			--æ‚¨çš„ä»“åº“å·²å­˜æ»¡ï¼Œæ— æ³•å­˜å…¥ç‰©å“ï¼
 			result = 16
 		else
-			--ÄãµÄ²Ö¿âÒÑÂú£¬Çë¹ºÂò²Ö¿âÇ¬À¤°üÀ©³ä²Ö¿â
+			--ä½ çš„ä»“åº“å·²æ»¡ï¼Œè¯·è´­ä¹°ä»“åº“ä¹¾å¤åŒ…æ‰©å……ä»“åº“
 			result = 14
 		end
 		
@@ -194,95 +194,95 @@ function Depot:canAddItems(item)
 	return canAdd, tAddPacks,result
 end
 
--- É¾³ıµÀ¾ß
+-- åˆ é™¤é“å…·
 function Depot:removeItem(itemGuid, removeNum, bUpdateClient)
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return RemoveItemsResult.SrcInvalid
 	end
 
-	-- »ñµÃµÀ¾ßËùÔÚµÄ°ü¹üË÷Òı
+	-- è·å¾—é“å…·æ‰€åœ¨çš„åŒ…è£¹ç´¢å¼•
 	local packIndex = item:getPackIndex()
 	if packIndex < DepotPackIndex.First or packIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return RemoveItemsResult.Failed
 	end
 
 	local result = self.packs[packIndex]:removeItem(item, removeNum, bUpdateClient)
 	if result == RemoveItemsResult.SucceedClean then
-		-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+		-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 		g_itemMgr:destroyItem(itemGuid)
 	end
 end
 
--- Ôö¼ÓµÀ¾ßµ½Ö¸¶¨°ü¹ü
+-- å¢åŠ é“å…·åˆ°æŒ‡å®šåŒ…è£¹
 function Depot:addItemsToPack(srcItem, dstPackIndex)
 	if dstPackIndex < DepotPackIndex.First or dstPackIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return AddItemsResult.LocInvalid
 	end
 
 	local result = self.packs[dstPackIndex]:addItems(srcItem, true)
 	if result == AddItemsResult.SucceedPile then
-		-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+		-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 		g_itemMgr:destroyItem(srcItem:getGuid())
 	end
 	return result
 end
 
--- Ìí¼ÓµÀ¾ßµ½Ö¸¶¨ÎïÆ·¸ñ
+-- æ·»åŠ é“å…·åˆ°æŒ‡å®šç‰©å“æ ¼
 function Depot:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 	if packIndex < DepotPackIndex.First or packIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	return self.packs[packIndex]:addItemsToGrid(item, gridIndex, bUpdateClient)
 end
 
--- ´ÓÖ¸¶¨ÎïÆ·¸ñÒÆ³ıµÀ¾ß£¬²¢²»Ïú»ÙµÀ¾ß
+-- ä»æŒ‡å®šç‰©å“æ ¼ç§»é™¤é“å…·ï¼Œå¹¶ä¸é”€æ¯é“å…·
 function Depot:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient)
 	if packIndex < DepotPackIndex.First or packIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	return self.packs[packIndex]:removeItemsFromGrid(gridIndex, bUpdateClient)
 end
 
--- µş¼ÓµÀ¾ßµ½Ö¸¶¨ÎïÆ·¸ñ
+-- å åŠ é“å…·åˆ°æŒ‡å®šç‰©å“æ ¼
 function Depot:pileItemsToGrid(srcItem, dstPackIndex, dstGridIndex)
 	if dstPackIndex < DepotPackIndex.First or dstPackIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	return self.packs[dstPackIndex]:pileItemsToGrid(srcItem, dstGridIndex)
 end
 
--- µş¼ÓµÀ¾ßµ½°ü¹üÖ¸¶¨ÎïÆ·¸ñ£¬×¢ÒâÕâÀïÊÇÄÜµş¼Ó¶àÉÙ¾Íµş¼Ó¶àÉÙ
+-- å åŠ é“å…·åˆ°åŒ…è£¹æŒ‡å®šç‰©å“æ ¼ï¼Œæ³¨æ„è¿™é‡Œæ˜¯èƒ½å åŠ å¤šå°‘å°±å åŠ å¤šå°‘
 function Depot:pileItemsToGridEx(srcItem, dstPackIndex, dstGridIndex)
 	if dstPackIndex < DepotPackIndex.First or dstPackIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	if self.packs[dstPackIndex] then
 		return self.packs[dstPackIndex]:pileItemsToGridEx(srcItem, dstGridIndex)
 	else
-		-- °ü¹ü»¹Î´¿ªÆô
+		-- åŒ…è£¹è¿˜æœªå¼€å¯
 		return false
 	end
 end
 
--- ½»»»µÀ¾ßÎ»ÖÃ
+-- äº¤æ¢é“å…·ä½ç½®
 function Depot:swapItem(srcPackIndex, srcGridIndex, dstPackIndex, dstGridIndex)
 	if srcPackIndex < DepotPackIndex.First or srcPackIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	if dstPackIndex < DepotPackIndex.First or dstPackIndex >= DepotPackIndex.MaxNum then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
@@ -297,28 +297,28 @@ function Depot:swapItem(srcPackIndex, srcGridIndex, dstPackIndex, dstGridIndex)
 		return false
 	end
 
-	-- Ô´°ü¹üÒÆ³ıÔ­À´µÄµÀ¾ß
+	-- æºåŒ…è£¹ç§»é™¤åŸæ¥çš„é“å…·
 	srcPack:removeItemsFromGrid(srcGridIndex, false)
-	-- Ô´°ü¹üÌí¼ÓĞÂµÀ¾ß
+	-- æºåŒ…è£¹æ·»åŠ æ–°é“å…·
 	srcPack:addItemsToGrid(dstGridItem, srcGridIndex, true)
-	-- Ä¿±ê°ü¹üÒÆ³ıÔ­À´µÄµÀ¾ß
+	-- ç›®æ ‡åŒ…è£¹ç§»é™¤åŸæ¥çš„é“å…·
 	dstPack:removeItemsFromGrid(dstGridIndex, false)
-	-- Ä¿±ê°ü¹üÌí¼ÓĞÂµÀ¾ß
+	-- ç›®æ ‡åŒ…è£¹æ·»åŠ æ–°é“å…·
 	dstPack:addItemsToGrid(srcGridItem, dstGridIndex, true)
 
 	return true
 end
 
--- ÕûÀí²Ö¿â
+-- æ•´ç†ä»“åº“
 function Depot:packUp()
 	for packIndex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = self.packs[packIndex]
 		if pack then
-			-- Ã¿Ò»¸ö°ü¹üµ¥¶ÀÕûÀí
+			-- æ¯ä¸€ä¸ªåŒ…è£¹å•ç‹¬æ•´ç†
 			pack:packUp()
 		end
 	end
-	-- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+	-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 	self:updateItemToClient()
 end

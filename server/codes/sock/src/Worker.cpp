@@ -80,7 +80,8 @@ HRESULT CWorker::UnregTimer(HANDLE hTimer)
 	m_timerMap.erase(ret);
 
 	_TimerInfo* pTimer = (_TimerInfo*)hTimer;
-	if(pTimer->item.pTask && m_timerCount > 0)
+	ASSERT_(m_timerCount > 0);
+	if(pTimer->item.pTask)
 	{
 		pTimer->item.pTask = NULL;
 		m_timerCount--;
@@ -219,10 +220,17 @@ unsigned int CWorker::OnTimeClick()
 
 		if(p->uiPeriod <= 0)
 		{
+			m_timerCount--;
+			TRACE3_L0("--CWorker::OnTimeClick(), remove once timer, handle = 0x%x, hContext=0x%x, count=%i\n", p,
+				p->item.hContext, m_timerCount);
+			TRACE1_L0("\tTimer Info: debugStr = %s\n", p->item.pDescription);
 			delete p;
 			m_timerQueue.pop();
-			m_timerCount--;
-			TRACE1_L2("--CWorker::OnTimeClick(), remove once timer, count=%i\n", m_timerCount);
+			std::map<_TimerInfo*, bool>::iterator ret = m_timerMap.find(p);
+			if ( ret != m_timerMap.end() )
+			{
+				m_timerMap.erase(ret);
+			}
 		}
 	}
 
@@ -231,7 +239,7 @@ unsigned int CWorker::OnTimeClick()
 	{
 		TRACE2_L0("--CWorker::OnTimeClick(), handling %d timers for a rather long time in a timer frame: %dms\n",count, span);
 	}
-	
+
 	return span;
 }
 

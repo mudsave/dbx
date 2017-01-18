@@ -49,7 +49,7 @@ public:
 public:
 	short X(){ return m_position.x; }
 	short Y(){ return m_position.y; }
-
+	void setIsFirstCast(bool bOk){ m_firstCast = bOk; };
 public:
 	handle getHandle(){ return m_hand; }
 	int getDBID(){ return m_dbid; }
@@ -71,7 +71,6 @@ public:
 	void setClientLink(handle hClient){ m_clientLink = hClient;}
 
 public:
-	void setFriendWatchee(handle hand){ m_hFriend = hand; }
 	bool addWatchee(handle hand){ return m_myAround.insert(hand); }
 	bool removeWatchee(handle hand){ return m_myAround.erase(hand); }
 	bool addWatcher(handle hand){ return m_aroundMe.insert(hand); }
@@ -91,14 +90,15 @@ public:
 public:
 	void flushMessage(const AppMsg* pMsg);
 	bool bcAMessage(const AppMsg* pMsg, bool pub = true);
-	bool bcAMessageToGroup(const AppMsg* pMsg);
+	bool bcAMessageToGroup(const AppMsg* pMsg,bool toSelf = true);
 
 public:
 	bool bcMyEnter();
 	bool bcSceneSwitch();
 	bool bcEntityEnter(handle hand);
 	bool bcEntityExit(handle* exitList, long count);
-	bool bcPropUpdates();
+	bool bcPropUpdates(handle hSendTo=0);
+	bool bcAllProps(handle hSendTo);
 
 public:
 	bool enterScene(CoScene* pScene, short x, short y);
@@ -155,6 +155,9 @@ public:
 	bool isInView(handle hand) const;
 
 public:
+    PeerHandle* getAroundMe(int& peer_count);
+
+public:
 	handle					m_clientLink;
 	handle					m_gatewayLink;
 	short					m_gatewayId;
@@ -173,7 +176,6 @@ public:
 public:
 	_AroundSet				m_myAround;
 	_AroundSet				m_aroundMe;
-	handle					m_hFriend;
 	GridVct					m_ringOrg[_SyncRingCount];
 
 public:

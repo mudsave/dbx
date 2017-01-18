@@ -1,6 +1,6 @@
 --[[EquipPlayingSystem.lua
-ÃèÊö:
-	×°±¸Íæ·¨ÏµÍ³£¬°üÀ¨£º×°±¸ÖÆ×÷¡¢×°±¸ÊôĞÔÖØÖÃ¡¢×°±¸ÊôĞÔÇ¿»¯¡¢×°±¸¸ÄÔì¡¢×°±¸Á¶»¯¡¢ÊÎÆ·ÖÆ×÷¡¢ÊÎÆ·ºÏ³ÉµÈ
+æè¿°:
+	è£…å¤‡ç©æ³•ç³»ç»Ÿï¼ŒåŒ…æ‹¬ï¼šè£…å¤‡åˆ¶ä½œã€è£…å¤‡å±æ€§é‡ç½®ã€è£…å¤‡å±æ€§å¼ºåŒ–ã€è£…å¤‡æ”¹é€ ã€è£…å¤‡ç‚¼åŒ–ã€é¥°å“åˆ¶ä½œã€é¥°å“åˆæˆç­‰
 ]]
 
 EquipPlayingSystem = class(EventSetDoer, Singleton)
@@ -8,23 +8,23 @@ EquipPlayingSystem = class(EventSetDoer, Singleton)
 function EquipPlayingSystem:__init()
 	self._doer =
 	{
-		--×°±¸ÖÆ×÷
+		--è£…å¤‡åˆ¶ä½œ
 		[EquipPlayingEvent_CS_EquipMake_Request]		= EquipPlayingSystem.onEquipMakeRequest,
-		--×°±¸·Ö½â
+		--è£…å¤‡åˆ†è§£
 		[EquipPlayingEvent_CS_EquipAnalyse_Request]		= EquipPlayingSystem.onEquipAnalyseRequest,
-		--²é¿´×°±¸ĞÅÏ¢
+		--æŸ¥çœ‹è£…å¤‡ä¿¡æ¯
 		[EquipPlayingEvent_CS_ViewEquips_Request]		= EquipPlayingSystem.onViewEquipRequest,
-		-- ×°±¸ÊôĞÔÖØÖÃ
+		-- è£…å¤‡å±æ€§é‡ç½®
 		[EquipPlayingEvent_CS_AttrReset_Request]		= EquipPlayingSystem.onAttrResetRequest,
-		-- ×°±¸ÊôĞÔÇ¿»¯
+		-- è£…å¤‡å±æ€§å¼ºåŒ–
 		[EquipPlayingEvent_CS_AttrImprove_Request]		= EquipPlayingSystem.onAttrImproveRequest,
-		-- ×°±¸¸ÄÔì
+		-- è£…å¤‡æ”¹é€ 
 		[EquipPlayingEvent_CS_EquipRemould_Request]		= EquipPlayingSystem.onEquipRemouldRequest,
-		-- ×°±¸Á¶»¯
+		-- è£…å¤‡ç‚¼åŒ–
 		[EquipPlayingEvent_CS_EquipRefining_Request]	= EquipPlayingSystem.onEquipRefiningRequest,
-		-- ÊÎÆ·ÖÆ×÷
+		-- é¥°å“åˆ¶ä½œ
 		[EquipPlayingEvent_CS_AdornMake_Request]		= EquipPlayingSystem.onAdornMakeRequest,
-		-- ÊÎÆ·ºÏ³É
+		-- é¥°å“åˆæˆ
 		[EquipPlayingEvent_CS_AdornSynthetict_Request]	= EquipPlayingSystem.onAdornSyntheticRequest,
 	}
 end
@@ -48,12 +48,12 @@ function EquipPlayingSystem.loadRoleInfoAndEquipReturn(recordList,player)
 		propertyContext.refiningEffect = serialize(gridItem.refiningEffect)
 		table.insert(viewResult,propertyContext)
 	end
-	-- Í¨Öª¿Í»§¶Ë¸ÄÔì½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯æ”¹é€ ç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_ViewEquips_Request,viewResult,roleInfo)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---²é¿´×°±¸
+--æŸ¥çœ‹è£…å¤‡
 function EquipPlayingSystem:onViewEquipRequest(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -67,42 +67,49 @@ function EquipPlayingSystem:onViewEquipRequest(event)
 
 	local targetID = params[1]
 	local targetName = params[2]
-	--µÃµ½Ä¿±ê¶ÔÏó
+	--å¾—åˆ°ç›®æ ‡å¯¹è±¡
 	local target = g_entityMgr:getPlayerByDBID(targetID)
 	target = target or g_entityMgr:getPlayerByName(targetName)
-	--ÔÚÏß
+	--åœ¨çº¿
 	if target then
-		local roleInfo = {}
-		local viewResult = {}
-		local mapID, xPos, yPos = target:getCurPos()
-		roleInfo = {name = target:getName(),ID = target:getID(),level = target:getLevel(),school = target:getSchool(),posite = {mapID = mapID, x = xPos, y = yPos},modelID = target:getModelID(),bodyTex = target:getCurBodyTex(),headTex = target:getCurHeadTex()}
-		
-		local equipHandler = target:getHandler(HandlerDef_Equip)
-		local equip = equipHandler:getEquip()
-		local equipPack = equip:getPack()
-		for i = 1, equipPack:getCapability() do
-			local gridItem = equipPack.grids[i]
-			if gridItem then
-				-- »ñµÃµÀ¾ßÊôĞÔÏÖ³¡·¢¸ø¿Í»§¶Ë
-				local propertyContext = gridItem:getPropertyContext()
-				-- °ÑÊôĞÔĞ§¹ûµÄLua±íĞòÁĞ»¯Ò»ÏÂ£¬·ÀÖ¹¸¡µãÊı¾«¶È¶ªÊ§µÄÎÊÌâ
-				propertyContext.ID = propertyContext.itemID
-				propertyContext.baseEffect = serialize(propertyContext.baseEffect)
-				propertyContext.addEffect = serialize(propertyContext.addEffect)
-				propertyContext.bindEffect = serialize(propertyContext.bindEffect)
-				propertyContext.refiningEffect = serialize(propertyContext.refiningEffect)
-				table.insert(viewResult,propertyContext)
+		local systemSetHandler = target:getHandler(HandlerDef_SystemSet)
+		if systemSetHandler:getRefInfo() then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SystemSet, 2)
+			g_eventMgr:fireRemoteEvent(event, player)
+			return 
+		else
+			local roleInfo = {}
+			local viewResult = {}
+			local mapID, xPos, yPos = target:getCurPos()
+			roleInfo = {name = target:getName(),ID = target:getID(),level = target:getLevel(),school = target:getSchool(),posite = {mapID = mapID, x = xPos, y = yPos},modelID = target:getModelID(),bodyTex = target:getCurBodyTex(),headTex = target:getCurHeadTex()}
+			
+			local equipHandler = target:getHandler(HandlerDef_Equip)
+			local equip = equipHandler:getEquip()
+			local equipPack = equip:getPack()
+			for i = 1, equipPack:getCapability() do
+				local gridItem = equipPack.grids[i]
+				if gridItem then
+					-- è·å¾—é“å…·å±æ€§ç°åœºå‘ç»™å®¢æˆ·ç«¯
+					local propertyContext = gridItem:getPropertyContext()
+					-- æŠŠå±æ€§æ•ˆæœçš„Luaè¡¨åºåˆ—åŒ–ä¸€ä¸‹ï¼Œé˜²æ­¢æµ®ç‚¹æ•°ç²¾åº¦ä¸¢å¤±çš„é—®é¢˜
+					propertyContext.ID = propertyContext.itemID
+					propertyContext.baseEffect = serialize(propertyContext.baseEffect)
+					propertyContext.addEffect = serialize(propertyContext.addEffect)
+					propertyContext.bindEffect = serialize(propertyContext.bindEffect)
+					propertyContext.refiningEffect = serialize(propertyContext.refiningEffect)
+					table.insert(viewResult,propertyContext)
+				end
 			end
+			-- é€šçŸ¥å®¢æˆ·ç«¯æ”¹é€ ç»“æœ
+			local event = Event.getEvent(EquipPlayingEvent_SC_ViewEquips_Request,viewResult,roleInfo)
+			g_eventMgr:fireRemoteEvent(event, player)
 		end
-		-- Í¨Öª¿Í»§¶Ë¸ÄÔì½á¹û
-		local event = Event.getEvent(EquipPlayingEvent_SC_ViewEquips_Request,viewResult,roleInfo)
-		g_eventMgr:fireRemoteEvent(event, player)
 	else
 		LuaDBAccess.loadRoleInfoAndEquip(targetID, EquipPlayingSystem.loadRoleInfoAndEquipReturn,player)
 	end
 end
 
---×°±¸ÖÆ×÷
+--è£…å¤‡åˆ¶ä½œ
 function EquipPlayingSystem:onEquipMakeRequest(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -119,21 +126,21 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 	local isBind = params[3]
 	local item = g_itemMgr:getItem(itemGuid)
 	if not isBind and item:getBindFlag() then
-		print("-------------¹´Ñ¡ÁË·Ç°ó¶¨£¬¶øÊ¹ÓÃÁË°ó¶¨²ÄÁÏ¡£¡£")
+		print("-------------å‹¾é€‰äº†éç»‘å®šï¼Œè€Œä½¿ç”¨äº†ç»‘å®šææ–™ã€‚ã€‚")
 		return
 	end
 	if item and item:getSubClass() == ItemSubClass.Drawing then
 		local itemID = item:getItemID()
 		local config = EquipFormulaDB[EquipPlaying.EquipMake][itemID]
 		if not config then
-			print("Í¼Ö½Éú³ÉµÄ×°±¸IDÅäÖÃ´íÎó")
+			print("å›¾çº¸ç”Ÿæˆçš„è£…å¤‡IDé…ç½®é”™è¯¯")
 			return
 		end
 		local equip = tEquipmentDB[config.equipID]
 		local level = equip.UseNeedLvl
 		local needMoney = EquipMoneyConsumeDB[EquipPlaying.EquipMake][level]
 		if attrType == EquipMakeAddattrType.Random then
-			--Ëæ»úÉú³É
+			--éšæœºç”Ÿæˆ
 			attrType = false
 		end
 		if not attrType  then
@@ -142,7 +149,7 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 		local money = player:getMoney()
 		local cashMoney = player:getCashMoney()
 		if needMoney > money+cashMoney then
-			print("Ç®²»¹»")
+			print("é’±ä¸å¤Ÿ")
 			return
 		end
 		local needItemTable = config.needItem
@@ -163,14 +170,14 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 				return
 			end
 		end
-		-- ×°±¸
+		-- è£…å¤‡
 		local itemConfig = tItemDB[config.equipID]
 		if not itemConfig then
-			-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
-			print("ÕÒ²»µ½ÅäÖÃ¡£¡£")
+			-- æ‰¾ä¸åˆ°é“å…·é…ç½®
+			print("æ‰¾ä¸åˆ°é…ç½®ã€‚ã€‚")
 			return
 		end
-		-- Éú³ÉµÀ¾ßÊôĞÔÏÖ³¡
+		-- ç”Ÿæˆé“å…·å±æ€§ç°åœº
 		local propertyContext = {}
 		propertyContext.itemID = config.equipID
 		propertyContext.expireTime = 0
@@ -178,11 +185,11 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 		propertyContext.identityFlag = true
 		if itemConfig.Class == ItemClass.Equipment then
 			propertyContext.curDurability = itemConfig.MaxDurability*ConsumeDurabilityNeedFightTimes
-			-- »ù´¡ÊôĞÔ
+			-- åŸºç¡€å±æ€§
 			g_itemMgr:generateEquipBaseAttr(propertyContext, itemConfig)
-			-- ¸½¼ÓÊôĞÔ
+			-- é™„åŠ å±æ€§
 			g_itemMgr:generateEquipAddAttr(propertyContext, itemConfig, 0,attrType)
-			-- °ó¶¨ÊôĞÔ
+			-- ç»‘å®šå±æ€§
 			g_itemMgr:generateEquipBindAttr(propertyContext, itemConfig)
 			local equip = g_itemMgr:createItemFromContext(propertyContext, 1)
 			if equip then
@@ -215,17 +222,17 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 					player:setMoney(0)
 					player:setCashMoney(cashMoney+subMoney)
 				end
-				-- Í¨Öª¿Í»§¶ËÖÆ×÷½á¹û
+				-- é€šçŸ¥å®¢æˆ·ç«¯åˆ¶ä½œç»“æœ
 				local event = Event.getEvent(EquipPlayingEvent_SC_EquipMake_Result)
 				g_eventMgr:fireRemoteEvent(event, player)
 			else
-				print("ÎŞ×°±¸¡£¡£¡£")
+				print("æ— è£…å¤‡ã€‚ã€‚ã€‚")
 			end
 		end
 	end
 end
 
--- ×°±¸²ğ½â
+-- è£…å¤‡æ‹†è§£
 function EquipPlayingSystem:onEquipAnalyseRequest(event)
 	local playerID = event.playerID
 	if not playerID then
@@ -241,25 +248,24 @@ function EquipPlayingSystem:onEquipAnalyseRequest(event)
 	local itemGuid = params[2]
 	local isBind = params[3]
 
-	-- À¶É«Æ·ÖÊÒÔÉÏ
+	-- è“è‰²å“è´¨ä»¥ä¸Š
 	local equipment = g_itemMgr:getItem(guid)
 	if not equipment or equipment:getEquipQuality() < ItemQuality.Blue then
 		return
 	end
 
-	-- ÅĞ¶ÏÊÇ·ñÊÇ¿Õ½ğ¸ÕÁéÊ¯
+	-- åˆ¤æ–­æ˜¯å¦æ˜¯ç©ºé‡‘åˆšçµçŸ³
 	local item = g_itemMgr:getItem(itemGuid)
 	if item:getSubClass() ~= ItemSubClass.LingShi or item:getAttr() or (not isBind and item:getBindFlag()) then
 		return
 	end
 	
-	-- ÅĞ¶ÏµÈ¼¶
-	local itemConfig = tItemDB[item:getItemID()]
 	local equipLevel = equipment:getEquipLevel()
-	if itemConfig.UseNeedLvl ~= equipLevel then
-		return
-	end
-	--ÅĞ¶Ï½ğÇ®
+--	if equipLevel < 20 then 
+--		print("è£…å¤‡çš„ç­‰çº§è‡³å°‘è¦20çº§")
+--		return 
+--	end 
+	--åˆ¤æ–­é‡‘é’±
 	local needMoney = EquipMoneyConsumeDB[EquipPlaying.EquipAnalyse][equipLevel]
 	local money = player:getMoney()
 	local cashMoney = player:getCashMoney()
@@ -267,7 +273,7 @@ function EquipPlayingSystem:onEquipAnalyseRequest(event)
 		return
 	end
 
-	--¿ÛÇ®
+	--æ‰£é’±
 	local subMoney = money - needMoney
 	if subMoney >= 0 then
 		player:setMoney(subMoney)
@@ -276,7 +282,7 @@ function EquipPlayingSystem:onEquipAnalyseRequest(event)
 		player:setCashMoney(cashMoney+subMoney)
 	end
 
-	--Éú³ÉÑÕÉ«
+	--ç”Ÿæˆé¢œè‰²
 	local _,addEffect = equipment:getEffect()
 	local flag = false
 	local attr
@@ -290,23 +296,23 @@ function EquipPlayingSystem:onEquipAnalyseRequest(event)
 	end
 	local attrColor = AttrPositionToColor[index]
 
-	-- Éú³ÉµÀ¾ßÊôĞÔÏÖ³¡
+	-- ç”Ÿæˆé“å…·å±æ€§ç°åœº
 	local position = equipment:getEquipClass()
-	item:setAttr({position,attrColor,attr})
+	item:setAttr({position, attrColor, attr, equipLevel})
 
 	if equipment:getContainerID() == PackContainerID.Equip then
 		player:getHandler(HandlerDef_Equip):removeItem(guid,1)
 	else
 		packetHandler:removeItem(guid,1)
 	end
-	-- ¸üĞÂµ½¿Í»§¶Ë
+	-- æ›´æ–°åˆ°å®¢æˆ·ç«¯
 	item:getPack():updateItemsToClient(item)
-	-- Í¨Öª¿Í»§²ğ½â½á¹û
+	-- é€šçŸ¥å®¢æˆ·æ‹†è§£ç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_EquipAnalyse_Result)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
--- ×°±¸¸ÄÔì
+-- è£…å¤‡æ”¹é€ 
 function EquipPlayingSystem:onEquipRemouldRequest(event)
 	local playerID = event.playerID
 	if not playerID then
@@ -323,30 +329,30 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 
 	local equip = g_itemMgr:getItem(itemGuid)
 	if not equip then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
-	-- ÅĞ¶ÏÊÇ·ñÊÇ×°±¸
+	-- åˆ¤æ–­æ˜¯å¦æ˜¯è£…å¤‡
 	if not instanceof(equip, Equipment) then
 		return
 	end
-	-- Ö»ÓĞÎäÆ÷ºÍ·À¾ß²Å¿ÉÒÔ½øĞĞ¸ÄÔì
+	-- åªæœ‰æ­¦å™¨å’Œé˜²å…·æ‰å¯ä»¥è¿›è¡Œæ”¹é€ 
 	local subClass = equip:getSubClass()
 	if subClass ~= EquipmentClass.Weapon and subClass ~= EquipmentClass.Armor then
 		return
 	end
-	-- ÅĞ¶ÏÊÇ·ñÒÑ¾­¼ø¶¨
+	-- åˆ¤æ–­æ˜¯å¦å·²ç»é‰´å®š
 	if not equip:getIdentityFlag() then
 		return
 	end
 	local level = equip:getEquipLevel()
 	if remouldType == EquipRemouldType.remould then
-		-- ÅĞ¶ÏÊÇ·ñÒÑ¾­ÊÇ×î´ó¸ÄÔìµÈ¼¶ÁË
+		-- åˆ¤æ–­æ˜¯å¦å·²ç»æ˜¯æœ€å¤§æ”¹é€ ç­‰çº§äº†
 		local remouldLevel = equip:getRemouldLevel()
 		if remouldLevel >= EquipRemouldMaxLevel then
 			return
 		end
-		-- ÅĞ¶ÏËùĞè·ÑÓÃ
+		-- åˆ¤æ–­æ‰€éœ€è´¹ç”¨
 		local remouldMoney = EquipMoneyConsumeDB[EquipPlaying.EquipRemould][EquipRemouldType.remould][level]
 		if not remouldMoney then
 			return
@@ -355,10 +361,10 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 		local playerMoney = player:getMoney()
 		local palyerCashMoney = player:getCashMoney()
 		if playerMoney + palyerCashMoney < remouldMoney then
-			-- ÒøÁ½²»×ã
+			-- é“¶ä¸¤ä¸è¶³
 			return
 		end
-		-- ÅĞ¶ÏËùĞè²ÄÁÏ
+		-- åˆ¤æ–­æ‰€éœ€ææ–™
 		local remouldItemData = EquipItemConsumeDB[EquipPlaying.EquipRemould]
 		if not remouldItemData then
 			return
@@ -377,14 +383,14 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			num = packetHandler:getNumByItemID(remouldItemID)
 		end
 		if num < remouldItemNum then
-			-- ²ÄÁÏ²»×ã
+			-- ææ–™ä¸è¶³
 			return
 		end
-		-- ¿Û³ıËùĞèÒøÁ½
+		-- æ‰£é™¤æ‰€éœ€é“¶ä¸¤
 		playerMoney = playerMoney - remouldMoney
 		player:setMoney(playerMoney)
 
-		-- ¿Û³ıËùĞè²ÄÁÏ£¬ÕâÀïÓÅÏÈ¿Û³ı°ó¶¨µÄ
+		-- æ‰£é™¤æ‰€éœ€ææ–™ï¼Œè¿™é‡Œä¼˜å…ˆæ‰£é™¤ç»‘å®šçš„
 		if isBind then
 			local bNum = packetHandler:getNumByItemID(bRemouldItemID)
 			if remouldItemNum <= bNum then
@@ -398,7 +404,7 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			packetHandler:removeByItemId(remouldItemID, remouldItemNum)
 		end
 
-		-- ½øĞĞ×°±¸µÄ»ù´¡ÊôĞÔ¼Ó³É
+		-- è¿›è¡Œè£…å¤‡çš„åŸºç¡€å±æ€§åŠ æˆ
 		local tWeigt = 0
 		for i,weight in pairs(EquipRemouldWeightDB) do 
 			tWeigt = tWeigt +weight
@@ -437,24 +443,24 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			local attrAddValue = math.ceil(attrValue*(1+allAttrAdd)/takingValueUnit)*takingValueUnit
 			baseEffect[i][2] = attrAddValue
 		end
-		-- ¼ÇÂ¼»ù´¡ÊôĞÔ¼Ó³É
+		-- è®°å½•åŸºç¡€å±æ€§åŠ æˆ
 		equip:setEffectEx(propertyContext)
-		-- ÉèÖÃĞÂµÄ¸ÄÔìÊôĞÔ
+		-- è®¾ç½®æ–°çš„æ”¹é€ å±æ€§
 		local remouldAttr = equip:getRemouldAttr() or {}
 		table.insert(remouldAttr,color)
 		equip:setRemouldAttr(remouldAttr)
 	else
 		local rollBackList = params[4]
 		local packetHandler = player:getHandler(HandlerDef_Packet)
-		-- ÅĞ¶ÏËùĞè²ÄÁÏ
+		-- åˆ¤æ–­æ‰€éœ€ææ–™
 		local remouldAttr = equip:getRemouldAttr()
 		local attrCount = table.size(remouldAttr)
 		local rollBackCount = table.size(rollBackList)
 		if rollBackCount > EquipRemouldMaxLevel then
-			--ÖÁÉÙÓĞÒ»Ìõ²»¹´Ñ¡
+			--è‡³å°‘æœ‰ä¸€æ¡ä¸å‹¾é€‰
 			return
 		end
-		if attrCount - rollBackCount >= 5 then
+		if attrCount - rollBackCount >= 4 then
 			local remouldItemData = EquipItemConsumeDB[EquipPlaying.EquipRemould][EquipRemouldType.rollBack][attrCount - rollBackCount]
 			if not remouldItemData then
 				return
@@ -472,10 +478,10 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 				num = packetHandler:getNumByItemID(remouldItemID)
 			end
 			if num < remouldItemNum then
-				-- ²ÄÁÏ²»×ã
+				-- ææ–™ä¸è¶³
 				return
 			end
-			-- ¿Û³ıËùĞè²ÄÁÏ£¬ÕâÀïÓÅÏÈ¿Û³ı°ó¶¨µÄ
+			-- æ‰£é™¤æ‰€éœ€ææ–™ï¼Œè¿™é‡Œä¼˜å…ˆæ‰£é™¤ç»‘å®šçš„
 			if isBind then
 				local bNum = packetHandler:getNumByItemID(bRemouldItemID)
 				if bNum >= remouldItemNum then
@@ -490,11 +496,11 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			end
 		end
 		local rollbackDBMoney = EquipMoneyConsumeDB[EquipPlaying.EquipRemould][EquipRemouldType.rollBack][level]*rollBackCount
-		-- ¼ÓÉÏ»ØÍËµÄÒøÁ½
+		-- åŠ ä¸Šå›é€€çš„é“¶ä¸¤
 		local playerMoney = player:getMoney()
 		player:setMoney(playerMoney + rollbackDBMoney)
 	
-		-- ÉèÖÃĞÂµÄ¸ÄÔìÊôĞÔ
+		-- è®¾ç½®æ–°çš„æ”¹é€ å±æ€§
 		for _,color in pairs(rollBackList) do
 			for index,color1 in pairs(remouldAttr) do
 				if color == color1 then
@@ -504,7 +510,7 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			end
 		end
 		local attrAdd = equip:getRemouldAttrValue()
-		-- ½øĞĞ×°±¸µÄ»ù´¡ÊôĞÔ¼Ó³É
+		-- è¿›è¡Œè£…å¤‡çš„åŸºç¡€å±æ€§åŠ æˆ
 		local propertyContext = equip:getPropertyContext()
 		local equipConfig = tEquipmentDB[equip:getItemID()]
 		local baseEffect = propertyContext.baseEffect
@@ -523,19 +529,19 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			baseEffect[i][2] = attrAddValue
 		end
 
-		-- ¼ÇÂ¼»ù´¡ÊôĞÔ¼Ó³É
+		-- è®°å½•åŸºç¡€å±æ€§åŠ æˆ
 		equip:setEffectEx(propertyContext)
 		equip:setRemouldAttr(remouldAttr)
 	end
-	-- ¸üĞÂµ½¿Í»§¶Ë
+	-- æ›´æ–°åˆ°å®¢æˆ·ç«¯
 	equip:getPack():updateItemsToClient(equip)
 
-	-- Í¨Öª¿Í»§¶Ë¸ÄÔì½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯æ”¹é€ ç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_EquipRemould_Result,itemGuid)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---×°±¸ÊôĞÔÖØÖÃ
+--è£…å¤‡å±æ€§é‡ç½®
 function EquipPlayingSystem:onAttrResetRequest(event)
 	local playerID = event.playerID
 	if not playerID then
@@ -549,25 +555,25 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 	local itemGuid = params[1]
 	local attrIndex = params[2]
 	local isBind = params[3]
-	-- Ö»ÓĞÎäÆ÷ºÍ·À¾ß²Å¿ÉÒÔ½øĞĞ¸ÄÔì
+	-- åªæœ‰æ­¦å™¨å’Œé˜²å…·æ‰å¯ä»¥è¿›è¡Œæ”¹é€ 
 	local equipMent = g_itemMgr:getItem(itemGuid)
 	local subClass = equipMent:getSubClass()
 	if subClass ~= EquipmentClass.Weapon and subClass ~= EquipmentClass.Armor then
 		return
 	end
 
-	-- ÅĞ¶ÏËùĞè·ÑÓÃ
+	-- åˆ¤æ–­æ‰€éœ€è´¹ç”¨
 	local quality = equipMent:getEquipQuality()
 	local equipLevel = equipMent:getEquipLevel()
 	local attrResetMoney = EquipMoneyConsumeDB[EquipPlaying.AttrReset][quality][equipLevel]
 	local playerMoney = player:getMoney()
 	local cashMoney = player:getCashMoney()
 	if playerMoney + cashMoney < attrResetMoney then
-		-- ÒøÁ½²»×ã
+		-- é“¶ä¸¤ä¸è¶³
 		return
 	end
 
-	-- ÅĞ¶ÏËùĞè²ÄÁÏ
+	-- åˆ¤æ–­æ‰€éœ€ææ–™
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local index = 0
 	local _,addEffect = equipMent:getEffect()
@@ -596,12 +602,12 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 			num = packetHandler:getNumByItemID(itemID)
 		end
 		if num < itemCount then
-			print("²ÄÁÏ²»¹»")
+			print("ææ–™ä¸å¤Ÿ")
 			return
 		end
 	end
 	
-	--¿Û³ı²ÄÁÏ
+	--æ‰£é™¤ææ–™
 	for _,item in pairs(attrResetItemData)do
 		local itemID = item.itemID
 		local itemCount = item.itemNum
@@ -619,7 +625,7 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 		end
 	end
 
-	--¿ÛÇ®
+	--æ‰£é’±
 	local subMoney = playerMoney - attrResetMoney
 	if subMoney >= 0 then
 		player:setMoney(subMoney)
@@ -627,7 +633,7 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 		player:setMoney(0)
 		player:setCashMoney(cashMoney+subMoney)
 	end
-	--Ëæ»úÖØÖÃÊôĞÔ
+	--éšæœºé‡ç½®å±æ€§
 	local attr = addEffect[attrIndex]
 	local attrType = attr[1]
 	local attrTable = AddAttrTypeDB[subClass][equipMent:getEquipClass()]
@@ -665,18 +671,18 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 	attr = {rAttrType,rattrValue}
 	addEffect[attrIndex] = attr
 	
-	--ÉèÖÃ°ó¶¨
+	--è®¾ç½®ç»‘å®š
 	if isBind then
 		equipMent:setBindFlag(true)
 	end
-	-- ¸üĞÂµ½¿Í»§¶Ë
+	-- æ›´æ–°åˆ°å®¢æˆ·ç«¯
 	equipMent:getPack():updateItemsToClient(equipMent)
-	-- Í¨Öª¿Í»§¶Ë¸ÄÔì½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯æ”¹é€ ç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_AttrReset_Result,attrIndex,itemGuid)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---×°±¸ÊôĞÔÇ¿»¯
+--è£…å¤‡å±æ€§å¼ºåŒ–
 function EquipPlayingSystem:onAttrImproveRequest(event)
 	local playerID = event.playerID
 	if not playerID then
@@ -693,24 +699,24 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 
 	local equipMent = g_itemMgr:getItem(itemGuid)
 	if not equipMent then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
-	-- ÅĞ¶ÏÊÇ·ñÊÇ×°±¸
+	-- åˆ¤æ–­æ˜¯å¦æ˜¯è£…å¤‡
 	if not instanceof(equipMent, Equipment) then
 		return
 	end
-	-- Ö»ÓĞÎäÆ÷ºÍ·À¾ß²Å¿ÉÒÔ½øĞĞÇ¿»¯
+	-- åªæœ‰æ­¦å™¨å’Œé˜²å…·æ‰å¯ä»¥è¿›è¡Œå¼ºåŒ–
 	local subClass = equipMent:getSubClass()
 	if subClass ~= EquipmentClass.Weapon and subClass ~= EquipmentClass.Armor then
 		return
 	end
-	-- ÅĞ¶ÏÊÇ·ñÒÑ¾­¼ø¶¨
+	-- åˆ¤æ–­æ˜¯å¦å·²ç»é‰´å®š
 	if not equipMent:getIdentityFlag() then
 		return
 	end
 
-	--ÅĞ¶ÏÊôĞÔÊÇ·ñ´ïµ½ÁË×î´óÖµ
+	--åˆ¤æ–­å±æ€§æ˜¯å¦è¾¾åˆ°äº†æœ€å¤§å€¼
 	local equipLevel = equipMent:getEquipLevel()
 	local _,addEffect = equipMent:getEffect()
 	local index = 0
@@ -732,27 +738,27 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 	local maxValue = attrValueTable.upper_limit
 	local minValue = attrValueTable.lower_limit
 	if attrValue >= maxValue then
-		print("Ç¿»¯ÒÑ´ïÂúÖµ£¬²»ÔÙ¶ÔÆä½øĞĞÇ¿»¯²Ù×÷")
+		print("å¼ºåŒ–å·²è¾¾æ»¡å€¼ï¼Œä¸å†å¯¹å…¶è¿›è¡Œå¼ºåŒ–æ“ä½œ")
 		return
 	end
 
-	-- ÅĞ¶ÏËùĞè·ÑÓÃ
+	-- åˆ¤æ–­æ‰€éœ€è´¹ç”¨
 	local quality = equipMent:getEquipQuality()
 	local attrImproveMoney = EquipMoneyConsumeDB[EquipPlaying.AttrImprove][quality][equipLevel]
 	local playerMoney = player:getMoney()
 	local cashMoney = player:getCashMoney()
 	if playerMoney + cashMoney < attrImproveMoney then
-		-- ÒøÁ½²»×ã
+		-- é“¶ä¸¤ä¸è¶³
 		return
 	end
 
-	-- ÅĞ¶ÏËùĞè²ÄÁÏ
+	-- åˆ¤æ–­æ‰€éœ€ææ–™
 	local attrImproveItem = EquipItemConsumeDB[EquipPlaying.AttrImprove][equipLevel]
 	if not attrImproveItem then
 		return
 	end
 
-	--»ñµÃĞèÒª²ÄÁÏ
+	--è·å¾—éœ€è¦ææ–™
 	local itemID = attrImproveItem.itemID
 	local bItemID = attrImproveItem.BitemID
 	local itemCount = attrImproveItem.itemNum
@@ -760,7 +766,7 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 		return
 	end
 
-	--»ñµÃÍæ¼ÒÉíÉÏÓĞµÄ²ÄÁÏ½øĞĞÎ»ÖÃ£¬µÈ¼¶£¬ÊôĞÔÑÕÉ«Æ¥Åä
+	--è·å¾—ç©å®¶èº«ä¸Šæœ‰çš„ææ–™è¿›è¡Œä½ç½®ï¼Œç­‰çº§ï¼Œå±æ€§é¢œè‰²åŒ¹é…
 	local itemConfig = tItemDB[itemID]
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local itemList = nil
@@ -772,21 +778,21 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 	local itemA = nil
 	for _,item in pairs(itemList) do
 		local itemAttr = item:getAttr()
-		--Ç¿»¯Ä³Ò»ÌõÊôĞÔÊ±ĞèÒªÏûºÄÓë±»Ç¿»¯µÄ×°±¸ÊôĞÔÀàĞÍÏàÍ¬¡¢²¿Î»ÏàÍ¬¡¢µÈ¼¶ÏàÍ¬¡¢ÊôĞÔÑÕÉ«ÏàÍ¬µÄ½ğ¸ÕÁé¾§
-		if itemAttr and itemAttr[1] == equipMent:getEquipClass() and itemAttr[2] == attrColor and itemConfig.UseNeedLvl == equipLevel and itemAttr[3][1] == attrType then
+		--å¼ºåŒ–æŸä¸€æ¡å±æ€§æ—¶éœ€è¦æ¶ˆè€—ä¸è¢«å¼ºåŒ–çš„è£…å¤‡å±æ€§ç±»å‹ç›¸åŒã€éƒ¨ä½ç›¸åŒã€ç­‰çº§ç›¸åŒã€å±æ€§é¢œè‰²ç›¸åŒçš„é‡‘åˆšçµæ™¶
+		if itemAttr and itemAttr[1] == equipMent:getEquipClass() and itemAttr[2] == attrColor and itemAttr[3][1] == attrType and itemAttr[4] == equipMent:getEquipLevel() then
 			itemA = item
 		end
 	end
 
 	if not itemA then
-		-- ²ÄÁÏ²»×ã
+		-- ææ–™ä¸è¶³
 		return
 	end
 
-	--¿Û³ı²ÄÁÏ
+	--æ‰£é™¤ææ–™
 	packetHandler:removeItem(itemA:getGuid(), itemCount)
 
-	--¿ÛÇ®
+	--æ‰£é’±
 	local subMoney = playerMoney - attrImproveMoney
 	if subMoney >= 0 then
 		player:setMoney(subMoney)
@@ -795,7 +801,7 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 		player:setCashMoney(cashMoney+subMoney)
 	end
 
-	--Ä³¸öÇ¿»¯³É¹¦ÂÊ = £¨´ËÊôĞÔ×î´óÖµ - µ±Ç°ÊôĞÔ£©/£¨È¡Öµµ¥Î»*×î´óÊôĞÔÖµ£©*½ğ¸ÕÁé¾§¸½¼ÓÊôĞÔ/×î´óÊôĞÔÖµ
+	--æŸä¸ªå¼ºåŒ–æˆåŠŸç‡ = ï¼ˆæ­¤å±æ€§æœ€å¤§å€¼ - å½“å‰å±æ€§ï¼‰/ï¼ˆå–å€¼å•ä½*æœ€å¤§å±æ€§å€¼ï¼‰*é‡‘åˆšçµæ™¶é™„åŠ å±æ€§/æœ€å¤§å±æ€§å€¼
 	local takingValueUnit = AddAttrValueDB[attrType].takingValueUnit
 	local attrA = itemA:getAttr()
 	local improveSuccess = math.floor((maxValue - attrValue)*(attrA[3][2]-minValue)/(maxValue-minValue)*100)
@@ -817,19 +823,19 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 		local improveValue = math.random(1,3)*takingValueUnit
 		attr[2] = attrValue + improveValue > maxValue and maxValue or attrValue + improveValue 
 	end
-	--ÉèÖÃ°ó¶¨
+	--è®¾ç½®ç»‘å®š
 	if isBind then
 		equipMent:setBindFlag(true)
 	end
-	-- ¸üĞÂµ½¿Í»§¶Ë
+	-- æ›´æ–°åˆ°å®¢æˆ·ç«¯
 	equipMent:getPack():updateItemsToClient(equipMent)
 
-	-- Í¨Öª¿Í»§¶Ë¸ÄÔì½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯æ”¹é€ ç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_AttrImprove_Result, isSuccess)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---×°±¸Á¶»¯
+--è£…å¤‡ç‚¼åŒ–
 function EquipPlayingSystem:onEquipRefiningRequest(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -846,30 +852,30 @@ function EquipPlayingSystem:onEquipRefiningRequest(event)
 	local isBind = params[3]
 	local equip = g_itemMgr:getItem(equipGuid)
 	if not equip then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
-	-- ÅĞ¶ÏÊÇ·ñÊÇ×°±¸,ÂÌÉ«×°±¸²ÅÄÜ½øĞĞ×°±¸Á¶»¯
+	-- åˆ¤æ–­æ˜¯å¦æ˜¯è£…å¤‡,ç»¿è‰²è£…å¤‡æ‰èƒ½è¿›è¡Œè£…å¤‡ç‚¼åŒ–
 	if not instanceof(equip, Equipment) and equip:getEquipQuality() == ItemQuality.Green then
 		return
 	end
-	-- Ö»ÓĞÎäÆ÷ºÍ·À¾ß²Å¿ÉÒÔ½øĞĞÁ¶»¯
+	-- åªæœ‰æ­¦å™¨å’Œé˜²å…·æ‰å¯ä»¥è¿›è¡Œç‚¼åŒ–
 	local subClass = equip:getSubClass()
 	if subClass ~= EquipmentClass.Weapon and subClass ~= EquipmentClass.Armor then
 		return
 	end
-	-- ÅĞ¶ÏÊÇ·ñÒÑ¾­¼ø¶¨
+	-- åˆ¤æ–­æ˜¯å¦å·²ç»é‰´å®š
 	if not equip:getIdentityFlag() then
 		return
 	end
 	local item = g_itemMgr:getItem(itemGuid)
 	local itemID = item:getItemID()
 	local itemConfig = tItemDB[itemID]
-	-- ÅĞ¶ÏÊÇ·ñÂÌÉ«·ûÊ¯Í·
+	-- åˆ¤æ–­æ˜¯å¦ç»¿è‰²ç¬¦çŸ³å¤´
 	if itemConfig.Quality ~= ItemQuality.Green and itemConfig.SubClass ~= ItemSubClass.Runes or (not isBind and item:getBindFlag())then
 		return
 	end
-	-- ÅĞ¶ÏËùĞè·ÑÓÃ
+	-- åˆ¤æ–­æ‰€éœ€è´¹ç”¨
 	local equipRefiningMoney = EquipMoneyConsumeDB[EquipPlaying.EquipRefining]
 	if not equipRefiningMoney then
 		return
@@ -881,23 +887,23 @@ function EquipPlayingSystem:onEquipRefiningRequest(event)
 	end
 	local playerMoney = player:getMoney()
 	if playerMoney < refiningMoney then
-		-- ÒøÁ½²»×ã
+		-- é“¶ä¸¤ä¸è¶³
 		return
 	end
-	-- ÅĞ¶ÏËùĞè²ÄÁÏ
+	-- åˆ¤æ–­æ‰€éœ€ææ–™
 	local refiningItemNum = equipLevel
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	if packetHandler:getNumByItemID(itemID) < refiningItemNum then
-		-- ²ÄÁÏ²»×ã
+		-- ææ–™ä¸è¶³
 		return
 	end
-	-- ¿Û³ıËùĞèÒøÁ½
+	-- æ‰£é™¤æ‰€éœ€é“¶ä¸¤
 	playerMoney = playerMoney - refiningMoney
 	player:setMoney(playerMoney)
 
 	packetHandler:removeByItemId(itemID, refiningItemNum)
 	
-	--Éú³ÉÊôĞÔ
+	--ç”Ÿæˆå±æ€§
 	local phase = itemConfig.ReactExtraParam1
 	local refiningConfig = RefiningEffectDB[phase]
 	local attrType = refiningConfig.attrType
@@ -915,12 +921,12 @@ function EquipPlayingSystem:onEquipRefiningRequest(event)
 	end
 
 	equip:getPack():updateItemsToClient(equip)
-	-- Í¨Öª¿Í»§¶ËÁ¶»¯½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯ç‚¼åŒ–ç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_EquipRefining_Result)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---ÊÎÆ·ÖÆ×÷
+--é¥°å“åˆ¶ä½œ
 function EquipPlayingSystem:onAdornMakeRequest(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -939,7 +945,7 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 	if not itemConfig then
 		return
 	end
-	-- ÅĞ¶ÏËùĞè·ÑÓÃ
+	-- åˆ¤æ–­æ‰€éœ€è´¹ç”¨
 	local adornMakeMoneyData = EquipMoneyConsumeDB[EquipPlaying.AdornMake]
 	if not adornMakeMoneyData then
 		return
@@ -952,10 +958,10 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 	local cashMoney = player:getCashMoney()
 
 	if adornMakeMoney > playerMoney+cashMoney then
-		-- ÒøÁ½²»×ã
+		-- é“¶ä¸¤ä¸è¶³
 		return
 	end
-	-- ÅĞ¶ÏËùĞè²ÄÁÏ
+	-- åˆ¤æ–­æ‰€éœ€ææ–™
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local needItemData = EquipItemConsumeDB[EquipPlaying.AdornMake][adornSubClass]
 	for _,item in pairs(needItemData)do
@@ -969,14 +975,14 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 			num = packetHandler:getNumByItemID(itemID)
 		end
 		if num < itemNum then
-			print("----------------²ÄÁÏ²»×ã¡£¡£¡£",itemID,itemNum)
+			print("----------------ææ–™ä¸è¶³ã€‚ã€‚ã€‚",itemID,itemNum)
 			return
 		end
 	end
-	-- ¿Û³ıËùĞèÒøÁ½
+	-- æ‰£é™¤æ‰€éœ€é“¶ä¸¤
 	playerMoney = playerMoney - adornMakeMoney
 	player:setMoney(playerMoney)
-	-- ¿Û³ıËùĞè²ÄÁÏ£¬ÕâÀïÓÅÏÈ¿Û³ı°ó¶¨µÄ
+	-- æ‰£é™¤æ‰€éœ€ææ–™ï¼Œè¿™é‡Œä¼˜å…ˆæ‰£é™¤ç»‘å®šçš„
 	for _,item in pairs(needItemData)do
 		local itemID = item.itemID
 		local bItemID = item.BitemID
@@ -994,7 +1000,7 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 		end
 	end
 
-	-- Éú³ÉµÀ¾ßÊôĞÔÏÖ³¡
+	-- ç”Ÿæˆé“å…·å±æ€§ç°åœº
 	local propertyContext = {}
 	propertyContext.itemID = makeEquipID
 	propertyContext.expireTime = 0
@@ -1002,23 +1008,23 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 	propertyContext.identityFlag = true
 	if itemConfig.Class == ItemClass.Equipment then
 		propertyContext.curDurability = itemConfig.MaxDurability*ConsumeDurabilityNeedFightTimes
-		-- »ù´¡ÊôĞÔ
+		-- åŸºç¡€å±æ€§
 		g_itemMgr:generateEquipBaseAttr(propertyContext, itemConfig)
-		-- ¸½¼ÓÊôĞÔ
+		-- é™„åŠ å±æ€§
 		g_itemMgr:generateEquipAddAttr(propertyContext, itemConfig, 0)
-		-- °ó¶¨ÊôĞÔ
+		-- ç»‘å®šå±æ€§
 		g_itemMgr:generateEquipBindAttr(propertyContext, itemConfig)
 		local equip = g_itemMgr:createItemFromContext(propertyContext, 1)
 		if equip then
 			packetHandler:addItems(equip:getGuid())
 		end
 	end
-	-- Í¨Öª¿Í»§¶ËÊÎÆ·ÖÆ×÷½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯é¥°å“åˆ¶ä½œç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_AdornMake_Result)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---ÊÎÆ·ºÏ³É
+--é¥°å“åˆæˆ
 
 local function syntheticAddEffect(propertyContext,addEffect)
 	while(1) do 
@@ -1052,7 +1058,7 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 	local itemGuidList = params[1]
 	local isBind = params[2]
 	local equipList = {}
-	--ÅĞ¶ÏÎïÆ·´æÔÚ²»
+	--åˆ¤æ–­ç‰©å“å­˜åœ¨ä¸
 	for _,itemGuid in pairs(itemGuidList)do
 		local adorn = g_itemMgr:getItem(itemGuid)
 		if not adorn then
@@ -1065,26 +1071,26 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 	local adorn2 = equipList[2]
 	local adorn3 = equipList[3]
 	if not isBind and (adorn1:getBindFlag() or adorn2:getBindFlag() or adorn3:getBindFlag()) then
-		print("·Ç°ó¶¨Ö»ÄÜÏûºÄ·Ç°ó¶¨²ÄÁÏ¡£¡£")
+		print("éç»‘å®šåªèƒ½æ¶ˆè€—éç»‘å®šææ–™ã€‚ã€‚")
 		return
 	end
 
-	--ÅĞ¶Ï²¿Î»Ò»ÖÂ
+	--åˆ¤æ–­éƒ¨ä½ä¸€è‡´
 	local equipClass = adorn1:getEquipClass()
 	if equipClass ~= adorn2:getEquipClass() or equipClass ~= adorn3:getEquipClass() then
 		return
 	end
-	--ÅĞ¶ÏÆ·½×Ò»ÖÂ
+	--åˆ¤æ–­å“é˜¶ä¸€è‡´
 	local quality = adorn1:getEquipQuality()
 	if quality ~= adorn2:getEquipQuality() or quality ~= adorn3:getEquipQuality() then
 		return
 	end
-	--ÅĞ¶ÏµÈ¼¶Ò»ÖÂ
+	--åˆ¤æ–­ç­‰çº§ä¸€è‡´
 	local level = adorn1:getEquipLevel()
 	if level~= adorn2:getEquipLevel() or level ~= adorn3:getEquipLevel() then
 		return
 	end
-	-- ÅĞ¶ÏËùĞè·ÑÓÃ
+	-- åˆ¤æ–­æ‰€éœ€è´¹ç”¨
 	local syntheticMoneyData = EquipMoneyConsumeDB[EquipPlaying.AdornSynthetic]
 	if not syntheticMoneyData then
 		return
@@ -1095,14 +1101,14 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 	end
 	local playerMoney = player:getMoney()
 	if playerMoney < syntheticMoney then
-		-- ÒøÁ½²»×ã
+		-- é“¶ä¸¤ä¸è¶³
 		return
 	end
-	-- ¿Û³ıËùĞèÒøÁ½
+	-- æ‰£é™¤æ‰€éœ€é“¶ä¸¤
 	playerMoney = playerMoney - syntheticMoney
 	player:setMoney(playerMoney)
 
-	--Éú³ÉÊÎÆ·
+	--ç”Ÿæˆé¥°å“
 	local adornID = nil
 	if quality == ItemQuality.Green then
 		adornID = adorn1:getItemID()
@@ -1112,7 +1118,7 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 
 	local adornData = tEquipmentDB[adornID]
 
-	-- Éú³ÉµÀ¾ßÊôĞÔÏÖ³¡
+	-- ç”Ÿæˆé“å…·å±æ€§ç°åœº
 	local propertyContext = {}
 	propertyContext.itemID = adornID
 	propertyContext.expireTime = 0
@@ -1121,7 +1127,7 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 	propertyContext.bindFlag = isBind
 	propertyContext.curDurability = adornData.MaxDurability*ConsumeDurabilityNeedFightTimes
 	propertyContext.addEffect = {}
-	--Ëæ»ú¸½¼ÓÊôĞÔÀ¶É«ÌõÊı
+	--éšæœºé™„åŠ å±æ€§è“è‰²æ¡æ•°
 	local subCount = 0
 	if quality == ItemQuality.Pink then
 		subCount = 1
@@ -1132,13 +1138,13 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 	end
 
 
-	--Ëæ»úµ½ÄÄÒ»¸öÊÎÆ·²ÄÁÏµÄÌõÊı
+	--éšæœºåˆ°å“ªä¸€ä¸ªé¥°å“ææ–™çš„æ¡æ•°
 	local index = math.random(1,3)
 	
-	--Ã¿¸öÊÎÆ·²ÄÁÏÀ¶É«ÊôĞÔÌõÊı
+	--æ¯ä¸ªé¥°å“ææ–™è“è‰²å±æ€§æ¡æ•°
 	local countList = {}
 	
-	--ËùÓĞ²ÄÁÏµÄËùÓĞ¸½¼ÓÊôĞÔ
+	--æ‰€æœ‰ææ–™çš„æ‰€æœ‰é™„åŠ å±æ€§
 	local addEffect = {}
 	for _,adorn in pairs(equipList)do
 		local count = 0
@@ -1152,16 +1158,16 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 		table.insert(countList,count-subCount)
 	end
 	
-	--Éú³É3ÌõÀ¶É«ÊôĞÔ
+	--ç”Ÿæˆ3æ¡è“è‰²å±æ€§
 	for i = 1,3 do
 		if i <= countList[index] then
-			--Ëæ»úµÃµ½ÄÄ¸öÌõÊôĞÔ
+			--éšæœºå¾—åˆ°å“ªä¸ªæ¡å±æ€§
 			syntheticAddEffect(propertyContext,addEffect)
 		else
 			table.insert(propertyContext.addEffect,{0,0})
 		end
 	end
-	--Éú³ÉÆäËûµÄÊôĞÔ
+	--ç”Ÿæˆå…¶ä»–çš„å±æ€§
 	if quality == ItemQuality.Pink then
 		syntheticAddEffect(propertyContext,addEffect)
 	elseif quality == ItemQuality.Gold then
@@ -1174,16 +1180,16 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 		end
 	end
 
-	-- Ëæ»úºÏ³Éºó¶àµÄÒ»ÌõÊôĞÔ
+	-- éšæœºåˆæˆåå¤šçš„ä¸€æ¡å±æ€§
 	local attrTypeDB = AddAttrTypeDB[adornData.SubClass][adornData.EquipClass]
 	if quality ~= ItemQuality.Green then
 		g_itemMgr:randomAttr(propertyContext,attrTypeDB,adornData)
 	end
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 
-	-- »ù´¡ÊôĞÔ
+	-- åŸºç¡€å±æ€§
 	g_itemMgr:generateEquipBaseAttr(propertyContext, adornData)
-	-- bindÊôĞÔ
+	-- bindå±æ€§
 	g_itemMgr:generateEquipBindAttr(propertyContext, adornData)
 
 	local equip = g_itemMgr:createItemFromContext(propertyContext, 1)
@@ -1199,7 +1205,7 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 			packetHandler:removeItem(guid,1)
 		end
 	end
-	-- Í¨Öª¿Í»§¶ËÊÎÆ·ºÏ³É½á¹û
+	-- é€šçŸ¥å®¢æˆ·ç«¯é¥°å“åˆæˆç»“æœ
 	local event = Event.getEvent(EquipPlayingEvent_SC_AdornSynthetict_Result)
 	g_eventMgr:fireRemoteEvent(event, player)
 end

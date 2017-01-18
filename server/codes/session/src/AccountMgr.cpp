@@ -10,12 +10,14 @@
 #include "LinkContext.h"
 #include "session.h"
 
-AccountInfo::AccountInfo() : accountId(-1), roleId(-1), gatewayId(-1), worldId(-1), status(-1), hAccountTimer(NULL), hLink(0), hPendingLink(0)
+AccountInfo::AccountInfo() : accountId(-1), roleId(-1), gatewayId(-1), worldId(-1),
+	status(-1), hAccountTimer(NULL), hLink(0), hPendingLink(0), inFight(false)
 {
 	pThreadsPool = GlobalThreadsPool();
 }
 
-AccountInfo::AccountInfo(int id, handle h) : accountId(id), roleId(-1), gatewayId(-1), worldId(-1), status(ACCOUNT_STATE_LOGINED), hAccountTimer(NULL), hLink(h), hPendingLink(0)
+AccountInfo::AccountInfo(int id, handle h) : accountId(id), roleId(-1), gatewayId(-1),
+	worldId(-1), status(ACCOUNT_STATE_LOGINED), hAccountTimer(NULL), hLink(h), hPendingLink(0), inFight(false)
 {
 	pThreadsPool = GlobalThreadsPool();
 }
@@ -46,6 +48,7 @@ void AccountInfo::_SwitchStatus(int s)
 	else if ( s == ACCOUNT_STATE_LOADING_1 ) interval = eAccountLoadingOneInterval;
 	else if ( s == ACCOUNT_STATE_LOADED ) interval = eAccountLoadedInterval;
 	else if ( s == ACCOUNT_STATE_KICKING ) interval = eAccountKickingInterval;
+	else if ( s == ACCOUNT_STATE_RECONNECTING_FIGHT ) interval = eAccountReconnectingFightInterval;
 
 	if ( interval != -1 )
 		hAccountTimer = pThreadsPool->RegTimer( this, (HANDLE)s, 0, interval, 0, "Account Info state timer" );
@@ -56,6 +59,7 @@ void AccountInfo::_SwitchStatus(int s)
 
 HRESULT AccountInfo::Do(HANDLE hContext)
 {
+	hAccountTimer = NULL;
 	int state = (int)(long)(hContext);
 	switch ( state )
 	{
@@ -77,6 +81,12 @@ HRESULT AccountInfo::Do(HANDLE hContext)
 				TRACE1_L2("timeout(state ACCOUNT_STATE_KICKING) of Account(%i) comes..\n", accountId);
 			}
 			break;
+		case ACCOUNT_STATE_RECONNECTING_FIGHT:
+			{
+				g_accountMgr.unregAccount(accountId);
+				TRACE1_L2("timeout(state ACCOUNT_STATE_RECONNECTING_FIGHT) of Account(%i) comes..\n", accountId);
+			}
+			break;
 		default:
 			{
 				TRACE2_L2("timeout(error state %i) of Account(%i) comes..\n", state, accountId);
@@ -92,6 +102,8 @@ bool AccountMgr::unregAccount(int id)
 	if ( iter != m_accounts.end() )
 	{
 		AccountInfo& info = iter->second;
+		// if(isOfflineInFight(info.m_accountName))
+			// unregOffFightAccount(id);
 		handle hPending = info.hPendingLink;
 		m_accounts.erase(iter);
 		LinkContext_Client* pOtherClient = g_session.getClientLink(hPending);

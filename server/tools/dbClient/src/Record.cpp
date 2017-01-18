@@ -128,13 +128,13 @@ void CRecord::_deleteAttriValue(MAPATTRVALUEIPAIR ipair)
 {
 	if (ipair.second)
 	{
-		delete (char*)ipair.second;
+		free(ipair.second);
 	}
 }
 void CRecord::_deleteAttriName(MAPATTRINAMEPAIR ipair)
 {
 	if (ipair.second)
 	{
-		delete ipair.second;
+		free(ipair.second);
 	}
 }

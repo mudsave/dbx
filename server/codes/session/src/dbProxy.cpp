@@ -52,7 +52,7 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 			break;
 		int row_count = pTemp->getResCount();
 		int field_count = pTemp->m_nAttriNameCount;
-		printf("rs%d:rows: %d, colums: %d\n", j, row_count, field_count);
+		// printf("rs%d:rows: %d, colums: %d\n", j, row_count, field_count);
 		IRecordSet* set = record_mgr->newRecordSet(&record_set_index);
 		rd_indexs.push_back(record_set_index);
 		for(int row_idx = 0; row_idx < row_count; row_idx++)
@@ -74,7 +74,7 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 {
 	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 	query_client->buildQuery();
-	query_client->addParam("spName", "sp_LoginTest");
+	query_client->addParam("spName", "sp_Login");
 	query_client->addParam("dataBase", 1);
 	query_client->addParam("usn", userName);
 	query_client->addParam("pwd", passWord);
@@ -189,11 +189,17 @@ void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hL
 						break;
 					case 6:
 						{
-							short sex = (short)*(bool*)pAttri;
-							pRoleMsg->role[i].sex = sex;
+							int weaponID = *(int*)pAttri;
+							pRoleMsg->role[i].weaponID = weaponID;
 						}
 						break;
-
+					case 7:
+						{
+							int len = attritype;
+							strncpy(pRoleMsg->role[i].remouldAttr,(char*)pAttri,len);
+							pRoleMsg->role[i].remouldAttr[len] = '\0';
+						}
+						break;
 				}
 			}
 		}

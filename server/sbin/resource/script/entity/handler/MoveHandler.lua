@@ -61,7 +61,6 @@ function MoveHandler:MoveEntity(pPosData, paths)
 			end
 		end
 	else
-	
 		self:moveFollowEntity(0, pPosData, paths, true, nil)
 	end
 end
@@ -93,23 +92,40 @@ function MoveHandler:DoStopMove(bCheckTeam, targetTile)
 	local x = 0
 	local y = 0
 	if targetTile then
-		x = targetPos.x
-		y = targetPos.y
+		x = targetTile.x
+		y = targetTile.y
 	end
-	player:getPeer():stopMove(x, y)			 
-	local followList = player:getHandler(HandlerDef_Follow):getMembers()
-	for _, member in pairs(followList) do
-		member:getPeer():stopMove(x, y)										 
-	end
-	--[[
-	local petID = palyer:getFollowPetID()
-	if petID then
-		local pet = g_entityMgr:getPet(petID)
-		if pet then
-			pet:getPeer():stopMove(x, y)
+	player:getPeer():stopMove(x, y)
+
+	local followHandler = player:getHandler(HandlerDef_Follow)
+	if followHandler then
+		local followList = followHandler:getMembers()
+		for _, member in pairs(followList) do
+			if member:isVisible() then
+				member:getPeer():stopMove(x, y)										
+			end
+		end
+	
+		local ectypeFollowList = followHandler:getEctypeMembers()
+		for _, member in pairs(ectypeFollowList) do
+			if member:isVisible() then
+				member:getPeer():stopMove(x, y)
+			end
 		end
 	end
-	]]
+
+	if player:getEntityType() == eClsTypePlayer then
+		local petID = player:getFollowPetID()
+		if petID then
+			local pet = g_entityMgr:getPet(petID)
+			if pet then
+				if pet:isVisible() then
+					pet:getPeer():stopMove(x, y)
+				end
+			end
+		end
+	end
+	
 end
 
 function MoveHandler:moveFollowEntity(offset, pPosData, paths, bTeamLeader, followList)
@@ -123,22 +139,30 @@ function MoveHandler:moveFollowEntity(offset, pPosData, paths, bTeamLeader, foll
 	
 	local mapID = player:getScene():getMapID()
 	local followHandler = player:getHandler(HandlerDef_Follow)
-	local followList = followHandler:getMembers()
-	for memberID, member in pairs(followList) do
-		if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
-		   table.insert(follows, member:getID())
+
+	if followHandler then
+		local followList = followHandler:getMembers()
+		for memberID, member in pairs(followList) do
+			if member:isVisible() then
+				if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+					table.insert(follows, member:getID())
+				end
+			end
+		end
+
+		local ectypeFollowList = followHandler:getEctypeMembers()
+		for memberID, member in pairs(ectypeFollowList) do
+			if member:isVisible() then
+				if member:getTaskType() == TaskType2.Copy then
+					table.insert(follows, member:getID())
+				end
+			end
 		end
 	end
-	--[[local ectypeFollowList = followHandler:getEctypeMembers()
-	for memberID, member in pairs(ectypeFollowList) do
-		if member:getTaskType() == TaskType2.Copy then
-			table.insert(follows, member:getID(), member:getDBID())
-		end
-	end
-	
-	--宠物
+	-- 宠物
+	local petID = nil
 	if bTeamLeader then
-		local petID = player:getFollowPetID()
+		petID = player:getFollowPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			if pet and pet:isVisible() then
@@ -146,10 +170,10 @@ function MoveHandler:moveFollowEntity(offset, pPosData, paths, bTeamLeader, foll
 			end
 		end
 	end
-	]]
+	-- 
 	if #follows > 0 and #paths >= 2 then
 		local value = player:getHandler(HandlerDef_Ride):getRidingMount() and 3 or 1
 		offset = offset + value
-		player:getPeer():moveFollowEntity(offset, pPosData, follows, paths)
+		player:getPeer():moveFollowEntity(offset, pPosData, follows, paths, petID)
 	end
 end

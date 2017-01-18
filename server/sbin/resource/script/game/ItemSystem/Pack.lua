@@ -1,26 +1,26 @@
 --[[Pack.lua
-ÃèÊö:
-	°ü¹üÀà
+æè¿°:
+	åŒ…è£¹ç±»
 ]]
 
 Pack = class()
 
 function Pack:__init()
-	-- ÎïÆ·¸ñ
+	-- ç‰©å“æ ¼
 	self.grids = {}
-	-- ÈİÁ¿
+	-- å®¹é‡
 	self.capacity = 0
-	-- ÓµÓĞÕß
+	-- æ‹¥æœ‰è€…
 	self.owner = nil
-	-- °ü¹üË÷Òı
+	-- åŒ…è£¹ç´¢å¼•
 	self.packIndex = -1
-	-- ËùÊôÈİÆ÷ID
+	-- æ‰€å±å®¹å™¨ID
 	self.packContainerID = -1
-	-- ¼ÇÂ¼ÓĞ¸Ä±äµÄÎ»ÖÃ£¬ÓÃÀ´Í¨Öª¿Í»§¶Ë
+	-- è®°å½•æœ‰æ”¹å˜çš„ä½ç½®ï¼Œç”¨æ¥é€šçŸ¥å®¢æˆ·ç«¯
 	self.changeLocation = {}
-	-- ¼ÇÂ¼ÓĞ¼ÆÊ±µÄµÀ¾ßÎ»ÖÃ
+	-- è®°å½•æœ‰è®¡æ—¶çš„é“å…·ä½ç½®
 	self.timeItemLocation = {}
-	--¼ÇÂ¼Î»ÖÃ
+	--è®°å½•ä½ç½®
 	self.gridIndex = 1
 end
 
@@ -31,93 +31,93 @@ function Pack:__release()
 	end
 end
 
--- ÉèÖÃ°ü¹üµÀ¾ß
+-- è®¾ç½®åŒ…è£¹é“å…·
 function Pack:setGridItem(item, gridIndex)
-	-- ¼ÇÂ¼ËùÔÚÎïÆ·¸ñË÷Òı
+	-- è®°å½•æ‰€åœ¨ç‰©å“æ ¼ç´¢å¼•
 	item:setGridIndex(gridIndex)
-	-- ¼ÇÂ¼ËùÊôÈİÆ÷ID
+	-- è®°å½•æ‰€å±å®¹å™¨ID
 	item:setContainerID(self.packContainerID)
-	-- ¼ÇÂ¼ËùÊô°ü¹ü
+	-- è®°å½•æ‰€å±åŒ…è£¹
 	item:setPack(self)
-	-- ¼ÇÂ¼µÀ¾ß
+	-- è®°å½•é“å…·
 	self.grids[gridIndex] = item
 
-	-- ¼ÆÊ±µÀ¾ßÒª´æÒ»ÏÂÎ»ÖÃĞÅÏ¢£¬·½±ã¼ì²âµ½ÆÚÊ±¼ä
+	-- è®¡æ—¶é“å…·è¦å­˜ä¸€ä¸‹ä½ç½®ä¿¡æ¯ï¼Œæ–¹ä¾¿æ£€æµ‹åˆ°æœŸæ—¶é—´
 	if item:getExpireTime() > 0 then
 		self.timeItemLocation[item:getGuid()] = gridIndex
 	end
 end
 
--- »ñµÃ°ü¹üµÀ¾ß
+-- è·å¾—åŒ…è£¹é“å…·
 function Pack:getGridItem(gridIndex)
 	return self.grids[gridIndex]
 end
 
--- »ñµÃ°ü¹ü´æÔÚ¼ÆÊ±µÄµÀ¾ß
+-- è·å¾—åŒ…è£¹å­˜åœ¨è®¡æ—¶çš„é“å…·
 function Pack:getTimeItems()
 	local tTimeItems = {}
 	for itemGuid, gridIndex in pairs(self.timeItemLocation) do
 		local gridItem = self.grids[gridIndex]
 		if gridItem then
 			if gridItem:getGuid() == itemGuid then
-				-- ¼ÓÈëÁĞ±í
+				-- åŠ å…¥åˆ—è¡¨
 				table.insert(tTimeItems, gridItem)
 			else
-				-- ¼ÆÊ±µÀ¾ß¿ÉÄÜÒÑÏú»Ù£¬ÆäËûµÀ¾ß·Åµ½ÕâÀïÁË
+				-- è®¡æ—¶é“å…·å¯èƒ½å·²é”€æ¯ï¼Œå…¶ä»–é“å…·æ”¾åˆ°è¿™é‡Œäº†
 				self.timeItemLocation[itemGuid] = nil
 			end
 		else
-			-- ¼ÆÊ±µÀ¾ß¿ÉÄÜÒÑÏú»Ù
+			-- è®¡æ—¶é“å…·å¯èƒ½å·²é”€æ¯
 			self.timeItemLocation[itemGuid] = nil
 		end
 	end
 	return tTimeItems
 end
 
--- ÉèÖÃ°ü¹üÈİÁ¿
+-- è®¾ç½®åŒ…è£¹å®¹é‡
 function Pack:setCapability(capacity)
 	self.capacity = capacity
 end
 
--- »ñµÃ°ü¹üÈİÁ¿
+-- è·å¾—åŒ…è£¹å®¹é‡
 function Pack:getCapability()
 	return self.capacity
 end
 
--- ÉèÖÃÓµÓĞÕß
+-- è®¾ç½®æ‹¥æœ‰è€…
 function Pack:setOwner(owner)
 	self.owner = owner
 end
 
--- »ñÈ¡ÓµÓĞÕß
+-- è·å–æ‹¥æœ‰è€…
 function Pack:getOwner()
 	return self.owner
 end
 
--- ÉèÖÃ°ü¹üË÷Òı
+-- è®¾ç½®åŒ…è£¹ç´¢å¼•
 function Pack:setPackIndex(packIndex)
 	self.packIndex = packIndex
 end
 
--- »ñµÃ°ü¹üË÷Òı
+-- è·å¾—åŒ…è£¹ç´¢å¼•
 function Pack:getPackIndex()
 	return self.packIndex
 end
 
--- ÉèÖÃËùÊôÈİÆ÷ID
+-- è®¾ç½®æ‰€å±å®¹å™¨ID
 function Pack:setPackContainerID(packContainerID)
 	self.packContainerID = packContainerID
 end
 
--- Í¨Öª¿Í»§¶Ë¸üĞÂµÀ¾ß
-function Pack:updateItemsToClient(gridItem)
+-- é€šçŸ¥å®¢æˆ·ç«¯æ›´æ–°é“å…·
+function Pack:updateItemsToClient(gridItem,flag)
 	if not gridItem then
 		return
 	end
-	-- »ñµÃµÀ¾ßÊôĞÔÏÖ³¡·¢¸ø¿Í»§¶Ë
+	-- è·å¾—é“å…·å±æ€§ç°åœºå‘ç»™å®¢æˆ·ç«¯
 	local propertyContext = gridItem:getPropertyContext()
 
-	-- °ÑÊôĞÔĞ§¹ûµÄLua±íĞòÁĞ»¯Ò»ÏÂ£¬·ÀÖ¹¸¡µãÊı¾«¶È¶ªÊ§µÄÎÊÌâ
+	-- æŠŠå±æ€§æ•ˆæœçš„Luaè¡¨åºåˆ—åŒ–ä¸€ä¸‹ï¼Œé˜²æ­¢æµ®ç‚¹æ•°ç²¾åº¦ä¸¢å¤±çš„é—®é¢˜
 	if propertyContext.attr then
 		propertyContext.attr = serialize(propertyContext.attr)
 	end
@@ -128,29 +128,34 @@ function Pack:updateItemsToClient(gridItem)
 	propertyContext.addEffect = serialize(propertyContext.addEffect)
 	propertyContext.bindEffect = serialize(propertyContext.bindEffect)
 	propertyContext.refiningEffect = serialize(propertyContext.refiningEffect)
-	local event = Event.getEvent(ItemEvents_SC_CreateItem, gridItem:getGuid(), propertyContext)
+	local event = Event.getEvent(ItemEvents_SC_CreateItem, gridItem:getGuid(), propertyContext,flag)
 	g_eventMgr:fireRemoteEvent(event, self.owner)
 end
 
--- ¼ÇÂ¼¸Ä±äÎ»ÖÃ
-function Pack:setChange(gridIndex)
+-- è®°å½•æ”¹å˜ä½ç½®
+function Pack:setChange(gridIndex,flag)
 	if gridIndex < 1 or gridIndex > self:getCapability() then
 		return
 	end
-
+	local marks
+	if flag then
+		marks = true
+	else
+		marks = false
+	end
 	local gridItem = self.grids[gridIndex]
 	if gridItem then
-		-- Í¨Öª¿Í»§¶Ë´´½¨µÀ¾ß
-		self:updateItemsToClient(gridItem)
+		-- é€šçŸ¥å®¢æˆ·ç«¯åˆ›å»ºé“å…·
+		self:updateItemsToClient(gridItem,marks)
 	end
 
 	self.changeLocation[gridIndex] = gridIndex
 end
 
--- ·¢ËÍ¸üĞÂµ½¿Í»§¶Ë
+-- å‘é€æ›´æ–°åˆ°å®¢æˆ·ç«¯
 function Pack:updateClient()
 	local changeInfo = {}
-	-- Ìî³ä¾ßÌåµÄµÀ¾ß¸üĞÂĞÅÏ¢
+	-- å¡«å……å…·ä½“çš„é“å…·æ›´æ–°ä¿¡æ¯
 	for _, gridIndex in pairs(self.changeLocation) do
 		if gridIndex >= 1 and gridIndex <= self:getCapability() then
 			local item = self.grids[gridIndex]
@@ -168,11 +173,11 @@ function Pack:updateClient()
 		g_eventMgr:fireRemoteEvent(event, self.owner)
 	end
 
-	-- Çå³ı¸Ä±äÎ»ÖÃ±í
+	-- æ¸…é™¤æ”¹å˜ä½ç½®è¡¨
 	self.changeLocation = {}
 end
 
--- »ñµÃ±³°üµÚÒ»¸ö¿Õ¸ñµÄÎ»ÖÃ£¬Èç¹ûitemConfig²»Îª¿Õ£¬±íÊ¾ÕÒ¿ÉÒÔµş¼ÓµÄÎ»ÖÃ£¬²¢·µ»Ø¿ÉÒÔµş¼ÓÉÏÈ¥µÄÊıÄ¿
+-- è·å¾—èƒŒåŒ…ç¬¬ä¸€ä¸ªç©ºæ ¼çš„ä½ç½®ï¼Œå¦‚æœitemConfigä¸ä¸ºç©ºï¼Œè¡¨ç¤ºæ‰¾å¯ä»¥å åŠ çš„ä½ç½®ï¼Œå¹¶è¿”å›å¯ä»¥å åŠ ä¸Šå»çš„æ•°ç›®
 function Pack:getFirstSpace(itemConfig)
 	for i = 1, self:getCapability() do
 		local item = self.grids[i]
@@ -189,7 +194,7 @@ function Pack:getFirstSpace(itemConfig)
 	return -1
 end
 
--- »ñµÃ±¾°ü¹üµÀ¾ßÊıÄ¿£¬ÆäÊµÊÇÕ¼ÓÃ¸ñ×ÓÊı
+-- è·å¾—æœ¬åŒ…è£¹é“å…·æ•°ç›®ï¼Œå…¶å®æ˜¯å ç”¨æ ¼å­æ•°
 function Pack:getPackItemNum()
 	local itemNum = 0
 
@@ -202,7 +207,7 @@ function Pack:getPackItemNum()
 	return itemNum
 end
 
--- »ñµÃ±¾°ü¹üËùÓĞ¿Õ¸ñÊı
+-- è·å¾—æœ¬åŒ…è£¹æ‰€æœ‰ç©ºæ ¼æ•°
 function Pack:getAllSpaceNum()
 	local spaceNum = 0
 
@@ -216,7 +221,7 @@ function Pack:getAllSpaceNum()
 	return spaceNum
 end
 
--- »ñµÃ±¾°ü¹üÖ¸¶¨µÀ¾ß¿ÉÒÔµş¼ÓÉÏÈ¥µÄÊıÄ¿
+-- è·å¾—æœ¬åŒ…è£¹æŒ‡å®šé“å…·å¯ä»¥å åŠ ä¸Šå»çš„æ•°ç›®
 function Pack:getCanPileNum(itemID)
 	local totalCanPileNum = 0
 	local curCanPileNum = 0
@@ -234,7 +239,7 @@ function Pack:getCanPileNum(itemID)
 	return totalCanPileNum
 end
 
--- »ñµÃ±¾°ü¹ü¿ÉÒÔµş¼ÓµÄÖ¸¶¨µÀ¾ßËùÔÚÎ»ÖÃ
+-- è·å¾—æœ¬åŒ…è£¹å¯ä»¥å åŠ çš„æŒ‡å®šé“å…·æ‰€åœ¨ä½ç½®
 function Pack:getCanPileItemPos(itemID)
 	for i = 1, self:getCapability() do
 		local item = self.grids[i]
@@ -248,7 +253,7 @@ function Pack:getCanPileItemPos(itemID)
 	return -1
 end
 
--- Ìí¼ÓµÀ¾ßµ½°ü¹üÖ¸¶¨ÎïÆ·¸ñ
+-- æ·»åŠ é“å…·åˆ°åŒ…è£¹æŒ‡å®šç‰©å“æ ¼
 function Pack:addItemsToGrid(item, gridIndex, bUpdateClient)
 	if gridIndex < 1 or gridIndex > self:getCapability() then
 		return false
@@ -256,16 +261,16 @@ function Pack:addItemsToGrid(item, gridIndex, bUpdateClient)
 
 	local gridItem = self.grids[gridIndex]
 	if not gridItem then
-		-- ¼ÇÂ¼µÀ¾ß
+		-- è®°å½•é“å…·
 		self:setGridItem(item, gridIndex)
 	else
-		-- ´ËÎïÆ·¸ñÒÑ¾­ÓĞµÀ¾ßÁË
+		-- æ­¤ç‰©å“æ ¼å·²ç»æœ‰é“å…·äº†
 		return false
 	end
 
-	-- ¼ÇÂ¼µ½¸Ä±ä±í
-	self:setChange(gridIndex)
-	-- Í¨Öª¿Í»§¶Ë
+	-- è®°å½•åˆ°æ”¹å˜è¡¨
+	self:setChange(gridIndex,true)
+	-- é€šçŸ¥å®¢æˆ·ç«¯
 	if bUpdateClient then
 		self:updateClient()
 	end
@@ -273,7 +278,7 @@ function Pack:addItemsToGrid(item, gridIndex, bUpdateClient)
 	return true
 end
 
--- ´Ó°ü¹üÖ¸¶¨ÎïÆ·¸ñÒÆ³ıµÀ¾ß£¬²¢²»Ïú»ÙµÀ¾ß
+-- ä»åŒ…è£¹æŒ‡å®šç‰©å“æ ¼ç§»é™¤é“å…·ï¼Œå¹¶ä¸é”€æ¯é“å…·
 function Pack:removeItemsFromGrid(gridIndex, bUpdateClient)
 	if gridIndex < 1 or gridIndex > self:getCapability() then
 		return false
@@ -283,13 +288,13 @@ function Pack:removeItemsFromGrid(gridIndex, bUpdateClient)
 	if gridItem then
 		self.grids[gridIndex] = nil
 	else
-		-- ´ËÎïÆ·¸ñÃ»ÓĞµÀ¾ß
+		-- æ­¤ç‰©å“æ ¼æ²¡æœ‰é“å…·
 		return false
 	end
 
-	-- ¼ÇÂ¼µ½¸Ä±ä±í
+	-- è®°å½•åˆ°æ”¹å˜è¡¨
 	self:setChange(gridIndex)
-	-- Í¨Öª¿Í»§¶Ë
+	-- é€šçŸ¥å®¢æˆ·ç«¯
 	if bUpdateClient then
 		self:updateClient()
 	end
@@ -297,7 +302,7 @@ function Pack:removeItemsFromGrid(gridIndex, bUpdateClient)
 	return true
 end
 
--- µş¼ÓµÀ¾ßµ½°ü¹üÖ¸¶¨ÎïÆ·¸ñ
+-- å åŠ é“å…·åˆ°åŒ…è£¹æŒ‡å®šç‰©å“æ ¼
 function Pack:pileItemsToGrid(srcItem, dstGridIndex)
 	if dstGridIndex < 1 or dstGridIndex > self:getCapability() then
 		return false
@@ -306,37 +311,37 @@ function Pack:pileItemsToGrid(srcItem, dstGridIndex)
 	local gridItem = self.grids[dstGridIndex]
 	if gridItem then
 		if gridItem:getItemID() ~= srcItem:getItemID() then
-			-- ID²»Í¬£¬²»ÄÜµş¼Ó
+			-- IDä¸åŒï¼Œä¸èƒ½å åŠ 
 			return false
 		end
 		local maxPileNum = gridItem:getPileNum()
 		if maxPileNum > 1 then
 			local totalNum = gridItem:getNumber() + srcItem:getNumber()
-			-- ÅĞ¶ÏÊÇ·ñ¿ÉÒÔµş¼Ó
+			-- åˆ¤æ–­æ˜¯å¦å¯ä»¥å åŠ 
 			if totalNum <= maxPileNum then
-				-- ÉèÖÃµş¼ÓºóµÄµÀ¾ßÊıÄ¿
+				-- è®¾ç½®å åŠ åçš„é“å…·æ•°ç›®
 				gridItem:setNumber(totalNum)
-				-- ¼ÇÂ¼µ½¸Ä±ä±í
+				-- è®°å½•åˆ°æ”¹å˜è¡¨
 				self:setChange(dstGridIndex)
-				-- Í¨Öª¿Í»§¶Ë
+				-- é€šçŸ¥å®¢æˆ·ç«¯
 				self:updateClient()
 			else
-				-- ´óÓÚ×î´óµş¼ÓÊı£¬Ö»ÄÜ½»»»
+				-- å¤§äºæœ€å¤§å åŠ æ•°ï¼Œåªèƒ½äº¤æ¢
 				return false
 			end
 		else
-			-- ×î´óÊıÄ¿ÊÇ1£¬²»¿Éµş¼Ó
+			-- æœ€å¤§æ•°ç›®æ˜¯1ï¼Œä¸å¯å åŠ 
 			return false
 		end
 	else
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	return true
 end
 
--- µş¼ÓµÀ¾ßµ½°ü¹üÖ¸¶¨ÎïÆ·¸ñ£¬×¢ÒâÕâÀïÊÇÄÜµş¼Ó¶àÉÙ¾Íµş¼Ó¶àÉÙ
+-- å åŠ é“å…·åˆ°åŒ…è£¹æŒ‡å®šç‰©å“æ ¼ï¼Œæ³¨æ„è¿™é‡Œæ˜¯èƒ½å åŠ å¤šå°‘å°±å åŠ å¤šå°‘
 function Pack:pileItemsToGridEx(srcItem, dstGridIndex)
 	if dstGridIndex < 1 or dstGridIndex > self:getCapability() then
 		return false
@@ -345,110 +350,110 @@ function Pack:pileItemsToGridEx(srcItem, dstGridIndex)
 	local gridItem = self.grids[dstGridIndex]
 	if gridItem then
 		if gridItem:getItemID() ~= srcItem:getItemID() then
-			-- ID²»Í¬£¬²»ÄÜµş¼Ó
+			-- IDä¸åŒï¼Œä¸èƒ½å åŠ 
 			return false
 		end
 		local maxPileNum = gridItem:getPileNum()
 		if maxPileNum > 1 then
 			local itemNum = gridItem:getNumber()
 			local spareNum = maxPileNum - itemNum
-			-- ÅĞ¶ÏÊÇ·ñ¿ÉÒÔµş¼Ó
+			-- åˆ¤æ–­æ˜¯å¦å¯ä»¥å åŠ 
 			if spareNum > 0 then
 				local srcGridIndex = srcItem:getGridIndex()
 				local srcItemNum = srcItem:getNumber()
 				if spareNum >= srcItemNum then
-					-- Ô´µÀ¾ßÈ«²¿µş¼ÓÁË£¬¿ÉÒÔÏú»ÙÁË
+					-- æºé“å…·å…¨éƒ¨å åŠ äº†ï¼Œå¯ä»¥é”€æ¯äº†
 					self.grids[srcGridIndex] = nil
 					g_itemMgr:destroyItem(srcItem:getGuid())
-					-- ÉèÖÃµş¼ÓºóµÄµÀ¾ßÊıÄ¿
+					-- è®¾ç½®å åŠ åçš„é“å…·æ•°ç›®
 					gridItem:setNumber(itemNum+srcItemNum)
 				else
-					-- Ô´µÀ¾ßµş¼ÓÁËÒ»²¿·ÖÊıÄ¿
+					-- æºé“å…·å åŠ äº†ä¸€éƒ¨åˆ†æ•°ç›®
 					srcItem:setNumber(srcItemNum-spareNum)
-					-- ÉèÖÃµş¼ÓºóµÄµÀ¾ßÊıÄ¿
+					-- è®¾ç½®å åŠ åçš„é“å…·æ•°ç›®
 					gridItem:setNumber(itemNum+spareNum)
 				end
-				-- ¼ÇÂ¼µ½¸Ä±ä±í
+				-- è®°å½•åˆ°æ”¹å˜è¡¨
 				self:setChange(srcGridIndex)
-				-- ¼ÇÂ¼µ½¸Ä±ä±í
+				-- è®°å½•åˆ°æ”¹å˜è¡¨
 				self:setChange(dstGridIndex)
 			else
-				-- ²»ÄÜµş¼Ó
+				-- ä¸èƒ½å åŠ 
 				return false
 			end
 		else
-			-- ×î´óÊıÄ¿ÊÇ1£¬²»¿Éµş¼Ó
+			-- æœ€å¤§æ•°ç›®æ˜¯1ï¼Œä¸å¯å åŠ 
 			return false
 		end
 	else
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	return true
 end
 
--- Ìí¼ÓµÀ¾ß
+-- æ·»åŠ é“å…·
 function Pack:addItems(item, bUpdateClient)
 	local itemID = item:getItemID()
 	local itemConfig = tItemDB[itemID]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return AddItemsResult.SrcInvalid
 	end
 
-	-- ÓÅÏÈÍ¨¹ıµş¼Ó·ÅÈëµÀ¾ß
+	-- ä¼˜å…ˆé€šè¿‡å åŠ æ”¾å…¥é“å…·
 	if itemConfig.MaxPileNum > 1 then
 		for i = 1, self:getCapability() do
 			local gridItem = self.grids[i]
 			if gridItem and gridItem:getItemID() == itemID then
 				local totalNumber = gridItem:getNumber() + item:getNumber()
 				if totalNumber <= itemConfig.MaxPileNum then
-					-- ÉèÖÃµş¼ÓºóµÄµÀ¾ßÊıÄ¿
+					-- è®¾ç½®å åŠ åçš„é“å…·æ•°ç›®
 					gridItem:setNumber(totalNumber)
-					-- ¼ÇÂ¼µ½¸Ä±ä±í
+					-- è®°å½•åˆ°æ”¹å˜è¡¨
 					self:setChange(i)
-					-- Í¨Öª¿Í»§¶Ë
+					-- é€šçŸ¥å®¢æˆ·ç«¯
 					if bUpdateClient then
 						self:updateClient()
 					end
-					-- µÀ¾ßµş¼Ó³É¹¦
+					-- é“å…·å åŠ æˆåŠŸ
 					return AddItemsResult.SucceedPile
 				end
 			end
 		end
 
-		-- ÔİÊ±²»´¦ÀíÍ¨¹ı¶à¸öµş¼Ó¿ÉÒÔ·ÅÏÂµÄÇé¿ö
+		-- æš‚æ—¶ä¸å¤„ç†é€šè¿‡å¤šä¸ªå åŠ å¯ä»¥æ”¾ä¸‹çš„æƒ…å†µ
 	end
-	-- µş¼Ó²»¿ÉĞĞ£¬²éÕÒ¿ÕÎ»£¬ÕûÌå·ÅÈë
+	-- å åŠ ä¸å¯è¡Œï¼ŒæŸ¥æ‰¾ç©ºä½ï¼Œæ•´ä½“æ”¾å…¥
 	local gridIndex = self:getFirstSpace()
 	if gridIndex ~= -1 then
-		-- ¿ÉÒÔÕûÌå·ÅÈë
+		-- å¯ä»¥æ•´ä½“æ”¾å…¥
 		self:setGridItem(item, gridIndex)
-		-- ¼ÇÂ¼µ½¸Ä±ä±í
+		-- è®°å½•åˆ°æ”¹å˜è¡¨
 		self:setChange(gridIndex)
-		-- Í¨Öª¿Í»§¶Ë
+		-- é€šçŸ¥å®¢æˆ·ç«¯
 		if bUpdateClient then
 			self:updateClient()
 		end
-		-- µÀ¾ßÌí¼Ó³É¹¦
+		-- é“å…·æ·»åŠ æˆåŠŸ
 		return AddItemsResult.Succeed
 	else
-		-- °ü¹üÒÑÂú
+		-- åŒ…è£¹å·²æ»¡
 		return AddItemsResult.Full
 	end
 end
 
--- Ìí¼ÓÖ¸¶¨¸öÊıµÄµÀ¾ß
+-- æ·»åŠ æŒ‡å®šä¸ªæ•°çš„é“å…·
 function Pack:addItemsLimitNums(item, addNum, bUpdateClient)
 	local itemID = item:getItemID()
 	local itemConfig = tItemDB[itemID]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return AddItemsResult.SrcInvalid
 	end
 
-	-- ¾¡¿ÉÄÜÍ¨¹ıµş¼Ó·ÅÈëµÀ¾ß
+	-- å°½å¯èƒ½é€šè¿‡å åŠ æ”¾å…¥é“å…·
 	if itemConfig.MaxPileNum > 1 then
 		for i = 1, self:getCapability() do
 			local gridItem = self.grids[i]
@@ -456,24 +461,24 @@ function Pack:addItemsLimitNums(item, addNum, bUpdateClient)
 				local leftPileNum = itemConfig.MaxPileNum - gridItem:getNumber()
 				if leftPileNum > 0 then
 					if addNum <= leftPileNum then
-						-- ÉèÖÃµş¼ÓºóµÄµÀ¾ßÊıÄ¿
+						-- è®¾ç½®å åŠ åçš„é“å…·æ•°ç›®
 						gridItem:setNumber(gridItem:getNumber() + addNum)
-						-- ¼ÇÂ¼µ½¸Ä±ä±í
+						-- è®°å½•åˆ°æ”¹å˜è¡¨
 						self:setChange(i)
-						-- Í¨Öª¿Í»§¶Ë
+						-- é€šçŸ¥å®¢æˆ·ç«¯
 						if bUpdateClient then
 							self:updateClient()
 						end
-						-- µÀ¾ßµş¼Ó³É¹¦
+						-- é“å…·å åŠ æˆåŠŸ
 						return AddItemsResult.SucceedPile
 					else
-						-- Ö»ÄÜµş¼ÓÒ»²¿·Ö
+						-- åªèƒ½å åŠ ä¸€éƒ¨åˆ†
 						gridItem:setNumber(itemConfig.MaxPileNum)
-						-- Ê£ÓàÊıÄ¿¼ÌĞøÕÒµş¼Ó
+						-- å‰©ä½™æ•°ç›®ç»§ç»­æ‰¾å åŠ 
 						addNum = addNum - leftPileNum
-						-- ¼ÇÂ¼µ½¸Ä±ä±í
+						-- è®°å½•åˆ°æ”¹å˜è¡¨
 						self:setChange(i)
-						-- Í¨Öª¿Í»§¶Ë
+						-- é€šçŸ¥å®¢æˆ·ç«¯
 						if bUpdateClient then
 							self:updateClient()
 						end
@@ -483,35 +488,35 @@ function Pack:addItemsLimitNums(item, addNum, bUpdateClient)
 		end
 	end
 
-	-- µş¼Ó²»¿ÉĞĞ£¬¼ÌĞø²éÕÒ¿ÕÎ»£¬ÕûÌå·ÅÈë
+	-- å åŠ ä¸å¯è¡Œï¼Œç»§ç»­æŸ¥æ‰¾ç©ºä½ï¼Œæ•´ä½“æ”¾å…¥
 	local gridIndex = self:getFirstSpace()
 	if gridIndex ~= -1 then
 		if addNum == item:getNumber() then
-			-- ±¾°ü¹ü¾Í¿ÉÒÔ·ÅÏÂÕâ¸öµÀ¾ß£¬²»ÓÃ·Ö²ğÀ´·Å
+			-- æœ¬åŒ…è£¹å°±å¯ä»¥æ”¾ä¸‹è¿™ä¸ªé“å…·ï¼Œä¸ç”¨åˆ†æ‹†æ¥æ”¾
 			self:setGridItem(item, gridIndex)
-			-- ¼ÇÂ¼µ½¸Ä±ä±í
+			-- è®°å½•åˆ°æ”¹å˜è¡¨
 			self:setChange(gridIndex)
-			-- Í¨Öª¿Í»§¶Ë
+			-- é€šçŸ¥å®¢æˆ·ç«¯
 			if bUpdateClient then
 				self:updateClient()
 			end
-			-- µÀ¾ßÌí¼Ó³É¹¦
+			-- é“å…·æ·»åŠ æˆåŠŸ
 			return AddItemsResult.Succeed
 		else
-			-- ±¾°ü¹üÖ»ÊÇ·ÅÒ»²¿·Ö£¬ĞèÒªÖØĞÂ´´½¨ĞÂµÄµÀ¾ß
+			-- æœ¬åŒ…è£¹åªæ˜¯æ”¾ä¸€éƒ¨åˆ†ï¼Œéœ€è¦é‡æ–°åˆ›å»ºæ–°çš„é“å…·
 			local newItem = g_itemMgr:createItemFromContext(item:getPropertyContext(), addNum)
 			if not newItem then
 				return AddItemsResult.Failed
 			end
-			-- ¼ÇÂ¼ĞÂµÄµÀ¾ß£¬ÕâÀï²¢²»Á¢¼´Ïú»ÙÔ´µÀ¾ß£¬ÒòÎªÆäËû·Å²¿·ÖÊıÄ¿µÄ°ü¹ü»¹ÒªÓÃ£¬µÈ¶¼·ÅÈëºÃÁË£¬ÓÉµ÷ÓÃÕß¸ù¾İ·µ»ØÖµÀ´Ïú»ÙÔ´µÀ¾ß
+			-- è®°å½•æ–°çš„é“å…·ï¼Œè¿™é‡Œå¹¶ä¸ç«‹å³é”€æ¯æºé“å…·ï¼Œå› ä¸ºå…¶ä»–æ”¾éƒ¨åˆ†æ•°ç›®çš„åŒ…è£¹è¿˜è¦ç”¨ï¼Œç­‰éƒ½æ”¾å…¥å¥½äº†ï¼Œç”±è°ƒç”¨è€…æ ¹æ®è¿”å›å€¼æ¥é”€æ¯æºé“å…·
 			self:setGridItem(newItem, gridIndex)
-			-- ¼ÇÂ¼µ½¸Ä±ä±í
+			-- è®°å½•åˆ°æ”¹å˜è¡¨
 			self:setChange(gridIndex)
-			-- Í¨Öª¿Í»§¶Ë
+			-- é€šçŸ¥å®¢æˆ·ç«¯
 			if bUpdateClient then
 				self:updateClient()
 			end
-			-- µÀ¾ßµş¼Ó³É¹¦
+			-- é“å…·å åŠ æˆåŠŸ
 			return AddItemsResult.SucceedPile
 		end
 	else
@@ -519,13 +524,13 @@ function Pack:addItemsLimitNums(item, addNum, bUpdateClient)
 	end
 end
 
--- ÅĞ¶Ï±¾°ü¹ü¿ÉÒÔ·ÅÈëµÄµÀ¾ßÊıÄ¿£¬×¢Òâ£ºÕâÀï²¢²»Ò»¶¨·µ»Ø¿ÉÒÔ·ÅÈëµÄ¾ø¶Ô×î´óÊı£¬Ö»ÒªÄÜ×°µÃÏÂ¾ÍÖ±½Ó·µ»Ø¿ÉÒÔ×°ÏÂµÄÊıÄ¿
+-- åˆ¤æ–­æœ¬åŒ…è£¹å¯ä»¥æ”¾å…¥çš„é“å…·æ•°ç›®ï¼Œæ³¨æ„ï¼šè¿™é‡Œå¹¶ä¸ä¸€å®šè¿”å›å¯ä»¥æ”¾å…¥çš„ç»å¯¹æœ€å¤§æ•°ï¼Œåªè¦èƒ½è£…å¾—ä¸‹å°±ç›´æ¥è¿”å›å¯ä»¥è£…ä¸‹çš„æ•°ç›®
 function Pack:canAddNumber(item)
 	local itemID = item:getItemID()
 	local itemNum = item:getNumber()
 	local itemConfig = tItemDB[itemID]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return 0
 	end
 	local maxPileNum = itemConfig.MaxPileNum
@@ -534,34 +539,34 @@ function Pack:canAddNumber(item)
 	for i = 1, self:getCapability() do
 		local gridItem = self.grids[i]
 		if not gridItem then
-			-- ¿Õ¸ñÖ±½Ó°´×î´óµş¼ÓÊıÀ´¼ÆËã
+			-- ç©ºæ ¼ç›´æ¥æŒ‰æœ€å¤§å åŠ æ•°æ¥è®¡ç®—
 			canAddNumber = canAddNumber + maxPileNum
 		elseif gridItem and gridItem:getItemID() == itemID then
 			curCanPileNum = maxPileNum - gridItem:getNumber()
 			if curCanPileNum > 0 then
-				-- ¼ÓÉÏ¿ÉÒÔµş¼ÓµÄÊıÄ¿
+				-- åŠ ä¸Šå¯ä»¥å åŠ çš„æ•°ç›®
 				canAddNumber = canAddNumber + curCanPileNum
 			end
 		end
 		if canAddNumber >= itemNum then
-			-- ÒÑ¾­¿ÉÒÔ×°ÏÂÁË£¬²»ÓÃ¼ÌĞøÕÒÏÂÈ¥ÁË£¬Ö±½Ó·µ»Ø
+			-- å·²ç»å¯ä»¥è£…ä¸‹äº†ï¼Œä¸ç”¨ç»§ç»­æ‰¾ä¸‹å»äº†ï¼Œç›´æ¥è¿”å›
 			return canAddNumber
 		end
 	end
-	-- Ö´ĞĞµ½ÕâÀï£¬ËµÃ÷±¾°ü¹ü×°²»ÏÂ£¬·µ»Ø¿ÉÒÔ×°µÄ×î´óÊıÄ¿
+	-- æ‰§è¡Œåˆ°è¿™é‡Œï¼Œè¯´æ˜æœ¬åŒ…è£¹è£…ä¸ä¸‹ï¼Œè¿”å›å¯ä»¥è£…çš„æœ€å¤§æ•°ç›®
 	return canAddNumber
 end
 
--- ÒÆ³ıµÀ¾ß
+-- ç§»é™¤é“å…·
 function Pack:removeItem(item, removeNum, bUpdateClient)
 	local nResult = RemoveItemsResult.Failed
 
-	-- ÅĞ¶ÏÒÆ³ıÊıÄ¿
+	-- åˆ¤æ–­ç§»é™¤æ•°ç›®
 	if 0 == removeNum then
 		removeNum = item:getNumber()
 	end
 	if removeNum > item:getNumber() then
-		-- ÊıÁ¿·Ç·¨
+		-- æ•°é‡éæ³•
 		nResult = RemoveItemsResult.NumInvalid
 		return nResult
 	end
@@ -571,20 +576,20 @@ function Pack:removeItem(item, removeNum, bUpdateClient)
 	if gridItem == item then
 		local gridItemNum = gridItem:getNumber()
 		if gridItemNum > removeNum then
-			-- ¿Û³ıĞèÒªÒÆ³ıµÄÊıÄ¿
+			-- æ‰£é™¤éœ€è¦ç§»é™¤çš„æ•°ç›®
 			gridItem:setNumber(gridItemNum-removeNum)
-			-- ÒÆ³ıµÀ¾ß³É¹¦
+			-- ç§»é™¤é“å…·æˆåŠŸ
 			nResult = RemoveItemsResult.Succeed
 		else
-			-- Õû¸öµÀ¾ßÒÆ³ı
+			-- æ•´ä¸ªé“å…·ç§»é™¤
 			self.grids[gridIndex] = nil
-			-- ÒÆ³ıµÀ¾ß³É¹¦£¬Ô´µÀ¾ßĞèÒªÏú»Ù
+			-- ç§»é™¤é“å…·æˆåŠŸï¼Œæºé“å…·éœ€è¦é”€æ¯
 			nResult = RemoveItemsResult.SucceedClean
 		end
-		-- ¼ÇÂ¼µ½¸Ä±ä±í
+		-- è®°å½•åˆ°æ”¹å˜è¡¨
 		self:setChange(gridIndex)
 		if bUpdateClient then
-			-- Í¨Öª¿Í»§¶Ë
+			-- é€šçŸ¥å®¢æˆ·ç«¯
 			self:updateClient()
 		end
 	end
@@ -592,7 +597,7 @@ function Pack:removeItem(item, removeNum, bUpdateClient)
 	return nResult
 end
 
---Ïú»ÙÖ¸¶¨¸ñµÄµÀ¾ß
+--é”€æ¯æŒ‡å®šæ ¼çš„é“å…·
 function Pack:destroyItem(gridIndex, bUpdateClient)
 	if gridIndex < 1 or gridIndex > self:getCapability() then
 		return false
@@ -603,13 +608,13 @@ function Pack:destroyItem(gridIndex, bUpdateClient)
 		self.grids[gridIndex] = nil
 		g_itemMgr:destroyItem(gridItem:getGuid())
 	else
-		-- ´ËÎïÆ·¸ñÃ»ÓĞµÀ¾ß
+		-- æ­¤ç‰©å“æ ¼æ²¡æœ‰é“å…·
 		return false
 	end
 
-	-- ¼ÇÂ¼µ½¸Ä±ä±í
+	-- è®°å½•åˆ°æ”¹å˜è¡¨
 	self:setChange(gridIndex)
-	-- Í¨Öª¿Í»§¶Ë
+	-- é€šçŸ¥å®¢æˆ·ç«¯
 	if bUpdateClient then
 		self:updateClient()
 	end
@@ -617,7 +622,7 @@ function Pack:destroyItem(gridIndex, bUpdateClient)
 	return true
 end
 
--- »ñµÃÖ¸¶¨IDµÀ¾ßµÄ¸öÊı
+-- è·å¾—æŒ‡å®šIDé“å…·çš„ä¸ªæ•°
 function Pack:getNumByItemID(itemId)
 	local itemNum = 0
 
@@ -631,7 +636,7 @@ function Pack:getNumByItemID(itemId)
 	return itemNum
 end
 
--- ÒÆ³ıÖ¸¶¨IDµÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function Pack:removeByItemId(itemId, itemNum)
 	local removeNum = 0
 	local needRemoveNum = itemNum
@@ -655,11 +660,11 @@ function Pack:removeByItemId(itemId, itemNum)
 				end
 			end
 			if result == RemoveItemsResult.SucceedClean then
-				-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+				-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 				g_itemMgr:destroyItem(gridItem:getGuid())
 			end
 			if needRemoveNum <= 0 or removeNum >= itemNum then
-				-- ÒÑ¾­ÒÆ³ı¹»Ö¸¶¨ÊıÄ¿ÁË
+				-- å·²ç»ç§»é™¤å¤ŸæŒ‡å®šæ•°ç›®äº†
 				return removeNum
 			end
 		end
@@ -668,7 +673,7 @@ function Pack:removeByItemId(itemId, itemNum)
 	return removeNum
 end
 
---[[ »ñµÃÖ¸¶¨IDµÄ°ó¶¨µÀ¾ßµÄ¸öÊı
+--[[ è·å¾—æŒ‡å®šIDçš„ç»‘å®šé“å…·çš„ä¸ªæ•°
 function Pack:getBindItemNum(itemId)
 	local itemNum = 0
 
@@ -682,7 +687,7 @@ function Pack:getBindItemNum(itemId)
 	return itemNum
 end
 
--- »ñµÃÖ¸¶¨IDµÄÎ´°ó¶¨µÀ¾ßµÄ¸öÊı
+-- è·å¾—æŒ‡å®šIDçš„æœªç»‘å®šé“å…·çš„ä¸ªæ•°
 function Pack:getNoBindItemNum(itemId)
 	local itemNum = 0
 
@@ -696,7 +701,7 @@ function Pack:getNoBindItemNum(itemId)
 	return itemNum
 end
 
--- ÒÆ³ıÖ¸¶¨IDµÄ°ó¶¨µÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDçš„ç»‘å®šé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function Pack:removeBindItem(itemId, itemNum)
 	local removeNum = 0
 	local needRemoveNum = itemNum
@@ -720,11 +725,11 @@ function Pack:removeBindItem(itemId, itemNum)
 				end
 			end
 			if result == RemoveItemsResult.SucceedClean then
-				-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+				-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 				g_itemMgr:destroyItem(gridItem:getGuid())
 			end
 			if needRemoveNum <= 0 or removeNum >= itemNum then
-				-- ÒÑ¾­ÒÆ³ı¹»Ö¸¶¨ÊıÄ¿ÁË
+				-- å·²ç»ç§»é™¤å¤ŸæŒ‡å®šæ•°ç›®äº†
 				return removeNum
 			end
 		end
@@ -733,7 +738,7 @@ function Pack:removeBindItem(itemId, itemNum)
 	return removeNum
 end
 
--- ÒÆ³ıÖ¸¶¨IDµÄÎ´°ó¶¨µÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDçš„æœªç»‘å®šé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function Pack:removeNoBindItem(itemId, itemNum)
 	local removeNum = 0
 	local needRemoveNum = itemNum
@@ -757,11 +762,11 @@ function Pack:removeNoBindItem(itemId, itemNum)
 				end
 			end
 			if result == RemoveItemsResult.SucceedClean then
-				-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+				-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 				g_itemMgr:destroyItem(gridItem:getGuid())
 			end
 			if needRemoveNum <= 0 or removeNum >= itemNum then
-				-- ÒÑ¾­ÒÆ³ı¹»Ö¸¶¨ÊıÄ¿ÁË
+				-- å·²ç»ç§»é™¤å¤ŸæŒ‡å®šæ•°ç›®äº†
 				return removeNum
 			end
 		end
@@ -770,26 +775,26 @@ function Pack:removeNoBindItem(itemId, itemNum)
 	return removeNum
 end]]
 
--- ¸üĞÂÖ¸¶¨Î»ÖÃµÄµÀ¾ßÊı¾İ
+-- æ›´æ–°æŒ‡å®šä½ç½®çš„é“å…·æ•°æ®
 function Pack:updateItem(gridIndex, itemID, itemNum)
 	local gridItem = self.grids[gridIndex]
 	if gridItem then
 		if gridItem:getItemID() == itemID then
 			if itemNum > 0 and gridItem:getNumber() ~= itemNum then
-				-- ÉèÖÃµÀ¾ßĞÂµÄÊıÄ¿
+				-- è®¾ç½®é“å…·æ–°çš„æ•°ç›®
 				gridItem:setNumber(itemNum)
-				-- ¼ÇÂ¼µ½¸Ä±ä±í
+				-- è®°å½•åˆ°æ”¹å˜è¡¨
 				self:setChange(gridIndex)
 			end
 		end
 	end
 end
 
--- ²éÕÒÓÅÏÈ¼¶±Èµ±Ç°µÀ¾ßÓÅÏÈ¼¶µÍµÄ¸ñ×Ó£¬Èç¹ûÓĞ¿Õ¸ñ¾ÍÖ±½Ó·µ»Ø¿Õ¸ñÎ»ÖÃ
+-- æŸ¥æ‰¾ä¼˜å…ˆçº§æ¯”å½“å‰é“å…·ä¼˜å…ˆçº§ä½çš„æ ¼å­ï¼Œå¦‚æœæœ‰ç©ºæ ¼å°±ç›´æ¥è¿”å›ç©ºæ ¼ä½ç½®
 function Pack:getLowerPriorityItemPos(srcItem)
 	local srcItemSortPriority = srcItem:getSortPriority()
 	local srcSalePrice = srcItem:getSalePrice()
-	-- ²éÕÒ·¶Î§ÔÚ±¾µÀ¾ßÖ®Ç°
+	-- æŸ¥æ‰¾èŒƒå›´åœ¨æœ¬é“å…·ä¹‹å‰
 	local gridIndex = srcItem:getGridIndex() - 1
 	if gridIndex >= 1 and gridIndex <= self:getCapability() then
 		for i = 1, gridIndex do
@@ -797,22 +802,22 @@ function Pack:getLowerPriorityItemPos(srcItem)
 			if gridItem then
 				local curSortPriority = gridItem:getSortPriority()
 				if curSortPriority < srcItemSortPriority then
-					-- ÓÅÏÈ¼¶Ğ¡ÓÚÔ´µÀ¾ß
+					-- ä¼˜å…ˆçº§å°äºæºé“å…·
 					return i
 				elseif curSortPriority == srcItemSortPriority then
-					-- ÓÅÏÈ¼¶ÏàµÈ£¬¼ÌĞøÅĞ¶ÏÏÂÎïÆ·¼ÛÖµ
+					-- ä¼˜å…ˆçº§ç›¸ç­‰ï¼Œç»§ç»­åˆ¤æ–­ä¸‹ç‰©å“ä»·å€¼
 					local curSalePrice = gridItem:getSalePrice()
 					if curSalePrice < srcSalePrice then
 						return i
 					elseif curSalePrice == srcSalePrice then
-						-- ÎïÆ·¼ÛÖµÒ²ÏàµÈ£¬¼ÌĞøÅĞ¶ÏÏÂÎïÆ·ÊıÄ¿
+						-- ç‰©å“ä»·å€¼ä¹Ÿç›¸ç­‰ï¼Œç»§ç»­åˆ¤æ–­ä¸‹ç‰©å“æ•°ç›®
 						if gridItem:getNumber() < srcItem:getNumber() then
 							return i
 						end
 					end
 				end
 			else
-				-- Èç¹ûÊÇ¿Õ¸ñµÄ»°£¬¾ÍÖ±½Ó·Å¹ıÈ¥
+				-- å¦‚æœæ˜¯ç©ºæ ¼çš„è¯ï¼Œå°±ç›´æ¥æ”¾è¿‡å»
 				return i
 			end
 		end
@@ -820,7 +825,7 @@ function Pack:getLowerPriorityItemPos(srcItem)
 	return -1
 end
 
--- ½»»»µÀ¾ß£¬×¢Òâ£ºÕâÀïÊÇÍ¬Ò»¸ö°ü¹üÀï½»»»µÀ¾ß
+-- äº¤æ¢é“å…·ï¼Œæ³¨æ„ï¼šè¿™é‡Œæ˜¯åŒä¸€ä¸ªåŒ…è£¹é‡Œäº¤æ¢é“å…·
 function Pack:swapItem(srcGridItem, dstGridItem)
 	if not srcGridItem or not dstGridItem then
 		return false
@@ -838,94 +843,94 @@ function Pack:swapItem(srcGridItem, dstGridItem)
 		return false
 	end
 
-	-- ¼ÇÂ¼ĞÂµÀ¾ß
+	-- è®°å½•æ–°é“å…·
 	self:setGridItem(srcGridItem, dstGridIndex)
 	self:setGridItem(dstGridItem, srcGridIndex)
-	-- ¼ÇÂ¼µ½¸Ä±ä±í
+	-- è®°å½•åˆ°æ”¹å˜è¡¨
 	self:setChange(srcGridIndex)
 	self:setChange(dstGridIndex)
 
 	return true
 end
 
--- ÕûÀí°ü¹ü
+-- æ•´ç†åŒ…è£¹
 function Pack:packUp()
 	local capacity = self:getCapability()
-	-- Ê×ÏÈ´¦Àíµş¼Ó
+	-- é¦–å…ˆå¤„ç†å åŠ 
 	for gridIndex = capacity, 1, -1 do
-		-- µ¹¹ıÀ´Ö´ĞĞ£¬ºóÃæµÄµÀ¾ßµş¼Óµ½Ç°ÃæµÄµÀ¾ßÉÏ
+		-- å€’è¿‡æ¥æ‰§è¡Œï¼Œåé¢çš„é“å…·å åŠ åˆ°å‰é¢çš„é“å…·ä¸Š
 		local gridItem = self.grids[gridIndex]
 		if gridItem then
-			-- µÃµ½×î´óµş¼ÓÊıÄ¿
+			-- å¾—åˆ°æœ€å¤§å åŠ æ•°ç›®
 			local maxPileNum = gridItem:getPileNum()
 			if maxPileNum > 1 then
-				-- ĞèÒªµş¼Ó
+				-- éœ€è¦å åŠ 
 				local itemNum = gridItem:getNumber()
 				local whileNum = 0
 				while gridItem do
 					whileNum = whileNum + 1
 					if whileNum > itemNum then
-						-- ·ÀÖ¹ËÀÑ­»·
+						-- é˜²æ­¢æ­»å¾ªç¯
 						break
 					end
-					-- ÕÒµ½¿ÉÒÔµş¼ÓµÄµÚÒ»¸öµÀ¾ßÎ»ÖÃ
+					-- æ‰¾åˆ°å¯ä»¥å åŠ çš„ç¬¬ä¸€ä¸ªé“å…·ä½ç½®
 					local pileItemGridIndex = self:getCanPileItemPos(gridItem:getItemID())
-					-- ¼ì²âÕÒµ½µÄÎ»ÖÃÊÇ²»ÊÇÔÚ±¾µÀ¾ßÇ°ÃæµÄ
+					-- æ£€æµ‹æ‰¾åˆ°çš„ä½ç½®æ˜¯ä¸æ˜¯åœ¨æœ¬é“å…·å‰é¢çš„
 					if pileItemGridIndex >= 1 and pileItemGridIndex < gridIndex then
-						-- ¿ªÊ¼µş¼Ó£¬×¢ÒâÕâÀï¿ÉÄÜ»áÏú»ÙÔ´µÀ¾ß
+						-- å¼€å§‹å åŠ ï¼Œæ³¨æ„è¿™é‡Œå¯èƒ½ä¼šé”€æ¯æºé“å…·
 						if not self:pileItemsToGridEx(gridItem, pileItemGridIndex) then
-							-- Âß¼­´íÎó
+							-- é€»è¾‘é”™è¯¯
 							break
 						end
-						-- ÖØĞÂµÃµ½±¾µÀ¾ß£¬Èç¹û»¹ÔÚ£¬ËµÃ÷»¹¿ÉÒÔ¼ÌĞø´¦Àí
+						-- é‡æ–°å¾—åˆ°æœ¬é“å…·ï¼Œå¦‚æœè¿˜åœ¨ï¼Œè¯´æ˜è¿˜å¯ä»¥ç»§ç»­å¤„ç†
 						gridItem = self.grids[gridIndex]
 						if not gridItem then
-							-- ±¾µÀ¾ßÈ«µşÉÏÈ¥ÁË£¬¼ÌĞø´¦ÀíÏÂÒ»¸ö
+							-- æœ¬é“å…·å…¨å ä¸Šå»äº†ï¼Œç»§ç»­å¤„ç†ä¸‹ä¸€ä¸ª
 							break
 						end
 					else
-						-- Ã»ÓĞ¿ÉÒÔµş¼ÓµÄ
+						-- æ²¡æœ‰å¯ä»¥å åŠ çš„
 						break
 					end
 				end
 			end
 		end
 	end
-	-- È»ºó´¦ÀíÅÅĞò
+	-- ç„¶åå¤„ç†æ’åº
 	for gridIndex = capacity, 1, -1 do
-		-- µ¹¹ıÀ´Ö´ĞĞ£¬ÓÅÏÈ¼¶¸ßµÄµÀ¾ß¾ÍÍùÇ°·Å
+		-- å€’è¿‡æ¥æ‰§è¡Œï¼Œä¼˜å…ˆçº§é«˜çš„é“å…·å°±å¾€å‰æ”¾
 		local gridItem = self.grids[gridIndex]
 		if gridItem then
 			local whileNum = 0
 			while gridItem do
 				whileNum = whileNum + 1
 				if whileNum > capacity then
-					-- ·ÀÖ¹ËÀÑ­»·
+					-- é˜²æ­¢æ­»å¾ªç¯
 					break
 				end
 				local lowerPriorityGridIndex = self:getLowerPriorityItemPos(gridItem)
 				if lowerPriorityGridIndex >= 1 then
 					local dstGridItem = self.grids[lowerPriorityGridIndex]
 					if dstGridItem then
-						-- ´æÔÚµÀ¾ß£¬¸ú±¾µÀ¾ß½øĞĞ½»»»
+						-- å­˜åœ¨é“å…·ï¼Œè·Ÿæœ¬é“å…·è¿›è¡Œäº¤æ¢
 						if not self:swapItem(gridItem, dstGridItem) then
-							-- Âß¼­´íÎó
+							-- é€»è¾‘é”™è¯¯
 							break
 						end
 					else
-						-- Ä¿±êÎ»ÖÃÃ»ÓĞµÀ¾ß
+						-- ç›®æ ‡ä½ç½®æ²¡æœ‰é“å…·
 						if self:removeItemsFromGrid(gridItem:getGridIndex(), false) then
-							-- ÏÈ´ÓÔ´Î»ÖÃÒÆ³ı£¬È»ºóÒÆ¶¯µÀ¾ß¹ıÈ¥
+							-- å…ˆä»æºä½ç½®ç§»é™¤ï¼Œç„¶åç§»åŠ¨é“å…·è¿‡å»
 							self:addItemsToGrid(gridItem, lowerPriorityGridIndex, false)
 						else
-							-- Âß¼­´íÎó
+							-- é€»è¾‘é”™è¯¯
 							break
 						end
 					end
-					-- ÖØĞÂµÃµ½µ±Ç°Ë÷ÒıµÄµÀ¾ß£¬Èç¹û»¹ÔÚ£¬ËµÃ÷»¹¿ÉÒÔ¼ÌĞø´¦Àí
+					-- é‡æ–°å¾—åˆ°å½“å‰ç´¢å¼•çš„é“å…·ï¼Œå¦‚æœè¿˜åœ¨ï¼Œè¯´æ˜è¿˜å¯ä»¥ç»§ç»­å¤„ç†
 					gridItem = self.grids[gridIndex]
 				else
-					-- Ã»ÓĞÓÅÏÈ¼¶±Èµ±Ç°µÀ¾ß»¹µÍµÄµÀ¾ßÁË
+					-- æ²¡æœ‰ä¼˜å…ˆçº§æ¯”å½“å‰é“å…·è¿˜ä½çš„é“å…·äº†
 					break
 				end
 			end
@@ -933,7 +938,7 @@ function Pack:packUp()
 	end
 end
 
---Õë¶ÔNpc»õ¼Ü°ü¹üÂúÄØ,ÒÆ³ıÖ®ºóÖØĞÂÅÅÁĞ
+--é’ˆå¯¹Npcè´§æ¶åŒ…è£¹æ»¡å‘¢,ç§»é™¤ä¹‹åé‡æ–°æ’åˆ—
 function Pack:packUpdate(bUpdateClient)
 	for i = 1, ShelfMaxCapacity do 
 		local item = self.grids[i]
@@ -946,7 +951,7 @@ function Pack:packUpdate(bUpdateClient)
 				self.grids[i+1] = nil
 			end
 			self:setChange(i)
-			-- Í¨Öª¿Í»§¶Ë
+			-- é€šçŸ¥å®¢æˆ·ç«¯
 		end
 	end
 	if bUpdateClient then
@@ -954,47 +959,47 @@ function Pack:packUpdate(bUpdateClient)
 	end
 end
 
---Íæ¼Ò³öÊÛÎïÆ·Ê±»õ¼ÜÎïÆ·µÄÌí¼Ó
+--ç©å®¶å‡ºå”®ç‰©å“æ—¶è´§æ¶ç‰©å“çš„æ·»åŠ 
 function Pack:addItemsToShelf(item, addNum, bUpdateClient)
-	-- ²éÕÒ¿ÕÎ»£¬ÕûÌå·ÅÈë
+	-- æŸ¥æ‰¾ç©ºä½ï¼Œæ•´ä½“æ”¾å…¥
 	local itemID = item:getItemID()
 	local gridIndex = self:getFirstSpace()
 	if gridIndex ~= -1 then
 		if addNum == item:getNumber() then
-			-- ±¾°ü¹ü¾Í¿ÉÒÔ·ÅÏÂÕâ¸öµÀ¾ß£¬²»ÓÃ·Ö²ğÀ´·Å
+			-- æœ¬åŒ…è£¹å°±å¯ä»¥æ”¾ä¸‹è¿™ä¸ªé“å…·ï¼Œä¸ç”¨åˆ†æ‹†æ¥æ”¾
 			self:setGridItem(item, gridIndex)
-			-- ¼ÇÂ¼µ½¸Ä±ä±í
+			-- è®°å½•åˆ°æ”¹å˜è¡¨
 			self:setChange(gridIndex)
-			-- Í¨Öª¿Í»§¶Ë
+			-- é€šçŸ¥å®¢æˆ·ç«¯
 			if bUpdateClient then
 				self:updateClient()
 			end
-			-- µÀ¾ßÌí¼Ó³É¹¦
+			-- é“å…·æ·»åŠ æˆåŠŸ
 			return AddItemsResult.Succeed
 		else
-			-- ±¾°ü¹üÖ»ÊÇ·ÅÒ»²¿·Ö£¬ĞèÒªÖØĞÂ´´½¨ĞÂµÄµÀ¾ß
+			-- æœ¬åŒ…è£¹åªæ˜¯æ”¾ä¸€éƒ¨åˆ†ï¼Œéœ€è¦é‡æ–°åˆ›å»ºæ–°çš„é“å…·
 			local newItem = g_itemMgr:createItem(itemID, addNum)
 			if not newItem then
 				return AddItemsResult.Failed
 			end
-			-- ¼ÇÂ¼ĞÂµÄµÀ¾ß£¬ÕâÀï²¢²»Á¢¼´Ïú»ÙÔ´µÀ¾ß£¬ÒòÎªÆäËû·Å²¿·ÖÊıÄ¿µÄ°ü¹ü»¹ÒªÓÃ£¬µÈ¶¼·ÅÈëºÃÁË£¬ÓÉµ÷ÓÃÕß¸ù¾İ·µ»ØÖµÀ´Ïú»ÙÔ´µÀ¾ß
+			-- è®°å½•æ–°çš„é“å…·ï¼Œè¿™é‡Œå¹¶ä¸ç«‹å³é”€æ¯æºé“å…·ï¼Œå› ä¸ºå…¶ä»–æ”¾éƒ¨åˆ†æ•°ç›®çš„åŒ…è£¹è¿˜è¦ç”¨ï¼Œç­‰éƒ½æ”¾å…¥å¥½äº†ï¼Œç”±è°ƒç”¨è€…æ ¹æ®è¿”å›å€¼æ¥é”€æ¯æºé“å…·
 			self:setGridItem(newItem, gridIndex)
-			-- ¼ÇÂ¼µ½¸Ä±ä±í
+			-- è®°å½•åˆ°æ”¹å˜è¡¨
 			self:setChange(gridIndex)
-			-- Í¨Öª¿Í»§¶Ë
+			-- é€šçŸ¥å®¢æˆ·ç«¯
 			if bUpdateClient then
 				self:updateClient()
 			end
-			-- µÀ¾ßµş¼Ó³É¹¦
+			-- é“å…·å åŠ æˆåŠŸ
 			return AddItemsResult.SucceedPile
 		end
 	else
 		if self.packContainerID == PackContainerID.Shelf then 
-			--ÕâÊÇ»ñÈ¡Ö®Ç°µÄ»Ø¹º»õ¼ÜÉÏµÄÎïÆ·°ÑËû¸øÏú»Ù
+			--è¿™æ˜¯è·å–ä¹‹å‰çš„å›è´­è´§æ¶ä¸Šçš„ç‰©å“æŠŠä»–ç»™é”€æ¯
 			local itemPrevious = self.grids[1]
 			local itemNum = itemPrevious:getNumber()
 			self:destroyItem(self.gridIndex, true)
-			--ÏòÇ°ÒÆ¶¯Ò»¸ö
+			--å‘å‰ç§»åŠ¨ä¸€ä¸ª
 			self:packUpdate(bUpdateClient)
 			self:setGridItem(item, ShelfMaxCapacity)
 			self:setChange(ShelfMaxCapacity)

@@ -1,12 +1,12 @@
 --[[Warrant.lua
-ÃèÊö:
-	ÎïÆ·´óÀàÆ¾Ö¤Àà
+æè¿°:
+	ç‰©å“å¤§ç±»å‡­è¯ç±»
 ]]
 
 Warrant = class(Item)
 
 function Warrant:__init()
-	-- Æ¾Ö¤´óÀà
+	-- å‡­è¯å¤§ç±»
 	self.class = ItemClass.Warrant
 	self.attr = nil
 end
@@ -15,17 +15,17 @@ function Warrant:__release()
 end
 
 
--- ÉèÖÃÊôĞÔĞ§¹û
+-- è®¾ç½®å±æ€§æ•ˆæœ
 function Warrant:setAttr(itemAttr)
 	self.attr = itemAttr
 end
 
--- »ñµÃÊôĞÔĞ§¹û
+-- è·å¾—å±æ€§æ•ˆæœ
 function Warrant:getAttr()
 	return self.attr
 end
 
--- ¸ù¾İÊı¾İ¿âÏÖ³¡ÉèÖÃÊôĞÔ
+-- æ ¹æ®æ•°æ®åº“ç°åœºè®¾ç½®å±æ€§
 function Warrant:setPropertyContext(context)
 	self:setExpireTime(context.expireTime)
 	if context.attr and type(context.attr) == "string" then
@@ -34,7 +34,7 @@ function Warrant:setPropertyContext(context)
 	self:setAttr(context.attr)
 end
 
--- »ñµÃÊôĞÔÏÖ³¡
+-- è·å¾—å±æ€§ç°åœº
 function Warrant:getPropertyContext()
 	local context = {}
 	context.itemID = self:getItemID()

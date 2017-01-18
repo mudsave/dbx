@@ -45,8 +45,9 @@ void CSession::Init(	const char* loginIP,	int loginPort,
 	hr = m_pLinkCtrl->Listen(loginIP,	&loginPort,	pClientSink,	0);	ASSERT_( SUCCEEDED(hr) );
 	hr = m_pLinkCtrl->Listen(gateIP,	&gatePort,	pGateSink,		0);	ASSERT_( SUCCEEDED(hr) );
 	hr = m_pLinkCtrl->Listen(worldIP,	&worldPort,	pWorldSink,		0);	ASSERT_( SUCCEEDED(hr) );
-	
+
 	g_DBProxy.init(dbIp, dbPort);
+	InitClientVersion();
 
 	m_hFastFrameTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eFastFrameHandle, 0, eFastFrameInterval, eFastFrameInterval, "session fast frame timer");	ASSERT_(m_hFastFrameTimer);
 	m_hSlowFrameTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eSlowFrameHandle, 0, eSlowFrameInterval, eSlowFrameInterval, "session slow frame timer");	ASSERT_(m_hSlowFrameTimer);
@@ -97,6 +98,31 @@ void CSession::Close()
 	m_pLinkCtrl->CloseCtrl();
 }
 
+void CSession::InitClientVersion()
+{
+	FILE* file = fopen("version.txt","r+");
+	char ch;
+	if ( file != NULL && EOF != (ch=fgetc(file)) )
+	{
+		char cTmp[15];
+		while(EOF != (ch=fgetc(file)))
+		{
+			if (ch ==' ')
+			{
+				fgets(cTmp, 15, file);
+				break;
+			}	
+		}
+		if (ch ==' ')
+			m_version = atoi(cTmp);
+		else
+			m_version = -1;
+		fclose(file);
+		return;
+	}
+	m_version = -1;
+}
+
 void CSession::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 {
 	LinkContext_Client* pContext = (LinkContext_Client*)hLinkContext;
@@ -107,7 +133,7 @@ void CSession::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 	int state			= pContext->state;			unused(state);
 	int msgCls			= pMsg->msgCls;
 	int msgId			= pMsg->msgId;
-	
+
 #if DEBUG_L >= 2
 	ClientMap::iterator iter = m_clients.find(hLink);
 	if ( iter == m_clients.end() )
@@ -150,7 +176,7 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 	int state			= pContext->state;			unused(state);
 	int msgCls			= pMsg->msgCls;
 	int msgId			= pMsg->msgId;
-	
+
 #if DEBUG_L >= 2
 	GateMap::iterator iter = m_gates.find(hLink);
 	if ( iter == m_gates.end() )
@@ -223,12 +249,14 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_S_G_USER_LOADED )
 				{
 					_MsgGS_UserLoginInfo* pInfo = (_MsgGS_UserLoginInfo*)pMsg;
+					g_accountMgr.unregOffFightAccount(pInfo->accountId);
 					if ( pInfo->result == 0 )
 					{
 						AccountInfo* pAccount = g_accountMgr.getAccountPtr(pInfo->accountId);
 						ASSERT_( pAccount );
 						ASSERT_( pAccount->roleId == pInfo->roleId );
-						ASSERT_( pAccount->status == ACCOUNT_STATE_LOADING );
+						ASSERT_( pAccount->status == ACCOUNT_STATE_LOADING
+						 	|| pAccount->status == ACCOUNT_STATE_RECONNECTING_FIGHT);
 						pAccount->_SwitchStatus(ACCOUNT_STATE_LOADED);
 						return;
 					}
@@ -269,6 +297,13 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						ASSERT_(0);
 						return;
 					}
+					if (pInfo->reason == 7)
+					{
+						TRACE0_L2("CSession::OnGateMsg(), 玩家小退\n");
+						TRACE1_L2("\taccountId = %i\n", accountId);
+						TRACE1_L2("\troleId = %i\n", roleId);
+						return;
+					}
 
 					AccountInfo& account = g_accountMgr.getAccount(accountId);
 					TRACE0_L2("CSession::OnGateMsg(), 玩家退出\n");
@@ -278,11 +313,36 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					TRACE1_L2("\tresult = %i\n", result);
 					TRACE1_L2("\treason = %i\n", reason);
 					ASSERT_( g_accountMgr.unregAccount(accountId) );
+
 					return;
 				}
 
 				TRACE0_L2("CSession::OnGateMsg(), Invalid msgId for MSG_CLS_LOGIN..\n");
 				TRACE1_L2("\tmsgId = %i\n", msgId);
+			}
+			break;
+		case MSG_CLS_OFFLINE:
+			{
+				if ( msgId == MSG_G_S_OFFLINE_IN_FIGHT)
+				{
+					_MsgGS_OfflineInFight* pInfo = (_MsgGS_OfflineInFight*)pMsg;
+					int accountId	= pInfo->accountId;
+					int roleId		= pInfo->roleId;
+					if ( g_accountMgr.isRegistered(accountId) == false )
+					{
+						return;
+					}
+					AccountInfo& account = g_accountMgr.getAccount(accountId);
+					account.gatewayId = -1;
+					account.hAccountTimer = NULL;
+					account.hLink = 0;
+					account.hPendingLink = 0;
+					account._SwitchStatus(ACCOUNT_STATE_OFFLINE_IN_FIGHT);
+					g_accountMgr.regOffFightAccount(accountId);
+					TRACE0_L2("CSession::OnGateMsg(), player offline in fight\n");
+					TRACE1_L2("\taccountId = %i\n", accountId);
+					TRACE1_L2("\troleId = %i\n", roleId);
+				}
 			}
 			break;
 		default:
@@ -308,7 +368,7 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 	int state			= pContext->state;			unused(state);
 	int msgCls			= pMsg->msgCls;
 	int msgId			= pMsg->msgId;
-	
+
 #if DEBUG_L >= 2
 	WorldMap::iterator iter = m_worlds.find(hLink);
 	if ( iter == m_worlds.end() )
@@ -331,18 +391,25 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 
 					pContext->worldId		= pInfo->worldId;
 					pContext->state			= LINK_CONTEXT_CONNECTED;
+					short tmp_id 			= pInfo->worldId;
 
-					bool ret = IsValidWorldId(pInfo->worldId);
+					bool ret = IsValidWorldId(tmp_id);
 					if ( ret == false )
 					{
 						IMsgLinksImpl<IID_IMsgLinksWS_L>::CloseLink(hLink, CLOSE_RELEASE);
 						return;
 					}
-					
-					RegWorldId(pInfo->worldId);
+
+					RegWorldId(tmp_id);
+
+					if (IS_WORLD_SERVER(tmp_id))
+						m_worldServers.insert(pContext->hLink);
+					else if (IS_FIGHT_SERVER(tmp_id))
+						m_fightServers.insert(pContext->hLink);
+					else if (IS_SOCIAL_SERVER(tmp_id))
+						m_socialServers.insert(pContext->hLink);
 
 					send_MsgSW_ACK_WorldInfo(hLink);
-
 					send_MsgSW_UP_GatewayList(hLink);
 
 					return;
@@ -351,11 +418,52 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				{
 					_MsgWS_UP_WorldState* pState = static_cast<_MsgWS_UP_WorldState*>(pMsg);
 					pContext->playerCount = pState->playerCount;
-
 					return;
 				}
 				TRACE0_L2("CSession::OnWorldMsg(), Invalid msgId for MSG_CLS_STARTUP..\n");
 				TRACE1_L2("\tmsgId = %i\n", msgId);
+			}
+			break;
+		case MSG_CLS_OFFLINE:
+			{
+				if (msgId == MSG_W_S_CLEAR_OFF_FIGHT)
+				{
+					_MsgWS_ClearOffFightInfo* pInfo = static_cast<_MsgWS_ClearOffFightInfo*>(pMsg);
+					if (!g_accountMgr.isRegistered(pInfo->accountId))
+						return;
+					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
+					ASSERT_(account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT || account.status == ACCOUNT_STATE_LOADED
+						|| account.status == ACCOUNT_STATE_RECONNECTING_FIGHT);
+					g_accountMgr.unregOffFightAccount(pInfo->accountId);
+					if (account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT)
+						g_accountMgr.unregAccount(pInfo->accountId);
+					TRACE0_L2("CSession::OnWorldMsg(), clear fight offline info!\n");
+					TRACE1_L2("Account: %d\n", pInfo->accountId);
+					TRACE1_L2("Status: %d\n", account.status);
+					return;
+				}
+
+				if (msgId == MSG_W_S_START_FIGHT)
+				{
+					_MsgWS_StartFight* pInfo = static_cast<_MsgWS_StartFight*>(pMsg);
+					if (!g_accountMgr.isRegistered(pInfo->accountId))
+						return;
+					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
+					account.inFight = true;
+					TRACE1_L2("CSession::OnWorldMsg(), account:%d is in fight!\n", pInfo->accountId);
+					return;
+				}
+
+				if (msgId == MSG_W_S_STOP_FIGHT)
+				{
+					_MsgWS_StopFight* pInfo = static_cast<_MsgWS_StopFight*>(pMsg);
+					if (!g_accountMgr.isRegistered(pInfo->accountId))
+						return;
+					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
+					account.inFight = false;
+					TRACE1_L2("CSession::OnWorldMsg(), account:%d is out fight!\n", pInfo->accountId);
+					return;
+				}
 			}
 			break;
 		default:
@@ -367,21 +475,25 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			}
 			break;
 	}
-
 	return;
 }
 
 void CSession::OnClientClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Client* pContext = (LinkContext_Client*)hLinkContext;
-	int linkType = pContext->linkType;		unused(linkType); 
+	int linkType = pContext->linkType;		unused(linkType);
 	handle hLink = pContext->hLink;			unused(hLink);
-
 	ClientMap::iterator iter = m_clients.find(hLink);
 	if ( iter != m_clients.end() )
 	{
 		LinkContext_Client* pClient = iter->second; ASSERT_( pContext == pClient );
-		if ( pClient->state == LINK_CONTEXT_LOGINED || pClient->state == LINK_CONTEXT_ROLE_CREATEING || pClient->state == LINK_CONTEXT_ROLE_DELETEING )
+		if ( pClient->hStateTimer )
+		{
+			m_pThreadsPool->UnregTimer( pClient->hStateTimer );
+			pClient->hStateTimer = NULL;
+		}
+		if ( pClient->state == LINK_CONTEXT_LOGINED || pClient->state == LINK_CONTEXT_ROLE_CREATEING
+			|| pClient->state == LINK_CONTEXT_ROLE_DELETEING )
 		{
 			g_accountMgr.unregAccount(pClient->accountId);
 		}
@@ -398,7 +510,7 @@ void CSession::OnClientClosed(HANDLE hLinkContext, HRESULT reason)
 void CSession::OnGateClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Gate* pContext = (LinkContext_Gate*)hLinkContext;
-	int linkType = pContext->linkType;		unused(linkType); 
+	int linkType = pContext->linkType;		unused(linkType);
 	handle hLink = pContext->hLink;			unused(hLink);
 
 	GateMap::iterator iter = m_gates.find(hLink);
@@ -418,13 +530,20 @@ void CSession::OnGateClosed(HANDLE hLinkContext, HRESULT reason)
 void CSession::OnWorldClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_World* pContext = (LinkContext_World*)hLinkContext;
-	int linkType = pContext->linkType;		unused(linkType); 
+	int linkType = pContext->linkType;		unused(linkType);
 	handle hLink = pContext->hLink;			unused(hLink);
 
 	WorldMap::iterator iter = m_worlds.find(hLink);
 	if ( iter != m_worlds.end() )
 	{
 		LinkContext_World* pWorld = iter->second; ASSERT_( pContext == pWorld );
+		int worldId = pWorld->worldId;
+		if(IS_WORLD_SERVER(worldId))
+			m_worldServers.erase(hLink);
+		else if(IS_FIGHT_SERVER(worldId))
+			m_fightServers.erase(hLink);
+		else if(IS_SOCIAL_SERVER(worldId))
+			m_socialServers.erase(hLink);
 		m_worlds.erase(iter);
 	}
 	else
@@ -449,18 +568,17 @@ void CSession::OnDBReturn(_DBMsg* pMsg, handle hLink)
 	}
 	ClientMap::iterator iter = m_clients.find(hLink);
 	if( iter == m_clients.end() )
-		ASSERT_(0);	
+		ASSERT_(0);
 	iter->second->OnDBMsg(pMsg);
 }
 
 void CSession::handleFastFrame()
 {
-
 }
 
 void CSession::handleSlowFrame()
 {
-
+	send_MSG_S_W_FIGHT_SERVER_LOAD();
 }
 
 HRESULT CSession::Do(HANDLE hContext)
@@ -497,7 +615,6 @@ HANDLE CSession::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkP
 		pClient->_SwitchState(LINK_CONTEXT_CONNECTED);
 		TRACE0_L0("connect client ok\n");
 		m_clients.insert( ClientMap::value_type(hLink, pClient) );
-		send_MsgSC_WorldListInfo(hLink);	
 		return pClient;
 	}
 

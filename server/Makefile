@@ -57,7 +57,7 @@ test :
 
 
 # 编译
-all : sock dbx session gateway world
+all : sock session gateway world
 
 clean :
 	rm -rf ./sbin/temp
