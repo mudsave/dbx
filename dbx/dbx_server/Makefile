@@ -9,7 +9,7 @@ SRC_DIR = ./src
 INCLUDE_DIR = -I../codes/dbx/inc -I../lib/dependencies/tinyxml
 
 # 编译选项
-CFLAGS = $(INCLUDE_DIR) -L../../server/sbin/linux -export-dynamic
+CFLAGS = $(INCLUDE_DIR) -L../../server/sbin/linux -L/usr/lib64/mysql -export-dynamic -g
 
 # --------------- default.mak start -------------------------------------------------------
 # 这里使用gcc，gcc -lstdc++ 等同于 g++
@@ -22,6 +22,9 @@ INCLUDE_DIR += -I../../share -I../../server/codes/share -I../../server/codes/soc
 LIBS +=-lrt -lstdc++ -pthread -lSock
 
 # --------------- default.mak end ---------------------------------------------------------
+
+INCLUDE_DIR += -I/usr/include/mysql
+LIBS += -lmysqlclient_r
 
 target: $(wildcard *.cpp)
 	$(CXX) $(CFLAGS) $(SRC_DIR)/*.cpp $(LIBS) -o $(PROJECT_NAME)

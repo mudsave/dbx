@@ -15,7 +15,8 @@ public:
 
     virtual void Disconnect();
 
-    virtual bool Initialize();
+protected:
+
 };
 
 #endif  // end of __DB_INTERFACE_MYSQL_H_

@@ -3,12 +3,15 @@
 #include "lindef.h"
 
 #include "DBFactory.h"
-
+#include "DBIssue.h"
 
 DBTask::DBTask(int p_dbInterfaceID, DBTaskPool *p_dbTaskPool):
     m_dbInterfaceID(p_dbInterfaceID),
     m_taskPool(p_dbTaskPool),
-    m_dbInterface(NULL)
+    m_dbInterface(NULL),
+    m_currentIssue(NULL),
+    m_semaphore(),
+    m_isDestroyed(false)
 {
 }
 
@@ -18,7 +21,7 @@ DBTask::~DBTask()
 
 HRESULT DBTask::Do(HANDLE hContext)
 {
-    TRACE1_L0("DBTask::Do:db InterfaceID(%i).\n", m_dbInterfaceID);
+    TRACE0_L0("DBTask::Do:DoStart...\n");
     m_dbInterface = DBFactory::InstancePtr()->CreateDBInterface(m_dbInterfaceID);
     if (m_dbInterface == NULL)
     {
@@ -26,12 +29,97 @@ HRESULT DBTask::Do(HANDLE hContext)
         return S_FALSE;
     }
     
-    while (0)
+    while (!IsDestroyed())
     {
-        // todo：
-        // 1. 尝试从TaskPool获得新的issue并执行，注意使用线程锁
-        // 2. 如果没有新的issue，那么通知TaskPool空闲状态，并进入等待wait
-        // 3. TaskPool分配新的任务时会Post通知
+        if (GetCurrIssue() == NULL)
+        {
+            Wait();
+        }
+        if (IsDestroyed())
+        {
+            DoEnd();
+            return S_OK;
+        }
+
+        DBIssueBase *issue = GetCurrIssue();
+        while (issue)
+        {
+            ProgressIssue(issue);
+            DBIssueBase *nextIssue = GetNextIssue();
+            if (!nextIssue)
+            {
+                ProgressEnd();
+                break;
+            }
+            else
+            {
+                GetTaskPool()->OnIssueFinish(issue);
+                issue = nextIssue;
+                SetIssue(issue);
+            }
+        }
     }
+
+    DoEnd();
     return S_OK;
+}
+
+void DBTask::SetIssue(DBIssueBase *p_issue)
+{
+    m_currentIssue = p_issue;
+}
+
+DBIssueBase *DBTask::GetCurrIssue()
+{
+    return m_currentIssue;
+}
+
+DBIssueBase *DBTask::GetNextIssue()
+{
+    return m_taskPool->PopBufferIssue();
+}
+
+DBTaskPool *DBTask::GetTaskPool()
+{
+    return m_taskPool;
+}
+
+void DBTask::Wait()
+{
+    TRACE0_L0("DBTask::Wait.\n");
+    m_semaphore.Wait();
+}
+
+void DBTask::Start()
+{
+    TRACE0_L0("DBTask::Start.\n");
+    m_semaphore.Post();
+}
+
+void DBTask::ProgressIssue(DBIssueBase *p_issue)
+{
+    p_issue->SetDBInterface(m_dbInterface);
+    p_issue->Progress();
+}
+
+void DBTask::ProgressEnd()
+{
+    GetTaskPool()->OnIssueFinish(m_currentIssue);
+    SetIssue(NULL);
+    GetTaskPool()->AddFreeTask(this);
+}
+
+void DBTask::DoEnd()
+{
+    TRACE1_L0("DBTask::DoEnd:cancel for DBInterface(id:%i)...\n", m_dbInterfaceID);
+}
+
+void DBTask::Destroy()
+{
+    m_isDestroyed = true;
+}
+
+bool DBTask::IsDestroyed()
+{
+    return m_isDestroyed;
 }
