@@ -36,6 +36,7 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg)
 void DBIssueCallSP::OnProgress()
 {
     TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
+    Sleep(50);
 }
 
 void DBIssueCallSP::MainProgress()
@@ -54,6 +55,7 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg)
 void DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
+    Sleep(50);
 }
 
 void DBIssueCallSQL::MainProgress()

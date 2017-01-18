@@ -21,7 +21,7 @@ public:
     DBTaskPool *GetTaskPool(int p_id)
     {
         DBTaskPoolMap::iterator iter = m_taskPoolMap.find(p_id);
-        if (iter != m_taskPoolMap.end())
+        if (iter != m_taskPoolMap.end() && !iter->second->IsDestroyed())
             return iter->second;
 
         return NULL;

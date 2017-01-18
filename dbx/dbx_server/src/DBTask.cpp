@@ -112,6 +112,10 @@ void DBTask::ProgressEnd()
 void DBTask::DoEnd()
 {
     TRACE1_L0("DBTask::DoEnd:cancel for DBInterface(id:%i)...\n", m_dbInterfaceID);
+    if (m_currentIssue != NULL)
+        delete m_currentIssue;
+
+    GetTaskPool()->OnTaskQuit(this);
 }
 
 void DBTask::Destroy()

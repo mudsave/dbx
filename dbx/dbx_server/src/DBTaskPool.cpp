@@ -19,7 +19,8 @@ DBTaskPool::DBTaskPool(int p_dbInterfaceID)
     m_finishIssueList(),
     m_freeBusyListMutex(),
     m_bufferListMutex(),
-    m_finishIssueMutex()
+    m_finishIssueMutex(),
+    m_isDestroyed(false)
 {
 }
 
@@ -30,7 +31,38 @@ DBTaskPool::~DBTaskPool()
 void DBTaskPool::Finalise()
 {
     TRACE1_L0("DBTaskPool::finalise:%i.\n", m_dbInterfaceID );
-    // todo:清理线程，清理new对象。
+    
+    m_isDestroyed = true;
+    m_freeBusyListMutex.Lock();
+    std::list<DBTask *>::iterator taskIter = m_totalTaskList.begin();
+    for (; taskIter != m_totalTaskList.end(); ++taskIter)
+        (*taskIter)->Destroy();
+    
+    taskIter = m_freeTaskList.begin();
+    for (; taskIter != m_freeTaskList.end(); ++taskIter)
+        (*taskIter)->Start();
+
+    m_freeBusyListMutex.Unlock();
+
+    Sleep(300);     // 等待全部线程销毁
+
+    m_freeBusyListMutex.Lock();
+    taskIter = m_totalTaskList.begin();
+    for (; taskIter != m_totalTaskList.end(); ++taskIter)
+        delete (*taskIter);
+    m_totalTaskList.clear();
+    m_freeTaskList.clear();
+    m_busyTaskList.clear();
+    m_freeBusyListMutex.Unlock();
+
+    m_bufferListMutex.Lock();
+    if (m_issueBufferList.size() > 0)
+    {
+        DBIssueBase *issue = m_issueBufferList.front();
+        m_issueBufferList.pop();
+        delete issue;
+    }
+    m_bufferListMutex.Unlock();
 }
 
 bool DBTaskPool::InitTasks(int p_taskNum)
@@ -79,6 +111,7 @@ bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
     }
     m_freeBusyListMutex.Unlock();
 
+    TRACE0_L0("DBTaskPool::AddIssue:add to Buffer.\n");
     m_bufferListMutex.Lock();
     m_issueBufferList.push(p_issue);
     if (m_issueBufferList.size() > DBX_TASK_BUSY_SIZE)
@@ -99,6 +132,7 @@ void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
 
 DBIssueBase *DBTaskPool::PopBufferIssue()
 {
+    TRACE0_L0("DBTaskPool::PopBufferIssue.\n");
     DBIssueBase *dbIssue = NULL;
 
     m_bufferListMutex.Lock();
@@ -116,6 +150,7 @@ DBIssueBase *DBTaskPool::PopBufferIssue()
 
 void DBTaskPool::AddFreeTask(DBTask *p_task)
 {
+    TRACE0_L0("DBTaskPool::AddFreeTask.\n");
     m_freeBusyListMutex.Lock();
 
     std::list<DBTask *>::iterator iter;
@@ -155,4 +190,14 @@ void DBTaskPool::MainTick()
         delete (*iter);
         iter = issueList.erase(iter);
     }
+}
+
+void DBTaskPool::OnTaskQuit(DBTask *p_task)
+{
+    TRACE0_L0("DBTaskPool::OnTaskQuit.\n");
+}
+
+bool DBTaskPool::IsDestroyed()
+{
+    return m_isDestroyed;
 }

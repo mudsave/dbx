@@ -43,7 +43,7 @@ void DBFactory::Finalise()
     for (; iter != m_taskPoolMap.end(); ++iter)
     {
         iter->second->Finalise();
-        delete iter->second;    // todo：定义安全释放宏
+        delete iter->second;
     }
 }
 

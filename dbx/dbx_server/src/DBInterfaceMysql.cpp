@@ -9,8 +9,9 @@
 #include "DBXConfig.h"
 
 
-DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID):
-DBInterface(p_dbInterfaceID)
+DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID)
+    :DBInterface(p_dbInterfaceID),
+    m_mysql(NULL)
 {
 }
 

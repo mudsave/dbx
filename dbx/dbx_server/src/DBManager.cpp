@@ -7,6 +7,7 @@
 #include "DBFactory.h"
 
 #define DBX_DEFALT_DATABASE_ID 1   // 默认数据库id
+#define DBX_MAIN_TICK_TIME 500
 
 DBManager::DBManager():
 m_networkInterface()
@@ -18,7 +19,7 @@ bool DBManager::Initialize(int p_port)
 	TRACE0_L0( "DBManager::Initialize...\n" );
     IThreadsPool* pThreadsPool = GlobalThreadsPool();    // 对象池初始化
 
-    m_mainProcessTimer = pThreadsPool->RegTimer(this, NULL, 0, 1000, 1000, "DBX_Main_Process_Timer");
+    m_mainProcessTimer = pThreadsPool->RegTimer(this, NULL, 0, DBX_MAIN_TICK_TIME, DBX_MAIN_TICK_TIME, "DBX_Main_Process_Timer");
     if (m_mainProcessTimer == NULL)
     {
         TRACE0_ERROR("DBManager::Initialize...Register timer error.\n");
@@ -65,6 +66,17 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
+
+    // for test
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
     dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
 }

@@ -32,6 +32,10 @@ public:
     void OnIssueFinish(DBIssueBase *p_issue);
 
     void AddFreeTask(DBTask *p_task);
+
+    void OnTaskQuit(DBTask *p_task);
+
+    bool IsDestroyed();
 protected:
     int m_dbInterfaceID;
 
@@ -45,6 +49,8 @@ protected:
     Mutex m_freeBusyListMutex;
     Mutex m_bufferListMutex;
     Mutex m_finishIssueMutex;
+
+    bool m_isDestroyed;
 };
 
 
