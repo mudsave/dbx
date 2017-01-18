@@ -185,8 +185,8 @@ public:
 	int ObjectId;
 
 	int param_count;
-	vector<int> param_types;
-	vector<void *> param_values;
+	std::vector<int> param_types;
+	std::vector<void *> param_values;
 
 	ObjDoMsg()
 	{
@@ -227,7 +227,7 @@ public:
 		//read param_types
 		for (int i = 0; i < param_count; i++)
 		{
-			param_types.add(*((int *)rpos))
+			param_types.push_back(*((int *)rpos));
 			rpos += sizeof(int);
 		}
 
@@ -236,9 +236,9 @@ public:
 		{
 			int size = getTypeSize(param_types[i]);
 			void * param = malloc(size);
-			memcpy(param, wpos, size);
-			param_values.add(param);
-			wpos += size;
+			memcpy(param, rpos, size);
+			param_values.push_back(param);
+			rpos += size;
 		}
 
 		//ok
@@ -318,12 +318,12 @@ public:
 	inline void setParam(int ParamType,void* pParam )
 	{
 		param_count++;
-		param_types.add( ParamType );
+		param_types.push_back( ParamType );
 
 		int type_size = getTypeSize(ParamType);
 		void * new_param = malloc(type_size);
 		memcpy(new_param, pParam, type_size);
-		param_values.add( new_param );
+		param_values.push_back( new_param );
 	}
 
 	inline int getParamCount()
@@ -508,7 +508,7 @@ public:
 		memcpy(wpos, &m_nLevel, sizeof(m_nLevel));
 		wpos += sizeof(m_nLevel);
 
-		return m_objDoMsg.writeStream(wpos)
+		return m_objDoMsg.writeStream(wpos);
 	}
 
 	bool isValidResMsg()
@@ -583,7 +583,7 @@ public:
 			{
 				char * name; int type;
 				void * value = getAttribute(&name, &type, attrIndex, resIndex);
-				int typesize = getTypeSize(type);
+				int typesize = ObjDoMsg::getTypeSize(type);
 
 				//字符串需要加上结束符
 				if (type > 0)
@@ -686,7 +686,7 @@ public:
 		m_nResCount = *(int *)rpos;
 		rpos += sizeof(m_nResCount);
 
-		return CResultMsg::readStream(rpos)
+		return CResultMsg::readStream(rpos);
 	}
 
 	BYTE * writeStream(BYTE * stream)
@@ -701,7 +701,7 @@ public:
 		memcpy(wpos, &m_nResCount, sizeof(m_nResCount));
 		wpos += sizeof(m_nResCount);
 
-		return CResultMsg::writeStream(wpos)
+		return CResultMsg::writeStream(wpos);
 	}
 
 public:
