@@ -15,18 +15,22 @@ enum _UnitPropId
 struct GridVct;
 enum EntityType
 {
-	eLogicNone = 0,
-	eLogicPlayer,
-	eLogicNpc,
-	eLogicPet,
-	eLogicMonster,
-	eLogicFollow,
-	eLogicMineNpc,
-	eLogicMpw,
-	eLogicMagic,
-	eLogicFarmLand,
-	eLogicCrop,
-	MAX_LOGIC_TYPE
+    eLogicNone = 0,
+    eLogicPlayer,
+    eLogicNpc,
+    eLogicPet,
+    eLogicMonster,
+    eLogicFollow,
+    eLogicMineNpc,
+    eLogicMpw,
+    eLogicMagic,
+    eLogicFarmLand,
+    eLogicCrop,
+    eLogicGoodsNpc,
+    eLogicEctypeNpc,
+    eLogicPatrolNpc,
+	eLogicEctypeObject,
+    MAX_LOGIC_TYPE
 };
 
 enum EntityPropType
@@ -79,6 +83,10 @@ public:
 	void setClientLink(handle hClient);
 
 	GridVct getPosition();
+
+	void setIsFirstCast(bool bOk);
+
+	void setDirection(char direction);
 public:
 	bool enterScene(CoScene* pScene, short x, short y);
 

@@ -1,6 +1,6 @@
 --[[ItemUseFun.lua
-ÃèÊö£º
-	ÎïÆ·Ê¹ÓÃµ÷ÓÃµÄLuaº¯Êı¶¨Òå
+æè¿°ï¼š
+	ç‰©å“ä½¿ç”¨è°ƒç”¨çš„Luaå‡½æ•°å®šä¹‰
 ]]
 
 require "data.OpenTreasureChestDB"
@@ -10,7 +10,7 @@ local function SendMessage(player, groupID, msgID, params, params1)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
--- ´ò¿ªĞÂÊÖÀñ°ü
+-- æ‰“å¼€æ–°æ‰‹ç¤¼åŒ…
 function NewPlayerLoginGift(player, item)
 	local itemID = item:getItemID()
 	local tGiftItems = tLoginGiftItems[itemID]
@@ -46,9 +46,9 @@ function NewPlayerLoginGift(player, item)
 	end
 end
 
---´ò¿ª±¦Ïä
+--æ‰“å¼€å®ç®±
 
---±¦ÏäÎïÆ·È¨ÖØ´¦Àí
+--å®ç®±ç‰©å“æƒé‡å¤„ç†
 local function GetGainInfo(config)
 	local totalWeight = 0
 	for _,info in ipairs(config) do
@@ -70,14 +70,14 @@ end
 function PlayerOpenTreasureChest(player, item)
 	local itemID = item:getItemID()
 	local treasureDB = tTreasureChestItems[itemID]
-	if not treasureDB then print("¶ÁÈ¡ÅäÖÃ³ö´í") return end
+	if not treasureDB then print("è¯»å–é…ç½®å‡ºé”™") return end
 	local typeNum = 0
 	if "number" == type(treasureDB.typeNum) then
 		typeNum = treasureDB.typeNum
 	elseif "table" == type(treasureDB.typeNum) then
 		typeNum = math.random(treasureDB.typeNum[1],treasureDB.typeNum[2])
 	end
-	--´´½¨»ñµÃµÄÎïÆ·ÁĞ±í
+	--åˆ›å»ºè·å¾—çš„ç‰©å“åˆ—è¡¨
 	local treasureList = treasureDB.treasure
 	local itemList = {}
 	local indexList = {}
@@ -98,7 +98,7 @@ function PlayerOpenTreasureChest(player, item)
 		end
 	end
 
-	--±³°üÖĞ´´½¨ÎïÆ·
+	--èƒŒåŒ…ä¸­åˆ›å»ºç‰©å“
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local emptyGrids = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
 	local itemCount = 0

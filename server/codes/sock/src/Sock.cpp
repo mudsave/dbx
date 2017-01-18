@@ -35,7 +35,7 @@ struct _Module
 			else
 				ASSERT_(0);
 		}
-		
+
 		if (pLongWorkers) delete pLongWorkers;
 	}
 } g_module;
@@ -71,20 +71,20 @@ extern "C" IThreadsPool* GlobalThreadsPool(int clsid)
 		{
 			CIoPollWorker* pWorker = new CIoPollWorker();
 			pWorker->FinalConstruct();
-			g_module.pThreadsPool = pWorker; 
+			g_module.pThreadsPool = pWorker;
 			g_module.clsid = clsid;
 		}
 		else if ( clsid == CLS_THREADS_EPOLL )
 		{
 			//CIoPollWorker* pWorker = new CIoEPollWorker();
 			//pWorker->FinalConstruct();
-			//g_module.pThreadsPool = pWorker; 
+			//g_module.pThreadsPool = pWorker;
 			//g_module.clsid = clsid;
-			TRACE1_L0("--GlobalThreadsPool clsid = %d is not supported", clsid); 
+			TRACE1_L0("--GlobalThreadsPool clsid = %d is not supported", clsid);
 		}
 		else
 		{
-			TRACE1_L0("--GlobalThreadsPool error clsid:%d", clsid); 
+			TRACE1_L0("--GlobalThreadsPool error clsid:%d", clsid);
 		}
 	}
 
@@ -101,7 +101,7 @@ extern "C" void GenerateWorker(ITask* pTask, HANDLE hContext)
 
 extern "C" ILinkCtrl* CreateLinkCtrl()
 {
-	CTcpCtrl* pLinkCtrl = new CTcpCtrl(); 
+	CTcpCtrl* pLinkCtrl = new CTcpCtrl();
 	return pLinkCtrl;
 }
 
@@ -127,6 +127,7 @@ static void* signal_proc(void* arg)
 	sigaddset(&mask, SIGUSR2);
 	sigaddset(&mask, SIGQUIT);
 	sigaddset(&mask, SIGTERM);
+	sigaddset(&mask, SIGINT);
 	pthread_sigmask(SIG_SETMASK, &mask, NULL);
 
 	bool isRunning = true;
@@ -167,6 +168,13 @@ static void* signal_proc(void* arg)
 					isRunning = false;
 				}
 				break;
+			case SIGINT:
+				{
+					TRACE1_L0("--signal_proc() recv SIGINT, signo = %d\n", signo);
+					pThreads->QueueTask(&task, pThreads, TASK_LAST_TASK);
+					isRunning = false;
+				}
+				break;
 			default:
 				{
 					TRACE1_L0("--signal thread recv error signal, signo = %d\n", signo);
@@ -175,7 +183,7 @@ static void* signal_proc(void* arg)
 		}
 	}
 
-	TRACE1_L0("--signal thread is stopped, tid = %i\n", tid); 
+	TRACE1_L0("--signal thread is stopped, tid = %i\n", tid);
 
 	return NULL;
 }
@@ -183,14 +191,14 @@ static void* signal_proc(void* arg)
 /**
 static void sig_usr(int signo)
 {
-	pid_t tid = gettid(); 
+	pid_t tid = gettid();
 	TRACE2_L2("--sig_usr() recv a signal(%i) in thread %i\n", signo, tid);
 }
 */
 
 extern "C" void GenerateSignalThread()
 {
-	//signal(SIGINT, sig_usr);	
+	//signal(SIGINT, sig_usr);
 
 	sigset_t block_set;
 	sigfillset(&block_set);

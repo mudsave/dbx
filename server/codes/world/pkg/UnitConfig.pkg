@@ -7,5 +7,5 @@ class CUnitConfig
 {
 	static CUnitConfig &Instance();
 	void initPropSet(int cls);
-	int addProperty(int cls,const char *type,const char *def,int isPublic);
+	int addProperty(int cls,const char *type,const char *def,int bPub,int bSync);
 };

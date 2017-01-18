@@ -31,6 +31,9 @@ void LinkContext_Client::doLoginAccount(DBMsg_LoginResult* pRet)
 	ASSERT_(roleList);
 	accountId = roleList->accountId;
 	g_accountMgr.regAccount(accountId, hLink);
+	AccountInfo& account = g_accountMgr.getAccount(accountId);
+	account.m_accountName = accountName;
+	g_accountMgr.updateNamePasswd(accountName, passwd);
 	g_session.send_MsgSC_Login_ResultInfo(hLink, 0, roleList);
 	_SwitchState(LINK_CONTEXT_LOGINED);
 }
@@ -110,16 +113,50 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 	int msgId	= pMsg->msgId;
 	if ( state == LINK_CONTEXT_CONNECTED )
 	{
+		if ( msgId == MSG_S_C_CHECK_VERSION )
+		{
+			_MsgCS_VersionCheck* pInfo = ( _MsgCS_VersionCheck* )pMsg;
+			bool checkSuccess = true;
+			if ( pInfo->version != g_session.m_version )
+				checkSuccess = false;
+			g_session.send_MsgSC_VersionCheck_ResultInfo(hLink, checkSuccess);
+			if ( checkSuccess )
+				g_session.send_MsgSC_WorldListInfo(hLink);
+			return;
+		}
 		if ( msgId == MSG_S_C_USER_LOGIN )
 		{
 			_MsgCS_UserLoginInfo* pInfo = (_MsgCS_UserLoginInfo*)pMsg;
-			accountName = pInfo->accountName;
-			passwd = pInfo->passwd;
-			g_DBProxy.doLogin(pInfo->accountName, pInfo->passwd, hLink);
-			_SwitchState(LINK_CONTEXT_LOGINING);
+			accountName = std::string(pInfo->accountName);
+			passwd = std::string(pInfo->passwd);
+			if (g_accountMgr.hasUserName(accountName))
+			{
+				if(!g_accountMgr.verifyPasswd(accountName, passwd))
+				{
+					g_session.send_MsgSC_Login_ResultInfo(hLink, LOGIN_FAILED_PASSWD_ERROR, NULL);
+					_SwitchState(LINK_CONTEXT_CONNECTED);
+					return;
+				}
+			}
+			int accountId = g_accountMgr.isOfflineInFight(accountName);
+			if (accountId != -1)
+			{
+				AccountInfo& account = g_accountMgr.getAccount(accountId);
+				ASSERT_(account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT);
+				account.hLink = hLink;
+				account.gatewayId = g_session.getRanGatewayId(account.worldId);
+				ASSERT_(account.gatewayId != -1);
+				account._SwitchStatus(ACCOUNT_STATE_RECONNECTING_FIGHT);
+				g_session.send_MsgSC_OffFightReConnect(hLink, account);
+				_SwitchState(LINK_CONTEXT_DISCONNECTED);
+			}
+			else
+			{
+				g_DBProxy.doLogin(pInfo->accountName, pInfo->passwd, hLink);
+				_SwitchState(LINK_CONTEXT_LOGINING);
+			}
 			return;
 		}
-
 		if ( msgId == MSG_S_C_USER_CREATE )
 		{
 			_MsgCS_CreateUserInfo* pInfo = (_MsgCS_CreateUserInfo*)pMsg;
@@ -131,6 +168,18 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 			}
 			m_creatingList.insert( std::make_pair(pInfo->accountName, 1) );
 			g_DBProxy.doCreateAccount(pInfo->accountName, pInfo->passwd, hLink);
+			return;
+		}
+		if ( msgId == MSG_S_C_CHANGE_SESSION_STATE )
+		{
+			_MsgCS_StateChanged_Info* pInfo = (_MsgCS_StateChanged_Info*)pMsg;
+			accountId = pInfo->accountId;
+			if (accountId <= 0)
+				return;
+			AccountInfo& account = g_accountMgr.getAccount(accountId);
+			account.hLink = hLink;
+			g_session.send_MsgSC_ChangeSessionState_ResultInfo(hLink);
+			_SwitchState(LINK_CONTEXT_LOGINED);
 			return;
 		}
 	}
@@ -180,6 +229,22 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 		}
 	}
 
+	if ( state == LINK_CONTEXT_ROLE_CREATEING)
+	{
+		TRACE0_L2("LinkContext_Client::OnNetMsg(), state: LINK_CONTEXT_ROLE_CREATEING\n");
+		TRACE1_L2("\tmsgCls	= %i\n", msgCls);
+		TRACE1_L2("\tmsgId	= %i\n", msgId);
+		return;
+	}
+
+	if ( state == LINK_CONTEXT_ROLE_DELETEING)
+	{
+		TRACE0_L2("LinkContext_Client::OnNetMsg(), state: LINK_CONTEXT_ROLE_DELETEING\n");
+		TRACE1_L2("\tmsgCls	= %i\n", msgCls);
+		TRACE1_L2("\tmsgId	= %i\n", msgId);
+		return;
+	}
+
 	TRACE0_L2("LinkContext_Client::OnNetMsg(), the msg on the wrong state..\n");
 	TRACE1_L2("\thLink	= %i\n", hLink);
 	TRACE1_L2("\tstate	= %i\n", state);
@@ -202,7 +267,6 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 				onLoginError(LOGIN_FAILED_PASSWD_ERROR, pRet);
 				return;
 			}
-
 			bool flag = g_accountMgr.isRegistered(pRet->accountId);
 			TRACE1_L0("pRet->accountId is %d\n",pRet->accountId);
 			if ( !flag )
@@ -233,13 +297,13 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 				return;
 			}
 
-			if ( s == ACCOUNT_STATE_LOADED )
+			if ( s == ACCOUNT_STATE_LOADED && account.inFight == false )
 			{
 				doKickAccount(account, pRet);
 				return;
 			}
-
-			ASSERT_(0);
+			//to-do give some tips to client when cannot kick account!
+			//ASSERT_(0);
 			return;
 		}
 	}
@@ -293,12 +357,13 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 	TRACE1_L2("\thLink		= %i\n", hLink);
 	TRACE1_L2("\tstate		= %i\n", state);
 	TRACE1_L2("\tactionType	= %i\n", type);
-	ASSERT_(0);
+	//ASSERT_(0);
 	return;
 }
 
 HRESULT LinkContext_Client::Do(HANDLE hContext)
 {
+	hStateTimer = NULL;
 	int state = (int)(long)(hContext);
 	switch ( state )
 	{

@@ -155,16 +155,14 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						return;
 					}
 					_MsgCG_PlayerLoginInfo* pInfo = (_MsgCG_PlayerLoginInfo*)pMsg;
-					PlayerInfo* player = g_playerMgr.regPlayer(pInfo->roleId);
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( !player )
 					{
-						TRACE1_L2("regPlayer faild, roleId = %i\n", pInfo->roleId);
-						pContext->_Close(CLOSE_RELEASE);
-						return;
+						player = g_playerMgr.regPlayer(pInfo->roleId);
+						player->accountId = pInfo->accountId;
+						player->gatewayId = pInfo->gatewayId;
+						player->worldId = pInfo->worldId;
 					}
-					player->accountId = pInfo->accountId;
-					player->gatewayId = pInfo->gatewayId;
-					player->worldId = pInfo->worldId;
 					player->hLink = hLink;
 					player->_SwitchStatus(PLAYER_STATUS_VERIFYING);
 					pContext->pPlayer = player;
@@ -211,6 +209,44 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					send_MsgGW_PlayerLogoutInfo(player, LOGOUT_REASON_CLIENT_NORMAL);
 					return;
 				}
+				if ( msgId == MSG_G_C_PLAYER_LITTLEBACK )
+				{
+					if ( pContext->state != LINK_CONTEXT_RUNNING )
+					{
+						TRACE0_L2("CGateway::OnClientMsg(), MSG_G_C_PLAYER_LITTLEBACK is not the state(LINK_CONTEXT_RUNNING)\n");
+						TRACE1_L2("\thLink = %i\n", pContext->hLink);
+						TRACE1_L2("\tstate = %i\n", pContext->state);
+						TRACE1_L2("\taddr  = %s\n", pContext->addr.c_str());
+						TRACE1_L2("\tport  = %i\n", pContext->port);
+						ASSERT_(0);
+						return;
+					}
+					_MsgCG_PlayerLogoutInfo* pInfo = (_MsgCG_PlayerLogoutInfo*)pMsg;
+					PlayerInfo* player = pContext->pPlayer;
+					if ( !player )
+					{
+						TRACE0_L2("CGateway::OnClientMsg(), MSG_G_C_PLAYER_LITTLEBACK throw exception\n");
+						pContext->_Close(CLOSE_RELEASE);
+						return;
+					}
+					if ( player->roleId != pInfo->roleId )
+					{
+						TRACE0_L2("CGateway::OnClientMsg(), MSG_G_C_PLAYER_LITTLEBACK, the wrong roleId from client\n");
+						return;
+					}
+					if ( player->status != PLAYER_STATUS_LOADED )
+					{
+						TRACE0_L2("CGateway::OnClientMsg(), MSG_G_C_PLAYER_LITTLEBACK, the wrong status from player\n");
+						TRACE1_L2("\troleId = %i\t", player->roleId);
+						TRACE1_L2("\tstatus = %i\t", player->status);
+						TRACE1_L2("\tlogout = %i\t", player->logoutReason);
+						return;
+					}
+
+					TRACE1_L2("CGateway::OnClientMsg(), MSG_G_C_PLAYER_LITTLEBACK, the player[%i] normal logout\n", player->roleId);
+					send_MsgGW_PlayerLogoutInfo(player, LOGOUT_REASON_CLIENT_LITTLEBACK);
+					return;
+				}
 
 				TRACE0_L2("CGateway::OnClientMsg(), Invalid msgId for MSG_CLS_LOGIN..\n");
 				TRACE1_L2("\tmsgId = %i\n", msgId);
@@ -230,8 +266,18 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					pContext->_Close(CLOSE_RELEASE);
 					return;
 				}
+				short _worldId = pMsg->context;
 				pMsg->context = hLink;
-				IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(player->hWorldLink, pMsg);
+				if (_worldId == player->worldId)
+					IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(player->hWorldLink, pMsg);
+				else
+				{
+					LinkContext_World *_world = getWorldLinkById(_worldId);
+					if (!_world)
+						return;
+					handle _worldLink = _world->hLink;
+					IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(_worldLink, pMsg);
+				}
 			}
 			break;
 		default:
@@ -355,6 +401,8 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					}
 					send_MsgGS_UserLogoutInfo(player, pInfo->result, pInfo->reason);
 					send_MsgGC_PlayerLogout_ResultInfo(player, pInfo->result, pInfo->reason);
+					if (player->hLink)
+						getClientLink(player->hLink)->_SwitchState(LINK_CONTEXT_DISCONNECTED);
 					player->_SwitchStatus(PLAYER_STATUS_UNLOADED);
 					TRACE0_L2("CGateway::OnWorldMsg(), player logout\t");
 					TRACE1_L2("\troleId = %i\n", pInfo->roleId);
@@ -381,9 +429,10 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						if ( player.status == PLAYER_STATUS_LOADING || player.status == PLAYER_STATUS_LOADED
 							|| player.status == PLAYER_STATUS_UNLOADING)
 						{
-							send_MsgGS_UserLogoutInfo(&player, 0, LOGOUT_REASON_WORLD_KICK);
+							send_MsgGS_UserLogoutInfo(&player, 0, LOGOUT_REASON_WORLD_KICK_ALL);
 						}
-						send_MsgGC_PlayerLogout_ResultInfo(&player, 0, LOGOUT_REASON_WORLD_KICK);
+						send_MsgGC_PlayerLogout_ResultInfo(&player, 0, LOGOUT_REASON_WORLD_KICK_ALL);
+						getClientLink(player.hLink)->_SwitchState(LINK_CONTEXT_DISCONNECTED);
 						player._SwitchStatus(PLAYER_STATUS_UNLOADED);
 						TRACE1_L2("\troleId = %i is kicked out!\n", player.roleId);
 						g_playerMgr.unregPlayer(player.roleId);
@@ -447,7 +496,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					{
 						PlayerInfo& player = iter->second;
 						if ( player.status != PLAYER_STATUS_LOADED ) continue;
-						if ( player.worldId!= worldId ) continue;
+						if ( worldId != -1 && player.worldId != worldId ) continue;
 						if ( player.hLink == (handle)INVALID_HANDLE ) continue;
 						int offset = sizeof(_MsgWG_SinkWorldPeers);
 						IMsgLinksImpl<IID_IMsgLinksCG_L>::SendData( player.hLink, (BYTE*)pSinkMsg + offset, pSinkMsg->msgLen - offset );
@@ -475,6 +524,32 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				TRACE1_L2("\tmsgId = %i\n", msgId);
 			}
 			break;
+		case MSG_CLS_OFFLINE:
+			{
+				if (msgId == MSG_W_G_OFFLINE_IN_FIGHT)
+				{
+					_MsgWG_OfflineInFight* pInfo = (_MsgWG_OfflineInFight*)pMsg;
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
+					if ( !player )
+					{
+						TRACE1_L2("Gateway::OnWorldMsg(), logout timeout, roleId = %i\n", pInfo->roleId);
+						return;
+					}
+					if ( player->status != PLAYER_STATUS_UNLOADING && player->status != PLAYER_STATUS_LOADED)
+					{
+						TRACE0_L2("CGateway::OnWorldMsg(), player offline error in fight\n");
+						TRACE1_L2("\troleId = %i\n", pInfo->roleId);
+						ASSERT_(0);
+						return;
+					}
+					send_MsgGS_OfflineInFight(player->accountId, player->roleId);
+					player->_SwitchStatus(PLAYER_STATUS_UNLOADED);
+					TRACE0_L2("CGateway::OnWorldMsg(), player offline in fight\n");
+					TRACE1_L2("\troleId = %i\n", player->roleId);
+					g_playerMgr.unregPlayer(player->roleId);
+					return;
+				}
+			}
 		default:
 			{
 				TRACE0_L2("CGateway::OnWorldMsg(), Invalid Msg..\n");
@@ -484,7 +559,6 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			}
 			break;
 	}
-
 	return;
 }
 

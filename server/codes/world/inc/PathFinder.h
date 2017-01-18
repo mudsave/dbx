@@ -243,7 +243,7 @@ bool PATH_FINDER_DECLARE::FindPath(const POINT & ptStart,const POINT & ptEnd,con
 
     //////////////////////////////////////////////////////////////////////////
 	// 只启用A*
-	if ( SEARCH_OPTION_ONLY_ASTAR & nOption )
+	//if ( SEARCH_OPTION_ONLY_ASTAR & nOption )
 	{
 		FindAStar(ptStart,ptEnd,nBlockOption);
 		nPathLen = BuildPath(m_PathTemp[0],MAX_FINDPATH_LEN,true,false);

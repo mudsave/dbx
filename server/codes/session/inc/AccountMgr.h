@@ -16,16 +16,20 @@ enum _AccountState
 	ACCOUNT_STATE_LOADED,
 	ACCOUNT_STATE_KICKING,
 	ACCOUNT_STATE_OFFLINE,
+	ACCOUNT_STATE_OFFLINE_IN_FIGHT,
+	ACCOUNT_STATE_RECONNECTING_FIGHT,
 };
 
 enum _AccountStateIntervals
 {
-	eAccountLoginedInterval		= -1,
-	eAccountLoadingInterval		= 5000 * 1,
-	eAccountLoadingOneInterval	= 1000 * 1,
-	eAccountLoadedInterval		= -1,
-	eAccountKickingInterval		= 1000 * 1,
-	eAccountOfflineInterval		= -1,
+	eAccountLoginedInterval			= -1,
+	eAccountLoadingInterval			= 1000 * 60 * 4,
+	eAccountLoadingOneInterval		= 1000 * 1,
+	eAccountLoadedInterval			= -1,
+	eAccountKickingInterval			= 1000 * 60 * 1,
+	eAccountOfflineInterval			= -1,
+	eAccountOfflineInFightInterval	= -1,
+	eAccountReconnectingFightInterval = 1000 * 5,
 };
 
 struct AccountInfo : public ITask
@@ -39,6 +43,8 @@ struct AccountInfo : public ITask
 	handle			hLink;
 	handle			hPendingLink;
 	IThreadsPool*	pThreadsPool;
+	std::string		m_accountName;
+	bool			inFight;
 
 	AccountInfo();
 
@@ -78,7 +84,6 @@ public:
 		return NULL;
 	}
 
-public:
 	bool regAccount(int id, handle h)
 	{
 		std::pair< AccountMapIter, bool > retPair = m_accounts.insert( AccountMap::value_type(id, AccountInfo(id, h)) );
@@ -92,11 +97,66 @@ public:
 	bool unregAccount(int id);
 
 public:
+
+	bool hasUserName(std::string& userName)
+	{
+		PasswordMap::iterator iter = m_passwds.find(userName);
+		if(iter != m_passwds.end())
+			return true;
+		return false;
+	}
+
+	bool addUserNamePasswd(std::string& userName, std::string& passwd)
+	{
+		std::pair<PasswordMap::iterator, bool> rt = m_passwds.insert(
+			PasswordMap::value_type(userName, passwd));
+		return rt.second;
+	}
+
+	bool updateNamePasswd(std::string& userName, std::string& passwd)
+	{
+		if (hasUserName(userName))
+			m_passwds[userName] = passwd;
+		else
+			addUserNamePasswd(userName, passwd);
+		return true;
+	}
+
+	bool verifyPasswd(std::string& userName, std::string& passwd)
+	{
+		return (m_passwds[userName] == passwd);
+	}
+
+public:
+	void regOffFightAccount(int accountId)
+	{
+		m_offFightAccounts.insert(OffFightAccountMap::value_type
+			(getAccount(accountId).m_accountName, accountId));
+	}
+
+	void unregOffFightAccount(int accountId)
+	{
+		m_offFightAccounts.erase(getAccount(accountId).m_accountName);
+	}
+
+	int isOfflineInFight(std::string& userName)
+	{
+		OffFightAccountMap::iterator iter = m_offFightAccounts.find(userName);
+		if(iter != m_offFightAccounts.end())
+			return iter->second;
+		return -1;
+	}
+
+public:
 	typedef std::map<int, AccountInfo> AccountMap;
 	typedef AccountMap::iterator AccountMapIter;
+	typedef std::map<std::string, int> OffFightAccountMap;
+	typedef std::map<std::string, std::string> PasswordMap;
 
 private:
-	AccountMap		m_accounts;
+	AccountMap				m_accounts;
+	OffFightAccountMap 		m_offFightAccounts;
+	PasswordMap 			m_passwds;
 };
 
 extern AccountMgr g_accountMgr;

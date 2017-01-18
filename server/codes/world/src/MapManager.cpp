@@ -16,7 +16,7 @@ CMapManager::~CMapManager()
 	Clear();
 }
 
-CMapInfo* CMapManager::CreateMap(DWORD mapID, char* pFileName)
+CMapInfo* CMapManager::CreateMap(short mapID, char* pFileName)
 {
 	ASSERT_(pFileName);
 	if (mapID == 0 || mapID > MAX_MAP_COUNT )
@@ -35,18 +35,18 @@ CMapInfo* CMapManager::CreateMap(DWORD mapID, char* pFileName)
 		delete pMapInfo;
 		return 0;
 	}
-	m_mapMapInfos.insert( std::map<DWORD, CMapInfo*>::value_type(mapID, pMapInfo) );
+	m_mapMapInfos.insert( std::map<short, CMapInfo*>::value_type(mapID, pMapInfo) );
 	return pMapInfo;
 }
 
-bool CMapManager::IsValidMap(DWORD mapID)
+bool CMapManager::IsValidMap(short mapID)
 {
 	return GetMap(mapID) != 0;
 }
 
-CMapInfo* CMapManager::GetMap(DWORD mapID)
+CMapInfo* CMapManager::GetMap(short mapID)
 {
-	std::map<DWORD, CMapInfo*>::iterator iter = m_mapMapInfos.find(mapID);
+	std::map<short, CMapInfo*>::iterator iter = m_mapMapInfos.find(mapID);
 	if (iter != m_mapMapInfos.end())
 	 {
 		 return iter->second;
@@ -56,7 +56,7 @@ CMapInfo* CMapManager::GetMap(DWORD mapID)
 
 void CMapManager::Clear()
 {
-	std::map<DWORD, CMapInfo*>::iterator iter = m_mapMapInfos.begin();
+	std::map<short, CMapInfo*>::iterator iter = m_mapMapInfos.begin();
 	for(; iter != m_mapMapInfos.end(); ++iter )
 	{
 		delete iter->second;
@@ -67,7 +67,7 @@ void CMapManager::Clear()
 // 搜索地图路径
 bool CMapManager::findPath(short mapID, const GridVct& ptFrom, const GridVct& ptTo, int nBlockOption, POINT*& pPaths, short& nPathLen)
 {
-	if (IsValidMap(mapID))
+	if (!IsValidMap(mapID))
 	{
 		TRACE1_ERROR("CSceneMap findPath failed: the mapID(%d) is error!!!\n", mapID);
 		return false;
@@ -85,7 +85,7 @@ bool CMapManager::findPath(short mapID, const GridVct& ptFrom, const GridVct& pt
 
 	if (nPathLen == 0)
 	{
-		TRACE0_L1("SceneManager::findPath error: find move path failed!\n");
+		TRACE0_L1("CSceneMap::findPath error: find move path failed!\n");
 		return false;
 	}
 	return true;

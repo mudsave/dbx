@@ -139,14 +139,14 @@ public:
 
 	/// 有新的数据（消息）到达
 	virtual int OnRecv(int iSize, BYTE* pData /* = NULL */) = 0;
-	/**< 
+	/**<
 	@param iSize	在流模式下为接收缓冲区中当前数据总长度，消息模式下为接收缓冲区中第一个消息的长度
 	@param pData	[in]可能为 NULL，不为 NULL 时，用户可以直接从 pData 顺序读取数据（消息）
 	@return			如果用户通过 pData 获取数据，则返回已从 pData 读取的数据长度，这个值在流模式下
 					>=0且<=iSize，消息模式下要么为 iSize 要么为0（暂时不处理消息）；@n
 					如果用户通过 ILinkPort::Recv 方法来获取数据，则应该始终返回0
 	@note
-	不管 pData 是否为 NULL，用户都可以使用 ILinkPort::Recv 来获取数据，但要注意一次 
+	不管 pData 是否为 NULL，用户都可以使用 ILinkPort::Recv 来获取数据，但要注意一次
 	IPortSink::OnRecv 调用中不可同时使用两种获取数据的方法
 	*/
 };
@@ -184,7 +184,7 @@ public:
 	virtual HRESULT GetRemoteAddr(char* pAddrBuf, int len, int* pPort) = 0;
 	/**<
 	@param pAddrBuf	[out]输出远端IP地址（10进制点分式）
-	@param len		地址缓冲区长度，单位为 char 
+	@param len		地址缓冲区长度，单位为 char
 	@param pPort	[out]输出远端端口
 	@return			参数错误时返回失败
 	如果是主动发起连接，返回的地址和发起时传入的地址相同
@@ -211,9 +211,9 @@ public:
 	调用将通知对方我方要关闭连接（不再发送数据）；若没有传递特殊标志，调用者应该进入 CLOSEING 状态，
 	并等待对方回应
 	断开连接有3种方式：@n
-	@arg 协商关闭，一方（或双方）调用 ILinkPort::Close 参数传0）来通知对方，然后等待对方的 
+	@arg 协商关闭，一方（或双方）调用 ILinkPort::Close 参数传0）来通知对方，然后等待对方的
 	IPortSink::OnClose 通知；另一方在收到 IPortSink::OnClose 通知（reason 值为 S_OK ）后，若自己处在
-	CONNECTED 状态，则应该调用 ILinkPort::Close 回应，若是处在 CLOSEING 状态（说明之前也调用了 
+	CONNECTED 状态，则应该调用 ILinkPort::Close 回应，若是处在 CLOSEING 状态（说明之前也调用了
 	ILinkPort::Close ）则可直接退出
 	@arg 单方关闭，主动方调用 ILinkPort::Close （参数传 #CLOSE_UNGRACEFUL ），然后即可退出
 	@arg 异常关闭，网络异常断开时，双方都收到 IPortSink::OnClose 通知，且 reason 值为 E_FAIL
@@ -267,7 +267,7 @@ public:
 	@note
 	此方法仅取消所有监听操作和未决的连接请求，对于已建立好的连接，用户应另行逐个关闭
 	@warning
-	如果不是在工作者线程中调用此方法，应注意避免死锁，因为工作者线程是在一个临界区里调用 
+	如果不是在工作者线程中调用此方法，应注意避免死锁，因为工作者线程是在一个临界区里调用
 	ILinkSink::OnConnects 方法的，而 ILinkCtrl::CloseCtrl 方法也要进入该临界区才能操作完成
 	*/
 };

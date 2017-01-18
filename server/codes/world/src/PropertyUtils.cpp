@@ -3,16 +3,13 @@
 #include "PropertyUtils.h"
 #include "Entity.h"
 
-/*
- * local value = getPropValue(self._peer,UNIT_MODEL)
-*/
 static int getPropValue(lua_State *L){
-	if(!lua_isuserdata(L,1) ||! lua_isnumber(L,2)){
-		luaL_error(L,"[getPropValue] #1 excepted a userdata,got %s;#2 excepted a number,got %s",lua_typename(L,lua_type(L,1)),lua_typename(L,lua_type(L,2)));
-	}
 	CoEntity *pEntity = (CoEntity *)tolua_tousertype(L,1,0);
-	long propID = (long)lua_tointeger(L,2);
+	long propID = (long)luaL_checkinteger(L,2);
 
+	if(!pEntity){
+		luaL_error(L,"[getPropValue] #1 excepted a CoEntity Instance,got null");
+	}
 	if(propID < 0 || propID >= pEntity->m_propSet.count){
 		luaL_error(L,"[getPropValue] #2 out of range:%d",propID);
 	}
@@ -46,22 +43,16 @@ static int getPropValue(lua_State *L){
 	return 1;
 }
 
-/*
- * setPropValue(self._peer,UNIT_MODEL,17)
-*/
 static int setPropValue(lua_State *L){
-	if(!lua_isuserdata(L,1)){
-		luaL_error(L,"[setPropValue] #1 excepted a userdata,got %s",lua_typename(L,lua_type(L,1)));
-	}
 	CoEntity *pEntity = (CoEntity *)tolua_tousertype(L,1,0);
 	if(!pEntity){
 		luaL_error(L,"[setPropValue] #1 excepted a CoEntity Instance,got null");
 	}
-
 	long propID = (long)luaL_checkinteger(L,2);
 	if(propID < 0 || propID >= pEntity->m_propSet.count){
 		luaL_error(L,"[setPropValue] #2 out of range:%d",propID);
 	}
+
 	bool bPropChanged = true;
 	_Property *property = pEntity->m_propSet[propID];
 	switch(property->val.type){
@@ -106,18 +97,17 @@ static int setPropValue(lua_State *L){
 }
 
 static int flushPropBatch(lua_State *L){
-	if(!lua_isuserdata(L,1)){
-		luaL_error(L,"[flushPropBatch] #1 excepted a userdata,got %s",lua_typename(L,lua_type(L,1)));
-	}
 	CoEntity *pEntity = (CoEntity *)tolua_tousertype(L,1,0);
 	if(!pEntity){
 		luaL_error(L,"[flushPropBatch] #1 excepted a CoEntity instance,got null");
 	}
-	pEntity->bcPropUpdates();
-	return 0;
-}
-
-static int print_prop(lua_State *L){
+	handle hSendTo = lua_tointeger(L,2);
+	if(lua_toboolean(L,3)){
+		pEntity->bcAllProps(hSendTo);
+	}
+	else{
+		pEntity->bcPropUpdates(hSendTo);
+	}
 	return 0;
 }
 
@@ -128,7 +118,6 @@ int lua_PropertySet_open(lua_State *L){
 	tolua_function(L,"getPropValue",getPropValue);
 	tolua_function(L,"setPropValue",setPropValue);
 	tolua_function(L,"flushPropBatch",flushPropBatch);
-	tolua_function(L,"print_prop",print_prop);
 	tolua_endmodule(L);
 	return 1;
 }

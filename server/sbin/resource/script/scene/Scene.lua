@@ -50,7 +50,7 @@ function Scene:attachEntity(entity, posX, PosY)
 	local curScene = entity:getScene()
 	if curScene then
 		if (curScene == self) then
-			peer:move(0, posX, PosY)
+			peer:stopMove(posX, PosY)
 			return
 		else
 			curScene:detachEntity(entity)
@@ -59,6 +59,8 @@ function Scene:attachEntity(entity, posX, PosY)
 	entity:setScene(self)
 	self.entityList[entity:getID()] = entity
 	if posX and PosY and peer then 
+		local posInfo = entity:getPos()
+		posInfo[1] = self:getMapID()
 		return peer:enterScene(self._peer, posX, PosY)
 	end
 end
@@ -107,4 +109,36 @@ function Scene:loadScopeMines(mineInfos)
 		self:attachEntity(mineNpc, mineInfo.centerTile[1], mineInfo.centerTile[2])
 		--mineNpc:beginScopeMove()
 	end
+end
+
+function Scene:loadSingleMine(mineInfo)
+	local mineNpc = g_entityFct:createMineNpc(mineInfo.npcID)
+	mineNpc:setConfig(mineInfo)
+	mineNpc:setScriptID(mineInfo.scriptID)		
+	mineNpc:setMovePath(mineInfo.tiles)
+	mineNpc:setNpcType(MineNpcType.ConfigPath)
+	mineNpc:setUpdatePeriod(mineInfo.updateTime)
+	self:attachEntity(mineNpc, mineInfo.tiles[1][1], mineInfo.tiles[1][2])
+	mineNpc:beginMove()
+end
+
+function Scene:loadSingleScopeMine(mineInfo)
+	local mineNpc = g_entityFct:createMineNpc(mineInfo.npcID)
+	mineNpc:setConfig(mineInfo)
+	mineNpc:setScriptID(mineInfo.scriptID)
+	mineNpc:setCenterTile(mineInfo.centerTile)
+	mineNpc:setRadius(mineInfo.radius)
+	mineNpc:setNpcType(MineNpcType.RandPath)
+	mineNpc:setUpdatePeriod(mineInfo.updateTime)
+	self:attachEntity(mineNpc, mineInfo.centerTile[1], mineInfo.centerTile[1])
+	mineNpc:beginScopeMove()
+end
+
+-- 宝藏npc
+function Scene:loadTreasureNpc(npcInfo)
+	-- 创建一个npc
+	local treasureNpc = g_entityFct:createNpc(npcInfo.npcDBID, true)
+	-- 关联到场景中
+	self:attachEntity(treasureNpc,npcInfo.posX,npcInfo.posY)
+	return treasureNpc
 end

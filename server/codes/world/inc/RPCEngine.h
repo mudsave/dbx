@@ -25,7 +25,7 @@ public:
 
 private:
     static int toluaRPCOpen(lua_State* pState);
-    static AppMsg* genRPC(lua_State *L);
+    static AppMsg* genRPC(lua_State *L, int offset);
     static void parseRPC(lua_State *L, ByteBuffer& buffer, int index);
     static bool pushluafunction(lua_State* pLuaState, const char* szFunName);
     static void savemap(lua_State *L, ByteBuffer &buffer, int idx);
@@ -34,6 +34,7 @@ private:
 private:
     static int _rpc_ref;
     static int _wrpc_ref;
+    static int _debug_ref;
     static ByteBuffer _s_buffer;
     static lua_State* m_pLuaState;
 };

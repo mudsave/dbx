@@ -1,21 +1,21 @@
 --[[Shelf.lua
-ÃèÊö:
-	Íæ¼Ò»Ø¹º»õ¼ÜÀ¸
+æè¿°:
+	ç©å®¶å›è´­è´§æ¶æ 
 ]]
 
 Shelf = class()
 
 function Shelf:__init(owner)
-	-- ÓµÓĞÕß
+	-- æ‹¥æœ‰è€…
 	self.owner = owner;
-	-- ËùÓĞ°ü¹ü
+	-- æ‰€æœ‰åŒ…è£¹
 	self.packs = {}
 
-	-- Ä¬ÈÏ°ü¹ü
+	-- é»˜è®¤åŒ…è£¹
 	local defaultPack = Pack()
-	--°ü¹üÉèÖÃÄ¬ÈÏÈİÁ¿Îª12
+	--åŒ…è£¹è®¾ç½®é»˜è®¤å®¹é‡ä¸º12
 	defaultPack:setCapability(ShelfMaxCapacity)
-	--Õâ¸ö°ü¹üºÍNpc»Ø¹º»õ¼Ü°ó¶¨4
+	--è¿™ä¸ªåŒ…è£¹å’ŒNpcå›è´­è´§æ¶ç»‘å®š4
 	defaultPack:setPackContainerID(PackContainerID.Shelf)
 	self:addPack(ShelfPackIndex.Default, defaultPack)
 end
@@ -25,21 +25,21 @@ function Shelf:__release()
 	self.packs[ShelfPackIndex.Default] = nil
 end
 
--- »ñµÃÈİÆ÷ID
+-- è·å¾—å®¹å™¨ID
 function Shelf:getContainerID()
 	return PackContainerID.Shelf
 end
 
--- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 function Shelf:updateItemToClient()
 	self.packs[ShelfPackIndex.Default]:updateClient()
 end
 
--- Ìí¼Ó°ü¹ü
+-- æ·»åŠ åŒ…è£¹
 function Shelf:addPack(packIndex, pack)
 	if instanceof(pack, Pack) then
 		if self.packs[packIndex] then
-			-- ÒÑ¾­´æÔÚ
+			-- å·²ç»å­˜åœ¨
 			return false
 		else
 			pack:setOwner(self.owner)
@@ -51,16 +51,16 @@ function Shelf:addPack(packIndex, pack)
 	return false
 end
 
--- »ñµÃ°ü¹ü
+-- è·å¾—åŒ…è£¹
 function Shelf:getPack()
-	-- ²Ö¿â¾ÍÒ»¸ö°ü¹ü
+	-- ä»“åº“å°±ä¸€ä¸ªåŒ…è£¹
 	return self.packs[ShelfPackIndex.Default]
 end
 
--- »ñµÃÖ¸¶¨Î»ÖÃµÄµÀ¾ß
+-- è·å¾—æŒ‡å®šä½ç½®çš„é“å…·
 function Shelf:getItems(packIndex, gridIndex)
 	if packIndex ~= ShelfPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return -1, nil
 	end
 
@@ -70,50 +70,50 @@ function Shelf:getItems(packIndex, gridIndex)
 		end
 	end
 
-	-- Âß¼­´íÎó
+	-- é€»è¾‘é”™è¯¯
 	return -1, nil
 end
 
--- É¾³ıµÀ¾ß
+-- åˆ é™¤é“å…·
 function Shelf:removeItem(itemGuid, removeNum, bUpdateClient)
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return RemoveItemsResult.SrcInvalid
 	end
 
 	local result = self.packs[ShelfPackIndex.Default]:removeItem(item, removeNum, bUpdateClient)
 	if result == RemoveItemsResult.SucceedClean then
-		-- Ïú»ÙÔ´µÀ¾ß£¬²»¿ÉÓÃÁË
+		-- é”€æ¯æºé“å…·ï¼Œä¸å¯ç”¨äº†
 		g_itemMgr:destroyItem(itemGuid)
 	end
 end
 
--- Ôö¼ÓµÀ¾ßÖ¸¶¨µÄÊıÁ¿µ½Ö¸¶¨°ü¹ü
+-- å¢åŠ é“å…·æŒ‡å®šçš„æ•°é‡åˆ°æŒ‡å®šåŒ…è£¹
 function Shelf:addNumberItemsToPack(srcItem, dstPackIndex, itemNum)
 	if dstPackIndex ~= ShelfPackIndex.Default then
-		-- Âß¼­´íÎó
-		print("Ö´ĞĞµ½´íÎó")
+		-- é€»è¾‘é”™è¯¯
+		print("æ‰§è¡Œåˆ°é”™è¯¯")
 		return false
 	end
 	return self.packs[dstPackIndex]:addItemsToShelf(srcItem, itemNum, true)
 end
 
--- ´ÓÖ¸¶¨ÎïÆ·¸ñÒÆ³ıµÀ¾ß£¬²¢²»Ïú»ÙµÀ¾ß
+-- ä»æŒ‡å®šç‰©å“æ ¼ç§»é™¤é“å…·ï¼Œå¹¶ä¸é”€æ¯é“å…·
 function Shelf:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient)
 	if packIndex ~= ShelfPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	return self.packs[packIndex]:removeItemsFromGrid(gridIndex, bUpdateClient)
 end
 
 
--- ÖØĞÂÉèÖÃÒ»ÏÂË³Ğò
+-- é‡æ–°è®¾ç½®ä¸€ä¸‹é¡ºåº
 function Shelf:upGridItem(packIndex, bUpdateClient)
-	-- ÕûÀíÄ¬ÈÏ°ü¹ü
+	-- æ•´ç†é»˜è®¤åŒ…è£¹
 	if packIndex ~= ShelfPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	return self.packs[packIndex]:packUpdate(bUpdateClient)

@@ -1,6 +1,6 @@
 --[[ItemFactory.lua
-ÃèÊö:
-	µÀ¾ß¹¤³§
+æè¿°:
+	é“å…·å·¥å‚
 ]]
 
 ItemFactory = class(nil, Singleton)
@@ -10,7 +10,7 @@ end
 
 function ItemFactory:createEquipment(itemId, itemNum)
 	if not tEquipmentDB[itemId] then
-		-- ÕÒ²»µ½×°±¸¶¨Òå
+		-- æ‰¾ä¸åˆ°è£…å¤‡å®šä¹‰
 		return nil
 	end
 
@@ -22,7 +22,7 @@ end
 
 function ItemFactory:createWarrant(itemId, itemNum)
 	if not tWarrantDB[itemId] then
-		-- ÕÒ²»µ½Æ¾Ö¤¶¨Òå
+		-- æ‰¾ä¸åˆ°å‡­è¯å®šä¹‰
 		return nil
 	end
 
@@ -34,7 +34,7 @@ end
 
 function ItemFactory:createMedicament(itemId, itemNum)
 	if not tMedicamentDB[itemId] then
-		-- ÕÒ²»µ½Ò©Æ·¶¨Òå
+		-- æ‰¾ä¸åˆ°è¯å“å®šä¹‰
 		return nil
 	end
 

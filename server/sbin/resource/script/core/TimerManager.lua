@@ -64,6 +64,7 @@ function TimerManager:regTimer(timer, elapse, period, debugInfo)
 		local rt = ScriptTimer.RegTimer(timerID, elapse, period)
 		if rt == -1 then
 			print ("[ScriptTimer]["..timerID.."] reg failed!");
+			return INVALID_TIMER_ID
 		end
 		self.regTimers[timerID] = timer
 		self.timerDebugInfo[timerID] = debugInfo
@@ -82,6 +83,14 @@ function TimerManager:unRegTimer(timerID)
 		return true
 	end
 	return false
+end
+
+function TimerManager.getDebugInfo(timerID)
+	if g_timerMgr.timerDebugInfo[timerID] then
+		return g_timerMgr.timerDebugInfo[timerID]
+	else
+		return "timer not exists!"
+	end
 end
 
 function TimerManager.getInstance()

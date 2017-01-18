@@ -46,7 +46,7 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 	_PropPosData* pPos = (_PropPosData*)buf;
 	short len = 0;
 	POINT *pPath = NULL;
-	GridVct moveTo(*pDest); 
+	GridVct moveTo(*pDest);
 	if (!g_MapManager.findPath(m_sceneInfo.mapId, m_position, moveTo, flags, pPath, len))
 	{
 		TRACE0_ERROR("Entity move failed: then entity not find path!!!\n");
@@ -87,7 +87,7 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 void CoEntity::moveByPath(lua_State* pState, _PropPosData* pPropPosData)
 {
 	int t_idx = lua_gettop(pState);
-	static BYTE* p = new BYTE[(MAX_PATH_LEN * 4) * sizeof(GridVct) + sizeof(_PropPosData)];
+	static BYTE* p = new BYTE[(MAX_PATH_LEN * 8) * sizeof(GridVct) + sizeof(_PropPosData)];
 	_PropPosData* pPosData = (_PropPosData*)p;
 	int len = sizeof(_PropPosData) - sizeof(GridVct);
 	::memcpy(pPosData, pPropPosData, len);
@@ -101,15 +101,14 @@ void CoEntity::moveByPath(lua_State* pState, _PropPosData* pPropPosData)
 			if (lock)
 			{
 				pPosData->path[index].x = (short) lua_tonumber(pState, -1);
-				lock = false;		
-
+				lock = false;
 			}
 			else
 			{
-				pPosData->path[index].y = (short) lua_tonumber(pState, -1);	
+				pPosData->path[index].y = (short) lua_tonumber(pState, -1);
 				lock = true;
-				index ++;
-			}		
+				++index;
+			}
 			lua_pop(pState, 1);
 		}
 	}
@@ -129,13 +128,13 @@ void CoEntity::moveByPath(_PropPosData* pPosData)
 		}
 		return;
 	}
-	
+
 	if (pPosData->len < 1)
 	{
 		TRACE2_WARNING("[CoEntity:MoveByPath] WARNING: entity(%d) move path too less, len < %i\n", m_hand, pPosData->len);
 		return;
 	}
-			
+
 	if (pPosData->len > MAX_PATH_LEN)
 	{
 		TRACE2_WARNING("[CoEntity:MoveByPath] WARNING: entity(%d) move path too long, len=%i\n", m_hand, pPosData->len);
@@ -204,6 +203,13 @@ void CoEntity::onMove()
 			if (bTileChanged)
 			{
 				setPosition(pPosData->path[pPosData->idx]);
+				if (getPropType() == eClsTypePlayer){
+					static LuaFunctor<TypeNull, int> tileChange(g_world.getLuaState(), "ManagedApp.onTileChange");
+					if ( !tileChange( TypeNull::nil(), getHandle() ) )
+					{
+						TRACE2_L1("[CoEntity::onMove] failed ! playerID: %d. because of:%s\n", getHandle(), tileChange.getLastError());
+					}
+				}
 			}
 			while(m_clipping >= m_stepTime)
 			{
@@ -225,38 +231,37 @@ void CoEntity::onMove()
 void CoEntity::moveFollowEntity(lua_State* pState, short offset, _PropPosData* pPropPosData)
 {
 	MovePath path;
-	path.clear(); 
+	path.clear();
 
 	// 倒数第一个参数，路径数组
 	int t_idx = lua_gettop(pState);
-	if(lua_istable(pState, t_idx))
+	handle petID = lua_tointeger(pState, t_idx);
+
+	if(lua_istable(pState, t_idx - 1))
 	{
 		lua_pushnil(pState);
-		while (lua_next(pState, t_idx))
+		while (lua_next(pState, t_idx - 1))
 		{
 			path.push_back((short) lua_tointeger(pState, -1));
 			lua_pop(pState, 1);
 		}
 		lua_pop(pState,1);
 	}
-	
+
 	vector<handle> vecEntityList;
 	vecEntityList.clear();
 	//倒数第二个参数，跟随者数组
-	if(lua_istable(pState, t_idx - 1))
+	if(lua_istable(pState, t_idx - 2))
 	{
 		lua_pushnil(pState);
-		while (lua_next(pState, t_idx - 1))
+		while (lua_next(pState, t_idx - 2))
 		{
-			lua_pushnil(pState);
-			while (lua_next(pState, t_idx - 1))
-			{
-				vecEntityList.push_back((handle) lua_tointeger(pState, -1));
-				lua_pop(pState, 1);
-			}
+			vecEntityList.push_back((handle) lua_tointeger(pState, -1));
 			lua_pop(pState, 1);
 		}
+		lua_pop(pState, 1);
 	}
+
 	static BYTE* p = new BYTE[(MAX_PATH_LEN * 4) * sizeof(GridVct) + sizeof(_PropPosData)];
 	_PropPosData* pPosData = (_PropPosData*)p;
 	int len = sizeof(_PropPosData) - sizeof(GridVct);
@@ -269,7 +274,14 @@ void CoEntity::moveFollowEntity(lua_State* pState, short offset, _PropPosData* p
 	{
 		short moveDelay = 0;
 		CoEntity* pFollow = _EntityFromHandle(vecEntityList[i]);
+		//modify the pet pos with player
+		if (petID == vecEntityList[i])
+		{
+			++offset;
+		}
+		//printf("move follow ................offset:%d\n", offset);
 		pFollow->calcMovePath(offset, path, moveDelay, bFilled);
+		//printf("move follow end.............\n");
 		// 只有队长才显示坐骑
 		offset = (offset > 1) ?  1 : offset;
 		if (path.size() >= 2)
@@ -277,8 +289,8 @@ void CoEntity::moveFollowEntity(lua_State* pState, short offset, _PropPosData* p
 			// 计算路径长度
 			pPosData->len = (int)(path.size() / 2);
 			pPosData->delay = (moveDelay < 0) ? 0 : (followedDelay + moveDelay);
-			
-			// 实体移动				
+
+			// 实体移动
 			pFollow->fillMovePath(path, pPosData);
 			followedDelay += pPosData->delay;
 		}
@@ -331,7 +343,7 @@ void CoEntity::stopMove(short x, short y )
 
 short CoEntity::correctMovePath(short x, short y)
 {
-	short realIdx = -1;
+	int realIdx = -1;
 	GridVct curPos(x, y);
 	GridVct realPos = curPos;
 	_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
@@ -356,7 +368,7 @@ short CoEntity::correctMovePath(short x, short y)
 			{
 				for(int i = curIdx - 1; i >= 0; i--)
 				{
-					if ( pPosData->path[i] == curPos ) 
+					if ( pPosData->path[i] == curPos )
 					{
 						realIdx = (difIdx == 0) ? i : ((difIdx > curIdx - i) ? i : realIdx);
 						break;
@@ -397,7 +409,7 @@ short CoEntity::correctFollowMovePath( short refIdx, short refPathLen )
 			if (refIdx == 0)
 			{
 				realIdx = 0;
-			}	
+			}
 			else if (refIdx < delay + 1)
 			{
 				m_bDelayEnable = pPosData->delay > 0;
@@ -406,7 +418,7 @@ short CoEntity::correctFollowMovePath( short refIdx, short refPathLen )
 			else
 			{
 				realIdx = refIdx - delay;
-			}	
+			}
 			realIdx = (realIdx < 0) ? 0 : realIdx;
 			realIdx = (realIdx >= pPosData->len) ? (pPosData->len - 1) : realIdx;
 			pPosData->idx = realIdx;
@@ -418,43 +430,73 @@ short CoEntity::correctFollowMovePath( short refIdx, short refPathLen )
 
 void CoEntity::calcMovePath( short offset, MovePath& path, short& moveDelay, bool bFilled )
 {
-	short nPos = 0;
 	size_t oldPathLen = path.size();
+
 	GridVct curPos = getPathByCurIndex(0);
 	GridVct nextPos = getPathByCurIndex(1);
 	GridVct pos = (m_Move && !m_bDelayEnable) ? nextPos : curPos;
-	for (size_t idx = 0; idx < path.size(); idx += 2)
+	//printf("clac move end........%d pos:%d,%d\n",path.size() pos.x, pos.y);
+	//清楚掉和当前位置小于offset的点
+	//不需要移动
+	int nExist = 0;
+	for (size_t idx = 0; idx < path.size(); idx = idx + 2)
 	{
 		short x = path[idx];
-		short y = path[idx];
+		short y = path[idx + 1];
 		short dx = ::abs(pos.x - x);
 		short dy = ::abs(pos.y - y);
-		if (dx > offset || dy > offset)
+		//printf("calc move........%d,%d   dx:%d dy:%d\n", x, y, dx, dy);
+		if (dx == 0 && dy == 0)
 		{
-			nPos = (idx >= 2) ? (idx - 2) : 0;
+			nExist = idx;
 			break;
 		}
 	}
-	path.erase(path.begin(), path.begin() + nPos);
-	if (path.size() >= 2 && ((pos.x != path[0]) || (pos.y != path[1])) )
+	/*
+	for (int idx = 0; idx < path.size(); idx = idx + 2)
 	{
-		path.push_front(pos.y);
-		path.push_front(pos.x);
-		// 防止出现不连续路径
-		fillMovePathByDistance(path, bFilled);
+		short x = path[idx];
+        short y = path[idx + 1];
+		printf("calc move....print1....%d,%d  \n", x, y);
 	}
-	if (m_Move && !m_bDelayEnable && curPos != nextPos)
+	*/
+	//printf("the pos is in path idx is:%d\n", nExist);
+	if (nExist > 0)
 	{
-		path.push_front(curPos.y);
-		path.push_front(curPos.x);
+		path.erase(path.begin(), path.begin() + nExist);
 	}
+	else
+	{
+		 if (path.size() >= 2 && ((pos.x != path[0]) || (pos.y != path[1])) )
+		 {
+			 path.push_front(pos.y);
+			 path.push_front(pos.x);
+			 //printf("not entert..........\n");
+			 // 防止出现不连续路径
+			 fillMovePathByDistance(path, bFilled);
+		 }
+		 if (m_Move && !m_bDelayEnable && curPos != nextPos)
+		 {
+			 path.push_front(curPos.y);
+			 path.push_front(curPos.x);
+		}
+	}
+	/*
+	for (int idx = 0; idx < path.size(); idx = idx + 2)
+    {   
+		 short x = path[idx];
+		 short y = path[idx + 1];
+		 printf("calc move....print2....%d,%d  \n", x, y);
+	}
+	*/
 	while (path.size() >= 2 && offset > 0)
-	{
+    {   
 		// 删掉末尾路径点
 		path.pop_back();
 		path.pop_back();
-		offset--;
+		--offset;
 	}
+
 	// 计算延迟
 	moveDelay = (oldPathLen - path.size()) / 2;
 }
@@ -465,40 +507,43 @@ void CoEntity::fillMovePath( MovePath &path, _PropPosData* pPosData )
 	{
 		pPosData->path[i].x = path[i*2];
 		pPosData->path[i].y = path[i*2+1];
+		//printf("fill move path.......:%d, %d \n", path[i*2], path[i*2+1]);
 	}
 	moveByPath(pPosData);
 }
 
-void CoEntity::fillMovePathByDistance( MovePath& path, bool bFilled )
+void CoEntity::fillMovePathByDistance( MovePath& path, bool bFilled)
 {
 	if (path.size() >= 4)
 	{
-		// 路径前两路径点相差2~4TILE内, 采用寻路算法来计算两路径点间的路径
+		// 路径前两路径点相差3~4TILE内, 采用寻路算法来计算两路径点间的路径
 		bool bDiscard = false;
 		short dx = ::abs(path[2] - path[0]);
 		short dy = ::abs(path[3] - path[1]);
+		//printf("distance...........%d,%d\n", dx, dy);
 		if ( bFilled || ( (!bFilled && (dx >= 2 && dx <= 4)) || (dy >= 2 && dy <= 4) ) )
 		{
 			POINT* pPath = 0;
 			short nPathLen = 0;
 			int nBlockOption = BLOCK_OPTION_GROUND | BLOCK_OPTION_FLY;
 			GridVct pos1(path[0], path[1]);
-			GridVct pos2(path[2], path[2]);
+			GridVct pos2(path[2], path[3]);
+			//printf("fill move path by distance.....pos1:%d,%d pos2:%d,%d\n", pos1.x, pos1.y, pos2.x, pos2.y);
 			if (g_MapManager.findPath(m_sceneInfo.mapId, pos1, pos2, nBlockOption, pPath, nPathLen))
 			{
 				path.pop_front();
 				path.pop_front();
-				// 插入新路径点
-			for (int i = nPathLen - 2; (nPathLen >= 3 && i >= 0); i--)
-			{
-				path.push_front(pPath[i].y);
-				path.push_front(pPath[i].x);
+					// 插入新路径点
+				for (int i = nPathLen - 2; (nPathLen >= 3 && i >= 0); i--)
+				{
+					path.push_front(pPath[i].y);
+					path.push_front(pPath[i].x);
+				}
 			}
-		}
-		else
-		{
-			bDiscard = true;
-		}
+			else
+			{
+				bDiscard = true;
+			}
 		}
 		else if ( dx > 4 || dy > 4 )
 		{

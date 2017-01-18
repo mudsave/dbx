@@ -13,11 +13,11 @@ class CMapManager
 
 		~CMapManager();
 
-		CMapInfo* CreateMap(DWORD mapID, char* pFileName);
+		CMapInfo* CreateMap(short mapID, char* pFileName);
 
-		bool IsValidMap(DWORD mapID);
+		bool IsValidMap(short mapID);
 
-		CMapInfo* GetMap(DWORD mapID);
+		CMapInfo* GetMap(short mapID);
 
 		bool findPath(short mapID, const GridVct& ptFrom, const GridVct& ptTo, int nBlockOption, POINT*& pPaths, short& nPathLen);
 		
@@ -25,7 +25,7 @@ class CMapManager
 
 	private:
     	PathFinder<CMapInfo> m_pathFinder;
-		std::map<DWORD, CMapInfo*> m_mapMapInfos;
+		std::map<short, CMapInfo*> m_mapMapInfos;
 };
 
 extern CMapManager g_MapManager;

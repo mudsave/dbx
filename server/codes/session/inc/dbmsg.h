@@ -6,9 +6,10 @@
 #ifndef _DB_DEF_H
 #define _DB_DEF_H
 
-#define MaxRoleInfosMsgSize 300
+#define MaxRoleInfosMsgSize 4096
 #define MaxShowPartSize 8
 #define MaxNameSize 64
+#define MaxRoleSize 6
 
 enum _DBMsgType
 {
@@ -29,10 +30,11 @@ struct DBRoleInfo
 	int roleId;
 	int modelId;
 	short school;
-	short sex;
+	int weaponID;
 	char showPart[MaxShowPartSize];
 	short level;
 	char name[MaxNameSize];
+	char remouldAttr[MaxNameSize];
 };
 
 struct DBMsg_LoginResult : public _DBMsg
@@ -44,16 +46,15 @@ struct DBMsg_LoginResult : public _DBMsg
 
 	static DBMsg_LoginResult* CreateLoginResult()
 	{
-		char* buff = new char[MaxRoleInfosMsgSize];
-		memset(buff,0,MaxRoleInfosMsgSize);
-		DBMsg_LoginResult* pRet = (DBMsg_LoginResult*)buff;
+		DBMsg_LoginResult* pRet = new DBMsg_LoginResult;
+		memset(pRet->role,0, sizeof(DBRoleInfo) * MaxRoleSize);
 		return pRet;
 	}
 public:
 	int accountId;
 	short ret;
 	short roleNum;
-	DBRoleInfo role[];
+	DBRoleInfo role[MaxRoleSize];
 };
 
 struct DBMsg_CreateAccountResult : public _DBMsg

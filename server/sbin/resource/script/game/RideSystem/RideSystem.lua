@@ -1,6 +1,6 @@
 --[[RideSystem.lua
-閹诲繗鍫敍锟�
-	閸ф劙鐛炵化鑽ょ埠
+描述：
+	坐骑系统
 --]]
 
 require "game.RideSystem.Ride"
@@ -10,39 +10,31 @@ RideSystem = class(EventSetDoer, Singleton)
 
 function RideSystem:__init()
 	self._doer = {
-		[RideEvent_CS_UpRide]			= RideSystem.upRide,
-		[RideEvent_CS_DownRide]			= RideSystem.downRide,
+		[RideEvent_CS_UpOrDownRide]		= RideSystem.UpOrDownRide,
 		[RideEvent_CS_ExpandRideBar]	= RideSystem.expandRideBar,
 		[RideEvent_CS_GrowUp]			= RideSystem.rideGrowUp,
 		[RideEvent_CS_RideToItem]		= RideSystem.rideToItem,
 	}
 end
 
---娑撳﹤娼楁锟�
-function RideSystem:upRide(event)
+--上下坐骑
+function RideSystem:UpOrDownRide(event)
 	local params = event:getParams()
 	local playerID = params[1]
 	local guid = params[2]
 	local player = g_entityMgr:getPlayerByID(playerID)
-	g_rideMgr:upRide(player,guid)
+	g_rideMgr:UpOrDownRide(player,guid)
 end
 
---娑撳娼楁锟�
-function RideSystem:downRide(event)
-	local params = event:getParams()
-	local playerID = params[1]
-	local player = g_entityMgr:getPlayerByID(playerID)
-	g_rideMgr:downRide(player)
-end
 
---閹碘晛鍘栭崸鎰扮崬閺嶏拷
+--扩充坐骑栏
 function RideSystem:expandRideBar(event)
 	local params = event:getParams()
 	local playerID = params[1]
 	g_rideMgr:expandRideBar(playerID)
 end
 
---閸ф劙鐛炴潻娑㈡▉
+--坐骑进阶
 function RideSystem:rideGrowUp(event)
 	local params = event:getParams()
 	local playerID = params[1]
@@ -55,7 +47,7 @@ function RideSystem:rideGrowUp(event)
 	g_rideMgr:rideGrowUp(player,guid,sGuidlist)
 end
 
---閸ф劙鐛為崶鐐殿儣
+--坐骑回笼
 function RideSystem:rideToItem(event)
 	local params = event:getParams()
 	local playerID = params[1]

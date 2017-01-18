@@ -47,7 +47,7 @@ CMapInfo::~CMapInfo(void)
 	m_pInfoBuf = 0;
 }
 
-bool CMapInfo::Init(DWORD mapId, char* pFileName)
+bool CMapInfo::Init(short mapId, char* pFileName)
 {
 	if(m_mapId > 0)
 	{
@@ -110,7 +110,7 @@ bool CMapInfo::Init(DWORD mapId, char* pFileName)
 
 	int nCols = m_sceneCo.getAbstractW(nWidth);
 	int nRows = m_sceneCo.getAbstractH(nHeight);
-	//Kirk: very important
+
 	InitBlockInfo(nRows, nCols * 2);
 	
 	int nTileRow = GRID_HEIGHT / TILE_HEIGHT;

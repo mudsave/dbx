@@ -1,14 +1,14 @@
 --[[ItemEffect.lua
-ÃèÊö:
-	ÎïÆ·Ğ§¹û
+æè¿°:
+	ç‰©å“æ•ˆæœ
 ]]
 
 ItemEffect = {}
 
--- ÒÆ³ı±êÖ¾
+-- ç§»é™¤æ ‡å¿—
 --local removeFlag = true
 
--- Ôö¼ÓBuff
+-- å¢åŠ Buff
 function ItemEffect.addBuff(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local buffID = medicamentConfig.ReactExtraParam1
@@ -17,37 +17,37 @@ function ItemEffect.addBuff(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ÒÆ³ıbuff
+-- ç§»é™¤buff
 function ItemEffect.cancelBuff(targetEntity, medicament, medicamentConfig)
-	--[[local removeFlag = true
+	local removeFlag = true
 	local buffID = medicamentConfig.ReactExtraParam1
 	local buffHandler = targetEntity:getHandler(HandlerDef_Buff)
-	-- ÅĞ¶ÏÊÇ·ñÒÑ¾­ÓĞbuff
+	-- åˆ¤æ–­æ˜¯å¦å·²ç»æœ‰buff
 	if nil == buffHandler:findBuffByID(buffID) then
 		removeFlag = false
 		return removeFlag
 	end
 	buffHandler:cancelBuff(buffID)
 	removeFlag = true
-	return removeFlag]]
+	return removeFlag
 end
 
--- Ö´ĞĞLuaº¯Êı
+-- æ‰§è¡ŒLuaå‡½æ•°
 function ItemEffect.exeLuaFun(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local targetFunction = _G[medicamentConfig.ReactExtraParam1]
 	if type(targetFunction) == 'function' then
 		targetFunction(targetEntity, medicament)
 	end
-	-- ÊÇ·ñÉ¾³ıµÀ¾ßÔÚLuaº¯ÊıÀï¿ØÖÆ
+	-- æ˜¯å¦åˆ é™¤é“å…·åœ¨Luaå‡½æ•°é‡Œæ§åˆ¶
 	removeFlag = false
 	return removeFlag
 end
 
--- ¸Ä±äÉúÃü ¼´ÄÜ¸Ä±ä
+-- æ”¹å˜ç”Ÿå‘½ å³èƒ½æ”¹å˜
 function ItemEffect.changeHp(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
-	-- Èç¹ûÓĞ×÷ÓÃÄ¿±êµÄ»°
+	-- å¦‚æœæœ‰ä½œç”¨ç›®æ ‡çš„è¯
 	local curEntity
 	if targetEntityID then
 		local pet = g_entityMgr:getPet(targetEntityID)
@@ -60,16 +60,16 @@ function ItemEffect.changeHp(targetEntity, medicament, medicamentConfig, targetE
 	else
 		curEntity = targetEntity
 	end
-	local maxHp = curEntity:getMaxHp()
-	local curHp = curEntity:getHp()
+	local maxHp = curEntity:getMaxHP()
+	local curHp = curEntity:getHP()
 	local changeHp = medicamentConfig.ReactExtraParam1
 
-	-- ÅĞ¶ÏÊÇ·ñÒÑ¾­ÊÇ×î´óÖµ
+	-- åˆ¤æ–­æ˜¯å¦å·²ç»æ˜¯æœ€å¤§å€¼
 	if curHp == maxHp then
 		removeFlag = false
 		return removeFlag, 7	
 	end
-	-- ¿ÉÒÔ¸Ä±äÖµ
+	-- å¯ä»¥æ”¹å˜å€¼
 	curHp = curHp + changeHp
 	if curHp > maxHp then
 		curHp = maxHp
@@ -77,15 +77,15 @@ function ItemEffect.changeHp(targetEntity, medicament, medicamentConfig, targetE
 	if curHp < 0 then
 		curHp = 0
 	end
-	curEntity:setHp(curHp)
+	curEntity:setHP(curHp)
 	if curEntity:getEntityType() == eClsTypePet then
-		curEntity:flushPropsBatch()
+		curEntity:flushPropBatch()
 	end
 	removeFlag = true
 	return removeFlag
 end
 
--- ¸Ä±ä·¨Á¦
+-- æ”¹å˜æ³•åŠ›
 function ItemEffect.changeMp(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
 	local curEntity
@@ -100,8 +100,8 @@ function ItemEffect.changeMp(targetEntity, medicament, medicamentConfig, targetE
 	else
 		curEntity = targetEntity
 	end
-	local maxMp = curEntity:getMaxMp()
-	local curMp = curEntity:getMp()
+	local maxMp = curEntity:getMaxMP()
+	local curMp = curEntity:getMP()
 	local changeMp = medicamentConfig.ReactExtraParam1
 	if curMp == maxMp then
 		removeFlag = false
@@ -114,21 +114,21 @@ function ItemEffect.changeMp(targetEntity, medicament, medicamentConfig, targetE
 	if curMp < 0 then
 		curMp = 0
 	end
-	curEntity:setMp(curMp)
+	curEntity:setMP(curMp)
 	if curEntity:getEntityType() == eClsTypePet then
-		curEntity:flushPropsBatch()
+		curEntity:flushPropBatch()
 	end
 	removeFlag = true
 	return removeFlag
 end
 
--- ¸Ä±äÉúÃüºÍ·¨Á¦
+-- æ”¹å˜ç”Ÿå‘½å’Œæ³•åŠ›
 function ItemEffect.changeHpMp(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
-	local maxHp = targetEntity:getMaxHp()
-	local curHp = targetEntity:getHp()
-	local maxMp = targetEntity:getMaxMp()
-	local curMp = targetEntity:getMp()
+	local maxHp = targetEntity:getMaxHP()
+	local curHp = targetEntity:getHP()
+	local maxMp = targetEntity:getMaxMP()
+	local curMp = targetEntity:getMP()
 	local changeHp = medicamentConfig.ReactExtraParam1
 	local changeMp = medicamentConfig.ReactExtraParam2
 	if curHp == maxHp and curMp == maxMp then
@@ -149,13 +149,13 @@ function ItemEffect.changeHpMp(targetEntity, medicament, medicamentConfig)
 	if curMp < 0 then
 		curMp = 0
 	end
-	targetEntity:setHp(curHp)
-	targetEntity:setMp(curMp)
+	targetEntity:setHP(curHp)
+	targetEntity:setMP(curMp)
 	removeFlag = true
 	return removeFlag
 end
 
--- ¸Ä±äÅ­Æø
+-- æ”¹å˜æ€’æ°”
 function ItemEffect.changeAngerValue(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local maxAngerValue = targetEntity:getAttrValue(player_max_anger)
@@ -177,7 +177,7 @@ function ItemEffect.changeAngerValue(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±äPKÖµ
+-- æ”¹å˜PKå€¼
 function ItemEffect.changePkValue(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curKillValue = targetEntity:getAttrValue(player_kill)
@@ -198,7 +198,7 @@ function ItemEffect.changePkValue(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±ä°óÒø
+-- æ”¹å˜ç»‘é“¶
 function ItemEffect.changeBindMoney(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curBindMoney =  targetEntity:getSubMoney()
@@ -213,11 +213,12 @@ function ItemEffect.changeBindMoney(targetEntity, medicament, medicamentConfig)
 		return removeFlag
 	end
 	targetEntity:setSubMoney(curBindMoney)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
 
--- ¸Ä±äÒøÁ½
+-- æ”¹å˜é“¶ä¸¤
 function ItemEffect.changeMoney(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curMoney = targetEntity:getMoney()
@@ -236,10 +237,10 @@ function ItemEffect.changeMoney(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±ä¾­Ñé
+-- æ”¹å˜ç»éªŒ
 function ItemEffect.changeExpValue(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
-	-- ÅĞ¶ÏµÈ¼¶
+	-- åˆ¤æ–­ç­‰çº§
 	local curLevel = targetEntity:getAttrValue(player_lvl)
 	local reactTarget = medicamentConfig.ReactTarget
 	if reactTarget == MedicamentReactTarget.Self then
@@ -259,14 +260,14 @@ function ItemEffect.changeExpValue(targetEntity, medicament, medicamentConfig, t
 	elseif reactTarget == MedicamentReactTarget.Pet then
 		local expValue = medicamentConfig.ReactExtraParam1
 		if not expValue then
-			print("Ã»ÓĞÅäÖÃ¾­Ñé²ÎÊıÖµ")
+			print("æ²¡æœ‰é…ç½®ç»éªŒå‚æ•°å€¼")
 			removeFlag = false
 			return removeFlag
 		end
 
 		local curEntity = false
 		if targetEntityID then
-			-- Õë¶ÔËùÑ¡ÔòµÄ³èÎï
+			-- é’ˆå¯¹æ‰€é€‰åˆ™çš„å® ç‰©
 			local pet = g_entityMgr:getPet(targetEntityID)
 			if pet then
 				curEntity = pet
@@ -275,7 +276,7 @@ function ItemEffect.changeExpValue(targetEntity, medicament, medicamentConfig, t
 				return removeFlag
 			end
 		else
-			-- Ö»Õë¶Ô³öÕ½³èÎï
+			-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 			local curFollowPetID = targetEntity:getFollowPetID()
 			if curFollowPetID then
 				local curFollowPet = g_entityMgr:getPet(curFollowPetID)
@@ -302,14 +303,14 @@ function ItemEffect.changeExpValue(targetEntity, medicament, medicamentConfig, t
 			end
 
 			curEntity:addXp(value)
-			curEntity:flushPropsBatch()
+			curEntity:flushPropBatch()
 			removeFlag = true
 			return removeFlag
 		end
 	end
 end
 
--- ¸Ä±äÀñ½ğ
+-- æ”¹å˜ç¤¼é‡‘
 function ItemEffect.changeCashMoney(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curCashMoney = targetEntity:getCashMoney()
@@ -321,7 +322,7 @@ function ItemEffect.changeCashMoney(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±äÔª±¦
+-- æ”¹å˜å…ƒå®
 function ItemEffect.changeGoldCoin(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curGoldCoin = targetEntity:getGoldCoin()
@@ -335,7 +336,7 @@ end
 
 --entity:getEntityType() == eClsTypePet
 --entity:getEntityType() == eClsTypePlayer
--- ¸Ä±äµÀĞĞÈËÎïºÍ³èÎï¹«ÓÃ
+-- æ”¹å˜é“è¡Œäººç‰©å’Œå® ç‰©å…¬ç”¨
 function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
 	local curTaoValue = targetEntity:getAttrValue(player_tao)
@@ -353,7 +354,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 	elseif reactTarget == MedicamentReactTarget.Pet then
 		local taoValue = medicamentConfig.ReactExtraParam1
 		if not targetEntityID then
-			-- Ö»Õë¶Ô³öÕ½³èÎï
+			-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 			local petID = targetEntity:getFollowPetID()
 			local pet = g_entityMgr:getPet(petID)
 			if pet then
@@ -362,7 +363,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 				end
 				local curPetTao = pet:getAttrValue(pet_tao)
 				if curPetTao >= MaxPetTao then
-					print("µ±Ç°³èÎïµÀĞĞÎŞĞèÔö¼Ó")
+					print("å½“å‰å® ç‰©é“è¡Œæ— éœ€å¢åŠ ")
 					removeFlag = false
 					return removeFlag
 				end
@@ -371,7 +372,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 					curPetTao = MaxPetTao
 				end
 				pet:setAttrValue(pet_tao, curPetTao)
-				pet:flushPropsBatch()
+				pet:flushPropBatch()
 			else
 				removeFlag = false
 				return removeFlag
@@ -386,7 +387,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 				end
 				local curPetTao = pet:getAttrValue(pet_tao)
 				if curPetTao >= MaxPetTao then
-					print("µ±Ç°³èÎïµÀĞĞÎŞĞèÔö¼Ó")
+					print("å½“å‰å® ç‰©é“è¡Œæ— éœ€å¢åŠ ")
 					removeFlag = false
 					return removeFlag
 				end
@@ -395,7 +396,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 					curPetTao = MaxPetTao
 				end
 				pet:setAttrValue(pet_tao, curPetTao)
-				pet:flushPropsBatch()
+				pet:flushPropBatch()
 				removeFlag = true
 				return removeFlag
 			else
@@ -406,7 +407,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 	end
 end
 
--- ¸Ä±äÇ±ÄÜ
+-- æ”¹å˜æ½œèƒ½
 function ItemEffect.changePotential(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curPotential = targetEntity:getAttrValue(player_pot)
@@ -421,7 +422,7 @@ function ItemEffect.changePotential(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±äÀúÁ·
+-- æ”¹å˜å†ç»ƒ
 function ItemEffect.changeExpoint(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curExpoint = targetEntity:getAttrValue(player_expoint)
@@ -436,7 +437,7 @@ function ItemEffect.changeExpoint(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±äÕ½¼¨
+-- æ”¹å˜æˆ˜ç»©
 function ItemEffect.changeCombatNum(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local curCombatNum = targetEntity:getAttrValue(player_combat)
@@ -447,12 +448,12 @@ function ItemEffect.changeCombatNum(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±ä°ï¹±
+-- æ”¹å˜å¸®è´¡
 function ItemEffect.changeContribution(targetEntity, medicament, medicamentConfig)
 
 end
 
--- ¸Ä±äÌåÁ¦
+-- æ”¹å˜ä½“åŠ›
 function ItemEffect.changeVigor(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local maxVigor = targetEntity:getMaxVigor()
@@ -474,12 +475,12 @@ function ItemEffect.changeVigor(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¸Ä±ä³èÎïÖÒ³Ï
+-- æ”¹å˜å® ç‰©å¿ è¯š
 function ItemEffect.changePetLoyalty(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
 	local curEntity
 	if targetEntityID then
-		-- Õë¶ÔËùÑ¡ÔòµÄ³èÎï
+		-- é’ˆå¯¹æ‰€é€‰åˆ™çš„å® ç‰©
 		local pet = g_entityMgr:getPet(targetEntityID)
 		if pet then
 			curEntity = pet
@@ -488,7 +489,7 @@ function ItemEffect.changePetLoyalty(targetEntity, medicament, medicamentConfig,
 			return removeFlag
 		end
 	else
-		-- Ö»Õë¶Ô³öÕ½³èÎï
+		-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 		local curFollowPetID = targetEntity:getFollowPetID()
 		if curFollowPetID then
 			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
@@ -511,7 +512,7 @@ function ItemEffect.changePetLoyalty(targetEntity, medicament, medicamentConfig,
 				curLoyalty = MaxPetLoyalty
 			end
 			curEntity:setLoyalty(curLoyalty)
-			curEntity:flushPropsBatch()
+			curEntity:flushPropBatch()
 			removeFlag = true
 			return removeFlag
 		end
@@ -519,12 +520,12 @@ function ItemEffect.changePetLoyalty(targetEntity, medicament, medicamentConfig,
 	
 end
 
--- ¸Ä±ä³èÎïÊÙÃü
+-- æ”¹å˜å® ç‰©å¯¿å‘½
 function ItemEffect.changePetLife(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
 	local value = medicamentConfig.ReactExtraParam1
 	if targetEntityID then
-		-- Õë¶ÔËùÑ¡ÔòµÄ³èÎï
+		-- é’ˆå¯¹æ‰€é€‰åˆ™çš„å® ç‰©
 		local pet = g_entityMgr:getPet(targetEntityID)
 		if pet then
 			curEntity = pet
@@ -533,7 +534,7 @@ function ItemEffect.changePetLife(targetEntity, medicament, medicamentConfig, ta
 			return removeFlag
 		end
 	else
-		-- Ö»Õë¶Ô³öÕ½³èÎï
+		-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 		local curFollowPetID = targetEntity:getFollowPetID()
 		if curFollowPetID then
 			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
@@ -556,14 +557,14 @@ function ItemEffect.changePetLife(targetEntity, medicament, medicamentConfig, ta
 				curPetLife = petLifeMax
 			end
 			curEntity:setAttrValue(pet_life, curPetLife)
-			curEntity:flushPropsBatch()
+			curEntity:flushPropBatch()
 			removeFlag = true
 			return removeFlag
 		end
 	end
 end
 
--- Ê¹ÓÃÉúÃü³Ø
+-- ä½¿ç”¨ç”Ÿå‘½æ± 
 function ItemEffect.useHpPoolItem(targetEntity, medicament, medicamentConfig,targetEntityID)
 	local removeFlag = false
 	if not targetEntity then
@@ -575,15 +576,15 @@ function ItemEffect.useHpPoolItem(targetEntity, medicament, medicamentConfig,tar
 		pet = curEntity
 	end
 
-	local roleMaxHp = role:getMaxHp()
-	local roleCurHp = role:getHp()
+	local roleMaxHp = role:getMaxHP()
+	local roleCurHp = role:getHP()
 	local roleAddHp = roleMaxHp - roleCurHp
 	local petMaxHp = 0
 	local petCurHp = 0
 	local petAddHp = 0
 	if pet then
-		petMaxHp = pet:getMaxHp()
-		petCurHp = pet:getHp()
+		petMaxHp = pet:getMaxHP()
+		petCurHp = pet:getHP()
 		petAddHp = petMaxHp - petCurHp
 	end
 	if petAddHp + roleAddHp > 0 then
@@ -591,12 +592,14 @@ function ItemEffect.useHpPoolItem(targetEntity, medicament, medicamentConfig,tar
 		if leftHpValue > roleAddHp + petAddHp then
 			leftHpValue = leftHpValue - roleAddHp - petAddHp
 			medicament:setEffect(leftHpValue)
-			-- Ö±½Ó¼ÓÂúÉúÃüÁ¦
-			role:setHp(roleMaxHp)
+			-- ç›´æ¥åŠ æ»¡ç”Ÿå‘½åŠ›
+			role:setHP(roleMaxHp)
+			role:flushPropBatch()
 			if pet then
-				pet:setHp(petMaxHp)
+				pet:setHP(petMaxHp)
+				pet:flushPropBatch(role)
 			end
-			-- Í¨Öª¿Í»§¶Ë±³°üÎïÆ·±ä»¯
+			-- é€šçŸ¥å®¢æˆ·ç«¯èƒŒåŒ…ç‰©å“å˜åŒ–
 			local changeInfo = {}
 			local gridIndex = medicament:getGridIndex()
 			changeInfo[gridIndex] = {}
@@ -606,25 +609,24 @@ function ItemEffect.useHpPoolItem(targetEntity, medicament, medicamentConfig,tar
 			g_eventMgr:fireRemoteEvent(event, targetEntity)
 		else
 			if leftHpValue > roleAddHp then
-				role:setHp(roleMaxHp)
+				role:setHP(roleMaxHp)
 				if pet then
-					pet:setHp(petCurHp+leftHpValue - roleAddHp)
+					pet:setHP(petCurHp+leftHpValue - roleAddHp)
+					pet:flushPropBatch(role)
 				end
 			else
-				role:setHp(roleCurHp + leftHpValue)
-			end
-			if pet then
-				pet:flushPropsBatch()
+				role:setHP(roleCurHp + leftHpValue)
+				role:flushPropBatch()
 			end
 			removeFlag = true
 		end
 	else
-		-- ÎŞĞèÊ¹ÓÃ
+		-- æ— éœ€ä½¿ç”¨
 	end
 	return removeFlag
 end
 
--- Ê¹ÓÃ·¨Á¦³Ø
+-- ä½¿ç”¨æ³•åŠ›æ± 
 function ItemEffect.useMpPoolItem(targetEntity, medicament, medicamentConfig)
 	local removeFlag = false
 	if not targetEntity then
@@ -636,15 +638,15 @@ function ItemEffect.useMpPoolItem(targetEntity, medicament, medicamentConfig)
 		pet = curEntity
 	end
 
-	local roleMaxMp = role:getMaxMp()
-	local roleCurMp = role:getMp()
+	local roleMaxMp = role:getMaxMP()
+	local roleCurMp = role:getMP()
 	local roleAddMp = roleMaxMp - roleCurMp
 	local petMaxMp = 0
 	local petCurMp = 0
 	local petAddMp = 0
 	if pet then
-		petMaxMp = pet:getMaxMp()
-		petCurMp = pet:getMp()
+		petMaxMp = pet:getMaxMP()
+		petCurMp = pet:getMP()
 		petAddMp = petMaxMp - petCurMp
 	end
 	if petAddMp + roleAddMp > 0 then
@@ -652,12 +654,12 @@ function ItemEffect.useMpPoolItem(targetEntity, medicament, medicamentConfig)
 		if leftMpValue > roleAddMp + petAddMp then
 			leftMpValue = leftMpValue - roleAddMp - petAddMp
 			medicament:setEffect(leftMpValue)
-			-- Ö±½Ó¼ÓÂú·¨Á¦
-			role:setMp(roleMaxMp)
+			-- ç›´æ¥åŠ æ»¡æ³•åŠ›
+			role:setMP(roleMaxMp)
 			if pet then
-				pet:setMp(petMaxMp)
+				pet:setMP(petMaxMp)
 			end
-			-- Í¨Öª¿Í»§¶Ë±³°üÎïÆ·±ä»¯
+			-- é€šçŸ¥å®¢æˆ·ç«¯èƒŒåŒ…ç‰©å“å˜åŒ–
 			local changeInfo = {}
 			local gridIndex = medicament:getGridIndex()
 			changeInfo[gridIndex] = {}
@@ -667,38 +669,37 @@ function ItemEffect.useMpPoolItem(targetEntity, medicament, medicamentConfig)
 			g_eventMgr:fireRemoteEvent(event, targetEntity)
 		else
 			if leftMpValue > roleAddMp then
-				role:setMp(roleMaxMp)
+				role:setMP(roleMaxMp)
 				if pet then
-					pet:setMp(petCurMp+leftMpValue - roleAddMp)
+					pet:setMP(petCurMp+leftMpValue - roleAddMp)
 				end
 			else
-				role:setMp(roleCurMp + leftMpValue)
+				role:setMP(roleCurMp + leftMpValue)
 			end
 			if pet then
-				pet:flushPropsBatch()
+				pet:flushPropBatch()
 			end
 			removeFlag = true
 		end
 	else
-		-- ÎŞĞèÊ¹ÓÃ
+		-- æ— éœ€ä½¿ç”¨
 	end
 	return removeFlag
 end
 
--- Ìí¼Ó³èÎï
+-- æ·»åŠ å® ç‰©
 function ItemEffect.addPet(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local petID = medicamentConfig.ReactExtraParam1
 	if petID then
-		-- ÅĞ¶ÏÄÜ·ñÌí¼Ó³èÎï
+		-- åˆ¤æ–­èƒ½å¦æ·»åŠ å® ç‰©
 		if targetEntity:canAddPet() then
 			local pet = g_entityFct:createPet(petID)
-			pet:setOwnerID(targetEntity:getID())
-			pet:setOwnerDBID(targetEntity:getDBID())
+			pet:setOwner(targetEntity)
 			targetEntity:addPet(pet)
 			removeFlag = true
 		else
-			print("Íæ¼Ò³èÎïÒÑ¾­´ïµ½ÉÏÏŞ£¬²»ÄÜÌí¼Ó³èÎï")
+			print("ç©å®¶å® ç‰©å·²ç»è¾¾åˆ°ä¸Šé™ï¼Œä¸èƒ½æ·»åŠ å® ç‰©")
 			removeFlag = false
 		end
 	else
@@ -707,7 +708,7 @@ function ItemEffect.addPet(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- Ìí¼Ó×øÆï
+-- æ·»åŠ åéª‘
 function ItemEffect.addRide(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local rideID = medicamentConfig.ReactExtraParam1
@@ -718,10 +719,10 @@ function ItemEffect.addRide(targetEntity, medicament, medicamentConfig)
 	return removeFlag
 end
 
--- ¶Ô×÷ÓÃÄ¿±êµÄĞ§¹û
+-- å¯¹ä½œç”¨ç›®æ ‡çš„æ•ˆæœ
 function ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
 	local removeFlag = true
-	local curEntity = false
+	local curEntity = nil
 	local reactTarget = medicamentConfig.ReactTarget
 	if reactTarget == MedicamentReactTarget.Self then
 		curEntity = targetEntity
@@ -755,7 +756,7 @@ function ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntity
 	return curEntity
 end
 
--- ¸Ä±äÈËÎï ºÍ ³èÎïËùÓĞÊôĞÔ¼Óµã
+-- æ”¹å˜äººç‰© å’Œ å® ç‰©æ‰€æœ‰å±æ€§åŠ ç‚¹
 function ItemEffect.changeAllAttr(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = false
 	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
@@ -765,7 +766,7 @@ function ItemEffect.changeAllAttr(targetEntity, medicament, medicamentConfig, ta
 		elseif curEntity:getEntityType() == eClsTypePet then
 			removeFlag = ItemEffect.washPetAllAttr(curEntity)
 			if removeFlag then
-				curEntity:flushPropsBatch()
+				curEntity:flushPropBatch()
 			end
 		end
 	end
@@ -780,7 +781,7 @@ local PlayerCleanAttrs = {
 	player_dex_point,
 }
 
--- Çå³ıÍæ¼ÒËùÓĞÊôĞÔ¼Óµã
+-- æ¸…é™¤ç©å®¶æ‰€æœ‰å±æ€§åŠ ç‚¹
 function ItemEffect.washPlayerAllAttr(player)
 	local freePoint = 0
 	for _,attrName in ipairs(PlayerCleanAttrs) do
@@ -794,7 +795,7 @@ function ItemEffect.washPlayerAllAttr(player)
 	local attrPoint = player:getAttrValue(player_attr_point)
 
 	if freePoint < 1 then
-		print("Íæ¼ÒÃ»ÓĞ¿É»¹Ô­µÄÊôĞÔµã")
+		print("ç©å®¶æ²¡æœ‰å¯è¿˜åŸçš„å±æ€§ç‚¹")
 		return false
 	end
 
@@ -826,7 +827,7 @@ local PetCleanAttrs = {
 	pet_dex_point,	
 }
 
--- Çå³ş³èÎïËùÓĞÊôĞÔ¼Óµã
+-- æ¸…æ¥šå® ç‰©æ‰€æœ‰å±æ€§åŠ ç‚¹
 function ItemEffect.washPetAllAttr(pet)
 	local freePoint = 0
 
@@ -840,7 +841,7 @@ function ItemEffect.washPetAllAttr(pet)
 
 
 	if freePoint < 1 then
-		print("³èÎïÃ»ÓĞ¿É»¹Ô­µÄÊôĞÔµã")
+		print("å® ç‰©æ²¡æœ‰å¯è¿˜åŸçš„å±æ€§ç‚¹")
 		return false
 	end
 
@@ -862,7 +863,7 @@ function ItemEffect.washPetAllAttr(pet)
 	return true
 end
 
--- Íæ¼Ò¡¢³èÎïËùÓĞ¿¹ĞÔ
+-- ç©å®¶ã€å® ç‰©æ‰€æœ‰æŠ—æ€§
 function ItemEffect.changeAllPhase(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = false
 	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
@@ -871,13 +872,13 @@ function ItemEffect.changeAllPhase(targetEntity, medicament, medicamentConfig, t
 	elseif curEntity:getEntityType() == eClsTypePet then
 		removeFlag = ItemEffect.washPetAllPhase(curEntity)
 		if removeFlag then
-			curEntity:flushPropsBatch()
+			curEntity:flushPropBatch()
 		end
 	end
 	return removeFlag
 end
 
--- Íæ¼ÒÇå³ıµÄÏàĞÔÊôĞÔ
+-- ç©å®¶æ¸…é™¤çš„ç›¸æ€§å±æ€§
 local PlayerCleanPhases = {
 	player_win_phase_point,
 	player_thu_phase_point,
@@ -887,9 +888,9 @@ local PlayerCleanPhases = {
 	player_poi_phase_point,
 }
 
--- Çå³ıÍæ¼ÒËùÓĞÏàĞÔ¼Óµã
+-- æ¸…é™¤ç©å®¶æ‰€æœ‰ç›¸æ€§åŠ ç‚¹
 function ItemEffect.washPlayerAllPhase(player)
-	--»ñÈ¡ËùÓĞµÄÊôĞÔ¼Óµã
+	--è·å–æ‰€æœ‰çš„å±æ€§åŠ ç‚¹
 	local freePoint = 0
 	for _,attrName in ipairs(PlayerCleanPhases) do
 		local pnt = player:getAttrValue(attrName)
@@ -900,7 +901,7 @@ function ItemEffect.washPlayerAllPhase(player)
 	end
 
 	if freePoint < 1 then
-		print("Íæ¼ÒÃ»ÓĞ¿É»¹Ô­µÄÏàĞÔµã")
+		print("ç©å®¶æ²¡æœ‰å¯è¿˜åŸçš„ç›¸æ€§ç‚¹")
 		return false
 	end
 
@@ -924,7 +925,7 @@ function ItemEffect.washPlayerAllPhase(player)
 	return true
 end
 
--- ³èÎïĞèÒªÇå³ıµÄÏàĞÔÊôĞÔ
+-- å® ç‰©éœ€è¦æ¸…é™¤çš„ç›¸æ€§å±æ€§
 local PetCleanPhases = {
 	pet_fir_phase_point,pet_soi_phase_point,
 	pet_win_phase_point,pet_poi_phase_point,
@@ -937,7 +938,7 @@ local PetCleanPhases = {
 	pet_freeze_phase_point,pet_toxicosis_phase_point,
 }
 
--- ³èÎïËùÓĞ¿¹ĞÔ
+-- å® ç‰©æ‰€æœ‰æŠ—æ€§
 function ItemEffect.washPetAllPhase(targetEntity)
 	local flag = false
 	local value = 0
@@ -972,11 +973,11 @@ function ItemEffect.washPetAllPhase(targetEntity)
 	end
 end
 
--- Ìí¼Ó³èÎï¾­Ñé
+-- æ·»åŠ å® ç‰©ç»éªŒ
 function ItemEffect.changePetExp(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local curEntity
 	if targetEntityID then
-		-- Õë¶ÔËùÑ¡ÔòµÄ³èÎï
+		-- é’ˆå¯¹æ‰€é€‰åˆ™çš„å® ç‰©
 		local pet = g_entityMgr:getPet(targetEntityID)
 		if pet then
 			curEntity = pet
@@ -984,7 +985,7 @@ function ItemEffect.changePetExp(targetEntity, medicament, medicamentConfig, tar
 			return false
 		end
 	else
-		-- Ö»Õë¶Ô³öÕ½³èÎï
+		-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 		local curFollowPetID = targetEntity:getFollowPetID()
 		if curFollowPetID then
 			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
@@ -997,13 +998,13 @@ function ItemEffect.changePetExp(targetEntity, medicament, medicamentConfig, tar
 	if curEntity then
 		local value = medicamentConfig.ReactExtraParam1
 		curEntity:addXp(value)
-		curEntity:flushPropsBatch()
+		curEntity:flushPropBatch()
 		removeFlag = true
 		return removeFlag
 	end
 end
 
---Ôö¼Ó×øÆïÌåÁ¦Öµ
+--å¢åŠ åéª‘ä½“åŠ›å€¼
 function ItemEffect.changeRideVigor(player, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
 	local rideHandler = player:getHandler(HandlerDef_Ride)
@@ -1021,9 +1022,7 @@ function ItemEffect.changeRideVigor(player, medicament, medicamentConfig, target
 	local vigor 
 	if ride:getVigor() < RideDB[ride:getID()].vigor then
 		vigor = ride:getVigor()+addVigor
-		if vigor > RideDB[ride:getID()].vigor then
-			vigor = RideDB[ride:getID()].vigor
-		end
+		--åéª‘ä½“åŠ›å…è®¸è¶…å‡ºæœ€å¤§ä¸Šé™
 		ride:setVigor(vigor)
 	else
 		removeFlag = false
@@ -1036,21 +1035,21 @@ function ItemEffect.changeRideVigor(player, medicament, medicamentConfig, target
 	return removeFlag
 end
 
--- Ê¹ÓÃÎïÆ·¿ÉÄÜÍê³ÉÈÎÎñ
+-- ä½¿ç”¨ç‰©å“å¯èƒ½å®Œæˆä»»åŠ¡
 function ItemEffect.finishTask(targetEntity, medicament, medicamentConfig)
 	local taskHandler = targetEntity:getHandler(HandlerDef_Task)
 	local taskID = medicamentConfig.ReactExtraParam1
 	local task = taskHandler:getTask(taskID)
 	if not task then
-		print("µ±Ç°ÄãÃ»ÓĞÕâ¸öÈÎÎñ")
+		print("å½“å‰ä½ æ²¡æœ‰è¿™ä¸ªä»»åŠ¡")
 		removeFlag = false
 		return removeFlag
 	end
-	-- ÓĞÕâ¸öÈÎÎñÒ²²»ĞĞ£¬»¹ÒªÅĞ¶Ïµ±Ç°ÈÎÎñÄ¿±êÊÇÕâ¸ö¹ºÂòÎïÆ·£¬
+	-- æœ‰è¿™ä¸ªä»»åŠ¡ä¹Ÿä¸è¡Œï¼Œè¿˜è¦åˆ¤æ–­å½“å‰ä»»åŠ¡ç›®æ ‡æ˜¯è¿™ä¸ªè´­ä¹°ç‰©å“ï¼Œ
 	local targetType = task:getTargetType()
 	local targetIndex = task:getTargetIdx()
 	if targetType ~= LoopTaskTargetType.mysteryBus then
-		print("µ±Ç°ÈÎÎñÄ¿±ê²»¶ÔÓ¦£¬²»ÄÜ¹»Ê¹ÓÃ¸ÃÎïÆ·")
+		print("å½“å‰ä»»åŠ¡ç›®æ ‡ä¸å¯¹åº”ï¼Œä¸èƒ½å¤Ÿä½¿ç”¨è¯¥ç‰©å“")
 		removeFlag =false
 		return removeFlag
 	end
@@ -1058,27 +1057,44 @@ function ItemEffect.finishTask(targetEntity, medicament, medicamentConfig)
 	local loopTask = g_taskFty:createLoopTask(targetEntity, taskID, LoopTaskTargetType.itemTalk)
 	loopTask:setReceiveTaskLvl(targetEntity:getLevel())
 	taskHandler:addTask(loopTask)
-	g_taskSystem:updateLoopTaskList(targetEntity, taskHandler:getRecetiveTaskList())
+	--g_taskSystem:updateLoopTaskList(targetEntity, taskHandler:getRecetiveTaskList())
+	taskHandler:updateTaskList(taskID, false)
 	removeFlag = true
 	return removeFlag
 end
 
--- Ê¹ÓÃ²Ø±¦Í¼¿ÉÄÜ´ò¿ª±¦²Ø
+-- ä½¿ç”¨è—å®å›¾å¯èƒ½æ‰“å¼€å®è—
 function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
-	-- É¾³ı±êÊ¶Îª²»É¾³ı
+	-- åˆ é™¤æ ‡è¯†ä¸ºä¸åˆ é™¤
 	removeFlag = false
-	-- ÊÇ·ñ×é¶Ó ÊÇ·ñÊÇ¶Ó³¤
+	-- æ˜¯å¦ç»„é˜Ÿ æ˜¯å¦æ˜¯é˜Ÿé•¿
 	local teamHandler = targetEntity:getHandler(HandlerDef_Team)
 	if teamHandler:isTeam() and not teamHandler:isLeader() then
 		return removeFlag
 	end
-	-- ÅĞ¶ÏÊÇ·ñÒÑ¾­´´½¨
+	
+	-- åˆ¤æ–­æ˜¯å¦å·²ç»åˆ›å»º
 	local treasureHandler = targetEntity:getHandler(HandlerDef_Treasure)
 	local guid = medicament:getGuid()
 	local treasureID = medicamentConfig.ReactExtraParam1
-		-- ´´½¨±¦²Ø 
+	
+	if not medicament:getBindFlag() then
+		local packIndex = medicament:getPackIndex()
+		local gridIndex	= medicament:getGridIndex()
+		
+		local packetHandler = targetEntity:getHandler(HandlerDef_Packet)
+		local packet = packetHandler:getPacket()
+		
+		local item = g_itemMgr:createItem(medicamentConfig.ReactExtraParam1, 1)
+		packet:removeItemsFromGrid(packIndex, gridIndex, false)
+		packet:addItemsToGrid(item, packIndex, gridIndex, true)
+		treasureID = tItemDB[medicamentConfig.ReactExtraParam1].ReactExtraParam1
+		guid = item:getGuid()
+	end
+	
+	-- åˆ›å»ºå®è— 
 	if g_treasureMgr:createTreasure(targetEntity,treasureID,guid) then
-		-- °ÑÎïÆ·ÉèÖÃÎª°ó¶¨
+		-- æŠŠç‰©å“è®¾ç½®ä¸ºç»‘å®š
 		return removeFlag
 	end
     local isTrue,msgID,msgParams = treasureHandler:doClickTreasure(guid)
@@ -1091,7 +1107,7 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 	end
 end
 
--- Îª³èÎïÌí¼Ó¼¼ÄÜ
+-- ä¸ºå® ç‰©æ·»åŠ æŠ€èƒ½
 function ItemEffect.addPetSkill(targetEntity,item,itemConfig,targetEntityID)
 	local targetPet
 	if targetEntityID then
@@ -1111,7 +1127,7 @@ function ItemEffect.addPetSkill(targetEntity,item,itemConfig,targetEntityID)
 		g_eventMgr:fireRemoteEvent(
 			Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.NoPetLearn), targetEntity
 		)
-		return false	--²»É¾³ıÎïÆ·
+		return false	--ä¸åˆ é™¤ç‰©å“
 	end
 
 	local skillHandler = targetPet:getHandler(HandlerDef_PetSkill)
@@ -1126,9 +1142,9 @@ function ItemEffect.addPetSkill(targetEntity,item,itemConfig,targetEntityID)
 	return false
 end
 
--- Ìí¼ÓÒ»¸öÈÎÎñ
+-- æ·»åŠ ä¸€ä¸ªä»»åŠ¡
 function ItemEffect.addTask(targetEntity,item,itemConfig,targetEntityID)
-	-- É¾³ı±êÊ¶Îª²»É¾³ı
+	-- åˆ é™¤æ ‡è¯†ä¸ºä¸åˆ é™¤
 	local removeFlag = false
 	local taskID = itemConfig.ReactExtraParam1
 	if g_taskDoer:doRecetiveTask(targetEntity,taskID ) then
@@ -1137,7 +1153,7 @@ function ItemEffect.addTask(targetEntity,item,itemConfig,targetEntityID)
 	return removeFlag
 end
 
---Íê³ÉÒ»¸öÈÎÎñ
+--å®Œæˆä¸€ä¸ªä»»åŠ¡
 function ItemEffect.completeTask(targetEntity,item,itemConfig,targetEntityID)
 	local removeFlag = false
 	local taskID = itemConfig.ReactExtraParam1
@@ -1147,18 +1163,18 @@ function ItemEffect.completeTask(targetEntity,item,itemConfig,targetEntityID)
 	return removeFlag
 end
 
---¸Ä±ä³èÎïÖÒ³Ï¶È²¢°ÑÊ£ÓàÖµÌí¼ÓÒ»¸öbuff
+--æ”¹å˜å® ç‰©å¿ è¯šåº¦å¹¶æŠŠå‰©ä½™å€¼æ·»åŠ ä¸€ä¸ªbuff
 function ItemEffect.changeLoyaltyAndAddBuff(targetEntity,item,itemConfig,targetEntityID)
 	local removeFlag = true
 	local pet
 	if targetEntityID then
-		-- Õë¶ÔËùÑ¡ÔòµÄ³èÎï
+		-- é’ˆå¯¹æ‰€é€‰åˆ™çš„å® ç‰©
 		pet = g_entityMgr:getPet(targetEntityID)
 		if not pet then
 			removeFlag = false
 		end
 	else
-		-- Ö»Õë¶Ô³öÕ½³èÎï
+		-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 		local curFollowPetID = targetEntity:getFollowPetID()
 		if curFollowPetID then
 			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
@@ -1187,7 +1203,7 @@ function ItemEffect.changeLoyaltyAndAddBuff(targetEntity,item,itemConfig,targetE
 				curLoyalty = curLoyalty + value
 			end
 			pet:setLoyalty(curLoyalty)
-			pet:flushPropsBatch()
+			pet:flushPropBatch()
 			removeFlag = true
 		end
 	else
@@ -1198,18 +1214,18 @@ function ItemEffect.changeLoyaltyAndAddBuff(targetEntity,item,itemConfig,targetE
 	return removeFlag
 end
 
---¸Ä±äÉúÃü²¢°ÑÊ£ÓàÖµÌí¼ÓÒ»¸öbuff
+--æ”¹å˜ç”Ÿå‘½å¹¶æŠŠå‰©ä½™å€¼æ·»åŠ ä¸€ä¸ªbuff
 function ItemEffect.changeHpAndAddBuff(targetEntity,item,itemConfig,targetEntityID)
 	local removeFlag = true
 	if not targetEntity then
 		return
 	end
-	-- Èç¹ûÓĞ×÷ÓÃÄ¿±êµÄ»°
+	-- å¦‚æœæœ‰ä½œç”¨ç›®æ ‡çš„è¯
 	local pet
 	if targetEntityID then
 		local pet = g_entityMgr:getPet(targetEntityID)
 	else
-		-- Ö»Õë¶Ô³öÕ½³èÎï
+		-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 		local curFollowPetID = targetEntity:getFollowPetID()
 		if curFollowPetID then
 			pet = g_entityMgr:getPet(curFollowPetID)
@@ -1221,28 +1237,28 @@ function ItemEffect.changeHpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 	local buffConfig = FightOutBuffDB[buffID]
 	local value = buffConfig.last_num
 	
-	local roleMaxHp = role:getMaxHp()
-	local roleCurHp = role:getHp()
-	-- ¿ÉÒÔ¸Ä±äÖµ
+	local roleMaxHp = role:getMaxHP()
+	local roleCurHp = role:getHP()
+	-- å¯ä»¥æ”¹å˜å€¼
 	if roleCurHp + value >= roleMaxHp then
 		value = value - (roleMaxHp-roleCurHp)
-		role:setHp(roleMaxHp)
+		role:setHP(roleMaxHp)
 	else
-		role:setHp(roleCurHp + value)
+		role:setHP(roleCurHp + value)
 		value = 0
 	end
 	
 	if pet then
-		local petMaxHp = pet:getMaxHp()
-		local petCurHp = pet:getHp()
+		local petMaxHp = pet:getMaxHP()
+		local petCurHp = pet:getHP()
 		if petCurHp + value >= petMaxHp then
 			value = value - (petMaxHp-petCurHp)
-			pet:setHp(petMaxHp)
+			pet:setHP(petMaxHp)
 		else
-			pet:setHp(petCurHp + value)
+			pet:setHP(petCurHp + value)
 			value = 0
 		end
-		pet:flushPropsBatch()
+		pet:flushPropBatch()
 	end
 
 	if value > 0 then
@@ -1255,18 +1271,18 @@ function ItemEffect.changeHpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 end
 
 
---¸Ä±ä·¨Á¦²¢°ÑÊ£ÓàÖµÌí¼ÓÒ»¸öbuff
+--æ”¹å˜æ³•åŠ›å¹¶æŠŠå‰©ä½™å€¼æ·»åŠ ä¸€ä¸ªbuff
 function ItemEffect.changeMpAndAddBuff(targetEntity,item,itemConfig,targetEntityID)
 	local removeFlag = true
 	if not targetEntity then
 		return
 	end
-	-- Èç¹ûÓĞ×÷ÓÃÄ¿±êµÄ»°
+	-- å¦‚æœæœ‰ä½œç”¨ç›®æ ‡çš„è¯
 	local pet
 	if targetEntityID then
 		local pet = g_entityMgr:getPet(targetEntityID)
 	else
-		-- Ö»Õë¶Ô³öÕ½³èÎï
+		-- åªé’ˆå¯¹å‡ºæˆ˜å® ç‰©
 		local curFollowPetID = targetEntity:getFollowPetID()
 		if curFollowPetID then
 			pet = g_entityMgr:getPet(curFollowPetID)
@@ -1278,28 +1294,28 @@ function ItemEffect.changeMpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 	local buffConfig = FightOutBuffDB[buffID]
 	local value = buffConfig.last_num
 	
-	local roleMaxMp = role:getMaxMp()
-	local roleCurMp = role:getMp()
-	-- ¿ÉÒÔ¸Ä±äÖµ
+	local roleMaxMp = role:getMaxMP()
+	local roleCurMp = role:getMP()
+	-- å¯ä»¥æ”¹å˜å€¼
 	if roleCurMp + value >= roleMaxMp then
 		value = value - (roleMaxMp-roleCurMp)
-		role:setMp(roleMaxMp)
+		role:setMP(roleMaxMp)
 	else
-		role:setMp(roleCurMp + value)
+		role:setMP(roleCurMp + value)
 		value = 0
 	end
 	
 	if pet then
-		local petMaxMp = pet:getMaxMp()
-		local petCurMp = pet:getMp()
+		local petMaxMp = pet:getMaxMP()
+		local petCurMp = pet:getMP()
 		if petCurMp + value >= petMaxMp then
 			value = value - (petMaxMp-petCurMp)
-			pet:setMp(petMaxMp)
+			pet:setMP(petMaxMp)
 		else
-			pet:setMp(petCurMp + value)
+			pet:setMP(petCurMp + value)
 			value = 0
 		end
-		pet:flushPropsBatch()
+		pet:flushPropBatch()
 	end
 
 	if value > 0 then

@@ -1,6 +1,6 @@
 --[[RideHandler.lua
-ÃèÊö£º
-	ÊµÌåµÄ×øÆïhandler
+æè¿°ï¼š
+	å®ä½“çš„åéª‘handler
 --]]
 
 RideHandler = class(nil, Timer)
@@ -11,8 +11,8 @@ function RideHandler:__init(entity)
 	self.ridingMount = nil
 	self.playerChangeSpeed = nil
 	self.rideList = {}
-	-- ¿ªÆô1·ÖÖÓµÄ¶¨Ê±Æ÷£¬¼ì²â×øÆïÊÇ·ñÌåÁ¦ÖµÎª0
-	self.checkRideVigorID = g_timerMgr:regTimer(self, 1000*60, 1000*60, "¼ì²â×øÆïÊÇ·ñÌåÁ¦ÖµÎª0")
+	-- å¼€å¯1åˆ†é’Ÿçš„å®šæ—¶å™¨ï¼Œæ£€æµ‹åéª‘æ˜¯å¦ä½“åŠ›å€¼ä¸º0
+	self.checkRideVigorID = g_timerMgr:regTimer(self, 1000*60, 1000*60, "æ£€æµ‹åéª‘æ˜¯å¦ä½“åŠ›å€¼ä¸º0")
 end
 
 function RideHandler:__release()
@@ -21,11 +21,11 @@ function RideHandler:__release()
 	self.rideList = nil
 	self.ridingMount = nil
 	self.playerChangeSpeed = nil
-	-- É¾³ı¶¨Ê±Æ÷
+	-- åˆ é™¤å®šæ—¶å™¨
 	g_timerMgr:unRegTimer(self.checkRideVigorID)
 end
 
--- ¶¨Ê±Æ÷»Øµ÷
+-- å®šæ—¶å™¨å›è°ƒ
 function RideHandler:update(timerID)
 	if timerID == self.checkRideVigorID then
 		local ride = self.ridingMount
@@ -36,7 +36,7 @@ function RideHandler:update(timerID)
 				local vigor = ride:getVigor()-1
 				ride:setVigor(vigor)
 				if vigor <= 0 then
-					g_rideMgr:downRide(self._entity)
+					g_rideMgr:UpOrDownRide(self._entity)
 					local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Ride, RideMessageID.VigorDeficiency)
 					g_eventMgr:fireRemoteEvent(event, self._entity)
 				end
@@ -59,17 +59,17 @@ function RideHandler:getRideCount()
 	return table.size(self.rideList)
 end
 
---»ñÈ¡×øÆïÀ¸ÈİÁ¿´óĞ¡
+--è·å–åéª‘æ å®¹é‡å¤§å°
 function RideHandler:getRideCapacity()
 	return self.rideCapacity
 end
 
---ÉèÖÃ×øÆïÀ¸ÈİÁ¿´óĞ¡
+--è®¾ç½®åéª‘æ å®¹é‡å¤§å°
 function RideHandler:setRideCapacity(rideBar)
 	self.rideCapacity = rideBar
 end
 
---¸úËæ×øÆï
+--è·Ÿéšåéª‘
 function RideHandler:getRidingMount()
 	return self.ridingMount
 end
@@ -78,73 +78,60 @@ function RideHandler:setRidingMount(ride)
 	self.ridingMount = ride
 end
 
---ÉÏ×øÆï
-function RideHandler:upRide(ride)
-	local vigor = ride:getVigor()
-	if vigor <= 0 then
-		print("¸Ã×øÆïÌåÁ¦Öµ²»×ã£¬ÎŞ·¨Æï³Ë¡£")
-		return
-	end
-	ride:setFollow(true)
-	self:setRidingMount(ride)
-	local configID = ride:getID()
-	local config = RideDB[configID]
-	local attrChange = config.attrChange
-	for _,attr in pairs(attrChange) do
-		if attr.attrType == player_hp then
-			local curHp = self._entity:getAttrValue(player_hp)
-			local maxHp = self._entity:getAttrValue(player_max_hp)
-			local changeValue = curHp*attr.attrInc
-			if changeValue+curHp > maxHp then
-				self._entity:setAttrValue(player_hp, maxHp)
-				changedValue = maxHp - curHp
-			else
-				self._entity:setAttrValue(player_hp, curHp+changeValue)
+--ä¸Šåéª‘
+function RideHandler:UpOrDownRide(rideGuid)
+	local ridingRide = self:getRidingMount()
+	local ride = self:getRide(rideGuid)
+	if ride and ridingRide ~= ride  then
+		local vigor = ride:getVigor()
+		if vigor <= 0 then
+			print("è¯¥åéª‘ä½“åŠ›å€¼ä¸è¶³ï¼Œæ— æ³•éª‘ä¹˜ã€‚")
+			return
+		end
+		if ridingRide then
+			local configID = ridingRide:getID()
+			local config = RideDB[configID]
+			local attrChange = config.attrChange
+			for _,attr in pairs(attrChange) do
+				self._entity:addAttrValue(attr.attrType, -attr.attrInc)
 			end
-			ride:setChangeAttr(player_hp,changeValue)
-		elseif attr.attrType == player_mp then
-			local curMp = self._entity:getAttrValue(player_mp)
-			local maxMp = self._entity:getAttrValue(player_max_mp)
-			local changeValue = curMp*attr.attrInc
-			if changeValue+curMp > maxMp then
-				self._entity:setAttrValue(player_mp, maxMp)
-				changedValue = maxMp - curMp
-			else
-				self._entity:setAttrValue(player_mp, curMp+changeValue)
-			end
-			ride:setChangeAttr(player_mp,changeValue)
-		else
+			self._entity:changeMoveSpeed(100-config.moveSpeed*100)
+			local data = string.format("%d", RideState.Ride_State_None)
+			setPropValue(self._entity:getPeer(), PLAYER_RIDE_INFO,data)
+			self._entity:flushPropBatch()
+			ridingRide:setFollow(false)
+			self:setRidingMount(nil)
+		end
+		ride:setFollow(true)
+		self:setRidingMount(ride)
+		local configID = ride:getID()
+		local config = RideDB[configID]
+		local attrChange = config.attrChange
+		for _,attr in pairs(attrChange) do
 			self._entity:addAttrValue(attr.attrType, attr.attrInc)
 		end
-	end
-	self._entity:changeMoveSpeed(config.moveSpeed*100-100)
-	local data = string.format("%d,%d,%s", RideState.Ride_State_Ride,configID,ride:getGuid())
-	setPropValue(self._entity:getPeer(), PLAYER_RIDE_INFO,data)
-	return true
-end
+		self._entity:changeMoveSpeed(config.moveSpeed*100-100)
+		local data = string.format("%d,%d,%s", RideState.Ride_State_Ride,configID,ride:getGuid())
+		setPropValue(self._entity:getPeer(), PLAYER_RIDE_INFO,data)
+		self._entity:flushPropBatch()
 
---ÏÂ×øÆï
-function RideHandler:downRide(ride)
-	local configID = ride:getID()
-	local config = RideDB[configID]
-	local attrChange = config.attrChange
-	for _,attr in pairs(attrChange) do
-		if attr.attrType == player_hp or attr.attrType == player_mp then
-			local value = self._entity:getAttrValue(attr.attrType)
-			local changeValue = ride:getChangeAttr(attr.attrType)
-			self._entity:setAttrValue(attr.attrType, value-changeValue > 0 and value-changeValue or 0)
-			ride:setChangeAttr(attr.attrType,nil)
-		else
-			self._entity:addAttrValue(attr.attrType,-attr.attrInc)
+		TaskCallBack.onUpRide(self._entity, configID)
+		--return true
+	elseif ridingRide then
+		local configID = ridingRide:getID()
+		local config = RideDB[configID]
+		local attrChange = config.attrChange
+		for _,attr in pairs(attrChange) do
+			self._entity:addAttrValue(attr.attrType, -attr.attrInc)
 		end
+		self._entity:changeMoveSpeed(100-config.moveSpeed*100)
+		local data = string.format("%d", RideState.Ride_State_None)
+		setPropValue(self._entity:getPeer(), PLAYER_RIDE_INFO,data)
+		self._entity:flushPropBatch()
+		ridingRide:setFollow(false)
+		self:setRidingMount(nil)
 	end
-	self._entity:changeMoveSpeed(100-config.moveSpeed*100)
-	local data = string.format("%d", RideState.Ride_State_None)
-	setPropValue(self._entity:getPeer(), PLAYER_RIDE_INFO,data)
-	ride:setFollow(false)
-	self:setRidingMount(nil)
 end
-
 
 function RideHandler:updateRide()
 	for idx,iter in pairs(self.rideList) do

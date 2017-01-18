@@ -72,18 +72,35 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	lua_State* pLuaState = m_pLuaEngine->GetLuaState();
 	tolua_api4lua_open(pLuaState);
 
-	lua_PropertySet_open(pLuaState);
-
-	ScriptTimer::init(pLuaState);
-
-	CDBProxy::init(dbIP, dbPort, pLuaState);
-
-	if ( !m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") )
+	if (IS_WORLD_SERVER(m_worldId))
 	{
-		TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());
-		exit(-1);
-	}
+		lua_PropertySet_open(pLuaState);
+		if ( !m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") )
+		{
+			TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());
+			exit(-1);
+		}
 
+	}
+	else if (IS_FIGHT_SERVER(m_worldId))
+	{
+		if ( !m_pLuaEngine->LoadLuaFile("../resource/fightScript/appEntry.lua") )
+		{
+			TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());
+			exit(-1);
+		}
+	}
+	else if (IS_SOCIAL_SERVER(m_worldId))
+	{
+		if ( !m_pLuaEngine->LoadLuaFile("../resource/socialScript/appEntry.lua") )
+		{
+			TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());
+			exit(-1);
+		}
+	}
+	//notice: the order is fixed!
+	ScriptTimer::init(pLuaState);
+	CDBProxy::init(dbIP, dbPort, pLuaState);
 	luaStart(pLuaState);
 	RPCEngine::init(pLuaState);
 }
@@ -175,6 +192,25 @@ void CWorld::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 
 					return;
 				}
+
+				if ( msgId == MSG_S_W_FIGHT_SERVER_LOAD )
+				{
+					_MsgSW_FightServerLoad* pInfo = static_cast<_MsgSW_FightServerLoad*>(pMsg);
+					int count = pInfo->count;
+					m_fightServerNum = count;
+					if (m_fightLoads)
+						delete[] m_fightLoads;
+					if (count == 0)
+					{
+						m_fightLoads = NULL;
+					}
+					else{
+						m_fightLoads = new FightServerLoad[count];
+						memcpy(m_fightLoads, pInfo->loads, sizeof(FightServerLoad) * count);
+					}
+					setFightServerLoads(getLuaState());
+					return;
+				}
 			}
 			break;
 		case MSG_CLS_LOGIN:
@@ -183,7 +219,6 @@ void CWorld::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			TRACE1_L2("CWorld::OnSessionMsg(), Invalid Msg for class %i\n", pMsg->msgCls);
 			break;
 	}
-
 	return;
 }
 
@@ -253,7 +288,7 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 			break;
 		case MSG_CLS_WORLD_RPC:
 			{
-				short srcId = pMsg->context; unused(srcId);
+				handle srcId_clientLink = pMsg->context; unused(srcId_clientLink);
 				handle hGate = hLink; unused(hGate);
 				short gatewayId = pContext->gatewayId; unused(gatewayId);
 				RPCEngine::onWorldReceive(pMsg);
@@ -343,7 +378,10 @@ void CWorld::handleUpdateWorldState()
 	if ( flag )
 	{
 		m_castedPlayerCount = m_playerCount;
-		send_MsgWS_UP_WorldState();
+		if ( IS_WORLD_SERVER(m_worldId) || IS_FIGHT_SERVER(m_worldId))
+		{
+			send_MsgWS_UP_WorldState();
+		}
 	}
 }
 
@@ -362,6 +400,9 @@ HRESULT CWorld::Do(HANDLE hContext)
 			break;
 		case eUpdateWorldStateHandle:
 			handleUpdateWorldState();
+			break;
+		case eCleanUpHandle:
+			handleCleanUp();
 			break;
 		default:
 			ASSERT_(0);
@@ -517,6 +558,23 @@ void CWorld::OnClosed(HANDLE hLinkContext, HRESULT reason)
 	TRACE2_L2("\taddr = %s:%i\n", addr, port);
 
 	return;
+}
+
+void CWorld::handleCleanUp()
+{
+	IThreadsPool* pThreadsPool	= GlobalThreadsPool();
+	pThreadsPool->Shutdown();
+}
+
+void CWorld::CleanUp()
+{
+	LuaFunctor<TypeNull, int> closeFunc(getLuaState(), "ManagedApp.close");
+	if ( !closeFunc( TypeNull::nil(), m_worldId ) )
+	{
+		TRACE2_L1("[CWorld::Close] failed in worldID %d because of:%s\n", m_worldId, closeFunc.getLastError());
+	}
+	HANDLE hCleanupTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eCleanUpHandle, 0, eCleanUpInterval, 0, "world clean up timer!");
+	ASSERT_(hCleanupTimer);
 }
 
 CWorld g_world;

@@ -16,26 +16,29 @@ function Entity:__init()
 	self._name			= nil
 	self._modelID		= nil
 	self._showParts		= nil
-	self._pos = {nil,nil,nil}		--mapID,x,y
-	self._speed = Speed(self)
+	self._pos			= {nil,nil,nil}		--mapID,x,y
+	self._speed			= Speed(self)
+	self._bFighting		= false
 end
 
 function Entity:__release()
-	
-	self._id = nil
-	self._scene = nil
-	self._handlers = nil
-	self._entityType = nil
-	self._pos = nil
-	self._speed = nil
+	self._id			= nil
+	self._scene			= nil
+	self._handlers		= nil
+	self._entityType	= nil
+	self._pos			= nil
+	self._speed			= nil
 	if self._peer then
-		self._peer.release()
-		self._peer = nil
+		self._peer:release()
+		self._peer		= nil
 	end
 end
 
 function Entity:setPeer(peer)
 	self._peer = peer
+	if peer then
+		self:setID(peer:getHandle())
+	end
 end
 
 function Entity:getPeer()
@@ -75,6 +78,9 @@ function Entity:getEntityType()
 end
 
 function Entity:getPos()
+	local pos = self._peer:getPosition()
+	self._pos[2] = pos.x
+	self._pos[3] = pos.y
 	return self._pos
 end
 
@@ -124,6 +130,11 @@ function Entity:setStatus(status)
 end
 
 function Entity:getStatus()
+	if not self.status then
+		if self._peer then
+			self.status = getPropValue(self._peer, UNIT_STATUS)
+		end
+	end
 	return self.status
 end
 
@@ -151,3 +162,10 @@ function Entity:setTeamSpeed(value)
 	self._speed:SetTeamSpeed(value)
 end
 
+function Entity:setFighting(flag)
+	self._bFighting = flag
+end
+
+function Entity:isFighting()
+	return self._bFighting 
+end

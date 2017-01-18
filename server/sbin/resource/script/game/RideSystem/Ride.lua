@@ -1,5 +1,5 @@
 --[[Ride.lua
-描述：
+描述:
 	坐骑类
 --]]
 
@@ -14,8 +14,6 @@ function Ride:__init(configID,guid)
 	self.vigor = 0
 	self._isFollow = false
 	self.ridingTime = 0
-	self.hpValue = nil
-	self.mpValue = nil
 end
 
 function Ride:__release()
@@ -27,8 +25,6 @@ function Ride:__release()
 	self.vigor = nil
 	self._isFollow = nil
 	self.ridingTime = nil
-	self.hpValue = nil
-	self.mpValue = nil
 end
 
 function Ride:setOwner(player)
@@ -77,22 +73,6 @@ end
 
 function Ride:setFollow(flag)
 	self._isFollow = flag
-end
-
-function Ride:setChangeAttr(attrType,addValue)
-	if attrType == player_hp then
-		self.hpValue = addValue
-	else
-		self.mpValue = addValue
-	end
-end
-
-function Ride:getChangeAttr(attrType)
-	if attrType == player_hp then
-		return self.hpValue
-	else
-		return self.mpValue
-	end
 end
 
 --用于检测是否到10分钟

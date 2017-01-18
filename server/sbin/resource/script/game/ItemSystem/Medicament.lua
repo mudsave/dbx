@@ -1,14 +1,14 @@
 --[[Medicament.lua
-ÃèÊö£º
-	ÎïÆ·´óÀàÒ©Æ·Àà
+æè¿°ï¼š
+	ç‰©å“å¤§ç±»è¯å“ç±»
 ]]
 
 Medicament = class(Item)
 
 function Medicament:__init()
-	-- Ò©Æ·´óÀà
+	-- è¯å“å¤§ç±»
 	self.class = ItemClass.Medicament
-	-- ÊôĞÔĞ§¹û
+	-- å±æ€§æ•ˆæœ
 	self.effect = 0
 	self.attr = nil
 end
@@ -16,27 +16,27 @@ end
 function Medicament:__release()
 end
 
--- ÉèÖÃÊôĞÔĞ§¹û
+-- è®¾ç½®å±æ€§æ•ˆæœ
 function Medicament:setEffect(itemEffect)
 	self.effect = itemEffect
 end
 
--- »ñµÃÊôĞÔĞ§¹û
+-- è·å¾—å±æ€§æ•ˆæœ
 function Medicament:getEffect()
 	return self.effect
 end
 
--- ÉèÖÃĞ§¹û±ítable
+-- è®¾ç½®æ•ˆæœè¡¨table
 function Medicament:setAttr(itemAttr)
 	self.attr = itemAttr
 end
 
--- »ñµÃĞ§¹û±í
+-- è·å¾—æ•ˆæœè¡¨
 function Medicament:getAttr()
 	return self.attr
 end
 
--- ¸ù¾İÊı¾İ¿âÏÖ³¡ÉèÖÃÒ©Æ·ÊôĞÔ
+-- æ ¹æ®æ•°æ®åº“ç°åœºè®¾ç½®è¯å“å±æ€§
 function Medicament:setPropertyContext(context)
 	self:setExpireTime(context.expireTime)
 	self:setEffect(tonumber(context.effect))
@@ -46,7 +46,7 @@ function Medicament:setPropertyContext(context)
 	self:setAttr(context.attr)
 end
 
--- »ñµÃÒ©Æ·ÊôĞÔÏÖ³¡
+-- è·å¾—è¯å“å±æ€§ç°åœº
 function Medicament:getPropertyContext()
 	local context = {}
 	context.itemID = self:getItemID()

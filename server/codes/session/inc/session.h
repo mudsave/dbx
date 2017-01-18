@@ -43,6 +43,8 @@ public:
 				const char* dbIp,       int dbPort	);
 
 	void Close();
+	
+	void InitClientVersion();
 
 public:
 	void OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext);
@@ -161,18 +163,66 @@ public:
 		}
 	}
 
+	void send_MSG_S_W_FIGHT_SERVER_LOAD()
+	{
+		static FightServerLoad serverLoads[100];
+	    int count = 0;
+		LinkContext_World* pContext = NULL;
+		WorldsSet::iterator iter = m_fightServers.begin();
+	    for(; iter != m_fightServers.end(); iter++)
+	    {
+	        pContext = m_worlds[*iter];
+			ASSERT_(pContext);
+	        serverLoads[count].serverId = pContext->worldId;
+	        serverLoads[count].load = pContext->playerCount;
+	        count++;
+	        ASSERT_(count < 100);
+	    }
+
+	    _MsgSW_FightServerLoad msg;
+	    msg.msgFlags = 0;
+	    msg.msgCls = MSG_CLS_STARTUP;
+	    msg.msgId = MSG_S_W_FIGHT_SERVER_LOAD;
+	    msg.context = 0;
+	    msg.count = count;
+	    msg.msgLen = sizeof(msg) + sizeof(FightServerLoad) * count;
+
+	    iter = m_worldServers.begin();
+	    for(; iter != m_worldServers.end(); iter++)
+	    {
+	        pContext = m_worlds[*iter];
+			ASSERT_(pContext);
+	        IMsgLinksImpl<IID_IMsgLinksWS_L>::SendData(pContext->hLink, (BYTE*)&msg, sizeof(msg));
+			if (count > 0)
+		        IMsgLinksImpl<IID_IMsgLinksWS_L>::SendData(pContext->hLink, (BYTE*)serverLoads, sizeof(FightServerLoad) * count);
+	    }
+	}
 public:
+	void send_MsgSC_VersionCheck_ResultInfo(handle hLink, bool success)
+	{
+		_MsgSC_VersionCheck_ResultInfo msg;
+		msg.msgId = MSG_C_S_ACK_VERSION_CHECK;
+		msg.msgCls = MSG_CLS_LOGIN;
+		msg.msgLen = sizeof(_MsgSC_VersionCheck_ResultInfo);
+		msg.msgFlags = 0;
+		msg.context = 0;
+		msg.ret = success;
+		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
+		return;
+	}
+
 	void send_MsgSC_WorldListInfo(handle hLink)
 	{
 		char buff[256] = {0};
 		short worldCount = 0;
 		_MsgSC_WorldListInfo* msg = (_MsgSC_WorldListInfo*)buff;
-		for( WorldMap::iterator iter = m_worlds.begin(); iter != m_worlds.end(); iter++)
+		WorldsSet::iterator iter = m_worldServers.begin();
+		for(; iter != m_worldServers.end(); iter++)
 		{
-			if ( iter->second->state == LINK_CONTEXT_CONNECTED )
+			if (m_worlds[*iter]->state == LINK_CONTEXT_CONNECTED)
 			{
-				msg->worldList[worldCount].worldId = iter->second->worldId;
-				msg->worldList[worldCount].playerCount = iter->second->playerCount;
+				msg->worldList[worldCount].worldId = m_worlds[*iter]->worldId;
+				msg->worldList[worldCount].playerCount = m_worlds[*iter]->playerCount;
 				worldCount++;
 			}
 		}
@@ -200,7 +250,8 @@ public:
 			return;
 		}
 
-		char buff[512] = {0};
+		static char buff[2048];
+		memset(buff, 0, 2048);
 		_MsgSC_Login_ResultInfo* msg = (_MsgSC_Login_ResultInfo*)buff;
 		msg->msgCls = MSG_CLS_LOGIN;
 		msg->msgId = MSG_C_S_ACK_USER_LOGIN;
@@ -209,15 +260,17 @@ public:
 		msg->context	= 0;
 		msg->result = 0;
 		msg->reason = pRet->roleNum;
+		msg->accountId = pRet->accountId;
 		for( int i = 0; i < pRet->roleNum; i++)
 		{
 		    msg->roleList[i].roleId = pRet->role[i].roleId;
 		    msg->roleList[i].modelId = pRet->role[i].modelId;
 		    msg->roleList[i].school = pRet->role[i].school;
-		    msg->roleList[i].sex = pRet->role[i].sex;
 		    msg->roleList[i].level = pRet->role[i].level;
+			msg->roleList[i].weaponID = pRet->role[i].weaponID ;
 		    strcpy(msg->roleList[i].showPart, pRet->role[i].showPart);
 		    strcpy(msg->roleList[i].name, pRet->role[i].name);
+			strcpy(msg->roleList[i].remouldAttr, pRet->role[i].remouldAttr);
 		}
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, msg);
 	}
@@ -225,6 +278,7 @@ public:
 	void send_MsgSC_ChooseRole_ResultInfo(handle hLink, int accountId, short gatewayId)
 	{
 		_MsgSC_ChooseRole_ResultInfo msg;
+		memset(&msg, 0, sizeof(msg));
 		msg.msgCls =  MSG_CLS_LOGIN;
 		msg.msgId = MSG_C_S_ACK_CHOOSE_ROLE;
 		msg.msgLen = sizeof(_MsgSC_ChooseRole_ResultInfo);
@@ -273,6 +327,34 @@ public:
 		msg.roleId = account.roleId;
 		LinkContext_Gate* pContext = getGateLinkById(account.gatewayId);
 		IMsgLinksImpl<IID_IMsgLinksGS_L>::SendMsg(pContext->hLink, &msg);
+	}
+
+	void send_MsgSC_OffFightReConnect(handle hLink, AccountInfo& account)
+	{
+		_MsgSC_OffFightReConnect msg;
+		msg.msgCls =  MSG_CLS_OFFLINE;
+		msg.msgId = MSG_S_C_FIGHT_RECONNECT;
+		msg.msgLen = sizeof(_MsgSC_OffFightReConnect);
+		msg.msgFlags = 0;
+		msg.context	= 0;
+		msg.hLink = hLink;
+		msg.accountId = account.accountId;
+		msg.roleId = account.roleId;
+		msg.worldId = account.worldId;
+		msg.gatewayId = account.gatewayId;
+		bool isExit =false;
+		for ( GateMap::iterator iter = m_gates.begin(); iter != m_gates.end(); iter++ )
+		{
+			if( iter->second->gatewayId == account.gatewayId )
+			{
+				strcpy(msg.addr, iter->second->addr_client);
+				msg.port = iter->second->port_client;
+				isExit = true;
+				break;
+			}
+		}
+		ASSERT_(isExit);
+		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
 public:
@@ -326,6 +408,17 @@ public:
 		msg.msgFlags = 0;
 		msg.context	= 0;
 		msg.ret = result;
+		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
+	}
+
+	void send_MsgSC_ChangeSessionState_ResultInfo(handle hLink)
+	{
+		_MsgSC_StateChanged_ResultInfo msg;
+		msg.msgCls = MSG_CLS_LOGIN;
+		msg.msgId = MSG_C_S_ACK_STATE_CHANGED;
+		msg.msgLen = sizeof(_MsgSC_StateChanged_ResultInfo);
+		msg.msgFlags = 0;
+		msg.context	= 0;
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
@@ -520,7 +613,11 @@ public:
 	}
 
 public:
+	int				m_version;
+
+public:
 	typedef std::vector<short>						IDPools;
+	typedef std::set<handle> 						WorldsSet;
 
 public:
 	typedef std::map<handle, LinkContext_Client*>	ClientMap;
@@ -531,6 +628,10 @@ private:
 	ClientMap		m_clients;
 	GateMap			m_gates;
 	WorldMap		m_worlds;
+
+	WorldsSet		m_worldServers;
+	WorldsSet		m_fightServers;
+	WorldsSet		m_socialServers;
 
 private:
 	IDPools			m_gateIds;
