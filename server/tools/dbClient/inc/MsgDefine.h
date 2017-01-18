@@ -211,7 +211,7 @@ public:
 		}
 
 		/*
-		Êı¾İ×éÖ¯¸ñÊ½£º
+		æ•°æ®ç»„ç»‡æ ¼å¼ï¼š
 		|ObjectId(int)|param_count(int)|param_type_1(int)param_type_2(int)...|param_value_1(void *)param_value_2(void *)...|
 		*/
 		BYTE * rpos = stream;
@@ -248,7 +248,7 @@ public:
 	BYTE * writeStream(BYTE * stream)
 	{
 		/*
-		Êı¾İ×éÖ¯¸ñÊ½£º
+		æ•°æ®ç»„ç»‡æ ¼å¼ï¼š
 			|ObjectId(int)|param_count(int)|param_type_1(int)param_type_2(int)...|param_value_1(void *)param_value_2(void *)...|
 		*/
 		if (stream == NULL)
@@ -375,7 +375,7 @@ public:
 		return getCharacterSize(pValue);
 	}
 
-	//ÒÑ¾­°üº¬ÁË¶ÔÊı¾İµÄÑ¹Ëõ£¬µ«Ä¿Ç°Ö»¶ÔÀàĞÍÑ¹ËõÁË
+	//å·²ç»åŒ…å«äº†å¯¹æ•°æ®çš„å‹ç¼©ï¼Œä½†ç›®å‰åªå¯¹ç±»å‹å‹ç¼©äº†
 	inline int* compressData(int* data,int compressMode,int* TotalLen /*out*/)
 	{
 		return NULL;
@@ -573,7 +573,7 @@ public:
 	char* getStream()
 	{
 		std::string paramstr;
-		int tempsize = 20;	//±£Ö¤¿ÉÒÔ·ÅÏÂÒ»¸öÕûÊı/¸¡µãÊı×ªÎª×Ö·û´®±íÊ¾Ö®ºóµÄ³ß´ç
+		int tempsize = 20;	//ä¿è¯å¯ä»¥æ”¾ä¸‹ä¸€ä¸ªæ•´æ•°/æµ®ç‚¹æ•°è½¬ä¸ºå­—ç¬¦ä¸²è¡¨ç¤ºä¹‹åçš„å°ºå¯¸
 		char * temp = (char *)malloc(tempsize);
 		if (temp == NULL) return NULL;
 
@@ -585,13 +585,13 @@ public:
 				void * value = getAttribute(&name, &type, attrIndex, resIndex);
 				int typesize = getTypeSize(type);
 
-				//×Ö·û´®ĞèÒª¼ÓÉÏ½áÊø·û
+				//å­—ç¬¦ä¸²éœ€è¦åŠ ä¸Šç»“æŸç¬¦
 				if (type > 0)
 				{
 					typesize += 1;
 				}
 
-				//µ÷ÕûtempµÄ´óĞ¡£¬Ê¹Æä¿ÉÒÔÈİÏÂµ±Ç°µÄÄÚÈİ
+				//è°ƒæ•´tempçš„å¤§å°ï¼Œä½¿å…¶å¯ä»¥å®¹ä¸‹å½“å‰çš„å†…å®¹
 				if (typesize > tempsize)
 				{
 					free(temp);
@@ -626,7 +626,7 @@ public:
 		}
 		free(temp);
 
-		//¿½±´µ½ĞÂµØÖ·ÒÔ±ã·µ»Ø
+		//æ‹·è´åˆ°æ–°åœ°å€ä»¥ä¾¿è¿”å›
 		temp = (char *)malloc(paramstr.length() + 1);
 		if (temp == NULL) return NULL;
 		strcpy(temp, paramstr.c_str());
@@ -644,12 +644,12 @@ public:
 		return NULL;
 	}
 
-	int		m_nAttriIndex;  //´ÓµÚ¼¸¸ö²ÎÊı¿ªÊ¼ÊÇÊôĞÔ²ÎÊı
+	int		m_nAttriIndex;  //ä»ç¬¬å‡ ä¸ªå‚æ•°å¼€å§‹æ˜¯å±æ€§å‚æ•°
 	int		m_nAttriNameCount;
 	int		m_nAttriCount;
-	int		m_nTempObjId;  //ÏìÓ¦µÄÁ÷Ë®ºÅ
-	int		m_nSessionId;	//sessionºÅ
-	int		m_spId;			//´æ´¢¹ı³ÌIDºÅ
+	int		m_nTempObjId;  //å“åº”çš„æµæ°´å·
+	int		m_nSessionId;	//sessionå·
+	int		m_spId;			//å­˜å‚¨è¿‡ç¨‹IDå·
 	bool	m_bEnd;	
 	bool	m_bNeedCallback;
 	short	m_nLevel;
