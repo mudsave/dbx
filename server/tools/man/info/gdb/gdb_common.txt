@@ -1,0 +1,55 @@
+gdb的启动：
+	gdb program
+	gdb program core
+	gdb program 12306
+	gdb --args program arg1 arg2 arg3
+	quit or Ctrl-d
+
+gdb运行程序：
+	set args ( arg1 arg2 arg3 )
+	run ( >zl.txt 2>&1 )
+	start ( >zl.txt 2>&1 )
+	kill
+
+gdb调试已经运行的程序：
+	attach 12306（查找路径：pwd，dir）
+
+gdb调试core dump：
+	ulimit -a，ulimit -c unlimited
+	echo "core.%e.%p.%h.%t" > /proc/sys/kernel/core_pattern
+	/etc/sysctl.conf，kernel.core_pattern=core.%e.%p.%h.%t
+
+gdb的多线程调试：
+	info threads，thread num，thread new_name，thread apply all
+	show print thread-events，print $_thread
+	All-Stop mode（show scheduler-locking，gdb的breakpoint或者event会导致系统调用提前返回）
+	No-Stop mode
+
+gdb加载文件：
+	file（查找路径：pwd，PATH）
+	exec-file（查找路径：pwd，PATH）
+	symbol-file（查找路径：pwd，PATH）
+	core-file（查找路径：pwd）
+	share（查找路径：solib-search-path）
+
+gdb中so中符号的加载：
+	so的加载是程序走正常流程，通过系统调用加载的，这个时候已经生成了完整的路径，并记录在进程中
+	show auto-solib-add（on）
+	show stop-on-solib-events（off）
+	info share，share，nosharedlibrary
+
+gdb的各种路径：
+	pwd，即当前工作路径
+	show dir，即源文件搜索路径
+	show paths，即环境变量PATH，可执行文件搜索路径
+	show sysroot，即executable和shared library的搜索路径前缀（我们不用）
+	show solib-search-path，即shared library的搜索路径
+
+gdb编辑源码：
+	edit number
+	edit function
+	export EDITOR=/usr/bin/vim
+
+gdb的tui：
+	Ctrl-x + a，打开和关闭tui
+	打开tui的情况下，Ctrl-p进行补齐

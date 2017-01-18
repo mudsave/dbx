@@ -1,0 +1,21 @@
+
+0, mysql的错误码error no 分为服务器和客户端的, 服务器的为1xxx, 客户端的为2xxx.
+
+1, 对于产生结果集的查询select, mysql_num_rows()返回查询的行数. 对于不产生结果集的查询insert,update,delete 可以用mysql_affected_rows()返回影响的行数.
+
+2, mysql_real_query()的返回值只有2个, 0表示成功, 1表示失败.
+   可以通过mysql_errno()和mysql_error()取出错误.
+   对于复合sql语句 或 存储过程中的复合sql语句.如果不是第一条语句出错, 则都返回0.
+   当遇到一条错误语句时, 就会停止执行了, 下面的语句就会被忽略了. 对于已经成功执行的语句, 如果产生了结果集, 那么结果集也将会返回给客户的.
+
+3, 对于复合查询, C api 是将整个查询语句用一个包发给mysql server.mysql server解析sql 语句, 对于每个以";"分割的单条查询, 如果产生结果集, 则每个结果集都是一个独立的tcp包, 发给客户端.有几个结果集, 将发几个tcp包到客户端. 每个包中, 包含查询的字段(column field)信息, 记录(row)信息, 服务器状态信息, 错误信息等.
+对于 insert,update,delete 是不会产生结果集的.
+
+4, mysql_real_query()之后所有使用 MYSQL 或 MYSQL_RES 这2个对象的操作, 都是客户端本地的操作, 都不会通过网络去询问服务器的.
+
+5, 对于 mysql_store_result()或mysql_use_result() 产生的结果集对象MYSQL_RES, 使用完后必须释放,mysql_free_result().
+
+6, 对于mysql server返回的包, 分为2种. 1种包括结果集和状态信息,mysql_store_result()返回结果对象; 另外1种只包括状态信息,mysql_store_result()返回NULL.
+
+7, 对于 mysql_next_result()要放在mysql_store_result()之后执行.mysql_store_result()的返回值有0, -1, 和1. 0表示执行成功下面还有结果集, -1表示执行成功下面没有结果集, 1表示出错.
+   当mysql_next_result()返回1时, 错误有2钟,如果是服务器错误,则表示所执行的语句没有全部执行成功.

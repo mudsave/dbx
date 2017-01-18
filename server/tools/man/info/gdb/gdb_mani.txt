@@ -1,0 +1,21 @@
+info：
+	info source
+	info line
+	info proc
+	info program
+
+artificial arrays：
+	第一种形式：
+		int *array = (int *) malloc (len * sizeof (int));
+		p *array@len
+	第二种形式：
+		p /x (short[])0x12345678
+	第三种形式：
+		set $i = 0
+		p pInfo[$i++]->fv
+		ret
+		ret
+
+gdb接受的数组形式（表达式输出和用户输入）：{1，2，3}
+
+show print（查看所有的print设置）
