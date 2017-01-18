@@ -47,6 +47,7 @@ void PlayerInfo::_SwitchStatus(int s)
 
 HRESULT PlayerInfo::Do(HANDLE hContext)
 {
+	hStatusTimer = NULL;
 	int state = (int)(long)(hContext);
 	switch ( state )
 	{

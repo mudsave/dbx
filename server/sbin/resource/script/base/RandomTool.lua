@@ -89,7 +89,7 @@ function NonRepeatIndex(prevSize)
 		if size < 1 then
 			return 0
 		end
-		local r = math.random(size)
+		local r = math_random(size)
 		local index = array[r]
 		array[r] = array[size]
 		size = size - 1

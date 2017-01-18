@@ -21,7 +21,8 @@ enum TaskHandles
 	eFastFrameHandle,
 	eSlowFrameHandle,
 	eReconnSessionHandle,
-	eUpdateWorldStateHandle
+	eUpdateWorldStateHandle,
+	eCleanUpHandle
 };
 
 enum TaskIntervals
@@ -29,8 +30,10 @@ enum TaskIntervals
 	eFastFrameInterval			= 100,
 	eSlowFrameInterval			= 10000,
 	eReconnSessionInterval		= 1000 * 30,
-	eUpdateWorldStateInterval	= 1000
+	eUpdateWorldStateInterval	= 1000,
+	eCleanUpInterval			= 3000
 };
+
 
 class CWorld :
 	public ITask,
@@ -46,6 +49,8 @@ public:
 	void Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort );
 
 	void Close();
+
+	void CleanUp();
 
 public:
 	void OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext);
@@ -65,6 +70,8 @@ public:
 	void handleSessionReconnect();
 
 	void handleUpdateWorldState();
+
+	void handleCleanUp();
 
 public:
 	virtual HRESULT Do(HANDLE hContext);
@@ -185,6 +192,59 @@ public:
 		return 0;
 	}
 
+	int send_MsgWG_OfflineInFight(handle hLink, int roleId)
+	{
+		_MsgWG_OfflineInFight msg;
+		msg.msgFlags = 0;
+		msg.msgCls = MSG_CLS_OFFLINE;
+		msg.msgId = MSG_W_G_OFFLINE_IN_FIGHT;
+		msg.roleId = roleId;
+		msg.context	= 0;
+		msg.msgLen = sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksWG_C>::SendMsg(hLink, &msg);
+		return 0;
+	}
+
+public:
+	int send_MsgWS_ClearOffFightInfo(int accountId)
+	{
+		_MsgWS_ClearOffFightInfo msg;
+		msg.msgFlags	= 0;
+		msg.msgCls		= MSG_CLS_OFFLINE;
+		msg.msgId		= MSG_W_S_CLEAR_OFF_FIGHT;
+		msg.accountId	= accountId;
+		msg.context		= 0;
+		msg.msgLen		= sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksWS_C>::SendMsg(m_pSession->hLink, &msg);
+		return 0;
+	}
+
+	int send_MsgWS_StartFight(int accountId)
+	{
+		_MsgWS_StartFight msg;
+		msg.msgFlags	= 0;
+		msg.msgCls		= MSG_CLS_OFFLINE;
+		msg.msgId		= MSG_W_S_START_FIGHT;
+		msg.accountId	= accountId;
+		msg.context		= 0;
+		msg.msgLen		= sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksWS_C>::SendMsg(m_pSession->hLink, &msg);
+		return 0;
+	}
+
+	int send_MsgWS_StopFight(int accountId)
+	{
+		_MsgWS_StopFight msg;
+		msg.msgFlags	= 0;
+		msg.msgCls		= MSG_CLS_OFFLINE;
+		msg.msgId		= MSG_W_S_STOP_FIGHT;
+		msg.accountId	= accountId;
+		msg.context		= 0;
+		msg.msgLen		= sizeof(msg);
+		IMsgLinksImpl<IID_IMsgLinksWS_C>::SendMsg(m_pSession->hLink, &msg);
+		return 0;
+	}
+
 public:
 	void sendMsgToPeer(handle hGate, handle hClient, const AppMsg* pMsg)
 	{
@@ -281,6 +341,29 @@ private:
 		return true;
 	}
 
+	void setFightServerLoads(lua_State* pLuaState)
+	{
+		static int ref = LUA_NOREF;
+		if (ref == LUA_NOREF)
+			ref = PushMethod(pLuaState, "FightServerLoad.setLoad");
+		ASSERT_(ref != LUA_NOREF);
+		lua_rawgeti(pLuaState, LUA_REGISTRYINDEX, ref);
+		lua_newtable(pLuaState);
+		for(int i = 0; i < m_fightServerNum; i++)
+		{
+			lua_pushinteger(pLuaState, m_fightLoads[i].serverId);
+			lua_pushinteger(pLuaState, m_fightLoads[i].load);
+			lua_rawset(pLuaState, -3);
+		}
+		int rt = lua_pcall(pLuaState, 1, 0, 0);
+		if (rt)
+		{
+			const char* errMsg = luaL_checkstring(pLuaState, -1);
+			TRACE2_L0("[world::setFightServerLoads] error No:%d, error Msg:%s\n",
+			rt, errMsg);
+		}
+	}
+
 public:
 	short getWorldId()
 	{
@@ -291,6 +374,17 @@ public:
     {
     	return m_pLuaEngine->GetLuaState();
     }
+
+	handle getGateLinkById(short id)
+	{
+		GateMap::iterator iter = m_gates.begin();
+		for(; iter != m_gates.end(); iter++)
+		{
+			if(iter->second->gatewayId == id)
+				return iter->first;
+		}
+		return 0;
+	}
 
 private:
 	const char* translateLinkType(int linkType)
@@ -352,6 +446,10 @@ private:
 
 private:
 	GateMap					m_gates;
+
+private:
+	int 					m_fightServerNum;
+	FightServerLoad*		m_fightLoads;
 
 private:
 	std::string				m_sessionIP;

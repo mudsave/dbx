@@ -14,6 +14,7 @@ struct _Property{
 	short radius;	//such a Property is public,true if radius bigger than 0
 	short update;	//times that property has been modified
 	short casted;	//times that property has been broadcasted
+	short sync;		//sync or not
 	_Property():radius(0),update(0),casted(0){}
 };
 

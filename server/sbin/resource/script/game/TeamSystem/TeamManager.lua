@@ -84,10 +84,6 @@ function TeamManager:dissolveTeam(leaderID)
 		for _,memberInfo in pairs(team:getMemberList()) do
 			local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 			player:setActionState(PlayerStates.Normal)
-			--解散队伍，设置回原来的速度
-			if leaderID ~= memberInfo.memberID then
-				player:setMoveSpeed(player:getSelfSpeed())
-			end
 
 			local teamHandler = player:getHandler(HandlerDef_Team)
 			teamHandler:setTeamID(InvalidTeamID)
@@ -97,6 +93,11 @@ function TeamManager:dissolveTeam(leaderID)
 			event = Event.getEvent(TeamEvents_SS_QuitTeam,player:getID())
 			g_eventMgr:fireEvent(event)
 
+			--解散队伍，设置回原来的速度
+			if leaderID ~= memberInfo.memberID then
+				player:setMoveSpeed(player:getSelfSpeed())
+			end
+
 			--自动组队队列的队员恢复自动组队状态
 			for k,queueInfo in pairs(self.queueList) do
 				if memberInfo.memberID == queueInfo.ID then
@@ -105,6 +106,9 @@ function TeamManager:dissolveTeam(leaderID)
 				end
 			end
 		end
+
+		team:dissolve()
+
 		self._teams[teamID] = nil
 		
 		--队长退出自动组队队列
@@ -131,6 +135,14 @@ function TeamManager:inviteJoinTeam(playerID,targetID)
 		g_eventMgr:fireRemoteEvent(event,player)
 		return
 	end
+	--如果玩家真在采集，则不能邀请入队	
+	local collectState = targetPlayer:getCollectState()
+	if collectState then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SystemSet, 7)
+		g_eventMgr:fireRemoteEvent(event, player)
+		return
+	end
+	
 	local systemSetHandler = targetPlayer:getHandler(HandlerDef_SystemSet) 
 	if systemSetHandler then
 		if systemSetHandler:getRefTeam() then
@@ -172,12 +184,12 @@ function TeamManager:inviteJoinTeam(playerID,targetID)
 	end
 	--判断玩家队伍是否满员
 	if team:isFull() then
-		--发送消息到客户端
+		--发送消息到客户��?
 		local event = Event.getEvent(TeamEvents_SC_TeamIsFullNotify)
 		g_eventMgr:fireRemoteEvent(event,player)
 		return
 	end
-	--判断玩家队伍是否收到过五条消息以上
+	--判断玩家队伍是否收到过五条消息以��?
 	if table.size(tTeamHandler:getTeaminviteList()) >= MaxInvalidCount then
 		print("最多收到五条（暂定）邀请信息，目标现在很忙。")
 		return
@@ -239,10 +251,10 @@ function TeamManager:answerInvite(targetID,leaderID,isAccept)
 		for _,memberInfo in pairs(team:getMemberList()) do
 			local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
 			if memberInfo.memberID ~= targetID then
-				local event = Event.getEvent(TeamEvents_SC_NewMemberJoinTeam,targetID,targetPlayer:getName(),targetPlayer:getLevel(),targetPlayer:getSchool(),targetPlayer:getModelID(),targetPlayer:getScene():getMapID(),flag,targetPlayer:getMaxHp(),targetPlayer:getMaxMp())
+				local event = Event.getEvent(TeamEvents_SC_NewMemberJoinTeam,targetID,targetPlayer:getName(),targetPlayer:getLevel(),targetPlayer:getSchool(),targetPlayer:getModelID(),targetPlayer:getScene():getMapID(),flag,targetPlayer:getMaxHP(),targetPlayer:getMaxMP())
 				g_eventMgr:fireRemoteEvent(event,member)
 			end
-			local info = {memberID = member:getID(),name = member:getName(),level = member:getLevel(),school = member:getSchool(),modelID = member:getModelID(),mapID = member:getScene():getMapID(),memberState = memberInfo.memberState,maxHp = targetPlayer:getMaxHp(),maxMp = targetPlayer:getMaxMp()}
+			local info = {memberID = member:getID(),name = member:getName(),level = member:getLevel(),school = member:getSchool(),modelID = member:getModelID(),mapID = member:getScene():getMapID(),memberState = memberInfo.memberState,maxHp = targetPlayer:getMaxHP(),maxMp = targetPlayer:getMaxMP()}
 			table.insert(memberList,info)
 		end
 		--给被邀请玩家发
@@ -271,7 +283,7 @@ function TeamManager:answerInvite(targetID,leaderID,isAccept)
 		if self.lastTargetID ~= targetID then
 			self.lastTargetID = targetID
 			--30s计时器
-			self.lastID = g_timerMgr:regTimer(self,30*1000,30*1000,"30s内不能重复邀请同一个玩家")
+			self.lastID = g_timerMgr:regTimer(self,30*1000,30*1000,"30s内不能重复邀请同一个玩家。")
 		end
 	
 	end
@@ -309,19 +321,27 @@ function TeamManager:answerRequest(leaderID,targetID,isAccept)
 	local player = g_entityMgr:getPlayerByID(leaderID)
 	local targetPlayer = g_entityMgr:getPlayerByID(targetID)
 	if not targetPlayer then
-		print("目标不存在或不在线。")
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 7)
+		g_eventMgr:fireRemoteEvent(event, player)
 		return
 	end
 	local pTeamID = player:getHandler(HandlerDef_Team):getTeamID()
 	local tTeamID = targetPlayer:getHandler(HandlerDef_Team):getTeamID()
 	if tTeamID ~= InvalidTeamID then
-		print("该目标已加入了一个队伍。")
+		--申请人有队伍了
+		if isAccept then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 5)
+			g_eventMgr:fireRemoteEvent(event, player)
+		end
+		local event = Event.getEvent(TeamEvents_SC_RefuseRequestTeam,targetID)
+		g_eventMgr:fireRemoteEvent(event, player)
 		return
 	end
 	local team = self._teams[pTeamID]
 	if isAccept then
 		if team:isFull() then
-			print("队伍人数已满.")
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 6)
+			g_eventMgr:fireRemoteEvent(event, player)
 			return
 		end
 		local flag = nil
@@ -336,10 +356,10 @@ function TeamManager:answerRequest(leaderID,targetID,isAccept)
 		for _,memberInfo in pairs(team:getMemberList()) do
 			local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 			if memberInfo.memberID ~= targetID then
-				local event = Event.getEvent(TeamEvents_SC_NewMemberJoinTeam,targetID,targetPlayer:getName(),targetPlayer:getLevel(),targetPlayer:getSchool(),targetPlayer:getModelID(),targetPlayer:getScene():getMapID(),flag,targetPlayer:getMaxHp(),targetPlayer:getMaxMp())
+				local event = Event.getEvent(TeamEvents_SC_NewMemberJoinTeam,targetID,targetPlayer:getName(),targetPlayer:getLevel(),targetPlayer:getSchool(),targetPlayer:getModelID(),targetPlayer:getScene():getMapID(),flag,targetPlayer:getMaxHP(),targetPlayer:getMaxMP())
 				g_eventMgr:fireRemoteEvent(event,player)
 			end
-			local info = {memberID = player:getID(),name = player:getName(),level = player:getLevel(),school = player:getSchool(),modelID = player:getModelID(),mapID = player:getScene():getMapID(),memberState = memberInfo.memberState,maxHp = targetPlayer:getMaxHp(),maxMp = targetPlayer:getMaxMp()}
+			local info = {memberID = player:getID(),name = player:getName(),level = player:getLevel(),school = player:getSchool(),modelID = player:getModelID(),mapID = player:getScene():getMapID(),memberState = memberInfo.memberState,maxHp = targetPlayer:getMaxHP(),maxMp = targetPlayer:getMaxMP()}
 			table.insert(memberList,info)
 		end
 		--给申请玩家发
@@ -404,7 +424,7 @@ function TeamManager:comeBackTeam(playerID)
 			if mapID >= EctypeMap_StartID then
 				g_ectypeMgr:enterEctypeScene(mapID, {player, xPos, yPos})
 			else
-				g_sceneMgr:enterPublicScene(mapID, {player, xPos, yPos})
+				g_sceneMgr:enterPublicScene(mapID, player, xPos, yPos)
 			end
 			team:comeBack(playerID)
 			for _,memberInfo in pairs(team:getMemberList()) do
@@ -652,7 +672,7 @@ function TeamManager:autoTeam(playerID,minLevel,maxLevel,actionTable)
 	local player = g_entityMgr:getPlayerByID(playerID)
 	local teamID = player:getHandler(HandlerDef_Team):getTeamID()
 	if teamID ~= InvalidTeamID then
-		print("您已经有队伍了。")
+		print("您已经有队伍了��?")
 		return
 	end
 
@@ -718,7 +738,7 @@ function TeamManager:leaderAutoTeam(leaderID,minLevel,maxLevel,actionID)
 	local teamID = leader:getHandler(HandlerDef_Team):getTeamID()
 	local team = self._teams[teamID]
 	if team:isFull() then
-		print("您队伍人数已满")
+		print("您队伍人数已��?")
 		return
 	end
 	--更改信息点击发布组队,先移除在队长队列中再添加到最后

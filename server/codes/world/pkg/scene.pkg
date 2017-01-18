@@ -17,8 +17,8 @@ struct GridVct
 
 class CoScene
 {
-public:
 	static CoScene* Create(SceneType type, short mapId, char* fname);
 	static bool PosValidate(short mapId, int x, int y);
 	static GridVct FindRandomTile(int mapId);
+	bool posValidate(int x,int y,int flag);
 };

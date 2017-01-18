@@ -1,6 +1,6 @@
 --[[RideManager.lua
 描述:
-	坐骑管理��?
+	坐骑管理类
 ]]
 
 RideManager = class(nil, Singleton)
@@ -19,7 +19,7 @@ function RideManager:addRide(player, configID)
 		return 1
 	else
 		if rideCount <= 0 then
-			--去开启坐骑包裹���??
+			--去开启坐骑包裹。
 			local packetHandler = player:getHandler(HandlerDef_Packet)
 			packetHandler:updateHorsePack(true)
 		end
@@ -39,22 +39,10 @@ function RideManager:addRide(player, configID)
 	end
 end
 
---上坐��?
-function RideManager:upRide(player,guid)
+--上下坐骑
+function RideManager:UpOrDownRide(player,guid)
 	local rideHandler = player:getHandler(HandlerDef_Ride)
-	local ride = rideHandler:getRide(guid)
-	if ride then
-		rideHandler:upRide(ride)
-	end
-end
-
---下坐��?
-function RideManager:downRide(player)
-	local rideHandler = player:getHandler(HandlerDef_Ride)
-	local ride = rideHandler:getRidingMount()
-	if ride then
-		rideHandler:downRide(ride)
-	end
+	rideHandler:UpOrDownRide(guid)
 end
 
 local function successRate(level,sLevel)
@@ -116,7 +104,7 @@ function RideManager:rideGrowUp(player,guid,sGuidList)
 		end
 	end
 	packetHandler:removeByItemId(RideGrowUpItem,needItemCount)
-	local rate = math.random(0,1)
+	local rate = math.random(0,1000)/1000
 	if rate <= totalSuccess or completeness >= 1 then
 		local rideID = ride:getID()
 		local growUpID = RideDB[rideID].growUpID
@@ -139,14 +127,17 @@ function RideManager:rideToItem(player,rideGuid)
 	local ride = rideHandler:getRide(rideGuid)
 	local rideID = ride:getID()
 	if ride:getVigor() < RideDB[rideID].vigor then
+		print("体力值不满")
 		return
 	end
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	if packetHandler:getNumByItemID(RideToItem) < 1 then
+		print("包裹格子小于1")
 		return
 	end
 	local itemID = RideDB[rideID].matID
 	if not packetHandler:canAddPacket(itemID, 1, false) then
+		print("有没有配置物品ID")
 		return
 	end
 	if packetHandler:addItemsToPacket(itemID,1) then
@@ -163,7 +154,7 @@ function RideManager:rideToItem(player,rideGuid)
 	end
 end
 
---扩充坐骑��?
+--扩充坐骑栏
 function RideManager:expandRideBar(playerID)
 	local player = g_entityMgr:getPlayerByID(playerID)
 	local rideHandler = player:getHandler(HandlerDef_Ride)
@@ -190,7 +181,7 @@ function RideManager:loadRides(player,ridesRecord)
 	end
 	local rideList = {}
 	local rideHandler = player:getHandler(HandlerDef_Ride)
-	local ridingRide = nil
+	local ridingRideGuid = nil
 	for _,iter in pairs(ridesRecord) do
 		local guid = iter.rideGuid
 		local configID = iter.configID
@@ -208,24 +199,24 @@ function RideManager:loadRides(player,ridesRecord)
 			rideHandler:addRide(ride)
 			table.insert(rideList,{guid = guid,configID = configID,vigor = vigor,completeness = completeness*10000,isFollow = isFollow,ridingTime = iter.ridingTime})
 			if isFollow then
-				ridingRide = ride
+				ridingRideGuid = guid
 			end
 		end
 	end
 	if rideHandler:getRideCount() > 0 then
-		--去开启坐骑包裹���??
+		--去开启坐骑包裹。
 		local packetHandler = player:getHandler(HandlerDef_Packet)
 		packetHandler:updateHorsePack(true)
 	end
 	local event = Event.getEvent(RideEvent_SC_LoadRide,rideHandler:getRideCapacity(),rideList)
 	g_eventMgr:fireRemoteEvent(event,player)
 
-	if ridingRide then
-		rideHandler:upRide(ridingRide)
+	if ridingRideGuid then
+		rideHandler:UpOrDownRide(ridingRideGuid)
 	end
 end
 
---更新数据库坐��?
+--更新数据库坐骑
 function RideManager:updateRide(player)
 	local handler = player:getHandler(HandlerDef_Ride)
 	handler:updateRide()

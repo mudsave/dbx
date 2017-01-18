@@ -8,6 +8,7 @@ enum PlayerStatus
 	ePlayerNormal,
 	ePlayerFight,
 	ePlayerInactive,
+	ePlayerInactiveFight,
 	ePlayerClosing,
 	ePlayerClosed
 };

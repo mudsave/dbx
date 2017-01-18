@@ -40,5 +40,9 @@ function EventManager:fireEvent(event)
 end
 
 function EventManager:fireRemoteEvent(event, player)
-	RemoteEventProxy.send(event, player:getID())
+	RemoteEventProxy.send(event, player)
+end
+
+function EventManager:fireWorldsEvent(event, worldID)
+	RemoteEventProxy.sendToWorld(event, worldID)
 end

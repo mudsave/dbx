@@ -45,7 +45,7 @@ public:
 			if( ( l->dwNextTime >= l->dwLastTime && r->dwNextTime >= r->dwLastTime ) ||
 				( l->dwNextTime < l->dwLastTime && r->dwNextTime < r->dwLastTime ) )
 			{
-				return ( l->dwNextTime > r->dwNextTime ) || 
+				return ( l->dwNextTime > r->dwNextTime ) ||
 					( l->dwNextTime == r->dwNextTime && l->sn > r->sn );
 			}
 
@@ -65,6 +65,7 @@ public:
 	static int RegTimer(lua_State* pState);
 	static int UnregTimer(lua_State* pState);
 	static int OnTimeClick();
+	static int getDebugInfo(int timerId);
 	static int toluaScriptTimerOpen(lua_State* pState);
 public:
 	static ScriptTimer* s_pScriptTimer;

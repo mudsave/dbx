@@ -24,7 +24,7 @@ function FollowHandler:loadFollowEntity(mapID, x ,y)
 		--y = y - 1
 		if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or npc:getTaskType() == TaskType.loop then
 			--print("跟随进入场景",mapID,toString({npc, x, y}))
-			g_sceneMgr:enterPublicScene(mapID, {npc, x, y})
+			g_sceneMgr:enterPublicScene(mapID, npc, x, y)
 		end
 	end
 end
@@ -73,7 +73,8 @@ end
 
 function FollowHandler:removeMember(memberID)
 	if self._memberList[memberID] then
-		release(self._memberList[memberID])
+		-- 实体销毁在Scene:detachEntity(entity) 
+		--release(self._memberList[memberID])
 		self._memberList[memberID] = nil
 	end
 end

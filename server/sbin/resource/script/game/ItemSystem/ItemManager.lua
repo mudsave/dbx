@@ -1,25 +1,25 @@
 --[[ItemManager.lua
-ÃèÊö:
-	µÀ¾ß¹ÜÀíÀà
+æè¿°:
+	é“å…·ç®¡ç†ç±»
 ]]
 
--- ´æ´¢ËùÓĞµÀ¾ßµÄÊı¾İ±í
+-- å­˜å‚¨æ‰€æœ‰é“å…·çš„æ•°æ®è¡¨
 tItemDB = {}
 table.deepCopy(tWarrantDB, tItemDB)
 table.deepCopy(tMedicamentDB, tItemDB)
 table.deepCopy(tEquipmentDB, tItemDB)
--- Éî¶È¿½±´Ê±£¬Èç¹ûKeyÖµÖØ¸´¾ÍÖ»»á²åÈëValueÖµ£¬ÕâÀï¼ì²âÏÂÊÇ·ñÓĞÒì³£
+-- æ·±åº¦æ‹·è´æ—¶ï¼Œå¦‚æœKeyå€¼é‡å¤å°±åªä¼šæ’å…¥Valueå€¼ï¼Œè¿™é‡Œæ£€æµ‹ä¸‹æ˜¯å¦æœ‰å¼‚å¸¸
 
 ItemManager = class(nil, Singleton)
 
 function ItemManager:__init()
-	-- ¼ÇÂ¼ËùÓĞµÀ¾ß
+	-- è®°å½•æ‰€æœ‰é“å…·
 	self.items = {}
-	-- ¼ÇÂ¼µÀ¾ßµÄÊ¹ÓÃ´ÎÊı
+	-- è®°å½•é“å…·çš„ä½¿ç”¨æ¬¡æ•°
 	self.itemUseTimes = {}
 end
 
--- Éú³É×°±¸»ù´¡ÊôĞÔ
+-- ç”Ÿæˆè£…å¤‡åŸºç¡€å±æ€§
 function ItemManager:generateEquipBaseAttr(propertyContext, itemConfig)
 	propertyContext.baseEffect = {}
 	if itemConfig.BaseAttrTypeA and itemConfig.BaseAttrValueA then
@@ -65,18 +65,18 @@ function ItemManager:randomAttr(propertyContext,attrTypeDB,itemConfig)
 			attrValue = attrValue / multiple
 			table.insert(propertyContext.addEffect,{attrID,attrValue})
 		else
-			print("AddAttrValueDBÎ´¶¨ÒåÖ¸¶¨µÈ¼¶£¬attrID£¬UseNeedLvl", attrID, itemConfig.UseNeedLvl)
+			print("AddAttrValueDBæœªå®šä¹‰æŒ‡å®šç­‰çº§ï¼ŒattrIDï¼ŒUseNeedLvl", attrID, itemConfig.UseNeedLvl)
 		end
 	else
-		print("AddAttrValueDBÎ´¶¨ÒåÖ¸¶¨ÊôĞÔ£¬attrID", attrID)
+		print("AddAttrValueDBæœªå®šä¹‰æŒ‡å®šå±æ€§ï¼ŒattrID", attrID)
 	end
 end
 
--- Éú³É×°±¸¸½¼ÓÊôĞÔ,attrType×÷ÎªÉú³É×°±¸Ê±ºò¸ù¾İ¸½¼ÓÊôĞÔÀàĞÍÀ´Ñ¡Ôñ±í
+-- ç”Ÿæˆè£…å¤‡é™„åŠ å±æ€§,attrTypeä½œä¸ºç”Ÿæˆè£…å¤‡æ—¶å€™æ ¹æ®é™„åŠ å±æ€§ç±»å‹æ¥é€‰æ‹©è¡¨
 function ItemManager:generateEquipAddAttr(propertyContext, itemConfig, blueAttrNum, attrType)
 	propertyContext.addEffect = {}
 	if not blueAttrNum and itemConfig.AddAttrTypeBlueA and itemConfig.AddAttrValueBlueA then
-		-- ×ß×°±¸±íÅäÖÃ
+		-- èµ°è£…å¤‡è¡¨é…ç½®
 		local equipQuality = itemConfig.Quality
 		table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueA,itemConfig.AddAttrValueBlueA})
 		if itemConfig.AddAttrTypeBlueB and itemConfig.AddAttrValueBlueB then
@@ -106,7 +106,7 @@ function ItemManager:generateEquipAddAttr(propertyContext, itemConfig, blueAttrN
 		end
 	else
 		local AddAttrTypeList = {}
-		-- ×ßÊôĞÔ±íËæ»ú
+		-- èµ°å±æ€§è¡¨éšæœº
 		if not attrType then
 			AddAttrTypeList = AddAttrTypeDB[itemConfig.SubClass]
 		else
@@ -146,13 +146,13 @@ function ItemManager:generateEquipAddAttr(propertyContext, itemConfig, blueAttrN
 					end
 				end
 			else
-				print("AddAttrTypeDBÎ´¶¨ÒåÖ¸¶¨×°±¸£¬SubClass£¬EquipClass", itemConfig.SubClass, itemConfig.EquipClass)
+				print("AddAttrTypeDBæœªå®šä¹‰æŒ‡å®šè£…å¤‡ï¼ŒSubClassï¼ŒEquipClass", itemConfig.SubClass, itemConfig.EquipClass)
 			end
 		end
 	end
 end
 
--- Éú³É×°±¸°ó¶¨ÊôĞÔ
+-- ç”Ÿæˆè£…å¤‡ç»‘å®šå±æ€§
 function ItemManager:generateEquipBindAttr(propertyContext, itemConfig)
 	local bindAttrValueDB = BindAttrValueDB[itemConfig.UseNeedLvl]
 	if not bindAttrValueDB then
@@ -164,122 +164,122 @@ function ItemManager:generateEquipBindAttr(propertyContext, itemConfig)
 	end
 end
 
--- Éú³ÉµÀ¾ßÊôĞÔÏÖ³¡
+-- ç”Ÿæˆé“å…·å±æ€§ç°åœº
 function ItemManager:generatePropertyContext(item, itemConfig)
-	-- ÉèÖÃµÀ¾ßÊôĞÔÏÖ³¡
+	-- è®¾ç½®é“å…·å±æ€§ç°åœº
 	local propertyContext = {}
 	propertyContext.expireTime = 0
 	propertyContext.effect = 0
 	propertyContext.identityFlag = true
 	propertyContext.bindFlag = false
 
-	-- ÉèÖÃµ½ÆÚÊ±¼ä
+	-- è®¾ç½®åˆ°æœŸæ—¶é—´
 	if itemConfig.TimeLimitHours and itemConfig.TimeLimitHours > 0 then
 		local expireTime = os.time() + itemConfig.TimeLimitHours * 3600
 		propertyContext.expireTime = expireTime
 	end
 
-	-- Éú³ÉµÀ¾ßEffect
+	-- ç”Ÿæˆé“å…·Effect
 	if itemConfig.Class == ItemClass.Equipment then
-		-- ×°±¸ÀàµÀ¾ß
+		-- è£…å¤‡ç±»é“å…·
 		propertyContext.curDurability = itemConfig.MaxDurability * ConsumeDurabilityNeedFightTimes
-		-- »ù´¡ÊôĞÔ
+		-- åŸºç¡€å±æ€§
 		self:generateEquipBaseAttr(propertyContext, itemConfig)
 		if itemConfig.Quality == ItemQuality.NoIdentify then
-			-- ÉèÖÃÎ´¼ø¶¨±êÖ¾
+			-- è®¾ç½®æœªé‰´å®šæ ‡å¿—
 			propertyContext.identityFlag = false
 		else
-			-- ¸½¼ÓÊôĞÔ
+			-- é™„åŠ å±æ€§
 			self:generateEquipAddAttr(propertyContext, itemConfig)
 		end
-		-- °ó¶¨ÊôĞÔ
+		-- ç»‘å®šå±æ€§
 		self:generateEquipBindAttr(propertyContext, itemConfig)
 	elseif itemConfig.Class == ItemClass.Medicament then
-		-- Ò©Æ·ÀàµÀ¾ß
+		-- è¯å“ç±»é“å…·
 		if itemConfig.ReactType == MedicamentReactType.UseHpPool or itemConfig.ReactType == MedicamentReactType.UseMpPool then
-			-- ÉúÃü³ØµÀ¾ßºÍ·¨Á¦³ØµÀ¾ß
+			-- ç”Ÿå‘½æ± é“å…·å’Œæ³•åŠ›æ± é“å…·
 			propertyContext.effect = itemConfig.ReactExtraParam1
 			
 		elseif itemConfig.SubClass == ItemSubClass.FlyingFlag then
-			--·ÉĞĞÆìµÄ·ÉĞĞ´ÎÊı
+			--é£è¡Œæ——çš„é£è¡Œæ¬¡æ•°
 			propertyContext.effect = itemConfig.ReactExtraParam2
 		end
 	else
-		-- Æ¾Ö¤ÀàµÀ¾ß£¬Ã»ÓĞÊôĞÔ¡£¡£
+		-- å‡­è¯ç±»é“å…·ï¼Œæ²¡æœ‰å±æ€§ã€‚ã€‚
 	end
 	
-	-- ÉèÖÃµÀ¾ßÊôĞÔÏÖ³¡
+	-- è®¾ç½®é“å…·å±æ€§ç°åœº
 	item:setPropertyContext(propertyContext)
 end
 
--- ´´½¨µÀ¾ß
+-- åˆ›å»ºé“å…·
 function ItemManager:createItem(itemId, itemNum)
 	local itemConfig = tItemDB[itemId]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return nil
 	end
 
 	local item = nil
 	if itemConfig.Class == ItemClass.Equipment then
-		-- ×°±¸
+		-- è£…å¤‡
 		item = g_itemFct:createEquipment(itemId, itemNum)
 	elseif itemConfig.Class == ItemClass.Medicament then
-		-- Ò©Æ·
+		-- è¯å“
 		item = g_itemFct:createMedicament(itemId, itemNum)
 	elseif itemConfig.Class == ItemClass.Warrant then
-		-- Æ¾Ö¤
+		-- å‡­è¯
 		item = g_itemFct:createWarrant(itemId, itemNum)
 	else
-		-- ÀàĞÍ´íÎó
+		-- ç±»å‹é”™è¯¯
 	end
 
 	if item then
-		-- Éú³ÉµÀ¾ßÊôĞÔÏÖ³¡
+		-- ç”Ÿæˆé“å…·å±æ€§ç°åœº
 		self:generatePropertyContext(item, itemConfig)
 
-		-- ¼ÇÂ¼Ò»ÏÂ
+		-- è®°å½•ä¸€ä¸‹
 		self.items[item:getGuid()] = item
 	end
 
 	return item
 end
 
--- ¸ù¾İÊôĞÔÏÖ³¡´´½¨µÀ¾ß
+-- æ ¹æ®å±æ€§ç°åœºåˆ›å»ºé“å…·
 function ItemManager:createItemFromContext(propertyContext, itemNum)
 	local itemId = propertyContext.itemID
 	local itemConfig = tItemDB[itemId]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return nil
 	end
 	
 	local item = nil
 	if itemConfig.Class == ItemClass.Equipment then
-		-- ×°±¸
+		-- è£…å¤‡
 		item = g_itemFct:createEquipment(itemId, itemNum)
 	elseif itemConfig.Class == ItemClass.Medicament then
-		-- Ò©Æ·
+		-- è¯å“
 		item = g_itemFct:createMedicament(itemId, itemNum)
 	elseif itemConfig.Class == ItemClass.Warrant then
-		-- Æ¾Ö¤
+		-- å‡­è¯
 		item = g_itemFct:createWarrant(itemId, itemNum)
 	else
-		-- ÀàĞÍ´íÎó
+		-- ç±»å‹é”™è¯¯
 	end
 
 	if item then
-		-- ÉèÖÃµÀ¾ßÊôĞÔÏÖ³¡
+		-- è®¾ç½®é“å…·å±æ€§ç°åœº
 		item:setPropertyContext(propertyContext)
 
-		-- ¼ÇÂ¼Ò»ÏÂ
+		-- è®°å½•ä¸€ä¸‹
 		self.items[item:getGuid()] = item
 	end
 
 	return item
 end
 
--- ¸ù¾İÊı¾İ¿â¶Á³öÀ´µÄÊı¾İ´´½¨µÀ¾ß
+-- æ ¹æ®æ•°æ®åº“è¯»å‡ºæ¥çš„æ•°æ®åˆ›å»ºé“å…·
 function ItemManager:createItemFromDB(player, itemsRecord)
 	if not itemsRecord then
 		return false
@@ -293,7 +293,7 @@ function ItemManager:createItemFromDB(player, itemsRecord)
 	local equipHandler = player:getHandler(HandlerDef_Equip)
 	local equip = equipHandler:getEquip()
 
-	-- Èç¹û²Ö¿âÈİÁ¿´óÓÚÄ¬ÈÏµÄ£¬¾ÍÍ¨ÖªÏÂ¿Í»§¶Ë
+	-- å¦‚æœä»“åº“å®¹é‡å¤§äºé»˜è®¤çš„ï¼Œå°±é€šçŸ¥ä¸‹å®¢æˆ·ç«¯
 	local depotCapacity = player:getDepotCapacity()
 	if depotCapacity > DepotDefaultCapacity then
 		depotHandler:setDepotCapability(depotCapacity)
@@ -301,82 +301,82 @@ function ItemManager:createItemFromDB(player, itemsRecord)
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
 
-	-- ¼ÇÂ¼±³°üÎ´Ìí¼Ó³É¹¦µÄµÀ¾ß£¬±ÈÈç²ß»®¸Ä±äÁËµÀ¾ß´æ·ÅµÄ°ü¹üÀàĞÍ£¬¸üĞÂºóÍæ¼ÒµÚÒ»´ÎµÇÂ½´ËµÀ¾ß¾Í»áÌí¼ÓÊ§°Ü
+	-- è®°å½•èƒŒåŒ…æœªæ·»åŠ æˆåŠŸçš„é“å…·ï¼Œæ¯”å¦‚ç­–åˆ’æ”¹å˜äº†é“å…·å­˜æ”¾çš„åŒ…è£¹ç±»å‹ï¼Œæ›´æ–°åç©å®¶ç¬¬ä¸€æ¬¡ç™»é™†æ­¤é“å…·å°±ä¼šæ·»åŠ å¤±è´¥
 	local tPacketUnAddItems = {}
-	-- ¼ÇÂ¼²Ö¿âÎ´Ìí¼Ó³É¹¦µÄµÀ¾ß
+	-- è®°å½•ä»“åº“æœªæ·»åŠ æˆåŠŸçš„é“å…·
 	local tDepotUnAddItems = {}
 
-	-- Ä¿Ç°×°±¸µÀ¾ß¡¢±³°üµÀ¾ßºÍ²Ö¿âµÀ¾ß¶¼Ò»²¢¶ÁÈ¡ÁË£¬ÒÔºó²Ö¿âÈç¹ûÒªÑéÖ¤ÃÜÂëµÄ»°£¬ÔÙµ¥¶À¿ªÀ´
+	-- ç›®å‰è£…å¤‡é“å…·ã€èƒŒåŒ…é“å…·å’Œä»“åº“é“å…·éƒ½ä¸€å¹¶è¯»å–äº†ï¼Œä»¥åä»“åº“å¦‚æœè¦éªŒè¯å¯†ç çš„è¯ï¼Œå†å•ç‹¬å¼€æ¥
 	for _, items in pairs(itemsRecord) do
-		-- ¸ù¾İÊı¾İ¿âÏÖ³¡´´½¨µÀ¾ß
+		-- æ ¹æ®æ•°æ®åº“ç°åœºåˆ›å»ºé“å…·
 		local item = self:createItemFromContext(items, items.number)
 		if item then
-			-- Ìí¼ÓµÀ¾ßµ½°ü¹üÈİÆ÷Ö¸¶¨ÎïÆ·¸ñ
+			-- æ·»åŠ é“å…·åˆ°åŒ…è£¹å®¹å™¨æŒ‡å®šç‰©å“æ ¼
 			if items.containerID == PackContainerID.Packet then
-				-- Ìí¼Óµ½±³°üÀ¸
+				-- æ·»åŠ åˆ°èƒŒåŒ…æ 
 				if not packet:addItemsToGrid(item, items.packIndex, items.gridIndex, false) then
-					-- ¼ÇÂ¼Ò»ÏÂ
+					-- è®°å½•ä¸€ä¸‹
 					table.insert(tPacketUnAddItems, item)
 				end
 			elseif items.containerID == PackContainerID.Depot then
-				-- Ìí¼Óµ½²Ö¿âÀ¸
+				-- æ·»åŠ åˆ°ä»“åº“æ 
 				if not depot:addItemsToGrid(item, items.packIndex, items.gridIndex, false) then
-					-- ¼ÇÂ¼Ò»ÏÂ
+					-- è®°å½•ä¸€ä¸‹
 					table.insert(tDepotUnAddItems, item)
 				end
 			elseif items.containerID == PackContainerID.Equip then
-				-- Ìí¼Óµ½×°±¸À¸
+				-- æ·»åŠ åˆ°è£…å¤‡æ 
 				if not equip:addItemsToGrid(item, items.packIndex, items.gridIndex, false) then
-					-- Ìí¼ÓÊ§°Ü
+					-- æ·»åŠ å¤±è´¥
 				end
 			else
-				-- ÈİÆ÷´íÎó
+				-- å®¹å™¨é”™è¯¯
 			end
 		else
-			-- ´´½¨Ê§°Ü
+			-- åˆ›å»ºå¤±è´¥
 		end
 	end
 
-	-- Í³Ò»´¦ÀíÏÂÇ°ÃæÎ´Ìí¼Ó³É¹¦µÄµÀ¾ß
+	-- ç»Ÿä¸€å¤„ç†ä¸‹å‰é¢æœªæ·»åŠ æˆåŠŸçš„é“å…·
 	local unAddItemsNum = 0
 
-	-- ´¦Àí±³°üµÄ
+	-- å¤„ç†èƒŒåŒ…çš„
 	unAddItemsNum = table.getn(tPacketUnAddItems)
 	if unAddItemsNum > 0 then
 		for i = 1, unAddItemsNum do
 			local itemGuid = tPacketUnAddItems[i]:getGuid()
 			local result = packet:addItems(itemGuid, false)
 			if result == AddItemsResult.SucceedPile then
-				-- µş¼Ó³É¹¦£¬Ïú»ÙÔ´µÀ¾ß
+				-- å åŠ æˆåŠŸï¼Œé”€æ¯æºé“å…·
 				packet:removeItem(itemGuid, 0, false)
 			elseif result == AddItemsResult.Succeed then
-				-- Ìí¼Ó³É¹¦
+				-- æ·»åŠ æˆåŠŸ
 			else
-				-- Ìí¼ÓÊ§°ÜÁË£¬´òÓ¡Ò»ÏÂLog°Ñ£¬²¢ÇÒÏú»ÙµÀ¾ß
+				-- æ·»åŠ å¤±è´¥äº†ï¼Œæ‰“å°ä¸€ä¸‹LogæŠŠï¼Œå¹¶ä¸”é”€æ¯é“å…·
 				self:destroyItem(itemGuid)
 			end
 		end
 	end
 
-	-- ´¦Àí²Ö¿âµÄ
+	-- å¤„ç†ä»“åº“çš„
 	unAddItemsNum = table.getn(tDepotUnAddItems)
 	if unAddItemsNum > 0 then
 		for i = 1, unAddItemsNum do
 			local itemGuid = tDepotUnAddItems[i]:getGuid()
 			local result = depot:addItems(itemGuid, false)
 			if result == AddItemsResult.SucceedPile then
-				-- µş¼Ó³É¹¦£¬Ïú»ÙÔ´µÀ¾ß
+				-- å åŠ æˆåŠŸï¼Œé”€æ¯æºé“å…·
 				depot:removeItem(itemGuid, 0, false)
 			elseif result == AddItemsResult.Succeed then
-				-- Ìí¼Ó³É¹¦
+				-- æ·»åŠ æˆåŠŸ
 			else
-				-- Ìí¼ÓÊ§°ÜÁË£¬´òÓ¡Ò»ÏÂLog°Ñ£¬²¢ÇÒÏú»ÙµÀ¾ß
+				-- æ·»åŠ å¤±è´¥äº†ï¼Œæ‰“å°ä¸€ä¸‹LogæŠŠï¼Œå¹¶ä¸”é”€æ¯é“å…·
 				self:destroyItem(itemGuid)
 			end
 		end
 	end
 
-	-- ÈİÆ÷µÀ¾ßÊı¾İÍ³Ò»·¢¸ø¿Í»§¶Ë
+	-- å®¹å™¨é“å…·æ•°æ®ç»Ÿä¸€å‘ç»™å®¢æˆ·ç«¯
 	packet:updateItemToClient()
 	depot:updateItemToClient()
 	equip:updateItemToClient()
@@ -384,36 +384,36 @@ function ItemManager:createItemFromDB(player, itemsRecord)
 	return true
 end
 
--- ±£´æÍæ¼ÒµÀ¾ßÊı¾İ
+-- ä¿å­˜ç©å®¶é“å…·æ•°æ®
 function ItemManager:saveItemsData(player)
 	local playerDBID = player:getDBID()
 
-	-- ÏÈ¼ÙÉ¾³ıÍæ¼ÒµÀ¾ß£¬Ö»ÊÇ×öÒ»¸öÉ¾³ı±ê¼Ç
+	-- å…ˆå‡åˆ é™¤ç©å®¶é“å…·ï¼Œåªæ˜¯åšä¸€ä¸ªåˆ é™¤æ ‡è®°
 	LuaDBAccess.itemRemove(playerDBID, 0)
 
-	-- ¼ÇÂ¼Òª±£´æµÄµÀ¾ßÊıÄ¿
+	-- è®°å½•è¦ä¿å­˜çš„é“å…·æ•°ç›®
 	local itemSaveNumber = 0
-	-- ¼ÇÂ¼Òª±£´æµÄ×°±¸ÊıÄ¿
+	-- è®°å½•è¦ä¿å­˜çš„è£…å¤‡æ•°ç›®
 	local equipSaveNumber = 0
-	-- Éè¶¨Ã¿´Î±£´æµÄ×î´óµÀ¾ßÊı
+	-- è®¾å®šæ¯æ¬¡ä¿å­˜çš„æœ€å¤§é“å…·æ•°
 	local maxItemSaveNumber = 30
 	local maxEquipSaveNumber = 5
-	-- Ä¿Ç°Êı¾İ¿â²»Ö§³Ö´«Èë¶ş½øÖÆÊı¾İ¿é£¬ËùÒÔÕâÀïÔİÊ±ÏÈÓÃ×Ö·û´®´úÌæ£¬´æ´¢¹ı³Ì½âÎö×Ö·û´®»ñµÃµÀ¾ßÊı¾İ
+	-- ç›®å‰æ•°æ®åº“ä¸æ”¯æŒä¼ å…¥äºŒè¿›åˆ¶æ•°æ®å—ï¼Œæ‰€ä»¥è¿™é‡Œæš‚æ—¶å…ˆç”¨å­—ç¬¦ä¸²ä»£æ›¿ï¼Œå­˜å‚¨è¿‡ç¨‹è§£æå­—ç¬¦ä¸²è·å¾—é“å…·æ•°æ®
 	local itemStringData = ""
 	local equipStringData = ""
 
-	-- ´¦ÀíÍæ¼Ò±³°üÀ¸µÀ¾ß
+	-- å¤„ç†ç©å®¶èƒŒåŒ…æ é“å…·
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local packet = packetHandler:getPacket()
 	for packindex = PacketPackIndex.Default, PacketPackIndex.MaxNum-1 do
-		-- »ñµÃ°ü¹ü
+		-- è·å¾—åŒ…è£¹
 		local pack = packet:getPack(packindex)
 		if pack then
-			-- »ñµÃ°ü¹üµÀ¾ß
+			-- è·å¾—åŒ…è£¹é“å…·
 			for gridIndex = 1, pack:getCapability() do
 				local item = pack:getGridItem(gridIndex)
 				if item then
-					-- »ñµÃÒª±£´æµÄÊôĞÔÏÖ³¡£¬¸÷¸öÊôĞÔÖ®¼äÓÃ"-"·ûºÅÀ´·Ö¸î
+					-- è·å¾—è¦ä¿å­˜çš„å±æ€§ç°åœºï¼Œå„ä¸ªå±æ€§ä¹‹é—´ç”¨"-"ç¬¦å·æ¥åˆ†å‰²
 					local propertyContext = item:getPropertyContext()
 					if item:getItemClass() ~= ItemClass.Equipment then
 						itemStringData = itemStringData..propertyContext.itemID.."-"
@@ -432,11 +432,11 @@ function ItemManager:saveItemsData(player)
 						itemSaveNumber = itemSaveNumber + 1
 						if itemSaveNumber >= maxItemSaveNumber then
 							print("itemSaveNumber................................"..itemSaveNumber)
-							-- ÇëÇóÊı¾İ¿â±£´æµÀ¾ßÊı¾İ
+							-- è¯·æ±‚æ•°æ®åº“ä¿å­˜é“å…·æ•°æ®
 							LuaDBAccess.itemSave(playerDBID, itemSaveNumber, itemStringData)
-							-- Çå¿ÕÒª±£´æµÄµÀ¾ß×Ö·û´®
+							-- æ¸…ç©ºè¦ä¿å­˜çš„é“å…·å­—ç¬¦ä¸²
 							itemStringData = ""
-							-- ÇåÁãÒª±£´æµÄµÀ¾ßÊıÄ¿
+							-- æ¸…é›¶è¦ä¿å­˜çš„é“å…·æ•°ç›®
 							itemSaveNumber = 0
 						end
 					else
@@ -477,11 +477,11 @@ function ItemManager:saveItemsData(player)
 
 						equipSaveNumber = equipSaveNumber + 1
 						if equipSaveNumber >= maxEquipSaveNumber then
-							-- ÇëÇóÊı¾İ¿â±£´æ×°±¸Êı¾İ
+							-- è¯·æ±‚æ•°æ®åº“ä¿å­˜è£…å¤‡æ•°æ®
 							LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
-							-- Çå¿ÕÒª±£´æµÄ×°±¸×Ö·û´®
+							-- æ¸…ç©ºè¦ä¿å­˜çš„è£…å¤‡å­—ç¬¦ä¸²
 							equipStringData = ""
-							-- ÇåÁãÒª±£´æµÄ×°±¸ÊıÄ¿
+							-- æ¸…é›¶è¦ä¿å­˜çš„è£…å¤‡æ•°ç›®
 							equipSaveNumber = 0
 						end
 					end
@@ -490,7 +490,7 @@ function ItemManager:saveItemsData(player)
 		end
 	end
 
-	-- ´¦ÀíÍæ¼Ò²Ö¿âÀ¸µÀ¾ß
+	-- å¤„ç†ç©å®¶ä»“åº“æ é“å…·
 	local depotHandler = player:getHandler(HandlerDef_Depot)
 	local depot = depotHandler:getDepot()
 	for packindex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
@@ -498,7 +498,7 @@ function ItemManager:saveItemsData(player)
 		for gridIndex = 1, depotPack:getCapability() do
 			local item = depotPack:getGridItem(gridIndex)
 			if item then
-				-- »ñµÃÒª±£´æµÄÊôĞÔÏÖ³¡£¬¸÷¸öÊôĞÔÖ®¼äÓÃ"-"·ûºÅÀ´·Ö¸î
+				-- è·å¾—è¦ä¿å­˜çš„å±æ€§ç°åœºï¼Œå„ä¸ªå±æ€§ä¹‹é—´ç”¨"-"ç¬¦å·æ¥åˆ†å‰²
 				local propertyContext = item:getPropertyContext()
 				if item:getItemClass() ~= ItemClass.Equipment then
 					itemStringData = itemStringData..propertyContext.itemID.."-"
@@ -516,11 +516,11 @@ function ItemManager:saveItemsData(player)
 					end
 					itemSaveNumber = itemSaveNumber + 1
 					if itemSaveNumber >= maxItemSaveNumber then
-						-- ÇëÇóÊı¾İ¿â±£´æµÀ¾ßÊı¾İ
+						-- è¯·æ±‚æ•°æ®åº“ä¿å­˜é“å…·æ•°æ®
 						LuaDBAccess.itemSave(playerDBID, itemSaveNumber, itemStringData)
-						-- Çå¿ÕÒª±£´æµÄµÀ¾ß×Ö·û´®
+						-- æ¸…ç©ºè¦ä¿å­˜çš„é“å…·å­—ç¬¦ä¸²
 						itemStringData = ""
-						-- ÇåÁãÒª±£´æµÄµÀ¾ßÊıÄ¿
+						-- æ¸…é›¶è¦ä¿å­˜çš„é“å…·æ•°ç›®
 						itemSaveNumber = 0
 					end
 				else
@@ -561,11 +561,11 @@ function ItemManager:saveItemsData(player)
 
 					equipSaveNumber = equipSaveNumber + 1
 					if equipSaveNumber >= maxEquipSaveNumber then
-						-- ÇëÇóÊı¾İ¿â±£´æ×°±¸Êı¾İ
+						-- è¯·æ±‚æ•°æ®åº“ä¿å­˜è£…å¤‡æ•°æ®
 						LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
-						-- Çå¿ÕÒª±£´æµÄ×°±¸×Ö·û´®
+						-- æ¸…ç©ºè¦ä¿å­˜çš„è£…å¤‡å­—ç¬¦ä¸²
 						equipStringData = ""
-						-- ÇåÁãÒª±£´æµÄ×°±¸ÊıÄ¿
+						-- æ¸…é›¶è¦ä¿å­˜çš„è£…å¤‡æ•°ç›®
 						equipSaveNumber = 0
 					end
 				end
@@ -573,7 +573,7 @@ function ItemManager:saveItemsData(player)
 		end
 	end
 
-	-- ´¦ÀíÍæ¼Ò×°±¸À¸µÀ¾ß
+	-- å¤„ç†ç©å®¶è£…å¤‡æ é“å…·
 	local equipHandler = player:getHandler(HandlerDef_Equip)
 	local equip = equipHandler:getEquip()
 	local equipPack = equip:getPack()
@@ -581,7 +581,7 @@ function ItemManager:saveItemsData(player)
 		local item = equipPack:getGridItem(gridIndex)
 		if item then
 			equipSaveNumber = equipSaveNumber + 1
-			-- »ñµÃÒª±£´æµÄÊôĞÔÏÖ³¡£¬¸÷¸öÊôĞÔÖ®¼äÓÃ"-"·ûºÅÀ´·Ö¸î
+			-- è·å¾—è¦ä¿å­˜çš„å±æ€§ç°åœºï¼Œå„ä¸ªå±æ€§ä¹‹é—´ç”¨"-"ç¬¦å·æ¥åˆ†å‰²
 			local propertyContext = item:getPropertyContext()
 			equipStringData = equipStringData..propertyContext.itemID.."-"
 			equipStringData = equipStringData..propertyContext.number.."-"
@@ -619,42 +619,42 @@ function ItemManager:saveItemsData(player)
 			equipStringData = equipStringData..propertyContext.completeness.."-"
 
 			if equipSaveNumber >= maxEquipSaveNumber then
-				-- ÇëÇóÊı¾İ¿â±£´æ×°±¸Êı¾İ
+				-- è¯·æ±‚æ•°æ®åº“ä¿å­˜è£…å¤‡æ•°æ®
 				LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
-				-- Çå¿ÕÒª±£´æµÄ×°±¸×Ö·û´®
+				-- æ¸…ç©ºè¦ä¿å­˜çš„è£…å¤‡å­—ç¬¦ä¸²
 				equipStringData = ""
-				-- ÇåÁãÒª±£´æµÄ×°±¸ÊıÄ¿
+				-- æ¸…é›¶è¦ä¿å­˜çš„è£…å¤‡æ•°ç›®
 				equipSaveNumber = 0
 			end
 		end
 	end
 
-	-- ×îºóÊ£ÓàµÄµÀ¾ßÒ²±£´æÏÂ
+	-- æœ€åå‰©ä½™çš„é“å…·ä¹Ÿä¿å­˜ä¸‹
 	if itemSaveNumber > 0 then
-		-- ÇëÇóÊı¾İ¿â±£´æµÀ¾ßÊı¾İ
+		-- è¯·æ±‚æ•°æ®åº“ä¿å­˜é“å…·æ•°æ®
 		LuaDBAccess.itemSave(playerDBID, itemSaveNumber, itemStringData)
 	end
-	-- ×îºóÊ£ÓàµÄ×°±¸Ò²±£´æÏÂ
+	-- æœ€åå‰©ä½™çš„è£…å¤‡ä¹Ÿä¿å­˜ä¸‹
 	if equipSaveNumber > 0 then
-		-- ÇëÇóÊı¾İ¿â±£´æ×°±¸Êı¾İ
+		-- è¯·æ±‚æ•°æ®åº“ä¿å­˜è£…å¤‡æ•°æ®
 		LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
 	end
 
-	-- ±£´æÍê±ÏÁË£¬ÕæÕıµÄÉ¾³ıÖ®Ç°±ê¼ÇµÄµÀ¾ß
+	-- ä¿å­˜å®Œæ¯•äº†ï¼ŒçœŸæ­£çš„åˆ é™¤ä¹‹å‰æ ‡è®°çš„é“å…·
 	LuaDBAccess.itemRemove(playerDBID, 1)
 
-	-- ±£´æµÀ¾ßÊ¹ÓÃ´ÎÊı
+	-- ä¿å­˜é“å…·ä½¿ç”¨æ¬¡æ•°
 	if self.itemUseTimes[playerDBID] then
 		for itemID, itemInfo in pairs(self.itemUseTimes[playerDBID]) do
-			-- ¸üĞÂÊı¾İ¿â
+			-- æ›´æ–°æ•°æ®åº“
 			LuaDBAccess.updateItemUseTimes(playerDBID, itemID, itemInfo.useTimes, itemInfo.recordTime)
 		end
-		-- Çå¿ÕµÀ¾ßÊ¹ÓÃ´ÎÊı¼ÇÂ¼
+		-- æ¸…ç©ºé“å…·ä½¿ç”¨æ¬¡æ•°è®°å½•
 		self.itemUseTimes[playerDBID] = nil
 	end
 end
 
--- Ïú»ÙµÀ¾ß
+-- é”€æ¯é“å…·
 function ItemManager:destroyItem(itemGuid)
 	local item = self.items[itemGuid]
 	if item then
@@ -663,14 +663,14 @@ function ItemManager:destroyItem(itemGuid)
 	self.items[itemGuid] = nil
 end
 
--- »ñµÃµÀ¾ß
+-- è·å¾—é“å…·
 function ItemManager:getItem(itemGuid)
 	return self.items[itemGuid]
 end
 
--- ¸ù¾İÈİÆ÷ID£¬°ü¹üID£¬ºÍ¸ñ×ÓµÃµ½ÎïÆ· £¨ÕâÖÖ·½Ê½ÏŞ¶¨ÓÚ×î´óµş¼ÓÊıÊÇÒ»£©
+-- æ ¹æ®å®¹å™¨IDï¼ŒåŒ…è£¹IDï¼Œå’Œæ ¼å­å¾—åˆ°ç‰©å“ ï¼ˆè¿™ç§æ–¹å¼é™å®šäºæœ€å¤§å åŠ æ•°æ˜¯ä¸€ï¼‰
 function ItemManager:getItemByPosition(player,containerID,packIndex,gridIndex)
-	-- »ñµÃ¸÷¸öÈİÆ÷
+	-- è·å¾—å„ä¸ªå®¹å™¨
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local packet = packetHandler:getPacket()
 	local depotHandler = player:getHandler(HandlerDef_Depot)
@@ -689,7 +689,7 @@ function ItemManager:getItemByPosition(player,containerID,packIndex,gridIndex)
 	return item
 end
 
--- ¼ÓÔØµÀ¾ßÊ¹ÓÃ´ÎÊı
+-- åŠ è½½é“å…·ä½¿ç”¨æ¬¡æ•°
 function ItemManager:loadItemUseTimes(player, useTimesRecord)
 	if not useTimesRecord or table.size(useTimesRecord) <= 0 then
 		return
@@ -699,18 +699,18 @@ function ItemManager:loadItemUseTimes(player, useTimesRecord)
 		self.itemUseTimes[playerDBID] = {}
 	end
 	for _, record in pairs(useTimesRecord) do
-		-- ÅĞ¶Ï¼ÇÂ¼ÈÕÆÚ¸úÏÖÔÚÊÇ²»ÊÇÍ¬Ò»Ìì
+		-- åˆ¤æ–­è®°å½•æ—¥æœŸè·Ÿç°åœ¨æ˜¯ä¸æ˜¯åŒä¸€å¤©
 		if time.isSameDay(record.recordTime) then
 			self.itemUseTimes[playerDBID][record.itemID] = {}
 			self.itemUseTimes[playerDBID][record.itemID].useTimes = record.useTimes
 			self.itemUseTimes[playerDBID][record.itemID].recordTime = record.recordTime
 		else
-			-- ²»ÊÇÍ¬Ò»Ìì£¬¿ÉÒÔÔÙ´ÎÊ¹ÓÃÁË
+			-- ä¸æ˜¯åŒä¸€å¤©ï¼Œå¯ä»¥å†æ¬¡ä½¿ç”¨äº†
 		end
 	end
 end
 
--- »ñµÃµÀ¾ßÊ¹ÓÃ´ÎÊı
+-- è·å¾—é“å…·ä½¿ç”¨æ¬¡æ•°
 function ItemManager:getItemUseTimes(playerDBID, itemID)
 	if self.itemUseTimes[playerDBID] then
 		if self.itemUseTimes[playerDBID][itemID] then
@@ -722,7 +722,7 @@ function ItemManager:getItemUseTimes(playerDBID, itemID)
 	return 0
 end
 
--- Ôö¼ÓµÀ¾ßÊ¹ÓÃ´ÎÊı
+-- å¢åŠ é“å…·ä½¿ç”¨æ¬¡æ•°
 function ItemManager:addItemUseTimes(playerDBID, itemID)
 	if not self.itemUseTimes[playerDBID] then
 		self.itemUseTimes[playerDBID] = {}
@@ -732,7 +732,7 @@ function ItemManager:addItemUseTimes(playerDBID, itemID)
 		self.itemUseTimes[playerDBID][itemID].useTimes = 0
 	else
 		if not time.isSameDay(self.itemUseTimes[playerDBID][itemID].recordTime) then
-			-- ²»ÊÇÍ¬Ò»ÌìÁË£¬Ö±½ÓÖÃ0
+			-- ä¸æ˜¯åŒä¸€å¤©äº†ï¼Œç›´æ¥ç½®0
 			self.itemUseTimes[playerDBID][itemID].useTimes = 0
 		end
 	end
@@ -740,7 +740,7 @@ function ItemManager:addItemUseTimes(playerDBID, itemID)
 	self.itemUseTimes[playerDBID][itemID].recordTime = os.time()
 end
 
--- ÖØÉèµÀ¾ßÊ¹ÓÃ´ÎÊı£¬¹©Õ½¶··µ»ØÊ±µ÷ÓÃ
+-- é‡è®¾é“å…·ä½¿ç”¨æ¬¡æ•°ï¼Œä¾›æˆ˜æ–—è¿”å›æ—¶è°ƒç”¨
 function ItemManager:resetItemUseTimes(playerDBID, itemID, useTimes)
 	if not self.itemUseTimes[playerDBID] then
 		self.itemUseTimes[playerDBID] = {}
@@ -752,19 +752,19 @@ function ItemManager:resetItemUseTimes(playerDBID, itemID, useTimes)
 	self.itemUseTimes[playerDBID][itemID].recordTime = os.time()
 end
 
---´ò¿ª×°±¸¼ø¶¨½çÃæ
+--æ‰“å¼€è£…å¤‡é‰´å®šç•Œé¢
 function ItemManager:openEquipAppraisal(player)
 	local event = Event.getEvent(ItemEvents_SC_OpenEquipAppraisal)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---´ò¿ª¶Ò»»ÎïÆ·½çÃæ
+--æ‰“å¼€å…‘æ¢ç‰©å“ç•Œé¢
 function ItemManager:exchangeProps(player)
 	local event = Event.getEvent(ItemEvents_SC_OpenExchangeProps)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
---¶Ò»»ÎïÆ·
+--å…‘æ¢ç‰©å“
 function ItemManager:onExchangeProps(player,itemID,num)
 	local itemConfig  = tItemDB[itemID]
 	local packetHandler = player:getHandler(HandlerDef_Packet)
@@ -776,7 +776,7 @@ function ItemManager:onExchangeProps(player,itemID,num)
 		for i = 1,num do
 			if itemID then
 				if packetHandler:getNumByItemID(itemID) < 1 then
-					print("--222-----²ÄÁÏ²»×ã¡£¡£¡£")
+					print("--222-----ææ–™ä¸è¶³ã€‚ã€‚ã€‚")
 					break
 				end
 			end
@@ -787,7 +787,7 @@ function ItemManager:onExchangeProps(player,itemID,num)
 				local count = matInfo[2]
 				local curcount = packetHandler:getNumByItemID(matID)
 				if count > curcount then
-					print("--11------²ÄÁÏ²»×ã¡£¡£¡£")
+					print("--11------ææ–™ä¸è¶³ã€‚ã€‚ã€‚")
 					breakFlag = true
 					break
 				end
@@ -797,7 +797,7 @@ function ItemManager:onExchangeProps(player,itemID,num)
 			end
 
 			if not packetHandler:canAddPacket(additemID, 1, false) then
-				print("±³°ü¿Õ¼ä²»×ãÎŞ·¨¶Ò»»¡£")
+				print("èƒŒåŒ…ç©ºé—´ä¸è¶³æ— æ³•å…‘æ¢ã€‚")
 				break
 			end
 
@@ -806,7 +806,7 @@ function ItemManager:onExchangeProps(player,itemID,num)
 				local count = matInfo[2]
 				packetHandler:removeByItemId(matID, count)
 			end
-			print("¼ÓÎïÆ·£¬¼ÓÎïÆ·¡£¼ÓÎïÆ·¡£¡£")
+			print("åŠ ç‰©å“ï¼ŒåŠ ç‰©å“ã€‚åŠ ç‰©å“ã€‚ã€‚")
 			packetHandler:removeByItemId(itemID, 1)
 			packetHandler:addItemsToPacket(additemID, 1)
 			flag = true

@@ -81,7 +81,7 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 		break;
 	case S_SP_CPP_RESULT:
 		{
-			printf("S_SP_CPP_RESULT %d\n",pDataMsg->m_nTempObjId);
+			// printf("S_SP_CPP_RESULT %d\n",pDataMsg->m_nTempObjId);
 			if(setResult(pDataMsg->m_nTempObjId,pDataMsg))
 			{
 				if(pDataMsg->m_bEnd){

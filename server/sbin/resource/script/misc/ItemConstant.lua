@@ -1,102 +1,20 @@
 --[[ItemConstant.lua
-ÃèÊö£º
-	ÎïÆ·ÏµÍ³³£Á¿¶¨Òå
+æè¿°ï¼š
+	ç‰©å“ç³»ç»Ÿå¸¸é‡å®šä¹‰
 ]]
 
--- µÀ¾ß·ÖÀà
-ItemClass =
-{
-	-- ×°±¸
-	Equipment  = 1,
-	-- Ò©Æ·£¬³ıÁË×°±¸£¬ÓÎÏ·ÀïËùÓĞÄÜÓÒ¼üÊ¹ÓÃµÄµÀ¾ß¶¼ÊôÓÚÒ©Æ·
-	Medicament = 2,
-	-- Æ¾Ö¤£¬³ıÁË×°±¸£¬ÓÎÏ·ÀïËùÓĞ²»ÄÜÓÒ¼üÊ¹ÓÃµÄµÀ¾ß¶¼ÊôÓÚÆ¾Ö¤
-	Warrant    = 3,
-}
-
--- µÀ¾ß×ÓÀà£¬·şÎñÆ÷ÓÃÀ´Çø·ÖÊÇ·ñÊÇÈÎÎñµÀ¾ß£¬ÒÔ±ã·ÅÈëÈÎÎñ±³°ü£¬¿Í»§¶ËÓÃÀ´ÔÚTipsÉÏÏÔÊ¾±êÖ¾ÓÃ
-ItemSubClass =
-{
-	-- ²ÄÁÏ
-	Material   = 1,
-	-- Ò©Æ·
-	Medicament = 2,
-	-- ¹¦ÄÜµÀ¾ß
-	Function   = 3,
-	-- ÈÎÎñµÀ¾ß
-	Task       = 4,
-	-- Õ½ÀûÆ·
-	Trophy     = 5,
-	-- ±äÉí¿¨
-	ChangeCard = 6,
-	-- ¼¼ÄÜÊé
-	SkillBook  = 7,
-	-- °ü¹ü
-	Pack       = 8,
-	-- ¶Ò»»Æ·
-	Exchange   = 9,
-	-- Ê³Æ·
-	Food       = 10,
-	-- ÕäÏ¡Æ·
-	Treasure   = 11,
-	--Í¼Ö½
-	Drawing    = 12,
-	--·ûÊ¯
-	Runes	   = 13,
-	--ÁéÊ¯
-	LingShi	   = 14,
-	--·ÉĞĞÆì
-	FlyingFlag = 15,
-	--ÊŞÎÄ
-	Beast      = 16,
-	-- Ááççµ¤
-	LinglongPill= 17,
-	-- ÖÒ³Ï³Ø
-	reservePool = 18,
-}
-
--- ×°±¸·ÖÀà
-EquipmentClass =
-{
-	-- ÎäÆ÷
-	Weapon   = 1,
-	-- ·À¾ß
-	Armor    = 2,
-	-- ÊÎÆ·
-	Adorn    = 3,
-	-- ·¨±¦
-	Talisman = 4,
-}
-
--- ÎäÆ÷×ÓÀà
-WeaponSubClass =
-{
-	-- ÕÈ
-	Rod      = 1,
-	-- µ¶
-	Knife    = 2,
-	-- ½£
-	Sword    = 3,
-	-- ÉÈ
-	Fan      = 4,
-	-- åó
-	Crossbow = 5,
-	-- Ç¹
-	Spear    = 6,
-}
-
--- ÎäÆ÷×ÓÀàÃÅÅÉ
+-- æ­¦å™¨å­ç±»é—¨æ´¾
 WeaponSubClassSchool = 
 {
-	[WeaponSubClass.Knife]		= "Ç¬Ôªµº",
-	[WeaponSubClass.Spear]		= "½ğÏ¼É½",
-	[WeaponSubClass.Crossbow]	= "×ÏÑôÃÅ",
-	[WeaponSubClass.Sword]		= "ÔÆÏö¹¬",
-	[WeaponSubClass.Fan]		= "ÌÒÔ´¶´",
-	[WeaponSubClass.Rod]		= "ÅîÀ³¸ó",
+	[WeaponSubClass.Knife]		= "ä¹¾å…ƒå²›",
+	[WeaponSubClass.Spear]		= "é‡‘éœå±±",
+	[WeaponSubClass.Crossbow]	= "ç´«é˜³é—¨",
+	[WeaponSubClass.Sword]		= "äº‘éœ„å®«",
+	[WeaponSubClass.Fan]		= "æ¡ƒæºæ´",
+	[WeaponSubClass.Rod]		= "è“¬è±é˜",
 }
 
--- ÎäÆ÷×ÓÀàÃÅÅÉID
+-- æ­¦å™¨å­ç±»é—¨æ´¾ID
 WeaponSubClassSchoolID = 
 {
 	[WeaponSubClass.Knife]		= SchoolType.QYD,
@@ -107,33 +25,33 @@ WeaponSubClassSchoolID =
 	[WeaponSubClass.Rod]		= SchoolType.PLG,
 }
 
--- ·À¾ß×ÓÀà
+-- é˜²å…·å­ç±»
 ArmorSubClass =
 {
-	-- Í·¿ø
+	-- å¤´ç›”
 	Helmet   = 7,
-	-- ÒÂ¼×
+	-- è¡£ç”²
 	Clothes  = 8,
-	-- Ğ¬×Ó
+	-- é‹å­
 	Shoes    = 9,
-	-- ¿ã×Ó
+	-- è£¤å­
 	Trousers = 10,
-	-- »¤¼ç
+	-- æŠ¤è‚©
 	Shoulder = 11,
 }
 
--- ÊÎÆ·×ÓÀà
+-- é¥°å“å­ç±»
 AdornSubClass =
 {
-	-- ½äÖ¸
+	-- æˆ’æŒ‡
 	Ring     = 12,
-	-- »¤·û
+	-- æŠ¤ç¬¦
 	Amulet   = 13,
-	-- ÏîÁ´
+	-- é¡¹é“¾
 	Necklace = 14,
 }
 
--- ×°±¸ÀàĞÍ¸ú×°±¸À¸ÎïÆ·¸ñË÷Òı¶ÔÓ¦±í
+-- è£…å¤‡ç±»å‹è·Ÿè£…å¤‡æ ç‰©å“æ ¼ç´¢å¼•å¯¹åº”è¡¨
 EquipType_ItemGrid =
 {
 	[EquipmentClass.Adorn] =
@@ -161,282 +79,145 @@ EquipType_ItemGrid =
 	},
 }
 
--- ÎäÆ÷¶ÔÓ¦×°±¸À¸µÄ¸ñ×ÓË÷Òı
+-- æ­¦å™¨å¯¹åº”è£…å¤‡æ çš„æ ¼å­ç´¢å¼•
 WeaponGridIndex = 7
 
--- ×°±¸À¶É«ÊôĞÔ×î´óÊıÄ¿
+-- è£…å¤‡è“è‰²å±æ€§æœ€å¤§æ•°ç›®
 EquipBlueAttrMaxNum = 3
 
--- ½øĞĞ¶àÉÙ³¡Õ½¶·ÏûºÄÒ»µãÄÍ¾Ã
+-- è¿›è¡Œå¤šå°‘åœºæˆ˜æ–—æ¶ˆè€—ä¸€ç‚¹è€ä¹…
 ConsumeDurabilityNeedFightTimes = 50
 
--- ×°±¸Î´¼ø¶¨µÄ±êÖ¾
+-- è£…å¤‡æœªé‰´å®šçš„æ ‡å¿—
 EquipNotIdentityFlag = 10000
 
--- ²Ö¿â´æÇ®µÄ×î´óÖµ
+-- ä»“åº“å­˜é’±çš„æœ€å¤§å€¼
 DepotSaveMoneyMax = 999999999
 
--- µÀ¾ßÆ·ÖÊ
-ItemQuality =
-{
-	-- Î´¼ø¶¨
-	NoIdentify = 0,
-	-- °×
-	White  = 1,
-	-- À¶
-	Blue   = 2,
-	-- ·Û
-	Pink = 3,
-	-- ½ğ
-	Gold   = 4,
-	-- ÂÌ
-	Green  = 5,
-}
-
--- µÀ¾ß¼Û¸ñÀàĞÍ
-ItemPriceType =
-{
-	-- ÒøÁ½
-	Money		= 1,
-	-- °óÒø
-	BindMoney	= 2,
-	--°ï¹±
-	FacContrib	= 3,
-}
-
--- Ò©Æ·×÷ÓÃÀàĞÍ
-MedicamentReactType =
-{
-	-- Ôö¼ÓBuff
-	AddBuff            = 1,
-	-- Ö´ĞĞLuaº¯Êı
-	ExeLuaFun          = 2,
-	-- ¸Ä±äÉúÃü
-	ChangeHp           = 3,
-	-- ¸Ä±ä·¨Á¦
-	ChangeMp           = 4,
-	-- ¸Ä±äÉúÃüºÍ·¨Á¦
-	ChangeHpMp         = 5,
-	-- ¸Ä±äÅ­Æø
-	ChangeAnger        = 6,
-	-- ¸Ä±äPKÖµ
-	ChangePk           = 7,
-	-- ¸Ä±ä°óÒø
-	ChangeBindMoney    = 8,
-	-- ¸Ä±äÒøÁ½
-	ChangeMoney        = 9,
-	-- ¸Ä±ä¾­Ñé
-	ChangeExp          = 10,
-	-- ¸Ä±äÀñ½ğ
-	ChangeCashMoney    = 11,
-	-- ¸Ä±äÔª±¦
-	ChangeGoldCoin     = 12,
-	-- ¸Ä±äµÀĞĞ
-	ChangeTao          = 13,
-	-- ¸Ä±äÇ±ÄÜ
-	ChangePotential    = 14,
-	-- ¸Ä±äÀúÁ·
-	ChangeExpoint      = 15,
-	-- ¸Ä±äÕ½¼¨
-	ChangeCombatNum    = 16,
-	-- ¸Ä±ä°ï¹±
-	ChangeContribution = 17,
-	-- ¸Ä±äÌåÁ¦
-	ChangeVigor        = 18,
-	-- ¸Ä±ä³èÎïÖÒ³Ï
-	ChangePetLoyalty   = 19,
-	-- ¸Ä±ä³èÎïÊÙÃü
-	ChangePetLife      = 20,
-	-- Ê¹ÓÃÉúÃü³Ø
-	UseHpPool          = 21,
-	-- Ê¹ÓÃ·¨Á¦³Ø
-	UseMpPool          = 22,
-	-- ´ò¿ª¿Í»§¶ËUI
-	OpenClientUI       = 23,
-	-- È¡Ïûbuff
-	CancelBuff         = 24,
-	-- Ìí¼Ó³èÎï
-	AddPet             = 25,
-	-- Ìí¼Ó×øÆï
-	AddRide            = 26,
-	-- ËùÓĞÊôĞÔµã
-	ChangeAllAttr      = 27,
-	-- ËùÓĞÏàĞÔÏ´µã
-	ChangeAllPhase     = 28,
-	-- ¸Ä±ä×øÆïÌåÁ¦Öµ
-	ChangeRideVigor    = 29,
-	-- Íê³ÉÈÎÎñ,ÔÙ½ÓÒ»ÖÖÖ¸¶¨ÀàĞÍÈÎÎñ
-	FinishTask         = 30,
-	-- ´ò¿ª²Ø±¦Í¼
-	OpenTreasure	   = 31,
-	-- Ìí¼Ó³èÎï¼¼ÄÜ
-	AddPetSkill		   = 32,
-	-- Ìí¼ÓÒ»¸öÈÎÎñ
-	AddTask			   = 33,
-	-- Íê³ÉÒ»¸öÈÎÎñ
-	CompleteTask	   = 34,
-	--¸Ä±ä³èÎïÖÒ³Ï¶È²¢Ìí¼Óbuff
-	ChangeLoyaltyAndAddBuff   = 35,
-	--¸Ä±äÉúÃü²¢Ìí¼Óbuff
-	ChangeHpAndAddBuff   = 36,
-	--¸Ä±ä·¨Á¦²¢Ìí¼Óbuff
-	ChangeMpAndAddBuff   = 37,
-}
-
--- Ò©Æ·Ê¹ÓÃ×´Ì¬
-MedicamentUseState =
-{
-	-- ²»¿ÉÓÃ
-	NonUse  = 1,
-	-- ÆÕÍ¨×´Ì¬ÓÃ
-	General = 2,
-	-- Õ½¶·ÖĞÓÃ
-	Fight   = 3,
-	-- ¶¼¿ÉÓÃ
-	All     = 4,
-}
-
--- Ò©Æ·×÷ÓÃ¶ÔÏóÀàĞÍ
-MedicamentReactTarget =
-{
-	-- ×Ô¼º
-	Self   = 1,
-	-- ³èÎï
-	Pet    = 2,
-	-- ÓÑ·½µ¥Î»
-	Friend = 3,
-	-- µĞ·½µ¥Î»
-	Enemy  = 4,
-	--×øÆï
-	Ride   = 5,
-	--³èÎïºÍÍæ¼Ò
-	SelfAndPet = 6,
-}
-
--- °ü¹üÈİÆ÷ID
+-- åŒ…è£¹å®¹å™¨ID
 PackContainerID =
 {
-	-- ±³°üÀ¸
+	-- èƒŒåŒ…æ 
 	Packet = 1,
-	-- ²Ö¿âÀ¸
+	-- ä»“åº“æ 
 	Depot  = 2,
-	-- ×°±¸À¸
+	-- è£…å¤‡æ 
 	Equip  = 3,
-	-- »õ¼Ü»Ø¹ºÀ¸
+	-- è´§æ¶å›è´­æ 
 	Shelf  = 4,
-	--Íæ¼Ò½»Ò×
+	--ç©å®¶äº¤æ˜“
 	Trade  = 5
 }
 
--- Ìí¼ÓµÀ¾ß½á¹û
+-- æ·»åŠ é“å…·ç»“æœ
 AddItemsResult =
 {
-	-- Ìí¼ÓµÀ¾ß³É¹¦
+	-- æ·»åŠ é“å…·æˆåŠŸ
 	Succeed     = 1,
-	-- Ìí¼ÓµÀ¾ß³É¹¦£¬µ«Ô´µÀ¾ßĞèÒªÏú»Ù£¬²»¿ÉÓÃ
+	-- æ·»åŠ é“å…·æˆåŠŸï¼Œä½†æºé“å…·éœ€è¦é”€æ¯ï¼Œä¸å¯ç”¨
 	SucceedPile = 2,
-	-- µÀ¾ßÎŞĞ§
+	-- é“å…·æ— æ•ˆ
 	SrcInvalid  = 3,
-	-- Î»ÖÃÎŞĞ§
+	-- ä½ç½®æ— æ•ˆ
 	LocInvalid  = 4,
-	-- °ü¹üÒÑÂú
+	-- åŒ…è£¹å·²æ»¡
 	Full        = 5,
-	-- Ê§°Ü
+	-- å¤±è´¥
 	Failed      = 6
 }
 
--- ÒÆ³ıµÀ¾ß½á¹û
+-- ç§»é™¤é“å…·ç»“æœ
 RemoveItemsResult =
 {
-	-- ÒÆ³ıµÀ¾ß³É¹¦
+	-- ç§»é™¤é“å…·æˆåŠŸ
 	Succeed      = 1,
-	-- ÒÆ³ıµÀ¾ß³É¹¦£¬µ«Ô´µÀ¾ßĞèÒªÏú»Ù£¬²»¿ÉÓÃ
+	-- ç§»é™¤é“å…·æˆåŠŸï¼Œä½†æºé“å…·éœ€è¦é”€æ¯ï¼Œä¸å¯ç”¨
 	SucceedClean = 2,
-	-- ÊıÁ¿·Ç·¨
+	-- æ•°é‡éæ³•
 	NumInvalid   = 3,
-	-- ÎïÆ·ÎŞĞ§
+	-- ç‰©å“æ— æ•ˆ
 	SrcInvalid   = 4,
-	-- Ê§°Ü
+	-- å¤±è´¥
 	Failed       = 5
 }
 
--- ±³°üµÄ°ü¹üË÷Òı
+-- èƒŒåŒ…çš„åŒ…è£¹ç´¢å¼•
 PacketPackIndex =
 {
-	-- Ä¬ÈÏ°ü¹ü
+	-- é»˜è®¤åŒ…è£¹
 	Default      = 1,
-	-- µÈ¼¶°ü¹ü
+	-- ç­‰çº§åŒ…è£¹
 	Level        = 2,
-	-- VIP°ü¹ü£¬ÔÂ¿¨ÓÃ»§×¨ÓÃ°ü¹ü
+	-- VIPåŒ…è£¹ï¼Œæœˆå¡ç”¨æˆ·ä¸“ç”¨åŒ…è£¹
 	VIP          = 3,
-	-- ×øÆï°ü¹ü
+	-- åéª‘åŒ…è£¹
 	Horse        = 4,
-	-- ÈÎÎñ°ü¹ü
+	-- ä»»åŠ¡åŒ…è£¹
 	Task         = 5,
-	-- ×î´ó¼ÆÊı£¬·½±ãÒÔºóÀ©Õ¹ÆäËû°ü¹ü
+	-- æœ€å¤§è®¡æ•°ï¼Œæ–¹ä¾¿ä»¥åæ‰©å±•å…¶ä»–åŒ…è£¹
 	MaxNum       = 6
 }
 
--- ±³°ü°ü¹üÄ¬ÈÏÈİÁ¿
+-- èƒŒåŒ…åŒ…è£¹é»˜è®¤å®¹é‡
 PacketPackDefaultCapacity = 24
--- ¿ªÆô±³°üµÈ¼¶°ü¹üĞèÒªµÄµÈ¼¶
+-- å¼€å¯èƒŒåŒ…ç­‰çº§åŒ…è£¹éœ€è¦çš„ç­‰çº§
 PacketLevelPackNeedLevel = 40
 
--- ±³°ü°ü¹üÀàĞÍ£¬°´ÎïÆ·´æ·ÅÀàĞÍÀ´Çø·Ö
+-- èƒŒåŒ…åŒ…è£¹ç±»å‹ï¼ŒæŒ‰ç‰©å“å­˜æ”¾ç±»å‹æ¥åŒºåˆ†
 PacketPackType =
 {
-	-- ·ÇÈÎÎñ°ü¹ü
+	-- éä»»åŠ¡åŒ…è£¹
 	Normal = 1,
-	-- ÈÎÎñ°ü¹ü
+	-- ä»»åŠ¡åŒ…è£¹
 	Task   = 2,
 }
 
--- ²Ö¿âµÄ°ü¹üË÷Òı
+-- ä»“åº“çš„åŒ…è£¹ç´¢å¼•
 DepotPackIndex =
 {
-	-- µÚÒ»¸ö°ü¹ü
+	-- ç¬¬ä¸€ä¸ªåŒ…è£¹
 	First  = 1,
-	-- µÚ¶ş¸ö°ü¹ü
+	-- ç¬¬äºŒä¸ªåŒ…è£¹
 	Second = 2,
-	-- ×î´ó¼ÆÊı£¬·½±ãÒÔºóÀ©Õ¹ÆäËû°ü¹ü
+	-- æœ€å¤§è®¡æ•°ï¼Œæ–¹ä¾¿ä»¥åæ‰©å±•å…¶ä»–åŒ…è£¹
 	MaxNum = 3
 }
 
---npc»õ¼Ü
+--npcè´§æ¶
 ShelfPackIndex = 
 {
-	-- Ä¬ÈÏ°ü¹ü
+	-- é»˜è®¤åŒ…è£¹
 	Default = 1,
 }
--- ²Ö¿â×î´óÈİÁ¿
+-- ä»“åº“æœ€å¤§å®¹é‡
 DepotMaxCapacity = 84
--- ²Ö¿âÄ¬ÈÏÈİÁ¿
+-- ä»“åº“é»˜è®¤å®¹é‡
 DepotDefaultCapacity = 24
--- ²Ö¿â°ü¹üÈİÁ¿£¬·½±ã¼ÆËã²Ö¿âÀ©³ä
+-- ä»“åº“åŒ…è£¹å®¹é‡ï¼Œæ–¹ä¾¿è®¡ç®—ä»“åº“æ‰©å……
 DepotPackCapacity = 42
 
---»õ¼ÜµÄ×î´óÈİÁ¿
+--è´§æ¶çš„æœ€å¤§å®¹é‡
 ShelfMaxCapacity = 12
 
---p2p½»Ò×»õ¼Ü
+--p2päº¤æ˜“è´§æ¶
 TradePackIndex = 
 {
-	--Ä¬ÈÏ°ü¹ü
+	--é»˜è®¤åŒ…è£¹
 	Default =1,
 }
--- p2p½»Ò×µÄÄ¬ÈÏÈİÁ¿
+-- p2päº¤æ˜“çš„é»˜è®¤å®¹é‡
 TradeDefaultCapacity = 12
 
--- ²Ö¿âÀ©³äµÀ¾ßID
+-- ä»“åº“æ‰©å……é“å…·ID
 DepotExtendItemID = 1026004
 
--- ×°±¸À¸Ä¬ÈÏÈİÁ¿
+-- è£…å¤‡æ é»˜è®¤å®¹é‡
 EquipDefaultCapacity = 10
 
--- ×°±¸À¸µÄ°ü¹üË÷Òı
+-- è£…å¤‡æ çš„åŒ…è£¹ç´¢å¼•
 EquipPackIndex =
 {
-	-- Ä¬ÈÏ°ü¹ü
+	-- é»˜è®¤åŒ…è£¹
 	Default = 1,
 }
 

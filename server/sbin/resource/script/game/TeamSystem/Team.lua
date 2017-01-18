@@ -5,6 +5,36 @@
 
 Team = class()
 
+--provide the set follow visible function 
+--include pet and npc and follow entity
+
+local function setFollowVisible(playerId, value)
+	local player = g_entityMgr:getPlayerByID(playerId)
+	if player then
+		--follow entity
+		local followHandler = player:getHandler(HandlerDef_Follow)
+		local followList = followHandler:getMembers()
+		for memberID, member in pairs(followList) do
+			member:setVisible(value, player)
+		end
+		
+		-- follow ectype entity
+		local ectypeFollowList = followHandler:getEctypeMembers()
+		for memberID, member in pairs(ectypeFollowList) do
+			member:setVisible(value, player)
+		end
+
+		--pet
+		local petID = player:getFollowPetID()
+		if petID then
+			local pet = g_entityMgr:getPet(petID)
+			if pet then
+				pet:setVisible(value)
+			end
+		end
+	end
+end
+
 function Team:__init(teamID,leaderID)
 	self.teamID = teamID
 	self.leaderID = leaderID
@@ -80,6 +110,8 @@ end
 function Team:changeLeader(leaderID,targetID)
 	local player = g_entityMgr:getPlayerByID(leaderID)
 	local targetPlayer = g_entityMgr:getPlayerByID(targetID)
+	local moveHandler = player:getHandler(HandlerDef_Move)
+	moveHandler:DoStopMove()
 	if not targetPlayer then
 		local haveFollowMem = false
 		for k,memberInfo in pairs(self.allMemberList) do
@@ -104,6 +136,13 @@ function Team:changeLeader(leaderID,targetID)
 				end
 			end
 		end
+		
+		--modify pet follow entity visible 
+		--old leader must hide
+		setFollowVisible(leaderID, false)
+
+		--new leader must show
+		setFollowVisible(targetID, true)
 
 		--更换成队长，重新设置速度
 		self.leaderID = targetID
@@ -121,12 +160,12 @@ function Team:changeLeader(leaderID,targetID)
 			end
 		end
 		--如果此人在副本中，切换机关
-		local ectypeHandler = targetPlayer:getHandler(HandlerDef_Ectype)
+		--[[local ectypeHandler = targetPlayer:getHandler(HandlerDef_Ectype)
 		local ectypeMapID = ectypeHandler:getEctypeMapID()
 		local ectype = g_ectypeMgr:getEctype(ectypeMapID)
 		if ectype then
 			SceneSystem.getInstance():changeLeader(self.leaderID)
-		end
+		end]]
 		return self.leaderID
 	end
 end
@@ -138,6 +177,7 @@ function Team:leaderQuit()
 		leader:setOldActionState(PlayerStates.Normal)
 	end
 	self:removeMember(self.leaderID)
+
 	local haveFollowMem = false
 	if table.size(self.allMemberList) > 0 then
 		for k,memberInfo in pairs(self.allMemberList) do
@@ -145,6 +185,9 @@ function Team:leaderQuit()
 				haveFollowMem = true
 				memberInfo.memberState = MemberState.Leader
 				self.leaderID = memberInfo.memberID
+				--modify npc pet show 
+				setFollowVisible(self.leaderID, true)
+
 				local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 				if player:getActionState() == PlayerStates.Fight then
 					player:setOldActionState(PlayerStates.Team)
@@ -188,12 +231,17 @@ function Team:addMember(playerID,memberState)
 		player:setActionState(PlayerStates.Normal)
 	else
 		player:setActionState(PlayerStates.Follow)
+		
+		--如果队长在战斗状态，队员观战
+		
+
 		--入队伍，设置为队长速度
 		local leader = g_entityMgr:getPlayerByID(self:getLeaderID())
 		player:setTeamSpeed(leader:getMoveSpeed())
 	end
 
-	
+	--modify npc pet hide
+	setFollowVisible(playerID, false)
 end
 
 --移除队员
@@ -212,7 +260,8 @@ function Team:removeMember(playerID)
 	--被移除队伍设置速度
 	print("-----退出队伍-----------d----",player:getName(),player:getSelfSpeed())
 	player:setMoveSpeed(player:getSelfSpeed())
-
+	--modify npc pet show
+	setFollowVisible(playerID, true)
 end
 
 --暂时离开
@@ -224,11 +273,8 @@ function Team:stepOut(playerID)
 			player:setActionState(PlayerStates.Normal)
 			--暂离，恢复原来速度
 			player:setMoveSpeed(player:getSelfSpeed())
-			local id = player:getFollowPetID()
-			local pet = id and player:getPet(id)
-			if pet then
-				pet:setVisible(true)
-			end
+			--modify npc pet show
+			setFollowVisible(playerID, true)
 		end
 	end
 end
@@ -242,11 +288,8 @@ function Team:comeBack(playerID)
 			local leader = g_entityMgr:getPlayerByID(self:getLeaderID())
 			local player = g_entityMgr:getPlayerByID(playerID)
 			player:setTeamSpeed(leader:getMoveSpeed())
-			local id = player:getFollowPetID()
-			local pet = id and player:getPet(id)
-			if pet then
-				pet:setVisible(false)
-			end
+			--modify npc pet hide
+			setFollowVisible(playerID, false)
 		end
 	end
 end
@@ -268,4 +311,16 @@ function Team:getMaxAndMinLvl()
 		end
 	end
 	return maxLvl,minLvl
+end
+
+function Team:dissolve()
+	for _, memberInfo in pairs(self.allMemberList) do
+		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
+		if self.leaderID ~= memberInfo.memberID then
+			if memberInfo.memberState == MemberState.Follow then
+				setFollowVisible(memberInfo.memberID, true)
+			end
+		end
+	end
+	self:release()
 end

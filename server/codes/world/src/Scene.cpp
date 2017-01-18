@@ -78,7 +78,7 @@ void CoScene::moveUnit(CoEntity* pEntity, const GridVct& last)
 		m_yAxis.p[y].p[nNew].insert(hand);
         m_unitCount++;
 	}
-	else	
+	else
 	{
 		TRACE2_L0("[CoScene::MoveUnit] unit position out of range,unitId=%d,\
 		mapId=%d\n", hand, m_SceneInfo.mapId);
@@ -107,14 +107,14 @@ int CoScene::getDistance(const GridVct* p1, const GridVct* p2)
 handle* CoScene::getEntities(const GridVct& ptCenter, short nRad, int& nHandleCount, short classType)
 {
 	int xOrg = ptCenter.x;
-	int nMin = (xOrg < nRad) ? 0 : xOrg - nRad;
-	int nMax = (xOrg + nRad > m_mapSize.x) ? m_mapSize.x - 1 : (xOrg + nRad);
+	int nMin = (xOrg <= nRad) ? 0 : xOrg - nRad;
+	int nMax = (xOrg + nRad >= m_mapSize.x) ? m_mapSize.x - 1 : (xOrg + nRad);
 	nMin = nMin / X_FIELD_LEN;
 	nMax = nMax / X_FIELD_LEN;
-    
+
 	int yOrg = ptCenter.y;
-	int yMin = (yOrg < nRad) ? 0 : (yOrg - nRad);
-	int yMax = (yOrg + nRad > m_mapSize.y) ? (m_mapSize.y - 1) : (yOrg + nRad);
+	int yMin = (yOrg <= nRad) ? 0 : (yOrg - nRad);
+	int yMax = (yOrg + nRad >= m_mapSize.y) ? (m_mapSize.y - 1) : (yOrg + nRad);
 
 	int count = 0;
 	for(int y = yMin; y <= yMax; y++)
@@ -130,7 +130,7 @@ handle* CoScene::getEntities(const GridVct& ptCenter, short nRad, int& nHandleCo
 				if(!pEntity) continue;
 				int dist = ::GridDistance(pEntity->X(), pEntity->Y(), xOrg, yOrg);
 				if(dist <= nRad && (classType == eClsTypeNone ||
-                	pEntity->getPropType() == classType))
+                	pEntity->getType() == classType))
 				{
 					if(count == _MaxEnumCount)
 					{
@@ -179,7 +179,7 @@ bool CoScene::FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVc
 	CMapInfo* mapConfig = g_MapManager.GetMap(mapId);
     int nDia = nRad * 2 + 1;
     GridVct ptLoc;
-    int nRandX = rand() % nDia;	
+    int nRandX = rand() % nDia;
     for(int i = 0; i < nDia; i++)
     {
         nRandX++;
@@ -197,7 +197,7 @@ bool CoScene::FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVc
 				(ptLoc.x != ptCenter.x || ptLoc.y != ptCenter.y)
 				&& (!pPtExclude || (ptLoc.x != pPtExclude->x || ptLoc.y != pPtExclude->y))
 				&& (ptLoc.x < mapConfig->GetXTileLen() && ptLoc.y < mapConfig->GetYTileLen())
-				) 
+				)
             {
                 int lFlag = g_MapManager.GetMap(mapId)->GetFlags(ptLoc.x, ptLoc.y);
                 if(lFlag == 0)
@@ -207,18 +207,24 @@ bool CoScene::FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVc
                     return true;
                 }
             }
-        }		
-    }    
+        }
+    }
     return false;
 }
 
 GridVct CoScene::FindRandomTile(int mapId)
 {
+	GridVct gv(0, 0);
 	CMapInfo* mapConfig = g_MapManager.GetMap(mapId);
+	ASSERT_(mapConfig);
+	if (!mapConfig)
+	{
+		TRACE1_L0("map %d can not find!", mapId);
+		return gv;
+	}
     int lenX = mapConfig->GetXTileLen();
     int lenY = mapConfig->GetYTileLen();
 	GridVct center(lenX / 2, lenY / 2);
-	GridVct gv(0, 0);
     int radius = lenX > lenY ? lenX : lenY;
 	FindEmptyTile(mapId, center, radius, gv, NULL);
     return gv;

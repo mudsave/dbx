@@ -11,8 +11,8 @@
 
 const int SOCK_RECV_BUF_LEN = 1 * 1024;
 
-class CTcpPort : 
-	public ILinkPort, 
+class CTcpPort :
+	public ILinkPort,
 	public IIoTask,
 	public ITask
 {
@@ -99,7 +99,9 @@ private:
 		_CloseContext* pContext = new _CloseContext;
 		pContext->reason = S_OK;
 		HRESULT hr = m_pThreadsPool->QueueTask(this, pContext, 0);
-		ASSERT_( SUCCEEDED(hr) );
+		//ASSERT_( SUCCEEDED(hr) );
+		if(FAILED(hr))
+			TRACE0_L0("--[CTcpPort::async_sock_eof] QueueTask failed! --\n");
 	}
 
 	inline void async_sock_error(const char* str_reason = "no reason")
@@ -123,7 +125,9 @@ private:
 		_CloseContext* pContext = new _CloseContext;
 		pContext->reason = E_FAIL;
 		HRESULT hr = m_pThreadsPool->QueueTask(this, pContext, 0);
-		ASSERT_( SUCCEEDED(hr) );
+		//ASSERT_( SUCCEEDED(hr) );
+		if(FAILED(hr))
+			TRACE0_L0("--[CTcpPort::async_sock_error] QueueTask failed! --\n");
 	}
 
 public:

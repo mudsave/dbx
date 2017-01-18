@@ -42,7 +42,7 @@ uint64 new_guid(short world,short type)
 		if(s_tStart == 0)
 			init_guid_data();
 		DWORD ts = (DWORD)difftime(time(0),s_tStart);
-		printf("时间:%X\n",ts);
+		// printf("时间:%X\n",ts);
 		if(ts - s_uLast > 100)
 		{
 			serial = 0;

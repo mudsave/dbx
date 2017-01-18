@@ -1,5 +1,5 @@
 --[[TeamHandler.lua
-描述：
+描述�?
 	实体的组队handler
 --]]
 
@@ -53,7 +53,7 @@ function TeamHandler:removeTeaminviteList(playerID)
 	end
 end
 
---判断自己是否在暂离状态
+--判断自己是否在暂离状�?
 function TeamHandler:isStepOutState()
 	local team = g_teamMgr:getTeam(self.teamID)
 	if not team then
@@ -68,7 +68,7 @@ function TeamHandler:isStepOutState()
 	return false
 end
 
---不带暂离的
+--不带暂离�?
 function TeamHandler:getTeamPlayerList(isAll)
 	local team = g_teamMgr:getTeam(self.teamID)
 	if not team then
@@ -104,13 +104,13 @@ function TeamHandler:getTeamAllPlayerList()
 end
 
 
--- 非暂离人员的最大 最小等级比
+-- 非暂离人员的最�? 最小等级比
 function TeamHandler:getCurMaxAndMinLvl()
 	local playerList = self:getTeamPlayerList()
 	local maxLvl = self._entity:getLevel()
 	local minLvl = maxLvl
 	local curLvl = 0
-	-- 求最大最小值
+	-- 求最大最小�?
 	for _,player in pairs(playerList) do
 		curLvl = player:getLevel()
 		if curLvl > maxLvl then

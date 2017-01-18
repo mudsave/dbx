@@ -55,6 +55,7 @@ void LinkContext_Client::_SwitchState(int s)
 
 HRESULT LinkContext_Client::Do(HANDLE hContext)
 {
+	hStateTimer = NULL;
 	int state = (int)(long)(hContext);
 	switch ( state )
 	{

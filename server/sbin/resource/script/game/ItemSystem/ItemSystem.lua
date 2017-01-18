@@ -1,6 +1,6 @@
 --[[ItemSystem.lua
-ÃèÊö:
-	ÎïÆ·ÏµÍ³£¬´¦Àí¿Í»§¶ËµÄÏûÏ¢ÇëÇó
+æè¿°:
+	ç‰©å“ç³»ç»Ÿï¼Œå¤„ç†å®¢æˆ·ç«¯çš„æ¶ˆæ¯è¯·æ±‚
 ]]
 
 require "game.ItemSystem.Item"
@@ -21,34 +21,34 @@ ItemSystem = class(EventSetDoer, Singleton)
 function ItemSystem:__init()
 	self._doer =
 	{
-		-- ÒÆ¶¯µÀ¾ß
+		-- ç§»åŠ¨é“å…·
 		[ItemEvents_CS_MoveItem]				= ItemSystem.onMoveItem,
-		-- Ïú»ÙµÀ¾ß
+		-- é”€æ¯é“å…·
 		[ItemEvents_CS_DestroyItem]				= ItemSystem.onDestroyItem,
-		-- ÕûÀíµÀ¾ß
+		-- æ•´ç†é“å…·
 		[ItemEvents_CS_PackUp]					= ItemSystem.onPackUp,
-		-- Ê¹ÓÃÒ©Æ·
+		-- ä½¿ç”¨è¯å“
 		[ItemEvents_CS_UseMedicament]			= ItemSystem.onUseMedicament,
-		-- ²ğ·ÖµÀ¾ß
+		-- æ‹†åˆ†é“å…·
 		[ItemEvents_CS_SplitItem]				= ItemSystem.onSplitItem,
-		-- ´æ·ÅÒøÁ½
+		-- å­˜æ”¾é“¶ä¸¤
 		[ItemEvents_CS_StoreMoney]				= ItemSystem.onStoreMoney,
-		-- È¡×ßÒøÁ½
+		-- å–èµ°é“¶ä¸¤
 		[ItemEvents_CS_FetchMoney]				= ItemSystem.onFetchMoney,
-		-- À©³ä²Ö¿â
+		-- æ‰©å……ä»“åº“
 		[ItemEvents_CS_ExtendDepot]				= ItemSystem.onExtendDepot,
-		--ÇëÇó¼ø¶¨×°±¸
+		--è¯·æ±‚é‰´å®šè£…å¤‡
 		[ItemEvents_CS_RequestEquipAppraisal]	= ItemSystem.onAppraisalEeuip,
-		--¶Ò»»ÎïÆ·
+		--å…‘æ¢ç‰©å“
 		[ItemEvents_CS_RequestExchangeProps]	= ItemSystem.onExchangeProps,
-		--ĞŞÀí×°±¸
+		--ä¿®ç†è£…å¤‡
 		[ItemEvents_CS_RepairEquipMent]			= ItemSystem.onRepairEquipMent,
-		--ĞŞÀí×°±¸
+		--ä¿®ç†è£…å¤‡
 		[ItemEvents_CS_RepairAllEquipMent]		= ItemSystem.onRepairAllEquipMent,
 	}
 end
 
--- ÒÆ¶¯µÀ¾ß
+-- ç§»åŠ¨é“å…·
 function ItemSystem:onMoveItem(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -60,32 +60,32 @@ function ItemSystem:onMoveItem(event)
 		return
 	end
 	--[[if player:isFighting() then
-		-- Õ½¶·ÖĞÎŞ·¨²Ù×÷
+		-- æˆ˜æ–—ä¸­æ— æ³•æ“ä½œ
 		return
 	end]]
 
 	local itemGuid = params[1]
-	-- ÏÈÑéÖ¤ÒªÒÆ¶¯µÀ¾ßÊÇ·ñ´æÔÚ
+	-- å…ˆéªŒè¯è¦ç§»åŠ¨é“å…·æ˜¯å¦å­˜åœ¨
 	local moveItem = g_itemMgr:getItem(itemGuid)
 	if not moveItem then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
-	-- Ô´ÈİÆ÷ID
+	-- æºå®¹å™¨ID
 	local srcContainerID = moveItem:getContainerID()
-	-- Ô´ÈİÆ÷°ü¹üË÷Òı
+	-- æºå®¹å™¨åŒ…è£¹ç´¢å¼•
 	local srcPackIndex = moveItem:getPackIndex()
-	-- Ô´ÈİÆ÷¸ñ×ÓË÷Òı
+	-- æºå®¹å™¨æ ¼å­ç´¢å¼•
 	local srcGridIndex = moveItem:getGridIndex()
 
 	local moveItemInfo = params[2]
-	-- Ä¿±êÈİÆ÷ID
+	-- ç›®æ ‡å®¹å™¨ID
 	local dstContainerID = moveItemInfo.dstContainerID
-	-- Ä¿±êÈİÆ÷°ü¹üË÷Òı
+	-- ç›®æ ‡å®¹å™¨åŒ…è£¹ç´¢å¼•
 	local dstPackIndex = moveItemInfo.dstPackIndex
-	-- Ä¿±êÈİÆ÷¸ñ×ÓË÷Òı
+	-- ç›®æ ‡å®¹å™¨æ ¼å­ç´¢å¼•
 	local dstGridIndex = moveItemInfo.dstGridIndex
-	-- Ô´ÈİÆ÷
+	-- æºå®¹å™¨
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local depotHandler = player:getHandler(HandlerDef_Depot)
 	local equipHandler = player:getHandler(HandlerDef_Equip)
@@ -99,7 +99,7 @@ function ItemSystem:onMoveItem(event)
 	else
 		return
 	end
-	-- Ä¿±êÈİÆ÷
+	-- ç›®æ ‡å®¹å™¨
 	local dstContainer = nil
 	if dstContainerID == PackContainerID.Packet then
 		dstContainer = packetHandler:getPacket()
@@ -111,27 +111,27 @@ function ItemSystem:onMoveItem(event)
 		return
 	end
 	if srcContainer == dstContainer then
-		-- Ô´ÈİÆ÷ºÍÄ¿±êÈİÆ÷ÊÇÒ»¸öÈİÆ÷£¬ÅĞ¶ÏÏÂÊÇ·ñÍ¬Ò»Î»ÖÃ
+		-- æºå®¹å™¨å’Œç›®æ ‡å®¹å™¨æ˜¯ä¸€ä¸ªå®¹å™¨ï¼Œåˆ¤æ–­ä¸‹æ˜¯å¦åŒä¸€ä½ç½®
 		if srcPackIndex == dstPackIndex and srcGridIndex == dstGridIndex then
-			-- Í¬Ò»Î»ÖÃ£¬Ã»±ØÒª¼ÌĞø´¦Àí
+			-- åŒä¸€ä½ç½®ï¼Œæ²¡å¿…è¦ç»§ç»­å¤„ç†
 			return
 		end
 	end
-	-- ÅĞ¶ÏÔ´Î»ÖÃÊÇ·ñºÏ·¨
+	-- åˆ¤æ–­æºä½ç½®æ˜¯å¦åˆæ³•
 	local result, srcItem = srcContainer:getItems(srcPackIndex, srcGridIndex)
 	if result == -1 or srcItem ~= moveItem then
 		return
 	end
-	-- Èç¹ûÔ´ÈİÆ÷ÊÇ×°±¸À¸
+	-- å¦‚æœæºå®¹å™¨æ˜¯è£…å¤‡æ 
 	if srcContainerID == PackContainerID.Equip then
-		-- Ä¿±êÈİÆ÷±ØĞëÊÇ±³°ü
+		-- ç›®æ ‡å®¹å™¨å¿…é¡»æ˜¯èƒŒåŒ…
 		if dstContainerID ~= PackContainerID.Packet then
 			return
 		end
 	end
-	-- Èç¹ûÄ¿±êÈİÆ÷ÊÇ×°±¸À¸
+	-- å¦‚æœç›®æ ‡å®¹å™¨æ˜¯è£…å¤‡æ 
 	if dstContainerID == PackContainerID.Equip then
-		-- Ô´ÈİÆ÷±ØĞëÊÇ±³°ü
+		-- æºå®¹å™¨å¿…é¡»æ˜¯èƒŒåŒ…
 		if srcContainerID ~= PackContainerID.Packet then
 			return
 		end
@@ -139,13 +139,13 @@ function ItemSystem:onMoveItem(event)
 			local result, dstItem = dstContainer:getItems(dstPackIndex, dstGridIndex)
 			if result == 0 then
 				if dstItem == nil then
-					-- Ö±½Ó·ÅÈëÄ¿±êÎ»ÖÃ
+					-- ç›´æ¥æ”¾å…¥ç›®æ ‡ä½ç½®
 					if dstContainer:addItemsToGrid(srcItem, dstPackIndex, dstGridIndex, true) then	
-						-- ´ÓÔ´Î»ÖÃÒÆ³ı
+						-- ä»æºä½ç½®ç§»é™¤
 						srcContainer:removeItemsFromGrid(srcPackIndex, srcGridIndex, true)
 					end
 				else
-					-- Ä¿±ê´æÔÚµÀ¾ß£¬ĞèÒª½øĞĞ½»»»
+					-- ç›®æ ‡å­˜åœ¨é“å…·ï¼Œéœ€è¦è¿›è¡Œäº¤æ¢
 					dstContainer:removeItemsFromGrid(dstPackIndex, dstGridIndex, false)
 					dstContainer:addItemsToGrid(srcItem, dstPackIndex, dstGridIndex, true)
 					srcContainer:removeItemsFromGrid(srcPackIndex, srcGridIndex, false)
@@ -153,25 +153,25 @@ function ItemSystem:onMoveItem(event)
 				end
 			end
 		else
-			-- ²ÎÊı²»ºÏ·¨
+			-- å‚æ•°ä¸åˆæ³•
 		end
 		return
 	end
 
 	if srcContainer ~= dstContainer then
-		-- µÀ¾ßÔÚ²»Í¬ÈİÆ÷¼äÒÆ¶¯£¬²Å»á´¦ÀíÒÆ¶¯ÊıÄ¿
+		-- é“å…·åœ¨ä¸åŒå®¹å™¨é—´ç§»åŠ¨ï¼Œæ‰ä¼šå¤„ç†ç§»åŠ¨æ•°ç›®
 		local moveNum = params[3]
 		if moveNum then
 			local srcItemNum = srcItem:getNumber()
 			if moveNum > srcItemNum then
-				-- Âß¼­´íÎó
+				-- é€»è¾‘é”™è¯¯
 				return
 			elseif moveNum < srcItemNum then
 				local newItem = g_itemMgr:createItemFromContext(srcItem:getPropertyContext(), moveNum)
 				if newItem then
-					-- Èç¹ûÄ¿±ê¸ñ×ÓË÷ÒıµÈÓÚ-1£¬ËµÃ÷¿Í»§¶ËÇëÇó°ÑµÀ¾ß·ÅÈëÄ¿±ê°ü¹üËæ±ãÒ»¸ö¿Õ¸ñÀï
+					-- å¦‚æœç›®æ ‡æ ¼å­ç´¢å¼•ç­‰äº-1ï¼Œè¯´æ˜å®¢æˆ·ç«¯è¯·æ±‚æŠŠé“å…·æ”¾å…¥ç›®æ ‡åŒ…è£¹éšä¾¿ä¸€ä¸ªç©ºæ ¼é‡Œ
 					if dstGridIndex == -1 then
-						-- Èç¹ûÄ¿±ê°ü¹üË÷ÒıµÈÓÚ-1£¬ËµÃ÷¿Í»§¶ËÇëÇó°ÑµÀ¾ß·ÅÈëÄ¿±êÈİÆ÷Ëæ±ãÒ»¸ö°ü¹üÀï,Èç¹û²»µÈÓÚ-1,Ôò·ÅÖ¸¶¨°ü¹ü
+						-- å¦‚æœç›®æ ‡åŒ…è£¹ç´¢å¼•ç­‰äº-1ï¼Œè¯´æ˜å®¢æˆ·ç«¯è¯·æ±‚æŠŠé“å…·æ”¾å…¥ç›®æ ‡å®¹å™¨éšä¾¿ä¸€ä¸ªåŒ…è£¹é‡Œ,å¦‚æœä¸ç­‰äº-1,åˆ™æ”¾æŒ‡å®šåŒ…è£¹
 						local result = nil
 						if dstPackIndex == -1 then
 							result = dstContainer:addItems(newItem:getGuid(), true)
@@ -180,38 +180,38 @@ function ItemSystem:onMoveItem(event)
 						end
 
 						if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
-							-- ¿Û³ıÔ´µÀ¾ßµÄÊıÄ¿
+							-- æ‰£é™¤æºé“å…·çš„æ•°ç›®
 							srcContainer:removeItem(srcItem:getGuid(), moveNum, true)
 						elseif result == AddItemsResult.Full and srcContainerID == PackContainerID.Depot and dstContainerID == PackContainerID.Packet then
-							--ÄúµÄÎïÆ·À¸ÖĞÄ¿Ç°Ã»ÓĞ¿Õ¼ä£¬²»ÄÜÔÙÈ¡³öÎïÆ·
+							--æ‚¨çš„ç‰©å“æ ä¸­ç›®å‰æ²¡æœ‰ç©ºé—´ï¼Œä¸èƒ½å†å–å‡ºç‰©å“
 							self:sendItemMessageTip(player, 15)
 						end
 					else
-						-- ÅĞ¶ÏÄ¿±êÎ»ÖÃÊÇ·ñºÏ·¨
+						-- åˆ¤æ–­ç›®æ ‡ä½ç½®æ˜¯å¦åˆæ³•
 						local result, dstItem = dstContainer:getItems(dstPackIndex, dstGridIndex)
 						if result == -1 then
 							return
 						end
 						if not dstItem then
-							-- Ö±½Ó·ÅÈëÄ¿±êÎ»ÖÃ
+							-- ç›´æ¥æ”¾å…¥ç›®æ ‡ä½ç½®
 							if dstContainer:addItemsToGrid(newItem, dstPackIndex, dstGridIndex, true) then
-								-- ¿Û³ıÔ´µÀ¾ßµÄÊıÄ¿
+								-- æ‰£é™¤æºé“å…·çš„æ•°ç›®
 								srcContainer:removeItem(srcItem:getGuid(), moveNum, true)
 							end
 						else
-							-- ²»¿ÉÒÔÖ±½Ó·ÅÈë£¬ÅĞ¶ÏÊÇ·ñ¿Éµş¼Ó
+							-- ä¸å¯ä»¥ç›´æ¥æ”¾å…¥ï¼Œåˆ¤æ–­æ˜¯å¦å¯å åŠ 
 							if dstContainer:pileItemsToGridEx(newItem, dstPackIndex, dstGridIndex) then
-								-- µş¼Ó³É¹¦
+								-- å åŠ æˆåŠŸ
 								dstContainer:updateItemToClient()
 								return
 							else
-								-- ²»ÄÜµş¼Ó£¬ÔÚÄ¿±êÈİÆ÷ÕÒÒ»¸ö¿Õ¸ñÀ´·Å
+								-- ä¸èƒ½å åŠ ï¼Œåœ¨ç›®æ ‡å®¹å™¨æ‰¾ä¸€ä¸ªç©ºæ ¼æ¥æ”¾
 								local result = dstContainer:addItemsToPack(newItem, dstPackIndex)
 								if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
-									-- ¿Û³ıÔ´µÀ¾ßµÄÊıÄ¿
+									-- æ‰£é™¤æºé“å…·çš„æ•°ç›®
 									srcContainer:removeItem(srcItem:getGuid(), moveNum, true)
 								elseif result == AddItemsResult.Full and srcContainerID == PackContainerID.Depot and dstContainerID == PackContainerID.Packet then
-									--ÄúµÄÎïÆ·À¸ÖĞÄ¿Ç°Ã»ÓĞ¿Õ¼ä£¬²»ÄÜÔÙÈ¡³öÎïÆ·
+									--æ‚¨çš„ç‰©å“æ ä¸­ç›®å‰æ²¡æœ‰ç©ºé—´ï¼Œä¸èƒ½å†å–å‡ºç‰©å“
 									self:sendItemMessageTip(player, 15)
 								end
 							end
@@ -220,70 +220,70 @@ function ItemSystem:onMoveItem(event)
 					return
 				end
 			else
-				-- ÒÆ¶¯È«²¿ÊıÄ¿£¬×ßÏÂÃæµÄ´¦Àí
+				-- ç§»åŠ¨å…¨éƒ¨æ•°ç›®ï¼Œèµ°ä¸‹é¢çš„å¤„ç†
 			end
 		end
 	end
-	-- Èç¹ûÄ¿±ê¸ñ×ÓË÷ÒıµÈÓÚ-1£¬ËµÃ÷¿Í»§¶ËÇëÇó°ÑµÀ¾ß·ÅÈëÄ¿±ê°ü¹üËæ±ãÒ»¸ö¿Õ¸ñÀï
+	-- å¦‚æœç›®æ ‡æ ¼å­ç´¢å¼•ç­‰äº-1ï¼Œè¯´æ˜å®¢æˆ·ç«¯è¯·æ±‚æŠŠé“å…·æ”¾å…¥ç›®æ ‡åŒ…è£¹éšä¾¿ä¸€ä¸ªç©ºæ ¼é‡Œ
 	if dstGridIndex == -1 then
-		-- Èç¹ûÄ¿±ê°ü¹üË÷ÒıµÈÓÚ-1£¬ËµÃ÷¿Í»§¶ËÇëÇó°ÑµÀ¾ß·ÅÈëÄ¿±êÈİÆ÷Ëæ±ãÒ»¸ö°ü¹üÀï
+		-- å¦‚æœç›®æ ‡åŒ…è£¹ç´¢å¼•ç­‰äº-1ï¼Œè¯´æ˜å®¢æˆ·ç«¯è¯·æ±‚æŠŠé“å…·æ”¾å…¥ç›®æ ‡å®¹å™¨éšä¾¿ä¸€ä¸ªåŒ…è£¹é‡Œ
 		if dstPackIndex == -1 then
 			local result = dstContainer:addItems(srcItem:getGuid(), true)
 			if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
-				-- ´ÓÔ´Î»ÖÃÒÆ³ı
+				-- ä»æºä½ç½®ç§»é™¤
 				srcContainer:removeItemsFromGrid(srcPackIndex, srcGridIndex, true)
 			elseif result == AddItemsResult.Full and srcContainerID == PackContainerID.Depot and dstContainerID == PackContainerID.Packet then
-				--ÄúµÄÎïÆ·À¸ÖĞÄ¿Ç°Ã»ÓĞ¿Õ¼ä£¬²»ÄÜÔÙÈ¡³öÎïÆ·
+				--æ‚¨çš„ç‰©å“æ ä¸­ç›®å‰æ²¡æœ‰ç©ºé—´ï¼Œä¸èƒ½å†å–å‡ºç‰©å“
 				self:sendItemMessageTip(player, 15)
 			end
 			return
 		end
-		-- Ôö¼Óµ½Ö¸¶¨°ü¹ü
-		-- ÏàÍ¬ÈİÆ÷£¬ÏàÍ¬±³°ü£¬Ä¿±êÎ»ÖÃ²»¶¨Ö±½Ó·µ»Ø
+		-- å¢åŠ åˆ°æŒ‡å®šåŒ…è£¹
+		-- ç›¸åŒå®¹å™¨ï¼Œç›¸åŒèƒŒåŒ…ï¼Œç›®æ ‡ä½ç½®ä¸å®šç›´æ¥è¿”å›
 		if srcPackIndex == dstPackIndex then
 			return 
 		end
 		
 		local result = dstContainer:addItemsToPack(srcItem, dstPackIndex)
 		if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
-			-- ´ÓÔ´Î»ÖÃÒÆ³ı
+			-- ä»æºä½ç½®ç§»é™¤
 			srcContainer:removeItemsFromGrid(srcPackIndex, srcGridIndex, true)
 		elseif result == AddItemsResult.Full and srcContainerID == PackContainerID.Depot and dstContainerID == PackContainerID.Packet then
-			--ÄúµÄÎïÆ·À¸ÖĞÄ¿Ç°Ã»ÓĞ¿Õ¼ä£¬²»ÄÜÔÙÈ¡³öÎïÆ·
+			--æ‚¨çš„ç‰©å“æ ä¸­ç›®å‰æ²¡æœ‰ç©ºé—´ï¼Œä¸èƒ½å†å–å‡ºç‰©å“
 			self:sendItemMessageTip(player, 15)
 		end
 		return
 	end
-	-- ÅĞ¶ÏÄ¿±êÎ»ÖÃÊÇ·ñºÏ·¨
+	-- åˆ¤æ–­ç›®æ ‡ä½ç½®æ˜¯å¦åˆæ³•
 	local result, dstItem = dstContainer:getItems(dstPackIndex, dstGridIndex)
 	if result == -1 then
 		return
 	end
 	if not dstItem then
-		-- Ö±½Ó·ÅÈëÄ¿±êÎ»ÖÃ
+		-- ç›´æ¥æ”¾å…¥ç›®æ ‡ä½ç½®
 		if dstContainer:addItemsToGrid(srcItem, dstPackIndex, dstGridIndex, true) then
-			-- ´ÓÔ´Î»ÖÃÒÆ³ı
+			-- ä»æºä½ç½®ç§»é™¤
 			srcContainer:removeItemsFromGrid(srcPackIndex, srcGridIndex, true)
 		end
 	else
-		-- ²»¿ÉÒÔÖ±½Ó·ÅÈë£¬ÅĞ¶ÏÊÇ·ñ¿Éµş¼Ó
+		-- ä¸å¯ä»¥ç›´æ¥æ”¾å…¥ï¼Œåˆ¤æ–­æ˜¯å¦å¯å åŠ 
 		if dstContainer:pileItemsToGridEx(srcItem, dstPackIndex, dstGridIndex) then
-			-- µş¼Ó³É¹¦
+			-- å åŠ æˆåŠŸ
 			dstContainer:updateItemToClient()
 			return
 		else
-			-- ²»¿Éµş¼Ó
+			-- ä¸å¯å åŠ 
 			if srcContainer == dstContainer then
-				-- Í¬Ò»ÈİÆ÷×ß½»»»Á÷³Ì
+				-- åŒä¸€å®¹å™¨èµ°äº¤æ¢æµç¨‹
 				return srcContainer:swapItem(srcPackIndex, srcGridIndex, dstPackIndex, dstGridIndex)
 			else
-				-- ²»Í¬ÈİÆ÷µÄ»°£¬ÔÚÄ¿±êÈİÆ÷ÕÒÒ»¸ö¿Õ¸ñÀ´·Å
+				-- ä¸åŒå®¹å™¨çš„è¯ï¼Œåœ¨ç›®æ ‡å®¹å™¨æ‰¾ä¸€ä¸ªç©ºæ ¼æ¥æ”¾
 				local result = dstContainer:addItemsToPack(srcItem, dstPackIndex)
 				if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
-					-- ´ÓÔ´Î»ÖÃÒÆ³ı
+					-- ä»æºä½ç½®ç§»é™¤
 					srcContainer:removeItemsFromGrid(srcPackIndex, srcGridIndex, true)
 				elseif result == AddItemsResult.Full and srcContainerID == PackContainerID.Depot and dstContainerID == PackContainerID.Packet then
-					--ÄúµÄÎïÆ·À¸ÖĞÄ¿Ç°Ã»ÓĞ¿Õ¼ä£¬²»ÄÜÔÙÈ¡³öÎïÆ·
+					--æ‚¨çš„ç‰©å“æ ä¸­ç›®å‰æ²¡æœ‰ç©ºé—´ï¼Œä¸èƒ½å†å–å‡ºç‰©å“
 					self:sendItemMessageTip(player, 15)
 				end
 			end
@@ -291,7 +291,7 @@ function ItemSystem:onMoveItem(event)
 	end
 end
 
--- Ïú»ÙµÀ¾ß
+-- é”€æ¯é“å…·
 function ItemSystem:onDestroyItem(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -303,37 +303,37 @@ function ItemSystem:onDestroyItem(event)
 		return
 	end
 	--[[if player:isFighting() then
-		-- Õ½¶·ÖĞÎŞ·¨²Ù×÷
+		-- æˆ˜æ–—ä¸­æ— æ³•æ“ä½œ
 		return
 	end]]
 
-	-- »ñµÃµÀ¾ßGuid
+	-- è·å¾—é“å…·Guid
 	local itemGuid = params[1]
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
 	local itemConfig = tItemDB[item:getItemID()]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return
 	end
-	-- ÏÈÅĞ¶ÏÄÜ·ñÏú»Ù
+	-- å…ˆåˆ¤æ–­èƒ½å¦é”€æ¯
 	if not itemConfig.CanDestroy then
 		return
 	end
-	-- »ñµÃËùÊôÈİÆ÷ID
+	-- è·å¾—æ‰€å±å®¹å™¨ID
 	local packContainerID = params[2]
 	if packContainerID == PackContainerID.Packet then
-		-- ±³°ü
+		-- èƒŒåŒ…
 		local packetHandler = player:getHandler(HandlerDef_Packet)
 		local itemID = item:getItemID()
 		packetHandler:getPacket():removeItem(itemGuid, 0, true)
 		TaskCallBack.onRemoveItem(player:getID(), itemID)
 		return
 	elseif packContainerID == PackContainerID.Depot then
-		-- ²Ö¿â
+		-- ä»“åº“
 		local depotHandler = player:getHandler(HandlerDef_Depot)
 		return depotHandler:getDepot():removeItem(itemGuid, 0, true)
 	else
@@ -341,7 +341,7 @@ function ItemSystem:onDestroyItem(event)
 	end
 end
 
--- ÕûÀíµÀ¾ß
+-- æ•´ç†é“å…·
 function ItemSystem:onPackUp(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -353,13 +353,13 @@ function ItemSystem:onPackUp(event)
 		return
 	end
 	--[[if player:isFighting() then
-		-- Õ½¶·ÖĞÎŞ·¨²Ù×÷
+		-- æˆ˜æ–—ä¸­æ— æ³•æ“ä½œ
 		return
 	end]]
-	-- Ô´ÈİÆ÷ID
+	-- æºå®¹å™¨ID
 	local srcContainerID = params[1]
 
-	-- Ô´ÈİÆ÷
+	-- æºå®¹å™¨
 	local srcContainer = nil
 	if srcContainerID == PackContainerID.Packet then
 		local packetHandler = player:getHandler(HandlerDef_Packet)
@@ -371,11 +371,11 @@ function ItemSystem:onPackUp(event)
 	if not srcContainer then
 		return
 	end
-	-- ÕûÀí
+	-- æ•´ç†
 	srcContainer:packUp()
 end
 
--- Ê¹ÓÃÒ©Æ·
+-- ä½¿ç”¨è¯å“
 function ItemSystem:onUseMedicament(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -386,22 +386,22 @@ function ItemSystem:onUseMedicament(event)
 	if not player then
 		return
 	end
-	--[[if player:isFighting() then
-		-- Õ½¶·ÖĞÎŞ·¨²Ù×÷
+	if player:isFighting() then
+		-- æˆ˜æ–—ä¸­æ— æ³•æ“ä½œ
 		return
-	end]]
+	end
 
 	local itemGuid = params[1]
 	local targetEntityID = params[2]
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
-	-- ÅĞ¶ÏÒ©Æ·ÄÜ·ñÊ¹ÓÃ
+	-- åˆ¤æ–­è¯å“èƒ½å¦ä½¿ç”¨
 	local reSult, errCode = self:canUseMedicament(player, item, targetEntityID)
 	if reSult then
-		-- Ê¹ÓÃÒ©Æ·
+		-- ä½¿ç”¨è¯å“
 		self:useMedicament(player, item, targetEntityID)
 	else
 		if errCode then
@@ -410,9 +410,9 @@ function ItemSystem:onUseMedicament(event)
 	end
 end
 
--- ÅĞ¶ÏÒ©Æ·ÄÜ·ñÊ¹ÓÃ
+-- åˆ¤æ–­è¯å“èƒ½å¦ä½¿ç”¨
 function ItemSystem:canUseMedicament(player, item, targetEntityID)
-	-- ÊıÁ¿²»ÄÜĞ¡ÓÚ1
+	-- æ•°é‡ä¸èƒ½å°äº1
 	if item:getNumber() < 1 then
 		return false, 2
 	end
@@ -422,22 +422,22 @@ function ItemSystem:canUseMedicament(player, item, targetEntityID)
 		return false, 3
 	end
 	
-	-- ÎïÆ·ÀàĞÍÈç¹ûÊÇÆ¾Ö¤ÓÒ¼ü²»ÄÜÊ¹ÓÃ
+	-- ç‰©å“ç±»å‹å¦‚æœæ˜¯å‡­è¯å³é”®ä¸èƒ½ä½¿ç”¨
 	if medicamentConfig.Class == ItemClass.Warrant then
 		return false, 3
 	end
-	-- ¼ÓÒÔ¸öÏŞÖÆ
+	-- åŠ ä»¥ä¸ªé™åˆ¶
 	if medicamentConfig.UseNeedState == MedicamentUseState.NonUse then 
 		return false, 3
 	end
 
-	-- ÅĞ¶ÏÊ¹ÓÃµÈ¼¶
+	-- åˆ¤æ–­ä½¿ç”¨ç­‰çº§
 	local playerLvl = player:getLevel()
 	if playerLvl < medicamentConfig.UseNeedLvl then
 		return false, 4
 	end
-	-- ÅĞ¶ÏÕ½¶·×´Ì¬
-	--[[if player:isFighting() then
+	-- åˆ¤æ–­æˆ˜æ–—çŠ¶æ€
+	if player:isFighting() then
 		if medicamentConfig.UseNeedState < MedicamentUseState.Fight then
 			return false, 5
 		end
@@ -445,25 +445,25 @@ function ItemSystem:canUseMedicament(player, item, targetEntityID)
 		if medicamentConfig.UseNeedState == MedicamentUseState.Fight then
 			return false, 6
 		end
-	end]]
+	end
 
-	-- ÊÇ·ñĞèÒªÅĞ¶ÏÊ¹ÓÃ´ÎÊı
+	-- æ˜¯å¦éœ€è¦åˆ¤æ–­ä½¿ç”¨æ¬¡æ•°
 	if medicamentConfig.UseTimesOneDay > 0 then
-		-- µÃµ½µ±Ç°Ê¹ÓÃ´ÎÊı
+		-- å¾—åˆ°å½“å‰ä½¿ç”¨æ¬¡æ•°
 		local curUseTimes = g_itemMgr:getItemUseTimes(player:getDBID(), item:getItemID())
 		if curUseTimes >= medicamentConfig.UseTimesOneDay then
-			-- Ê¹ÓÃ´ÎÊıÒÑÓÃÍê
+			-- ä½¿ç”¨æ¬¡æ•°å·²ç”¨å®Œ
 			return false, 7
 		end
 	end
-	-- ÅĞ¶Ï¶ÔÖ¸¶¨Ä¿±êÄÜ·ñÊ¹ÓÃ
-	-- Èç¹ûÔÚ¸±±¾£¬»¹ÒªÅĞ¶ÏÄÜ·ñÊ¹ÓÃÖÎÁÆÀàµÀ¾ß
+	-- åˆ¤æ–­å¯¹æŒ‡å®šç›®æ ‡èƒ½å¦ä½¿ç”¨
+	-- å¦‚æœåœ¨å‰¯æœ¬ï¼Œè¿˜è¦åˆ¤æ–­èƒ½å¦ä½¿ç”¨æ²»ç–—ç±»é“å…·
 	if item:isHealItem() then
 		local mapID = player:getCurPos()
 		if mapID >= EctypeMap_StartID then
 			local ectype = g_ectypeMgr:getEctype(mapID)
 			if ectype and not ectype:canUseHealItems() then
-				--´Ë¸±±¾²»¿ÉÊ¹ÓÃ
+				--æ­¤å‰¯æœ¬ä¸å¯ä½¿ç”¨
 				g_ectypeMgr:sendEctypeMessageTip(player, 10)
 				return false, 8
 			end
@@ -472,7 +472,7 @@ function ItemSystem:canUseMedicament(player, item, targetEntityID)
 	return true
 end
 
--- Ò©Æ·×÷ÓÃÀàĞÍ¶ÔÓ¦Ğ§¹ûº¯Êı
+-- è¯å“ä½œç”¨ç±»å‹å¯¹åº”æ•ˆæœå‡½æ•°
 local tMedicamentReactEffect =
 {
 	[MedicamentReactType.AddBuff]					= ItemEffect.addBuff,
@@ -515,31 +515,30 @@ local tMedicamentReactEffect =
 
 }
 
--- Ê¹ÓÃÒ©Æ·
+-- ä½¿ç”¨è¯å“
 function ItemSystem:useMedicament(player, item, targetEntityID)
-	local medicamentConfig = tMedicamentDB[item:getItemID()]
+	local itemID = item:getItemID()
+	local medicamentConfig = tMedicamentDB[itemID]
 	if not medicamentConfig then
 		return
 	end
 	local reactEffectFun = tMedicamentReactEffect[medicamentConfig.ReactType]
 	if reactEffectFun then
 		local reSult, errCode = reactEffectFun(player, item, medicamentConfig, targetEntityID)
-		print("reSult, errCode",reSult, errCode)
 		if reSult then
-			-- Èç¹û·µ»ØµÄremoveFlagÎªTrue£¬¾ÍÉ¾³ıÔ´µÀ¾ß
+			-- å¦‚æœè¿”å›çš„removeFlagä¸ºTrueï¼Œå°±åˆ é™¤æºé“å…·
 			local packetHandler = player:getHandler(HandlerDef_Packet)
 			local packet = packetHandler:getPacket()
 			local result = packet:removeItem(item:getGuid(), 1, true)
 			if result == RemoveItemsResult.Succeed or result == RemoveItemsResult.SucceedClean then
 				if medicamentConfig.UseTimesOneDay > 0 then
-					-- Ôö¼ÓÊ¹ÓÃ´ÎÊı
-					g_itemMgr:addItemUseTimes(player:getDBID(), item:getItemID())
-					-- Ê¹ÓÃµÄÌáÊ¾ĞÅÏ¢
-					local msgID = 1
+					-- å¢åŠ ä½¿ç”¨æ¬¡æ•°
+					g_itemMgr:addItemUseTimes(player:getDBID(), itemID)
+					-- ä½¿ç”¨çš„æç¤ºä¿¡æ¯
 					local itemName = medicamentConfig.Name
-					self:sendItemMessageTip(player, msgID, itemName)
+					self:sendItemMessageTip(player, 1, itemName)
 				end
-				-- Ê¹ÓÃÎïÆ·Íê³ÉÈÎÎñ
+				-- ä½¿ç”¨ç‰©å“å®Œæˆä»»åŠ¡
 				--[[
 				if medicamentConfig.ReactType == MedicamentReactType.MayFinishTask then
 					local taskID = medicamentConfig.ReactExtraParam1
@@ -548,17 +547,17 @@ function ItemSystem:useMedicament(player, item, targetEntityID)
 				--]]
 			end
 		else
-			-- ³ö´íÏûÏ¢
+			-- å‡ºé”™æ¶ˆæ¯
 			if errCode then
 				self:sendItemMessageTip(player, errCode)
 			end
 		end
 	else
-		print("ItemSystem:useMedicament Âß¼­´íÎó£¬ReactType = ", medicamentConfig.ReactType)
+		print("ItemSystem:useMedicament é€»è¾‘é”™è¯¯ï¼ŒReactType = ", medicamentConfig.ReactType)
 	end
 end
 
--- ²ğ·ÖµÀ¾ß
+-- æ‹†åˆ†é“å…·
 function ItemSystem:onSplitItem(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -570,48 +569,48 @@ function ItemSystem:onSplitItem(event)
 		return
 	end
 --[[	if player:isFighting() then
-		-- Õ½¶·ÖĞÎŞ·¨²Ù×÷
+		-- æˆ˜æ–—ä¸­æ— æ³•æ“ä½œ
 		return
 	end
 ]]
 	local itemGuid = params[1]
 	local splitNum = params[2]
-	-- ÏÈÑéÖ¤µÀ¾ßÊÇ·ñ´æÔÚ
+	-- å…ˆéªŒè¯é“å…·æ˜¯å¦å­˜åœ¨
 	local item = g_itemMgr:getItem(itemGuid)
 	if not item then
-		-- µÀ¾ß²»´æÔÚ
+		-- é“å…·ä¸å­˜åœ¨
 		return
 	end
 	if item:getContainerID() ~= PackContainerID.Packet then
-		-- ÔİÊ±Ö»Ö§³Ö±³°üµÀ¾ßµÄ²ğ·Ö
+		-- æš‚æ—¶åªæ”¯æŒèƒŒåŒ…é“å…·çš„æ‹†åˆ†
 		return
 	end
 	if item:getNumber() <= splitNum or splitNum <= 0 then
-		-- ²ğ·ÖÊıÄ¿²»ºÏ·¨
+		-- æ‹†åˆ†æ•°ç›®ä¸åˆæ³•
 		return
 	end
 	
     local packetHandler = player:getHandler(HandlerDef_Packet)
 	local packet = packetHandler:getPacket()
 
-	-- Ïë²ğ·Ö£¬Ê×ÏÈµÃÓĞ¿Õ¸ñ
+	-- æƒ³æ‹†åˆ†ï¼Œé¦–å…ˆå¾—æœ‰ç©ºæ ¼
 	local result, packIndex, gridIndex = packet:getSpaceIndex(item)
 	if not result then
-		-- ÌáÊ¾°ü¹üÒÑÂú
+		-- æç¤ºåŒ…è£¹å·²æ»¡
 		return
 	end
 	local result = packet:removeItem(itemGuid, splitNum, false)
 	if result == RemoveItemsResult.Succeed then
-		-- Éú³É·Ö²ğ³öÀ´µÄĞÂµÀ¾ß£¬ÕâÀï¸ù¾İµ±Ç°µÀ¾ßµÄÊôĞÔÏÖ³¡À´´´½¨£¬·ñÔò¿ÉÄÜÊôĞÔ²»Ò»Ñù
+		-- ç”Ÿæˆåˆ†æ‹†å‡ºæ¥çš„æ–°é“å…·ï¼Œè¿™é‡Œæ ¹æ®å½“å‰é“å…·çš„å±æ€§ç°åœºæ¥åˆ›å»ºï¼Œå¦åˆ™å¯èƒ½å±æ€§ä¸ä¸€æ ·
 		local newItem = g_itemMgr:createItemFromContext(item:getPropertyContext(), splitNum)
 		if newItem then
-			-- Ôö¼Óµ½Ö¸¶¨¿Õ¸ñÀï
+			-- å¢åŠ åˆ°æŒ‡å®šç©ºæ ¼é‡Œ
 			packet:addItemsToGrid(newItem, packIndex, gridIndex, true)
 		end
 	end
 end
 
--- ´æ·ÅÒøÁ½
+-- å­˜æ”¾é“¶ä¸¤
 function ItemSystem:onStoreMoney(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -626,21 +625,22 @@ function ItemSystem:onStoreMoney(event)
 	local storeMoney = params[1]
 	local playerMoney = player:getMoney()
 	if storeMoney > playerMoney then
-		-- ²»ºÏ·¨
+		-- ä¸åˆæ³•
 		return
 	end
 	local depotMoney = player:getDepotMoney()
 	if depotMoney + storeMoney > DepotSaveMoneyMax then
 		return
 	end
-	-- ¿Û³ıÍæ¼ÒÉíÉÏÒøÁ½
+	-- æ‰£é™¤ç©å®¶èº«ä¸Šé“¶ä¸¤
 	player:setMoney(playerMoney - storeMoney)
 
-	-- Ôö¼ÓÍæ¼Ò²Ö¿âÒøÁ½
+	-- å¢åŠ ç©å®¶ä»“åº“é“¶ä¸¤
 	player:setDepotMoney(depotMoney + storeMoney)
+	player:flushPropBatch()
 end
 
--- È¡×ßÒøÁ½
+-- å–èµ°é“¶ä¸¤
 function ItemSystem:onFetchMoney(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -655,19 +655,20 @@ function ItemSystem:onFetchMoney(event)
 	local fetchMoney = params[1]
 	local depotMoney = player:getDepotMoney()
 	if fetchMoney > depotMoney then
-		-- ²»ºÏ·¨
+		-- ä¸åˆæ³•
 		return
 	end
-	-- ¿Û³ıÍæ¼Ò²Ö¿âÒøÁ½
+	-- æ‰£é™¤ç©å®¶ä»“åº“é“¶ä¸¤
 	depotMoney = depotMoney - fetchMoney
 	player:setDepotMoney(depotMoney)
-	-- Ôö¼ÓÍæ¼ÒÉíÉÏÒøÁ½
+	-- å¢åŠ ç©å®¶èº«ä¸Šé“¶ä¸¤
 	local playerMoney = player:getMoney()
 	playerMoney = playerMoney + fetchMoney
 	player:setMoney(playerMoney)
+	player:flushPropBatch()
 end
 
--- À©³ä²Ö¿â
+-- æ‰©å……ä»“åº“
 function ItemSystem:onExtendDepot(event)
 	local playerID = event.playerID
 	if not playerID then
@@ -680,53 +681,53 @@ function ItemSystem:onExtendDepot(event)
 	local depotHandler = player:getHandler(HandlerDef_Depot)
 	local curCapacity = depotHandler:getDepotCapability()
 	if curCapacity >= DepotMaxCapacity then
-		-- ÒÑ¾­À©³äµ½×î´ó
+		-- å·²ç»æ‰©å……åˆ°æœ€å¤§
 		return
 	end
-	-- ¼ÆËãÊÇµÚ¼¸´ÎÀ©³ä²Ö¿â
+	-- è®¡ç®—æ˜¯ç¬¬å‡ æ¬¡æ‰©å……ä»“åº“
 	local extendCapacity = curCapacity - DepotDefaultCapacity
 	if extendCapacity % 6 ~= 0 then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return
 	end
 	local extendTimes = extendCapacity / 6 + 1
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	if packetHandler:getNumByItemID(DepotExtendItemID) < extendTimes then
-		-- À©³äµÀ¾ß²»×ã
+		-- æ‰©å……é“å…·ä¸è¶³
 		return
 	end
 	packetHandler:removeByItemId(DepotExtendItemID, extendTimes)
 	curCapacity = curCapacity + 6
 	if curCapacity > DepotMaxCapacity then
-		-- ÒÔ·ÀÍòÒ»
+		-- ä»¥é˜²ä¸‡ä¸€
 		return
 	end
 	depotHandler:setDepotCapability(curCapacity)
-	-- ½ÇÉ«¼ÇÂ¼ÏÂ£¬Òª±£´æÊı¾İ¿â
+	-- è§’è‰²è®°å½•ä¸‹ï¼Œè¦ä¿å­˜æ•°æ®åº“
 	player:setDepotCapacity(curCapacity)
 
 	local event = Event.getEvent(ItemEvents_SC_CapacityChange, PackContainerID.Depot, curCapacity)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
--- ÎïÆ·ÌáÊ¾ÏûÏ¢
+-- ç‰©å“æç¤ºæ¶ˆæ¯
 function ItemSystem:sendItemMessageTip(player, msgID, msgParams)
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Item, msgID, msgParams)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
--- ´¦ÀíÓÒ¼üµã»÷ÈÎÎñµÀ¾ßµÄÊ¹ÓÃÓĞ¿ÉÄÜÍê³ÉÈÎÎñ£¬ÓĞ¿ÉÄÜ´¥·¢ÆäËûÈÎÎñ
+-- å¤„ç†å³é”®ç‚¹å‡»ä»»åŠ¡é“å…·çš„ä½¿ç”¨æœ‰å¯èƒ½å®Œæˆä»»åŠ¡ï¼Œæœ‰å¯èƒ½è§¦å‘å…¶ä»–ä»»åŠ¡
 --[[
 function ItemSystem:dealTask(roleID, taskID)
-	local player = g_entityMgr:getPlayer(roleID)
+	local player = g_entityMgr:getPlayerByID(roleID)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local value = math.random(1, 2)
 	if value == 1 then
-		-- ´¦ÀíÍê³ÉÈÎÎñ
+		-- å¤„ç†å®Œæˆä»»åŠ¡
 		taskHandler:finishLoopTask(taskID)
 	else
 		g_taskDoer:doDeleteTask(player, taskID)
-		-- ÔÙ½ÓÖ¸¶¨µÄÀàĞÍµÄÈÎÎñ
+		-- å†æ¥æŒ‡å®šçš„ç±»å‹çš„ä»»åŠ¡
 		local loopTask = g_taskFty:createLoopTask(player, taskID, LoopTaskTargetType.itemScript)
 		taskHandler:addTask(loopTask)
 		g_taskSystem:updateLoopTaskList(player, taskHandler:getRecetiveTaskList())
@@ -734,7 +735,7 @@ function ItemSystem:dealTask(roleID, taskID)
 end
 --]]
 
--- ÇëÇó¼ø¶¨×°±¸
+-- è¯·æ±‚é‰´å®šè£…å¤‡
 function ItemSystem:onAppraisalEeuip(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -754,7 +755,7 @@ function ItemSystem:onAppraisalEeuip(event)
 	end
 end
 
--- ¶Ò»»ÎïÆ·
+-- å…‘æ¢ç‰©å“
 function ItemSystem:onExchangeProps(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -771,7 +772,7 @@ function ItemSystem:onExchangeProps(event)
 	g_itemMgr:onExchangeProps(player,itemID,num)
 end
 
---ĞŞÀí×°±¸
+--ä¿®ç†è£…å¤‡
 function ItemSystem:onRepairEquipMent(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -820,7 +821,7 @@ function ItemSystem:onRepairEquipMent(event)
 	equipMent:setCurDurability(maxDurability)
 end
 
---ĞŞÀíÈ«²¿×°±¸
+--ä¿®ç†å…¨éƒ¨è£…å¤‡
 function ItemSystem:onRepairAllEquipMent(event)
 	local params = event:getParams()
 	local playerID = event.playerID

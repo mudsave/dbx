@@ -17,7 +17,7 @@ public:
 
 	~CMapInfo(void);
 
-	bool Init(DWORD mapId, char* pFileName);
+	bool Init(short mapId, char* pFileName);
 
 	int GetFlags(int x, int y)
 	{
@@ -80,7 +80,7 @@ private:
 
 	int m_yLen;			
 
-	DWORD m_mapId;
+	short m_mapId;
 
 	BYTE* m_pInfoBuf;
 

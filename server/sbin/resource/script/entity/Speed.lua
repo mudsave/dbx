@@ -77,19 +77,19 @@ function Speed:setCurSpeed(value)
 			for _, member in pairs (followList) do
 				member:setMoveSpeed(value)
 			end
-			--[[local ectypeList = followHandler:getEctypeMembers()
+			local ectypeList = followHandler:getEctypeMembers()
 			for _, memeber in pairs(ectypeList) do
 				memeber:setMoveSpeed(value)
-			end]]
+			end
 		end
 	
-		--[[local petID = player:getdFollowPetID()
+		local petID = player:getFollowPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			if pet and pet:isVisible() then
 				pet:setMoveSpeed(value)
 			end
-		end]]
+		end
 	end
 end
 
@@ -102,11 +102,11 @@ function Speed:GetSelfSpeed()
 end
 
 function Speed:ChangeMoveSpeed(value)
-	local speed = self:GetSelfSpeed() * value/100
-	speed = speed + self.m_self
-	self:setSelfSpeed(value)
+	local changeSpeed = DefaultSpeed * value/100
+	local speed = self:GetSelfSpeed() + changeSpeed
+	self:setSelfSpeed(speed)
 	if self.m_entity:getEntityType() == eClsTypePlayer then
-		local handle = self.m_entity:getHandler(HandleDef_Team)
+		local handle = self.m_entity:getHandler(HandlerDef_Team)
 		if handle and handle:isTeam() then
 			if handle:isLeader() then
 				self.m_self = speed
@@ -115,14 +115,10 @@ function Speed:ChangeMoveSpeed(value)
 					entity:setTeamSpeed(speed)
 				end
 			else
-				if handle:isStepOutState() then
-					self:setSelfSpeed(speed)
-				else
+				if not handle:isStepOutState() then
 					self.m_self = speed
 				end
 			end
-		else
-			self:setSelfSpeed(speed)
 		end
 	end
 end

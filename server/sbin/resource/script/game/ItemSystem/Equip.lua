@@ -1,17 +1,17 @@
 --[[Equip.lua
-ÃèÊö:
-	×°±¸À¸
+æè¿°:
+	è£…å¤‡æ 
 ]]
 
 Equip = class()
 
 function Equip:__init(owner)
-	-- ÓµÓĞÕß
+	-- æ‹¥æœ‰è€…
 	self.owner = owner;
-	-- ËùÓĞ°ü¹ü
+	-- æ‰€æœ‰åŒ…è£¹
 	self.packs = {}
 
-	-- ×°±¸À¸¾ÍÒ»¸öÄ¬ÈÏ°ü¹ü
+	-- è£…å¤‡æ å°±ä¸€ä¸ªé»˜è®¤åŒ…è£¹
 	local defaultPack = Pack()
 	defaultPack:setCapability(EquipDefaultCapacity)
 	defaultPack:setOwner(self.owner)
@@ -25,25 +25,25 @@ function Equip:__release()
 	self.packs[EquipPackIndex.Default] = nil
 end
 
--- »ñµÃÈİÆ÷ID
+-- è·å¾—å®¹å™¨ID
 function Equip:getContainerID()
 	return PackContainerID.Equip
 end
 
--- Í¨Öª¿Í»§¶ËµÀ¾ßÊı¾İ
+-- é€šçŸ¥å®¢æˆ·ç«¯é“å…·æ•°æ®
 function Equip:updateItemToClient()
 	self.packs[EquipPackIndex.Default]:updateClient()
 end
 
--- »ñµÃ°ü¹ü
+-- è·å¾—åŒ…è£¹
 function Equip:getPack()
 	return self.packs[EquipPackIndex.Default]
 end
 
--- »ñµÃÖ¸¶¨Î»ÖÃµÄµÀ¾ß
+-- è·å¾—æŒ‡å®šä½ç½®çš„é“å…·
 function Equip:getItems(packIndex, gridIndex)
 	if packIndex ~= EquipPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return -1, nil
 	end
 
@@ -52,20 +52,20 @@ function Equip:getItems(packIndex, gridIndex)
 			return 0, self.packs[packIndex]:getGridItem(gridIndex)
 		end
 	end
-	-- Âß¼­´íÎó
+	-- é€»è¾‘é”™è¯¯
 	return -1, nil
 end
 
--- ¼ì²âÊÇ·ñ¿ÉÒÔÌí¼ÓµÀ¾ßµ½Ö¸¶¨ÎïÆ·¸ñ£¬ÕâÀïÖ»¼ì²âºÏ·¨ĞÔ£¬Ä¿±êÎ»ÖÃ´æÔÚµÀ¾ß²»ÔÚ´Ë¼ì²â·¶Î§
+-- æ£€æµ‹æ˜¯å¦å¯ä»¥æ·»åŠ é“å…·åˆ°æŒ‡å®šç‰©å“æ ¼ï¼Œè¿™é‡Œåªæ£€æµ‹åˆæ³•æ€§ï¼Œç›®æ ‡ä½ç½®å­˜åœ¨é“å…·ä¸åœ¨æ­¤æ£€æµ‹èŒƒå›´
 function Equip:canAddItemsToGrid(item, packIndex, gridIndex)
 	if packIndex ~= EquipPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 	if not instanceof(item, Equipment) then
 		return false
 	end
-	-- Èç¹ûÄÍ¾ÃÎª0£¬ÔòÎŞÈÎºÎĞ§¹û
+	-- å¦‚æœè€ä¹…ä¸º0ï¼Œåˆ™æ— ä»»ä½•æ•ˆæœ
 	if item:getCurDurability() <= 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg,eventGroup_Item, 13)
 		g_eventMgr:fireRemoteEvent(event,self.owner)
@@ -81,20 +81,20 @@ function Equip:canAddItemsToGrid(item, packIndex, gridIndex)
 	local equipGridIndex = item:getEquipGridIndex()
 	if type(equipGridIndex) ~= 'table' then
 		if equipGridIndex ~= gridIndex then
-			-- ×°±¸Î»ÖÃ²»ºÏ·¨
+			-- è£…å¤‡ä½ç½®ä¸åˆæ³•
 			return false
 		end
 	else
-		-- ËµÃ÷ÊÇ½äÖ¸£¬ÓĞÁ½¸öÎ»ÖÃ¿ÉÒÔ×°±¸
+		-- è¯´æ˜æ˜¯æˆ’æŒ‡ï¼Œæœ‰ä¸¤ä¸ªä½ç½®å¯ä»¥è£…å¤‡
 		if equipGridIndex[1] ~= gridIndex and equipGridIndex[2] ~= gridIndex then
-			-- ×°±¸Î»ÖÃ²»ºÏ·¨
+			-- è£…å¤‡ä½ç½®ä¸åˆæ³•
 			return false
 		end
 	end
-	-- ¼ì²âÈç¹ûÊÇÎäÆ÷ÊÇ·ñ·ûºÏÃÅÅÉ
+	-- æ£€æµ‹å¦‚æœæ˜¯æ­¦å™¨æ˜¯å¦ç¬¦åˆé—¨æ´¾
 	if item:getSubClass() == EquipmentClass.Weapon then 
 		local schoolID = self.owner:getSchool()
-		-- ÎäÆ÷ÊÇ·ñ¶ÔÓ¦ÃÅÅÉ
+		-- æ­¦å™¨æ˜¯å¦å¯¹åº”é—¨æ´¾
 		if WeaponSubClassSchoolID[item:getEquipClass()] ~= schoolID then
 			local event = Event.getEvent(ClientEvents_SC_PromptMsg,eventGroup_Item, 12)
 			g_eventMgr:fireRemoteEvent(event,self.owner)
@@ -104,7 +104,7 @@ function Equip:canAddItemsToGrid(item, packIndex, gridIndex)
 	return true
 end
 
--- Ìí¼ÓµÀ¾ßµ½Ö¸¶¨ÎïÆ·¸ñ
+-- æ·»åŠ é“å…·åˆ°æŒ‡å®šç‰©å“æ ¼
 function Equip:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 	if not self:canAddItemsToGrid(item, packIndex, gridIndex) then
 		return false
@@ -117,24 +117,24 @@ function Equip:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 	return result
 end
 
--- ´ÓÖ¸¶¨ÎïÆ·¸ñÒÆ³ıµÀ¾ß£¬²¢²»Ïú»ÙµÀ¾ß
+-- ä»æŒ‡å®šç‰©å“æ ¼ç§»é™¤é“å…·ï¼Œå¹¶ä¸é”€æ¯é“å…·
 function Equip:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient)
 	if packIndex ~= EquipPackIndex.Default then
-		-- Âß¼­´íÎó
+		-- é€»è¾‘é”™è¯¯
 		return false
 	end
 
 	local item = self.packs[packIndex]:getGridItem(gridIndex)
 	local result = self.packs[packIndex]:removeItemsFromGrid(gridIndex, bUpdateClient)
 	if result then
-		-- Ğ¶ÔØ¸Ã×°±¸
+		-- å¸è½½è¯¥è£…å¤‡
 		item:unEquip(self.owner)
 		self:setSuitAttr(false,item)
 	end
 	return result
 end
 
--- ÒÆ³ıÖ¸¶¨GUIDµÄµÀ¾ß²¢Ïú»Ù
+-- ç§»é™¤æŒ‡å®šGUIDçš„é“å…·å¹¶é”€æ¯
 function Equip:removeItem(itemGuid, removeNum)
 	local equipMent = g_itemMgr:getItem(itemGuid)
 	if equipMent then
@@ -145,14 +145,14 @@ function Equip:removeItem(itemGuid, removeNum)
 end
 
 function Equip:setSuitAttr(onEquip,item)
-	--ÅĞ¶ÏÌ××°ÊôĞÔ
+	--åˆ¤æ–­å¥—è£…å±æ€§
 	local _,_,_,itemRefiningEffect = item:getEffect()
 	if itemRefiningEffect then
 		local count = 0
 		local level = item:getEquipLevel()
 		local phase = itemRefiningEffect.phase
 		local attr = nil
-		--µÈ¼¶Ò»Ñù£¬ÏàĞÔÒ»ÑùµÄ×°±¸
+		--ç­‰çº§ä¸€æ ·ï¼Œç›¸æ€§ä¸€æ ·çš„è£…å¤‡
 		local refiningEquip = {}
 		for i = 1, self.packs[EquipPackIndex.Default]:getCapability() do
 			local equipMent = self.packs[EquipPackIndex.Default]:getGridItem(i)
@@ -208,10 +208,10 @@ function Equip:setSuitAttr(onEquip,item)
 					self.owner:addAttrValue(attr.attrID, attr.attrValue)
 				end
 			end
-			--ËùÒÔÔÚÕâÀï¸üĞÂÒ»ÏÂËûµÄÌ××°ÊôĞÔ
+			--æ‰€ä»¥åœ¨è¿™é‡Œæ›´æ–°ä¸€ä¸‹ä»–çš„å¥—è£…å±æ€§
 			item:setSuitAttr(nil)
-			print("ÉèÖÃÁËnil------------")
 			item:getPack():updateItemsToClient(item)
 		end
+		self.owner:flushPropBatch()
 	end
 end

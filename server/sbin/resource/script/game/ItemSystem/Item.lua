@@ -1,128 +1,128 @@
 --[[Item.lua
-ÃèÊö:
-	ÎïÆ·»ùÀà
+æè¿°:
+	ç‰©å“åŸºç±»
 ]]
 
 Item = class()
 
 function Item:__init(itemID, itemNum)
-	-- µÀ¾ß´óÀà
+	-- é“å…·å¤§ç±»
 	self.class = 0
-	-- È«¾ÖÎ¨Ò»±êÊ¶
+	-- å…¨å±€å”¯ä¸€æ ‡è¯†
 	self.guid = ""
-	-- µÀ¾ßID
+	-- é“å…·ID
 	self.itemID = itemID
-	-- µÀ¾ßÊıÄ¿
+	-- é“å…·æ•°ç›®
 	self.itemNum = itemNum
-	-- ËùÔÚÎïÆ·¸ñË÷Òı
+	-- æ‰€åœ¨ç‰©å“æ ¼ç´¢å¼•
 	self.gridIndex = -1
-	-- ËùÔÚÈİÆ÷ID
+	-- æ‰€åœ¨å®¹å™¨ID
 	self.containerID = -1
-	-- ¼ÇÂ¼ËùÔÚ°ü¹ü£¬·½±ã°ó¶¨»òÕßËø¶¨µÈ±êÖ¾¸üĞÂ¸ø¿Í»§¶Ë
+	-- è®°å½•æ‰€åœ¨åŒ…è£¹ï¼Œæ–¹ä¾¿ç»‘å®šæˆ–è€…é”å®šç­‰æ ‡å¿—æ›´æ–°ç»™å®¢æˆ·ç«¯
 	self.pack = nil
-	-- µ½ÆÚÊ±¼ä£¬ÎïÆ·´´½¨µÄÊ±ºò£¬·şÎñÆ÷Ê±¼ä¼ÓÉÏ²ß»®Éè¶¨µÄÊ±¼ä¾ÍÊÇµ½ÆÚÊ±¼ä
+	-- åˆ°æœŸæ—¶é—´ï¼Œç‰©å“åˆ›å»ºçš„æ—¶å€™ï¼ŒæœåŠ¡å™¨æ—¶é—´åŠ ä¸Šç­–åˆ’è®¾å®šçš„æ—¶é—´å°±æ˜¯åˆ°æœŸæ—¶é—´
 	self.expireTime = 0
-	-- ÕûÀíÅÅĞòÓÅÏÈ¼¶£¬ÊıÖµÔ½´óÓÅÏÈ¼¶Ô½¸ß
+	-- æ•´ç†æ’åºä¼˜å…ˆçº§ï¼Œæ•°å€¼è¶Šå¤§ä¼˜å…ˆçº§è¶Šé«˜
 	self.sortPriority = -1
-	-- ÉèÖÃÕûÀíÅÅĞòÓÅÏÈ¼¶
+	-- è®¾ç½®æ•´ç†æ’åºä¼˜å…ˆçº§
 	self:setSortPriority()
-	-- Ëø¶¨±êÖ¾
+	-- é”å®šæ ‡å¿—
 	self.lockFlag = false
-	-- ÎïÆ·Éú³ÉµÄµÈ¼¶
+	-- ç‰©å“ç”Ÿæˆçš„ç­‰çº§
 	self.itemLvl = nil 
 end
 
 function Item:__release()
 end
 
--- »ñµÃµÀ¾ß´óÀà
+-- è·å¾—é“å…·å¤§ç±»
 function Item:getItemClass()
 	return self.class
 end
 
--- »ñµÃµÀ¾ß×ÓÀà
+-- è·å¾—é“å…·å­ç±»
 function Item:getSubClass()
 	local itemConfig = tItemDB[self.itemID]
 	return itemConfig.SubClass
 end
 
--- ÉèÖÃGUID
+-- è®¾ç½®GUID
 function Item:setGuid(guid)
 	self.guid = guid
 end
 
--- »ñµÃGUID
+-- è·å¾—GUID
 function Item:getGuid()
 	return self.guid
 end
 
--- »ñµÃµÀ¾ßID
+-- è·å¾—é“å…·ID
 function Item:getItemID()
 	return self.itemID
 end
 
--- ÉèÖÃµÀ¾ßÊıÄ¿
+-- è®¾ç½®é“å…·æ•°ç›®
 function Item:setNumber(number)
 	self.itemNum = number
 end
 
--- »ñµÃµÀ¾ßÊıÄ¿
+-- è·å¾—é“å…·æ•°ç›®
 function Item:getNumber()
 	return self.itemNum
 end
 
--- »ñµÃ°ü¹üË÷Òı
+-- è·å¾—åŒ…è£¹ç´¢å¼•
 function Item:getPackIndex()
 	return self.pack:getPackIndex()
 end
 
--- ÉèÖÃÎïÆ·¸ñË÷Òı
+-- è®¾ç½®ç‰©å“æ ¼ç´¢å¼•
 function Item:setGridIndex(gridIndex)
 	self.gridIndex = gridIndex
 end
 
--- »ñµÃÎïÆ·¸ñË÷Òı
+-- è·å¾—ç‰©å“æ ¼ç´¢å¼•
 function Item:getGridIndex()
 	return self.gridIndex
 end
 
--- ÉèÖÃËùÔÚÈİÆ÷ID
+-- è®¾ç½®æ‰€åœ¨å®¹å™¨ID
 function Item:setContainerID(containerID)
 	self.containerID = containerID
 end
 
--- »ñµÃËùÔÚÈİÆ÷ID
+-- è·å¾—æ‰€åœ¨å®¹å™¨ID
 function Item:getContainerID()
 	return self.containerID
 end
 
--- ÉèÖÃËùÔÚ°ü¹ü
+-- è®¾ç½®æ‰€åœ¨åŒ…è£¹
 function Item:setPack(pack)
 	self.pack = pack
 end
 
--- »ñµÃËùÔÚ°ü¹ü
+-- è·å¾—æ‰€åœ¨åŒ…è£¹
 function Item:getPack()
 	return self.pack
 end
 
--- ÉèÖÃµÀ¾ßµ½ÆÚÊ±¼ä
+-- è®¾ç½®é“å…·åˆ°æœŸæ—¶é—´
 function Item:setExpireTime(expireTime)
 	self.expireTime = expireTime
 end
 
--- »ñµÃµÀ¾ßµ½ÆÚÊ±¼ä
+-- è·å¾—é“å…·åˆ°æœŸæ—¶é—´
 function Item:getExpireTime()
 	return self.expireTime
 end
 
--- »ñµÃµÀ¾ß°ó¶¨±êÖ¾
+-- è·å¾—é“å…·ç»‘å®šæ ‡å¿—
 function Item:getBindFlag()
 	local itemConfig = tItemDB[self.itemID]
 	return not itemConfig.CanTrade
 end
 
--- ÅĞ¶ÏÊÇ·ñÊÇÈÎÎñµÀ¾ß£¬Èç¹ûÊÇÈÎÎñµÀ¾ß£¬Ìí¼Óµ½±³°üÈİÆ÷Ê±Ö»ÄÜ·ÅÈÎÎñ°ü¹ü
+-- åˆ¤æ–­æ˜¯å¦æ˜¯ä»»åŠ¡é“å…·ï¼Œå¦‚æœæ˜¯ä»»åŠ¡é“å…·ï¼Œæ·»åŠ åˆ°èƒŒåŒ…å®¹å™¨æ—¶åªèƒ½æ”¾ä»»åŠ¡åŒ…è£¹
 function Item:isTaskItem()
 	local itemConfig = tItemDB[self.itemID]
 	if not itemConfig then
@@ -131,7 +131,7 @@ function Item:isTaskItem()
 	return itemConfig.SubClass == ItemSubClass.Task
 end
 
--- ÅĞ¶ÏÊÇ·ñÊÇÕ½¶·µÀ¾ß
+-- åˆ¤æ–­æ˜¯å¦æ˜¯æˆ˜æ–—é“å…·
 function Item:isBattleItem()
 	local medicamentConfig = tMedicamentDB[self.itemID]
 	if not medicamentConfig then
@@ -140,7 +140,7 @@ function Item:isBattleItem()
 	return medicamentConfig.UseNeedState >= MedicamentUseState.Fight
 end
 
--- »ñµÃ×î´óµş¼ÓÊıÄ¿
+-- è·å¾—æœ€å¤§å åŠ æ•°ç›®
 function Item:getPileNum()
 	local itemConfig = tItemDB[self.itemID]
 	if not itemConfig then
@@ -149,7 +149,7 @@ function Item:getPileNum()
 	return itemConfig.MaxPileNum
 end
 
--- »ñµÃÊÛÂô½ğÇ®ÊıÄ¿
+-- è·å¾—å”®å–é‡‘é’±æ•°ç›®
 function Item:getSalePrice()
 	local itemConfig = tItemDB[self.itemID]
 	if not itemConfig then
@@ -158,7 +158,7 @@ function Item:getSalePrice()
 	return itemConfig.SaleMoneyNum or 0
 end
 
--- ÉèÖÃÎïÆ·ÅÅĞòÓÅÏÈ¼¶
+-- è®¾ç½®ç‰©å“æ’åºä¼˜å…ˆçº§
 function Item:setSortPriority()
 	local itemConfig = tItemDB[self.itemID]
 	if not itemConfig then
@@ -166,73 +166,73 @@ function Item:setSortPriority()
 	end
 	if itemConfig.Class == ItemClass.Warrant then
 		if itemConfig.SubClass == ItemSubClass.Task then
-			-- ÈÎÎñÎïÆ·
+			-- ä»»åŠ¡ç‰©å“
 			self.sortPriority = 1
 		else
-			-- ÆäËû¶¼Ëã²ÄÁÏ
+			-- å…¶ä»–éƒ½ç®—ææ–™
 			self.sortPriority = 2
 		end
 	elseif itemConfig.Class == ItemClass.Medicament then
 		if itemConfig.SubClass == ItemSubClass.Medicament or itemConfig.SubClass == ItemSubClass.Food then
-			-- ÏûºÄÆ·
+			-- æ¶ˆè€—å“
 			self.sortPriority = 3
 		else
-			-- ¿ÉÊ¹ÓÃ·ÇÏûºÄÆ·
+			-- å¯ä½¿ç”¨éæ¶ˆè€—å“
 			self.sortPriority = 7
 		end
 		if itemConfig.SubClass == ItemSubClass.Medicament then
 			if itemConfig.ReactType == MedicamentReactType.ChangeHpMp then
-				-- ºìÀ¶Ò©
+				-- çº¢è“è¯
 				self.sortPriority = 4
 			elseif itemConfig.ReactType == MedicamentReactType.ChangeMp or itemConfig.ReactType == MedicamentReactType.UseMpPool then
-				-- À¶Ò©
+				-- è“è¯
 				self.sortPriority = 5
 			elseif itemConfig.ReactType == MedicamentReactType.ChangeHp or itemConfig.ReactType == MedicamentReactType.UseHpPool then
-				-- ºìÒ©
+				-- çº¢è¯
 				self.sortPriority = 6
 			end
 		elseif itemConfig.SubClass == ItemSubClass.Pack then
-			-- À©Õ¹°ü¹ü
+			-- æ‰©å±•åŒ…è£¹
 			self.sortPriority = 8
 		end
 	elseif itemConfig.Class == ItemClass.Equipment then
-		-- Ê±×°
+		-- æ—¶è£…
 		if itemConfig.SubClass then
 			self.sortPriority = 9
 		end
-		-- ·¨±¦
+		-- æ³•å®
 		self.sortPriority = 10
-		-- ½äÖ¸
+		-- æˆ’æŒ‡
 		self.sortPriority = 11
-		-- ÏîÁ´
+		-- é¡¹é“¾
 		self.sortPriority = 12
-		-- Ğ¬×Ó
+		-- é‹å­
 		self.sortPriority = 13
-		-- Ñü´ø
+		-- è…°å¸¦
 		self.sortPriority = 14
-		-- ¿ã×Ó
+		-- è£¤å­
 		self.sortPriority = 15
-		-- »¤¼ç
+		-- æŠ¤è‚©
 		self.sortPriority = 16
-		-- ÒÂ·ş
+		-- è¡£æœ
 		self.sortPriority = 17
-		-- Í·¿ø
+		-- å¤´ç›”
 		self.sortPriority = 18
-		-- ÎäÆ÷
+		-- æ­¦å™¨
 		self.sortPriority = 19
 	end
 	if self.sortPriority == -1 then
-		print("ÉèÖÃµÀ¾ßÕûÀíÅÅĞòÓÅÏÈ¼¶´íÎó£¬itemID = ", self.itemID)
+		print("è®¾ç½®é“å…·æ•´ç†æ’åºä¼˜å…ˆçº§é”™è¯¯ï¼ŒitemID = ", self.itemID)
 	end
 	--print(self.itemID, self.sortPriority)
 end
 
--- µÃµ½ÎïÆ·ÅÅĞòÓÅÏÈ¼¶
+-- å¾—åˆ°ç‰©å“æ’åºä¼˜å…ˆçº§
 function Item:getSortPriority()
 	return self.sortPriority
 end
 
--- ÉèÖÃÎïÆ·µÄËø¶¨±êÖ¾
+-- è®¾ç½®ç‰©å“çš„é”å®šæ ‡å¿—
 function Item:setLockFlag(lockFlag)
 	if self.lockFlag ~= lockFlag then
 		self.lockFlag = lockFlag
@@ -242,22 +242,22 @@ function Item:setLockFlag(lockFlag)
 	end
 end
 
--- »ñÈ¡ÎïÆ·µÄËø¶¨±êÖ¾
+-- è·å–ç‰©å“çš„é”å®šæ ‡å¿—
 function Item:getLockFlag()
 	return self.lockFlag
 end
 
--- ÉèÖÃÎïÆ·Éú³ÉµÄµÈ¼¶
+-- è®¾ç½®ç‰©å“ç”Ÿæˆçš„ç­‰çº§
 function Item:setItemLvl(lvl)
 	self.itemLvl = lvl 
 end
 
--- »ñµÃÎïÆ·Éú³ÉµÄµÈ¼¶
+-- è·å¾—ç‰©å“ç”Ÿæˆçš„ç­‰çº§
 function Item:getItemLvl()
 	return self.itemLvl
 end
 
--- ÖÎÁÆÀàµÀ¾ßÀàĞÍ¶ÔÓ¦±í
+-- æ²»ç–—ç±»é“å…·ç±»å‹å¯¹åº”è¡¨
 local tHealItems =
 {
 	[MedicamentReactType.ChangeHp] = true,
@@ -266,7 +266,7 @@ local tHealItems =
 	[MedicamentReactType.UseHpPool] = true,
 	[MedicamentReactType.UseMpPool] = true,
 }
--- ÅĞ¶ÏµÀ¾ßÊÇ·ñÊÇÖÎÁÆÀàµÀ¾ß
+-- åˆ¤æ–­é“å…·æ˜¯å¦æ˜¯æ²»ç–—ç±»é“å…·
 function Item:isHealItem()
 	local itemConfig = tItemDB[self.itemID]
 	if not itemConfig then

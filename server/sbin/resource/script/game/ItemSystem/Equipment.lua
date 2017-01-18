@@ -1,89 +1,89 @@
 --[[Equipment.lua
-ÃèÊö:
-	ÎïÆ·´óÀà×°±¸Àà
+æè¿°:
+	ç‰©å“å¤§ç±»è£…å¤‡ç±»
 ]]
 
 Equipment = class(Item)
 
 function Equipment:__init(itemId, itemNum)
-	-- ×°±¸´óÀà
+	-- è£…å¤‡å¤§ç±»
 	self.class = ItemClass.Equipment
-	-- ×°±¸·ÖÀà£¬°´¹¦ÄÜ
+	-- è£…å¤‡åˆ†ç±»ï¼ŒæŒ‰åŠŸèƒ½
 	self.subClass = tEquipmentDB[itemId].SubClass
-	-- ×°±¸¾ßÌåÀàĞÍ
+	-- è£…å¤‡å…·ä½“ç±»å‹
 	self.equipClass = tEquipmentDB[itemId].EquipClass
-	-- µ±Ç°ÄÍ¾Ã¶È
+	-- å½“å‰è€ä¹…åº¦
 	self.curDurability = 0
-	--¼ø¶¨
+	--é‰´å®š
 	self.identityFlag = true
-	-- ¸ÄÔìµÈ¼¶
+	-- æ”¹é€ ç­‰çº§
 	self.remouldAttr = nil
-	-- »ù´¡ÊôĞÔĞ§¹û
+	-- åŸºç¡€å±æ€§æ•ˆæœ
 	self.baseEffect = nil
-	-- ¸½¼ÓÊôĞÔĞ§¹û
+	-- é™„åŠ å±æ€§æ•ˆæœ
 	self.addEffect = nil
-	-- °ó¶¨ÊôĞÔĞ§¹û
+	-- ç»‘å®šå±æ€§æ•ˆæœ
 	self.bindEffect = nil
-	-- Á¶»¯ÊôĞÔĞ§¹û
+	-- ç‚¼åŒ–å±æ€§æ•ˆæœ
 	self.refiningEffect = nil
-	-- Ì××°ÊôĞÔ
+	-- å¥—è£…å±æ€§
 	self.suitEffect = nil
-	--Ç¿»¯Íê³É¶È
+	--å¼ºåŒ–å®Œæˆåº¦
 	self.completeness = 0
-	-- °ó¶¨±êÖ¾£¬trueÎª°ó¶¨£¬
+	-- ç»‘å®šæ ‡å¿—ï¼Œtrueä¸ºç»‘å®šï¼Œ
 	self.bindFlag = false
 end
 
 function Equipment:__release()
 end
--- »ñµÃ×°±¸µÄÀàĞÍ
+-- è·å¾—è£…å¤‡çš„ç±»å‹
 function Equipment:getSubClass()
 	local equipConfig = tEquipmentDB[self.itemID]
 	return equipConfig.SubClass
 end
--- »ñµÃ×°±¸¾ßÌåÀàĞÍ
+-- è·å¾—è£…å¤‡å…·ä½“ç±»å‹
 function Equipment:getEquipClass()
 	local equipConfig = tEquipmentDB[self.itemID]
 	return equipConfig.EquipClass
 end
 
--- »ñµÃ×°±¸µÈ¼¶£¬¾ÍÊÇÊ¹ÓÃµÈ¼¶
+-- è·å¾—è£…å¤‡ç­‰çº§ï¼Œå°±æ˜¯ä½¿ç”¨ç­‰çº§
 function Equipment:getEquipLevel()
 	local equipConfig = tEquipmentDB[self.itemID]
 	return self:getItemLvl() and self:getItemLvl() or equipConfig.UseNeedLvl
 end
 
--- »ñµÃ×°±¸Æ·ÖÊ
+-- è·å¾—è£…å¤‡å“è´¨
 function Equipment:getEquipQuality()
 	local equipConfig = tEquipmentDB[self.itemID]
 	if equipConfig.Quality ~= ItemQuality.NoIdentify then
-		-- ·µ»ØÅäÖÃµÄ×°±¸Æ·ÖÊ
+		-- è¿”å›é…ç½®çš„è£…å¤‡å“è´¨
 		return equipConfig.Quality
 	else
 		if not self.identityFlag then
-			-- Î´¼ø¶¨
+			-- æœªé‰´å®š
 			return ItemQuality.NoIdentify
 		else
-			-- ¸ù¾İ¼ø¶¨ºó¸½¼ÓÊôĞÔÅĞ¶Ï×°±¸Æ·ÖÊ
+			-- æ ¹æ®é‰´å®šåé™„åŠ å±æ€§åˆ¤æ–­è£…å¤‡å“è´¨
 			local addEffectNum = table.getn(self.addEffect)
 			if addEffectNum >= 6 then
-				-- ÂÌÉ«
+				-- ç»¿è‰²
 				return ItemQuality.Green
 			elseif addEffectNum >= 5 then
-				-- ½ğÉ«
+				-- é‡‘è‰²
 				return ItemQuality.Gold
 			elseif addEffectNum >= 4 then
-				-- ·ÛÉ«
+				-- ç²‰è‰²
 				return ItemQuality.Pink
 			else
-				-- À¶É«
+				-- è“è‰²
 				return ItemQuality.Blue
 			end
 		end
 	end
 end
 
--- »ñµÃ×°±¸×î´óÄÍ¾Ã
+-- è·å¾—è£…å¤‡æœ€å¤§è€ä¹…
 function Equipment:getMaxDurability()
 	local equipConfig = tEquipmentDB[self.itemID]
 	if not equipConfig then
@@ -92,7 +92,7 @@ function Equipment:getMaxDurability()
 	return equipConfig.MaxDurability*ConsumeDurabilityNeedFightTimes or 0
 end
 
--- ÉèÖÃµ±Ç°ÄÍ¾Ã¶È
+-- è®¾ç½®å½“å‰è€ä¹…åº¦
 function Equipment:setCurDurability(curDurability)
 	if curDurability < 0 then
 		curDurability = 0
@@ -102,7 +102,7 @@ function Equipment:setCurDurability(curDurability)
 		local curRealDurability = math.floor(self.curDurability / ConsumeDurabilityNeedFightTimes)
 		self.curDurability = curDurability
 		if setRealDurability ~= curRealDurability then
-			-- Èç¹û¿Í»§¶ËÏÔÊ¾ÓĞ±ä»¯£¬¾ÍÍ¨ÖªÏÂ¿Í»§¶Ë
+			-- å¦‚æœå®¢æˆ·ç«¯æ˜¾ç¤ºæœ‰å˜åŒ–ï¼Œå°±é€šçŸ¥ä¸‹å®¢æˆ·ç«¯
 			if self.pack then
 				self.pack:setChange(self.gridIndex)
 			end
@@ -110,12 +110,12 @@ function Equipment:setCurDurability(curDurability)
 	end
 end
 
--- »ñµÃµ±Ç°ÄÍ¾Ã¶È
+-- è·å¾—å½“å‰è€ä¹…åº¦
 function Equipment:getCurDurability()
 	return self.curDurability
 end
 
--- ÉèÖÃµÀ¾ß°ó¶¨±êÖ¾
+-- è®¾ç½®é“å…·ç»‘å®šæ ‡å¿—
 function Equipment:setBindFlag(bindFlag)
 	if self.bindFlag ~= bindFlag then
 		self.bindFlag = bindFlag
@@ -125,12 +125,12 @@ function Equipment:setBindFlag(bindFlag)
 	end
 end
 
--- »ñµÃµÀ¾ß°ó¶¨±êÖ¾
+-- è·å¾—é“å…·ç»‘å®šæ ‡å¿—
 function Equipment:getBindFlag()
 	return self.bindFlag
 end
 
--- ÉèÖÃ¸ÄÔìÊôĞÔ
+-- è®¾ç½®æ”¹é€ å±æ€§
 function Equipment:setRemouldAttr(remouldAttr)
 	self.remouldAttr = remouldAttr
 	if self:getSubClass() == EquipmentClass.Weapon and self:getContainerID() == PackContainerID.Equip then
@@ -140,12 +140,12 @@ function Equipment:setRemouldAttr(remouldAttr)
 	end
 end
 
--- »ñµÃ¸ÄÔìÊôĞÔ
+-- è·å¾—æ”¹é€ å±æ€§
 function Equipment:getRemouldAttr()
 	return self.remouldAttr
 end
 
---»ñµÃÊôĞÔÖµ
+--è·å¾—å±æ€§å€¼
 function Equipment:getRemouldAttrValue()
 	local attrValue = 0
 	for _,color in pairs(self.remouldAttr or {}) do
@@ -154,32 +154,32 @@ function Equipment:getRemouldAttrValue()
 	return attrValue
 end
 
--- »ñµÃ¸ÄÔìµÈ¼¶
+-- è·å¾—æ”¹é€ ç­‰çº§
 function Equipment:getRemouldLevel()
 	return table.size(self.remouldAttr)
 end
 
--- ÉèÖÃ¼ø¶¨±êÖ¾
+-- è®¾ç½®é‰´å®šæ ‡å¿—
 function Equipment:setIdentityFlag(identityFlag)
 	self.identityFlag = identityFlag
 end
 
--- »ñµÃ¼ø¶¨±êÖ¾,trueÎª¼ø¶¨£¬falseÎªÎ´¼ø¶¨
+-- è·å¾—é‰´å®šæ ‡å¿—,trueä¸ºé‰´å®šï¼Œfalseä¸ºæœªé‰´å®š
 function Equipment:getIdentityFlag()
 	return self.identityFlag
 end
 
--- ÉèÖÃÇ¿»¯Íê³É¶È
+-- è®¾ç½®å¼ºåŒ–å®Œæˆåº¦
 function Equipment:setCompleteness(completeness)
 	self.completeness = completeness
 end
 
--- »ñÈ¡Ç¿»¯Íê³É¶È
+-- è·å–å¼ºåŒ–å®Œæˆåº¦
 function Equipment:getCompleteness()
 	return self.completeness
 end
 
--- ÉèÖÃÊôĞÔĞ§¹û
+-- è®¾ç½®å±æ€§æ•ˆæœ
 function Equipment:setEffect(context)
 	if context.baseEffect then
 		self.baseEffect = context.baseEffect
@@ -195,17 +195,17 @@ function Equipment:setEffect(context)
 	end
 end
 
--- »ñÈ¡Ì××°ÊôĞÔ
+-- è·å–å¥—è£…å±æ€§
 function Equipment:setSuitAttr(suirAttr)
 	self.suitAttr = suirAttr
 end
 
--- »ñÈ¡Ì××°ÊôĞÔ
+-- è·å–å¥—è£…å±æ€§
 function Equipment:getSuitAttr()
 	return self.suitAttr
 end
 
--- ÉèÖÃÊôĞÔĞ§¹ûÀ©Õ¹º¯Êı
+-- è®¾ç½®å±æ€§æ•ˆæœæ‰©å±•å‡½æ•°
 function Equipment:setEffectEx(context)
 	self.baseEffect = context.baseEffect
 	self.addEffect = context.addEffect
@@ -213,14 +213,14 @@ function Equipment:setEffectEx(context)
 	self.refiningEffect = context.refiningEffect
 end
 
--- »ñµÃÊôĞÔĞ§¹û
+-- è·å¾—å±æ€§æ•ˆæœ
 function Equipment:getEffect()
 	return self.baseEffect, self.addEffect, self.bindEffect,self.refiningEffect
 end
 
--- ¸ù¾İÊı¾İ¿âÏÖ³¡ÉèÖÃ×°±¸ÊôĞÔ
+-- æ ¹æ®æ•°æ®åº“ç°åœºè®¾ç½®è£…å¤‡å±æ€§
 function Equipment:setPropertyContext(context)
-	-- ×°±¸ÔİÊ±Ã»ÓĞµ½ÆÚÊ±¼ä£¬ÓÀ¾ÃÓĞĞ§
+	-- è£…å¤‡æš‚æ—¶æ²¡æœ‰åˆ°æœŸæ—¶é—´ï¼Œæ°¸ä¹…æœ‰æ•ˆ
 	self:setBindFlag(context.bindFlag and true or false)
 
 	if context.expireTime > 0 then
@@ -257,7 +257,7 @@ function Equipment:setPropertyContext(context)
 
 end
 
--- »ñµÃ×°±¸ÊôĞÔÏÖ³¡
+-- è·å¾—è£…å¤‡å±æ€§ç°åœº
 function Equipment:getPropertyContext()
 	local context = {}
 	context.itemID = self:getItemID()
@@ -270,30 +270,30 @@ function Equipment:getPropertyContext()
 	context.identityFlag = self:getIdentityFlag()
 	context.completeness = self:getCompleteness()
 	context.suitAttr = self:getSuitAttr()
-	print("---------Ì××°ÊôĞÔ-----d----",toString(context.suitAttr))
+	print("---------å¥—è£…å±æ€§-----d----",toString(context.suitAttr))
 	return context
 end
 
--- »ñµÃ×°±¸¶ÔÓ¦µÄ×°±¸À¸¸ñ×ÓË÷Òı
+-- è·å¾—è£…å¤‡å¯¹åº”çš„è£…å¤‡æ æ ¼å­ç´¢å¼•
 function Equipment:getEquipGridIndex()
 	return EquipType_ItemGrid[self.subClass][self.equipClass]
 end
 
--- ×°±¸¸Ã×°±¸
+-- è£…å¤‡è¯¥è£…å¤‡
 function Equipment:onEquip(player)
 	local equipConfig = tEquipmentDB[self.itemID]
 	if not equipConfig then
-		-- ÕÒ²»µ½×°±¸¶¨Òå
+		-- æ‰¾ä¸åˆ°è£…å¤‡å®šä¹‰
 		return
 	end
 	if not instanceof(player, Player) then
 		return
 	end
 
-	-- ¸üĞÂ×°±¸Íâ¹Û
+	-- æ›´æ–°è£…å¤‡å¤–è§‚
 	self:updatePlayerShowParts(player, equipConfig, true)
 
-	-- »ù´¡ÊôĞÔ
+	-- åŸºç¡€å±æ€§
 	if equipConfig.BaseAttrTypeA then
 		player:addAttrValue(equipConfig.BaseAttrTypeA, equipConfig.BaseAttrValueA)
 	end
@@ -303,29 +303,34 @@ function Equipment:onEquip(player)
 	if equipConfig.BaseAttrTypeC then
 		player:addAttrValue(equipConfig.BaseAttrTypeC, equipConfig.BaseAttrValueC)
 	end
-	-- ¸½¼ÓÊôĞÔ
+	-- é™„åŠ å±æ€§
 	self:updateAddAttr(player, true)
-	-- °ó¶¨ÊôĞÔ
+	-- ç»‘å®šå±æ€§
 	self:updateBindAttr(player, true)
-	-- Á¶»¯ÊôĞÔ
+	-- ç‚¼åŒ–å±æ€§
 	self:updateRefiningAttr(player, true)
+
+	player:flushPropBatch()
+
+	--é€šçŸ¥ä»»åŠ¡ç³»ç»Ÿ
+	TaskCallBack.onWearEquip(player:getID(), self.itemID)
 end
 
--- Ğ¶ÔØ¸Ã×°±¸
+-- å¸è½½è¯¥è£…å¤‡
 function Equipment:unEquip(player)
 	local equipConfig = tEquipmentDB[self.itemID]
 	if not equipConfig then
-		-- ÕÒ²»µ½×°±¸¶¨Òå
+		-- æ‰¾ä¸åˆ°è£…å¤‡å®šä¹‰
 		return
 	end
 	if not instanceof(player, Player) then
 		return
 	end
 
-	-- ¸üĞÂ×°±¸Íâ¹Û
+	-- æ›´æ–°è£…å¤‡å¤–è§‚
 	self:updatePlayerShowParts(player, equipConfig, false)
 
-	-- È¥µô»ù´¡ÊôĞÔ
+	-- å»æ‰åŸºç¡€å±æ€§
 	if equipConfig.BaseAttrTypeA then
 		player:addAttrValue(equipConfig.BaseAttrTypeA, -equipConfig.BaseAttrValueA)
 	end
@@ -335,15 +340,20 @@ function Equipment:unEquip(player)
 	if equipConfig.BaseAttrTypeC then
 		player:addAttrValue(equipConfig.BaseAttrTypeC, -equipConfig.BaseAttrValueC)
 	end
-	-- È¥µô¸½¼ÓÊôĞÔ
+	-- å»æ‰é™„åŠ å±æ€§
 	self:updateAddAttr(player, false)
-	-- È¥µô°ó¶¨ÊôĞÔ
+	-- å»æ‰ç»‘å®šå±æ€§
 	self:updateBindAttr(player, false)
-	-- È¥µôÁ¶»¯ÊôĞÔ
+	-- å»æ‰ç‚¼åŒ–å±æ€§
 	self:updateRefiningAttr(player, false)
+
+	player:flushPropBatch()
+
+	--é€šçŸ¥ä»»åŠ¡ç³»ç»Ÿ
+	TaskCallBack.onDownEquip(player:getID(), self.itemID)
 end
 
--- ¸üĞÂ¸½¼ÓÊôĞÔ
+-- æ›´æ–°é™„åŠ å±æ€§
 function Equipment:updateAddAttr(player, isEquip)
 	for i = 1, table.getn(self.addEffect or {}) do
 		local attrID = self.addEffect[i][1]
@@ -358,10 +368,10 @@ function Equipment:updateAddAttr(player, isEquip)
 	end
 end
 
--- ¸üĞÂ°ó¶¨ÊôĞÔ
+-- æ›´æ–°ç»‘å®šå±æ€§
 function Equipment:updateBindAttr(player, isEquip)
 	if not self:getBindFlag() then
-		-- Ö»ÓĞ°ó¶¨ºó£¬°ó¶¨ÊôĞÔ²Å»áÓĞĞ§¹û
+		-- åªæœ‰ç»‘å®šåï¼Œç»‘å®šå±æ€§æ‰ä¼šæœ‰æ•ˆæœ
 		return
 	end
 	for i = 1, table.getn(self.bindEffect or {}) do
@@ -375,7 +385,7 @@ function Equipment:updateBindAttr(player, isEquip)
 	end
 end
 
--- ¸üĞÂÁ¶»¯ÊôĞÔ
+-- æ›´æ–°ç‚¼åŒ–å±æ€§
 function Equipment:updateRefiningAttr(player, isEquip)
 	if self.refiningEffect then
 		local attr = self.refiningEffect.attr
@@ -389,10 +399,10 @@ function Equipment:updateRefiningAttr(player, isEquip)
 	end
 end
 
--- ¸üĞÂ½ÇÉ«×°±¸Íâ¹Û
+-- æ›´æ–°è§’è‰²è£…å¤‡å¤–è§‚
 function Equipment:updatePlayerShowParts(player, equipConfig, onEquip)
-	--local buffHandler = player:getHandler(HandlerDef_Buff)
-	--local isTransCard = buffHandler:getTransCard()
+	local buffHandler = player:getHandler(HandlerDef_Buff)
+	local isTransCard = buffHandler:getTransCard()
 	if equipConfig.SubClass == EquipmentClass.Weapon then
 		local data = string.format("{%s,%d,%d}", onEquip and "true" or "false", equipConfig.ID,self:getRemouldAttrValue()*100)
 		setPropValue(player:getPeer(), PLAYER_EQUIP_WEAPON,data)
@@ -401,7 +411,7 @@ function Equipment:updatePlayerShowParts(player, equipConfig, onEquip)
 		local curBodyTex = player:getCurBodyTex()
 		local curModelID = player:getModelID()
 		if onEquip then
-			-- ÉÏ×°
+			-- ä¸Šè£…
 			local str = ModelIDByClothDB[player:getSchool()][player:getSex()][equipConfig.UseNeedLvl]
 			if str then
 				local i,j = string.find(str,"%d+")
@@ -416,7 +426,7 @@ function Equipment:updatePlayerShowParts(player, equipConfig, onEquip)
 				end
 			end
 		else
-			-- Ğ¶×°
+			-- å¸è£…
 			local modelID = SchoolModelSwitch[player:getSex()][player:getSchool()]
 			if curModelID ~= modelID then
 				player:setModelID(modelID)

@@ -1,12 +1,12 @@
 --[[ShelfHandler.lua
-ÃèÊö£º
-	ÊµÌåµÄNpc»õ¼Ü»Ø¹ºÀ¸handler
+æè¿°ï¼š
+	å®ä½“çš„Npcè´§æ¶å›è´­æ handler
 --]]
 ShelfHandler = class(nil)
 
 function ShelfHandler:__init(entity)
 	self._entity = entity
-	-- npc»õ¼Ü»Ø¹º
+	-- npcè´§æ¶å›è´­
 	self.shelf = Shelf(self._entity)
 end
 
@@ -16,13 +16,13 @@ function ShelfHandler:__release()
 	self.shelf = nil
 end
 
--- »ñÈ¡»õ¼Ü
+-- è·å–è´§æ¶
 function ShelfHandler:getShelf()
 	return self.shelf
 end
 
 
--- ÉèÖÃ»Ø¹º»õ¼ÜÈİÁ¿
+-- è®¾ç½®å›è´­è´§æ¶å®¹é‡
 function ShelfHandler:setShelfCapability(curCapability)
 	local defaultPack = self.shelf:getPack()
 	defaultPack:setCapability(curCapability)

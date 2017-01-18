@@ -3,6 +3,7 @@
 
 #include "lindef.h"
 
+// 使用这两个宏的时候，确保p是char *指针
 #define auxWrite(p,type,value) *(type *)p = (type)(value),p+=sizeof(type)
 #define auxRead(lv,type,p) lv = *(type *)p,p+=sizeof(type)			//lv 左值
 

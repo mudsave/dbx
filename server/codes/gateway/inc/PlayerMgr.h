@@ -21,10 +21,10 @@ enum _PlayerStatus
 enum _PlayerStatusIntervals
 {
 	ePlayerInitInterval			= -1,
-	ePlayerVerifyingInterval	= 1000,
-	ePlayerLoadingInterval		= 1000,
+	ePlayerVerifyingInterval	= 1000 * 5,
+	ePlayerLoadingInterval		= 1000 * 60 * 3,
 	ePlayerLoadedInterval		= -1,
-	ePlayerUnloadingInterval	= 1000,
+	ePlayerUnloadingInterval	= 1000 * 10,
 	ePlayerUnloadedInterval		= -1
 };
 
