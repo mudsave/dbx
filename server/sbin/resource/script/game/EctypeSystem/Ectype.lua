@@ -215,7 +215,7 @@ end
 -- 定时器回调
 function Ectype:update(timerID)
 	-- 副本生命定时器
-	print("timerID>>>>>>>>>>>>>>>>", timerID, self.lifeTimerID)
+	--print("timerID>>>>>>>>>>>>>>>>", timerID, self.lifeTimerID)
 	if timerID == self.lifeTimerID then
 		-- 副本时间到了，如果副本还未完成，则消耗一次进入次数
 		print("self.finishFalga>>>>>>>>>>>>>>>>>>>>>>>>>", self.finishFlag)
@@ -269,11 +269,8 @@ function Ectype:exeLogicFightClean(progress)
 end
 -- 执行指定步骤的结束动作进度奖励
 function Ectype:exeLogicProcedureEnd(progress)
-	print("progress>>>>>>>>>>>>>>>>>>>>>>>>>>", progress)
 	local logicProcedure = self.ectypeConfig.LogicProcedure[progress]
 	if logicProcedure then
-
-		print("再次执行移除工作"..progress)
 		-- 先执行上一步骤的退出动作
 		for i = 1, table.getn(logicProcedure.End) do
 			local funs = logicProcedure.End[i][1]
@@ -783,13 +780,9 @@ function Ectype:removePlayer(player)
 		if self.ectypeConfig.EctypeType == EctypeType.Common or self.ectypeConfig.EctypeType == EctypeType.Ring then
 			self:releaseEctype()
 		else
-			if self.ectypeConfig.EctypeDyingTime > 0 then
-				local dyingTime = self.ectypeConfig.EctypeDyingTime * 60 * 1000
-				self.dyingTimerID = g_timerMgr:regTimer(self, dyingTime, dyingTime, "副本弥留定时器")
-			else
-				-- 弥留时间为0，需要立即销毁副本
-				self:releaseEctype()
-			end
+			
+			-- 副本弥留时间已经取消，需要立即销毁副本
+			self:releaseEctype()
 		end
 	end
 end
@@ -926,9 +919,18 @@ function Ectype:enterEctypeOtherScene(enterPosX, enterPosY, player)
 	self:exeLogicProcedure(false)
 end
 
--- 获取连环副本中领队人的传送门信息
+-- 获取连环副本中领队人的传送门信息, 这个我想改下, 连环副本必定要组队
 function Ectype:getTransferDoorsInfo()
-	local teamID = g_ectypeMgr:getEctypeTeamID(self.ectypeMapID)
+	local ectypePlayers = self:getEctypePlayers()
+	local teamID
+	for playerID, _ in pairs(ectypePlayers) do
+		local player = g_entityMgr:getPlayerByID(playerID)
+		if player then
+			local teamHandler = player:getHandler(HandlerDef_Team)
+			teamID = teamHandler:getTeamID()
+			break
+		end
+	end
 	if not teamID then return end
 	if teamID > 0 then
 		local team = g_teamMgr:getTeam(teamID)
@@ -957,9 +959,11 @@ function Ectype:driveEctypeProcess()
 	-- 在驱动副本进度前要先打开副本机关
 	self:openEctypeEffect()
 	-- 驱动副本进度
+	print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", self.curProgress)
 	if self.curProgress >= table.getn(self.ectypeConfig.LogicProcedure) then
 		-- 执行到这里应该是子副本掉线，没有点击传送门进行下一步，所以这里重走一下流程
 		local transferDoorsInfo = self:getTransferDoorsInfo()
+		print("tasstransferDoorsInfoFer捏皮囊", transferDoorsInfo)
 		if transferDoorsInfo then
 			local ectypePlayers = self:getEctypePlayers()
 			for playerID, _ in pairs(ectypePlayers) do
@@ -1423,6 +1427,18 @@ function Ectype:onAttackEffect()
 					ectypeHandler:addEctypeAttackTime(self.ectypeID)
 				end
 			end
+		end
+	end
+end
+
+-- 对于那些不需要保存进度的副本
+function Ectype:setEctypeAttackTime(attackTime)
+	local ectypePlayers = self:getEctypePlayers()
+	for playerID, _ in pairs(ectypePlayers) do
+		local player = g_entityMgr:getPlayerByID(playerID)
+		if player then
+			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
+			ectypeHandler:setEctypeAttackTime(attackTime)
 		end
 	end
 end

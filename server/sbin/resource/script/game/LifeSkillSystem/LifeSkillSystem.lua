@@ -14,6 +14,7 @@ function LifeSkillSystem:__init()
 		[LifeSkillEvent_CS_costMoneyLearnSkill] = LifeSkillSystem.costMoneyLearnSkill,
 		[LifeSkillEvent_CS_onRefine] = LifeSkillSystem.onRefineItem,
 	}
+	self.randRecipeID = nil
 end
 
 function LifeSkillSystem:onRefineItem(event)
@@ -431,8 +432,16 @@ function LifeSkillSystem:onProduct(event)
 				if recipeID == costInfo.recipeID then
 					--消耗体力
 					player:setAttrValue(player_vigor,vigor-costInfo.vigorCost)
+					player:flushPropBatch()
 					local successRate = self:productRate(recipeID)
 					if successRate then
+						local packetHandler = player:getHandler(HandlerDef_Packet)
+						if not packetHandler then 
+							return 
+						end
+						--获取玩家背包的格子数
+						roleEmptyGridsNum = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
+						
 						--生产所获得的配方
 						packetHandler:addItemsToPacket(recipeID, 1)
 						
@@ -467,13 +476,24 @@ function LifeSkillSystem:onProduct(event)
 				
 					--消耗体力
 					player:setAttrValue(player_vigor,vigor-costInfo.vigorCost)
+					player:flushPropBatch()
 					local successRate = self:productRate(recipeID)
 					if successRate then
-						--生产所获得的配方
-						packetHandler:addItemsToPacket(recipeID, 1)
-						--得到配方，发消息给客户端
-						local event = Event.getEvent(LifeSkillEvent_SC_gainedRecipeNotice, recipeID,costInfo.vigorCost)
-						g_eventMgr:fireRemoteEvent(event, player)
+						local packetHandler = player:getHandler(HandlerDef_Packet)
+						if not packetHandler then 
+							return 
+						end
+						--获取玩家背包的格子数
+						roleEmptyGridsNum = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
+						if roleEmptyGridsNum >1 then
+							--生产所获得的配方
+							packetHandler:addItemsToPacket(recipeID, 1)
+							--得到配方，发消息给客户端
+							local event = Event.getEvent(LifeSkillEvent_SC_gainedRecipeNotice, recipeID,costInfo.vigorCost)
+							g_eventMgr:fireRemoteEvent(event, player)
+						else 
+							return
+						end 						
 					else
 						--消耗材料、体力未生产成功的银两补偿
 						local randNum = math.random(0,20)
@@ -488,8 +508,6 @@ function LifeSkillSystem:onProduct(event)
 	end
 end
 		
-
-
 --生产随机的配方
 function LifeSkillSystem:onProductRandRecipe(event)
 	local params = event:getParams()
@@ -503,12 +521,12 @@ function LifeSkillSystem:onProductRandRecipe(event)
 	end
 	
 	local skillIndex = params[1]
-	local randRecipeID= params[2]
+	local productLevel = params[2]
 	
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local vigor = player:getAttrValue(player_vigor)
 	--如果skillIndex等于1表示为烹饪技能里的随机配方
-	if skillIndex==1 then
+	if skillIndex==4 then
 		local n = 2
 		local fixItemID =1311082
 		if  vigor>n then
@@ -519,11 +537,25 @@ function LifeSkillSystem:onProductRandRecipe(event)
 				packetHandler:removeByItemId(fixItemID, 2)
 				--消耗体力
 				player:setAttrValue(player_vigor,vigor- n)
-				--生产所获得的配方
-				packetHandler:addItemsToPacket(randRecipeID, 1)
-				--通知客户端所获得配方
-				local event = Event.getEvent(LifeSkillEvent_SC_gainedRecipeNotice, randRecipeID,n,fixItemID)
-				g_eventMgr:fireRemoteEvent(event, player)
+				player:flushPropBatch()
+				
+				local packetHandler = player:getHandler(HandlerDef_Packet)
+				if not packetHandler then 
+					return 
+				end
+				--获取玩家背包的格子数
+				roleEmptyGridsNum = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
+				--判断玩家背包格子数是否小于所获物品的种类
+				if roleEmptyGridsNum >1 then
+					local randRecipeID = self:randOutputRecipe(skillIndex,productLevel)
+					--生产所获得的配方
+					packetHandler:addItemsToPacket(randRecipeID, 1)
+					--通知客户端所获得配方
+					local event = Event.getEvent(LifeSkillEvent_SC_gainedRecipeNotice, randRecipeID,n,fixItemID)
+					g_eventMgr:fireRemoteEvent(event, player)
+				else 
+					return
+				end 
 				
 			else
 				-- 发消息给客户端
@@ -538,8 +570,8 @@ function LifeSkillSystem:onProductRandRecipe(event)
 		end
 	end	
 	
-	--如果skillIndex等于2表示为烹饪技能里的随机配方
-	if skillIndex==2 then
+	--如果skillIndex等于2表示为炼药技能里的随机配方
+	if skillIndex==5 then
 		local n = 2
 		local fixItemID2 =1311083
 		if  vigor>n then
@@ -548,14 +580,29 @@ function LifeSkillSystem:onProductRandRecipe(event)
 			if itemNum2>=2 then
 				--背包移除固定消耗材料1
 				packetHandler:removeByItemId(fixItemID2, 2)
+				player:flushPropBatch()
 				--消耗体力
 				player:setAttrValue(player_vigor,vigor- n)
-				--生产所获得的配方
-				packetHandler:addItemsToPacket(randRecipeID, 1)
-				--通知客户端所获得配方
-				local event = Event.getEvent(LifeSkillEvent_SC_gainedRecipeNotice, randRecipeID,n,fixItemID2)
-				g_eventMgr:fireRemoteEvent(event, player)
+				player:flushPropBatch()
 				
+				local packetHandler = player:getHandler(HandlerDef_Packet)
+				if not packetHandler then 
+					return 
+				end
+				
+				--获取玩家背包的格子数
+				roleEmptyGridsNum = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
+				--判断玩家背包格子数是否小于所获物品的种类
+				if roleEmptyGridsNum >1 then
+					local randRecipeID = self:randOutputRecipe(skillIndex,productLevel)
+					--生产所获得的配方
+					packetHandler:addItemsToPacket(randRecipeID, 1)
+					--通知客户端所获得配方
+					local event = Event.getEvent(LifeSkillEvent_SC_gainedRecipeNotice, randRecipeID,n,fixItemID2)
+					g_eventMgr:fireRemoteEvent(event, player)
+				else 
+					return
+				end 
 			else
 				-- 发消息给客户端
 				local event = Event.getEvent(LifeSkillEvent_SC_vigorLackNotice, 3)
@@ -570,39 +617,41 @@ function LifeSkillSystem:onProductRandRecipe(event)
 	
 end
 
+function LifeSkillSystem:checkRoleEmptyGridsNum(player)
+	local packetHandler = player:getHandler(HandlerDef_Packet)
+	if not packetHandler then 
+		return 
+	end
+	--获取玩家背包的格子数
+	roleEmptyGridsNum = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
+	--判断玩家背包格子数是否小于所获物品的种类
+	if roleEmptyGridsNum < 1 then
+		-- local noticeID_6 =  6
+		-- local event_lackGridsMSG = Event.getEvent(GoodsEvents_SC_LackGridsMSG, noticeID_6)
+		-- g_eventMgr:fireRemoteEvent(event_lackGridsMSG,player)
+		return
+	else	
+	
+	end
+end 
+
 --随机产出配方ID
-function LifeSkillSystem:randOutputRecipe(event)
-	local params = event:getParams()
-	local playerID = event.playerID
-	if not playerID then
-		return
-	end
-	local player = g_entityMgr:getPlayerByID(playerID)
-	if not player then
-		return
-	end
-	
-	local skillIndex = params[1]--配置里的[1]表示烹饪和[2]表示炼药
-	local productLevel = params[2]
-	
+function LifeSkillSystem:randOutputRecipe(skillIndex,productLevel)
 	for k,recipeInfos in pairs(ItemProductDB or {})do
 		if skillIndex ==k then 
 			for recipeIndex,recipeInfo in pairs(recipeInfos)do
 				local  recipeLevel = recipeInfo.level
-				if  recipeLevel==productLevel then
+				if  recipeLevel== productLevel then
 					local recipeOutputInfo = recipeInfo.itemOutputs
 					local ocIndex = self:getDropInfo(recipeOutputInfo)
-					gainedRecipe = recipeOutputInfo[ocIndex]
-					local randRecipeID = gainedRecipe.itemID
-					
-					--发送此随机配方到客户端，并执行生产按钮
-					local event = Event.getEvent(LifeSkillEvent_SC_randedOutputRecipe,skillIndex,randRecipeID)
-					g_eventMgr:fireRemoteEvent(event, player)
+					local gainedRecipe = recipeOutputInfo[ocIndex]
+					self.randRecipeID = gainedRecipe.itemID
 				end 
 			end
 		end	
 	end
-end
+	return self.randRecipeID 
+end 
 
 --配方产出权重处理
 function LifeSkillSystem:getDropInfo(config)

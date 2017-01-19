@@ -4,7 +4,7 @@
 
 ItemProductDB ={
     --≈Î‚ø
-	[1] =
+	[4] =
 	{
 		[1001]=
 		{
@@ -149,13 +149,13 @@ ItemProductDB ={
 						},
 						
 				--¡∂“©
-				[2] ={
+				[5] ={
 						[1001]={
 							skillName = "¡∂“©",
 							level = 0,
 							itemOutputs = {
-											[1]={itemID = 1100013,weight =50},
-											[2]={itemID = 1100014,weight =50},
+											[1]={itemID = 1100013,weight =40},
+											[2]={itemID = 1100014,weight =60},
 									},
 							},
 						

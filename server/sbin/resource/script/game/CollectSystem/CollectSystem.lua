@@ -176,89 +176,30 @@ function CollectSystem:gainedRewards(dropID)
 	if dropID then
 		local dropConfig = DropDB[dropID]
 		local dropNumData = dropConfig.dropNumData
-		local dropType = dropConfig.dropType
-		if table.size(dropNumData)>1 then   
-			local randIndex = math.random(1,#dropNumData)
-			local randNum = dropNumData[randIndex]
-			self:gaindedSomething(dropType,randNum,reward)
-		else
-			self:gaindedSomething(dropType,dropNumData[1],reward)
-		end		
+		if dropNumData then
+			local dropType = dropConfig.dropType
+			if table.size(dropNumData)>1 then   
+				local randIndex = math.random(1,#dropNumData)
+				local randNum = dropNumData[randIndex]
+				self:gaindedSomething(player,dropType,randNum,reward)
+			else
+				self:gaindedSomething(player,dropType,dropNumData[1],reward)
+			end	
+		else 
+			local rewardData = DropDB[dropID].dropRewards
+			self:addRewardsValue(player,rewardData,reward)
+		end 		
 	end	
 	return reward
 end 
 
 --获得具体奖励处理
-function CollectSystem:gaindedSomething(dropType,number,reward)
+function CollectSystem:gaindedSomething(player,dropType,number,reward)
 	for i = 1,number do
 		local ocIndex = self:getDropInfo(dropType)
 		rewardData = dropType[ocIndex]
-		--金币公式奖励
-		if rewardData.formulaMoney then 
-			local formulaFun = rewardData.formulaMoney
-			local level = player:getLevel()
-			local value = formulaFun(level)
-			reward.value.money  = reward.value.money + value
-		end
-		
-		--金币奖励
-		if rewardData.money then
-			reward.value.money = reward.value.money + rewardData.money
-		end
-		
-		--绑银公式奖励
-		if rewardData.formulaSubMoney then 
-			local formulaFun = rewardData.formulaSubMoney
-			local level = player:getLevel()
-			local value = formulaFun(level)
-			reward.value.subMoney = reward.value.subMoney + value
-		end
-		
-		--绑银奖励
-		if rewardData.subMoney then
-			reward.value.subMoney = reward.value.subMoney + rewardData.subMoney
-		end
-		
-		--经验公式奖励
-		if rewardData.formulaXp then 
-			local formulaFun = rewardData.formulaXp
-			local level = player:getLevel()
-			local value = formulaFun(level)
-			reward.value.xp = reward.value.xp + value
-		end
-		
-		--经验奖励
-		if rewardData.xp then
-			reward.value.xp = reward.value.xp + rewardData.xp
-		end
-		
-		--潜能公式奖励
-		if rewardData.formulaPot then 
-			local formulaFun = rewardData.formulaPot
-			local level = player:getLevel()
-			local value = formulaFun(level)
-			reward.value.pot = reward.value.pot + value
-		end
-		
-		--潜能奖励
-		if rewardData.pot then
-			reward.value.pot = reward.value.pot + rewardData.pot
-		end
-		
-		--历练公式奖励
-		if rewardData.formulaExpoint then 
-			local formulaFun = rewardData.formulaExpoint
-			local level = player:getLevel()
-			local value = formulaFun(level)
-			reward.value.expoint = reward.value.expoint + value
-		end
-		
-		--历练奖励
-		if rewardData.expoint then
-			reward.value.expoint = reward.value.expoint + rewardData.expoint
-		end	
-		
-		--物品奖励
+		self:addRewardsValue(player,rewardData,reward)
+		--物品奖励单独处理
 		if rewardData.item then
 			local itemID = rewardData.item.id
 			local itemNumData = rewardData.item.number
@@ -273,6 +214,74 @@ function CollectSystem:gaindedSomething(dropType,number,reward)
 	end
 end  
  
+function  CollectSystem:addRewardsValue(player,rewardData,reward)
+	--金币公式奖励
+	if rewardData.formulaMoney then 
+		local formulaFun = rewardData.formulaMoney
+		local level = player:getLevel()
+		local value = formulaFun(level)
+		reward.value.money  = reward.value.money + value
+	end
+	
+	--金币奖励
+	if rewardData.money then
+		reward.value.money = reward.value.money + rewardData.money
+	end
+	
+	--绑银公式奖励
+	if rewardData.formulaSubMoney then 
+		local formulaFun = rewardData.formulaSubMoney
+		local level = player:getLevel()
+		local value = formulaFun(level)
+		reward.value.subMoney = reward.value.subMoney + value
+	end
+	
+	--绑银奖励
+	if rewardData.subMoney then
+		reward.value.subMoney = reward.value.subMoney + rewardData.subMoney
+	end
+	
+	--经验公式奖励
+	if rewardData.formulaXp then 
+		local formulaFun = rewardData.formulaXp
+		local level = player:getLevel()
+		local value = formulaFun(level)
+		reward.value.xp = reward.value.xp + value
+	end
+	
+	--经验奖励
+	if rewardData.xp then
+		reward.value.xp = reward.value.xp + rewardData.xp
+	end
+	
+	--潜能公式奖励
+	if rewardData.formulaPot then 
+		local formulaFun = rewardData.formulaPot
+		local level = player:getLevel()
+		local value = formulaFun(level)
+		reward.value.pot = reward.value.pot + value
+	end
+	
+	--潜能奖励
+	if rewardData.pot then
+		reward.value.pot = reward.value.pot + rewardData.pot
+	end
+	
+	--历练公式奖励
+	if rewardData.formulaExpoint then 
+		local formulaFun = rewardData.formulaExpoint
+		local level = player:getLevel()
+		local value = formulaFun(level)
+		reward.value.expoint = reward.value.expoint + value
+	end
+	
+	--历练奖励
+	if rewardData.expoint then
+		reward.value.expoint = reward.value.expoint + rewardData.expoint
+	end	
+
+end
+
 --同步奖励至玩家身上
 function CollectSystem:setPlayerReward(reward,player)
 	if reward.money then
@@ -280,7 +289,7 @@ function CollectSystem:setPlayerReward(reward,player)
 	end
 	
 	if reward.subMoney then
-		player:setMoney(player:getSubMoney() + reward.subMoney)
+		player:setSubMoney(player:getSubMoney() + reward.subMoney)
 	end
 	
 	if reward.xp then
@@ -297,6 +306,7 @@ function CollectSystem:setPlayerReward(reward,player)
 		local expointValua = player:getAttrValue(player_expoint)
 		player:setAttrValue(player_expoint,expointValua+reward.expoint)
 	end	
+	player:flushPropBatch()
 end
  
 --物品权重处理

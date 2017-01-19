@@ -313,7 +313,9 @@ function EctypeSystem:onAttackEffect(event)
 		return
 	end
 	local msgID = 17
-	ectype:redIntegral(msgID, EctypeIntegral.Effect)
+	-- 记录撞击次数
+	ectype:onAttackEffect()
+	--ectype:redIntegral(msgID, EctypeIntegral.Effect)
 end
 
 function EctypeSystem.getInstance()

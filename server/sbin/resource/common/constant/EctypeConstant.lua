@@ -23,21 +23,3 @@ EctypeEnterType =
 	-- 组队进入
 	Team   = 2,
 }
-
--- 副本积分
-EctypeIntegral =
-{
-	-- 物件
-	Object		= 3,
-	Patrol		= 2,
-	Effect		= 1,
-}
-
--- 帮会副本奖励
-FactionEctypeReward = 
-{
-	[1] = {0, 12},
-	[2] = {13, 24},
-	[3] = {25, 36},
-	[4] = {36, 100},
-}

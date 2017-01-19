@@ -59,6 +59,7 @@ function EctypeHandler:checkEctypeData(ectypeID)
 		self.ectypeInfo[ectypeID].curProcess = 0
 		self.ectypeInfo[ectypeID].leftMin = 0
 		self.ectypeInfo[ectypeID].recordTime = os.time()
+		self.ectypeInfo[ectypeID].attackTime = 0
 	end
 end
 
@@ -74,6 +75,7 @@ function EctypeHandler:checkRingEctypeData(ringEctypeID)
 		self.ringEctypeInfo[ringEctypeID].childEctypeFlag = {0, 0, 0, 0}
 		self.ringEctypeInfo[ringEctypeID].finishFlag = 0
 		self.ringEctypeInfo[ringEctypeID].recordTime = os.time()
+		self.ringEctypeInfo[ringEctypeID].attackTime = 0
 	end
 end
 
@@ -211,6 +213,49 @@ function EctypeHandler:setRingEctypeProcess(ringEctypeID, curProcess)
 						if table.size(itemInfo) > 0 then
 							self:sendEctypePrize(msgID, itemInfo)
 						end
+						-- 机关撞击额外奖励
+						local ringEctypeExtraPrizes = ringEctypeConfig.tPrizes[curRing+1][curProcess].ExtraPrizes
+						if ringEctypeExtraPrizes then
+							local attackTime = self.ringEctypeInfo[ringEctypeID].attackTime
+							local percent = 100 - (attackTime * 5)
+							self:sendEctypePrize(25, attackTime)
+							-- 经验奖励
+							if ringEctypeExtraPrizes.ExpPrize then
+								local msgID = 26
+								local expPrize = math.floor(ringEctypeExtraPrizes.ExpPrize * percent / 100)
+								local experience = expPrize + self._entity:getAttrValue(player_xp)
+								self._entity:setAttrValue(player_xp, experience)
+								self:sendEctypePrize(msgID, expPrize)
+							end
+							-- 金钱奖励
+							if ringEctypeExtraPrizes.MoneyPrize then
+								local msgID = 27
+								local moneyPrize = math.floor(ringEctypeExtraPrizes.ExpPrize * percent / 100)
+								local money = moneyPrize + self._entity:getMoney()
+								self._entity:setMoney(money)
+								self:sendEctypePrize(msgID, moneyPrize)
+							end
+							-- 道行
+							if ringEctypeExtraPrizes.TaoPrize then
+								local msgID = 28
+								-- 衰减等级
+								--local decayLev = self._entity:getTaoDecayLev()
+								-- 衰减强度
+								--decayPower = math.pow(1/1.1, decayLev)
+								local taoPrize = math.floor(ringEctypeExtraPrizes.ExpPrize * percent / 100)
+								local tao = taoPrize + self._entity:getAttrValue(player_tao)
+								self._entity:setAttrValue(player_tao, tao)
+								self:sendEctypePrize(msgID, taoPrize)
+							end
+							-- 潜能
+							if ringEctypeExtraPrizes.PotPrize then
+								local msgID = 29
+								local potPrize = math.floor(ringEctypeExtraPrizes.ExpPrize * percent / 100)
+								local pot = potPrize + self._entity:getAttrValue(player_pot)
+								self._entity:setAttrValue(player_pot, pot)
+								self:sendEctypePrize(msgID, potPrize)
+							end
+						end
 					end
 					print("获得连环副本进度奖励")
 				end
@@ -244,6 +289,7 @@ function EctypeHandler:setRingEctypeFinishFlag(ringEctypeID)
 	self:checkRingEctypeData(ringEctypeID)
 	self.ringEctypeInfo[ringEctypeID].finishFlag = 1
 	self.ringEctypeInfo[ringEctypeID].recordTime = os.time()
+	self.ringEctypeInfo[ringEctypeID].attackTime = 0
 end
 
 -- 获得连环副本完成标志
@@ -258,6 +304,7 @@ function EctypeHandler:addEctypeFinishTimes(ectypeID)
 	self.ectypeInfo[ectypeID].finishTimes = self.ectypeInfo[ectypeID].finishTimes + 1
 	self.ectypeInfo[ectypeID].curProcess = 0
 	self.ectypeInfo[ectypeID].recordTime = os.time()
+	self.ectypeInfo[ectypeID].attackTime = 0
 end
 
 -- 设置普通副本完成次数
@@ -337,6 +384,49 @@ function EctypeHandler:setEctypeProcess(ectypeID, curProcess)
 						end
 					end
 					print("获得普通副本进度奖励")
+				end
+				-- 副本额外进度奖励
+				local attackTime = self.ectypeInfo[ectypeID].attackTime
+				local percent = 100 - (attackTime * 5)
+				local ectypeExtraPrizes = ectypeConfig.LogicProcedure[curProcess].ExtraPrizes
+				if percent > 0 and ectypeExtraPrizes then
+					self:sendEctypePrize(25, attackTime)
+					-- 经验奖励
+					if ectypeExtraPrizes.ExpPrize then
+						local msgID = 26
+						local expPrize = math.floor(ectypeExtraPrizes.ExpPrize * percent / 100)
+						local experience = expPrize + self._entity:getAttrValue(player_xp)
+						self._entity:setAttrValue(player_xp, experience)
+						self:sendEctypePrize(msgID, expPrize)
+					end
+					-- 金钱奖励
+					if ectypeExtraPrizes.MoneyPrize then
+						local msgID = 27
+						local moneyPrize = math.floor(ectypeExtraPrizes.MoneyPrize * percent / 100)
+						local money = moneyPrize + self._entity:getMoney()
+						self._entity:setMoney(money)
+						self:sendEctypePrize(msgID, moneyPrize)
+					end
+					-- 道行
+					if ectypeExtraPrizes.TaoPrize then
+						local msgID = 28
+						-- 衰减等级
+						--local decayLev = self._entity:getTaoDecayLev()
+						-- 衰减强度
+						--decayPower = math.pow(1/1.1, decayLev)
+						local taoPrize = math.floor(ectypeExtraPrizes.TaoPrize * percent / 100)
+						local tao = taoPrize + self._entity:getAttrValue(player_tao)
+						self._entity:setAttrValue(player_tao, tao)
+						self:sendEctypePrize(msgID, taoPrize)
+					end
+					-- 潜能
+					if ectypeExtraPrizes.PotPrize then
+						local msgID = 29
+						local potPrize = math.floor(ectypeExtraPrizes.PotPrize * percent / 100)
+						local pot = potPrize + self._entity:getAttrValue(player_pot)
+						self._entity:setAttrValue(player_pot, pot)
+						self:sendEctypePrize(msgID, potPrize)
+					end
 				end
 			end
 		end
@@ -428,6 +518,7 @@ function EctypeHandler:setEctypeInfo(ectypeRecord)
 					ectype.finishTimes = 0
 					ectype.curProcess = 0
 					ectype.leftMin = 0
+					ectype.attackTime = 0
 				end
 			else
 				-- 判断记录日期跟现在是不是同一周
@@ -436,6 +527,7 @@ function EctypeHandler:setEctypeInfo(ectypeRecord)
 					ectype.finishTimes = 0
 					ectype.curProcess = 0
 					ectype.leftMin = 0
+					ectype.attackTime = 0
 				end
 			end
 			if not self.ectypeInfo[ectype.ectypeID] then
@@ -444,6 +536,7 @@ function EctypeHandler:setEctypeInfo(ectypeRecord)
 				self.ectypeInfo[ectype.ectypeID].curProcess = ectype.curProcess
 				self.ectypeInfo[ectype.ectypeID].leftMin = ectype.leftMin
 				self.ectypeInfo[ectype.ectypeID].recordTime = ectype.recordTime
+				self.ectypeInfo[ectype.ectypeID].attackTime = ectype.attackTime or 0
 			else
 				-- 逻辑错误
 			end
@@ -474,6 +567,7 @@ function EctypeHandler:setRingEctypeInfo(ringEctypeRecord)
 					self.ringEctypeInfo[ringEctype.ringEctypeID].childEctypeFlag[4] = ringEctype.fourthChildEctypeFlag
 					self.ringEctypeInfo[ringEctype.ringEctypeID].finishFlag = ringEctype.finishFlag
 					self.ringEctypeInfo[ringEctype.ringEctypeID].recordTime = ringEctype.recordTime
+					self.ringEctypeInfo[ringEctype.ringEctypeID].attackTime = ringEctype.attackTime or 0
 				else
 					-- 逻辑错误
 				end
@@ -499,6 +593,7 @@ function EctypeHandler:saveEctypeData()
 			ectypeInfo = ectypeInfo..ectype.curProcess.."-"
 			ectypeInfo = ectypeInfo..ectype.leftMin.."-"
 			ectypeInfo = ectypeInfo..ectype.recordTime.."-"
+			ectypeInfo = ectypeInfo..ectype.attackTime.."-"
 			LuaDBAccess.saveEctypeInfo(playerDBID, ectypeInfo)
 		end
 	end
@@ -521,6 +616,7 @@ function EctypeHandler:saveRingEctypeData()
 		ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[4].."-"
 		ringEctypeInfo = ringEctypeInfo..ringEctype.finishFlag.."-"
 		ringEctypeInfo = ringEctypeInfo..ringEctype.recordTime.."-"
+		ringEctypeInfo = ringEctypeInfo..ringEctype.attackTime.."-"
 		LuaDBAccess.saveRingEctypeInfo(playerDBID, ringEctypeInfo)
 	end
 end
@@ -574,4 +670,22 @@ function EctypeHandler:getFactionEctypeStage()
 			return index
 		end
 	end
+end
+
+-- 连环副本撞击次数
+function EctypeHandler:addRingEctypeAttackTime(ringEctypeID)
+	self:checkRingEctypeData(ringEctypeID)
+	self.ringEctypeInfo[ringEctypeID].attackTime = self.ringEctypeInfo[ringEctypeID].attackTime + 1
+end
+
+-- 普通副本撞击次数
+function EctypeHandler:addEctypeAttackTime(ectypeID)
+	self:checkEctypeData(ectypeID)
+	self.ectypeInfo[ectypeID].attackTime = self.ectypeInfo[ectypeID].attackTime + 1
+end
+
+-- 设置common副本的撞击次数
+function EctypeHandler:setEctypeAttackTime(attackTime)
+	self:checkEctypeData(ectypeID)
+	self.ectypeInfo[ectypeID].attackTime = attackTime
 end
