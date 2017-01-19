@@ -3,6 +3,8 @@
 
 #include <map>
 
+#include "lindef.h"
+
 #include "Singleton.h"
 #include "DBTaskPool.h"
 
@@ -21,10 +23,18 @@ public:
     DBTaskPool *GetTaskPool(int p_id)
     {
         DBTaskPoolMap::iterator iter = m_taskPoolMap.find(p_id);
-        if (iter != m_taskPoolMap.end() && !iter->second->IsDestroyed())
-            return iter->second;
+        if (iter == m_taskPoolMap.end())
+        {
+            TRACE1_ERROR("DBFactory::GetTaskPool:Cant get task pool for db interface(id:%i).\n", p_id);
+            return NULL;
+        }
+        if (iter->second->IsDestroyed())
+        {
+            TRACE1_ERROR("DBFactory::GetTaskPool:Cant get task pool for db interface(id:%i).it had been destroyed.\n", p_id);
+            return NULL;
+        }
 
-        return NULL;
+        return iter->second;
     }
 private:
     DBTaskPoolMap m_taskPoolMap;

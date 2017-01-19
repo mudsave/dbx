@@ -76,7 +76,16 @@ DBIssueBase *DBTask::GetCurrIssue()
 
 DBIssueBase *DBTask::GetNextIssue()
 {
-    return m_taskPool->PopBufferIssue();
+    DBIssueBase *nextIssue = NULL;
+
+    DBIssueBase *currIssue = GetCurrIssue();
+    if (currIssue != NULL && currIssue->GetQueryID() > 0)
+        nextIssue = m_taskPool->TryGetOrderIssue(currIssue->GetQueryID());
+
+    if (nextIssue == NULL)
+        nextIssue = m_taskPool->PopBufferIssue();
+
+    return nextIssue;
 }
 
 DBTaskPool *DBTask::GetTaskPool()

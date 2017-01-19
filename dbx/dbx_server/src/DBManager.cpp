@@ -58,14 +58,28 @@ bool DBManager::InitDB()
 
 void DBManager::CallSP(AppMsg *p_appMsg)
 {
+    // todo:从p_appMsg中获得queryID
+
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
-    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg));
+    if (dbTaskPool == NULL)
+    {
+        TRACE1_ERROR("DBManager::CallSQL:Cant get task pool(id:%i), it is maybe destroyed.\n", DBX_DEFALT_DATABASE_ID);
+        return;
+    }
+    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1));
 }
 
 void DBManager::CallSQL(AppMsg *p_appMsg)
 {
+    // todo:从p_appMsg中获得queryID
+
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
-    dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg));
+    if (dbTaskPool == NULL)
+    {
+        TRACE1_ERROR("DBManager::CallSQL:Cant get task pool(id:%i), it is maybe destroyed.\n", DBX_DEFALT_DATABASE_ID);
+        return;
+    }
+    dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, -1));
 }
 
 HRESULT DBManager::Do(HANDLE hContext)
@@ -75,14 +89,18 @@ HRESULT DBManager::Do(HANDLE hContext)
 
     // for test
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 2));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 3));
+    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 2));
 }

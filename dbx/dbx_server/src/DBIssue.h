@@ -7,7 +7,7 @@
 class DBIssueBase
 {
 public:
-    DBIssueBase(AppMsg *p_appMsg);
+    DBIssueBase(AppMsg *p_appMsg, int p_queryID);
 
     virtual void Progress();
     virtual void OnProgress() = 0;
@@ -15,15 +15,18 @@ public:
 
     void SetDBInterface(DBInterface *p_dbInterface);
 
+    int GetQueryID();
+
 protected:
     DBInterface *m_dbInterface;
+    int m_queryID;      // 查询的序号id，有效的同序号须按顺序处理查询
 };
 
 
 class DBIssueCallSP :public DBIssueBase
 {
 public:
-    DBIssueCallSP(AppMsg *p_appMsg);
+    DBIssueCallSP(AppMsg *p_appMsg, int p_queryID);
 
     virtual void OnProgress();
     virtual void MainProgress();
@@ -33,7 +36,7 @@ public:
 class DBIssueCallSQL :public DBIssueBase
 {
 public:
-    DBIssueCallSQL(AppMsg *p_appMsg);
+    DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID);
 
     virtual void OnProgress();
     virtual void MainProgress();

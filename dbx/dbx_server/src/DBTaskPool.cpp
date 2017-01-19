@@ -19,9 +19,11 @@ DBTaskPool::DBTaskPool(int p_dbInterfaceID)
     m_totalTaskList(),
     m_issueBufferList(),
     m_finishIssueList(),
+    m_orderQueryIssueMap(),
     m_freeBusyListMutex(),
     m_bufferListMutex(),
     m_finishIssueMutex(),
+    m_orderQueryMutex(),
     m_isDestroyed(false)
 {
 }
@@ -96,11 +98,41 @@ DBTask *DBTaskPool::CreateThread()
     return task;
 }
 
-bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
+bool DBTaskPool::HasOrderIssue(int p_queryID)
+{
+    std::pair<ORDER_ISSUE_MAP::iterator, ORDER_ISSUE_MAP::iterator> range =
+        m_orderQueryIssueMap.equal_range(p_queryID);
+
+    if (range.first == range.second)
+        return false;
+    TRACE1_L0("DBTaskPool::HasOrderIssue:issue(queryID:%i).11111111111111111111\n", p_queryID);
+    return true;
+}
+
+void DBTaskPool::AddOrderIssue(DBIssueBase *p_issue)
+{
+    TRACE1_L0("DBTaskPool::AddOrderIssue:add issue(queryID:%i) to order.\n", p_issue->GetQueryID());
+    m_orderQueryMutex.Lock();
+
+    if (HasOrderIssue(p_issue->GetQueryID()))
+    {
+        m_orderQueryIssueMap.insert(std::make_pair(p_issue->GetQueryID(), p_issue));
+        m_orderQueryMutex.Unlock();
+        return;
+    }
+    TRACE1_L0("DBTaskPool::AddOrderIssue:firest issue(queryID:%i).22222222222222222\n", p_issue->GetQueryID());
+    m_orderQueryIssueMap.insert(std::make_pair(p_issue->GetQueryID(), (DBIssueBase *)NULL));    // 占位，表明此queryID正在处理中，以便顺序处理后来者
+    AddRandomIssue(p_issue);
+
+    m_orderQueryMutex.Unlock();
+}
+
+bool DBTaskPool::TaskIssue(DBIssueBase *p_issue)
 {
     m_freeBusyListMutex.Lock();
     if (m_freeTaskList.size() > 0)
     {
+        TRACE0_L0("DBTaskPool::ExcuteIssue:Has free task.\n");
         std::list<DBTask *>::iterator iter = m_freeTaskList.begin();
         DBTask *task = *iter;
         m_freeTaskList.remove(task);
@@ -112,15 +144,59 @@ bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
         return true;
     }
     m_freeBusyListMutex.Unlock();
+    return false;
+}
 
+void DBTaskPool::BufferIssue(DBIssueBase *p_issue)
+{
     TRACE0_L0("DBTaskPool::AddIssue:add to Buffer.\n");
     m_bufferListMutex.Lock();
     m_issueBufferList.push(p_issue);
     if (m_issueBufferList.size() > DBX_TASK_BUSY_SIZE)
         TRACE1_WARNING("DBTaskPool::AddIssue:There are too much(%i) DBIssues in buffer.\n", m_issueBufferList.size());
     m_bufferListMutex.Unlock();
-    
+}
+
+void DBTaskPool::AddRandomIssue(DBIssueBase *p_issue)
+{
+    if (TaskIssue(p_issue))
+        return;
+
+    BufferIssue(p_issue);
+}
+
+bool DBTaskPool::AddIssue(DBIssueBase *p_issue)
+{
+    if (p_issue->GetQueryID() > 0)
+    {
+        AddOrderIssue(p_issue);
+        return true;
+    }
+
+    AddRandomIssue(p_issue);
     return true;
+}
+
+DBIssueBase *DBTaskPool::TryGetOrderIssue(int p_queryID)
+{
+    DBIssueBase *nextIssue = NULL;
+
+    m_orderQueryMutex.Lock();
+
+    std::pair<ORDER_ISSUE_MAP::iterator, ORDER_ISSUE_MAP::iterator> range =
+        m_orderQueryIssueMap.equal_range(p_queryID);
+    if (range.first != range.second)
+    {
+        ORDER_ISSUE_MAP::iterator nextIter = range.first;
+        nextIter++;     // first只是占位用。
+        if (nextIter != range.second)
+            nextIssue = nextIter->second;
+        m_orderQueryIssueMap.erase(range.first);
+    }
+
+    m_orderQueryMutex.Unlock();
+
+    return nextIssue;
 }
 
 void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)

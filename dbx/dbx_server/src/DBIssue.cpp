@@ -4,8 +4,9 @@
 #include "vsdef.h"
 
 // -----------------------------------------------------------------------------------
-DBIssueBase::DBIssueBase(AppMsg *p_appMsg)
-    :m_dbInterface(NULL)
+DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
+    :m_dbInterface(NULL),
+    m_queryID(p_queryID)
 {
 }
 
@@ -25,11 +26,15 @@ void DBIssueBase::MainProgress()
     TRACE0_L0("DBIssueBase::MainProgress.\n");
 }
 
+int DBIssueBase::GetQueryID()
+{
+    return m_queryID;
+}
 
 
 // -----------------------------------------------------------------------------------
-DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg)
-    :DBIssueBase(p_appMsg)
+DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID)
+    :DBIssueBase(p_appMsg, p_queryID)
 {
 }
 
@@ -47,8 +52,8 @@ void DBIssueCallSP::MainProgress()
 
 
 // -----------------------------------------------------------------------------------
-DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg)
-    :DBIssueBase(p_appMsg)
+DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
+    :DBIssueBase(p_appMsg, p_queryID)
 {
 }
 
