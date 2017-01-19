@@ -178,6 +178,7 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 				return;
 			AccountInfo& account = g_accountMgr.getAccount(accountId);
 			account.hLink = hLink;
+			account._SwitchStatus(ACCOUNT_STATE_LOGINED);
 			g_session.send_MsgSC_ChangeSessionState_ResultInfo(hLink);
 			_SwitchState(LINK_CONTEXT_LOGINED);
 			return;
@@ -229,28 +230,12 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 		}
 	}
 
-	if ( state == LINK_CONTEXT_ROLE_CREATEING)
-	{
-		TRACE0_L2("LinkContext_Client::OnNetMsg(), state: LINK_CONTEXT_ROLE_CREATEING\n");
-		TRACE1_L2("\tmsgCls	= %i\n", msgCls);
-		TRACE1_L2("\tmsgId	= %i\n", msgId);
-		return;
-	}
-
-	if ( state == LINK_CONTEXT_ROLE_DELETEING)
-	{
-		TRACE0_L2("LinkContext_Client::OnNetMsg(), state: LINK_CONTEXT_ROLE_DELETEING\n");
-		TRACE1_L2("\tmsgCls	= %i\n", msgCls);
-		TRACE1_L2("\tmsgId	= %i\n", msgId);
-		return;
-	}
-
 	TRACE0_L2("LinkContext_Client::OnNetMsg(), the msg on the wrong state..\n");
 	TRACE1_L2("\thLink	= %i\n", hLink);
 	TRACE1_L2("\tstate	= %i\n", state);
 	TRACE1_L2("\tmsgCls	= %i\n", msgCls);
 	TRACE1_L2("\tmsgId	= %i\n", msgId);
-	ASSERT_(0);
+	// ASSERT_(0);
 	return;
 }
 

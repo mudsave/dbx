@@ -527,7 +527,7 @@ function Player:loadBasicDataFromDB(recordList)
 	self:setGoldCoin(rs.goldCoin)
 	self:setPos({rs.mapID, rs.posX, rs.posY})
 	self:setLoginPos({rs.mapID, rs.posX, rs.posY})
-
+	self:getHandler(HandlerDef_Ride):setRideCapacity(rs.rideBar)
 	-- 加载玩家属性集合
 	local attributeRecord = recordList[2]
 	self:createAttributeSet()
@@ -670,7 +670,7 @@ function Player:onPlayerLogout(reason)
 	self:updateProperty("Practise",self:getPractise())
 	self:updateProperty("PractiseCount",self:getPractiseCount())
 	self:updateProperty("StoreXp",self:getStoreXp())
-	--self:updateProperty("RideBar",self:getHandler(HandlerDef_Ride):getRideCapacity())
+	self:updateProperty("RideBar",self:getHandler(HandlerDef_Ride):getRideCapacity())
 end
 
 -- 提交玩家属性集合

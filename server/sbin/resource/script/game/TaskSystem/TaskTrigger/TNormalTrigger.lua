@@ -161,3 +161,32 @@ function Triggers.CreateIntemDirect(roleID, param, task, fromDB)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	g_taskSystem:notifyClient(player, TaskNotifyClientType.item, param)
 end
+
+function Triggers.enterScriptFight(roleID, param, task, fromDB)
+	if fromDB then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	local playerList = {}
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if teamHandler:isTeam() then
+		if teamHandler:isLeader() then
+			playerList = teamHandler:getTeamPlayerList()
+		elseif teamHandler:isStepOutState() then
+			table.insert(playerList,player)
+		end
+	else
+		table.insert(playerList,player)
+	end
+	--加宠物
+	local finalList = {}
+	for k,player in ipairs(playerList) do
+		table.insert(finalList,player)
+		local petID = player:getFollowPetID()
+		if petID then
+			local pet = g_entityMgr:getPet(petID)
+			table.insert(finalList,pet)
+		end
+	end
+	g_fightMgr:startScriptFight(finalList, param.scriptID, param.mapID)
+end

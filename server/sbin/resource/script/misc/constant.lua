@@ -47,7 +47,10 @@ OnlineReason = {
 	Reattach = 2,
 	Relogin	 = 3,
 }
+
+
 require "misc.EntityConstant"
+require "misc.ActivityConstant"
 require "misc.EctypeConstant"
 require "misc.ItemConstant"
 require "misc.EquipPlayingConstant"

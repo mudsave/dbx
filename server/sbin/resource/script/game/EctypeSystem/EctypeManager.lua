@@ -11,6 +11,7 @@ function EctypeManager:__init()
 	-- 所有副本
 	self.allEctypes = {}
 	-- 玩家ID-副本ID
+	--[[
 	self.actorEctypeMapID = {}
 	-- 副本ID-玩家ID
 	self.ectypeMapIDActor = {}
@@ -18,6 +19,7 @@ function EctypeManager:__init()
 	self.teamEctypeMapID = {}
 	-- 副本ID-队伍ID
 	self.ectypeMapIDTeam = {}
+	--]]
 end
 
 function EctypeManager:__release()
@@ -167,19 +169,6 @@ function EctypeManager:enterEctype(player, ectypeID)
 			self:sendEctypeMessageTip(player, 6)
 			return
 		end
-		-- 单人副本
-		if self.actorEctypeMapID[ectypeID] and self.actorEctypeMapID[ectypeID][playerDBID] then
-			local ectypeMapID = self.actorEctypeMapID[ectypeID][playerDBID]
-			local ectype = self.allEctypes[ectypeMapID]
-			if ectype then
-				-- 进入现有副本
-				ectype:enterEctypeScene(player)
-				print("进入现有副本，ectypeID，ectypeMapID，curProgress", ectypeID, ectypeMapID, ectype:getEctypeProcess())
-				-- 执行前置步骤
-				ectype:exePreProcedure()
-				return
-			end
-		end
 		-- 判断进入条件
 		if not self:canEnterEctype(player, ectypeConfig) then
 			return
@@ -192,18 +181,12 @@ function EctypeManager:enterEctype(player, ectypeID)
 			local ectypeMapID = ectype:getEctypeMapID()
 			-- 记录新副本
 			self.allEctypes[ectypeMapID] = ectype
-			-- 记录玩家ID-副本ID对
-			if not self.actorEctypeMapID[ectypeID] then
-				self.actorEctypeMapID[ectypeID] = {}
-			end
-			self.actorEctypeMapID[ectypeID][playerDBID] = ectypeMapID
-			-- 记录副本ID-玩家ID对
-			self.ectypeMapIDActor[ectypeMapID] = playerDBID
 			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
 			-- 设置副本进度
 			if ectypeConfig.EctypeType == EctypeType.Common then
 				-- 普通副本每次进入都是从头开始
 				ectype:setEctypeProcess(1)
+				ectype:setEctypeAttackTime(0)
 			else
 				local ectypeProcess = ectypeHandler:getEctypeProcess(ectypeID)
 				ectypeProcess = ectypeProcess + 1
@@ -225,7 +208,6 @@ function EctypeManager:enterEctype(player, ectypeID)
 		end
 	elseif ectypeConfig.EctypeEnterType == EctypeEnterType.Team then
 		-- 组队副本
-		print("组队副本》》》》》》》》。。")
 		if teamID <= 0 then
 			-- 没有组队，无法进入
 			self:sendEctypeMessageTip(player, 1)
@@ -258,35 +240,6 @@ function EctypeManager:enterEctype(player, ectypeID)
 				end
 			end
 		end
-		-- 组队副本
-		if self.teamEctypeMapID[ectypeID] and self.teamEctypeMapID[ectypeID][teamID] then
-			local ectypeMapID = self.teamEctypeMapID[ectypeID][teamID].ectypeMapID
-			local ectype = self.allEctypes[ectypeMapID]
-			if ectype then
-				for i = 1, table.getn(teamMemberPlayer) do
-					local memberDBID = teamMemberPlayer[i]:getDBID()
-					-- 判断玩家是否进入过，处理掉线再上的情况
-					if not self.teamEctypeMapID[ectypeID][teamID][memberDBID] then
-						-- 第一次进入，要判断下进入条件
-						if not self:canEnterEctype(teamMemberPlayer[i], ectypeConfig) then
-							-- 提示不能进入的原因
-							return
-						end
-					end
-				end
-				for i = 1, table.getn(teamMemberPlayer) do
-					local memberDBID = teamMemberPlayer[i]:getDBID()
-					-- 记录已经进入过此副本
-					if not self.teamEctypeMapID[ectypeID][teamID][memberDBID] then
-						self.teamEctypeMapID[ectypeID][teamID][memberDBID] = true
-					end
-					-- 进入现有副本
-					ectype:enterEctypeScene(teamMemberPlayer[i])
-				end
-				print("进入现有副本，ectypeID，ectypeMapID", ectypeID, ectypeMapID)
-				return
-			end
-		end
 		-- 判断进入条件
 		for i = 1, table.getn(teamMemberPlayer) do
 			if not self:canEnterEctype(teamMemberPlayer[i], ectypeConfig) then
@@ -304,16 +257,6 @@ function EctypeManager:enterEctype(player, ectypeID)
 			local ectypeMapID = ectype:getEctypeMapID()
 			-- 记录新副本
 			self.allEctypes[ectypeMapID] = ectype
-			-- 记录队伍ID-副本ID对
-			if not self.teamEctypeMapID[ectypeID] then
-				self.teamEctypeMapID[ectypeID] = {}
-			end
-			if not self.teamEctypeMapID[ectypeID][teamID] then
-				self.teamEctypeMapID[ectypeID][teamID] = {}
-			end
-			self.teamEctypeMapID[ectypeID][teamID].ectypeMapID = ectypeMapID
-			-- 记录副本ID-队伍ID对
-			self.ectypeMapIDTeam[ectypeMapID] = teamID
 			-- 设置副本进度
 			local ectypeProcess = 0
 			local ectypeLeftMin = 0
@@ -322,6 +265,7 @@ function EctypeManager:enterEctype(player, ectypeID)
 					-- 普通副本每次进入都是从头开始
 					ectypeProcess = 0
 					ectypeLeftMin = 0
+					ectype:setEctypeAttackTime(0)
 				else
 					-- 日常、周常等类型的组队副本
 					for i = 1, table.getn(teamMemberPlayer) do
@@ -348,9 +292,6 @@ function EctypeManager:enterEctype(player, ectypeID)
 			-- 是否创建第二张地图
 			ectype:createEctypeOhterScene()
 			for i = 1, table.getn(teamMemberPlayer) do
-				local memberDBID = teamMemberPlayer[i]:getDBID()
-				-- 记录已经进入过此副本
-				self.teamEctypeMapID[ectypeID][teamID][memberDBID] = true
 				-- 进入新副本
 				ectype:enterEctypeScene(teamMemberPlayer[i])
 			end
@@ -364,11 +305,6 @@ function EctypeManager:enterEctype(player, ectypeID)
 	end
 end
 
---获取队伍ID
-function EctypeManager:getEctypeTeamID(ectypeMapID)
-	return self.ectypeMapIDTeam[ectypeMapID]
-end
-
 -- 退出副本
 function EctypeManager:exitEctype(player)
 	local ectypeHandler = player:getHandler(HandlerDef_Ectype)
@@ -377,41 +313,12 @@ function EctypeManager:exitEctype(player)
 	if not ectype then
 		return
 	end
-
-	if self.ectypeMapIDTeam[ectypeMapID] then
-		local teamID = self.ectypeMapIDTeam[ectypeMapID]
-		local team = g_teamMgr:getTeam(teamID)
-		if not team then
-			-- 找不到队伍
-			return
+	local ectypePlayers = ectype:getEctypePlayers()
+	for playerID, _ in pairs(ectypePlayers) do 
+		local curPlayer = g_entityMgr:getPlayerByID(playerID) 
+		if curPlayer then
+			ectype:returnPublicScene(player)
 		end
-		-- 只有队长才可以操作
-		if team:getLeaderID() ~= player:getID() then
-			-- 判断是不是队员在副本中离队
-			local teamHandler = player:getHandler(HandlerDef_Team)
-			local teamID = teamHandler:getTeamID()
-			if teamID == InvalidTeamID then
-				ectype:returnPublicScene(player)
-			end
-			return
-		end
-		-- 所有队伍人员都传送出去
-		local ectypeID = ectype:getEctypeID()
-		if self.teamEctypeMapID[ectypeID] then
-			local allTeamMember = self.teamEctypeMapID[ectypeID][teamID]
-			if allTeamMember then
-				for teamMemberID, _ in pairs(allTeamMember) do
-					if teamMemberID ~= "ectypeMapID" then
-						local teamMember = g_entityMgr:getPlayerByDBID(teamMemberID)
-						if teamMember then
-							ectype:returnPublicScene(teamMember)
-						end
-					end
-				end
-			end
-		end
-	else
-		ectype:returnPublicScene(player)
 	end
 end
 
@@ -466,94 +373,6 @@ function EctypeManager:getRingEctypeLevelSection(level, ringEctypeID)
 	return lvlSection
 end
 
--- 挑战连环副本这个时候就没用这个呢，之后要删掉
---[[
-function EctypeManager:challengeRingEctype(player, ringEctypeID)
-	if not tRingEctypeDB[ringEctypeID] then
-		print("不存在连环副本配置，ringEctypeID = ", ringEctypeID)
-		return -1
-	end
-
-	local teamHandler = player:getHandler(HandlerDef_Team)
-	local teamID = teamHandler:getTeamID()
-	local team = g_teamMgr:getTeam(teamID)
-	if not team then
-		-- 找不到队伍
-		self:sendEctypeMessageTip(player, 1)
-		return -1
-	end
-	if team:getLeaderID() ~= player:getID() then
-		-- 不是队长
-		return -1
-	end
-
-	-- 所有玩家的等级需要在同一个区间段
-	local playerLvlSection = 0
-	local teamMemberList = team:getMemberList()
-	for i = 1, table.getn(teamMemberList) do
-		local teamMember = g_entityMgr:getPlayerByID(teamMemberList[i].memberID)
-		if teamMember then
-			local teamMemberLvl = teamMember:getLevel()
-			if teamMemberLvl < tRingEctypeDB.MinEnterLevel then
-				-- 提示队伍成员不符合进入副本的最低等级
-				self:sendEctypeMessageTip(player, 2)
-				return -1
-			end
-			if playerLvlSection == 0 then
-				playerLvlSection = self:getRingEctypeLevelSection(teamMemberLvl, ringEctypeID)
-			elseif playerLvlSection > 0 then
-				if self:getRingEctypeLevelSection(teamMemberLvl, ringEctypeID) ~= playerLvlSection then
-					-- 提示队伍成员不在一个等级区间
-					self:sendEctypeMessageTip(player, 3)
-					return -1
-				end
-			end
-		end
-	end
-	if playerLvlSection == 0 then
-		-- 玩家等级区间段不合法
-		print("连环副本进入等级配置错误")
-		return -1
-	end
-	local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-	local finishFlag = ectypeHandler:getRingEctypeFinishFlag(ringEctypeID)
-	if finishFlag == 1 then
-		-- 队长已经完成的话，就不让进了
-		self:sendEctypeMessageTip(player, 4)
-		return -1
-	end
-
-	-- 计算当前队伍连环副本的进入信息
-	self:calcTeamRingEctypeEnterInfo(team, ringEctypeID)
-
-	local teamMember = g_entityMgr:getPlayerByID(team[ringEctypeID])
-	if teamMember then
-		local ectypeHandler = teamMember:getHandler(HandlerDef_Ectype)
-		local ringEctypeGroupID = ectypeHandler:getRingEctypeGroupID(ringEctypeID)
-		if ringEctypeGroupID > 0 then
-			-- 今天已经记录了群组ID，直接返回结果
-			print("返回已记录的连环副本群组ID：ringEctypeGroupID", ringEctypeGroupID)
-			return ringEctypeGroupID
-		end
-
-		ringEctypeGroupID = playerLvlSection
-		if tRingEctypeDB[ringEctypeID][ringEctypeGroupID] then
-			-- 记录当前的连环副本群组ID
-			for i = 1, table.getn(teamMemberList) do
-				local teamMember = g_entityMgr:getPlayerByID(teamMemberList[i].memberID)
-				if teamMember then
-					local memberEctypeHandler = teamMember:getHandler(HandlerDef_Ectype)
-					memberEctypeHandler:setRingEctypeGroupID(ringEctypeID, ringEctypeGroupID)
-				end
-			end
-			print("返回连环副本群组ID：ringEctypeGroupID", ringEctypeGroupID)
-			return ringEctypeGroupID
-		end
-	end
-
-	return -1
-end
---]]
 -- 随机出当前连环副本下一子副本ID
 function EctypeManager:randomRingEctypeChildEctypeID(ectypeHandler, ringEctypeID)
 	local tAllEctypes = tRingEctypeDB[ringEctypeID].tAllEctypes
@@ -654,37 +473,13 @@ end
 
 -- 销毁副本回调
 function EctypeManager:onReleaseEctype(ectypeID, ectypeMapID)
-	-- 删除各种ID对记录
-	if self.ectypeMapIDActor[ectypeMapID] then
-		if self.actorEctypeMapID[ectypeID] then
-			local playerDBID = self.ectypeMapIDActor[ectypeMapID]
-			if self.actorEctypeMapID[ectypeID][playerDBID] then
-				self.actorEctypeMapID[ectypeID][playerDBID] = nil
-			end
-			if table.size(self.actorEctypeMapID[ectypeID]) == 0 then
-				self.actorEctypeMapID[ectypeID] = nil
-			end
-		end
-		self.ectypeMapIDActor[ectypeMapID] = nil
-	end
-	if self.ectypeMapIDTeam[ectypeMapID] then
-		if self.teamEctypeMapID[ectypeID] then
-			local teamID = self.ectypeMapIDTeam[ectypeMapID]
-			if self.teamEctypeMapID[ectypeID][teamID] then
-				self.teamEctypeMapID[ectypeID][teamID] = nil
-			end
-			if table.size(self.teamEctypeMapID[ectypeID]) == 0 then
-				self.teamEctypeMapID[ectypeID] = nil
-			end
-		end
-		self.ectypeMapIDTeam[ectypeMapID] = nil
-	end
-
 	-- 删除副本记录
+	local ectype = self.allEctypes[ectypeMapID]
+	release(ectype)
 	self.allEctypes[ectypeMapID] = nil
-
 	-- 删除副本场景
 	g_sceneMgr:releaseEctypeScene(ectypeMapID)
+	print("副本场景销毁掉呢》》》》》》》》》》》》》》》》》》》》。")
 end
 
 -- 
@@ -786,80 +581,35 @@ function EctypeManager:enterFactionEctype(player, factionEctypeID)
 		local player = g_entityMgr:getPlayerByID(roleID)
 		self:exeEnterEctypeDeductCondition(player, ectypeConfig)
 	end
-	-- 根据是否组队
-	if not team then
-		-- 创建副本
-		local ectype = FactionEctype()
-		if ectype:create(ectypeID) then
-			local ectypeMapID = ectype:getEctypeMapID()
-			-- 记录新副本
-			self.allEctypes[ectypeMapID] = ectype
-			-- 记录玩家ID-副本ID对
-			if not self.actorEctypeMapID[ectypeID] then
-				self.actorEctypeMapID[ectypeID] = {}
-			end
-			self.actorEctypeMapID[ectypeID][playerDBID] = ectypeMapID
-			-- 记录副本ID-玩家ID对
-			self.ectypeMapIDActor[ectypeMapID] = playerDBID
-			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-			-- 设置副本进度
-			ectype:setEctypeProcess(1)
-			-- 设置副本时间
-			local leftMin = ectypeConfig.EctypeExistTime
-			ectype:setEctypeLeftMin(leftMin)
-			-- 如果有两张地图
-			ectype:createEctypeOhterScene()
-			-- 进入新副本
+	
+	-- 创建副本
+	local ectype = FactionEctype()
+	if ectype:create(ectypeID) then
+		local ectypeMapID = ectype:getEctypeMapID()
+		-- 记录新副本
+		self.allEctypes[ectypeMapID] = ectype
+		local ectypeHandler = player:getHandler(HandlerDef_Ectype)
+		-- 设置副本进度
+		ectype:setEctypeProcess(1)
+		-- 设置副本时间
+		local leftMin = ectypeConfig.EctypeExistTime
+		ectype:setEctypeLeftMin(leftMin)
+		ectype:setEctypeAttackTime(0)
+		-- 如果有两张地图
+		ectype:createEctypeOhterScene()
+		-- 进入新副本
+		for _, roleID in pairs(players) do
+			local player = g_entityMgr:getPlayerByID(roleID)
 			ectype:enterEctypeScene(player)
-			-- 驱动副本进度
-			ectype:driveEctypeProcess()
-		else
-			-- 创建副本失败
-			print("EctypeManager:enterEctype 创建失败 1，ectypeID = ", ectypeID)
-			release(ectype)
 		end
+		-- 驱动副本进度
+		ectype:driveEctypeProcess()
 	else
-		-- 创建副本
-		local ectype = FactionEctype()
-		if ectype:create(ectypeID) then
-			local ectypeMapID = ectype:getEctypeMapID()
-			-- 记录新副本
-			self.allEctypes[ectypeMapID] = ectype
-			-- 记录队伍ID-副本ID对
-			if not self.teamEctypeMapID[ectypeID] then
-				self.teamEctypeMapID[ectypeID] = {}
-			end
-			if not self.teamEctypeMapID[ectypeID][teamID] then
-				self.teamEctypeMapID[ectypeID][teamID] = {}
-			end
-			self.teamEctypeMapID[ectypeID][teamID].ectypeMapID = ectypeMapID
-			-- 记录副本ID-队伍ID对
-			self.ectypeMapIDTeam[ectypeMapID] = teamID
-			-- 设置副本进度
-			-- 设置副本进度
-			ectype:setEctypeProcess(1)
-			-- 设置副本时间
-			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-			local leftMin = ectypeConfig.EctypeExistTime
-			ectype:setEctypeLeftMin(leftMin)
-			-- 是否创建第二张地图
-			ectype:createEctypeOhterScene()
-			for _, roleID in pairs(players) do
-				local player = g_entityMgr:getPlayerByID(roleID)
-				local memberDBID = player:getDBID()
-				-- 记录已经进入过此副本
-				self.teamEctypeMapID[ectypeID][teamID][memberDBID] = true
-				-- 进入新副本
-				ectype:enterEctypeScene(player)
-			end
-			-- 驱动副本进度
-			ectype:driveEctypeProcess()
-		else
-			-- 创建副本失败
-			print("EctypeManager:enterEctype 创建失败 2，ectypeID = ", ectypeID)
-			release(ectype)
-		end
+		-- 创建副本失败
+		print("EctypeManager:enterEctype 创建失败 1，ectypeID = ", ectypeID)
+		release(ectype)
 	end
+
 end
 
 -- 这个条件补上呢

@@ -234,7 +234,6 @@ fy_fight : start_fight
 fy_social: START_PORT=39060
 fy_social : start_social
 
-
 # 前台运行程序 - 程冲 39888
 cc_start: START_PORT=39888
 cc_start: start_server
@@ -250,6 +249,35 @@ cc_fight : start_fight
 cc_social: START_PORT=39888
 cc_social : start_social
 
+# 前台运行程序 - 黄诗颉 39070
+hsj_start: START_PORT=39070
+hsj_start: start_server
+
+hsj_session: START_PORT=39070
+hsj_session : start_session
+hsj_gateway: START_PORT=39070
+hsj_gateway : start_gateway
+hsj_world: START_PORT=39070
+hsj_world : start_world
+hsj_fight: START_PORT=39070
+hsj_fight : start_fight
+hsj_social: START_PORT=39070
+hsj_social : start_social
+
+# 前台运行程序 - 欧阳民振 39080
+oymz_start: START_PORT=39080
+oymz_start: start_server
+
+oymz_session: START_PORT=39080
+oymz_session : start_session
+oymz_gateway: START_PORT=39080
+oymz_gateway : start_gateway
+oymz_world: START_PORT=39080
+oymz_world : start_world
+oymz_fight: START_PORT=39080
+oymz_fight : start_fight
+oymz_social: START_PORT=39080
+oymz_social : start_social
 
 # 前台运行程序 - 公共服务器 41000
 dream_start: START_PORT=41000

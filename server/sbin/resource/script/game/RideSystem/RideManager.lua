@@ -222,6 +222,7 @@ function RideManager:updateRide(player)
 	handler:updateRide()
 end
 
+--下线坐骑数据存储
 function RideManager:onPlayerCheckOut(player)
 	self:updateRide(player)
 	local handler = player:getHandler(HandlerDef_Ride)

@@ -235,6 +235,15 @@ function FactionEctype:onFightEnd(fightID, isWin)
 	end
 end
 
+-- 收到机关撞击
+function FactionEctype:onAttackEffect()
+	if not self.finishFlag then
+		local msgID = 17
+		self:redIntegral(msgID, EctypeIntegral.Effect)
+	end
+end
+
+-- 在这个副本当中没有记录撞击次数
 function FactionEctype:redIntegral(msgID, ectypeIntegral)
 	local ectypePlayers = self:getEctypePlayers()
 	for playerID, _ in pairs(ectypePlayers) do

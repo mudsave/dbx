@@ -452,14 +452,6 @@ void CoEntity::calcMovePath( short offset, MovePath& path, short& moveDelay, boo
 			break;
 		}
 	}
-	/*
-	for (int idx = 0; idx < path.size(); idx = idx + 2)
-	{
-		short x = path[idx];
-        short y = path[idx + 1];
-		printf("calc move....print1....%d,%d  \n", x, y);
-	}
-	*/
 	//printf("the pos is in path idx is:%d\n", nExist);
 	if (nExist > 0)
 	{
@@ -467,21 +459,53 @@ void CoEntity::calcMovePath( short offset, MovePath& path, short& moveDelay, boo
 	}
 	else
 	{
-		 if (path.size() >= 2 && ((pos.x != path[0]) || (pos.y != path[1])) )
-		 {
-			 path.push_front(pos.y);
-			 path.push_front(pos.x);
-			 //printf("not entert..........\n");
-			 // 防止出现不连续路径
-			 fillMovePathByDistance(path, bFilled);
-		 }
-		 if (m_Move && !m_bDelayEnable && curPos != nextPos)
-		 {
-			 path.push_front(curPos.y);
-			 path.push_front(curPos.x);
+		int nErase = 0;
+		//for (int idx = path.size() - 2; idx >= 0; idx = idx - 2)
+		{
+			//终点就在跟随目标附近 不移动了
+			size_t nLen = path.size();
+			short dx = ::abs(pos.x - path[nLen - 2]);
+			short dy = ::abs(pos.y - path[nLen - 1]);
+			if (dx <= offset && dy <= offset)
+			{
+				//printf("just clear...........%d,%d\n", path[nLen - 2], path[nLen - 1]);
+				path.clear();
+				return;
+			}
+			int nOffset = 2 * offset;
+			if (path.size() - nOffset >= 2)
+			{
+				for (int idx = path.size() - 1 - nOffset; idx >= 0; idx = idx - 2)
+				{
+					short dx = ::abs(pos.x - path[idx - 1]);
+					short dy = ::abs(pos.y - path[idx]);
+					//printf("check is dx dy  pos:%d,%d  tar:%d,%d  dx:%d dy:%d\n", pos.x, pos.y, path[idx - 1], path[idx], dx, dy);
+					if (dx <= 1 && dy <= 1)
+					{
+						nErase = idx - 1;
+						//printf("erase the path pos:%d,%d   idx path:%d,%d\n", pos.x, pos.y, path[idx], path[idx + 1]);
+						break;
+					}
+				}
+			}
+			//if (nErase)
+			{
+				path.erase(path.begin(), path.begin() + nErase);
+				path.push_front(pos.y);
+				path.push_front(pos.x);
+				/*
+				for (int idx = 0; idx < path.size(); idx = idx + 2)
+				{
+				    short x = path[idx];
+					short y = path[idx + 1];
+					printf("calc move....print1....%d,%d  \n", x, y);
+				}
+				*/
+				fillMovePathByDistance(path, bFilled);
+			}
 		}
 	}
-	/*
+	/*	
 	for (int idx = 0; idx < path.size(); idx = idx + 2)
     {   
 		 short x = path[idx];
