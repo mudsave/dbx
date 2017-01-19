@@ -185,8 +185,8 @@ public:
 	int ObjectId;
 
 	int param_count;
-	vector<int> param_types;
-	vector<void *> param_values;
+	std::vector<int> param_types;
+	std::vector<void *> param_values;
 
 	ObjDoMsg()
 	{
@@ -211,7 +211,7 @@ public:
 		}
 
 		/*
-		Êı¾İ×éÖ¯¸ñÊ½£º
+		æ•°æ®ç»„ç»‡æ ¼å¼ï¼š
 		|ObjectId(int)|param_count(int)|param_type_1(int)param_type_2(int)...|param_value_1(void *)param_value_2(void *)...|
 		*/
 		BYTE * rpos = stream;
@@ -227,7 +227,7 @@ public:
 		//read param_types
 		for (int i = 0; i < param_count; i++)
 		{
-			param_types.add(*((int *)rpos))
+			param_types.push_back(*((int *)rpos));
 			rpos += sizeof(int);
 		}
 
@@ -236,9 +236,9 @@ public:
 		{
 			int size = getTypeSize(param_types[i]);
 			void * param = malloc(size);
-			memcpy(param, wpos, size);
-			param_values.add(param);
-			wpos += size;
+			memcpy(param, rpos, size);
+			param_values.push_back(param);
+			rpos += size;
 		}
 
 		//ok
@@ -248,7 +248,7 @@ public:
 	BYTE * writeStream(BYTE * stream)
 	{
 		/*
-		Êı¾İ×éÖ¯¸ñÊ½£º
+		æ•°æ®ç»„ç»‡æ ¼å¼ï¼š
 			|ObjectId(int)|param_count(int)|param_type_1(int)param_type_2(int)...|param_value_1(void *)param_value_2(void *)...|
 		*/
 		if (stream == NULL)
@@ -318,12 +318,12 @@ public:
 	inline void setParam(int ParamType,void* pParam )
 	{
 		param_count++;
-		param_types.add( ParamType );
+		param_types.push_back( ParamType );
 
 		int type_size = getTypeSize(ParamType);
 		void * new_param = malloc(type_size);
 		memcpy(new_param, pParam, type_size);
-		param_values.add( new_param );
+		param_values.push_back( new_param );
 	}
 
 	inline int getParamCount()
@@ -375,7 +375,7 @@ public:
 		return getCharacterSize(pValue);
 	}
 
-	//ÒÑ¾­°üº¬ÁË¶ÔÊı¾İµÄÑ¹Ëõ£¬µ«Ä¿Ç°Ö»¶ÔÀàĞÍÑ¹ËõÁË
+	//å·²ç»åŒ…å«äº†å¯¹æ•°æ®çš„å‹ç¼©ï¼Œä½†ç›®å‰åªå¯¹ç±»å‹å‹ç¼©äº†
 	inline int* compressData(int* data,int compressMode,int* TotalLen /*out*/)
 	{
 		return NULL;
@@ -508,7 +508,7 @@ public:
 		memcpy(wpos, &m_nLevel, sizeof(m_nLevel));
 		wpos += sizeof(m_nLevel);
 
-		return m_objDoMsg.writeStream(wpos)
+		return m_objDoMsg.writeStream(wpos);
 	}
 
 	bool isValidResMsg()
@@ -573,7 +573,7 @@ public:
 	char* getStream()
 	{
 		std::string paramstr;
-		int tempsize = 20;	//±£Ö¤¿ÉÒÔ·ÅÏÂÒ»¸öÕûÊı/¸¡µãÊı×ªÎª×Ö·û´®±íÊ¾Ö®ºóµÄ³ß´ç
+		int tempsize = 20;	//ä¿è¯å¯ä»¥æ”¾ä¸‹ä¸€ä¸ªæ•´æ•°/æµ®ç‚¹æ•°è½¬ä¸ºå­—ç¬¦ä¸²è¡¨ç¤ºä¹‹åçš„å°ºå¯¸
 		char * temp = (char *)malloc(tempsize);
 		if (temp == NULL) return NULL;
 
@@ -583,15 +583,15 @@ public:
 			{
 				char * name; int type;
 				void * value = getAttribute(&name, &type, attrIndex, resIndex);
-				int typesize = getTypeSize(type);
+				int typesize = ObjDoMsg::getTypeSize(type);
 
-				//×Ö·û´®ĞèÒª¼ÓÉÏ½áÊø·û
+				//å­—ç¬¦ä¸²éœ€è¦åŠ ä¸Šç»“æŸç¬¦
 				if (type > 0)
 				{
 					typesize += 1;
 				}
 
-				//µ÷ÕûtempµÄ´óĞ¡£¬Ê¹Æä¿ÉÒÔÈİÏÂµ±Ç°µÄÄÚÈİ
+				//è°ƒæ•´tempçš„å¤§å°ï¼Œä½¿å…¶å¯ä»¥å®¹ä¸‹å½“å‰çš„å†…å®¹
 				if (typesize > tempsize)
 				{
 					free(temp);
@@ -626,7 +626,7 @@ public:
 		}
 		free(temp);
 
-		//¿½±´µ½ĞÂµØÖ·ÒÔ±ã·µ»Ø
+		//æ‹·è´åˆ°æ–°åœ°å€ä»¥ä¾¿è¿”å›
 		temp = (char *)malloc(paramstr.length() + 1);
 		if (temp == NULL) return NULL;
 		strcpy(temp, paramstr.c_str());
@@ -644,12 +644,12 @@ public:
 		return NULL;
 	}
 
-	int		m_nAttriIndex;  //´ÓµÚ¼¸¸ö²ÎÊı¿ªÊ¼ÊÇÊôĞÔ²ÎÊı
+	int		m_nAttriIndex;  //ä»ç¬¬å‡ ä¸ªå‚æ•°å¼€å§‹æ˜¯å±æ€§å‚æ•°
 	int		m_nAttriNameCount;
 	int		m_nAttriCount;
-	int		m_nTempObjId;  //ÏìÓ¦µÄÁ÷Ë®ºÅ
-	int		m_nSessionId;	//sessionºÅ
-	int		m_spId;			//´æ´¢¹ı³ÌIDºÅ
+	int		m_nTempObjId;  //å“åº”çš„æµæ°´å·
+	int		m_nSessionId;	//sessionå·
+	int		m_spId;			//å­˜å‚¨è¿‡ç¨‹IDå·
 	bool	m_bEnd;	
 	bool	m_bNeedCallback;
 	short	m_nLevel;
@@ -686,7 +686,7 @@ public:
 		m_nResCount = *(int *)rpos;
 		rpos += sizeof(m_nResCount);
 
-		return CResultMsg::readStream(rpos)
+		return CResultMsg::readStream(rpos);
 	}
 
 	BYTE * writeStream(BYTE * stream)
@@ -701,7 +701,7 @@ public:
 		memcpy(wpos, &m_nResCount, sizeof(m_nResCount));
 		wpos += sizeof(m_nResCount);
 
-		return CResultMsg::writeStream(wpos)
+		return CResultMsg::writeStream(wpos);
 	}
 
 public:
