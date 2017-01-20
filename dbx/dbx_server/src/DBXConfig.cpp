@@ -92,3 +92,8 @@ DBInterfaceInfo *DBXConfig::GetDBInterfaceInfo(int p_dbInterfaceID)
 
     return NULL;
 }
+
+DBXConfig::DB_INTERFACE_INFOS const &DBXConfig::GetAllDBInterfaceInfo()
+{
+    return m_interfaceInfos;
+}
