@@ -60,13 +60,23 @@ void DBTaskPool::Finalise()
     m_freeBusyListMutex.Unlock();
 
     m_bufferListMutex.Lock();
-    if (m_issueBufferList.size() > 0)
+    while (m_issueBufferList.size() > 0)
     {
         DBIssueBase *issue = m_issueBufferList.front();
         m_issueBufferList.pop();
         delete issue;
     }
     m_bufferListMutex.Unlock();
+
+    m_orderQueryMutex.Lock();
+    ORDER_ISSUE_MAP::iterator orderMapIter = m_orderQueryIssueMap.begin();
+    for (; orderMapIter != m_orderQueryIssueMap.end(); ++orderMapIter)
+    {
+        if (orderMapIter->second != NULL)
+            delete orderMapIter->second;
+    }
+    m_orderQueryIssueMap.clear();
+    m_orderQueryMutex.Unlock();
 }
 
 bool DBTaskPool::InitTasks(int p_taskNum)
