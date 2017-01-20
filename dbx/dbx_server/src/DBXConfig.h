@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+ร่ส๖ฃบ
+
+*/
+
 #ifndef __DBX_CONFIG_H_
 #define __DBX_CONFIG_H_
 

@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+ÃèÊö£º
+
+*/
+
 #include "DBManager.h"
 
 //#include "trace.h"

@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+描述：
+
+*/
+
 #ifndef __DB_COMMON_H_
 #define __DB_COMMON_H_
 

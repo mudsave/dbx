@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+ร่ส๖ฃบ
+
+*/
+
 #ifndef __DB_FACTORY_H_
 #define __DB_FACTORY_H_
 

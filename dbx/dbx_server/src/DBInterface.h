@@ -8,6 +8,13 @@
 #include "lindef.h"
 #include "vsdef.h"
 
+/*
+Written by wangshufeng.
+RTX:6016.
+描述：
+
+*/
+
 #include "DBXCommon.h"
 #include "DBXConfig.h"
 
