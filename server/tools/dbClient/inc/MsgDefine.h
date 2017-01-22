@@ -179,6 +179,386 @@ private:
 	char* m_pStr;
 };
 
+typedef int PType;
+
+class DbxMessage : public AppMsg
+{
+public:
+	DbxMessage() : p_content(NULL) {}
+
+	int getParamCount()
+	{
+		return p_content ? *(int *)p_content : 0;
+	}
+
+	int getParamLen()
+	{
+		int param_count = getParamCount();
+		if (param_count == 0) return 0;
+
+		const BYTE * rpos = p_content;
+		const PType * temp;
+
+		//跳过数量字节
+		rpos += sizeof(int);
+
+		int type_size;
+		//放数量的字节 + 放类型长度的字节
+		int len = sizeof(int) + getParamCount() * sizeof(PType);
+
+		for (int i = 0; i < getParamCount(); i++)
+		{
+			temp = (PType *)rpos;
+			type_size = getTypeSize(*temp);
+			len += type_size;
+
+			//跳过类型和数据字节
+			rpos += sizeof(PType) + type_size;
+		}
+		return len;
+	}
+
+	bool getParam(PType & type/*out*/, const void *& pValue, int index/*from 0*/)
+	{
+		//数据结构：|变量数量|变量1类型|变量1的数据|变量2类型|变量2的数据|...|
+
+		if (index >= getParamCount())
+			return false;
+
+		const BYTE * rpos = p_content;
+		const PType * temp;
+
+		//跳过数量字节
+		rpos += sizeof(int);
+
+		for (int i = 0; i < getParamCount(); i++)
+		{
+			if (i == index)
+			{
+				type = *(PType *)rpos;
+				pValue = (void *)(rpos + sizeof(PType));
+				return true;
+			}
+			else
+			{
+				temp = (PType *)rpos;
+				//跳过类型和数据字节
+				rpos += sizeof(PType) + getTypeSize(*temp);
+			}
+		}
+		return false;
+	}
+
+	bool getAttribute(std::string & name/*out*/, PType & valueType/*out*/, const void *& pValue, int col, int row)
+	{
+		if (col < attribute_cols)
+		{
+			return getAttribute(name, valueType, pValue, row * attribute_cols + col);
+		}
+		return false;
+	}
+
+	bool getAttribute(std::string & name/*out*/, PType & valueType/*out*/, const void *& pValue, int index)
+	{
+		if (index < attribute_count)
+		{
+			int nameType; const void * pName(NULL);
+			if (getParam(nameType, pName, index % attribute_cols))
+			{
+				char * temp = (char*)malloc(nameType + 1);
+				if (temp == NULL) return false;
+
+				//取属性名
+				memcpy(temp, pName, nameType);
+				temp[nameType] = '\0';
+				name = temp;
+				free(temp);
+
+				/*取属性值（存放的顺序是：
+				|属性名1长度|属性名1|属性名2长度|属性名2...|属性1类型|属性1|属性2类型|属性2|...|其他参数|
+				）*/
+				int value_pos = attribute_cols + index;
+				return getParam(valueType, pValue, value_pos);
+			}
+		}
+		return false;
+	}
+
+	/*
+	* 根据索引获取非属性参数
+	*/
+	bool getNonAttribute(PType & type/*out*/, const void *& pValue, int index/*from 0*/)
+	{
+		return getParam(type, pValue, attribute_cols + attribute_count + index);
+	}
+
+	int getAttributeRows()
+	{
+		return attribute_count / attribute_cols;
+	}
+
+	static int getTypeSize(PType paramType)
+	{
+		if (paramType >= 0) return paramType;
+		switch (paramType)
+		{
+		case PARAMINT:
+			return sizeof(int);
+		case PARAMBOOL:
+			return sizeof(bool);
+		case PARAMFLOAT:
+			return sizeof(float);
+		}
+		return 0;
+	}
+
+	static int getCharacterSize(char* pValue)
+	{
+		return (int)strlen(pValue);
+	}
+
+	static int getCharacterType(char* pValue)
+	{
+		return getCharacterSize(pValue);
+	}
+
+	template<class T>
+	static T convert(const void * pValue)
+	{
+		return *(T *)pValue;
+	}
+
+	static char * convertString(const int & len, const void * pValue)
+	{
+		char * temp = (char *)malloc(len + 1);
+		memcpy(temp, pValue, len);
+		temp[len] = '\0';
+		return temp;
+	}
+
+protected:
+	template<class T> friend class DbxMessageBuilder;
+
+	int attribute_cols;		//属性的列数
+	int attribute_count;	//属性总数
+
+	//数据结构：|变量数量|变量1类型|变量1的数据|变量2类型|变量2的数据|...|
+	BYTE * p_content;
+};
+
+
+template<class MessageType>
+class DbxMessageBuilder
+{
+private:
+	struct Param
+	{
+		Param(PType t, const void * v)
+		{
+			type = t;
+			p_value = v;
+		}
+
+		PType type;
+		const void * p_value;
+	};
+
+public:
+	void BeginMessage()
+	{
+		attribute_cols = 0;
+		attribute_count = 0;
+		params.clear();
+		//保证vector的内存可以释放掉
+		std::vector<Param>(params).swap(params);
+	}
+
+	/*
+	* 消息填充完成，将所有数据放入新内存
+	*/
+	MessageType * FinishMessage()
+	{
+		int size = sizeof(MessageType) + getParamLen();
+		MessageType * p_msg = (MessageType *)malloc(size);
+		if (p_msg == NULL) return NULL;
+
+		//设置消息长度
+		p_msg->msgLen = (unsigned short)size;
+		p_msg->attribute_cols = attribute_cols;
+		p_msg->attribute_count = attribute_count;
+
+		int param_count = params.size();
+		if (param_count <= 0) return p_msg;
+
+		/*定位p_content指针，指向结构末尾*/
+		p_msg->p_content = (BYTE *)p_msg;
+		p_msg->p_content += sizeof(MessageType);
+		BYTE * wpos = p_msg->p_content;
+
+		//写参数数量
+		memcpy(wpos, &param_count, sizeof(int));
+		wpos += sizeof(int);
+
+		for (int i = 0; i < param_count; i++)
+		{
+			//写类型
+			memcpy(wpos, &params[i].type, sizeof(PType));
+			wpos += sizeof(PType);
+
+			//写数据
+			size = DbxMessage::getTypeSize(params[i].type);
+			memcpy(wpos, params[i].p_value, size);
+			wpos += size;
+		}
+
+		//消息写完，把临时数据清理掉
+		params.clear();
+		//保证vector的内存可以释放掉
+		std::vector<Param>(params).swap(params);
+
+		return p_msg;
+	}
+
+	void addParam(PType ParamType, const void* pParam)
+	{
+		params.push_back(Param(ParamType, pParam));
+	}
+
+	void addAttribute(const char* name, const void* value, PType valueType)
+	{
+		int pos;
+
+		/*属性会按顺序放入到前面，存放的顺序是：
+		|属性名1长度|属性名1|属性名2长度|属性名2|...|属性1类型|属性1|属性2类型|属性2|...|其他参数|
+		*/
+		if (name != NULL)
+		{
+			pos = attribute_cols++;
+			params.insert(params.begin() + pos, Param((PType)strlen(name), name));
+		}
+		if (value != NULL)
+		{
+			pos = attribute_cols + attribute_count;
+			params.insert(params.begin() + pos, Param(valueType, value));
+			attribute_count++;
+		}
+	}
+
+	int getParamLen()
+	{
+		int param_count = params.size();
+		if (param_count == 0)
+			return 0;
+
+		//放数量的字节 + 放类型长度的字节
+		int len = sizeof(int) + param_count * sizeof(PType);
+
+		for (int i = 0; i < param_count; i++)
+		{
+			len += DbxMessage::getTypeSize(params[i].type);
+		}
+		return len;
+	}
+
+	static void locateContent(MessageType * p_msg)
+	{
+		if (p_msg->msgLen <= sizeof(MessageType))
+		{
+			p_msg->p_content = NULL
+		}
+		else
+		{
+			/*定位p_content指针，指向结构末尾*/
+			p_msg->p_content = (BYTE *)p_msg;
+			p_msg->p_content += sizeof(MessageType);
+		}
+	}
+
+private:
+	int attribute_cols;
+	int attribute_count;
+	std::vector<Param> params;
+};
+
+
+class DbxResultMessage : public DbxMessage
+{
+public:
+
+	char* getStream()
+	{
+		std::string paramstr;
+		int tempsize = 20;	//保证可以放下一个整数/浮点数转为字符串表示之后的尺寸
+		char * temp = (char *)malloc(tempsize);
+		if (temp == NULL) return NULL;
+
+		for (int index = 0; index < attribute_count; index++)
+		{
+			std::string name; PType type; const void * pValue;
+			getAttribute(name, type, pValue, index);
+			int typesize = getTypeSize(type);
+
+			//字符串需要加上结束符
+			if (type > 0)
+			{
+				typesize += 1;
+			}
+
+			//调整temp的大小，使其可以容下当前的内容
+			if (typesize > tempsize)
+			{
+				free(temp);
+				tempsize = typesize;
+				temp = (char *)malloc(tempsize);
+
+				if (temp == NULL)
+					return NULL;
+			}
+
+			memcpy(temp, 0, tempsize);
+			paramstr = paramstr + name + ": ";
+
+			switch (type)
+			{
+			case PARAMINT:
+				sprintf(temp, "%d", *(int*)pValue);
+				break;
+			case PARAMBOOL:
+				sprintf(temp, "%d", *(bool*)pValue);
+				break;
+			case PARAMFLOAT:
+				sprintf(temp, "%f", *(float*)pValue);
+				break;
+			default:
+				memcpy(temp, pValue, type);
+			}
+
+			paramstr = paramstr + temp + " ";
+
+		}
+		free(temp);
+
+		//拷贝到新地址以便返回
+		temp = (char *)malloc(paramstr.length() + 1);
+		if (temp == NULL) return NULL;
+		strcpy(temp, paramstr.c_str());
+
+		return temp;
+	}
+
+public:
+	//	int		m_nAttriIndex;  //从第几个参数开始是属性参数
+	//	int		m_nAttriNameCount;
+	//	int		m_nAttriCount;
+	int		m_nTempObjId;  //响应的流水号
+	int		m_nSessionId;	//session号
+	int		m_spId;			//存储过程ID号
+	bool	m_bEnd;
+	bool	m_bNeedCallback;
+	short	m_nLevel;
+};
+
+
 class ObjDoMsg 
 {
 public:
@@ -198,92 +578,6 @@ public:
 		*this=obj;
 	}
 
-	int streamSize()
-	{
-		return sizeof(ObjectId) + sizeof(param_count) + getParamLen();
-	}
-
-	BYTE * readStream(BYTE * stream)
-	{
-		if (stream == NULL)
-		{
-			return NULL;
-		}
-
-		/*
-		数据组织格式：
-		|ObjectId(int)|param_count(int)|param_type_1(int)param_type_2(int)...|param_value_1(void *)param_value_2(void *)...|
-		*/
-		BYTE * rpos = stream;
-
-		//read ObjectId
-		ObjectId = *((int *)rpos);
-		rpos += sizeof(ObjectId);
-
-		//read param_count
-		param_count = *((int *)rpos);
-		rpos += sizeof(param_count);
-
-		//read param_types
-		for (int i = 0; i < param_count; i++)
-		{
-			param_types.push_back(*((int *)rpos));
-			rpos += sizeof(int);
-		}
-
-		//read param_values
-		for (int i = 0; i < param_count; i++)
-		{
-			int size = getTypeSize(param_types[i]);
-			void * param = malloc(size);
-			memcpy(param, rpos, size);
-			param_values.push_back(param);
-			rpos += size;
-		}
-
-		//ok
-		return rpos;
-	}
-
-	BYTE * writeStream(BYTE * stream)
-	{
-		/*
-		数据组织格式：
-			|ObjectId(int)|param_count(int)|param_type_1(int)param_type_2(int)...|param_value_1(void *)param_value_2(void *)...|
-		*/
-		if (stream == NULL)
-		{
-			return NULL;
-		}
-		BYTE * wpos = stream;
-
-		//write ObjectId
-		memcpy(wpos, &ObjectId, sizeof(ObjectId));
-		wpos += sizeof(ObjectId);
-
-		//write param_count
-		memcpy(wpos, &param_count, sizeof(param_count));
-		wpos += sizeof(param_count);
-
-		//write param_types
-		for (int i = 0; i < param_count; i++)
-		{
-			memcpy(wpos, &param_types[i], sizeof(param_types[i]));
-			wpos += sizeof(param_types[i]);
-		}
-
-		//write param_values
-		for (int i = 0; i < param_count; i++)
-		{
-			int size = getTypeSize(param_types[i]);
-			memcpy(wpos, param_values[i], size);
-			wpos += size;
-		}
-
-		//ok
-		return wpos;
-	}
-
 	void initMsg()
 	{
 		param_count = 0;
@@ -295,8 +589,11 @@ public:
 		param_values.clear();
 	}
 
-	void operator=(ObjDoMsg &obj)
+	ObjDoMsg & operator=(ObjDoMsg &obj)
 	{
+		if (this == &obj)
+			return *this;
+		
 		ObjectId = obj.ObjectId;
 		initMsg();
 
@@ -304,6 +601,8 @@ public:
 		{
 			setParam(obj.param_types[i], obj.param_values[i]);
 		}
+		
+		return *this;
 	}
 
 	~ObjDoMsg()
@@ -397,118 +696,23 @@ private:
 class CResultMsg : public AppMsg
 {
 public:
-
-	virtual int streamSize()
+	CResultMsg & operator=(CResultMsg &obj)
 	{
-		return sizeof(AppMsg) + sizeof(m_nAttriIndex) + sizeof(m_nAttriNameCount)
-			+ sizeof(m_nAttriCount) + sizeof(m_nTempObjId) + sizeof(m_nSessionId)
-			+ sizeof(m_spId) + sizeof(m_bEnd) + sizeof(m_bNeedCallback) + sizeof(m_nLevel)
-			+ m_objDoMsg.streamSize();
-	}
+		if (this == &obj)
+			return *this;
 
-	virtual BYTE * readStream(BYTE * stream)
-	{
-		if (stream == NULL)
-		{
-			return NULL;
-		}
-
-		BYTE * rpos = stream;
-
-		//read AppMsg
-		msgLen = *(unsigned short *)rpos;
-		rpos += sizeof(msgLen);
-
-		msgFlags = *(unsigned char *)rpos;
-		rpos += sizeof(msgFlags);
-
-		msgCls = *(unsigned char *)rpos;
-		rpos += sizeof(msgCls);
-
-		msgId = *(unsigned short *)rpos;
-		rpos += sizeof(msgId);
-
-		context = *(long *)rpos;
-		rpos += sizeof(context);
-
-		//write this attributes
-		m_nAttriIndex = *(int *)rpos;
-		rpos += sizeof(m_nAttriIndex);
-
-		m_nAttriNameCount = *(int *)rpos;
-		rpos += sizeof(m_nAttriNameCount);
-
-		m_nAttriCount = *(int *)rpos;
-		rpos += sizeof(m_nAttriCount);
-
-		m_nTempObjId = *(int *)rpos;
-		rpos += sizeof(m_nTempObjId);
-
-		m_spId = *(int *)rpos;
-		rpos += sizeof(m_spId);
-
-		m_bEnd = *(bool *)rpos;
-		rpos += sizeof(m_bEnd);
-
-		m_bNeedCallback = *(bool *)rpos;
-		rpos += sizeof(m_bNeedCallback);
-
-		m_nLevel = *(short *)rpos;
-		rpos += sizeof(m_nLevel);
-
-		return m_objDoMsg.readStream(rpos);
-	}
-
-	virtual BYTE * writeStream(BYTE * stream)
-	{
-		if (stream == NULL)
-		{
-			return NULL;
-		}
-		BYTE * wpos = stream;
-
-		//write AppMsg
-		memcpy(wpos, &msgLen, sizeof(msgLen));
-		wpos += sizeof(msgLen);
-
-		memcpy(wpos, &msgFlags, sizeof(msgFlags));
-		wpos += sizeof(msgFlags);
-
-		memcpy(wpos, &msgCls, sizeof(msgCls));
-		wpos += sizeof(msgCls);
-
-		memcpy(wpos, &msgId, sizeof(msgId));
-		wpos += sizeof(msgId);
-
-		memcpy(wpos, &context, sizeof(context));
-		wpos += sizeof(context);
-
-		//write this attributes
-		memcpy(wpos, &m_nAttriIndex, sizeof(m_nAttriIndex));
-		wpos += sizeof(m_nAttriIndex);
-
-		memcpy(wpos, &m_nAttriNameCount, sizeof(m_nAttriNameCount));
-		wpos += sizeof(m_nAttriNameCount);
-
-		memcpy(wpos, &m_nAttriCount, sizeof(m_nAttriCount));
-		wpos += sizeof(m_nAttriCount);
-
-		memcpy(wpos, &m_nTempObjId, sizeof(m_nTempObjId));
-		wpos += sizeof(m_nTempObjId);
-
-		memcpy(wpos, &m_spId, sizeof(m_spId));
-		wpos += sizeof(m_spId);
-
-		memcpy(wpos, &m_bEnd, sizeof(m_bEnd));
-		wpos += sizeof(m_bEnd);
-
-		memcpy(wpos, &m_bNeedCallback, sizeof(m_bNeedCallback));
-		wpos += sizeof(m_bNeedCallback);
-
-		memcpy(wpos, &m_nLevel, sizeof(m_nLevel));
-		wpos += sizeof(m_nLevel);
-
-		return m_objDoMsg.writeStream(wpos);
+		m_nAttriIndex = obj.m_nAttriIndex;
+		m_nAttriNameCount = obj.m_nAttriNameCount;
+		m_nAttriCount = obj.m_nAttriCount;
+		m_nTempObjId = obj.m_nTempObjId;
+		m_nSessionId = obj.m_nSessionId;
+		m_spId = obj.m_spId;
+		m_bEnd = obj.m_bEnd;
+		m_bNeedCallback = obj.m_bNeedCallback;
+		m_nLevel = obj.m_nLevel;
+		m_objDoMsg = obj.m_objDoMsg;
+		
+		return *this;
 	}
 
 	bool isValidResMsg()
@@ -668,40 +872,14 @@ public:
 	{
 	}
 
-	int streamSize()
+	CSSResultMsg & operator=(CSSResultMsg &obj)
 	{
-		return CResultMsg::streamSize() + sizeof(m_nResCount);
-	}
+		if (this == &obj)
+			return *this;
 
-	BYTE * readStream(BYTE * stream)
-	{
-		if (stream == NULL)
-		{
-			return NULL;
-		}
-
-		BYTE * rpos = stream;
-
-		//read m_nResCount
-		m_nResCount = *(int *)rpos;
-		rpos += sizeof(m_nResCount);
-
-		return CResultMsg::readStream(rpos);
-	}
-
-	BYTE * writeStream(BYTE * stream)
-	{
-		if (stream == NULL)
-		{
-			return NULL;
-		}
-		BYTE * wpos = stream;
-
-		//write m_nResCount
-		memcpy(wpos, &m_nResCount, sizeof(m_nResCount));
-		wpos += sizeof(m_nResCount);
-
-		return CResultMsg::writeStream(wpos);
+		static_cast<CResultMsg &>(*this) = obj;
+		m_nResCount = obj.m_nResCount;
+		return *this;
 	}
 
 public:
