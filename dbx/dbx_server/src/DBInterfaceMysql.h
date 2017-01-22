@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #ifndef __DB_INTERFACE_MYSQL_H_
 #define __DB_INTERFACE_MYSQL_H_
 

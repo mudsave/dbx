@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+描述：
+
+*/
+
 #include "DBTaskPool.h"
 
 #include <algorithm>
@@ -60,13 +67,23 @@ void DBTaskPool::Finalise()
     m_freeBusyListMutex.Unlock();
 
     m_bufferListMutex.Lock();
-    if (m_issueBufferList.size() > 0)
+    while (m_issueBufferList.size() > 0)
     {
         DBIssueBase *issue = m_issueBufferList.front();
         m_issueBufferList.pop();
         delete issue;
     }
     m_bufferListMutex.Unlock();
+
+    m_orderQueryMutex.Lock();
+    ORDER_ISSUE_MAP::iterator orderMapIter = m_orderQueryIssueMap.begin();
+    for (; orderMapIter != m_orderQueryIssueMap.end(); ++orderMapIter)
+    {
+        if (orderMapIter->second != NULL)
+            delete orderMapIter->second;
+    }
+    m_orderQueryIssueMap.clear();
+    m_orderQueryMutex.Unlock();
 }
 
 bool DBTaskPool::InitTasks(int p_taskNum)
@@ -105,7 +122,6 @@ bool DBTaskPool::HasOrderIssue(int p_queryID)
 
     if (range.first == range.second)
         return false;
-    TRACE1_L0("DBTaskPool::HasOrderIssue:issue(queryID:%i).11111111111111111111\n", p_queryID);
     return true;
 }
 
@@ -120,7 +136,6 @@ void DBTaskPool::AddOrderIssue(DBIssueBase *p_issue)
         m_orderQueryMutex.Unlock();
         return;
     }
-    TRACE1_L0("DBTaskPool::AddOrderIssue:firest issue(queryID:%i).22222222222222222\n", p_issue->GetQueryID());
     m_orderQueryIssueMap.insert(std::make_pair(p_issue->GetQueryID(), (DBIssueBase *)NULL));    // 占位，表明此queryID正在处理中，以便顺序处理后来者
     AddRandomIssue(p_issue);
 

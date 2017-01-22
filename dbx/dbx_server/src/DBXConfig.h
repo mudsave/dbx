@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #ifndef __DBX_CONFIG_H_
 #define __DBX_CONFIG_H_
 
@@ -37,7 +44,10 @@ public:
 
     DBInterfaceInfo *GetDBInterfaceInfo(int p_dbInterfaceID);
 
-    std::vector<DBInterfaceInfo> m_interfaceInfos;
+    typedef std::vector<DBInterfaceInfo> DB_INTERFACE_INFOS;
+    DB_INTERFACE_INFOS const &GetAllDBInterfaceInfo();
+
+    DB_INTERFACE_INFOS m_interfaceInfos;
 
 protected:
     std::string GetElementAttributeStr(TiXmlElement *p_element, const char *p_key);

@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+描述：
+
+*/
+
 #include "DBFactory.h"
 
 #include <vector>
@@ -15,20 +22,21 @@ bool DBFactory::Initialize()
 {
     TRACE0_L0("DBFactory::Initialize.\n");
 
-    if (g_dbxConfig.m_interfaceInfos.size() == 0)
+    const DBXConfig::DB_INTERFACE_INFOS allDBInterfaceInfos = g_dbxConfig.GetAllDBInterfaceInfo();
+    if (allDBInterfaceInfos.size() == 0)
     {
         TRACE0_ERROR( "DBFactory::Initialize:cant find database interface.\n" );
         return false;
     }
 
-    std::vector<DBInterfaceInfo>::iterator dbInterfaceInfo = g_dbxConfig.m_interfaceInfos.begin();
-    for (; dbInterfaceInfo != g_dbxConfig.m_interfaceInfos.end(); ++dbInterfaceInfo)
+    std::vector<DBInterfaceInfo>::const_iterator iter = allDBInterfaceInfos.begin();
+    for (; iter != allDBInterfaceInfos.end(); ++iter)
     {
-        TRACE1_L0("DBFactory::Initialize DBInterface %i.\n", dbInterfaceInfo->id);
-        m_taskPoolMap[dbInterfaceInfo->id] = new DBTaskPool(dbInterfaceInfo->id);
-        if (!m_taskPoolMap[dbInterfaceInfo->id]->InitTasks(dbInterfaceInfo->db_connectionsNum))
+        TRACE1_L0("DBFactory::Initialize DBInterface %i.\n", iter->id);
+        m_taskPoolMap[iter->id] = new DBTaskPool(iter->id);
+        if (!m_taskPoolMap[iter->id]->InitTasks(iter->db_connectionsNum))
         {
-            TRACE1_ERROR("DBFactory::Initialize:Cant initTasks for db interface(id:%i).\n", dbInterfaceInfo->id);
+            TRACE1_ERROR("DBFactory::Initialize:Cant initTasks for db interface(id:%i).\n", iter->id);
             return false;
         }            
     }

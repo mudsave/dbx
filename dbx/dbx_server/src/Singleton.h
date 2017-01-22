@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #ifndef __DBX_SINGLETON_H_
 #define __DBX_SINGLETON_H_
 

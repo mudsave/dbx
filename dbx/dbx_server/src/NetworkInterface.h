@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+描述：
+
+*/
+
 #ifndef __NETWORK_INTERFACE_H_
 #define __NETWORK_INTERFACE_H_
 

@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+ÃèÊö£º
+
+*/
+
 #include "DBInterfaceMysql.h"
 
 #include <string.h>

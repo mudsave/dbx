@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+ÃèÊö£º
+
+*/
+
 #ifndef __DB_ISSUE_H_
 #define __DB_ISSUE_H_
 
