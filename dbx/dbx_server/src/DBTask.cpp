@@ -131,6 +131,12 @@ void DBTask::DoEnd()
     if (m_currentIssue != NULL)
         delete m_currentIssue;
 
+    if (m_dbInterface)
+    {
+        m_dbInterface->Disconnect();
+        delete m_dbInterface;
+    }
+
     GetTaskPool()->OnTaskQuit(this);
 }
 

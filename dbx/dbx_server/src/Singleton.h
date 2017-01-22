@@ -11,47 +11,52 @@ RTX:6016.
 #include <assert.h>
 #include <stdio.h>
 
-template<typename T>
-class Singleton
+namespace DBX
 {
-protected:
-    static T *m_instance;
-
-public:
-    Singleton()
+    template<typename T>
+    class Singleton
     {
-        assert(!m_instance);
-        m_instance = static_cast<T *>(this);
-    }
+    protected:
+        static T *m_instance;
 
-    static void Create()
-    {
-        if(m_instance == NULL)
+    public:
+        Singleton()
         {
-            m_instance = new T();
+            assert(!m_instance);
+            m_instance = static_cast<T *>(this);
         }
-    }
 
-    static T *InstancePtr()
-    {
-        if (m_instance == NULL)
+        static void Create()
         {
-            Create();
+            if (m_instance == NULL)
+            {
+                m_instance = new T();
+            }
         }
-        return m_instance;
-    }
 
-    static T &Instance()
-    {
-        if (m_instance == NULL)
+        static T *InstancePtr()
         {
-            Create();
+            if (m_instance == NULL)
+            {
+                Create();
+            }
+            return m_instance;
         }
-        return *m_instance;
-    }
-};
 
-template<typename T>
-T* Singleton<T>::m_instance = NULL;
+        static T &Instance()
+        {
+            if (m_instance == NULL)
+            {
+                Create();
+            }
+            return *m_instance;
+        }
+    };
+
+    template<typename T>
+    T* Singleton<T>::m_instance = NULL;
+
+}   // end of namespace DBX
+
 
 #endif   // __DBX_SINGLETON_H_

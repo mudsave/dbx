@@ -328,6 +328,9 @@ public:
 		return *(T *)pValue;
 	}
 
+	/*
+	* 外部记得用free释放掉
+	*/
 	static char * convertString(const int & len, const void * pValue)
 	{
 		char * temp = (char *)malloc(len + 1);
@@ -356,11 +359,26 @@ private:
 		Param(PType t, const void * v)
 		{
 			type = t;
-			p_value = v;
+
+			int size = DbxMessage::getTypeSize(t);
+			p_value = malloc(size);
+			if (p_value)
+			{
+				memcpy(p_value, v, size);
+			}
+		}
+
+		~Param()
+		{
+			if (p_value)
+			{
+				free(p_value);
+				p_value = NULL;
+			}
 		}
 
 		PType type;
-		const void * p_value;
+		void * p_value;
 	};
 
 public:
@@ -368,9 +386,17 @@ public:
 	{
 		attribute_cols = 0;
 		attribute_count = 0;
-		params.clear();
-		//保证vector的内存可以释放掉
-		std::vector<Param>(params).swap(params);
+
+		if (params.size() > 0)
+		{
+			for (size_t i = 0; i < params.size(); i++)
+			{
+				delete params[i];
+			}
+			params.clear();
+			//保证vector的内存可以释放掉
+			std::vector<Param *>(params).swap(params);
+		}
 	}
 
 	/*
@@ -402,26 +428,30 @@ public:
 		for (int i = 0; i < param_count; i++)
 		{
 			//写类型
-			memcpy(wpos, &params[i].type, sizeof(PType));
+			memcpy(wpos, &params[i]->type, sizeof(PType));
 			wpos += sizeof(PType);
 
 			//写数据
-			size = DbxMessage::getTypeSize(params[i].type);
-			memcpy(wpos, params[i].p_value, size);
+			size = DbxMessage::getTypeSize(params[i]->type);
+			memcpy(wpos, params[i]->p_value, size);
 			wpos += size;
 		}
 
 		//消息写完，把临时数据清理掉
+		for (size_t i = 0; i < params.size(); i++)
+		{
+			delete params[i];
+		}
 		params.clear();
 		//保证vector的内存可以释放掉
-		std::vector<Param>(params).swap(params);
+		std::vector<Param *>(params).swap(params);
 
 		return p_msg;
 	}
 
 	void addParam(PType ParamType, const void* pParam)
 	{
-		params.push_back(Param(ParamType, pParam));
+		params.push_back(new Param(ParamType, pParam));
 	}
 
 	void addAttribute(const char* name, const void* value, PType valueType)
@@ -434,12 +464,12 @@ public:
 		if (name != NULL)
 		{
 			pos = attribute_cols++;
-			params.insert(params.begin() + pos, Param((PType)strlen(name), name));
+			params.insert(params.begin() + pos, new Param((PType)strlen(name), name));
 		}
 		if (value != NULL)
 		{
 			pos = attribute_cols + attribute_count;
-			params.insert(params.begin() + pos, Param(valueType, value));
+			params.insert(params.begin() + pos, new Param(valueType, value));
 			attribute_count++;
 		}
 	}
@@ -455,7 +485,7 @@ public:
 
 		for (int i = 0; i < param_count; i++)
 		{
-			len += DbxMessage::getTypeSize(params[i].type);
+			len += DbxMessage::getTypeSize(params[i]->type);
 		}
 		return len;
 	}
@@ -477,7 +507,7 @@ public:
 private:
 	int attribute_cols;
 	int attribute_count;
-	std::vector<Param> params;
+	std::vector<Param *> params;
 };
 
 
