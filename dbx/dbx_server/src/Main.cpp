@@ -1,5 +1,8 @@
 /*
-Written by wangshufeng
+Written by wangshufeng.
+RTX:6016.
+ÃèÊö£º
+
 */
 
 //#include "trace.h"
@@ -13,6 +16,12 @@ void ParseMainCommandArgs(int argc, char *argv[])
 {
 }
 
+void CleanUp()
+{
+    TRACE0_L0("DBX CleanUp...\n");
+    DBManager::InstancePtr()->Shutdown();
+}
+
 int main(int argc, char *argv[])
 {
 	InitTraceServer(true);
@@ -20,6 +29,7 @@ int main(int argc, char *argv[])
     ParseMainCommandArgs(argc, argv);
     g_dbxConfig.LoadConfig("DBServer.xml");
     GenerateSignalThread();
+    SetCleanup(CleanUp);
 
     const int DBX_PORT = 3000;  // todo£º·Åµ½DBServer.xmlÅäÖÃ
     if (!DBManager::InstancePtr()->Initialize(DBX_PORT))
@@ -30,17 +40,15 @@ int main(int argc, char *argv[])
         Sleep(1000 * 5);
         return -1;
     }
+
+    HRESULT result = DBManager::InstancePtr()->Run();
+    if (result == S_OK)
+    {
+        TRACE0_L0("Dbx stop [ normal ].\n");
+    }
     else
     {
-        HRESULT result = DBManager::InstancePtr()->Run();
-        if (result == S_OK)
-        {
-            TRACE0_L0("Dbx stop [ normal ].\n");
-        }
-        else
-        {
-            TRACE0_L0("Dbx stop [ timeout ].\n");
-        }
+        TRACE0_L0("Dbx stop [ timeout ].\n");
     }
 
     Sleep(1000 * 5);

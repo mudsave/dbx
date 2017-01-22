@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #include "DBXConfig.h"
 
 #include <string>
@@ -91,4 +98,9 @@ DBInterfaceInfo *DBXConfig::GetDBInterfaceInfo(int p_dbInterfaceID)
     }
 
     return NULL;
+}
+
+DBXConfig::DB_INTERFACE_INFOS const &DBXConfig::GetAllDBInterfaceInfo()
+{
+    return m_interfaceInfos;
 }

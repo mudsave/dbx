@@ -1,11 +1,19 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #include "DBIssue.h"
 
 #include "lindef.h"
 #include "vsdef.h"
 
 // -----------------------------------------------------------------------------------
-DBIssueBase::DBIssueBase(AppMsg *p_appMsg)
-    :m_dbInterface(NULL)
+DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
+    :m_dbInterface(NULL),
+    m_queryID(p_queryID)
 {
 }
 
@@ -25,17 +33,22 @@ void DBIssueBase::MainProgress()
     TRACE0_L0("DBIssueBase::MainProgress.\n");
 }
 
+int DBIssueBase::GetQueryID()
+{
+    return m_queryID;
+}
 
 
 // -----------------------------------------------------------------------------------
-DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg)
-    :DBIssueBase(p_appMsg)
+DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID)
+    :DBIssueBase(p_appMsg, p_queryID)
 {
 }
 
 void DBIssueCallSP::OnProgress()
 {
     TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
+    Sleep(50);
 }
 
 void DBIssueCallSP::MainProgress()
@@ -46,14 +59,15 @@ void DBIssueCallSP::MainProgress()
 
 
 // -----------------------------------------------------------------------------------
-DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg)
-    :DBIssueBase(p_appMsg)
+DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
+    :DBIssueBase(p_appMsg, p_queryID)
 {
 }
 
 void DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
+    Sleep(50);
 }
 
 void DBIssueCallSQL::MainProgress()

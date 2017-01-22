@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+描述：
+
+*/
+
 #include "DBTask.h"
 
 #include "lindef.h"
@@ -76,7 +83,16 @@ DBIssueBase *DBTask::GetCurrIssue()
 
 DBIssueBase *DBTask::GetNextIssue()
 {
-    return m_taskPool->PopBufferIssue();
+    DBIssueBase *nextIssue = NULL;
+
+    DBIssueBase *currIssue = GetCurrIssue();
+    if (currIssue != NULL && currIssue->GetQueryID() > 0)
+        nextIssue = m_taskPool->TryGetOrderIssue(currIssue->GetQueryID());
+
+    if (nextIssue == NULL)
+        nextIssue = m_taskPool->PopBufferIssue();
+
+    return nextIssue;
 }
 
 DBTaskPool *DBTask::GetTaskPool()
@@ -112,6 +128,10 @@ void DBTask::ProgressEnd()
 void DBTask::DoEnd()
 {
     TRACE1_L0("DBTask::DoEnd:cancel for DBInterface(id:%i)...\n", m_dbInterfaceID);
+    if (m_currentIssue != NULL)
+        delete m_currentIssue;
+
+    GetTaskPool()->OnTaskQuit(this);
 }
 
 void DBTask::Destroy()

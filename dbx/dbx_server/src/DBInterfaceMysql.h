@@ -1,5 +1,14 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #ifndef __DB_INTERFACE_MYSQL_H_
 #define __DB_INTERFACE_MYSQL_H_
+
+#include "mysql.h"
 
 #include "DBInterface.h"
 
@@ -16,7 +25,7 @@ public:
     virtual void Disconnect();
 
 protected:
-
+    MYSQL *m_mysql;
 };
 
 #endif  // end of __DB_INTERFACE_MYSQL_H_

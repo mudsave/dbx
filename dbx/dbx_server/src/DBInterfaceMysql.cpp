@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #include "DBInterfaceMysql.h"
 
 #include <string.h>
@@ -9,8 +16,9 @@
 #include "DBXConfig.h"
 
 
-DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID):
-DBInterface(p_dbInterfaceID)
+DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID)
+    :DBInterface(p_dbInterfaceID),
+    m_mysql(NULL)
 {
 }
 

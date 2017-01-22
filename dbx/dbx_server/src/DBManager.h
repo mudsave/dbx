@@ -1,3 +1,10 @@
+/*
+Written by wangshufeng.
+RTX:6016.
+√Ë ˆ£∫
+
+*/
+
 #ifndef __DB_MANAGER_H_
 #define __DB_MANAGER_H_
 
@@ -16,6 +23,7 @@ public:
     void Finalise();
 
     HRESULT Run();
+    void Shutdown();
 
     void CallSP(AppMsg *m_appMsg);
     void CallSQL(AppMsg *m_appMsg);
