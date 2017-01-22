@@ -36,13 +36,13 @@ bool DBInterfaceMysql::Initialize()
     return true;
 }
 
-bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, AppMsg *p_appMsg)
+bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue)
 {
     TRACE1_L0("DBInterfaceMysql::Query p_dbInterfaceID(%s)\n", p_cmd);
     if (m_mysql == NULL)
     {
         TRACE0_ERROR("DBInterfaceMysql::Query: MYSQL has not init.");
-        ProcessQueryResult(p_appMsg);
+        ProcessQueryResult(p_issue);
         return false;
     }
 
@@ -54,9 +54,9 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, AppMsg *p_appMsg)
     return true;
 }
 
-bool DBInterfaceMysql::ProcessQueryResult(AppMsg *p_appMsg)
+bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 {
-    if (p_appMsg == NULL)
+    if (p_issue == NULL)
         return true;
 
     return true;
