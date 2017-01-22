@@ -28,7 +28,9 @@ public:
     {
     }
 
-    ~DBInterface();
+    ~DBInterface()
+    {
+    }
 
     virtual bool Query(const char *p_cmd, int p_size, AppMsg *p_appMsg) = 0;
 

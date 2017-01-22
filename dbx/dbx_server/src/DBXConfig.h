@@ -37,7 +37,7 @@ struct DBInterfaceInfo
     int db_connectionsNum;              // 数据库最大连接
 };
 
-class DBXConfig: public Singleton<DBXConfig>
+class DBXConfig: public DBX::Singleton<DBXConfig>
 {
 public:
     bool LoadConfig(std::string p_filePath);

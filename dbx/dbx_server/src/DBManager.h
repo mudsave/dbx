@@ -14,7 +14,7 @@ RTX:6016.
 #include "NetworkInterface.h"
 #include "Singleton.h"
 
-class DBManager: public Singleton<DBManager>, ITask
+class DBManager : public DBX::Singleton<DBManager>, ITask
 {
 public:
     DBManager();
