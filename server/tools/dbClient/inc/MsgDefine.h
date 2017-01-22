@@ -464,7 +464,7 @@ public:
 	{
 		if (p_msg->msgLen <= sizeof(MessageType))
 		{
-			p_msg->p_content = NULL
+			p_msg->p_content = NULL;
 		}
 		else
 		{
