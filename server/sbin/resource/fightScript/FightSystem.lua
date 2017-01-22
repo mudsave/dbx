@@ -316,10 +316,13 @@ function FightSystem:_onStartLuckMonsterScriptFight(event)
 	--生成怪物ID
 	local monsterDBIDs,bAssign
 	
-	monsterConfig = ScriptFightDB[scriptFightID].monsters
-	
+	local monsterConfig = ScriptFightDB[scriptFightID]
+	--小怪
 	monsterDBIDs = FightUtils.getMinorMonsters(monsterConfig)
-	
+	--主怪
+	for _,info in pairs(monsterConfig.majorMonsterInfo) do
+		table.insert(monsterDBIDs,info.ID)
+	end
 	
 	--获取助阵npc配置
 	local npcIDs = ScriptFightDB[scriptFightID].npcs
@@ -369,6 +372,7 @@ function FightSystem:_onStartLuckMonsterScriptFight(event)
 
 	--生成怪物:pve
 	if (not bAssign) and monsterDBIDs then
+		
 		for _, DBID in pairs(monsterDBIDs) do
 			local monster = g_fightEntityFactory:createMonster(DBID, false, playerLvl)
 			table.insert(fightMonsters, monster)

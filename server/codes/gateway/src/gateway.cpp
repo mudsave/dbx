@@ -158,10 +158,13 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( !player )
 					{
-						player = g_playerMgr.regPlayer(pInfo->roleId);
+						player = g_playerMgr.regPlayer(pInfo->roleId, pInfo->version);
 						player->accountId = pInfo->accountId;
 						player->gatewayId = pInfo->gatewayId;
 						player->worldId = pInfo->worldId;
+					}
+					else{
+						player->version = pInfo->version;	
 					}
 					player->hLink = hLink;
 					player->_SwitchStatus(PLAYER_STATUS_VERIFYING);
@@ -209,6 +212,7 @@ void CGateway::OnClientMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					send_MsgGW_PlayerLogoutInfo(player, LOGOUT_REASON_CLIENT_NORMAL);
 					return;
 				}
+
 				if ( msgId == MSG_G_C_PLAYER_LITTLEBACK )
 				{
 					if ( pContext->state != LINK_CONTEXT_RUNNING )
@@ -345,12 +349,9 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_G_W_ACK_PLAYER_LOGIN )
 				{
 					_MsgWG_PlayerLogin_ResultInfo* pInfo = (_MsgWG_PlayerLogin_ResultInfo*)(pMsg);
-					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
-					if ( !player )
-					{
-						TRACE1_L2("Gateway::OnWorldMsg(), login timeout, roleId = %i\n", pInfo->roleId);
+					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnWorldMsg(), MSG_G_W_ACK_PLAYER_LOGIN"))
 						return;
-					}
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->status != PLAYER_STATUS_LOADING )
 					{
 						ASSERT_(0);
@@ -382,12 +383,9 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_G_W_ACK_PLAYER_LOGOUT )
 				{
 					_MsgWG_PlayerLogout_ResultInfo* pInfo = (_MsgWG_PlayerLogout_ResultInfo*)pMsg;
-					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
-					if ( !player )
-					{
-						TRACE1_L2("Gateway::OnWorldMsg(), logout timeout, roleId = %i\n", pInfo->roleId);
+					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnWorldMsg(), MSG_G_W_ACK_PLAYER_LOGOUT"))
 						return;
-					}
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->status != PLAYER_STATUS_UNLOADING && player->status != PLAYER_STATUS_LOADED )
 					{
 						TRACE0_L2("CGateway::OnWorldMsg(), player logout error\t");
@@ -529,12 +527,9 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if (msgId == MSG_W_G_OFFLINE_IN_FIGHT)
 				{
 					_MsgWG_OfflineInFight* pInfo = (_MsgWG_OfflineInFight*)pMsg;
-					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
-					if ( !player )
-					{
-						TRACE1_L2("Gateway::OnWorldMsg(), logout timeout, roleId = %i\n", pInfo->roleId);
+					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnSessionMsg(), _MsgWG_OfflineInFight"))
 						return;
-					}
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->status != PLAYER_STATUS_UNLOADING && player->status != PLAYER_STATUS_LOADED)
 					{
 						TRACE0_L2("CGateway::OnWorldMsg(), player offline error in fight\n");
@@ -542,7 +537,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						ASSERT_(0);
 						return;
 					}
-					send_MsgGS_OfflineInFight(player->accountId, player->roleId);
+					send_MsgGS_OfflineInFight(player->accountId, player->roleId, player->version);
 					player->_SwitchStatus(PLAYER_STATUS_UNLOADED);
 					TRACE0_L2("CGateway::OnWorldMsg(), player offline in fight\n");
 					TRACE1_L2("\troleId = %i\n", player->roleId);
@@ -596,13 +591,9 @@ void CGateway::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_G_S_KICK_ACCOUNT )
 				{
 					_MsgSG_KickAccountInfo* pInfo = (_MsgSG_KickAccountInfo*)pMsg;
-					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
-					if ( !player )
-					{
-						TRACE0_L2("CGateway::OnSessionMsg(), MSG_G_S_ACK_USER_VERIFY(player has been logout)\n");
-						TRACE1_L2("\troleId = %i\n", pInfo->roleId);
+					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnSessionMsg(), MSG_G_S_KICK_ACCOUNT"))
 						return;
-					}
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->status != PLAYER_STATUS_LOADED )
 					{
 						TRACE0_L2("CGateway::OnSessionMsg(), MSG_G_S_KICK_ACCOUNT, the wrong status from player\n");
@@ -618,13 +609,9 @@ void CGateway::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_G_S_ACK_USER_VERIFY )
 				{
 					_MsgSG_UserVerify_ResultInfo* pInfo = (_MsgSG_UserVerify_ResultInfo*)pMsg;
-					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
-					if ( !player )
-					{
-						TRACE0_L2("CGateway::OnSessionMsg(), warning for MSG_G_S_ACK_USER_VERIFY(timeout)\n");
-						TRACE1_L2("\troleId = %i\n", pInfo->roleId);
+					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnSessionMsg(), MSG_G_S_ACK_USER_VERIFY"))
 						return;
-					}
+					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->hLink == 0 )
 					{
 						g_playerMgr.unregPlayer(pInfo->roleId);
@@ -646,7 +633,7 @@ void CGateway::OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						pClient->_Close(CLOSE_RELEASE);
 						return;
 					}
-					send_MsgGW_PlayerLoginInfo(pWorld->hLink, player->roleId, player->hLink);
+					send_MsgGW_PlayerLoginInfo(pWorld->hLink, player);
 					player->_SwitchStatus(PLAYER_STATUS_LOADING);
 					return;
 				}

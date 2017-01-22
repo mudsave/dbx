@@ -20,7 +20,6 @@ function PlayerFactory:__init()
 end
 
 function PlayerFactory:createPlayer(info)
-
 	local player = Player()
 	player:setGatewayId(info.gateId)
 	player:setClientLink(info.clientLink)
@@ -34,6 +33,7 @@ function PlayerFactory:createPlayer(info)
 	player:setCurBodyTex(info.curBodyTex)
 	player:setOfflineDate(info.offlineDate)
 	player:setVigor(info.vigor)
+	player:setID(info.roleID)
 	player:addHandler(HandlerDef_Friend,FriendHandler(player))
 	player:addHandler(HandlerDef_Group,GroupHandler(player))
 	player:addHandler(HandlerDef_Faction,FactionHandler(player))

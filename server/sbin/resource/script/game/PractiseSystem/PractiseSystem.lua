@@ -8,7 +8,8 @@ PractiseSystem = class(EventSetDoer, Singleton)
 function PractiseSystem:__init()
 	self._doer = {
 		[PractiseEvent_CS_updateBox]		= PractiseSystem.updateBox,
-		[PractiseEvent_CS_updatePractise]	= PractiseSystem.updatePractise
+		[PractiseEvent_CS_updatePractise]	= PractiseSystem.updatePractise,
+		[TaskEvent_SS_AddActivityPractise]	= PractiseSystem.addPractise,
 	}
 end
 
@@ -68,7 +69,31 @@ function PractiseSystem:updatePractise(event)
 		end
 		
 	else 
-		print("客户端没有控制改变出现错误")
+		print("$$　updatePractise error control")
+	end
+end
+
+function PractiseSystem:addPractise(event)
+	local params = event:getParams()
+	local playerID = params[1]
+	local taskID = params[2]
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if not player then
+		return
+	end
+	-- 任务
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local countRing =  taskHandler:getCountRing(taskID)
+	print("当前环数",countRing)
+	for _,data in pairs(tActivityPageDB) do
+		if data.TaskID == taskID then
+			local value = data.PracticeReword
+			local curReword = countRing*value
+			if curReword < data.MaxPracticeReword then	
+				player:addPractise(value)
+				player:flushPropBatch()
+			end
+		end
 	end
 end
 

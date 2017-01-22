@@ -5,7 +5,7 @@
 ActivityDB = {}
 ActivityID = 1
 
---require "game.ActivitySystem.Activity.BeastBless.BeastBless"
+require "game.ActivitySystem.Activity.BeastBless.BeastBless"
 
 ActivityManager = class(nil, Singleton)
 
@@ -55,15 +55,19 @@ end
 --玩家上线加入活动
 function ActivityManager:onPlayerOnline(player, recordList)
 	if recordList then
-		for id, targetData in pairs(recordList) do
-			for targetIndex, flag in pairs(targetData) do
-				if self.curActivityList[id] then
-					 self.curActivityList[id]:joinPlayer(player, targetIndex)
-				else
-					print("活动已经关闭")
-				end
-			end
+		-- 瑞兽降临活动
+		if self.curActivityList[3] then
+			 -- self.curActivityList[3]:joinPlayer(player,)
 		end
+		-- for id, targetData in pairs(recordList) do
+			-- for targetIndex, flag in pairs(targetData) do
+				-- if self.curActivityList[id] then
+					 -- self.curActivityList[id]:joinPlayer(player, targetIndex)
+				-- else
+					-- print("活动已经关闭")
+				-- end
+			-- end
+		-- end
 	end
 end
 
@@ -72,11 +76,14 @@ function ActivityManager:onPlayerOffline(player)
 	player:getHandler(HandlerDef_Activity):offLine()
 end
 
+local isTrue = true
+
 function ActivityManager:minUpdate(currentTime)
 	if self.lastTime > 0 and currentTime - self.lastTime < 600 then
 		return
 	end
 	local data = os.date("*t", currentTime)
+	-- print("data",toString(data))
 	if self.lastTime == 0 and data.min%10 == 0 then
 		self.lastTime = currentTime 
 	elseif self.lastTime > 0 then
@@ -100,7 +107,9 @@ function ActivityManager:minUpdate(currentTime)
 				--	日	一	二	三	四	五	六
 				--	1	2	3	4	5	6	7	都加一对应的数值
 				--	0	1	2	3	4	5	6	可以使用这个
+				print("可以使用这个startTime:",startTime.week,startTime.hour,startTime.min)
 				if data.wday == startTime.week + 1 and data.hour == startTime.hour and data.min == startTime.min then
+					print("可以使用这个")
 					self:openActivity(id, activityInfo.name)
 				end
 			else

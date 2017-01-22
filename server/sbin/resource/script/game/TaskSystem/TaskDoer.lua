@@ -61,8 +61,10 @@ end
 
 -- 接任务
 function TaskDoer:doRecetiveTask(player, taskID, GM)
+
 	local msgID = nil
 	local taskHandler = player:getHandler(HandlerDef_Task)
+	--先判断有没有接过该任务
 	if NormalTaskDB[taskID] then
 		if taskHandler:getTask(taskID) then
 			return false, 2
@@ -83,8 +85,13 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 				return false, 30
 			end
 		end
+	elseif DailyTaskDB[taskID] then
+		if taskHandler:getTask(taskID) then
+			return false, 2
+		end
 	end
 
+	--再判断任务条件是否满足
 	if NormalTaskDB[taskID] then
 		if not TaskCondition.normalTask(player, taskID, true, GM) then
 			print("任务条件不满足")
@@ -111,6 +118,16 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		-- 重新跟新一下循环任务列表
 		--g_taskSystem:updateLoopTaskList(player, taskHandler:getRecetiveTaskList())
 		taskHandler:updateTaskList(taskID, false)
+		return true
+	elseif DailyTaskDB[taskID] then
+		if not TaskCondition.DailyTask(player, taskID, true, GM) then
+			print("任务条件不满足")
+			return false, 2
+		end	
+		local dailyTask = g_taskFty:createDailyTask(player, taskID)
+		taskHandler:addTask(dailyTask)
+		dailyTask:updateNpcHeader()
+		g_taskSystem:updateDailyTaskList(player, taskHandler:getNextID())
 		return true
 	else
 		print("接受任务出错，任务找不到ID为",taskID)
@@ -384,22 +401,40 @@ function TaskDoer:updateCurMapNpcHeader(player, curMapID)
 end
 
 -- 设置可接任务列表
-function TaskDoer:loadCanReceiveTask(player)
+function TaskDoer:loadCanRecetiveTask(player)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	if taskHandler then
-		taskHandler:loadCanReceiveLoopTask()
+		taskHandler:loadCanRecetiveLoopTask()
 		-- 通知客户端
-		g_taskSystem:loadLoopTaskList(player, taskHandler:getReceiveLoopTask())
+		g_taskSystem:loadLoopTaskList(player, taskHandler:getRecetiveLoopTask())
 	end
 end
 
-function TaskDoer:onUpLevel(player, level)
-	for _, levelConfig in pairs(CanReceiveLoopTaskLvl) do 
+-- 玩家设置等级的时候通知任务系统，fromDB读数据库
+function TaskDoer:notifyTaskSystem(playerID, level, fromDB)
+	-- 不是读数据库，从配置表当中去找，有没有匹配的等级，有的话就加载可接任务列表
+	if fromDB then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if not player then
+		return
+	end
+	
+	for _, levelConfig in pairs(CanRecetiveLoopTaskLvl) do 
 		if level == levelConfig then
 			local taskHandler = player:getHandler(HandlerDef_Task)
-			taskHandler:loadCanReceiveLoopTask()
-			g_taskSystem:loadLoopTaskList(player, taskHandler:getReceiveLoopTask())
+			taskHandler:loadCanRecetiveLoopTask()
+			g_taskSystem:loadLoopTaskList(player, taskHandler:getRecetiveLoopTask())
+			break
 		end
+	end
+	
+	-- 跟新NPC头顶图标
+	local scene = player:getScene()
+	if scene then
+		local curMapID = scene:getMapID()
+		g_taskDoer:updateCurMapNpcHeader(player, curMapID)
 	end
 end
 

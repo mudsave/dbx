@@ -571,7 +571,7 @@ void CWorld::CleanUp()
 	LuaFunctor<TypeNull, int> closeFunc(getLuaState(), "ManagedApp.close");
 	if ( !closeFunc( TypeNull::nil(), m_worldId ) )
 	{
-		TRACE2_L1("[CWorld::Close] failed in worldID %d because of:%s\n", m_worldId, closeFunc.getLastError());
+		TRACE2_L1("[CWorld::CleanUp()] failed in worldID %d because of:%s\n", m_worldId, closeFunc.getLastError());
 	}
 	HANDLE hCleanupTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eCleanUpHandle, 0, eCleanUpInterval, 0, "world clean up timer!");
 	ASSERT_(hCleanupTimer);

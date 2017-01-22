@@ -46,30 +46,22 @@ end
 
 -- 改变生命 即能改变
 function ItemEffect.changeHp(targetEntity, medicament, medicamentConfig, targetEntityID)
-	local removeFlag = true
+	local removeFlag = false
 	-- 如果有作用目标的话
-	local curEntity
-	if targetEntityID then
-		local pet = g_entityMgr:getPet(targetEntityID)
-		if pet then
-			curEntity = pet
-		else
-			removeFlag = false
-			return removeFlag
-		end
-	else
-		curEntity = targetEntity
+	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
+	if not curEntity then
+		return
 	end
 	local maxHp = curEntity:getMaxHP()
 	local curHp = curEntity:getHP()
-	local changeHp = medicamentConfig.ReactExtraParam1
-
+	
 	-- 判断是否已经是最大值
 	if curHp == maxHp then
 		removeFlag = false
 		return removeFlag, 7	
 	end
 	-- 可以改变值
+	local changeHp = medicamentConfig.ReactExtraParam1
 	curHp = curHp + changeHp
 	if curHp > maxHp then
 		curHp = maxHp
@@ -78,9 +70,7 @@ function ItemEffect.changeHp(targetEntity, medicament, medicamentConfig, targetE
 		curHp = 0
 	end
 	curEntity:setHP(curHp)
-	if curEntity:getEntityType() == eClsTypePet then
-		curEntity:flushPropBatch()
-	end
+	curEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -88,25 +78,18 @@ end
 -- 改变法力
 function ItemEffect.changeMp(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
-	local curEntity
-	if targetEntityID then
-		local pet = g_entityMgr:getPet(targetEntityID)
-		if pet then
-			curEntity = pet
-		else
-			removeFlag = false
-			return removeFlag
-		end
-	else
-		curEntity = targetEntity
+	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
+	if not curEntity then
+		return
 	end
 	local maxMp = curEntity:getMaxMP()
 	local curMp = curEntity:getMP()
-	local changeMp = medicamentConfig.ReactExtraParam1
+	
 	if curMp == maxMp then
 		removeFlag = false
 		return removeFlag, 7	
 	end
+	local changeMp = medicamentConfig.ReactExtraParam1
 	curMp = curMp + changeMp
 	if curMp > maxMp then
 		curMp = maxMp
@@ -115,9 +98,7 @@ function ItemEffect.changeMp(targetEntity, medicament, medicamentConfig, targetE
 		curMp = 0
 	end
 	curEntity:setMP(curMp)
-	if curEntity:getEntityType() == eClsTypePet then
-		curEntity:flushPropBatch()
-	end
+	curEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -151,6 +132,7 @@ function ItemEffect.changeHpMp(targetEntity, medicament, medicamentConfig)
 	end
 	targetEntity:setHP(curHp)
 	targetEntity:setMP(curMp)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -173,6 +155,7 @@ function ItemEffect.changeAngerValue(targetEntity, medicament, medicamentConfig)
 		curAngerValue = 0
 	end
 	targetEntity:setAttrValue(player_anger, curAngerValue)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -194,6 +177,7 @@ function ItemEffect.changePkValue(targetEntity, medicament, medicamentConfig)
 		curKillValue = 0
 	end
 	targetEntity:setAttrValue(player_kill, curKillValue)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -233,81 +217,42 @@ function ItemEffect.changeMoney(targetEntity, medicament, medicamentConfig)
 		return removeFlag
 	end
 	targetEntity:setMoney(curMoney)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
 
 -- 改变经验
 function ItemEffect.changeExpValue(targetEntity, medicament, medicamentConfig, targetEntityID)
-	local removeFlag = true
+	local removeFlag = false
 	-- 判断等级
-	local curLevel = targetEntity:getAttrValue(player_lvl)
-	local reactTarget = medicamentConfig.ReactTarget
-	if reactTarget == MedicamentReactTarget.Self then
+	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
+	local changeExpValue = medicamentConfig.ReactExtraParam1
+	local fun_Change = ItemEffectFuncs[changeExpValue]
+	if fun_Change then
+		changeExpValue = fun_Change(curEntity)
+	end
+
+	if instanceof(curEntity,Player)then
+		local curLevel = curEntity:getAttrValue(player_lvl)
 		if curLevel == MaxPlayerLevel then
 			removeFlag = false
 			return removeFlag
 		end
-		local changeExpValue = medicamentConfig.ReactExtraParam1
-		local fun_Change = ItemEffectFuncs[changeExpValue]
-		if fun_Change then
-			changeExpValue = fun_Change(targetEntity)
-		end
-
-		targetEntity:addXp(changeExpValue)
+		curEntity:addXp(changeExpValue)
+		curEntity:flushPropBatch()
 		removeFlag = true
-		return removeFlag
-	elseif reactTarget == MedicamentReactTarget.Pet then
-		local expValue = medicamentConfig.ReactExtraParam1
-		if not expValue then
-			print("没有配置经验参数值")
+	elseif instanceof(curEntity,Pet) then
+		local level = curEntity:getLevel()
+		if level < medicamentConfig.UseNeedLvl then
 			removeFlag = false
-			return removeFlag
+			return removeFlag, 9
 		end
-
-		local curEntity = false
-		if targetEntityID then
-			-- 针对所选则的宠物
-			local pet = g_entityMgr:getPet(targetEntityID)
-			if pet then
-				curEntity = pet
-			else
-				removeFlag = false
-				return removeFlag
-			end
-		else
-			-- 只针对出战宠物
-			local curFollowPetID = targetEntity:getFollowPetID()
-			if curFollowPetID then
-				local curFollowPet = g_entityMgr:getPet(curFollowPetID)
-				curEntity = curFollowPet
-			else
-				removeFlag = false
-				return removeFlag, 6
-			end
-		end
-
-		if curEntity then
-			if func_Change then
-				taoValue = func_Change(targetEntity)
-			end
-			local level = curEntity:getLevel()
-			if level < medicamentConfig.UseNeedLvl then
-				removeFlag = false
-				return removeFlag, 9
-			end
-			local value = medicamentConfig.ReactExtraParam1
-			local fun_Change = ItemEffectFuncs[changeExpValue]
-			if fun_Change then
-				value = fun_Change(curEntity)
-			end
-
-			curEntity:addXp(value)
-			curEntity:flushPropBatch()
-			removeFlag = true
-			return removeFlag
-		end
+		curEntity:addXp(changeExpValue)
+		curEntity:flushPropBatch()
+		removeFlag = true
 	end
+	return removeFlag
 end
 
 -- 改变礼金
@@ -316,8 +261,8 @@ function ItemEffect.changeCashMoney(targetEntity, medicament, medicamentConfig)
 	local curCashMoney = targetEntity:getCashMoney()
 	local changeCashMoney = medicamentConfig.ReactExtraParam1
 	curCashMoney = curCashMoney + changeCashMoney
-	print(curCashMoney)
 	targetEntity:setCashMoney(curCashMoney)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -329,6 +274,7 @@ function ItemEffect.changeGoldCoin(targetEntity, medicament, medicamentConfig)
 	local changeGoldCoin = medicamentConfig.ReactExtraParam1
 	curGoldCoin = curGoldCoin + changeGoldCoin
 	targetEntity:setGoldCoin(curGoldCoin)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -339,72 +285,31 @@ end
 -- 改变道行人物和宠物公用
 function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, targetEntityID)
 	local removeFlag = true
-	local curTaoValue = targetEntity:getAttrValue(player_tao)
+	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
 	local changeTaoValue = medicamentConfig.ReactExtraParam1
 	local fun_Change = ItemEffectFuncs[changeTaoValue]
-
-	local reactTarget = medicamentConfig.ReactTarget
-	if reactTarget == MedicamentReactTarget.Self then
-		if fun_Change then
-			changeTaoValue = fun_Change(targetEntity)
-		end
-		targetEntity:addTao(changeTaoValue)
-		removeFlag = true
-		return removeFlag
-	elseif reactTarget == MedicamentReactTarget.Pet then
-		local taoValue = medicamentConfig.ReactExtraParam1
-		if not targetEntityID then
-			-- 只针对出战宠物
-			local petID = targetEntity:getFollowPetID()
-			local pet = g_entityMgr:getPet(petID)
-			if pet then
-				if func_Change then
-					taoValue = func_Change(pet)
-				end
-				local curPetTao = pet:getAttrValue(pet_tao)
-				if curPetTao >= MaxPetTao then
-					print("当前宠物道行无需增加")
-					removeFlag = false
-					return removeFlag
-				end
-				curPetTao = curPetTao + taoValue
-				if curPetTao > MaxPetTao then
-					curPetTao = MaxPetTao
-				end
-				pet:setAttrValue(pet_tao, curPetTao)
-				pet:flushPropBatch()
-			else
-				removeFlag = false
-				return removeFlag
-			end
-			removeFlag = true
-			return removeFlag
-		else
-			local pet = g_entityMgr:getPet(targetEntityID)
-			if pet then
-				if fun_Change then
-					changeTaoValue = fun_Change(pet)
-				end
-				local curPetTao = pet:getAttrValue(pet_tao)
-				if curPetTao >= MaxPetTao then
-					print("当前宠物道行无需增加")
-					removeFlag = false
-					return removeFlag
-				end
-				curPetTao = curPetTao + taoValue
-				if curPetTao > MaxPetTao then
-					curPetTao = MaxPetTao
-				end
-				pet:setAttrValue(pet_tao, curPetTao)
-				pet:flushPropBatch()
-				removeFlag = true
-				return removeFlag
-			else
-				removeFlag = false
-				return removeFlag
-			end
-		end
+	if fun_Change then
+		changeTaoValue = fun_Change(curEntity)
 	end
+	if instanceof(curEntity,Player)then
+		curEntity:addAttrValue(player_tao,changeTaoValue)
+		curEntity:flushPropBatch()
+		removeFlag = true
+	elseif instanceof(curEntity,Pet) then
+		local curPetTao = curEntity:getAttrValue(pet_tao)
+		if curPetTao >= MaxPetTao then
+			removeFlag = false
+			return removeFlag
+		end
+		curPetTao = curPetTao + changeTaoValue
+		if curPetTao > MaxPetTao then
+			curPetTao = MaxPetTao
+		end
+		curEntity:setAttrValue(pet_tao, curPetTao)
+		curEntity:flushPropBatch()
+		removeFlag = true
+	end
+	return removeFlag
 end
 
 -- 改变潜能
@@ -418,6 +323,7 @@ function ItemEffect.changePotential(targetEntity, medicament, medicamentConfig)
 	end
 	curPotential = curPotential + changePotential
 	targetEntity:setAttrValue(player_pot, curPotential)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -433,6 +339,7 @@ function ItemEffect.changeExpoint(targetEntity, medicament, medicamentConfig)
 	end
 	curExpoint = curExpoint + changExpoint
 	targetEntity:setAttrValue(player_expoint, curExpoint)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -444,6 +351,7 @@ function ItemEffect.changeCombatNum(targetEntity, medicament, medicamentConfig)
 	local changeCombatNum = medicamentConfig.ReactExtraParam1
 	curCombatNum = curCombatNum + changeCombatNum
 	targetEntity:setAttrValue(player_combat, curCombatNum)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
@@ -471,41 +379,18 @@ function ItemEffect.changeVigor(targetEntity, medicament, medicamentConfig)
 		curVigor = 0
 	end
 	targetEntity:setVigor(curVigor)
+	targetEntity:flushPropBatch()
 	removeFlag = true
 	return removeFlag
 end
 
 -- 改变宠物忠诚
 function ItemEffect.changePetLoyalty(targetEntity, medicament, medicamentConfig, targetEntityID)
-	local removeFlag = true
-	local curEntity
-	if targetEntityID then
-		-- 针对所选则的宠物
-		local pet = g_entityMgr:getPet(targetEntityID)
-		if pet then
-			curEntity = pet
-		else
-			removeFlag = false
-			return removeFlag
-		end
-	else
-		-- 只针对出战宠物
-		local curFollowPetID = targetEntity:getFollowPetID()
-		if curFollowPetID then
-			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
-			curEntity = curFollowPet
-		else
-			removeFlag = false
-			return removeFlag
-		end
-	end
-
+	local removeFlag = false
+	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
 	if curEntity then
 		local curLoyalty = curEntity:getLoyalty()
-		if curLoyalty >= MaxPetLoyalty then
-			removeFlag = false
-			return removeFlag
-		else
+		if curLoyalty < MaxPetLoyalty then
 			local value = medicamentConfig.ReactExtraParam1
 			curLoyalty = curLoyalty + value
 			if curLoyalty >= MaxPetLoyalty then
@@ -514,37 +399,15 @@ function ItemEffect.changePetLoyalty(targetEntity, medicament, medicamentConfig,
 			curEntity:setLoyalty(curLoyalty)
 			curEntity:flushPropBatch()
 			removeFlag = true
-			return removeFlag
 		end
 	end
-	
+	return removeFlag
 end
 
 -- 改变宠物寿命
 function ItemEffect.changePetLife(targetEntity, medicament, medicamentConfig, targetEntityID)
-	local removeFlag = true
-	local value = medicamentConfig.ReactExtraParam1
-	if targetEntityID then
-		-- 针对所选则的宠物
-		local pet = g_entityMgr:getPet(targetEntityID)
-		if pet then
-			curEntity = pet
-		else
-			removeFlag = false
-			return removeFlag
-		end
-	else
-		-- 只针对出战宠物
-		local curFollowPetID = targetEntity:getFollowPetID()
-		if curFollowPetID then
-			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
-			curEntity = curFollowPet
-		else
-			removeFlag = false
-			return removeFlag
-		end
-	end
-
+	local removeFlag = false
+	local curEntity = ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntityID)
 	if curEntity then
 		local petLife = curEntity:getAttrValue(pet_life)
 		local petLifeMax = curEntity:getAttrValue(pet_life_max)
@@ -552,6 +415,7 @@ function ItemEffect.changePetLife(targetEntity, medicament, medicamentConfig, ta
 			removeFlag = false
 			return removeFlag
 		else
+			local value = medicamentConfig.ReactExtraParam1
 			curPetLife = petLife + value
 			if curPetLife >= petLifeMax then
 				curPetLife = petLifeMax
@@ -656,8 +520,10 @@ function ItemEffect.useMpPoolItem(targetEntity, medicament, medicamentConfig)
 			medicament:setEffect(leftMpValue)
 			-- 直接加满法力
 			role:setMP(roleMaxMp)
+			role:flushPropBatch()
 			if pet then
 				pet:setMP(petMaxMp)
+				pet:flushPropBatch()
 			end
 			-- 通知客户端背包物品变化
 			local changeInfo = {}
@@ -679,6 +545,7 @@ function ItemEffect.useMpPoolItem(targetEntity, medicament, medicamentConfig)
 			if pet then
 				pet:flushPropBatch()
 			end
+			role:flushPropBatch()
 			removeFlag = true
 		end
 	else
@@ -726,7 +593,7 @@ function ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntity
 	local reactTarget = medicamentConfig.ReactTarget
 	if reactTarget == MedicamentReactTarget.Self then
 		curEntity = targetEntity
-	elseif reactTarget == MedicamentReactTarget.Pet then
+	elseif reactTarget == MedicamentReactTarget.Pet or reactTarget == MedicamentReactTarget.SelfAndPet then
 		if targetEntityID then
 			local curPet = g_entityMgr:getPet(targetEntityID)
 			if curPet then
@@ -739,17 +606,15 @@ function ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntity
 				curEntity = curFollowPet
 			end
 		end
-	elseif reactTarget == MedicamentReactTarget.SelfAndPet then
-		if targetEntityID then
+	elseif reactTarget == MedicamentReactTarget.Friend then
+		if not targetEntityID then
+			curEntity = targetEntity
+		else
 			local curPet = g_entityMgr:getPet(targetEntityID)
 			if curPet then
 				curEntity = curPet
-			end
-		else
-			local curFollowPetID = targetEntity:getFollowPetID()
-			if curFollowPetID then
-				local curFollowPet = g_entityMgr:getPet(curFollowPetID)
-				curEntity = curFollowPet
+			else
+				curEntity = g_entityMgr:getPlayerByID(targetEntityID)
 			end
 		end
 	end
@@ -922,6 +787,7 @@ function ItemEffect.washPlayerAllPhase(player)
 	if curMp > maxMp then
 		player:setAttrValue(player_mp, maxMp)
 	end
+	player:flushPropBatch()
 	return true
 end
 
@@ -967,6 +833,7 @@ function ItemEffect.washPetAllPhase(targetEntity)
 		if curMp > maxMp then
 			targetEntity:setAttrValue(pet_mp, maxMp)
 		end
+		targetEntity:flushPropBatch()
 		return true
 	else
 		return false
@@ -1057,7 +924,7 @@ function ItemEffect.finishTask(targetEntity, medicament, medicamentConfig)
 	local loopTask = g_taskFty:createLoopTask(targetEntity, taskID, LoopTaskTargetType.itemTalk)
 	loopTask:setReceiveTaskLvl(targetEntity:getLevel())
 	taskHandler:addTask(loopTask)
-	--g_taskSystem:updateLoopTaskList(targetEntity, taskHandler:getRecetiveTaskList())
+	
 	taskHandler:updateTaskList(taskID, false)
 	removeFlag = true
 	return removeFlag
@@ -1093,17 +960,16 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 	end
 	
 	-- 创建宝藏 
-	if g_treasureMgr:createTreasure(targetEntity,treasureID,guid) then
+	if not g_treasureMgr:createTreasure(targetEntity,treasureID,guid) then
 		-- 把物品设置为绑定
-		return removeFlag
-	end
-    local isTrue,msgID,msgParams = treasureHandler:doClickTreasure(guid)
-	if isTrue then
-		removeFlag = true
-		return removeFlag
-	else
-		treasureHandler:sendTreasureMessage(msgID,msgParams)
-		return removeFlag
+		local isTrue,msgID,msgParams = treasureHandler:doClickTreasure(guid)
+		if isTrue then
+			removeFlag = true
+			return removeFlag
+		else
+			treasureHandler:sendTreasureMessage(msgID,msgParams)
+			return removeFlag
+		end
 	end
 end
 

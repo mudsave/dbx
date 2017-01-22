@@ -18,19 +18,15 @@ local function loadCore()
 end
 
 local function loadDB()
-	
 	require "constant.Constant"
 	require "misc.constant"
-
 	require "attribute.PlayerAttrDefine"
 	require "attribute.PlayerAttrFormula"
 	require "attribute.PetAttrDefine"
 	require "attribute.PetAttrFormula"
 	require "attribute.MonsterAttrDefine"
 	require "attribute.MonsterAttrFormula"
-
 	require "misc.PetConstant"
-	
 
 	require "data.MonsterDB"
 	require "data.MonsterAttrDB"
@@ -51,19 +47,16 @@ local function loadDB()
 	require "data.SkillDB.MonsterSkillDataDB"
 	require "data.SkillDB.MonsterSkillDB"
 	require "data.SkillDB.SystemSkillDB"
-	
 end
 
 local function loadSystem()
-	
-	g_eventMgr				= EventManager.getInstance()
-	g_timerMgr				= TimerManager.getInstance()
-
 	require "FightSystem"
 	require "buff.FightBuffManager"
 	require "item.FightItemManager"
 	require "chatSystem.ChatSystem"
 		
+	g_eventMgr				= EventManager.getInstance()
+	g_timerMgr				= TimerManager.getInstance()
 	g_fightMgr 				= FightManager.getInstance()
 	g_fightFactory			= FightFactory.getInstance()
 	g_fightEntityFactory 	= FightEntityFactory.getInstance()
@@ -71,8 +64,14 @@ local function loadSystem()
 	g_SystemSkillMgr 		= SystemSkillManager.getInstance()
 	g_fightBuffMgr			= FightBuffManager.getInstance()
 	g_fightItemMgr			= FightItemManager.getInstance()
-	
 end
+
+ServerState = 
+{
+	load	= 1, --加载完脚本文件
+	run		= 2, --脚本已启动
+	stop	= 3, --脚本已停止
+}
 
 ManagedApp = {}
 
@@ -83,7 +82,9 @@ function ManagedApp.start(serverId)
 	loadCore()
 	loadDB()
 	loadSystem()
+	ManagedApp.State = ServerState.run
 end
+
 function ManagedApp.timerFired(timerID, state)
 	if state == ScriptTimerNormal then
 		g_timerMgr:update(timerID)
@@ -91,3 +92,10 @@ function ManagedApp.timerFired(timerID, state)
 		g_timerMgr:notify(timerID, state)
 	end
 end
+
+function ManagedApp.close()
+	print("Fight Server is closing!")
+	ManagedApp.State = ServerState.stop
+end
+
+ManagedApp.State = ServerState.load

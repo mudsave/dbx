@@ -254,9 +254,9 @@ function SceneManager:doEnterFactionScene(roleID,x, y)
 	end
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler:getTeamID() ~= -1 then
-		local msg = "玩家正处于组队状态，无法进入帮派领地"
+		local msg = FactionMsgTextKeyTable.CantEnterFactionScene
         local notifyParams = {msg = msg}
-        local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.NormalNotify,notifyParams)
+        local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
         g_eventMgr:fireRemoteEvent(event_Notify,player)
 	else
 		if self:enterFactionScene(factionDBID, {player, x ,y}) then

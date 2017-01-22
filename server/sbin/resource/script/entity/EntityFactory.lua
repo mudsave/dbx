@@ -71,14 +71,17 @@ function EntityFactory:createDynamicNpc(dbID)
 	local peer = CoEntity:Create(eLogicNpc, eClsTypeNpc)
 	peer:setDBID(dbID)
 	npc:setPeer(peer)
-	npc:setMoveSpeed(DefaultSpeed)
-	g_entityMgr:addNpc(npc)
-
-	-- handler add
+	local npcName = NpcDB[dbID].name 
+	if npcName then
+		npc:setName(npcName)
+	end
+	--添加该实体类型的handler
 	npc:addHandler(HandlerDef_Dialog, DialogHandler(npc))
 	npc:getHandler(HandlerDef_Dialog):setDialogIDs(NpcDB[dbID] and NpcDB[dbID].dialogIDs or {})
-
-	npc:addHandler(HandlerDef_Move, MoveHandler(npc))
+	
+	npc:setEntityType(eLogicNpc)
+	--将实体加入EntityManager管理
+	g_entityMgr:addNpc(npc)
 	return npc
 end
 

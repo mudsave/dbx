@@ -153,6 +153,8 @@ FriendMsgTextKeyTable = {
     FailtoAddFriend = 1,
     AlreadyInBlackList = 2,
     PlayerIsNotExist    =3,
+    PlayerIsNotOnline   = 4,
+
 }
 
 FactionMsgTextKeyTable = {

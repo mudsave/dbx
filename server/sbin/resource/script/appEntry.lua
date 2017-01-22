@@ -6,6 +6,13 @@
 package.path = "../resource/script/?.lua;../../../share/lua/?.lua;../resource/common/?.lua;" .. package.path
 print("package.path = ", package.path)
 
+ServerState = 
+{
+	load	= 1, --加载完脚本文件
+	run		= 2, --脚本已启动
+	stop	= 3, --脚本已停止
+}
+
 ManagedApp = {}
 
 function ManagedApp.start(serverID)
@@ -21,6 +28,7 @@ function ManagedApp.start(serverID)
 	loadSystem()
 	g_sceneMgr:loadPublicScenes()
 	g_sceneMgr:loadSystemByScene()
+	ManagedApp.State = ServerState.run
 end
 
 function ManagedApp.timerFired(timerID, state)
@@ -36,6 +44,9 @@ function ManagedApp.onExeSP(operationID, recordList, errorCode)
 end
 
 function ManagedApp.EntityStartMove(entityId)
+	if ManagedApp.State ~= ServerState.run then
+		return
+	end
 	local entity = g_entityMgr:getPlayerByID(entityId) or g_entityMgr:getPet(entityId)
 	--是玩家
 	if entity then
@@ -47,6 +58,9 @@ function ManagedApp.EntityStartMove(entityId)
 end
 
 function ManagedApp.EntityEndMove(entityId)
+	if ManagedApp.State ~= ServerState.run then
+		return
+	end
 	local entity = g_entityMgr:getPlayerByID(entityId) or g_entityMgr:getPet(entityId) or g_entityMgr:getPatrolNpc(entityId)
 	--是玩家, 宠物， 巡逻NPC
 	if entity then
@@ -58,11 +72,16 @@ function ManagedApp.EntityEndMove(entityId)
 end
 
 function ManagedApp.onPlayerMessage(hLink, msg)
+	if ManagedApp.State ~= ServerState.run then
+		return
+	end
 	g_playerMgr:onPlayerMessage(hLink, msg)
 end
 
 function ManagedApp.onTileChange(playerID)
-	--print (playerID, " walking ...")
+	if ManagedApp.State ~= ServerState.run then
+		return
+	end
 	local player = g_entityMgr:getPlayerByID(playerID)
 	if player then
 		local mapID, xPos, yPos = player:getCurPos()
@@ -73,6 +92,9 @@ function ManagedApp.onTileChange(playerID)
 end
 
 function ManagedApp.close()
-	print("Server is closing!")
+	print("World Server is closing!")
 	g_playerMgr:kickAllPlayer()
+	ManagedApp.State = ServerState.stop
 end
+
+ManagedApp.State = ServerState.load

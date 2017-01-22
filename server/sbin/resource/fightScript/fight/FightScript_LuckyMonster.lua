@@ -10,7 +10,7 @@ FightScript_LuckyMonster = class(FightScript)
 
 
 function FightScript_LuckyMonster:__init(scriptID)
-	self._mainMonsterDBID = self._scriptPrototype.majorMonsterInfo.ID
+	self._mainMonsterDBID = self._scriptPrototype.majorMonsterInfo[1].ID
 	self._playerLevel = nil --玩家代表等级(组队的话是队长等级)
 	self._deadInfo = {n={},m={},cur={}}--n={[DBID]=次数},m={[DBID]=次数/2}
 end
@@ -105,7 +105,7 @@ end
 
 function FightScript_LuckyMonster:addMinorMonsters2Results()
 	local unchanged={}
-	local ResultRefeshMembers = {actionType = FightActionType.System ,type = ScriptFightActionType.RefreshMembers,unchanged=unchanged,params = {}}
+	local ResultRefeshMembers = {actionType = FightActionType.System ,type = ScriptFightActionType.RefreshMembers,params = {monsters = {},unchanged=unchanged,}}
 	local monsters = self._members[FightStand.B]
 	local newMonsters = {}
 	for _,monster in pairs(monsters) do
@@ -116,7 +116,8 @@ function FightScript_LuckyMonster:addMinorMonsters2Results()
 			table.insert(unchanged,monster:getID())
 		end
 	end
-	FightUtils.setMonsterInfo4Client(newMonsters,ResultRefeshMembers.params,nil)
+	local params = ResultRefeshMembers.params
+	FightUtils.setMonsterInfo4Client(newMonsters,params.monsters,nil)
 	FightUtils.insertFightResult(self,ResultRefeshMembers,false)
 end
 function FightScript_LuckyMonster:__release()

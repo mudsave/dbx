@@ -15,8 +15,7 @@ end
 
 function ChatManager:sendMessage(role, channelType, message, sign, context)
 
-	local roleInfo = {DBID = role:getDBID(), name = role:getName()}
-	
+	local roleInfo = {DBID = role:getDBID(), name = role:getName(),ID = role:getID()}
 	--帮会频道
 	if channelType == ChatChannelType.Faction then
 		--给当前帮会在线成员发送帮派消息
@@ -54,33 +53,25 @@ function ChatManager:sendMessage(role, channelType, message, sign, context)
 		g_eventMgr:fireRemoteEvent(event, target)
 	--当前频道
 	elseif channelType == ChatChannelType.Current then
-		print("服务端发送聊天数据到社会服"..ChatEvents_SB_SendToAround)
 		local event = Event.getEvent(ChatEvents_SB_SendToAround,role:getDBID(),0,channelType,message,roleInfo,sign)
 		g_eventMgr:fireWorldsEvent(event,CurWorldID)
-		
 	--队伍频道
 	elseif channelType == ChatChannelType.Team then
-		local h = role:getHandler(HandlerDef_Team)
-		local teamID = h:getTeamID()
-		local team = g_teamMgr:getTeam(teamID)
-		
-		for _,memberInfo in pairs(team:getMemberList()) do
-			local member = g_entityMgr:getPlayer(memberInfo.memberID)
-			local event = Event.getEvent(ChatEvents_SC_SendChatMsg, member:getDBID(), 0, channelType, message, roleInfo, sign )
-			g_eventMgr:fireRemoteEvent(event, member)	
-		end
+		local event = Event.getEvent(ChatEvents_SB_SendToTeam,role:getDBID(),0,channelType,message,roleInfo,sign)
+		g_eventMgr:fireWorldsEvent(event,CurWorldID)
 	--世界频道
 	elseif channelType == ChatChannelType.World then
 		local bNotReduce = context
 		if not bNotReduce then
-			local vigor = role:getVigor()
-			role:setVigor(vigor-WorldChannelVigorCost)
+			local vigor = role:getVigor()-WorldChannelVigorCost
+			role:setVigor(vigor)
+			local event = Event.getEvent(ChatEvents_SB_SendToWorld,role:getDBID(),vigor)
+			g_eventMgr:fireWorldsEvent(event,CurWorldID)
 		end
 		local event = Event.getEvent(ChatEvents_SC_SendChatMsg, -1, 0, ChatChannelType.World, message, roleInfo, sign )
 		RemoteEventProxy.broadcast(event,0)
 	end
 
-	
 end
 
 

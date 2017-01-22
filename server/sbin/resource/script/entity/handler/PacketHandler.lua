@@ -167,17 +167,20 @@ function PacketHandler:removeNoBindItem(itemId, removeNum)
 end
 ]]
 
--- 添加道具到玩家背包
+-- 添加道具到玩家背包, 这个接口在P2P交易当中，有可能这个itemGuid被销毁，先把配置ID存起来，在发送到任务系统
 function PacketHandler:addItems(itemGuid)
-	return self.packet:addItems(itemGuid, true)
+	local item = g_itemMgr:getItem(itemGuid)
+	local itemID = item:getItemID()
+	local result = self.packet:addItems(itemGuid, true) 
+	if result == AddItemsResult.Succeed or reslut == AddItemsResult.SucceedPile then
+		TaskCallBack.onBuyItem(self._entity:getID(), itemID)
+	end
 end
 
 -- 移除指定ID道具，返回移除的个数
 function PacketHandler:removeByItemId(itemID, itemNum)
-	local itemNum = self.packet:removeByItemId(itemID, itemNum)
-	-- 发个消息给循环任务系统
-	TaskCallBack.onRemoveItem(self._entity:getID(), itemID)
-	return itemNum
+	return self.packet:removeByItemId(itemID, itemNum)
+	
 end
 
 -- 循环任务对话移除物品接口 不会回调到任务系统的监听

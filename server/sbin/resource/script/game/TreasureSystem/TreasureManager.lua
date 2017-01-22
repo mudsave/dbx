@@ -46,6 +46,7 @@ function TreasureManager:removePlaceMoster(npcID)
 end
 
 function TreasureManager:createTreasure(player,treasureID,guid)
+
 	local treasureHandler = player:getHandler(HandlerDef_Treasure)
 	local isTrue,treasure = treasureHandler:findTreasure(guid)
 	if isTrue then

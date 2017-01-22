@@ -18,14 +18,12 @@ local function loadCore()
 	require "core.TimerManager"
 	require "core.LuaDBAccess"
 
-
 	g_eventMgr	= EventManager.getInstance()
 	g_timerMgr	= TimerManager.getInstance()
 
 end
 
 local function loadSystem()
-
 	require "SocialSystem"
 	require "FriendSystem.FriendSystem"
 	require "GroupSystem.GroupSystem"
@@ -35,8 +33,6 @@ local function loadSystem()
 	require "SelfProtectionSystem.SelfProtectionMgr"
 	require "SystemSetSystem.SystemSetSystem"
 	require "entity.SocialEntityManager"
-
-	
 
 	g_groupSysMgr 			= GroupSysMgr.getInstance()
 	g_factionSysMgr			= FactionSysMgr.getInstance()
@@ -51,6 +47,13 @@ local function loadSystem()
 
 end
 
+ServerState = 
+{
+	load	= 1, --加载完脚本文件
+	run		= 2, --脚本已启动
+	stop	= 3, --脚本已停止
+}
+
 ManagedApp = {}
 
 function ManagedApp.start(serverId)
@@ -59,8 +62,16 @@ function ManagedApp.start(serverId)
 	math.random()
 	loadCore()
 	loadSystem()
+	ManagedApp.State = ServerState.run
 end
 
 function ManagedApp.onExeSP(operationID, recordList, errorCode)
 	LuaDBAccess.onExeSP(operationID, recordList, errorCode)
 end
+
+function ManagedApp.close()
+	print("Social Server is closing!")
+	ManagedApp.State = ServerState.stop
+end
+
+ManagedApp.State = ServerState.load

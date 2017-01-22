@@ -179,7 +179,8 @@ function TeamManager:inviteJoinTeam(playerID,targetID)
 	end
 	--判断目标是否已经存在于玩家队伍邀请中
 	if team:existInviteList(targetID) then
-		print("已经在邀请列表中。")
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 8)
+		g_eventMgr:fireRemoteEvent(event, player)
 		return
 	end
 	--判断玩家队伍是否满员
@@ -191,7 +192,8 @@ function TeamManager:inviteJoinTeam(playerID,targetID)
 	end
 	--判断玩家队伍是否收到过五条消息以��?
 	if table.size(tTeamHandler:getTeaminviteList()) >= MaxInvalidCount then
-		print("最多收到五条（暂定）邀请信息，目标现在很忙。")
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 11)
+		g_eventMgr:fireRemoteEvent(event, targetPlayer)
 		return
 	end
 	--判断
@@ -208,7 +210,8 @@ function TeamManager:inviteJoinTeam(playerID,targetID)
 			local event = Event.getEvent(TeamEvents_SC_InviteJoinTeam,playerID,playerName)
 			g_eventMgr:fireRemoteEvent(event,targetPlayer)
 		else
-			print("玩家不存在")
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 7)
+			g_eventMgr:fireRemoteEvent(event, targetPlayer)
 		end
 	end
 	--给队长提示，你已发出组队邀请，请等待对方接受
@@ -236,7 +239,8 @@ function TeamManager:answerInvite(targetID,leaderID,isAccept)
 
 	if isAccept then
 		if team:isFull() then
-			print("目标队伍人数已满.")
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 6)
+			g_eventMgr:fireRemoteEvent(event, targetPlayer)
 			return
 		end
 		local flag = nil
@@ -306,7 +310,8 @@ function TeamManager:requestJoinTeam(playerID,targetID)
 	if pTeamID == InvalidTeamID and tTeamID ~= InvalidTeamID then
 		local team = self._teams[tTeamID]
 		if team:isFull() then
-			print("目标队伍人数已满.")
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 6)
+			g_eventMgr:fireRemoteEvent(event, player)
 			return
 		else
 			local leaderID = team:getLeaderID()
@@ -542,6 +547,8 @@ function TeamManager:changeLeader(leaderID,playerID)
 			end
 		end
 	else
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 10)
+		g_eventMgr:fireRemoteEvent(event, targetPlayer)
 		print("只有队长可以操作")
 		return
 	end
@@ -586,7 +593,8 @@ function TeamManager:moveOutMember(leaderID,playerID)
 			local ectypeEvent = Event.getEvent(TeamEvents_SS_MoveOutMember, playerID)
 			g_eventMgr:fireEvent(ectypeEvent)
 		else
-			print("只有队长可以操作")
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 10)
+			g_eventMgr:fireRemoteEvent(event, targetPlayer)
 		end
 	end
 end
@@ -672,7 +680,8 @@ function TeamManager:autoTeam(playerID,minLevel,maxLevel,actionTable)
 	local player = g_entityMgr:getPlayerByID(playerID)
 	local teamID = player:getHandler(HandlerDef_Team):getTeamID()
 	if teamID ~= InvalidTeamID then
-		print("您已经有队伍了��?")
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 9)
+		g_eventMgr:fireRemoteEvent(event, targetPlayer)
 		return
 	end
 
@@ -738,7 +747,8 @@ function TeamManager:leaderAutoTeam(leaderID,minLevel,maxLevel,actionID)
 	local teamID = leader:getHandler(HandlerDef_Team):getTeamID()
 	local team = self._teams[teamID]
 	if team:isFull() then
-		print("您队伍人数已��?")
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 6)
+		g_eventMgr:fireRemoteEvent(event, targetPlayer)
 		return
 	end
 	--更改信息点击发布组队,先移除在队长队列中再添加到最后

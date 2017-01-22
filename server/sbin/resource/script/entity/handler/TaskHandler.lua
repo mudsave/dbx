@@ -11,10 +11,11 @@ function TaskHandler:__init(entity)
 	self.nextTaskID = 0				--主线下一个任务
 	self.hisTasks = {}				--历史任务
 	self.taskTraceList = nil		--任务追踪列表
-	self.canReceiveLoopTask = {}	--可接循环任务列表
+	self.canRecetiveLoopTask = {}	--可接循环任务列表
 	self.count = 0					--任务数量
 	self.loopTaskInfo = {}			--循环任务信息
 	self.canRecetiveTaskID = {}
+	self.dailyTaskList = {}
 
 end
 
@@ -24,7 +25,7 @@ function TaskHandler:__release()
 	self.nextTaskID = nil
 	self.hisTasks = nil
 	self.taskTraceList = nil
-	self.canReceiveLoopTask = nil
+	self.canRecetiveLoopTask = nil
 	self.taskMineList = nil
 	self.count = nil
 	self.loopTaskInfo = nil
@@ -105,15 +106,15 @@ function TaskHandler:updateNextTask(taskID)
 end
 
 -- 玩家上线加载完任务之后，调用一下这个接口， 设置这些可接任务
-function TaskHandler:loadCanReceiveLoopTask()
+function TaskHandler:loadCanRecetiveLoopTask()
 	for loopTaskID, taskData in pairs(LoopTaskDB) do
 		if self._entity:getLevel() >= taskData.level[1] and self._entity:getLevel() <= taskData.level[2] then
 			if taskData.school then
 				-- 如果有门牌限定
 				if taskData.school == self._entity:getSchool() then
 					if not self.currentTask[loopTaskID] and self:getCountRing(loopTaskID) < taskData.loop then
-						if not self.canReceiveLoopTask[loopTaskID] then
-							self.canReceiveLoopTask[loopTaskID] = true
+						if not self.canRecetiveLoopTask[loopTaskID] then
+							self.canRecetiveLoopTask[loopTaskID] = true
 						end
 					end
 				end
@@ -123,15 +124,15 @@ function TaskHandler:loadCanReceiveLoopTask()
 					local factionID = self._entity:getFactionDBID()
 					if factionID > 0 then
 						if not self.currentTask[loopTaskID] and self:getCountRing(loopTaskID) < taskData.loop then
-							if not self.canReceiveLoopTask[loopTaskID] then
-								self.canReceiveLoopTask[loopTaskID] = true
+							if not self.canRecetiveLoopTask[loopTaskID] then
+								self.canRecetiveLoopTask[loopTaskID] = true
 							end
 						end
 					end
 				else
 					if not self.currentTask[loopTaskID] and self:getCountRing(loopTaskID) < taskData.loop then
-						if not self.canReceiveLoopTask[loopTaskID] then
-							self.canReceiveLoopTask[loopTaskID] = true
+						if not self.canRecetiveLoopTask[loopTaskID] then
+							self.canRecetiveLoopTask[loopTaskID] = true
 						end
 					end
 				end
@@ -143,16 +144,16 @@ end
 -- 完成任务之后再添加，因为在完成任务之前，一些判断都满足，才能执行到
 function TaskHandler:addLoopTaskList(taskID)
 	if not self.currentTask[taskID] and self:getCountRing(taskID) < LoopTaskDB[taskID].loop then
-		if not self.canReceiveLoopTask[taskID] then
-			self.canReceiveLoopTask[taskID] = true
+		if not self.canRecetiveLoopTask[taskID] then
+			self.canRecetiveLoopTask[taskID] = true
 		end
 	end
 end
 
 -- 接任务之后， 删除可接循环任务列表
 function TaskHandler:removeLoopTaskList(taskID)
-	if self.canReceiveLoopTask[taskID] then
-		self.canReceiveLoopTask[taskID] = nil
+	if self.canRecetiveLoopTask[taskID] then
+		self.canRecetiveLoopTask[taskID] = nil
 	end
 end
 
@@ -167,8 +168,8 @@ function TaskHandler:updateTaskList(taskID, flag)
 	end
 end
 
-function TaskHandler:getReceiveLoopTask()
-	return self.canReceiveLoopTask
+function TaskHandler:getRecetiveLoopTask()
+	return self.canRecetiveLoopTask
 end
 
 function TaskHandler:getNextID()
@@ -342,7 +343,6 @@ function TaskHandler:updateHisTask(taskID)
 end
 
 function TaskHandler:isHisTask(taskID)
-	print("历史任务》》》》》》》》》》》", toString(self.hisTasks))
 	for _, histaskID in pairs(self.hisTasks) do
 		if histaskID == taskID then
 			return true
@@ -401,6 +401,9 @@ function TaskHandler:finishLoopTask(taskID)
 	-- 完成当前任务，
 	self:finishTaskByID(taskID)
 	local player = self._entity
+	-- 完成循环任务的时候向活动界面发一个接口
+	local activityEvent = Event.getEvent(TaskEvent_SS_AddActivityPractise, player:getID(), taskID)
+	g_eventMgr:fireEvent(activityEvent)
 	-- 自动交接, 天道任务和其他任务处理方式不一样， 天道任务处理
 	if LoopTaskDB[taskID].taskType2 == TaskType2.Heaven then
 		local teamHandler = player:getHandler(HandlerDef_Team)
@@ -604,4 +607,8 @@ function TaskHandler:resetCurrentRing(taskID)
 	if LoopTaskDB[taskID] then
 		self.loopTaskInfo[taskID].currentRing = 0
 	end
+end
+
+function TaskHandler:getDailyTask( taskID )
+	return self.dailyTaskList[taskID]
 end

@@ -173,15 +173,16 @@ public:
 	}
 
 public:
-	void send_MsgGW_PlayerLoginInfo(handle hLink, int roleId, handle hClientLink)
+	void send_MsgGW_PlayerLoginInfo(handle hLink, PlayerInfo* player)
 	{
 		_MsgGW_PlayerLoginInfo msg;
 		msg.msgFlags    = 0;
 		msg.msgCls      = MSG_CLS_LOGIN;
 		msg.msgId       = MSG_W_G_PLAYER_LOGIN;
-		msg.roleId		= roleId;
+		msg.roleId		= player->roleId;
 		msg.gatewayId	= m_gatewayId;
-		msg.hClientLink	= hClientLink;
+		msg.hClientLink	= player->hLink;
+		msg.version		= player->version;
 		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(hLink, &msg);
 	}
@@ -198,6 +199,7 @@ public:
 		msg.msgId       = MSG_W_G_PLAYER_LOGOUT;
 		msg.roleId		= player->roleId;
 		msg.reason		= player->logoutReason;
+		msg.version		= player->version;
 		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWG_L>::SendMsg(player->hWorldLink, &msg);
 	}
@@ -241,6 +243,7 @@ public:
 		msg.accountId	= player->accountId;
 		msg.roleId		= player->roleId;
 		msg.result		= result;
+		msg.version		= player->version;
 		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
@@ -256,6 +259,7 @@ public:
 		msg.roleId		= player->roleId;
 		msg.result		= result;
 		msg.reason		= reason;
+		msg.version		= player->version;
 		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
@@ -272,11 +276,12 @@ public:
 		msg.roleId		= pInfo->roleId;
 		msg.gatewayId	= pInfo->gatewayId;
 		msg.worldId		= pInfo->worldId;
+		msg.version		= pInfo->version;
 		msg.msgLen      = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
 
-	void send_MsgGS_OfflineInFight(int accountId, int roleId)
+	void send_MsgGS_OfflineInFight(int accountId, int roleId, int version)
 	{
 		if ( !m_pSession ) return;
 		_MsgGS_OfflineInFight msg;
@@ -286,9 +291,31 @@ public:
 		msg.context		= 0;
 		msg.accountId  	= accountId;
 		msg.roleId		= roleId;
+		msg.version		= version;
 		msg.msgLen		= sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksGS_C>::SendMsg(m_pSession->hLink, &msg);
 	}
+
+public:
+	bool verifyVersion(int tRoleId, int tVersion, const char* msg)	
+	{
+		PlayerInfo* player = g_playerMgr.getPlayerInfo(tRoleId);
+		if (!player)	
+		{
+			TRACE2_L2("%s, Role %d is not exists!\n", msg, tRoleId);
+			return false;
+		}
+		if (tVersion != player->version)
+		{
+			TRACE1_L2("%s, Role Version Is Wrong!\n", msg);
+			TRACE1_L2("\troleId = %i\n", tRoleId);
+			TRACE1_L2("\tversion = %i\n", tVersion);
+			TRACE1_L2("\tplayer version = %i\n", player->version);
+			return false;
+		}
+		return true	;
+	}
+
 
 private:
 	const char* translateLinkType(int linkType)

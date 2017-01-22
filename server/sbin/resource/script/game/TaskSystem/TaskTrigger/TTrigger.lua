@@ -11,27 +11,27 @@ function FireTrigger(triggerName, roleID, task, param, fromDB)
 	end
 end
 
-function Triggers.recetiveTask(roleID, param, task, fromDB)
+function Triggers.RecetiveTask(roleID, param, task, fromDB)
 	if fromDB then
 		return
 	end
 	local player = g_entityMgr:getPlayerByID(roleID)
-	local recetiveTaskID = nil
+	local RecetiveTaskID = nil
 	if param.taskID then
 		if type(param.taskIDs) == "table" then
 			for _,taskID in pairs(param.taskIDs) do
 				if TaskCondition.normalTask(player, taskID) then
-					recetiveTaskID = taskID
+					RecetiveTaskID = taskID
 					break
 				end
 			end
 		else
-			print("配置错误，格式为{type = 'recetiveTask', param = {taskIDs = {1}}}")
+			print("配置错误，格式为{type = 'RecetiveTask', param = {taskIDs = {1}}}")
 		end
 		
 	end
-	if recetiveTaskID then
-		g_taskDoer:doRecetiveTask(player, recetiveTaskID)
+	if RecetiveTaskID then
+		g_taskDoer:doRecetiveTask(player, RecetiveTaskID)
 	end
 end
 
@@ -41,22 +41,22 @@ function Triggers.finishTask(roleID, param, task, fromDB)
 	end
 	local player = g_entityMgr:getPlayerByID(roleID)
 	player:getHandler(HandlerDef_Task):finishTaskByID(task:getID())
-	local recetiveTaskID = nil
-	if param.recetiveTaskID then
-		if type(param.recetiveTaskID) == "number" then
-			recetiveTaskID = param.recetiveTaskID
-		elseif type(param.recetiveTaskID) == "table" then
-			for _,taskID in pairs(param.recetiveTaskID) do
+	local RecetiveTaskID = nil
+	if param.RecetiveTaskID then
+		if type(param.RecetiveTaskID) == "number" then
+			RecetiveTaskID = param.RecetiveTaskID
+		elseif type(param.RecetiveTaskID) == "table" then
+			for _,taskID in pairs(param.RecetiveTaskID) do
 				if TaskCondition.normalTask(player, taskID) then
-					recetiveTaskID = taskID
+					RecetiveTaskID = taskID
 					break
 				end
 			end
 		end
 		
 	end
-	if recetiveTaskID then
-		g_taskDoer:doRecetiveTask(player, recetiveTaskID)
+	if RecetiveTaskID then
+		g_taskDoer:doRecetiveTask(player, RecetiveTaskID)
 	end
 end
 

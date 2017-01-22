@@ -259,12 +259,7 @@ function EquipPlayingSystem:onEquipAnalyseRequest(event)
 	if item:getSubClass() ~= ItemSubClass.LingShi or item:getAttr() or (not isBind and item:getBindFlag()) then
 		return
 	end
-	
 	local equipLevel = equipment:getEquipLevel()
---	if equipLevel < 20 then 
---		print("装备的等级至少要20级")
---		return 
---	end 
 	--判断金钱
 	local needMoney = EquipMoneyConsumeDB[EquipPlaying.EquipAnalyse][equipLevel]
 	local money = player:getMoney()
@@ -753,7 +748,7 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 	end
 
 	-- 判断所需材料
-	local attrImproveItem = EquipItemConsumeDB[EquipPlaying.AttrImprove][equipLevel]
+	local attrImproveItem = EquipItemConsumeDB[EquipPlaying.AttrImprove]
 	if not attrImproveItem then
 		return
 	end
@@ -778,8 +773,8 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 	local itemA = nil
 	for _,item in pairs(itemList) do
 		local itemAttr = item:getAttr()
-		--强化某一条属性时需要消耗与被强化的装备属性类型相同、部位相同、等级相同、属性颜色相同的金刚灵晶
-		if itemAttr and itemAttr[1] == equipMent:getEquipClass() and itemAttr[2] == attrColor and itemAttr[3][1] == attrType and itemAttr[4] == equipMent:getEquipLevel() then
+		--强化某一条属性时需要消耗与被强化的装备属性类型相同、部位相同、属性颜色相同的金刚灵晶
+		if itemAttr and itemAttr[1] == equipMent:getEquipClass() and itemAttr[2] == attrColor and itemAttr[3][1] == attrType then
 			itemA = item
 		end
 	end
@@ -801,27 +796,29 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 		player:setCashMoney(cashMoney+subMoney)
 	end
 
-	--某个强化成功率 = （此属性最大值 - 当前属性）/（取值单位*最大属性值）*金刚灵晶附加属性/最大属性值
+	--某个强化成功率 = 0.01*roundup((上限-当前装备附加属性值)/波动单位)*roundup((材料金刚灵晶附加属性值-下限)/波动单位)*调整单位X
+	--强化成功加值为一个波动单位
+	local fluctuate = attrValueTable.fluctuate
 	local takingValueUnit = AddAttrValueDB[attrType].takingValueUnit
 	local attrA = itemA:getAttr()
-	local improveSuccess = math.floor((maxValue - attrValue)*(attrA[3][2]-minValue)/(maxValue-minValue)*100)
+	local improveSuccess = math.ceil((maxValue-attrValue)/fluctuate)*math.ceil((attrA[3][2]-minValue)/fluctuate)*1
 	local successRata = math.random(1,100)
+	print("--------------------improveSuccess-improveSuccess",improveSuccess,successRata)
 	local isSuccess = false
 	if successRata <= improveSuccess then
 		isSuccess = true
 	else
-		local iCompleteness = equipMent:getCompleteness()
-		iCompleteness = iCompleteness + improveSuccess/2
+		local iCompleteness = attr[3]
+		iCompleteness = iCompleteness + improveSuccess
 		if iCompleteness > 100 then
-			equipMent:setCompleteness(0)
+			attr[3] = 0
 			isSuccess = true
 		else
-			equipMent:setCompleteness(iCompleteness)
+			attr[3] = iCompleteness
 		end
 	end
 	if isSuccess then
-		local improveValue = math.random(1,3)*takingValueUnit
-		attr[2] = attrValue + improveValue > maxValue and maxValue or attrValue + improveValue 
+		attr[2] = attrValue + fluctuate > maxValue and maxValue or attrValue + fluctuate 
 	end
 	--设置绑定
 	if isBind then
@@ -967,7 +964,7 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 	for _,item in pairs(needItemData)do
 		local itemID = item.itemID
 		local bItemID = item.BitemID
-		local itemNum = item.itemNum > 0 and item.itemNum or level
+		local itemNum = item.itemNum * level
 		local num = 0
 		if isBind then
 			num = packetHandler:getNumByItemID(itemID) + packetHandler:getNumByItemID(bItemID)
@@ -986,7 +983,7 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 	for _,item in pairs(needItemData)do
 		local itemID = item.itemID
 		local bItemID = item.BitemID
-		local itemNum = item.itemNum > 0 and item.itemNum or level
+		local itemNum = item.itemNum * level
 		if isBind then
 			local bNum = packetHandler:getNumByItemID(bItemID)
 			if bNum >= itemNum then
@@ -1164,7 +1161,7 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 			--随机得到哪个条属性
 			syntheticAddEffect(propertyContext,addEffect)
 		else
-			table.insert(propertyContext.addEffect,{0,0})
+			table.insert(propertyContext.addEffect,{0,0,0})
 		end
 	end
 	--生成其他的属性

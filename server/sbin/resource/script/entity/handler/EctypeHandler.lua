@@ -214,12 +214,12 @@ function EctypeHandler:setRingEctypeProcess(ringEctypeID, curProcess)
 							self:sendEctypePrize(msgID, itemInfo)
 						end
 						-- 机关撞击额外奖励
+						local attackTime = self.ringEctypeInfo[ringEctypeID].attackTime
 						local ringEctypeExtraPrizes = ringEctypeConfig.tPrizes[curRing+1][curProcess].ExtraPrizes
-						if ringEctypeExtraPrizes then
-							local attackTime = self.ringEctypeInfo[ringEctypeID].attackTime
-							local percent = 100 - (attackTime * 5)
-							self:sendEctypePrize(25, attackTime)
+						local percent = 100 - (attackTime * 5)					
+						if percent > 0 and ringEctypeExtraPrizes then
 							-- 经验奖励
+							self:sendEctypePrize(25, attackTime)
 							if ringEctypeExtraPrizes.ExpPrize then
 								local msgID = 26
 								local expPrize = math.floor(ringEctypeExtraPrizes.ExpPrize * percent / 100)
@@ -390,8 +390,8 @@ function EctypeHandler:setEctypeProcess(ectypeID, curProcess)
 				local percent = 100 - (attackTime * 5)
 				local ectypeExtraPrizes = ectypeConfig.LogicProcedure[curProcess].ExtraPrizes
 				if percent > 0 and ectypeExtraPrizes then
-					self:sendEctypePrize(25, attackTime)
 					-- 经验奖励
+					self:sendEctypePrize(25, attackTime)
 					if ectypeExtraPrizes.ExpPrize then
 						local msgID = 26
 						local expPrize = math.floor(ectypeExtraPrizes.ExpPrize * percent / 100)
@@ -685,7 +685,13 @@ function EctypeHandler:addEctypeAttackTime(ectypeID)
 end
 
 -- 设置common副本的撞击次数
-function EctypeHandler:setEctypeAttackTime(attackTime)
+function EctypeHandler:setEctypeAttackTime(ectypeID, attackTime)
 	self:checkEctypeData(ectypeID)
 	self.ectypeInfo[ectypeID].attackTime = attackTime
+end
+
+-- 连环副本传送门撞击次数
+function EctypeHandler:setRingEctypeAttackTime(ringEctypeID, attackTime)
+	self:checkRingEctypeData(ringEctypeID)
+	self.ringEctypeInfo[ringEctypeID].attackTime = attackTime
 end

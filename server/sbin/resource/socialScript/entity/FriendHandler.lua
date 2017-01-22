@@ -82,6 +82,16 @@ function FriendHandler:getEnemyInfoInBlackListInfo( enemyDBID )
 
 end
 
+function FriendHandler:getEnemyInfoInBlackListInfoByName( enemyName )
+
+	for key,value in pairs(self._blackListInfo["enemyListInfos"]) do  
+        if value.enemyName == enemyName then
+            return self._blackListInfo["enemyListInfos"][key]
+        end
+    end
+
+end
+
 function FriendHandler:getEnemyInfosInBlackListInfo(  )
 
 	return self._blackListInfo["enemyListInfos"]
@@ -126,6 +136,16 @@ function FriendHandler:getScreenInfoInBlackListInfo( screenDBID )
 
 	for key,value in pairs(self._blackListInfo["screenListInfos"]) do  
         if value.screenDBID == screenDBID then
+            return self._blackListInfo["screenListInfos"][key]
+        end
+    end
+
+end
+
+function FriendHandler:getScreenInfoInBlackListInfoByName( screenName )
+
+	for key,value in pairs(self._blackListInfo["screenListInfos"]) do  
+        if value.screenName == screenName then
             return self._blackListInfo["screenListInfos"][key]
         end
     end

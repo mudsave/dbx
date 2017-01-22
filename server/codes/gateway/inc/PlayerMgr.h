@@ -39,6 +39,7 @@ struct PlayerInfo : public ITask
 	handle	hLink;
 	handle	hWorldLink;
 	HANDLE	hStatusTimer;
+	int		version;
 	IThreadsPool*   pThreadsPool;
 
 public:
@@ -48,17 +49,19 @@ public:
 		logoutReason(LOGOUT_REASON_INIT),
 		hLink(0), hWorldLink(0),
 		hStatusTimer(NULL),
+		version(0),
 		pThreadsPool(NULL)
 	{
 		pThreadsPool = GlobalThreadsPool();
 	}
 
-	PlayerInfo(int rId) : accountId(-1), roleId(rId),
+	PlayerInfo(int rId, int version) : accountId(-1), roleId(rId),
 		gatewayId(-1), worldId(-1),
 		status(ePlayerInitInterval),
 		logoutReason(LOGOUT_REASON_INIT),
 		hLink(0), hWorldLink(0),
 		hStatusTimer(NULL),
+		version(version),
 		pThreadsPool(NULL)
 	{
 		pThreadsPool = GlobalThreadsPool();
@@ -83,7 +86,7 @@ public:
 	~PlayerMgr(){};
 
 public:
-	PlayerInfo* regPlayer(int roleId);
+	PlayerInfo* regPlayer(int roleId, int version);
 
 	bool unregPlayer(int roleId);
 

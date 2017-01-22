@@ -11,13 +11,14 @@
 #include "session.h"
 
 AccountInfo::AccountInfo() : accountId(-1), roleId(-1), gatewayId(-1), worldId(-1),
-	status(-1), hAccountTimer(NULL), hLink(0), hPendingLink(0), inFight(false)
+	status(-1), hAccountTimer(NULL), hLink(0), hPendingLink(0), inFight(false),
+	version(0)
 {
 	pThreadsPool = GlobalThreadsPool();
 }
 
 AccountInfo::AccountInfo(int id, handle h) : accountId(id), roleId(-1), gatewayId(-1),
-	worldId(-1), status(ACCOUNT_STATE_LOGINED), hAccountTimer(NULL), hLink(h), hPendingLink(0), inFight(false)
+	worldId(-1), status(ACCOUNT_STATE_LOGINED), hAccountTimer(NULL), hLink(h), hPendingLink(0), inFight(false), version(0)
 {
 	pThreadsPool = GlobalThreadsPool();
 }
@@ -45,7 +46,6 @@ void AccountInfo::_SwitchStatus(int s)
 	int interval = -1;
 	if ( s == ACCOUNT_STATE_LOGINED ) interval = eAccountLoginedInterval;
 	else if ( s == ACCOUNT_STATE_LOADING ) interval = eAccountLoadingInterval;
-	else if ( s == ACCOUNT_STATE_LOADING_1 ) interval = eAccountLoadingOneInterval;
 	else if ( s == ACCOUNT_STATE_LOADED ) interval = eAccountLoadedInterval;
 	else if ( s == ACCOUNT_STATE_KICKING ) interval = eAccountKickingInterval;
 	else if ( s == ACCOUNT_STATE_RECONNECTING_FIGHT ) interval = eAccountReconnectingFightInterval;
@@ -67,12 +67,6 @@ HRESULT AccountInfo::Do(HANDLE hContext)
 			{
 				g_accountMgr.unregAccount(accountId);
 				TRACE1_L2("timeout(state ACCOUNT_STATE_LOADING) of Account(%i) comes..\n", accountId);
-			}
-			break;
-		case ACCOUNT_STATE_LOADING_1:
-			{
-				g_accountMgr.unregAccount(accountId);
-				TRACE1_L2("timeout(state ACCOUNT_STATE_LOADING_1) of Account(%i) comes..\n", accountId);
 			}
 			break;
 		case ACCOUNT_STATE_KICKING:

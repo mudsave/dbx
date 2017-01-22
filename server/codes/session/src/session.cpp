@@ -241,14 +241,18 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_S_G_USER_VERIFY )
 				{
 					_MsgGS_UserVerifyInfo* pInfo = (_MsgGS_UserVerifyInfo*)pMsg;
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnGateMsg(), MSG_S_G_USER_VERIFY"))
+						return;
 					int ret = IsValidPlayer(pInfo);
-					send_MsgSG_UserVerify_ResultInfo(hLink, pInfo->roleId, ret);
+					send_MsgSG_UserVerify_ResultInfo(hLink, pInfo->roleId, pInfo->version, ret);
 					return;
 				}
 
 				if ( msgId == MSG_S_G_USER_LOADED )
 				{
 					_MsgGS_UserLoginInfo* pInfo = (_MsgGS_UserLoginInfo*)pMsg;
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnGateMsg(), MSG_S_G_USER_LOADED"))
+						return;
 					g_accountMgr.unregOffFightAccount(pInfo->accountId);
 					if ( pInfo->result == 0 )
 					{
@@ -270,21 +274,12 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_S_G_USER_LOGOUT )
 				{
 					_MsgGS_UserLogoutInfo* pInfo = (_MsgGS_UserLogoutInfo*)pMsg;
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnGateMsg(), MSG_S_G_USER_LOGOUT"))
+						return;
 					int accountId	= pInfo->accountId;
 					int roleId		= pInfo->roleId;
 					int result		= pInfo->result;
 					short reason	= pInfo->reason;
-
-					if ( g_accountMgr.isRegistered(accountId) == false )
-					{
-						TRACE0_L2("CSession::OnGateMsg(), 无法获取账户信息, 可能重复收到MSG_S_G_USER_LOGOUT\n");
-						TRACE1_L2("\taccountId = %i\n", accountId);
-						TRACE1_L2("\troleId = %i\n", roleId);
-						TRACE1_L2("\tresult = %i\n", result);
-						TRACE1_L2("\treason = %i\n", reason);
-						ASSERT_(0);
-						return;
-					}
 
 					if ( result != 0 )
 					{
@@ -297,15 +292,16 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 						ASSERT_(0);
 						return;
 					}
+
+					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
 					if (pInfo->reason == 7)
 					{
+						account._SwitchStatus(ACCOUNT_STATE_LOGINED);
 						TRACE0_L2("CSession::OnGateMsg(), 玩家小退\n");
 						TRACE1_L2("\taccountId = %i\n", accountId);
 						TRACE1_L2("\troleId = %i\n", roleId);
 						return;
 					}
-
-					AccountInfo& account = g_accountMgr.getAccount(accountId);
 					TRACE0_L2("CSession::OnGateMsg(), 玩家退出\n");
 					TRACE1_L2("\taccount status = %i\n", account.status);
 					TRACE1_L2("\taccountId = %i\n", accountId);
@@ -326,13 +322,11 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_G_S_OFFLINE_IN_FIGHT)
 				{
 					_MsgGS_OfflineInFight* pInfo = (_MsgGS_OfflineInFight*)pMsg;
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnGateMsg(), MSG_G_S_OFFLINE_IN_FIGHT"))
+						return;
 					int accountId	= pInfo->accountId;
 					int roleId		= pInfo->roleId;
-					if ( g_accountMgr.isRegistered(accountId) == false )
-					{
-						return;
-					}
-					AccountInfo& account = g_accountMgr.getAccount(accountId);
+					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
 					account.gatewayId = -1;
 					account.hAccountTimer = NULL;
 					account.hLink = 0;
@@ -429,6 +423,8 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if (msgId == MSG_W_S_CLEAR_OFF_FIGHT)
 				{
 					_MsgWS_ClearOffFightInfo* pInfo = static_cast<_MsgWS_ClearOffFightInfo*>(pMsg);
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnWorldMsg(), MSG_W_S_CLEAR_OFF_FIGHT"))
+						return;
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
@@ -446,6 +442,8 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if (msgId == MSG_W_S_START_FIGHT)
 				{
 					_MsgWS_StartFight* pInfo = static_cast<_MsgWS_StartFight*>(pMsg);
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnWorldMsg(), MSG_W_S_START_FIGHT"))
+						return;
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
@@ -457,6 +455,8 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if (msgId == MSG_W_S_STOP_FIGHT)
 				{
 					_MsgWS_StopFight* pInfo = static_cast<_MsgWS_StopFight*>(pMsg);
+					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnWorldMsg(), MSG_W_S_STOP_FIGHT"))
+						return;
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);

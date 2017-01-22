@@ -576,7 +576,7 @@ function GMSystem:add_equipment( roleID, itemId, itemNum, bindFlag, blueAttrNum,
 	itemId = tonumber(itemId)
 	itemNum = tonumber(itemNum)
 	local itemConfig = tItemDB[itemId]
-	if not itemConfig then
+	if not itemConfig or itemConfig.Class ~= ItemClass.Equipment then
 		-- 找不到道具配置
 		return
 	end
@@ -587,29 +587,28 @@ function GMSystem:add_equipment( roleID, itemId, itemNum, bindFlag, blueAttrNum,
 		propertyContext.itemID = itemId
 		propertyContext.effect = 0
 		propertyContext.identityFlag = true
-		if itemConfig.Class == ItemClass.Equipment then
-			propertyContext.expireTime = itemConfig.MaxDurability*ConsumeDurabilityNeedFightTimes
-			-- 基础属性
-			g_itemMgr:generateEquipBaseAttr(propertyContext, itemConfig)
 
-			if itemConfig.Quality == ItemQuality.NoIdentify then
-				-- 设置未鉴定标志
-				propertyContext.identityFlag = false
-			else
-				-- 附加属性
-				if blueAttrNum then
-					blueAttrNum = tonumber(blueAttrNum)
-					if blueAttrNum > EquipBlueAttrMaxNum then
-						blueAttrNum = EquipBlueAttrMaxNum
-					elseif blueAttrNum <= 1 then
-						blueAttrNum = 1
-					end
+		propertyContext.expireTime = itemConfig.MaxDurability*ConsumeDurabilityNeedFightTimes
+		-- 基础属性
+		g_itemMgr:generateEquipBaseAttr(propertyContext, itemConfig)
+
+		if itemConfig.Quality == ItemQuality.NoIdentify then
+			-- 设置未鉴定标志
+			propertyContext.identityFlag = false
+		else
+			-- 附加属性
+			if blueAttrNum then
+				blueAttrNum = tonumber(blueAttrNum)
+				if blueAttrNum > EquipBlueAttrMaxNum then
+					blueAttrNum = EquipBlueAttrMaxNum
+				elseif blueAttrNum <= 1 then
+					blueAttrNum = 1
 				end
-				g_itemMgr:generateEquipAddAttr(propertyContext, itemConfig, blueAttrNum)
 			end
-			-- 绑定属性
-			g_itemMgr:generateEquipBindAttr(propertyContext, itemConfig)
+			g_itemMgr:generateEquipAddAttr(propertyContext, itemConfig, blueAttrNum)
 		end
+		-- 绑定属性
+		g_itemMgr:generateEquipBindAttr(propertyContext, itemConfig)
 		for i = 1,itemNum do
 			local equip = g_itemMgr:createItemFromContext(propertyContext, 1)
 			if equip then

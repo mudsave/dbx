@@ -589,6 +589,15 @@ function DialogAction:doAddFollowNpc(player, param, npcID)
 end
 
 function DialogAction:doEnterBeastFight(player, param, npcID)
+	local npc = g_entityMgr:getNpc(npcID)
+	if npc then
+		local beast = g_beastBlessMgr:findBeastFromList(npcID)
+		if beast then
+			g_beastBlessMgr:removeBeastFromList(beast)
+		else
+			print("$$ --->no find beast")
+		end
+	end
 	print("DialogAction:doEnterBeastFight")
 end
 

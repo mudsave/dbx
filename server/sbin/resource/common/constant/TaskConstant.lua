@@ -2,75 +2,75 @@
 
 TaskRewardList =
 {
-	player_xp		= 1,	--ç©å®¶ç»éªŒ
-	pet_xp			= 2,	--å® ç‰©ç»éªŒ
-	money			= 3,	--é“¶ä¸¤
-	subMoney		= 4,	--ç»‘é“¶
+	player_xp		= 1,	--Íæ¼Ò¾­Ñé
+	pet_xp			= 2,	--³èÎï¾­Ñé
+	money			= 3,	--ÒøÁ½
+	subMoney		= 4,	--°óÒø
 	cashMoney		= 5,
 	goldCoin		= 6,
-	player_tao		= 7,	--äººç‰©é“è¡Œ
-	pet_tao			= 8,	--å® ç‰©é“è¡Œ
-	player_pot		= 9,	--äººç‰©æ½œèƒ½
+	player_tao		= 7,	--ÈËÎïµÀĞĞ
+	pet_tao			= 8,	--³èÎïµÀĞĞ
+	player_pot		= 9,	--ÈËÎïÇ±ÄÜ
 
-	faction_cont	= 10,	--å¸®è´¡
-	faction_money	= 11,	--å¸®ä¼šèµ„é‡‘
-	faction_Fame	= 12,	--å¸®ä¼šå£°æœ›
+	faction_cont	= 10,	--°ï¹±
+	faction_money	= 11,	--°ï»á×Ê½ğ
+	faction_Fame	= 12,	--°ï»áÉùÍû
 
 }
 
---ä»»åŠ¡çŠ¶æ€
+--ÈÎÎñ×´Ì¬
 TaskStatus = {
-	Active          = 0x01, --æ­£åœ¨è¿›è¡Œ
-	Done            = 0x02, --å®Œæˆ
-	Failed          = 0x04, --å¤±è´¥
-	Finished        = 0x08, --å®Œæˆ,å·²äº¤è¿˜
-	Deleted         = 0x10, --åˆ é™¤çš„ä»»åŠ¡
-	HalfDone		= 0x20, --é‡å¤–åœ°å›¾ä»»åŠ¡é›·çš„ç‰¹æ®ŠçŠ¶æ€
-	Collection		= 0x40, --ç‰¹æ®ŠçŠ¶æ€ä¹‹é‡‡é›†è§¦å‘å™¨
+	Active          = 0x01, --ÕıÔÚ½øĞĞ
+	Done            = 0x02, --Íê³É
+	Failed          = 0x04, --Ê§°Ü
+	Finished        = 0x08, --Íê³É,ÒÑ½»»¹
+	Deleted         = 0x10, --É¾³ıµÄÈÎÎñ
+	HalfDone		= 0x20, --Ò°ÍâµØÍ¼ÈÎÎñÀ×µÄÌØÊâ×´Ì¬
+	Collection		= 0x40, --ÌØÊâ×´Ì¬Ö®²É¼¯´¥·¢Æ÷
 }
 
-----ç±»å‹2
+----ÀàĞÍ2
 TaskType2 = {
-	NewBie			= 0x01,		--æŒ‡å¼•ä»»åŠ¡
-	Main			= 0x02,		--ä¸»çº¿ä»»åŠ¡
-	Faction			= 0x04,		--å¸®ä¼šä»»åŠ¡
-	Active			= 0x08,		--æ´»åŠ¨ä»»åŠ¡
-	Daily			= 0x10,		--æ¯æ—¥
-	Copy			= 0x20,		--å‰¯æœ¬
-	Sub				= 0x40,		--æ”¯çº¿
-	Random			= 0x80,		--å¥‡é‡ä»»åŠ¡
-	SchoolExercise	= 0x100,	--é—¨æ´¾å†ç»ƒ
-	Master			= 0x200,	--å¸ˆå¾’ä»»åŠ¡
-	Challenge		= 0x400,	--æŒ‘æˆ˜ä»»åŠ¡
-	Trial			= 0x800,	--è¯•ç‚¼ä»»åŠ¡
-	Heaven			= 0x1000,	--å¤©é“ä»»åŠ¡
+	NewBie			= 0x01,		--Ö¸ÒıÈÎÎñ
+	Main			= 0x02,		--Ö÷ÏßÈÎÎñ
+	Faction			= 0x04,		--°ï»áÈÎÎñ
+	Active			= 0x08,		--»î¶¯ÈÎÎñ
+	Daily			= 0x10,		--Ã¿ÈÕ
+	Copy			= 0x20,		--¸±±¾
+	Sub				= 0x40,		--Ö§Ïß
+	Random			= 0x80,		--ÆæÓöÈÎÎñ
+	SchoolExercise	= 0x100,	--ÃÅÅÉÀúÁ·
+	Master			= 0x200,	--Ê¦Í½ÈÎÎñ
+	Challenge		= 0x400,	--ÌôÕ½ÈÎÎñ
+	Trial			= 0x800,	--ÊÔÁ¶ÈÎÎñ
+	Heaven			= 0x1000,	--ÌìµÀÈÎÎñ
 
 }
 
---å¾ªç¯ä»»åŠ¡ç›®æ ‡ç±»å‹
+--Ñ­»·ÈÎÎñÄ¿±êÀàĞÍ
 LoopTaskTargetType =
 {
-	script				= 1,		-- è„šæœ¬æˆ˜æ–—
-	talk				= 2,		-- å’ŒNPCå¯¹è¯
-	buyItem				= 3,		-- ä¹°ä¸œè¥¿
-	catchPet			= 4,		-- æ•æ‰å® ç‰©
-	partrolScript		= 5,		-- å·¡é€»æˆ˜æ–—
-	escort				= 6,		-- æŠ¤é€
-	deliverLetters		= 7,		-- é€ä¿¡
-	recovery			= 8,		-- åŠ¨æ€æ”¶é›†
-	partrolTalk			= 9,		-- å·¡é€»å¯¹è¯
-	mysteryBus			= 10,		-- ç¥ç§˜å•†äºº
-	donate				= 11,		-- æèµ 
-	paidEquip			= 12,		-- ä¸Šäº¤è£…å¤‡
-	brightMine			= 13,		-- æ˜é›·
-	-- å¤–é¢ä¸ç”¨é…ç½®
-	talkScript			= 14,		-- å¯¹è¯æˆ˜æ–—
-	itemTalk			= 15,		-- ç‰©å“æˆ˜æ–—
+	script				= 1,		-- ½Å±¾Õ½¶·
+	talk				= 2,		-- ºÍNPC¶Ô»°
+	buyItem				= 3,		-- Âò¶«Î÷
+	catchPet			= 4,		-- ²¶×½³èÎï
+	partrolScript		= 5,		-- Ñ²ÂßÕ½¶·
+	escort				= 6,		-- »¤ËÍ
+	deliverLetters		= 7,		-- ËÍĞÅ
+	recovery			= 8,		-- ¶¯Ì¬ÊÕ¼¯
+	partrolTalk			= 9,		-- Ñ²Âß¶Ô»°
+	mysteryBus			= 10,		-- ÉñÃØÉÌÈË
+	donate				= 11,		-- ¾èÔù
+	paidEquip			= 12,		-- ÉÏ½»×°±¸
+	brightMine			= 13,		-- Ã÷À×
+	-- ÍâÃæ²»ÓÃÅäÖÃ
+	talkScript			= 14,		-- ¶Ô»°Õ½¶·
+	itemTalk			= 15,		-- ÎïÆ·Õ½¶·
 
-	collectMaterials	= 16,		-- æ”¶é›†ææ–™
+	collectMaterials	= 16,		-- ÊÕ¼¯²ÄÁÏ
 }
 
-CanReceiveLoopTaskLvl = 
+CanRecetiveLoopTaskLvl = 
 {
 	[1] = 20,
 	[2] = 30,

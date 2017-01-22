@@ -12,7 +12,42 @@ function TcommitItem:__init(entity, task, param, state)
 end
 
 function TcommitItem:onCommitItem(itemsInfo)
-	if table.size(self._param.itemsInfo) == table.size(itemsInfo)then
+	for _, pItemInfo in pairs(self._param.itemsInfo) do			
+		for _, itemInfo in pairs(itemsInfo) do
+			local item = g_itemMgr:getItem(itemInfo.guid)
+			local itemID = item:getItemID()
+			if pItemInfo.itemID == itemID and pItemInfo.count <= itemInfo.count then
+				self._state = self._state + 1
+				if self:completed() then
+					local packetHandler = self._entity:getHandler(HandlerDef_Packet)
+					-- 这个地方做移除的时候，不触发监听
+					packetHandler:removeItem(itemInfo.guid, pItemInfo.count)
+
+					--上交物品成功发送客户端
+					local event = Event.getEvent(TaskEvent_SC_CommitItemResult, self._task:getID(),true)
+					g_eventMgr:fireRemoteEvent(event, self._entity)
+					
+					local privateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
+					if privateHandler:getTaskItem(self._task:getID()) then
+						privateHandler:removeTaskItem(self._task:getID())
+					end
+					if LoopTaskDB[self._task:getID()] then 
+						self._entity:getHandler(HandlerDef_Task):finishLoopTask(self._task:getID())
+					elseif NormalTaskDB[self._task:getID()] then
+						if NormalTaskDB[self._task:getID()].taskType2 == TaskType2.Main then 
+							self._task:refresh()
+						end
+					end
+				end
+			else
+				local event = Event.getEvent(TaskEvent_SC_CommitItemResult, self._task:getID(),false)
+				g_eventMgr:fireRemoteEvent(event, self._entity)
+			end
+		end
+	end
+
+
+	--[[if table.size(self._param.itemsInfo) == table.size(itemsInfo)then
 		local t_count = 0
 		for _, pItemInfo in pairs(self._param.itemsInfo) do			
 			for _, itemInfo in pairs(itemsInfo) do
@@ -55,6 +90,7 @@ function TcommitItem:onCommitItem(itemsInfo)
 			return
 		end
 	end
+	]]
 end
 
 function TcommitItem:completed()

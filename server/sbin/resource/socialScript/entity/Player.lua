@@ -22,12 +22,12 @@ function Player:__init()
 	self._offlineMsg 	= {}
 	self._handlers 		= {}
 	self._modelID		= false
-	self._curHeadTex     = 0
-	self._curBodyTex     = 0
+	self._curHeadTex    = 0
+	self._curBodyTex    = 0
 
 	self._hClientLink	= nil
 	self._hGateId		= nil
-
+	self._id			= nil
 end
 
 function Player:__release()
@@ -47,7 +47,15 @@ function Player:__release()
 	self._curBodyTex    = nil
 	self._hClientLink	= nil
 	self._hGateId		= nil
+	self._id			= nil
+end
 
+function Player:setID(id)
+	self._id = id
+end
+
+function Player:getID()
+	return self._id
 end
 
 function Player:setGatewayId( gateId )

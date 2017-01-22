@@ -33,18 +33,21 @@ struct _MsgGW_PlayerLoginInfo : public AppMsg
 	int			roleId;
 	int			gatewayId;
 	handle		hClientLink;
+	int			version;
 };
 
 struct _MsgGW_PlayerLogoutInfo : public AppMsg
 {
 	int			roleId;
 	int			reason;
+	int			version;
 };
 
 struct _MsgWG_PlayerLogin_ResultInfo : AppMsg
 {
 	int			roleId;
 	int			result;
+	int			version;
 };
 
 struct _PropPosData

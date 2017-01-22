@@ -13,6 +13,8 @@ function ServerDataCommunitySystem:__init()
 		
 		[FactionEvent_BB_UpdateWorldServerData]	= ServerDataCommunitySystem.onUpdateWorldServerData,
 		[ChatEvents_SB_SendToAround]			= ServerDataCommunitySystem.onSendToAround,
+		[ChatEvents_SB_SendToTeam]				= ServerDataCommunitySystem.onSendToTeam,
+		[ChatEvents_SB_SendToWorld]				= ServerDataCommunitySystem.onSendToWorld,
 	}
 end
 
@@ -54,6 +56,32 @@ function ServerDataCommunitySystem:onSendToAround(event)
 	local event_SendToAround = Event.getEvent(ChatEvents_SC_SendChatMsg,playerID, params[2],params[3],params[4],roleInfo,params[6])
 	RemoteEventProxy.sendToAround(event_SendToAround,player)
 
+end
+
+function ServerDataCommunitySystem:onSendToTeam(event)
+
+	local params = event:getParams()
+	local role = g_entityMgr:getPlayerByDBID(params[1])
+	local h = role:getHandler(HandlerDef_Team)
+	local teamID = h:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	local playerID = role:getID()
+	local roleInfo = {ID = playerID,name = params[5].name}
+	for _,memberInfo in pairs(team:getMemberList()) do
+		local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+		local event = Event.getEvent(ChatEvents_SC_SendChatMsg,member:getDBID(),params[2],params[3],params[4],roleInfo,params[6])
+		g_eventMgr:fireRemoteEvent(event, member)	
+	end
+
+end
+
+function ServerDataCommunitySystem:onSendToWorld(event)
+
+	local params = event:getParams()
+	local role = g_entityMgr:getPlayerByDBID(params[1])
+	local vigor = params[2]
+	role:setVigor(vigor)
+	role:flushPropBatch()
 end
 
 function ServerDataCommunitySystem.getInstance()

@@ -22,6 +22,7 @@ DialogConditionDoer =
 	[DialogCondition.CheckLoopTask] = RoleVerify.checkLoopTask,
 	[DialogCondition.HasTask_1] = RoleVerify.hasTask_1,
 	[DialogCondition.CheckLoopTasks] = RoleVerify.checkLoopTasks,
+	[DialogCondition.CheckBeastBless] = RoleVerify.checkBeastBless
 }
 
 --对话条件对应的实例
@@ -40,6 +41,7 @@ DialogConditionInstance =
 	[DialogCondition.HasFactionTask] = RoleVerify.getInstance(),
 	[DialogCondition.NotHasFactionTask] = RoleVerify.getInstance(),
 	[DialogCondition.CheckTaskTeam] = RoleVerify.getInstance(),
+	[DialogCondition.CheckBeastBless] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTask] = RoleVerify.getInstance(),
 	[DialogCondition.HasTask_1] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTasks] = RoleVerify.getInstance(),

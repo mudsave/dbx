@@ -24,7 +24,7 @@ function LoopTask:__init(taskData)
 	-- 物品奖励
 	self._itemRewards = nil
 	-- 接任务时的等级
-	self._receiveTaskLvl = nil
+	self._recetiveTaskLvl = nil
 end
 
 function LoopTask:__release()
@@ -43,7 +43,7 @@ function LoopTask:__release()
 	-- 物品奖励
 	self._itemRewards = nil
 	-- 接任务时的等级
-	self._receiveTaskLvl = nil
+	self._recetiveTaskLvl = nil
 end
 
 --公式奖励
@@ -279,7 +279,7 @@ function LoopTask:dealFormulaReward()
 	local player = g_entityMgr:getPlayerByID(self._roleID)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local curRing = taskHandler:getCurrentRing(self._taskID)
-	local level = self._receiveTaskLvl
+	local level = self._recetiveTaskLvl
 	local followPetID	= player:getFollowPetID()
 	local followPet		= followPetID and g_entityMgr:getPet(followPetID)
 	local petLevel
@@ -446,9 +446,9 @@ end
 
 -- 设置接任务等级
 function LoopTask:setReceiveTaskLvl(level)
-	self._receiveTaskLvl = level
+	self._recetiveTaskLvl = level
 end
 
 function LoopTask:getReceiveTaskLvl()
-	return self._receiveTaskLvl
+	return self._recetiveTaskLvl
 end

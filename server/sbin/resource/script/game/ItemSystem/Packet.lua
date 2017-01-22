@@ -282,7 +282,8 @@ function Packet:removeItem(itemGuid, removeNum, bUpdateClient)
 		-- 销毁源道具，不可用了
 		g_itemMgr:destroyItem(itemGuid)
 	end
-
+	local itemID = item:getItemID()
+	TaskCallBack.onRemoveItem(self.owner:getID(), itemID)
 	return result
 end
 

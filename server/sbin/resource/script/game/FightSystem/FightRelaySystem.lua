@@ -39,7 +39,7 @@ function FightRelaySystem:Route( event )
 	for _, v in pairs(players) do
 		local player = g_entityMgr:getPlayerByDBID(v.playerID)
 		if player then
-			g_world:send_MsgWS_StartFight(player:getAccountID())
+			g_world:send_MsgWS_StartFight(player:getAccountID(), player:getVersion())
 			player:setStatus(ePlayerFight)
 			player:setFighting(true)
 		end
@@ -143,7 +143,7 @@ function FightRelaySystem:FightEnd(event)
 
 	for playerID,player in pairs(rolelist) do
 		player:onWarEnded(resultMap[playerID])
-		g_world:send_MsgWS_StopFight(player:getAccountID())
+		g_world:send_MsgWS_StopFight(player:getAccountID(), player:getVersion())
 	end
 
 	for petID,pet in pairs(petlist) do
@@ -299,7 +299,7 @@ print("FightRelaySystem:QuitFight")
 			player:setActionState(player:getOldActionState())
 		end
 		player:onWarEnded(resultMap[eid])
-		g_world:send_MsgWS_StopFight(player:getAccountID())
+		g_world:send_MsgWS_StopFight(player:getAccountID(), player:getVersion())
 		notice("$$$$$ %s",eid)
 	end
 
@@ -400,7 +400,7 @@ function FightRelaySystem:_judgeAndDoOffline(results)
 			local status = player:getStatus()
 			if status == ePlayerInactiveFight then
 				local accountID = player:getAccountID()
-				g_world:send_MsgWS_ClearOffFightInfo(accountID)
+				g_world:send_MsgWS_ClearOffFightInfo(accountID, player:getVersion())
 
 			end
 			if (status == ePlayerInactiveFight) and player:getIsFightClose() then

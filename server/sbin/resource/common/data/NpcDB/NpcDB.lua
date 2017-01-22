@@ -2746,6 +2746,7 @@ NpcDB = {
 	     attrID = 16,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+		 dialogIDs = {50101},
      },
      [20910] = {
 	     name = "²ÜÓª¾«±ø",
