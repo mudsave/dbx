@@ -10,6 +10,7 @@
 #include "LinkContext.h"
 #include "session.h"
 #include "dbProxy.h"
+#include "Version.h"
 
 LinkContext_Client::~LinkContext_Client()
 {
@@ -198,8 +199,10 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 			account.roleId = roleId;
 			account.worldId = worldId;
 			account.gatewayId = gatewayId;
+			int version = GenerateVersionNum();
+			account.version = version;
 			account._SwitchStatus(ACCOUNT_STATE_LOADING);
-			g_session.send_MsgSC_ChooseRole_ResultInfo(hLink, accountId, gatewayId);
+			g_session.send_MsgSC_ChooseRole_ResultInfo(hLink, accountId, gatewayId, version);
 			_SwitchState(LINK_CONTEXT_DISCONNECTED);
 			return;
 		}
@@ -276,7 +279,7 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 				return;
 			}
 
-			if ( s == ACCOUNT_STATE_LOADING || s == ACCOUNT_STATE_LOADING_1 || s == ACCOUNT_STATE_KICKING )
+			if ( s == ACCOUNT_STATE_LOADING || s == ACCOUNT_STATE_KICKING )
 			{
 				onLoginError(LOGIN_FAILED_PROCESSING, pRet);
 				return;
@@ -287,7 +290,7 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 				doKickAccount(account, pRet);
 				return;
 			}
-			//to-do give some tips to client when cannot kick account!
+			TRACE3_L0("Account:%d login failed! status:%d, inFight:%d\n", account.accountId, s, account.inFight);
 			//ASSERT_(0);
 			return;
 		}

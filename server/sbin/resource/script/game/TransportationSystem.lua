@@ -23,8 +23,14 @@ function TransportationSystem:onUpdateFlyFlagPositionList( event )
 	local flyFlagPositionList = params[2]
 	local player = g_entityMgr:getPlayerByDBID(playerDBID)
 	if player then
-		local transportionHandler = player:getHandler(HandlerDef_Transportion)
-		transportionHandler:setFlyFlagPositionList(flyFlagPositionList)
+		local transportationHandler = player:getHandler(HandlerDef_Transportation)
+		transportationHandler:setFlyFlagPositionList(flyFlagPositionList)
+		if type(flyFlagPositionList) == "table" then
+			flyFlagPositionList = serialize(flyFlagPositionList)
+			if type(flyFlagPositionList) == "string" then
+				LuaDBAccess.UpdateWorldServerData(player:getDBID(),"flyFlagPositionList",flyFlagPositionList,0)
+			end
+		end
 	end
 end
 

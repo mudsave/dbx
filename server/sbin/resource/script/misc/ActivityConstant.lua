@@ -21,3 +21,9 @@ AtyStartType =
 	fixedMonthHour	= 3,	--每月固定时间(例如每月一号)
 	Holiday			= 4,	--节假日活动(例如五一 国庆 春节)
 }
+
+ActivityState = 
+{
+	PreOpening = 1,
+	Opening = 2,
+}

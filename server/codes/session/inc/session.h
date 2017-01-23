@@ -244,6 +244,7 @@ public:
 			msg.msgLen = sizeof(_MsgSC_Login_ResultInfo);
 			msg.msgFlags = 0;
 			msg.context	= 0;
+			msg.accountId = -1;
 			msg.result = 1;
 			msg.reason = reason;
 			IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
@@ -275,7 +276,7 @@ public:
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, msg);
 	}
 
-	void send_MsgSC_ChooseRole_ResultInfo(handle hLink, int accountId, short gatewayId)
+	void send_MsgSC_ChooseRole_ResultInfo(handle hLink, int accountId, short gatewayId, int version)
 	{
 		_MsgSC_ChooseRole_ResultInfo msg;
 		memset(&msg, 0, sizeof(msg));
@@ -286,6 +287,7 @@ public:
 		msg.context	= 0;
 		msg.hLink = hLink;
 		msg.accountId = accountId;
+		msg.version = version;
 		bool isExit = false;
 		for ( GateMap::iterator iter = m_gates.begin(); iter != m_gates.end(); iter++ )
 		{
@@ -325,6 +327,7 @@ public:
 		msg.context	= 0;
 		msg.accountId = account.accountId;
 		msg.roleId = account.roleId;
+		msg.version = account.version;
 		LinkContext_Gate* pContext = getGateLinkById(account.gatewayId);
 		IMsgLinksImpl<IID_IMsgLinksGS_L>::SendMsg(pContext->hLink, &msg);
 	}
@@ -342,6 +345,7 @@ public:
 		msg.roleId = account.roleId;
 		msg.worldId = account.worldId;
 		msg.gatewayId = account.gatewayId;
+		msg.version = account.version;
 		bool isExit =false;
 		for ( GateMap::iterator iter = m_gates.begin(); iter != m_gates.end(); iter++ )
 		{
@@ -422,7 +426,7 @@ public:
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
-	void send_MsgSG_UserVerify_ResultInfo(handle hLink, int roleId, int ret)
+	void send_MsgSG_UserVerify_ResultInfo(handle hLink, int roleId, int version, int ret)
 	{
 		_MsgSG_UserVerify_ResultInfo msg;
 		msg.msgCls = MSG_CLS_LOGIN;
@@ -432,6 +436,7 @@ public:
 		msg.context	= 0;
 		msg.roleId = roleId;
 		msg.result = ret;
+		msg.version = version;
 		IMsgLinksImpl<IID_IMsgLinksGS_L>::SendMsg(hLink, &msg);
 	}
 
@@ -610,6 +615,26 @@ public:
 		if ( account.worldId != pInfo->worldId )
 			return 6;
 		return 0;
+	}
+
+public:
+	bool verifyVersion(int tAccountId, int tVersion, const char* msg)	
+	{
+		if (!g_accountMgr.isRegistered(tAccountId))	
+		{
+			TRACE2_L2("%s, Account %d is not exists!\n", msg, tAccountId);
+			return false;
+		}
+		AccountInfo& account = g_accountMgr.getAccount(tAccountId);
+		if (tVersion != account.version)
+		{
+			TRACE1_L2("%s, Role Version Is Wrong!\n", msg);
+			TRACE1_L2("\taccountId = %i\n", tAccountId);
+			TRACE1_L2("\tversion = %i\n", tVersion);
+			TRACE1_L2("\taccount version = %i\n", account.version);
+			return false;
+		}
+		return true	;
 	}
 
 public:

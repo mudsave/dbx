@@ -58,6 +58,7 @@ function System._LoadSocialServerData(player, socialServerData)
 		thisWeekFactionContribute = player:getThisWeekFactionContribute() ,
 		lastWeekFactionContribute = player:getLastWeekFactionContribute(),
 		intradayFactionContribute = player:getIntradayFactionContribute(),
+		roleID = player:getID(),
 	}
 	print("准备发送数据到社会服")
 	local event = Event.getEvent(SocialEvent_SB_Enter, basicInfo)
@@ -165,6 +166,11 @@ function System.OnPlayerLogout(player, reason)
 	g_mailMgr:update2DB(player:getDBID())
 	g_mailMgr:removeMailBox(player:getDBID())
 
+	g_tradeMgr:releaseTrade(player:getID())
+
+	--玩家下线退出队伍
+	g_teamMgr:onPlayerCheckOut(player)
+
 	local event = Event.getEvent(SocialEvent_BB_ExitWorld,player:getDBID())
 	g_eventMgr:fireWorldsEvent(event, SocialWorldID)
 
@@ -190,7 +196,7 @@ function System.onPlayerReAttached(player)
 	if status == ePlayerInactiveFight then
 		player:setStatus(ePlayerFight)
 		local accountID = player:getAccountID()
-		g_world:send_MsgWS_ClearOffFightInfo(accountID)
+		g_world:send_MsgWS_ClearOffFightInfo(accountID, player:getVersion())
 		local fightServerID = player:getFightServerID()
 		local event = Event(FrameEvents_SS_playerOnLine, player:getDBID(),OnlineReason.Reattach)
 		g_eventMgr:fireWorldsEvent(event,fightServerID)
@@ -208,7 +214,7 @@ function System.onPlayerDettached(player)
 		player:setStatus(ePlayerInactiveFight)
 		local gateLink = player:getGateLink()
 		local DBID =  player:getDBID()
-		g_world:send_MsgWG_OfflineInFight(gateLink, DBID)
+		g_world:send_MsgWG_OfflineInFight(gateLink, DBID, player:getVersion())
 		player:setStatus(ePlayerInactiveFight)
 		player:setIsFightClose(false)
 		local fightServerID = player:getFightServerID()

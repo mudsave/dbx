@@ -30,11 +30,7 @@ EquipItemConsumeDB =
 	},
 	[EquipPlaying.AttrImprove] =
 	{
-		[20] = {BitemID = 3110143,itemID = 1110143,itemNum = 1},
-		[30] = {BitemID = 3110143,itemID = 1110143,itemNum = 1},
-		[40] = {BitemID = 3110143,itemID = 1110143,itemNum = 1},
-		[50] = {BitemID = 3110143,itemID = 1110143,itemNum = 1},
-		[60] = {BitemID = 3110143,itemID = 1110143,itemNum = 1},
+		BitemID = 3110143,itemID = 1110143,itemNum = 1
 	},
 	[EquipPlaying.EquipRemould] =
 	{
@@ -46,6 +42,7 @@ EquipItemConsumeDB =
 			[6] = {BitemID = 1110070,itemID = 1110138,itemNum = 3},
 			[7] = {BitemID = 1110070,itemID = 1110138,itemNum = 4},
 			[8] = {BitemID = 1110070,itemID = 1110138,itemNum = 5},
+			[9] = {BitemID = 1110070,itemID = 1110138,itemNum = 6},
 		},
 	},
 	[EquipPlaying.AdornMake] =

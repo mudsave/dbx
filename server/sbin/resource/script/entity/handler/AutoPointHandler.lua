@@ -83,7 +83,6 @@ function AutoPointHandler:__init(entity)
 	self.auto_phase		= false									-- 是否自动分配相性
 	self.order			= DefOrder								-- 相性属性分配顺序
 	self.planID			= self.entity:getEntityType()			-- 属性点分配方案
-	print("--ININT----self.planID",self.planID)
 	self.distribution	= nil									-- 每个属性的分配比例，总值不能超过五
 end
 
@@ -92,10 +91,10 @@ function AutoPointHandler:loadDB(attrRecord)
 
 	local setting = attrRecord and attrRecord[1]
 	if not setting then
-		return false	--没有属性自动分配记录
+		return false
 	end
 
-	local planID = setting.planID	-- 记录为玩家还是宠物或者是自定义
+	local planID = setting.planID
 	local distribution
 	if flag[planID] then
 		self.planID = planID
@@ -238,7 +237,7 @@ function AutoPointHandler:distibutePhasePoints()
 		print "没有点数"
 		return
 	end
-	local half_all = entity:getLevel() - 19		--一半的所有点数，在一个属性上不能分配超过一半所有相性点
+	
 	local allocted = false
 	local order = self.order
 	for index = 1,3 do
@@ -246,7 +245,7 @@ function AutoPointHandler:distibutePhasePoints()
 		if attrName and attrName > 0 then
 			local points = entity:getAttrValue(attrName)
 			local point2add = math_min(
-				freePoint,MaxPhasePoint - points,half_all - points
+				freePoint,MaxPhasePoint - points
 			)
 			if point2add > 0 then
 				entity:addAttrValue(attrName,point2add)

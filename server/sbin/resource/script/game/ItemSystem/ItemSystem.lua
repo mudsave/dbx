@@ -330,7 +330,6 @@ function ItemSystem:onDestroyItem(event)
 		local packetHandler = player:getHandler(HandlerDef_Packet)
 		local itemID = item:getItemID()
 		packetHandler:getPacket():removeItem(itemGuid, 0, true)
-		TaskCallBack.onRemoveItem(player:getID(), itemID)
 		return
 	elseif packContainerID == PackContainerID.Depot then
 		-- 仓库

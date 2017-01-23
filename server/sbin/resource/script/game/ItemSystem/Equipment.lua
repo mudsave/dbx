@@ -28,8 +28,6 @@ function Equipment:__init(itemId, itemNum)
 	self.refiningEffect = nil
 	-- 套装属性
 	self.suitEffect = nil
-	--强化完成度
-	self.completeness = 0
 	-- 绑定标志，true为绑定，
 	self.bindFlag = false
 end
@@ -169,16 +167,6 @@ function Equipment:getIdentityFlag()
 	return self.identityFlag
 end
 
--- 设置强化完成度
-function Equipment:setCompleteness(completeness)
-	self.completeness = completeness
-end
-
--- 获取强化完成度
-function Equipment:getCompleteness()
-	return self.completeness
-end
-
 -- 设置属性效果
 function Equipment:setEffect(context)
 	if context.baseEffect then
@@ -236,10 +224,6 @@ function Equipment:setPropertyContext(context)
 		self:setIdentityFlag(context.identityFlag)
 	end
 
-	if context.completeness then
-		self:setCompleteness(context.completeness)
-	end
-
 	if context.baseEffect and type(context.baseEffect) == "string" then
 		context.baseEffect = unserialize(context.baseEffect)
 	end
@@ -268,9 +252,7 @@ function Equipment:getPropertyContext()
 	context.remouldAttr = self:getRemouldAttr()
 	context.baseEffect, context.addEffect, context.bindEffect, context.refiningEffect = self:getEffect()
 	context.identityFlag = self:getIdentityFlag()
-	context.completeness = self:getCompleteness()
 	context.suitAttr = self:getSuitAttr()
-	print("---------套装属性-----d----",toString(context.suitAttr))
 	return context
 end
 
@@ -293,25 +275,8 @@ function Equipment:onEquip(player)
 	-- 更新装备外观
 	self:updatePlayerShowParts(player, equipConfig, true)
 
-	-- 基础属性
-	if equipConfig.BaseAttrTypeA then
-		player:addAttrValue(equipConfig.BaseAttrTypeA, equipConfig.BaseAttrValueA)
-	end
-	if equipConfig.BaseAttrTypeB then
-		player:addAttrValue(equipConfig.BaseAttrTypeB, equipConfig.BaseAttrValueB)
-	end
-	if equipConfig.BaseAttrTypeC then
-		player:addAttrValue(equipConfig.BaseAttrTypeC, equipConfig.BaseAttrValueC)
-	end
-	-- 附加属性
-	self:updateAddAttr(player, true)
-	-- 绑定属性
-	self:updateBindAttr(player, true)
-	-- 炼化属性
-	self:updateRefiningAttr(player, true)
-
-	player:flushPropBatch()
-
+	-- 装备属性
+	self:updateEquipAttr(player, true)
 	--通知任务系统
 	TaskCallBack.onWearEquip(player:getID(), self.itemID)
 end
@@ -330,31 +295,29 @@ function Equipment:unEquip(player)
 	-- 更新装备外观
 	self:updatePlayerShowParts(player, equipConfig, false)
 
-	-- 去掉基础属性
-	if equipConfig.BaseAttrTypeA then
-		player:addAttrValue(equipConfig.BaseAttrTypeA, -equipConfig.BaseAttrValueA)
-	end
-	if equipConfig.BaseAttrTypeB then
-		player:addAttrValue(equipConfig.BaseAttrTypeB, -equipConfig.BaseAttrValueB)
-	end
-	if equipConfig.BaseAttrTypeC then
-		player:addAttrValue(equipConfig.BaseAttrTypeC, -equipConfig.BaseAttrValueC)
-	end
-	-- 去掉附加属性
-	self:updateAddAttr(player, false)
-	-- 去掉绑定属性
-	self:updateBindAttr(player, false)
-	-- 去掉炼化属性
-	self:updateRefiningAttr(player, false)
-
-	player:flushPropBatch()
+	-- 去掉装备属性
+	self:updateEquipAttr(player, false)
 
 	--通知任务系统
 	TaskCallBack.onDownEquip(player:getID(), self.itemID)
 end
 
--- 更新附加属性
-function Equipment:updateAddAttr(player, isEquip)
+-- 更新装备属性
+function Equipment:updateEquipAttr(player, isEquip)
+	--基础属性
+	for i = 1, table.getn(self.baseEffect or {}) do
+		local attrID = self.baseEffect[i][1]
+		if attrID > 0 then
+			local attrValue = self.baseEffect[i][2]
+			if isEquip then
+				player:addAttrValue(attrID, attrValue)
+			else
+				player:addAttrValue(attrID, -attrValue)
+			end
+		end
+	end
+
+	--附加属性
 	for i = 1, table.getn(self.addEffect or {}) do
 		local attrID = self.addEffect[i][1]
 		if attrID > 0 then
@@ -366,27 +329,21 @@ function Equipment:updateAddAttr(player, isEquip)
 			end
 		end
 	end
-end
 
--- 更新绑定属性
-function Equipment:updateBindAttr(player, isEquip)
-	if not self:getBindFlag() then
-		-- 只有绑定后，绑定属性才会有效果
-		return
-	end
-	for i = 1, table.getn(self.bindEffect or {}) do
-		local attrID = self.bindEffect[i][1]
-		local attrValue = self.bindEffect[i][2]
-		if isEquip then
-			player:addAttrValue(attrID, attrValue)
-		else
-			player:addAttrValue(attrID, -attrValue)
+	--绑定属性
+	if self:getBindFlag() then
+		for i = 1, table.getn(self.bindEffect or {}) do
+			local attrID = self.bindEffect[i][1]
+			local attrValue = self.bindEffect[i][2]
+			if isEquip then
+				player:addAttrValue(attrID, attrValue)
+			else
+				player:addAttrValue(attrID, -attrValue)
+			end
 		end
 	end
-end
 
--- 更新炼化属性
-function Equipment:updateRefiningAttr(player, isEquip)
+	--炼化属性
 	if self.refiningEffect then
 		local attr = self.refiningEffect.attr
 		local attrID = attr[1]
@@ -420,7 +377,6 @@ function Equipment:updatePlayerShowParts(player, equipConfig, onEquip)
 				local subStr = string.sub(str,j+2,string.len(str))
 				i,j = string.find(subStr,"%d+")
 				bodyTex = toNumber(string.sub(subStr,i,j))
-
 				if configModelID and curModelID ~= configModelID then
 					player:setModelID(configModelID)
 				end

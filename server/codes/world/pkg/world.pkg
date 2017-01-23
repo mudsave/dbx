@@ -5,13 +5,13 @@ $#include "world.h"
 
 class CWorld{
 public:
-	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int result);
-	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int result, int reason);
+	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int version, int result);
+	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int version, int result, int reason);
 	int send_MsgWG_WorldPlayersLogout_ResultInfo(short worldId);
-	int send_MsgWG_OfflineInFight(handle hLink, int roleId);
-	int send_MsgWS_ClearOffFightInfo(int accountId);
-	int send_MsgWS_StartFight(int accountId);
-	int send_MsgWS_StopFight(int accountId);
+	int send_MsgWG_OfflineInFight(handle hLink, int roleId, int version);
+	int send_MsgWS_ClearOffFightInfo(int accountId, int version);
+	int send_MsgWS_StartFight(int accountId, int version);
+	int send_MsgWS_StopFight(int accountId, int version);
 };
 
 CWorld g_world;

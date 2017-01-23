@@ -1,9 +1,9 @@
 --[[EventConstant.lua
---描述:
-	提示消息相关常量(和客户端脚本的MessageSets.lua对应)
+--鎻忚堪:
+	鎻愮ず娑堟伅鐩稿叧甯搁噺(鍜屽鎴风鑴氭湰鐨凪essageSets.lua瀵瑰簲)
 ]]
 
---消息组iD(以后下面添加)
+--娑堟伅缁刬D(浠ュ悗涓嬮潰娣诲姞)
 eventGroup_Item			    = 1
 eventGroup_Ectype			= eventGroup_Item + 1
 eventGroup_Team			    = eventGroup_Item + 2
@@ -29,12 +29,12 @@ eventGroup_UseSkill			= eventGroup_Item + 21
 eventGroup_SystemSet		= eventGroup_Item + 22
 
 
---------------------每个业务系统的消息ID常量----------------
---物品
+--------------------姣忎釜涓氬姟绯荤粺鐨勬秷鎭疘D甯搁噺----------------
+--鐗╁搧
 ItemMsgID_1 = 1
 ItemMsgID_2 = 2
 
---副本
+--鍓湰
 CopyMsgID_1 = 1
 CopyMsgID_2 = 2
 CopyMsgID_3 = 2

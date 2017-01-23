@@ -228,4 +228,31 @@ function TaskFactory:buildTaskTarget(player, task, targetsData, taskData)
 	return true
 end
 
+function TaskFactory:createDailyTask( player,taskID )
+	
+	local dailyTaskData = DailyTaskDB[taskID]
+	local dailyTask = DailyTask()
+	dailyTask:setID(taskID)
+	dailyTask:setType(TaskType.normal)
+	dailyTask:setRewards(dailyTaskData.rewards)
+	dailyTask:setTriggers(dailyTaskData.triggers)
+	dailyTask:setSubType(dailyTaskData.taskType2)
+	dailyTask:setRoleID(player:getID())
+	if dailyTaskData.limitTime then
+		dailyTask:setStartTime(os.time())
+		dailyTask:setEndTime(dailyTaskData.limitTime)
+	end
+	local hasTarget = self:buildTaskTarget(player, dailyTask, dailyTaskData.targets)
+	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
+	if hasTarget then
+		dailyTask:stateChange(TaskStatus.Active)
+	else
+		dailyTask:stateChange(TaskStatus.Done)
+	end
+	return dailyTask
+
+
+end
+
+
 g_taskFty = TaskFactory()

@@ -461,6 +461,8 @@ local function initFirstLoginAttr(self)
 end
 
 function Player:setLevel(level, fromDB)
+
+
 	self.level = level
 	self:setAttrValue(player_lvl,level)
 	initFirstLoginAttr(self)
@@ -470,9 +472,7 @@ function Player:setLevel(level, fromDB)
 		packetHandler:updateLevelPack()
 	end
 	-- 等级变化通知任务系统
-	if not fromDB then
-		g_taskDoer:onUpLevel(self, level)
-	end
+	g_taskDoer:notifyTaskSystem(self._id, level, fromDB)
 end
 
 function Player:getLevel()

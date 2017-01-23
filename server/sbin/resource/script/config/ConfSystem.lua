@@ -84,4 +84,7 @@ function loadSystem()
 	g_RoleConfigMgr		= RoleConfigManager.getInstance()
 	g_dropMgr			= DropManager.getInstance()
 	g_mailMgr			= MailManager.getInstance()
+	
+	-- 瑞兽降临活动
+	g_beastBlessMgr		= BeastBlessManager.getInstance()
 end

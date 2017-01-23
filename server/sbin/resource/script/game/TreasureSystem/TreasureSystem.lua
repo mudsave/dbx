@@ -14,6 +14,7 @@ function TreasureSystem:__init()
 	self._doer = 
 	{
 		[FightEvents_SS_FightEnd_afterClient]	= TreasureSystem.onFightEnd,
+		[TreasureEvent_CS_SendPositionInfo]   = TreasureSystem.onGetPositionInfo,
 	}
 end
 
@@ -55,6 +56,24 @@ function TreasureSystem:onFightEnd(event)
 			end
 		end
 	end
+end
+
+
+function TreasureSystem:onGetPositionInfo(event)
+	local params = event:getParams()
+	local playerID = event.playerID
+	if not playerID then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if not player then
+		return
+	end
+	local tarPosition = params[1]
+	local guid = params[2]
+	
+	local treasureHandler = player:getHandler(HandlerDef_Treasure)
+	treasureHandler:setTransferPosition(guid,tarPosition)
 end
 
 function TreasureSystem.getInstance()

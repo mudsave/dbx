@@ -155,13 +155,14 @@ FriendMsgTextKeyTable = {
 
 FactionMsgTextKeyTable = {
 
-    AlreadyInBlackList = 1,
-    AlreadyHaveFaction = 2,
-    FactionMembersIsEnough = 3,
-    FactionNameExist    =4,
-    MsgSendSucceed      = 5,
-    LevelIsNotEnough    = 6,
-    MoneyIsNotEnough    = 7,
+    AlreadyInBlackList      = 1,
+    AlreadyHaveFaction      = 2,
+    FactionMembersIsEnough  = 3,
+    FactionNameExist        = 4,
+    MsgSendSucceed          = 5,
+    LevelIsNotEnough        = 6,
+    MoneyIsNotEnough        = 7,
+    CantEnterFactionScene   = 8,
 
 }
 

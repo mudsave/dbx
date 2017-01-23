@@ -113,6 +113,9 @@ function Performable:onSkillAction(dest)
 	if self.skillType == Skill_Type.Gathering then
 		local round = self._gatheringRound or 0
 		self._gatheringRound = round + 1
+		if self._gatheringRound > 1 then 
+			self._gatheringRound = nil 
+		end 
 	end
 	return count
 end

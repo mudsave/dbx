@@ -119,34 +119,40 @@ end
 function Treasure:generateRandMapData()
 	-- 随机地图ID
 	self:doRandMapID()
-	-- 随机宝藏坐标
-	self:doRandPosion()
-	-- 随机附近的坐标
-	self:doRandNearPosition()
 end  
 
 -- 根据传入的数据生成宝藏所在地图数据
 function Treasure:setMapData(context)
 	self.mapID = context.mapID
 	self.posX = context.posX
-	self.posY = context.posY
+	self.posX = context.posY
 	self.nearPosX = context.nearPosX
 	self.nearPosY = context.nearPosY
 	self.tipState = context.tipState
 end
 
--- 随机地图ID
+
 function Treasure:doRandMapID()
 	local MapConfig = tTreasureInMapDB[self.config.TMapID]
 	local newMapTable = TreasureUtils.RandNewTableByLevelLimit(self.owner,MapConfig.MapValues)
 	local tEvent = TreasureUtils.randTreasureEvent(newMapTable)
 	self.mapID = tEvent.MapID
+	local event = Event.getEvent(TreasureEvent_SC_MapIDInfo, self.mapID,self.guid)
+	g_eventMgr:fireRemoteEvent(event, self.owner)
 end
 
 -- 随机坐标
-function Treasure:doRandPosion()
-	-- 调用场景中的位置随机函数
-	self.posX, self.posY = g_sceneMgr:getRandomPosition(self.mapID)
+function Treasure:doRandPosion(transferPosdDate)	
+		-- 调用场景中的位置随机函数
+		posX, posY = g_sceneMgr:getRandomPosition(self.mapID)
+		if transferPosdDate[1] == posX and transferPosdDate[2] == posY then
+			return self:setTransferPosition(transferPosdDate)
+		else 
+		   self.posX = posX
+		   self.posY = posY
+		end 
+	-- 随机附近的坐标
+	self:doRandNearPosition()
 end
 
 -- 随机附近的坐标

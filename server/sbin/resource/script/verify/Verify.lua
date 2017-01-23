@@ -1,5 +1,5 @@
 --[[verify.lua
-	¼ì²âÌõ¼ş
+	æ£€æµ‹æ¡ä»¶
 ]]
 
 require "verify.RoleVerify"

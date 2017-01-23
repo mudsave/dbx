@@ -166,7 +166,7 @@ function FriendSystem:onAddFriend(event)
 	else
 		friendName = params[2]
 	end
-	
+	print("roleDBID",roleDBID)
 	local role = g_playerMgr:getPlayerByDBID(roleDBID)
 	local roleName = role:getName()
 
@@ -452,37 +452,36 @@ function FriendSystem:onAddPlayerToBlcaklistInScreen(event)
 			screenInfo.screenDBID = DBID
 			playerDBID = DBID
 		end
-	else
-		roleFriendHandler:addScreenInfoToBlackListInfo(screenInfo)
-		--判断当前玩家是否已经是角色好友，如果是，则删除好友关系，如果不是，则更新数据库
-		local friend = roleFriendHandler:getFriend(playerDBID)
-		if friend then
-			roleFriendHandler:deleteFriend(playerDBID)
-			--发送事件到对方客户端
-			local player = g_playerMgr:getPlayerByDBID(playerDBID)
-			local playerLoaded = g_playerMgr:getLoadedPlayerByDBID(playerDBID)
-			if playerLoaded then
-				local playerFriendHandler = playerLoaded:getHandler(HandlerDef_Friend)
-				playerFriendHandler:deleteFriend(roleDBID)
-			end
-
-			if player then
-				local event = Event.getEvent(FriendEvent_BC_DeleteFriendInfoList,roleDBID)
-				g_eventMgr:fireRemoteEvent(event,player)
-			end
-
-			local event_UpdateBlackList = Event.getEvent(FriendEvent_BC_AddPlayerToBlcaklistInScreen,playerDBID,screenInfo)
-			g_eventMgr:fireRemoteEvent(event_UpdateBlackList,role)
-
-			LuaDBAccess.updateFriend(roleDBID,playerDBID,0,1)
-			LuaDBAccess.deleteFriend(playerDBID,roleDBID)
-		else
-
-			local event_UpdateBlackList = Event.getEvent(FriendEvent_BC_AddPlayerToBlcaklistInScreen,roleDBID,screenInfo)
-			g_eventMgr:fireRemoteEvent(event_UpdateBlackList,role)
-			LuaDBAccess.addFriend(roleDBID,playerDBID,0,1)
-
+	end
+	roleFriendHandler:addScreenInfoToBlackListInfo(screenInfo)
+	--判断当前玩家是否已经是角色好友，如果是，则删除好友关系，如果不是，则更新数据库
+	local friend = roleFriendHandler:getFriend(playerDBID)
+	if friend then
+		roleFriendHandler:deleteFriend(playerDBID)
+		--发送事件到对方客户端
+		local player = g_playerMgr:getPlayerByDBID(playerDBID)
+		local playerLoaded = g_playerMgr:getLoadedPlayerByDBID(playerDBID)
+		if playerLoaded then
+			local playerFriendHandler = playerLoaded:getHandler(HandlerDef_Friend)
+			playerFriendHandler:deleteFriend(roleDBID)
 		end
+
+		if player then
+			local event = Event.getEvent(FriendEvent_BC_DeleteFriendInfoList,roleDBID)
+			g_eventMgr:fireRemoteEvent(event,player)
+		end
+
+		local event_UpdateBlackList = Event.getEvent(FriendEvent_BC_AddPlayerToBlcaklistInScreen,playerDBID,screenInfo)
+		g_eventMgr:fireRemoteEvent(event_UpdateBlackList,role)
+
+		LuaDBAccess.updateFriend(roleDBID,playerDBID,0,1)
+		LuaDBAccess.deleteFriend(playerDBID,roleDBID)
+	else
+
+		local event_UpdateBlackList = Event.getEvent(FriendEvent_BC_AddPlayerToBlcaklistInScreen,roleDBID,screenInfo)
+		g_eventMgr:fireRemoteEvent(event_UpdateBlackList,role)
+		LuaDBAccess.addFriend(roleDBID,playerDBID,0,1)
+
 	end
 
 end

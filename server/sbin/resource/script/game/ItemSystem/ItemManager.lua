@@ -63,7 +63,7 @@ function ItemManager:randomAttr(propertyContext,attrTypeDB,itemConfig)
 		if attrValueLimit then
 			local attrValue = math.random(attrValueLimit.lower_limit * multiple, attrValueLimit.upper_limit * multiple)
 			attrValue = attrValue / multiple
-			table.insert(propertyContext.addEffect,{attrID,attrValue})
+			table.insert(propertyContext.addEffect,{attrID,attrValue,0})
 		else
 			print("AddAttrValueDB未定义指定等级，attrID，UseNeedLvl", attrID, itemConfig.UseNeedLvl)
 		end
@@ -78,31 +78,31 @@ function ItemManager:generateEquipAddAttr(propertyContext, itemConfig, blueAttrN
 	if not blueAttrNum and itemConfig.AddAttrTypeBlueA and itemConfig.AddAttrValueBlueA then
 		-- 走装备表配置
 		local equipQuality = itemConfig.Quality
-		table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueA,itemConfig.AddAttrValueBlueA})
+		table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueA,itemConfig.AddAttrValueBlueA,0})
 		if itemConfig.AddAttrTypeBlueB and itemConfig.AddAttrValueBlueB then
-			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueB,itemConfig.AddAttrValueBlueB})
+			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueB,itemConfig.AddAttrValueBlueB,0})
 		else
-			table.insert(propertyContext.addEffect,{0,0})
+			table.insert(propertyContext.addEffect,{0,0,0})
 		end
 		if itemConfig.AddAttrTypeBlueC and itemConfig.AddAttrValueBlueC then
-			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueC,itemConfig.AddAttrValueBlueC})
+			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeBlueC,itemConfig.AddAttrValueBlueC,0})
 		else
-			table.insert(propertyContext.addEffect,{0,0})
+			table.insert(propertyContext.addEffect,{0,0,0})
 		end
 		if itemConfig.AddAttrTypePink and itemConfig.AddAttrValuePink and equipQuality >= ItemQuality.Pink then
-			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypePink,itemConfig.AddAttrValuePink})
+			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypePink,itemConfig.AddAttrValuePink,0})
 		else
-			table.insert(propertyContext.addEffect,{0,0})
+			table.insert(propertyContext.addEffect,{0,0,0})
 		end
 		if itemConfig.AddAttrTypeGold and itemConfig.AddAttrValueGold and equipQuality >= ItemQuality.Gold then
-			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeGold,itemConfig.AddAttrValueGold})
+			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeGold,itemConfig.AddAttrValueGold,0})
 		else
-			table.insert(propertyContext.addEffect,{0,0})
+			table.insert(propertyContext.addEffect,{0,0,0})
 		end
 		if itemConfig.AddAttrTypeGreen and itemConfig.AddAttrValueGreen and equipQuality >= ItemQuality.Green then
-			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeGreen,itemConfig.AddAttrValueGreen})
+			table.insert(propertyContext.addEffect,{itemConfig.AddAttrTypeGreen,itemConfig.AddAttrValueGreen,0})
 		else
-			table.insert(propertyContext.addEffect,{0,0})
+			table.insert(propertyContext.addEffect,{0,0,0})
 		end
 	else
 		local AddAttrTypeList = {}
@@ -130,7 +130,7 @@ function ItemManager:generateEquipAddAttr(propertyContext, itemConfig, blueAttrN
 					if i <= blueAttrNum then
 						self:randomAttr(propertyContext,attrTypeDB,itemConfig)
 					else
-						table.insert(propertyContext.addEffect,{0,0})
+						table.insert(propertyContext.addEffect,{0,0,0})
 					end
 				end
 				local equipQuality = itemConfig.Quality
@@ -473,7 +473,6 @@ function ItemManager:saveItemsData(player)
 							equipStringData = equipStringData.."nil".."-"
 						end
 						equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
-						equipStringData = equipStringData..propertyContext.completeness.."-"
 
 						equipSaveNumber = equipSaveNumber + 1
 						if equipSaveNumber >= maxEquipSaveNumber then
@@ -557,7 +556,6 @@ function ItemManager:saveItemsData(player)
 						equipStringData = equipStringData.."nil".."-"
 					end
 					equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
-					equipStringData = equipStringData..propertyContext.completeness.."-"
 
 					equipSaveNumber = equipSaveNumber + 1
 					if equipSaveNumber >= maxEquipSaveNumber then
@@ -616,7 +614,6 @@ function ItemManager:saveItemsData(player)
 				equipStringData = equipStringData.."nil".."-"
 			end
 			equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
-			equipStringData = equipStringData..propertyContext.completeness.."-"
 
 			if equipSaveNumber >= maxEquipSaveNumber then
 				-- 请求数据库保存装备数据

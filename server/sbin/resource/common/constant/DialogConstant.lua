@@ -1,17 +1,17 @@
 -- common.constant.DialogConstant.lua
 
---å¯¹è¯æ¡ä»¶ç±»å‹
+--¶Ô»°Ìõ¼şÀàĞÍ
 DialogCondition =
 {
-	Level = 1,				--ç­‰çº§æ¡ä»¶
-	HasTask = 2,			--ä»»åŠ¡æ¡ä»¶
-	School = 3,				--é—¨æ´¾æ¡ä»¶
-	Team = 4,				--ç»„é˜Ÿæ¡ä»¶
-	Currency = 5,			--è´§å¸æ¡ä»¶
-	Attr	= 6,			--æˆ˜ç»©æ¡ä»¶
-	HasTasks = 7,			--å«æœ‰å¤šä¸ªä»»åŠ¡(ç›¸äº’ä¹‹é—´æ˜¯æˆ–å…³ç³»)
-	Faction = 8,			--å¸®æ´¾æ¡ä»¶
-	CheckOwner = 9,			--npcç»‘å®šç©å®¶æ¡ä»¶
+	Level = 1,				--µÈ¼¶Ìõ¼ş
+	HasTask = 2,			--ÈÎÎñÌõ¼ş
+	School = 3,				--ÃÅÅÉÌõ¼ş
+	Team = 4,				--×é¶ÓÌõ¼ş
+	Currency = 5,			--»õ±ÒÌõ¼ş
+	Attr	= 6,			--Õ½¼¨Ìõ¼ş
+	HasTasks = 7,			--º¬ÓĞ¶à¸öÈÎÎñ(Ïà»¥Ö®¼äÊÇ»ò¹ØÏµ)
+	Faction = 8,			--°ïÅÉÌõ¼ş
+	CheckOwner = 9,			--npc°ó¶¨Íæ¼ÒÌõ¼ş
 	LoopTaskTalk = 10,
 	HasFactionTask = 11,
 	NotHasFactionTask = 12,
@@ -19,77 +19,79 @@ DialogCondition =
 	CheckLoopTask = 14,
 	HasTask_1 = 15,
 	CheckLoopTasks = 16,
+	CheckBeastBless = 17,
 }
 
---å¯¹è¯ç±»å‹
+--¶Ô»°ÀàĞÍ
 DialogType =
 {
-	HasOption	= 1,		--æœ‰é€‰é¡¹å¯¹è¯
-	FunctionOption = 2,		--ç‰¹æ®Šç±»å‹å¯¹è¯
-	NotOption	= 3,		--æ— é€‰é¡¹å¯¹è¯
-	Error	= 4,			--é”™è¯¯å¯¹è¯
+	HasOption	= 1,		--ÓĞÑ¡Ïî¶Ô»°
+	FunctionOption = 2,		--ÌØÊâÀàĞÍ¶Ô»°
+	NotOption	= 3,		--ÎŞÑ¡Ïî¶Ô»°
+	Error	= 4,			--´íÎó¶Ô»°
 }
 
---å¯¹è¯é€‰é¡¹åŠŸèƒ½
+--¶Ô»°Ñ¡Ïî¹¦ÄÜ
 DialogActionType =
 {
-	SwithScene			= 1,		-- åˆ‡æ¢åœºæ™¯
-	Goto				= 2,		-- è·³è½¬å¯¹è¯
-	EnterFight			= 3,		-- è¿›å…¥æˆ˜æ–—
-	EnterScriptFight	= 4,		-- è¿›å…¥è„šæœ¬æˆ˜æ–—
-	EnterEctype			= 5,		-- è¿›å…¥å‰¯æœ¬
-	RingEctype			= 6,		-- è¿ç¯å‰¯æœ¬1
-	EnterRingEctype		= 7,		-- è¿ç¯å‰¯æœ¬2
-	EnterPVPFight		= 8,		-- è¿›å…¥pvpæˆ˜æ–—
-	FrozenBuff			= 9,		-- å†°å†»åŒå€ç»éªŒä¸¹
-	CancelFrozenBuff	= 10,		-- å–æ¶ˆå†°å†»åŒå€ç»éªŒä¸¹
-	RecetiveTask		= 11,		-- æ¥å—ä¸€ä¸ªä»»åŠ¡
-	RequestNpcTrade		= 12,		-- è¯·æ±‚Npcè´§æ¶äº¤æ˜“
-	GetItem				= 13,		-- npcå¯¹è¯è·å¾—ç‰©å“
-	FinishTask			= 14,		-- æ¨¡æ‹Ÿäº¤ä»»åŠ¡
-	DoneTask			= 15,		-- æ¨¡æ‹Ÿå®Œæˆä»»åŠ¡
-	AutoTrace			= 16,		-- è‡ªåŠ¨å¯»è·¯
-	RecoverMaxHp        = 17,       -- æ¢å¤è§’è‰²æœ€å¤§è¡€é‡
-	FlyEffect			= 18,       -- é£å‰‘åŠ¨ç”»
-	CloseDialog			= 19,		-- å…³é—­å¯¹è¯
-	UITip				= 20,		-- UIæç¤º
-	OpenUI              = 21,       -- æ‰“å¼€UI
-	Gotos				= 22,       -- è·³è½¬å¤šå¯¹è¯
-	RepairPet			= 23,		-- ä¿®å¤å½“å‰å‡ºæˆ˜å® ç‰©
-	RepairAllPet		= 24,		-- ä¿®å¤æ‰€æœ‰å® ç‰©
-	PaidItem			= 25,		-- ä¸Šç¼´ç‰©å“
-	PaidPet				= 26,		-- ä¸Šç¼´å® ç‰©
-	MayTaskFight		= 27,		-- å¯èƒ½è¿›å…¥æˆ˜æ–—ï¼Œå¯èƒ½å®Œæˆä»»åŠ¡
-	BuyItem				= 28,		-- å¯¹è¯ä¹°ç‰©å“
-	CostMoney			= 29,		-- èŠ±è´¹ç»‘é“¶å®Œæˆä»»åŠ¡
-	Fight				= 30,		-- è¿›è¡Œæˆ˜æ–—æ¥å®Œæˆä»»åŠ¡
-	DeductMoney			= 31,		-- å¯¹è¯æ‰£é™¤ç©å®¶é‡‘é’±
-	openLookTaskWin		= 32,		-- å¾ªç¯ä»»åŠ¡æ‰“å¼€çª—å£
-	EnterTreasureFight	= 33,		-- è¿›è¡Œå®è—ç±»å‹çš„è„šæœ¬æˆ˜æ–—
+	SwithScene			= 1,		-- ÇĞ»»³¡¾°
+	Goto				= 2,		-- Ìø×ª¶Ô»°
+	EnterFight			= 3,		-- ½øÈëÕ½¶·
+	EnterScriptFight	= 4,		-- ½øÈë½Å±¾Õ½¶·
+	EnterEctype			= 5,		-- ½øÈë¸±±¾
+	RingEctype			= 6,		-- Á¬»·¸±±¾1
+	EnterRingEctype		= 7,		-- Á¬»·¸±±¾2
+	EnterPVPFight		= 8,		-- ½øÈëpvpÕ½¶·
+	FrozenBuff			= 9,		-- ±ù¶³Ë«±¶¾­Ñéµ¤
+	CancelFrozenBuff	= 10,		-- È¡Ïû±ù¶³Ë«±¶¾­Ñéµ¤
+	RecetiveTask		= 11,		-- ½ÓÊÜÒ»¸öÈÎÎñ
+	RequestNpcTrade		= 12,		-- ÇëÇóNpc»õ¼Ü½»Ò×
+	GetItem				= 13,		-- npc¶Ô»°»ñµÃÎïÆ·
+	FinishTask			= 14,		-- Ä£Äâ½»ÈÎÎñ
+	DoneTask			= 15,		-- Ä£ÄâÍê³ÉÈÎÎñ
+	AutoTrace			= 16,		-- ×Ô¶¯Ñ°Â·
+	RecoverMaxHp        = 17,       -- »Ö¸´½ÇÉ«×î´óÑªÁ¿
+	FlyEffect			= 18,       -- ·É½£¶¯»­
+	CloseDialog			= 19,		-- ¹Ø±Õ¶Ô»°
+	UITip				= 20,		-- UIÌáÊ¾
+	OpenUI              = 21,       -- ´ò¿ªUI
+	Gotos				= 22,       -- Ìø×ª¶à¶Ô»°
+	RepairPet			= 23,		-- ĞŞ¸´µ±Ç°³öÕ½³èÎï
+	RepairAllPet		= 24,		-- ĞŞ¸´ËùÓĞ³èÎï
+	PaidItem			= 25,		-- ÉÏ½ÉÎïÆ·
+	PaidPet				= 26,		-- ÉÏ½É³èÎï
+	MayTaskFight		= 27,		-- ¿ÉÄÜ½øÈëÕ½¶·£¬¿ÉÄÜÍê³ÉÈÎÎñ
+	BuyItem				= 28,		-- ¶Ô»°ÂòÎïÆ·
+	CostMoney			= 29,		-- »¨·Ñ°óÒøÍê³ÉÈÎÎñ
+	Fight				= 30,		-- ½øĞĞÕ½¶·À´Íê³ÉÈÎÎñ
+	DeductMoney			= 31,		-- ¶Ô»°¿Û³ıÍæ¼Ò½ğÇ®
+	openLookTaskWin		= 32,		-- Ñ­»·ÈÎÎñ´ò¿ª´°¿Ú
+	EnterTreasureFight	= 33,		-- ½øĞĞ±¦²ØÀàĞÍµÄ½Å±¾Õ½¶·
 	ShowFactionList		= 34,
-	RemoveItem			= 35,		-- ç§»é™¤ç‰©å“
+	RemoveItem			= 35,		-- ÒÆ³ıÎïÆ·
 	CreateFaction		= 36,
-	EnterCatchPetFight	= 37,		-- æ•å® æˆ˜æ–—
-	EnterCatchPetMap	= 38,		-- è¿›å…¥æŠ“å® åœºæ™¯
-	EnterFactionScene	= 40,		-- è¿›å…¥å¸®æ´¾åœºæ™¯
-	ContributeFaction	= 41,		-- å¸®æ´¾æçŒ®
-	OpenEquipAppraisal	= 42,		-- è£…å¤‡é‰´å®š
-	ExchangeProps		= 43,		-- å…‘æ¢é“å…·
-	RecetiveSpecialTask = 44,		-- æ¥å—å¤©é“ä»»åŠ¡
-	ConsumeRecetiveTask	= 45,		-- æ¶ˆè€—å¹¶æ¥å—ä»»åŠ¡ {è¿™é‡Œæ¶ˆè€—çš„ç±»å‹åœ¨å‚æ•°ä¸­å¡« type = "money"--é“¶ä¸¤,"subMoney--ç»‘é“¶"}
-	FinishLoopTask		= 46,		-- å®Œæˆå¾ªç¯ä»»åŠ¡ï¼Œå¹¶ä¸”èƒ½å¤Ÿè‡ªåŠ¨æ¥ä»»åŠ¡
-	AddFollowNpc		= 47,		-- æ”¹å˜ä»»åŠ¡çŠ¶æ€
+	EnterCatchPetFight	= 37,		-- ²¶³èÕ½¶·
+	EnterCatchPetMap	= 38,		-- ½øÈë×¥³è³¡¾°
+	EnterFactionScene	= 40,		-- ½øÈë°ïÅÉ³¡¾°
+	ContributeFaction	= 41,		-- °ïÅÉ¾èÏ×
+	OpenEquipAppraisal	= 42,		-- ×°±¸¼ø¶¨
+	ExchangeProps		= 43,		-- ¶Ò»»µÀ¾ß
+	RecetiveSpecialTask = 44,		-- ½ÓÊÜÌìµÀÈÎÎñ
+	ConsumeRecetiveTask	= 45,		-- ÏûºÄ²¢½ÓÊÜÈÎÎñ {ÕâÀïÏûºÄµÄÀàĞÍÔÚ²ÎÊıÖĞÌî type = "money"--ÒøÁ½,"subMoney--°óÒø"}
+	FinishLoopTask		= 46,		-- Íê³ÉÑ­»·ÈÎÎñ£¬²¢ÇÒÄÜ¹»×Ô¶¯½ÓÈÎÎñ
+	AddFollowNpc		= 47,		-- ¸Ä±äÈÎÎñ×´Ì¬
+	EnterBeastFight		= 48,		-- è¿›å…¥ç‘å…½é™ç¦
 }
 
---å¯¹è¯æ¡†å›¾æ ‡ç±»å‹
+--¶Ô»°¿òÍ¼±êÀàĞÍ
 DialogIcon = {
-	Talk            = 0x00, --æ°”æ³¡(æ°”æ³¡)
-	Help            = 0x01, --å¸®åŠ©(ç¯æ³¡)
-	Trade           = 0x02, --äº¤æ˜“(é’±è¢‹å­)
-	Box             = 0x03, --ä»“åº“(ç®±å­)
-	Function        = 0x04, --ç‰¹æ®ŠNPCåŠŸèƒ½(é½¿è½®)
-	Task1           = 0x05, --(ä¸å¯é‡å¤)å¯æ¥ä»»åŠ¡(æ„Ÿå¹å·-ç»¿è‰²)
-	Task2           = 0x06, --(å¯é‡å¤)å¯æ¥ä»»åŠ¡(æ„Ÿå¹å·-è“è‰²)
-	Task3           = 0x07, --æ­£åœ¨è¿›è¡Œ(å·²æ¥)ä»»åŠ¡(é—®å·-ç°è‰²)
-	Task4           = 0x08, --(å·²å®Œæˆ)å¯äº¤ä»»åŠ¡(é—®å·-ç»¿è‰²)
+	Talk            = 0x00, --ÆøÅİ(ÆøÅİ)
+	Help            = 0x01, --°ïÖú(µÆÅİ)
+	Trade           = 0x02, --½»Ò×(Ç®´ü×Ó)
+	Box             = 0x03, --²Ö¿â(Ïä×Ó)
+	Function        = 0x04, --ÌØÊâNPC¹¦ÄÜ(³İÂÖ)
+	Task1           = 0x05, --(²»¿ÉÖØ¸´)¿É½ÓÈÎÎñ(¸ĞÌ¾ºÅ-ÂÌÉ«)
+	Task2           = 0x06, --(¿ÉÖØ¸´)¿É½ÓÈÎÎñ(¸ĞÌ¾ºÅ-À¶É«)
+	Task3           = 0x07, --ÕıÔÚ½øĞĞ(ÒÑ½Ó)ÈÎÎñ(ÎÊºÅ-»ÒÉ«)
+	Task4           = 0x08, --(ÒÑÍê³É)¿É½»ÈÎÎñ(ÎÊºÅ-ÂÌÉ«)
 }

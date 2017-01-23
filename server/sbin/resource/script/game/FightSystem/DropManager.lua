@@ -607,8 +607,12 @@ function DropManager:dealWithPunish(FightEndResults,scriptID, fightID)
 				else
 					g_buffMgr:onFightEndGodBless(player)
 				end
-				if buffHandler:getHPPool() then
-					g_sceneMgr:enterPublicScene(9,player,100,100)
+				if buffHandler:getHPPool() and (not isWin) then
+					local teamHandler = player:getHandler(HandlerDef_Team)
+					local bTeam = teamHandler:isTeam()
+					if not bTeam then
+						g_sceneMgr:enterPublicScene(9,player,100,100)
+					end
 				end
 
 				

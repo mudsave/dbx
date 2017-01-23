@@ -12,7 +12,6 @@ enum _AccountState
 {
 	ACCOUNT_STATE_LOGINED,
 	ACCOUNT_STATE_LOADING,
-	ACCOUNT_STATE_LOADING_1,
 	ACCOUNT_STATE_LOADED,
 	ACCOUNT_STATE_KICKING,
 	ACCOUNT_STATE_OFFLINE,
@@ -22,14 +21,13 @@ enum _AccountState
 
 enum _AccountStateIntervals
 {
-	eAccountLoginedInterval			= -1,
-	eAccountLoadingInterval			= 1000 * 60 * 4,
-	eAccountLoadingOneInterval		= 1000 * 1,
-	eAccountLoadedInterval			= -1,
-	eAccountKickingInterval			= 1000 * 60 * 1,
-	eAccountOfflineInterval			= -1,
-	eAccountOfflineInFightInterval	= -1,
-	eAccountReconnectingFightInterval = 1000 * 5,
+	eAccountLoginedInterval				= -1,
+	eAccountLoadingInterval				= 1000 * 60 * 3,
+	eAccountLoadedInterval				= -1,
+	eAccountKickingInterval				= 1000 * 60 * 1,
+	eAccountOfflineInterval				= -1,
+	eAccountOfflineInFightInterval		= -1,
+	eAccountReconnectingFightInterval 	= 1000 * 5,
 };
 
 struct AccountInfo : public ITask
@@ -45,6 +43,7 @@ struct AccountInfo : public ITask
 	IThreadsPool*	pThreadsPool;
 	std::string		m_accountName;
 	bool			inFight;
+	int				version;
 
 	AccountInfo();
 
@@ -90,7 +89,6 @@ public:
 
 		AccountMapIter iter		= retPair.first;
 		bool bRet				= retPair.second;
-
 		return bRet;
 	}
 

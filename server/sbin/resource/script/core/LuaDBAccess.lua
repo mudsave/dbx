@@ -737,3 +737,19 @@ function LuaDBAccess.SavePointSetting(entity)
 		end
 	end
 end
+
+---------------------------------------------------------------------------------------------------
+--更新世界服数据
+function LuaDBAccess.UpdateWorldServerData( playerDBID,valueName,cvalue,ivalue )
+
+	clearParams()
+	params[1]["spName"] = "sp_UpdateWorldServerData"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "pID,valueName,cvalue,ivalue"
+	params[1]["pID"] = playerDBID
+	params[1]["valueName"] = valueName
+	params[1]["cvalue"] = cvalue
+	params[1]["ivalue"] = ivalue
+	LuaDBAccess.exeSP(params,false)
+
+end

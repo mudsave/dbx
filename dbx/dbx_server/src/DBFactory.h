@@ -17,7 +17,7 @@ RTX:6016.
 
 class DBInterface;
 
-class DBFactory : public Singleton<DBFactory>
+class DBFactory : public DBX::Singleton<DBFactory>
 {
 public:
     bool Initialize();

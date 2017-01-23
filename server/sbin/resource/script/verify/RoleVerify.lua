@@ -1,5 +1,5 @@
 --[[RoleVerify.lua
-	½ÇÉ«¼ì²âÌõ¼ş
+	è§’è‰²æ£€æµ‹æ¡ä»¶
 ]]
 
 RoleVerify = class(nil, Singleton)
@@ -13,7 +13,7 @@ function RoleVerify:checkLevel(player, param)
 	if curLevel < param.level then
 		return false, param.errorID and param.errorID or 1
 	end
-	-- ÉÏÏŞÉèÖÃ
+	-- ä¸Šé™è®¾ç½®
 	if param.maxLevel then
 		if curLevel > param.maxLevel then
 			return false, param.errorID and param.errorID or 1
@@ -130,16 +130,16 @@ function RoleVerify:checkFaction( player,param )
 	
 end
 
--- Ñ­»·ÈÎÎñ½»Ì¸¶Ô»°NPC
+-- å¾ªç¯ä»»åŠ¡äº¤è°ˆå¯¹è¯NPC
 function RoleVerify:loopTaskTalk(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local taskID = param.taskID
 	local taskType = param.taskType
 	local configNpcID = param.npcID
-	local statue = param.statue -- ÊÇ·ñĞèÒªÅĞ¶Ï´æÔÚÈÎÎñ²Å¿ÉÒÔÅĞ¶Ï
+	local statue = param.statue -- æ˜¯å¦éœ€è¦åˆ¤æ–­å­˜åœ¨ä»»åŠ¡æ‰å¯ä»¥åˆ¤æ–­
 	local task = taskHandler:getTask(taskID)
 	if not task and not statue then
-		--print("Ã»ÓĞ´ËÈÎÎñ£¬²»ÄÜ½Ó")
+		--print("æ²¡æœ‰æ­¤ä»»åŠ¡ï¼Œä¸èƒ½æ¥")
 		return false,param.errorID and param.errorID or 6
 	end	
 	if configNpcID then
@@ -147,7 +147,7 @@ function RoleVerify:loopTaskTalk(player, param)
 		local taskNpcID = privateHandler:getTraceInfo(taskID)
 		if taskNpcID then
 			if taskNpcID ~= configNpcID then
-				--print("ÈÎÎñ½»½ÓNPC²»ÊÇÕâ¸ö")
+				--print("ä»»åŠ¡äº¤æ¥NPCä¸æ˜¯è¿™ä¸ª")
 				return false,param.errorID and param.errorID or 6
 			end
 		else
@@ -156,7 +156,7 @@ function RoleVerify:loopTaskTalk(player, param)
 	end
 	if taskType then
 		if task:getTargetType() ~= taskType then
-			--print("ÈÎÎñÀàĞÍ²»Æ¥Åä")
+			--print("ä»»åŠ¡ç±»å‹ä¸åŒ¹é…")
 			return false,param.errorID and param.errorID or 6
 		end
 	end
@@ -203,35 +203,35 @@ end
 
 function RoleVerify:checkTaskTeam(player, param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
-	-- ÊÇ·ñ×é¶Ó
+	-- æ˜¯å¦ç»„é˜Ÿ
 	if teamHandler and teamHandler:isTeam() then 
-		-- ¶ÓÎéÖĞÈËÊıµÄÅĞ¶Ï
+		-- é˜Ÿä¼ä¸­äººæ•°çš„åˆ¤æ–­
 		if  param.playerNum then
 			if teamHandler:getCurMemberNum() < param.playerNum then
-				--print("¶ÓÎéÖĞÈËÊıµÄÅĞ¶Ï")
+				--print("é˜Ÿä¼ä¸­äººæ•°çš„åˆ¤æ–­")
 				return false, param.errorID and param.errorID or 18
 			end
 		end
-		-- ÅĞ¶ÏÔİÀëµÄ×´Ì¬
+		-- åˆ¤æ–­æš‚ç¦»çš„çŠ¶æ€
 		if teamHandler:isStepOutState() then
 			return false, param.errorID and param.errorID or 18
 		end
 		local maxLvl,minLvl = teamHandler:getCurMaxAndMinLvl()
-		-- ¶ÓÔ±Ö®¼äµÄµÈ¼¶²î
+		-- é˜Ÿå‘˜ä¹‹é—´çš„ç­‰çº§å·®
 		if param.playerLvlRange then
 			--print("maxLvl - minLvl",(maxLvl - minLvl))
 			if param.playerLvlRange < (maxLvl - minLvl) then
 				return false ,param.errorID and param.errorID or 18
 			end
 		end
-		-- ½ÓÈÎÎñµÄµÈ¼¶Çø¼ä
+		-- æ¥ä»»åŠ¡çš„ç­‰çº§åŒºé—´
 		if param.taskLvlRange then
-			--print("½ÓÈÎÎñµÄµÈ¼¶Çø¼ä")
+			--print("æ¥ä»»åŠ¡çš„ç­‰çº§åŒºé—´")
 			if param.taskLvlRange.minLvl > minLvl and param.taskLvlRange.maxLvl < maxLvl then
 				return false,param.errorID and param.errorID or 18
 			end
 		end
-		-- ÅĞ¶Ï»îÁ¦Öµ
+		-- åˆ¤æ–­æ´»åŠ›å€¼
 		if param.tiredness then
 			local playerList = teamHandler:getTeamPlayerList()
 			for _,player in pairs(playerList) do
@@ -245,6 +245,12 @@ function RoleVerify:checkTaskTeam(player, param)
 	return false, param.errorID and param.errorID or 4
 end
 
+function RoleVerify:checkBeastBless(player, param)
+	local minLvl		= param.minLvl		-- ç­‰çº§é™åˆ¶
+	local playerCount	= param.playerCount -- é˜Ÿä¼äººæ•°é™åˆ¶
+	local lvlDiffer		= player.lvlDiffer	-- ç­‰çº§å·®
+	--local 
+end
 
 function RoleVerify.getInstance()
 	return RoleVerify()

@@ -65,6 +65,11 @@ end
 function ChatSystem:_checkPrivate(player,target)
 	if not target then
 		return 4
+	else
+		local targetFriendHandler = target:getHandler(HandlerDef_Friend)
+		if targetFriendHandler:getEnemyInfoInBlackListInfo(player:getDBID()) or targetFriendHandler:getScreenInfoInBlackListInfo(player:getDBID()) then		
+			return 8
+		end
 	end
 	return 0
 end
@@ -117,7 +122,7 @@ function ChatSystem:onGetMessage(event)
 			g_chatMgr:sendMessage(player, channelType, msg, sign)
 			self:_setExpireTime(player)
 		else
-			local event = Event.getEvent(ChatEvents_SC_SendChatMsg, g_serverId, errorCode)
+			local event = Event.getEvent(ChatEvents_SC_SendChatMsg, DBID, errorCode)
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	--门派频道
@@ -128,29 +133,36 @@ function ChatSystem:onGetMessage(event)
 			g_chatMgr:sendMessage(player, channelType, msg, sign)
 			self:_setExpireTime(player)
 		else
-			local event = Event.getEvent(ChatEvents_SC_SendChatMsg, g_serverId, errorCode)
+			local event = Event.getEvent(ChatEvents_SC_SendChatMsg, DBID, errorCode)
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	--私人频道
 	elseif channelType == ChatChannelType.Private then
 		local targetName = params[5]
 		local target = g_playerMgr:getPlayerByName(targetName)
-		local systemSetHandler = target:getHandler(HandlerDef_SystemSet) 
-		if systemSetHandler:getRefMess() then
-			local eventGroup_SystemSet = 23
-			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SystemSet, 3)
-			g_eventMgr:fireRemoteEvent(event, player)
-			return
-		else
-			local errorCode = self:_checkPrivate(player, target)
-			if errorCode == 0 then
-				local targetID = target:getDBID()
-				g_chatMgr:sendMessage(player,channelType, msg, sign,targetID)
-				self:_setExpireTime(player)
-			else
-				local event = Event.getEvent(ChatEvents_SC_SendChatMsg, g_serverId, errorCode)
+		if target then
+			local systemSetHandler = target:getHandler(HandlerDef_SystemSet) 
+			if systemSetHandler:getRefMess() then
+				local eventGroup_SystemSet = 23
+				local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SystemSet, 3)
 				g_eventMgr:fireRemoteEvent(event, player)
+				return
+			else
+				local errorCode = self:_checkPrivate(player, target)
+				if errorCode == 0 then
+					local targetID = target:getDBID()
+					g_chatMgr:sendMessage(player,channelType, msg, sign,targetID)
+					self:_setExpireTime(player)
+				else
+					local event = Event.getEvent(ChatEvents_SC_SendChatMsg, DBID, errorCode)
+					g_eventMgr:fireRemoteEvent(event, player)
+				end
 			end
+		else
+			local msg = FriendMsgTextKeyTable.PlayerIsNotOnline
+			local notifyParams = {msg = msg}
+			local event_Notify  = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FriendNotify,notifyParams)
+			g_eventMgr:fireRemoteEvent(event_Notify,player)
 		end
 	--世界频道
 	elseif channelType == ChatChannelType.World then

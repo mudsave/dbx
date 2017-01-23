@@ -18,6 +18,8 @@ RTX:6016.
 #include "DBXCommon.h"
 #include "DBXConfig.h"
 
+class DBIssueBase;
+
 class DBInterface
 {
 public:
@@ -28,9 +30,11 @@ public:
     {
     }
 
-    ~DBInterface();
+    ~DBInterface()
+    {
+    }
 
-    virtual bool Query(const char *p_cmd, int p_size, AppMsg *p_appMsg) = 0;
+    virtual bool Query(const char *p_cmd, int p_size, DBIssueBase *p_issue) = 0;
 
     virtual bool Connect() = 0;
 

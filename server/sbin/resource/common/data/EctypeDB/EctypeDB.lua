@@ -899,999 +899,6 @@ tEctypeDB =
 	},
 
 
-
-	[102] =
-	{
-		Name = "再入妖阵",	-- 副本名字
-		EctypeID = 102,	-- 副本ID，策划配置ID
-		StaticMapID = 100,	-- 静态地图ID
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},	-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedPlayerNum = 1,	-- 进入副本最少人数，组队时有效
-		EctypeType = EctypeType.Common,	-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeEnterType = EctypeEnterType.Single,
-		EctypeCDFinishTimes = 100000,	-- 副本CD内可完成次数
-		EctypeExistTime = 0,	-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeDyingTime = 0,	-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EnterInitLocs = {locX = 210, locY = 50},	-- 进入副本初始坐标，分别为X坐标和Y坐标
-		LogicProcedure =		-- 副本逻辑流程
-		{
-			[1] =
-			{
-				Start =	-- 步骤开始
-				{
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 219, yPos = 93},
-					{Ectype_CreateNpc, npcID = 20035, xPos = 218, yPos = 93, dir = Direction.WestSouth},--------刷新出boss
-					{Ectype_StartSceneMagic, index = 1, magicID = 1505, xPos = 218, yPos = 98},---------刷新出阵法光效
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 1, gotoNext =2},
-					},
-				},
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				Start =
-				{
-					{Ectype_OpenDialog, dialogID = 219},
-				},
-				Goto =
-				{
-					FightWin =
-					{
-						{fightID = 110, gotoNext = 3},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20035},
-					{Ectype_StopSceneMagic, index = 1},
-				},
-			},
-			[3] =
-			{
-				Start =
-				{
-					{Ectype_OpenDialog, dialogID = 221},
-				},
-				--跳转
-				Goto =
-				{
-				},
-				End =
-				{
-				},
-			},
-			[4] =
-			{
-				Start =
-				{
-
-				},
-				Goto =
-				{
-
-				},
-				End =
-				{
-
-				},
-			},
-		},
-	},
-
-----------------------------------------------------------1-25剧情副本----------
-	[101] =
-	{
-		Name = "苦战妖阵",	-- 副本名字
-		EctypeID = 101,	-- 副本ID，策划配置ID
-		StaticMapID = 102,	-- 静态地图ID
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},	-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedPlayerNum = 1,	-- 进入副本最少人数，组队时有效
-		EctypeType = EctypeType.Common,	-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeEnterType = EctypeEnterType.Single,
-		EctypeCDFinishTimes = 100000,	-- 副本CD内可完成次数
-		EctypeExistTime = 0,	-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeDyingTime = 0,	-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EnterInitLocs = {locX = 65, locY = 172},	-- 进入副本初始坐标，分别为X坐标和Y坐标
-		LogicProcedure =		-- 副本逻辑流程
-		{
-			[1] =
-			{
-				Start =	-- 步骤开始
-				{
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 106, yPos = 90},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 1, gotoNext =2},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20033, xPos = 106, yPos = 90, dir = Direction.EastNorth},---------刷新出头目1
-					{Ectype_CreateNpc, npcID = 20036, xPos = 108, yPos = 87, dir = Direction.EastNorth},
-					{Ectype_CreateNpc, npcID = 20118, xPos = 102, yPos = 87, dir = Direction.EastNorth},
-					{Ectype_CreateNpc, npcID = 20037, xPos = 106, yPos = 86, dir = Direction.EastNorth},
-					{Ectype_CreateNpc, npcID = 20119, xPos = 104, yPos = 86, dir = Direction.EastNorth},
-					{Ectype_OpenDialog, dialogID = 184},
-				},
-				--跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 107, gotoNext = 3},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20033},
-					{Ectype_RemoveNpc, npcID = 20036},
-					{Ectype_RemoveNpc, npcID = 20118},
-					{Ectype_RemoveNpc, npcID = 20037},
-					{Ectype_RemoveNpc, npcID = 20119},
-					{Ectype_DestroyHotArea, hotAreaID = 1},
-				},
-			},
-			[3] =
-			{
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 2, xPos = 183, yPos = 52},
-				},
-				--跳转
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 2, gotoNext =4},
-					},
-
-				},
-				End =
-				{
-				},
-			},
-			[4] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20034, xPos = 183, yPos = 52, dir = Direction.WestNorth},--------刷新出头目2
-					{Ectype_CreateNpc, npcID = 20036, xPos = 185, yPos = 47, dir = Direction.WestNorth},
-					{Ectype_CreateNpc, npcID = 20118, xPos = 185, yPos = 57, dir = Direction.WestNorth},
-					{Ectype_CreateNpc, npcID = 20037, xPos = 185, yPos = 50, dir = Direction.WestNorth},
-					{Ectype_CreateNpc, npcID = 20119, xPos = 185, yPos = 54, dir = Direction.WestNorth},
-					{Ectype_OpenDialog, dialogID = 186},
-				},
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 108, gotoNext = 5},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20034},
-					{Ectype_RemoveNpc, npcID = 20036},
-					{Ectype_RemoveNpc, npcID = 20118},
-					{Ectype_RemoveNpc, npcID = 20037},
-					{Ectype_RemoveNpc, npcID = 20119},
-					{Ectype_DestroyHotArea, hotAreaID = 2},
-				},
-			},
-			[5] =
-			{
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 3, xPos = 218, yPos = 93},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 3, gotoNext =6},
-					},
-
-				},
-				End =
-				{
-				},
-			},
-			[6] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20035, xPos = 218, yPos = 93, dir = Direction.WestSouth},--------刷新出boss
-					{Ectype_StartSceneMagic, index = 1, magicID = 1505, xPos = 218, yPos = 98},---------刷新出阵法光效
-					{Ectype_OpenDialog, dialogID = 188},
-				},
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 109, gotoNext = 7},
-					},
-					FightLose =
-					{
-						{fightID = 109, gotoNext = 7},
-					},
-				},
-				End =
-				{
-					{Ectype_DestroyHotArea, hotAreaID = 3},
-					{Ectype_StopSceneMagic, index = 1},
-					{Ectype_RemoveNpc, npcID = 20035},
-					{Ectype_EnterPublicScene, mapID = 101, xPos = 75, yPos = 179},--副本结束传送到巨鹿
-				},
-			},
-			[7] =
-			{
-				Start =
-				{
-
-				},
-				Goto =
-				{
-				},
-				End =
-				{
-				},
-			},
-		},
-	},
-	-----------------------------------------------------------------------------------------------------------------------------
-	[120] =
-	{
-		-- 副本名字
-		Name = "天魔大阵",
-		-- 副本ID，策划配置ID
-		EctypeID = 120,
-		-- 静态地图ID
-		StaticMapID = 11,
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},	-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedPlayerNum = 1,	-- 进入副本最少人数，组队时有效
-		EctypeType = EctypeType.Common,	-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeEnterType = EctypeEnterType.Team,
-		EctypeCDFinishTimes = 100000,	-- 副本CD内可完成次数
-		EctypeExistTime = 0,	-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeDyingTime = 0,	-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		-- 进入副本初始坐标，分别为X坐标和Y坐标
-		EnterInitLocs = {locX = 170, locY = 192},
-		-- 副本逻辑流程
-		LogicProcedure =
-		{
-			-- 步骤一
-			[1] =
-			{
-				Start =	-- 步骤开始
-				{
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 151, yPos = 130},
-					{Ectype_CreateFollowNPC, followNpcID = 20638},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 1, gotoNext =2},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20633, xPos = 151, yPos = 130, dir = 1},
-					{Ectype_CreateNpc, npcID = 20631, xPos = 151, yPos = 127, dir = 1},
-					{Ectype_CreateNpc, npcID = 20642, xPos = 148, yPos = 130, dir = 1},
-					{Ectype_CreateNpc, npcID = 20632, xPos = 151, yPos = 124, dir = 1},
-					{Ectype_CreateNpc, npcID = 20643, xPos = 145, yPos = 130, dir = 1},
-					{Ectype_OpenDialog, dialogID = 1582},
-				},
-				--跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 318, gotoNext = 3},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20633},
-					{Ectype_RemoveNpc, npcID = 20631},
-					{Ectype_RemoveNpc, npcID = 20642},
-					{Ectype_RemoveNpc, npcID = 20632},
-					{Ectype_RemoveNpc, npcID = 20643},
-					{Ectype_DestroyHotArea, hotAreaID = 1},
-				},
-			},
-			[3] =
-			{
-				Start =	-- 步骤开始
-				{
-					{Ectype_CreateHotArea, hotAreaID = 2, xPos = 82, yPos = 268},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 2, gotoNext =4},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[4] =
-			{
-				-- 步骤开始
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20634, xPos = 82, yPos = 268, dir = 1},
-					{Ectype_CreateNpc, npcID = 20632, xPos = 80, yPos = 266, dir = 1},
-					{Ectype_CreateNpc, npcID = 20643, xPos = 80, yPos = 270, dir = 1},
-					{Ectype_CreateNpc, npcID = 20631, xPos = 78, yPos = 267, dir = 1},
-					{Ectype_CreateNpc, npcID = 20642, xPos = 78, yPos = 269, dir = 1},
-					-- 打开指定对话
-					{Ectype_OpenDialog, dialogID = 1584},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						-- 跳转到第5步骤
-						{fightID = 319, gotoNext = 5},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-					-- 删除热区
-					{Ectype_DestroyHotArea, hotAreaID = 2},
-					-- 删除动态NPC
-					{Ectype_RemoveNpc, npcID = 20634},
-					{Ectype_RemoveNpc, npcID = 20632},
-					{Ectype_RemoveNpc, npcID = 20643},
-					{Ectype_RemoveNpc, npcID = 20631},
-					{Ectype_RemoveNpc, npcID = 20642},
-				},
-			},
-			[5] =
-			{
-				-- 步骤开始
-				Start =
-				{
-					-- 创建热区
-					{Ectype_CreateHotArea, hotAreaID = 3, xPos = 42, yPos = 234},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-					-- 进入热区触发
-					EnterArea =
-					{
-						-- 跳转到第6步骤
-						{hotAreaID = 3, gotoNext = 6},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[6] =
-			{
-				-- 步骤开始
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20635, xPos = 42, yPos = 234, dir = 1},
-					-- 打开指定对话
-					{Ectype_OpenDialog, dialogID = 1586},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						-- 跳转到第7步骤
-						{fightID = 320, gotoNext = 7},
-					},
-					FightLose =
-					{
-						-- 跳转到第7步骤
-						{fightID = 320, gotoNext = 7},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-					-- 删除热区
-					{Ectype_DestroyHotArea, hotAreaID = 3},
-					-- 删除动态NPC
-					{Ectype_RemoveNpc, npcID = 20635},
-					{Ectype_EnterPublicScene, mapID = 133, xPos = 203, yPos = 57},--副本结束传送到阴山
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-				},
-			},
-			[7] =
-			{
-				Start =
-				{
-
-				},
-				Goto =
-				{
-				},
-				End =
-				{
-				},
-			},
-		},
-	},
-	[121] =
-	{
-		-- 副本名字
-		Name = "再入天魔大阵",
-		-- 副本ID，策划配置ID
-		EctypeID = 121,
-		-- 静态地图ID
-		StaticMapID = 136,
-		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedLevel = {minLevel = 1, maxLevel = 100},
-		-- 进入副本最少人数，组队时有效
-		EnterNeedPlayerNum = 1,
-		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
-		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
-		EctypeEnterType = EctypeEnterType.Single,
-		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 1,
-		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
-		-- 进入副本初始坐标，分别为X坐标和Y坐标
-		EnterInitLocs = {locX = 78, locY = 196},
-		-- 副本逻辑流程
-		LogicProcedure =
-		{
-			-- 步骤一
-			[1] =
-			{
-				-- 步骤开始
-				Start =
-				{
-					-- 创建热区
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 42, yPos = 234},
-					-- 创建动态NPC
-					{Ectype_CreateNpc, npcID = 20636, xPos = 42, yPos = 234, dir = 1},
-					{Ectype_CreateFollowNPC, followNpcID = 20640},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-					-- 进入热区触发
-					EnterArea =
-					{
-						-- 跳转到第2步骤
-						{hotAreaID = 1, gotoNext = 2},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				-- 步骤开始
-				Start =
-				{
-					-- 打开指定对话
-					{Ectype_OpenDialog, dialogID = 1588},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						-- 跳转到第3步骤
-						{fightID = 321, gotoNext = 3},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-					-- 删除动态NPC
-					{Ectype_RemoveNpc, npcID = 20636},
-					-- 删除热区
-					{Ectype_DestroyHotArea, hotAreaID = 1},
-
-				},
-			},
-			[3] =
-			{
-				-- 步骤开始
-				Start =
-				{
-				{Ectype_OpenDialog, dialogID = 1590},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-		},
-	},
-
-
-
-------------------------------------33-35级副本前往凤仪亭和魔化吕布战斗-----------------------------------------------
-[122] =
-	{
-		Name = "前往凤仪亭",	-- 副本名字
-		EctypeID = 122,	-- 副本ID，策划配置ID
-		StaticMapID = 139,	-- 静态地图ID
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},	-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedPlayerNum = 1,	-- 进入副本最少人数，组队时有效
-		EctypeType = EctypeType.Common,	-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeEnterType = EctypeEnterType.Single,
-		EctypeCDFinishTimes = 100000,	-- 副本CD内可完成次数
-		EctypeExistTime = 0,	-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeDyingTime = 0,	-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EnterInitLocs = {locX = 139, locY = 217},	-- 进入副本初始坐标，分别为X坐标和Y坐标
-		GotoPublicScene = {mapID = 138, xPos = 182, yPos = 111}, -- 副本完成后传送到指定公共场景
-		LogicProcedure =		-- 副本逻辑流程
-		{
-			[1] =
-			{
-				Start =	-- 步骤开始
-				{
-					{Ectype_CreateFollowNPC, followNpcID = 20754},
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 159, yPos = 59},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 1, gotoNext =2},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20716, xPos = 159, yPos = 59, dir = Direction.EastNorth},---------刷新出头目1
-					{Ectype_CreateNpc, npcID = 20719, xPos = 159, yPos = 62, dir = Direction.EastNorth},
-					{Ectype_CreateNpc, npcID = 20720, xPos = 156, yPos = 62, dir = Direction.EastNorth},
-					{Ectype_CreateNpc, npcID = 20755, xPos = 156, yPos = 56, dir = Direction.EastNorth},
-					{Ectype_CreateNpc, npcID = 20756, xPos = 159, yPos = 56, dir = Direction.EastNorth},
-					{Ectype_OpenDialog, dialogID = 2026},
-				},
-				--跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 331, gotoNext = 3},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20716},
-					{Ectype_RemoveNpc, npcID = 20719},
-					{Ectype_RemoveNpc, npcID = 20720},
-					{Ectype_RemoveNpc, npcID = 20755},
-					{Ectype_RemoveNpc, npcID = 20756},
-					{Ectype_DestroyHotArea, hotAreaID = 1},
-				},
-			},
-			[3] =
-			{
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 2, xPos = 110, yPos = 161},
-				},
-				--跳转
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 2, gotoNext =4},
-					},
-
-				},
-				End =
-				{
-				},
-			},
-			[4] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20717, xPos = 110, yPos = 161, dir = Direction.WestNorth},--------刷新出头目2
-					{Ectype_CreateNpc, npcID = 20719, xPos = 113, yPos = 161, dir = Direction.WestNorth},
-					{Ectype_CreateNpc, npcID = 20720, xPos = 107, yPos = 161, dir = Direction.WestNorth},
-					{Ectype_CreateNpc, npcID = 20755, xPos = 107, yPos = 164, dir = Direction.WestNorth},
-					{Ectype_CreateNpc, npcID = 20756, xPos = 113, yPos = 164, dir = Direction.WestNorth},
-					{Ectype_OpenDialog, dialogID = 2029},
-				},
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 332, gotoNext = 5},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20717},
-					{Ectype_RemoveNpc, npcID = 20719},
-					{Ectype_RemoveNpc, npcID = 20720},
-					{Ectype_RemoveNpc, npcID = 20755},
-					{Ectype_RemoveNpc, npcID = 20756},
-					{Ectype_DestroyHotArea, hotAreaID = 2},
-				},
-			},
-			[5] =
-			{
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 3, xPos = 43, yPos = 165},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 3, gotoNext =6},
-					},
-
-				},
-				End =
-				{
-				},
-			},
-			[6] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20718, xPos = 43, yPos = 165, dir = Direction.WestSouth},--------刷新出boss
-					--{Ectype_StartSceneMagic, index = 1, magicID = 1505, xPos = 218, yPos = 98},---------刷新出阵法光效
-					{Ectype_OpenDialog, dialogID =2031 },
-				},
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 333, gotoNext = 7},
-					},
-					FightLose =
-					{
-						{fightID = 333, gotoNext = 7},
-					},
-				},
-				End =
-				{
-					{Ectype_DestroyHotArea, hotAreaID = 3},
-					{Ectype_StopSceneMagic, index = 1},
-					{Ectype_RemoveNpc, npcID = 20718},
-				},
-			},
-			[7] =
-			{
-				Start =
-				{
-
-				},
-				Goto =
-				{
-				},
-				End =
-				{
-				},
-			},
-		},
-	},
-
-	[123] =
-	{
-		Name = "驱除魔气",	-- 副本名字
-		EctypeID = 123,	-- 副本ID，策划配置ID
-		StaticMapID = 100,	-- 静态地图ID
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},	-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedPlayerNum = 1,	-- 进入副本最少人数，组队时有效
-		EctypeType = EctypeType.Common,	-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeEnterType = EctypeEnterType.Single,
-		EctypeCDFinishTimes = 100000,	-- 副本CD内可完成次数
-		EctypeExistTime = 0,	-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeDyingTime = 0,	-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EnterInitLocs = {locX = 210, locY = 50},	-- 进入副本初始坐标，分别为X坐标和Y坐标
-		LogicProcedure =		-- 副本逻辑流程
-		{
-			[1] =
-			{
-				Start =	-- 步骤开始
-				{
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 219, yPos = 93},
-					{Ectype_CreateNpc, npcID = 20035, xPos = 218, yPos = 93, dir = Direction.WestSouth},--------刷新出boss
-					{Ectype_StartSceneMagic, index = 1, magicID = 1505, xPos = 218, yPos = 98},---------刷新出阵法光效
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 1, gotoNext =2},
-					},
-				},
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				Start =
-				{
-					{Ectype_OpenDialog, dialogID = 219},
-				},
-				Goto =
-				{
-					FightWin =
-					{
-						{fightID = 110, gotoNext = 3},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20035},
-					{Ectype_StopSceneMagic, index = 1},
-				},
-			},
-			[3] =
-			{
-				Start =
-				{
-					{Ectype_OpenDialog, dialogID = 221},
-				},
-				--跳转
-				Goto =
-				{
-				},
-				End =
-				{
-				},
-			},
-		},
-	},
-
-
-
-		----------------------------------------------------------35-36剧情副本----------
-	[124] =
-	{
-		Name = "魔龙宫遭遇",	-- 副本名字
-		EctypeID = 124,	-- 副本ID，策划配置ID
-		StaticMapID = 153,	-- 静态地图ID
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},	-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedPlayerNum = 1,	-- 进入副本最少人数，组队时有效
-		EctypeType = EctypeType.Common,	-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeEnterType = EctypeEnterType.Single,
-		EctypeCDFinishTimes = 100000,	-- 副本CD内可完成次数
-		EctypeExistTime = 0,	-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeDyingTime = 0,	-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EnterInitLocs = {locX = 230, locY = 126},	-- 进入副本初始坐标，分别为X坐标和Y坐标
-		LogicProcedure =		-- 副本逻辑流程
-		{
-			[1] =
-			{
-				Start =	-- 步骤开始
-				{
-				    {Ectype_CreateFollowNPC, followNpcID = 20801},
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 82, yPos = 107},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 1, gotoNext =2},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-				},
-			},
-			[2] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20834, xPos = 82, yPos = 107, dir = Direction.EastSouth},---------刷新出头目1
-					{Ectype_CreateNpc, npcID = 20832, xPos = 82, yPos = 104, dir = Direction.EastSouth},
-					{Ectype_CreateNpc, npcID = 20833, xPos = 82, yPos = 110, dir = Direction.EastSouth},
-					{Ectype_CreateNpc, npcID = 20840, xPos = 79, yPos = 107, dir = Direction.EastSouth},
-					{Ectype_CreateNpc, npcID = 20841, xPos = 79, yPos = 110, dir = Direction.EastSouth},
-					{Ectype_OpenDialog, dialogID = 2148},
-				},
-				--跳转
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 379, gotoNext = 3},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20834},
-					{Ectype_RemoveNpc, npcID = 20832},
-					{Ectype_RemoveNpc, npcID = 20833},
-					{Ectype_RemoveNpc, npcID = 20840},
-					{Ectype_RemoveNpc, npcID = 20841},
-					{Ectype_DestroyHotArea, hotAreaID = 1},
-				},
-			},
-			[3] =
-			{
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 2, xPos = 151, yPos = 192},
-				},
-				--跳转
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 2, gotoNext =4},
-					},
-
-				},
-				End =
-				{
-				},
-			},
-			[4] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20835, xPos = 151, yPos = 192, dir = Direction.EastSouth},--------刷新出头目2
-					{Ectype_CreateNpc, npcID = 20832, xPos = 151, yPos = 189, dir = Direction.EastSouth},
-					{Ectype_CreateNpc, npcID = 20833, xPos = 151, yPos = 195, dir = Direction.EastSouth},
-					{Ectype_CreateNpc, npcID = 20840, xPos = 148, yPos = 195, dir = Direction.EastSouth},
-					{Ectype_CreateNpc, npcID = 20841, xPos = 148, yPos = 192, dir = Direction.EastSouth},
-					{Ectype_OpenDialog, dialogID = 2150},
-				},
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 380, gotoNext = 5},
-					},
-				},
-				End =
-				{
-					{Ectype_RemoveNpc, npcID = 20835},
-					{Ectype_RemoveNpc, npcID = 20832},
-					{Ectype_RemoveNpc, npcID = 20833},
-					{Ectype_RemoveNpc, npcID = 20840},
-					{Ectype_RemoveNpc, npcID = 20841},
-					{Ectype_DestroyHotArea, hotAreaID = 2},
-				},
-			},
-			[5] =
-			{
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 3, xPos = 113, yPos = 239},
-				},
-				Goto =
-				{
-					EnterArea =
-					{
-						{hotAreaID = 3, gotoNext =6},
-					},
-
-				},
-				End =
-				{
-				},
-			},
-			[6] =
-			{
-				Start =
-				{
-					{Ectype_CreateNpc, npcID = 20836, xPos = 113, yPos = 239, dir = Direction.WestSouth},--------刷新出boss
-					{Ectype_StartSceneMagic, index = 1, magicID = 1505, xPos = 113, yPos = 239},---------刷新出阵法光效
-					{Ectype_OpenDialog, dialogID = 2152},
-				},
-				Goto =
-				{
-					-- 战斗结束触发
-					FightWin =
-					{
-						{fightID = 381, gotoNext = 7},
-					},
-					FightLose =
-					{
-						{fightID = 381, gotoNext = 7},
-					},
-				},
-				End =
-				{
-					{Ectype_DestroyHotArea, hotAreaID = 3},
-					{Ectype_StopSceneMagic, index = 1},
-					{Ectype_RemoveNpc, npcID = 20836},
-					{Ectype_EnterPublicScene, mapID = 152, xPos = 43, yPos = 157},--副本结束传送到巨鹿
-				},
-			},
-			[7] =
-			{
-				Start =
-				{
-
-				},
-				Goto =
-				{
-				},
-				End =
-				{
-				},
-			},
-		},
-	},
-
-
-
-
-
 [2001] =
 	{
 		-- 副本名字
@@ -1903,11 +910,11 @@ tEctypeDB =
 		-- 静态地图ID2
 		--StaticMapID2 = 601,
 		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedLevel = {minLevel = 1, maxLevel = 150},
+		EnterNeedLevel = {minLevel = 35, maxLevel = 150},
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		--组队副本
 		--EctypeEnterType = EctypeEnterType.Team,
@@ -1916,9 +923,7 @@ tEctypeDB =
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
 		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 1,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
+		EctypeExistTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 140, locY = 29},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -1934,10 +939,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -2453,7 +1454,7 @@ tEctypeDB =
 		-- 静态地图ID2
 		--StaticMapID2 = 601,
 		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedLevel = {minLevel = 35, maxLevel = 100},
+		EnterNeedLevel = {minLevel = 35, maxLevel = 150},
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
@@ -2464,11 +1465,9 @@ tEctypeDB =
 		--单人
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 62,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 56, locY = 195},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -2485,10 +1484,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -2984,7 +1979,7 @@ tEctypeDB =
 		-- 静态地图ID2
 		--StaticMapID2 = 601,
 		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedLevel = {minLevel = 35, maxLevel = 100},
+		EnterNeedLevel = {minLevel = 35, maxLevel = 150},
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
@@ -2995,11 +1990,9 @@ tEctypeDB =
 		--单人
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 62,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 30,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
+		EctypeExistTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 46, locY = 132},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -3015,10 +2008,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -3521,7 +2510,7 @@ tEctypeDB =
 		-- 静态地图ID2
 		--StaticMapID2 = 601,
 		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedLevel = {minLevel = 35, maxLevel = 100},
+		EnterNeedLevel = {minLevel = 35, maxLevel = 150},
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
@@ -3532,11 +2521,9 @@ tEctypeDB =
 		--组队
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 62,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 213, locY = 181},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -3552,10 +2539,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -4067,8 +3050,6 @@ tEctypeDB =
 		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 35, locY = 190},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -4631,8 +3612,6 @@ tEctypeDB =
 		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 252, locY = 113},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -5154,8 +4133,6 @@ tEctypeDB =
 		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 156, locY = 39},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -5698,8 +4675,6 @@ tEctypeDB =
 		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 230, locY = 127},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -6244,11 +5219,9 @@ tEctypeDB =
 		--组队
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 62,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 90,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
+		EctypeExistTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 68, locY = 188},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -6262,10 +5235,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -6779,11 +5748,9 @@ tEctypeDB =
 		--组队
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 62,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 267, locY = 145},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -6799,10 +5766,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -7368,11 +6331,9 @@ tEctypeDB =
 		--组队
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 62,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 90,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
+		EctypeExistTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 240, locY = 100},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -7388,10 +6349,6 @@ tEctypeDB =
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -7928,6 +6885,140 @@ tEctypeDB =
 			},
 		},
 	},
+--------------------------------------天宫山-----------------------
+[2016] =
+	{
+		-- 副本名字
+		Name = "天宫山",
+		-- 副本ID，策划配置ID
+		EctypeID = 2016,
+		-- 静态地图ID
+		StaticMapID = 622,
+		-- 静态地图ID2
+		--StaticMapID2 = 622,
+		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
+		EnterNeedLevel = {minLevel = 35, maxLevel = 150},
+		-- 进入副本最少人数，组队时有效
+		EnterNeedPlayerNum = 1,
+		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
+		EctypeType = EctypeType.Common,
+		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
+		EctypeEnterType = EctypeEnterType.Team,
+		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
+		EctypeCDFinishTimes = 1,
+		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
+		EctypeExistTime = 0,
+		-- 进入副本初始坐标，分别为X坐标和Y坐标
+		EnterInitLocs = {locX = 235, locY = 28},
+		-- 进入副本第二个场景的初始坐标，分别为X坐标和Y坐标
+		--EnterInitLocs2 = {locX = 233, locY = 175},
+		-- 副本结束后出现传送门的坐标
+		TransferDoorLocs =
+		{
+			{locX = 33, locY = 228},
+			
+			
+			
+		},
+		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
+		EnterNeedItems = {itemID = 10000, itemNum = 1},
+		-- 副本机关
+		EctypeEffect = {Ectype_LoadOrganEffect},
+		-- 副本逻辑流程
+		LogicProcedure =
+		{
+			-- 步骤一
+			[1] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 1, xPos =100, yPos = 100},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 1000, xPos = 100, yPos = 100, dir = 6},
+					{Ectype_CreateNpc, npcID = 1000, xPos = 100, yPos = 100, dir = 6},
+					{Ectype_CreateNpc, npcID = 1000, xPos = 100, yPos = 100, dir = 6},
+					{Ectype_CreateNpc, npcID = 1000, xPos = 100, yPos = 100, dir = 6},
+					{Ectype_CreateNpc, npcID = 1000, xPos = 100, yPos = 100, dir = 6},
+					
+					-- 开启场景特效
+					--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 70, yPos = 79},
+					--启动机关
+					--{Ectype_LoadOrganEffect},
+					-- 添加动态传送门进入指定副本
+					--{Ectype_DynamicTransferDoors, ectypeID = 4, transferDoorLocX = 60, transferDoorLocY = 74},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第2步骤
+						{hotAreaID = 1, gotoNext = 2},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[2] =
+			{
+				-- 步骤开始
+				Start =
+				{	
+					--打开飞剑
+					--{Ectype_ResumeOrganEffect, npcID = 30046},
+					 --打开指定对话
+					{Ectype_OpenDialog, dialogID = 100},
+					-- 关闭场景特效
+					--{Ectype_StopSceneMagic, index = 1},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+
+					-- 战斗结束触发
+					
+					FightWin =
+					{
+						-- 跳转到第3步骤
+						{fightID = 3076, gotoNext = 3},
+					},
+					
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 100},
+					{Ectype_RemoveNpc, npcID = 100},
+					{Ectype_RemoveNpc, npcID = 100},
+					{Ectype_RemoveNpc, npcID = 100},
+					{Ectype_RemoveNpc, npcID = 100},
+					
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 1},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			
+	},
+},
 
 -------------------------------------------------------------帮会副本配置--------------------------------------------------------------
 	[3000] =

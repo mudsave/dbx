@@ -144,7 +144,7 @@ private:
 	}
 
 public:
-	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int result)
+	int send_MsgWG_PlayerLogin_ResultInfo(handle hLink, int roleId, int version, int result)
 	{
 		ASSERT_(hLink > 0);
 		ASSERT_(roleId > 0);
@@ -153,6 +153,7 @@ public:
 		msg.msgCls = MSG_CLS_LOGIN;
 		msg.msgId = MSG_G_W_ACK_PLAYER_LOGIN;
 		msg.roleId = roleId;
+		msg.version = version;
 		msg.result = result;
 		msg.context	= 0;
 		msg.msgLen = sizeof(msg);
@@ -160,7 +161,7 @@ public:
 		return 0;
 	}
 
-	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int result, int reason)
+	int send_MsgWG_PlayerLogout_ResultInfo(handle hLink, int roleId, int version, int result, int reason)
 	{
 		ASSERT_(hLink > 0);
 		ASSERT_(roleId > 0);
@@ -169,6 +170,7 @@ public:
 		msg.msgCls = MSG_CLS_LOGIN;
 		msg.msgId = MSG_G_W_ACK_PLAYER_LOGOUT;
 		msg.roleId = roleId;
+		msg.version = version;
 		msg.result = result;
 		msg.reason = reason;
 		msg.context	= 0;
@@ -192,13 +194,14 @@ public:
 		return 0;
 	}
 
-	int send_MsgWG_OfflineInFight(handle hLink, int roleId)
+	int send_MsgWG_OfflineInFight(handle hLink, int roleId, int version)
 	{
 		_MsgWG_OfflineInFight msg;
 		msg.msgFlags = 0;
 		msg.msgCls = MSG_CLS_OFFLINE;
 		msg.msgId = MSG_W_G_OFFLINE_IN_FIGHT;
 		msg.roleId = roleId;
+		msg.version = version;
 		msg.context	= 0;
 		msg.msgLen = sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWG_C>::SendMsg(hLink, &msg);
@@ -206,39 +209,42 @@ public:
 	}
 
 public:
-	int send_MsgWS_ClearOffFightInfo(int accountId)
+	int send_MsgWS_ClearOffFightInfo(int accountId, int version)
 	{
 		_MsgWS_ClearOffFightInfo msg;
 		msg.msgFlags	= 0;
 		msg.msgCls		= MSG_CLS_OFFLINE;
 		msg.msgId		= MSG_W_S_CLEAR_OFF_FIGHT;
 		msg.accountId	= accountId;
+		msg.version		= version;
 		msg.context		= 0;
 		msg.msgLen		= sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWS_C>::SendMsg(m_pSession->hLink, &msg);
 		return 0;
 	}
 
-	int send_MsgWS_StartFight(int accountId)
+	int send_MsgWS_StartFight(int accountId, int version)
 	{
 		_MsgWS_StartFight msg;
 		msg.msgFlags	= 0;
 		msg.msgCls		= MSG_CLS_OFFLINE;
 		msg.msgId		= MSG_W_S_START_FIGHT;
 		msg.accountId	= accountId;
+		msg.version		= version;
 		msg.context		= 0;
 		msg.msgLen		= sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWS_C>::SendMsg(m_pSession->hLink, &msg);
 		return 0;
 	}
 
-	int send_MsgWS_StopFight(int accountId)
+	int send_MsgWS_StopFight(int accountId, int version)
 	{
 		_MsgWS_StopFight msg;
 		msg.msgFlags	= 0;
 		msg.msgCls		= MSG_CLS_OFFLINE;
 		msg.msgId		= MSG_W_S_STOP_FIGHT;
 		msg.accountId	= accountId;
+		msg.version		= version;
 		msg.context		= 0;
 		msg.msgLen		= sizeof(msg);
 		IMsgLinksImpl<IID_IMsgLinksWS_C>::SendMsg(m_pSession->hLink, &msg);

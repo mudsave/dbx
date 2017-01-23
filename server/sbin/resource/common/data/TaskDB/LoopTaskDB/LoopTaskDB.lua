@@ -1056,7 +1056,7 @@ LoopTaskDB =
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.QYD,
-		startNpcID = 20004,
+		startNpcID = 29040,
 		loop = 10,
 		-- 这个来确定是每日，还是每周的。
 		period = TaskPeriod.day,

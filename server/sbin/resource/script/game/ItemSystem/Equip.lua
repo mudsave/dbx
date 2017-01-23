@@ -113,6 +113,7 @@ function Equip:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 	if result then
 		item:onEquip(self.owner)
 		self:setSuitAttr(true,item)
+		self.owner:flushPropBatch()
 	end
 	return result
 end
@@ -130,6 +131,7 @@ function Equip:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient)
 		-- 卸载该装备
 		item:unEquip(self.owner)
 		self:setSuitAttr(false,item)
+		self.owner:flushPropBatch()
 	end
 	return result
 end
@@ -140,6 +142,7 @@ function Equip:removeItem(itemGuid, removeNum)
 	if equipMent then
 		equipMent:unEquip(self.owner)
 		self:setSuitAttr(false,equipMent)
+		self.owner:flushPropBatch()
 		return self.packs[EquipPackIndex.Default]:removeItem(equipMent, removeNum, true)
 	end
 end

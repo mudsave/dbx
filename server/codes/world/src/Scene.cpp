@@ -168,64 +168,31 @@ bool CoScene::PosValidate(short mapId, int x, int y)
 	return (flags == 0);
 }
 
-//产生随机可用Tile
-bool CoScene::FindEmptyTile(int mapId, const GridVct& ptCenter, int nRad, GridVct &ptResult,
-	const GridVct* pPtExclude)
-{
-	if(mapId<0 || mapId >= MAX_MAP_COUNT)
-    	return false;
-	if(!g_MapManager.IsValidMap(mapId))
-    	return false;
-	CMapInfo* mapConfig = g_MapManager.GetMap(mapId);
-    int nDia = nRad * 2 + 1;
-    GridVct ptLoc;
-    int nRandX = rand() % nDia;
-    for(int i = 0; i < nDia; i++)
-    {
-        nRandX++;
-        if(nRandX >= nDia)
-            nRandX = 0;
-        ptLoc.x = ptCenter.x - nRad + nRandX;
-        int nRandY = rand() % nDia;
-        for(int j = 0; j < nDia; j++)
-        {
-            nRandY++;
-            if(nRandY >= nDia)
-                nRandY = 0;
-            ptLoc.y = ptCenter.y - nRad + nRandY;
-            if (
-				(ptLoc.x != ptCenter.x || ptLoc.y != ptCenter.y)
-				&& (!pPtExclude || (ptLoc.x != pPtExclude->x || ptLoc.y != pPtExclude->y))
-				&& (ptLoc.x < mapConfig->GetXTileLen() && ptLoc.y < mapConfig->GetYTileLen())
-				)
-            {
-                int lFlag = g_MapManager.GetMap(mapId)->GetFlags(ptLoc.x, ptLoc.y);
-                if(lFlag == 0)
-                {
-                    ptResult.x = ptLoc.x;
-                    ptResult.y = ptLoc.y;
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
-
 GridVct CoScene::FindRandomTile(int mapId)
 {
 	GridVct gv(0, 0);
 	CMapInfo* mapConfig = g_MapManager.GetMap(mapId);
-	ASSERT_(mapConfig);
 	if (!mapConfig)
 	{
 		TRACE1_L0("map %d can not find!", mapId);
 		return gv;
 	}
-    int lenX = mapConfig->GetXTileLen();
-    int lenY = mapConfig->GetYTileLen();
-	GridVct center(lenX / 2, lenY / 2);
-    int radius = lenX > lenY ? lenX : lenY;
-	FindEmptyTile(mapId, center, radius, gv, NULL);
-    return gv;
+    int xlen = mapConfig->GetXTileLen();
+    int ylen = mapConfig->GetYTileLen();
+	int count = 0;
+	while(1)
+	{
+		if (count++ >= 500)
+			break;
+		int x=0, y=0;		
+		x = random() % xlen;
+		y = random() % ylen;
+		if(mapConfig->GetFlags(x, y) == 0)
+		{
+			gv.x = x;
+			gv.y = y;
+			break;
+		}
+	}
+	return gv;
 }

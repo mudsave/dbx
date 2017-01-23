@@ -636,6 +636,8 @@ function Ectype:onTransferDoor(player)
 			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
 			-- 点击传送门后重设当前进度
 			ectypeHandler:setRingEctypeProcess(self.ectypeConfig.ringEctypeID, 0)
+			-- 点击传送门后重设碰撞次数
+			ectypeHandler:setRingEctypeAttackTime(self.ectypeConfig.ringEctypeID, 0)
 		end
 	end
 
@@ -1438,7 +1440,7 @@ function Ectype:setEctypeAttackTime(attackTime)
 		local player = g_entityMgr:getPlayerByID(playerID)
 		if player then
 			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-			ectypeHandler:setEctypeAttackTime(attackTime)
+			ectypeHandler:setEctypeAttackTime(self.ectypeID, attackTime)
 		end
 	end
 end

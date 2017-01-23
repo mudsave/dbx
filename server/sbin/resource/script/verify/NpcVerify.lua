@@ -1,5 +1,5 @@
 --[[NpcVerify.lua
-	npc¼ì²âÌõ¼ş
+	npcæ£€æµ‹æ¡ä»¶
 ]]
 
 NpcVerify = class(nil, Singleton)

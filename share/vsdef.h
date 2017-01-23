@@ -30,6 +30,7 @@ enum EntityType
 	eLogicGoodsNpc,
 	eLogicEctypeNpc,
 	eLogicPatrolNpc,
+	eLogicEctypeObject,
 	MAX_LOGIC_TYPE
 };
 
@@ -61,9 +62,23 @@ enum PlayerStatus
 	ePlayerNormal,
 	ePlayerFight,
 	ePlayerInactive,
+	ePlayerInactiveFight,
 	ePlayerClosing,
 	ePlayerClosed
 };
+
+enum WorldIdsDivision
+{
+	eWorldStart = 0,
+	eWorldEnd = 99,
+	eFightStart = 100,
+	eFightEnd = 199,
+	eSocial = 200,
+};
+
+#define IS_WORLD_SERVER(id) (id >= eWorldStart && id <= eWorldEnd)
+#define IS_FIGHT_SERVER(id) (id >= eFightStart && id <= eFightEnd)
+#define IS_SOCIAL_SERVER(id) (id == eSocial)
 
 #pragma pack(push, 1)
 
@@ -116,8 +131,8 @@ struct _PropPosData
 	GridVct path[1];
 };
 
-//最大的位置数据信息长度
-#define PosDataLen (sizeof(_PropPosData) + (MAX_PATH_LEN - 1) * sizeof(GridVct))
+//鏈�澶х殑浣嶇疆鏁版嵁淇℃伅闀垮害
+#define PosDataLen (sizeof(_PropPosData) + (MAX_PATH_LEN - 1) * sizeof(GridVct) * 8)
 
 
 #pragma pack(pop)

@@ -34,17 +34,23 @@ function DialogDoer:checkTaskDialog(player, npcID)
 	local dialogID
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local providerTaskID, taskTypeA = taskHandler:checkTaskProvider(npcID)
-	local recetiveTaskID, taskTypeB = taskHandler:checkTaskRecetiver(npcID)
-	if recetiveTaskID then
+	local RecetiveTaskID, taskTypeB = taskHandler:checkTaskRecetiver(npcID)
+	if RecetiveTaskID then
 		if taskTypeB == TaskType.normal then
-			dialogID = NormalTaskDB[recetiveTaskID].endDialogID
+			dialogID = NormalTaskDB[RecetiveTaskID].endDialogID
+			if type(dialogID) == "table" then
+				dialogID = g_dialogCondtion:choseDialogID(player, dialogID)
+			end
 		elseif taskTypeB == TaskType.loop then
-			local loopTask = taskHandler:getTask(recetiveTaskID)
+			local loopTask = taskHandler:getTask(RecetiveTaskID)
 			dialogID = loopTask:getEndDialogID()
 		end
 	elseif providerTaskID then
 		if taskTypeA == TaskType.normal then
 			dialogID = NormalTaskDB[providerTaskID].startDialogID
+			if type(dialogID) == "table" then
+				dialogID = g_dialogCondtion:choseDialogID(player, dialogID)
+			end
 		elseif taskTypeA == TaskType.loop then
 			dialogID = LoopTaskDB[providerTaskID].startDialogID
 		end

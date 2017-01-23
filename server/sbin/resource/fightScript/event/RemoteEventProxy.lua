@@ -23,17 +23,11 @@ function RemoteEventProxy.sendToWorld(event, worldID)
 	RPCEngine:sendToWorld(worldID, eventID, g_serverId, unpack(params))
 end
 
--- 在当前world广播
-function RemoteEventProxy.broadcast(event)
-end
-
--- 发送给视野内所有的玩家
-function RemoteEventProxy.sendToAround(event, playerID)
-end
-
 -- 接收消息
 function RemoteEventProxy.receive(eventID, playerID, ...)
-print("RemoteEventProxy.receive",eventID, playerID)
+	if ManagedApp.State ~= ServerState.run then
+		return
+	end
 	local event = Event(eventID, ... )
 	event.DBID = playerID
 	g_eventMgr:fireEvent(event)
@@ -41,6 +35,9 @@ end
 
 -- 接收世界消息
 function RemoteEventProxy.wreceive(eventID, srcWorldID, ...)
+	if ManagedApp.State ~= ServerState.run then
+		return
+	end
 	local event = Event(eventID, ... )
 	event.srcWorldID = srcWorldID
 	g_eventMgr:fireEvent(event)

@@ -78,9 +78,9 @@ HRESULT PlayerInfo::Do(HANDLE hContext)
 	return S_OK;
 }
 
-PlayerInfo* PlayerMgr::regPlayer(int roleId)
+PlayerInfo* PlayerMgr::regPlayer(int roleId, int version)
 {
-	std::pair< PlayerMapIter, bool > retPair = m_players.insert( PlayerMap::value_type(roleId, PlayerInfo(roleId)) );
+	std::pair< PlayerMapIter, bool > retPair = m_players.insert( PlayerMap::value_type(roleId, PlayerInfo(roleId, version)));
 	PlayerMapIter iter		= retPair.first;
 	bool bFlag				= retPair.second;
 	if ( bFlag )

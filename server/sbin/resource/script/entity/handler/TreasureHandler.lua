@@ -10,6 +10,7 @@ function TreasureHandler:__init(targetEntity)
 	self.owner = targetEntity
 	-- 记录宝藏
 	self.treasureList = {} 
+	
 end
 
 function TreasureHandler:__release()
@@ -130,6 +131,18 @@ function TreasureHandler:doClickTreasure(guid)
 		return false
 	end
 end
+
+--保存宝藏坐标为传送点的左边，便于重新生成
+function TreasureHandler:setTransferPosition(guid,transferPosdDate)
+    if transferPosdDate then 
+		local treasure = self.treasureList[guid]
+		if treasure then
+			treasure:doRandPosion(transferPosdDate)
+			local isTrue,msgID,msgParams = self:doClickTreasure(guid)
+			self:sendTreasureMessage(msgID,msgParams)
+		end
+	end 	
+end 
 
 -- 随机触发的事件
 function TreasureHandler:doTriggerEvent(config)

@@ -1,0 +1,19 @@
+
+
+{
+[1] = {{rideBar = 6, mapID = 101, goldCoin = 0, subMoney = 84392, modelID = 2, posX = 144, ID = 3569, level = 30, petBar = 3, accountID = 3128, posY = 198, money = 33092, depotMoney = 0, petDepotCapacity = 3, name = "f1", sex = false, school = 1, cashMoney = 0, depotCapacity = 0, showParts = "{1,1}"}}, 
+
+
+[2] = {{attrType = 11, attrValue = 145}, {attrType = 42, attrValue = 22}, {attrType = 43, attrValue = 446}, {attrType = 44, attrValue = 477}, {attrType = 118, attrValue = 2886}, {attrType = 119, attrValue = 23103}, {attrType = 120, attrValue = 800}, {attrType = 121, attrValue = 100}, {attrType = 124, attrValue = 3650}, {attrType = 126, attrValue = 1000}, {attrType = 147, attrValue = 3}}, 
+
+_result = 0, _operationID = 1
+}
+
+
+wangshufeng:
+以上是2个select *符合查询返回。相当一个字典，最后2个键值对，_result应该对应错误码，_operationID对应查询发起时的id，以辨别返回的数据是哪个发起的，对应哪个回调函数。
+发起查询时会g_dict[_operationID] = callback
+
+可以有改进的方案是。
+1. 不应该关心key，使用sql命令的人清楚知道查询哪个表，查询了那些字段和记录，要做什么处理。key是冗余的。
+2. c++层不做任何转换，直接把结果集发到脚本层，脚本层使用者自己转换，因为使用者是知道自己所查询的表的结果和定义的。

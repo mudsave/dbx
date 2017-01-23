@@ -1,0 +1,47 @@
+def func(a,b,c):print("wsf1111111111-------------------",a,b,c)
+KBEngine.executeRawDatabaseCommand("call t11", func)
+
+wsf1111111------ None None Table 'kbe.t100' doesn't exist
+wsf1111111------ None None PROCEDURE kbe.t11 can't return a result set in the given context
+
+
+%KBE_ROOT%\kbe\res;%KBE_ROOT%\assets\scripts;%KBE_ROOT%\assets\res
+
+
+
+CREATE procedure `t1`()
+begin
+INSERT INTO t1 (col) values("abc1");
+INSERT INTO t1 (col) values("abc2");
+END;
+
+CREATE procedure `t11`()
+begin
+INSERT INTO t1 (col) values("abc1");
+INSERT INTO t1 (col) values("abc2");
+INSERT INTO t100 (col) values("abc");
+END;
+
+CREATE procedure `t111`()
+begin
+START TRANSACTION;
+INSERT INTO t1 (col) values("abc1");
+INSERT INTO t1 (col) values("abc2");
+INSERT INTO t100 (col) values("abc");
+COMMIT;
+END;
+
+
+
+
+CREATE procedure `t2`()
+begin
+SELECT * FROM `t2`;
+INSERT INTO t2 (col) values("abc");
+END;
+
+CREATE procedure `t5`()
+begin
+INSERT INTO t5 (col) values("abc1");
+INSERT INTO t100 (col) values("abc");
+END;

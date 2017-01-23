@@ -13,8 +13,8 @@ RingEctype_MaxRingNum = 4
 EctypeIntegral =
 {
 	-- 物件
-	Object		= 10,
-	Patrol		= 1,
+	Object		= 3,
+	Patrol		= 2,
 	Effect		= 1,
 }
 

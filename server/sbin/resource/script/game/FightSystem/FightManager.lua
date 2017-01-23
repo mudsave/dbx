@@ -163,7 +163,7 @@ local function PushOffenseWarrior(entity)
 
 		SetPlayerAttrInfo(entity,OffenceWarriors[OIndex])
 		OIndex = OIndex + 1
-		local petID = entity:getFollowPetID()
+		local petID = entity:getFightPetID()
 		
 		for _,pet in pairs(entity:getPetList()) do	--如果是玩家，将这个玩家的所有非出战宠物放入到后备宠物列表中
 			if petID ~= pet:getID() then PushReservist(pet) end
@@ -183,7 +183,7 @@ local function PushDefenseWarrior(entity)
 	if entity:getEntityType() == eClsTypePlayer then
 		SetPlayerAttrInfo(entity,DefenceWarriors[DIndex])
 		DIndex = DIndex + 1
-		local petID = entity:getFollowPetID()
+		local petID = entity:getFightPetID()
 		
 		for _,pet in pairs(entity:getPetList()) do	--如果是玩家，将这个玩家的所有非出战宠物放入到后备宠物列表中
 			if petID ~= pet:getID() then PushReservist(pet) end

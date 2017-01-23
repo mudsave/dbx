@@ -435,6 +435,78 @@ mapDB =
 			safeY 		= 0,
 		},
 
+	[400] = { 
+			map 		= "xsc01.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[401] = { 
+			map 		= "yw_dg01m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[402] = { 
+			map 		= "fb_gt01m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[403] = { 
+			map 		= "yw_jt08m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[404] = { 
+			map 		= "yw_jt07m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[405] = { 
+			map 		= "cd01m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[406] = { 
+			map 		= "fbx30m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[407] = { 
+			map 		= "yw_gt05m.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
 	[600] = { 
 			map 		= "yw_ld03.mp",
 			level 		= 0,
@@ -547,7 +619,7 @@ mapDB =
 			map 		= "yw_tg04.mp",
 			level 		= 0,
 			mapType 	= MapType.Copy,
-			npcs 		= {31087,31085,31064,31066,31067,31084,31086,31065,31083,31082,31063,31061,31062,31081, },
+			npcs 		= {31087,31085,31064,31084,31086,31083,31065,31082,31063,31062,31061,31081, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -556,7 +628,7 @@ mapDB =
 			map 		= "yw_tg03.mp",
 			level 		= 0,
 			mapType 	= MapType.Copy,
-			npcs 		= {31094,31096,31070,31071,31074,31093,31095,31091,31072,31090,31069,31073,31089,31068,31092,31088, },
+			npcs 		= {31094,31070,31096,31071,31093,31095,31091,31090,31073,31068,31089,31092,31088, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -565,7 +637,7 @@ mapDB =
 			map 		= "yw_jt08.mp",
 			level 		= 0,
 			mapType 	= MapType.Copy,
-			npcs 		= {},
+			npcs 		= {31170,31168,31163,31165,31167,31169,31162,31164,31166,31161, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -574,7 +646,7 @@ mapDB =
 			map 		= "yw_dg01.mp",
 			level 		= 0,
 			mapType 	= MapType.Copy,
-			npcs 		= {},
+			npcs 		= {31151,31156,31155,31154,31157,31152,31153,31159,31158,31160, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},

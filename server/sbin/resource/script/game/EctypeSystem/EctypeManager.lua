@@ -317,7 +317,7 @@ function EctypeManager:exitEctype(player)
 	for playerID, _ in pairs(ectypePlayers) do 
 		local curPlayer = g_entityMgr:getPlayerByID(playerID) 
 		if curPlayer then
-			ectype:returnPublicScene(player)
+			ectype:returnPublicScene(curPlayer)
 		end
 	end
 end

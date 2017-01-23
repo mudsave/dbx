@@ -13,6 +13,7 @@ function Player:__init(roleId, gatewayId, hClientLink, hGateLink)
 	self._hGateLink		= hGateLink
 	self._status		= ePlayerNone
 	self._fightID		= nil
+	self._version		= nil
 	self._isClosedInfight = false --是否是战斗中强X,配合ePlayerInactiveFight状态使用
 	self:__init_basic()
 	self:__init_logic()
@@ -76,6 +77,14 @@ end
 
 function Player:getIsFightClose()
 	return self._isClosedInfight
+end
+
+function Player:setVersion(version)
+	self._version = version
+end
+
+function Player:getVersion()
+	return self._version
 end
 
 require "entity.PlayerBasic"

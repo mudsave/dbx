@@ -49,4 +49,5 @@ DialogActionConfig =
 	[DialogActionType.ConsumeRecetiveTask]		= DialogAction.doConsumeRecetiveTask,
 	[DialogActionType.FinishLoopTask]			= DialogAction.doFinishLoopTask,
 	[DialogActionType.AddFollowNpc]				= DialogAction.doAddFollowNpc,
+	[DialogActionType.EnterBeastFight]			= DialogAction.doEnterBeastFight,
 }

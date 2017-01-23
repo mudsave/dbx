@@ -163,9 +163,25 @@ function TaskCondition.loopTask(player, taskID, needDebug, GM)
 		end
 		return false
 	end
+	
+	if not TaskCondition.isCountRing(player, taskID) then
+		if needDebug then
+			print("环数已经做完呢")
+		end
+		return false
+	end
+
 	return true
 end
 
+function TaskCondition.isCountRing(player, taskID)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local taskData = LoopTaskDB[taskID]
+	if taskHandler:getCountRing(taskID) < taskData.loop then
+		return true
+	end
+	return false
+end
 -- 循环任务是否最大环
 function TaskCondition.isMaxRing(player, taskID)
 	local taskHandler = player:getHandler(HandlerDef_Task)
@@ -264,4 +280,23 @@ function TaskCondition.SpecialTeamTask(team, taskID)
 	end
 	
 	return true
+end
+
+--日常任务条件检测
+function TaskCondition.DailyTask( player, taskID, GM )
+	local DailyTaskData = DailyTaskDB[taskID]
+	local levelLimit = taskData.level
+	local consume = taskData.consume
+	local school = taskData.school
+	local level = player:getLevel()
+	local taskHandler = player:getHandler(taskHandler)
+
+	if level < levelLimit[1] or level > levelLimit[2] then
+		print("玩家等级不够>>>>>>>>>>>>>>>>>>>>>>>")
+		return false
+	elseif taskHandler:getTask(taskID) or taskHandler:getTask(taskID).remainCount < 1  then
+		print("当日可接次数不够>>>>>>>>>>>>>>>>>>>>>>>")
+		return false
+	end
+	
 end
