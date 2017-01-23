@@ -218,7 +218,7 @@ public:
 		return len;
 	}
 
-	bool getParam(PType & type/*out*/, const void *& pValue, int index/*from 0*/)
+	bool getParam(PType & type/*out*/, const void *& pValue/*out*/, const int & index/*from 0*/)
 	{
 		//数据结构：|变量数量|变量1类型|变量1的数据|变量2类型|变量2的数据|...|
 
@@ -249,7 +249,23 @@ public:
 		return false;
 	}
 
-	bool getAttribute(std::string & name/*out*/, PType & valueType/*out*/, const void *& pValue, int col, int row)
+	/*为了兼容旧版*/
+	bool getParam(PType & type/*out*/, void *& pValue/*out*/, const int & index/*from 0*/)
+	{
+		const void * temp = NULL;
+		if (getParam(type, temp, index))
+		{
+			pValue = const_cast<void *>(temp);
+			return true;
+		}
+		else
+		{
+			pValue = NULL;
+			return false;
+		}
+	}
+
+	bool getAttribute(std::string & name/*out*/, PType & valueType/*out*/, const void *& pValue/*out*/, const int & col, const int & row)
 	{
 		if (col < attribute_cols)
 		{
@@ -258,7 +274,7 @@ public:
 		return false;
 	}
 
-	bool getAttribute(std::string & name/*out*/, PType & valueType/*out*/, const void *& pValue, int index)
+	bool getAttribute(std::string & name/*out*/, PType & valueType/*out*/, const void *& pValue/*out*/, const int & index)
 	{
 		if (index < attribute_count)
 		{
@@ -284,10 +300,37 @@ public:
 		return false;
 	}
 
+	/*为了兼容旧版*/
+	bool getAttribute(char *& name/*out*/, PType & valueType/*out*/, void *& pValue/*out*/, const int & col, const int & row)
+	{
+		if (col < attribute_cols)
+		{
+			int nameType; const void * pName(NULL);
+			if (getParam(nameType, pName, col))
+			{
+				name = (char*)malloc(nameType + 1);
+				if (name == NULL) return false;
+
+				//取属性名
+				memcpy(name, pName, nameType);
+				name[nameType] = '\0';
+				//name = temp;
+				//free(temp);	由外部释放
+
+				/*取属性值（存放的顺序是：
+				|属性名1长度|属性名1|属性名2长度|属性名2...|属性1类型|属性1|属性2类型|属性2|...|其他参数|
+				）*/
+				int value_pos = attribute_cols + row * attribute_cols + col;
+				return getParam(valueType, pValue, value_pos);
+			}
+		}
+		return false;
+	}
+
 	/*
 	* 根据索引获取非属性参数
 	*/
-	bool getNonAttribute(PType & type/*out*/, const void *& pValue, int index/*from 0*/)
+	bool getNonAttribute(PType & type/*out*/, const void *& pValue/*out*/, const int & index/*from 0*/)
 	{
 		return getParam(type, pValue, attribute_cols + attribute_count + index);
 	}
@@ -297,7 +340,17 @@ public:
 		return attribute_count / attribute_cols;
 	}
 
-	static int getTypeSize(PType paramType)
+	int getAttributeCols()
+	{
+		return attribute_cols;
+	}
+
+	int getAttributeCount()
+	{
+		return attribute_count;
+	}
+
+	static int getTypeSize(const PType & paramType)
 	{
 		if (paramType >= 0) return paramType;
 		switch (paramType)
@@ -312,12 +365,12 @@ public:
 		return 0;
 	}
 
-	static int getCharacterSize(char* pValue)
+	static int getCharacterSize(const char* pValue)
 	{
 		return (int)strlen(pValue);
 	}
 
-	static int getCharacterType(char* pValue)
+	static int getCharacterType(const char* pValue)
 	{
 		return getCharacterSize(pValue);
 	}
@@ -356,7 +409,7 @@ class DbxMessageBuilder
 private:
 	struct Param
 	{
-		Param(PType t, const void * v)
+		Param(const PType & t, const void * v)
 		{
 			type = t;
 
@@ -382,7 +435,12 @@ private:
 	};
 
 public:
-	void BeginMessage()
+	~DbxMessageBuilder()
+	{
+		reset();
+	}
+
+	void reset()
 	{
 		attribute_cols = 0;
 		attribute_count = 0;
@@ -399,10 +457,15 @@ public:
 		}
 	}
 
+	void beginMessage()
+	{
+		reset();
+	}
+
 	/*
 	* 消息填充完成，将所有数据放入新内存
 	*/
-	MessageType * FinishMessage()
+	MessageType * finishMessage()
 	{
 		int size = sizeof(MessageType) + getParamLen();
 		MessageType * p_msg = (MessageType *)malloc(size);
@@ -438,23 +501,17 @@ public:
 		}
 
 		//消息写完，把临时数据清理掉
-		for (size_t i = 0; i < params.size(); i++)
-		{
-			delete params[i];
-		}
-		params.clear();
-		//保证vector的内存可以释放掉
-		std::vector<Param *>(params).swap(params);
+		reset();
 
 		return p_msg;
 	}
 
-	void addParam(PType ParamType, const void* pParam)
+	void addParam(const PType & ParamType, const void* pParam)
 	{
 		params.push_back(new Param(ParamType, pParam));
 	}
 
-	void addAttribute(const char* name, const void* value, PType valueType)
+	void addAttribute(const char* name, const void* value, const PType &  valueType)
 	{
 		int pos;
 
@@ -890,12 +947,11 @@ public:
 	ObjDoMsg m_objDoMsg;
 };
 
-class CSSResultMsg :public CResultMsg
+class CSSResultMsg :public DbxResultMessage
 {
 public:
 	void init()
 	{
-		m_objDoMsg.initMsg();
 	}
 
 	void getInit()
@@ -907,7 +963,7 @@ public:
 		if (this == &obj)
 			return *this;
 
-		static_cast<CResultMsg &>(*this) = obj;
+		static_cast<DbxResultMessage &>(*this) = obj;
 		m_nResCount = obj.m_nResCount;
 		return *this;
 	}
@@ -917,25 +973,23 @@ public:
 };
 
 
-class CCSResultMsg :public CResultMsg
+class CCSResultMsg :public DbxResultMessage
 {
 public:
 	void init()
 	{
-		m_objDoMsg.initMsg();
 	}
 	void getInit()
 	{
 	}
 };
 
-class CSCResultMsg :public CResultMsg
+class CSCResultMsg :public DbxResultMessage
 {
 public:
 
 	void init()
 	{
-		m_objDoMsg.initMsg();
 	}
 	void getInit()
 	{
