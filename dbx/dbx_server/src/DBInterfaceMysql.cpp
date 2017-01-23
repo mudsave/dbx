@@ -14,6 +14,7 @@ RTX:6016.
 #include "DBXCommon.h"
 #include "DBInterface.h"
 #include "DBXConfig.h"
+#include "DBIssue.h"
 
 
 DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID)
@@ -38,7 +39,7 @@ bool DBInterfaceMysql::Initialize()
 
 bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue)
 {
-    TRACE1_L0("DBInterfaceMysql::Query p_dbInterfaceID(%s)\n", p_cmd);
+    TRACE1_L0("DBInterfaceMysql::Query p_dbInterfaceID(%s).\n", p_cmd);
     if (m_mysql == NULL)
     {
         TRACE0_ERROR("DBInterfaceMysql::Query: MYSQL has not init.");
@@ -48,7 +49,8 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
     if (mysql_real_query(m_mysql, p_cmd, p_size) != 0)
     {
-        
+        p_issue->SetError(mysql_errno(m_mysql), mysql_error(m_mysql));
+        return false;
     }
 
     return true;
@@ -56,9 +58,16 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
 bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 {
+    TRACE0_L0("DBInterfaceMysql::ProcessQueryResult.\n");
     if (p_issue == NULL)
         return true;
 
+    return true;
+}
+
+bool DBInterfaceMysql::ProcessError(DBIssueBase *p_issue)
+{
+    TRACE0_L0("DBInterfaceMysql::ProcessError.\n");
     return true;
 }
 
@@ -80,7 +89,8 @@ bool DBInterfaceMysql::Connect()
         m_dbUserName, m_dbPassword,
         m_dbName,
         m_dbPort,
-        NULL, CLIENT_MULTI_STATEMENTS) == NULL)
+        NULL, 
+        CLIENT_MULTI_STATEMENTS) == NULL)
     {
         TRACE1_ERROR("DBInterfaceMysql::Connect:error:%s.\n", mysql_error(m_mysql));
         return false;

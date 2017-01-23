@@ -13,7 +13,9 @@ RTX:6016.
 // -----------------------------------------------------------------------------------
 DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
     :m_dbInterface(NULL),
-    m_queryID(p_queryID)
+    m_queryID(p_queryID),
+    m_errnum(0),
+    m_errstr("")
 {
 }
 
@@ -36,6 +38,28 @@ void DBIssueBase::MainProgress()
 int DBIssueBase::GetQueryID()
 {
     return m_queryID;
+}
+
+bool DBIssueBase::HasError()
+{
+    return m_errnum != 0;
+}
+
+std::string &DBIssueBase::GetErrorStr()
+{
+    return m_errstr;
+}
+
+void DBIssueBase::ProcessError()
+{
+    m_errnum = 0;
+    m_errstr = "";
+}
+
+void DBIssueBase::SetError(int p_errnum, std::string p_errstr)
+{
+    m_errnum = p_errnum;
+    m_errstr = p_errstr;
 }
 
 

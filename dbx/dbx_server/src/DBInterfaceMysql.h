@@ -22,6 +22,8 @@ public:
 
     bool ProcessQueryResult(DBIssueBase *p_issue);
 
+    bool ProcessError(DBIssueBase *p_issue);
+
     virtual bool Initialize();
 
     virtual bool Connect();
