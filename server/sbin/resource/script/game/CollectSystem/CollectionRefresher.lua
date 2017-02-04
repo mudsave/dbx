@@ -3,7 +3,7 @@
 		采集的刷新工具
 --]]
 require "base.RandomTool"
-CollectionRefresher = class(Singleton,Timer)
+CollectionRefresher = class(nil,Timer,Singleton)
 
 function CollectionRefresher:__init()
 	self.showingNpcs = {}
@@ -197,7 +197,19 @@ function CollectionRefresher:collect(npcID)
 	local mapID = npc:getMapID()
 	local scene = npc:getScene()
 	if scene then
-		local data = npc:getRefreshData()
+
+		if g_sceneMgr:isInGoldHuntScene(npc) then
+			local count = npc:getCollectedCount()+1
+			npc:setCollectedCount(count)
+			local rand = math.random(GoldHuntZone_MineCollectLimit[1],GoldHuntZone_MineCollectLimit[2])
+			if count >= rand then
+				scene:detachEntity(npc)
+				return true
+			else
+				return false
+			end
+		end
+
 		local Type = data.posType
 	
 		if Type ==PosEnum.fixedPos then

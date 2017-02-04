@@ -587,6 +587,33 @@ function DialogAction:doAddFollowNpc(player, param, npcID)
 		TaskCallBack.onAddFollowNpc(player:getID(), followNpcID)
 	end
 end
+--进入猎金场
+function DialogAction:doEnterGoldHuntZone(player, param)
+	g_goldHuntMgr:enterHuntZone(player,param)
+end
+
+--猎金场战斗
+function DialogAction:doGoldHuntFight(player, param, npcID)
+	local playerList = {}
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if teamHandler:isTeam() then
+		return
+	
+	end
+
+	local curNpc = g_entityMgr:getNpc(npcID)
+	if not curNpc then
+		return
+	end
+
+	g_goldHuntMgr:doGoldHuntPVEFight(player, param, npcID)
+	
+end
+
+--猎金场玩家提交积分
+function DialogAction:doGoldHuntCommit(player, param)
+	g_goldHuntMgr:commitScore(player)
+end
 
 function DialogAction:doEnterBeastFight(player, param, npcID)
 	local npc = g_entityMgr:getNpc(npcID)

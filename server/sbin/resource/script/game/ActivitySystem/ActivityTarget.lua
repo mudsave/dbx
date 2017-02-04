@@ -21,6 +21,10 @@ function ActivityTarget:getActivityIndex()
 	return self._activityIndex
 end
 
+function ActivityTarget:setEntity( role)
+	 self._entity = role
+end
+
 function ActivityTarget:getEntity()
 	return self._entity
 end

@@ -6,13 +6,15 @@
 require "base.base"
 require "entity.Entity"
 
-PatrolNpc = class(Entity, Timer)
+PatrolNpc = class(Entity)
 
 function PatrolNpc:__init()
 	self._dbID = nil
 	self.scriptID = 0
 	self.radius = nil
 	self.ownerID = nil
+	self.isMove = false
+	self.startTime = nil
 end
 
 function PatrolNpc:__release()
@@ -20,11 +22,8 @@ function PatrolNpc:__release()
 	self.scriptID = nil
 	self.radius = nil
 	self.ownerID = nil
-	if self.timerID  then 
-		g_timerMgr:unRegTimer(self.timerID)
-		self.timerID = nil
-	end
-	
+	self.isMove = nil
+	self.startTime = nil
 end
 
 function PatrolNpc:setCatchPet(catchPet)
@@ -36,6 +35,7 @@ function PatrolNpc:getCatchPet()
 end
 
 function PatrolNpc:beginScopeMove()
+	self.isMove = true
 	local x, y
 	local mapID = self._scene:getMapID()
 	local pos = self:getPos()
@@ -68,19 +68,11 @@ end
 
 -- 移动停止注册一个5秒定时器
 function PatrolNpc:moveNext()
-	if not self.ownerID then
-		self.timerID = g_timerMgr:regTimer(self, 5*1000, 5*1000, "moveNext")
-	end
+	self.isMove = false
+	local nowTime = os.time()
+	self.startTime = nowTime + 4
 end
 
--- 停止5秒之后
-function PatrolNpc:update()
-	if self.timerID  then
-		g_timerMgr:unRegTimer(self.timerID)
-		self.timerID = nil
-		self:beginScopeMove()
-	end
-end
 
 function PatrolNpc:setOwnerID(playerID)
 	self.ownerID = playerID
@@ -88,4 +80,16 @@ end
 
 function PatrolNpc:getOwnerID()
 	return self.ownerID
+end
+
+function PatrolNpc:setStartMoveTime(startTime)
+	self.startTime = startTime
+end
+
+function PatrolNpc:getStartMoveTime()
+	return self.startTime
+end
+
+function PatrolNpc:getMoveState()
+	return self.isMove
 end

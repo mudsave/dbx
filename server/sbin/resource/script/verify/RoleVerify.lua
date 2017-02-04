@@ -251,6 +251,16 @@ function RoleVerify:checkBeastBless(player, param)
 	local lvlDiffer		= player.lvlDiffer	-- 等级差
 	--local 
 end
+function RoleVerify:checkTime(player, param)
+	local hour = param.hour
+	local min = param.min
+	local tInfo = os.date("*t")
+	if (tInfo.hour> hour) or (tInfo.hour == hour and tInfo.min > min) then
+		return true
+	else
+		return false
+	end
+end
 
 function RoleVerify.getInstance()
 	return RoleVerify()

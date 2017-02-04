@@ -29,7 +29,7 @@ enum EntityType
 	eLogicCrop,
 	eLogicGoodsNpc,
 	eLogicEctypeNpc,
-	eLogicPatrolNpc,
+	eLogicEctypePatrolNpc,
 	eLogicEctypeObject,
 	MAX_LOGIC_TYPE
 };

@@ -22,7 +22,9 @@ DialogConditionDoer =
 	[DialogCondition.CheckLoopTask] = RoleVerify.checkLoopTask,
 	[DialogCondition.HasTask_1] = RoleVerify.hasTask_1,
 	[DialogCondition.CheckLoopTasks] = RoleVerify.checkLoopTasks,
-	[DialogCondition.CheckBeastBless] = RoleVerify.checkBeastBless
+	[DialogCondition.CheckBeastBless] = RoleVerify.checkBeastBless,
+	[DialogCondition.Time] = RoleVerify.checkTime,
+	[DialogCondition.PlayerCountInGoldHuntMap] = SceneManager.checkPlayerCountInGoldHuntMap,
 }
 
 --对话条件对应的实例
@@ -45,4 +47,6 @@ DialogConditionInstance =
 	[DialogCondition.CheckLoopTask] = RoleVerify.getInstance(),
 	[DialogCondition.HasTask_1] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTasks] = RoleVerify.getInstance(),
+	[DialogCondition.Time] = RoleVerify.getInstance(),
+	[DialogCondition.PlayerCountInGoldHuntMap] = SceneManager.getInstance(),
 }

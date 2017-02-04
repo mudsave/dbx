@@ -12,6 +12,7 @@ extern CWorld g_world;
 extern CMapManager g_MapManager;
 handle CoScene::s_entitiesBuf[_MaxEnumCount];
 #define X_FIELD_LEN 50
+#define Radius_limit 5
 
 CoScene::CoScene(short sWordId, short mapId, SceneType type, CMapInfo* pMapInfo):
 	m_SceneInfo(sWordId, mapId, type), m_pMapInfo(pMapInfo), m_unitCount(0),
@@ -195,4 +196,55 @@ GridVct CoScene::FindRandomTile(int mapId)
 		}
 	}
 	return gv;
+}
+
+GridVct CoScene::getRandomPos(int centerX,int centerY,int radius,int mapID)
+{
+	if(radius > Radius_limit)
+	{
+		radius = Radius_limit;
+	}
+	int xOrg = centerX;
+	int yOrg = centerY;
+	int yMin = yOrg - radius;
+	if(yMin < 0) yMin = 0;
+	int yMax = yOrg + radius;
+	
+
+	int nMin = xOrg - radius;
+	if(nMin < 0) nMin = 0;
+	
+	int nMax = xOrg + radius;
+	
+	
+
+	vector<GridVct> v;
+	
+	for(int y = yMin; y <= yMax; y++)
+	{
+		for(int n = nMin; n <= nMax; n++)
+		{
+			
+			bool flag = posValidate( n, y,0);
+			if (flag)
+			{
+				v.push_back(GridVct(n,y));
+				
+			}
+			
+			
+		}
+	}
+	int count = v.size();
+	if (count> 0)
+	{
+		int nRand = rand() % (count);
+		return v[nRand-1];
+	}
+	else
+	{
+		return GridVct(centerX,centerY);
+	}
+	
+
 }

@@ -129,7 +129,6 @@ function GroupSystem:onInviteFriend( event )
 end
 
 function GroupSystem:onPlayerExist( event )
-    
     if self._listenState == true then
         local params = event:getParams()
         local playerInfo = params[1]
@@ -140,7 +139,7 @@ function GroupSystem:onPlayerExist( event )
         if member then
             local msg = GroupMsgTextKeyTable.AlreadyInGroup
             local notifyParams = {msg = msg}
-            local event_ShowNotifyInfo = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.NormalNotify,notifyParams)
+            local event_ShowNotifyInfo = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.GroupNotify,notifyParams)
             g_eventMgr:fireRemoteEvent(event_ShowNotifyInfo,role)
         else--玩家不在群中
             --检查玩家是否在线

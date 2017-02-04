@@ -28,24 +28,42 @@ function CollectSystem:onRemoveGoods(event)
 	end
 	local goodsNpcID = params[1]
 	local goodsNpc = g_entityMgr:getGoodsNpc(goodsNpcID)
+	
 	--判断地图上是否有该包裹
 	if goodsNpc then
+		local isSuccess = false
+		local isRemoved = false
 	    local collectionRefresher = CollectionRefresher.getInstance()
 		--获取GoodsReward物件包ID
 		local packID = goodsNpc:getDBID()
 		local config = ArticlesDB[packID]
 		local condition = config.condition
+		--猎金场活动条件判断
+		if g_sceneMgr:isInGoldHuntScene(player) then
+			if not g_goldHuntMgr:canCollectMine(player,packID) then
+				local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, 5)
+				g_eventMgr:fireRemoteEvent(event_notice,player)
+				return
+			end
+			isRemoved = collectionRefresher:collect(goodsNpcID)
+			CollectSystem:openGoodsPack(goodsNpcID,playerID)
+			g_goldHuntMgr:onItemCollected(goodsNpcID,packID,playerID,isRemoved)
+			return
+		end
+
 		--条件为空，说明该物件为障碍物，同样可以采集移除
 		if table.size(condition) <=0 then
+			isSuccess = true
 		    collectionRefresher:collect(goodsNpcID)
 			CollectSystem:openGoodsPack(goodsNpcID,playerID)
 		else   
+			
 			-- 处理玩家等级是否满足开采条件
 			if condition.lowLevel then 
 				local playerLevel = player:getLevel()
 				--如果玩家等级小于该开采条件内
 				if  playerLevel < condition.lowLevel then
-
+					isSuccess = true
 					collectionRefresher:collect(goodsNpcID)
 					CollectSystem:openGoodsPack(goodsNpcID,playerID)
 				else
@@ -57,6 +75,7 @@ function CollectSystem:onRemoveGoods(event)
 			-- 处理玩家任务是否满足开采条件
 			else		
 				if condition.taskID then
+					isSuccess = true
 				    --如果玩家持有该任务
 					if player:getHandler(HandlerDef_Task):getTask(condition.taskID) then
 					collectionRefresher:collect(goodsNpcID)
@@ -78,7 +97,8 @@ function CollectSystem:onRemoveGoods(event)
 						local packetHandler = player:getHandler(HandlerDef_Packet)
 						--判断玩家物品是否有打开包裹需要消耗的物品
 						if packetHandler:getNumByItemID(itemConfigID) >= num then
-							--消耗玩家物品					
+							--消耗玩家物品		
+							isSuccess = true
 							packetHandler:removeByItemId(itemConfigID, num)
 							collectionRefresher:collect(goodsNpcID)
 							CollectSystem:openGoodsPack(goodsNpcID,playerID)
@@ -92,6 +112,7 @@ function CollectSystem:onRemoveGoods(event)
 							local playerLevel = player:getLevel()
 							--如果玩家等级高于给配置条件
 							if  playerLevel > condition.highLevel then
+								isSuccess = true
 								collectionRefresher:collect(goodsNpcID)
 								CollectSystem:openGoodsPack(goodsNpcID,playerID)
 							else
@@ -104,7 +125,8 @@ function CollectSystem:onRemoveGoods(event)
 					end
 				end
 			end
-		end 
+		end
+		
 	--该包裹被采集后，其他玩家还在读条的处理
     else
 		local noticeID_5 =  5

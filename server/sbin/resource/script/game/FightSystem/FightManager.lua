@@ -169,7 +169,7 @@ local function PushOffenseWarrior(entity)
 			if petID ~= pet:getID() then PushReservist(pet) end
 		end
 		
-	elseif entity:getEntityType() == eClsTypePet then
+	elseif entity:getEntityType() == eClsTypePet and entity:getPetStatus() == PetStatus.Fight then
 	
 		SetPetAttrInfo(entity,OffenceWarriors[OIndex])
 		OIndex = OIndex + 1
@@ -189,7 +189,7 @@ local function PushDefenseWarrior(entity)
 			if petID ~= pet:getID() then PushReservist(pet) end
 		end
 		
-	elseif entity:getEntityType() == eClsTypePet then
+	elseif entity:getEntityType() == eClsTypePet and entity:getPetStatus() == PetStatus.Fight then
 		SetPetAttrInfo(entity,DefenceWarriors[DIndex])
 		DIndex = DIndex + 1
 	end

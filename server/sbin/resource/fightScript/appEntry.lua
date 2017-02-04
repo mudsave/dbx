@@ -50,13 +50,14 @@ local function loadDB()
 end
 
 local function loadSystem()
+	g_eventMgr				= EventManager.getInstance()
+	g_timerMgr				= TimerManager.getInstance()
+
 	require "FightSystem"
 	require "buff.FightBuffManager"
 	require "item.FightItemManager"
 	require "chatSystem.ChatSystem"
 		
-	g_eventMgr				= EventManager.getInstance()
-	g_timerMgr				= TimerManager.getInstance()
 	g_fightMgr 				= FightManager.getInstance()
 	g_fightFactory			= FightFactory.getInstance()
 	g_fightEntityFactory 	= FightEntityFactory.getInstance()

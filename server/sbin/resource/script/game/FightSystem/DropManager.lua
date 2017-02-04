@@ -583,6 +583,9 @@ function DropManager:dealWithPunish(FightEndResults,scriptID, fightID)
 
 		if player then
 			print("----------处理惩罚------getHP--",player:getHP())
+			if g_sceneMgr:isInGoldHuntScene(player) then
+				return
+			end
 			--死亡惩罚
 			--如果具有血池Buff，则传送回桃源镇
 			local buffHandler = player:getHandler(HandlerDef_Buff)

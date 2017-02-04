@@ -26,13 +26,15 @@ PunishDurReductionPerc = 10
 
 FightBussinessType = 
 {
-	Wild	= 1,--野外
-	Excise	= 2,--切磋
-	PK		= 3,--PK
-	Task	= 4,--任务
-	Test	= 5,--测试
-	Collect = 6,--采集
-	Treasure= 7,--藏宝图
+	Wild			= 1,--野外
+	Excise			= 2,--切磋
+	PK				= 3,--PK
+	Task			= 4,--任务
+	Test			= 5,--测试
+	Collect			= 6,--采集
+	Treasure		= 7,--藏宝图
+	EctypePatrol	= 8,--副本巡逻战斗
+	GoldHunt= 8,--猎金场
 
 }
 CallPetLevelNeed = 10

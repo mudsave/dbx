@@ -50,4 +50,7 @@ DialogActionConfig =
 	[DialogActionType.FinishLoopTask]			= DialogAction.doFinishLoopTask,
 	[DialogActionType.AddFollowNpc]				= DialogAction.doAddFollowNpc,
 	[DialogActionType.EnterBeastFight]			= DialogAction.doEnterBeastFight,
+	[DialogActionType.EnterGoldHuntZone]		= DialogAction.doEnterGoldHuntZone,
+	[DialogActionType.GoldHuntFight]			= DialogAction.doGoldHuntFight,
+	[DialogActionType.GoldHuntCommit]			= DialogAction.doGoldHuntCommit,
 }

@@ -4,7 +4,6 @@
 
 -- 获得奖励的等级
 baseRewardLvl = 25
-initLeftTimes = 180
 --每日最大可抽奖次数为多少，这里就需要配置多少个
 OnlineRewardExtractionTimer =
 {

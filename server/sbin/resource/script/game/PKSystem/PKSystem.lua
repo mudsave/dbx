@@ -24,6 +24,11 @@ function PKSystem:doInvitePK(event)
 	if not player then
 		return
 	end
+
+	if g_sceneMgr:isInGoldHuntScene(player) then
+		return
+	end
+
 	local params = event:getParams()
 	local targetID = params[1]
 	local tgPlayer = g_entityMgr:getPlayerByID(targetID)

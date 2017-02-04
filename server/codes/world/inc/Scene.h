@@ -45,6 +45,7 @@ public:
     {
     	return (SceneType)(m_SceneInfo.sceneType);
     }
+	GridVct getRandomPos(int x, int y,int radius, int mapID);
 
 public:
 	static handle s_entitiesBuf[_MaxEnumCount];

@@ -34,6 +34,8 @@ function EctypeSystem:__init()
 		[EctypeEvents_CS_RemoveObject]                   = EctypeSystem.onRemoveObject,
 		-- 受到机关撞击效果
 		[SceneEvent_SS_AttackEffect]                     = EctypeSystem.onAttackEffect,
+		-- 副本巡逻进入战斗
+		[EctypeEvents_CS_EnterPatrolFight]               = EctypeSystem.onEnterPatrolFight,
 	}
 end
 
@@ -316,6 +318,65 @@ function EctypeSystem:onAttackEffect(event)
 	-- 记录撞击次数
 	ectype:onAttackEffect()
 	--ectype:redIntegral(msgID, EctypeIntegral.Effect)
+end
+
+function EctypeSystem:onEnterPatrolFight(event)
+	local params = event:getParams()
+	local roleID = params[1]
+	local patrolNpcID = params[2]
+	if not roleID then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	if not player then
+		return
+	end
+	-- 找到玩家所在副本
+	local ectypeHandler = player:getHandler(HandlerDef_Ectype)
+	local ectypeMapID = ectypeHandler:getEctypeMapID()
+	local ectype = g_ectypeMgr:getEctype(ectypeMapID)
+	if not ectype then
+		return
+	end
+	local patrolNpc = g_entityMgr:getPatrolNpc(patrolNpcID)
+	if not patrolNpc then
+		return
+	end
+	if not patrolNpc:getOwnerID() then
+		patrolNpc:setOwnerID(player:getID())
+		local scriptID = patrolNpc:getScriptID()
+		local fightID = self:startPatrolFight(player, scriptID)
+		-- 在当前副本当中记录战斗ID 和 巡逻NPC运行ID
+		ectype:attachPatrolNpc(fightID, patrolNpcID)
+		local moveHandler = patrolNpc:getHandler(HandlerDef_Move)
+		moveHandler:DoStopMove()
+	end
+end
+
+function EctypeSystem:startPatrolFight(player, scriptID)
+	local playerList = {}
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if teamHandler:isTeam() then
+		if teamHandler:isLeader() then
+			playerList = teamHandler:getTeamPlayerList()
+		elseif teamHandler:isStepOutState() then
+			table.insert(playerList,player)
+		end
+	else
+		table.insert(playerList,player)
+	end
+	--加宠物
+	local finalList = {}
+	for k,player in ipairs(playerList) do
+		table.insert(finalList,player)
+		local petID = player:getFollowPetID()
+		if petID then
+			local pet = g_entityMgr:getPet(petID)
+			table.insert(finalList,pet)
+		end
+	end
+	local fightID = g_fightMgr:startScriptFight(finalList, scriptID, nil, FightBussinessType.EctypePatrol)
+	return fightID
 end
 
 function EctypeSystem.getInstance()

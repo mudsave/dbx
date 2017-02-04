@@ -4,6 +4,7 @@
 
 local math_random = math.random
 local nDay = tonumber(os.date("%w",os.time()))
+local initLeftTimes = OnlineRewardExtractionTimer[nDay]
 
 RewardSession = class()
 
@@ -17,11 +18,11 @@ function getbaseday()
 end
 
 --首次上线触发
-function RewardSession:__init(player)	
+function RewardSession:__init(player)
 	self.ownerID =	player:getDBID()
 	self.r_number = false	--随机数
 	self.nTimes = 0			--当前可抽奖次数
-	self.times = 0			--累计抽奖次数
+	self.times = 1			--累计抽奖次数
 	self.offTimes = 0		--累计已抽奖次数
 	self.nLastTime = nil	--最后一次发送倒计时的时间
 	self.nLeftTime = 0		--倒计时剩余时间
@@ -35,16 +36,16 @@ function RewardSession:__release()
 end
 
 function RewardSession:initDef()   
-	self.r_number			= false			--随机数
-	self.nTimes				= 0				--当前可抽奖次数
-	self.times				= 0				--累计抽奖次数
-	self.offTimes			= 0				--累计已抽奖次数
-	self.nLastTime			= nil			--最后一次发倒计时的时间
-	self.onLineTime			= nil			--再次上线的时间点
-	self.offLineTime		= nil			--下线的时间
-	self.nLeftTime			= initLeftTimes	--倒计时剩余时间
-	self.resultlist			= {}			--在线奖励的物品ID
-	self.session_day		= getbaseday()	--这次奖励的天	
+	self.r_number			= false					--随机数
+	self.nTimes				= 0						--当前可抽奖次数
+	self.times				= 1						--累计抽奖次数
+	self.offTimes			= 0						--累计已抽奖次数
+	self.nLastTime			= nil					--最后一次发倒计时的时间
+	self.onLineTime			= nil					--再次上线的时间点
+	self.offLineTime		= nil					--下线的时间
+	self.nLeftTime			= initLeftTimes[self.times]	--倒计时剩余时间
+	self.resultlist			= {}					--在线奖励的物品ID
+	self.session_day		= getbaseday()			--这次奖励的天	
 	self:onSessionInited()
 	return self
 end

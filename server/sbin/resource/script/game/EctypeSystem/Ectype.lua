@@ -89,7 +89,7 @@ function Ectype:removeNpc(npcID)
 	scene:detachEntity(npc)
 	g_entityMgr:removeNpc(npc:getID())
 	self.ectypeNpc[npcID] = nil
-	release(npc)
+	
 end
 
 -- 获取所有的动态NPC
@@ -1192,6 +1192,9 @@ end
 -- 释放副本
 function Ectype:releaseEctype()
 	-- 关闭定时刷新定时器， 帮会任务定时刷新的定时器
+	if self.moveTimerID and self.moveTimerID > 0 then
+		g_timerMgr:unRegTimer(self.moveTimerID)
+	end
 	if self.checkTimerID and self.checkTimerID > 0 then
 		g_timerMgr:unRegTimer(self.checkTimerID)
 	end

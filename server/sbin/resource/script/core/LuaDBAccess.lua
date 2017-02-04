@@ -737,7 +737,23 @@ function LuaDBAccess.SavePointSetting(entity)
 		end
 	end
 end
-
+--保存玩家的猎金场总积分
+function LuaDBAccess.updateGoldHuntActivity(player)
+	local handler = player:getHandler(HandlerDef_Activity)
+	if handler then
+		clearParams()
+		local curTotal = handler:getGoldHuntData().totalScore
+		local isPrized = handler:getGoldHuntData().isPrized
+		params[1]["spName"]			= "sp_UpdatePlayerGoldHunt"
+		params[1]["dataBase"]		= 1
+		params[1]["sort"]			= "ID,totalScore,isPrized"
+		params[1]["ID"]			= player:getDBID()
+		params[1]["totalScore"]	= curTotal
+		params[1]["isPrized"]	= isPrized
+		
+		LuaDBAccess.exeSP(params, false)
+	end
+end
 ---------------------------------------------------------------------------------------------------
 --更新世界服数据
 function LuaDBAccess.UpdateWorldServerData( playerDBID,valueName,cvalue,ivalue )

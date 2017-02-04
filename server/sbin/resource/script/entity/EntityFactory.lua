@@ -50,7 +50,7 @@ function EntityFactory:createPlayer(roleId, gatewayId, hClientLink, hGateLink)
 	player:addHandler(HandlerDef_SystemSet,SystemSetHandler(player))
 	player:addHandler(HandlerDef_AutoPoint,AutoPointHandler(player))	
 	player:addHandler(HandlerDef_Mine,MineHandler(player))
-
+	player:addHandler(HandlerDef_Activity, ActivityHandler(player))
 	return player
 end
 
@@ -175,11 +175,11 @@ function EntityFactory:createEctypeNpc(dbID)
 end
 
 -- 这个就是公共场景巡逻NPC
-function EntityFactory:createPatrolNpc(dbID)
+function EntityFactory:createEctypePatrolNpc(dbID)
 	local patrolNpc = PatrolNpc()
 	patrolNpc:setDBID(dbID)
 	--创建c++实体
-	local peer = CoEntity:Create(eLogicPatrolNpc, eClsTypeNpc)
+	local peer = CoEntity:Create(eLogicEctypePatrolNpc, eClsTypeNpc)
 	patrolNpc:setPeer(peer)
 	patrolNpc:setMoveSpeed(DefaultSpeed)
 	peer:setDBID(dbID)

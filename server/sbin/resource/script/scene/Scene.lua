@@ -9,6 +9,7 @@ function Scene:__init()
 	self._peer = nil
 	self._type = nil
 	self.entityList = {}
+	self._playerCount = 0
 end
 
 function Scene:__release()
@@ -45,6 +46,10 @@ function Scene:getEntityList()
 	return self.entityList
 end
 
+function Scene:getPlayerCount()
+	return self._playerCount
+end
+
 function Scene:attachEntity(entity, posX, PosY)
 	local peer = entity:getPeer()
 	local curScene = entity:getScene()
@@ -61,6 +66,9 @@ function Scene:attachEntity(entity, posX, PosY)
 	if posX and PosY and peer then 
 		local posInfo = entity:getPos()
 		posInfo[1] = self:getMapID()
+		if instanceof(entity, Player) then
+			self._playerCount = self._playerCount + 1
+		end
 		return peer:enterScene(self._peer, posX, PosY)
 	end
 end
@@ -73,6 +81,9 @@ function Scene:detachEntity(entity)
 	entity:setScene(nil)
 	self.entityList[entity:getID()] = nil
 	if peer then 
+		if instanceof(entity, Player) then
+			self._playerCount = self._playerCount - 1
+		end
 		peer:quitScene()
 	end
 	return true

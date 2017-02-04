@@ -8,6 +8,15 @@ require "game.ActivitySystem.ActivityManager"
 require "game.ActivitySystem.ActivityCallBack"
 require "game.ActivitySystem.ActivityTarget"
 
+
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone1"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone2"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone3"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PK"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_Collect"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PVE"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntManager"
+
 ActivitySystem = class(EventSetDoer, Singleton)
 
 function ActivitySystem:__init()

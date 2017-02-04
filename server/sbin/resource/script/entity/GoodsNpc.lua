@@ -17,7 +17,7 @@ function GoodsNpc:__init()
   self._mapID = nil
   self._refreshTime = nil
   self._collectionInfo = nil
-  
+  self._collectedCount = 0
 end
 
 function GoodsNpc:__release()
@@ -108,4 +108,12 @@ end
  
 function GoodsNpc:getPosIndex()
 	return self.index
+end
+
+function GoodsNpc:setCollectedCount(count)
+	 self._collectedCount = count
+end
+
+function GoodsNpc:getCollectedCount()
+	 return self._collectedCount 
 end

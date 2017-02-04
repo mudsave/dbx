@@ -12,6 +12,7 @@ function SceneManager:__init()
 	self.scene = {}
 	self.ectypeScene = {}
 	self.factionScene = {}
+	self._GoldHuntZone = {}
 end
 
 function SceneManager:__release()
@@ -196,6 +197,82 @@ function SceneManager:releaseEctypeScene(ectypeMapID)
 	end
 	release(scene)
 	self.ectypeScene[ectypeMapID] = nil
+end
+
+-- 创建猎金场场景
+function SceneManager:createGoldHuntScene(mapID,activityID)
+	local mapConfig = mapDB[mapID]
+	if not mapConfig then
+		return -1
+	end
+	local scene = Scene()
+	local peer = CoScene:Create(mapConfig.sceneType, mapID, mapConfig.map)
+	scene:setPeer(peer)
+	scene:setMapID(mapID)
+	self._GoldHuntZone[activityID] = scene
+	return scene
+end
+
+-- 进入猎金场场景 
+function SceneManager:enterGoldHuntScene(activityID, role,x ,y)
+	local toScene = self._GoldHuntZone[activityID]
+	if not toScene then
+		return
+	end
+	if role and x and y then
+		toScene:attachEntity(role, x, y)
+		if role:getEntityType() == eClsTypePlayer then
+			
+			local petID = role:getFollowPetID()
+			local pet = petID and g_entityMgr:getPet(petID)
+			if pet and pet:isVisible() then
+				pet:setVisible(false)
+				pet:setVisible(true) 
+				toScene:attachEntity(pet, x -1 , y - 1 )
+			end
+			
+		end
+	end
+end
+
+function SceneManager:isInGoldHuntScene(player)
+	local curScene = player:getScene()
+	for _ ,scene in pairs(self._GoldHuntZone) do
+		if curScene == scene then
+			return true
+		end
+	end
+	return false
+end
+
+-- 销毁猎金场场景
+function SceneManager:releaseGoldHuntScene(activityID)
+	local scene = self._GoldHuntZone[activityID]
+	if not scene then
+		return
+	end
+	-- 释放场景
+	local peer = scene:getPeer()
+	if peer then
+		--peer:close()
+	end
+	release(scene)
+	self._GoldHuntZone[activityID] = nil
+end
+
+--检验玩家要进入的猎金场当前玩家数
+function SceneManager:checkPlayerCountInGoldHuntMap(player)
+	local	activityID = g_goldHuntMgr:getPlayerActivityID(player)
+	if activityID then
+		local scene = self._GoldHuntZone[activityID]
+		if  scene then
+			local playerCount = scene:getPlayerCount()
+			if playerCount < GoldHuntZone_MapPlayerLimit then
+				return true
+			end
+		end
+	end
+	return false
 end
 
 function SceneManager:enterFactionSceneAtBegin(factionDBID,roleInfo)

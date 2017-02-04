@@ -113,6 +113,8 @@ PS_EndID = 1102		-- 宠物技能结束ID
 
 -- 是否为高级技能
 function PS_IsAdvanced(skillID)
+print("**************skillID",type(skillID))
+print(debug.traceback())
 	-- 在这个范围内的ID不是技能
 	if skillID < PS_StartID or skillID > PS_EndID then
 		return false,nil

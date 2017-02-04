@@ -188,10 +188,9 @@ FightEvents_CS_EnterMineFight           = Event_Group_Fight + 27
 FightEvents_CS_QuitFight				= Event_Group_Fight + 28 
 FightEvents_SS_FightEnd_beforeClient	= Event_Group_Fight + 29
 FightEvents_SS_FightEnd_afterClient		= Event_Group_Fight + 30
-FightEvents_CS_EnterPatrolFight			= Event_Group_Fight + 31
-FightEvents_CS_SwitchMineState			= Event_Group_Fight + 32
-FightEvents_SS_FightEnd_ResetState		= Event_Group_Fight + 33
-FightEvents_SC_StartAutoMeet			= Event_Group_Fight + 34
+FightEvents_CS_SwitchMineState			= Event_Group_Fight + 31
+FightEvents_SS_FightEnd_ResetState		= Event_Group_Fight + 32
+FightEvents_SC_StartAutoMeet			= Event_Group_Fight + 33
 
 --瀹氫箟缁勯槦绯荤粺娑堟伅鏃堕��?
 TeamEvents_CS_CreateTeam				= Event_Group_Team + 1
@@ -262,6 +261,7 @@ EctypeEvents_SC_SceneMagic              = Event_Group_Ectype + 13
 EctypeEvents_SC_AddFollowEntity         = Event_Group_Ectype + 14
 EctypeEvents_SC_RemoveFollowEntity      = Event_Group_Ectype + 15
 EctypeEvents_CS_RemoveObject			= Event_Group_Ectype + 16
+EctypeEvents_CS_EnterPatrolFight		= Event_Group_Ectype + 17
 
 --瀹氫箟蹇嵎鏍忎簨锟斤拷?
 ShortCutKeyEvents_CS_UpdateKeyData			= Event_Group_ShortCutKey + 1
@@ -651,6 +651,7 @@ GoodsEvents_SC_LowLevelMSG                      = Event_Group_Collecting + 6
 GoodsEvents_SC_LackGridsMSG                     = Event_Group_Collecting + 7
 GoodsEvents_SC_GetNumRewards                    = Event_Group_Collecting + 8
 GoodsEvents_CS_CollectState 					= Event_Group_Collecting + 9
+GoodsEvents_SS_ItemRemoved 						= Event_Group_Collecting + 10
 
 --鏂版墜绀煎寘绯荤��?
 NewcomerGifsEvent_CS_doRequestItemData		= event_Group_NewcomerGifts + 1

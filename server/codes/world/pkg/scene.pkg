@@ -21,4 +21,5 @@ class CoScene
 	static bool PosValidate(short mapId, int x, int y);
 	static GridVct FindRandomTile(int mapId);
 	bool posValidate(int x,int y,int flag);
+	GridVct getRandomPos(int x, int y,int radius, int mapID);
 };

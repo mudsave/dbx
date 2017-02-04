@@ -27,6 +27,8 @@ eventGroup_TreasureEvent	= eventGroup_Item + 19
 eventGroup_Task				= eventGroup_Item + 20
 eventGroup_UseSkill			= eventGroup_Item + 21
 eventGroup_SystemSet		= eventGroup_Item + 22
+eventGroup_RemakeEquipment	= eventGroup_Item + 23
+eventGroup_GoldHunt			= eventGroup_Item + 24
 
 
 --------------------每个业务系统的消息ID常量----------------

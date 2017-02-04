@@ -10,6 +10,7 @@ function ActivityHandler:__init(entity)
 	self.currentTargets = {}
 	self.finishTargets = {}
 	self.priData = {}
+	self._goldHuntData={ID=0,totalScore=0,isPrized = -1,rank = -1}
 end
 
 function ActivityHandler:__release()
@@ -17,11 +18,19 @@ function ActivityHandler:__release()
 	self.currentTargets = nil
 	self.finishTargets = nil
 	self.priData = nil
+	self._goldHuntData = nil
+end
+
+function ActivityHandler:getGoldHuntData()
+	return self._goldHuntData
 end
 
 function ActivityHandler:addActivityTarget(activityId, targetIndex, target)
 	if not self.activityProgressData[activityId] then
 		self.activityProgressData[activityId] = {}
+	end
+	if not self.currentTargets[activityId] then
+		self.currentTargets[activityId] = {}
 	end
 	self.activityProgressData[activityId][targetIndex] = true
 	self.currentTargets[activityId][targetIndex] = target
@@ -52,7 +61,9 @@ end
 
 function ActivityHandler:setPriDataById(activityId, priData)
 	self.priData[activityId] = priData
+	
 end
+
 
 function ActivityHandler:getTargetsById(activityId)
 	return self.currentTargets[activityId]

@@ -20,6 +20,8 @@ DialogCondition =
 	HasTask_1 = 15,
 	CheckLoopTasks = 16,
 	CheckBeastBless = 17,
+	Time	= 18,
+	PlayerCountInGoldHuntMap = 19,
 }
 
 --对话类型
@@ -80,7 +82,10 @@ DialogActionType =
 	ConsumeRecetiveTask	= 45,		-- 消耗并接受任务 {这里消耗的类型在参数中填 type = "money"--银两,"subMoney--绑银"}
 	FinishLoopTask		= 46,		-- 完成循环任务，并且能够自动接任务
 	AddFollowNpc		= 47,		-- 改变任务状态
-	EnterBeastFight		= 48,		-- 杩涘叆鐟炲吔闄嶇
+	EnterBeastFight		= 48,		-- 
+	EnterGoldHuntZone   = 49,		-- 进入猎金场
+	GoldHuntFight		= 50,		-- 猎金场战斗
+	GoldHuntCommit		= 51,		-- 猎金场提交分数
 }
 
 --对话框图标类型

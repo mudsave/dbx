@@ -6885,11 +6885,11 @@ tEctypeDB =
 			},
 		},
 	},
---------------------------------------天宫山-----------------------
+--------------------------------------天公山-----------------------
 [2016] =
 	{
 		-- 副本名字
-		Name = "天宫山",
+		Name = "天公山",
 		-- 副本ID，策划配置ID
 		EctypeID = 2016,
 		-- 静态地图ID
@@ -7019,7 +7019,589 @@ tEctypeDB =
 			
 	},
 },
+-----------------------------------------------董卓再现·赤魂岭----------------------------------
+[2012]=
+	{
+		-- 副本名字
+		Name = "赤魂岭",
+		-- 副本ID，策划配置ID
+		EctypeID = 2012,
+		-- 静态地图ID
+		StaticMapID = 618,
+		-- 静态地图ID2
+		StaticMapID2 = 617,
+		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
+		EnterNeedLevel = {minLevel = 42, maxLevel = 100},
+		-- 进入副本最少人数，组队时有效
+		EnterNeedPlayerNum = 1,
+		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
+		EctypeType = EctypeType.Team,
+		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
+		--单人副本
+		--EctypeEnterType = EctypeEnterType.Single,
+		--组队
+		EctypeEnterType = EctypeEnterType.Team,
+		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
+		EctypeCDFinishTimes = 100,
+		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
+		EctypeExistTime = 0,
+		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
+		EctypeDyingTime = 0,
+		-- 进入副本初始坐标，分别为X坐标和Y坐标
+		EnterInitLocs = {locX = 74, locY = 88},
+		--EnterInitLocs = {locX = 40, locY = 192},
+		-- 进入副本第二个场景的初始坐标，分别为X坐标和Y坐标
+		EnterInitLocs2 = {locX = 230, locY = 126},
+		-- 副本结束后出现传送门的坐标
+		TransferDoorLocs =
+		{
+			{locX = 114, locY = 250},
+			--{locX = 223, locY = 63},
+			--{locX = 222, locY = 76},
+			--{locX = 219, locY = 59},
+		},
+		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
+		EnterNeedItems = {itemID = 10000, itemNum = 1},
+		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
+		CanUseHealItems = true,
+		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
+		CanTradeInEctype = false,
+		-- 副本机关
+		EctypeEffect = {Ectype_LoadOrganEffect},
+		-- 副本逻辑流程
+		LogicProcedure =
+		{
+			-- 步骤一
+			[1] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 1, xPos =161, yPos = 68},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 31110, xPos = 161, yPos = 68, dir = 4},
+					{Ectype_CreateNpc, npcID = 31111, xPos = 164, yPos = 71, dir = 4},
+					{Ectype_CreateNpc, npcID = 31113, xPos = 164, yPos = 66, dir = 4},
+					{Ectype_CreateNpc, npcID = 31115, xPos = 169, yPos = 72, dir = 4},
+					{Ectype_CreateNpc, npcID = 31116, xPos = 169, yPos = 63, dir = 4},
+					
+					-- 开启场景特效
+					--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 70, yPos = 79},
+					--启动机关
+					--{Ectype_LoadOrganEffect},
+					-- 添加动态传送门进入指定副本
+					--{Ectype_DynamicTransferDoors, ectypeID = 4, transferDoorLocX = 60, transferDoorLocY = 74},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第2步骤
+						{hotAreaID = 1, gotoNext = 2},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[2] =
+			{
+				-- 步骤开始
+				Start =
+				{	
+					--打开飞剑
+					--{Ectype_ResumeOrganEffect, npcID = 30046},
+					 --打开指定对话
+					{Ectype_OpenDialog, dialogID = 10093},
+					-- 关闭场景特效
+					--{Ectype_StopSceneMagic, index = 1},
+				},
+				-- 步骤跳转
+				Goto =
+				{
 
+					-- 战斗结束触发
+					
+					FightWin =
+					{
+						-- 跳转到第3步骤
+						{fightID = 3082, gotoNext = 3},
+					},
+					
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 31110},
+					{Ectype_RemoveNpc, npcID = 31111},
+					{Ectype_RemoveNpc, npcID = 31113},
+					{Ectype_RemoveNpc, npcID = 31115},
+					{Ectype_RemoveNpc, npcID = 31116},
+					
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 1},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[3] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 2, xPos = 151, yPos =137},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 31118, xPos = 151, yPos = 137, dir = 6},
+					{Ectype_CreateNpc, npcID = 31119, xPos = 145, yPos = 141, dir = 6},
+					{Ectype_CreateNpc, npcID = 31121, xPos = 156, yPos = 141, dir = 6},
+					{Ectype_CreateNpc, npcID = 31123, xPos = 147, yPos = 145, dir = 6},
+					{Ectype_CreateNpc, npcID = 31124, xPos = 152, yPos = 146, dir = 6},
+			
+					
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第4步骤
+						{hotAreaID = 2, gotoNext = 4},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[4] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 打开指定对话
+					{Ectype_OpenDialog, dialogID = 10095},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 战斗结束触发
+					FightWin =
+					{
+						-- 跳转到第5步骤
+						{fightID = 3083, gotoNext = 5},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 31118},
+					{Ectype_RemoveNpc, npcID = 31119},
+					{Ectype_RemoveNpc, npcID = 31121},
+					{Ectype_RemoveNpc, npcID = 31123},
+					{Ectype_RemoveNpc, npcID = 31124},
+					
+					
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 2},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[5] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 3, xPos = 187, yPos = 216},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 31126, xPos = 187, yPos = 216, dir = 4},
+					{Ectype_CreateNpc, npcID = 31127, xPos = 184, yPos = 220, dir = 4},
+					{Ectype_CreateNpc, npcID = 31129, xPos = 188, yPos = 220, dir = 4},
+					{Ectype_CreateNpc, npcID = 31131, xPos = 181, yPos = 225, dir = 4},
+                                        {Ectype_CreateNpc, npcID = 31132, xPos = 185, yPos = 224, dir = 4},
+                                        {Ectype_CreateNpc, npcID = 31133, xPos = 189, yPos = 224, dir = 4},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第4步骤
+						{hotAreaID = 3, gotoNext = 6},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[6] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 打开指定对话
+					{Ectype_OpenDialog, dialogID = 10097},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 战斗结束触发
+					FightWin =
+					{
+						-- 跳转到第5步骤
+						{fightID = 3084, gotoNext = 7},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 31126},
+					{Ectype_RemoveNpc, npcID = 31127},
+					{Ectype_RemoveNpc, npcID = 31129},
+                                        {Ectype_RemoveNpc, npcID = 31131},
+                                        {Ectype_RemoveNpc, npcID = 31132},
+                                        {Ectype_RemoveNpc, npcID = 31133},
+
+					
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 3},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[7] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					{Ectype_CreateHotArea, hotAreaID = 8, xPos = 186, yPos = 231},
+					--开启场景光效
+					{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 186, yPos = 231},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 跳转到第八步
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第8步骤
+						{hotAreaID = 8, gotoNext = 8},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 传送到第二个场景
+					{Ectype_TransferToSecondScene},
+
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[8] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 传送到第二个场景
+					--{Ectype_TransferToSecondScene},
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 4, xPos = 40, yPos = 156},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 31134, xPos = 40, yPos = 156, dir = 7},
+					{Ectype_CreateNpc, npcID = 31135, xPos = 37, yPos = 155, dir = 7},
+					{Ectype_CreateNpc, npcID = 31137, xPos = 41, yPos = 159, dir = 7},
+					{Ectype_CreateNpc, npcID = 31139, xPos = 34, yPos = 154, dir = 7},
+					{Ectype_CreateNpc, npcID = 31140, xPos = 42, yPos = 162, dir = 7},
+					
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第4步骤
+						{hotAreaID = 4, gotoNext = 9},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[9] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 打开指定对话
+					{Ectype_OpenDialog, dialogID = 10099},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 战斗结束触发
+					FightWin =
+					{
+						-- 跳转到第5步骤
+						{fightID = 3085, gotoNext = 10},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 31134},
+					{Ectype_RemoveNpc, npcID = 31135},
+					{Ectype_RemoveNpc, npcID = 31137},
+					{Ectype_RemoveNpc, npcID = 31139},
+					{Ectype_RemoveNpc, npcID = 31140},
+					
+					
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 4},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[10] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 5, xPos = 177, yPos = 180},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 31142, xPos = 177, yPos = 180, dir = 6},
+					{Ectype_CreateNpc, npcID = 31143, xPos = 174, yPos = 184, dir = 6},
+					{Ectype_CreateNpc, npcID = 31145, xPos = 178, yPos = 184, dir = 6},
+					{Ectype_CreateNpc, npcID = 31147, xPos = 171, yPos = 188, dir = 6},
+					{Ectype_CreateNpc, npcID = 31148, xPos = 175, yPos = 188, dir = 6},
+					{Ectype_CreateNpc, npcID = 31149, xPos = 179, yPos = 188, dir = 6},
+					
+					
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第4步骤
+						{hotAreaID = 5, gotoNext = 11},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[11] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 打开指定对话
+					{Ectype_OpenDialog, dialogID = 10101},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 战斗结束触发
+					FightWin =
+					{
+						-- 跳转到第5步骤
+						{fightID = 3086, gotoNext = 12},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 31142},
+					{Ectype_RemoveNpc, npcID = 31143},
+					{Ectype_RemoveNpc, npcID = 31145},
+					{Ectype_RemoveNpc, npcID = 31147},
+					{Ectype_RemoveNpc, npcID = 31148},
+					{Ectype_RemoveNpc, npcID = 31149},
+					
+					
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 5},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[12] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 创建热区
+					{Ectype_CreateHotArea, hotAreaID = 7, xPos = 114, yPos = 240},
+					-- 创建动态NPC
+					{Ectype_CreateNpc, npcID = 31150, xPos = 114, yPos = 240, dir = 6},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 进入热区触发
+					EnterArea =
+					{
+						-- 跳转到第4步骤
+						{hotAreaID = 7, gotoNext = 13},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+				},
+			},
+			[13] =
+			{
+				-- 步骤开始
+				Start =
+				{
+					-- 打开指定对话
+					{Ectype_OpenDialog, dialogID = 10103},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 战斗结束触发
+					FightWin =
+					{
+						-- 跳转到第5步骤
+						{fightID = 3087, gotoNext = 14},
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+					-- 删除动态NPC
+					{Ectype_RemoveNpc, npcID = 31150},
+					-- 删除热区
+					{Ectype_DestroyHotArea, hotAreaID = 7},
+				},
+				-- 进度奖励
+				Prizes =
+				{
+					-- 经验奖励
+					ExpPrize = 20,
+					-- 金钱奖励
+					MoneyPrize = 20,
+					-- 道具奖励
+					ItemPrize =
+					{
+
+					},
+				},
+			},
+			[14]=
+			{
+			-- 步骤开始
+				Start =
+				{	
+				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 114, yPos = 250},
+				--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 222, yPos = 76},
+				},
+				-- 步骤跳转
+				Goto =
+				{
+					-- 战斗结束触发
+					FightWin =
+					{
+
+					},
+				},
+				-- 步骤结束
+				End =
+				{
+
+				},
+			},
+		},
+	},
 -------------------------------------------------------------帮会副本配置--------------------------------------------------------------
 	[3000] =
 	{

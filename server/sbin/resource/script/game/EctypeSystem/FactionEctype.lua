@@ -13,6 +13,7 @@ function FactionEctype:__init()
 	self.fightNpc = {}
 	--  记录副本物件采集个数
 	self.collectObjectNum = 0
+	self.moveTimerID = -1
 end
 
 function FactionEctype:__release()
@@ -25,6 +26,7 @@ function FactionEctype:__release()
 	self.fightNpc = nil
 	--  记录副本物件采集个数
 	self.collectObjectNum = nil
+	self.moveTimerID = nil
 end
 
 function FactionEctype:driveEctypeProcess()
@@ -34,6 +36,7 @@ function FactionEctype:driveEctypeProcess()
 	self:exeLogicProcedure()
 	-- 启动一分钟监测定时器
 	self:createCheckTimer()
+	self:createMoveTimer()
 end
 
 -- 只有一个动作序列,不需要一步一步的执行
@@ -69,6 +72,10 @@ function FactionEctype:createCheckTimer()
 	end
 end
 
+function FactionEctype:createMoveTimer()
+	self.moveTimerID = g_timerMgr:regTimer(self, 2000, 2000, "定时扫描NPC定时")
+end
+
 -- 定时器回调
 function FactionEctype:update(timerID)
 	-- 副本生命定时器
@@ -77,6 +84,19 @@ function FactionEctype:update(timerID)
 		self:exeLogicProcedure()
 	elseif timerID == self.lifeTimerID then
 		Ectype.update(self, timerID)
+	elseif timerID == self.moveTimerID then
+		self:checkPatroNpc()
+	end
+end
+
+function FactionEctype:checkPatroNpc()
+	local nowTime = os.time()
+	for patrolNpcID, patrolNpc in pairs(self.ectypePatrolNpc) do
+		if patrolNpc then
+			if not patrolNpc:getMoveState() and nowTime >= patrolNpc:getStartMoveTime() and not patrolNpc:getOwnerID() then
+				patrolNpc:beginScopeMove()
+			end
+		end
 	end
 end
 
@@ -147,16 +167,16 @@ end
 
 -- 创建副本巡逻怪
 function FactionEctype:createPatrolNpc(params)
+	local nowTime = os.time()
 	local patrolNpcID = params.npcID
 	-- 判断场景物件的个数
 	local objectsNum = table.size(self.ectypePatrolNpc)
 	if objectsNum < params.npcNum then
 		local needCreateNum = params.npcNum - objectsNum
-		
 		for i = 1, needCreateNum do 
 			-- 随机坐标：
 			local xPos, yPos = self:getEctypeValidEmptyPos()
-			local patrolNpc = g_entityFct:createPatrolNpc(patrolNpcID)
+			local patrolNpc = g_entityFct:createEctypePatrolNpc(patrolNpcID)
 			if not patrolNpc then
 				return
 			end
@@ -166,12 +186,11 @@ function FactionEctype:createPatrolNpc(params)
 				-- 把对应配置的东西设置进去
 				patrolNpc:setScriptID(params.scriptID)
 				patrolNpc:setRadius(params.radius)
-				-- 在挡墙场景当中移动
-				patrolNpc:beginScopeMove()
+				patrolNpc:setStartMoveTime(nowTime)
 			end
 		end
 		--[[
-		local patrolNpc = g_entityFct:createPatrolNpc(patrolNpcID)
+		local patrolNpc = g_entityFct:createEctypePatrolNpc(patrolNpcID)
 		if not patrolNpc then
 			return
 		end
@@ -181,9 +200,7 @@ function FactionEctype:createPatrolNpc(params)
 			-- 把对应配置的东西设置进去
 			patrolNpc:setScriptID(params.scriptID)
 			patrolNpc:setRadius(params.radius)
-			--patrolNpc:setCenterTile({129, 39})
-			-- 在挡墙场景当中移动
-			patrolNpc:beginScopeMove()
+			patrolNpc:setStartMoveTime(nowTime)
 		end
 		--]]
 	end

@@ -274,7 +274,7 @@ function FriendSysMgr.roleOnline(role,roleFriendList)
 					local state = PlayerOnlineState.Online
 					local informKind = UpdateCode.Update
 					local memberInfo = {DBID = role:getDBID(),name = role:getName(),state = state}
-					local event = Event.getEvent(FriendEvent_BC_UpdateGroupMemberInChat,memberInfo,value.DBID,informKind)
+					local event = Event.getEvent(FriendEvent_BC_UpdateGroupMemberInChat,memberInfo,group.DBID,informKind)
 					g_eventMgr:fireRemoteEvent(event,member)
 				end
 			end

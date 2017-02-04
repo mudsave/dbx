@@ -14,7 +14,6 @@ function MineSystem:__init()
 		[MoveEvent_SS_OnStartMove]				= MineSystem.onStartMove,
 		[MoveEvent_SS_OnStopMove]				= MineSystem.onStopMove,
 		[FightEvents_CS_EnterMineFight]			= MineSystem.onEnterMineFight,
-		[FightEvents_CS_EnterPatrolFight]		= MineSystem.onEnterPatrolFight,
 		[FightEvents_CS_SwitchMineState]		= MineSystem.onSwitchState,
 		[FightEvents_SS_FightEnd_afterClient]	= MineSystem.onFightEnd,
 
@@ -164,51 +163,6 @@ function MineSystem:onEnterMineFight(event)
 	end
 	g_entityMgr:removeMineNpc(mineNpcID)
 end
-
--- 巡逻NPC战斗当中
-function MineSystem:onEnterPatrolFight(event)
-	local params = event:getParams()
-	local playerID = params[1]
-	local patrolNpcID = params[2]
-	local player = g_entityMgr:getPlayerByID(playerID)
-	local patrolNpc = g_entityMgr:getPatrolNpc(patrolNpcID)
-	if (not player) or (not patrolNpc) then
-		return
-	end
-
-	local teamHandler = player:getHandler(HandlerDef_Team)
-	if teamHandler:isTeam() then
-		if not teamHandler:isLeader() then
-			return
-		end
-	end
-	if not patrolNpc:getOwnerID() then
-		patrolNpc:setOwnerID(playerID)
-		local scriptID = patrolNpc:getScriptID()
-		local config = {}
-		config.scriptID = scriptID
-		local mineHandler = player:getHandler(HandlerDef_Mine)
-		local fightID = mineHandler:startObviousFight(config)
-		local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-		local ectypeMapID = ectypeHandler:getEctypeMapID()
-		local ectype = g_ectypeMgr:getEctype(ectypeMapID)
-		if ectype then
-			-- 在当前副本当中记录战斗ID 和 巡逻NPC运行ID
-			ectype:attachPatrolNpc(fightID, patrolNpcID)
-		else
-			--[[
-			local catchPet = patrolNpc:getCatchPet()
-			if catchPet then
-				catchPet:attachCatchPet(playerID, fightID, patrolNpcID)
-			end
-			--]]
-		end
-		local moveHandler = patrolNpc:getHandler(HandlerDef_Move)
-		moveHandler:DoStopMove()
-		print("进入战斗停止移动》》》》》》》》")
-	end
-end
-
 
 function MineSystem:update(timerID)
 	g_timerMgr:unRegTimer(timerID)

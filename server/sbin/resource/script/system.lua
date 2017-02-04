@@ -123,6 +123,9 @@ function System.OnPlayerLoaded(player, recordList)
 
 	--加载邮箱系统
 	g_mailMgr:loadPlayerMails(player,recordList[14])
+	--加载猎金场活动
+	g_goldHuntMgr:loadGoldHunt(player,recordList[31])
+
 end
 
 function System.OnPlayerLogout(player, reason)
