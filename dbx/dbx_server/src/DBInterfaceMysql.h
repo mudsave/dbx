@@ -30,6 +30,9 @@ public:
 
     virtual void Disconnect();
 
+private:
+    void SetIssueError(DBIssueBase *p_issue);
+
 protected:
     MYSQL *m_mysql;
 };

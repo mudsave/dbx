@@ -49,11 +49,12 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
     if (mysql_real_query(m_mysql, p_cmd, p_size) != 0)
     {
-        p_issue->SetError(mysql_errno(m_mysql), mysql_error(m_mysql));
+        SetIssueError(p_issue);
         return false;
     }
 
-    return true;
+
+    return ProcessQueryResult(p_issue);
 }
 
 bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
@@ -61,6 +62,36 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
     TRACE0_L0("DBInterfaceMysql::ProcessQueryResult.\n");
     if (p_issue == NULL)
         return true;
+
+    MYSQL_RES *result;
+    int status = 0;
+    do
+    {
+        result = mysql_store_result(m_mysql);
+        if (result)
+        {
+            // 处理并释放内存
+            mysql_free_result(result);
+        }
+        else
+        {
+            if (mysql_field_count(m_mysql) == 0)
+            {
+                // insert之类的语句
+            }
+            else
+            {
+                SetIssueError(p_issue);
+                return false;
+            }
+        }
+
+        if (status = mysql_next_result(m_mysql) > 0)
+        {
+            SetIssueError(p_issue);
+            return false;
+        }
+    } while (status == 0);
 
     return true;
 }
@@ -108,4 +139,10 @@ void DBInterfaceMysql::Disconnect()
         mysql_close(m_mysql);
         m_mysql = NULL;
     }
+}
+
+void DBInterfaceMysql::SetIssueError(DBIssueBase *p_issue)
+{
+    TRACE2_ERROR("DBInterfaceMysql::SetIssueError:mysql_errno(%i),mysql_error(%s).\n", mysql_errno(m_mysql), mysql_error(m_mysql));
+    p_issue->SetError(mysql_errno(m_mysql), mysql_error(m_mysql));
 }
