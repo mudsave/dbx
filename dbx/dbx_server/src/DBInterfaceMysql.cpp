@@ -70,14 +70,27 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
         result = mysql_store_result(m_mysql);
         if (result)
         {
-            // 处理并释放内存
+            unsigned int fieldNum = mysql_num_fields(result);
+            MYSQL_FIELD *fields = mysql_fetch_fields(result);
+            MYSQL_ROW row;
+            while (row = mysql_fetch_row(result))
+            {
+                unsigned long *lengths = mysql_fetch_lengths(result);
+                for (int i = 0; i < fieldNum; ++i)
+                {
+                    const char *value = (row[i] == NULL ? "NULL" : row[i]);
+                    TRACE3_L0("DBInterfaceMysql::ProcessQueryResult:result set(%i) data:type(%i),value(%s).\n", i, fields[i].type, value);
+                }
+            }
+
             mysql_free_result(result);
         }
         else
         {
             if (mysql_field_count(m_mysql) == 0)
             {
-                // insert之类的语句
+                TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:affected rows:%i.\n", m_mysql->affected_rows);
+                // insert之类的语句无结果集，创建无结果集数据包
             }
             else
             {
