@@ -49,10 +49,10 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
     if (mysql_real_query(m_mysql, p_cmd, p_size) != 0)
     {
+        TRACE0_ERROR("DBInterfaceMysql::SetIssueError:11111111111111111\n");
         SetIssueError(p_issue);
         return false;
     }
-
 
     return ProcessQueryResult(p_issue);
 }
@@ -63,13 +63,14 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
     if (p_issue == NULL)
         return true;
 
-    MYSQL_RES *result;
+    MYSQL_RES *result = NULL;
     int status = 0;
     do
     {
         result = mysql_store_result(m_mysql);
         if (result)
         {
+            // todo:创建数据包
             unsigned int fieldNum = mysql_num_fields(result);
             MYSQL_FIELD *fields = mysql_fetch_fields(result);
             MYSQL_ROW row;
@@ -79,7 +80,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                 for (int i = 0; i < fieldNum; ++i)
                 {
                     const char *value = (row[i] == NULL ? "NULL" : row[i]);
-                    TRACE3_L0("DBInterfaceMysql::ProcessQueryResult:result set(%i) data:type(%i),value(%s).\n", i, fields[i].type, value);
+                    TRACE3_L0("DBInterfaceMysql::ProcessQueryResult:field(%i) data:type(%i),value(%s).\n", i, fields[i].type, value);
                 }
             }
 
@@ -90,17 +91,19 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             if (mysql_field_count(m_mysql) == 0)
             {
                 TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:affected rows:%i.\n", m_mysql->affected_rows);
-                // insert之类的语句无结果集，创建无结果集数据包
+                // insert之类的语句无结果集，todo:创建无结果集数据包
             }
             else
             {
+                TRACE0_ERROR("DBInterfaceMysql::SetIssueError:222222222222\n");
                 SetIssueError(p_issue);
                 return false;
             }
         }
 
-        if (status = mysql_next_result(m_mysql) > 0)
+        if ((status = mysql_next_result(m_mysql)) > 0)
         {
+            TRACE0_ERROR("DBInterfaceMysql::SetIssueError:33333333333333333\n");
             SetIssueError(p_issue);
             return false;
         }

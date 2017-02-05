@@ -99,11 +99,11 @@ HRESULT DBManager::Do(HANDLE hContext)
     dbTaskPool->AddIssue(new DBIssueCallSP(NULL, -1));
     dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
     dbTaskPool->AddIssue(new DBIssueCallSP(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
+    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
     dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
     dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
     dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 2));

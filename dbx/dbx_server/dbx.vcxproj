@@ -18,6 +18,7 @@
     <ClInclude Include="..\lib\message_define\MessageBase.h" />
     <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
+    <ClInclude Include="src\DBTest.h" />
     <ClInclude Include="src\DBXContextDefine.h" />
     <ClInclude Include="src\DBXCommon.h" />
     <ClInclude Include="src\DBInterface.h" />

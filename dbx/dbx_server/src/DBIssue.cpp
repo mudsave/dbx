@@ -91,6 +91,8 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
 void DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
+    const char *cmd = "select * from t1;";
+    bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
     Sleep(50);
 }
 

@@ -80,6 +80,9 @@
     <ClInclude Include="src\DBXCommon.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\DBTest.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DBManager.cpp">
