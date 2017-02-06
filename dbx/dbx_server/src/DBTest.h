@@ -107,7 +107,7 @@ public:
         while (true)
         {
             taskPool->AddIssue(new DBIssueTest("call sp2()", 3000));
-            Sleep(100);
+            Sleep(1000);
         }
     }
 

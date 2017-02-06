@@ -80,7 +80,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                 for (int i = 0; i < fieldNum; ++i)
                 {
                     const char *value = (row[i] == NULL ? "NULL" : row[i]);
-                    TRACE3_L0("DBInterfaceMysql::ProcessQueryResult:field(%i) data:type(%i),value(%s).\n", i, fields[i].type, value);
+                    TRACE3_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s).\n", fields[i].name, fields[i].type, value);
                 }
             }
 

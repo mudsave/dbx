@@ -147,7 +147,7 @@ bool DBTaskPool::TaskIssue(DBIssueBase *p_issue)
     m_freeBusyListMutex.Lock();
     if (m_freeTaskList.size() > 0)
     {
-        TRACE0_L0("DBTaskPool::ExcuteIssue:Has free task.\n");
+        TRACE0_L0("DBTaskPool::ExcuteIssue:I have free task.\n");
         std::list<DBTask *>::iterator iter = m_freeTaskList.begin();
         DBTask *task = *iter;
         m_freeTaskList.remove(task);
@@ -266,7 +266,7 @@ void DBTaskPool::MainTick()
 
     if (m_finishIssueList.size() == 0)
     {
-        TRACE0_L0("DBTaskPool::MainTick:Has no finished issue.\n");
+        TRACE0_L0("DBTaskPool::MainTick:There is no finished issue.\n");
         m_finishIssueMutex.Unlock();
         return;
     }

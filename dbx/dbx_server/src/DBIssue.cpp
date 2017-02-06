@@ -73,12 +73,17 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID)
 void DBIssueCallSP::OnProgress()
 {
     TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
-    Sleep(50);
+    const char *cmd = "CALL SP2();";
+    bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
+    if (!success)
+    {
+        // todo:处理错误
+    }
 }
 
 void DBIssueCallSP::MainProgress()
 {
-    TRACE0_L0("DBIssueCallSP::MainProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n");
+    TRACE0_L0("DBIssueCallSP::MainProgress.RESULT...RESULT...RESULT...\n");
 }
 
 
@@ -92,11 +97,16 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
 void DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
-    Sleep(50);
+    const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
+    bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
+    if (!success)
+    {
+        // todo:处理错误
+    }
 }
 
 void DBIssueCallSQL::MainProgress()
 {
-    TRACE0_L0("DBIssueCallSQL::MainProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
+    TRACE0_L0("DBIssueCallSQL::MainProgress.RESULT...RESULT...RESULT...\n");
 }
 

@@ -14,10 +14,10 @@ RTX:6016.
 #include "DBFactory.h"
 
 #define DBX_DEFALT_DATABASE_ID 1   // Ä¬ÈÏÊý¾Ý¿âid
-#define DBX_MAIN_TICK_TIME 3000
+#define DBX_MAIN_TICK_TIME 100
 
-DBManager::DBManager():
-m_networkInterface()
+DBManager::DBManager()
+    :m_networkInterface()
 {
 }
 
@@ -92,8 +92,4 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
-
-    DBTaskPool *taskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
-    taskPool->AddIssue(new DBIssueCallSP(NULL, -1));
-    taskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
 }
