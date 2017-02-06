@@ -49,7 +49,7 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
     if (mysql_real_query(m_mysql, p_cmd, p_size) != 0)
     {
-        TRACE0_ERROR("DBInterfaceMysql::SetIssueError:11111111111111111\n");
+        TRACE0_ERROR("DBInterfaceMysql::SetIssueError1:mysql_real_query.\n");
         SetIssueError(p_issue);
         return false;
     }
@@ -90,12 +90,11 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
         {
             if (mysql_field_count(m_mysql) == 0)
             {
-                TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:affected rows:%i.\n", m_mysql->affected_rows);
-                // insert之类的语句无结果集，todo:创建无结果集数据包
+                TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:mysql_field_count(m_mysql) == 0,affected rows:%i.\n", m_mysql->affected_rows);
             }
             else
             {
-                TRACE0_ERROR("DBInterfaceMysql::SetIssueError:222222222222\n");
+                TRACE0_ERROR("DBInterfaceMysql::SetIssueError2:mysql_field_count(m_mysql) != 0.\n");
                 SetIssueError(p_issue);
                 return false;
             }
@@ -103,7 +102,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 
         if ((status = mysql_next_result(m_mysql)) > 0)
         {
-            TRACE0_ERROR("DBInterfaceMysql::SetIssueError:33333333333333333\n");
+            TRACE0_ERROR("DBInterfaceMysql::SetIssueError3:mysql_next_result(m_mysql)) > 0.\n");
             SetIssueError(p_issue);
             return false;
         }

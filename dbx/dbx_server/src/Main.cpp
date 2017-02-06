@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     GenerateSignalThread();
     SetCleanup(CleanUp);
 
-    const int DBX_PORT = 3000;  // todo£º·Åµ½DBServer.xmlÅäÖÃ
+    const int DBX_PORT = 3000;
     if (!DBManager::InstancePtr()->Initialize(DBX_PORT))
     {
         TRACE0_ERROR("DBManager::Initialize(): initialization failed!\n");
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     }
 
     //for test
-    //DBTest().Run();
+    DBTest().Run();
 
     HRESULT result = DBManager::InstancePtr()->Run();
     if (result == S_OK)
