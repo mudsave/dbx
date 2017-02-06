@@ -61,6 +61,7 @@ FrameEvents_SC_Test						= Event_Group_Frame + 2
 FrameEvents_SS_playerDropLine			= Event_Group_Frame + 3
 FrameEvents_SS_playerOnLine				= Event_Group_Frame + 4
 FrameEvents_CS_playerHeartBeat			= Event_Group_Frame + 5
+FrameEvents_SS_leaveScene				= Event_Group_Frame + 6
 
 --瀹氫箟Event_Group_Confg浜嬩��?
 ConfigEvents_CS_SaveConfig				= Event_Group_Confg + 1
@@ -692,6 +693,15 @@ RoleConfigureEvent_SC_getSaveFun				= Event_Group_RoleConfigure + 2
 ActivityEvent_CS_updateBox						= Event_Group_Activity + 1
 
 ActivityEvent_SC_updateBox						= Event_Group_Activity + 2
+ActivityEvent_SC_GoldHunt_informScore			= Event_Group_Activity + 3
+ActivityEvent_SB_GoldHunt_Rank					= Event_Group_Activity + 4
+ActivityEvent_BS_GoldHunt_RankResults			= Event_Group_Activity + 5
+ActivityEvent_SC_GoldHunt_enter					= Event_Group_Activity + 6
+ActivityEvent_SC_GoldHunt_leave					= Event_Group_Activity + 7
+ActivityEvent_SC_GoldHunt_end					= Event_Group_Activity + 8
+ActivityEvent_SC_GoldHunt_newPhase_begin		= Event_Group_Activity + 9
+
+
 
 --瀹犵墿浠撳簱娑堟��?
 PetDepotEvent_CS_ExpandPetDepot					= Event_Group_PetDepot + 1

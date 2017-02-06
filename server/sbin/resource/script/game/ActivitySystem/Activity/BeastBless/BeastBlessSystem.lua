@@ -24,6 +24,10 @@ function BeastBlessSystem:onFightEnd(event)
 	local fightID			= params[4]	--战斗ID
 	local fightInfo			= params[5]	--战斗信息(如瑞兽降幅的怪物死亡统计信息)
 	local bWin = false
+	-- 如果没有这个配置
+	if not ScriptFightDB[scriptID] then
+		return
+	end
 	-- 没有瑞兽奖励配置不是这个接口
 	if not ScriptFightDB[scriptID].LuckyRewardID then
 		return
@@ -37,8 +41,13 @@ function BeastBlessSystem:onFightEnd(event)
 		print("fightEndResults2",toString(fightEndResults))
 		g_beastBlessMgr:dealWithRewards(fightEndResults, scriptID, monsterDBIDs, fightID, fightInfo)
 		-- 移除更新NPC
+		local beast = g_beastBlessMgr:getBeastFromFlagList(scriptID)
+		if beast then
+			g_beastBlessMgr:removeBeastFromList(beast)
+		end
 	else
 		-- 更新NPC标记
+		g_beastBlessMgr:removeBeastFightFlagList(scriptID)
 	end
 end
 

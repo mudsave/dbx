@@ -331,6 +331,7 @@ function Pet:setVisible(visible)
 		if scene and scene:attachEntity(self,pos.x,pos.y) then
 			self.visible = true
 			handler:setFollowPetID(self:getID())
+			self:setMoveSpeed(player:getMoveSpeed())
 		end
 	else
 		local scene = self:getScene()

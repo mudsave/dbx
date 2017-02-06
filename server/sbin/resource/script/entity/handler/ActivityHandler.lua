@@ -74,11 +74,18 @@ function ActivityHandler:getTargets()
 end
 
 function ActivityHandler:offLine()
-	for targetIndex, flag in pairs(self.activityProgressData[activityId]) do
-		if flag == true then
-			LuaDBAccess[ActivityDB[activityId].dbName](player)
+	for activityId,data in pairs(ActivityDB) do
+		-- 判断活动是否开启
+		if g_activityMgr:getActivity(activityId) then
+			-- 把开启活动的数据存储到数据库中
+			LuaDBAccess[ActivityDB[activityId].dbName](player,activityId)
 		end
 	end
+	-- for targetIndex, flag in pairs(self.activityProgressData[activityId]) do
+		-- if flag == true then
+			-- LuaDBAccess[ActivityDB[activityId].dbName](player,activityId)
+		-- end
+	-- end
 	for _, targets in pairs(self.currentTargets) do
 		for targetIndex, target in pairs(targets) do
 			release(target)

@@ -73,6 +73,7 @@ require "misc.TransportationConstant"
 require "misc.SocialServerConstant"
 require "misc.MeetMonsterConstant"
 require "misc.PetDepotConstant"
+require "misc.ActivityConstant"
 require "misc.GoldHuntZoneConstant"
 
 

@@ -23745,14 +23745,14 @@ DialogModelDB =
 
 		},
 	},
-----------------------------------------------------------------天宫山-------------------------------------------------------------------------------------------
+----------------------------------------------------------------天公山-------------------------------------------------------------------------------------------
 [10105] =
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
-		speakerID = 0,
+		speakerID = 31190,
 		soundID =0 ,
 		txt = "站住！此乃天公将军张角修炼之所，擅入此地者杀无赦！",
 		options =
@@ -23762,7 +23762,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID=10094}},
+					{action = DialogActionType.Goto, param = {dialogID=10106}},
 				},
 			}
 
@@ -23784,7 +23784,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3092 ,mapID =622},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3093 ,mapID =622},},
 				},
 			}
 
@@ -23796,7 +23796,7 @@ DialogModelDB =
 		conditions =
 		{
 		},
-		speakerID = 0,
+		speakerID = 31198,
 		soundID =0 ,
 		txt = "吾乃天公山守山大将，此地岂容尔等小贼放肆！",
 		options =
@@ -23806,7 +23806,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID=10096}},
+					{action = DialogActionType.Goto, param = {dialogID=10108}},
 				},
 			}
 
@@ -23828,7 +23828,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3093 ,mapID =622},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3094 ,mapID =622},},
 				},
 			}
 
@@ -23840,7 +23840,7 @@ DialogModelDB =
 		conditions =
 		{
 		},
-		speakerID = 0,
+		speakerID = 31206,
 		soundID =0 ,
 		txt = "张角大人马上就要修炼出关了，小子，你今日死期已至！",
 		options =
@@ -23850,7 +23850,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID=10098}},
+					{action = DialogActionType.Goto, param = {dialogID=10110}},
 				},
 			}
 
@@ -23872,7 +23872,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3094 ,mapID =622},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3095 ,mapID =622},},
 				},
 			}
 
@@ -23884,7 +23884,7 @@ DialogModelDB =
 		conditions =
 		{
 		},
-		speakerID = 0,
+		speakerID = 31214,
 		soundID =0 ,
 		txt = "天公将军麾下大将杨凤在此！有本将在，谁也休想惊扰张角大人的修炼！",
 		options =
@@ -23894,7 +23894,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID=10100}},
+					{action = DialogActionType.Goto, param = {dialogID=10112}},
 				},
 			}
 
@@ -23916,7 +23916,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3095 ,mapID =622},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3096 ,mapID =622},},
 				},
 			}
 
@@ -23928,7 +23928,7 @@ DialogModelDB =
 		conditions =
 		{
 		},
-		speakerID = 0,
+		speakerID = 31222,
 		soundID =0 ,
 		txt = "小子，你屡坏本座大事，杀我众多弟兄，实是可恨！今日本座定要将你挫骨扬灰！",
 		options =
@@ -23938,7 +23938,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID=10102}},
+					{action = DialogActionType.Goto, param = {dialogID=10114}},
 				},
 			}
 
@@ -23960,12 +23960,235 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3096 ,mapID =616},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3097 ,mapID =622},},
 				},
 			}
 
 		},
 	},
+
+---------------------------------迷雾林，雾霾麦阿米阿米-----------------------------------------------------------------------
+[10115] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31250,
+		soundID =0 ,
+		txt = "此乃程远志大帅修炼之地，敢擅闯者皆杀无赦！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10116}},
+				},
+			}
+
+		},
+	},
+	[10116] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "我只找程远志算账，尔等现在让开尚可活命！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3088 ,mapID =620},},
+				},
+			}
+
+		},
+	},
+[10117] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31258,
+		soundID =0 ,
+		txt = "哪里跑来的小贼，竟敢来此地打扰我家大帅的修炼！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10118}},
+				},
+			}
+
+		},
+	},
+	[10118] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "无需多言，叫程远志速速前来领死！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3089 ,mapID =620},},
+				},
+			}
+
+		},
+	},
+[10119] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31266,
+		soundID =0 ,
+		txt = "站住！你竟敢打扰程大帅的修炼，本将今日定取你小命！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=100120}},
+				},
+			}
+
+		},
+	},
+	[10120] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "程远志我今日是杀定了，敢挡我者一并诛杀！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3090 ,mapID =620},},
+				},
+			}
+
+		},
+	},
+[10121] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31274,
+		soundID =0 ,
+		txt = "吾乃黄巾大将韩忠是也！奉程远志大帅令在此埋伏多时！受死吧！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10122}},
+				},
+			}
+
+		},
+	},
+	[10122] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "来得正是时候，倒省了我找的功夫！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3091 ,mapID =620},},
+				},
+			}
+
+		},
+	},
+[10123] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31282,
+		soundID =0 ,
+		txt = "小贼！你苦苦相逼，屡次坏本帅大事！今日就和你决一死战！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10124}},
+				},
+			}
+
+		},
+	},
+	[10124] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "程远志，上次只是灭了你肉身，不料你竟又复活了！今日我就让你彻底魂飞魄散！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3092 ,mapID =620},},
+				},
+			}
+
+		},
+	},
+
 
 	[20000] =
 	{
@@ -26581,7 +26804,8 @@ DialogModelDB =
 		},
 	},
 
---日常任务------------------------------------------------------------------------------------------------------------------------------
+------------------------------日常任务----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------每日杀怪计数---------------------------------------------------------------------------------------------------
 	[50101] =
 	{
 		dialogType = DialogType.HasOption,
@@ -26743,6 +26967,73 @@ DialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+---------------------------------------每日道具计数---------------------------------------------------------------------------------------------------
+	[50110] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 29081,
+		soundID =nil,
+		txt = "如今黄巾贼兴风作浪，皇子们又为太子之位明争暗斗，真是内忧外患啊！",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.Level, param = {level = 30,},},
+				},
+				optionTxt = "充实军备",
+				actions =
+				{
+				{action = DialogActionType.RecetiveTask , param = {taskID = 10030}},
+				},
+			},
+			[2] = 
+			{
+				showConditions = {},
+				optionTxt = "我还有事，告辞",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+	[50111] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+                {condition = DialogCondition.CheckLoopTask, param = {taskID = 10030, errorID = 38}},
+		},
+		speakerID = 29081,
+		soundID =nil,
+		txt = "{myName}，你来得正好。如今朝廷军备不足，急需一批盔甲。如果你能替我集齐5件崭新的盔甲或10件破碎的盔甲，作为报酬我会给你奖励！记住，这种盔甲只能在与你等级相差5级以内的战斗中获得，你每天能够在我这里上交10次！知道了就快去吧！",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = 
+				{},
+				optionTxt = "上交盔甲",
+				actions =
+				{
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10030, itemsInfo ={{itemID = 1051021,count = 5},{itemID = 1051022,count = 10}}}},
+				},
+			},
+			[2] = 
+			{
+				showConditions = {},
+				optionTxt = "我这就去收集",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog , param = {},},
 				},
 			},
 		},

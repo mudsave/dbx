@@ -11,8 +11,10 @@ local BeastBlessActivityDB =
 		name = "BeastBless",
 		dbName = "updateBeastBless",
 		startType = AtyStartType.fixedWeekHour,
-		startTime = {week = 5,hour = 14, min = 63},
-		endTime = {week = 5,hour = 21, min = 30},
+		activityTime = {
+			[1] = {startTime = {week = 2,hour = 15, min = 54},endTime = {week = 2,hour = 21, min = 0}},
+			[2] = {startTime = {week =5,hour = 20, min = 0},endTime = {week =5,hour = 21, min = 0}},
+		}
 	}
 }
 

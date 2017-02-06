@@ -55,8 +55,8 @@ function MindHandler.on_minds_load(recordList, role_dbid)
 	local tmp_minds = MindHandler.deal(handler)
 	local event = Event(SkillEvents_SC_LoadMindsExt, handler:get_minds())
 	g_eventMgr:fireRemoteEvent(event, player)
-
 	handler:show()
+	player:flushPropBatch()
 end
 
 function MindHandler:deal()

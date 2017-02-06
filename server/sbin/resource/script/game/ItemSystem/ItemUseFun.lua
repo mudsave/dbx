@@ -40,6 +40,7 @@ function NewPlayerLoginGift(player, item)
 			for i = 1, table.getn(tGiftItems) do
 				local itemID = tGiftItems[i].itemID
 				local itemNum = tGiftItems[i].itemNum
+				print("--------itemID---itemID-----itemID---------",itemID)
 				packetHandler:addItemsToPacket(itemID, itemNum)
 			end
 		end
