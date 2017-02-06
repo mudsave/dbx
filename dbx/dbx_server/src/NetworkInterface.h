@@ -30,6 +30,7 @@ public:
 
 	HRESULT Recv(BYTE *p_buff, int p_size);
 
+    void Finalise();
 public:
     virtual HANDLE OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT p_result, ILinkPort* p_linkPort, int p_linkType);
     virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);

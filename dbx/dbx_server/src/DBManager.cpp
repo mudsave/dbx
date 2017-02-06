@@ -42,6 +42,8 @@ void DBManager::Finalise()
     GlobalThreadsPool()->UnregTimer(m_mainProcessTimer);
 
     DBFactory::InstancePtr()->Finalise();
+    m_networkInterface.Finalise();
+    GlobalThreadsPool()->Clear();
 }
 
 HRESULT DBManager::Run()
@@ -93,21 +95,4 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
-
-    // for test
-    DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, -1));
-    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    //dbTaskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 2));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 1));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 3));
-    dbTaskPool->AddIssue(new DBIssueCallSP(NULL, 2));
 }

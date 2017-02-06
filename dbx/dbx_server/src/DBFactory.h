@@ -1,8 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
-
+æè¿°ï¼?
 */
 
 #ifndef __DB_FACTORY_H_

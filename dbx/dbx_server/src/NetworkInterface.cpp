@@ -100,3 +100,9 @@ void NetworkInterface::OnClosed(HANDLE hLinkContext, HRESULT p_reason)
 
     TRACE1_L0("NetworkInterface::OnClosed reason(%i)\n", p_reason);
 }
+
+void NetworkInterface::Finalise()
+{
+    Clear();
+    m_linkCtrl->CloseCtrl();
+}

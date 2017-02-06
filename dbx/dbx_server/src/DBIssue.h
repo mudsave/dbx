@@ -32,7 +32,8 @@ public:
     void ProcessError();
 protected:
     DBInterface *m_dbInterface;
-    int m_queryID;      // 查询的序号id，有效的同序号须按顺序处理查询
+    int m_queryID;              // 查询的序号id，有效的同序号须按顺序处理查询
+    AppMsg m_resultAppMsg;      // 查询结果数据包
 
     unsigned int m_errnum;
     std::string m_errstr;
