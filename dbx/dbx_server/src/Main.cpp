@@ -10,7 +10,9 @@ RTX:6016.
 #include "Sock.h"
 
 #include "DBManager.h"
+#include "DBTest.h"
 #include "DBXConfig.h"
+
 
 void ParseMainCommandArgs(int argc, char *argv[])
 {
@@ -27,7 +29,11 @@ int main(int argc, char *argv[])
 	InitTraceServer(true);
     TRACE0_L0("DBX start...\n");
     ParseMainCommandArgs(argc, argv);
+
     g_dbxConfig.LoadConfig("DBServer.xml");
+
+    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // 对象池初始化
+
     GenerateSignalThread();
     SetCleanup(CleanUp);
 
@@ -41,6 +47,9 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    //for test
+    //DBTest().Run();
+
     HRESULT result = DBManager::InstancePtr()->Run();
     if (result == S_OK)
     {
@@ -50,6 +59,8 @@ int main(int argc, char *argv[])
     {
         TRACE0_L0("Dbx stop [ timeout ].\n");
     }
+    
+    GlobalThreadsPool()->Clear();
 
     Sleep(1000 * 5);
 	return 0;

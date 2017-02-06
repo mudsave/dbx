@@ -24,9 +24,7 @@ m_networkInterface()
 bool DBManager::Initialize(int p_port)
 {
 	TRACE0_L0( "DBManager::Initialize...\n" );
-    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // 对象池初始化
-
-    m_mainProcessTimer = pThreadsPool->RegTimer(this, NULL, 0, DBX_MAIN_TICK_TIME, DBX_MAIN_TICK_TIME, "DBX_Main_Process_Timer");
+    m_mainProcessTimer = GlobalThreadsPool()->RegTimer(this, NULL, 0, DBX_MAIN_TICK_TIME, DBX_MAIN_TICK_TIME, "DBX_Main_Process_Timer");
     if (m_mainProcessTimer == NULL)
     {
         TRACE0_ERROR("DBManager::Initialize...Register timer error.\n");
@@ -43,7 +41,7 @@ void DBManager::Finalise()
 
     DBFactory::InstancePtr()->Finalise();
     m_networkInterface.Finalise();
-    GlobalThreadsPool()->Clear();
+    GlobalThreadsPool()->Shutdown();
 }
 
 HRESULT DBManager::Run()
@@ -55,7 +53,6 @@ HRESULT DBManager::Run()
 void DBManager::Shutdown()
 {
     Finalise();
-    GlobalThreadsPool()->Shutdown();
 }
 
 bool DBManager::InitDB()
@@ -95,4 +92,8 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
+
+    DBTaskPool *taskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
+    taskPool->AddIssue(new DBIssueCallSP(NULL, -1));
+    taskPool->AddIssue(new DBIssueCallSQL(NULL, -1));
 }
