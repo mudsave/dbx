@@ -36,7 +36,10 @@ const char *TEST_CMD_SP1 = "create procedure sp1() \
 const char *TEST_CMD_SP2 = "create procedure sp2() \
                             begin \
                             select * from t1; \
+                            select * from t3; \
                             end; ";
+
+const char *TEST_CMD_CALL_SP2 = "call sp2()";
 
 const char *TEST_CMD_ERROR = "WSF_MYSQL_ERROR_CMD";
 
@@ -106,7 +109,7 @@ public:
         taskPool->AddIssue(new DBIssueTest(TEST_CMD_SP2, 20013));
         while (true)
         {
-            taskPool->AddIssue(new DBIssueTest("call sp2()", 3000));
+            taskPool->AddIssue(new DBIssueTest(TEST_CMD_CALL_SP2, 3000));
             Sleep(1000);
         }
     }

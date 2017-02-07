@@ -70,7 +70,6 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
         result = mysql_store_result(m_mysql);
         if (result)
         {
-            // todo:创建数据包
             unsigned int fieldNum = mysql_num_fields(result);
             MYSQL_FIELD *fields = mysql_fetch_fields(result);
             MYSQL_ROW row;
@@ -80,7 +79,17 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                 for (int i = 0; i < fieldNum; ++i)
                 {
                     const char *value = (row[i] == NULL ? "NULL" : row[i]);
-                    TRACE3_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s).\n", fields[i].name, fields[i].type, value);
+                    TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
+                    // todo: 写入DBIssue数据包
+                    switch (fields[i].type)
+                    {
+                    case MYSQL_TYPE_TINY:
+                    case MYSQL_TYPE_LONG:
+                    case MYSQL_TYPE_STRING:
+                    case MYSQL_TYPE_VAR_STRING:
+                    default:
+                        break;
+                    }
                 }
             }
 

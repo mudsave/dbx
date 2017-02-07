@@ -20,6 +20,6 @@ RTX:6016.
 namespace DBXCommon
 {
 
-}   // end of namespace DBXCommon
+}   // end namespace DBXCommon
 
-#endif // end of __DB_COMMON_H_
+#endif // __DB_COMMON_H_
