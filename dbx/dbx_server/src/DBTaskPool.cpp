@@ -15,7 +15,6 @@ RTX:6016.
 #include "Sock.h"
 
 #include "DBTask.h"
-#include "DBXContextDefine.h"
 
 #define DB_TASK_DESTROY_TIME 500
 
@@ -108,9 +107,8 @@ bool DBTaskPool::InitTasks(int p_taskNum)
 
 DBTask *DBTaskPool::CreateThread()
 {
-    DBTaskContext *taskContext = new DBTaskContext(this);
     DBTask *task = new DBTask(m_dbInterfaceID, this);
-    if (GlobalThreadsPool()->QueueTask(task, taskContext, TASK_LONG_TIME) != S_OK)
+    if (GlobalThreadsPool()->QueueTask(task, NULL, TASK_LONG_TIME) != S_OK)
     {
         TRACE1_ERROR( "DBTaskPool::CreateThread:Cant create task fro db interface(id:%i).\n", m_dbInterfaceID );
         return NULL;
