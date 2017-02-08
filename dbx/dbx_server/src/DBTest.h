@@ -111,6 +111,8 @@ public:
         {
             taskPool->AddIssue(new DBIssueTest(TEST_CMD_CALL_SP2, 3000));
             Sleep(1000);
+            if (taskPool->IsDestroyed())
+                break;
         }
     }
 

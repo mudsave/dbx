@@ -135,6 +135,7 @@ void DBTask::DoEnd()
     {
         m_dbInterface->Disconnect();
         delete m_dbInterface;
+        m_dbInterface = NULL;
     }
 
     GetTaskPool()->OnTaskQuit(this);

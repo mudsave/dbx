@@ -17,7 +17,7 @@ RTX:6016.
 #include "DBTask.h"
 #include "DBXContextDefine.h"
 
-#define DB_TASK_DESTROY_TIME 300
+#define DB_TASK_DESTROY_TIME 500
 
 DBTaskPool::DBTaskPool(int p_dbInterfaceID)
     :m_dbInterfaceID(p_dbInterfaceID),
@@ -60,7 +60,10 @@ void DBTaskPool::Finalise()
     m_freeBusyListMutex.Lock();
     taskIter = m_totalTaskList.begin();
     for (; taskIter != m_totalTaskList.end(); ++taskIter)
+    {
         delete (*taskIter);
+        (*taskIter) = NULL;
+    }
     m_totalTaskList.clear();
     m_freeTaskList.clear();
     m_busyTaskList.clear();
