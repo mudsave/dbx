@@ -161,6 +161,7 @@ void DBInterfaceMysql::Disconnect()
     if (m_mysql != NULL)
     {
         mysql_close(m_mysql);
+        mysql_library_end();
         m_mysql = NULL;
     }
 }
