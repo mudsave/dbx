@@ -71,6 +71,8 @@ DBInterface *DBFactory::CreateDBInterface(int p_dbInterfaceID)
         if (!dbInterface->Initialize())
         {
             TRACE1_ERROR("DBFactory::CreateDBInterface: DBInterfaceMysql Initialize error.(id:%i).", p_dbInterfaceID);
+            delete dbInterface;
+            dbInterface = NULL;
             return NULL;
         }
     }
@@ -78,6 +80,8 @@ DBInterface *DBFactory::CreateDBInterface(int p_dbInterfaceID)
     if (!dbInterface->Connect())
     {
         TRACE1_ERROR("DBFactory::CreateDBInterface:DB interface(id:%i) Connect Error.\n", p_dbInterfaceID);
+        delete dbInterface;
+        dbInterface = NULL;
         return NULL;
     }
 
