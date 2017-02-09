@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 */
 
@@ -80,7 +80,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                 {
                     const char *value = (row[i] == NULL ? "NULL" : row[i]);
                     TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
-                    // todo: Ð´ÈëDBIssueÊý¾Ý°ü
+                    // todo: Ð´ï¿½ï¿½DBIssueï¿½ï¿½ï¿½Ý°ï¿½
                     switch (fields[i].type)
                     {
                     case MYSQL_TYPE_TINY:
@@ -161,7 +161,6 @@ void DBInterfaceMysql::Disconnect()
     if (m_mysql != NULL)
     {
         mysql_close(m_mysql);
-        mysql_library_end();
         m_mysql = NULL;
     }
 }
