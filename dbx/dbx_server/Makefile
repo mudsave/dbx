@@ -24,6 +24,8 @@ LIBS +=-lrt -lstdc++ -pthread -lSock
 # --------------- default.mak end ---------------------------------------------------------
 
 INCLUDE_DIR += -I/usr/include/mysql
+
+# 线程安全的mysql库
 LIBS += -lmysqlclient_r
 
 target: $(wildcard *.cpp)

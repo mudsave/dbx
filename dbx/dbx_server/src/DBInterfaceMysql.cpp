@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-������
+描述：
 
 */
 
@@ -78,9 +78,9 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                 unsigned long *lengths = mysql_fetch_lengths(result);
                 for (int i = 0; i < fieldNum; ++i)
                 {
+                    // 临时代码。todo: 创建数据包到DBIssue
                     const char *value = (row[i] == NULL ? "NULL" : row[i]);
                     TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
-                    // todo: д��DBIssue���ݰ�
                     switch (fields[i].type)
                     {
                     case MYSQL_TYPE_TINY:

@@ -56,7 +56,7 @@ namespace DBX
     template<typename T>
     T* Singleton<T>::m_instance = NULL;
 
-}   // end of namespace DBX
+}   // end namespace DBX
 
 
 #endif   // __DBX_SINGLETON_H_
