@@ -115,7 +115,11 @@ void DBTask::Start()
 void DBTask::ProgressIssue(DBIssueBase *p_issue)
 {
     p_issue->SetDBInterface(m_dbInterface);
-    p_issue->Progress();
+    if( !p_issue->Progress() )
+    {
+        // todo: 根据不同错误进行错误处理，比如是否需要重新查询
+        TRACE1_ERROR("DBTask::ProgressIssue:error(%s)..\n", p_issue->GetErrorStr());
+    }
 }
 
 void DBTask::ProgressEnd()

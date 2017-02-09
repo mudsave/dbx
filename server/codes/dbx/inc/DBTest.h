@@ -57,9 +57,10 @@ public:
         m_cmd(p_cmd)
     {}
 
-    virtual void OnProgress()
+    virtual bool OnProgress()
     {
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
+        return success;
     }
 
     virtual void MainProgress()
@@ -78,10 +79,11 @@ public:
         :DBIssueTest(p_cmd, p_queryID)
     {}
 
-    virtual void OnProgress()
+    virtual bool OnProgress()
     {
         m_cmd = "Create table if not EXISTS t1(id BIGINT primary key auto_increment, col varchar(50) ) ENGINE=InnoDB charset=utf8;";
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
+        return success;
     }
 };
 
@@ -92,10 +94,11 @@ public:
         :DBIssueTest(p_cmd, p_queryID)
     {}
 
-    virtual void OnProgress()
+    virtual bool OnProgress()
     {
         m_cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
+        return success;
     }
 };
 

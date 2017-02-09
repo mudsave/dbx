@@ -12,14 +12,15 @@ RTX:6016.
 
 #include "lindef.h"
 #include "DBInterface.h"
+#include "DBXMessageTranslate.h"
 
 class DBIssueBase
 {
 public:
     DBIssueBase(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void Progress();
-    virtual void OnProgress() = 0;
+    virtual bool Progress();
+    virtual bool OnProgress() = 0;
     virtual void MainProgress();
 
     void SetDBInterface(DBInterface *p_dbInterface);
@@ -47,6 +48,13 @@ public:
 
     virtual void OnProgress();
     virtual void MainProgress();
+
+	const TListOutput & GetOutParams() { return m_outParams; }
+
+private:
+	TListOutput m_outParams;	//输出参数，从查询结果构建消息协议时用到
+
+	AppMsg * m_pAppMsg;
 };
 
 
@@ -56,7 +64,9 @@ public:
     DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID);
 
     virtual void OnProgress();
-    virtual void MainProgress();
+	virtual void MainProgress();
+
+	AppMsg * m_pAppMsg;
 };
 
 #endif // end of __DB_ISSUE_H_
