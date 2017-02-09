@@ -20,11 +20,11 @@ CMPL_EX =
 LINK_EX =
 
 # default.mak已包含了一些公用的目录，这里加上其他头文件目录
-INCLUDE_DIR = -I../codes/dbx/inc -I../codes/dbx/tinyxml
+INCLUDE_DIR = -I../codes/dbx/inc -I../codes/dbx/tinyxml -I/usr/include/mysql
 
 # default.mak已包含了一些公用的库，这里加上其他所需的库及所在目录（exe工程才需要设置）
-LIB_DIR =
-LIBS = -ltinyxml
+LIB_DIR = -L/usr/lib64/mysql
+LIBS = -ltinyxml -lmysqlclient_r
 
 # 工程目标
 .PHONY: all pre_build target post_build print clean check
