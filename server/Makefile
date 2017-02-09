@@ -82,9 +82,12 @@ world :
 	cd mak.d; make -f world.mak
 	@echo ""
 
+dbx :
+	#echo ""
+	cd mak.d; make -f dbx.mak
 
 # 安装环境
-config : lua tolua db
+config : lua tolua db tinyxml
 
 lua :
 	cd ./tools/lua-5.1.5; make clean; make linux; make install
@@ -98,6 +101,9 @@ db :
 ldconfig :
 	cd /etc/ld.so.conf.d && touch devel.conf; echo /usr/local/lib >devel.conf
 	ldconfig
+
+tinyxml :
+	cd ./codes/dbx/tinyxml; make
 
 limits :
 	echo "" >>/etc/security/limits.conf
