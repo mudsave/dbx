@@ -76,7 +76,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             while (row = mysql_fetch_row(result))
             {
                 unsigned long *lengths = mysql_fetch_lengths(result);
-                for (int i = 0; i < fieldNum; ++i)
+                for (unsigned int i = 0; i < fieldNum; ++i)
                 {
                     // 临时代码。todo: 创建数据包到DBIssue
                     const char *value = (row[i] == NULL ? "NULL" : row[i]);
