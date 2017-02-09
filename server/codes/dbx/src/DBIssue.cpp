@@ -20,10 +20,10 @@ DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
 {
 }
 
-void DBIssueBase::Progress()
+bool DBIssueBase::Progress()
 {
     TRACE0_L0("DBIssueBase::Progress.\n");
-    OnProgress();
+    return OnProgress();
 }
 
 void DBIssueBase::SetDBInterface(DBInterface *p_dbInterface)
@@ -70,15 +70,13 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID)
 {
 }
 
-void DBIssueCallSP::OnProgress()
+bool DBIssueCallSP::OnProgress()
 {
     TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
     const char *cmd = "CALL SP2();";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-    if (!success)
-    {
-        // todo:处理错误
-    }
+
+    return success;
 }
 
 void DBIssueCallSP::MainProgress()
@@ -94,15 +92,13 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
 {
 }
 
-void DBIssueCallSQL::OnProgress()
+bool DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
     const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-    if (!success)
-    {
-        // todo:处理错误
-    }
+
+    return success;
 }
 
 void DBIssueCallSQL::MainProgress()
