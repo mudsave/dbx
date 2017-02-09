@@ -88,15 +88,11 @@ void DBIssueCallSP::OnProgress()
 
 	if (!build_sp_query_buffer(pdbInterface->GetMysql(), (CCSResultMsg *)(m_pAppMsg), pszQueryBuffer, nQueryBufferLen, m_outParams))
 	{
-		SetError(1, "Build SP query buffer fail.");
 		return;
 	}
 
 	if (!pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this))
 	{
-		string errstr = "Call SP fail. QueryBuffer: ";
-		errstr += pszQueryBuffer;
-		SetError(1, errstr);
 		return;
 	}
 }
