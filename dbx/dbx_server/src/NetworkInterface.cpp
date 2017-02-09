@@ -14,6 +14,8 @@ RTX:6016.
 #include "DBXContextDefine.h"
 #include "DBManager.h"
 
+#include "dbx_msgdef.h"
+
 NetworkInterface::NetworkInterface(int p_port)
 {
 	TRACE0_L0( "NetworkInterface init...\n" );
@@ -67,7 +69,16 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
 
     //DBManager::InstancePtr()
 
-    SendMsg(context->m_linkIndex, pMsg);
+    //SendMsg(context->m_linkIndex, pMsg);
+
+	if (pMsg->msgId == C_DOACTION || pMsg->msgId == C_SP_FROM_CPP)
+	{
+		DBManager::InstancePtr()->CallSP(pMsg);
+	}
+	else
+	{
+		DBManager::InstancePtr()->CallSQL(pMsg);
+	}
 }
 
 void NetworkInterface::OnClosed(HANDLE hLinkContext, HRESULT p_reason)

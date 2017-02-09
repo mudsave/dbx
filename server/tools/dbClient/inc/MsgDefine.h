@@ -470,6 +470,7 @@ public:
 		int size = sizeof(MessageType) + getParamLen();
 		MessageType * p_msg = (MessageType *)malloc(size);
 		if (p_msg == NULL) return NULL;
+		memset(p_msg, 0, size);
 
 		//设置消息长度
 		p_msg->msgLen = (unsigned short)size;
