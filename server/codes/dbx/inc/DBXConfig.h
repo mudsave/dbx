@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -27,14 +27,14 @@ struct DBInterfaceInfo
         memset(db_password, 0, sizeof(db_password));
     }
 
-    int id;                             // Êı¾İ¿â½Ó¿Úid
-    char db_type[DBX_MAX_BUF];          // Êı¾İ¿âÀàĞÍ
-    char db_ip[DBX_MAX_BUF];            // Êı¾İ¿âipµØÖ·
-    int db_port;                        // Êı¾İ¿â¶Ë¿Ú
-    char db_name[DBX_MAX_NAME];         // Êı¾İ¿âÃû×Ö
-    char db_username[DBX_MAX_NAME];     // Á¬½ÓÊı¾İ¿âµÄÓÃ»§Ãû
-    char db_password[DBX_MAX_BUF];      // Á¬½ÓÊı¾İ¿âµÄÃÜÂë
-    int db_connectionsNum;              // Êı¾İ¿â×î´óÁ¬½Ó
+    int id;                             // ï¿½ï¿½ï¿½İ¿ï¿½Ó¿ï¿½id
+    char db_type[DBX_MAX_BUF];          // ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    char db_ip[DBX_MAX_BUF];            // ï¿½ï¿½ï¿½İ¿ï¿½ipï¿½ï¿½Ö·
+    int db_port;                        // ï¿½ï¿½ï¿½İ¿ï¿½Ë¿ï¿½
+    char db_name[DBX_MAX_NAME];         // ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    char db_username[DBX_MAX_NAME];     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+    char db_password[DBX_MAX_BUF];      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int db_connectionsNum;              // ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 };
 
 class DBXConfig: public DBX::Singleton<DBXConfig>

@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -33,8 +33,8 @@ public:
     void ProcessError();
 protected:
     DBInterface *m_dbInterface;
-    int m_queryID;              // ²éÑ¯µÄĞòºÅid£¬ÓĞĞ§µÄÍ¬ĞòºÅĞë°´Ë³Ğò´¦Àí²éÑ¯
-    AppMsg m_resultAppMsg;      // ²éÑ¯½á¹ûÊı¾İ°ü
+    int m_queryID;              // æŸ¥è¯¢çš„åºå·idï¼Œæœ‰æ•ˆçš„åŒåºå·é¡»æŒ‰é¡ºåºå¤„ç†æŸ¥è¯¢
+    AppMsg m_resultAppMsg;      // æŸ¥è¯¢ç»“æœæ•°æ®åŒ…
 
     unsigned int m_errnum;
     std::string m_errstr;
@@ -52,7 +52,7 @@ public:
 	const TListOutput & GetOutParams() { return m_outParams; }
 
 private:
-	TListOutput m_outParams;	//Êä³ö²ÎÊı£¬´Ó²éÑ¯½á¹û¹¹½¨ÏûÏ¢Ğ­ÒéÊ±ÓÃµ½
+	TListOutput m_outParams;	//è¾“å‡ºå‚æ•°ï¼Œä»æŸ¥è¯¢ç»“æœæ„å»ºæ¶ˆæ¯åè®®æ—¶ç”¨åˆ°
 
 	AppMsg * m_pAppMsg;
 };

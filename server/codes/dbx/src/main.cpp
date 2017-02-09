@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     g_dbxConfig.LoadConfig("DBServer.xml");
 
-    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // ¶ÔÏó³Ø³õÊ¼»¯
+    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // ï¿½ï¿½ï¿½ï¿½Ø³ï¿½Ê¼ï¿½ï¿½
 
     GenerateSignalThread();
     SetCleanup(CleanUp);
