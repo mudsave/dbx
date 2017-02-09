@@ -15,10 +15,10 @@
     <ClInclude Include="..\lib\message_define\DBXClientMessage.h" />
     <ClInclude Include="..\lib\message_define\DBMessageDefine.h" />
     <ClInclude Include="..\lib\message_define\DBXMessage.h" />
+    <ClInclude Include="..\lib\message_define\dbx_msgdef.h" />
     <ClInclude Include="..\lib\message_define\MessageBase.h" />
     <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
-    <ClInclude Include="src\DBTest.h" />
     <ClInclude Include="src\DBXContextDefine.h" />
     <ClInclude Include="src\DBXCommon.h" />
     <ClInclude Include="src\DBInterface.h" />
@@ -29,6 +29,7 @@
     <ClInclude Include="src\DBTaskPool.h" />
     <ClInclude Include="src\DBFactory.h" />
     <ClInclude Include="src\DBXConfig.h" />
+    <ClInclude Include="src\DBXMessageTranslate.h" />
     <ClInclude Include="src\NetworkInterface.h" />
     <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\tinystr.h" />
