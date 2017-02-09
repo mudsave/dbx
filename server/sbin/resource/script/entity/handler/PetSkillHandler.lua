@@ -278,7 +278,7 @@ function PetSkillHandler:acquireTalent()
 			local index = _next()
 			if index < 1 then break end
 			self:addSkill(
-				PetSkill(sup[index][1],Superior)
+				PetSkill(sup[index],Superior)
 			)
 			number = number - 1	
 		end

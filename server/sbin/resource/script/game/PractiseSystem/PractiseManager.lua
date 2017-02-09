@@ -13,7 +13,7 @@ end
 function PractiseManager:update(period)
 	if period == "day" then 
 		for playerID, player in pairs(g_entityMgr:getPlayers()) do
-			local storeXp = 0
+			local storeXp = player:getStoreXp()
 			-- 更新存储经验
 			for _,dataDB in pairs(tActivityPageDB) do
 				if schoolType == dataDB.SchoolType  or not dataDB.SchoolType then
@@ -55,6 +55,7 @@ function PractiseManager:loadPractiseFromDB(player, recordList)
 	local storeXp = 0
 	for _,data in pairs(recordList) do
 		if data then
+			storeXp = data.storeXp
 			if not time.isSameDay(data.recordTime) then
 				-- 更新到0
 				player:setPractise(0)
@@ -79,12 +80,12 @@ function PractiseManager:loadPractiseFromDB(player, recordList)
 				end	
 			else	
 				player:setPractise(data.practise)
+				player:setStoreXp(data.storeXp)
 				if practiseHandler then
 					practiseHandler:setTabBoxState(data)
 				end
 			end
 			player:setPractiseCount(data.practiseCount)
-			player:setStoreXp(data.storeXp)
 		end
 	end
 	player:flushPropBatch()

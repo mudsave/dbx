@@ -17,7 +17,7 @@ function PlayerMiscSystem:__init()
 	}
 end
 
---分配玩家属性点
+-- 分配玩家属性点
 function PlayerMiscSystem:doAttributePointChanged(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
@@ -25,19 +25,24 @@ function PlayerMiscSystem:doAttributePointChanged(event)
 	local attrPoint = 0
 	for attrType,attrValue in pairs(attrTable) do
 		if attrType < player_str_point or attrType > player_dex_point then
-			print("属性类型无效。")
+			-- print("属性类型无效。")
+			return
+		end
+		if attrValue < 0 then
+			-- print "尝试减去一个属性点"
 			return
 		end
 		attrPoint = attrPoint+attrValue
 	end
-	local subAttrPoint = player:getAttrValue(player_attr_point)-attrPoint
-	if subAttrPoint < 0 then
+	local nPointLeft = player:getAttrValue(player_attr_point) - attrPoint
+	if nPointLeft < 0 then
 		print("属性点不足。")
+		return
 	end
 	for attrType,attrValue in pairs(attrTable) do
 		player:addAttrValue(attrType,attrValue)
 	end
-	player:setAttrValue(player_attr_point,subAttrPoint)
+	player:setAttrValue(player_attr_point,nPointLeft)
 	
 	player:flushPropBatch()
 	
@@ -51,16 +56,17 @@ end
 function PlayerMiscSystem:doPhasePointChanged(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
+	-- local roleID = params[1]
 	local attrTable = params[2]
 	
 	local phasePoint = 0
 	for attrName,attrValue in pairs(attrTable) do
 		if attrName < player_win_phase_point or attrName > player_poi_phase_point then
-			print("属性类型无效。")
+			print("设置角色相性点:属性类型无效。")
 			return
 		end
 		if attrValue < 0 then
-			print "试图以负数设置属性"
+			print "设置角色相性点:试图以负数设置属性"
 			return
 		end
 		if player:getAttrValue(attrName) + attrValue > 35 then
@@ -69,15 +75,15 @@ function PlayerMiscSystem:doPhasePointChanged(event)
 		end
 		phasePoint = phasePoint+attrValue
 	end
-	local subPhasePoint = player:getAttrValue(player_phase_point)-phasePoint
-	if subPhasePoint < 0 then
-		print("相性点不足。")
+	local leftPnts = player:getAttrValue(player_phase_point)-phasePoint
+	if leftPnts < 0 then
+		print "相性点不足。"
 		return
 	end
 	for attrName,attrValue in pairs(attrTable) do
 		player:addAttrValue(attrName,attrValue)
 	end
-	player:setAttrValue(player_phase_point,subPhasePoint)
+	player:setAttrValue(player_phase_point,leftPnts)
 	player:flushPropBatch()
 end
 

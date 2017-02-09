@@ -60,7 +60,7 @@ end
 
 --通过对话id直接创建对话
 function DialogDoer:createDialogByID(player, optionID, check, npcID)
-	local dialog = g_dialogFty:createDialogObject(player, optionID, check)		--创建一个对话对象
+	local dialog = g_dialogFty:createDialogObject(player, optionID, check,npcID)		--创建一个对话对象
 	if dialog then
 		self:openDialog(player, dialog, npcID)										--打开对话框
 	end

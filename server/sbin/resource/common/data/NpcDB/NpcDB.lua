@@ -12892,14 +12892,14 @@ NpcDB = {
      },
      [31150] = {
 	     name = "董卓",
-	     modelID =198,
+	     modelID =595,
 	     desc = "赤魂岭BOSS",
 	     funcFlag = 12,
 	     level = 42,
 	     attrID = 505,
 	     phaseType = PhaseType.Ice,
-	     skillCfg = {1014,1015},
-	     modelScale =18,
+	     skillCfg = {1012,1015},
+	     modelScale =14,
 	     unhitRate = 1,
 	     unhitSkills = {1014,1015},
      },
@@ -12981,6 +12981,42 @@ NpcDB = {
 	     modelID =2000,
      },
      [31170] = {
+	     name = "火龙卷",
+	     modelID =2000,
+     },
+     [31171] = {
+	     name = "地宫铁刺",
+	     modelID =2047,
+     },
+     [31172] = {
+	     name = "地宫铁刺",
+	     modelID =2047,
+     },
+     [31173] = {
+	     name = "地宫铁刺",
+	     modelID =2047,
+     },
+     [31174] = {
+	     name = "陨石",
+	     modelID =2000,
+     },
+     [31175] = {
+	     name = "陨石",
+	     modelID =2000,
+     },
+     [31176] = {
+	     name = "陨石",
+	     modelID =2000,
+     },
+     [31177] = {
+	     name = "火龙卷",
+	     modelID =2000,
+     },
+     [31178] = {
+	     name = "火龙卷",
+	     modelID =2000,
+     },
+     [31179] = {
 	     name = "火龙卷",
 	     modelID =2000,
 	     desc = "赤魂岭机关",
@@ -13847,6 +13883,40 @@ NpcDB = {
 	     taoExpPrize =300,
 	     combatNumPrize =100,
 	     modelScale =14,
+     },
+     [39050] = {
+	     name = "天子猎金场活动使",
+	     modelID =624,
+	     desc = "天子猎金场活动入口",
+	     dialogIDs = {27101},
+     },
+     [39051] = {
+	     name = "军辎重募集使",
+	     modelID =627,
+	     desc = "天子猎金场积分上交",
+	     dialogIDs = {27103},
+     },
+     [39052] = {
+	     name = "远古守卫",
+	     modelID =559,
+	     desc = "猎金场守卫",
+	     dialogIDs = {27102},
+     },
+     [39053] = {
+	     name = "精英远古守卫",
+	     modelID =202,
+	     desc = "猎金场守卫",
+	     dialogIDs = {27102},
+     },
+     [39054] = {
+	     name = "石妖",
+	     modelID =223,
+	     desc = "采集刷新的怪物",
+     },
+     [39055] = {
+	     name = "石魔",
+	     modelID =199,
+	     desc = "采集刷新的怪物",
      },
      [40001] = {
 	     name = "张捕快",

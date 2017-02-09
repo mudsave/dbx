@@ -6340,7 +6340,7 @@ LoopTaskTargetAssistDB =
 				{
 					collectTrace = 
 					{
-						[1] = {itemsInfo = {{itemID = 1051021, itemNum = 5},{itemID = 1051022,itemNum = 10}},npcID = 20913, mapID = 10, x = 177, y = 231},
+						[1] = {itemsInfo = {{itemID = 1051005, itemNum = 10},{itemID = 1051006,itemNum = 20}},npcID = 29081, mapID = 10, x = 49, y = 229},
 					},
 				},
 			},

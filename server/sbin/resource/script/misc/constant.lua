@@ -75,6 +75,7 @@ require "misc.MeetMonsterConstant"
 require "misc.PetDepotConstant"
 require "misc.ActivityConstant"
 require "misc.GoldHuntZoneConstant"
+require "misc.BeastBlessConstant"
 
 
 

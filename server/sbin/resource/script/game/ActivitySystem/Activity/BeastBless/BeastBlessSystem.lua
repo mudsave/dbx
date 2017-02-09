@@ -38,17 +38,16 @@ function BeastBlessSystem:onFightEnd(event)
 	end
 	if bWin then
 		-- 奖励计算
-		print("fightEndResults2",toString(fightEndResults))
+		-- print("fightEndResults2",toString(fightEndResults))
 		g_beastBlessMgr:dealWithRewards(fightEndResults, scriptID, monsterDBIDs, fightID, fightInfo)
 		-- 移除更新NPC
 		local beast = g_beastBlessMgr:getBeastFromFlagList(scriptID)
 		if beast then
 			g_beastBlessMgr:removeBeastFromList(beast)
 		end
-	else
-		-- 更新NPC标记
-		g_beastBlessMgr:removeBeastFightFlagList(scriptID)
 	end
+	-- 更新NPC标记
+	g_beastBlessMgr:removeBeastFightFlagList(scriptID)
 end
 
 

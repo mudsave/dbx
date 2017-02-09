@@ -149,7 +149,7 @@ function PlayerAttrbuteFormula.player_win_at(player)
 	local player_win_phase = player:getAttrValue(player_win_phase)
 	local player_inc_win_at = player:getAttrValue(player_inc_win_at)/1000
 	local player_inc_phase_at = player:getAttrValue(player_inc_phase_at)/1000
-	return math_floor(player_win_phase*0.01+player_inc_win_at+player_inc_phase_at)
+	return player_win_phase*0.01+player_inc_win_at+player_inc_phase_at
 end
 
 --雷攻击 = （雷相性*0.01+雷攻击加值+所有相性攻击加值）
@@ -157,7 +157,7 @@ function PlayerAttrbuteFormula.player_thu_at(player)
 	local player_thu_phase = player:getAttrValue(player_thu_phase)
 	local player_inc_thu_at = player:getAttrValue(player_inc_thu_at)/1000
 	local player_inc_phase_at = player:getAttrValue(player_inc_phase_at)/1000
-	return math_floor(player_thu_phase*0.01+player_inc_thu_at+player_inc_phase_at)
+	return player_thu_phase*0.01+player_inc_thu_at+player_inc_phase_at
 end
 
 --冰攻击 =（冰相性*0.01+冰攻击加值+所有相性攻击加值）
@@ -165,7 +165,7 @@ function PlayerAttrbuteFormula.player_ice_at(player)
 	local player_ice_phase = player:getAttrValue(player_ice_phase)
 	local player_inc_ice_at = player:getAttrValue(player_inc_ice_at)/1000
 	local player_inc_phase_at = player:getAttrValue(player_inc_phase_at)/1000
-	return math_floor(player_ice_phase*0.01+player_inc_ice_at+player_inc_phase_at)
+	return player_ice_phase*0.01+player_inc_ice_at+player_inc_phase_at
 end
 
 --火攻击 = (火相性*0.01+火攻击加值+所有相性攻击加值)
@@ -173,7 +173,7 @@ function PlayerAttrbuteFormula.player_fir_at(player)
 	local player_fir_phase = player:getAttrValue(player_fir_phase)
 	local player_inc_fir_at = player:getAttrValue(player_inc_fir_at)/1000
 	local player_inc_phase_at = player:getAttrValue(player_inc_phase_at)/1000
-	return math_floor(player_fir_phase*0.01+player_inc_fir_at+player_inc_phase_at)
+	return player_fir_phase*0.01+player_inc_fir_at+player_inc_phase_at
 end
 
 --土攻击 = (土相性*0.01+土攻击加值+所有相性攻击加值)
@@ -181,7 +181,7 @@ function PlayerAttrbuteFormula.player_soi_at(player)
 	local player_soi_phase = player:getAttrValue(player_soi_phase)
 	local player_inc_soi_at = player:getAttrValue(player_inc_soi_at)/1000
 	local player_inc_phase_at = player:getAttrValue(player_inc_phase_at)/1000
-	return math_floor(player_soi_phase*0.01+player_inc_soi_at+player_inc_phase_at)
+	return player_soi_phase*0.01+player_inc_soi_at+player_inc_phase_at
 end
 
 --毒攻击 = (毒相性*0.01+毒攻击加值+所有相性攻击加值)
@@ -189,7 +189,7 @@ function PlayerAttrbuteFormula.player_poi_at(player)
 	local player_poi_phase = player:getAttrValue(player_poi_phase)
 	local player_inc_poi_at = player:getAttrValue(player_inc_poi_at)/1000
 	local player_inc_phase_at = player:getAttrValue(player_inc_phase_at)/1000
-	return math_floor(player_poi_phase*0.01+player_inc_poi_at+player_inc_phase_at)
+	return player_poi_phase*0.01+player_inc_poi_at+player_inc_phase_at
 end
 
 --风抗 = (风相性*0.01+风抗加值+所有相性抗性加值)
@@ -197,7 +197,7 @@ function PlayerAttrbuteFormula.player_win_resist(player)
 	local player_win_phase = player:getAttrValue(player_win_phase)
 	local player_inc_win_resist = player:getAttrValue(player_inc_win_resist)/1000
 	local player_inc_phase_resist = player:getAttrValue(player_inc_phase_resist)/1000
-	return math_floor(player_win_phase*0.01+player_inc_win_resist+player_inc_phase_resist)
+	return player_win_phase*0.01+player_inc_win_resist+player_inc_phase_resist
 end
 
 --雷抗 = (雷相性*0.01+雷抗加值+所有相性抗性加值)
@@ -205,7 +205,7 @@ function PlayerAttrbuteFormula.player_thu_resist(player)
 	local player_thu_phase = player:getAttrValue(player_thu_phase)
 	local player_inc_thu_resist = player:getAttrValue(player_inc_thu_resist)/1000
 	local player_inc_phase_resist = player:getAttrValue(player_inc_phase_resist)/1000
-	return math_floor(player_thu_phase*0.01+player_inc_thu_resist+player_inc_phase_resist)
+	return player_thu_phase*0.01+player_inc_thu_resist+player_inc_phase_resist
 end
 
 --冰抗 = (冰相性*0.01+冰抗加值+所有相性抗性加值)
@@ -213,7 +213,7 @@ function PlayerAttrbuteFormula.player_ice_resist(player)
 	local player_ice_phase = player:getAttrValue(player_ice_phase)
 	local player_inc_ice_resist = player:getAttrValue(player_inc_ice_resist)/1000
 	local player_inc_phase_resist = player:getAttrValue(player_inc_phase_resist)/1000
-	return math_floor(player_ice_phase*0.01+player_inc_ice_resist+player_inc_phase_resist)
+	return player_ice_phase*0.01+player_inc_ice_resist+player_inc_phase_resist
 end
 
 --火抗 = (火相性*0.01+火抗加值+所有相性抗性加值)
@@ -221,7 +221,7 @@ function PlayerAttrbuteFormula.player_fir_resist(player)
 	local player_fir_phase = player:getAttrValue(player_fir_phase)
 	local player_inc_fir_resist = player:getAttrValue(player_inc_fir_resist)/1000
 	local player_inc_phase_resist = player:getAttrValue(player_inc_phase_resist)/1000
-	return math_floor(player_fir_phase*0.01+player_inc_fir_resist+player_inc_phase_resist)
+	return player_fir_phase*0.01+player_inc_fir_resist+player_inc_phase_resist
 end
 
 --土抗 = (土相性*0.01+土抗加值+所有相性抗性加值)
@@ -229,7 +229,7 @@ function PlayerAttrbuteFormula.player_soi_resist(player)
 	local player_soi_phase = player:getAttrValue(player_soi_phase)
 	local player_inc_ice_resist = player:getAttrValue(player_inc_ice_resist)/1000
 	local player_inc_phase_resist = player:getAttrValue(player_inc_phase_resist)/1000
-	return math_floor(player_soi_phase*0.01+player_inc_ice_resist+player_inc_phase_resist)
+	return player_soi_phase*0.01+player_inc_ice_resist+player_inc_phase_resist
 end
 
 --毒抗 = (毒相性*0.01+毒抗加值+所有相性抗性加值)
@@ -237,7 +237,7 @@ function PlayerAttrbuteFormula.player_poi_resist(player)
 	local player_poi_phase = player:getAttrValue(player_poi_phase)
 	local player_inc_poi_resist = player:getAttrValue(player_inc_poi_resist)/1000
 	local player_inc_phase_resist = player:getAttrValue(player_inc_phase_resist)/1000
-	return math_floor(player_poi_phase*0.01+player_inc_poi_resist+player_inc_phase_resist)
+	return player_poi_phase*0.01+player_inc_poi_resist+player_inc_phase_resist
 end
 
 --生命上限=（根骨*7.2+冰相性*6.4+（等级+4）^2/5-等级+196+生命上限加值+红蓝上限加值）*（1+生命值上限加成+红蓝上限加成）
@@ -619,19 +619,36 @@ g_AttributePlayerToProp =
 	[player_fir_phase_point]			= PLAYER_FIR_PHASE_POINT,
 	[player_poi_phase_point]			= PLAYER_POI_PHASE_POINT,
 
-	[player_win_at]						= PLAYER_WIN_AT,
-	[player_thu_at]						= PLAYER_THU_AT,
-	[player_ice_at]						= PLAYER_ICE_AT,
-	[player_soi_at]						= PLAYER_SOI_AT,
-	[player_fir_at]						= PLAYER_FIR_AT,
-	[player_poi_at]						= PLAYER_POI_AT,
+	[player_inc_win_at]					= PLAYER_INC_WIN_AT,
+	[player_inc_thu_at]					= PLAYER_INC_THU_AT,
+	[player_inc_ice_at]					= PLAYER_INC_ICE_AT,
+	[player_inc_fir_at]					= PLAYER_INC_FIR_AT,
+	[player_inc_soi_at]					= PLAYER_INC_SOI_AT,
+	[player_inc_poi_at]					= PLAYER_INC_POI_AT,
 
-	[player_win_resist]					= PLAYER_WIN_RESIST,
-	[player_thu_resist]					= PLAYER_THU_RESIST,
-	[player_ice_resist]					= PLAYER_ICE_RESIST,
-	[player_soi_resist]					= PLAYER_SOI_RESIST,
-	[player_fir_resist]					= PLAYER_FIR_RESIST,
-	[player_poi_resist]					= PLAYER_POI_RESIST,
+	[player_inc_win_resist]				= PLAYER_INC_WIN_RESIST,
+	[player_inc_thu_resist]				= PLAYER_INC_THU_RESIST,
+	[player_inc_ice_resist]				= PLAYER_INC_ICE_RESIST,
+	[player_inc_fir_resist]				= PLAYER_INC_FIR_RESIST,
+	[player_inc_soi_resist]				= PLAYER_INC_SOI_RESIST,
+	[player_inc_poi_resist]				= PLAYER_INC_POI_RESIST,
+
+	[player_inc_phase_at]				= PLAYER_INC_PHASE_AT,
+	[player_inc_phase_resist]			= PLAYER_INC_PHASE_RESIST,
+
+	[player_inc_taunt_hit]				= PLAYER_INC_TAUNT_HIT,
+	[player_inc_soper_hit]				= PLAYER_INC_SOPER_HIT,
+	[player_inc_chaos_hit]				= PLAYER_INC_CHAOS_HIT,
+	[player_inc_freeze_hit]				= PLAYER_INC_FREEZE_HIT,
+	[player_inc_silent_hit]				= PLAYER_INC_SILENT_HIT,
+	[player_inc_toxicosis_hit]			= PLAYER_INC_TOXICOSIS_HIT,
+
+	[player_inc_taunt_resist]			= PLAYER_INC_TAUNT_RESIST,
+	[player_inc_sopor_resist]			= PLAYER_INC_SOPOR_RESIST,
+	[player_inc_chaos_resist]			= PLAYER_INC_CHAOS_RESIST,
+	[player_inc_freeze_resist]			= PLAYER_INC_FREEZE_RESIST,
+	[player_inc_silent_resist]			= PLAYER_INC_SILENT_RESIST,
+	[player_inc_toxicosis_resist]		= PLAYER_INC_TOXICOSIS_RESIST,
 
 	[player_stand_tao]					= PLAYER_STAND_TAO,
 	[player_tao]						= PLAYER_TAO,
@@ -695,3 +712,4 @@ g_AttrPlayerSyncTable =
 	[player_tenacity] = true,
 	[player_speed] = true,
 }
+

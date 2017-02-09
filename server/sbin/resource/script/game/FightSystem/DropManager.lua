@@ -359,18 +359,21 @@ function DropManager:getCompareLevel(monsterConfig, role, fightID)
 			local rand = math.random(100)
 			local itemInfo = {}
 			local allItem = {}
-			if rand >= 1 and rand <= 10 then
-			elseif rand > 10 and rand <= 40 then
-				packetHandler:addItemsToPacket(1051021 ,1)
-				itemInfo.itemID = 1051021
+			if rand >= 1 and rand <= 40 then
+				itemInfo = nil
+			elseif rand > 40 and rand <= 60 then
+				packetHandler:addItemsToPacket(1051005 ,1)
+				itemInfo.itemID = 1051005
 				itemInfo.itemNum = 1
-			elseif rand > 40 and rand <= 100 then
-				packetHandler:addItemsToPacket(1051022 ,1)
-				itemInfo.itemID = 1051022
+			elseif rand > 60 and rand <= 100 then
+				packetHandler:addItemsToPacket(1051006 ,1)
+				itemInfo.itemID = 1051006
 				itemInfo.itemNum = 1
 			end
-			table.insert(allItem,itemInfo)
-			self:sendRewardMessageTip(role, 8, allItem)
+			if table.size(itemInfo) > 0 then
+				table.insert(allItem,itemInfo)
+				self:sendRewardMessageTip(role, 8, allItem)
+			end
 		end
 	end
 
@@ -524,14 +527,15 @@ function DropManager:dealRewardsTip(FightEndResults, fightID)
 					for itemID, itemNum in pairs(roleReward.item) do
 						-- 把物品给玩家
 						if packetHandler:addItemsToPacket(itemID, itemNum) then
-							
 							local itemInfo = {}
 							itemInfo.itemID = itemID
 							itemInfo.itemNum = itemNum
 							table.insert(allItem,itemInfo)
 						end
 					end
-					self:sendRewardMessageTip(role, 8, allItem)
+					if table.size(allItem) > 0 then
+						self:sendRewardMessageTip(role, 8, allItem)
+					end
 				end
 				role:flushPropBatch()
 			end

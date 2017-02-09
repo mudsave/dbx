@@ -1968,7 +1968,7 @@ tWarrantDB =
 	},
  [1051005] = {
 		ID = 1051005 ,
-		Name = "ÕÅ½Ç»­Ïñ" ,
+		Name = "Í·¿ø" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Trophy ,
 		MaxPileNum = 20 ,
@@ -1986,7 +1986,7 @@ tWarrantDB =
 	},
  [1051006] = {
 		ID = 1051006 ,
-		Name = "ÆÆËéîø¼×" ,
+		Name = "Í·¿øËéÆ¬" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Trophy ,
 		MaxPileNum = 20 ,

@@ -9,13 +9,17 @@ local pkTargetIndex = 3
 GoldHuntManager = class(EventSetDoer, Singleton)
 
 local FightIDs ={}--[ID]=monsterID or pked ID
-
-
+local rankResults 
+local CurRankList = {}--{name="",score = 0}
+local FinalPos = {}--[DBID]={ID=activityID,x=0,y=0}
 function GoldHuntManager:__init()
 	self._doer = {
 		--[GoodsEvents_SS_ItemRemoved]			= GoldHuntManager.onItemRemoved,
 		[FightEvents_SS_FightEnd_afterClient]	= GoldHuntManager.onFightEnd,
 		[PK_CS_Invite]							= GoldHuntManager.onPk,
+		[ActivityEvent_BS_GoldHunt_RankResults] = GoldHuntManager.onGetRankResults,
+		[FrameEvents_SS_leaveScene]				= GoldHuntManager.onLeaveScene,
+		[ActivityEvent_CS_GoldHunt_leave]		= GoldHuntManager.onGetLeaveCmd,
 	}
 	
 end
@@ -23,6 +27,96 @@ end
 function GoldHuntManager:__release()
 	
 	
+end
+
+function GoldHuntManager:_orderScoreAndSend(player)
+	local scene = player:getScene()
+	local roleList = scene:getEntityList()
+	local bChanged = false
+	--以前没排过
+	if #CurRankList == 0 then
+		--排序
+		local i =0
+		local selectedRoleIds = {}
+		local orderedIds = {}
+		while i < GoldHuntZone_ClientRankLimit do
+			local max = 0
+			local name = ""
+			local ID = 0
+			for roleID,role in pairs(roleList) do
+				if instanceof(role, Player) and (not selectedRoleIds[roleID])then
+					local handler = role:getHandler(HandlerDef_Activity)
+					local curTotal = handler:getGoldHuntData().totalScore
+					if  curTotal > max then
+						max = curTotal
+						name = role:getName()
+						ID = roleID
+					end
+				end
+			end
+			if ID > 0 then
+				table.insert(CurRankList,{name = name, score = max})
+				selectedRoleIds[ID] = true
+			--选完了
+			else
+				break
+			end
+			i = i + 1
+		end
+		bChanged = true
+	--以前排过
+	else
+		local handler = player:getHandler(HandlerDef_Activity)
+		local curTotal = handler:getGoldHuntData().totalScore
+		--先看名单里有没有我,有的话剔除
+		local myIndex = 0
+		local myName = player:getName()
+		for index , info in ipairs (CurRankList) do
+			if info.name == myName then
+				myIndex = index
+				break
+			end
+		end
+		if myIndex > 0 then
+			table.remove(CurRankList,myIndex)
+		end
+		--重新给玩家定位，看是否在排名内
+		myIndex = 0
+		for index , info in ipairs (CurRankList) do
+			local score = info.score
+			if curTotal > score then
+				bChanged = true
+				myIndex = index
+				break
+			end
+		end
+		
+		--有替换的
+		if myIndex > 0 then
+			table.insert(CurRankList,myIndex,{name = player:getName(), score = curTotal})
+			local curCount = #CurRankList
+			--删除排名之后的
+			if curCount > GoldHuntZone_ClientRankLimit then
+				local count = curCount - GoldHuntZone_ClientRankLimit
+				local i = 0
+				while i < count do
+					table.remove(CurRankList)
+					i = i + 1
+				end
+			end
+		else
+			--直接放最后
+			if #CurRankList < GoldHuntZone_ClientRankLimit then
+				table.insert(CurRankList,{name = player:getName(), score = curTotal})
+				bChanged = true
+			end
+		end
+	end
+	--通知客户端
+	if bChanged then
+		local event = Event.getEvent(ActivityEvent_SC_GoldHunt_CurRank, CurRankList)
+		RemoteEventProxy.broadcast(event,g_serverId)
+	end
 end
 
 function GoldHuntManager:commitScore(player)
@@ -42,6 +136,7 @@ function GoldHuntManager:commitScore(player)
 	LuaDBAccess.updateGoldHuntActivity(player)
 	self:setIconValue(player,data.curScore)
 	self:informClientScore(player)
+	self:_orderScoreAndSend(player)
 end
 
 function GoldHuntManager:informClientScore(player)
@@ -215,18 +310,28 @@ function GoldHuntManager:onFightEnd(event)
 	local fightID = params[4]
 	local isPVE = false
 
-	if monsterDBIDs and #monsterDBIDs>0 then
-		isPVE = true
-	else
-		isPVE = false
+	local roleID = FightIDs[fightID]
+	if not roleID then
+		return
 	end
 
+	local role = g_entityMgr:getPlayerByID(roleID)
+	if role then
+		isPVE = false
+	else
+		isPVE = true
+	end
+	
 	local winner, loser
 	for playerID, isWin in pairs(results) do
 		local player = g_entityMgr:getPlayerByID(playerID)
 		if player  then
 			local isPass = g_sceneMgr:isInGoldHuntScene(player)
+			--活动已结束
 			if not isPass then
+				FightIDs[fightID] = nil
+				local prevPos = player:getPrevPos()
+				g_sceneMgr:doSwitchScence(player:getID(),prevPos[1],prevPos[2],prevPos[3])
 				return
 			else
 				--满血满蓝
@@ -236,14 +341,20 @@ function GoldHuntManager:onFightEnd(event)
 					local maxMP = player:getAttrValue(player_max_mp)
 					player:setMP(maxMP)
 				end
-				--赋值
+				--赋值winner,loser
+				  --胜利
 				if isWin then
 					winner = player
 					if isPVE then
 						break
 					end
+				  --失败
 				else
 					if isPVE then
+						local monsterID = FightIDs[fightID]
+						local npc = g_entityMgr:getNpc(monsterID)
+						npc:setStatus(ePlayerNormal)
+						FightIDs[fightID] = nil
 						return
 					end
 					loser = player
@@ -259,11 +370,13 @@ function GoldHuntManager:onFightEnd(event)
 	local handler = winner:getHandler(HandlerDef_Activity)
 	local activityID = handler:getGoldHuntData().ID
 	if not activityID then
+		FightIDs[fightID] = nil
 		return
 	end
 
 	local activity = g_activityMgr:getActivity(activityID)
 	if not activity then
+		FightIDs[fightID] = nil
 		return
 	end
 	
@@ -321,11 +434,28 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	if not activityID then
 		return
 	end
-	g_sceneMgr:enterGoldHuntScene(activityID, player, x , y)
-	
-	--初始化
+	local bResult = g_sceneMgr:enterGoldHuntScene(activityID, player, x , y)
+	if not bResult then
+		return
+	end
+	FinalPos[player:getDBID()] = nil
+	--发送进入事件(倒计时和总积分)
 	local handler = player:getHandler(HandlerDef_Activity)
 	local goldHuntData = handler:getGoldHuntData()
+
+	local now = os.time()
+	local date = os.date("*t")
+	local endTime = ActivityDB[activityID].endTime
+	date.hour = endTime.hour
+	date.min = endTime.min
+	date.sec = 0
+	local endTimeTick = os.time(date)
+	local leftTime = endTimeTick - now
+	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList)
+	g_eventMgr:fireRemoteEvent(event, player)
+	
+	--初始化
+	
 	goldHuntData.ID = activityID
 	
 	local monsterTarget = GoldHunt_PVE()
@@ -380,12 +510,122 @@ function GoldHuntManager:loadGoldHunt(player,recordList)
 	local ghData = handler:getGoldHuntData()
 	for _,rec in pairs(recordList) do
 		if rec then
-			ghData.rank = rec.rank
-			ghData.isPrized = rec.isPrized -- -1表示没参加 
+			ghData.rank = rec.rank-- -1表示没名次
+			ghData.isPrized = rec.isPrized -- -1表示没参加 0表示没领
+			ghData.totalScore = rec.score
 			break
 		end
 		
 	end
+	
+end
+
+
+function  GoldHuntManager:onGetRankResults(event)
+	local params = event:getParams()
+	local results = params[1]
+	rankResults = results
+	local rank3Names = {}
+	for _,rs in ipairs(rankResults) do
+		if rs.rank <= 3 then
+			table.insert(rank3Names,rs.name..",")
+		else
+			break
+		end
+	end
+	--
+	table.clear(CurRankList)
+	--发布前3广播
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,8,unpack(rank3Names))
+	RemoteEventProxy.broadcast(event, g_serverId)
+	--给在线玩家发奖
+	for _,rs in ipairs(rankResults) do
+		local dbID = rs.roleID
+		local rank = rs.rank
+		local player = g_entityMgr:getPlayerByDBID(dbID)
+		if player then
+			local handler = player:getHandler(HandlerDef_Activity)
+			for _,rewardInfo in ipairs(GoldHuntZone_Reward) do
+				--在某段排名内
+				if rewardInfo.rank and (rank <= rewardInfo.rank) then
+					handler:getGoldHuntData().isPrized = 1
+					LuaDBAccess.updateGoldHuntActivity(player)
+					break
+				end
+				--排名外
+				if not rewardInfo.rank then
+					handler:getGoldHuntData().isPrized = 1
+					LuaDBAccess.updateGoldHuntActivity(player)
+					break
+				end
+				
+			end
+		end
+	end
+end
+
+function GoldHuntManager:onLeaveScene(event)
+	local params = event:getParams()
+	local role = params[1]
+	local scene = params[2]
+	if not instanceof(role,Player) then
+		return
+	end
+
+	if not g_sceneMgr:isGoldHuntScene(scene) then
+		return
+	end
+
+	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_leave, -1)
+	g_eventMgr:fireRemoteEvent(event, role)
+
+end
+
+function GoldHuntManager:onGetLeaveCmd(event)
+	local roleID = event.playerID
+	if not roleID then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	if not player then
+		return
+	end
+
+	if not g_sceneMgr:isInGoldHuntScene(player) then
+		return
+	end
+	local prevPos = player:getPrevPos()
+	g_sceneMgr:doSwitchScence(roleID,prevPos[1],prevPos[2],prevPos[3])
+
+	FinalPos[player:getDBID()] = nil
+end
+
+function GoldHuntManager:onOffline(player,activityID)
+	if not (activityID == gGoldHuntID1 or activityID == gGoldHuntID2 or activityID == gGoldHuntID3 )then
+		return
+	end
+	if not g_sceneMgr:isInGoldHuntScene(player) then
+		return
+	end
+	local handler = player:getHandler(HandlerDef_Activity)
+	local activityID = handler:getGoldHuntData().ID
+	local mapID ,x,y = player:getCurPos()
+	FinalPos[player:getDBID()] = {ID = activityID,x=x,y=y}
+end
+
+function GoldHuntManager:onOnline(player)
+	local DBID = player:getDBID()
+	local pos = FinalPos[DBID]
+	if pos then
+		self:enterHuntZone(player,{x= pos.x, y = pos.y})
+		local prevPos = role:getPrevPos()
+		prevPos[1],prevPos[2],prevPos[3] = RightPos4Error.mapID,RightPos4Error.x,RightPos4Error.y
+		
+	end
+end
+
+function GoldHuntManager:clearFinalPos()
+	table.clear(FinalPos)
 end
 
 function GoldHuntManager.getInstance()

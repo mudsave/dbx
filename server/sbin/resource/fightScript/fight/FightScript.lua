@@ -425,6 +425,12 @@ local function hasDeadCondition(conditions)
 end
 --处理怪物死亡时
 function FightScript:onRoleDead(role)
+	if instanceof(role ,FightMonster) then
+		if instanceof(self, FightScript_LuckyMonster)then
+			self:updateMonsterDeadInfo(role:getDBID())
+		end
+		return
+	end
 	if instanceof(role ,FightPet) or instanceof(role ,FightPlayer) then
 		local actions = self._scriptPrototype.systemActions
 		if not actions then

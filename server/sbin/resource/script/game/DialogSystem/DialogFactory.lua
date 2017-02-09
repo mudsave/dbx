@@ -10,7 +10,7 @@ function DialogFactory:__init()
 end
 
 --创建一个对话对象
-function DialogFactory:createDialogObject(player, dialogID, check)
+function DialogFactory:createDialogObject(player, dialogID, check, npcID)
 	local dialogData = DialogModelDB[dialogID]
 	if not dialogData then
 		print("对话ID出错,ID为",dialogID)
@@ -22,7 +22,7 @@ function DialogFactory:createDialogObject(player, dialogID, check)
 		return
 	end
 	if not check then
-		local result, errorID = g_dialogCondtion:checkDialogID(player, dialogID)
+		local result, errorID = g_dialogCondtion:checkDialogID(player, dialogID, npcID)
 		if not result then
 			if errorID and errorID > 0 then
 				g_dialogFty:createErrorDialogObject(player, errorID)

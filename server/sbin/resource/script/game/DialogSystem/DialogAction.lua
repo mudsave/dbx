@@ -10,8 +10,8 @@ function DialogAction:__init()
 end
 
 --对话功能之切换对话框
-function DialogAction:doGoto(player, param)
-	g_dialogDoer:createDialogByID(player, param.dialogID)			--创建一个对话对象
+function DialogAction:doGoto(player, param, npcID)
+	g_dialogDoer:createDialogByID(player, param.dialogID, nil, npcID)			--创建一个对话对象
 end
 
 --对话功能之切换对话框
@@ -511,7 +511,7 @@ end
 
 --物品兑换
 function DialogAction:doExchangeProps(player)
-	print("--------兑换道具。。")
+	print("兑换道具。")
 	g_itemMgr:exchangeProps(player)
 end
 
@@ -617,16 +617,59 @@ end
 
 function DialogAction:doEnterBeastFight(player, param, npcID)
 	local npc = g_entityMgr:getNpc(npcID)
+	local scriptID = param.scriptID
+	print("npcID",npcID)
 	if npc then
 		local beast = g_beastBlessMgr:findBeastFromList(npcID)
 		if beast then
-			g_beastBlessMgr:removeBeastFromList(beast)
-		else
-			print("$$ --->no find beast")
+			local playerList = {}
+			print("npcID",npcID)
+			local teamHandler = player:getHandler(HandlerDef_Team)
+			if teamHandler:isTeam() then
+				-- 不是队长不能使用npc
+				if not teamHandler:isStepOutState() then
+					if teamHandler:isLeader() then
+						playerList = teamHandler:getTeamPlayerList()
+					else
+						print("不是队长不能使用npc")
+						return
+					end 
+				elseif teamHandler:isStepOutState() then 
+					if teamHandler:isLeader() then
+						playerList = teamHandler:getTeamPlayerList()
+					else
+						table.insert(playerList,player)
+					end
+				end
+			else
+				table.insert(playerList,player)
+			end
+			--加宠物
+			local finalList = {}
+			for k,player in ipairs(playerList) do
+				table.insert(finalList,player)
+				local petID = player:getFollowPetID()
+				if petID then
+					local pet = g_entityMgr:getPet(petID)
+					table.insert(finalList,pet)
+				end
+			end	
+			local bPass = g_fightMgr:checkStartScriptFight(finalList, scriptID,  param.mapID)
+			-- 这里判断是不是有人使用过这个npc
+			print("进入脚本战斗战斗，scriptID，bPass",scriptID,bPass)
+			local curNpc = g_entityMgr:getNpc(npcID)
+			if bPass then
+				if not curNpc:isFighting() then
+					g_beastBlessMgr:addBeastFightFlagList(scriptID,curNpc)
+					g_fightMgr:startScriptFight(finalList, scriptID,  param.mapID ,FightBussinessType.Task)
+				end
+			end
 		end
+	else
+		print("no find this npc")
 	end
 	print("DialogAction:doEnterBeastFight")
-end
+end	
 
 function DialogAction.getInstance()
 	return DialogAction()

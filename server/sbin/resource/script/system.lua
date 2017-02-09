@@ -125,7 +125,8 @@ function System.OnPlayerLoaded(player, recordList)
 	g_mailMgr:loadPlayerMails(player,recordList[14])
 	--加载猎金场活动
 	g_goldHuntMgr:loadGoldHunt(player,recordList[31])
-
+	-- 活动上线
+	g_activityMgr:onPlayerOnline(player,recordList)
 end
 
 function System.OnPlayerLogout(player, reason)
@@ -173,7 +174,9 @@ function System.OnPlayerLogout(player, reason)
 
 	--玩家下线退出队伍
 	g_teamMgr:onPlayerCheckOut(player)
-
+	-- 玩家下线保存活动值
+	g_activityMgr:onPlayerOffline(player)
+	
 	local event = Event.getEvent(SocialEvent_BB_ExitWorld,player:getDBID())
 	g_eventMgr:fireWorldsEvent(event, SocialWorldID)
 

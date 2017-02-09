@@ -26987,14 +26987,28 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.Level, param = {level = 30,},},
+                                {condition = DialogCondition.HasTask, param = {taskID = 10030, statue = false}},
 				},
 				optionTxt = "充实军备",
 				actions =
 				{
 				{action = DialogActionType.RecetiveTask , param = {taskID = 10030}},
+                                {action = DialogActionType.Goto, param = {dialogID = 50111}},
 				},
 			},
 			[2] = 
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 10030, statue = true}},
+				},
+				optionTxt = "上交头盔",
+				actions =
+				{
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10030, itemsInfo ={{itemID = 1051021,count = 5},{itemID = 1051022,count = 10}}}},
+				},
+			},
+			[3] = 
 			{
 				showConditions = {},
 				optionTxt = "我还有事，告辞",
@@ -27014,7 +27028,7 @@ DialogModelDB =
 		},
 		speakerID = 29081,
 		soundID =nil,
-		txt = "{myName}，你来得正好。如今朝廷军备不足，急需一批盔甲。如果你能替我集齐5件崭新的盔甲或10件破碎的盔甲，作为报酬我会给你奖励！记住，这种盔甲只能在与你等级相差5级以内的战斗中获得，你每天能够在我这里上交10次！知道了就快去吧！",
+		txt = "<myName>，你来得正好。如今朝廷军备不足，急需一批装备。如果你能替我集齐10件头盔或20件头盔碎片，作为报酬我会给你奖励！记住，这种头盔只能在与你等级相差5级以内的战斗中获得，你每天能够在我这里上交10次！知道了就快去吧！",
 		options =
 		{
 			[1] = 
@@ -27038,6 +27052,26 @@ DialogModelDB =
 			},
 		},
 	},
+	[50112] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{},
+		speakerID = 29081,
+		txt = "我需要的是10件头盔或者20件头盔碎片，你提交给我的道具不符合啊！",
+		options = 
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog ,param = {}},
+				},
+			},
+		}
+	},
+
 
 --------------------------------------------------------------------------------------------------------------------------------
 

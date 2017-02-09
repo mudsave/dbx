@@ -7,7 +7,7 @@ local updateBeastTime = 20
 Beast = class()
 
 function Beast:__init(DBID,mapID)
-	self.canUseTime		= updateBeastTime	-- 更新时间
+	self.canUseTime		= 0					-- 更新时间
 	self.DBID			= DBID				-- 配置ID
 	self.npc			= nil				-- 动态ID
 	self.mapID			= mapID
@@ -33,6 +33,8 @@ function Beast:addBeastToMap(curMapBeastList)
 	local curPosX = 0
 	local curPosY = 0
 	local reSetTime = 0
+	-- 重新设置可用时间
+	self:reSetCanUseTime()
 	repeat
 		curPosX,curPosY	= g_sceneMgr:getRandomPosition(mapID)
 		local isReset = true
@@ -52,10 +54,10 @@ function Beast:addBeastToMap(curMapBeastList)
 	until isReset
 	self.posX = curPosX
 	self.posY = curPosY
-	print("self.posX,self.posY",self.posX,self.posY)
 	local scence = g_sceneMgr:getSceneByID(mapID)
 	if npc then
 		npcID = npc:getID()
+		print("npcID",npcID,self.posX,self.posY)
 		scence:attachEntity(npc,self.posX,self.posY)
 		-- 加到beastmanager中
 		return npcID
@@ -98,7 +100,7 @@ function Beast:setFighting(flag)
 	self.npc:setFighting(flag)
 end
 
-function Beast:reSetTime()
+function Beast:reSetCanUseTime()
 	self.canUseTime		= updateBeastTime		
 end
 

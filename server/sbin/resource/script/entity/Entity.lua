@@ -19,6 +19,7 @@ function Entity:__init()
 	self._pos			= {nil,nil,nil}		--mapID,x,y
 	self._speed			= Speed(self)
 	self._bFighting		= false
+	self._prevPos		= {nil,nil,nil} --mapID,x,y玩家在上一张地图的位置
 end
 
 function Entity:__release()
@@ -86,6 +87,11 @@ end
 
 function Entity:setPos(posInfo)
 	self._pos = posInfo
+end
+
+function Entity:getPrevPos()
+	
+	return self._prevPos
 end
 
 function Entity:setEntityType(entityType)

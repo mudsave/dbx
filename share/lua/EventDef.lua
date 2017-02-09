@@ -700,6 +700,8 @@ ActivityEvent_SC_GoldHunt_enter					= Event_Group_Activity + 6
 ActivityEvent_SC_GoldHunt_leave					= Event_Group_Activity + 7
 ActivityEvent_SC_GoldHunt_end					= Event_Group_Activity + 8
 ActivityEvent_SC_GoldHunt_newPhase_begin		= Event_Group_Activity + 9
+ActivityEvent_SC_GoldHunt_CurRank				= Event_Group_Activity + 10
+ActivityEvent_CS_GoldHunt_leave					= Event_Group_Activity + 11
 
 
 
@@ -720,3 +722,4 @@ TreasureEvent_CS_SendPositionInfo               = Event_Group_Treasure + 3
 PractiseEvent_CS_updateBox						= Event_Group_Practise + 1
 PractiseEvent_SC_updateBox						= Event_Group_Practise + 2
 PractiseEvent_CS_updatePractise					= Event_Group_Practise + 3
+PractiseEvent_SC_addPractise					= Event_Group_Practise + 4

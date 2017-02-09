@@ -588,7 +588,7 @@ FightSkillDB = {
 	             [1] = { 
 	                     type = SkillEff.AddCrit,
 	                     num_id = 29,
-	                     target_type = TargetType.enemy_g,
+	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
 	             [2] = { 

@@ -146,6 +146,7 @@ function TaskHandler:addLoopTaskList(taskID)
 	if not self.currentTask[taskID] and self:getCountRing(taskID) < LoopTaskDB[taskID].loop then
 		if not self.canRecetiveLoopTask[taskID] then
 			self.canRecetiveLoopTask[taskID] = true
+			return true
 		end
 	end
 end
@@ -162,8 +163,15 @@ function TaskHandler:updateTaskList(taskID, flag)
 	if NormalTaskDB[taskID] then
 		g_taskSystem:updateNormalTaskList(self._entity, self.nextTaskID)
 	elseif LoopTaskDB[taskID] then
-		-- 完成循环任务之后， 先添加
-		self:addLoopTaskList(taskID)
+		-- 完成循环任务之后， 先添加,和删除
+		if flag then
+			if not self:addLoopTaskList(taskID) then
+				return
+			end
+		else
+			-- 必须移除
+			self:removeLoopTaskList(taskID)
+		end
 		g_taskSystem:updateLoopTaskList(self._entity, taskID, flag)
 	end
 end
@@ -359,6 +367,7 @@ function TaskHandler:removeTaskByID(taskID)
 		self.count = self.count - 1
 		-- 此时也要跟新一下npc头顶状态
 		self:updateNpcHeader(taskID)
+		self:updateTaskList(taskID, true)
 	end
 end
 

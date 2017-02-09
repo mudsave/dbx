@@ -86,6 +86,8 @@ function Scene:detachEntity(entity)
 		end
 		peer:quitScene()
 	end
+	local event = Event.getEvent(FrameEvents_SS_leaveScene, entity,self)
+	g_eventMgr:fireEvent(event)
 	return true
 end
 

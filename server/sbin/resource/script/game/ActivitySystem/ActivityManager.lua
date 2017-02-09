@@ -35,8 +35,7 @@ end
 
 function ActivityManager:closeActivity(id)
 	self.curActivityList[id]:close()
-	release(self.curActivityList[id])
-	self.curActivityList[id] = nil
+	
 end
 
 function ActivityManager:getActivity(id)
@@ -68,6 +67,7 @@ function ActivityManager:onPlayerOnline(player, recordList)
 			end
 		end
 	end
+	
 end
 
 --玩家下线
@@ -79,7 +79,7 @@ local isTrue = true
 
 function ActivityManager:minUpdate(currentTime)
 	if self.lastTime > 0 and currentTime - self.lastTime < 600 then
-		return
+		--return
 	end
 	
 	local data = os.date("*t", currentTime)
@@ -92,6 +92,7 @@ function ActivityManager:minUpdate(currentTime)
 	for id, activityInfo in pairs(ActivityDB) do
 		if activityInfo.startType == AtyStartType.fixedDayHour then --每一天
 			local startTime = activityInfo.startTime
+			local endTime = activityInfo.endTime
 			if not self.curActivityList[id] then		
 				if data.hour == startTime.hour and data.min == startTime.min then
 					self:openActivity(id, activityInfo.name)
@@ -147,6 +148,11 @@ function ActivityManager:minUpdate(currentTime)
 			end
 		end
 	end
+end
+
+function ActivityManager:removeActivity(activityID)
+	release(self.curActivityList[activityID])
+	self.curActivityList[activityID] = nil
 end
 
 function ActivityManager.getInstance()

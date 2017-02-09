@@ -10,7 +10,7 @@ function ActivityHandler:__init(entity)
 	self.currentTargets = {}
 	self.finishTargets = {}
 	self.priData = {}
-	self._goldHuntData={ID=0,totalScore=0,isPrized = -1,rank = -1}
+	self._goldHuntData={ID=0,totalScore=0,isPrized = 0,rank = -1}
 end
 
 function ActivityHandler:__release()
@@ -74,10 +74,12 @@ function ActivityHandler:getTargets()
 end
 
 function ActivityHandler:offLine()
+	local player = self.entity
 	for activityId,data in pairs(ActivityDB) do
 		-- 判断活动是否开启
 		if g_activityMgr:getActivity(activityId) then
 			-- 把开启活动的数据存储到数据库中
+			g_goldHuntMgr:onOffline(player,activityId)
 			LuaDBAccess[ActivityDB[activityId].dbName](player,activityId)
 		end
 	end

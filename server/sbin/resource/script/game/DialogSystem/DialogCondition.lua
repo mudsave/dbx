@@ -43,12 +43,12 @@ function DialogCondition:choseOption(player, showConditions)
 end
 
 --检测对话ID是否满足条件
-function DialogCondition:checkDialogID(player, dialogID)
+function DialogCondition:checkDialogID(player, dialogID, npcID)
 	local conditions = DialogModelDB[dialogID].conditions
 	for _, data in pairs(conditions) do
 		local method = DialogConditionDoer[data.condition]
 		local instence = DialogConditionInstance[data.condition]
-		local result, errorID = method(instence, player, data.param)
+		local result, errorID = method(instence, player, data.param, npcID)
 		if not result and errorID and errorID > 0 then
 			return result, errorID
 		end

@@ -251,10 +251,6 @@ function Fight:removeRole(role,isKeep)
 		return false
 	end
 
-	if instanceof(role,FightMonster) and instanceof(self, FightScript_LuckyMonster)then
-			self:updateMonsterDeadInfo(role:getDBID())
-	end
-
 	local side = role:getPos()[2]
 	local pos = role:getPos()[3]
 

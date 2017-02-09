@@ -17,7 +17,7 @@ MainTaskDB21_30 =
 		name = "解救陈宫",	--任务名字
 		startNpcID = 20049,	--任务起始npc
 		endNpcID = 20302,	--任务结束npc
-		preTaskData = {1125},	--任务前置任务没有填nil
+		preTaskData = {1384},	--任务前置任务没有填nil
 		nextTaskID = 1102,	--任务后置任务没有填nil
 		startDialogID = 1001,	--接任务对话ID没有填nil
 		endDialogID = 1004,	--交任务对话ID没有填nil
@@ -60,12 +60,12 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 20305,mapID = 107, x = 173, y = 44,dir = EastSouth,},--胡轸
-							[2] = {npcID = 20303,mapID = 107, x = 174, y = 47,dir = South,},
-							[3] = {npcID = 20304,mapID = 107, x = 177, y = 47,dir = West,},
-							[4] = {npcID = 20310,mapID = 107, x = 179, y = 43,dir = WestNorth,},
-							[5] = {npcID = 20311,mapID = 107, x = 176, y = 41,dir = EastNorth,},
-							[6] = {npcID = 20302,mapID = 107, x = 176, y = 44,dir = WestNorth,}, --陈宫
+							[1] = {npcID = 20305,mapID = 107, x = 173, y = 44,dir = Direction. EastSouth,},--胡轸
+							[2] = {npcID = 20303,mapID = 107, x = 174, y = 47,dir = Direction. South,},
+							[3] = {npcID = 20304,mapID = 107, x = 177, y = 47,dir = Direction. West,},
+							[4] = {npcID = 20310,mapID = 107, x = 179, y = 43,dir = Direction. WestNorth,},
+							[5] = {npcID = 20311,mapID = 107, x = 176, y = 41,dir = Direction. EastNorth,},
+							[6] = {npcID = 20302,mapID = 107, x = 176, y = 44,dir = Direction. WestNorth,}, --陈宫
 						},
 					},
 				},
@@ -153,7 +153,7 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-						    [1] = {npcID = 20309,mapID = 107, x = 184, y = 69,dir = WestSouth,},--王方
+						    [1] = {npcID = 20309,mapID = 107, x = 184, y = 69,dir = Direction. WestSouth,},--王方
 						},
 					},
 				},
@@ -210,12 +210,12 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 20312, mapID = 107, x = 166, y = 97,dir = South,},--董越
-							[2] = {npcID = 20307, mapID = 107, x = 163, y = 100,dir = WestSouth,},
-							[3] = {npcID = 20319, mapID = 107, x = 166, y = 97,dir = WestNorth,},
-							[4] = {npcID = 20320, mapID = 107, x = 163, y = 94,dir = EastNorth,},
-							[5] = {npcID = 20324, mapID = 107, x = 160, y = 98,dir = EastSouth,},
-							[6] = {npcID = 20313, mapID = 107, x = 163, y = 97,dir = South,}, --曹操
+							[1] = {npcID = 20312, mapID = 107, x = 166, y = 97,dir = Direction. South,},--董越
+							[2] = {npcID = 20307, mapID = 107, x = 163, y = 100,dir = Direction. WestSouth,},
+							[3] = {npcID = 20319, mapID = 107, x = 166, y = 97,dir = Direction. WestNorth,},
+							[4] = {npcID = 20320, mapID = 107, x = 163, y = 94,dir = Direction. EastNorth,},
+							[5] = {npcID = 20324, mapID = 107, x = 160, y = 98,dir = Direction. EastSouth,},
+							[6] = {npcID = 20313, mapID = 107, x = 163, y = 97,dir = Direction. South,}, --曹操
 						},
 					},
 				},
@@ -391,11 +391,11 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 20317, mapID = 107, x = 105, y = 215,dir = South,}, --成廉
-							[2] = {npcID = 20316, mapID = 107, x = 102, y = 213,dir = South,}, --小怪
-							[3] = {npcID = 20328, mapID = 107, x = 102, y = 216,dir = South,}, --小怪
-							[4] = {npcID = 20329, mapID = 107, x = 104, y = 218,dir = South,}, --小怪
-							[5] = {npcID = 20332, mapID = 107, x = 108, y = 216,dir = South,}, --小怪
+							[1] = {npcID = 20317, mapID = 107, x = 105, y = 215,dir = Direction. South,}, --成廉
+							[2] = {npcID = 20316, mapID = 107, x = 102, y = 213,dir = Direction. South,}, --小怪
+							[3] = {npcID = 20328, mapID = 107, x = 102, y = 216,dir = Direction. South,}, --小怪
+							[4] = {npcID = 20329, mapID = 107, x = 104, y = 218,dir = Direction. South,}, --小怪
+							[5] = {npcID = 20332, mapID = 107, x = 108, y = 216,dir = Direction. South,}, --小怪
 						},
 					},
 				},
@@ -407,7 +407,7 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 20313, mapID = 107, x = 105, y = 215,dir = South,}, --曹操
+							[1] = {npcID = 20313, mapID = 107, x = 105, y = 215,dir = Direction. South,}, --曹操
 						},
 					},
 				},
@@ -512,7 +512,7 @@ MainTaskDB21_30 =
 					param={
 							npcs =
 							{
-								[1] = {npcID = 20318, mapID = 107, x = 109, y = 98,dir = EastSouth,},--袁绍
+								[1] = {npcID = 20318, mapID = 107, x = 109, y = 98,dir = Direction. EastSouth,},--袁绍
 							},
 						},
 				},
@@ -560,7 +560,7 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 20313,mapID =109, x = 274, y = 91,dir = EastSouth,},--曹操
+							[1] = {npcID = 20313,mapID =109, x = 274, y = 91,dir = Direction. EastSouth,},--曹操
 						},
 					},
 				},
@@ -628,12 +628,12 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20322,mapID = 109, x = 251, y = 91,dir = EastNorth,},--关羽
-								[2] = {npcID = 20321,mapID = 109, x = 250, y = 96,dir = EastNorth,},--李蒙
-								[3] = {npcID = 20338,mapID = 109, x = 246, y = 95,dir = EastNorth,},--小怪
-								[4] = {npcID = 20339,mapID = 109, x = 247, y = 97,dir = EastNorth,},--小怪
-								[5] = {npcID = 20340,mapID = 109, x = 253, y = 97,dir = EastNorth,},--小怪
-								[6] = {npcID = 20341,mapID = 109, x = 254, y = 95,dir = EastNorth,},--小怪
+								[1] = {npcID = 20322,mapID = 109, x = 251, y = 91,dir = Direction. EastNorth,},--关羽
+								[2] = {npcID = 20321,mapID = 109, x = 250, y = 96,dir = Direction. EastNorth,},--李蒙
+								[3] = {npcID = 20338,mapID = 109, x = 246, y = 95,dir = Direction. EastNorth,},--小怪
+								[4] = {npcID = 20339,mapID = 109, x = 247, y = 97,dir = Direction. EastNorth,},--小怪
+								[5] = {npcID = 20340,mapID = 109, x = 253, y = 97,dir = Direction. EastNorth,},--小怪
+								[6] = {npcID = 20341,mapID = 109, x = 254, y = 95,dir = Direction. EastNorth,},--小怪
 						},
 					},
 				},
@@ -714,11 +714,11 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20325,mapID = 109, x = 187, y = 106,dir = EastSouth,}, --华雄
-								[2] = {npcID = 20323,mapID = 109, x = 185, y = 103,dir = EastSouth,}, --小怪
-								[3] = {npcID = 20343,mapID = 109, x = 183, y = 104,dir = EastSouth,}, --小怪
-								[4] = {npcID = 20344,mapID = 109, x = 183, y = 108,dir = EastSouth,}, --小怪
-								[5] = {npcID = 20345,mapID = 109, x = 185, y = 109,dir = EastSouth,}, --小怪
+								[1] = {npcID = 20325,mapID = 109, x = 187, y = 106,dir = Direction. EastSouth,}, --华雄
+								[2] = {npcID = 20323,mapID = 109, x = 185, y = 103,dir = Direction. EastSouth,}, --小怪
+								[3] = {npcID = 20343,mapID = 109, x = 183, y = 104,dir = Direction. EastSouth,}, --小怪
+								[4] = {npcID = 20344,mapID = 109, x = 183, y = 108,dir = Direction. EastSouth,}, --小怪
+								[5] = {npcID = 20345,mapID = 109, x = 185, y = 109,dir = Direction. EastSouth,}, --小怪
 						},
 					},
 				},
@@ -778,8 +778,8 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20326,mapID = 109, x = 250, y = 94,dir = EastNorth,}, --创建刘备
-								[2] = {npcID = 20327,mapID = 109, x = 252, y = 92,dir = EastNorth,}, --创建张飞
+								[1] = {npcID = 20326,mapID = 109, x = 250, y = 94,dir = Direction. EastNorth,}, --创建刘备
+								[2] = {npcID = 20327,mapID = 109, x = 252, y = 92,dir = Direction. EastNorth,}, --创建张飞
 						},
 					},
 				},
@@ -852,11 +852,11 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20331,mapID = 109, x = 101, y = 164,dir = South,}, --创建张辽
-								[2] = {npcID = 20330,mapID = 109, x = 95, y = 164,dir = South,}, --创建小怪
-								[3] = {npcID = 20346,mapID = 109, x = 98, y = 166,dir = South,}, --创建小怪
-								[4] = {npcID = 20347,mapID = 109, x = 104, y = 166,dir = South,}, --创建小怪
-								[5] = {npcID = 20348,mapID = 109, x = 108, y = 163,dir = South,}, --创建小怪
+								[1] = {npcID = 20331,mapID = 109, x = 101, y = 164,dir = Direction. South,}, --创建张辽
+								[2] = {npcID = 20330,mapID = 109, x = 95, y = 164,dir = Direction. South,}, --创建小怪
+								[3] = {npcID = 20346,mapID = 109, x = 98, y = 166,dir = Direction. South,}, --创建小怪
+								[4] = {npcID = 20347,mapID = 109, x = 104, y = 166,dir = Direction. South,}, --创建小怪
+								[5] = {npcID = 20348,mapID = 109, x = 108, y = 163,dir = Direction. South,}, --创建小怪
 						},
 					},
 			},
@@ -928,7 +928,7 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20335,mapID = 109, x = 87, y = 291,dir = WestSouth,}, --创建吕布
+								[1] = {npcID = 20335,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建吕布
 						},
 					},
 				},
@@ -998,7 +998,7 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20342,mapID = 109, x = 87, y = 291,dir = WestSouth,}, --创建魔化吕布
+								[1] = {npcID = 20342,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建魔化吕布
 						},
 					},
 				},
@@ -1017,9 +1017,9 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-								[1] = {npcID = 20326,mapID = 109, x = 87, y = 291,dir = WestSouth,}, --创建刘备
-								[1] = {npcID = 20322,mapID = 109, x = 87, y = 291,dir = WestSouth,}, --创建关羽
-								[1] = {npcID = 20327,mapID = 109, x = 87, y = 291,dir = WestSouth,}, --创建展飞
+								[1] = {npcID = 20326,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建刘备
+								[1] = {npcID = 20322,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建关羽
+								[1] = {npcID = 20327,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建展飞
 						},
 					},
 			},
@@ -1116,7 +1116,7 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20318,mapID = 107, x = 110, y = 98,dir = WestNorth,}, --创建袁绍
+								[1] = {npcID = 20318,mapID = 107, x = 110, y = 98,dir = Direction. WestNorth,}, --创建袁绍
 						},
 					},
 				},
@@ -1210,7 +1210,7 @@ MainTaskDB21_30 =
 		},
 		targets = --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
-			[1] = {type='Tarea',param = {mapID = 8 , x = 134, y = 219, bor = true},},-------到达指定坐标
+			[1] = {type='TattainLevel',param = {level = 30,bor = true},},---等级限制目标
 		},
 		triggers = --任务触发器
 		{

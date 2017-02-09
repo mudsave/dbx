@@ -84,30 +84,22 @@ function CollectionRefresher:getSingleRandPos(mapID,collection)
 	end
 	local peer = scene:getPeer()
 	--C++层随机一个坐标
-    local point = peer:getRandomPosition()
+    local point = peer:FindRandomTile(mapID)
 	for _, collectInfo in ipairs(collection) do
 	    local Type = collectInfo.posType 
 		--判断该坐标是否在固定刷新类型和固定池随机刷新类型内
-		if Type == PosEnum.fixedPos or Type == PosEnum.fixedRandPos then
-		    for _,pos in ipairs(collectInfo.posData) do
-		        --比较随机点是否和两种类型中的坐标相等
-			    if point.x == pos[1] and point.y == pos[2]then
-				    return self:getSingleRandPos(mapID,collection)
-		        else
-                    local entityPosTable = g_CollectMgr.loadedPostion[mapID]
-				    for _, pos in ipairs(entityPosTable) do
-						if point.x == pos[1] and point.y == pos[2] then
-							return self:getSingleRandPos(mapID,collection)
-						else
-							local postion = {point.x,point.y}
-							return postion	
-						end
-		            end
-				end	
+		if Type == PosEnum.randPos or Type == PosEnum.uperRandPos then
+			local entityPosTable = g_CollectMgr.loadedPostion[mapID]
+			for _, pos in ipairs(entityPosTable) do
+				if point.x == pos[1] and point.y == pos[2] then
+					return self:getSingleRandPos(mapID,collection)
+				else
+					local postion = {point.x,point.y}
+					return postion	
+				end
 			end
 		end
-	end
-	
+	end	
 end
 
 --初始加载采集物件
@@ -210,8 +202,8 @@ function CollectionRefresher:collect(npcID)
 			end
 		end
 
+		local data = npc:getRefreshData()
 		local Type = data.posType
-	
 		if Type ==PosEnum.fixedPos then
 			scene:detachEntity(npc)
 		end

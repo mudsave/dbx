@@ -669,3 +669,21 @@ function LuaDBAccess.DeleteApplyFactions( playerDBID )
 	LuaDBAccess.exeSP(params,false)
 
 end
+--对全服的玩家的猎金场总积分进行排序,并筛选出前n名的玩家
+function LuaDBAccess.orderGoldHuntActivity(orderCount, callbackFunction, callbackArgs)
+	
+		clearParams()
+		params[1]["spName"]			= "sp_GoldHuntRank"
+		params[1]["dataBase"]		= 1
+		params[1]["orderCount"]		= orderCount
+		params[1]["sort"]			= "orderCount"
+		
+		
+		local operationID = LuaDBAccess.exeSP(params, false)
+		local callback = {
+							func = callbackFunction,
+							args = callbackArgs
+		}
+		DB_CallbackContext[operationID] = callback
+	
+end

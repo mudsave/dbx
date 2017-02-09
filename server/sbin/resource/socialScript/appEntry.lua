@@ -33,6 +33,7 @@ local function loadSystem()
 	require "SelfProtectionSystem.SelfProtectionMgr"
 	require "SystemSetSystem.SystemSetSystem"
 	require "entity.SocialEntityManager"
+	require "ActivitySystem.GoldHuntRankManager"
 
 	g_groupSysMgr 			= GroupSysMgr.getInstance()
 	g_factionSysMgr			= FactionSysMgr.getInstance()

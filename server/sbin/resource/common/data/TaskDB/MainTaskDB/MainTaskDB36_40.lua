@@ -2609,7 +2609,7 @@ MainTaskDB36_40 =
 				param={
 					npcs =
 					{
-					[1] = {npcID = 20917,mapID = 119, x = 200, y = 73,dir = South,},
+					[1] = {npcID = 20917,mapID = 119, x = 200, y = 73,dir = Direction. South,},
 					},
 				},
 			},

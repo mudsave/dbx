@@ -31,7 +31,7 @@ function PractiseSystem:updateBox(event)
 	local practiseHandler = player:getHandler(HandlerDef_Practise)
 	-- 是否增加成功
 	local packetHandler = player:getHandler(HandlerDef_Packet)
-	print("params,boxIndex,itemID,itemNum",boxIndex,state,itemID,itemNum)
+	-- print("params,boxIndex,itemID,itemNum",boxIndex,state,itemID,itemNum)
 	if packetHandler:addItemsToPacket(itemID, itemNum) then
 		if practiseHandler then
 			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, 11, itemNum, itemID)
@@ -53,7 +53,7 @@ function PractiseSystem:updatePractise(event)
 	local itemID = params[1]
 	local itemNum = params[2]
 	local costPractise = params[3]
-	print("消息传过来了",itemID,itemID,itemNum)
+	-- print("消息传过来了",itemID,itemID,itemNum)
 	local curPractiseCount = player:getPractiseCount()
 	if curPractiseCount >= costPractise then
 		local packetHandler = player:getHandler(HandlerDef_Packet)
@@ -91,6 +91,14 @@ function PractiseSystem:addPractise(event)
 			local curReword = countRing*value
 			if curReword < data.MaxPracticeReword then	
 				player:addPractise(value)
+				-- 通知给客户端里的界面
+				g_eventMgr:fireRemoteEvent(
+					Event.getEvent(
+						ClientEvents_SC_PromptMsg,taskID,curReword
+					),
+					player
+				)
+				--
 				player:flushPropBatch()
 			end
 		end

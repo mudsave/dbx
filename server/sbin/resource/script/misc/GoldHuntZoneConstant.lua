@@ -27,4 +27,16 @@ GoldHuntZone_Protected_iconValue = 0
 GoldHuntZone_mine_protect_limit = 30
 GoldHuntZone_MineCollectLimit = {3,4}
 GoldHuntZone_MapPlayerLimit	= 300
+GoldHuntZone_ReadyPeriodBeforeEnd = 3--min
+GoldHuntZone_RankLimit	= 100
+GoldHuntZone_ClientRankLimit	= 5
+GoldHuntZone_Reward = {
+	{rank=3,},
+	{rank=10,},
+	{rank=50,},
+	{rank=100,},
+	{},
+}
+GoldHuntZone_scoreNpcID = 70004
+
 

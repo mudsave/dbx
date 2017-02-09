@@ -30,7 +30,7 @@ DataChunk::SectionChunk::~SectionChunk()
 {
 	if(m_pData) 
 	{
-		delete m_pData;
+		delete[] m_pData;
 	}
 	m_pData = 0;
 }
@@ -84,10 +84,10 @@ DataChunk::SectionChunk* DataChunk::ReadChunk(FILE* pFile)
 	{
 		return 0;
 	}
-	DWORD dwType;
-	DWORD dwSize;
-	DWORD dwDataSize;
-	BYTE* pChunkData;
+	DWORD dwType = 0;
+	DWORD dwSize = 0;
+	DWORD dwDataSize = 0;
+	BYTE* pChunkData = NULL;
 	
 	fread(&dwType, sizeof(dwType), 1, pFile);
 	fread(&dwDataSize, sizeof(dwDataSize), 1, pFile);

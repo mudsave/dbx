@@ -67,7 +67,7 @@ function TcollectItem:onCollectItem(itemsInfo)
 			else
 				--local event = Event.getEvent(TaskEvent_SC_CommitItemResult, self._task:getID(),false)	
 				--g_eventMgr:fireRemoteEvent(event, self._entity)
-				g_dialogDoer:createDialogByID(self._entity, 30019)
+				g_dialogDoer:createDialogByID(self._entity, 50112)
 			end
 		end
 	end

@@ -35,8 +35,6 @@ function BeastBlessManager:__init()
 	self.beastFightFlag = {}
 	-- 奖励记录
 	self.rewardList = {}
-	-- 参加玩家的管理
-	-- self.beastPlayerList = {}
 end
 
 function BeastBlessManager:__release()
@@ -46,33 +44,55 @@ function BeastBlessManager:__release()
 	self.rewardList = nil
 end
 
--- 把在线的玩家的加入到活动链表管理中
-function BeastBlessManager:initBeastPlayerList()
+-- 初始化在线上的玩家
+function BeastBlessManager:initOnLinePlayerData()
+	local playerList = g_entityMgr:getPlayers()
+	local activityId = g_beastBless:getID()
+	for playerID,player in pairs(playerList) do
+		print("在线玩家重置",activityId)
+		local activityHandler = player:getHandler(HandlerDef_Activity)
+		activityHandler:setPriDataById(activityId,0)
+	end
 end
 
 -- 上线的玩家加入到活动表中
 function BeastBlessManager:joinPlayer(player,recordList)
+	print("beast$$recordList:",toString(recordList))
 	local activityHandler = player:getHandler(HandlerDef_Activity)
-	-- 
+	local activityId = g_beastBless:getID()
+	print("activityId",activityId)
 	if activityHandler then
-		if recordList then
+		if recordList and table.size(recordList) > 0 then
 			for _,data in pairs(recordList) do
+				print("BeastBlessManager:",toString(data))
 				if not time.isSameDay(data.recordTime) then
 					-- 重置数据
+					activityHandler:setPriDataById(activityId,0)
 				else
-					-- 读入数据
+					local fightCount = 0
+					if data.fightCount then
+						fightCount = data.fightCount 
+					end
+					print("设置私有数据fightCount")
+					activityHandler:setPriDataById(activityId,fightCount)
 				end
 			end
+		else
+			print("设置私有数据")
+			print("activityId",activityId)
+			activityHandler:setPriDataById(activityId,0)
 		end
 	end
 end
+
 -- 把战斗记录标记加入到
 function BeastBlessManager:addBeastFightFlagList(fightID,curNpc)
 	local scene = curNpc:getScene()
 	local mapID = scene:getMapID()
 	local curBeastList = self.beastList[mapID]
 	if curBeastList then
-		local beast = curBeastList[npcID]
+		local beastID = curNpc:getID()
+		local beast = curBeastList.beasts[beastID]
 		if beast then
 			local beastFightFlag = self.beastFightFlag
 			beast:setFighting(true)
@@ -90,8 +110,12 @@ function BeastBlessManager:removeBeastFightFlagList(fightID)
 	local beast = self.beastFightFlag[fightID]
 	if beast then
 		beast:setFighting(false)
-		beastFightFlag[fightID] = nil
+		self.beastFightFlag[fightID] = nil
 	end
+end
+
+function BeastBlessManager:getBeastFromFlagList(fightID)
+	return self.beastFightFlag[fightID]
 end
 
 -- beast增加到死亡链表中
@@ -160,7 +184,6 @@ function BeastBlessManager:findBeastFromList(npcID)
 	return false
 end
 
-
 -- 增加一个beast给地图
 function BeastBlessManager:addBeastToList(mapID)
 	local beastList =  self.beastList
@@ -219,6 +242,7 @@ function BeastBlessManager:initBeastToMap()
 			local beast = Beast(npcDBID,mapID)
 			-- 随机坐标 并加到场景中 不能再同一个坐标
 			local npcID = beast:addBeastToMap(beasts)
+			print("npcID:",npcID)
 			if npcID then
 				-- 这个场景中的所有beast
 				beasts[npcID] = beast
@@ -255,7 +279,6 @@ function BeastBlessManager:removeBeastFromList(beast)
 				beast:removeFromMap()
 				-- 从beatlist移除
 				beasts[npcID] = nil
-				-- 
 				-- print("curMapBeastList.beastCount",curMapBeastList.beastCount)
 				curMapBeastList.beastCount = beastCount - 1
 				-- print("beastCount",curMapBeastList.beastCount)
@@ -273,7 +296,6 @@ end
 -- 把地图中beast的数量增加
 function BeastBlessManager:updateAllMapBeast()
 	-- 检查beast管理表
-	-- print("do this")
 	local beastList = self.beastList
 	for mapID,curMapBeastList in pairs(beastList) do
 		local beastMaxCount = curMapBeastList.beastMaxCount 
@@ -329,16 +351,10 @@ local roleRewordType = {
 
 -- 瑞兽活动奖励总接口
 function BeastBlessManager:dealWithRewards(fightEndResults, scriptID, monsterDBIDs, fightID, fightInfo)
-	-- local bWin = false
-	-- for playerID,isWin in pairs(fightEndResults) do
-		-- bWin = isWin
-		-- break
-	-- end
-	-- if not bWin then
-		-- return
-	-- end
 	-- 奖励计数
 	self:dealWithRewardCount(fightEndResults, scriptID, fightInfo)
+	-- 战斗胜利场数计数\
+	self:dealFightCount(fightEndResults)
 	-- 奖励提示
 	self:dealRewardsTip(fightEndResults)
 end
@@ -355,6 +371,27 @@ function BeastBlessManager:getPlayerNum(fightEndResults)
 		end
 	end
 	return playerNum,tempPlayer
+end
+
+-- 战斗胜利场数计数
+function BeastBlessManager:dealFightCount(fightEndResults)
+	-- 活动的id
+	local activityId = g_beastBless:getID()
+	
+	for roleID,isWin in pairs(fightEndResults) do
+		local player = g_entityMgr:getPlayerByID(roleID)
+		if player then
+			local activityHandler = player:getHandler(HandlerDef_Activity)
+			local fightCount = activityHandler:getPriData(activityId)
+			-- 防御
+			if not fightCount then
+				fightCount = 0
+			end
+			-- 计数加一个数
+			fightCount = fightCount + 1
+			activityHandler:setPriDataById(activityId,fightCount)
+		end
+	end
 end
 
 local randRewordWeight = 100
@@ -392,8 +429,6 @@ function BeastBlessManager:dealWithRewardCount(fightEndResults, scriptID, fightI
 				local maxWeight = randRewordWeight*playerNum
 				local rand = math.random(maxWeight)
 				local curWeight = 0
-				print("itemID",itemID)
-				print("curPlayer:",toString(curPlayer))
 				for _,player in pairs(curPlayer) do
 					if curWeight <= rand and rand < curWeight + randRewordWeight then
 						self:addItemRewordToList(player,{{ID = itemID,count = 1}})	
@@ -501,6 +536,7 @@ function BeastBlessManager:addItemRewordToList(role,rewardNode)
 			end
 		end
 	end
+	print("rewardList:",toString(rewardList))
 end
 
 function BeastBlessManager:dealRewardsTip(fightEndResults)
@@ -555,9 +591,13 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 							itemInfo.itemID = itemID
 							itemInfo.itemNum = itemNum
 							table.insert(allItem,itemInfo)
+						else
+							print("背包问题")
 						end
 					end
-					self:sendRewardMessageTip(role, 8, allItem)
+					if table.size(allItem) > 0 then
+						self:sendRewardMessageTip(role, 8, allItem)
+					end
 				end
 				role:flushPropBatch()
 			end

@@ -74,7 +74,7 @@ function FightEntity:setLifeState(s)
 		local fight = g_fightMgr:getFight(self._fightID)
 		local fightType = fight:getType()
 		if fightType == FightType.Script then
-			fight:onRoleDead(self)
+			--fight:onRoleDead(self)
 		elseif fightType == FightType.PVE then
 			fight:removeRole(self,true)
 		end

@@ -508,7 +508,7 @@ function NormalEffect:calcDmg(target, phaseType)
 	damage, isMpShield, shieldChange = self:calcShield(target, damage, damageType)
 	Flog:log(" ->护盾后:"..damage)
 	if isMpShield then
-		self:setTargetMpChange(shieldChange)
+		self:setTargetMpChange(target, shieldChange)
 	end
 	
 	-- 计算反震

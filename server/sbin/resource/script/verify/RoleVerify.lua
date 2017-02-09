@@ -245,11 +245,63 @@ function RoleVerify:checkTaskTeam(player, param)
 	return false, param.errorID and param.errorID or 4
 end
 
-function RoleVerify:checkBeastBless(player, param)
-	local minLvl		= param.minLvl		-- 等级限制
-	local playerCount	= param.playerCount -- 队伍人数限制
-	local lvlDiffer		= player.lvlDiffer	-- 等级差
-	--local 
+function RoleVerify:checkBeastBless(player, param, npcID)
+	print("checkBeastBless$$$$$$")
+	local minLvl		= BeastBlessMinLvl			-- 等级限制
+	local playerNum		= BeastBlessPlayerNum		-- 队伍人数限制
+	local fightCount	= BeastBlessFightCount		-- 战斗次数
+	local playerLvlRange= BeastBlessPlayerLvlRange	-- 等级差
+	-- 判断NPC是否处于战斗状态
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	local npc = g_entityMgr:getNpc(npcID)
+	if npc then
+		if npc:isFighting() then
+			return false, param.errorID and param.errorID or 37
+		end
+	end
+	local activityHandler = player:getHandler(HandlerDef_Activity)
+	local activityId = g_beastBless:getID()
+	local teamFightCount = activityHandler:getPriData(activityId)
+	print("teamFightCount:",teamFightCount)
+	if teamHandler and teamHandler:isTeam() then 
+		-- 队伍中人数的判断
+		if playerNum then
+			if teamHandler:getCurMemberNum() < playerNum then
+				--print("队伍中人数的判断")
+				return false, param.errorID and param.errorID or 33
+			end
+		end
+		local teamMaxLvl,teamMinLvl = teamHandler:getCurMaxAndMinLvl()
+		if minLvl then
+			if teamMinLvl < minLvl then
+				return false ,param.errorID and param.errorID or 34
+			end
+		end
+		-- 队员之间的等级差
+		if playerLvlRange then
+			if playerLvlRange < (teamMaxLvl - teamMinLvl) then
+				return false ,param.errorID and param.errorID or 35
+			end
+		end 
+		if fightCount then
+			local playerList = teamHandler:getTeamPlayerList()
+			local activityHandler = player:getHandler(HandlerDef_Activity)
+			local activityId = g_beastBless:getID()
+			for _,player in pairs(playerList) do
+				local activityHandler = player:getHandler(HandlerDef_Activity)
+				if activityHandler then
+					local teamFightCount = activityHandler:getPriData(activityId)
+					print("teamFightCount>>>",teamFightCount,fightCount)
+					if teamFightCount > fightCount then
+						return false ,param.errorID and param.errorID or 36
+					end
+				end
+			end
+		end
+		-- 排除所有的条件
+		return true
+	end
+	return false, param.errorID and param.errorID or 4
 end
 function RoleVerify:checkTime(player, param)
 	local hour = param.hour

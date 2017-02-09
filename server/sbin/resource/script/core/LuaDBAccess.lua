@@ -744,7 +744,7 @@ function LuaDBAccess.updateGoldHuntActivity(player)
 		clearParams()
 		local curTotal = handler:getGoldHuntData().totalScore
 		local isPrized = handler:getGoldHuntData().isPrized
-		params[1]["spName"]			= "sp_UpdatePlayerGoldHunt"
+		params[1]["spName"]			= "sp_UpdateGoldHunt"
 		params[1]["dataBase"]		= 1
 		params[1]["sort"]			= "ID,totalScore,isPrized"
 		params[1]["ID"]			= player:getDBID()
@@ -754,6 +754,22 @@ function LuaDBAccess.updateGoldHuntActivity(player)
 		LuaDBAccess.exeSP(params, false)
 	end
 end
+
+function LuaDBAccess.updateBeastBless(player,activityId)
+	local handler = player:getHandler(HandlerDef_Activity)
+	if handler then
+		clearParams()
+		local fightCount = handler:getPriData(activityId)
+		params[1]["spName"]			= "sp_UpdatePlayerBeastBless"
+		params[1]["dataBase"]		= 1
+		params[1]["sort"]			= "_roleID,_fightCount,_recordTime"
+		params[1]["_roleID"]		= player:getDBID()
+		params[1]["_fightCount"]	= fightCount
+		params[1]["_recordTime"]	= os.time()
+		LuaDBAccess.exeSP(params, false)
+	end
+end
+
 ---------------------------------------------------------------------------------------------------
 --更新世界服数据
 function LuaDBAccess.UpdateWorldServerData( playerDBID,valueName,cvalue,ivalue )

@@ -451,6 +451,13 @@ function FightUtils.doPostDead(dead_list)
 	local actionList
 	for _,ID in pairs(dead_list) do
 		local role = g_fightEntityMgr:getRole(ID)
+		if role and instanceof(role,FightMonster) then
+			local fight = g_fightMgr:getFight(role:getFightID())
+			local fightType = fight:getType()
+			if fightType == FightType.Script then
+				fight:onRoleDead(role)
+			end
+		end
 		if role and (instanceof(role,FightPlayer) or instanceof(role,FightPet))then
 			local tmp_actionList = role:useRevivalSkill()
 			if tmp_actionList then

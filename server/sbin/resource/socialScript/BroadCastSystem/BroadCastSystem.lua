@@ -23,7 +23,7 @@ end
 function BroadCastSystem:onDigTreasure( event )
 
     local params = event:getParams()
-    local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4])
+    local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4],params[5])
     RemoteEventProxy.broadcast(event_DigTreasure)
 
 end

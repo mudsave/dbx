@@ -1145,12 +1145,12 @@ LoopTaskDB =
 
 	[10030] = 
 	{
-		name = "收集材料任务",
+		name = "充实军库",
 		startDialogID = nil,
 		taskType2 = TaskType2.Daily,
 		level = {30, 150},
 		school = nil,
-		startNpcID = 30017,
+		startNpcID = 29081,
 		loop = 10,
 		period = TaskPeriod.day,
 		targetLevelSection =

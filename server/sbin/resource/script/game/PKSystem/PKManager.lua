@@ -73,6 +73,10 @@ function PKManager:setPK(player, tgPlayer, flag)
 			pkInfo.hasBuff = buffState
 			pkInfo.isAttacker = true
 			pkInfo.isPK = false
+			local hp = activiPlayer:getHP()
+			local mp = activiPlayer:getMP()
+			pkInfo.hp = hp
+			pkInfo.mp = mp
 		end
 		
 		for _, unactivePlayer in pairs(playerList2 or {}) do
@@ -82,6 +86,10 @@ function PKManager:setPK(player, tgPlayer, flag)
 			pkInfo.hasBuff = buffState
 			pkInfo.isAttacker = false
 			pkInfo.isPK = false
+			local hp = unactivePlayer:getHP()
+			local mp = unactivePlayer:getMP()
+			pkInfo.hp = hp
+			pkInfo.mp = mp
 		end
 	end
 	-- 如果有出战宠物要添加到战斗当中
@@ -611,6 +619,11 @@ function PKManager:onFightEndReset(event)
 		local player = g_entityMgr:getPlayerByID(playerID)
 		if instanceof(player,Player) then
 			local pkInfo = player:getPkInfo()
+			if not pkInfo.isPK then
+				player:setHP(pkInfo.hp)
+				player:setMP(pkInfo.mp)
+				player:flushPropBatch()
+			end
 			pkInfo.isPK = nil
 		end
 	end

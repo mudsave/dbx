@@ -55,6 +55,10 @@ function EntityFactory:createPlayer(roleId, gatewayId, hClientLink, hGateLink)
 end
 
 function EntityFactory:createStaticNpc(dbID)
+	if not dbID or not NpcDB[dbID] then
+		print ("ERROR: can not get static npc config data", dbID)
+		return nil
+	end
 	local npc = Npc()
 	npc:setDBID(dbID)
 	g_entityMgr:addNpc(npc)
@@ -66,6 +70,10 @@ function EntityFactory:createStaticNpc(dbID)
 end
 
 function EntityFactory:createDynamicNpc(dbID)
+	if not dbID or not NpcDB[dbID] then
+		print ("ERROR: can not get dynamic npc config data", dbID)
+		return nil
+	end
 	local npc = Npc()
 	npc:setDBID(dbID)
 	local peer = CoEntity:Create(eLogicNpc, eClsTypeNpc)
@@ -87,6 +95,7 @@ end
 
 function EntityFactory:createPet(configID)
 	if not configID or not PetDB[configID] then
+		print ("ERROR: can not get pet config data", configID)
 		return nil
 	end
 
@@ -136,7 +145,11 @@ function EntityFactory:createGoodsNpc(config, goodNpcID,index)
 	return goodsNpc
 end
 
-function EntityFactory:createBoss(dbID,endTime)
+function EntityFactory:createBoss(dbID, endTime)
+	if not dbID or not NpcDB[dbID] then
+		print ("ERROR: can not get boss npc config data", dbID)
+		return nil
+	end
 	local boss = Npc()
 	boss:setDBID(dbID)
 	--创建c++实体
@@ -159,6 +172,10 @@ function EntityFactory:createBoss(dbID,endTime)
 end
 
 function EntityFactory:createEctypeNpc(dbID)
+	if not dbID or not NpcDB[dbID] then
+		print ("ERROR: can not get ectype npc config data", dbID)
+		return nil
+	end
 	local npc = Npc()
 	npc:setDBID(dbID)
 	local peer = CoEntity:Create(eLogicEctypeNpc, eClsTypeNpc)
@@ -176,6 +193,10 @@ end
 
 -- 这个就是公共场景巡逻NPC
 function EntityFactory:createEctypePatrolNpc(dbID)
+	if not dbID or not NpcDB[dbID] then
+		print ("ERROR: can not get patrol npc config data", dbID)
+		return nil
+	end
 	local patrolNpc = PatrolNpc()
 	patrolNpc:setDBID(dbID)
 	--创建c++实体
@@ -193,6 +214,10 @@ function EntityFactory:createEctypePatrolNpc(dbID)
 end
 
 function EntityFactory:createFollowEntity(npcID)
+	if not npcID or not NpcDB[npcID] then
+		print ("ERROR: can not get npc config data", npcID)
+		return nil
+	end
 	local npcInfo = NpcDB[npcID]
 	if not npcInfo then
 		print("npc没配就要创建跟随",npcID)

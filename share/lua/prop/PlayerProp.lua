@@ -81,19 +81,36 @@ local PlayerProps = {
 	{"PLAYER_FIR_PHASE_POINT",		"INT",		0,		0,	0},	-- 火加点
 	{"PLAYER_POI_PHASE_POINT",		"INT",		0,		0,	0},	-- 毒加点
 
-	{"PLAYER_WIN_AT",				"INT",		0,		0,	0},	-- 风攻
-	{"PLAYER_THU_AT",				"INT",		0,		0,	0},	-- 雷攻
-	{"PLAYER_ICE_AT",				"INT",		0,		0,	0},	-- 冰攻
-	{"PLAYER_SOI_AT",				"INT",		0,		0,	0},	-- 土攻
-	{"PLAYER_FIR_AT",				"INT",		0,		0,	0},	-- 火攻
-	{"PLAYER_POI_AT",				"INT",		0,		0,	0},	-- 毒攻
+	{"PLAYER_INC_PHASE_AT",			"INT",		0,		0,	0},	-- 相性攻击加成
+	{"PLAYER_INC_PHASE_RESIST",		"INT",		0,		0,	0},	-- 相性防御加成
 
-	{"PLAYER_WIN_RESIST",			"INT",		0,		0,	0},	-- 风抗
-	{"PLAYER_THU_RESIST",			"INT",		0,		0,	0},	-- 雷抗
-	{"PLAYER_ICE_RESIST",			"INT",		0,		0,	0},	-- 冰抗
-	{"PLAYER_SOI_RESIST",			"INT",		0,		0,	0},	-- 土抗
-	{"PLAYER_FIR_RESIST",			"INT",		0,		0,	0},	-- 火抗
-	{"PLAYER_POI_RESIST",			"INT",		0,		0,	0},	-- 毒抗
+	{"PLAYER_INC_WIN_AT",			"INT",		0,		0,	0},	-- 风攻击加成
+	{"PLAYER_INC_THU_AT",			"INT",		0,		0,	0},	-- 雷攻击加成
+	{"PLAYER_INC_ICE_AT",			"INT",		0,		0,	0},	-- 冰攻击加成
+	{"PLAYER_INC_FIR_AT",			"INT",		0,		0,	0},	-- 火攻击加成
+	{"PLAYER_INC_SOI_AT",			"INT",		0,		0,	0},	-- 土攻击加成
+	{"PLAYER_INC_POI_AT",			"INT",		0,		0,	0},	-- 毒攻击加成
+
+	{"PLAYER_INC_WIN_RESIST",		"INT",		0,		0,	0},	-- 风抗性加成
+	{"PLAYER_INC_THU_RESIST",		"INT",		0,		0,	0},	-- 雷抗性加成
+	{"PLAYER_INC_ICE_RESIST",		"INT",		0,		0,	0},	-- 冰抗性加成
+	{"PLAYER_INC_FIR_RESIST",		"INT",		0,		0,	0},	-- 火抗性加成
+	{"PLAYER_INC_SOI_RESIST",		"INT",		0,		0,	0},	-- 土抗性加成
+	{"PLAYER_INC_POI_RESIST",		"INT",		0,		0,	0},	-- 毒抗性加成
+
+	{"PLAYER_INC_TAUNT_HIT",		"INT",		0,		0,	0},	-- 嘲讽命中
+	{"PLAYER_INC_SOPER_HIT",		"INT",		0,		0,	0},	-- 催眠命中
+	{"PLAYER_INC_CHAOS_HIT",		"INT",		0,		0,	0},	-- 混乱命中
+	{"PLAYER_INC_FREEZE_HIT",		"INT",		0,		0,	0},	-- 冻结命中
+	{"PLAYER_INC_SILENT_HIT",		"INT",		0,		0,	0},	-- 沉默命中
+	{"PLAYER_INC_TOXICOSIS_HIT",	"INT",		0,		0,	0},	-- 致毒命中
+
+	{"PLAYER_INC_TAUNT_RESIST",		"INT",		0,		0,	0},	-- 嘲讽抵抗
+	{"PLAYER_INC_SOPOR_RESIST",		"INT",		0,		0,	0},	-- 昏迷抵抗
+	{"PLAYER_INC_CHAOS_RESIST",		"INT",		0,		0,	0},	-- 混乱抵抗
+	{"PLAYER_INC_FREEZE_RESIST",	"INT",		0,		0,	0},	-- 冰冻抵抗
+	{"PLAYER_INC_SILENT_RESIST",	"INT",		0,		0,	0},	-- 沉默抵抗
+	{"PLAYER_INC_TOXICOSIS_RESIST",	"INT",		0,		0,	0},	-- 中毒抵抗
 
 	{"PLAYER_MONEY",				"INT",		0,		0,	1},	-- 银两
 	{"PLAYER_SUBMONEY",				"INT",		0,		0,	1},	-- 绑银
@@ -127,11 +144,12 @@ local PlayerProps = {
 	{"PLAYER_INC_SILENT_RESIST",	"INT",		0,		0,	0},	-- 沉默抵抗加成
 	{"PLAYER_INC_TOXICOSIS_RESIST",	"INT",		0,		0,	0},	-- 中毒抵抗加成
 	
-	{"PLAYER_TIREDNESS",			"INT",		0,		0,	0,},-- 活力值
-	{"PLAYER_PRACTISE",				"INT",		0,		0,	0,},-- 修行值
-	{"PLAYER_PRACTISECOUNT",		"INT",		0,		0,	0,},-- 修行总值
-	{"PLAYER_STOREXP",				"INT",		0,		0,	0,},-- 存储经验
-	{"PLAYER_GOLD_HUNT_MINE",			"SHORT",	1,		1,	0,},-- 在猎金场所得矿量
+	{"PLAYER_TIREDNESS",			"INT",		0,		0,	0},	-- 活力值
+	{"PLAYER_PRACTISE",				"INT",		0,		0,	0},	-- 修行值
+	{"PLAYER_PRACTISECOUNT",		"INT",		0,		0,	0},	-- 修行总值
+	{"PLAYER_STOREXP",				"INT",		0,		0,	0},	-- 存储经验
+	{"PLAYER_GOLD_HUNT_MINE",		"SHORT",	1,		1,	0},	-- 在猎金场所得矿量
 }
 
 InitPropSet(eClsTypePlayer,PlayerProps)
+

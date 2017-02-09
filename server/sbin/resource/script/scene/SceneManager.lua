@@ -61,6 +61,10 @@ end
 function SceneManager:enterPublicScene(mapID, role, x, y)
 	local scene = self.scene[mapID]
 	if scene and role and x and y then
+		local prevPos = role:getPrevPos()
+		local pos = role:getPos()
+		prevPos[1],prevPos[2],prevPos[3] = pos[1],pos[2],pos[3]
+		
 		if scene:attachEntity(role, x, y) then
 			if role:getEntityType() == eClsTypePlayer then
 				local petID = role:getFollowPetID()
@@ -217,9 +221,13 @@ end
 function SceneManager:enterGoldHuntScene(activityID, role,x ,y)
 	local toScene = self._GoldHuntZone[activityID]
 	if not toScene then
-		return
+		return false
 	end
 	if role and x and y then
+		local prevPos = role:getPrevPos()
+		local pos = role:getPos()
+		prevPos[1],prevPos[2],prevPos[3] = pos[1],pos[2],pos[3]
+
 		toScene:attachEntity(role, x, y)
 		if role:getEntityType() == eClsTypePlayer then
 			
@@ -230,13 +238,24 @@ function SceneManager:enterGoldHuntScene(activityID, role,x ,y)
 				pet:setVisible(true) 
 				toScene:attachEntity(pet, x -1 , y - 1 )
 			end
-			
+			return true
 		end
 	end
+	return false
 end
 
 function SceneManager:isInGoldHuntScene(player)
 	local curScene = player:getScene()
+	for _ ,scene in pairs(self._GoldHuntZone) do
+		if curScene == scene then
+			return true
+		end
+	end
+	return false
+end
+
+function SceneManager:isGoldHuntScene(curScene)
+	
 	for _ ,scene in pairs(self._GoldHuntZone) do
 		if curScene == scene then
 			return true
@@ -250,6 +269,14 @@ function SceneManager:releaseGoldHuntScene(activityID)
 	local scene = self._GoldHuntZone[activityID]
 	if not scene then
 		return
+	end
+	--遣返还在的玩家
+	local entityList = scene:getEntityList()
+	for ID, role in pairs(entityList) do
+		if instanceof(role, Player) and role:getStatus() ~= ePlayerFight then
+			local prevPos = role:getPrevPos()
+			self:doSwitchScence(role:getID(),prevPos[1],prevPos[2],prevPos[3])
+		end
 	end
 	-- 释放场景
 	local peer = scene:getPeer()
