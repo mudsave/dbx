@@ -33,11 +33,8 @@ public:
 private:
     void SetIssueError(DBIssueBase *p_issue);
 
-	//用来创建查询缓冲，放在这里可以避免多次创建和释放内存
-	char m_szQueryBuffer[QUERYBUFFER_MAX_LEN];
-
 protected:
     MYSQL *m_mysql;
 };
 
-#endif  // end of __DB_INTERFACE_MYSQL_H_
+#endif  // __DB_INTERFACE_MYSQL_H_
