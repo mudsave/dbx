@@ -107,7 +107,7 @@ _fight_1 :
 
 _dbx :
 	@set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/dbx >$(WORK_DIR)/logs/_dbx.txt 2>&1 & ); \
+	( $(WORK_DIR)/dbx >$(WORK_DIR)/logs/_dbx.txt 2>&1 & ); \
 	echo "dbx has been runned.."; sleep 2s
 
 _social :
