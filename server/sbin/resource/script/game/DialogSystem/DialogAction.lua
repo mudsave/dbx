@@ -179,6 +179,13 @@ function DialogAction:doRecetiveTask(player, param)
 	end
 end
 
+function DialogAction:doRecetiveTasks(player, param)
+	local taskIDs = param.taskIDs
+	for _,taskID in pairs(taskIDs) do
+		g_taskDoer:doRecetiveTask(player, param.taskID)
+	end
+end
+
 --接受一个任务
 function DialogAction:doRecetiveSpecialTask(player, param)
 	print("接受一个天道任务")

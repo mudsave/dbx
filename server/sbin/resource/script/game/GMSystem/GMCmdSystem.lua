@@ -809,6 +809,20 @@ function GMSystem:hideOrShow(roleID)
 	end
 end
 
+function GMSystem:openBeastBless(roleID)
+	local activityList =  g_activityMgr:getActivityList()
+	local id = g_beastBless:getID()
+	activityList[id] = g_beastBless
+	print("openBeastBless $$$$$$ ")
+	g_beastBless:open()
+end
+
+function GMSystem:closeBeastBless(roleID)
+	print("closeBeastBless $$$$$$")
+	g_beastBless:close()
+end
+
+
 --[[
 	同步玩家属性到战斗服
 	只能同步在属性集合中的属性
@@ -1006,6 +1020,7 @@ local function MakeEntityGM(Attrs,onGetEntity,onAttrToWar,onWarAttr,onAttrSet)
 		end
 	end
 end
+
 
 MakeEntityGM( PlayerGMAttrs,onGetPlayerByID,onPlayerAttrToWar,onPlayerWarAttr,onPlayerAttrSet)
 MakeEntityGM( PetGMAttrs,onGetPet,nil,nil,onPetAttrSet)

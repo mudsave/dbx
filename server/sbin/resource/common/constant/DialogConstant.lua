@@ -86,6 +86,7 @@ DialogActionType =
 	EnterGoldHuntZone   = 49,		-- 进入猎金场
 	GoldHuntFight		= 50,		-- 猎金场战斗
 	GoldHuntCommit		= 51,		-- 猎金场提交分数
+	RecetiveTasks		= 52,		-- 同时接受多个任务
 }
 
 --对话框图标类型

@@ -14,33 +14,29 @@ GoldHuntZoneActivityDB1 =
 		name = "GoldHuntZone1",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 17, min = 1},				--开始时间
+		startTime = {hour = 15, min = 9},				--开始时间
 		min_maxPlayerLevel = {1,40},					--等级范围
 		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 17, min = 40},				--结束时间
+		endTime = {hour = 15, min = 30},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
 					period = 3,--min			--阶段持续时间
-					--[[monsterInfo ={
-									{commonDBID = 10001,centerPos={x=109,y=216},radius = 5},updatePeriod = 1,totalMax= 2, curMax = 1,
-									eliteDBID = 10001,propability = 20,
-					},]]--
 					materialInfo = {
-									{itemID = 10012,centerPos={x=109,y=216},radius = 5,count = 1},					--场景物件，中心，范围数量
-									updatePeriod = 1,totalMax= 2, curMax = 1,							--刷新间隔，总数量，保持数量
+									{itemID = 10012,centerPos={x=109,y=216},radius = 5,count = 3},					--场景物件,中心,范围,数量,可以多行并列
+									updatePeriod = 1,totalMax= 6, curMax = 4,							--刷新间隔,总数量,保持数量
 					}
 			},
 			[2] = {
 					period = 3,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=109,y=216},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,	--怪物ID，中心，范围
-									eliteDBID = 39053,propability = 20,									--精英怪，概率
+									{commonDBID = 39052,centerPos={x=109,y=216},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,	--怪物ID,中心,范围,刷新间隔,总数量,保持数量
+									eliteDBID = 39053,propability = 20,									--精英怪,概率
 					},
 					materialInfo = {
 									{itemID = 10011,centerPos={x=186,y=201},radius = 5,count = 1},
-									updatePeriod = 3,totalMax= 6, curMax = 4,
+									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			},
 			[3] = {
@@ -51,7 +47,7 @@ GoldHuntZoneActivityDB1 =
 					},
 					materialInfo = {
 									{itemID = 10013,centerPos={x=201,y=117},radius = 5,count = 1},
-									updatePeriod = 3,totalMax= 6, curMax = 4,
+									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			},
 			[4] = {
@@ -62,7 +58,7 @@ GoldHuntZoneActivityDB1 =
 					},
 					materialInfo = {
 									{itemID = 10011,centerPos={x=279,y=101},radius = 5,count = 1},
-									updatePeriod = 3,totalMax= 6, curMax = 4,
+									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			}
 		},
@@ -89,6 +85,7 @@ function GoldHuntZone1:__init()
 	self._id = gGoldHuntID1
 	self._scene = nil
 	self._phaseID = 1
+	self._curPhaseID = 1
 	self._timePhaseID = 1
 	self._monsters = {total={[1]=0,[2]=0,[3]=0,[4]=0},[1]={},[2]={},[3]={},[4]={}}
 	self._mines = {total={[1]=0,[2]=0,[3]=0,[4]=0},[1]={},[2]={},[3]={},[4]={}}
@@ -300,6 +297,10 @@ function GoldHuntZone1:removeMine(mineID)
 	info[mineID] = nil
 end
 
+function GoldHuntZone1:getPhaseID()
+	return self._curPhaseID
+end
+
 function GoldHuntZone1:removeMonster(monsterID)
 	local phaseID = monsterIDPhase[monsterID]
 	monsterIDPhase[monsterID] = nil
@@ -311,6 +312,7 @@ function GoldHuntZone1:removeMonster(monsterID)
 	local totalMax = self._config.phaseInfo[phaseID].monsterInfo.totalMax
 	if (table.size(info) == 0) and (curTotal == totalMax) then
 		self:_refreshMines(phaseID)
+		self._curPhaseID = phaseID
 		--通知客户端打开关口
 		local entityList = self._scene:getEntityList()--
 		for _,role in pairs(entityList) do

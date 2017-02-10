@@ -78,3 +78,47 @@ function BeastBlessUtils.addBeastToMap(curMapBeastList,mapID,beast)
 		print("error -> addBeastToMap")
 	end
 end
+
+-- 基础值公式
+function BeastBlessUtils.getPlayerBaseRewardFormula(playerLVl,value)
+	return (playerLVl*10 + value)
+end
+
+function BeastBlessUtils.getPetBaseRewardFormula(playerLvl,petLvl,value)
+
+end
+-- 额外单个奖励公式
+-- 钱
+function BeastBlessUtils.getSubMoneyFormula(money,value)
+	return money + 200 
+end
+
+-- 经验
+function BeastBlessUtils.getExpFormula(playerExp,value)
+	return playerExp*(value*0.5)
+end
+
+-- 道行
+function BeastBlessUtils.getTaoFormula(playerTao,value)
+	return playerTao*(value*0.5)
+end
+
+-- 对对碰公式
+-- 钱
+function BeastBlessUtils.getDSubMoneyFormula(money,value)
+	return money + 200 
+end
+-- 经验
+function BeastBlessUtils.getDExpFormula(playerExp,value)
+	return playerExp*(value*0.2)
+end
+
+-- 道行
+function BeastBlessUtils.getDTaoFormula(playerTao,value)
+	return playerTao*(value*0.2)
+end
+
+-- 获得物品的几率
+function BeastBlessUtils.getDItemFormula(ItemValue,nValue,mValue)
+	return ItemValue + nValue*5 + mValue*10
+end

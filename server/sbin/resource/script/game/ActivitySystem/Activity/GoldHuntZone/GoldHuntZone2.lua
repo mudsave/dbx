@@ -14,7 +14,7 @@ GoldHuntZoneActivityDB2 =
 		name = "GoldHuntZone2",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 14, min = 13},
+		startTime = {hour = 15, min = 3},
 		min_maxPlayerLevel = {40,50},
 		readyPeriod = 1,
 		
@@ -89,6 +89,7 @@ function GoldHuntZone2:__init()
 	self._id = gGoldHuntID2
 	self._scene = nil
 	self._phaseID = 1
+	self._curPhaseID = 1
 	self._timePhaseID = 1
 	self._monsters = {total={[1]=0,[2]=0,[3]=0,[4]=0},[1]={},[2]={},[3]={},[4]={}}
 	self._mines = {total={[1]=0,[2]=0,[3]=0,[4]=0},[1]={},[2]={},[3]={},[4]={}}
@@ -275,6 +276,10 @@ function GoldHuntZone2:removeMine(mineID)
 	info[mineID] = nil
 end
 
+function GoldHuntZone2:getPhaseID()
+	return self._curPhaseID
+end
+
 function GoldHuntZone2:removeMonster(monsterID)
 	local phaseID = monsterIDPhase[monsterID]
 	monsterIDPhase[monsterID] = nil
@@ -286,6 +291,7 @@ function GoldHuntZone2:removeMonster(monsterID)
 	local totalMax = self._config.phaseInfo[phaseID].monsterInfo.totalMax
 	if (table.size(info) == 0) and (curTotal == totalMax) then
 		self:_refreshMines(phaseID)
+		self._curPhaseID = phaseID
 		--通知客户端打开关口
 		local entityList = self._scene:getEntityList()--
 		for _,role in pairs(entityList) do

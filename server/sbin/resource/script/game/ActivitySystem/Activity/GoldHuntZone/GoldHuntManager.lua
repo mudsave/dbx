@@ -439,7 +439,10 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 		return
 	end
 	FinalPos[player:getDBID()] = nil
-	--发送进入事件(倒计时和总积分)
+	self:setIconValue(player,0,true)--初始化值
+	--发送进入事件(倒计时和总积分和階段)
+	local activity = g_activityMgr:getActivity(activityID) 
+	local phaseID = activity:getPhaseID()
 	local handler = player:getHandler(HandlerDef_Activity)
 	local goldHuntData = handler:getGoldHuntData()
 
@@ -451,7 +454,7 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	date.sec = 0
 	local endTimeTick = os.time(date)
 	local leftTime = endTimeTick - now
-	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList)
+	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList,phaseID)
 	g_eventMgr:fireRemoteEvent(event, player)
 	
 	--初始化
@@ -488,15 +491,15 @@ function GoldHuntManager:getIconValue(score)
 		end
 	end
 
-	local count = GoldHuntZoneIconValue
+	local count = 1
 	return GoldHuntZoneIconValue[count][2]
 end
 
-function GoldHuntManager:setIconValue(player ,score)
+function GoldHuntManager:setIconValue(player ,score, isSet)
 	local peer = player:getPeer()
 	local cur = getPropValue(peer, PLAYER_GOLD_HUNT_MINE)
 	local iconValue = self:getIconValue(score)
-	if iconValue ~= cur then
+	if iconValue ~= cur or isSet then
 		setPropValue(peer, PLAYER_GOLD_HUNT_MINE, iconValue)
 		player:flushPropBatch()
 	end
@@ -618,7 +621,7 @@ function GoldHuntManager:onOnline(player)
 	local pos = FinalPos[DBID]
 	if pos then
 		self:enterHuntZone(player,{x= pos.x, y = pos.y})
-		local prevPos = role:getPrevPos()
+		local prevPos = player:getPrevPos()
 		prevPos[1],prevPos[2],prevPos[3] = RightPos4Error.mapID,RightPos4Error.x,RightPos4Error.y
 		
 	end

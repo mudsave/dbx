@@ -148,7 +148,7 @@ local PlayerProps = {
 	{"PLAYER_PRACTISE",				"INT",		0,		0,	0},	-- 修行值
 	{"PLAYER_PRACTISECOUNT",		"INT",		0,		0,	0},	-- 修行总值
 	{"PLAYER_STOREXP",				"INT",		0,		0,	0},	-- 存储经验
-	{"PLAYER_GOLD_HUNT_MINE",		"SHORT",	1,		1,	0},	-- 在猎金场所得矿量
+	{"PLAYER_GOLD_HUNT_MINE",		"SHORT",	1,		1,	1},	-- 在猎金场所得矿量
 }
 
 InitPropSet(eClsTypePlayer,PlayerProps)

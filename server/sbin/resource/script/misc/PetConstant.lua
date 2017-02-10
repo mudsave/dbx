@@ -45,7 +45,7 @@ PetSkillCategory = {
 MaxPetLoyalty			= 10000		-- 宠物的最大忠诚度
 PetLoyaltyFightParam	= 6000		-- 宠物出战逃跑忠诚度临界值
 PetTalentBox			= 1026005	-- 天赋宝盒，使用之后增加一个宠物栏
-MaxPetNum				= 3			-- 默认宠物栏大小
+MaxPetNum				= 10		-- 默认宠物栏大小
 MaxPetEnchance			= 9			-- 宠物最大强化等级
 PetVarientRate			= 10		-- 洗宠产生变异宠物的概率
 MaxPetTao				= 999999999	-- 宠物最大道行
@@ -113,8 +113,6 @@ PS_EndID = 1102		-- 宠物技能结束ID
 
 -- 是否为高级技能
 function PS_IsAdvanced(skillID)
-print("**************skillID",type(skillID))
-print(debug.traceback())
 	-- 在这个范围内的ID不是技能
 	if skillID < PS_StartID or skillID > PS_EndID then
 		return false,nil

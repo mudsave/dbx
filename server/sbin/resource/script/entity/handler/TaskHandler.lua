@@ -231,6 +231,7 @@ function TaskHandler:updateDayTask()
 		if task:getType() == TaskType.loop and task:getPeriod() == TaskPeriod.day then
 			-- 此时任务不能删除
 			self.loopTaskInfo[taskID].countRing = 0
+			self.loopTaskInfo[taskID].finishTimes = 0
 		end
 	end
 end
@@ -239,6 +240,7 @@ function TaskHandler:updateWeekTask()
 	for taskID, task in pairs(self.currentTask) do
 		if task:getType() == TaskType.loop and task:getPeriod() == TaskPeriod.week then
 			self.loopTaskInfo[tasID].countRing = 0
+			self.loopTaskInfo[taskID].finishTimes = 0
 		end
 	end
 end
@@ -250,6 +252,12 @@ function TaskHandler:getCountRing(taskID)
 	return self.loopTaskInfo[taskID].countRing
 end
 
+-- 得到完成次数
+function TaskHandler:getFinishTimes(taskID)
+	self:checkTaskData(taskID)
+	return self.loopTaskInfo[taskID].finishTimes
+end
+
 -- 天道任务获取当前的环数
 function TaskHandler:checkTaskData(taskID)
 	local taskData = self.loopTaskInfo[taskID]
@@ -257,6 +265,7 @@ function TaskHandler:checkTaskData(taskID)
 		taskData = {}
 		taskData.countRing = 0
 		taskData.currentRing = 0
+		taskData.finishTimes = 0
 		self.loopTaskInfo[taskID] = taskData
 	end
 end
@@ -270,6 +279,12 @@ end
 function TaskHandler:setCountRing(taskID, countRing)
 	self:checkTaskData(taskID)
 	self.loopTaskInfo[taskID].countRing = countRing
+end
+
+-- 得到完成次数
+function TaskHandler:updateFinishTimes(taskID)
+	self:checkTaskData(taskID)
+	self.loopTaskInfo[taskID].finishTimes = self.loopTaskInfo[taskID].finishTimes + 1
 end
 
 -- 刚开始没有环数为1设置呢 这个需要做下判断
@@ -476,6 +491,7 @@ function TaskHandler:finishTaskByID(taskID)
 		self:createNextTaskID(taskID)
 		-- 完成任务时，重新设置这个任务列表
 		self:updateTaskList(taskID, true)
+		self:updateFinishTimes(taskID)
 		self.count = self.count - 1
 		return true
 	else
@@ -583,17 +599,20 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 				if not time.isSameDay(offlineTime) then
 					-- 不是同一天，重新设置当前可做的次数，
 					loopTask.countRing = 0
+					loopTask.finishTimes = 0
 				end
 			else
 				-- 判断记录日期跟现在是不是同一周
 				if not time.isSameWeek(offlineTime) then
 					-- 不是同一周，算是新CD了，重置完成次数和副本进度
 					loopTask.countRing = 0
+					loopTask.finishTimes = 0
 				end
 			end
 			if not self.loopTaskInfo[loopTask.taskID] then
 				self.loopTaskInfo[loopTask.taskID] = {}
 				self.loopTaskInfo[loopTask.taskID].countRing = loopTask.countRing
+				self.loopTaskInfo[loopTask.taskID].countRing = loopTask.finishTimes
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
 			else
 	
