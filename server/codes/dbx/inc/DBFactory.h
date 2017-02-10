@@ -48,4 +48,4 @@ private:
 };
 
 
-#endif // end of __DB_FACTORY_H_
+#endif // __DB_FACTORY_H_

@@ -27,14 +27,14 @@ struct DBInterfaceInfo
         memset(db_password, 0, sizeof(db_password));
     }
 
-    int id;                             // ���ݿ�ӿ�id
-    char db_type[DBX_MAX_BUF];          // ���ݿ�����
-    char db_ip[DBX_MAX_BUF];            // ���ݿ�ip��ַ
-    int db_port;                        // ���ݿ�˿�
-    char db_name[DBX_MAX_NAME];         // ���ݿ�����
-    char db_username[DBX_MAX_NAME];     // �������ݿ���û���
-    char db_password[DBX_MAX_BUF];      // �������ݿ������
-    int db_connectionsNum;              // ���ݿ��������
+    int id;                             // 数据库接口id
+    char db_type[DBX_MAX_BUF];          // 数据库类型
+    char db_ip[DBX_MAX_BUF];            // 数据库ip地址
+    int db_port;                        // 数据库端口
+    char db_name[DBX_MAX_NAME];         // 数据库名字
+    char db_username[DBX_MAX_NAME];     // 连接数据库的用户名
+    char db_password[DBX_MAX_BUF];      // 连接数据库的密码
+    int db_connectionsNum;              // 数据库最大连接
 };
 
 class DBXConfig: public DBX::Singleton<DBXConfig>
@@ -58,4 +58,4 @@ protected:
 #define g_dbxConfig DBXConfig::Instance()
 
 
-#endif  // end of __DBX_CONFIG_H_
+#endif  // __DBX_CONFIG_H_

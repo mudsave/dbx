@@ -56,7 +56,7 @@ public:
     DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID);
 
     virtual bool OnProgress();
-	virtual void MainProgress();
+    virtual void MainProgress();
 };
 
 #endif // __DB_ISSUE_H_

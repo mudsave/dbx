@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-æè¿°ï¼š
+ÃèÊö£º
 
 */
 
@@ -13,7 +13,7 @@ RTX:6016.
 
 #include "DBFactory.h"
 
-#define DBX_DEFALT_DATABASE_ID 1   // é»˜è®¤æ•°æ®åº“id
+#define DBX_DEFALT_DATABASE_ID 1   // Ä¬ÈÏÊı¾İ¿âid
 #define DBX_MAIN_TICK_TIME 100
 
 DBManager::DBManager()
@@ -64,7 +64,7 @@ bool DBManager::InitDB()
 
 void DBManager::CallSP(AppMsg *p_appMsg)
 {
-    // todo:ä»p_appMsgä¸­è·å¾—queryID
+    // todo:´Óp_appMsgÖĞ»ñµÃqueryID
 
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
     if (dbTaskPool == NULL)
@@ -72,13 +72,12 @@ void DBManager::CallSP(AppMsg *p_appMsg)
         TRACE1_ERROR("DBManager::CallSQL:Cant get task pool(id:%i), it is maybe destroyed.\n", DBX_DEFALT_DATABASE_ID);
         return;
     }
-
     dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1));
 }
 
 void DBManager::CallSQL(AppMsg *p_appMsg)
 {
-    // todo:ä»p_appMsgä¸­è·å¾—queryID
+    // todo:´Óp_appMsgÖĞ»ñµÃqueryID
 
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
     if (dbTaskPool == NULL)
@@ -93,4 +92,5 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
+    return S_OK;
 }

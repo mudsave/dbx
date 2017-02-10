@@ -14,7 +14,6 @@ RTX:6016.
 #include "DBXContextDefine.h"
 #include "DBManager.h"
 
-
 NetworkInterface::NetworkInterface(int p_port)
 {
 	TRACE0_L0( "NetworkInterface init...\n" );
@@ -36,12 +35,12 @@ bool NetworkInterface::Listen(int p_port)
 
 bool NetworkInterface::Send(AppMsg *p_appMsg)
 {
-	return true;
+    return true;
 }
 
 bool NetworkInterface::Recv(BYTE *p_buff, int p_size)
 {
-	return true;
+    return true;
 }
 
 HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT p_result, ILinkPort* p_linkPort, int p_linkType)

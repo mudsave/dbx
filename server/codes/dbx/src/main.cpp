@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     g_dbxConfig.LoadConfig("DBServer.xml");
 
-    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // ����س�ʼ��
+    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // 对象池初始化
 
     GenerateSignalThread();
     SetCleanup(CleanUp);

@@ -28,7 +28,7 @@ public:
 
 	bool Send(AppMsg *p_appMsg);
 
-	bool Recv(BYTE *p_buff, int p_size);
+    bool Recv(BYTE *p_buff, int p_size);
 
     void Finalise();
 public:
