@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -13,7 +13,7 @@ RTX:6016.
 
 #include "DBFactory.h"
 
-#define DBX_DEFALT_DATABASE_ID 1   // Ä¬ÈÏÊý¾Ý¿âid
+#define DBX_DEFALT_DATABASE_ID 1   // é»˜è®¤æ•°æ®åº“id
 #define DBX_MAIN_TICK_TIME 100
 
 DBManager::DBManager()
@@ -64,7 +64,7 @@ bool DBManager::InitDB()
 
 void DBManager::CallSP(AppMsg *p_appMsg)
 {
-    // todo:´Óp_appMsgÖÐ»ñµÃqueryID
+    // todo:ä»Žp_appMsgä¸­èŽ·å¾—queryID
 
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
     if (dbTaskPool == NULL)
@@ -77,7 +77,7 @@ void DBManager::CallSP(AppMsg *p_appMsg)
 
 void DBManager::CallSQL(AppMsg *p_appMsg)
 {
-    // todo:´Óp_appMsgÖÐ»ñµÃqueryID
+    // todo:ä»Žp_appMsgä¸­èŽ·å¾—queryID
 
     DBTaskPool* dbTaskPool = DBFactory::InstancePtr()->GetTaskPool(DBX_DEFALT_DATABASE_ID);
     if (dbTaskPool == NULL)

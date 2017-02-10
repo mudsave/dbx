@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         TRACE0_L0("Dbx stop [ timeout ].\n");
     }
     
-    GlobalThreadsPool()->Clear();
+    pThreadsPool->Clear();
 
     Sleep(1000 * 5);
 	return 0;
