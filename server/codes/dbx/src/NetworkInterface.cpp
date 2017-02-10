@@ -34,12 +34,14 @@ bool NetworkInterface::Listen(int p_port)
     return true;
 }
 
-HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
+bool NetworkInterface::Send(AppMsg *p_appMsg)
 {
+	return true;
 }
 
-HRESULT NetworkInterface::Recv(BYTE *p_buff, int p_size)
+bool NetworkInterface::Recv(BYTE *p_buff, int p_size)
 {
+	return true;
 }
 
 HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT p_result, ILinkPort* p_linkPort, int p_linkType)

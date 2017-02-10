@@ -26,9 +26,9 @@ public:
 
     bool Listen(int p_port);
 
-	HRESULT Send(AppMsg *p_appMsg);
+	bool Send(AppMsg *p_appMsg);
 
-	HRESULT Recv(BYTE *p_buff, int p_size);
+	bool Recv(BYTE *p_buff, int p_size);
 
     void Finalise();
 public:
