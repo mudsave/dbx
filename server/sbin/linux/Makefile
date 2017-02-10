@@ -11,9 +11,9 @@ export LD_LIBRARY_PATH = $(WORK_DIR)
 .PHONY : client_v server_v
 
 .PHONY : all clean
-.PHONY : session gateway world
-.PHONY : _session _gateway _world _fight _social
-.PHONY : session_v gateway_v world_v
+.PHONY : session gateway world dbx
+.PHONY : _session _gateway _world _fight _social _dbx
+.PHONY : session_v gateway_v world_v dbx_v
 
 # 启动入口
 test : _server _client
