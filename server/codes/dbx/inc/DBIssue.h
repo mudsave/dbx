@@ -45,7 +45,7 @@ class DBIssueCallSP :public DBIssueBase
 public:
     DBIssueCallSP(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void OnProgress();
+    virtual bool OnProgress();
     virtual void MainProgress();
 };
 
@@ -55,7 +55,7 @@ class DBIssueCallSQL :public DBIssueBase
 public:
     DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void OnProgress();
+    virtual bool OnProgress();
 	virtual void MainProgress();
 };
 
