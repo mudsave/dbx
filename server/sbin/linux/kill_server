@@ -30,3 +30,7 @@ sleep 2s
 kill_server World
 echo "World has been killed.."
 sleep 2s
+
+kill_server dbx
+echo "dbx has been killed.."
+sleep 2s
