@@ -23,7 +23,7 @@ LINK_EX =
 INCLUDE_DIR = -I../codes/dbx/inc -I../codes/tinyxml/include -I/usr/include/mysql
 
 # default.mak已包含了一些公用的库，这里加上其他所需的库及所在目录（exe工程才需要设置）
-LIB_DIR = -L/usr/lib64/mysql -L/../codes/tinyxml/lib
+LIB_DIR = -L/usr/lib64/mysql -L../codes/tinyxml/lib
 LIBS = -ltinyxml -lmysqlclient_r
 
 # 工程目标
