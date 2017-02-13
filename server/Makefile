@@ -98,12 +98,12 @@ tolua :
 db :
 	cd ./tools/dbClient; make
 
+tinyxml :
+	cd ./tools/tinyxml; make target; make install
+
 ldconfig :
 	cd /etc/ld.so.conf.d && touch devel.conf; echo /usr/local/lib >devel.conf
 	ldconfig
-
-tinyxml :
-	cd ./codes/dbx/tinyxml; make
 
 limits :
 	echo "" >>/etc/security/limits.conf
