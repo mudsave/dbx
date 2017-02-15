@@ -239,6 +239,7 @@ function Player:setStoreXp(storeXp)
 	end
 	self.storeXp = storeXp
 	setPropValue(self._peer, PLAYER_STOREXP, storeXp)
+	return storeXp
 end
 
 function Player:getStoreXp()
@@ -642,7 +643,6 @@ end
 
 function Player:onPlayerLogout(reason)
 	--store the status and position
-
 	self:updatePlayerAttr()
 	local mapID, xPos, yPos = self:getCurPos()
 	if mapID >= EctypeMap_StartID then
@@ -653,7 +653,15 @@ function Player:onPlayerLogout(reason)
 		xPos = enterPos.xPos
 		yPos = enterPos.yPos
 	end
-	print("=============================",mapID, xPos, yPos)
+	
+	-- 如果在捕宠活动场景当中
+	if g_catchPetMgr:isInActivityScene(self) then
+		local activityHandler = self:getHandler(HandlerDef_Activity)
+		local enterPos = activityHandler:getEnterPos()
+		mapID = enterPos.mapID
+		xPos = enterPos.xPos
+		yPos = enterPos.yPos
+	end
 	self:updateProperty("MapID",mapID)
 	self:updateProperty("PosX",xPos)
 	self:updateProperty("PosY",yPos)

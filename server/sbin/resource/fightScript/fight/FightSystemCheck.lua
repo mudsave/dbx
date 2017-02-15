@@ -273,3 +273,20 @@ function FightSystemActionChecker.isPlayerDead(fight,params,condition)
 		end
 		return false
 end
+
+--[[
+params = monsterDBID
+condition.params ={DBID = {1052},}
+]]
+function FightSystemActionChecker.isMonsterCatched(fight,params,condition)
+	if not params then
+		return
+	end
+	local monsterDBID = params
+	for _,ID in pairs(condition.params.DBID) do
+		if ID == monsterDBID then
+			return true
+		end
+	end
+	return false
+end

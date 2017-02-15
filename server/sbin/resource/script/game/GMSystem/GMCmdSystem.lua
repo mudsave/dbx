@@ -1021,6 +1021,27 @@ local function MakeEntityGM(Attrs,onGetEntity,onAttrToWar,onWarAttr,onAttrSet)
 	end
 end
 
+-- 开启活动
+function GMSystem:openactivity(player, activityID)
+	local value = tonumber(activityID)
+	if value >= 0 then
+		local activity = g_activityMgr:getActivity(value)
+		if not activity then
+			g_activityMgr:openActivity(value, ActivityDB[value].name)
+		end
+	end
+end
+
+-- 关闭活动
+function GMSystem:closeactivity(player, activityID)
+	local value = tonumber(activityID)
+	if value >= 0 then
+		local activity = g_activityMgr:getActivity(value)
+		if activity then
+			g_activityMgr:closeActivity(value)
+		end
+	end
+end
 
 MakeEntityGM( PlayerGMAttrs,onGetPlayerByID,onPlayerAttrToWar,onPlayerWarAttr,onPlayerAttrSet)
 MakeEntityGM( PetGMAttrs,onGetPet,nil,nil,onPetAttrSet)

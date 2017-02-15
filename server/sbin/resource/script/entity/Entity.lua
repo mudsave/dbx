@@ -66,10 +66,6 @@ function Entity:addHandler(hType, handler)
 	self._handlers[hType] = handler
 end
 
-function Entity:removeHandler(hType)
-	self._handlers[hType] = nil
-end
-
 function Entity:getHandler(hType)
 	return self._handlers[hType]
 end

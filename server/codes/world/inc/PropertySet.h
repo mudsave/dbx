@@ -8,187 +8,122 @@
 #include "lindef.h"
 #include "vsdef.h"
 #include "Variant.h"
+#include <cstdarg>
+
+#define Private		0
+#define Public		1
+#define Postpone	0
+#define Sync		1
 
 struct _Property{
 	Variant val;
-	short radius;	//such a Property is public,true if radius bigger than 0
-	short update;	//times that property has been modified
-	short casted;	//times that property has been broadcasted
-	short sync;		//sync or not
-	_Property():radius(0),update(0),casted(0){}
+	short radius;		//whether a property is public,true if radius bigger than 0
+	short update;		//times that property has been modified
+	short casted;		//times that property has been broadcasted
+	short sync;			//sync or not
+	const char *name;	//name
+
+	_Property():radius(0),update(0),casted(0),name(0){
+	}
+	inline int type() const {
+		return val.type;
+	}
+	inline void type(int type) {
+		val.type = type;
+	}
+	template<typename T>
+	inline bool setValue(T value){
+		int t = type();
+		if( t < VAR_BYTE || t > VAR_FLOAT ){
+			return false;
+		}
+		switch( t )	{
+			case VAR_BYTE:
+				val.cVal = value;
+				break;
+			case VAR_SHORT:
+				val.sVal = value;
+				break;
+			case VAR_INT:
+				val.iVal = value;
+				break;
+			case VAR_LONGLONG:
+				val.llVal = value;
+				break;
+			case VAR_FLOAT:
+				val.fVal = value;
+				break;
+		}
+		return true;
+	}
+	inline bool setValue(const char *str,size_t len = 0){
+		if( type() != VAR_STRING ){
+			return false;
+		}
+		val.Set(str,len);
+		return true;
+	}
+	inline bool setValue(const void *ptr,size_t len = 0){
+		if( type() != VAR_DATA ){
+			return false;
+		}
+		val.Set(ptr,len);
+		return true;
+	}
 };
 
-typedef _CountedArray<_Property>	_PropSet;
-typedef _CountedArray<BYTE>			_RefList;
-
-#define auxCheckProp(p,t) (assert(p && t==p->val.type),(p && t==p->val.type))
+typedef _CountedArray<_Property> _PropSet;
 
 class PropertySet{
 public:
-	HRESULT SetPropByte(long propID,char cVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_BYTE)){
-			prop->val.cVal = cVal;
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropByte(long propID,char *cVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_BYTE)){
-			*cVal = prop->val.cVal;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT SetPropShort(long propID,short sVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_SHORT)){
-			prop->val.sVal = sVal;
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropShort(long propID,short *sVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_SHORT)){
-			*sVal = prop->val.sVal;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT SetPropInt(long propID,int iVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_INT)){
-			prop->val.iVal = iVal;
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropInt(long propID,int *iVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_INT)){
-			*iVal = prop->val.iVal;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT SetPropLonglong(long propID,long long llVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_LONGLONG)){
-			prop->val.llVal = llVal;
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropLonglong(long propID,long long *llVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_LONGLONG)){
-			*llVal = prop->val.llVal;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT SetPropFloat(long propID,float fVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_FLOAT)){
-			prop->val.fVal = fVal;
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropFloat(long propID,float *fVal){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_FLOAT)){
-			*fVal = prop->val.fVal;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT SetPropString(long propID,const char *pVal,long len){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_STRING)){
-			prop->val.Set(pVal,len);
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropStringLen(long propID,long *pLen){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_STRING)){
-			*pLen = prop->val.length;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropString(long propID,char *pVal,long *pLen){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_STRING)){
-			int copied = prop->val.Get(pVal,*pLen);
-			if(copied < 0){
-				return E_FAIL;
-			}
-			*pLen = copied;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT SetPropData(long propID,const void *pVal,long len){	
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_DATA)){
-			prop->val.Set(pVal,len);
-			PropValChanged(propID);
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-	HRESULT GetPropData(long propID,void *pVal,long *pLen){
-		_Property *prop = m_propSet[propID];
-		if(auxCheckProp(prop,VAR_DATA)){
-			int copied = prop->val.Get(pVal,*pLen);
-			*pLen = copied;
-			return S_OK;
-		}
-		return E_FAIL;
-	}
-
-public:
-	long GetPropCount(){
+	inline int getPropCount(){
 		return m_propSet.count;
 	}
-	_Property *getProperty(long propID){
+	inline _Property *getProperty(long propID){
 		return m_propSet[propID];
 	}
-	const char *GetPropName(long propID){
-		return NULL;
+	const char *getPropName(int propID){
+		_Property *p = getProperty(propID);
+		return p?p->name:"invalid property";
 	}
-	char GetPropType(long propID){
-		ASSERT_(propID < m_propSet.count);
-		if(propID < m_propSet.count){
-			return m_propSet[propID]->val.type;
+	template<typename T>
+	bool SetPropNumber(int propID,T value){
+		_Property *p = getProperty(propID);
+		if( p && p->setValue(value) ){
+			PropValChanged(propID);
+			return true;
 		}
-		return VAR_NULL;
+		return false;
 	}
-public:
-	short DestX(){
-		_PropPosData *pPosData = (_PropPosData *)m_propSet[UNIT_POS]->val.dataVal;
-		return pPosData->path[pPosData->len - 1].x;
+	bool SetPropData(int propID,const void *ptr,size_t len = 0){
+		_Property *p = getProperty(propID);
+		if( p && p->setValue(ptr) ){
+			PropValChanged(propID);
+			return true;
+		}
+		return false;
 	}
-	short DestY(){	
-		_PropPosData *pPosData = (_PropPosData *)m_propSet[UNIT_POS]->val.dataVal;
-		return pPosData->path[pPosData->len - 1].y;
+	bool SetPropData(int propID,const char *str,size_t len = 0){
+		_Property *p = getProperty(propID);
+		if( p && p->setValue(str,len) ){
+			PropValChanged(propID);
+			return true;
+		}
+		return false;
 	}
-public:
-	virtual void PropValChanged(int propID)=0;
-public:
+	void PropValChanged(int propID){
+		_Property *p = getProperty(propID);
+		if(p){
+			p->update++;
+			onPropValChanged(propID);
+		}
+	}
+	virtual void onPropValChanged(int propID) = 0;
+protected:
 	_PropSet m_propSet;
 };
 
-
+/*
+	高兴是种偏见,视不开心为不幸,却把快乐当成必然,
+*/
 #endif

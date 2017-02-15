@@ -617,18 +617,15 @@ end
 function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 	local bHas,changeHpResult
 	local members = fight:getMembers()[FightStand.B]
-	for _,DBID in pairs(params.DBID) do
-		local targets = FightUtils.getTargetsByDBID(members,DBID)
-		if targets and #targets > 0 then
-			if not bHas then
-				bHas = true
-				changeHpResult = {actionType = FightActionType.System,type =ScriptFightActionType.ChangeHp ,params={}}
-			end
-			for _, targetID in ipairs(targets)  do
-				local target = g_fightEntityMgr:getRole(targetID)
-				local maxHp = target:getMaxHp()
-				local changedHp = maxHp*(params.percent/100)
+	local players = fight:getMembers()[FightStand.A]
+	--玩家
+	if params.DBID == -1 then
+		bHas = true
+		changeHpResult = {actionType = FightActionType.System,type =ScriptFightActionType.ChangeHp ,params={}}
+		for _,target in pairs(players) do
+			if instanceof(target, FightPlayer) then
 				local curHp = target:getHp()
+				local changedHp = math.floor(curHp*(params.percent/100))
 				local finalHp
 				if changedHp > 0 then
 					finalHp = curHp + changedHp
@@ -643,15 +640,50 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 				end
 
 				target:setHp(finalHp)
-				local lifeState
-				if finalHp == 0 then
-					target:setLifeState(RoleLifeState.Dead)
-					lifeState = RoleLifeState.Dead
+				local targetID = target:getID()
+				table.insert(changeHpResult.params,{ID = targetID,value = changedHp})
+			end
+		end
+	--怪物
+	else
+		
+		for _,DBID in pairs(params.DBID) do
+			local targets = FightUtils.getTargetsByDBID(members,DBID)
+			if targets and #targets > 0 then
+				if not bHas then
+					bHas = true
+					changeHpResult = {actionType = FightActionType.System,type =ScriptFightActionType.ChangeHp ,params={}}
 				end
-				table.insert(changeHpResult.params,{ID = targetID,value = changedHp,lifeState = lifeState})
+				for _, targetID in ipairs(targets)  do
+					local target = g_fightEntityMgr:getRole(targetID)
+					local maxHp = target:getMaxHp()
+					local changedHp = maxHp*(params.percent/100)
+					local curHp = target:getHp()
+					local finalHp
+					if changedHp > 0 then
+						finalHp = curHp + changedHp
+						if finalHp > maxHp then
+							finalHp = maxHp
+						end
+					elseif changedHp <= 0 then
+						finalHp = curHp + changedHp
+						if finalHp < 0 then
+							finalHp = 0
+						end
+					end
+
+					target:setHp(finalHp)
+					local lifeState
+					if finalHp == 0 then
+						target:setLifeState(RoleLifeState.Dead)
+						lifeState = RoleLifeState.Dead
+					end
+					table.insert(changeHpResult.params,{ID = targetID,value = changedHp,lifeState = lifeState})
+				end
 			end
 		end
 	end
+
 	if bHas then
 		if not result then
 			FightUtils.insertFightResult(fight,changeHpResult,bInserted)

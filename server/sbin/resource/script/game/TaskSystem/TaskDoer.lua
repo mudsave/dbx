@@ -61,7 +61,6 @@ end
 
 -- 接任务
 function TaskDoer:doRecetiveTask(player, taskID, GM)
-
 	local msgID = nil
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	--先判断有没有接过该任务
@@ -326,19 +325,7 @@ function TaskDoer:updateNpcHeader(player, npc)
 	local npcStatue = nil
 	for _, taskID in ipairs(g_taskProvideNpcs[npc:getID()] or {}) do
 		local task = taskHandler:getTask(taskID)
-		if task then
-			if NormalTaskDB[taskID] then
-				if task:getStatus() == TaskStatus.Active then
-					npcStatue = DialogIcon.Task3
-				else
-					npcStatue = nil
-				end
-				break
-			elseif LoopTaskDB[taskID] then
-				npcStatue = DialogIcon.Task3
-				break
-			end
-		else
+		if not task then
 			if TaskCondition.normalTask(player, taskID) then	
 				if NormalTaskDB[taskID].taskType2 == TaskType2.Main then
 					npcStatue = DialogIcon.Task1
@@ -357,9 +344,14 @@ function TaskDoer:updateNpcHeader(player, npc)
 
 	for _, taskID in pairs(g_taskRecetiveNpcs[npc:getID()] or {}) do
 		local task = taskHandler:getTask(taskID)
-		if task and task:getStatus() == TaskStatus.Done then
-			npcStatue = DialogIcon.Task4
-			break
+		if task then
+			if task:getStatus() == TaskStatus.Done then
+				npcStatue = DialogIcon.Task4
+				break
+			elseif task:getStatus() == TaskStatus.Active then
+				npcStatue = DialogIcon.Task3
+				break
+			end
 		end
 	end
 	g_taskSystem:onUpdateNpcStatue(player, npc:getID(), npcStatue)
@@ -430,6 +422,8 @@ function TaskDoer:notifyTaskSystem(playerID, level, fromDB)
 		end
 	end
 	
+	-- 等级任务目标
+	TaskCallBack.onAttainLevel(playerID, level)
 	-- 跟新NPC头顶图标
 	local scene = player:getScene()
 	if scene then

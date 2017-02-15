@@ -90,15 +90,15 @@ public:
 public:
 	void flushMessage(const AppMsg* pMsg);
 	bool bcAMessage(const AppMsg* pMsg, bool pub = true);
-	bool bcAMessageToGroup(const AppMsg* pMsg,bool toSelf = true);
+	bool bcAMessageToGroup(const AppMsg* pMsg,bool toSelf = true,handle hExcept=0);
 
 public:
-	bool bcMyEnter();
 	bool bcSceneSwitch();
 	bool bcEntityEnter(handle hand);
 	bool bcEntityExit(handle* exitList, long count);
 	bool bcPropUpdates(handle hSendTo=0);
-	bool bcAllProps(handle hSendTo);
+	bool bcPropBind(handle hTarget);
+	bool bcPropUnbind(handle hTarget);
 
 public:
 	bool enterScene(CoScene* pScene, short x, short y);
@@ -111,7 +111,7 @@ private:
 	void PosChanged(GridVct& old);
 
 public:
-	virtual void PropValChanged(int propId);
+	virtual void onPropValChanged(int propId);
 
 	//path relation function
 public:

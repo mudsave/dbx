@@ -182,7 +182,7 @@ end
 function DialogAction:doRecetiveTasks(player, param)
 	local taskIDs = param.taskIDs
 	for _,taskID in pairs(taskIDs) do
-		g_taskDoer:doRecetiveTask(player, param.taskID)
+		g_taskDoer:doRecetiveTask(player,taskID)
 	end
 end
 
@@ -454,6 +454,7 @@ function DialogAction:doCreateFaction(player, param, npcID)
 end
 
 -- 捕宠战斗
+--[[
 function DialogAction:doEnterCatchPetFight(player, param, npcID)
 	local playerList = {}
 	local teamHandler = player:getHandler(HandlerDef_Team)
@@ -491,7 +492,7 @@ function DialogAction:doEnterCatchPetFight(player, param, npcID)
 		end
 	end
 end
-
+--]]
 --进入抓宠地图  (1025001 --消耗品目前都用驱魔香代替)                     
 function DialogAction:doEnterCatchPetMap(player, param, npcID)
 	g_catchPetMgr:enterCatchPet(player, param)
@@ -666,8 +667,9 @@ function DialogAction:doEnterBeastFight(player, param, npcID)
 			print("进入脚本战斗战斗，scriptID，bPass",scriptID,bPass)
 			local curNpc = g_entityMgr:getNpc(npcID)
 			if bPass then
+				print("curNpc:isFighting()",curNpc:isFighting())
 				if not curNpc:isFighting() then
-					g_beastBlessMgr:addBeastFightFlagList(scriptID,curNpc)
+					g_beastBlessMgr:addBeastFightFlagList(player:getID(),curNpc)
 					g_fightMgr:startScriptFight(finalList, scriptID,  param.mapID ,FightBussinessType.Task)
 				end
 			end

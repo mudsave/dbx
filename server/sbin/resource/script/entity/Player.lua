@@ -20,8 +20,24 @@ function Player:__init(roleId, gatewayId, hClientLink, hGateLink)
 end
 
 function Player:__release()
+	self._accountID		= nil
+	self._dbId			= nil
+	self._gatewayId		= nil
+	self._hClientLink	= nil
+	self._hGateLink		= nil
+	self._status		= nil
+	self._fightID		= nil
+	self._version		= nil
+	self._isClosedInfight = nil
+
 	self:__release_logic()
 	self:__release_basic()
+	for htype,handler in pairs(self._handlers or {}) do
+		release(handler)
+		self._handlers[htype] = nil
+	end
+	self._handlers = nil
+
 end
 
 function Player:setAccountID(id)

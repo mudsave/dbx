@@ -11,9 +11,9 @@ function PractiseManager:__release()
 end
 
 function PractiseManager:update(period)
-	if period == "day" then 
 		for playerID, player in pairs(g_entityMgr:getPlayers()) do
 			local storeXp = player:getStoreXp()
+			local xpValue = 0
 			-- 更新存储经验
 			for _,dataDB in pairs(tActivityPageDB) do
 				if schoolType == dataDB.SchoolType  or not dataDB.SchoolType then
@@ -22,17 +22,46 @@ function PractiseManager:update(period)
 						local loopTask = LoopTaskDB[taskID]
 						if loopTask then
 							local levelLimit = loopTask.level
-							if levelLimit[1] <= myLevel then 
-								local countRing = taskHandler:getCountRing(taskID)
-								if countRing <= loopTask.loop then
-									storeXp = storeXp + countRing*dataDB.PracticeReword
+							local type = loopTask.taskType2
+							if levelLimit[1] <= myLevel and type ~= TaskType2.Heaven then 
+								local countRing = taskHandler:getCurrentRing(taskID)
+								if loopTask.loop then
+									local loop = loopTask.loop
+									local periodTime = loopTask.period
+									if period == "day" and periodTime == TaskPeriod.day then 
+										for index = countRing,loop do
+											local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
+											print("xpFuncName:",xpFuncName)
+											if xpFuncName then
+												xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
+												print("xpValue:",xpValue)
+											end
+										end
+									elseif period == "week" and periodTime == TaskPeriod.week then
+										for index = countRing,loop do
+											local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
+											print("xpFuncName:",xpFuncName)
+											if xpFuncName then
+												xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
+												print("xpValue:",xpValue)
+											end
+										end
+									end
 								end
 							end
 						end
 					end
 				end
-				player:setStoreXp(storeXp)
+				if xpValue > 0 then 
+				xpValue = player:setStoreXp(storeXp + xpValue)
+				g_eventMgr:fireRemoteEvent(
+							Event.getEvent(
+							ClientEvents_SC_PromptMsg,eventGroup_Practise,2,xpValue
+					),
+					player
+				)
 				end
+		
 			-- 更新修行值
 			-- 把活力值重新赋值
 			player:setPractise(0)
@@ -53,41 +82,73 @@ function PractiseManager:loadPractiseFromDB(player, recordList)
 	local schoolType = player:getSchool()
 	local myLevel =  player:getLevel()
 	local storeXp = 0
+	local period = 0
 	for _,data in pairs(recordList) do
 		if data then
-			storeXp = data.storeXp
+		storeXp = storeXp + data.storeXp
+		period = data.recordTime
 			if not time.isSameDay(data.recordTime) then
 				-- 更新到0
 				player:setPractise(0)
-				-- 更新存储经验 公式更新 活动里没有完成的任务全部增加到存储经验里
-				for _,dataDB in pairs(tActivityPageDB) do
-					if schoolType == dataDB.SchoolType  or not dataDB.SchoolType then
-						local taskID = dataDB.TaskID
-						if taskID then
-							local loopTask = LoopTaskDB[taskID]
-							if loopTask then
-								local levelLimit = loopTask.level
-								if levelLimit[1] <= myLevel then 
-									local countRing = taskHandler:getCountRing(taskID)
-									if countRing <= loopTask.loop then
-										storeXp = storeXp + countRing*dataDB.PracticeReword
+			else	
+				-- 修行值和宝箱
+				player:setPractise(data.practise)
+				if practiseHandler then
+					practiseHandler:setTabBoxState(data)
+				end
+			end
+		end
+	end
+	local xpValue = 0
+	-- 更新存储经验
+	for _,dataDB in pairs(tActivityPageDB) do
+		if schoolType == dataDB.SchoolType  or not dataDB.SchoolType then
+			local taskID = dataDB.TaskID
+			if taskID then
+				local loopTask = LoopTaskDB[taskID]
+				if loopTask then
+					local levelLimit = loopTask.level
+					local type = loopTask.taskType2
+					if levelLimit[1] <= myLevel and type ~= TaskType2.Heaven then  
+						local countRing = taskHandler:getCurrentRing(taskID)
+						if loopTask.loop then
+							local loop = loopTask.loop
+							local periodTime = loopTask.period
+							if not time.isSameDay(period) and periodTime == TaskPeriod.day then 
+								for index = countRing,loop do
+									local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
+									print("xpFuncName:",xpFuncName)
+									if xpFuncName then
+										xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
+										print("xpValue:",xpValue)
+									end
+								end
+							elseif  not time.isSameWeek(period)  and periodTime == TaskPeriod.week then
+								for index = countRing,loop do
+									local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
+									print("xpFuncName:",xpFuncName)
+									if xpFuncName then
+										xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
+										print("xpValue:",xpValue)
 									end
 								end
 							end
 						end
 					end
-					player:setStoreXp(storeXp)
-				end	
-			else	
-				player:setPractise(data.practise)
-				player:setStoreXp(data.storeXp)
-				if practiseHandler then
-					practiseHandler:setTabBoxState(data)
 				end
 			end
-			player:setPractiseCount(data.practiseCount)
 		end
 	end
+	if xpValue > 0 then
+		xpValue = player:setStoreXp(storeXp + xpValue)
+		g_eventMgr:fireRemoteEvent(
+					Event.getEvent(
+					ClientEvents_SC_PromptMsg,eventGroup_Practise,2,xpValue
+			),
+			player
+		)
+	end
+
 	player:flushPropBatch()
 end
 

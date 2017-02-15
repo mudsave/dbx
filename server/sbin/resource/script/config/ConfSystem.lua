@@ -90,4 +90,5 @@ function loadSystem()
 	-- 瑞兽降临活动
 	g_beastBlessMgr		= BeastBlessManager.getInstance()
 	g_goldHuntMgr		= GoldHuntManager.getInstance()
+	g_catchPetMgr		= CatchPetManager.getInstance()
 end

@@ -15,6 +15,7 @@ function PatrolNpc:__init()
 	self.ownerID = nil
 	self.isMove = false
 	self.startTime = nil
+	self.bindPetID = nil
 end
 
 function PatrolNpc:__release()
@@ -24,6 +25,7 @@ function PatrolNpc:__release()
 	self.ownerID = nil
 	self.isMove = nil
 	self.startTime = nil
+	self.bindPetID = nil
 end
 
 function PatrolNpc:setCatchPet(catchPet)
@@ -66,7 +68,7 @@ function PatrolNpc:setRadius(radius)
 	self.radius = radius
 end
 
--- 移动停止注册一个5秒定时器
+-- 此时设置四秒时间让NPC移动
 function PatrolNpc:moveNext()
 	self.isMove = false
 	local nowTime = os.time()
@@ -92,4 +94,12 @@ end
 
 function PatrolNpc:getMoveState()
 	return self.isMove
+end
+
+function PatrolNpc:setBindPetID(petID)
+	self.bindPetID = petID
+end
+
+function PatrolNpc:getBindPetID()
+	return self.bindPetID
 end

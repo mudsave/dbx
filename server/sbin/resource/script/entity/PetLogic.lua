@@ -155,16 +155,16 @@ function Pet:onAdded(player)
 	end
 	self:setOwner(player)
 	self:setPetStatus(self._status)
+	self._status = PetStatus.Rest
 
+	attachEntity(self:getPeer(),player:getID())
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(
 			PetEvent_SC_PetJoined,self:getID(),self:getBirth()
 		),player
 	)
-	self:flushPropBatch(player,true)
 
 	self:getHandler(HandlerDef_PetSkill):sendFull(player)
-	toDo "添加宠物自动加点发送"
 	self:getHandler(HandlerDef_AutoPoint):sendToClient()
 	if self:isNew() then
 		LuaDBAccess.SavePet(self)
@@ -176,6 +176,7 @@ end
 -- 被移除后处理
 function Pet:onRemoved(player)
 	self:setVisible(false)
+	detachEntity(self:getPeer(),player:getID())
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(PetEvent_SC_PetLeaved,self:getID()),player
 	)

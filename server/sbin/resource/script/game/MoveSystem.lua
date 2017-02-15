@@ -42,80 +42,64 @@ local function dirToPath(dirPath, x, y)
 	return paths
 end
 
-local function correctFollowMovePath(player, followPeer, curIdx)
-	local mapID = player:getScene():getMapID()
-	local mapType = mapDB[mapID].mapType
-	local followHandler = player:getHandler(HandlerDef_Follow)
-	if followHandler then
-		local followList = followHandler:getMembers()
-		for _, member in pairs (followList) do
-			if member:isVisible() then
-				if mapType == MapType.Task or mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
-					local memPeer = member:getPeer()
-					curIdx = memPeer:correctFollowMovePath(curIdx, followPeer:getPathLen())
-					followPeer = memPeer
-				end
-			end
-		end
-	
-		local ectypeFollowList = followHandler:getEctypeMembers()
-		for _, member in pairs(ectypeFollowList) do
-			if member:isVisible() then
-				if member:getTaskType() == TaskType2.Copy then
-					local memPeer = member:getPeer()
-					curIdx = memPeer:correctFollowMovePath(curIdx, followPeer:getPathLen())
-					followPeer = memPeer
-				end
-			end
-		end
-	end
-	
-	if player:getEntityType() == eClsTypePlayer then
-		local petID = player:getFollowPetID()
-		if petID then
-			local pet = g_entityMgr:getPet(petID)
-			if pet and pet:isVisible() then
-				pet:getPeer():correctFollowMovePath(curIdx, followPeer:getPathLen())
-			end
-		end
-	end
-end
-
-local function correctMovePath(roleID, x, y)
+function correctMovePath(roleID,x,y)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	if not player then
-		return
+		return	
 	end
-	local peer = player:getPeer()
-	local curIdx = peer:correctMovePath(x, y)
+	local peer =  player:getPeer()
+	local curIdx = peer:correctMovePath(x,y)
+
 	if curIdx == -1 then
 		return
 	end
-
-	local followPeer = peer
+	
+	local followedEntity = peer
 	local teamHandler = player:getHandler(HandlerDef_Team)
-	if teamHandler then
-		local teamID = teamHandler:getTeamID()
-		local team = g_teamMgr:getTeam(teamID)
-		if team and team:getLeaderID() == player:getID() then
-			local teamList = team:getMemberList()
-			if teamList and table.size(teamList) > 1 then
-				for _, memberInfo in pairs(teamList) do
-					if memberInfo.memberState == MemberState.Follow then
-						local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
-						curIdx = member:getPeer():correctFollowMovePath(curIdx, followPeer:getPathLen())
-						followPeer = member:getPeer()
-					end
+	local teamID = teamHandler:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	if team and team:getLeaderID() == player:getID() then
+		local teamList = team:getMemberList()
+		if teamList and table.size(teamList) > 1 then --加个是队长判断	
+			for _,memberInfo in pairs(teamList) do
+				if memberInfo.memberState == MemberState.Follow then
+					local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+					curIdx = member:getPeer():correctFollowMovePath(curIdx, followedEntity:getPathLen())
+					followedEntity = member:getPeer()
 				end
 			end
 		end
 	end
+
+	local mapID = player:getScene():getMapID()
+	local followHandler = player:getHandler(HandlerDef_Follow)
+	local followList = followHandler:getMembers()
+	for memberID, member in pairs(followList) do	
+		if member:isVisible() then
+			if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+				curIdx = member:getPeer():correctFollowMovePath(curIdx, followedEntity:getPathLen())
+				followedEntity = member:getPeer()
+			end
+		end
+	end
+
+	local ectypeFollowList = followHandler:getEctypeMembers()
+	for memberID, member in pairs(ectypeFollowList) do	
+		if member:isVisible() then
+			if member:getTaskType() == TaskType2.Copy then
+				curIdx = member:getPeer():correctFollowMovePath(curIdx, followedEntity:getPathLen())
+				followedEntity = member:getPeer()
+			end
+		end
+	end
 	
-	--self follow correct
-	correctFollowMovePath(player, followPeer, curIdx)
-	
-	-- team member follow correct
-	-- todo now is not need
+	local petID = player:getFollowPetID()
+	if petID then
+		local pet = g_entityMgr:getPet(petID)
+		if pet and pet:isVisible() then
+			pet:getPeer():correctFollowMovePath(curIdx, followedEntity:getPathLen())
+		end
+	end
 end
 
 MoveSystem = class(EventSetDoer, Singleton)

@@ -37,6 +37,7 @@ function BroadCastSystem:onRemakeEquip( event )
 end
 
 function BroadCastSystem:onUpgradeMounts( event )
+
     local params = event:getParams()
     local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4])
     RemoteEventProxy.broadcast(event_DigTreasure)

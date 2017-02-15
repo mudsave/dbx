@@ -5,7 +5,7 @@
 local math_floor		= math.floor
 local math_min			= math.min
 local table_concat		= table.concat
-local MaxPhasePoint		= 35	--在一个相性上最多分配的点数
+local MaxPhasePoint		= 35	-- 在一个相性上最多分配的点数
 local defaultPoint		= 0		-- 添加一个默认的自动加点的id
 
 -- 标记存数据库的数据
@@ -13,6 +13,7 @@ local flag = {
 	[eClsTypePlayer] = true,
 	[eClsTypePet]	 = true,
 }
+
 -- 系统分配方案
 local PreDefineDistributions = {
 	[eClsTypePlayer] ={
@@ -78,12 +79,12 @@ local DBPhaseNames = {
 local DefOrder = {0,0,0}
 
 function AutoPointHandler:__init(entity)
-	self.entity			= entity								-- 实体
-	self.auto_attr		= false									-- 是否自动分配属性
-	self.auto_phase		= false									-- 是否自动分配相性
-	self.order			= DefOrder								-- 相性属性分配顺序
-	self.planID			= self.entity:getEntityType()			-- 属性点分配方案
-	self.distribution	= nil									-- 每个属性的分配比例，总值不能超过五
+	self.entity			= entity						-- 实体
+	self.auto_attr		= false							-- 是否自动分配属性
+	self.auto_phase		= false							-- 是否自动分配相性
+	self.order			= DefOrder						-- 相性属性分配顺序
+	self.planID			= self.entity:getEntityType()	-- 属性点分配方案
+	self.distribution	= nil							-- 每个属性的分配比例，总值不能超过五
 end
 
 -- 从数据库中加载
@@ -189,13 +190,13 @@ function AutoPointHandler:distibuteAttrPoints()
 	local config = EntityConfig[entity:getEntityType()]
 	if not config then return end
 
-	local basePointAttr = config.basePointAttr	--第一个加点属性的属性名称<<属性名称是数字
-	local freePointAttr = config.freeAttrPoint	--自由属性点的属性名称
+	local basePointAttr = config.basePointAttr	-- 第一个加点属性的属性名称<<属性名称是数字
+	local freePointAttr = config.freeAttrPoint	-- 自由属性点的属性名称
 
 	local totalPoint = entity:getAttrValue(freePointAttr)
-	local freePoint = totalPoint	--剩余属性点
-	local _index,_value = 1,0		--最大值的索引和最大值
-	local allocted = false			--属性点是否已经分配
+	local freePoint = totalPoint	-- 剩余属性点
+	local _index,_value = 1,0		-- 最大值的索引和最大值
+	local allocted = false			-- 属性点是否已经分配
 	local distribution = self.distribution
 	for index = 1,5 do
 		local value = distribution[index]
@@ -211,7 +212,7 @@ function AutoPointHandler:distibuteAttrPoints()
 			allocted = true
 		end
 	end
-	if freePoint > 0 then	--将剩余的点数加到最多的属性上
+	if freePoint > 0 then	-- 将剩余的点数加到最多的属性上
 		entity:addAttrValue(basePointAttr + _index - 1,freePoint)
 		allocted = true
 	end
@@ -234,7 +235,7 @@ function AutoPointHandler:distibutePhasePoints()
 
 	local freePoint = entity:getAttrValue(pntAttr)
 	if freePoint < 1 then
-		print "没有点数"
+		print "自动分配相性点:没有多余点数"
 		return
 	end
 	
@@ -243,9 +244,8 @@ function AutoPointHandler:distibutePhasePoints()
 	for index = 1,3 do
 		local attrName = order[index]
 		if attrName and attrName > 0 then
-			local points = entity:getAttrValue(attrName)
 			local point2add = math_min(
-				freePoint,MaxPhasePoint - points
+				freePoint,MaxPhasePoint - entity:getAttrValue(attrName)
 			)
 			if point2add > 0 then
 				entity:addAttrValue(attrName,point2add)
@@ -320,7 +320,7 @@ function AutoPointHandler:setOrder(order)
 	return true
 end
 
---发送属性点分配方案
+-- 发送属性点分配方案
 function AutoPointHandler:sendDistribution(player)
 	local entity = self.entity   
 	local eType = entity:getEntityType()
@@ -328,9 +328,15 @@ function AutoPointHandler:sendDistribution(player)
 	local event
 
 	if flag[planID] then
-		event = Event.getEvent(AutoPointEvent_SC_DistributionComfirmed,entity:getID(),planID,self:isAutoAttr())
+		event = Event.getEvent(
+			AutoPointEvent_SC_DistributionComfirmed,
+			entity:getID(),planID,self:isAutoAttr()
+		)
 	else
-		event = Event.getEvent(AutoPointEvent_SC_DistributionComfirmed,entity:getID(),self.distribution,self:isAutoAttr())
+		event = Event.getEvent(
+			AutoPointEvent_SC_DistributionComfirmed,
+			entity:getID(),self.distribution,self:isAutoAttr()
+		)
 	end
 	g_eventMgr:fireRemoteEvent(event, player)
 
@@ -343,16 +349,20 @@ function AutoPointHandler:sendDistribution(player)
 	end
 end
 
---发送相性点分配顺序
+-- 发送相性点分配顺序
 function AutoPointHandler:sendOrder(player)
 	local entity = self.entity
 	if eClsTypePlayer == entity:getEntityType() then
-		local event_order = Event.getEvent(AutoPointEvent_SC_OrderComfirmed,entity:getID(),self.order,self:isAutoPhase())
-		g_eventMgr:fireRemoteEvent(event_order, player)
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(
+				AutoPointEvent_SC_OrderComfirmed,
+				entity:getID(),self.order,self:isAutoPhase()
+			), player
+		 )
 	end
 end
 
---发送到客户端
+-- 发送到客户端
 function AutoPointHandler:sendToClient(player)
 	if not player then
 		local entity = self.entity
@@ -370,7 +380,7 @@ function AutoPointHandler:sendToClient(player)
 	self:sendOrder(player)
 end
 
---属性分配完毕后的操作
+-- 属性分配完毕后的操作
 function AutoPointHandler:onAttrAllocated()
 	local entity = self.entity
 	local eType = entity:getEntityType()

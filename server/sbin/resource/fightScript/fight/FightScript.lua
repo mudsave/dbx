@@ -220,6 +220,53 @@ function FightScript:computeConditionsEx4Dead(conditions,role)
 			return bPass
 end
 
+function FightScript:computeConditionsEx4MonsterCatched(conditions,monsterDBID)
+
+			local bPass = false
+			local isAnd = conditions.isAnd
+			local count = conditions.count or 0xFFFF
+
+			for _,condition in ipairs(conditions) do
+				if condition.type == ScriptFightConditionType.IDExist  then
+					 bPass = FightSystemActionChecker.isIDExist(self,nil,condition)
+
+				elseif condition.type == ScriptFightConditionType.RoundCount  then
+					bPass = FightSystemActionChecker.isRoundCount(self,nil,condition)
+
+				elseif condition.type == ScriptFightConditionType.RoundInterval  then
+					bPass = FightSystemActionChecker.isRoundInterval(self,nil,condition)
+
+				elseif condition.type == ScriptFightConditionType.LiveNum  then
+					bPass = FightSystemActionChecker.isLiveNum(self,nil,condition)
+
+				elseif condition.type == ScriptFightConditionType.FightPeriod  then
+					bPass = FightSystemActionChecker.isFightPeriod(self,os.time()-self._startTime,condition)
+				elseif condition.type == ScriptFightConditionType.BuffStatus  then
+					bPass = FightSystemActionChecker.isBuffStatus(self,nil,condition)
+				elseif condition.type == ScriptFightConditionType.IsAttacked  then
+					bPass = FightSystemActionChecker.isAttacked(self,nil,condition)
+				elseif condition.type == ScriptFightConditionType.AttrValue  then
+					bPass = FightSystemActionChecker.AttrValueChanged(self,nil,condition)
+				elseif condition.type == ScriptFightConditionType.PlayerDead  then
+					bPass = FightSystemActionChecker.isPlayerDead(self,nil,condition)
+				elseif condition.type == ScriptFightConditionType.MonsterCatched  then
+					bPass = FightSystemActionChecker.isMonsterCatched(self, monsterDBID, condition)
+				end
+				print("bPass=",bPass)
+				if isAnd then
+					if not bPass then
+						break
+					end
+				else
+					if bPass then
+						break
+					end
+				end
+			end
+			bPass = bPass and ( (self._triggerCount[conditions] or 0 ) < (count or 1) )
+			return bPass
+end
+
 function FightScript:_check_doActions(actionsInfo,atStart,atFin)
 	for _,actionInfo in ipairs(actionsInfo) do
 			local conditions = actionInfo.condition
@@ -450,6 +497,40 @@ function FightScript:onRoleDead(role)
 							local params = action.params
 							self:_doSystemAction(type1,params)
 					end
+				end
+			end
+		end
+	end
+end
+
+local function hasCatchCondition(conditions)
+		for _, condition in ipairs(conditions) do
+			if condition.type == ScriptFightConditionType.MonsterCatched then
+				return true
+			end
+		end
+		return false
+end
+
+--处理怪物被捕捉时
+function FightScript:onMonsterCatched(monsterDBID)
+	local actions = self._scriptPrototype.systemActions
+	if not actions then
+		return
+	end
+	for _,info in ipairs(actions) do
+		local conditions = info.condition
+		if hasCatchCondition(conditions) then
+			local bPass = self:computeConditionsEx4MonsterCatched(conditions,monsterDBID)
+			if bPass then
+				self._triggerCount[conditions] = (self._triggerCount[conditions] or 0) + 1
+				local curResultIndex = self:getCurResultIndex()
+				local nextIndex = curResultIndex + 1
+				self:setCurResultIndex(nextIndex)
+				for _, action in ipairs(info.actions) do
+						local type1 = action.type
+						local params = action.params
+						self:_doSystemAction(type1,params)
 				end
 			end
 		end

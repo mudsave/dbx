@@ -41,22 +41,22 @@ function Triggers.finishTask(roleID, param, task, fromDB)
 	end
 	local player = g_entityMgr:getPlayerByID(roleID)
 	player:getHandler(HandlerDef_Task):finishTaskByID(task:getID())
-	local RecetiveTaskID = nil
-	if param.RecetiveTaskID then
-		if type(param.RecetiveTaskID) == "number" then
-			RecetiveTaskID = param.RecetiveTaskID
-		elseif type(param.RecetiveTaskID) == "table" then
-			for _,taskID in pairs(param.RecetiveTaskID) do
+	local recetiveTaskID = nil
+	if param.recetiveTaskID then
+		if type(param.recetiveTaskID) == "number" then
+			recetiveTaskID = param.recetiveTaskID
+		elseif type(param.recetiveTaskID) == "table" then
+			for _,taskID in pairs(param.recetiveTaskID) do
 				if TaskCondition.normalTask(player, taskID) then
-					RecetiveTaskID = taskID
+					recetiveTaskID = taskID
 					break
 				end
 			end
 		end
 		
 	end
-	if RecetiveTaskID then
-		g_taskDoer:doRecetiveTask(player, RecetiveTaskID)
+	if recetiveTaskID then
+		g_taskDoer:doRecetiveTask(player, recetiveTaskID)
 	end
 end
 
@@ -88,6 +88,10 @@ end
 function Triggers.getRide(roleID, param, task, fromDB)
 	if fromDB then
 		return
+	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	for index = 1, param.count do
+		g_rideMgr:addRide(player, param.rideID)
 	end
 end
 

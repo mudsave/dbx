@@ -5,105 +5,76 @@
 #include "lindef.h"
 #include "vsdef.h"
 #include "UnitConfig.h"
-#include "LuaFunctor.h"
 
-#define auxCheckValidSet(ss,cls) (assert(cls>=0 && cls < MAX_CLASS_TYPE),ss[cls])
-#define auxStrEquals(s1,s2) (strcmp(s1,s2)==0)
-#define auxAddProperty(propID,...) ASSERT_(addProperty(__VA_ARGS__) == propID)
+#define CheckValidSet(list,index) ( (index < MAX_CLASS_TYPE && index >= 0) ? list + index : 0 )
+#define StrEquals(_1,_2) ( strcmp( _1 , _2 ) == 0 )
+#define AddProperty(propID,...) ASSERT_(addProperty(__VA_ARGS__) == propID)
 #define PropAllocSize 64
-#define IdAllocSize 32
-
-CUnitConfig::CUnitConfig(){
-}
 
 CUnitConfig &CUnitConfig::Instance(){
 	static CUnitConfig instance;
 	return instance;
 }
 
-bool CUnitConfig::Init(lua_State *L){
-	bool bSuccess = LuaFunctor<>::Call(L,"loadUnitConfig");
-	if(!bSuccess){
-		TRACE1_L0("CUnitConfig::Init() error:%s\n",LuaFunctor<>::getLastError());
+CUnitConfig::CUnitConfig(){
+	for(int i=0;i<MAX_CLASS_TYPE;i++){
+		AddProperty(UNIT_STATUS,     i,"BYTE",	"0",	Public,	Sync,	"UNIT_STATUS");
+		AddProperty(UNIT_POS,        i,"POSDATA", "0",	Public,	Sync,	"UNIT_POS");
+		AddProperty(UNIT_MOVE_SPEED, i,"SHORT",  "40",	Public,	Sync,	"UNIT_MOVE_SPEED");
 	}
-	return bSuccess;
+}
+
+CUnitConfig::~CUnitConfig(){
+	for(int i=0;i<MAX_CLASS_TYPE;i++){
+		_PropSet *set = m_propSets + i;
+		for(int id = 0;id < set->count;id++){
+			_Property *p = (*set)[id];
+			if(p->name){
+				delete[] (char *)p->name;
+			}
+		}
+	}
 }
 
 bool CUnitConfig::CopyPropSet(int cls,_PropSet &out){
-	_PropSet &set = auxCheckValidSet(m_propSets,cls);
-	long count = set.count;
-	ASSERT_(set.p && count >= 0);
-	if(!set.p || count < 1){
+	_PropSet *set = CheckValidSet(m_propSets,cls);
+	if( !set || set->count < 1 || !set->p ){
+		TRACE1_L0("[CUnitConfig::CopyPropSet] 出错:%d对应的同步集合模板无效\n",cls);
 		return false;
 	}
 	if(out.p){
 		delete []out.p;
 	}
 
+	int count = set->count;
 	out.p = new _Property[count];
 	out.count = count;
 
 	for(int i=0;i<count;i++){
-		out.p[i] = set.p[i];
+		*( out[i] ) = *( *set )[i];
 	}
 
 	return true;
 }
 
-char CUnitConfig::GetPropType(int cls,int propID){
-	_PropSet &set = auxCheckValidSet(m_propSets,cls);
-	_Property *p = set[propID];
-	return p->val.type;
-}
 
-const _RefList& CUnitConfig::GetPublicProps(int cls){
-	ASSERT_(cls>=0 && cls<MAX_CLASS_TYPE);
-	return m_refLists[cls];
-}
-
-void CUnitConfig::initPropSet(int cls){
-	_PropSet &set = auxCheckValidSet(m_propSets,cls);
-	if(set.p){
-		delete[] set.p;
+int CUnitConfig::addProperty(int cls,const char *szType,const char *szDef,int bPub,int bSync,const char *szName){
+	_PropSet *set = CheckValidSet(m_propSets,cls);
+	if(!set){
+		TRACE1_L0("CUnitConfig::addProperty 出错:无效的同步集合%d\n",cls);
+		return -1;
 	}
-	set.count = 0;
 
-	_RefList &pset = m_refLists[cls];
-	if(pset.p){
-		delete[] pset.p;
-	}
-	pset.count = 0;
-
-	addSharedProps(cls);
-}
-
-void CUnitConfig::addPublicProp(int cls,int propID){
-	_RefList &set = m_refLists[cls];
-	if(0 == set.count%IdAllocSize){
-		BYTE *p = new BYTE[(set.count / IdAllocSize + 1) * IdAllocSize];
-		if(set.p){
-			memcpy(p,set.p,set.count);
-			delete[] set.p;
-		}
-		set.p = p;
-	}
-	set.p[set.count++] = (BYTE)propID;
-}
-
-int CUnitConfig::addProperty(int cls,const char *type,const char *def,int bPub,int bSync){
-	_PropSet &set = auxCheckValidSet(m_propSets,cls);
-	ASSERT_(type);
-
-	int count = set.count;
-	if(0 == count%PropAllocSize){
+	int count = set->count;
+	if(0 == count % PropAllocSize){
 		_Property *p = new _Property[ (count / PropAllocSize + 1) * PropAllocSize ];
-		if(set.p){
+		if(set->p){
 			for(int i=0;i<count;i++){
-				p[i] = set.p[i];
+				p[ i ] = set->p[i];
 			}
-			delete[] set.p;
+			delete[] set->p;
 		}
-		set.p = p;
+		set->p = p;
 	}
 
 	char		ptype	= VAR_NULL;
@@ -111,27 +82,27 @@ int CUnitConfig::addProperty(int cls,const char *type,const char *def,int bPub,i
 	size_t		udlen	= 0;
 
 	do{
-		if(auxStrEquals(type,"INT")){
+		if(StrEquals(szType,"INT")){
 			ptype = VAR_INT;
 			break;
 		}
-		if(auxStrEquals(type,"STRING")){
+		if(StrEquals(szType,"STRING")){
 			ptype = VAR_STRING;
 			break;
 		}
-		if(auxStrEquals(type,"SHORT")){
+		if(StrEquals(szType,"SHORT")){
 			ptype = VAR_SHORT;
 			break;
 		}
-		if(auxStrEquals(type,"FLOAT")){
+		if(StrEquals(szType,"FLOAT")){
 			ptype = VAR_FLOAT;
 			break;
 		}
-		if(auxStrEquals(type,"BYTE")){
+		if(StrEquals(szType,"BYTE")){
 			ptype = VAR_BYTE;
 			break;
 		}
-		if(auxStrEquals(type,"POSDATA")){
+		if(StrEquals(szType,"POSDATA")){
 			static char defPosData[PosDataLen];
 			static bool inited = false;
 			if(!inited){
@@ -144,65 +115,43 @@ int CUnitConfig::addProperty(int cls,const char *type,const char *def,int bPub,i
 			udlen	= PosDataLen;
 			break;
 		}
-		if(auxStrEquals(type,"LONGLONG")){
+		if(StrEquals(szType,"LONGLONG")){
 			ptype = VAR_LONGLONG;
 			break;
 		}
-		ASSERT_(0);
+		return -2;
 	}while(false);
 
-	set.count = count + 1;
-	_Property *prop	= set[count];
-	prop->val.type	= ptype;
-	switch(ptype){
-		case VAR_NULL:
-			break;
-		case VAR_BYTE:
-			prop->val.cVal = atoi(def);
-			break;
-		case VAR_SHORT:
-			prop->val.sVal = atoi(def);
-			break;
-		case VAR_INT:
-			prop->val.iVal = atoi(def);
-			break;
-		case VAR_LONGLONG:
-			prop->val.llVal = atoi(def);
-			break;
-		case VAR_STRING:
-			prop->val.Set(def);
-			break;
-		case VAR_FLOAT:
-			prop->val.fVal = (float)atof(def);
-			break;
-		case VAR_DATA:
-			prop->val.Set(ud,udlen);
-			//do nothing?i think there should be some memory alloc...
-			break;
-	}
+	_Property *prop	= set->p + count;
 
-	prop->radius	= 0;
+	prop->type(ptype);
+	prop->radius	= bPub ? 1 : 0;
+	prop->sync		= bSync ? 1 : 0;
+	prop->name		= strcpy( new char[strlen(szName) + 1],szName );
 
-	if(bPub > 0){//whether it be a public property
-		prop->radius = 1;
-		addPublicProp(cls,count);
-	}
-	
-	prop->sync = bSync?1:0;
+	do {
+		if(VAR_NULL < ptype && VAR_FLOAT > ptype ){
+			prop->setValue(atoi(szDef));
+			break;
+		}
+		if( VAR_FLOAT == ptype ){
+			prop->setValue(atof(szDef));
+			break;
+		}
+		if( VAR_STRING == ptype ){
+			prop->setValue(szDef);
+			break;
+		}
+		if( VAR_DATA == ptype ){
+			prop->setValue(ud,udlen);
+			break;
+		}
+		return -2;
+	}while(false);
+
+	set->count = count + 1;
+
+	// 返回索引作为ID
 	return count;
-}
-
-/*
- * 所有C++实体共有的PROP定义
-*/
-void CUnitConfig::addSharedProps(int cls){
-	ASSERT_(cls >= 0 && cls < MAX_CLASS_TYPE);
-
-	auxAddProperty(UNIT_STATUS,     cls,"BYTE",	   "0",PROP_PUBLIC,	1);
-	auxAddProperty(UNIT_POS,        cls,"POSDATA", "0",PROP_PUBLIC,	1);
-	auxAddProperty(UNIT_MOVE_SPEED, cls,"SHORT",  "40",PROP_PUBLIC,	1);
-}
-
-void CUnitConfig::Close(){
 }
 

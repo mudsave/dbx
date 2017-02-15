@@ -1,19 +1,19 @@
 --[[PacketHandler.lua
-ÃèÊö£º
-	ÊµÌåµÄ±³°ühandler
+æè¿°ï¼š
+	å®ä½“çš„èƒŒåŒ…handler
 --]]
 
 PacketHandler = class(nil, Timer)
 
 function PacketHandler:__init(entity)
 	self._entity = entity
-	-- ±³°ü
+	-- èƒŒåŒ…
 	self.packet = Packet(self._entity)
-	-- ¿ªÆô15ÃëµÄ¶¨Ê±Æ÷£¬¼ì²â¼ÆÊ±µÀ¾ßÊÇ·ñµ½ÆÚ
-	self.checkGoodsTimerID = g_timerMgr:regTimer(self, 1000*15, 1000*15, "¼ì²â±³°ü¼ÆÊ±µÀ¾ß")
-	-- ×öÒ»¸ö¼ì²â2·ÖÖÓ¶¨Ê±Æ÷
+	-- å¼€å¯15ç§’çš„å®šæ—¶å™¨ï¼Œæ£€æµ‹è®¡æ—¶é“å…·æ˜¯å¦åˆ°æœŸ
+	self.checkGoodsTimerID = g_timerMgr:regTimer(self, 1000*15, 1000*15, "æ£€æµ‹èƒŒåŒ…è®¡æ—¶é“å…·")
+	-- åšä¸€ä¸ªæ£€æµ‹2åˆ†é’Ÿå®šæ—¶å™¨
 	self.doubleTimer = 0
-	-- É±Æø¶¨Ê±Æ÷
+	-- æ€æ°”å®šæ—¶å™¨
 	self.killAirTimer = 0
 end
 
@@ -21,31 +21,31 @@ function PacketHandler:__release()
 	self._entity = nil
 	release(self.packet)
 	self.packet = nil
-	-- É¾³ı¶¨Ê±Æ÷
+	-- åˆ é™¤å®šæ—¶å™¨
 	g_timerMgr:unRegTimer(self.checkGoodsTimerID)
 	self.doubleTimer = nil
 	self.killAirTimer = nil
 end
 
--- »ñÈ¡±³°ü
+-- è·å–èƒŒåŒ…
 function PacketHandler:getPacket()
 	return self.packet
 end
 
---»ñÈ¡ÎïÆ·
+--è·å–ç‰©å“
 function PacketHandler:getItemsByID(itemID)
 	return self.packet:getItemsByID(itemID)
 end
 
--- ¶¨Ê±Æ÷»Øµ÷
+-- å®šæ—¶å™¨å›è°ƒ
 function PacketHandler:update(timerID)
 	if timerID == self.checkGoodsTimerID then
-		-- ¼ì²â±³°üµÀ¾ß
+		-- æ£€æµ‹èƒŒåŒ…é“å…·
 		self.packet:checkItemExpire()
-		-- Èç¹ûÊÇ2·ÖÖÓ
+		-- å¦‚æœæ˜¯2åˆ†é’Ÿ
 		self.doubleTimer = self.doubleTimer + 1
 		if self.doubleTimer == 2 then
-			-- Ôö¼ÓÍæ¼ÒµÄÌåÁ¦Öµ
+			-- å¢åŠ ç©å®¶çš„ä½“åŠ›å€¼
 			local vigor = self._entity:getVigor()
 			local maxVigor = self._entity:getMaxVigor()
 			if vigor < maxVigor then
@@ -55,10 +55,10 @@ function PacketHandler:update(timerID)
 			self.doubleTimer = 0
 		end
 
-		-- É±Æø¶¨Ê±
+		-- æ€æ°”å®šæ—¶
 		self.killAirTimer = self.killAirTimer + 1
 		if self.killAirTimer == 2 then
-			-- ¼õÍæ¼ÒÉ±Æø
+			-- å‡ç©å®¶æ€æ°”
 			local killAir = self._entity:getAttrValue(player_kill)
 			if killAir > 0 then
 				killAir = killAir - 1
@@ -69,15 +69,15 @@ function PacketHandler:update(timerID)
 	end
 end
 
--- Éú³ÉµÀ¾ßµ½±³°ü
+-- ç”Ÿæˆé“å…·åˆ°èƒŒåŒ…
 function PacketHandler:addItemsToPacket(itemID, itemNum)
 	local itemConfig = tItemDB[itemID]
 	if not itemConfig then
-		-- ÕÒ²»µ½µÀ¾ßÅäÖÃ
+		-- æ‰¾ä¸åˆ°é“å…·é…ç½®
 		return false
 	end
 	if itemConfig.MaxPileNum < 1 then
-		-- ÒÔ·ÀÍòÒ»
+		-- ä»¥é˜²ä¸‡ä¸€
 		return false
 	end
 	local needCreateNum = 1
@@ -105,46 +105,46 @@ function PacketHandler:addItemsToPacket(itemID, itemNum)
 				else 
 					item:setItemLvl(itemConfig.UseNeedLvl)
 				end
-				-- ·¢¸ö¼àÌıÏûÏ¢¸øÑ­»·ÈÎÎñÏµÍ³
+				-- å‘ä¸ªç›‘å¬æ¶ˆæ¯ç»™å¾ªç¯ä»»åŠ¡ç³»ç»Ÿ
 			else
-				-- Ìí¼ÓÊ§°Ü£¬·¢ËÍÓÊ¼ş£¬ÒªÃ´¾ÍÏú»ÙµÀ¾ß
+				-- æ·»åŠ å¤±è´¥ï¼Œå‘é€é‚®ä»¶ï¼Œè¦ä¹ˆå°±é”€æ¯é“å…·
 				return false
 			end
 		end
 	end
-	-- Ìí¼ÓÎïÆ·³É¹¦·¢¸öÏûÏ¢¸øÈÎÎñÏµÍ³
+	-- æ·»åŠ ç‰©å“æˆåŠŸå‘ä¸ªæ¶ˆæ¯ç»™ä»»åŠ¡ç³»ç»Ÿ
 	TaskCallBack.onBuyItem(self._entity:getID(), itemID)
 	return true
 end
 
--- »ñµÃÖ¸¶¨IDµÀ¾ßµÄ¸öÊı
+-- è·å¾—æŒ‡å®šIDé“å…·çš„ä¸ªæ•°
 function PacketHandler:getNumByItemID(itemId)
 	return self.packet:getNumByItemID(itemId)
 end
 
---[[ÎÒÃÇÓÎÏ·Éè¶¨ÎïÆ·°ó¶¨·Ç°ó¶¨ÊÇÓÉÅäÖÃÊÇ·ñ½»Ò×ÓĞ¹Ø£¬²»ÄÜ¸ü¸Ä£¬ËùÒÔÕâ´úÂëÓÃ²»×Å£¬µ«±£Áô
--- »ñµÃÖ¸¶¨IDÎ´°ó¶¨µÀ¾ßµÄ¸öÊı
+--[[æˆ‘ä»¬æ¸¸æˆè®¾å®šç‰©å“ç»‘å®šéç»‘å®šæ˜¯ç”±é…ç½®æ˜¯å¦äº¤æ˜“æœ‰å…³ï¼Œä¸èƒ½æ›´æ”¹ï¼Œæ‰€ä»¥è¿™ä»£ç ç”¨ä¸ç€ï¼Œä½†ä¿ç•™
+-- è·å¾—æŒ‡å®šIDæœªç»‘å®šé“å…·çš„ä¸ªæ•°
 function PacketHandler:getNoBindItemNum(itemId)
 	return self.packet:getNoBindItemNum(itemId)
 end
 
--- »ñµÃÖ¸¶¨ID°ó¶¨µÀ¾ßµÄ¸öÊı
+-- è·å¾—æŒ‡å®šIDç»‘å®šé“å…·çš„ä¸ªæ•°
 function PacketHandler:getBindItemNum(itemId)
 	return self.packet:getBindItemNum(itemId)
 end
 
--- ¿Û³ıÖ¸¶¨IDµÀ¾ß£¬ÓÅÏÈ¿Û³ı°ó¶¨µÄ£¬°ó¶¨µÄ²»¹»ÔÙ¿Û³ıÎ´°ó¶¨µÄ
+-- æ‰£é™¤æŒ‡å®šIDé“å…·ï¼Œä¼˜å…ˆæ‰£é™¤ç»‘å®šçš„ï¼Œç»‘å®šçš„ä¸å¤Ÿå†æ‰£é™¤æœªç»‘å®šçš„
 function PacketHandler:removeByItemIdEx(itemId, itemNum)
-	-- »ñµÃ°ó¶¨µÀ¾ßÊıÄ¿
+	-- è·å¾—ç»‘å®šé“å…·æ•°ç›®
 	local bindItemNum = self.packet:getBindItemNum(itemId)
-	-- »ñµÃÎ´°ó¶¨µÀ¾ßÊıÄ¿
+	-- è·å¾—æœªç»‘å®šé“å…·æ•°ç›®
 	local noBindItemNum = self.packet:getNoBindItemNum(itemId)
 	if bindItemNum + noBindItemNum < itemNum then
-		-- ÊıÄ¿²»¹»£¬ÎŞ·¨¿Û³ı
+		-- æ•°ç›®ä¸å¤Ÿï¼Œæ— æ³•æ‰£é™¤
 		return 0
 	end
 	local needRemoveItemNum = itemNum
-	-- ÏÈ¿Û³ı°ó¶¨µÄ
+	-- å…ˆæ‰£é™¤ç»‘å®šçš„
 	if bindItemNum > 0 then
 		if bindItemNum >= itemNum then
 			needRemoveItemNum = 0
@@ -154,20 +154,20 @@ function PacketHandler:removeByItemIdEx(itemId, itemNum)
 			self.packet:removeBindItem(itemId, bindItemNum)
 		end
 	end
-	-- ÔÙ¿Û³ıÎ´°ó¶¨µÄ
+	-- å†æ‰£é™¤æœªç»‘å®šçš„
 	if needRemoveItemNum > 0 then
 		self.packet:removeNoBindItem(itemId, needRemoveItemNum)
 	end
 	return itemNum
 end
 
--- ÒÆ³ıÎ´°ó¶¨µÄIDµÄµÀ¾ß
+-- ç§»é™¤æœªç»‘å®šçš„IDçš„é“å…·
 function PacketHandler:removeNoBindItem(itemId, removeNum)
 	self.packet:removeNoBindItem(itemId, removeNum)
 end
 ]]
 
--- Ìí¼ÓµÀ¾ßµ½Íæ¼Ò±³°ü, Õâ¸ö½Ó¿ÚÔÚP2P½»Ò×µ±ÖĞ£¬ÓĞ¿ÉÄÜÕâ¸öitemGuid±»Ïú»Ù£¬ÏÈ°ÑÅäÖÃID´æÆğÀ´£¬ÔÚ·¢ËÍµ½ÈÎÎñÏµÍ³
+-- æ·»åŠ é“å…·åˆ°ç©å®¶èƒŒåŒ…, è¿™ä¸ªæ¥å£åœ¨P2Päº¤æ˜“å½“ä¸­ï¼Œæœ‰å¯èƒ½è¿™ä¸ªitemGuidè¢«é”€æ¯ï¼Œå…ˆæŠŠé…ç½®IDå­˜èµ·æ¥ï¼Œåœ¨å‘é€åˆ°ä»»åŠ¡ç³»ç»Ÿ
 function PacketHandler:addItems(itemGuid)
 	local item = g_itemMgr:getItem(itemGuid)
 	local itemID = item:getItemID()
@@ -177,32 +177,32 @@ function PacketHandler:addItems(itemGuid)
 	end
 end
 
--- ÒÆ³ıÖ¸¶¨IDµÀ¾ß£¬·µ»ØÒÆ³ıµÄ¸öÊı
+-- ç§»é™¤æŒ‡å®šIDé“å…·ï¼Œè¿”å›ç§»é™¤çš„ä¸ªæ•°
 function PacketHandler:removeByItemId(itemID, itemNum)
 	return self.packet:removeByItemId(itemID, itemNum)
 	
 end
 
--- Ñ­»·ÈÎÎñ¶Ô»°ÒÆ³ıÎïÆ·½Ó¿Ú ²»»á»Øµ÷µ½ÈÎÎñÏµÍ³µÄ¼àÌı
+-- å¾ªç¯ä»»åŠ¡å¯¹è¯ç§»é™¤ç‰©å“æ¥å£ ä¸ä¼šå›è°ƒåˆ°ä»»åŠ¡ç³»ç»Ÿçš„ç›‘å¬
 function PacketHandler:removeTaskItem(itemID, itemNum)
 	return self.packet:removeByItemId(itemID, itemNum)
 end
 
--- ÒÆ³ıÖ¸¶¨GUIDµÄµÀ¾ß
+-- ç§»é™¤æŒ‡å®šGUIDçš„é“å…·
 function PacketHandler:removeItem(itemGuid, removeNum)
 	return self.packet:removeItem(itemGuid, removeNum, true)
 end
 
--- ÉèÖÃÖ¸¶¨GUIDµÄµÀ¾ßËø¶¨±êÖ¾
+-- è®¾ç½®æŒ‡å®šGUIDçš„é“å…·é”å®šæ ‡å¿—
 function PacketHandler:setLockFlag(gridItem, lockFlag)
 	gridItem:setLockFlag(lockFlag)
-	--Í¨Öª¿Í»§¶Ë,ÈÃ¿Í»§¶Ë´ËÎïÆ·¼ÏËø
+	--é€šçŸ¥å®¢æˆ·ç«¯,è®©å®¢æˆ·ç«¯æ­¤ç‰©å“æ·é”
 	local packIndex = gridItem:getPackIndex()
 	local pack = self.packet:getPack(packIndex)
 	pack:updateItemsToClient(gridItem)
 end
 
--- »ñµÃÖ¸¶¨ÀàĞÍ°ü¹üÊ£Óà¸ñ×ÓÊı
+-- è·å¾—æŒ‡å®šç±»å‹åŒ…è£¹å‰©ä½™æ ¼å­æ•°
 function PacketHandler:getPacketEmptyGridsNum(packType)
 	local leftGridsNum = 0
 	if packType == PacketPackType.Normal then
@@ -221,12 +221,12 @@ function PacketHandler:getPacketEmptyGridsNum(packType)
 	return leftGridsNum
 end
 
--- ÅĞ¶ÏÖ¸¶¨µÀ¾ßIDºÍÊıÄ¿ÄÜ·ñ·ÅÈë±³°ü
+-- åˆ¤æ–­æŒ‡å®šé“å…·IDå’Œæ•°ç›®èƒ½å¦æ”¾å…¥èƒŒåŒ…
 function PacketHandler:canAddPacket(itemID, itemNum, bindFlag)
 	return self.packet:canAddPacket(itemID, itemNum, bindFlag)
 end
 
--- ¸üĞÂ±³°üµÄµÈ¼¶°ü¹ü
+-- æ›´æ–°èƒŒåŒ…çš„ç­‰çº§åŒ…è£¹
 function PacketHandler:updateLevelPack()
 	local pack = self.packet:getPack(PacketPackIndex.Level)
 	if not pack then
@@ -236,32 +236,32 @@ function PacketHandler:updateLevelPack()
 	end
 end
 
--- ¸üĞÂ±³°üµÄ×øÆï°ü¹ü
+-- æ›´æ–°èƒŒåŒ…çš„åéª‘åŒ…è£¹
 function PacketHandler:updateHorsePack(canUse)
 	if canUse then
 		if self.packet:getPack(PacketPackIndex.Horse) then
-			-- ÒÑ¾­¿ªÆôÁË
+			-- å·²ç»å¼€å¯äº†
 			return
 		end
-		-- ¿ªÆô×øÆï°ü¹ü
+		-- å¼€å¯åéª‘åŒ…è£¹
 		local horsePack = Pack()
 		horsePack:setCapability(PacketPackDefaultCapacity)
 		self.packet:addPack(PacketPackIndex.Horse, horsePack)
 	else
 		local horsePack = self.packet:getPack(PacketPackIndex.Horse)
 		if not horsePack then
-			-- »¹Î´¿ªÆô
+			-- è¿˜æœªå¼€å¯
 			return
 		end
 		local packItemNum = horsePack:getPackItemNum()
 		if packItemNum > 0 then
-			-- ÓĞµÀ¾ß´æÔÚ£¬²»ÄÜ¹Ø±Õ×øÆï°ü¹ü
+			-- æœ‰é“å…·å­˜åœ¨ï¼Œä¸èƒ½å…³é—­åéª‘åŒ…è£¹
 			return
 		end
-		-- ¹Ø±Õ×øÆï°ü¹ü
+		-- å…³é—­åéª‘åŒ…è£¹
 		self.packet:stopPack(PacketPackIndex.Horse)
 	end
-	-- Í¨Öª¿Í»§¶ËË¢ĞÂ×øÆï°ü¹ü
+	-- é€šçŸ¥å®¢æˆ·ç«¯åˆ·æ–°åéª‘åŒ…è£¹
 	local event = Event.getEvent(ItemEvents_CS_UpdatePack, PackContainerID.Packet, PacketPackIndex.Horse, canUse)
 	g_eventMgr:fireRemoteEvent(event, self._entity)
 end

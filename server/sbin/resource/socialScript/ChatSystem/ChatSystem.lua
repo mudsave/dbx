@@ -195,6 +195,11 @@ function ChatSystem:onGetMessage(event)
 			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Chat, errorCode)
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
+	--喇叭频道
+	elseif channelType == ChatChannelType.Horn then
+		print("channelType>>>>>>>>>",channelType)
+		self:_setExpireTime(player)
+		g_chatMgr:sendHornMessage(msg, player , sign)
 	end
 
 end

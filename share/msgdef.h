@@ -474,7 +474,7 @@ struct _MsgWG_SinkWorld : public AppMsg
 struct _MsgWC_PropSetEnter : public AppMsg
 {
 	char			isMe;
-	int				unitId;
+	unsigned int	unitId;
 	int				dbId;
 	_PropSceneData	scene;
 	GridVct			pos;
@@ -493,19 +493,21 @@ struct _MsgWC_PropSetExit : public AppMsg
 
 struct _MsgWC_PropsUpdate : public AppMsg
 {
-	short			unitCount;
+	unsigned int	unitId;
+	short			propCount;
 };
 
 struct _MsgWC_PropSetBind : public AppMsg
 {
-	int unitId;
-	char propSetId;
-	char propCount;
+	unsigned int	unitId;
+	char			entityType;
+	char			propSetId;
+	short			propCount;
 };
 
 struct _MsgWC_PropSetUnbind : public AppMsg
 {
-	int unitId;
+	unsigned int	unitId;
 };
 
 struct _MsgWC_SceneSwitch : public AppMsg

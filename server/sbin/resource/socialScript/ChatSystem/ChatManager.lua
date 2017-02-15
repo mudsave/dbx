@@ -74,6 +74,11 @@ function ChatManager:sendMessage(role, channelType, message, sign, context)
 
 end
 
+function ChatManager:sendHornMessage(message,player,sign)
+	local event = Event.getEvent(ChatEvents_SC_SendChatMsg, -1, 0, ChatChannelType.Horn, message ,{ID = player:getID(), worldID = g_serverId, name = player:getName()},sign)
+	RemoteEventProxy.broadcast(event)
+end
+
 
 function ChatManager.getInstance()
 	return ChatManager()

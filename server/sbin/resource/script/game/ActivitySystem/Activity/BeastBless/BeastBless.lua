@@ -20,11 +20,13 @@ local BeastBlessActivityDB =
 		preEndPeriod= 0.1,
 		mapInfo = {
 			-- 瑞兽降福的地图
-			mapID = {9,10},
-			-- 每个地图的个数
-			npcNum	= 50,
+			inMapID = {9,10},
+			mapID = {
+				[1] = {mapID = 9,npcNum	= 20,},
+				[2] = {mapID = 10,npcNum = 50,},
+			},
 			-- 瑞兽的随机范围
-			npcValues = {100000,100001,100002},
+			npcValues = {25501,25502,25503,25504},
 		},
 	},
 }
@@ -54,7 +56,7 @@ function BeastBless:open()
 	-- 准备时间
 	local readyPeriod = self._config.readyPeriod
 	-- 出现地图信息
-	local mapInfo = self._config.mapInfo.mapID
+	local mapInfo = self._config.mapInfo.inMapID
 	--广播
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,1,readyPeriod,mapInfo)
@@ -87,7 +89,7 @@ end
 -- 定时器执行，真正开启活动
 function BeastBless:openActivity()
 	--广播
-	local mapInfo = self._config.mapInfo.mapID
+	local mapInfo = self._config.mapInfo.inMapID
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,2,mapInfo)
 		RemoteEventProxy.broadcast(event)

@@ -321,7 +321,7 @@ function FightSystem:_onStartLuckMonsterScriptFight(event)
 	monsterDBIDs = FightUtils.getMinorMonsters(monsterConfig)
 	--主怪
 	for _,info in pairs(monsterConfig.majorMonsterInfo) do
-		table.insert(monsterDBIDs,info.ID)
+		table.insert(monsterDBIDs,1,info.ID)
 	end
 	
 	--获取助阵npc配置

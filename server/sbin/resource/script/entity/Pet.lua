@@ -288,7 +288,7 @@ function Pet:freshProps()
 end
 
 -- 发送所有改动了的属性
-function Pet:flushPropBatch(player,bSendAll)
+function Pet:flushPropBatch(player)
 	self:freshProps()
 
 	if not player then
@@ -296,7 +296,7 @@ function Pet:flushPropBatch(player,bSendAll)
 	end
 	if not player then return end
 
-	flushPropBatch(self:getPeer(),player:getID(),bSendAll)
+	flushPropBatch(self:getPeer(),player:getID())
 end
 
 -- 可视性管理
@@ -334,6 +334,10 @@ function Pet:setVisible(visible)
 			self:setMoveSpeed(player:getMoveSpeed())
 		end
 	else
+		if player then
+			player:getHandler(HandlerDef_Pet):setFollowPetID(false)
+		end
+
 		local scene = self:getScene()
 		if scene then
 			scene:detachEntity(self)

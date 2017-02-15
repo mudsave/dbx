@@ -11,6 +11,10 @@ function RemoteEventProxy.send(event, player)
 	local eventID	= event:getID()
 	local params	= event:getParams()
 	if not eventID then return end
+	if not player:getGatewayID() or not player:getClientLink() then
+		print ("[Warning!]RPC Target player not exists!")
+		return
+	end
 	RPCEngine:sendToPeer(player:getGatewayID(), player:getClientLink(), eventID, g_serverId, unpack(params))
 end
 
@@ -20,6 +24,7 @@ function RemoteEventProxy.sendToWorld(event, worldID)
 	local eventID	= event:getID()
 	local params	= event:getParams()
 	if not eventID then return end
+	worldID = worldID or -1
 	RPCEngine:sendToWorld(worldID, eventID, g_serverId, unpack(params))
 end
 
@@ -41,6 +46,9 @@ function RemoteEventProxy.sendToAround(event, player)
 	local eventID	= event:getID()
 	local params	= event:getParams()
 	if not eventID then return end
+	if not player:getID() then
+		return
+	end
 	RPCEngine:sendToAround(player:getID(), eventID, player:getID(), unpack(params))
 end
 

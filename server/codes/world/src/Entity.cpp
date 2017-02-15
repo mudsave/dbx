@@ -121,12 +121,12 @@ void CoEntity::adjustSights(handle* pEntityList, int len)
 AppMsg* CoEntity::genExitMessage()
 {
 	_MsgWC_PropSetExit* pMsg = (_MsgWC_PropSetExit*)s_propUpdateBuf;
-	pMsg->msgFlags = 0;
-	pMsg->msgCls = MSG_CLS_PROP;
-	pMsg->msgId = MSG_C_W_PROPSET_EXIT;
-	pMsg->unitCount = 1;
-	pMsg->units[0] = m_hand;
-	pMsg->msgLen = sizeof(_MsgWC_PropSetExit) + sizeof(unsigned int);
+	pMsg->msgFlags	= 0;
+	pMsg->msgCls	= MSG_CLS_PROP;
+	pMsg->msgId		= MSG_C_W_PROPSET_EXIT;
+	pMsg->unitCount	= 1;
+	pMsg->units[0]	= m_hand;
+	pMsg->msgLen	= sizeof(_MsgWC_PropSetExit) + sizeof(unsigned int);
 	return pMsg;
 }
 
@@ -137,24 +137,13 @@ AppMsg* CoEntity::genPropUpdateMessage(int propId)
 	pMsg->msgCls		= MSG_CLS_PROP;
 	pMsg->msgId			= MSG_C_W_PROPS_UPDATE;
 	pMsg->context		= 0;
-	pMsg->unitCount		= 1;
+	pMsg->unitId		= m_hand;
+	pMsg->propCount		= 1;
 
-	char *p = s_propUpdateBuf + sizeof(_MsgWC_PropsUpdate);
-	auxWrite(p,unsigned int,m_hand);//Set Entity ID
-	auxWrite(p,char,1);				//Only one prop
-	auxWrite(p,char,propId);		//Set PropID
-
-	int size;
-	if(UNIT_POS == propId)
-	{
-		size = serializePath(p);
-	}
-	else
-	{
-		size =  m_propSet[propId]->val.Save(p,_MaxMsgLength-(signed)(p-s_propUpdateBuf),0);
-	}
-	ASSERT_(size > 0);
-	p += size;
+	char *p = (char *)(pMsg + 1);
+	auxWrite(p,char,propId);	
+	p += (UNIT_POS == propId) ? serializePath(p)
+		: m_propSet[propId]->val.Save(p,_MaxMsgLength-sizeof(_MsgWC_PropsUpdate)-sizeof(char),0);
 	pMsg->msgLen = (signed)(p - s_propUpdateBuf);
 	return pMsg;
 }
@@ -253,9 +242,9 @@ bool CoEntity::bcAMessage(const AppMsg* pMsg, bool bPublic)
 	return true;
 }
 
-bool CoEntity::bcAMessageToGroup(const AppMsg* pMsg,bool toSelf)
+bool CoEntity::bcAMessageToGroup(const AppMsg* pMsg,bool toSelf,handle hExcept)
 {
-	static PeerHandle pPeers[500];
+	static PeerHandle pPeers[512];
 	int peer_count = 0;
 
 	if(toSelf && inSync())
@@ -273,27 +262,28 @@ bool CoEntity::bcAMessageToGroup(const AppMsg* pMsg,bool toSelf)
 
 		if( pEntity && pEntity->inSync() )
 		{
-			bool toErease = GridDistance( X(), Y(), pEntity->X(), pEntity->Y() ) > _SyncRadius;
-			if( toErease )
+			if( GridDistance( X(), Y(), pEntity->X(), pEntity->Y() ) > _SyncRadius )
 			{
 				s_exitList[free_count++] = pEntity;
 				h = m_aroundMe.erase();
 			}
 			else
 			{
-				pPeers[peer_count].hGate		= pEntity->m_gatewayLink;
-				pPeers[peer_count].hClient		= pEntity->m_clientLink;
-				pPeers[peer_count].gatewayId	= pEntity->m_gatewayId;
-
-				peer_count++;
-
-				// ASSERT_(peer_count <= 500);// you can just send your data by several times
-				if(peer_count >= 500)
+				if( hExcept != h )
 				{
-					g_world.sendMsgToPeers(pPeers,peer_count,pMsg);
-					peer_count = 0;
+					pPeers[peer_count].hGate		= pEntity->m_gatewayLink;
+					pPeers[peer_count].hClient		= pEntity->m_clientLink;
+					pPeers[peer_count].gatewayId	= pEntity->m_gatewayId;
+	
+					peer_count++;
+	
+					// ASSERT_(peer_count <= 500);// you can just send your data by several times
+					if(peer_count >= 500)
+					{
+						g_world.sendMsgToPeers(pPeers,peer_count,pMsg);
+						peer_count = 0;
+					}
 				}
-
 				h = m_aroundMe.next();
 			}
 		}
@@ -320,8 +310,7 @@ bool CoEntity::bcAMessageToGroup(const AppMsg* pMsg,bool toSelf)
 
 				peer_count++;
 
-				// ASSERT_(peer_count <= 500); // just send your data several times
-				if(peer_count>=500)
+				if(peer_count >= 512)
 				{
 					g_world.sendMsgToPeers(pPeers,peer_count,pExitMsg);
 					peer_count = 0;
@@ -332,60 +321,6 @@ bool CoEntity::bcAMessageToGroup(const AppMsg* pMsg,bool toSelf)
 			if (peer_count > 0)
 				g_world.sendMsgToPeers(pPeers, peer_count, pExitMsg);
 		}
-	}
-	return true;
-}
-
-bool CoEntity::bcMyEnter()
-{
-	_MsgWC_PropSetEnter* pMsg = (_MsgWC_PropSetEnter*)s_propUpdateBuf;
-	pMsg->msgFlags		= 0;
-	pMsg->msgCls		= MSG_CLS_PROP;
-	pMsg->msgId			= MSG_C_W_PROPSET_ENTER;
-	pMsg->isMe			= (char)1;
-	pMsg->unitId		= m_hand;
-	pMsg->dbId			= m_dbid;
-	pMsg->scene			= m_sceneInfo;
-	pMsg->pos			= m_position;
-	pMsg->dir			= m_direction;
-	pMsg->status		= 0;
-	pMsg->entityType	= m_logicType;
-	pMsg->propSetId		= m_propType;
-	pMsg->propCount		= 0;
-
-	int offset = sizeof(_MsgWC_PropSetEnter);
-	int head = offset;
-	int nPropCount = 0;
-
-	for( int i = 0; i < m_propSet.count; i++ )
-	{
-		_Property *property = m_propSet[i];
-		if(VAR_NULL == property->val.type || 0 == property->update)
-		{
-			continue;
-		}
-		*(char *)(s_propUpdateBuf + offset)  = i,offset += sizeof(char);
-		int size = 0;
-		if(UNIT_POS == i)
-		{
-			size = serializePath(s_propUpdateBuf + offset);
-		}
-		else
-		{
-			size = property->val.Save(s_propUpdateBuf + offset,_MaxMsgLength - offset,false);
-		}
-		ASSERT_(size > 0);
-		if(size > 0)
-		{
-			offset += size;
-		}
-		nPropCount++;
-	}
-	ASSERT_( offset > head );
-	if(offset > head){
-		pMsg->propCount = nPropCount;
-		pMsg->msgLen = offset;
-		flushMessage(pMsg);
 	}
 	return true;
 }
@@ -408,17 +343,15 @@ bool CoEntity::bcSceneSwitch()
 
 bool CoEntity::bcEntityEnter(handle hand)
 {
-	CoEntity* pEntity = _EntityFromHandle(hand);
-	if(!pEntity)
-	{
-		return false;
-	}
-
+	bool bMine = (hand == m_hand);
+	CoEntity* pEntity = bMine ? this : _EntityFromHandle(hand);
+	if(!pEntity) return false;
+	
 	_MsgWC_PropSetEnter* pMsg = (_MsgWC_PropSetEnter*)s_propUpdateBuf;
 	pMsg->msgFlags		= 0;
 	pMsg->msgCls		= MSG_CLS_PROP;
 	pMsg->msgId			= MSG_C_W_PROPSET_ENTER;
-	pMsg->isMe			= (char)0;
+	pMsg->isMe			= (char)bMine ? 1 : 0;
 	pMsg->unitId		= hand;
 	pMsg->dbId			= pEntity->m_dbid;
 	pMsg->scene			= pEntity->m_sceneInfo;
@@ -427,74 +360,66 @@ bool CoEntity::bcEntityEnter(handle hand)
 	pMsg->status		= 0;
 	pMsg->entityType	= pEntity->m_logicType;
 	pMsg->propSetId		= pEntity->m_propType;
-	pMsg->propCount		= 0;
 
-	int offset = sizeof(_MsgWC_PropSetEnter);
+	char *p = (char *)(pMsg + 1); 
 
 	int nPropCount = 0;
-	const _RefList &refList = CUnitConfig::Instance().GetPublicProps(pEntity->m_propType);
-	for(int i=0;i<refList.count;i++)
+	int nAllProps = pEntity->getPropCount();
+	for(int i=0;i<nAllProps;i++)
 	{
-		BYTE propID = *refList[i];
-		_Property *property = pEntity->m_propSet[propID];
+		_Property *property = pEntity->getProperty(i);
 
-		//we don't wanna send default or NULL value
-		if(VAR_NULL == property->val.type || 0 == property->update)
-		{
+		// 没有更新过的或者发送给其他实体时候的私有属性都不加入数据报
+		if( property->update < 1 || (!bMine && property->radius < 1) )
 			continue;
-		}
-		//put prop id
-		*(char *)(s_propUpdateBuf + offset) = propID,offset += sizeof(char);
-		int size = 0;
-		if(UNIT_POS == propID)
-		{
-			size = pEntity->serializePath(s_propUpdateBuf + offset);
-		}
-		else
-		{
-			size = property->val.Save(s_propUpdateBuf + offset,_MaxMsgLength - offset,false);
-		}
-		ASSERT_(size>0);
-		if(size > 0){
-			offset += size;
-		}
+
+		auxWrite(p,char,i);
+		p += ( UNIT_POS == i ) 
+			? pEntity->serializePath(p)
+			: property->val.Save(p,_MaxMsgLength - (signed )( p - s_propUpdateBuf ),false);
+
 		nPropCount++;
 	}
 
 	pMsg->propCount	= nPropCount;
-	pMsg->msgLen	= offset;
+	pMsg->msgLen	= (signed )( p - s_propUpdateBuf );
 
 	flushMessage(pMsg);
 
 	return true;
 }
 
+/*
+	* 这个函数居然没有使用
+*/
 bool CoEntity::bcEntityExit(handle* exitList, long count)
 {
 	_MsgWC_PropSetExit* pMsg = (_MsgWC_PropSetExit*)s_propUpdateBuf;
-	pMsg->msgFlags = 0;
-	pMsg->msgCls = MSG_CLS_PROP;
-	pMsg->msgId = MSG_C_W_PROPSET_EXIT;
-	pMsg->unitCount = 0;
-	int offset = sizeof(_MsgWC_PropSetExit);
-	int head = offset;
+	pMsg->msgFlags	= 0;
+	pMsg->msgCls	= MSG_CLS_PROP;
+	pMsg->msgId		= MSG_C_W_PROPSET_EXIT;
+	pMsg->unitCount	= 0;
+	
+	char *p = (char *)(pMsg + 1);
 	for(int i = 0; i < count; i++)
 	{
 		handle hand = exitList[i];
-		if ( offset + 2 * (sizeof(unsigned int) + 1) > _MaxMsgLength )
+		if( p < s_propUpdateBuf + _MaxMsgLength )
 		{
-			pMsg->msgLen = offset;
+			auxWrite(p,unsigned int,hand);
+			pMsg->unitCount++;
+		}
+		else
+		{
+			pMsg->msgLen = (signed )(p - s_propUpdateBuf);
 			flushMessage(pMsg);
 			pMsg->unitCount = 0;
-			offset = head;
+			p = (char *)(pMsg + 1);
 		}
-		*(unsigned int*)(s_propUpdateBuf + offset) = hand;
-		offset += sizeof(unsigned int);
-		pMsg->unitCount++;
 	}
-	if ( offset > head )
+	if ( p > (char *)(pMsg + 1) )
 	{
-		pMsg->msgLen = offset;
+		pMsg->msgLen = (signed )( p - s_propUpdateBuf );
 		flushMessage(pMsg);
 	}
 	return true;
@@ -517,16 +442,18 @@ bool CoEntity::bcPropUpdates(handle hSendTo)
 	if( !bSendToPeer && !m_inSync && m_aroundMe.empty() ) return false;
 
 	_MsgWC_PropsUpdate* pMsg = (_MsgWC_PropsUpdate*)s_propUpdateBuf;
+	
 	char *p = (char* )(pMsg + 1);
-
-	auxWrite(p,unsigned int,m_hand);	// 设置实体ID
-	auxWrite(p,char,0);					// 设置同步属性个数
 
 	int nPublic = 0;		// 公开属性个数
 	int nPBlockSize = 0;	// 公开属性数据包大小
 	int nPrivate = 0;		// 私有属性个数
 	static int aPrID[256];	// 存放私有属性的数组
 
+	int aid_debug[256] = {0};
+	int nlen_debug = 0;
+
+	// 写入公开属性,并记录更新了的私有属性ID
 	for( int i = 0; i < m_propSet.count; i++ )
 	{
 		_Property* property = m_propSet[i];
@@ -542,122 +469,77 @@ bool CoEntity::bcPropUpdates(handle hSendTo)
 					property->val.Save(p, _MaxMsgLength - (signed)( p - s_propUpdateBuf ), false);
 				property->casted = property->update;
 				nPublic++;
+
+				// 调试信息
+				aid_debug[nlen_debug++] = i; 
 			}
 		}
 	}
-	nPBlockSize = (signed)( p - s_propUpdateBuf );
-	for( int i = 0; i < nPrivate; i++ )
-	{
-		int nID = aPrID[i];
-		_Property* property = m_propSet[nID];
-		auxWrite(p, char, nID);
-		p += property->val.Save(p, _MaxMsgLength - (signed)( p - s_propUpdateBuf ), false);
-		property->casted = property->update;
-	}
+	nPBlockSize = (signed)( p - s_propUpdateBuf );// 公开属性全部写入时,数据报大小
 
 	pMsg->msgFlags	= 0;
 	pMsg->msgCls	= MSG_CLS_PROP;
 	pMsg->msgId		= MSG_C_W_PROPS_UPDATE;
 	pMsg->context	= 0;
-	pMsg->unitCount	= 1;
+	pMsg->unitId	= m_hand;
 
-	if( bSendToPeer || m_inSync )
+	#define b2sz(exp) ((exp)?"true":"false")
+
+	// 发送属性更新给自己或者指定实体
+	if( nPrivate + nPublic > 0 && ( bSendToPeer || m_inSync ) )
 	{
-		char* pp = (char* )(pMsg + 1) + sizeof(m_hand);
-		auxWrite(pp,char,nPublic + nPrivate);
+		// 写入私有属性
+		for( int i = 0; i < nPrivate; i++ )
+		{
+			int nID = aPrID[i];
+			_Property* property = m_propSet[nID];
+			auxWrite(p, char, nID);
+			p += property->val.Save(p, _MaxMsgLength - (signed)( p - s_propUpdateBuf ), false);
+			property->casted = property->update;
 
-		pMsg->msgLen = p - s_propUpdateBuf;
+			// 调试信息
+			aid_debug[nlen_debug++] = nID;
+		}
+
+		// 写入属性个数
+		pMsg->propCount = nPublic + nPrivate;
+
+		pMsg->msgLen = (signed)(p - s_propUpdateBuf);
 
 		if( pSendTo ) pSendTo->flushMessage(pMsg);
 		if( m_inSync ) flushMessage(pMsg);
 	}
 
-	if( !m_aroundMe.empty() )
+	if( nPublic > 0 && !m_aroundMe.empty() )
 	{
-		const int MaxGroup = 512;
-		static PeerHandle s_peers[MaxGroup];
-		int nFree = 0;
-		int nSend = 0;
-
-		char* pp = (char* )(pMsg + 1) + sizeof(m_hand);
-		auxWrite(pp, char, nPublic);
+		// 写入公开属性的个数
+		pMsg->propCount = nPublic;
 
 		pMsg->msgLen = nPBlockSize;
 
-		for( handle h = m_aroundMe.begin(); h != (handle)INVALID_HANDLE; )
-		{
-			CoEntity *pEntity = _EntityFromHandle(h);
-			if( pEntity && pEntity->inSync() )
-			{
-				if( GridDistance( m_position.x, m_position.y, pEntity->X(), pEntity->Y() ) > _SyncRadius )
-					s_exitList[nFree++] = pEntity, h = m_aroundMe.erase();
-				else
-				{
-					if( h == hSendTo )
-					{
-						h = m_aroundMe.next();
-						continue;
-					}
-
-					s_peers[nSend].hGate = pEntity->m_gatewayLink;
-					s_peers[nSend].hClient = pEntity->m_clientLink;
-					s_peers[nSend].gatewayId = pEntity->m_gatewayId;
-
-					if( ++nSend >= MaxGroup )
-						g_world.sendMsgToPeers(s_peers, nSend, pMsg), nSend = 0;
-					h = m_aroundMe.next();
-				}
-			}
-			else {
-				h = m_aroundMe.erase();
-			}
-		}
-		if( nSend > 0 )
-			g_world.sendMsgToPeers(s_peers, nSend, pMsg), nSend = 0;
-
-		if( nFree > 0)
-		{
-			AppMsg* pExitMsg = genExitMessage();
-			while( nFree > 0 )
-			{
-				nFree--;
-
-				s_peers[nSend].hGate = s_exitList[nFree]->m_gatewayLink;
-				s_peers[nSend].hClient = s_exitList[nFree]->m_clientLink;
-				s_peers[nSend].gatewayId = s_exitList[nFree]->m_gatewayId;
-
-				s_exitList[nFree]->removeWatchee(m_hand);
-
-				if( ++nSend >= MaxGroup )
-					g_world.sendMsgToPeers(s_peers, nSend, pExitMsg), nSend = 0;
-			}
-			if( nSend > 0 )
-				g_world.sendMsgToPeers(s_peers, nSend, pExitMsg);
-		}
+		bcAMessageToGroup(pMsg,false,hSendTo);
 	}
 	return true;
 }
 
-/*
-	* 发送实体的所有属性
-*/
-bool CoEntity::bcAllProps(handle hSendTo)
+// 使某个实体可以查看当前实体的属性,即使不在视野中
+bool CoEntity::bcPropBind(handle hTarget)
 {
-	CoEntity *pSendTo = _EntityFromHandle(hSendTo);
-	if(!pSendTo || !pSendTo->inSync()) return false;
+	CoEntity *pTarget = _EntityFromHandle(hTarget);
+	if(!pTarget || !pTarget->inSync()) return false;
 
-	_MsgWC_PropsUpdate* pMsg = (_MsgWC_PropsUpdate*)s_propUpdateBuf;
-	pMsg->msgFlags	= 0;
-	pMsg->msgCls	= MSG_CLS_PROP;
-	pMsg->msgId		= MSG_C_W_PROPS_UPDATE;
-	pMsg->context	= 0;
-	pMsg->unitCount	= 1;
+	_MsgWC_PropSetBind *pMsg = (_MsgWC_PropSetBind *)s_propUpdateBuf;
+	pMsg->msgFlags		= 0;
+	pMsg->msgCls		= MSG_CLS_PROP;
+	pMsg->msgId			= MSG_C_W_PROPSET_BIND;
+	pMsg->context		= 0;
+	pMsg->unitId		= m_hand;
+	pMsg->entityType	= m_logicType;
+	pMsg->propSetId		= m_propType;
 
 	int nPropCount = 0;	//属性个数
 
 	char *p = (char *)(pMsg + 1);
-	auxWrite(p,unsigned int,m_hand);	// 设置实体ID
-	auxWrite(p,char,0);					// 设置同步属性个数
 
 	for(int i=0;i<m_propSet.count;i++)
 	{
@@ -673,11 +555,27 @@ bool CoEntity::bcAllProps(handle hSendTo)
 	if(nPropCount > 0)
 	{
 		pMsg->msgLen = p - s_propUpdateBuf;
-		p = (char *)(pMsg + 1) + sizeof(m_hand);
-		auxWrite(p,char,nPropCount);
-		pSendTo->flushMessage(pMsg);
+		pMsg->propCount = nPropCount;
+		pTarget->flushMessage(pMsg);
 	}
 
+	return true;
+}
+
+// 使可以看到当前实体属性的实体不再保留该关联
+bool CoEntity::bcPropUnbind(handle hTarget)
+{
+	CoEntity *pTarget = _EntityFromHandle(hTarget);
+	if(!pTarget || !pTarget->inSync()) return false;
+
+	_MsgWC_PropSetUnbind *pMsg = (_MsgWC_PropSetUnbind *)s_propUpdateBuf;
+	pMsg->msgFlags	= 0;
+	pMsg->msgCls	= MSG_CLS_PROP;
+	pMsg->msgId		= MSG_C_W_PROPSET_UNBIND;
+	pMsg->context	= 0;
+	pMsg->unitId	= m_hand;
+
+	pTarget->flushMessage(pMsg);
 	return true;
 }
 
@@ -702,7 +600,7 @@ bool CoEntity::enterScene(CoScene* pScene, short x, short y)
 	data.path[0] = grid;
 	m_position = grid;
 
-	SetPropData(UNIT_POS, (BYTE*)&data, sizeof(data));
+	SetPropData(UNIT_POS,( const void *)&data,sizeof(data));
 
 	for( int i = 0; i < _SyncRingCount; i++ )
 	{
@@ -715,7 +613,7 @@ bool CoEntity::enterScene(CoScene* pScene, short x, short y)
 		m_inSync = true;
 		if ( m_firstCast )
 		{
-			bcMyEnter();
+			bcEntityEnter( m_hand );
 			m_firstCast = false;
 		}
 		else
@@ -801,17 +699,16 @@ void CoEntity::PosChanged(GridVct& old)
 	}
 }
 
-void CoEntity::PropValChanged(int propId)
+void CoEntity::onPropValChanged(int propId)
 {
-	_Property *property = m_propSet[propId];
-	property->update++;
 
 	//如果没有开启自动同步，则属性变动后一般不立即发送同步事件
 	//指定了立即同步的属性，只要实体已经在场景中，则位置信息需要立即同步
 	//可以接受属性同步的后续条件有两个
 	//1，是自己可以接受同步数据
 	//2，是周围有可以接受同步数据的实体
-	if( ( m_autoCast || ( property->sync && !m_firstCast ) ) && (m_inSync||!m_aroundMe.empty()))
+	_Property *property = getProperty(propId);
+	if( ( m_autoCast || ( property->sync && !m_firstCast ) ) && ( m_inSync || !m_aroundMe.empty() ))
 	{
 		AppMsg *pMsg = genPropUpdateMessage(propId);
 		if(pMsg){

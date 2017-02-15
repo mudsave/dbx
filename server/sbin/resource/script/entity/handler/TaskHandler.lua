@@ -266,6 +266,7 @@ function TaskHandler:checkTaskData(taskID)
 		taskData.countRing = 0
 		taskData.currentRing = 0
 		taskData.finishTimes = 0
+		-- print("taskData.finishTimes",taskData.finishTimes)
 		self.loopTaskInfo[taskID] = taskData
 	end
 end
@@ -426,6 +427,7 @@ function TaskHandler:finishLoopTask(taskID)
 	self:finishTaskByID(taskID)
 	local player = self._entity
 	-- 完成循环任务的时候向活动界面发一个接口
+	self:updateFinishTimes(taskID)
 	local activityEvent = Event.getEvent(TaskEvent_SS_AddActivityPractise, player:getID(), taskID)
 	g_eventMgr:fireEvent(activityEvent)
 	-- 自动交接, 天道任务和其他任务处理方式不一样， 天道任务处理
@@ -491,7 +493,6 @@ function TaskHandler:finishTaskByID(taskID)
 		self:createNextTaskID(taskID)
 		-- 完成任务时，重新设置这个任务列表
 		self:updateTaskList(taskID, true)
-		self:updateFinishTimes(taskID)
 		self.count = self.count - 1
 		return true
 	else
@@ -589,6 +590,7 @@ end
 -- 设置循环任务的环数
 function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 	for _, loopTask in pairs(loopTaskRecord or {}) do
+		print("loopTask.finishTimes",toString(loopTask))
 		local offlineTime = loopTask.offlineTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数
 		local loopTaskConfig = LoopTaskDB[loopTask.taskID]
@@ -612,7 +614,9 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 			if not self.loopTaskInfo[loopTask.taskID] then
 				self.loopTaskInfo[loopTask.taskID] = {}
 				self.loopTaskInfo[loopTask.taskID].countRing = loopTask.countRing
-				self.loopTaskInfo[loopTask.taskID].countRing = loopTask.finishTimes
+				-- print("loopTask.finishTimes:",loopTask.finishTimes)
+				self.loopTaskInfo[loopTask.taskID].finishTimes = loopTask.finishTimes
+				-- print("loopTask.finishTimes",loopTask.finishTimes)
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
 			else
 	
@@ -627,6 +631,7 @@ end
 function TaskHandler:updateLoopTaskRingToDB()
 	local playerDBID = self._entity:getDBID()
 	for taskID, taskInfo in pairs(self.loopTaskInfo) do
+		print("taskInfo",toString(taskInfo))
 		LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	end
 end

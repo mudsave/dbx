@@ -57,14 +57,11 @@ end
 
 -- 上线的玩家加入到活动表中
 function BeastBlessManager:joinPlayer(player,recordList)
-	print("beast$$recordList:",toString(recordList))
 	local activityHandler = player:getHandler(HandlerDef_Activity)
 	local activityId = g_beastBless:getID()
-	print("activityId",activityId)
 	if activityHandler then
 		if recordList and table.size(recordList) > 0 then
 			for _,data in pairs(recordList) do
-				print("BeastBlessManager:",toString(data))
 				if not time.isSameDay(data.recordTime) then
 					-- 重置数据
 					activityHandler:setPriDataById(activityId,0)
@@ -86,7 +83,7 @@ function BeastBlessManager:joinPlayer(player,recordList)
 end
 
 -- 把战斗记录标记加入到
-function BeastBlessManager:addBeastFightFlagList(fightID,curNpc)
+function BeastBlessManager:addBeastFightFlagList(playerID,curNpc)
 	local scene = curNpc:getScene()
 	local mapID = scene:getMapID()
 	local curBeastList = self.beastList[mapID]
@@ -96,7 +93,7 @@ function BeastBlessManager:addBeastFightFlagList(fightID,curNpc)
 		if beast then
 			local beastFightFlag = self.beastFightFlag
 			beast:setFighting(true)
-			beastFightFlag[fightID] = beast
+			beastFightFlag[playerID] = beast
 		else
 			print("error:addBeastFightFlagList npcID")
 		end
@@ -106,16 +103,16 @@ function BeastBlessManager:addBeastFightFlagList(fightID,curNpc)
 end
 
 -- 移除记录标记
-function BeastBlessManager:removeBeastFightFlagList(fightID)
-	local beast = self.beastFightFlag[fightID]
+function BeastBlessManager:removeBeastFightFlagList(playerID)
+	local beast = self.beastFightFlag[playerID]
 	if beast then
 		beast:setFighting(false)
-		self.beastFightFlag[fightID] = nil
+		self.beastFightFlag[playerID] = nil
 	end
 end
 
-function BeastBlessManager:getBeastFromFlagList(fightID)
-	return self.beastFightFlag[fightID]
+function BeastBlessManager:getBeastFromFlagList(playerID)
+	return self.beastFightFlag[playerID]
 end
 
 -- beast增加到死亡链表中
@@ -126,7 +123,6 @@ function BeastBlessManager:addBeastToDieList(beast)
 	-- 当前地图死亡链表
 	local curMapDieList = nil
 	if not beastDieList[mapID] then
-		print("没有beastDieList")
 		curMapDieList = {}
 		curMapDieList[npcID] = beast
 		beastDieList[mapID] = curMapDieList
@@ -134,7 +130,6 @@ function BeastBlessManager:addBeastToDieList(beast)
 		curMapDieList = beastDieList[mapID]
 		curMapDieList[npcID] = beast
 	end
-	print("addBeastToDieList：curMapDieList",toString(beastDieList[mapID]))
 end
 
 -- 从beastDie移除
@@ -205,7 +200,7 @@ function BeastBlessManager:addBeastToList(mapID)
 		local npcID = nil
 		if beast then
 			print("beastDie")
-			print("beasts",toString(beasts))
+			-- print("beasts",toString(beasts))
 			npcID = beast:addBeastToMap(beasts)
 			self:removeBeastFromDieList(beast)
 		else
@@ -233,8 +228,10 @@ function BeastBlessManager:createBeastToMap(config)
 	local npcValues = config.npcValues
 	-- 每个地图瑞兽的数量
 	local npcNum = config.npcNum
-	for _,mapID in pairs(mapInfo) do
+	for _,data in pairs(mapInfo) do
 		-- 当前地图表
+		local mapID = data.mapID
+		local npcNum = data.npcNum
 		local curMapBeastList = {}
 		-- 当前地图瑞兽记录表
 		local beasts = {}
@@ -411,7 +408,7 @@ function BeastBlessManager:getPlayerNum(fightEndResults)
 			end
 		end
 	end
-	print("playerNum,normalRewardPlayer,specialRewardPlayer,normalRewardPet,specialRewardPet",playerNum,toString(normalRewardPlayer))
+	-- print("playerNum,normalRewardPlayer,specialRewardPlayer,normalRewardPet,specialRewardPet",playerNum,toString(normalRewardPlayer))
 	return playerNum,normalRewardPlayer,specialRewardPlayer,normalRewardPet,specialRewardPet
 end
 
@@ -508,17 +505,17 @@ function BeastBlessManager:getFormula(role,rewardsConfig,fightInfo)
 				print("额外奖励计数:",toString(luckMonster.n))
 				for DBID,nTimes in pairs(luckMonster.n) do
 					local rewardType = BeastBlessExtraReward[DBID]
-					if rewardType then
-						local params = BeastBlessToValueReward[rewardType]
-						if params then
-							local name = params[1]
-							local prev = rewardNode[name]
-							if prev then
-								local funName = params[2]
-								rewardNode[name] = prev + getBeastBlessUtilsFunc(funName,prev,nTimes)
-							else
-								print("$$ 额外奖励计数:error no count this value")
-							end
+					local name = BeastBlessToValueReward[rewardType]
+					local prev = rewardNode[name]
+					if prev then
+						if rewardType == BeastBlessDropType.playerExp then
+							rewardNode[name] = prev + BeastBlessUtils.getExpFormula(prev,nTimes)
+						elseif rewardType == BeastBlessDropType.subMoney then
+							rewardNode[name] = prev + BeastBlessUtils.getSubMoneyFormula(prev,nTimes)
+						elseif rewardType == BeastBlessDropType.playerTao then
+							rewardNode[name] = prev + BeastBlessUtils.getTaoFormula(prev,nTimes)
+						elseif rewardType == BeastBlessDropType.playerDecSubmoney then
+							rewardNode[name] = prev + BeastBlessUtils.getDecSubMoneyFormula(prev,nTimes)
 						end
 					end
 				end
@@ -527,17 +524,15 @@ function BeastBlessManager:getFormula(role,rewardsConfig,fightInfo)
 			if luckMonster.m then
 				for DBID,mTimes in pairs(luckMonster.m) do
 					local rewardType = BeastBlessExtraReward[DBID]
-					if rewardType then
-						local params = BeastBlessToValueReward[rewardType]
-						if params then
-							local name = params[1]
-							local prev = rewardNode[name]
-							if prev then
-								local funName = params[3]
-								rewardNode[name] = prev + getBeastBlessUtilsFunc(funName,prev,mTimes)
-							else
-								print("$$ 额外奖励计数:error no count this value")
-							end
+					local name = BeastBlessToValueReward[rewardType]
+					local prev = rewardNode[name]
+					if prev then
+						if rewardType == BeastBlessDropType.playerExp then
+							rewardNode[name] = prev + BeastBlessUtils.getDExpFormula(prev,nTimes)
+						elseif rewardType == BeastBlessDropType.subMoney then
+							rewardNode[name] = prev + BeastBlessUtils.getDSubMoneyFormula(prev,nTimes)
+						elseif rewardType == BeastBlessDropType.playerTao then
+							rewardNode[name] = prev + BeastBlessUtils.getDTaoFormula(prev,nTimes)
 						end
 					end
 				end
@@ -567,6 +562,9 @@ end
 local randRewordWeight = 100
 
 function BeastBlessManager:dealItemReward(normalRewardPlayer,itemsConfig,fightInfo,playerNum)
+	if playerNum == 0 then
+		return
+	end
 	local luckMonster  = fightInfo.LuckMonster 
 	local specialCountN = 0 -- 特殊怪的计数
 	local specialCountM = 0 -- 特殊怪对数计数
@@ -616,6 +614,7 @@ function BeastBlessManager:dealItemReward(normalRewardPlayer,itemsConfig,fightIn
 	local itemID = BeastBlessUtils.randItem(curItems)
 	-- 把每这个个物品分配给玩家
 	local maxWeight = randRewordWeight*playerNum
+	print("maxWeight",maxWeight,randRewordWeight,playerNum)
 	local rand = math.random(maxWeight)
 	local curWeight = 0
 	for playerID,player in pairs(normalRewardPlayer) do
@@ -747,6 +746,7 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 					self:sendRewardMessageTip(role, 7, roleReward.pot)
 				end
 				if roleReward.item then
+					print("roleReward.item",toString(roleReward.item))
 					local packetHandler = role:getHandler(HandlerDef_Packet)
 					local params = false
 					local allItem = {}
@@ -761,7 +761,7 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 							if itemID == BeastBlessSpecialItem then
 								-- 广播
 								if g_serverId == 0 then
-									local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,5,{{itemInfo.itemID,itemInfo.itemNum}})
+									local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,5,role:getName(),{{itemID = itemID ,itemNum = itemNum}})
 									RemoteEventProxy.broadcast(event)
 								end
 							end
@@ -809,6 +809,7 @@ end
 
 -- 发送给客户端消息
 function BeastBlessManager:sendRewardMessageTip(player, msgID, msgParams)
+	print("msgParams",toString(msgParams))
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, msgID, msgParams)
 	g_eventMgr:fireRemoteEvent(event, player)
 end

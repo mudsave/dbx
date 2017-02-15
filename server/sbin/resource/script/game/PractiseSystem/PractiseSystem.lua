@@ -83,26 +83,63 @@ function PractiseSystem:addPractise(event)
 	end
 	-- 任务
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	local countRing =  taskHandler:getCountRing(taskID)
-	print("当前环数",countRing)
+	local storeXp = player:getStoreXp()
+	local valueReword = 0
 	for _,data in pairs(tActivityPageDB) do
+		-- 完成的是否是面板上的任务
 		if data.TaskID == taskID then
-			local value = data.PracticeReword
-			local curReword = countRing*value
-			if curReword < data.MaxPracticeReword then	
-				player:addPractise(value)
-				-- 通知给客户端里的界面
-				g_eventMgr:fireRemoteEvent(
-					Event.getEvent(
-						ClientEvents_SC_PromptMsg,taskID,curReword
-					),
-					player
-				)
-				--
-				player:flushPropBatch()
+			valueReword = data.PracticeReword
+			local taskConfig = LoopTaskDB[taskID]
+			-- 返回经验值
+			if taskConfig.taskType2 ~= TaskType2.Heaven then
+				-- 修行值的获得
+				local countRing = taskHandler:getCurrentRing(taskID)
+				-- local curRing = taskHandler:countRing(taskID)
+				local xpFuncName = taskConfig.formulaRewards[TaskRewardList.player_xp]
+				if xpFuncName then
+					local xpValue = xpFuncName(countRing,player:getLevel())
+					xpValue =  math.floor(xpValue*0.5)
+					if storeXp <= xpValue then
+						xpValue = storeXp
+					end
+					if xpValue > 0 then		
+					storeXp = storeXp - xpValue
+					player:setStoreXp(storeXp)
+					player:addXp(xpValue)
+					g_eventMgr:fireRemoteEvent(
+						Event.getEvent(
+							ClientEvents_SC_PromptMsg,eventGroup_Practise,1,xpValue
+						),
+						player
+					)
+					end
+				end
 			end
+			break
 		end
 	end
+	local finishTimes =  taskHandler:getFinishTimes(taskID)
+	print("finishTimes:",finishTimes)
+	
+	g_eventMgr:fireRemoteEvent(
+		Event.getEvent(
+			PractiseEvent_SC_addPractise,finishTimes
+		),
+		player
+	)
+	-- 通知消息
+	if valueReword > 0 then
+		valueReword =  math.floor(valueReword)
+		player:addPractise(valueReword)
+		-- 通知给客户端里的界面
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(
+				ClientEvents_SC_PromptMsg,eventGroup_Practise,3,valueReword
+			),
+			player
+		)
+	end
+	player:flushPropBatch()
 end
 
 function PractiseSystem:sendMessage(player, msgID, money,itemNum,itemID)

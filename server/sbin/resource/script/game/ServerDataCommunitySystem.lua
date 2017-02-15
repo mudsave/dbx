@@ -15,6 +15,7 @@ function ServerDataCommunitySystem:__init()
 		[ChatEvents_SB_SendToAround]			= ServerDataCommunitySystem.onSendToAround,
 		[ChatEvents_SB_SendToTeam]				= ServerDataCommunitySystem.onSendToTeam,
 		[ChatEvents_SB_SendToWorld]				= ServerDataCommunitySystem.onSendToWorld,
+		[ChatEvents_CB_SendToHorn]				= ServerDataCommunitySystem.onSendToHorn,
 	}
 end
 
@@ -82,6 +83,33 @@ function ServerDataCommunitySystem:onSendToWorld(event)
 	local vigor = params[2]
 	role:setVigor(vigor)
 	role:flushPropBatch()
+end
+
+function ServerDataCommunitySystem:onSendToHorn( event )
+	
+	local params = event:getParams()
+	local channelType = params[1]
+	local msg = params[2]
+	local sign = params[3]
+	local DBID = params[4]
+	local iHornGuid = params[5]
+
+	local player = g_entityMgr:getPlayerByDBID(DBID)
+	local packetHandler = player:getHandler(HandlerDef_Packet)
+	local num = packetHandler:getNumByItemID(iHornGuid)
+	print("iHornGuid>>>>>>>>>",iHornGuid,toString(packetHandler:getNumByItemID(iHornGuid)))
+	print("num>>>>>>>>>>",num)
+	if num < 0 then
+		local msgID = 9
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Chat, msgID)
+		g_eventMgr:fireRemoteEvent(event, player)
+	else
+		packetHandler:removeByItemId(iHornGuid, 1)
+		--发送事件到社会服
+		local event_SendToHorn = Event.getEvent(ChatEvents_CS_SendChatMsg,channelType,msg,sign,DBID,iHornGuid)
+		g_eventMgr:fireWorldsEvent(event_SendToHorn,SocialWorldID)
+	end
+
 end
 
 function ServerDataCommunitySystem.getInstance()

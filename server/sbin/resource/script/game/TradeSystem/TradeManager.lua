@@ -677,6 +677,58 @@ function TradeManager:sendP2PTradeMessage(player, msgID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+function TradeManager:petBuyShop(player, petID, petBuyPrice, petBuyType)
+	local playerMoney = player:getMoney()
+	local playerSubMoney = player:getSubMoney()
+	if petBuyType == ItemPriceType.BindMoney then 
+		if petBuyPrice <= playerSubMoney then 
+			if player:canAddPet() then
+				local pet = g_entityFct:createPet(tonumber(petID))
+				if not pet then
+					print(("宠物%s是没有配置的"):format(petID))
+					return
+				end
+				pet:setOwner(player)
+				player:addPet(pet)
+				player:setSubMoney(playerSubMoney-petBuyPrice)
+				self:sendTradeMessage(player, 13, petBuyPrice,1,petID)
+			else
+				g_eventMgr:fireRemoteEvent(
+					Event.getEvent(
+						ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.MaxPetNumber
+					),player
+				)
+			end	
+		else
+			return 
+		end 
+	elseif petBuyType == ItemPriceType.Money then
+		if  petBuyPrice <= playerMoney then 
+			if player:canAddPet() then
+				local pet = g_entityFct:createPet(petID)
+				if not pet then
+					print(("宠物%s是没有配置的"):format(petID))
+					return
+				end
+				pet:setOwner(player)
+				player:addPet(pet)
+				player:setMoney(playerMoney-petBuyPrice)
+				self:sendTradeMessage(player, 14, petBuyPrice,1,petID)
+			else
+				g_eventMgr:fireRemoteEvent(
+					Event.getEvent(
+						ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.MaxPetNumber
+					),player
+				)
+			end		
+		else
+			self:sendTradeMessage(player, 5)
+			return 
+		end 
+	else 
+		return 
+	end 
+end 
 
 function TradeManager.getInstance()
 	return TradeManager()

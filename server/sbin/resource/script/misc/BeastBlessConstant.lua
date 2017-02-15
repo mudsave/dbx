@@ -23,9 +23,10 @@ BeastBlessDropType =
 {	
 	playerExp	= 1,
 	subMoney	= 2,
-	PlayerTao	= 3,
+	playerTao	= 3,
 	PetExp		= 4,
 	PetTao		= 5,
+	playerDecSubmoney = 6,
 }
 
 -- 特殊怪的计算
@@ -33,14 +34,16 @@ BeastBlessExtraReward =
 {	
 	[25505] = BeastBlessDropType.subMoney,
 	[25506] = BeastBlessDropType.playerExp,
-	[25508] = BeastBlessDropType.PlayerTao,
+	[25508] = BeastBlessDropType.playerTao,
+	[25511] = BeastBlessDropType.playerDecSubmoney,
 }
 
 BeastBlessToValueReward = 
 {	
-	[BeastBlessDropType.playerExp]	= {"playerExp","BeastBlessUtils.getExpFormula","BeastBlessUtils.getDExpFormula"},
-	[BeastBlessDropType.subMoney]		= {"subMoney","BeastBlessUtils.getSubMoneyFormula","BeastBlessUtils.getDSubMoneyFormula"},
-	[BeastBlessDropType.PlayerTao]	= {"PlayerTao","BeastBlessUtils.getTaoFormula","BeastBlessUtils.getDTaoFormula"},
+	[BeastBlessDropType.playerExp]	= "playerExp",
+	[BeastBlessDropType.subMoney]	= "subMoney",
+	[BeastBlessDropType.playerTao]	= "playerTao",
+	[BeastBlessDropType.playerDecSubmoney] = "subMoney",
 }
 
 
