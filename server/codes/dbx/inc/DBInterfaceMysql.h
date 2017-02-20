@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-√Ë ˆ£∫
+ÊèèËø∞Ôºö
 
 */
 
@@ -11,7 +11,6 @@ RTX:6016.
 #include "mysql.h"
 
 #include "DBInterface.h"
-#include "DBXMessageTranslate.h"
 
 
 class DBInterfaceMysql : public DBInterface
@@ -31,18 +30,11 @@ public:
 
     virtual void Disconnect();
 
-	MYSQL * GetMysql() { return m_mysql; }
-
-	char * GetQueryBuffer() { return m_szQueryBuffer; }
-
 private:
     void SetIssueError(DBIssueBase *p_issue);
-
-	//”√¿¥¥¥Ω®≤È—Øª∫≥Â£¨∑≈‘⁄’‚¿Ôø…“‘±‹√‚∂‡¥Œ¥¥Ω®∫Õ Õ∑≈ƒ⁄¥Ê
-	char m_szQueryBuffer[QUERYBUFFER_MAX_LEN];
 
 protected:
     MYSQL *m_mysql;
 };
 
-#endif  // end of __DB_INTERFACE_MYSQL_H_
+#endif  // __DB_INTERFACE_MYSQL_H_

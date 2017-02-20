@@ -30,6 +30,7 @@ enum EntityType
     eLogicEctypeNpc,
     eLogicEctypePatrolNpc,
 	eLogicEctypeObject,
+	eLogicActivityPatrolNpc,
     MAX_LOGIC_TYPE
 };
 
@@ -87,6 +88,8 @@ public:
 	void setIsFirstCast(bool bOk);
 
 	void setDirection(char direction);
+
+	const char *getPropName(int propID);
 public:
 	bool enterScene(CoScene* pScene, short x, short y);
 

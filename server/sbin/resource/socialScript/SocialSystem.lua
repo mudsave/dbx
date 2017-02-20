@@ -50,6 +50,7 @@ function  SocialSystem:onSaveData(event)
 end
 
 function SocialSystem:onExitWorld(event)
+
 	local DBID = event:getParams()[1]
 	local player = g_playerMgr:getPlayerByDBID(DBID)
 	if not player then

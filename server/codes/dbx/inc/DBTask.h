@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -54,4 +54,4 @@ protected:
 };
 
 
-#endif // end of __DB_TASK_H_
+#endif // __DB_TASK_H_

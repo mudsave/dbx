@@ -31,11 +31,11 @@ GoldHuntZone_ReadyPeriodBeforeEnd = 3--min
 GoldHuntZone_RankLimit	= 100
 GoldHuntZone_ClientRankLimit	= 5
 GoldHuntZone_Reward = {
-	{rank=3,},
-	{rank=10,},
-	{rank=50,},
-	{rank=100,},
-	{},
+	{rank=3,exp = 10,money = 10,tao = 10},
+	{rank=10,exp = 8,money = 8,tao = 8},
+	{rank=50,exp = 6,money = 6,tao = 6},
+	{rank=100,exp = 4,money = 4,tao = 4},
+	{exp = 2,money = 2,tao = 2},
 }
 GoldHuntZone_scoreNpcID = 70004
 

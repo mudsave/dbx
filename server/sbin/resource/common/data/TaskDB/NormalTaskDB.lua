@@ -98,7 +98,7 @@ NormalTaskDB =
 			--[8] = {type = "TgetItem", param = {itemID = 1051013, count = 1 ,bor = true},}--任务目标获取物品
 			--[9] = {type='TcontactSeal',param = {sealID = xxx， bor = false},},---任务目标 例如：摧毁需破坏的阵法或者摧毁采集的物品
 			--[10] = {type='TattainLevel',param = {level = 30,bor = true},},---等级限制目标
-			--[11] = {type='Tride',param = {rideID = 10, bor = false} ------获得坐骑任务目标
+			--[11] = {type='Tride',param = {rideID = 10, bor = false},}, ------获得坐骑任务目标
 
 		},
 		triggers = --任务触发器
@@ -115,7 +115,6 @@ NormalTaskDB =
 			--	{type = "enterEctype",	param =	{ectypeID = 5,}},					--进入副本
 			--	{type = "autoTrace", param = {tarMapID	= 3, x = 28, y = 92,npcID = 20006,},}, --寻路到掌门
 			--	{type = "playAnimation", param	= {animationID = 2}},				--触发指定ID的脚本动画(参数待定)
-			--	{type='Tarea',param = {mapID = 2 , x = 2, y = 3, bor = true},},--到达指定的坐标点
 			--	{type = "flyEffect", param = {flyEffectID = 1}},--飞剑动画
 			--	{type = "createCage", param = {position = {mapID = ,x = ,y =},}},	--创建笼子
 
@@ -132,8 +131,6 @@ NormalTaskDB =
 					{mapID = 103, scriptID = {118,119},fightMapID = nil,stepFactor = 0.2,mustCatch = false},
 					}
 				} --创建任务雷，如果一个任务在一张地图上，需要打两场任务雷，在两场任务雷的情况下，写这个代码
-
-
 			},
 			[TaskStatus.Done]		=
 			{
@@ -141,7 +138,7 @@ NormalTaskDB =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20029,	mapID =	101, x = 88, y = 218,dir = WestSouth,},
+								[1] = {npcID = 20029,	mapID =	101, x = 88, y = 218,dir = Direction.WestSouth,},
 						},
 					},
 				},
@@ -175,15 +172,15 @@ NormalTaskDB =
 				--{type = "recetiveTask", param = {taskIDs = {1}}},--触发接受任务,改成表
 				--上面修改成
 				--{type = "finishTask", param = {recetiveTaskID = 1103}},--触发完成任务接受下一个任务
+				--{type = "finishTask", param = {recetiveTaskID = {1082,1084,1086,1088,1090,1092}}},--触发完成任务接受下多个任务
 				--{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    --{type = "removeMine", param = {}}, -- 移除任务类
-
+				--{type = "enterScriptFight", param = {scriptID = 100, mapID = 8}}, --接受任务时直接进入战斗
 			},
 			[TaskStatus.Finished]	=
 			{
 				{type = "openDialog", param={dialogID = 1},}, --在任务结束时打开一个对话框
 				{type = "openUI", param={v = "SkillBoard"},}  --在任务结束打开一个UI
-
 			}
 		}
 	},
@@ -222,11 +219,13 @@ NormalTaskDB =
 		},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
-			[1] = {type='TwearEquip',param = {equipID	= 2001086, bor = false},},
-			[2] = {type='TwearEquip',param = {equipID	= 2001091, bor = false},},
-			[3] = {type='TwearEquip',param = {equipID	= 2001092, bor = false},},
-			[4] = {type='TwearEquip',param = {equipID	= 2001093, bor = false},},
-			[5] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},
+		    --穿戴指定物品及装备目标（可以写多个）
+			[1] = {type='TwearEquip',param = {equipID	= 2001085, bor = false},},--武器
+			[2] = {type='TwearEquip',param = {equipID	= 2001091, bor = false},},--护肩
+			[3] = {type='TwearEquip',param = {equipID	= 2001092, bor = false},},--头盔
+			[4] = {type='TwearEquip',param = {equipID	= 2001093, bor = false},},--战袍
+			[5] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},--裤子
+			[6] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},--鞋子
 		},
 		triggers = --任务触发器
 		{

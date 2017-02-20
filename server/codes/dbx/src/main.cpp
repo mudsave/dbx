@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     g_dbxConfig.LoadConfig("DBServer.xml");
 
-    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // ¶ÔÏó³Ø³õÊ¼»¯
+    IThreadsPool* pThreadsPool = GlobalThreadsPool();    // å¯¹è±¡æ± åˆå§‹åŒ–
 
     GenerateSignalThread();
     SetCleanup(CleanUp);
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         TRACE0_L0("Dbx stop [ timeout ].\n");
     }
     
-    GlobalThreadsPool()->Clear();
+    pThreadsPool->Clear();
 
     Sleep(1000 * 5);
 	return 0;

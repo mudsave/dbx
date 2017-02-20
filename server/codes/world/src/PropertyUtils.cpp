@@ -10,11 +10,10 @@ static int getPropValue(lua_State *L){
 	if(!pEntity){
 		luaL_error(L,"[getPropValue] #1 excepted a CoEntity Instance,got null");
 	}
-	if(propID < 0 || propID >= pEntity->m_propSet.count){
-		luaL_error(L,"[getPropValue] #2 out of range:%d",propID);
-	}
-
 	_Property *property = pEntity->getProperty(propID);
+	if(!property){
+		luaL_error(L,"[getPropValue] no property found for propID %d",propID);
+	}
 	switch(property->val.type){
 		case VAR_BYTE:
 			lua_pushinteger(L,property->val.cVal);
@@ -48,28 +47,21 @@ static int setPropValue(lua_State *L){
 	if(!pEntity){
 		luaL_error(L,"[setPropValue] #1 excepted a CoEntity Instance,got null");
 	}
-	long propID = (long)luaL_checkinteger(L,2);
-	if(propID < 0 || propID >= pEntity->m_propSet.count){
-		luaL_error(L,"[setPropValue] #2 out of range:%d",propID);
+	long propID = (long)luaL_checkinteger(L,2);	
+	_Property *property = pEntity->getProperty(propID);
+	if(!property){
+		luaL_error(L,"[setPropValue] no property found for propID %d",propID);
 	}
-
 	bool bPropChanged = true;
-	_Property *property = pEntity->m_propSet[propID];
-	switch(property->val.type){
+	switch(property->type()){
 		case VAR_BYTE:
-			property->val.cVal = (char)luaL_checkinteger(L,3);
-			break;
 		case VAR_SHORT:
-			property->val.sVal = (short)luaL_checkinteger(L,3);
-			break;
 		case VAR_INT:
-			property->val.iVal = (int)luaL_checkinteger(L,3);
-			break;
 		case VAR_LONGLONG:
-			property->val.llVal = (long long)luaL_checkinteger(L,3);
+			property->setValue(luaL_checkinteger(L,3));
 			break;
 		case VAR_FLOAT:
-			property->val.fVal = (float)luaL_checknumber(L,3);
+			property->setValue(luaL_checknumber(L,3));
 			break;
 		case VAR_STRING:{
 				size_t len;
@@ -88,7 +80,7 @@ static int setPropValue(lua_State *L){
 			bPropChanged = false;
 			break;
 		default:
-			luaL_error(L,"[setPropValue] unsupport Variant type:%d",property->val.type);
+			luaL_error(L,"[setPropValue] unsupport Variant type:%d",property->type());
 	}
 	if(bPropChanged){
 		pEntity->PropValChanged(propID);
@@ -101,14 +93,30 @@ static int flushPropBatch(lua_State *L){
 	if(!pEntity){
 		luaL_error(L,"[flushPropBatch] #1 excepted a CoEntity instance,got null");
 	}
-	handle hSendTo = lua_tointeger(L,2);
-	if(lua_toboolean(L,3)){
-		pEntity->bcAllProps(hSendTo);
-	}
-	else{
-		pEntity->bcPropUpdates(hSendTo);
-	}
+	pEntity->bcPropUpdates( lua_tointeger(L,2) );
 	return 0;
+}
+
+static int attachEntity(lua_State *L){
+	CoEntity *pEntity = (CoEntity *)tolua_tousertype(L,1,0);
+	if(!pEntity){
+		luaL_error(L,"[attachEntity] #1 excepted a CoEntity instance,got null");
+	}
+	lua_pushboolean(L,
+		pEntity->bcPropBind( lua_tointeger(L,2) )? 1 : 0
+	);
+	return 1;
+}
+
+static int detachEntity(lua_State *L){
+	CoEntity *pEntity = (CoEntity *)tolua_tousertype(L,1,0);
+	if(!pEntity){
+		luaL_error(L,"[detachEntity] #1 excepted a CoEntity instance,got null");
+	}
+	lua_pushboolean(L,
+		 pEntity->bcPropUnbind( lua_tointeger(L,2) )? 1 : 0
+	);
+	return 1;
 }
 
 int lua_PropertySet_open(lua_State *L){
@@ -118,6 +126,8 @@ int lua_PropertySet_open(lua_State *L){
 	tolua_function(L,"getPropValue",getPropValue);
 	tolua_function(L,"setPropValue",setPropValue);
 	tolua_function(L,"flushPropBatch",flushPropBatch);
+	tolua_function(L,"attachEntity",attachEntity);
+	tolua_function(L,"detachEntity",detachEntity);
 	tolua_endmodule(L);
 	return 1;
 }

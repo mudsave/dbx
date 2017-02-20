@@ -5,7 +5,8 @@
 	10001-20000副本 各种副本的对话ID集合
 	20001-21000主城固定npc以及默认对话
 	21001-26000通天塔以及其他
-	27001-27100坐骑任务（临）
+	27001-27100坐骑任务
+	27101-27150天子猎金场
 	30001-35000循环任务（30100-30300 帮派任务）
 	35001-35099抓宠任务
 	35100-35199瑞兽降福
@@ -17,7 +18,29 @@
 DialogModelDB =
 {
 -------------------主线任务特殊处理对话-----------------------------task---
-    [108] =
+-------------------1-25级主线任务1087特殊处理对话--------------------------------
+    [308] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions ={},
+		speakerID = 0,
+		soundID = nil,
+		txt = "封神台之事非同小可，我这便返回门派将此事告知掌门师傅！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1087}},
+				{action = DialogActionType.RecetiveTasks ,param = {taskIDs = {1088,1090,1092,1094,1096,1098}}},
+				},
+			}
+		},
+	},
+-------------------1-25级主线任务1003特殊处理对话--------------------------------
+    [452] =---乾元岛
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -34,12 +57,13 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1004}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1003}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1004}},
+				},
 			}
 		},
 	},
-	 [118] =
+	[453] =---桃源洞
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -56,12 +80,13 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1009}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1003}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1014}},
+				},
 			}
 		},
 	},
-      [128] =
+    [454] =---金霞山
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -78,12 +103,13 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1014}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1003}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1024}},
+				},
 			}
 		},
 	},
-       [138] =
+    [455] =---蓬莱阁
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -100,12 +126,13 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1019}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1003}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1034}},
+				},
 			}
 		},
 	},
-        [148] =
+    [456] =---紫阳门
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -122,12 +149,13 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1024}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1003}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1044}},
+				},
 			}
 		},
 	},
-        [158] =
+    [457] =---云霄宫
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -144,8 +172,9 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1029}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1003}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1054}},
+				},
 			}
 		},
 	},
@@ -16245,6 +16274,35 @@ DialogModelDB =
 			},
 		},
 	},
+	[20032] =    ----洛阳宠物商店
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID = 29082,
+		txt = "特殊物品可在这买",
+		options =
+		{
+		[1] = {
+				showConditions = {},
+				optionTxt = "看看卖啥",
+				actions =
+				{
+					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 22},},
+				},
+				icon = DialogIcon.Trade,
+			},
+		[2] = {
+				showConditions = {},
+				optionTxt = "只是路过",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
 	--------------------------------桃园镇对话ID规划：20151~20250------
 	[20151] =
 	{
@@ -18550,7 +18608,7 @@ DialogModelDB =
 				optionTxt = "洛阳",  --主城
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 119}},
 				},
 			},
 			[8] = {
@@ -18676,14 +18734,44 @@ DialogModelDB =
 			},
 			[7] =
 			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTasks, param = {taskIDs = {1089,1378}, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				},
+				optionTxt = "玄都玉京（主线任务）",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 107}},
 				},
 			},
-			[8] = {
+			[8] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1362, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				},
+				optionTxt = "玉泉山（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 113}},
+				},
+			},
+			[9] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1012, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				},
+				optionTxt = "桃园镇（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+			},
+			[10] = {
 				showConditions = {},
 				optionTxt = "我再转转",
 				actions =
@@ -18752,6 +18840,17 @@ DialogModelDB =
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+			[6] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.Level, param = {level = 20}},
+				},
+				optionTxt = "了解师门任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 700}},
 				},
 			},
 		},
@@ -18932,14 +19031,44 @@ DialogModelDB =
 			},
 			[7] =
 			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTasks, param = {taskIDs = {1091,1378}, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
+				},
+				optionTxt = "玄都玉京（主线任务）",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 108}},
 				},
 			},
-			[8] = {
+			[8] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1364, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
+				},
+				optionTxt = "玉泉山（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 114}},
+				},
+			},
+			[9] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1022, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
+				},
+				optionTxt = "桃园镇（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+			},
+			[10] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19188,14 +19317,44 @@ DialogModelDB =
 			},
 			[7] =
 			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTasks, param = {taskIDs = {1093,1378}, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
+				},
+				optionTxt = "玄都玉京（主线任务）",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 109}},
 				},
 			},
-			[8] = {
+			[8] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1366, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
+				},
+				optionTxt = "玉泉山（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 115}},
+				},
+			},
+			[9] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1032, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
+				},
+				optionTxt = "桃园镇（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+			},
+			[10] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19445,14 +19604,44 @@ DialogModelDB =
 			},
 			[7] =
 			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTasks, param = {taskIDs = {1095,1378}, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
+				},
+				optionTxt = "玄都玉京（主线任务）",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 110}},
 				},
 			},
-			[8] = {
+			[8] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1368, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
+				},
+				optionTxt = "玉泉山（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 116}},
+				},
+			},
+			[9] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1042, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
+				},
+				optionTxt = "桃园镇（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+			},
+			[10] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19702,14 +19891,44 @@ DialogModelDB =
 			},
 			[7] =
 			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTasks, param = {taskIDs = {1097,1378}, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
+				},
+				optionTxt = "玄都玉京（主线任务）",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 111}},
 				},
 			},
-			[8] = {
+			[8] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1370, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
+				},
+				optionTxt = "玉泉山（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 117}},
+				},
+			},
+			[9] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1052, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
+				},
+				optionTxt = "桃园镇（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+			},
+			[10] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19958,14 +20177,44 @@ DialogModelDB =
 			},
 			[7] =
 			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTasks, param = {taskIDs = {1099,1378}, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
+				},
+				optionTxt = "玄都玉京（主线任务）",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 112}},
 				},
 			},
-			[8] = {
+			[8] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1372, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
+				},
+				optionTxt = "玉泉山（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 118}},
+				},
+			},
+			[9] =
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1062, statue = true}},
+				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
+				},
+				optionTxt = "桃园镇（主线任务）",
+				actions =
+				{
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+			},
+			[10] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -20357,6 +20606,27 @@ DialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 1223,itemsInfo = {{itemID = 1041014, count = 1}}},},
+				},
+			},
+		},
+	},
+	[20855] =             --主线1-25玉泉山传送人
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID = 20113,
+		txt = "我可以送你去洛阳，确定要去么！",
+		options =
+		{
+			[1] =
+			{
+				showConditions = {},
+				optionTxt = "洛阳",  --主城
+				actions =
+				{
+				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 119}},
 				},
 			},
 		},
@@ -24573,6 +24843,132 @@ DialogModelDB =
 		},
 	},
 ------------------------------坐骑任务   结束-------------------
+------------------------------------------------------天子猎金场活动开始
+	[27101] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		
+		},
+		speakerID = 39050,
+		soundID =0,
+		txt = "南方蛮荒之地发现一处上古遗迹，遗迹中盛产一种上古金晶，是重要的军备物资，朝廷需要征集有志之士前往，你可愿意？",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "前往天子猎金场",
+				actions =
+				{
+					{action = DialogActionType.EnterGoldHuntZone , param = {x = 103, y = 283},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "我稍后再来",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			},
+		},
+	},
+	[27102] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		
+		},
+		speakerID = 39051,
+		soundID =0,
+		txt = "现在这个兵荒马乱的年代，发财容易，就怕是有命赚没命花，金晶矿带来了吗？",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "上交采集的金晶矿",
+				actions =
+				{
+					{action = DialogActionType.GoldHuntCommit , param = {},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "我稍后再来",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			},
+		},
+	},
+	[27103] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		
+		},
+		speakerID = 39052,
+		soundID =0,
+		txt = "此处有我驻守，任何人休想通过",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "谁抢到了就是谁的",
+				actions =
+				{
+					{action = DialogActionType.GoldHuntFight , param = {scriptID = 6001 ,mapID =909},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "不和你打",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			},
+		},
+	},
+	[27104] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		
+		},
+		speakerID = 39053,
+		soundID =0,
+		txt = "此处有我驻守，任何人休想通过",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "谁抢到了就是谁的",
+				actions =
+				{
+					{action = DialogActionType.GoldHuntFight , param = {scriptID = 6002 ,mapID =909},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "不和你打",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			},
+		},
+	},
+
 
 -- 乾元岛师门任务发放人，第一层对话
 [30001] =
@@ -25140,7 +25536,7 @@ DialogModelDB =
 					optionTxt = "30级抓宠地图",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 901, x = 35, y = 157, itemID = 1025001, itemNum = 1}},
+						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 901, x = 35, y = 157, level = 30}},
 					},
 				},
 			[2] =
@@ -25149,7 +25545,7 @@ DialogModelDB =
 					optionTxt = "40级抓宠地图",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 902, x = 35, y = 157, itemID = 1025001, itemNum = 1}},
+						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 902, x = 35, y = 157, level = 30}},
 					},
 				},
 			[3] =
@@ -25158,7 +25554,7 @@ DialogModelDB =
 					optionTxt = "50级抓宠地图",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 903, x = 35, y = 157, itemID = 1025001, itemNum = 1}},
+						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 903, x = 35, y = 157, level = 30}},
 					},
 				},
 			[4] =
@@ -25167,7 +25563,7 @@ DialogModelDB =
 					optionTxt = "60级抓宠地图",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 904, x = 35, y = 157, itemID = 1025001, itemNum = 1}},
+						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 904, x = 35, y = 157, level = 30}},
 					},
 				},
 		},
@@ -26328,7 +26724,7 @@ DialogModelDB =
 					optionTxt = "请指点一二！",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 7102 ,mapID =nil},},
+						{action = DialogActionType.Goto, param = {dialogID=35105}},
 					},
 				},
 			[2] =	{
@@ -26355,7 +26751,7 @@ DialogModelDB =
 					optionTxt = "请指点一二！",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 7103 ,mapID =nil},},
+						{action = DialogActionType.Goto, param = {dialogID=35106}},
 					},
 				},
 			[2] =	{
@@ -26382,7 +26778,7 @@ DialogModelDB =
 					optionTxt = "请指点一二！",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 7104 ,mapID =nil},},
+						{action = DialogActionType.Goto, param = {dialogID=35107}},
 					},
 				},
 			[2] =	{
@@ -26409,7 +26805,7 @@ DialogModelDB =
 					optionTxt = "请指点一二！",
 					actions =
 					{
-						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 7105 ,mapID =nil},},
+						{action = DialogActionType.Goto, param = {dialogID=35108}},
 					},
 				},
 			[2] =	{
@@ -26420,6 +26816,86 @@ DialogModelDB =
 						{action = DialogActionType.CloseDialog , param ={}},
 					},
 				},
+		},
+	},
+	[35105] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25501,
+		soundID =nil,
+		txt = "�ǾͿ�ʼ�ɣ�",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterBeastFight , param = {scriptID = 45000},},
+				},
+			}
+		},
+	},
+	[35106] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25502,
+		soundID =nil ,
+		txt = "�ǾͿ�ʼ�ɣ�",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterBeastFight , param = {scriptID = 45000},},
+				},
+			}
+		},
+	},
+	[35107] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25503,
+		soundID =nil,
+		txt = "�ǾͿ�ʼ�ɣ�",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterBeastFight , param = {scriptID = 45000},},
+				},
+			}
+		},
+	},
+	[35108] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25504,
+		soundID =nil,
+		txt = "�ǾͿ�ʼ�ɣ�",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterBeastFight , param = {scriptID = 45000},},
+				},
+			}
 		},
 	},
 

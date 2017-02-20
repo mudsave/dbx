@@ -25,8 +25,9 @@ function Treasure:__init(owner,treasureID)
 	self.nearPosX = nil
 	self.nearPosY = nil
 	-- 宝藏的状态控制 1原始 没有点击过 2知道地点 3知道附近点
-	self.tipState = TreasureTipsState.Original
+	self.tipState = TreasureTipsState.ShowPosition
 	
+	 
 end
 
 function Treasure:__release()
@@ -158,6 +159,7 @@ end
 -- 随机附近的坐标
 function Treasure:doRandNearPosition()
 	self.nearPosX, self.nearPosY = TreasureUtils.RandNearPosition(self.mapID, self.posX, self.posY, TreasureNearPosionRange)
+	self:toNotifyUpdateClientInfo()
 end
 
 -- 宝藏的图标提示

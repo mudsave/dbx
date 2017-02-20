@@ -5,7 +5,7 @@
 tBeastBlessInMapDB = {
 	[1] = {
 		mapID	= 10,
-		npcNum	= 20,
+		npcNum	= 5,
 		npcValues = {100000,100001,100002},
 	},
 }

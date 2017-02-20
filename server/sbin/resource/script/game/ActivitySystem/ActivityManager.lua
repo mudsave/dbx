@@ -33,6 +33,10 @@ function ActivityManager:openActivity(id, frameName)
 	end
 end
 
+function ActivityManager:getActivityList()
+	return self.curActivityList
+end
+
 function ActivityManager:closeActivity(id)
 	self.curActivityList[id]:close()
 	

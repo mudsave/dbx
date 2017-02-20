@@ -6,34 +6,42 @@ UNIT_NAME		= UNIT_BASE + 0
 UNIT_MODEL		= UNIT_BASE + 1
 UNIT_SHOWPARTS	= UNIT_BASE + 2
 
-local Properties = {}
+local Properties = {
+	{ UNIT_NAME,		"STRING",	"noname",	Public,	Sync,"UNIT_NAME"},		-- 实体名称
+	{ UNIT_MODEL,		"SHORT",	11,			Public,	Sync,"UNIT_MODEL"},		-- 实体模型
+	{ UNIT_SHOWPARTS,	"STRING",	"{1,1}",	Public,	Sync,"UNIT_SHOWPARTS"},	-- 实体纹理
+}
 
-local function DefineProperty(...)
-	Properties[#Properties + 1] = arg
+local PropertyError = {
+	[-1] = "invalid property set!",
+	[-2] = "unrecognized data type!",
+}
+
+local function GetID(newID,desireID)
+	if newID < 0 then
+		error(PropertyError[newID])
+	end
+	if desireID and newID ~= desireID then
+		error("duplicated property initialization!")
+	end
+	return newID
 end
-
-DefineProperty(UNIT_NAME,		"STRING",	"noname",	1,	1)	--实体名称
-DefineProperty(UNIT_MODEL,		"SHORT",	11,			1,	1)	--实体模型
-DefineProperty(UNIT_SHOWPARTS,	"STRING",	"{1,1}",	1,	1)	--显示细节
 
 -- 初始化一个属性集合
 function InitPropSet(cls,propConfig)
 	local unitConfig = CUnitConfig:Instance()
 	
-	unitConfig:initPropSet(cls)			--添加C++中使用属性
-
 	for _,conf in ipairs(Properties) do	--添加lua中共有属性
-		local propId,type,def,pub,sync = unpack(conf)
-		local id = unitConfig:addProperty(cls,type,def,pub,sync)
-		if propId ~= id then
-			print("error:duplicated property initialization!")
-			return false
-		end
+		local propID,szType,szDefault,bPub,bSync,szName = unpack(conf)
+		local id = unitConfig:addProperty(cls,szType,szDefault,bPub,bSync,szName)
+		GetID(id,propID)
 	end
 
-	for _,conf in ipairs(propConfig) do
-		local propName,type,def,pub,sync = unpack(conf)
-		local propId = unitConfig:addProperty(cls,type,def,pub,sync)
-		_G[propName] = propId
+	if propConfig then
+		for _,conf in ipairs(propConfig) do
+			local propName,szType,szDefault,bPub,bSync = unpack(conf)
+			local id = unitConfig:addProperty(cls,szType,szDefault,bPub,bSync,propName)
+			_G[propName] = GetID(id)
+		end
 	end
 end

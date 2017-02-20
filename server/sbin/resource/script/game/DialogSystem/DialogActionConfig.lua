@@ -53,4 +53,5 @@ DialogActionConfig =
 	[DialogActionType.EnterGoldHuntZone]		= DialogAction.doEnterGoldHuntZone,
 	[DialogActionType.GoldHuntFight]			= DialogAction.doGoldHuntFight,
 	[DialogActionType.GoldHuntCommit]			= DialogAction.doGoldHuntCommit,
+	[DialogActionType.RecetiveTasks]			= DialogAction.doRecetiveTasks,
 }

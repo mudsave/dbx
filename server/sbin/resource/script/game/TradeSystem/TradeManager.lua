@@ -40,22 +40,42 @@ function TradeManager:ptoNBuyBack(player, itemGuid, itemNum, moveItemInfo)
 			self:sendTradeMessage(player, 4)
 			return
 		end 
-			--回购时价格应该取物品配置
+		--回购时价格应该取物品配置
 		local itemID = item:getItemID()
 		local itemConfig = tItemDB[itemID]
 		if item then
 			--获取回购的类型和单价
 			local saleMoneyType = itemConfig.SaleMoneyType
 			local saleMoneyNum = itemConfig.SaleMoneyNum
-			local playerMoney = player:getMoney()
 			local playerSubMoney = player:getSubMoney()
+			local playerMoney = player:getMoney()
 			local costSubMoney = 0
 			local costMoney = 0
-			--获取总价
-			local totalPrice = saleMoneyNum*itemNum
-
+			local totalPrice = saleMoneyNum*itemNum 	--获取总价
+			
+			if saleMoneyType == ItemPriceType.BindMoney then 
+				if playerSubMoney >= totalPrice then
+					costSubMoney = totalPrice
+				else
+					if playerMoney >= totalPrice then 
+						costMoney = totalPrice
+					else
+						--玩家金钱不足无法购买
+						self:sendTradeMessage(player, 5)
+						return
+					end
+				end 
+			else
+				if playerMoney >= totalPrice then 
+					costMoney = totalPrice
+				else
+					--玩家金钱不足无法购买
+					self:sendTradeMessage(player, 5)
+					return
+				end
+			end 
 			--玩家交易的接口关闭
-			if player:getPayMode() then
+			--[[	if player:getPayMode() then
 				--玩家绑银不足
 				if playerSubMoney >= totalPrice then
 					costSubMoney = totalPrice
@@ -79,7 +99,7 @@ function TradeManager:ptoNBuyBack(player, itemGuid, itemNum, moveItemInfo)
 					self:sendTradeMessage(player, 5)
 					return
 				end
-			end
+			end --]]
 			--先看玩家的钱数再做移动操作再处理钱数成功失败
 			local result = self:onMoveItem(player, itemGuid, itemNum, moveItemInfo)
 			-- 这个地方应该还加一个判断成功和失败
@@ -87,17 +107,15 @@ function TradeManager:ptoNBuyBack(player, itemGuid, itemNum, moveItemInfo)
 				self:sendTradeMessage(player, 4)
 				return  
 			end
-			player:setMoney(playerMoney-costMoney)
 			player:setSubMoney(playerSubMoney-costSubMoney)
+			player:setMoney(playerMoney-costMoney)
 			player:flushPropBatch()
 			if costSubMoney > 0 then
 				self:sendTradeMessage(player, 1, costSubMoney,itemNum,itemID)
 			end
-
 			if costMoney > 0 then
 				self:sendTradeMessage(player, 2, costMoney,itemNum,itemID)
 			end
-
 		end
 	end
 end
@@ -530,7 +548,7 @@ function TradeManager:doP2PCancelTrade(roleID, targetID)
 	local target = g_entityMgr:getPlayerByID(targetID)
 	self:releaseP2PTrade(roleID, targetID)
 	--发消息给目标客户端让他取消交易
-	local event = Event.getEvent(TradeEvents_SC_TradeCanceled, player:getName())
+	local event = Event.getEvent(TradeEvents_SC_TradeCanceled, player:getName(), 0)
 	g_eventMgr:fireRemoteEvent(event, target)
 	
 end
@@ -570,7 +588,7 @@ function TradeManager:releaseTrade(roleID)
 		self.tradeList[roleID] = nil
 		self.tradeList[targetID] = nil
 		--发消息给目标客户端让他取消交易
-		local event = Event.getEvent(TradeEvents_SC_TradeCanceled, roleID)
+		local event = Event.getEvent(TradeEvents_SC_TradeCanceled, player:getName(), 1)
 		g_eventMgr:fireRemoteEvent(event, target)
 	end
 end
@@ -659,6 +677,58 @@ function TradeManager:sendP2PTradeMessage(player, msgID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+function TradeManager:petBuyShop(player, petID, petBuyPrice, petBuyType)
+	local playerMoney = player:getMoney()
+	local playerSubMoney = player:getSubMoney()
+	if petBuyType == ItemPriceType.BindMoney then 
+		if petBuyPrice <= playerSubMoney then 
+			if player:canAddPet() then
+				local pet = g_entityFct:createPet(tonumber(petID))
+				if not pet then
+					print(("宠物%s是没有配置的"):format(petID))
+					return
+				end
+				pet:setOwner(player)
+				player:addPet(pet)
+				player:setSubMoney(playerSubMoney-petBuyPrice)
+				self:sendTradeMessage(player, 13, petBuyPrice,1,petID)
+			else
+				g_eventMgr:fireRemoteEvent(
+					Event.getEvent(
+						ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.MaxPetNumber
+					),player
+				)
+			end	
+		else
+			return 
+		end 
+	elseif petBuyType == ItemPriceType.Money then
+		if  petBuyPrice <= playerMoney then 
+			if player:canAddPet() then
+				local pet = g_entityFct:createPet(petID)
+				if not pet then
+					print(("宠物%s是没有配置的"):format(petID))
+					return
+				end
+				pet:setOwner(player)
+				player:addPet(pet)
+				player:setMoney(playerMoney-petBuyPrice)
+				self:sendTradeMessage(player, 14, petBuyPrice,1,petID)
+			else
+				g_eventMgr:fireRemoteEvent(
+					Event.getEvent(
+						ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.MaxPetNumber
+					),player
+				)
+			end		
+		else
+			self:sendTradeMessage(player, 5)
+			return 
+		end 
+	else 
+		return 
+	end 
+end 
 
 function TradeManager.getInstance()
 	return TradeManager()

@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -75,7 +75,6 @@ bool DBIssueCallSP::OnProgress()
     TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
     const char *cmd = "CALL SP2();";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-
     return success;
 }
 
@@ -97,7 +96,6 @@ bool DBIssueCallSQL::OnProgress()
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
     const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-
     return success;
 }
 

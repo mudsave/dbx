@@ -30,19 +30,19 @@ struct Variant{
 		Variant* vctVal;
 	};
 	char type;
-	int length;
+	size_t length;
 public:
 	Variant():llVal(0),type(VAR_NULL),length(0){}
 	Variant(char c):cVal(c),type(VAR_BYTE){}
 	Variant(short s):sVal(s),type(VAR_SHORT){}
 	Variant(int i):iVal(i),type(VAR_INT){}
 	Variant(float f):fVal(f),type(VAR_FLOAT){}
-	Variant(const char *pStr,int len = -1):dataVal(0),type(VAR_STRING){
+	Variant(const char *pStr,size_t len = 0):dataVal(0),type(VAR_STRING){
 		ASSERT_(pStr);
 		Set(pStr,len);
 	}
-	Variant(const void *pData,int len):dataVal(0),type(VAR_DATA){
-		ASSERT_(pData&&len >= 0);
+	Variant(const void *pData,size_t len):dataVal(0),type(VAR_DATA){
+		ASSERT_(pData);
 		Set(pData,len);
 	}
 	Variant(const Variant &src){
@@ -59,12 +59,12 @@ public:
 		return *this;
 	}
 	bool IsEqual(const char *pStr,int len=-1) const{
-		ASSERT_(VAR_STRING==type);
+		ASSERT_( VAR_STRING == type );
 		return strcmp((const char *)dataVal,pStr)==0;
 	}
-	bool IsEqual(const void *pData,int len) const{
-		ASSERT_(VAR_DATA==type && len>=0);
-		if(len!=length){
+	bool IsEqual(const void *pData,size_t len) const{
+		ASSERT_( VAR_DATA == type && len>0 );
+		if( len != length ){
 			return false;
 		}
 		return memcpy(dataVal,pData,len)==0;
@@ -105,9 +105,9 @@ public:
 				break;
 			case VAR_VECTOR:
 				length = src.length;
-				ASSERT_(length>0);
+				ASSERT_( length > 0 );
 				vctVal = new Variant[length];
-				for(int i=0;i<length;i++){
+				for(unsigned i=0;i<length;i++){
 					vctVal[i].Copy(src.vctVal[i]);
 				}
 				break;
@@ -130,8 +130,8 @@ public:
 				ASSERT_(0);
 		}
 	}
-	int Save(void *pBuff,int len,bool bSaveType = false){
-		ASSERT_(len >= (signed)sizeof(long long) && pBuff);
+	int Save(void *pBuff,size_t len,bool bSaveType = false){
+		ASSERT_( len >= sizeof(long long) && pBuff );
 		char *p = (char *)pBuff;
 		if(bSaveType){
 			auxWrite(p,char,type);
@@ -155,15 +155,15 @@ public:
 				auxWrite(p,float,fVal);
 				break;
 			case VAR_STRING:{
-					int slen = strlen((const char *)dataVal);
-					ASSERT_(len >= slen + (signed)sizeof(short));
+					int slen = strlen( (const char *)dataVal );
+					ASSERT_(len >= slen + sizeof(short));
 					auxWrite(p,short,slen);
 					memcpy(p,dataVal,slen);
 					p+=slen;
 				}
 				break;
 			case VAR_DATA:
-				ASSERT_(len >= length + (signed)sizeof(short));
+				ASSERT_( len >= length + sizeof(short) );
 				auxWrite(p,short,length);
 				memcpy(p,dataVal,length);
 				p+=length;
@@ -173,7 +173,7 @@ public:
 		}
 		return (int)(p - (char *)pBuff);
 	}
-	int Load(const void *pData,int len,bool bTypeSaved = false){
+	int Load(const void *pData,size_t len,bool bTypeSaved = false){
 		Clear(bTypeSaved);
 		const char *p = (char *)pData;
 		if(bTypeSaved){
@@ -196,22 +196,22 @@ public:
 				break;
 			case VAR_STRING:
 				auxRead(length,short,p);
-				ASSERT_(length > 0 && len >= length + (signed)sizeof(short));
+				ASSERT_(length > 0 && len >= length + sizeof(short) );
 				dataVal = memcpy(new char[length + 1],p,length);
 				*((char *)dataVal + length) = 0;
 				p += length;
 				break;
 			case VAR_DATA:
 				auxRead(length,short,p);
-				ASSERT_(length > 0 && len >= length + (signed)sizeof(short));
+				ASSERT_(length > 0 && len >= length + sizeof(short));
 				dataVal = memcpy(new char[length],p,length);
 				p += length;
 				break;
 			case VAR_VECTOR:
 				auxRead(length,short,p);
-				ASSERT_(length > 0 && len > (signed)sizeof(short));
+				ASSERT_(length > 0 && len > sizeof(short));
 				vctVal = new Variant[length];
-				for(int i=0;i<length;i++){
+				for(unsigned i=0;i<length;i++){
 					 p += vctVal[i].Load(p,len - (int)(p - (const char *)pData),bTypeSaved);
 				}
 				break;
@@ -220,9 +220,9 @@ public:
 		}
 		return (int)(p - (const char *)pData);
 	}
-	void Set(const char *pStr,int len=-1){
+	void Set(const char *pStr,size_t len=0){
 		ASSERT_(VAR_STRING == type && pStr);
-		int size = len<0?strlen(pStr):len;
+		size_t size = len < 1 ? strlen(pStr) : len;
 		if(length < size + 1){
 			Clear(false);
 			dataVal = new char[size + 1];
@@ -231,18 +231,18 @@ public:
 		memcpy(dataVal,pStr,size);
 		*((char *)(dataVal) + size) = 0;
 	}
-	int Get(char *pBuf,int len){
+	int Get(char *pBuf,size_t len){
 		ASSERT_(VAR_STRING == type && pBuf);
-		int size = strlen((const char *)dataVal);
+		size_t size = strlen((const char *)dataVal);
 		if(len + 1 < size){
 			return -1;
 		}
 		memcpy(pBuf,dataVal,size);
 		return size;
 	}
-	void Set(const void *pData,int len=-1){
+	void Set(const void *pData,size_t len = 0){
 		ASSERT_(VAR_DATA == type && pData);
-		if(len>0){					//如果长度为-1，则使用之前保存的长度
+		if(len > 0){					//如果长度为-1，则使用之前保存的长度
 			Clear(false);
 			dataVal = new char[len];
 			length = len;
@@ -250,9 +250,9 @@ public:
 		ASSERT_(dataVal && length>0);
 		memcpy(dataVal,pData,length);
 	}
-	int Get(void *pBuf,int len){
+	int Get(void *pBuf,size_t len){
 		ASSERT_(VAR_DATA == type);
-		int size = length>len?len:length;//支持分段读取
+		size_t size = length>len?len:length;//支持分段读取
 		memcpy(pBuf,dataVal,size);
 		return size;
 	}

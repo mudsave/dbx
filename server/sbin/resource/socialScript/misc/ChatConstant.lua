@@ -14,7 +14,7 @@ ChatChannelType =
 	Faction = 5,--帮会频道
 	School	= 6,--门派频道
 	Private	= 7,--私人频道
-	Horn	= 8,--小喇叭(不可选)
+	Horn	= 8,--小喇叭
 }
 
 WorldChannelMinLevel = 15

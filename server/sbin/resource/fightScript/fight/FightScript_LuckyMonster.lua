@@ -13,6 +13,7 @@ function FightScript_LuckyMonster:__init(scriptID)
 	self._mainMonsterDBID = self._scriptPrototype.majorMonsterInfo[1].ID
 	self._playerLevel = nil --玩家代表等级(组队的话是队长等级)
 	self._deadInfo = {n={},m={},cur={}}--n={[DBID]=次数},m={[DBID]=次数/2}
+	self._isDead = false
 end
 
 function FightScript_LuckyMonster:_removeMinorMonsters()
@@ -26,6 +27,11 @@ function FightScript_LuckyMonster:_removeMinorMonsters()
 end
 
 function FightScript_LuckyMonster:updateMonsterDeadInfo(DBID)
+
+	if DBID == self._mainMonsterDBID then
+		self._isDead = true
+	end
+
 	local info = self._deadInfo.cur
 	if not info[DBID] then
 		info[DBID] = 1
@@ -80,6 +86,9 @@ end
 
 function FightScript_LuckyMonster:refreshMonsters()
 	self:_removeMinorMonsters()
+	if self._isDead then
+		return
+	end
 	local minorMonsters = FightUtils.getMinorMonsters(self._scriptPrototype)
 	
 	local playerLvl = self._playerLevel
@@ -93,7 +102,7 @@ function FightScript_LuckyMonster:refreshMonsters()
 		table.insert(fightMonsters, monster)
 	end
 
-	local monsterCount = #fightMonsters 
+	local monsterCount = #fightMonsters + 1
 	for _,monster in ipairs(fightMonsters) do
 		local pos = self:getRolePos(StandRoleType.Monster, FightStand.B, monsterCount)
 		if pos then

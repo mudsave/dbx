@@ -1,7 +1,7 @@
 /*
 Written by wangshufeng.
 RTX:6016.
-ÃèÊö£º
+æè¿°ï¼š
 
 */
 
@@ -12,7 +12,6 @@ RTX:6016.
 
 #include "lindef.h"
 #include "DBInterface.h"
-#include "DBXMessageTranslate.h"
 
 class DBIssueBase
 {
@@ -33,8 +32,8 @@ public:
     void ProcessError();
 protected:
     DBInterface *m_dbInterface;
-    int m_queryID;              // ²éÑ¯µÄĞòºÅid£¬ÓĞĞ§µÄÍ¬ĞòºÅĞë°´Ë³Ğò´¦Àí²éÑ¯
-    AppMsg m_resultAppMsg;      // ²éÑ¯½á¹ûÊı¾İ°ü
+    int m_queryID;              // æŸ¥è¯¢çš„åºå·idï¼Œæœ‰æ•ˆçš„åŒåºå·é¡»æŒ‰é¡ºåºå¤„ç†æŸ¥è¯¢
+    AppMsg m_resultAppMsg;      // æŸ¥è¯¢ç»“æœæ•°æ®åŒ…
 
     unsigned int m_errnum;
     std::string m_errstr;
@@ -46,15 +45,8 @@ class DBIssueCallSP :public DBIssueBase
 public:
     DBIssueCallSP(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void OnProgress();
+    virtual bool OnProgress();
     virtual void MainProgress();
-
-	const TListOutput & GetOutParams() { return m_outParams; }
-
-private:
-	TListOutput m_outParams;	//Êä³ö²ÎÊı£¬´Ó²éÑ¯½á¹û¹¹½¨ÏûÏ¢Ğ­ÒéÊ±ÓÃµ½
-
-	AppMsg * m_pAppMsg;
 };
 
 
@@ -63,10 +55,8 @@ class DBIssueCallSQL :public DBIssueBase
 public:
     DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void OnProgress();
-	virtual void MainProgress();
-
-	AppMsg * m_pAppMsg;
+    virtual bool OnProgress();
+    virtual void MainProgress();
 };
 
-#endif // end of __DB_ISSUE_H_
+#endif // __DB_ISSUE_H_

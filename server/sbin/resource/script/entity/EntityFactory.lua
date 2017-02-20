@@ -249,6 +249,24 @@ function EntityFactory:createEctypeObject(objectID)
 	return ectypeObject
 end
 
+-- 创建活动巡逻NPC
+function EntityFactory:createActivityPatrolNpc(dbID)
+	local patrolNpc = PatrolNpc()
+	patrolNpc:setDBID(dbID)
+	--创建c++实体
+	local peer = CoEntity:Create(eLogicActivityPatrolNpc, eClsTypeNpc)
+	patrolNpc:setPeer(peer)
+	patrolNpc:setMoveSpeed(DefaultSpeed)
+	peer:setDBID(dbID)
+
+	patrolNpc:addHandler(HandlerDef_Move, MoveHandler(patrolNpc))
+
+	patrolNpc:setEntityType(eLogicNpc)
+	--将实体加入EntityManager管理
+	g_entityMgr:addPatrolNpc(patrolNpc)
+	return patrolNpc
+end
+
 EntityFactory.getInstance = function()
 	return EntityFactory()
 end

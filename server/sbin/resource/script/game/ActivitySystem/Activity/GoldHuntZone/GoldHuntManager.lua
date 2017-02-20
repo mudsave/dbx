@@ -439,7 +439,10 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 		return
 	end
 	FinalPos[player:getDBID()] = nil
-	--发送进入事件(倒计时和总积分)
+	self:setIconValue(player,0,true)--初始化值
+	--发送进入事件(倒计时和总积分和階段)
+	local activity = g_activityMgr:getActivity(activityID) 
+	local phaseID = activity:getPhaseID()
 	local handler = player:getHandler(HandlerDef_Activity)
 	local goldHuntData = handler:getGoldHuntData()
 
@@ -451,7 +454,7 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	date.sec = 0
 	local endTimeTick = os.time(date)
 	local leftTime = endTimeTick - now
-	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList)
+	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList,phaseID)
 	g_eventMgr:fireRemoteEvent(event, player)
 	
 	--初始化
@@ -488,15 +491,15 @@ function GoldHuntManager:getIconValue(score)
 		end
 	end
 
-	local count = GoldHuntZoneIconValue
+	local count = 1
 	return GoldHuntZoneIconValue[count][2]
 end
 
-function GoldHuntManager:setIconValue(player ,score)
+function GoldHuntManager:setIconValue(player ,score, isSet)
 	local peer = player:getPeer()
 	local cur = getPropValue(peer, PLAYER_GOLD_HUNT_MINE)
 	local iconValue = self:getIconValue(score)
-	if iconValue ~= cur then
+	if iconValue ~= cur or isSet then
 		setPropValue(peer, PLAYER_GOLD_HUNT_MINE, iconValue)
 		player:flushPropBatch()
 	end
@@ -520,6 +523,33 @@ function GoldHuntManager:loadGoldHunt(player,recordList)
 	
 end
 
+function GoldHuntManager:_giveReward(player, reward)
+
+	local dropMgr = DropManager.getInstance()
+	local isChanged = false
+	if reward.exp and reward.exp > 0 then
+		player:addXp(reward.exp)
+		dropMgr:sendRewardMessageTip(player, 2, reward.exp)
+		isChanged = true
+	end
+
+	if reward.money and reward.money > 0 then
+		local money = reward.money + player:getMoney()
+		player:setMoney(money)
+		dropMgr:sendRewardMessageTip(player, 3, reward.money)
+		isChanged = true
+	end
+
+	if reward.tao and reward.tao > 0 then
+		local tao = reward.tao + player:getAttrValue(player_tao)
+		player:setAttrValue(player_tao, tao)
+		dropMgr:sendRewardMessageTip(player, 5, roleReward.tao)
+		isChanged = true
+	end
+	if isChanged then
+		player:flushPropBatch()
+	end
+end
 
 function  GoldHuntManager:onGetRankResults(event)
 	local params = event:getParams()
@@ -538,30 +568,46 @@ function  GoldHuntManager:onGetRankResults(event)
 	--发布前3广播
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,8,unpack(rank3Names))
 	RemoteEventProxy.broadcast(event, g_serverId)
-	--给在线玩家发奖
+	--给在线玩家发排名奖
 	for _,rs in ipairs(rankResults) do
 		local dbID = rs.roleID
 		local rank = rs.rank
 		local player = g_entityMgr:getPlayerByDBID(dbID)
 		if player then
 			local handler = player:getHandler(HandlerDef_Activity)
+			local reward
 			for _,rewardInfo in ipairs(GoldHuntZone_Reward) do
 				--在某段排名内
 				if rewardInfo.rank and (rank <= rewardInfo.rank) then
 					handler:getGoldHuntData().isPrized = 1
 					LuaDBAccess.updateGoldHuntActivity(player)
+					self:_giveReward(player,rewardInfo)
 					break
 				end
 				--排名外
 				if not rewardInfo.rank then
 					handler:getGoldHuntData().isPrized = 1
 					LuaDBAccess.updateGoldHuntActivity(player)
+					self:_giveReward(player,rewardInfo)
 					break
 				end
-				
+			end
+			
+		end
+	end
+	--给在剩下在线玩家发参与奖
+	for playerID, player in pairs(g_entityMgr:getPlayers()) do
+		local handler = player:getHandler(HandlerDef_Activity)
+		local isPrized =  handler:getGoldHuntData().isPrized
+		local totalScore =  handler:getGoldHuntData().totalScore
+		if isPrized and (isPrized ~= 1) then
+			if 	totalScore and (totalScore > 0) then
+				local reward = GoldHuntZone_Reward[#GoldHuntZone_Reward]
+				self:_giveReward(player,reward)
 			end
 		end
 	end
+
 end
 
 function GoldHuntManager:onLeaveScene(event)
@@ -618,7 +664,7 @@ function GoldHuntManager:onOnline(player)
 	local pos = FinalPos[DBID]
 	if pos then
 		self:enterHuntZone(player,{x= pos.x, y = pos.y})
-		local prevPos = role:getPrevPos()
+		local prevPos = player:getPrevPos()
 		prevPos[1],prevPos[2],prevPos[3] = RightPos4Error.mapID,RightPos4Error.x,RightPos4Error.y
 		
 	end

@@ -24,6 +24,7 @@ function BeastBlessSystem:onFightEnd(event)
 	local fightID			= params[4]	--战斗ID
 	local fightInfo			= params[5]	--战斗信息(如瑞兽降幅的怪物死亡统计信息)
 	local bWin = false
+	local teamPlayerID = nil
 	-- 如果没有这个配置
 	if not ScriptFightDB[scriptID] then
 		return
@@ -32,22 +33,37 @@ function BeastBlessSystem:onFightEnd(event)
 	if not ScriptFightDB[scriptID].LuckyRewardID then
 		return
 	end
+	-- print("fightEndResults",toString(fightEndResults))
 	for playerID,isWin in pairs(fightEndResults) do
 		bWin = isWin
-		break
+		local player = g_entityMgr:getPlayerByID(playerID)
+		if player then
+			local teamHandler = player:getHandler(HandlerDef_Team)
+			if teamHandler:isTeam() then
+				if teamHandler:isLeader() then
+					teamPlayerID = playerID
+				end
+			else
+				teamPlayerID = playerID
+			end
+		end
 	end
-	if bWin then
+	if bWin and teamPlayerID then
 		-- 奖励计算
 		-- print("fightEndResults2",toString(fightEndResults))
 		g_beastBlessMgr:dealWithRewards(fightEndResults, scriptID, monsterDBIDs, fightID, fightInfo)
 		-- 移除更新NPC
-		local beast = g_beastBlessMgr:getBeastFromFlagList(scriptID)
+		local beast = g_beastBlessMgr:getBeastFromFlagList(teamPlayerID)
 		if beast then
 			g_beastBlessMgr:removeBeastFromList(beast)
 		end
 	end
 	-- 更新NPC标记
-	g_beastBlessMgr:removeBeastFightFlagList(scriptID)
+	if teamPlayerID then
+		g_beastBlessMgr:removeBeastFightFlagList(teamPlayerID)
+	else 
+		print("error $$$ BeastBlessSystem")
+	end
 end
 
 

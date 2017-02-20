@@ -117,6 +117,7 @@ public:
             if (taskPool->IsDestroyed())
                 break;
         }
+        return S_OK;
     }
 
     void Run()

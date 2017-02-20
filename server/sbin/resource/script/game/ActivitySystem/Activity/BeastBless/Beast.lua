@@ -57,6 +57,7 @@ function Beast:addBeastToMap(curMapBeastList)
 	local scence = g_sceneMgr:getSceneByID(mapID)
 	if npc then
 		npcID = npc:getID()
+		print("npc:isFighting()",npc:isFighting())
 		print("npcID",npcID,self.posX,self.posY)
 		scence:attachEntity(npc,self.posX,self.posY)
 		-- 加到beastmanager中
@@ -69,6 +70,7 @@ end
 function Beast:removeFromMap()
 	local scence = g_sceneMgr:getSceneByID(self.mapID)
 	if scence then
+		self.npc:setFighting(false)
 		scence:detachEntity(self.npc)
 	end
 end
@@ -101,6 +103,7 @@ function Beast:setFighting(flag)
 end
 
 function Beast:reSetCanUseTime()
+	self.npc:setFighting(false)
 	self.canUseTime		= updateBeastTime		
 end
 

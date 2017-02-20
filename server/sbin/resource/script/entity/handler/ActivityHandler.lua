@@ -11,6 +11,7 @@ function ActivityHandler:__init(entity)
 	self.finishTargets = {}
 	self.priData = {}
 	self._goldHuntData={ID=0,totalScore=0,isPrized = 0,rank = -1}
+	self.enterPos = {}
 end
 
 function ActivityHandler:__release()
@@ -19,6 +20,7 @@ function ActivityHandler:__release()
 	self.finishTargets = nil
 	self.priData = nil
 	self._goldHuntData = nil
+	self.enterPos = nil
 end
 
 function ActivityHandler:getGoldHuntData()
@@ -80,7 +82,10 @@ function ActivityHandler:offLine()
 		if g_activityMgr:getActivity(activityId) then
 			-- 把开启活动的数据存储到数据库中
 			g_goldHuntMgr:onOffline(player,activityId)
-			LuaDBAccess[ActivityDB[activityId].dbName](player,activityId)
+			g_catchPetMgr:onOffline(player, activityId)
+			if ActivityDB[activityId].dbName then
+				LuaDBAccess[ActivityDB[activityId].dbName](player,activityId)
+			end
 		end
 	end
 	-- for targetIndex, flag in pairs(self.activityProgressData[activityId]) do
@@ -107,4 +112,15 @@ function ActivityHandler:releaseFinishTargets()
 		release(target)
 	end
 	self.finishTargets = {}
+end
+
+-- 设置进入活动场景前的位置
+function ActivityHandler:setEnterPos(mapID, xPos, yPos)
+	self.enterPos.mapID = mapID
+	self.enterPos.xPos = xPos
+	self.enterPos.yPos = yPos
+end
+
+function ActivityHandler:getEnterPos()
+	return self.enterPos
 end

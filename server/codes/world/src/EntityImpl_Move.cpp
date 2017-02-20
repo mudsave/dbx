@@ -75,7 +75,7 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 	pPos->delay = 0;
 	pPos->step = 0;
 	pPos->endPath = true;
-	SetPropData(UNIT_POS, buf, sizeof(_PropPosData) + (len - 1) * sizeof(GridVct));
+	SetPropData(UNIT_POS, (const void *)buf, sizeof(_PropPosData) + (len - 1) * sizeof(GridVct));
 	m_dTimeOrigin = ::GetTickCount();
 	if (!m_Move)
 	{
@@ -153,7 +153,7 @@ void CoEntity::moveByPath(_PropPosData* pPosData)
 	// 更新位置
 	setPosition(pPosData->path[0]);
 	// 更新路径并通知客户端
-	SetPropData(UNIT_POS, pPosData, sizeof(_PropPosData) + (pPosData->len - 1) * sizeof(GridVct));
+	SetPropData(UNIT_POS, (void *)pPosData, sizeof(_PropPosData) + (pPosData->len - 1) * sizeof(GridVct));
 }
 
 void CoEntity::onMove()
@@ -330,7 +330,7 @@ void CoEntity::stopMove(short x, short y )
 	data.step = 0;
 	data.endPath = true;
 	data.path[0] = pos;
-	SetPropData(UNIT_POS, (BYTE*)&data, sizeof(data));
+	SetPropData(UNIT_POS, (const void *)&data, sizeof(data));
 	if (x == 0 && y == 0)
 	{
 		return;
@@ -343,178 +343,126 @@ void CoEntity::stopMove(short x, short y )
 
 short CoEntity::correctMovePath(short x, short y)
 {
-	int realIdx = -1;
-	GridVct curPos(x, y);
+	short realIdx = -1;
+	GridVct curPos;
+	curPos.x = x;
+	curPos.y = y;
 	GridVct realPos = curPos;
 	_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
-	if (m_Move)
+
+	if (m_position != curPos)
 	{
-		if (m_position != curPos)
+		short curIdx = pPosData->idx;
+		short difIdx = 0;
+
+		// 往后找
+		for(int i = curIdx + 1; i < pPosData->len; i++)
 		{
-			short curIdx = pPosData->idx;
-			short difIdx = 0;
-			//往后找
-			for (int i = curIdx + 1; i < pPosData->len; ++i)
+			if ( pPosData->path[i] == curPos ) 
 			{
-				if (pPosData->path[i] == curPos)
+				realIdx = i;
+				difIdx = realIdx - curIdx;
+				break;
+			}
+		}
+
+		if (difIdx != 1)
+		{
+			// 往前找
+			for(int i = curIdx - 1; i >= 0; i--)
+			{
+				if ( pPosData->path[i] == curPos ) 
 				{
-					realIdx = i;
-					difIdx = realIdx - curIdx;
+					realIdx = (difIdx == 0) ? i : ( (difIdx > curIdx - i) ? i : realIdx );
 					break;
 				}
 			}
-			//往前找
-			if (difIdx != 1)
-			{
-				for(int i = curIdx - 1; i >= 0; i--)
-				{
-					if ( pPosData->path[i] == curPos )
-					{
-						realIdx = (difIdx == 0) ? i : ((difIdx > curIdx - i) ? i : realIdx);
-						break;
-					}
-				}
-			}
-		}
-		else
-		{
-			realIdx = (pPosData->idx == pPosData->len) ? (pPosData->idx - 1) : pPosData->idx;
 		}
 	}
 	else
 	{
-		if (m_position != curPos)
-		{
-			realPos = m_position;
-		}
+		realIdx = (pPosData->idx == pPosData->len) ? (pPosData->idx - 1) : pPosData->idx;
 	}
+
 	if (realIdx != -1)
 	{
+		// 当前路径点以客户端为准
 		pPosData->idx = realIdx;
 		realPos = pPosData->path[realIdx];
 	}
+	// 校正位置
 	setPosition(realPos);
+
 	return realIdx;
 }
 
 short CoEntity::correctFollowMovePath( short refIdx, short refPathLen )
 {
-	short realIdx = 0;
+	short realIdx = -1;
+
 	if (refIdx >= 0)
 	{
-		if (m_Move)
+		_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
+		short delay = refPathLen - pPosData->len;
+
+		if (refIdx == 0)
 		{
-			_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
-			short delay = refPathLen - pPosData->len;
-			if (refIdx == 0)
-			{
-				realIdx = 0;
-			}
-			else if (refIdx < delay + 1)
-			{
-				m_bDelayEnable = pPosData->delay > 0;
-				realIdx = (m_Move && m_bDelayEnable) ? 1: 0;
-			}
-			else
-			{
-				realIdx = refIdx - delay;
-			}
-			realIdx = (realIdx < 0) ? 0 : realIdx;
-			realIdx = (realIdx >= pPosData->len) ? (pPosData->len - 1) : realIdx;
-			pPosData->idx = realIdx;
-			setPosition(pPosData->path[realIdx]);
+			realIdx = 0;
 		}
+		else if (refIdx < delay + 1)
+		{
+			m_bDelayEnable = (pPosData->delay > 0) ? true : false;
+			realIdx = (m_Move && m_bDelayEnable) ? 1: 0;
+		}
+		else
+		{
+			realIdx = refIdx - delay;
+		}
+
+		realIdx = (realIdx < 0) ? 0 : realIdx;
+		realIdx = (realIdx >= pPosData->len) ? (pPosData->len - 1) : realIdx;
+		pPosData->idx = realIdx;
+		setPosition(pPosData->path[realIdx]);
 	}
+
 	return realIdx;
 }
 
 void CoEntity::calcMovePath( short offset, MovePath& path, short& moveDelay, bool bFilled )
 {
+	short nPos = 0;
 	size_t oldPathLen = path.size();
 
 	GridVct curPos = getPathByCurIndex(0);
 	GridVct nextPos = getPathByCurIndex(1);
 	GridVct pos = (m_Move && !m_bDelayEnable) ? nextPos : curPos;
-	//printf("clac move end........%d pos:%d,%d\n",path.size() pos.x, pos.y);
-	//清楚掉和当前位置小于offset的点
-	//不需要移动
-	int nExist = 0;
-	for (size_t idx = 0; idx < path.size(); idx = idx + 2)
+	for (size_t idx = 0; idx < path.size(); idx += 2)
 	{
 		short x = path[idx];
 		short y = path[idx + 1];
 		short dx = ::abs(pos.x - x);
 		short dy = ::abs(pos.y - y);
-		//printf("calc move........%d,%d   dx:%d dy:%d\n", x, y, dx, dy);
-		if (dx == 0 && dy == 0)
+		if (dx > offset || dy > offset)
 		{
-			nExist = idx;
+			nPos = (idx >= 2) ? (idx - 2) : 0;
 			break;
 		}
 	}
-	//printf("the pos is in path idx is:%d\n", nExist);
-	if (nExist > 0)
+	path.erase(path.begin(), path.begin() + nPos);
+	if (path.size() >= 2 && ((pos.x != path[0]) || (pos.y != path[1])) )
 	{
-		path.erase(path.begin(), path.begin() + nExist);
+		path.push_front(pos.y);
+		path.push_front(pos.x);
+		// 防止出现不连续路径
+		fillMovePathByDistance(path, bFilled);
 	}
-	else
+	if (m_Move && !m_bDelayEnable && curPos != nextPos)
 	{
-		int nErase = 0;
-		//for (int idx = path.size() - 2; idx >= 0; idx = idx - 2)
-		{
-			//终点就在跟随目标附近 不移动了
-			size_t nLen = path.size();
-			short dx = ::abs(pos.x - path[nLen - 2]);
-			short dy = ::abs(pos.y - path[nLen - 1]);
-			if (dx <= offset && dy <= offset)
-			{
-				//printf("just clear...........%d,%d\n", path[nLen - 2], path[nLen - 1]);
-				path.clear();
-				return;
-			}
-			int nOffset = 2 * offset;
-			if (path.size() - nOffset >= 2)
-			{
-				for (int idx = path.size() - 1 - nOffset; idx >= 0; idx = idx - 2)
-				{
-					short dx = ::abs(pos.x - path[idx - 1]);
-					short dy = ::abs(pos.y - path[idx]);
-					//printf("check is dx dy  pos:%d,%d  tar:%d,%d  dx:%d dy:%d\n", pos.x, pos.y, path[idx - 1], path[idx], dx, dy);
-					if (dx <= 1 && dy <= 1)
-					{
-						nErase = idx - 1;
-						//printf("erase the path pos:%d,%d   idx path:%d,%d\n", pos.x, pos.y, path[idx], path[idx + 1]);
-						break;
-					}
-				}
-			}
-			//if (nErase)
-			{
-				path.erase(path.begin(), path.begin() + nErase);
-				path.push_front(pos.y);
-				path.push_front(pos.x);
-				/*
-				for (int idx = 0; idx < path.size(); idx = idx + 2)
-				{
-				    short x = path[idx];
-					short y = path[idx + 1];
-					printf("calc move....print1....%d,%d  \n", x, y);
-				}
-				*/
-				fillMovePathByDistance(path, bFilled);
-			}
-		}
+		path.push_front(curPos.y);
+		path.push_front(curPos.x);
 	}
-	/*	
-	for (int idx = 0; idx < path.size(); idx = idx + 2)
-    {   
-		 short x = path[idx];
-		 short y = path[idx + 1];
-		 printf("calc move....print2....%d,%d  \n", x, y);
-	}
-	*/
 	while (path.size() >= 2 && offset > 0)
-    {   
+	{
 		// 删掉末尾路径点
 		path.pop_back();
 		path.pop_back();
@@ -608,7 +556,7 @@ void CoEntity::resetMove()
 void CoEntity::setMoveSpeed(short speed)
 {
 	m_speed = speed;
-	SetPropShort(UNIT_MOVE_SPEED,speed);
+	SetPropNumber(UNIT_MOVE_SPEED,speed);
 }
 
 short CoEntity::getMoveSpeed()

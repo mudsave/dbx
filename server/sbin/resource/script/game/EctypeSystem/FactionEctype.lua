@@ -233,9 +233,9 @@ function FactionEctype:onFightEndBefor(fightID, isWin)
 	if patrolNpcID then
 		local patrolNpc = g_entityMgr:getPatrolNpc(patrolNpcID)
 		if patrolNpc then
+			self.fightNpc[fightID] = nil
 			if isWin then
 				-- 战斗胜利移除NPC
-				self.fightNpc[fightID] = nil
 				self:removePatrolNpc(patrolNpcID)
 			else
 				patrolNpc:setOwnerID()
@@ -290,7 +290,7 @@ function FactionEctype:getEctypeValidEmptyPos()
 		checkSuccess = true 
 		x, y = g_sceneMgr:getEctypeRandomPosition(self.ectypeMapID, self.ectypeConfig.StaticMapID)
 		for entityId, entity in pairs(scene:getEntityList()) do
-			if entity:getEntityType() == eLogicEctypeObject or entity:getEntityType() == eLogicPatrolNpc then
+			if entity:getEntityType() == eLogicEctypeObject or entity:getEntityType() == eLogicEctypePatrolNpc then
 				if entity:getPos()[2] == x and entity:getPos()[3] == y then
 					checkSuccess = false
 					break

@@ -16,11 +16,13 @@ require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PK"
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_Collect"
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PVE"
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntManager"
+require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"
 
 ActivitySystem = class(EventSetDoer, Singleton)
 
 function ActivitySystem:__init()
-	self._doer = {
+	self._doer =
+	{
 		
 	}
 end

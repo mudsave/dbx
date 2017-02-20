@@ -13,7 +13,7 @@ TradeSystem = class(EventSetDoer, Singleton)
 function TradeSystem:__init()
 	self._doer =
 	{
-		--右键单击购买物品
+		--点击购买按钮
 		[TradeEvents_CS_BuyGoods]				= TradeSystem.doPtoNBuyGoods,
 		--关闭交易
 		[TradeEvents_CS_CloseTrade]				= TradeSystem.doCloseTrade,
@@ -38,6 +38,8 @@ function TradeSystem:__init()
 		[TradeEvents_CS_P2PConfirmTrade]		= TradeSystem.doP2PConfirmTrade,
 		-- p2p记录宠物的相关信息
 		[TradeEvents_CS_P2PTradePet]			= TradeSystem.doP2PTradePet,
+		--宠物商店购买宠物
+		[TradeEvents_CS_BuyPet]						= TradeSystem.doBuyPet,
 	}
 end
 
@@ -183,9 +185,9 @@ function TradeSystem:doCloseTrade(event)
 	g_tradeMgr:closeTrade(player)
 end
 
---客户端点击确定和右键购买物品
+--客户端点击购买按钮
 function TradeSystem:doPtoNBuyGoods(event)
-	print("------------购买物品。。。。。")
+	print("------------购买物品------------")
 	local params = event:getParams()
 	local itemID = params[1]
 	local itemNum = params[2]
@@ -202,6 +204,23 @@ function TradeSystem:doPtoNBuyGoods(event)
 	g_tradeMgr:ptoNBuyGoods(player, itemID, itemNum, npcPackID)
 
 end
+
+function TradeSystem:doBuyPet(event)
+	local params = event:getParams()
+	local petID = params[1]
+	local petBuyPrice = params[2]
+	local petBuyType = params[3]
+	
+	local playerID = event.playerID
+	if not playerID then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if not player then
+		return
+	end
+	g_tradeMgr:petBuyShop(player, petID, petBuyPrice, petBuyType)
+end 
 
 function TradeSystem.getInstance()
 	return TradeSystem()

@@ -29,6 +29,7 @@ ScriptFightConditionType=
 	IsAttacked		= 7,--指定单位是否受击 {type = ScriptFightConditionType.IsAttacked, params={DBID = {1052},}, },
 	FightPeriod		= 8,--战斗持续时间 {type = ScriptFightConditionType.FightPeriod, params={time = 10},},--分钟
 	PlayerDead		= 9,--玩家或宠物死亡{type = ScriptFightConditionType.PlayerDead, params={type = ScriptFightDeadType.PlayerOrPet},}
+	MonsterCatched  = 10,--怪物被捕捉{type = ScriptFightConditionType.MonsterCatched, params={DBID = {1052},}
 }
 ScriptFightDeadType = {
 	Player	= 1,
@@ -96,7 +97,7 @@ ScriptFightActionType=
 	MakeEscape	  = 15,--强制逃跑 {type = ScriptFightActionType.MakeEscape,params={} }
 	SetCounterRate= 16,--设置反击率 {type = ScriptFightActionType.SetCounterRate,params={DBID ={22},value = 0.5} }
 	ExchangePos	  = 17,--交换或改变位置 {type = ScriptFightActionType.ExchangePos,params={curPos = 21,targetPos =23} }
-	ChangeHp		  = 18,--设置生命值(增大或减少最大值的百分比){type = ScriptFightActionType.ChangeHp,params={DBID ={22},percent = -50}}
+	ChangeHp	  = 18,--设置生命值(增大或减少最大值的百分比,如果是玩家的话params={DBID =-1,percent = -50}}是相对红蓝){type = ScriptFightActionType.ChangeHp,params={DBID ={22},percent = -50}}
 	SameTime	  =19,--同时执行一组
 	RefreshMembers = 20,--刷新怪物
 }
@@ -346,299 +347,389 @@ ScriptFightDB[27] = {					---------------野怪
 }
 
 
-------------------------------------1-25级主线---------------------
-
-
-ScriptFightDB[100] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20010},},           -- 游戏中的第一个怪
+-----------------------------------------------1-25级主线脚本------------------------------------------------------
+ScriptFightDB[100] = {              --------------玄都玉京——玉清神将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20010}},
 }
-ScriptFightDB[101] = {    ---------抓宠任务------
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10011},},
-
+ScriptFightDB[101] = {              --------------门派——玉清神将（捕捉）
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10011}},
 }
-----------------------巨鹿地图脚本战斗----------------------
-ScriptFightDB[102] = {    --正式杀怪--马相
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20031},{ID = 20029},{ID = 20029},{ID = 20030},{ID = 20030},},
-	npcs = {{ID = 20028,pos = 11},},
-}
-ScriptFightDB[103] = {   --黄巾将领
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID =20033},{ID = 20034},{ID = 20034},{ID = 20035},{ID = 20035},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 3},},
-
-}
-ScriptFightDB[104] = {    --击杀杜解救张飞
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20036},{ID = 20034},{ID = 20034},{ID = 20035},{ID = 20035},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 3},},
-}
-ScriptFightDB[105] = {   --刘备和关羽跟随击杀张梁
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20040},{ID = 20038},{ID = 20039},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
-}
--------------------封神台地图脚本战斗---------------------
-ScriptFightDB[106] = {   --击杀李大目1
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20043},{ID = 20041},{ID = 20041},{ID = 20042},{ID = 20042},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
-}
-ScriptFightDB[107] = {  --击杀程志远2
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20044},{ID = 20041},{ID = 20041},{ID = 20042},{ID = 20042},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
-}
-ScriptFightDB[108] = {  --击杀张宝3
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20045},{ID = 20041},{ID = 20041},{ID = 20042},{ID = 20042},},
-    npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
-}
-ScriptFightDB[109] = {  --击杀徐合4
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20046},{ID = 20041},{ID = 20041},{ID = 20042},{ID = 20042},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
-}
-ScriptFightDB[110] = {	--战胜张曼成5
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20047},{ID = 20041},{ID = 20041},{ID = 20042},{ID = 20042},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
-}
-ScriptFightDB[113] = {   ----和张角的战斗  张角血量低于20的时候逃跑
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20048},},
-	npcs = {{ID = 20028,pos = 11},{ID = 20032,pos = 2},{ID = 20037,pos = 4},},
+ScriptFightDB[102] = {              --------------桃园镇——关羽
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20032}},
 	systemActions = {
-	      [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20048,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20048,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20032,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20032,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20048},bubbleID = 101},},  --张角
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20048,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20032},bubbleID = 101},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20032,},},},
 		  }
 	},
 	},
 }
---------------御花园脚本战斗-------
-ScriptFightDB[114] = {   --御花园统领
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20052},{ID = 20050},{ID = 20050},{ID = 20051},{ID = 20051},},
-}
-ScriptFightDB[115] = {   --赛所
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20053},{ID = 20050},{ID = 20050},{ID = 20051},{ID = 20051},},
-}
-ScriptFightDB[116] = {    --阉党头目
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20056},{ID = 20054},{ID = 20054},{ID = 20055},{ID = 20055},},
-}
-ScriptFightDB[117] = {  ---张让
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20057},{ID = 20054},{ID = 20054},{ID = 20055},{ID = 20055},},
+ScriptFightDB[103] = {              --------------桃园镇——陌生人
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20030}},
 	systemActions = {
-	      [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20057,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20057,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20030,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20030,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20057},bubbleID = 102},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20057,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20030},bubbleID = 102},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20030,},},},
 		  }
 	},
 	},
 }
-ScriptFightDB[118] = {    --冒牌御前侍卫
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20058},{ID = 20050},{ID = 20050},{ID = 20051},{ID = 20051},},
-	begin = {
-			[1] = {
-				condition = {
-				          {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
-					isAnd = true,
-				 },
-				 actions = {
-                      {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 103},},
-					  {type = ScriptFightActionType.PlayBubble,params={DBID={20058},bubbleID = 104},}, 
-				 }
-			},
-	},
-}
----------------洛阳击败赵忠打探实情-----------
-ScriptFightDB[120] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20060},},
+ScriptFightDB[104] = {              --------------镇外桃林——张宝	
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20031},{ID = 20033},{ID = 20034},{ID = 20035},{ID = 20036},},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
 	systemActions = {
-	      [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20060,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20060,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20031,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20031,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20060},bubbleID = 105},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20060,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20031},bubbleID = 103},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20031,},},},
 		  }
 	},
 	},
 }
----------------黑风山zy-------------------------
-ScriptFightDB[121] = {  --黑风山贼将
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20061},{ID = 20062},{ID = 20062},{ID = 20063},{ID = 20063},},
-}
-ScriptFightDB[122] = {  --张泽
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20064},{ID = 20062},{ID = 20063},{ID = 20062},{ID = 20063},},
+ScriptFightDB[105] = {              --------------巨鹿——严政	
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20038},{ID = 20039},{ID = 20039},{ID = 20039},{ID = 20039},},
 	systemActions = {
-	      [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20064,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20064,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20038,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20038,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20064},bubbleID = 106},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20064,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20038},bubbleID = 104},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20038,},},},
 		  }
 	},
 	},
 }
-ScriptFightDB[123] = {   --张燕手下头目
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20099},{ID = 20061},{ID = 20061},{ID = 20062},{ID = 20062},},
+ScriptFightDB[106] = {              --------------巨鹿——马相
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20044},{ID = 20040},{ID = 20041},{ID = 20042},{ID = 20043},},
 }
-ScriptFightDB[124] = {   --张燕
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20067},{ID = 20065},{ID = 20065},{ID = 20066},{ID = 20066},},
+ScriptFightDB[107] = {              --------------巨鹿——杜远
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20045},{ID = 20040},{ID = 20041},{ID = 20042},{ID = 20043},},
+	npcs = {{ID = 20028},},--跟随NPC，刘备
+}
+ScriptFightDB[108] = {              --------------巨鹿——李乐
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20046},{ID = 20040},{ID = 20041},{ID = 20042},{ID = 20043},},
+	npcs = {{ID = 20028},{ID = 20037},},--跟随NPC，刘备、张飞。
+}
+ScriptFightDB[109] = {              --------------秘密古阵——张宝
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20031}},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
+}
+ScriptFightDB[110] = {              --------------岐山——程远志
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20047},{ID = 20110},{ID = 20110},{ID = 20110},{ID = 20110},},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
+}
+ScriptFightDB[111] = {              --------------失魂阵——玄煌
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20048},{ID = 20050},{ID = 20050},{ID = 20050},{ID = 20050},},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
 	systemActions = {
-	      [1] = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20048},bubbleID = 105},},
+		  }
+	},
+	},
+}
+ScriptFightDB[112] = {              --------------血魂阵——水雉
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20051},{ID = 20052},{ID = 20052},{ID = 20052},{ID = 20052},},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
+	systemActions = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20051},bubbleID = 106},},
+		  }
+	},
+	},
+}
+ScriptFightDB[113] = {              --------------噬魂阵——火心
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20053},{ID = 20054},{ID = 20054},{ID = 20054},{ID = 20054},},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
+	systemActions = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20053},bubbleID = 107},},
+		  }
+	},
+	[2] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundCount, params={ round = 10 },},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20053},bubbleID = 108},},
+		  {type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+		  }
+	},
+	},
+}
+ScriptFightDB[114] = {              --------------万魂大阵——张梁
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20055}},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
+}
+ScriptFightDB[115] = {              --------------封神台——张角	
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20056},},
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--跟随NPC，刘备、关羽、张飞。
+	systemActions = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20056,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20056,type="hp",[">"] = 0},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20056},bubbleID = 109},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20056,},},},
+		  }
+	},
+	},
+}
+ScriptFightDB[116] = {              --------------御花园——御花园统领
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20060},{ID = 20057},{ID = 20057},{ID = 20058},{ID = 20058},},
+}
+ScriptFightDB[117] = {              --------------御花园——蹇硕副将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20061},{ID = 20057},{ID = 20057},{ID = 20058},{ID = 20058},},
+}
+ScriptFightDB[118] = {              --------------御花园——蹇硕
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20062},{ID = 20057},{ID = 20057},{ID = 20058},{ID = 20058},},
+}
+ScriptFightDB[119] = {              --------------御花园——阉党头目
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20065},{ID = 20063},{ID = 20063},{ID = 20064},{ID = 20064},},
+}
+ScriptFightDB[120] = {              --------------御花园——张让亲卫
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20066},{ID = 20063},{ID = 20063},{ID = 20064},{ID = 20064},},
+}
+ScriptFightDB[121] = {              --------------御花园——张让	
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20067},{ID = 20063},{ID = 20063},{ID = 20064},{ID = 20064},},
+	systemActions = {
+	[1] = {
 		  condition = {
 		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20067,type="hp",["<="] = 20},},
 		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20067,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20067},bubbleID = 107},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20067,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20067},bubbleID = 109},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20067,},},},
 		  }
 	},
 	},
 }
-ScriptFightDB[125] = {   --黑风老妖手下
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20068}, {ID = 20065},{ID = 20065},{ID = 20066},{ID = 20066},},
-}
-ScriptFightDB[126] = {   --黑风老妖
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20069},},
+ScriptFightDB[122] = {              --------------御花园——冒牌御前侍卫头目
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20069},{ID = 20068},{ID = 20068},{ID = 20068},{ID = 20068},},
 	systemActions = {
-	      [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
-		  },
-		  actions = {
-          {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 108},},
-		  {type = ScriptFightActionType.MakeEscape,params={} },
-		  }
-	},
-	},
-}
-ScriptFightDB[127] = { -- 杨戬跟随 黑风老妖投降并告诉角色实情。需添加逃跑bubble
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20103},},
-	npcs = {{ID = 20071,pos = 11},},
-		systemActions = {
-	          [1] = {
-		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20103,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20103,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20103},bubbleID = 404},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20103,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 111},},
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20069},bubbleID = 112},},
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 113},},
 		  }
 	},
 	},
 }
-
-------------长安--------------
-ScriptFightDB[128] = {   --樊定
+ScriptFightDB[123] = {              --------------洛阳——赵忠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20070},},
+	systemActions = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20070,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20070,type="hp",[">"] = 0},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20070},bubbleID = 114},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20070,},},},
+		  }
+	},
+	},
+}
+ScriptFightDB[124] = {              --------------黑风山——探子
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20071},},
+	systemActions = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20071},bubbleID = 122},},
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 123},},
+		  }
+	},
+	[2] = {
+		  condition = {
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20071,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20071,type="hp",[">"] = 0},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20071},bubbleID = 115},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20071,},},},
+		  }
+	},
+	},
+}
+ScriptFightDB[125] = {              --------------黑风山——黑风山贼将
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20074},{ID = 20072},{ID = 20072},{ID = 20073},{ID = 20073},},
 }
-ScriptFightDB[129] = {  --镇营大将
+ScriptFightDB[126] = {              --------------黑风山——黑风山守卫
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20075},{ID = 20072},{ID = 20072},{ID = 20073},{ID = 20073},},
 }
-ScriptFightDB[130] = {  --樊稠
+ScriptFightDB[127] = {              --------------黑风山——张燕
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20076},{ID = 20072},{ID = 20072},{ID = 20073},{ID = 20073},},
 	systemActions = {
-	          [1] = {
+	[1] = {
 		  condition = {
 		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20076,type="hp",["<="] = 20},},
 		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20076,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20076},bubbleID = 405},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20076,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20076},bubbleID = 116},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20076,},},},
 		  }
 	},
 	},
 }
-ScriptFightDB[131] = {  --长安魔将
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20079},{ID = 20077},{ID = 20077},{ID = 20078},{ID = 20078},},
-}
-ScriptFightDB[132] = {  --飞廉
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20080},},
+ScriptFightDB[128] = {              --------------黑风洞——黑风老妖
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20077},},
 	systemActions = {
 	      [1] = {
 		  condition = {
 		  {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
 		  },
 		  actions = {
-          {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 406},},
+          {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 117},},
 		  {type = ScriptFightActionType.MakeEscape,params={} },
 		  }
 	},
 	},
 }
------------洛阳---------------
-ScriptFightDB[133] = { --魏续
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20083},{ID = 20081},{ID = 20081},{ID = 20082},{ID = 20082},},
+ScriptFightDB[129] = {              --------------黑风洞——黑风老妖2
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20077},},
+	npcs = {{ID = 20079},},--跟随NPC，金霞童子
 	systemActions = {
-	          [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20083,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20083,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20077,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20077,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20083},bubbleID = 407},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20083,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20077},bubbleID = 118},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20077,},},},
 		  }
 	},
 	},
 }
-----------孟津大营-----------
-ScriptFightDB[134] = { --李肃
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20086},},
+ScriptFightDB[130] = {              --------------堳坞——镇营大将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20082},{ID = 20080},{ID = 20080},{ID = 20081},{ID = 20081},},
+}
+ScriptFightDB[131] = {              --------------堳坞——樊定
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20083},{ID = 20080},{ID = 20080},{ID = 20081},{ID = 20081},},
+}
+ScriptFightDB[132] = {              --------------堳坞——樊稠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20084},{ID = 20080},{ID = 20080},{ID = 20081},{ID = 20081},},
 	systemActions = {
-	          [1] = {
+	[1] = {
 		  condition = {
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20086,type="hp",["<="] = 20},},
-		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20086,type="hp",[">"] = 0},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20084,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20084,type="hp",[">"] = 0},},
 		  isAnd = true,
 		  },
 		  actions = {
-		  {type = ScriptFightActionType.PlayBubble,params={DBID={20086},bubbleID = 407},},
-          {type = ScriptFightActionType.EntityQuit,params={DBID ={20086,},} },
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20084},bubbleID = 119},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20084,},},},
 		  }
 	},
 	},
 }
-ScriptFightDB[135] = {  --孟津守将
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20089},{ID = 20087},{ID = 20087},{ID = 20088},{ID = 20088},},
+ScriptFightDB[133] = {              --------------堳坞——堳坞魔将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20087},{ID = 20085},{ID = 20085},{ID = 20086},{ID = 20086},},
 }
-ScriptFightDB[136] = { --侯成
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20090},{ID = 20087},{ID = 20087},{ID = 20088},{ID = 20088},},
+ScriptFightDB[134] = {              --------------堳坞——郿坞妖将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20088},{ID = 20085},{ID = 20085},{ID = 20086},{ID = 20086},},
 }
-ScriptFightDB[137] = { --阻击悍将
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20094},{ID = 20092},{ID = 20092},{ID = 20093},{ID = 20093},},
-	npcs = {{ID = 20091,pos = 11},},
+ScriptFightDB[135] = {              --------------堳坞——飞廉
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20089},},
+	systemActions = {
+	      [1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+		  },
+		  actions = {
+          {type = ScriptFightActionType.PlayBubble,params={DBID={0},bubbleID = 120},},
+		  {type = ScriptFightActionType.MakeEscape,params={} },
+		  }
+	},
+	},
 }
-ScriptFightDB[138] = {	--段煨
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20095},{ID = 20092},{ID = 20092},{ID = 20093},{ID = 20093},},
-	npcs = {{ID = 20091,pos = 11},},
+ScriptFightDB[136] = {              --------------孟津大营——副将统领
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20093},{ID = 20090},{ID = 20090},{ID = 20092},{ID = 20092},},
 }
-ScriptFightDB[139] = {  --董旻
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20096},{ID = 20092},{ID = 20092},{ID = 20093},{ID = 20093},},
-	npcs = {{ID = 20091,pos = 11},},
+ScriptFightDB[137] = {              --------------孟津大营——李肃亲卫
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20094},{ID = 20090},{ID = 20090},{ID = 20092},{ID = 20092},},
 }
-ScriptFightDB[140] = {  --孟津大营守将
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20097},{ID = 20092},{ID = 20092},{ID = 20093},{ID = 20093},},
-	npcs = {{ID = 20091,pos = 11},},
+ScriptFightDB[138] = {              --------------孟津大营——李肃
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20095},{ID = 20090},{ID = 20090},{ID = 20092},{ID = 20092},},
+	systemActions = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20095,type="hp",["<="] = 20},},
+		  {type = ScriptFightConditionType.AttrValue, params={DBID = 20095,type="hp",[">"] = 0},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20095},bubbleID = 121},},
+          {type = ScriptFightActionType.EntityQuit,params={DBID ={20095,},},},
+		  }
+	},
+	},
+}
+ScriptFightDB[139] = {              --------------潼关——侯成
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20098},{ID = 20096},{ID = 20097},{ID = 20111},{ID = 20112},},
+}
+ScriptFightDB[140] = {              --------------潼关——段煨
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20101},{ID = 20099},{ID = 20099},{ID = 20100},{ID = 20100},},
+	npcs = {{ID = 20091},},--跟随NPC，袁绍
+}
+ScriptFightDB[141] = {              --------------潼关——董旻
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20109},{ID = 20102},{ID = 20103},{ID = 20104},{ID = 20105},},
+	npcs = {{ID = 20091},},--跟随NPC，袁绍
 }
 ----1-25级脚本战斗完事------
 
@@ -3106,3 +3197,42 @@ ScriptFightDB[35415] = {					---------------60地图抓宠巡逻怪
 ScriptFightDB[35416] = {					---------------60地图抓宠巡逻怪
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 60216,weight= 999}, {ID = 10608,weight= 1,max = 1}},
 }
+-- 45000 - 50000 瑞兽降福 这个在其他的配置中配置
+ScriptFightDB[45000] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 25501,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 7,maxCount = 7,{ID = 25505,weight= 50},{ID = 25507,weight= 20}, {ID = 25508,weight= 50},{ID = 25509,weight= 50}, {ID = 25510,weight= 40},{ID = 25511,weight= 50},},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 25501,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 25510,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={25510},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+

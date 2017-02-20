@@ -319,9 +319,15 @@ function FightAction.doCatch(role,context,result)
 		local monsterCofigID = target:getDBID()
 		local config = MonsterDB[monsterCofigID] or NpcDB[monsterCofigID]
 		local petID = config.makePetID
-		local event = Event(FightEvents_FS_CreatePet, g_serverId, role:getDBID(),petID )
-		g_eventMgr:fireWorldsEvent(event, fight:getSrcWorldID())
+		if petID then
+			local event = Event(FightEvents_FS_CreatePet, g_serverId, role:getDBID(),petID )
+			g_eventMgr:fireWorldsEvent(event, fight:getSrcWorldID())
+		end
+
 		fight:removeRole(target, true)
+		if instanceof(fight, FightScript) then
+			fight:onMonsterCatched(monsterCofigID)
+		end
 	end
 
 	

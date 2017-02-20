@@ -255,6 +255,7 @@ function Task:createDataForClient(taskStatus)
 		-- 对于天道任务只能取队长的
 		taskData.ring = taskHandler:getCurrentRing(self._taskID)
 		taskData.countRing = taskHandler:getCountRing(self._taskID)
+		taskData.finishTimes =  taskHandler:getFinishTimes(self._taskID)
 		taskData.targetType = self:getTargetType()
 		--taskData.targetIdx	= self:getTargetIdx()
 		--taskData.gradeIdx = self:getGradeIdx()

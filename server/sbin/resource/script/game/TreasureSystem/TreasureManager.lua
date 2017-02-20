@@ -65,8 +65,6 @@ function TreasureManager:createTreasure(player,treasureID,guid)
 	-- 随机生成宝藏地图的位置
 	treasure:generateRandMapData()
 	-- 改变物品提示
-	print("改变物品提示")
-	treasure:doClickChangeTipState()
 	-- 记录到handler的记录表
 	treasureHandler:addTreasure(treasure)
 	return true
@@ -90,7 +88,7 @@ function TreasureManager:createTreasureFromDB(player,treasuresRecord)
 			local treasureHandler = player:getHandler(HandlerDef_Treasure)
 			treasureHandler:addTreasure(treasure)
 			-- 把tip的状态给客户端
-			treasure:toNotifyUpdateClientInfo()
+			-- treasure:toNotifyUpdateClientInfo()
 		end
 	end
 end

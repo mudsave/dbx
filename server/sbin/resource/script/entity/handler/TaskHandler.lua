@@ -231,6 +231,7 @@ function TaskHandler:updateDayTask()
 		if task:getType() == TaskType.loop and task:getPeriod() == TaskPeriod.day then
 			-- 此时任务不能删除
 			self.loopTaskInfo[taskID].countRing = 0
+			self.loopTaskInfo[taskID].finishTimes = 0
 		end
 	end
 end
@@ -239,6 +240,7 @@ function TaskHandler:updateWeekTask()
 	for taskID, task in pairs(self.currentTask) do
 		if task:getType() == TaskType.loop and task:getPeriod() == TaskPeriod.week then
 			self.loopTaskInfo[tasID].countRing = 0
+			self.loopTaskInfo[taskID].finishTimes = 0
 		end
 	end
 end
@@ -250,6 +252,12 @@ function TaskHandler:getCountRing(taskID)
 	return self.loopTaskInfo[taskID].countRing
 end
 
+-- 得到完成次数
+function TaskHandler:getFinishTimes(taskID)
+	self:checkTaskData(taskID)
+	return self.loopTaskInfo[taskID].finishTimes
+end
+
 -- 天道任务获取当前的环数
 function TaskHandler:checkTaskData(taskID)
 	local taskData = self.loopTaskInfo[taskID]
@@ -257,6 +265,8 @@ function TaskHandler:checkTaskData(taskID)
 		taskData = {}
 		taskData.countRing = 0
 		taskData.currentRing = 0
+		taskData.finishTimes = 0
+		-- print("taskData.finishTimes",taskData.finishTimes)
 		self.loopTaskInfo[taskID] = taskData
 	end
 end
@@ -270,6 +280,12 @@ end
 function TaskHandler:setCountRing(taskID, countRing)
 	self:checkTaskData(taskID)
 	self.loopTaskInfo[taskID].countRing = countRing
+end
+
+-- 得到完成次数
+function TaskHandler:updateFinishTimes(taskID)
+	self:checkTaskData(taskID)
+	self.loopTaskInfo[taskID].finishTimes = self.loopTaskInfo[taskID].finishTimes + 1
 end
 
 -- 刚开始没有环数为1设置呢 这个需要做下判断
@@ -411,6 +427,7 @@ function TaskHandler:finishLoopTask(taskID)
 	self:finishTaskByID(taskID)
 	local player = self._entity
 	-- 完成循环任务的时候向活动界面发一个接口
+	self:updateFinishTimes(taskID)
 	local activityEvent = Event.getEvent(TaskEvent_SS_AddActivityPractise, player:getID(), taskID)
 	g_eventMgr:fireEvent(activityEvent)
 	-- 自动交接, 天道任务和其他任务处理方式不一样， 天道任务处理
@@ -573,6 +590,7 @@ end
 -- 设置循环任务的环数
 function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 	for _, loopTask in pairs(loopTaskRecord or {}) do
+		print("loopTask.finishTimes",toString(loopTask))
 		local offlineTime = loopTask.offlineTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数
 		local loopTaskConfig = LoopTaskDB[loopTask.taskID]
@@ -583,17 +601,22 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 				if not time.isSameDay(offlineTime) then
 					-- 不是同一天，重新设置当前可做的次数，
 					loopTask.countRing = 0
+					loopTask.finishTimes = 0
 				end
 			else
 				-- 判断记录日期跟现在是不是同一周
 				if not time.isSameWeek(offlineTime) then
 					-- 不是同一周，算是新CD了，重置完成次数和副本进度
 					loopTask.countRing = 0
+					loopTask.finishTimes = 0
 				end
 			end
 			if not self.loopTaskInfo[loopTask.taskID] then
 				self.loopTaskInfo[loopTask.taskID] = {}
 				self.loopTaskInfo[loopTask.taskID].countRing = loopTask.countRing
+				-- print("loopTask.finishTimes:",loopTask.finishTimes)
+				self.loopTaskInfo[loopTask.taskID].finishTimes = loopTask.finishTimes
+				-- print("loopTask.finishTimes",loopTask.finishTimes)
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
 			else
 	
@@ -608,6 +631,7 @@ end
 function TaskHandler:updateLoopTaskRingToDB()
 	local playerDBID = self._entity:getDBID()
 	for taskID, taskInfo in pairs(self.loopTaskInfo) do
+		print("taskInfo",toString(taskInfo))
 		LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	end
 end

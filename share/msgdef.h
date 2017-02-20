@@ -120,6 +120,8 @@ enum _AppMsgID
 	MSG_C_G_ACK_PLAYER_LOGIN,
 	MSG_C_G_ACK_PLAYER_LOGOUT,
 
+	MSG_C_W_PROPSET_BIND,
+	MSG_C_W_PROPSET_UNBIND,
 	MSG_C_W_PROPSET_ENTER,
 	MSG_C_W_PROPSET_EXIT,
 	MSG_C_W_PROPS_UPDATE,
@@ -472,7 +474,7 @@ struct _MsgWG_SinkWorld : public AppMsg
 struct _MsgWC_PropSetEnter : public AppMsg
 {
 	char			isMe;
-	int				unitId;
+	unsigned int	unitId;
 	int				dbId;
 	_PropSceneData	scene;
 	GridVct			pos;
@@ -491,7 +493,21 @@ struct _MsgWC_PropSetExit : public AppMsg
 
 struct _MsgWC_PropsUpdate : public AppMsg
 {
-	short			unitCount;
+	unsigned int	unitId;
+	short			propCount;
+};
+
+struct _MsgWC_PropSetBind : public AppMsg
+{
+	unsigned int	unitId;
+	char			entityType;
+	char			propSetId;
+	short			propCount;
+};
+
+struct _MsgWC_PropSetUnbind : public AppMsg
+{
+	unsigned int	unitId;
 };
 
 struct _MsgWC_SceneSwitch : public AppMsg
