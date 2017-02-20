@@ -73,8 +73,8 @@ void DBManager::CallSP(AppMsg *p_appMsg)
         return;
     }
 
-	//对于sp调用来说，queryID默认是1
-    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, 1));
+	//对于sp调用来说，queryID默认是-1
+    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1));
 }
 
 void DBManager::CallSQL(AppMsg *p_appMsg)
