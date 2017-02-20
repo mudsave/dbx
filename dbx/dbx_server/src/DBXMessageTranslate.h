@@ -4,7 +4,7 @@
 #include "lindef.h"	// 包含lindef.h来使用trace.h
 #include "dbx_msgdef.h"
 //mysql
-#include "m_string.h"
+//#include "m_string.h"
 #include "mysql.h"
 //std
 #include <list>
@@ -18,6 +18,12 @@ using namespace std;
 
 // QueryBuffer长度
 #define QUERYBUFFER_MAX_LEN			1024 * 128
+
+char * strmov(char * dst, const char * src)
+{
+	while ((*dst++ = *src++) != '\0');
+	return dst - 1;
+}
 
 // 参数方向定义
 enum
