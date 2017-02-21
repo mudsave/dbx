@@ -10,6 +10,8 @@ RTX:6016.
 #include "lindef.h"
 #include "vsdef.h"
 
+#include "DBInterfaceMysql.h"
+
 // -----------------------------------------------------------------------------------
 DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
     :m_dbInterface(NULL),
@@ -20,10 +22,10 @@ DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
 {
 }
 
-bool DBIssueBase::Progress()
+void DBIssueBase::Progress()
 {
     TRACE0_L0("DBIssueBase::Progress.\n");
-    return OnProgress();
+    OnProgress();
 }
 
 void DBIssueBase::SetDBInterface(DBInterface *p_dbInterface)
@@ -68,14 +70,31 @@ void DBIssueBase::SetError(int p_errnum, std::string p_errstr)
 DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID)
     :DBIssueBase(p_appMsg, p_queryID)
 {
+    m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
+    memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
 }
 
-bool DBIssueCallSP::OnProgress()
+void DBIssueCallSP::OnProgress()
 {
     TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
-    const char *cmd = "CALL SP2();";
-    bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-    return success;
+
+    DBInterfaceMysql * pdbInterface = static_cast<DBInterfaceMysql *>(m_dbInterface);
+
+    char * pszQueryBuffer = pdbInterface->GetQueryBuffer();
+    int nQueryBufferLen = QUERYBUFFER_MAX_LEN;
+
+    //把旧数据先清除
+    m_outParams.clear();
+
+    if (!build_sp_query_buffer(pdbInterface->GetMysql(), (CCSResultMsg *)(m_pAppMsg), pszQueryBuffer, nQueryBufferLen, m_outParams))
+    {
+        return;
+    }
+
+    if (!pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this))
+    {
+        return;
+    }
 }
 
 void DBIssueCallSP::MainProgress()
@@ -89,14 +108,19 @@ void DBIssueCallSP::MainProgress()
 DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
     :DBIssueBase(p_appMsg, p_queryID)
 {
+    m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
+    memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
 }
 
-bool DBIssueCallSQL::OnProgress()
+void DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
     const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-    return success;
+    if (!success)
+    {
+        // todo:处理错误
+    }
 }
 
 void DBIssueCallSQL::MainProgress()

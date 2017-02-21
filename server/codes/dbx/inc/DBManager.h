@@ -35,7 +35,7 @@ protected:
 protected:
     HANDLE m_mainProcessTimer;
 
-	NetworkInterface m_networkInterface;
+    NetworkInterface m_networkInterface;
 };
 
 

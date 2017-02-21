@@ -54,4 +54,4 @@ protected:
 };
 
 
-#endif // __DB_TASK_H_
+#endif // end of __DB_TASK_H_

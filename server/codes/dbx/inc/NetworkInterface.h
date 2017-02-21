@@ -22,13 +22,13 @@ class ILinkSink;
 class NetworkInterface : public IMsgLinksImpl<1>    // 暂且用类型1
 {
 public:
-	NetworkInterface(int p_port = 3000);
+    NetworkInterface(int p_port = 3000);
 
     bool Listen(int p_port);
 
-	bool Send(AppMsg *p_appMsg);
+    HRESULT Send(AppMsg *p_appMsg);
 
-    bool Recv(BYTE *p_buff, int p_size);
+    HRESULT Recv(BYTE *p_buff, int p_size);
 
     void Finalise();
 public:
@@ -37,7 +37,7 @@ public:
     virtual void OnClosed(HANDLE hLinkContext, HRESULT p_reason);
 
 protected:
-	ILinkCtrl* m_linkCtrl;
+    ILinkCtrl* m_linkCtrl;
 };
 
 

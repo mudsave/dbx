@@ -23,7 +23,7 @@ DBManager::DBManager()
 
 bool DBManager::Initialize(int p_port)
 {
-	TRACE0_L0( "DBManager::Initialize...\n" );
+    TRACE0_L0( "DBManager::Initialize...\n" );
     m_mainProcessTimer = GlobalThreadsPool()->RegTimer(this, NULL, 0, DBX_MAIN_TICK_TIME, DBX_MAIN_TICK_TIME, "DBX_Main_Process_Timer");
     if (m_mainProcessTimer == NULL)
     {
@@ -72,6 +72,8 @@ void DBManager::CallSP(AppMsg *p_appMsg)
         TRACE1_ERROR("DBManager::CallSQL:Cant get task pool(id:%i), it is maybe destroyed.\n", DBX_DEFALT_DATABASE_ID);
         return;
     }
+
+    //对于sp调用来说，queryID默认是-1
     dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1));
 }
 
@@ -92,5 +94,4 @@ HRESULT DBManager::Do(HANDLE hContext)
 {
     TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
-    return S_OK;
 }

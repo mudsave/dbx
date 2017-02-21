@@ -51,16 +51,15 @@ public:
         :DBIssueBase(p_appMsg, p_queryID),
         m_cmd(NULL)
     {}
-    
+
     DBIssueTest(const char *p_cmd, int p_queryID)
         :DBIssueBase(NULL, p_queryID),
         m_cmd(p_cmd)
     {}
 
-    virtual bool OnProgress()
+    virtual void OnProgress()
     {
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
-        return success;
     }
 
     virtual void MainProgress()
@@ -79,11 +78,10 @@ public:
         :DBIssueTest(p_cmd, p_queryID)
     {}
 
-    virtual bool OnProgress()
+    virtual void OnProgress()
     {
         m_cmd = "Create table if not EXISTS t1(id BIGINT primary key auto_increment, col varchar(50) ) ENGINE=InnoDB charset=utf8;";
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
-        return success;
     }
 };
 
@@ -94,11 +92,10 @@ public:
         :DBIssueTest(p_cmd, p_queryID)
     {}
 
-    virtual bool OnProgress()
+    virtual void OnProgress()
     {
         m_cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
-        return success;
     }
 };
 
@@ -117,7 +114,6 @@ public:
             if (taskPool->IsDestroyed())
                 break;
         }
-        return S_OK;
     }
 
     void Run()

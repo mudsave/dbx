@@ -8,16 +8,18 @@ RTX:6016.
 #include "NetworkInterface.h"
 
 //#include "trace.h"
-#include "lindef.h"	// 包含lindef.h来使用trace.h
-#include "Sock.h"	// 使用Sock.h必先包含lindef.h，依赖其中的声明
+#include "lindef.h" // 包含lindef.h来使用trace.h
+#include "Sock.h"   // 使用Sock.h必先包含lindef.h，依赖其中的声明
 
 #include "DBXContextDefine.h"
 #include "DBManager.h"
 
+#include "dbx_msgdef.h"
+
 NetworkInterface::NetworkInterface(int p_port)
 {
-	TRACE0_L0( "NetworkInterface init...\n" );
-	m_linkCtrl = CreateLinkCtrl();
+    TRACE0_L0( "NetworkInterface init...\n" );
+    m_linkCtrl = CreateLinkCtrl();
 
 }
 
@@ -33,14 +35,12 @@ bool NetworkInterface::Listen(int p_port)
     return true;
 }
 
-bool NetworkInterface::Send(AppMsg *p_appMsg)
+HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
 {
-    return true;
 }
 
-bool NetworkInterface::Recv(BYTE *p_buff, int p_size)
+HRESULT NetworkInterface::Recv(BYTE *p_buff, int p_size)
 {
-    return true;
 }
 
 HANDLE NetworkInterface::OnConnects(SOCKET p_socket, handle p_linkIndex, HRESULT p_result, ILinkPort* p_linkPort, int p_linkType)
@@ -69,7 +69,16 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
 
     //DBManager::InstancePtr()
 
-    SendMsg(context->m_linkIndex, pMsg);
+    //SendMsg(context->m_linkIndex, pMsg);
+
+    if (pMsg->msgId == C_DOACTION || pMsg->msgId == C_SP_FROM_CPP)
+    {
+        DBManager::InstancePtr()->CallSP(pMsg);
+    }
+    else
+    {
+        DBManager::InstancePtr()->CallSQL(pMsg);
+    }
 }
 
 void NetworkInterface::OnClosed(HANDLE hLinkContext, HRESULT p_reason)
