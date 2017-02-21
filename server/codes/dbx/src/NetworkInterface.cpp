@@ -35,11 +35,7 @@ bool NetworkInterface::Listen(int p_port)
     return true;
 }
 
-HRESULT NetworkInterface::Send(AppMsg *p_appMsg)
-{
-}
-
-HRESULT NetworkInterface::Recv(BYTE *p_buff, int p_size)
+void NetworkInterface::Send(AppMsg *p_appMsg)
 {
 }
 

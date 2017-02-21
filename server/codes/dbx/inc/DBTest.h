@@ -60,6 +60,8 @@ public:
     virtual void OnProgress()
     {
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
+        if(!success)
+        {}
     }
 
     virtual void MainProgress()
@@ -82,6 +84,8 @@ public:
     {
         m_cmd = "Create table if not EXISTS t1(id BIGINT primary key auto_increment, col varchar(50) ) ENGINE=InnoDB charset=utf8;";
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
+        if(!success)
+        {}
     }
 };
 
@@ -96,6 +100,8 @@ public:
     {
         m_cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
         bool success = m_dbInterface->Query(m_cmd, strlen(m_cmd), this);
+        if(!success)
+        {}
     }
 };
 
@@ -114,6 +120,8 @@ public:
             if (taskPool->IsDestroyed())
                 break;
         }
+        
+        return S_OK;
     }
 
     void Run()
