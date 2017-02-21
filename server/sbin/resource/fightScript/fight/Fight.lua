@@ -773,6 +773,10 @@ function Fight:onPlayOver(params)
 	--校验有效性
 	--print("onPlayOver")
 	--print("Fight:onPlayOver(params)",self._curWaitClientNum)
+	if instanceof(self,FightScript_Random) and FightScript_Random.onPlayOver then
+		FightScript_Random.onPlayOver(self,params)
+		return
+	end
 	if self._fightType == FightType.Script and FightScript.onPlayOver then
 		FightScript.onPlayOver(self,params)
 		return

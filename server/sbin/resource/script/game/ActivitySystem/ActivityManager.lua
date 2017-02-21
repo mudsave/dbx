@@ -9,6 +9,8 @@ ActivityID = 1
 require "game.ActivitySystem.Activity.DekaronSchool.DekaronSchool"
 require "game.ActivitySystem.Activity.DekaronSchool.AScript"
 require "game.ActivitySystem.Activity.BeastBless.BeastBless"
+require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"
+
 
 ActivityManager = class(nil, Singleton)
 
@@ -108,7 +110,7 @@ function ActivityManager:minUpdate(currentTime)
 			end
 
 		elseif activityInfo.startType == AtyStartType.fixedWeekHour then --每一周
-			print("----------分钟更新-----",toString(data))
+			--print("----------分钟更新-----",toString(data))
 			local activityTime = activityInfo.activityTime
 			for _,time in pairs(activityTime) do
 				local startTime = time.startTime

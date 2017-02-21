@@ -29,7 +29,7 @@ function DialogCondition:choseDialogID(player, dialogIDs, npcID)
 	end
 end
 
---选择选项条件
+-- 选择选项条件
 function DialogCondition:choseOption(player, showConditions)
 	for _, data in pairs(showConditions) do
 		local method = DialogConditionDoer[data.condition]

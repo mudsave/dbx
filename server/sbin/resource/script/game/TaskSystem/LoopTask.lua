@@ -211,7 +211,7 @@ function LoopTask:addReward()
 				reward[rewardType] = curValue
 			end
 		elseif rewardType == TaskRewardList.pet_tao then
-			local followPetID	= player:getFollowPetID()
+			local followPetID	= player:getFightPetID()
 			local followPet		= followPetID and g_entityMgr:getPet(followPetID)
 			if followPet then
 				local petTao = followPet:getAttrValue(pet_tao)
@@ -280,7 +280,7 @@ function LoopTask:dealFormulaReward()
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local curRing = taskHandler:getCurrentRing(self._taskID)
 	local level = self._recetiveTaskLvl
-	local followPetID	= player:getFollowPetID()
+	local followPetID	= player:getFightPetID()
 	local followPet		= followPetID and g_entityMgr:getPet(followPetID)
 	local petLevel
 	if followPet then
@@ -354,7 +354,7 @@ function LoopTask:dealFactionFormulaReward()
 				player:setAttrValue(player_tao, playerTao + curValue)	
 				reward[rewardType] = curValue
 			elseif rewardType == TaskRewardList.pet_tao then
-				local followPetID	= player:getFollowPetID()
+				local followPetID	= player:getFightPetID()
 				local followPet		= followPetID and g_entityMgr:getPet(followPetID)
 				if followPet then
 					local petTao = followPet:getAttrValue(pet_tao)

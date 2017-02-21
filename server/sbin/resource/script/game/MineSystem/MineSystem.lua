@@ -15,7 +15,7 @@ function MineSystem:__init()
 		[MoveEvent_SS_OnStopMove]				= MineSystem.onStopMove,
 		[FightEvents_CS_EnterMineFight]			= MineSystem.onEnterMineFight,
 		[FightEvents_CS_SwitchMineState]		= MineSystem.onSwitchState,
-		[FightEvents_SS_FightEnd_afterClient]	= MineSystem.onFightEnd,
+		
 
 	}
 end

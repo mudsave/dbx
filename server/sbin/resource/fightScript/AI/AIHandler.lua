@@ -15,6 +15,7 @@ function FightAIHandler:__init(owner)
 	self._aiIDs = nil
 	self._wordsID = nil
 	self._skillID = nil
+	self._usedCount = {}--[aiid] = 1
 	
 end
 --[[
@@ -52,38 +53,43 @@ function FightAIHandler:setAction(action,context)
 	--按顺序执行AI
 	else
 		for _,AIID in ipairs(self._aiIDs ) do
-			local actionType,targets ,params,isEnemy,skillID = self._aiMgr:choose(AIID ,self._owner,context.targets)
-			action.actionType = actionType
-			--没选中AI则下一个AI
-			if actionType ~= nil then
-					if actionType == FightUIType.UseSkill then--TODO 怪物技能
-						action.context.skillID = skillID
-						action.context.targets = targets
-						action.context.isEnemy = isEnemy
-					elseif actionType == FightUIType.CommonAttack then 
-						if (not targets) or #targets == 0 then
-							action.context.target = NonExistEntityPos
-						else
-							local pos = targets[1]:getPos()[3]
-							action.context.target = pos 
+			local permitCount = FightAIDB[AIID].count or 0xFFFFFFFF
+			local curCount = self._usedCount[AIID] or 0
+			if  curCount < permitCount then
+				local actionType,targets ,params,isEnemy,skillID = self._aiMgr:choose(AIID ,self._owner,context.targets)
+				action.actionType = actionType
+				--没选中AI则下一个AI
+				if actionType ~= nil then
+						self._usedCount[AIID] = curCount + 1
+						if actionType == FightUIType.UseSkill then--TODO 怪物技能
+							action.context.skillID = skillID
+							action.context.targets = targets
+							action.context.isEnemy = isEnemy
+						elseif actionType == FightUIType.CommonAttack then 
+							if (not targets) or #targets == 0 then
+								action.context.target = NonExistEntityPos
+							else
+								local pos = targets[1]:getPos()[3]
+								action.context.target = pos 
+							end
+						elseif actionType == FightUIType.Call then 
+							action.context.members = params
+						elseif actionType == FightUIType.Protect then
+							local target = targets[1]
+							if target then
+								local pos = target:getPos()[3]
+								action.context.target = pos 
+								print(pos)
+							else
+								--print("qqqqqqqqqq")
+								print("cann't find protect target!")
+							end
+						
 						end
-					elseif actionType == FightUIType.Call then 
-						action.context.members = params
-					elseif actionType == FightUIType.Protect then
-						local target = targets[1]
-						if target then
-							local pos = target:getPos()[3]
-							action.context.target = pos 
-							print(pos)
-						else
-							--print("qqqqqqqqqq")
-							print("cann't find protect target!")
-						end
-					
-					end
 
-					print("FightAIHandler:setAction(action,context)",instanceof(action.role,FightMonster),instanceof(target,FightPlayer))
-					break
+						print("FightAIHandler:setAction(action,context)",instanceof(action.role,FightMonster),instanceof(target,FightPlayer))
+						break
+				end
 			end
 		end
 	end
@@ -125,4 +131,5 @@ end
 
 function FightAIHandler:__release()
 	self._owner = nil
+	self._usedCount = nil
 end

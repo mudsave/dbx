@@ -456,9 +456,9 @@ function NormalEffect:calculateHit(target)
 	local dodge = target:ft_get_dodge()
 	local hitRatio = 0
 	if hit == 0 then
-		hitRatio = 100
+		hitRatio = 0
 	elseif dodge == 0 then
-		hitRatio = -1
+		hitRatio = 100
 	else
 		hitRatio = 100 * FinalHitRateConst*hit/(FinalHitRateConst*hit + dodge)
 	end

@@ -6,19 +6,19 @@
 TaskTarget = class()
 
 function TaskTarget:__init(entity, task, param)
-	self._task = task
-	self._entity = entity
-	self._param = param
-	self._bor = param.bor
-	self._state = 0
+	self._task		= task
+	self._entity	= entity
+	self._param		= param
+	self._bor		= param.bor
+	self._state		= 0
 end
 
 function TaskTarget:__release()
-	self._task = nil
-	self._entity = nil
-	self._param = nil
-	self._bor = nil
-	self._state = nil
+	self._task		= nil
+	self._entity	= nil
+	self._param		= nil
+	self._bor		= nil
+	self._state		= nil
 end
 
 function TaskTarget:getBor()

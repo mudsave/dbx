@@ -369,7 +369,7 @@ function EctypeSystem:startPatrolFight(player, scriptID)
 	local finalList = {}
 	for k,player in ipairs(playerList) do
 		table.insert(finalList,player)
-		local petID = player:getFollowPetID()
+		local petID = player:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			table.insert(finalList,pet)

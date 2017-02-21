@@ -31,7 +31,18 @@ function TaskSystem:__init()
 		[TaskEvent_CS_CommitItem]				= TaskSystem.doCommitItem,
 		[FightEvents_SS_FightEnd_afterClient]	= TaskSystem.onFightEnd,
 		[TaskEvent_CS_RemoveTaskPet]			= TaskSystem.onRemoveTaskPet,
+		[TaskEvent_BS_GuideJoinFaction]			= TaskSystem.onJoinFaction,
 	}
+end
+
+function TaskSystem:onJoinFaction(event)
+	local params = event:getParams()
+	local flag = params[1]
+	local pDBID = params[2]
+	print("--pDBID--",pDBID)
+	local player = g_entityMgr:getPlayerByDBID(pDBID)
+	if not player then return end
+	TaskCallBack.onjoinFaction(player,flag)
 end
 
 function TaskSystem:onRemoveTaskPet(event)
@@ -488,6 +499,11 @@ end
 
 function TaskSystem:setTargetsState(player, taskID, targetsState)
 	local event = Event.getEvent(TaskEvent_SC_SetTargetsState, taskID, targetsState)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function TaskSystem:loadLoopTaskToClient(player, loopTaskData)
+	local event = Event.getEvent(TaskEvent_SC_LoadLoopTaskInfoToClient, loopTaskData)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

@@ -7,7 +7,9 @@ local function notice(str,...) print( ("Pet:%s"):format( str and str:format(...)
 local function toDo(str,...) end
 
 local flushPropBatch = flushPropBatch
-local setPropValue  = setPropValue
+local setPropValue	 = setPropValue
+local attachEntity	 = attachEntity
+local detachEntity	 = detachEntity
 
 Pet = class(Entity)
 
@@ -297,6 +299,17 @@ function Pet:flushPropBatch(player)
 	if not player then return end
 
 	flushPropBatch(self:getPeer(),player:getID())
+end
+
+-- 绑定宠物到某个实体
+function Pet:attachTo(player)
+	self:freshProps()
+	attachEntity(self:getPeer(),player:getID())
+end
+
+-- 将宠物从某个实体上解除绑定
+function Pet:detachFrom(player)
+	detachEntity(self:getPeer(),player:getID())
 end
 
 -- 可视性管理

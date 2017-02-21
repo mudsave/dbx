@@ -39,7 +39,7 @@ function NormalTask:addReward()
 		elseif rewardType == TaskRewardList.subMoney then
 			player:setSubMoney(player:getSubMoney() + value)
 		elseif rewardType == TaskRewardList.pet_xp then
-			local pid = player:getFollowPetID()
+			local pid = player:getFightPetID()
 			local fpet = pid and g_entityMgr:getPet(pid)
 			if fpet then
 				fpet:addXp(value)
@@ -47,7 +47,7 @@ function NormalTask:addReward()
 		elseif rewardType == TaskRewardList.player_tao then
 			player:addTao(value)
 		elseif rewardType == TaskRewardList.pet_tao then
-			local pid = player:getFollowPetID()
+			local pid = player:getFightPetID()
 			local fpet = pid and g_entityMgr:getPet(pid)
 			if fpet then
 				local curPetTao = fpet:getAttrValue(pet_tao)

@@ -127,6 +127,8 @@ function System.OnPlayerLoaded(player, recordList)
 	g_goldHuntMgr:loadGoldHunt(player,recordList[31])
 	-- 活动上线
 	g_activityMgr:onPlayerOnline(player,recordList)
+	--加载兑换物品数据
+	g_exchangeItemMgr:playerOnLine(player,recordList[34])
 end
 
 function System.OnPlayerLogout(player, reason)
@@ -179,6 +181,9 @@ function System.OnPlayerLogout(player, reason)
 	
 	local event = Event.getEvent(SocialEvent_BB_ExitWorld,player:getDBID())
 	g_eventMgr:fireWorldsEvent(event, SocialWorldID)
+
+	--玩家下线保存兑换物品信息
+	--g_exchangeItemMgr:palyerOffLine(player)
 
 end
 

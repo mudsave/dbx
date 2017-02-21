@@ -48,6 +48,8 @@ function loadSystem()
 	require "game.RoleConfigSystem.RoleConfigSystem"
 	require "game.MineSystem.MineSystem"
 	require "game.MailSystem.MailSystem"
+	require "game.TestSystem.TestSystem"
+	require "game.ExchangeItemSystem.ExchangeItemSystem"
 
 	g_itemFct			= ItemFactory.getInstance()
 	g_itemMgr			= ItemManager.getInstance()
@@ -91,4 +93,6 @@ function loadSystem()
 	g_beastBlessMgr		= BeastBlessManager.getInstance()
 	g_goldHuntMgr		= GoldHuntManager.getInstance()
 	g_catchPetMgr		= CatchPetManager.getInstance()
+
+	g_exchangeItemMgr = ExchangeItemManager.getInstance()
 end

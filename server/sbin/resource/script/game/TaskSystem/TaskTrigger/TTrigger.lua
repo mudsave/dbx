@@ -163,6 +163,8 @@ function Triggers.playAnimation(roleID, param, task, fromDB)
 	if fromDB then
 		return
 	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	CactionSystem.getInstance():doPlayAnimation(player, param)
 end
 
 function Triggers.getItem(roleID, param, task, fromDB)

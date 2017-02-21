@@ -47,6 +47,12 @@ TaskType2 = {
 
 }
 
+-- 指引的类型
+GuideType = {
+	Talk			= 0x01,		--指引任务
+	DoTask			= 0x02,		--主线任务
+}
+
 --循环任务目标类型
 LoopTaskTargetType =
 {

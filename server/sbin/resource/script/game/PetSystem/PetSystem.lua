@@ -16,25 +16,25 @@ PetSystem = class(EventSetDoer,Singleton)
 
 function PetSystem:__init()
 	self._doer = {
-		[PetEvent_CS_SetFightPet]			= PetSystem.onSetFightPet,		--设置出战宠物
-		[PetEvent_CS_ShowPet]				= PetSystem.onSwitchPetVisible,	--切换宠物可视性
-		[PetEvent_CS_RequireFullBatch]		= PetSystem.onRequireFullBatch,	--客户端请求某个宠物的属性集合
-		[PetEvent_CS_SetStatus]				= PetSystem.onSetPetStatus,		--设置宠物状态
-		[PetEvent_CS_SetAttrDistribution]	= PetSystem.onSetPetAttrs,		--宠物属性点的分配
-		[PetEvent_CS_SetName]				= PetSystem.onSetPetName,		--设置宠物名称
-		[PetEvent_CS_DeletePet]				= PetSystem.onDeletePet,		--删除一个宠物
-		[PetEvent_CS_RepairPet]				= PetSystem.onConfirmRepair,	--宠物修复
+		[PetEvent_CS_SetFightPet]			= PetSystem.onSetFightPet,		-- 设置出战宠物
+		[PetEvent_CS_ShowPet]				= PetSystem.onSwitchPetVisible,	-- 切换宠物可视性
+		[PetEvent_CS_RequireFullBatch]		= PetSystem.onRequireFullBatch,	-- 客户端请求宠物信息
+		[PetEvent_CS_SetStatus]				= PetSystem.onSetPetStatus,		-- 设置宠物状态
+		[PetEvent_CS_SetAttrDistribution]	= PetSystem.onSetPetAttrs,		-- 宠物属性点的分配
+		[PetEvent_CS_SetName]				= PetSystem.onSetPetName,		-- 设置宠物名称
+		[PetEvent_CS_DeletePet]				= PetSystem.onDeletePet,		-- 删除一个宠物
+		[PetEvent_CS_RepairPet]				= PetSystem.onConfirmRepair,	-- 宠物修复
 
-		[TeamEvents_SS_MemberJoinTeam]		= PetSystem.onJoinTeam,			--加入队伍
-		[TeamEvents_SS_QuitTeam]			= PetSystem.onQuitTeam,			--退出队伍
-		[TeamEvents_SS_ChangeLeader]		= PetSystem.onChangeLeader,		--队伍队长改变
+		[TeamEvents_SS_MemberJoinTeam]		= PetSystem.onJoinTeam,			-- 加入队伍
+		[TeamEvents_SS_QuitTeam]			= PetSystem.onQuitTeam,			-- 退出队伍
+		[TeamEvents_SS_ChangeLeader]		= PetSystem.onChangeLeader,		-- 队伍队长改变
 
-		[PetEvent_CS_EnchancePet]			= PetSystem.onEnchancePet,		--宠物强化
-		[PetEvent_CS_RebirthPet]			= PetSystem.onPetRebirth,		--宠物还童
-		[PetEvent_CS_SetPhaseDistribution]	= PetSystem.onSetPetPhase,		--设置宠物的相性点
-		[PetEvent_CS_ExpandPetBar]			= PetSystem.onExpandPetBar,		--拓展宠物栏
-		[PetEvent_CS_CombinePets]			= PetSystem.onCombinePets,		--宠物合成
-		[PetEvent_CS_ReadSkillBook]			= PetSystem.onPetLearn,			--宠物学习技能
+		[PetEvent_CS_EnchancePet]			= PetSystem.onEnchancePet,		-- 宠物强化
+		[PetEvent_CS_RebirthPet]			= PetSystem.onPetRebirth,		-- 宠物还童
+		[PetEvent_CS_SetPhaseDistribution]	= PetSystem.onSetPetPhase,		-- 设置宠物的相性点
+		[PetEvent_CS_ExpandPetBar]			= PetSystem.onExpandPetBar,		-- 拓展宠物栏
+		[PetEvent_CS_CombinePets]			= PetSystem.onCombinePets,		-- 宠物合成
+		[PetEvent_CS_ReadSkillBook]			= PetSystem.onPetLearn,			-- 宠物学习技能
 	}
 end
 
@@ -175,10 +175,39 @@ function PetSystem:onChangeLeader(event)
 	toDo "切换队长时候处理"
 end
 
+-- 请求宠物数据检测
+function RequireFullBatchCheck(player,pet)
+	if not pet then
+		return PetError.RequireNone
+	end
+	if pet:getOwnerID() == player:getID() then
+		return PetError.RequireMine
+	end
+
+	return 0
+end
+
 -- 请求宠物数据
 function PetSystem:onRequireFullBatch(event)
 	local player	= g_entityMgr:getPlayerByID(event.playerID)
 	local params	= event:getParams()
+
+	local petID		= params[1]
+	local pet		= g_entityMgr:getPet(petID)
+
+	local errCode = RequireFullBatchCheck(player,pet)
+	if errCode == 0 then
+		pet:attachTo(player)
+		pet:sendFull(player)
+
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(PetEvent_SC_FullBatchPushed,petID),player
+		)
+	else
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(ClientEvents_SC_PromptMsg,eventGroup_Pet,errCode),player
+		)
+	end
 end
 
 -- 设置宠物状态检测

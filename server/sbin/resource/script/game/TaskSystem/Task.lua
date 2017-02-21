@@ -42,7 +42,7 @@ end
 
 --任务目标
 function Task:addTarget(idx, target)
-	if self._targets[idx] then
+	if self._targets[idx] then	
 		print("配置任务目标索引出错")
 	else
 		self._targets[idx] = target
@@ -109,7 +109,8 @@ end
 
 --状态跳转
 function Task:stateChange(taskStatus, fromDB)
-	local oldStatus = self:getStatus()						 --不允许同一状态改变两次
+	local oldStatus = self:getStatus()
+	--不允许同一状态改变两次
 	if oldStatus == taskStatus then
 		return 
 	end	
@@ -206,7 +207,7 @@ end
 
 function Task:refresh()
 	-- 此时可能会出现任务回退
-	if self:canEnd() then	
+	if self:canEnd() then
 		self:stateChange(TaskStatus.Done)
 	elseif self:isFaild() then
 		self:stateChange(TaskStatus.Failed)

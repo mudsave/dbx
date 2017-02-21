@@ -112,7 +112,7 @@ MainTaskDB1_20 =
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
 		nextTaskID = 1005,	--任务后置任务没有填nil
-		startDialogID =	108,	--接任务对话ID没有填nil
+		startDialogID =	452,	--接任务对话ID没有填nil
 		endDialogID = 109,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.QYD,	--门派限制没有填nil
@@ -233,7 +233,7 @@ MainTaskDB1_20 =
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
-			[1] = {type='Tarea',param = {mapID = 1 , x = 85, y = 63, bor = true},},-------到达指定坐标
+			[1] = {type='Tarea',param = {mapID = 1 , x = 26, y = 84, bor = true},},-------到达指定坐标
 		},
 		triggers = --任务触发器
 		{
@@ -275,7 +275,7 @@ MainTaskDB1_20 =
 		{
 			[TaskStatus.Done]		=
 			{
-			{type="openDialog", param={dialogID = 115},},--在任务结束时打开一个对话框
+			{type="openDialog", param={dialogID = 118},},--在任务结束时打开一个对话框
 			},
 		},
 	},
@@ -468,7 +468,7 @@ MainTaskDB1_20 =
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
 		nextTaskID = 1015,	--任务后置任务没有填nil
-		startDialogID =	108,	--接任务对话ID没有填nil
+		startDialogID =	453,	--接任务对话ID没有填nil
 		endDialogID = 131,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.TYD,	--门派限制没有填nil
@@ -823,7 +823,7 @@ MainTaskDB1_20 =
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
 		nextTaskID = 1025,	--任务后置任务没有填nil
-		startDialogID =	108,	--接任务对话ID没有填nil
+		startDialogID =	454,	--接任务对话ID没有填nil
 		endDialogID = 153,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.JXS,	--门派限制没有填nil
@@ -1179,7 +1179,7 @@ MainTaskDB1_20 =
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
 		nextTaskID = 1035,	--任务后置任务没有填nil
-		startDialogID =	108,	--接任务对话ID没有填nil
+		startDialogID =	455,	--接任务对话ID没有填nil
 		endDialogID = 175,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.PLG,	--门派限制没有填nil
@@ -1530,7 +1530,7 @@ MainTaskDB1_20 =
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
 		nextTaskID = 1045,	--任务后置任务没有填nil
-		startDialogID =	108,	--接任务对话ID没有填nil
+		startDialogID =	456,	--接任务对话ID没有填nil
 		endDialogID = 197,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.ZYM,	--门派限制没有填nil
@@ -1881,7 +1881,7 @@ MainTaskDB1_20 =
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
 		nextTaskID = 1055,	--任务后置任务没有填nil
-		startDialogID =	108,	--接任务对话ID没有填nil
+		startDialogID =	457,	--接任务对话ID没有填nil
 		endDialogID = 219,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.YXG,	--门派限制没有填nil

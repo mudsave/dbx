@@ -57,7 +57,7 @@ function Beast:addBeastToMap(curMapBeastList)
 	local scence = g_sceneMgr:getSceneByID(mapID)
 	if npc then
 		npcID = npc:getID()
-		print("npc:isFighting()",npc:isFighting())
+		print("________>npc:isFighting()",npc:isFighting())
 		print("npcID",npcID,self.posX,self.posY)
 		scence:attachEntity(npc,self.posX,self.posY)
 		-- 加到beastmanager中
