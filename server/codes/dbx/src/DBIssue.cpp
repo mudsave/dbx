@@ -110,15 +110,12 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
     memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
 }
 
-void DBIssueCallSQL::OnProgress()
+bool DBIssueCallSQL::OnProgress()
 {
     TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
     const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
-    if (!success)
-    {
-        // todo:处理错误
-    }
+    return success;
 }
 
 void DBIssueCallSQL::MainProgress()
