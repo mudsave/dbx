@@ -71,7 +71,7 @@ std::string DBXConfig::GetElementAttributeStr(TiXmlElement *p_element, const cha
         TRACE2_ERROR("DBXConfig::GetElementAttributeStr:cant find attribute %s from element %s\n", p_key, p_element->Value());
         return "";
     }
-
+        
     return attr;
 }
 

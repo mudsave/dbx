@@ -38,7 +38,7 @@ bool DBFactory::Initialize()
         {
             TRACE1_ERROR("DBFactory::Initialize:Cant initTasks for db interface(id:%i).\n", iter->id);
             return false;
-        }
+        }            
     }
 
     return true;
