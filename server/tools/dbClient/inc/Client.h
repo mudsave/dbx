@@ -53,7 +53,7 @@ private:
        
 	IThreadsPool*	m_pThreadPool;
 	
-	DBXMessageBuilder<CCSResultMsg> m_msgBuilder;
+	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 
 public:
 	virtual void buildQuery();
