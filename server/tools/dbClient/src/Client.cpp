@@ -21,7 +21,6 @@ IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 CClient::CClient():m_bLink(false),INIT_THREAD_SAFETY_MEMBER_FAST(sock),INIT_THREAD_SAFETY_MEMBER_FAST(Attr)
 {
         //sleep(30);
-	m_query_msg = NULL;
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
 	m_pLinkCtrl=static_cast<ILinkCtrl*>(::CreateLinkCtrl());
 	if (m_pLinkCtrl==NULL)

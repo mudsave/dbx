@@ -1,10 +1,10 @@
 #ifndef __DBX_MSGDEF_
 #define __DBX_MSGDEF_
 
-#include "stdlib.h"
-#include "vsdef.h"
+#include <stdlib.h>
 #include <string>
 #include <vector>
+#include "vsdef.h"
 
 enum msg_id
 {
