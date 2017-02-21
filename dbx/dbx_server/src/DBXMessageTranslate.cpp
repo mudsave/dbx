@@ -9,10 +9,17 @@ char * strmov(char * dst, const char * src)
 
 void upper_first_char(char * buffer)
 {
-	if (*buffer >= 'a' && *(buffer + 1) >= 'a')
-		*buffer -= 'a' - 'A';
+	if (*buffer >= 'a' && *buffer <= 'z')
+		if (*(buffer + 1) >= 'a' && *(buffer + 1) <= 'z')
+			*buffer -= 'a' - 'A';
 }
 
+void lower_first_char(char * buffer)
+{
+	if (*buffer >= 'A' && *buffer <= 'Z')
+		if (*(buffer + 1) >= 'A' && *(buffer + 1) <= 'Z')
+			*buffer += 'a' - 'A';
+}
 
 bool build_sql_query_buffer(CCSResultMsg & message, char * pBuffer)
 {

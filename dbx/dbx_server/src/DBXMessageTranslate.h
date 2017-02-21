@@ -95,6 +95,8 @@ char * strmov(char * dst, const char * src);
 
 void upper_first_char(char * buffer);
 
+void lower_first_char(char * buffer);
+
 bool build_sql_query_buffer(CCSResultMsg & message, char * pBuffer);
 
 bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, char * pBuffer/*out*/, 
