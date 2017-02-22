@@ -62,7 +62,7 @@ bool DBManager::InitDB()
     return DBFactory::InstancePtr()->Initialize();
 }
 
-void DBManager::CallSP(AppMsg *p_appMsg)
+void DBManager::CallSP(handle p_linkIndex, AppMsg *p_appMsg)
 {
     // todo:从p_appMsg中获得queryID
 
@@ -74,10 +74,10 @@ void DBManager::CallSP(AppMsg *p_appMsg)
     }
 
     //对于sp调用来说，queryID默认是-1
-    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1, p_linkIndex));
 }
 
-void DBManager::CallSQL(AppMsg *p_appMsg)
+void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
 {
     // todo:从p_appMsg中获得queryID
 
@@ -87,7 +87,12 @@ void DBManager::CallSQL(AppMsg *p_appMsg)
         TRACE1_ERROR("DBManager::CallSQL:Cant get task pool(id:%i), it is maybe destroyed.\n", DBX_DEFALT_DATABASE_ID);
         return;
     }
-    dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, -1));
+    dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, -1, p_linkIndex));
+}
+
+void DBManager::SendResult(handle p_linkIndex, AppMsg *p_appMsg)
+{
+    m_networkInterface.SendMsg(p_linkIndex, p_appMsg);
 }
 
 HRESULT DBManager::Do(HANDLE hContext)

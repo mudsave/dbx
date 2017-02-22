@@ -69,11 +69,11 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
 
     if (pMsg->msgId == C_DOACTION || pMsg->msgId == C_SP_FROM_CPP)
     {
-        DBManager::InstancePtr()->CallSP(pMsg);
+        DBManager::InstancePtr()->CallSP(context->m_linkIndex, pMsg);
     }
     else
     {
-        DBManager::InstancePtr()->CallSQL(pMsg);
+        DBManager::InstancePtr()->CallSQL(context->m_linkIndex, pMsg);
     }
 }
 
