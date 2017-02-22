@@ -41,13 +41,13 @@ DBTaskPool::~DBTaskPool()
 void DBTaskPool::Finalise()
 {
     TRACE1_L0("DBTaskPool::Finalise:%i.\n", m_dbInterfaceID );
-
+    
     m_isDestroyed = true;
     m_freeBusyListMutex.Lock();
     std::list<DBTask *>::iterator taskIter = m_totalTaskList.begin();
     for (; taskIter != m_totalTaskList.end(); ++taskIter)
         (*taskIter)->Destroy();
-
+    
     taskIter = m_freeTaskList.begin();
     for (; taskIter != m_freeTaskList.end(); ++taskIter)
         (*taskIter)->Start();

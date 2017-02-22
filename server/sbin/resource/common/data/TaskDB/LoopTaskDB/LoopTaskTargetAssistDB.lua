@@ -6347,4 +6347,24 @@ LoopTaskTargetAssistDB =
 		},
 		
 	},
+	[1] =
+	{
+		-- 1 - 151 级
+		[1] =
+		{
+			-- 1 - 1000 环
+			[1] =
+			{
+				-- 在根据环数来分配不同的怪物 
+				[LoopTaskTargetType.brightMine] =
+				{	
+					-- 指定NPC，固定坐标 ,无需创建，但是这个坐标要发给客户端
+					brightMine =
+					{
+						[1] = {npcID = 2,scriptID = 100, mapID = 101, x = 100, y = 200},
+					}
+				},
+			},
+		},
+	},
 }

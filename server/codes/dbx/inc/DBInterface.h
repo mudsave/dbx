@@ -85,4 +85,4 @@ protected:
 
 
 
-#endif // end of __DB_INTERFACE_H_
+#endif // __DB_INTERFACE_H_

@@ -72,7 +72,7 @@ function DialogAction:doEnterFight(player, param)
 	-- 加宠物
 	for k,player in ipairs(playerList) do
 		table.insert(finalList,player)
-		local petID = player:getFollowPetID()
+		local petID = player:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			table.insert(finalList,pet)
@@ -98,7 +98,7 @@ function DialogAction:doEnterScriptFight(player, param)
 	local finalList = {}
 	for k,player in ipairs(playerList) do
 		table.insert(finalList,player)
-		local petID = player:getFollowPetID()
+		local petID = player:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			table.insert(finalList,pet)
@@ -171,7 +171,6 @@ end
 
 --接受一个任务
 function DialogAction:doRecetiveTask(player, param)
-	print("接受一个任务")
 	local isTrue,result = g_taskDoer:doRecetiveTask(player, param.taskID)
 	if result and result > 0 then
 		g_dialogFty:createErrorDialogObject(player, result)
@@ -400,7 +399,7 @@ function DialogAction:doEnterTreasureFight(player, param, npcID)
 	local finalList = {}
 	for k,player in ipairs(playerList) do
 		table.insert(finalList,player)
-		local petID = player:getFollowPetID()
+		local petID = player:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			table.insert(finalList,pet)
@@ -471,7 +470,7 @@ function DialogAction:doEnterCatchPetFight(player, param, npcID)
 	local finalList = {}
 	for k,player in ipairs(playerList) do
 		table.insert(finalList,player)
-		local petID = player:getFollowPetID()
+		local petID = player:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			table.insert(finalList,pet)
@@ -624,14 +623,12 @@ function DialogAction:doGoldHuntCommit(player, param)
 end
 
 function DialogAction:doEnterBeastFight(player, param, npcID)
-	local npc = g_entityMgr:getNpc(npcID)
 	local scriptID = param.scriptID
-	print("npcID",npcID)
-	if npc then
-		local beast = g_beastBlessMgr:findBeastFromList(npcID)
+	local beast = g_beastBlessMgr:findBeastFromList(npcID)
+		print("doEnterBeastFight1")
 		if beast then
+			print("doEnterBeastFight2")
 			local playerList = {}
-			print("npcID",npcID)
 			local teamHandler = player:getHandler(HandlerDef_Team)
 			if teamHandler:isTeam() then
 				-- 不是队长不能使用npc
@@ -656,7 +653,7 @@ function DialogAction:doEnterBeastFight(player, param, npcID)
 			local finalList = {}
 			for k,player in ipairs(playerList) do
 				table.insert(finalList,player)
-				local petID = player:getFollowPetID()
+				local petID = player:getFightPetID()
 				if petID then
 					local pet = g_entityMgr:getPet(petID)
 					table.insert(finalList,pet)
@@ -664,19 +661,16 @@ function DialogAction:doEnterBeastFight(player, param, npcID)
 			end	
 			local bPass = g_fightMgr:checkStartScriptFight(finalList, scriptID,  param.mapID)
 			-- 这里判断是不是有人使用过这个npc
-			print("进入脚本战斗战斗，scriptID，bPass",scriptID,bPass)
+			print("进入脚本战斗战斗，npcID scriptID，bPass",npcID,scriptID,bPass)
 			local curNpc = g_entityMgr:getNpc(npcID)
 			if bPass then
-				print("curNpc:isFighting()",curNpc:isFighting())
+				print("curNpc:isFighting()----------->",curNpc:isFighting())
 				if not curNpc:isFighting() then
 					g_beastBlessMgr:addBeastFightFlagList(player:getID(),curNpc)
 					g_fightMgr:startScriptFight(finalList, scriptID,  param.mapID ,FightBussinessType.Task)
 				end
 			end
 		end
-	else
-		print("no find this npc")
-	end
 	print("DialogAction:doEnterBeastFight")
 end	
 

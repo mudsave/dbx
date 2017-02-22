@@ -600,7 +600,7 @@ function ItemEffect.getTargetEntity(targetEntity, medicamentConfig, targetEntity
 				curEntity = curPet
 			end
 		else
-			local curFollowPetID = targetEntity:getFollowPetID()
+			local curFollowPetID = targetEntity:getFightPetID()
 			if curFollowPetID then
 				local curFollowPet = g_entityMgr:getPet(curFollowPetID)
 				curEntity = curFollowPet
@@ -853,7 +853,7 @@ function ItemEffect.changePetExp(targetEntity, medicament, medicamentConfig, tar
 		end
 	else
 		-- 只针对出战宠物
-		local curFollowPetID = targetEntity:getFollowPetID()
+		local curFollowPetID = targetEntity:getFightPetID()
 		if curFollowPetID then
 			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
 			curEntity = curFollowPet
@@ -983,7 +983,7 @@ function ItemEffect.addPetSkill(targetEntity,item,itemConfig,targetEntityID)
 		end
 	end
 	if not targetPet then
-		local followID = targetEntity:getFollowPetID()
+		local followID = targetEntity:getFightPetID()
 		local pet = followID and g_entityMgr:getPet(followID)
 		if pet then
 			targetPet = pet
@@ -1041,7 +1041,7 @@ function ItemEffect.changeLoyaltyAndAddBuff(targetEntity,item,itemConfig,targetE
 		end
 	else
 		-- 只针对出战宠物
-		local curFollowPetID = targetEntity:getFollowPetID()
+		local curFollowPetID = targetEntity:getFightPetID()
 		if curFollowPetID then
 			local curFollowPet = g_entityMgr:getPet(curFollowPetID)
 			pet = curFollowPet
@@ -1092,7 +1092,7 @@ function ItemEffect.changeHpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 		local pet = g_entityMgr:getPet(targetEntityID)
 	else
 		-- 只针对出战宠物
-		local curFollowPetID = targetEntity:getFollowPetID()
+		local curFollowPetID = targetEntity:getFightPetID()
 		if curFollowPetID then
 			pet = g_entityMgr:getPet(curFollowPetID)
 		end
@@ -1149,7 +1149,7 @@ function ItemEffect.changeMpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 		local pet = g_entityMgr:getPet(targetEntityID)
 	else
 		-- 只针对出战宠物
-		local curFollowPetID = targetEntity:getFollowPetID()
+		local curFollowPetID = targetEntity:getFightPetID()
 		if curFollowPetID then
 			pet = g_entityMgr:getPet(curFollowPetID)
 		end

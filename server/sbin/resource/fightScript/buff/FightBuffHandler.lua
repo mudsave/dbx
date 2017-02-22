@@ -666,7 +666,7 @@ function FightBuffHandler:doClearAddBuff()
 			if kind == goodKind and buff:getDisperse() then
 				buff:stop()
 				release(buff)
-				self.buffList[idx] = nil
+				self.buffList[kind] = nil
 			end
 		end
 	end

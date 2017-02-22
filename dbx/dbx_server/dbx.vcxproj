@@ -11,6 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBFactory.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBInterface.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBInterfaceMysql.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBIssue.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBManager.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBTask.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBTaskPool.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBTest.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXCommon.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXConfig.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXContextDefine.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXMessageTranslate.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\NetworkInterface.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\Singleton.h" />
+    <ClInclude Include="..\..\server\codes\dbx\inc\SwapList.h" />
+    <ClInclude Include="..\..\server\tools\tinyxml\tinystr.h" />
+    <ClInclude Include="..\..\server\tools\tinyxml\tinyxml.h" />
     <ClInclude Include="..\lib\message_define\AppMessge.h" />
     <ClInclude Include="..\lib\message_define\DBXClientMessage.h" />
     <ClInclude Include="..\lib\message_define\DBMessageDefine.h" />
@@ -19,37 +36,24 @@
     <ClInclude Include="..\lib\message_define\MessageBase.h" />
     <ClInclude Include="..\lib\message_define\DBMessageBuilder.h" />
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h" />
-    <ClInclude Include="src\DBXContextDefine.h" />
-    <ClInclude Include="src\DBXCommon.h" />
-    <ClInclude Include="src\DBInterface.h" />
-    <ClInclude Include="src\DBInterfaceMysql.h" />
-    <ClInclude Include="src\DBIssue.h" />
-    <ClInclude Include="src\DBManager.h" />
-    <ClInclude Include="src\DBTask.h" />
-    <ClInclude Include="src\DBTaskPool.h" />
-    <ClInclude Include="src\DBFactory.h" />
-    <ClInclude Include="src\DBXConfig.h" />
-    <ClInclude Include="src\DBXMessageTranslate.h" />
-    <ClInclude Include="src\NetworkInterface.h" />
-    <ClInclude Include="src\Singleton.h" />
-    <ClInclude Include="src\tinystr.h" />
-    <ClInclude Include="src\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DBInterfaceMysql.cpp" />
-    <ClCompile Include="src\DBIssue.cpp" />
-    <ClCompile Include="src\DBManager.cpp" />
-    <ClCompile Include="src\DBTask.cpp" />
-    <ClCompile Include="src\DBTaskPool.cpp" />
-    <ClCompile Include="src\DBFactory.cpp" />
-    <ClCompile Include="src\DBXCommon.cpp" />
-    <ClCompile Include="src\DBXConfig.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\NetworkInterface.cpp" />
-    <ClCompile Include="src\tinystr.cpp" />
-    <ClCompile Include="src\tinyxml.cpp" />
-    <ClCompile Include="src\tinyxmlerror.cpp" />
-    <ClCompile Include="src\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBFactory.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBInterfaceMysql.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBIssue.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBManager.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBTask.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBTaskPool.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBXCommon.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBXConfig.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\DBXMessageTranslate.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\main.cpp" />
+    <ClCompile Include="..\..\server\codes\dbx\src\NetworkInterface.cpp" />
+    <ClCompile Include="..\..\server\tools\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\..\server\tools\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\server\tools\tinyxml\xmltest.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}</ProjectGuid>
@@ -85,7 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share;../lib/message_define;../lib/dependencies/mysql/mysql/include;../lib/dependencies/tinyxml</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/share;../../share;../lib/message_define;../lib/dependencies/mysql/mysql/include;../../server/tools/tinyxml</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

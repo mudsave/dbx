@@ -19,8 +19,6 @@ RTX:6016.
 #include "DBTask.h"
 
 
-// DB线程池，负责管理线程，分配空闲线程，缓冲DB查询任务
-// 线程有空闲、忙碌
 class DBTaskPool
 {
 public:
@@ -76,4 +74,4 @@ protected:
 };
 
 
-#endif // end of __DB_TASK_POOL_H_
+#endif // __DB_TASK_POOL_H_

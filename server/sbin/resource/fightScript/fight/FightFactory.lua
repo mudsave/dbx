@@ -88,6 +88,8 @@ function FightFactory:createScriptFight(scriptID,players, monsters, mapID,monste
 	local fight
 	if scriptConfig.subType and scriptConfig.subType == ScriptType.LuckyMonster then
 		fight = FightScript_LuckyMonster(scriptID)
+	elseif scriptConfig.subType and scriptConfig.subType == ScriptType.Random then
+		fight = FightScript_Random(scriptID)
 	else
 		fight = FightScript(scriptID)
 	end

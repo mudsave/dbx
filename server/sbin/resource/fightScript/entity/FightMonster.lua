@@ -95,12 +95,14 @@ function FightMonster:loadAttrs(playerLvl)
     local dbID = self:getDBID()
 	local monster = MonsterDB[dbID] or NpcDB[dbID]
 	if monster then
+		local level = 0
 		self:setName( monster.name )
 		self:setModelID( monster.modelID )
 		local monAttr = AttributeList[monster.attrID]
 		if monAttr then
 			-- 设置基本属性
-			local level = monster.level
+			level = monster.level
+			--等级为-1特殊处理
 			if level == -1 then
 				level = playerLvl
 			end

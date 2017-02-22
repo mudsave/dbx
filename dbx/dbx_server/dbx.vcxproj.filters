@@ -12,20 +12,11 @@
     <Filter Include="MsgDefine">
       <UniqueIdentifier>{88ebeecd-ced0-4d2c-91e4-4f8681e98692}</UniqueIdentifier>
     </Filter>
-    <Filter Include="XML">
-      <UniqueIdentifier>{d183ab41-40f8-4835-b92e-a86c34d463b6}</UniqueIdentifier>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{4ebbf02b-ef7b-49c6-acf4-07e5f31c9ee6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\DBManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\NetworkInterface.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Singleton.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\message_define\MessageBase.h">
       <Filter>MsgDefine</Filter>
     </ClInclude>
@@ -47,87 +38,108 @@
     <ClInclude Include="..\lib\message_define\DBXCmdMessage.h">
       <Filter>MsgDefine</Filter>
     </ClInclude>
-    <ClInclude Include="src\DBXConfig.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tinystr.h">
-      <Filter>XML</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tinyxml.h">
-      <Filter>XML</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBIssue.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBTaskPool.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBInterface.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBInterfaceMysql.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBFactory.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBXContextDefine.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DBXCommon.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\message_define\dbx_msgdef.h">
       <Filter>MsgDefine</Filter>
     </ClInclude>
-    <ClInclude Include="src\DBXMessageTranslate.h">
+    <ClInclude Include="..\..\server\tools\tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\tools\tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBInterface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBInterfaceMysql.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBIssue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBTaskPool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXCommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXContextDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\DBXMessageTranslate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\NetworkInterface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\Singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server\codes\dbx\inc\SwapList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DBManager.cpp">
+    <ClCompile Include="..\..\server\tools\tinyxml\tinystr.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\tools\tinyxml\tinyxml.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlerror.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlparser.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\tools\tinyxml\xmltest.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\codes\dbx\src\DBFactory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Main.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBInterfaceMysql.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\NetworkInterface.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBIssue.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBXConfig.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\tinystr.cpp">
-      <Filter>XML</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tinyxml.cpp">
-      <Filter>XML</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tinyxmlerror.cpp">
-      <Filter>XML</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tinyxmlparser.cpp">
-      <Filter>XML</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DBTask.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBTask.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBTaskPool.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBTaskPool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBInterfaceMysql.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBXCommon.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBFactory.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBXConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBXCommon.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\DBXMessageTranslate.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\DBIssue.cpp">
+    <ClCompile Include="..\..\server\codes\dbx\src\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\codes\dbx\src\NetworkInterface.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

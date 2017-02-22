@@ -93,6 +93,14 @@ function DropManager:dealWithRewards(FightEndResults,scriptID,monsterDBIDs, figh
 	if not bWin then
 		return
 	end
+	-- 如果没有这个配置
+	if not ScriptFightDB[scriptID] then
+		return
+	end
+	-- 没有瑞兽奖励配置不是这个接口
+	if ScriptFightDB[scriptID].LuckyRewardID then
+		return
+	end
 	-- 脚本奖励
 	self:dealSriptReword(FightEndResults, scriptID , fightID)
 	-- 怪物掉落奖励
@@ -614,15 +622,7 @@ function DropManager:dealWithPunish(FightEndResults,scriptID, fightID)
 				else
 					g_buffMgr:onFightEndGodBless(player)
 				end
-				if buffHandler:getHPPool() and (not isWin) then
-					local teamHandler = player:getHandler(HandlerDef_Team)
-					local bTeam = teamHandler:isTeam()
-					if not bTeam then
-						g_sceneMgr:enterPublicScene(9,player,100,100)
-					end
-				end
-
-				
+								
 				--pk保护buff
 				
 				local pkInfo = player:getPkInfo()

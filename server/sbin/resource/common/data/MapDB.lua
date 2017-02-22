@@ -97,7 +97,7 @@ mapDB =
 			map 		= "xsc_new.mp",
 			level 		= nil,
 			mapType 	= MapType.City,
-			npcs 		= {29009,29010,29011,20027,29012,29013,30251,20019,27073,27074,29014,29015, },
+			npcs 		= {29009,29010,29011,20027,29012,29013,27073,30253,27074,29014,29015, },
 			safeX 		= 96,
 			safeY 		= 74,
 		},
@@ -106,7 +106,7 @@ mapDB =
 			map 		= "ly00.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {20059,30320,20049,29081,29008,29048,29006,50050,30250,39050,20909,20018,20913,60000,27150,20011,29079,29046,20928,29065,20012,20013,20014,20015,20016,29001,29002,29003,20106,29082,20107,20108,29004,20017,39000,29056,29005,29007, },
+			npcs 		= {20059,30320,20049,29081,29008,29048,29006,50050,39050,20909,30252,20913,60000,27150,20011,29079,29046,20928,29065,20012,20013,20014,20015,20016,29001,29002,29003,20106,29082,20107,20108,29004,20017,39000,29056,29005,29007, },
 			safeX 		= 189,
 			safeY 		= 208,
 			compareArea 	= {{x2 = 148, y2 = 171, y1 = 147, x1 = 131}},
@@ -134,7 +134,7 @@ mapDB =
 			map 		= "xc_new_00.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {29036,20701,29037,29038,29029,29035,29034,29030,30257,30256,29033,29032,29039,27075,29031, },
+			npcs 		= {29036,20701,29037,29038,29029,29035,29034,30255,29030,29033,29032,29039,27075,29031, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -143,7 +143,7 @@ mapDB =
 			map 		= "xsc00.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {29057,27077,29019,30253,29020,30252,29018,29023,27076,29021,29022,29058, },
+			npcs 		= {29057,27077,29019,29020,30254,29018,29023,27076,29021,29022,29058, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -179,7 +179,7 @@ mapDB =
 			map 		= "xc03.mp",
 			level 		= 5,
 			mapType 	= MapType.Wild,
-			npcs 		= {},
+			npcs 		= {1,2, },
 			safeX 		= 0,
 			safeY 		= 0,
 			revivePoint 	= {y = 32, mapID = 9, x = 93, r = 5},
@@ -403,7 +403,7 @@ mapDB =
 			map 		= "yw_hd03.mp",
 			level 		= 48,
 			mapType 	= MapType.Wild,
-			npcs 		= {},
+			npcs 		= {30251,30250, },
 			safeX 		= 0,
 			safeY 		= 0,
 			revivePoint 	= {y = 32, mapID = 9, x = 93, r = 5},
@@ -546,6 +546,42 @@ mapDB =
 
 	[412] = { 
 			map 		= "yw_jt08.mp",
+			level 		= 0,
+			mapType 	= MapType.Task,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[413] = { 
+			map 		= "yw_df04.mp",
+			level 		= 0,
+			mapType 	= MapType.Task,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[414] = { 
+			map 		= "yw_df03.mp",
+			level 		= 0,
+			mapType 	= MapType.Task,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[415] = { 
+			map 		= "jy05.mp",
+			level 		= 0,
+			mapType 	= MapType.Task,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+		},
+
+	[416] = { 
+			map 		= "yw_dk01.mp",
 			level 		= 0,
 			mapType 	= MapType.Task,
 			npcs 		= {},
@@ -737,7 +773,7 @@ mapDB =
 			map 		= "ly03.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {},
+			npcs 		= {60001, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -746,7 +782,7 @@ mapDB =
 			map 		= "ly03.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {},
+			npcs 		= {60002, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -755,7 +791,7 @@ mapDB =
 			map 		= "ly03.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {},
+			npcs 		= {60003, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -764,7 +800,7 @@ mapDB =
 			map 		= "ly03.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {},
+			npcs 		= {60004, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -812,6 +848,1797 @@ mapDB =
 			npcs 		= {39051, },
 			safeX 		= 0,
 			safeY 		= 0,
+		},
+
+	[1001] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1002] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1003] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1004] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1005] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1006] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1007] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1008] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1009] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1010] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1011] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1012] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1013] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1014] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1015] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1016] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1017] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1018] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1019] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1020] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1021] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1022] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1023] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1024] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1025] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1026] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1027] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1028] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1029] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1030] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1031] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1032] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1033] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1034] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1035] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1036] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1037] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1038] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1039] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1040] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1041] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1042] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1043] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1044] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1045] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1046] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1047] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1048] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1049] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1050] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1051] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1052] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1053] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1054] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1055] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1056] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1057] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1058] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1059] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1060] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1061] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1062] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1063] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1064] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1065] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1066] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1067] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1068] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1069] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1070] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1071] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1072] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1073] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1074] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1075] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1076] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1077] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1078] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1079] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1080] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1081] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1082] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1083] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1084] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1085] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1086] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1087] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1088] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1089] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1090] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1091] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1092] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1093] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1094] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1095] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1096] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1097] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1098] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1099] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1100] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1101] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1102] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1103] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1104] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1105] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1106] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1107] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1108] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1109] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1110] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1111] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1112] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1113] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1114] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1115] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1116] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1117] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1118] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1119] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1120] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1121] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1122] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1123] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1124] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1125] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1126] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1127] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1128] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1129] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1130] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1131] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1132] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1133] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1134] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1135] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1136] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1137] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1138] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1139] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1140] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1141] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1142] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1143] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1144] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1145] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1146] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1147] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1148] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1149] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1150] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1151] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1152] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1153] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1154] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1155] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1156] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1157] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1158] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1159] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1160] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1161] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1162] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1163] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1164] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1165] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1166] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1167] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1168] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1169] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1170] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1171] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1172] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1173] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1174] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1175] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1176] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1177] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1178] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1179] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1180] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1181] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1183] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1184] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1185] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1186] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1187] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1188] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1189] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1190] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1191] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1192] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1193] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1194] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1195] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1196] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1197] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1198] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1199] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
+		},
+
+	[1200] = { 
+			map 		= "hd_ttt_05.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 41,
+			safeY 		= 25,
 		},
 
 }

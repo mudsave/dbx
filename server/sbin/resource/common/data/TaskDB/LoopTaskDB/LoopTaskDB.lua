@@ -1169,4 +1169,33 @@ LoopTaskDB =
 		formulaRewards =
 		{},
 	},
+
+	-- 压测测试专用
+	[1] = 
+	{
+		name = "压测任务",
+		startDialogID = nil,
+		taskType2 = TaskType2.Master,
+		level = {1, 150},
+		school = nil,
+		startNpcID = 1,
+		loop =1000,
+		-- 这个来确定是每日，还是每周的。
+		period = TaskPeriod.day,
+		-- 这个表示代表
+		levelFlag = true,
+		targetLevelSection =
+		{
+			[1] = {1, 150},
+		},
+		targets = 
+		{
+			[1] =
+			{
+				[LoopTaskTargetType.brightMine] = 100,		            -- 明雷战斗
+			},
+		},
+		itemRewards =
+		{}
+	},
 }

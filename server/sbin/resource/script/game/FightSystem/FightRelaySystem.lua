@@ -165,6 +165,12 @@ function FightRelaySystem:FightEnd(event)
 		)
 		--TaskCallBack.script(player, scriptID, result, false)--false表示此时客户端还在战斗中
 	end
+	self:_sendAndResetAutoStatus(FightEndResults)
+	--这个有特殊次序要求(踩雷系统)的插在这
+	local event = Event.getEvent(
+			FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,monsterDBIDs,fightID,fightInfo
+		)
+	MineSystem.getInstance():onFightEnd(event)
 
 	--统一奖励和惩罚
 	g_dropMgr:dealWithPunish(FightEndResults, scriptID, fightID)
@@ -174,12 +180,9 @@ function FightRelaySystem:FightEnd(event)
 		TaskCallBack.onObtainPet(playerID,info)
 	end
 	
-	g_eventMgr:fireEvent(
-		Event.getEvent(
-			FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,monsterDBIDs,fightID,fightInfo
-		)
-	)
+	g_eventMgr:fireEvent(event)
 
+	
 	for _,pet in pairs(petlist) do
 		pet:flushPropBatch()
 	end
@@ -193,7 +196,7 @@ function FightRelaySystem:FightEnd(event)
 			FightEvents_SS_FightEnd_ResetState,FightEndResults,scriptID,monsterDBIDs,fightID
 		)
 	)
-	self:_sendAndResetAutoStatus(FightEndResults)
+	
 	g_fightMgr:clearFightType(fightID)
 	self:_judgeAndDoOffline(FightEndResults)
 
@@ -321,17 +324,20 @@ print("FightRelaySystem:QuitFight")
 	for playerID, info in pairs(newAddedPets) do
 		TaskCallBack.onObtainPet(playerID,info)
 	end
-
-	g_eventMgr:fireEvent(
-		Event.getEvent(
-			FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,nil,fightID
-		)
-	)
-	--delayedEvent[player:getDBID()] = {scriptID,false}
-	--TaskCallBack.script(player, scriptID, false, false)--false表示此时客户端还在战斗中
+	self:_sendAndResetAutoStatus(FightEndResults)
+	--这个有特殊次序要求(踩雷系统)的插在这
+	local event = Event.getEvent(FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,nil,fightID)
+	MineSystem.getInstance():onFightEnd(event)
 
 	--统一奖励和惩罚
 	g_dropMgr:dealWithPunish(FightEndResults, scriptID, fightID)
+
+	g_eventMgr:fireEvent(event)
+	--delayedEvent[player:getDBID()] = {scriptID,false}
+	--TaskCallBack.script(player, scriptID, false, false)--false表示此时客户端还在战斗中
+
+	
+	
 
 	for _,pet in pairs(petlist) do
 		pet:flushPropBatch()
@@ -346,7 +352,7 @@ print("FightRelaySystem:QuitFight")
 			FightEvents_SS_FightEnd_ResetState,FightEndResults,scriptID,nil,fightID
 		)
 	)
-	self:_sendAndResetAutoStatus(FightEndResults)
+	
 	g_fightMgr:clearFightType(fightID)
 	self:_judgeAndDoOffline(FightEndResults)
 end

@@ -16,7 +16,7 @@ require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PK"
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_Collect"
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PVE"
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntManager"
-require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"
+require "game.ActivitySystem.Activity.CatchPet.CatchPetSystem"
 
 ActivitySystem = class(EventSetDoer, Singleton)
 

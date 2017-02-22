@@ -206,7 +206,7 @@ function GoldHuntManager:onPk(event)
 	--进入战斗
 	local roles1 = {}
 	table.insert(roles1,player)
-	local petID = player:getFollowPetID()
+	local petID = player:getFightPetID()
 	if petID then
 		local pet = g_entityMgr:getPet(petID)
 		table.insert(roles1,pet)
@@ -214,7 +214,7 @@ function GoldHuntManager:onPk(event)
 
 	local roles2 = {}
 	table.insert(roles2,tgPlayer)
-	petID = tgPlayer:getFollowPetID()
+	petID = tgPlayer:getFightPetID()
 	if petID then
 		local pet = g_entityMgr:getPet(petID)
 		table.insert(roles2,pet)
@@ -243,7 +243,7 @@ function GoldHuntManager:doGoldHuntPVEFight(player, param, npcID)
 	--加宠物
 	local finalList = {}
 	table.insert(finalList,player)
-	local petID = player:getFollowPetID()
+	local petID = player:getFightPetID()
 	if petID then
 		local pet = g_entityMgr:getPet(petID)
 		table.insert(finalList,pet)
@@ -543,7 +543,7 @@ function GoldHuntManager:_giveReward(player, reward)
 	if reward.tao and reward.tao > 0 then
 		local tao = reward.tao + player:getAttrValue(player_tao)
 		player:setAttrValue(player_tao, tao)
-		dropMgr:sendRewardMessageTip(player, 5, roleReward.tao)
+		dropMgr:sendRewardMessageTip(player, 5, reward.tao)
 		isChanged = true
 	end
 	if isChanged then

@@ -7,21 +7,25 @@ require "base.base"
 require "misc.FightConstant"
 require "misc.PetConstant"
 require "game.SystemError"
+
 g_max_fightID = 0
+
 FightManager = class(nil, Singleton)
 
 local math_rand			= math.random
 local tb_clear			= table.clear
-local CirticalLoyalty	= PetLoyaltyFightParam	--宠物逃离战斗的临界忠诚度
-local MaxPetLoyalty		= MaxPetLoyalty			--宠物的最大忠诚值
-local fightIDs = {}--[ID]=type
---实体进入战斗失败的原因
-local BattleFail_Duplicate	= 1	--已经出战了
-local BattleFail_PetDying	= 2	--宠物垂死
-local BattleFail_PetFlee	= 3	--宠物逃离
+local CirticalLoyalty	= PetLoyaltyFightParam	-- 宠物逃离战斗的临界忠诚度
+local MaxPetLoyalty		= MaxPetLoyalty			-- 宠物的最大忠诚值
 
-local OffenceWarriors = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}--20个
-local DefenceWarriors = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}--20个
+local fightIDs = {}--[ID]=type
+
+-- 实体进入战斗失败的原因
+local BattleFail_Duplicate	= 1	-- 已经出战了
+local BattleFail_PetDying	= 2	-- 宠物垂死
+local BattleFail_PetFlee	= 3	-- 宠物逃离
+
+local OffenceWarriors = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}	-- 20个
+local DefenceWarriors = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}	-- 20个
 local Reservists = {
 	{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
 	{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
@@ -33,7 +37,9 @@ local Reservists = {
 local OIndex = 1
 local DIndex = 1
 local RIndex = 1
+
 local serverLoad = FightServerLoad:getInstance()
+
 --[[
 	清除
 ]]
@@ -58,8 +64,8 @@ end
 local function SetPlayerAttrInfo(player,info,isPvp)
 	local attrSet = player:getAttributeSet()
 	for attrType,attr in pairs(attrSet) do
-		--所有基本属性传过去
-		if not PlayerAttrDefine[attrType].expr then
+		-- 所有基础属性传过去
+		if not attr:isExpr() then
 			info[attrType] = attr:getValue()
 		end
 	end
@@ -90,6 +96,7 @@ local function SetPlayerAttrInfo(player,info,isPvp)
 	end
 	info.remouldLevel = remouldLevel
 
+	-- 存放组队信息
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler:isTeam() then
 		info.isTeam = true
@@ -119,16 +126,16 @@ end
 local function SetPetAttrInfo(pet,info)
 	local attrSet = pet:getAttributeSet()
 	for attrType,attr in pairs(attrSet) do
-		if not PetAttrDefine[attrType].expr then
+		if not attr:isExpr() then
 			info[attrType] = attr:getValue()
 		end
 	end
 		
 	info.type = eClsTypePet
 	info.dbID = pet:getConfigID()
-	info.name = pet:getName() 
+	info.name = pet:getName()
 	info.modelID = pet:getModelID()
-	info.level = pet:getLevel() 
+	info.level = pet:getLevel()
 	--info.xp = pet:getXp()
 	info.sex = 1 --pet:getSex() or 1
 	info.showParts = "{1,1}"--pet:getShowParts() or "{1,1}"
@@ -170,7 +177,6 @@ local function PushOffenseWarrior(entity)
 		end
 		
 	elseif entity:getEntityType() == eClsTypePet and entity:getPetStatus() == PetStatus.Fight then
-	
 		SetPetAttrInfo(entity,OffenceWarriors[OIndex])
 		OIndex = OIndex + 1
 	end
@@ -214,28 +220,31 @@ local function TeamCheck(entities)
 	local failedEntites = {}	--不能进入战斗的实体，格式是 ID->Reason
 	local count = 0				--能够进入战斗的实体数量
 	for key,role in pairs(entities) do
-	repeat
-		if instanceof(role,Player) and role:getActionState() == PlayerStates.Fight then
-			failedEntites[key] = BattleFail_Duplicate
-			break
-		end
-
-		local entityType = role:getEntityType()
-		if entityType == eClsTypePet then
-			if role:getPetLife()  < 1 then
-				failedEntites[key] = BattleFail_PetDying
-				break
+		repeat
+			local entityType = role:getEntityType()
+	
+			if entityType == eClsTypePlayer then
+				if role:getActionState() == PlayerStates.Fight then
+					failedEntites[key] = BattleFail_Duplicate
+					break
+				end
 			end
 
-			if WouldPetDessert(role) then	
-				failedEntites[key] = BattleFail_PetFlee
-				break
+			print("队伍检测时候存在逻辑漏洞:如果组队状态下某个玩家无法进入战斗,则其宠物也必须无法进入战斗__by chenmin")
+			if entityType == eClsTypePet then
+				if role:getPetLife()  < 1 then
+					failedEntites[key] = BattleFail_PetDying
+					break
+				end
+	
+				if WouldPetDessert(role) then	
+					failedEntites[key] = BattleFail_PetFlee
+					break
+				end
 			end
-		elseif entityType == eClsTypePlayer then
-		end
-		
-		count = count + 1
-	until true
+			
+			count = count + 1
+		until true
 	end
 	return failedEntites,count
 end
@@ -245,26 +254,26 @@ end
 ]]
 local function HandleBattleFail(entity,reason)
 	repeat
-	if reason == BattleFail_Duplicate then
-		print(("%s已经在战斗了"):format(entity:getName()))
-		break
-	end
-	if entity:getEntityType() ~= eClsTypePet then
-		--处理玩家不能出战
-		break
-	end
-
-	--处理宠物不能出战
-	local player = g_entityMgr:getPlayerByID(entity:getOwnerID())
-	local event = nil
-	if reason == BattleFail_PetDying then
-		event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.PetLifeLow)
-	elseif reason == BattleFail_PetFlee then
-		event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.PetLoyaltyLow)
-	end
-	if event then
-		g_eventMgr:fireRemoteEvent(event, player)
-	end
+		if reason == BattleFail_Duplicate then
+			print(("%s已经在战斗了"):format(entity:getName()))
+			break
+		end
+		if entity:getEntityType() ~= eClsTypePet then
+			-- 处理玩家不能出战
+			break
+		end
+	
+		-- 处理宠物不能出战
+		local player = g_entityMgr:getPlayerByID(entity:getOwnerID())
+		local event = nil
+		if reason == BattleFail_PetDying then
+			event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.PetLifeLow)
+		elseif reason == BattleFail_PetFlee then
+			event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet, PetError.PetLoyaltyLow)
+		end
+		if event then
+			g_eventMgr:fireRemoteEvent(event, player)
+		end
 	until true
 end
 
@@ -296,7 +305,7 @@ function FightManager:startPveFight(roles, monsters, mapID,type)
 			HandleBattleFail(role,failure)
 		else
 			PushOffenseWarrior(role)
-			if instanceof(role, Player) then
+			if role:getEntityType() == eClsTypePlayer then
 				role:setOldActionState(role:getActionState())
 				--进入战斗如果是组队状态
 				if role:getActionState() == PlayerStates.Team then
@@ -307,20 +316,26 @@ function FightManager:startPveFight(roles, monsters, mapID,type)
 				--local moveHandler = role:getHandler(HandlerDef_Move)
 				--moveHandler:doStopMove()
 				role:setFightServerID(worldID)
+
+				-- 如果没有地图iD
+				if not curMapID then
+					curMapID = role:getPos()[1]
+				end
 			end
-		end
-		if not curMapID and role:getEntityType() == eClsTypePlayer then
-			curMapID = role:getPos()[1]
 		end
 	end
 
 	--发送事件给战斗服务器
 	local fightType = FightType.PVE
 	g_max_fightID = g_max_fightID + 1
-	local event = Event.getEvent(FightEvents_SF_StartFight, fightType, OffenceWarriors, monsters,Reservists, mapID or curMapID, g_max_fightID)
 	
-	
-	g_eventMgr:fireWorldsEvent(event, worldID)
+	g_eventMgr:fireWorldsEvent(
+		Event.getEvent(
+			FightEvents_SF_StartFight, fightType, 
+			OffenceWarriors, monsters,Reservists,
+			mapID or curMapID, g_max_fightID
+		), worldID
+	)
 	fightIDs[g_max_fightID] = type
 	
 	return g_max_fightID
@@ -354,7 +369,7 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 	local curMapID
 	local failedEntites,count = TeamCheck(roles)
 	if count < 1 then
-		print("战斗实体不够")
+		print "脚本战斗失败:实体不够"
 		return 
 	end
 
@@ -363,12 +378,12 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 	for key,role in ipairs(roles) do
 		local failure = failedEntites[key]
 		if failure then
-			--处理进入战斗失败的实体
+			-- 处理进入战斗失败的实体,发送提示
 			HandleBattleFail(role,failure)
 		else
-			--产生一个攻方实体
+			-- 产生一个攻方实体
 			PushOffenseWarrior(role)
-			if instanceof(role, Player) then
+			if role:getEntityType() == eClsTypePlayer then
 				role:setOldActionState(role:getActionState())
 				if role:getActionState() == PlayerStates.Team then
 					role:setActionState(PlayerStates.FightAndTeam)
@@ -378,24 +393,30 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 				--local moveHandler = role:getHandler(HandlerDef_Move)
 				--moveHandler:doStopMove()
 				role:setFightServerID(worldID)
+
+				-- 进入战斗要在正确的地图位置中
+				if not curMapID then
+					curMapID = role:getPos()[1]
+				end
 			end
-		end
-		if not curMapID and role:getEntityType() == eClsTypePlayer then
-			curMapID = role:getPos()[1]
 		end
 	end
 	print("toDo:增加脚本战斗检测")
-	--发送事件给战斗服务器
 	g_max_fightID = g_max_fightID + 1
-	local event = Event.getEvent(FightEvents_SF_StartScriptFight, FightType.Script, scriptFightID,OffenceWarriors,Reservists, mapID or curMapID, g_max_fightID)
-	
-	g_eventMgr:fireWorldsEvent(event, worldID)
+
+	-- 发送事件给战斗服务器
+	g_eventMgr:fireWorldsEvent(
+		Event.getEvent(
+			FightEvents_SF_StartScriptFight, FightType.Script,
+			scriptFightID,OffenceWarriors,Reservists,
+			mapID or curMapID, g_max_fightID
+		), worldID
+	)
 	fightIDs[g_max_fightID] = type
 	return g_max_fightID
 end
 
-
---roles1:{player1,player2},roles2:{player1,player2}
+-- roles1:{player1,player2},roles2:{player1,player2}
 function FightManager:startPvpFight(roles1, roles2, mapID,type)
 	clearAttrPool()
 	
@@ -420,7 +441,7 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 			HandleBattleFail(role,failure)
 		else	
 			PushOffenseWarrior(role)
-			if instanceof(role, Player) then
+			if role:getEntityType() == eClsTypePlayer then
 				role:setOldActionState(role:getActionState())
 				if role:getActionState() == PlayerStates.Team then
 					role:setActionState(PlayerStates.FightAndTeam)
@@ -430,11 +451,11 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 				--local moveHandler = role:getHandler(HandlerDef_Move)
 				--moveHandler:doStopMove()
 				role:setFightServerID(worldID)
-			end
-		end
 
-		if not curMapID and role:getEntityType() == eClsTypePlayer then
-			curMapID = role:getPos()[1]
+				if not curMapID then
+					curMapID = role:getPos()[1]
+				end
+			end
 		end
 	end
 
@@ -444,7 +465,7 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 			HandleBattleFail(role,failure)
 		else	
 			PushDefenseWarrior(role)
-			if instanceof(role, Player) then
+			if role:getEntityType() ==  eClsTypePlayer then
 				role:setOldActionState(role:getActionState())
 				if role:getActionState() == PlayerStates.Team then
 					role:setActionState(PlayerStates.FightAndTeam)
@@ -458,16 +479,20 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 		end
 	end
 
-	--发送事件给战斗服务器
 	local fightType = FightType.PVP
 	g_max_fightID = g_max_fightID + 1
-	local event = Event.getEvent(FightEvents_SF_StartFight, fightType, OffenceWarriors, DefenceWarriors,Reservists, mapID or curMapID, g_max_fightID)
 	
-	g_eventMgr:fireWorldsEvent(event, worldID)
+	-- 发送事件给战斗服务器
+	g_eventMgr:fireWorldsEvent(
+		Event.getEvent(
+			FightEvents_SF_StartFight,fightType,
+			OffenceWarriors, DefenceWarriors,Reservists,
+			mapID or curMapID, g_max_fightID
+		), worldID
+	)
 	fightIDs[g_max_fightID] = type
 	return g_max_fightID
 end
-
 
 function FightManager:getFightType(fightID)
 	return fightIDs[fightID]
@@ -479,7 +504,6 @@ end
 
 FightManager.setPlayerAttrInfo = SetPlayerAttrInfo
 FightManager.setPetAttrInfo = SetPetAttrInfo
-
 
 function FightManager.getInstance()
 	return FightManager()

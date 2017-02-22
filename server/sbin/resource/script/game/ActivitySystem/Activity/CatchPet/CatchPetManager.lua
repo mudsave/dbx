@@ -9,7 +9,10 @@ function CatchPetManager:__init()
 end
 
 function CatchPetManager:__release()
-
+	for mapID, catchPet in pairs(self.catchPetList) do
+		
+	end
+	self.fightPlayers = nil
 end
 
 -- 活动时间到，创建4个场景巡逻NPC
@@ -18,12 +21,20 @@ function CatchPetManager:openActivity()
 	for _, monsterDB in pairs(CatchPetDB) do
 		local mapID = monsterDB.mapID
 		local catchPet = CatchPet(mapID, monsterDB)
-		-- 先创建NPC
-		catchPet:createMonster()
-		-- 每个当中创建一个定时器
-		catchPet:createTimer()
 		if not self.catchPetList[mapID] then
 			self.catchPetList[mapID] = catchPet
+		end
+	end
+end
+
+-- 创建怪物和定时器
+function CatchPetManager:startOpen()
+	for mapID, catchPet in pairs(self.catchPetList) do
+		if catchPet then
+			-- 先创建NPC
+			catchPet:createMonster()
+			-- 每个当中创建一个定时器
+			catchPet:createTimer()
 		end
 	end
 end
@@ -55,10 +66,8 @@ end
 function CatchPetManager:enterCatchPet(player, param)
 	-- 存储当前进入场景的玩家
 	local activityID = catchPetActivityID
-	print("当前捕宠活动ID>>>>", activityID)
 	local activity = g_activityMgr:getActivity(activityID)
 	if not activity then
-		print("当前活动没有开启，不能进入")
 		self:sendCatchPetMessageTip(player, 1)
 		return
 	end
@@ -94,6 +103,7 @@ function CatchPetManager:enterCatchPet(player, param)
 	local count = table.size(curMembers) + table.size(catchPetPlayers)
 	if count > 100 then
 		self:sendCatchPetMessageTip(player, 3)
+		return
 	end
 	catchPet:enterCatchPet(curMembers)
 	for _, playerID in pairs(curMembers) do

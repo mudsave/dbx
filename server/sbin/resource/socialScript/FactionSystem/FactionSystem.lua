@@ -223,9 +223,18 @@ function FactionSystem:onAdmitPlayerJoin( event )
 
                 local event_UpdateStandByPlayerList = Event.getEvent(FactionEvent_BC_UpdateStandByPlayerList,UpdateCode.Delete,playerDBID)
                 g_eventMgr:fireRemoteEvent(event_UpdateStandByPlayerList,role)
+
+				-- 添加加入帮派成功标记（用于指引加入帮派的行为）
+				g_eventMgr:fireWorldsEvent(
+					Event.getEvent(
+						TaskEvent_BS_GuideJoinFaction,true,playerDBID	-- palyerDBID为申请入帮的玩家
+					),0
+				)
+				
+
+
             end
         end
-
     else
         print("玩家未上过线")
     end

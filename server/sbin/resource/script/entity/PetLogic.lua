@@ -157,7 +157,7 @@ function Pet:onAdded(player)
 	self:setPetStatus(self._status)
 	self._status = PetStatus.Rest
 
-	attachEntity(self:getPeer(),player:getID())
+	self:attachTo(player)
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(
 			PetEvent_SC_PetJoined,self:getID(),self:getBirth()
@@ -176,7 +176,7 @@ end
 -- 被移除后处理
 function Pet:onRemoved(player)
 	self:setVisible(false)
-	detachEntity(self:getPeer(),player:getID())
+	self:detachFrom(player)
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(PetEvent_SC_PetLeaved,self:getID()),player
 	)

@@ -241,7 +241,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-                    {type="openDialog", param={dialogID = 4780},},
+                                        {type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
@@ -485,7 +485,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-					
+					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
@@ -728,7 +728,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-					
+					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
@@ -971,7 +971,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-					
+	                                {type="openDialog", param={dialogID = 4780},},				
 				},
 			},
 		},
@@ -1214,7 +1214,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-					
+					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
@@ -1455,7 +1455,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-					
+					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
@@ -1890,6 +1890,27 @@ LoopTaskTargetsDB =
 					--{type = "finishLoopTask", param = {}}
 				},
 			}
+		},
+	},
+	[1] =
+	{
+		--挑战明雷
+		[LoopTaskTargetType.brightMine] = 
+		{
+			--挑战明雷NPCID是固定随机的		
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					-- 随机NPC  一种指定NPC，不指定坐标。一种不指定NPC，不指定坐标
+					{type = "brightMine", param = {}},
+				},
+				-- 任务完成时候
+				[TaskStatus.Done] =
+				{
+					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
+				},
+			},
 		},
 	},
 }

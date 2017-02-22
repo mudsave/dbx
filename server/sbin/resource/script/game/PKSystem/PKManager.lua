@@ -97,7 +97,7 @@ function PKManager:setPK(player, tgPlayer, flag)
 	local roleList2 = {}
 	for _, role in pairs(playerList1 or {}) do
 		table.insert(roleList1, role)
-		local petID = role:getFollowPetID()
+		local petID = role:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			if pet then
@@ -108,7 +108,7 @@ function PKManager:setPK(player, tgPlayer, flag)
 
 	for _, role in pairs(playerList2 or {}) do
 		table.insert(roleList2, role)
-		local petID = role:getFollowPetID()
+		local petID = role:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			if pet then

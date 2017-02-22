@@ -30,6 +30,7 @@ require "fight.FightPVE"
 require "fight.FightPVP"
 require "fight.FightScript"
 require "fight.FightScript_LuckyMonster"
+require "fight.FightScript_Random"
 require "fight.FightFSMConfig"
 require "fight.FightFactory"
 require "fight.FightManager"
@@ -782,6 +783,7 @@ function FightSystem:onChoose(event)
 	local isPlayer = params[1]
 	local actionType = params[2]
 	local actionContext = params[3]
+	print(isPlayer,actionType,toString(actionContext))
 	params[1] = DBID
 	params[2] = isPlayer
 	params[3] = actionType
