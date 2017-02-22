@@ -76,7 +76,7 @@ public:
 		int nSize=0;
 		for (int i=0;i<nCount;i++)
 		{
-			nSize=nSize+ObjDoMsg::getTypeSize(pTypeList[i]);
+			nSize=nSize+DbxMessage::getTypeSize(pTypeList[i]);
 		}
 		return nSize;
 	}
