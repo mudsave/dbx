@@ -162,6 +162,22 @@ function TaskCallBack.onCollectItem(roleID, itemInfo)
 	end
 end
 
+-- 指引任务
+function TaskCallBack.onGuideTask(player,taskID)
+	local eventHandler = player:getHandler(HandlerDef_Event)
+	if eventHandler then
+		eventHandler:notifyWatchers("onGuideTask",taskID)
+	end
+end
+
+-- 加入帮派
+function TaskCallBack.onjoinFaction(player,flag)
+	local eventHandler = player:getHandler(HandlerDef_Event)
+	if eventHandler then
+		eventHandler:notifyWatchers("onjoinFaction",flag)
+	end
+end
+
 --上坐骑
 function TaskCallBack.onUpRide(player, rideID)
 	local eventHandler = player:getHandler(HandlerDef_Event)

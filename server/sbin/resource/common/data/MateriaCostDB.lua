@@ -172,22 +172,6 @@ MateriaCostDB ={
                      },
 					{
                                         --产物id
-						recipeID = 1311019,
-			                --配方名称
-						recipeName = "初级宝箱钥匙" ,  
-						--对应技能名称
-						skillName  = "制宝" ,
-						--需求等级						
-						demandLvl  = 20, 
-    					--体力消耗	
-						vigorCost  = 3,
-						--配方材料
-						itemsCost ={  itemName = "黄铜片", itemID = 1311018 ,num = 1,}, 
-						--生产成功率			 
-						successRate = 100,								
-                     },
-					{
-                                        --产物id
 						recipeID = 1311028,
 			            --配方名称
 						recipeName = "冰凌石(蓝)" ,  
@@ -276,22 +260,6 @@ MateriaCostDB ={
 						vigorCost  = 3,
 					--配方材料
 						itemsCost ={  itemName = "毒龙石(白)", itemID = 1311027 ,num = 6,}, 
-						--生产成功率			 
-		                               successRate = 100,								
-                     },
-					{
-                                        --产物id
-						recipeID = 1311020,
-			                --配方名称
-						recipeName = "中级宝箱钥匙" ,  
-					--对应技能名称
-						skillName  = "制宝" ,
-                                        --需求等级						
-						demandLvl  = 30, 
-    					--体力消耗	
-						vigorCost  = 3,
-					--配方材料
-						itemsCost ={  itemName = "黄铜片", itemID = 1311018 ,num = 2,}, 
 						--生产成功率			 
 		                               successRate = 100,								
                      },

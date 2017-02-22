@@ -20,9 +20,7 @@ function FightEntityFactory:createPlayer(attr)
 	player:setLifeState(RoleLifeState.Normal)
 	player:createAttributeSet()
 
-
 	player:loadAttrs(attr)
-print("--------------------------getHp=",player:getHp(),player:getLevel())
 	player:setGateID(attr.gateID)
 	attr.gateID = nil
 	player:setClientLink(attr.clientLink)
@@ -115,11 +113,14 @@ function FightEntityFactory:createMonster(dbID, monType, playerLvl)
 	monster:createAttributeSet()
 	monster:loadAttrs(playerLvl)
 	monster:setLifeState(RoleLifeState.Normal)
-	
 	-- 设置怪物等级与玩家等级相同
 	if monster:getAttrValue(monster_lvl) < 1 and playerLvl then
 		print("设置怪物等级与玩家等级相同")
 		monster:setAttrValue(monster_lvl, playerLvl)
+	elseif monster:getAttrValue(monster_lvl) == 0 or monster:getAttrValue(monster_lvl) ==nil then 
+		--怪物配置表的怪物没有等级是暂时设为1级
+		print("怪物配置表的怪物没有等级是暂时设为1级")
+		monster:setAttrValue(monster_lvl, 1)
 	end
 	
 	--加上AI处理

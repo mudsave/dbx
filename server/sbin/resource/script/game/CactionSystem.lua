@@ -39,6 +39,11 @@ function CactionSystem:doOpenUITip(player, param)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+function CactionSystem:doPlayAnimation(player, param)
+	local event = Event.getEvent(CactionEvent_SC_PlayAnimation, param.playID, param.sceneID)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
 function CactionSystem.getInstance()
 	return CactionSystem()
 end

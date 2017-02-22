@@ -158,7 +158,7 @@ function TaskHandler:removeLoopTaskList(taskID)
 	end
 end
 
--- 完成任务之后跟新任务列表，先添加 在设置之后,再发送到客户端
+-- 完成任务之后跟新任务列表，先添加在设置之后,再发送到客户端
 function TaskHandler:updateTaskList(taskID, flag)
 	if NormalTaskDB[taskID] then
 		g_taskSystem:updateNormalTaskList(self._entity, self.nextTaskID)
@@ -282,7 +282,7 @@ function TaskHandler:setCountRing(taskID, countRing)
 	self.loopTaskInfo[taskID].countRing = countRing
 end
 
--- 得到完成次数
+-- 更新完成次数
 function TaskHandler:updateFinishTimes(taskID)
 	self:checkTaskData(taskID)
 	self.loopTaskInfo[taskID].finishTimes = self.loopTaskInfo[taskID].finishTimes + 1
@@ -494,6 +494,9 @@ function TaskHandler:finishTaskByID(taskID)
 		-- 完成任务时，重新设置这个任务列表
 		self:updateTaskList(taskID, true)
 		self.count = self.count - 1
+
+		-- 判断任务目标
+		TaskCallBack.onGuideTask(self._entity,taskID)
 		return true
 	else
 		print("任务不存在",taskID)
@@ -590,7 +593,6 @@ end
 -- 设置循环任务的环数
 function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 	for _, loopTask in pairs(loopTaskRecord or {}) do
-		print("loopTask.finishTimes",toString(loopTask))
 		local offlineTime = loopTask.offlineTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数
 		local loopTaskConfig = LoopTaskDB[loopTask.taskID]
@@ -618,13 +620,19 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 				self.loopTaskInfo[loopTask.taskID].finishTimes = loopTask.finishTimes
 				-- print("loopTask.finishTimes",loopTask.finishTimes)
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
+				-- 把循环任务的消息给客户端
+				self:loadLoopTaskInfoToClient()
 			else
-	
+
 			end
 		else
 			print("数据初始化出错，任务id是",loopTask.taskID)
 		end
 	end
+end
+
+function TaskHandler:loadLoopTaskInfoToClient()
+	g_taskSystem:loadLoopTaskToClient(self._entity, self.loopTaskInfo)
 end
 
 -- 保存循环任务环数

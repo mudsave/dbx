@@ -316,7 +316,7 @@ function GMSystem:s_fight(roleID,scriptID ,mapID)
 		--加宠物
 		for k,player in ipairs(playerList) do
 			table.insert(finalList,player)
-			local petID = player:getFollowPetID()
+			local petID = player:getFightPetID()
 			if petID then
 				local pet = g_entityMgr:getPet(petID)
 				table.insert(finalList,pet)
@@ -348,7 +348,7 @@ function GMSystem:s_fightType(roleID,scriptID,fightType,mapID)
 		--加宠物
 		for k,player in ipairs(playerList) do
 			table.insert(finalList,player)
-			local petID = player:getFollowPetID()
+			local petID = player:getFightPetID()
 			if petID then
 				local pet = g_entityMgr:getPet(petID)
 				table.insert(finalList,pet)
@@ -388,7 +388,7 @@ function GMSystem:m_fight(roleID,...)
 		--加宠物
 		for k,player in ipairs(playerList) do
 			table.insert(finalList,player)
-			local petID = player:getFollowPetID()
+			local petID = player:getFightPetID()
 			if petID then
 				local pet = g_entityMgr:getPet(petID)
 				table.insert(finalList,pet)
@@ -513,6 +513,7 @@ end
 function GMSystem:test_pet(roleID, configID)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	local roleDBID = player:getDBID()
+
 	if player then
 		if player:canAddPet() then
 			local pet = g_entityFct:createPet(tonumber(configID))
@@ -775,7 +776,7 @@ end
 function GMSystem:show_fight(roleID)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	if not player then return end
-	local pet = g_entityMgr:getPet(player:getFollowPetID())
+	local pet = g_entityMgr:getPet(player:getFightPetID())
 	if pet then
 		pet:setVisible(true)
 	else
@@ -963,6 +964,9 @@ local function MakeEntityGM(Attrs,onGetEntity,onAttrToWar,onWarAttr,onAttrSet)
 				end
 			elseif attrName > 0 then
 				add_func = function(entity,value)
+					if not entity:getAttrValue(attrName) then
+						print(attrName,"没有这条属性")
+					end
 					local newValue = ensure_func(entity,entity:getAttrValue(attrName) + value)
 					set_func(entity,newValue)
 					if onAttrToWar then

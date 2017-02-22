@@ -19,8 +19,8 @@ class DBIssueBase
 public:
     DBIssueBase(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void Progress();
-    virtual void OnProgress() = 0;
+    virtual bool Progress();
+    virtual bool OnProgress() = 0;
     virtual void MainProgress();
 
     void SetDBInterface(DBInterface *p_dbInterface);
@@ -46,7 +46,7 @@ class DBIssueCallSP :public DBIssueBase
 public:
     DBIssueCallSP(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void OnProgress();
+    virtual bool OnProgress();
     virtual void MainProgress();
 
     const TListOutput & GetOutParams() { return m_outParams; }
@@ -63,10 +63,10 @@ class DBIssueCallSQL :public DBIssueBase
 public:
     DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID);
 
-    virtual void OnProgress();
+    virtual bool OnProgress();
     virtual void MainProgress();
 
     AppMsg * m_pAppMsg;
 };
 
-#endif // end of __DB_ISSUE_H_
+#endif // __DB_ISSUE_H_

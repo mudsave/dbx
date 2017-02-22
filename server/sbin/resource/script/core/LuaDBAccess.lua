@@ -816,3 +816,17 @@ function LuaDBAccess.UpdateWorldServerData( playerDBID,valueName,cvalue,ivalue )
 	LuaDBAccess.exeSP(params,false)
 
 end
+
+--保存兑换物品数据
+function LuaDBAccess.saveExchangeItemInfo( playerDBID,commitTimes,commitTime,commitID )
+
+	clearParams()
+	params[1]["spName"] = "sp_saveExchangeItemInfo"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "_roleID,_commitTimes,_commitTime,_commitID"
+	params[1]["_roleID"] = playerDBID
+	params[1]["_commitTimes"] = commitTimes
+	params[1]["_commitTime"] = commitTime
+	params[1]["_commitID"] = commitID
+	LuaDBAccess.exeSP(params,false)
+end

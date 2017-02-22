@@ -58,4 +58,4 @@ protected:
 #define g_dbxConfig DBXConfig::Instance()
 
 
-#endif  // end of __DBX_CONFIG_H_
+#endif  // __DBX_CONFIG_H_

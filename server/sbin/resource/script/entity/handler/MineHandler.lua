@@ -46,7 +46,9 @@ function MineHandler:onMove()
 	if self._isMining then
 		self._curStep = self._curStep + 1
 		if self._curStep >= self._mineStep then
-			self:startFight()
+			local fightID = self:startFight()
+			local mineSystem = MineSystem.getInstance()
+			mineSystem:addFightID(fightID)
 			self._isMining = false
 			self._curStep = 0
 		end
@@ -112,7 +114,7 @@ function MineHandler:startFight()
 		local finalList = {}
 		for k,player in ipairs(playerList) do
 			table.insert(finalList,player)
-			local petID = player:getFollowPetID()
+			local petID = player:getFightPetID()
 			if petID then
 				local pet = g_entityMgr:getPet(petID)
 				table.insert(finalList,pet)
@@ -144,7 +146,7 @@ function MineHandler:startObviousFight(mineInfo)
 		local finalList = {}
 		for k,player in ipairs(playerList) do
 			table.insert(finalList,player)
-			local petID = player:getFollowPetID()
+			local petID = player:getFightPetID()
 			if petID then
 				local pet = g_entityMgr:getPet(petID)
 				table.insert(finalList,pet)

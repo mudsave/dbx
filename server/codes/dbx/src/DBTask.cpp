@@ -35,7 +35,7 @@ HRESULT DBTask::Do(HANDLE hContext)
         TRACE1_ERROR("DBTask::Do:cant create db InterfaceID(%i).\n", m_dbInterfaceID);
         return S_FALSE;
     }
-
+    
     while (!IsDestroyed())
     {
         if (GetCurrIssue() == NULL)
@@ -115,7 +115,11 @@ void DBTask::Start()
 void DBTask::ProgressIssue(DBIssueBase *p_issue)
 {
     p_issue->SetDBInterface(m_dbInterface);
-    p_issue->Progress();
+    if (!p_issue->Progress())
+    {
+        TRACE1_ERROR("DBTask::ProgressIssue:progress issue error(%s).\n", p_issue->GetErrorStr().c_str());
+        // todo : 需要处理某些mysql错误。
+    }
 }
 
 void DBTask::ProgressEnd()
@@ -133,7 +137,7 @@ void DBTask::DoEnd()
         delete m_currentIssue;
         m_currentIssue = NULL;
     }
-
+        
     if (m_dbInterface)
     {
         m_dbInterface->Disconnect();

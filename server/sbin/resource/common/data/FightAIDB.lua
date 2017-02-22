@@ -210,3 +210,132 @@ FightAIDB[3] = {
 		},
 	},
 }
+
+FightAIDB[11] = {
+	name  = '固定回合动作测试',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+		type=AIConditionType.RoundCount,params={round = 2,},				--指定回合触发：round = 回合数
+		--type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},	--回合间隔生效：period = 回合间隔，starRound = 起始循环回合数			
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能
+			--actionType = FightUIType.Escape,					--逃跑
+			--actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[21] = {
+	name  = '条件触发行为测试',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+		type=AIConditionType.AttrPercent,params={isEnemy = false ,count = 1, type = AIAttrType.Hp,relation ="<=", value = 0.5 ,},		--判断敌方hp小于50%
+		--type=AIConditionType.AttrPercent,params={ ID = 20000,type = AIAttrType.Hp,relation ="<=",value = 0.2},				--判断具体ID的角色hp小于20%
+
+		--属性比例判断：isEnemy = 敌友判断（true = 敌方，false = 友方）,count = 目标人数（仅能在配置isEnemy时使用），ID = 单位ID （ID和isEnemy只能选择一个填入）
+		--type = 属性类型（"AIAttrType.Hp"=生命值，"AIAttrType.Mp"=法力值，"AIAttrType.Kill"=杀气值），relation = 关系类型（比较类型有："<"、">"、"="、"<="、">="），value = 比例关系
+
+
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能
+			--actionType = FightUIType.Escape,					--逃跑
+			--actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[22] = {
+	name  = '条件触发行为测试',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.IDExist,params={ID = 65001,{isNot = true}},
+				--指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
+				--type=AIConditionType.LiveNum,params={isEnemy = true,count = 1},
+				--存活单位数：isEnemy = 敌友判断（true = 敌方，false = 友方），count = 存活数量
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能
+			--actionType = FightUIType.Escape,					--逃跑
+			--actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[31] = {
+	name  = '多个条件执行，判断顺序从1开始',
+	type = AIType.Config,
+
+	[1] = {	
+		condition = {
+				type=AIConditionType.AttrPercent,params={ ID = 65003,type = AIAttrType.Hp,relation ="<=",value = 0.2},			--1.判断具体ID的角色hp小于20%后使用逃跑
+		},		
+		action = { 
+			--actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能
+			--actionType = FightUIType.CommonAttack,						--普通攻击
+			actionType = FightUIType.Escape,					--逃跑
+			--actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.Me,							--目标自己
+		},
+	},
+	[2] = {	
+		condition = {
+				type=AIConditionType.AttrPercent,params={ ID = 65003,type = AIAttrType.Hp,relation ="<=",value = 0.5},			--2.判断具体ID的角色hp小于50%后使用防御
+		},		
+		action = { 
+			--actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能
+			--actionType = FightUIType.CommonAttack,						--普通攻击
+			--actionType = FightUIType.Escape,					--逃跑
+			actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.Me,							--目标自己
+		},
+	},
+	[3] = {	
+		condition = {
+				type=AIConditionType.AttrPercent,params={ ID = 65003,type = AIAttrType.Hp,relation ="<=",value = 0.8},			--3.判断具体ID的角色hp小于80%后使用普攻
+		},		
+		action = { 
+			--actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能
+			actionType = FightUIType.CommonAttack,					--普通攻击
+			--actionType = FightUIType.Escape,					--逃跑
+			--actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,							--目标敌人
+		},
+	},
+	[4] = {
+		condition = {
+				--type=AIConditionType.AttrPercent,params={ ID = 65003,type = AIAttrType.Hp,relation ="<=",value = 1},			--3.判断具体ID的角色hp小于80%后使用普攻
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1004}},		--使用技能						--4.无条件使用技能
+			--actionType = FightUIType.CommonAttack,				--普通攻击
+			--actionType = FightUIType.Escape,					--逃跑
+			--actionType = FightUIType.Defense,					--防御
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,							--目标敌人
+		},
+	},
+}

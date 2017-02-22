@@ -1,9 +1,9 @@
 --[[CatchPetSystem.lua
 	捕宠活动业务系统
 --]]
-require "game.ActivitySystem.Activity.CatchPet.CatchPetManager"
-require "game.ActivitySystem.Activity.CatchPet.CatchPet"
 
+require "game.ActivitySystem.Activity.CatchPet.CatchPet"
+require "game.ActivitySystem.Activity.CatchPet.CatchPetManager"
 CatchPetSystem = class(EventSetDoer, Singleton)
 
 function CatchPetSystem:__init()
@@ -61,7 +61,7 @@ function CatchPetSystem:startPatrolFight(player, scriptID)
 	local finalList = {}
 	for k,player in ipairs(playerList) do
 		table.insert(finalList,player)
-		local petID = player:getFollowPetID()
+		local petID = player:getFightPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			table.insert(finalList,pet)

@@ -52,6 +52,7 @@ local Event_Group_Treasure				= 0x3500000
 local Event_Group_Practise				= 0x3600000
 local Event_Group_SocialServer_BroadCast = 0x3700000
 local Event_Group_DekaronSchool			= 0x3800000
+local Event_Group_ExchangeItem			= 0x3900000
 
 --定义Event_Group_Local事件
 LocalEvents_SS_Test						= Event_Group_Local + 1
@@ -64,7 +65,11 @@ FrameEvents_SS_playerOnLine				= Event_Group_Frame + 4
 FrameEvents_CS_playerHeartBeat			= Event_Group_Frame + 5
 FrameEvents_SS_leaveScene				= Event_Group_Frame + 6
 
+FrameEvents_SC_Ping						= Event_Group_Frame + 7
+FrameEvents_CS_Ping						= Event_Group_Frame + 8
+
 --定义Event_Group_Confg事件
+
 ConfigEvents_CS_SaveConfig				= Event_Group_Confg + 1
 ConfigEvents_CS_SaveShortcutKeys		= Event_Group_Confg + 2
 ConfigEvents_C_MenuItemClicked			= Event_Group_Confg + 3
@@ -344,8 +349,6 @@ TaskEvent_SC_LoadLoopTaskList			= Event_Group_Task + 45
 TaskEvent_SS_AddActivityPractise		= Event_Group_Task + 46
 
 --循环任务（送信任务上交物品）
-TaskEvent_SC_UpdateItemDataToClient		= Event_Group_Task + 45
-TaskEvent_CS_CommitItem					= Event_Group_Task + 46
 TaskEvent_SC_CommitItemResult			= Event_Group_Task + 47
 TaskEvent_SC_CommitEquipResult			= Event_Group_Task + 48
 TaskEvent_SC_ForceStopAutoMeet			= Event_Group_Task + 49
@@ -357,7 +360,11 @@ TaskEvent_SC_AddTaskPet					= Event_Group_Task + 54
 TaskEvent_SC_RemoveTaskPet				= Event_Group_Task + 55
 TaskEvent_CS_RemoveTaskPet				= Event_Group_Task + 56
 TaskEvent_SC_SetTargetsState			= Event_Group_Task + 57
-
+TaskEvent_SC_UpdateGuideTask			= Event_Group_Task + 58
+TaskEvent_SC_UpdateItemDataToClient		= Event_Group_Task + 59
+TaskEvent_CS_CommitItem					= Event_Group_Task + 60
+TaskEvent_SC_LoadLoopTaskInfoToClient	= Event_Group_Task + 61
+TaskEvent_BS_GuideJoinFaction			= Event_Group_Task + 62
 
 --定义交易系统事件
 --p2N交易消息
@@ -415,7 +422,7 @@ CactionEvent_SC_FlyEffect				= Event_Group_Caction + 3
 CactionEvent_SC_OpenUITip				= Event_Group_Caction + 4
 CactionEvent_SC_AutoMeet				= Event_Group_Caction + 5
 CactionEvent_SC_StopAutoMeet			= Event_Group_Caction + 6
-
+CactionEvent_SC_PlayAnimation			= Event_Group_Caction + 7
 
 TaskTargetEvent_SC_LearnSkill			= Event_Group_TaskTarget + 1
 TaskTargetEvent_SC_UpdateEquipTrace		= Event_Group_TaskTarget + 2
@@ -508,6 +515,7 @@ FactionEvent_CB_FireFactionMember				= Event_Group_SocialServer_Faction + 25
 FactionEvent_BB_ContributeFaction				= Event_Group_SocialServer_Faction + 26
 FactionEvent_BC_ContributeFaction				= Event_Group_SocialServer_Faction + 27
 FactionEvent_CB_ContributeFaction				= Event_Group_SocialServer_Faction + 28
+-- 指引加入帮派
 
 BroadCastSystem_CS_DigTreasure					= Event_Group_SocialServer_BroadCast + 1
 BroadCastSystem_CS_RemakeEquip					= Event_Group_SocialServer_BroadCast + 2
@@ -734,4 +742,11 @@ DekaronSchool_SC_AddActvityTarget				= Event_Group_DekaronSchool + 1
 DekaronSchool_SC_updateBox						= Event_Group_DekaronSchool + 2
 DekaronSchool_CS_updatePractise					= Event_Group_DekaronSchool + 3
 DekaronSchool_SC_addPractise					= Event_Group_DekaronSchool + 4
+
+--兑换物品
+ExchangeItemEvent_CS_doExchange                 = Event_Group_ExchangeItem + 1
+ExchangeItemEvent_SC_doExchangeReturn			= Event_Group_ExchangeItem + 2
+ExchangeItemEvent_SC_RewardItemMsg				= Event_Group_ExchangeItem + 3
+ExchangeItemEvent_SC_UpdateData					= Event_Group_ExchangeItem + 4
+ExchangeItemEvent_SC_ResetData					= Event_Group_ExchangeItem + 5
 

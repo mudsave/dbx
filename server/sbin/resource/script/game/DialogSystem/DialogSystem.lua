@@ -106,7 +106,6 @@ function DialogSystem:onNextAction(event)
 	local params = event:getParams()
 	local optionID = params[2]
 	local npcID = params[3]
-	print("optionID,npcID",optionID,npcID)
 	if not player then
 		return 
 	end

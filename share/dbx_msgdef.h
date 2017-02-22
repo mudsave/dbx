@@ -456,7 +456,7 @@ public:
                     return NULL;
             }
 
-            memcpy(temp, 0, tempsize);
+            memset(temp, 0, tempsize);
             paramstr = paramstr + name + ": ";
 
             switch (type)

@@ -1,11 +1,11 @@
 --[[PetSkillDB.lua
-æè¿°ï¼šå® ç‰©æŠ€èƒ½
+ÃèÊö£º³èÎï¼¼ÄÜÏÖ
 	]]
 
 PetSkillDB = {
 
      [101] = {
-	          name = "å¤©ç”Ÿç¥åŠ›",
+	          name = "ÌìÉúÉñÁ¦",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -20,7 +20,7 @@ PetSkillDB = {
 	         }, 
      },
      [102] = {
-	          name = "åŠ›ç ´åƒå†›",
+	          name = "Á¦ÆÆÇ§¾ü",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -35,7 +35,7 @@ PetSkillDB = {
 	         }, 
      },
      [103] = {
-	          name = "é‡‘å£°ç‰æŒ¯",
+	          name = "½ğÉùÓñÕñ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -50,7 +50,7 @@ PetSkillDB = {
 	         }, 
      },
      [104] = {
-	          name = "å¤©æµªè´¯å³",
+	          name = "ÌìÀË¹áÓÒ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -65,7 +65,7 @@ PetSkillDB = {
 	         }, 
      },
      [105] = {
-	          name = "é›·éœ†ä¸‡å‡»",
+	          name = "À×öªÍò»÷",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -80,7 +80,7 @@ PetSkillDB = {
 	         }, 
      },
      [106] = {
-	          name = "æ€’è¡è‹ç©¹",
+	          name = "Å­µ´²Ôñ·",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -95,7 +95,7 @@ PetSkillDB = {
 	         }, 
      },
      [107] = {
-	          name = "ç–¾é£ä¹‹æ€’",
+	          name = "¼²·çÖ®Å­",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -110,7 +110,7 @@ PetSkillDB = {
 	         }, 
      },
      [108] = {
-	          name = "é£äº‘æ®‹å·",
+	          name = "·çÔÆ²Ğ¾í",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -125,7 +125,7 @@ PetSkillDB = {
 	         }, 
      },
      [109] = {
-	          name = "é£èµ·äº‘æ¶Œ",
+	          name = "·çÆğÔÆÓ¿",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -140,7 +140,7 @@ PetSkillDB = {
 	         }, 
      },
      [110] = {
-	          name = "é˜´é£æ€’å·",
+	          name = "Òõ·çÅ­ºÅ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -155,7 +155,7 @@ PetSkillDB = {
 	         }, 
      },
      [111] = {
-	          name = "ç„šé£é˜µé˜µ",
+	          name = "·Ù·çÕóÕó",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -170,7 +170,7 @@ PetSkillDB = {
 	         }, 
      },
      [112] = {
-	          name = "é£æ£æƒŠè™¹",
+	          name = "·ç³¸¾ªºç",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -185,7 +185,7 @@ PetSkillDB = {
 	         }, 
      },
      [113] = {
-	          name = "é£äº‘çªå˜",
+	          name = "·çÔÆÍ»±ä",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Wind,
@@ -199,7 +199,7 @@ PetSkillDB = {
 	         }, 
      },
      [114] = {
-	          name = "å¾¡é£ç¥ç½¡",
+	          name = "Óù·çÉñî¸",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Wind,
@@ -213,7 +213,7 @@ PetSkillDB = {
 	         }, 
      },
      [115] = {
-	          name = "é›·éœ†ä¸€å‡»",
+	          name = "À×öªÒ»»÷",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -228,7 +228,7 @@ PetSkillDB = {
 	         }, 
      },
      [116] = {
-	          name = "é›·éœ†ä¸‡é’§",
+	          name = "À×öªÍò¾û",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -243,7 +243,7 @@ PetSkillDB = {
 	         }, 
      },
      [117] = {
-	          name = "å¥”é›·ç–¾ç”µ",
+	          name = "±¼À×¼²µç",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -258,7 +258,7 @@ PetSkillDB = {
 	         }, 
      },
      [118] = {
-	          name = "ä¹å¤©ç„é›·",
+	          name = "¾ÅÌìĞşÀ×",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -273,7 +273,7 @@ PetSkillDB = {
 	         }, 
      },
      [119] = {
-	          name = "ç”µé—ªé›·é¸£",
+	          name = "µçÉÁÀ×Ãù",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -288,7 +288,7 @@ PetSkillDB = {
 	         }, 
      },
      [120] = {
-	          name = "é¸£é›·æ–­ç©º",
+	          name = "ÃùÀ×¶Ï¿Õ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -303,7 +303,7 @@ PetSkillDB = {
 	         }, 
      },
      [121] = {
-	          name = "é›·åŠ²å¥”è¢­",
+	          name = "À×¾¢±¼Ï®",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Thunder,
@@ -317,7 +317,7 @@ PetSkillDB = {
 	         }, 
      },
      [122] = {
-	          name = "å¤©ç½¡é›·é¸£",
+	          name = "Ììî¸À×Ãù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Thunder,
@@ -331,7 +331,7 @@ PetSkillDB = {
 	         }, 
      },
      [123] = {
-	          name = "å¯’å†°å…¥éª¨",
+	          name = "º®±ùÈë¹Ç",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -346,7 +346,7 @@ PetSkillDB = {
 	         }, 
      },
      [124] = {
-	          name = "å†°é›¨ç®­çŸ¢",
+	          name = "±ùÓê¼ıÊ¸",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -361,7 +361,7 @@ PetSkillDB = {
 	         }, 
      },
      [125] = {
-	          name = "å†°è‚Œç‰è‚¤",
+	          name = "±ù¼¡Óñ·ô",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -376,7 +376,7 @@ PetSkillDB = {
 	         }, 
      },
      [126] = {
-	          name = "å…­åˆå¹ºå†°",
+	          name = "ÁùºÏçÛ±ù",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -391,7 +391,7 @@ PetSkillDB = {
 	         }, 
      },
      [127] = {
-	          name = "å†°é­‚é›ªé­„",
+	          name = "±ù»êÑ©ÆÇ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -406,7 +406,7 @@ PetSkillDB = {
 	         }, 
      },
      [128] = {
-	          name = "å†°é›¨å‡Œå¤©",
+	          name = "±ùÓêÁèÌì",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -421,7 +421,7 @@ PetSkillDB = {
 	         }, 
      },
      [129] = {
-	          name = "å†°å°åƒé‡Œ",
+	          name = "±ù·âÇ§Àï",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Ice,
@@ -435,7 +435,7 @@ PetSkillDB = {
 	         }, 
      },
      [130] = {
-	          name = "å†°éœœå…‰ç¯",
+	          name = "±ùËª¹â»·",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Ice,
@@ -449,7 +449,7 @@ PetSkillDB = {
 	         }, 
      },
      [131] = {
-	          name = "åœŸä¹‹æ®‡å¤©",
+	          name = "ÍÁÖ®éäÌì",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -464,7 +464,7 @@ PetSkillDB = {
 	         }, 
      },
      [132] = {
-	          name = "åœŸå´©ç“¦è§£",
+	          name = "ÍÁ±ÀÍß½â",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -479,7 +479,7 @@ PetSkillDB = {
 	         }, 
      },
      [133] = {
-	          name = "è…¥åœŸè¿é¢",
+	          name = "ĞÈÍÁÓ­Ãæ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -494,7 +494,7 @@ PetSkillDB = {
 	         }, 
      },
      [134] = {
-	          name = "ç°¸åœŸæ‰¬æ²™",
+	          name = "ô¤ÍÁÑïÉ³",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -509,7 +509,7 @@ PetSkillDB = {
 	         }, 
      },
      [135] = {
-	          name = "è·µåœŸé£Ÿæ¯›",
+	          name = "¼ùÍÁÊ³Ã«",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -524,7 +524,7 @@ PetSkillDB = {
 	         }, 
      },
      [136] = {
-	          name = "æ’®åœŸç„šé¦™",
+	          name = "´éÍÁ·ÙÏã",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -539,7 +539,7 @@ PetSkillDB = {
 	         }, 
      },
      [137] = {
-	          name = "åœŸé¾™åˆç‹—",
+	          name = "ÍÁÁúÛ»¹·",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Soil,
@@ -553,7 +553,7 @@ PetSkillDB = {
 	         }, 
      },
      [138] = {
-	          name = "åœŸæ‰¶æˆå¢™",
+	          name = "ÍÁ·ö³ÉÇ½",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Soil,
@@ -567,7 +567,7 @@ PetSkillDB = {
 	         }, 
      },
      [139] = {
-	          name = "çƒˆç«ç‡åŸ",
+	          name = "ÁÒ»ğÁÇÔ­",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -582,7 +582,7 @@ PetSkillDB = {
 	         }, 
      },
      [140] = {
-	          name = "ç«ç„šä¹Œå·¢",
+	          name = "»ğ·ÙÎÚ³²",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -597,7 +597,7 @@ PetSkillDB = {
 	         }, 
      },
      [141] = {
-	          name = "çƒ›é¾™å­½ç«",
+	          name = "ÖòÁúÄõ»ğ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -612,7 +612,7 @@ PetSkillDB = {
 	         }, 
      },
      [142] = {
-	          name = "å¤©ç«é™¨æ˜Ÿ",
+	          name = "Ìì»ğÔÉĞÇ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -627,7 +627,7 @@ PetSkillDB = {
 	         }, 
      },
      [143] = {
-	          name = "ä¸‰å‘³çœŸç«",
+	          name = "ÈıÎ¶Õæ»ğ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -642,7 +642,7 @@ PetSkillDB = {
 	         }, 
      },
      [144] = {
-	          name = "ä¸šç«çº¢è²",
+	          name = "Òµ»ğºìÁ«",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -657,7 +657,7 @@ PetSkillDB = {
 	         }, 
      },
      [145] = {
-	          name = "ç…½é£ç‚¹ç«",
+	          name = "É¿·çµã»ğ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Fire,
@@ -671,7 +671,7 @@ PetSkillDB = {
 	         }, 
      },
      [146] = {
-	          name = "å…«è’çƒˆç«",
+	          name = "°Ë»ÄÁÒ»ğ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Fire,
@@ -685,7 +685,7 @@ PetSkillDB = {
 	         }, 
      },
      [147] = {
-	          name = "æ·¬æ¯’ä¹‹åˆƒ",
+	          name = "´ã¶¾Ö®ÈĞ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -700,7 +700,7 @@ PetSkillDB = {
 	         }, 
      },
      [148] = {
-	          name = "æ¯’äº‘å¼¥æ¼«",
+	          name = "¶¾ÔÆÃÖÂş",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -715,7 +715,7 @@ PetSkillDB = {
 	         }, 
      },
      [149] = {
-	          name = "æ¯’åˆƒå°å¿ƒ",
+	          name = "¶¾ÈĞ·âĞÄ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -730,7 +730,7 @@ PetSkillDB = {
 	         }, 
      },
      [150] = {
-	          name = "æ¯’æ°”ç†å¤©",
+	          name = "¶¾ÆøÑ¬Ìì",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 9,
 	          skill_type = PetSkillType.Normal,
@@ -745,7 +745,7 @@ PetSkillDB = {
 	         }, 
      },
      [151] = {
-	          name = "æ¯’è¡€è”“å»¶",
+	          name = "¶¾ÑªÂûÑÓ",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 10,
 	          skill_type = PetSkillType.Normal,
@@ -760,7 +760,7 @@ PetSkillDB = {
 	         }, 
      },
      [152] = {
-	          name = "ä¸‡è›Šå¥‡æ¯’",
+	          name = "Íò¹ÆÆæ¶¾",
 	          consume_type = ConsumeType.Mp,
 	          consume_id = 6,
 	          skill_type = PetSkillType.Normal,
@@ -775,7 +775,7 @@ PetSkillDB = {
 	         }, 
      },
      [153] = {
-	          name = "æ¯’åŒ–é­å‡»",
+	          name = "¶¾»¯±Ş»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Poison,
@@ -789,7 +789,7 @@ PetSkillDB = {
 	         }, 
      },
      [154] = {
-	          name = "æ¯’ä¸é¬¼è—¤",
+	          name = "¶¾Ë¿¹íÌÙ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.Poison,
@@ -803,7 +803,7 @@ PetSkillDB = {
 	         }, 
      },
      [1001] = {
-	          name = "åå‡»",
+	          name = "·´»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -823,7 +823,7 @@ PetSkillDB = {
 	         }, 
      },
      [1002] = {
-	          name = "é«˜çº§åå‡»",
+	          name = "¸ß¼¶·´»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -843,7 +843,7 @@ PetSkillDB = {
 	         }, 
      },
      [1003] = {
-	          name = "åéœ‡",
+	          name = "·´Õğ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -863,7 +863,7 @@ PetSkillDB = {
 	         }, 
      },
      [1004] = {
-	          name = "é«˜çº§åéœ‡",
+	          name = "¸ß¼¶·´Õğ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -883,7 +883,7 @@ PetSkillDB = {
 	         }, 
      },
      [1005] = {
-	          name = "æ³•æœ¯åå‡»",
+	          name = "·¨Êõ·´»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -903,7 +903,7 @@ PetSkillDB = {
 	         }, 
      },
      [1006] = {
-	          name = "é«˜çº§æ³•æœ¯åå‡»",
+	          name = "¸ß¼¶·¨Êõ·´»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -923,7 +923,7 @@ PetSkillDB = {
 	         }, 
      },
      [1007] = {
-	          name = "å¸è¡€",
+	          name = "ÎüÑª",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -937,7 +937,7 @@ PetSkillDB = {
 	         }, 
      },
      [1008] = {
-	          name = "é«˜çº§å¸è¡€",
+	          name = "¸ß¼¶ÎüÑª",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -951,7 +951,7 @@ PetSkillDB = {
 	         }, 
      },
      [1009] = {
-	          name = "è¿å‡»",
+	          name = "Á¬»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -971,7 +971,7 @@ PetSkillDB = {
 	         }, 
      },
      [1010] = {
-	          name = "é«˜çº§è¿å‡»",
+	          name = "¸ß¼¶Á¬»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -991,7 +991,7 @@ PetSkillDB = {
 	         }, 
      },
      [1011] = {
-	          name = "å†ç”Ÿ",
+	          name = "ÔÙÉú",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1005,7 +1005,7 @@ PetSkillDB = {
 	         }, 
      },
      [1012] = {
-	          name = "é«˜çº§å†ç”Ÿ",
+	          name = "¸ß¼¶ÔÙÉú",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1019,7 +1019,7 @@ PetSkillDB = {
 	         }, 
      },
      [1013] = {
-	          name = "å†¥æ€",
+	          name = "Ú¤Ë¼",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1033,7 +1033,7 @@ PetSkillDB = {
 	         }, 
      },
      [1014] = {
-	          name = "é«˜çº§å†¥æ€",
+	          name = "¸ß¼¶Ú¤Ë¼",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1047,7 +1047,7 @@ PetSkillDB = {
 	         }, 
      },
      [1015] = {
-	          name = "æ…§æ ¹",
+	          name = "»Û¸ù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1061,7 +1061,7 @@ PetSkillDB = {
 	         }, 
      },
      [1016] = {
-	          name = "é«˜çº§æ…§æ ¹",
+	          name = "¸ß¼¶»Û¸ù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1075,7 +1075,7 @@ PetSkillDB = {
 	         }, 
      },
      [1017] = {
-	          name = "å¿…æ€",
+	          name = "±ØÉ±",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1089,7 +1089,7 @@ PetSkillDB = {
 	         }, 
      },
      [1018] = {
-	          name = "é«˜çº§å¿…æ€",
+	          name = "¸ß¼¶±ØÉ±",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1103,7 +1103,7 @@ PetSkillDB = {
 	         }, 
      },
      [1019] = {
-	          name = "å¹¸è¿",
+	          name = "ĞÒÔË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1117,7 +1117,7 @@ PetSkillDB = {
 	         }, 
      },
      [1020] = {
-	          name = "é«˜çº§å¹¸è¿",
+	          name = "¸ß¼¶ĞÒÔË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1137,7 +1137,7 @@ PetSkillDB = {
 	         }, 
      },
      [1021] = {
-	          name = "ç¥è¿¹",
+	          name = "Éñ¼£",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1151,7 +1151,7 @@ PetSkillDB = {
 	         }, 
      },
      [1022] = {
-	          name = "é«˜çº§ç¥è¿¹",
+	          name = "¸ß¼¶Éñ¼£",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1165,7 +1165,7 @@ PetSkillDB = {
 	         }, 
      },
      [1023] = {
-	          name = "æ‹›æ¶",
+	          name = "ÕĞ¼Ü",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1179,7 +1179,7 @@ PetSkillDB = {
 	         }, 
      },
      [1024] = {
-	          name = "é«˜çº§æ‹›æ¶",
+	          name = "¸ß¼¶ÕĞ¼Ü",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1193,7 +1193,7 @@ PetSkillDB = {
 	         }, 
      },
      [1025] = {
-	          name = "æ°¸æ’",
+	          name = "ÓÀºã",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1207,7 +1207,7 @@ PetSkillDB = {
 	         }, 
      },
      [1026] = {
-	          name = "é«˜çº§æ°¸æ’",
+	          name = "¸ß¼¶ÓÀºã",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1221,7 +1221,7 @@ PetSkillDB = {
 	         }, 
      },
      [1027] = {
-	          name = "æ•æ·",
+	          name = "Ãô½İ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1235,7 +1235,7 @@ PetSkillDB = {
 	         }, 
      },
      [1028] = {
-	          name = "é«˜çº§æ•æ·",
+	          name = "¸ß¼¶Ãô½İ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1249,7 +1249,7 @@ PetSkillDB = {
 	         }, 
      },
      [1029] = {
-	          name = "å¼ºåŠ›",
+	          name = "Ç¿Á¦",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1269,7 +1269,7 @@ PetSkillDB = {
 	         }, 
      },
      [1030] = {
-	          name = "é«˜çº§å¼ºåŠ›",
+	          name = "¸ß¼¶Ç¿Á¦",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1289,7 +1289,7 @@ PetSkillDB = {
 	         }, 
      },
      [1031] = {
-	          name = "é˜²å¾¡",
+	          name = "·ÀÓù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1309,7 +1309,7 @@ PetSkillDB = {
 	         }, 
      },
      [1032] = {
-	          name = "é«˜çº§é˜²å¾¡",
+	          name = "¸ß¼¶·ÀÓù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1329,7 +1329,7 @@ PetSkillDB = {
 	         }, 
      },
      [1033] = {
-	          name = "å¼ºå£®",
+	          name = "Ç¿×³",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1343,7 +1343,7 @@ PetSkillDB = {
 	         }, 
      },
      [1034] = {
-	          name = "é«˜çº§å¼ºå£®",
+	          name = "¸ß¼¶Ç¿×³",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1357,7 +1357,7 @@ PetSkillDB = {
 	         }, 
      },
      [1035] = {
-	          name = "åˆšæ¯…",
+	          name = "¸ÕÒã",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1371,7 +1371,7 @@ PetSkillDB = {
 	         }, 
      },
      [1036] = {
-	          name = "é«˜çº§åˆšæ¯…",
+	          name = "¸ß¼¶¸ÕÒã",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1385,7 +1385,7 @@ PetSkillDB = {
 	         }, 
      },
      [1037] = {
-	          name = "å·è¢­",
+	          name = "ÍµÏ®",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1411,7 +1411,7 @@ PetSkillDB = {
 	         }, 
      },
      [1038] = {
-	          name = "é«˜çº§å·è¢­",
+	          name = "¸ß¼¶ÍµÏ®",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1437,7 +1437,7 @@ PetSkillDB = {
 	         }, 
      },
      [1039] = {
-	          name = "é­”ä¹‹å¿ƒ",
+	          name = "Ä§Ö®ĞÄ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1451,7 +1451,7 @@ PetSkillDB = {
 	         }, 
      },
      [1040] = {
-	          name = "é«˜çº§é­”ä¹‹å¿ƒ",
+	          name = "¸ß¼¶Ä§Ö®ĞÄ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1465,7 +1465,7 @@ PetSkillDB = {
 	         }, 
      },
      [1041] = {
-	          name = "æ¶…æ§ƒ",
+	          name = "Äù˜„",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1485,7 +1485,7 @@ PetSkillDB = {
 	         }, 
      },
      [1042] = {
-	          name = "é«˜çº§æ¶…æ§ƒ",
+	          name = "¸ß¼¶Äù˜„",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1505,7 +1505,7 @@ PetSkillDB = {
 	         }, 
      },
      [1043] = {
-	          name = "ç ´é˜²",
+	          name = "ÆÆ·À",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1531,7 +1531,7 @@ PetSkillDB = {
 	         }, 
      },
      [1044] = {
-	          name = "é«˜çº§ç ´é˜²",
+	          name = "¸ß¼¶ÆÆ·À",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1557,7 +1557,7 @@ PetSkillDB = {
 	         }, 
      },
      [1045] = {
-	          name = "é‡ä¼¤",
+	          name = "ÖØÉË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1583,7 +1583,7 @@ PetSkillDB = {
 	         }, 
      },
      [1046] = {
-	          name = "é«˜çº§é‡ä¼¤",
+	          name = "¸ß¼¶ÖØÉË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1609,7 +1609,7 @@ PetSkillDB = {
 	         }, 
      },
      [1047] = {
-	          name = "æ³•æœ¯è¿å‡»",
+	          name = "·¨ÊõÁ¬»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1623,7 +1623,7 @@ PetSkillDB = {
 	         }, 
      },
      [1048] = {
-	          name = "é«˜çº§æ³•æœ¯è¿å‡»",
+	          name = "¸ß¼¶·¨ÊõÁ¬»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1637,7 +1637,7 @@ PetSkillDB = {
 	         }, 
      },
      [1049] = {
-	          name = "æ³•æœ¯æš´å‡»",
+	          name = "·¨Êõ±©»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1657,7 +1657,7 @@ PetSkillDB = {
 	         }, 
      },
      [1050] = {
-	          name = "é«˜çº§æ³•æœ¯æš´å‡»",
+	          name = "¸ß¼¶·¨Êõ±©»÷",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1677,7 +1677,7 @@ PetSkillDB = {
 	         }, 
      },
      [1051] = {
-	          name = "æ³•æœ¯æ³¢åŠ¨",
+	          name = "·¨Êõ²¨¶¯",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1691,7 +1691,7 @@ PetSkillDB = {
 	         }, 
      },
      [1052] = {
-	          name = "é«˜çº§æ³•æœ¯æ³¢åŠ¨",
+	          name = "¸ß¼¶·¨Êõ²¨¶¯",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1705,7 +1705,7 @@ PetSkillDB = {
 	         }, 
      },
      [1053] = {
-	          name = "æ³•æœ¯æŠµæŠ—",
+	          name = "·¨ÊõµÖ¿¹",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1725,7 +1725,7 @@ PetSkillDB = {
 	         }, 
      },
      [1054] = {
-	          name = "é«˜çº§æ³•æœ¯æŠµæŠ—",
+	          name = "¸ß¼¶·¨ÊõµÖ¿¹",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -1745,7 +1745,7 @@ PetSkillDB = {
 	         }, 
      },
      [1055] = {
-	          name = "è¿Ÿé’",
+	          name = "³Ù¶Û",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1759,7 +1759,7 @@ PetSkillDB = {
 	         }, 
      },
      [1056] = {
-	          name = "é«˜çº§è¿Ÿé’",
+	          name = "¸ß¼¶³Ù¶Û",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1773,7 +1773,7 @@ PetSkillDB = {
 	         }, 
      },
      [1057] = {
-	          name = "é£æ”»",
+	          name = "·ç¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1787,7 +1787,7 @@ PetSkillDB = {
 	         }, 
      },
      [1058] = {
-	          name = "é«˜çº§é£æ”»",
+	          name = "¸ß¼¶·ç¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1801,7 +1801,7 @@ PetSkillDB = {
 	         }, 
      },
      [1059] = {
-	          name = "é›·æ”»",
+	          name = "À×¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1815,7 +1815,7 @@ PetSkillDB = {
 	         }, 
      },
      [1060] = {
-	          name = "é«˜çº§é›·æ”»",
+	          name = "¸ß¼¶À×¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1829,7 +1829,7 @@ PetSkillDB = {
 	         }, 
      },
      [1061] = {
-	          name = "å†°æ”»",
+	          name = "±ù¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1843,7 +1843,7 @@ PetSkillDB = {
 	         }, 
      },
      [1062] = {
-	          name = "é«˜çº§å†°æ”»",
+	          name = "¸ß¼¶±ù¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1857,7 +1857,7 @@ PetSkillDB = {
 	         }, 
      },
      [1063] = {
-	          name = "åœŸæ”»",
+	          name = "ÍÁ¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1871,7 +1871,7 @@ PetSkillDB = {
 	         }, 
      },
      [1064] = {
-	          name = "é«˜çº§åœŸæ”»",
+	          name = "¸ß¼¶ÍÁ¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1885,7 +1885,7 @@ PetSkillDB = {
 	         }, 
      },
      [1065] = {
-	          name = "ç«æ”»",
+	          name = "»ğ¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1899,7 +1899,7 @@ PetSkillDB = {
 	         }, 
      },
      [1066] = {
-	          name = "é«˜çº§ç«æ”»",
+	          name = "¸ß¼¶»ğ¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1913,7 +1913,7 @@ PetSkillDB = {
 	         }, 
      },
      [1067] = {
-	          name = "æ¯’æ”»",
+	          name = "¶¾¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1927,7 +1927,7 @@ PetSkillDB = {
 	         }, 
      },
      [1068] = {
-	          name = "é«˜çº§æ¯’æ”»",
+	          name = "¸ß¼¶¶¾¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1941,7 +1941,7 @@ PetSkillDB = {
 	         }, 
      },
      [1069] = {
-	          name = "æŠ—é£",
+	          name = "¿¹·ç",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1955,7 +1955,7 @@ PetSkillDB = {
 	         }, 
      },
      [1070] = {
-	          name = "é«˜çº§æŠ—é£",
+	          name = "¸ß¼¶¿¹·ç",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1969,7 +1969,7 @@ PetSkillDB = {
 	         }, 
      },
      [1071] = {
-	          name = "æŠ—é›·",
+	          name = "¿¹À×",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1983,7 +1983,7 @@ PetSkillDB = {
 	         }, 
      },
      [1072] = {
-	          name = "é«˜çº§æŠ—é›·",
+	          name = "¸ß¼¶¿¹À×",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -1997,7 +1997,7 @@ PetSkillDB = {
 	         }, 
      },
      [1073] = {
-	          name = "æŠ—å†°",
+	          name = "¿¹±ù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2011,7 +2011,7 @@ PetSkillDB = {
 	         }, 
      },
      [1074] = {
-	          name = "é«˜çº§æŠ—å†°",
+	          name = "¸ß¼¶¿¹±ù",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2025,7 +2025,7 @@ PetSkillDB = {
 	         }, 
      },
      [1075] = {
-	          name = "æŠ—åœŸ",
+	          name = "¿¹ÍÁ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2039,7 +2039,7 @@ PetSkillDB = {
 	         }, 
      },
      [1076] = {
-	          name = "é«˜çº§æŠ—åœŸ",
+	          name = "¸ß¼¶¿¹ÍÁ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2053,7 +2053,7 @@ PetSkillDB = {
 	         }, 
      },
      [1077] = {
-	          name = "æŠ—ç«",
+	          name = "¿¹»ğ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2067,7 +2067,7 @@ PetSkillDB = {
 	         }, 
      },
      [1078] = {
-	          name = "é«˜çº§æŠ—ç«",
+	          name = "¸ß¼¶¿¹»ğ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2081,7 +2081,7 @@ PetSkillDB = {
 	         }, 
      },
      [1079] = {
-	          name = "æŠ—æ¯’",
+	          name = "¿¹¶¾",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2095,7 +2095,7 @@ PetSkillDB = {
 	         }, 
      },
      [1080] = {
-	          name = "é«˜çº§æŠ—æ¯’",
+	          name = "¸ß¼¶¿¹¶¾",
 	          consume_type = nil,
 	          skill_type = PetSkillType.AttrPassive,
 	          phase_type = PhaseType.None,
@@ -2109,7 +2109,7 @@ PetSkillDB = {
 	         }, 
      },
      [1081] = {
-	          name = "æ³•æœ¯å…ç–«",
+	          name = "·¨ÊõÃâÒß",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2123,7 +2123,7 @@ PetSkillDB = {
 	         }, 
      },
      [1082] = {
-	          name = "é«˜çº§æ³•æœ¯å…ç–«",
+	          name = "¸ß¼¶·¨ÊõÃâÒß",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2137,7 +2137,7 @@ PetSkillDB = {
 	         }, 
      },
      [1083] = {
-	          name = "æ±²å–ç‰©ä¼¤",
+	          name = "¼³È¡ÎïÉË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2151,7 +2151,7 @@ PetSkillDB = {
 	         }, 
      },
      [1084] = {
-	          name = "é«˜çº§æ±²å–ç‰©ä¼¤",
+	          name = "¸ß¼¶¼³È¡ÎïÉË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2165,7 +2165,7 @@ PetSkillDB = {
 	         }, 
      },
      [1085] = {
-	          name = "æ±²å–æ³•ä¼¤",
+	          name = "¼³È¡·¨ÉË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2179,7 +2179,7 @@ PetSkillDB = {
 	         }, 
      },
      [1086] = {
-	          name = "é«˜çº§æ±²å–æ³•ä¼¤",
+	          name = "¸ß¼¶¼³È¡·¨ÉË",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2193,7 +2193,7 @@ PetSkillDB = {
 	         }, 
      },
      [1087] = {
-	          name = "ç›¸æ€§å…ç–«",
+	          name = "ÏàĞÔÃâÒß",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2207,7 +2207,7 @@ PetSkillDB = {
 	         }, 
      },
      [1088] = {
-	          name = "é«˜çº§ç›¸æ€§å…ç–«",
+	          name = "¸ß¼¶ÏàĞÔÃâÒß",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2221,7 +2221,7 @@ PetSkillDB = {
 	         }, 
      },
      [1089] = {
-	          name = "æ±²å–ç›¸æ”»",
+	          name = "¼³È¡Ïà¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2235,7 +2235,7 @@ PetSkillDB = {
 	         }, 
      },
      [1090] = {
-	          name = "é«˜çº§æ±²å–ç›¸æ”»",
+	          name = "¸ß¼¶¼³È¡Ïà¹¥",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2249,7 +2249,7 @@ PetSkillDB = {
 	         }, 
      },
      [1091] = {
-	          name = "æç¥",
+	          name = "ÌáÉñ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2263,7 +2263,7 @@ PetSkillDB = {
 	         }, 
      },
      [1092] = {
-	          name = "é«˜çº§æç¥",
+	          name = "¸ß¼¶ÌáÉñ",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2277,7 +2277,7 @@ PetSkillDB = {
 	         }, 
      },
      [1093] = {
-	          name = "æ°”è¡€è½¬åŒ–",
+	          name = "ÆøÑª×ª»¯",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2297,7 +2297,7 @@ PetSkillDB = {
 	         }, 
      },
      [1094] = {
-	          name = "é«˜çº§æ°”è¡€è½¬åŒ–",
+	          name = "¸ß¼¶ÆøÑª×ª»¯",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2317,7 +2317,7 @@ PetSkillDB = {
 	         }, 
      },
      [1095] = {
-	          name = "æ³•æœ¯æ±²å–",
+	          name = "·¨Êõ¼³È¡",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2331,7 +2331,7 @@ PetSkillDB = {
 	         }, 
      },
      [1096] = {
-	          name = "é«˜çº§æ³•æœ¯æ±²å–",
+	          name = "¸ß¼¶·¨Êõ¼³È¡",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2345,7 +2345,7 @@ PetSkillDB = {
 	         }, 
      },
      [1097] = {
-	          name = "æ³•æœ¯æµå¤±",
+	          name = "·¨ÊõÁ÷Ê§",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2359,7 +2359,7 @@ PetSkillDB = {
 	         }, 
      },
      [1098] = {
-	          name = "é«˜çº§æ³•æœ¯æµå¤±",
+	          name = "¸ß¼¶·¨ÊõÁ÷Ê§",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2373,7 +2373,7 @@ PetSkillDB = {
 	         }, 
      },
      [1099] = {
-	          name = "ä»¥æ³•ç»­å‘½",
+	          name = "ÒÔ·¨ĞøÃü",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2393,7 +2393,7 @@ PetSkillDB = {
 	         }, 
      },
      [1100] = {
-	          name = "é«˜çº§ä»¥æ³•ç»­å‘½",
+	          name = "¸ß¼¶ÒÔ·¨ĞøÃü",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2413,7 +2413,7 @@ PetSkillDB = {
 	         }, 
      },
      [1101] = {
-	          name = "å¼€å¤©",
+	          name = "¿ªÌì",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2445,7 +2445,7 @@ PetSkillDB = {
 	         }, 
      },
      [1102] = {
-	          name = "è¶…çº§å¼€å¤©",
+	          name = "³¬¼¶¿ªÌì",
 	          consume_type = nil,
 	          skill_type = PetSkillType.StatePassive,
 	          phase_type = PhaseType.None,
@@ -2472,6 +2472,426 @@ PetSkillDB = {
 	                     type = PetPassiveEffect.ATDmgIncValue,
 	                     num_id = 203,
 	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2001] = {
+	          name = "ÊÉ»ê¶áÆÇ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 39,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2002] = {
+	          name = "»ê·ÉÆÇÉ¢",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 40,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2003] = {
+	          name = "·çÁ÷ÔÆÉ¢",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 37,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2004] = {
+	          name = "·­ÔÆ¸²Óê",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 38,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2005] = {
+	          name = "ÈçÓ°ËæĞÎ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 35,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2006] = {
+	          name = "ÇÃ¹ÇÎüËè",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 36,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2007] = {
+	          name = "¼á±ÚÇåÒ°",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 48,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2008] = {
+	          name = "»¤ÌåÌìî¸",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 49,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2009] = {
+	          name = "Ìì½µÉñÍş",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 41,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2010] = {
+	          name = "ÒÆ»¨½ÓÄ¾",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 50,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2011] = {
+	          name = "ÁúÒ÷»¢Ğ¥",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 46,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2012] = {
+	          name = "Ì«ÔÀÕò»ê",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 45,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2013] = {
+	          name = "·ğ¹âÉÁÏÖ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 47,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2014] = {
+	          name = "Ò»·òµ±¹Ø",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 42,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2015] = {
+	          name = "Ê¿Æø´óÕñ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 44,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2016] = {
+	          name = "÷È»óÖ®Êõ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 43,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2017] = {
+	          name = "Èçãå´º·ç",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 51,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2018] = {
+	          name = "ÃùÀ×¶Ï¿Õ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 52,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2019] = {
+	          name = "±ù·âÍòÀï",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 53,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2020] = {
+	          name = "ÍÁ±ÀÍß½â",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 54,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2021] = {
+	          name = "ÎŞÍıÌì»ğ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 55,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2022] = {
+	          name = "¶¾ÈĞ·âĞÄ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 56,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2023] = {
+	          name = "Ï¸ÓêÎ¢·ç",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 57,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2024] = {
+	          name = "¼²·çÑ¸À×",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 58,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2025] = {
+	          name = "±ùËª·âÓ¡",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 59,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2026] = {
+	          name = "ÁùºÏºñÍÁ",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 60,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2027] = {
+	          name = "½Ù»ğºìÁ«",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 61,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	              }, 
+	         }, 
+     },
+     [2028] = {
+	          name = "İ±¶¾ÉúÁé",
+	          consume_type = ConsumeType.Mp,
+	          consume_id = 9,
+	          skill_type = PetSkillType.Buff,
+	          phase_type = PhaseType.None,
+	          skill = { 
+	             [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 62,
+	                     target_type = TargetType.friend,
 	                     target_num_id = 1,
 	              }, 
 	         }, 

@@ -144,7 +144,7 @@ bool DBInterfaceMysql::Connect()
         m_dbUserName, m_dbPassword,
         m_dbName,
         m_dbPort,
-        NULL,
+        NULL, 
         CLIENT_MULTI_STATEMENTS) == NULL)
     {
         TRACE1_ERROR("DBInterfaceMysql::Connect:error:%s.\n", mysql_error(m_mysql));

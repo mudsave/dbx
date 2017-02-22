@@ -26,7 +26,7 @@ void CleanUp()
 
 int main(int argc, char *argv[])
 {
-    InitTraceServer(true);
+	InitTraceServer(true);
     TRACE0_L0("DBX start...\n");
     ParseMainCommandArgs(argc, argv);
 
@@ -59,10 +59,10 @@ int main(int argc, char *argv[])
     {
         TRACE0_L0("Dbx stop [ timeout ].\n");
     }
-
+    
     pThreadsPool->Clear();
 
     Sleep(1000 * 5);
-    return 0;
+	return 0;
 }
 

@@ -2,6 +2,7 @@
 Written by wangshufeng.
 RTX:6016.
 描述：
+
 */
 
 #ifndef __DB_FACTORY_H_
@@ -47,4 +48,4 @@ private:
 };
 
 
-#endif // end of __DB_FACTORY_H_
+#endif // __DB_FACTORY_H_

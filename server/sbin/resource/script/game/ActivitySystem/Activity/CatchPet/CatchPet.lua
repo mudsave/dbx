@@ -319,7 +319,6 @@ end
 
 -- 清理工作
 function CatchPet:clear()
-	print("调用到清理工作没")
 	-- 关闭定时器
 	if self.patrolTimerID > 0 then
 		g_timerMgr:unRegTimer(self.patrolTimerID)

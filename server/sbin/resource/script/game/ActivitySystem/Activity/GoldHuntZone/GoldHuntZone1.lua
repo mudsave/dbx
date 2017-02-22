@@ -14,18 +14,19 @@ GoldHuntZoneActivityDB1 =
 		name = "GoldHuntZone1",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 15, min = 9},				--开始时间
+		startTime = {hour = 15, min = 53},				--开始时间
 		min_maxPlayerLevel = {1,40},					--等级范围
 		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 15, min = 30},				--结束时间
+		endTime = {hour = 16, min = 30},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
 					period = 3,--min			--阶段持续时间
 					materialInfo = {
-									{itemID = 10012,centerPos={x=109,y=216},radius = 5,count = 3},					--场景物件,中心,范围,数量,可以多行并列
-									updatePeriod = 1,totalMax= 6, curMax = 4,							--刷新间隔,总数量,保持数量
+									{itemID = 10026,centerPos={x=109,y=216},radius = 5,count = 2},					--场景物件,中心,范围,数量,可以多行并列
+									{itemID = 10027,centerPos={x=109,y=215},radius = 5,count = 2},	
+									updatePeriod = 1,totalMax= 6, curMax = 5,							--刷新间隔,总数量,保持数量
 					}
 			},
 			[2] = {
@@ -35,7 +36,7 @@ GoldHuntZoneActivityDB1 =
 									eliteDBID = 39053,propability = 20,									--精英怪,概率
 					},
 					materialInfo = {
-									{itemID = 10011,centerPos={x=186,y=201},radius = 5,count = 1},
+									{itemID = 10028,centerPos={x=186,y=201},radius = 5,count = 1},
 									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			},
@@ -46,7 +47,7 @@ GoldHuntZoneActivityDB1 =
 									eliteDBID = 39053,propability = 40,
 					},
 					materialInfo = {
-									{itemID = 10013,centerPos={x=201,y=117},radius = 5,count = 1},
+									{itemID = 10029,centerPos={x=201,y=117},radius = 5,count = 1},
 									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			},
@@ -57,7 +58,7 @@ GoldHuntZoneActivityDB1 =
 									eliteDBID = 39053,propability = 60,
 					},
 					materialInfo = {
-									{itemID = 10011,centerPos={x=279,y=101},radius = 5,count = 1},
+									{itemID = 10030,centerPos={x=279,y=101},radius = 5,count = 1},
 									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			}

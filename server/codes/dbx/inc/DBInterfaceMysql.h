@@ -45,4 +45,4 @@ protected:
     MYSQL *m_mysql;
 };
 
-#endif  // end of __DB_INTERFACE_MYSQL_H_
+#endif  // __DB_INTERFACE_MYSQL_H_

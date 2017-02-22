@@ -727,11 +727,15 @@ function FightUtils.canCatch(player,monster)
 	local type = petConfig.petType
 	local rate1 = 0
 	if type == PetType.Wild then
-		rate1 = 70 + addRate
+		rate1 = 80 + addRate
 	elseif type == PetType.Baby then
-		rate1 = 20 + addRate
+		rate1 = 60 + addRate
 	elseif type == PetType.Spirit then
-		rate1 = 10 + addRate
+		rate1 = 30 + addRate
+	elseif type == PetType.Varient then
+		rate1 = 50 + addRate
+	elseif type == PetType.God then
+		rate1 = 20 + addRate
 	else
 		return -1
 	end

@@ -61,6 +61,7 @@ end
 
 -- 接任务
 function TaskDoer:doRecetiveTask(player, taskID, GM)
+	print("接受一个任务，任务的ID：",taskID)	
 	local msgID = nil
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	--先判断有没有接过该任务
@@ -90,7 +91,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		end
 	end
 
-	--再判断任务条件是否满足
+	-- 再判断任务条件是否满足
 	if NormalTaskDB[taskID] then
 		if not TaskCondition.normalTask(player, taskID, true, GM) then
 			print("任务条件不满足")
@@ -99,7 +100,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		local normalTask = g_taskFty:createNormalTask(player, taskID)
 		taskHandler:addTask(normalTask)
 		normalTask:updateNpcHeader()
-		g_taskSystem:updateNormalTaskList(player, taskHandler:getNextID())
+		-- g_taskSystem:updateNormalTaskList(player, taskHandler:getNextID())
 		return true
 	elseif LoopTaskDB[taskID] then	
 		if not TaskCondition.loopTask(player, taskID, true, GM) then
@@ -115,7 +116,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		taskHandler:addTask(loopTask)
 		loopTask:updateNpcHeader()
 		-- 重新跟新一下循环任务列表
-		--g_taskSystem:updateLoopTaskList(player, taskHandler:getRecetiveTaskList())
+		-- g_taskSystem:updateLoopTaskList(player, taskHandler:getRecetiveTaskList())
 		taskHandler:updateTaskList(taskID, false)
 		return true
 	elseif DailyTaskDB[taskID] then
@@ -310,10 +311,13 @@ end
 
 --等级任务主要是指引任务
 function TaskDoer:updatePlayerLevelTasks(player)
-	for taskID, taskData in pairs(NormalTaskDB) do
+	for taskID,taskData in pairs(NormalTaskDB) do
 		if taskData.taskType2 == TaskType2.NewBie then
-			if taskData.level[1] == player:getLevel() then
-				self:doRecetiveTask(player, taskID)
+			if taskData.level[1] <= player:getLevel() then	-- 指引任务不能重复接
+				if not player:getHandler(HandlerDef_Task):isHisTask(taskID) then
+					print("--接受指引任务----")
+					self:doRecetiveTask(player, taskID)	-- 升级自动接指引任务
+				end
 			end
 		end
 	end
@@ -422,6 +426,7 @@ function TaskDoer:notifyTaskSystem(playerID, level, fromDB)
 		end
 	end
 	
+	self:updatePlayerLevelTasks(player)
 	-- 等级任务目标
 	TaskCallBack.onAttainLevel(playerID, level)
 	-- 跟新NPC头顶图标
