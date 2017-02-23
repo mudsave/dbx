@@ -18,7 +18,7 @@ DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex)
     :m_dbInterface(NULL),
     m_queryID(p_queryID),
     m_linkIndex(p_linkIndex),
-    m_resultAppMsg(),
+    m_pResultHead(NULL),
     m_errnum(0),
     m_errstr("")
 {
@@ -38,6 +38,11 @@ void DBIssueBase::SetDBInterface(DBInterface *p_dbInterface)
 void DBIssueBase::MainProgress()
 {
     TRACE0_L0("DBIssueBase::MainProgress.\n");
+}
+
+void DBIssueBase::OnQueryReturn(AppMsg * p_appMsg)
+{
+    TRACE0_L0("DBIssueBase::OnQueryReturn.\n");
 }
 
 int DBIssueBase::GetQueryID()
@@ -85,15 +90,24 @@ bool DBIssueCallSP::OnProgress()
     char * pszQueryBuffer = pdbInterface->GetQueryBuffer();
     int nQueryBufferLen = QUERYBUFFER_MAX_LEN;
 
-    //把旧数据先清除
-    m_outParams.clear();
+    CCSResultMsg * pCSMsg = (CCSResultMsg *)(m_pAppMsg);
+    DbxMessageBuilder<CCSResultMsg>::locateContent(pCSMsg);
+    bool success = true;
 
-    if (!build_sp_query_buffer(pdbInterface->GetMysql(), (CCSResultMsg *)(m_pAppMsg), pszQueryBuffer, nQueryBufferLen, m_outParams))
+    for (int row = 0; row < pCSMsg->getAttributeRows(); row++)
     {
-        return false;
+        //把旧数据先清除
+        m_outParams.clear();
+
+        if (!build_sp_query_buffer(pdbInterface->GetMysql(), pCSMsg, row, pszQueryBuffer, nQueryBufferLen, m_outParams))
+        {
+            return false;
+        }
+
+        success &= pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this);
     }
 
-    return pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this);
+    return success;
 
 }
 
@@ -102,10 +116,42 @@ void DBIssueCallSP::MainProgress()
     TRACE0_L0("DBIssueCallSP::MainProgress.RESULT...RESULT...RESULT...\n");
     if (m_linkIndex > 0)
     {
-        DBManager::InstancePtr()->SendResult(m_linkIndex, &m_resultAppMsg);
+        SAppMsgNode *dropped(NULL), *current(m_pResultHead);
+        while (current != NULL)
+        {
+            DBManager::InstancePtr()->SendResult(m_linkIndex, current->p_msg);
+            free(current->p_msg);
+            dropped = current;
+            current = current->next;
+            free(dropped);
+        }
+        m_pResultHead = NULL;
+        free(m_pAppMsg);
     }
 }
 
+void DBIssueCallSP::OnQueryReturn(AppMsg * p_appMsg)
+{
+    CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
+    CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
+
+    pResultMsg->msgId = S_DOACTION_RESULT;
+    pResultMsg->m_spId = pQueryMsg->m_spId;
+    pResultMsg->msgCls = pQueryMsg->msgCls;
+    pResultMsg->m_nTempObjId = pQueryMsg->m_nTempObjId;
+    pResultMsg->m_bEnd = true;
+
+    if (m_pResultHead == NULL)
+    {
+        m_pResultHead = new SAppMsgNode(p_appMsg);
+    }
+    else
+    {
+        SAppMsgNode * tail = m_pResultHead->tail();
+        ((CCSResultMsg *)tail->p_msg)->m_bEnd = false;
+        tail->next = new SAppMsgNode(p_appMsg);
+    }
+}
 
 
 // -----------------------------------------------------------------------------------
@@ -124,12 +170,44 @@ bool DBIssueCallSQL::OnProgress()
     return success;
 }
 
+
 void DBIssueCallSQL::MainProgress()
 {
-    TRACE0_L0("DBIssueCallSQL::MainProgress.RESULT...RESULT...RESULT...\n");
+    TRACE0_L0("DBIssueCallSP::MainProgress.RESULT...RESULT...RESULT...\n");
     if (m_linkIndex > 0)
     {
-        DBManager::InstancePtr()->SendResult(m_linkIndex, &m_resultAppMsg);
+        SAppMsgNode *dropped(NULL), *current(m_pResultHead);
+        while (current != NULL)
+        {
+            DBManager::InstancePtr()->SendResult(m_linkIndex, current->p_msg);
+            free(current->p_msg);
+            dropped = current;
+            current = current->next;
+            free(dropped);
+        }
+        m_pResultHead = NULL;
     }
 }
 
+void DBIssueCallSQL::OnQueryReturn(AppMsg * p_appMsg)
+{
+    CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
+    CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
+
+    pResultMsg->msgId = S_DOSQL_RESULT;
+    pResultMsg->m_spId = pQueryMsg->m_spId;
+    pResultMsg->msgCls = pQueryMsg->msgCls;
+    pResultMsg->m_nTempObjId = pQueryMsg->m_nTempObjId;
+    pResultMsg->m_bEnd = true;
+
+    if (m_pResultHead == NULL)
+    {
+        m_pResultHead = new SAppMsgNode(p_appMsg);
+    }
+    else
+    {
+        SAppMsgNode * tail = m_pResultHead->tail();
+        ((CCSResultMsg *)tail->p_msg)->m_bEnd = false;
+        tail->next = new SAppMsgNode(p_appMsg);
+    }
+}

@@ -23,6 +23,8 @@ public:
     virtual bool OnProgress() = 0;
     virtual void MainProgress();
 
+    virtual void OnQueryReturn(AppMsg *p_appMsg);
+
     void SetDBInterface(DBInterface *p_dbInterface);
 
     int GetQueryID();
@@ -31,12 +33,13 @@ public:
     std::string &GetErrorStr();
     void SetError(int p_errnum, std::string p_errstr);
     void ProcessError();
+
 protected:
     DBInterface *m_dbInterface;
     int m_queryID;              // 查询的序号id，有效的同序号须按顺序处理查询
 
     handle m_linkIndex;         // 发起查询的客户端网络索引，可通过此索引把查询结果集发回查询方
-    AppMsg m_resultAppMsg;      // 查询结果数据包
+    SAppMsgNode * m_pResultHead;    // 查询结果单向链表
 
     unsigned int m_errnum;
     std::string m_errstr;
@@ -50,6 +53,8 @@ public:
 
     virtual bool OnProgress();
     virtual void MainProgress();
+
+    virtual void OnQueryReturn(AppMsg *p_appMsg);
 
     const TListOutput & GetOutParams() { return m_outParams; }
 
@@ -67,6 +72,8 @@ public:
 
     virtual bool OnProgress();
     virtual void MainProgress();
+
+    virtual void OnQueryReturn(AppMsg *p_appMsg);
 
     AppMsg * m_pAppMsg;
 };

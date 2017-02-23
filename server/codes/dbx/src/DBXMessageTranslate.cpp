@@ -21,14 +21,14 @@ void lower_first_char(char * buffer)
             *buffer += 'a' - 'A';
 }
 
-bool build_sql_query_buffer(CCSResultMsg & message, char * pBuffer)
+bool build_sql_query_buffer(CCSResultMsg & message, const int & row, char * pBuffer/*out*/)
 {
     return true;
 }
 
 
-bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, char * pBuffer/*out*/,
-    int & nBufferLen/*in-out*/, TListOutput & outParams/*out*/)
+bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & row,
+    char * pBuffer/*out*/, int & nBufferLen/*in-out*/, TListOutput & outParams/*out*/)
 {
     char spName[MAX_PARAMNAME_LEN] = { 0 };
 
@@ -40,9 +40,9 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, char * pBuff
 
     //整理存储过程参数
     string attrName; PType attrType; const void * pAttrValue;
-    for (int i = 0; i < pMessage->getAttributeCount(); i++)
+    for (int i = 0; i < pMessage->getAttributeCols(); i++)
     {
-        pMessage->getAttribute(attrName, attrType, pAttrValue, i);
+        pMessage->getAttribute(attrName, attrType, pAttrValue, i, row);
 
         if (attrName == "spName")
         {

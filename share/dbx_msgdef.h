@@ -13,6 +13,12 @@ enum msg_id
     C_SP_FROM_CPP
 };
 
+enum action_res
+{
+    S_DOACTION_RESULT = 1001,
+    S_DOSQL_RESULT
+};
+
 enum DataType
 {
     PARAMINT = -1,
@@ -21,8 +27,30 @@ enum DataType
     DATATYPEEND = -4
 };
 
+// 最大参数名称长度
+#define MAX_PARAMNAME_LEN           32
+
 typedef int PType;
 typedef unsigned char BYTE;
+
+
+struct SAppMsgNode
+{
+    AppMsg * p_msg;
+    SAppMsgNode * next;
+
+    SAppMsgNode(AppMsg * p_msg) :
+        p_msg(p_msg), next(NULL)
+    {
+    }
+
+    SAppMsgNode * tail()
+    {
+        SAppMsgNode * current = this;
+        while (current->next != NULL) { current = current->next; };
+        return current;
+    }
+};
 
 
 class DbxMessage : public AppMsg
@@ -171,13 +199,35 @@ public:
         return false;
     }
 
-    bool getAttibuteByName(const char * name, PType & valueType/*out*/, const void *& pValue/*out*/)
+    bool getAttibuteByName(const char * name, const int & row, PType & valueType/*out*/, const void *& pValue/*out*/)
     {
-        for (int i = 0; i < attribute_count; i++)
-        {
+        char * currentName = (char *)malloc(MAX_PARAMNAME_LEN);
+        if (currentName == NULL)
+            return false;
 
+        void * currentValue = NULL;
+        bool found = false;
+
+        for (int i = 0; i < attribute_cols; i++)
+        {
+            memset(currentName, 0, MAX_PARAMNAME_LEN);
+            if (getAttribute(currentName, valueType, currentValue, i, row))
+            {
+                if (strcmp(currentName, name) == 0)
+                {
+                    pValue = currentValue;
+                    found = true;
+                    break;
+                }
+            }
+            else
+            {
+                break;
+            }
         }
-        return true;
+
+        free(currentName);
+        return found;
     }
 
     /*

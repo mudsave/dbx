@@ -13,6 +13,15 @@ RTX:6016.
 #include "DBInterface.h"
 #include "DBXMessageTranslate.h"
 
+/// 参数数据类型
+enum
+{
+    PARAM_DATATYPE_INT = 0,         /// 整型
+    PARAM_DATATYPE_CHAR,            /// 字符串类型
+    PARAM_DATATYPE_BIN,             /// 二进制类型
+    PARAM_DATATYPE_FLOAT,           /// 浮点类型
+    PARAM_DATATYPE_BOOL,            /// 布尔类型
+};
 
 class DBInterfaceMysql : public DBInterface
 {
@@ -40,6 +49,9 @@ private:
 
     //用来创建查询缓冲，放在这里可以避免多次创建和释放内存
     char m_szQueryBuffer[QUERYBUFFER_MAX_LEN];
+
+    //用来创建回调消息
+    DbxMessageBuilder<CSCResultMsg> m_SCMsgBuilder;
 
 protected:
     MYSQL *m_mysql;

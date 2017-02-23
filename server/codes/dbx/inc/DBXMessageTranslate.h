@@ -97,10 +97,10 @@ void upper_first_char(char * buffer);
 
 void lower_first_char(char * buffer);
 
-bool build_sql_query_buffer(CCSResultMsg & message, char * pBuffer);
+bool build_sql_query_buffer(CCSResultMsg & message, const int & row, char * pBuffer);
 
-bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, char * pBuffer/*out*/,
-    int & nBufferLen/*in-out*/, TListOutput & outParams/*out*/);
+bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & row,
+    char * pBuffer/*out*/, int & nBufferLen/*in-out*/, TListOutput & outParams/*out*/);
 
 bool translate_sql_result_mysql(const char * pData, CSCResultMsg & message);
 

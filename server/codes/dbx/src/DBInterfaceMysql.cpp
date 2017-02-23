@@ -17,6 +17,76 @@ RTX:6016.
 #include "DBIssue.h"
 
 
+int g_Translate1[20] =
+{
+    -1,
+    PARAM_DATATYPE_BOOL,
+    PARAM_DATATYPE_INT,
+    PARAM_DATATYPE_INT,
+    PARAM_DATATYPE_FLOAT,
+    PARAM_DATATYPE_FLOAT,
+    PARAM_DATATYPE_CHAR, -1, -1,
+    PARAM_DATATYPE_FLOAT, -1,//10
+    -1, -1, -1, -1, -1,
+    PARAM_DATATYPE_BIN,
+};
+
+int g_Translate2[20] =
+{
+    0, 4, 4, 4, 4, 4,
+    0, 0, 0, 4, 0,
+    0, 0, 0, 0, 0,
+    0,
+};
+
+class Translate
+{
+public:
+    static int getType(MYSQL_FIELD * info)
+    {
+        if (!info) return 0;
+        if (info->type<MYSQL_TYPE_NEWDECIMAL)
+        {
+            int type = g_Translate1[info->type];
+            if (type != -1) return g_Translate1[info->type];
+        }
+        switch (info->type)
+        {
+        case MYSQL_TYPE_STRING:
+        case MYSQL_TYPE_VAR_STRING:
+        case MYSQL_TYPE_VARCHAR:
+        case MYSQL_TYPE_TIMESTAMP:
+        case MYSQL_TYPE_TIME:
+        case MYSQL_TYPE_DATETIME:
+            return PARAM_DATATYPE_CHAR;
+        }
+        return 0;
+    }
+    static int getSize(MYSQL_FIELD * info)
+    {
+        if (!info) return 0;
+        if ((info->type<MYSQL_TYPE_NEWDECIMAL))
+        {
+            int type = g_Translate1[info->type];
+            int size = g_Translate2[info->type];
+            if ((type != -1) || (size>0)) return g_Translate2[info->type];
+        }
+        switch (info->type)
+        {
+        case MYSQL_TYPE_STRING:
+        case MYSQL_TYPE_VAR_STRING:
+        case MYSQL_TYPE_VARCHAR:
+        case MYSQL_TYPE_TIMESTAMP:
+        case MYSQL_TYPE_TIME:
+        case MYSQL_TYPE_DATETIME:
+            return info->length;
+        }
+        return 0;
+    }
+
+};
+
+
 DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID)
     :DBInterface(p_dbInterfaceID),
     m_mysql(NULL)
@@ -70,28 +140,70 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
         result = mysql_store_result(m_mysql);
         if (result)
         {
+            //准备好填充消息
+            m_SCMsgBuilder.beginMessage();
+
             unsigned int fieldNum = mysql_num_fields(result);
             MYSQL_FIELD *fields = mysql_fetch_fields(result);
             MYSQL_ROW row;
+
+            bool isFirstRow = true;
             while (row = mysql_fetch_row(result))
             {
                 unsigned long *lengths = mysql_fetch_lengths(result);
                 for (unsigned int i = 0; i < fieldNum; ++i)
                 {
-                    // 临时代码。todo: 创建数据包到DBIssue
-                    const char *value = (row[i] == NULL ? "NULL" : row[i]);
+                    const char * value = (row[i] == NULL ? "NULL" : row[i]);
+                    const char * name = isFirstRow ? fields[i].name : NULL;     // 第一行写上属性名
                     TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
-                    switch (fields[i].type)
+
+                    switch (Translate::getType(&fields[i]))
                     {
-                    case MYSQL_TYPE_TINY:
-                    case MYSQL_TYPE_LONG:
-                    case MYSQL_TYPE_STRING:
-                    case MYSQL_TYPE_VAR_STRING:
-                    default:
-                        break;
+                        case PARAM_DATATYPE_INT:
+                        {
+                            if (row[i] != NULL)
+                            {
+                                int nRowRestul = atoi(row[i]);
+                                m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMINT);
+                            }
+                            break;
+                        }
+                        case PARAM_DATATYPE_FLOAT:
+                        {
+                            if (row[i] != NULL)
+                            {
+                                float fRowRestul = (float)atof(row[i]);
+                                m_SCMsgBuilder.addAttribute(name, &fRowRestul, PARAMFLOAT);
+                            }
+                            break;
+                        }
+                        case PARAM_DATATYPE_BOOL:
+                        {
+                            if (row[i] != NULL)
+                            {
+                                bool nRowRestul = atoi(row[i]);
+                                m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMBOOL);
+                            }
+                            break;
+                        }
+                        default:
+                        {
+                            if (row[i] != NULL)
+                            {
+                                int nSize = strlen((char*)row[i]);
+                                m_SCMsgBuilder.addAttribute(name, row[i], nSize);
+                            }
+                            break;
+                        }
                     }
                 }
+
+                //属性名只写一次
+                if (isFirstRow)
+                    isFirstRow = false;
             }
+
+            p_issue->OnQueryReturn(m_SCMsgBuilder.finishMessage());
 
             mysql_free_result(result);
         }
@@ -144,7 +256,7 @@ bool DBInterfaceMysql::Connect()
         m_dbUserName, m_dbPassword,
         m_dbName,
         m_dbPort,
-        NULL, 
+        NULL,
         CLIENT_MULTI_STATEMENTS) == NULL)
     {
         TRACE1_ERROR("DBInterfaceMysql::Connect:error:%s.\n", mysql_error(m_mysql));
