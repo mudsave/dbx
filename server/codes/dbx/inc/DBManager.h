@@ -25,8 +25,10 @@ public:
     HRESULT Run();
     void Shutdown();
 
-    void CallSP(AppMsg *m_appMsg);
-    void CallSQL(AppMsg *m_appMsg);
+    void CallSP(handle p_linkIndex, AppMsg *p_appMsg);
+    void CallSQL(handle p_linkIndex, AppMsg *p_appMsg);
+
+    void SendResult(handle p_linkIndex, AppMsg *p_appMsg);
 
     virtual HRESULT Do(HANDLE hContext);
 protected:

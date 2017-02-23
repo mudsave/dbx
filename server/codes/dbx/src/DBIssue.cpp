@@ -11,11 +11,13 @@ RTX:6016.
 #include "vsdef.h"
 
 #include "DBInterfaceMysql.h"
+#include "DBManager.h"
 
 // -----------------------------------------------------------------------------------
-DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID)
+DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex)
     :m_dbInterface(NULL),
     m_queryID(p_queryID),
+    m_linkIndex(p_linkIndex),
     m_resultAppMsg(),
     m_errnum(0),
     m_errstr("")
@@ -67,8 +69,8 @@ void DBIssueBase::SetError(int p_errnum, std::string p_errstr)
 
 
 // -----------------------------------------------------------------------------------
-DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID)
-    :DBIssueBase(p_appMsg, p_queryID)
+DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex)
+    :DBIssueBase(p_appMsg, p_queryID, p_linkIndex)
 {
     m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
     memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
@@ -98,13 +100,17 @@ bool DBIssueCallSP::OnProgress()
 void DBIssueCallSP::MainProgress()
 {
     TRACE0_L0("DBIssueCallSP::MainProgress.RESULT...RESULT...RESULT...\n");
+    if (m_linkIndex > 0)
+    {
+        DBManager::InstancePtr()->SendResult(m_linkIndex, &m_resultAppMsg);
+    }
 }
 
 
 
 // -----------------------------------------------------------------------------------
-DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID)
-    :DBIssueBase(p_appMsg, p_queryID)
+DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex)
+    :DBIssueBase(p_appMsg, p_queryID, p_linkIndex)
 {
     m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
     memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
@@ -121,5 +127,9 @@ bool DBIssueCallSQL::OnProgress()
 void DBIssueCallSQL::MainProgress()
 {
     TRACE0_L0("DBIssueCallSQL::MainProgress.RESULT...RESULT...RESULT...\n");
+    if (m_linkIndex > 0)
+    {
+        DBManager::InstancePtr()->SendResult(m_linkIndex, &m_resultAppMsg);
+    }
 }
 
