@@ -315,7 +315,6 @@ function TaskDoer:updatePlayerLevelTasks(player)
 		if taskData.taskType2 == TaskType2.NewBie then
 			if taskData.level[1] <= player:getLevel() then	-- 指引任务不能重复接
 				if not player:getHandler(HandlerDef_Task):isHisTask(taskID) then
-					print("--接受指引任务----")
 					self:doRecetiveTask(player, taskID)	-- 升级自动接指引任务
 				end
 			end

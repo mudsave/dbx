@@ -106,7 +106,7 @@ function FightMonster:loadAttrs(playerLvl)
 			if level == -1 then
 				level = playerLvl
 			end
-
+			print("***************loadAttrs",dbID,level,monster.attrID)	
 			local hpCoeff = MonsterLvlAttrDB[level].maxHP
 			local maxHp = monAttr.maxHP * hpCoeff
 			self:setAttrValue(monster_add_max_hp, maxHp)

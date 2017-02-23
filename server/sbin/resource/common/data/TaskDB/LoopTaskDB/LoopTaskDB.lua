@@ -1143,33 +1143,6 @@ LoopTaskDB =
 		},
 	},
 
-	[10030] = 
-	{
-		name = "充实军库",
-		startDialogID = nil,
-		taskType2 = TaskType2.Daily,
-		level = {30, 150},
-		school = nil,
-		startNpcID = 29081,
-		loop = 10,
-		period = TaskPeriod.day,
-		targetLevelSection =
-		{
-			[1] = {30, 150},
-		},
-		targets = 
-		{
-			[1] =
-			{
-				[LoopTaskTargetType.collectMaterials] = 100,
-			},
-		},
-		normalRewards =
-		{},
-		formulaRewards =
-		{},
-	},
-
 	-- 压测测试专用
 	[1] = 
 	{

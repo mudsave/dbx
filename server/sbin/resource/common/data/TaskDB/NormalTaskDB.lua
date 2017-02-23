@@ -114,7 +114,7 @@ NormalTaskDB =
 			--	{type = "enterScriptFight", param = {scriptID = 203, mapID = 2}},	--进入脚本战斗
 			--	{type = "enterEctype",	param =	{ectypeID = 5,}},					--进入副本
 			--	{type = "autoTrace", param = {tarMapID	= 3, x = 28, y = 92,npcID = 20006,},}, --寻路到掌门
-			--	{type = "playAnimation", param	= {animationID = 2}},				--触发指定ID的脚本动画(参数待定)
+			--	{type = "playAnimation", param = {playID = 1002, sceneID = 1,},},				--触发指定ID的脚本动画(参数待定)
 			--	{type = "flyEffect", param = {flyEffectID = 1}},--飞剑动画
 			--	{type = "createCage", param = {position = {mapID = ,x = ,y =},}},	--创建笼子
 

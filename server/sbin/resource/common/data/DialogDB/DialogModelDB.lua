@@ -15475,10 +15475,9 @@ DialogModelDB =
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
-		{
-		},
+		{},
 		speakerID = 29001,
-		txt = "上好的武器，客官要不要来看看？",
+		txt = "听闻这一带盛产铁矿石，用来打造兵器肯定不错！<myName>，如果你能替我弄到一些，报酬我可不会少付给你！",
 		options =
 		{
 			[1] = {
@@ -15552,16 +15551,41 @@ DialogModelDB =
 				optionTxt = "看看有什么武器",
 				actions =
 				{
-					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 6},},
+				{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 6},},
 				},
 				icon = DialogIcon.Trade,
 			},
-			[8] ={
+			[8] = 
+			{
+				showConditions = 
+				{
+				{condition = DialogCondition.Level, param = {level = 30,},},
+				},
+				optionTxt = "上交铁矿石",
+				actions =
+				{
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
+				},
+                                icon = DialogIcon.Function,
+			},
+			[9] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.Level, param = {level = 30,},},
+				},
+				optionTxt = "了解玩法",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 50110}},
+				},
+				icon = DialogIcon.Help,
+			},
+			[10] ={
 				showConditions = {},
 				optionTxt = "只是路过",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param = {},},
+				{action = DialogActionType.CloseDialog, param = {},},
 				},
 			},
 		},
@@ -16411,6 +16435,26 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+		},
+	},
+	[20033] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{},
+		speakerID = 29081,
+		txt = "现在黄巾教兴风作浪，皇子们又为太子之位明争暗斗，真是内忧外患啊！",
+		options = 
+		{
+			[1] = 
+				{
+					showConditions = {},
+					optionTxt = "将军英明",
+					actions =
+					{
+					{action = DialogActionType.CloseDialog ,param = {}},
+					},
+				}, 
 		},
 	},
 	--------------------------------桃园镇对话ID规划：20151~20250------
@@ -17441,7 +17485,7 @@ DialogModelDB =
 		txt = "我是长安车夫",
 		options =
 		{
-		        [1] =
+			[1] =
 			{
 				showConditions = {},
 				optionTxt = "洛阳",
@@ -18285,7 +18329,7 @@ DialogModelDB =
 	},
 	[20452] =    -----------元始天尊
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
@@ -18293,12 +18337,18 @@ DialogModelDB =
 		txt = "道者，累劫良因之无极圣众，于是现运神通，摄众圣道，藏于万气祖根里，纳于粟米之中，于无极而收，六电之气翼其真，祖气护养润其神，积七千余劫，太极经咸应度，无极圣众始布太极。",
 		options =
 		{
+			[1] =
 			{
-				showConditions = {},
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 1003, statue = true}},
+				},
+				optionTxt = "主线任务",
 				actions =
 				{
+				{action = DialogActionType.Goto, param = {dialogID = 105}},
 				},
-			}
+			},
 		},
 	},
 	[20453] =    -----------白鹤童子
@@ -20114,7 +20164,6 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-
 			[4] = {
 				showConditions = 
 				{
@@ -25220,78 +25269,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[30017] =
-	{
-		dialogType = DialogType.HasOption,
-		conditions = 
-		{
-			{condition = DialogCondition.Level, param = {level = 30}},
-			{condition = DialogCondition.HasTask_1, param = {taskIDs = {10030}}},
-			--{condition =  DialogCondition.CheckLoopTasks, param = {taskIDs = {10030,10031}, errorID = 31}},
-		},
-		speakerID = 20004,
-		txt = "哈哈哈",
-		options = 
-		{
-			[1] = 
-				{
-					showConditions = {},
-					optionTxt = "上交5个白虎卷或者10个朱雀卷",
-					actions =
-					{
-						{action = DialogActionType.RecetiveTask, param = {taskID = 10030}},
-						{action = DialogActionType.Goto, param = {dialogID=30018}},
-					},
-				}, 
-		},
-	},
 
-	[30018] = 
-	{
-		dialogType = DialogType.NotOption,
-		conditions = 
-		{
-			{condition = DialogCondition.HasTask, param = {taskID = 10001}},
-			--{condition =  DialogCondition.CheckLoopTask, param = {taskID = 10030, errorID = 31}},
-		},
-		speakerID = 20913,
-		
-		txt = "xxxxxxxxxxxxxxx",
-		options = 
-		{
-			[1] = {
-				showConditions = {},
-				optionTxt = "上交5个白虎卷",
-				actions =
-				{
-					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10001, itemsInfo ={{itemID = 1051021,count = 5},{itemID = 1051022,count = 10}}}},
-				},
-			},
-		}
-	},
-
-	[30019] = 
-	{
-		dialogType = DialogType.NotOption,
-		conditions = 
-		{
-			
-		},
-		speakerID = 20913,
-		
-		txt = "物品个数不满足，不能完成任务",
-		options = 
-		{
-			[1] = {
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.CloseDialog ,param = {}},
-				},
-			},
-		}
-	},
 [30050] =
 	{
 		dialogType = DialogType.NotOption,
@@ -27361,74 +27339,53 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
-		speakerID = 29081,
+		speakerID = 29001,
 		soundID =nil,
-		txt = "如今黄巾贼兴风作浪，%s皇子们又为太子之位明争暗斗，真是内忧外患啊！",
-		options =
-		{
-			
-			[1] = 
-			{
-				showConditions = 
-				{
-					{condition = DialogCondition.Level, param = {level = 30,},},
-				},
-				optionTxt = "上交头盔",
-				actions =
-				{
-					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051021,count = 5},{itemID = 1051022,count = 10}},commitID = 101}},
-				},
-			},
-		},
-	},
-	[50111] =
-	{
-		dialogType = DialogType.HasOption,
-		conditions =
-		{
-                {condition = DialogCondition.CheckLoopTask, param = {taskID = 10030, errorID = 38}},
-		},
-		speakerID = 29081,
-		soundID =nil,
-		txt = "<myName>，你来得正好。如今朝廷军备不足，急需一批装备。如果你能替我集齐10件头盔或20件头盔碎片，作为报酬我会给你奖励！记住，这种头盔只能在与你等级相差5级以内的战斗中获得，你每天能够在我这里上交10次！知道了就快去吧！",
+		txt = "我需要的是5个千年寒铁或20个黑铁矿石，这种铁矿石有几率在等级差5级以内的战斗中掉落。如果你集齐了就可以带过来给我。我一天能够收你10次！",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = 
 				{},
-				optionTxt = "上交盔甲",
+				optionTxt = "上交铁矿石",
 				actions =
 				{
-				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10030, itemsInfo ={{itemID = 1051021,count = 5},{itemID = 1051022,count = 10}}}},
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
 				},
-			},
-			[2] = 
-			{
-				showConditions = {},
-				optionTxt = "我这就去收集",
-				actions =
-				{
-				{action = DialogActionType.CloseDialog , param = {},},
-				},
+				icon = DialogIcon.Function,
 			},
 		},
 	},
+
 	[50112] = 
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29081,
-		txt = "我需要的是10件头盔或者20件头盔碎片，你提交给我的道具不符合啊！",
+		speakerID = 29001,
+		txt = "这些是给你的报酬，请收好！",
 		options = 
 		{
-			[1] = {
-				showConditions = {},
-				optionTxt = "",
+			[1] = 
+			{
+				showConditions = 
+				{},
+				optionTxt = "继续上交铁矿石",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog ,param = {}},
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
+				},
+				icon = DialogIcon.Function,
+			},
+			[2] = 
+			{
+				showConditions = 
+				{},
+				optionTxt = "下次再来",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
 		}
@@ -27437,37 +27394,6 @@ DialogModelDB =
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-
-	[100001] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		
-		},
-		speakerID = 20002,
-		soundID = nil,
-		txt = "我阐教在人传承有六大仙门，本座已令其中一派<npcID>你入门，教你降妖伏魔本领！你且去<mapID,x,y>助你下凡！",
-		options =
-		{
-			
-		},
-	},
-	[100002] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		
-		},
-		speakerID = 20002,
-		soundID = nil,
-		txt = "我阐教在人传承有六大仙门，本座已令其中一派<npcID>你入门，教你降妖伏魔本领！你且去<mapID,x,y>助你下凡！",
-		options =
-		{
-			
-		},
-	},
 
 	--接受帮会任务
 	[10000001] = 

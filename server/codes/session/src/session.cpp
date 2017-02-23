@@ -480,6 +480,7 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 
 void CSession::OnClientClosed(HANDLE hLinkContext, HRESULT reason)
 {
+	TRACE1_L0("CSession::OnClientClosed(), reason:%d\n", reason);
 	LinkContext_Client* pContext = (LinkContext_Client*)hLinkContext;
 	int linkType = pContext->linkType;		unused(linkType);
 	handle hLink = pContext->hLink;			unused(hLink);
@@ -495,6 +496,9 @@ void CSession::OnClientClosed(HANDLE hLinkContext, HRESULT reason)
 		if ( pClient->state == LINK_CONTEXT_LOGINED || pClient->state == LINK_CONTEXT_ROLE_CREATEING
 			|| pClient->state == LINK_CONTEXT_ROLE_DELETEING )
 		{
+			int tmp_state = g_accountMgr.getAccountPtr(pClient->accountId)->status;
+			TRACE3_L0("CSession::OnClientClosed() link state:%d account id:%d account state:%d\n",
+				pClient->state, pClient->accountId, tmp_state);
 			g_accountMgr.unregAccount(pClient->accountId);
 		}
 		m_clients.erase(iter);
