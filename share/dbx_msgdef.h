@@ -16,7 +16,8 @@ enum msg_id
 enum action_res
 {
     S_DOACTION_RESULT = 1001,
-    S_DOSQL_RESULT
+    S_DOSQL_RESULT,
+    S_SP_CPP_RESULT
 };
 
 enum DataType
