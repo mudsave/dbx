@@ -74,13 +74,16 @@ void DBManager::CallSP(handle p_linkIndex, AppMsg *p_appMsg)
     }
 
     //获取queryIndex
-	PType type; const void * pValue; int queryIndex = -1;
-	if (((CCSResultMsg *)p_appMsg)->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
-	{
-		queryIndex = *(int *)pValue;
-	}
+    PType type; const void * pValue; int queryIndex = -1;
+    CCSResultMsg * pQueryMsg = (CCSResultMsg *)p_appMsg;
+    DbxMessageBuilder<CCSResultMsg>::locateContent(pQueryMsg);
 
-	dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, queryIndex, p_linkIndex));
+    if (pQueryMsg->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
+    {
+        queryIndex = *(int *)pValue;
+    }
+
+    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, queryIndex, p_linkIndex));
 }
 
 void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
@@ -94,14 +97,17 @@ void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
         return;
     }
 
-	//获取queryIndex
-	PType type; const void * pValue; int queryIndex = -1;
-	if (((CCSResultMsg *)p_appMsg)->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
-	{
-		queryIndex = *(int *)pValue;
-	}
+    //获取queryIndex
+    PType type; const void * pValue; int queryIndex = -1;
+    CCSResultMsg * pQueryMsg = (CCSResultMsg *)p_appMsg;
+    DbxMessageBuilder<CCSResultMsg>::locateContent(pQueryMsg);
 
-	dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, queryIndex, p_linkIndex));
+    if (pQueryMsg->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
+    {
+        queryIndex = *(int *)pValue;
+    }
+
+    dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, queryIndex, p_linkIndex));
 }
 
 void DBManager::SendResult(handle p_linkIndex, AppMsg *p_appMsg)
