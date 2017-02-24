@@ -271,7 +271,11 @@ function Player:getOldActionState()
 end
 
 function Player:setOldActionState(s)
-	self._oldActionState = s
+	if s == PlayerStates.P2PTrade or s == PlayerStates.P2PTradeAndTeam then 
+		self._oldActionState = PlayerStates.Normal
+	else 
+		self._oldActionState = s
+	end 
 end
 
 function Player:incHp(value)

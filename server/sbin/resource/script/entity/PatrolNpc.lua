@@ -26,6 +26,11 @@ function PatrolNpc:__release()
 	self.isMove = nil
 	self.startTime = nil
 	self.bindPetID = nil
+	for htype,handler in pairs(self._handlers or {}) do
+		release(handler)
+		self._handlers[htype] = nil
+	end
+	self._handlers = nil
 end
 
 function PatrolNpc:setCatchPet(catchPet)

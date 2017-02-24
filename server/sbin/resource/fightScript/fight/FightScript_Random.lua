@@ -18,7 +18,9 @@ function FightScript_Random:__init(scriptID)
 	
 end
 
-
+function FightScript_Random:setPhaseID(phaseID)
+	self._curPhase = phaseID
+end
 function FightScript_Random:_getRandomPhase()
 	local phaseInfo = self._scriptPrototype.phases
 	local count = table.size(self._unpassedPhase)
@@ -75,7 +77,7 @@ function FightScript_Random:onPlayOver(params)
 				self:gotoState(FightState.FightEnd)
 			end
 			
-			print("*************FightState.FightPhaseEnd")
+			print("*************FightState.FightPhaseEnd",self._curPhase)
 		else
 			self:gotoState(FightState.RoundStart)
 		end

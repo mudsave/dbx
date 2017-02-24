@@ -1874,24 +1874,7 @@ LoopTaskTargetsDB =
 			},
 		},
 	},
-
-	[10030] = 
-	{
-		[LoopTaskTargetType.collectMaterials] =
-		{
-			triggers = 
-			{
-				[TaskStatus.Active] = 
-				{
-					{type = "collectTrace",param = {}},
-				},
-				[TaskStatus.Done] = 
-				{
-					--{type = "finishLoopTask", param = {}}
-				},
-			}
-		},
-	},
+-----------压测任务----------------------
 	[1] =
 	{
 		--挑战明雷

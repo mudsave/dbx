@@ -67,7 +67,7 @@ FrameEvents_SS_leaveScene				= Event_Group_Frame + 6
 
 FrameEvents_SC_Ping						= Event_Group_Frame + 7
 FrameEvents_CS_Ping						= Event_Group_Frame + 8
-
+FrameEvents_CS_addMoney					= Event_Group_Frame + 9
 --定义Event_Group_Confg事件
 
 ConfigEvents_CS_SaveConfig				= Event_Group_Confg + 1
@@ -186,7 +186,7 @@ FightEvents_SS_FightEnd					= Event_Group_Fight + 17
 FightEvents_FS_QuitFight				= Event_Group_Fight + 18
 FightEvents_FC_EnterFightState			= Event_Group_Fight + 19
 FightEvents_FC_SwitchFightScene			= Event_Group_Fight + 20
-FightEvents_SF_ExitFight				= Event_Group_Fight + 21 --閫€鍑烘垬鏂桮M鎸囦��?
+FightEvents_SF_ExitFight				= Event_Group_Fight + 21 --退出战斗GM指令
 FightEvents_SF_QueryAttr				= Event_Group_Fight + 22
 FightEvents_SF_SetAttr                  = Event_Group_Fight + 23
 FightEvents_FC_SetAttr                  = Event_Group_Fight + 24
@@ -397,23 +397,24 @@ TradeEvents_CS_P2PTradePet				= Event_Group_Trade + 30
 TradeEvents_SC_P2PChangePetReturn		= Event_Group_Trade + 31
 
 TradeEvents_CS_BuyPet					= Event_Group_Trade + 32 --宠物商店购买宠物
+TradeEvents_CS_P2PMessageChoose = Event_Group_Trade +33 ----处理P2P发过来的消息
 
 --邮件消息
-MailEvent_SC_MailsDelieved				= Event_Group_Mail + 1	--鏈嶅姟鍣ㄧ粰瀹㈡埛绔帹閫侀偖锟斤拷?
-MailEvent_SC_MailsRemoved				= Event_Group_Mail + 2	--鏈嶅姟鍣ㄥ彂閫佺粰瀹㈡埛绔殑浜嬩欢锛屽凡缁忓垹闄や簡鐨勯偖锟斤拷?
-MailEvent_SC_MailItemPicked				= Event_Group_Mail + 3	--鐗╁搧宸茬粡棰嗗彇浜嗙殑閭��? [2016锟斤��??3锟斤��??30锟斤��?? 鏇存敼浜嗗悕瀛梋
+MailEvent_SC_MailsDelieved				= Event_Group_Mail + 1	--服务器给客户端推送邮件
+MailEvent_SC_MailsRemoved				= Event_Group_Mail + 2	--服务器发送给客户端的事件，已经删除了的邮件
+MailEvent_SC_MailItemPicked				= Event_Group_Mail + 3	--物品已经领取了的邮件 [2016年3月30日 更改了名字]
 
-MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--瀹㈡埛绔姹傝鏌愪竴涓偖浠讹紝鍦ㄦ湇鍔″櫒灏嗚繖涓偖浠惰涓哄凡锟斤��??
-MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--瀹㈡埛绔姹傚垹闄や竴鎵归偖锟斤拷?
-MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--瀹㈡埛绔姹傞鍙栭偖浠剁墿锟斤拷?
-MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--瀹㈡埛绔姹傝鏌愪竴涓偖浠讹紝鍦ㄦ湇鍔″櫒灏嗚繖涓偖浠惰涓哄凡锟斤��??
-MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--瀹㈡埛绔姹傚垹闄や竴鎵归偖锟斤拷?
-MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--瀹㈡埛绔姹傞鍙栭偖浠剁墿锟斤拷?
-MailEvent_CS_RequireMoreMails			= Event_Group_Mail + 7	--瀹㈡埛绔姹傝幏寰楁洿澶氱殑閭欢
+MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--客户端请求读某一个邮件，在服务器将这个邮件设为已读
+MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--客户端请求删除一批邮件
+MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--客户端请求领取邮件物品
+MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--客户端请求读某一个邮件，在服务器将这个邮件设为已读
+MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--客户端请求删除一批邮件
+MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--客户端请求领取邮件物品
+MailEvent_CS_RequireMoreMails			= Event_Group_Mail + 7	--客户端请求获得更多的邮件
 
-MailEvent_SS_NewMail					= Event_Group_Mail + 8	--鏈嶅姟鍣ㄥ彂閫佹柊閭欢缁欑帺锟斤拷?
+MailEvent_SS_NewMail					= Event_Group_Mail + 8	--服务器发送新邮件给玩家
 
-QuitEvent_C_SystemQuit					= Event_Group_Quit + 1	--绯荤粺閫€鍑虹洃鍚秷锟斤拷?
+QuitEvent_C_SystemQuit					= Event_Group_Quit + 1	--系统退出监听消息
 
 
 CactionEvent_SC_OpenUI					= Event_Group_Caction + 1
@@ -515,6 +516,11 @@ FactionEvent_CB_FireFactionMember				= Event_Group_SocialServer_Faction + 25
 FactionEvent_BB_ContributeFaction				= Event_Group_SocialServer_Faction + 26
 FactionEvent_BC_ContributeFaction				= Event_Group_SocialServer_Faction + 27
 FactionEvent_CB_ContributeFaction				= Event_Group_SocialServer_Faction + 28
+--帮派技能相关
+FactionEvent_BC_UpdateExtendSkill				= Event_Group_SocialServer_Faction + 29
+--研发帮派技能
+FactionEvent_CB_ExtendFactionSkill				= Event_Group_SocialServer_Faction + 30
+
 -- 指引加入帮派
 
 BroadCastSystem_CS_DigTreasure					= Event_Group_SocialServer_BroadCast + 1
@@ -549,40 +555,40 @@ NewRewardsEvent_CS_StartTimer			= Event_Group_NewRewards + 4
 PetEvent_SC_TestAddFollow				= Event_Group_Pet + 1
 PetEvent_CS_SetFightPet					= Event_Group_Pet + 2
 PetEvent_CS_ShowPet						= Event_Group_Pet + 3
-PetEvent_SC_PetJoined					= Event_Group_Pet + 4	--瀹犵墿鍔犲叆
-PetEvent_CS_RequireFullBatch			= Event_Group_Pet + 5	--瀹㈡埛绔姹傚畬鏁寸殑Prop鎵规洿锟斤拷?
-PetEvent_SC_FullBatchPushed				= Event_Group_Pet + 6	--鏈嶅姟鍣ㄥ弽棣堝畬鏁寸殑Prop鎵瑰凡缁忓彂锟斤��??
-PetEvent_CS_SetStatus					= Event_Group_Pet + 7	--瀹㈡埛绔姹傛敼鍙樺疇鐗╃殑鐘讹拷锟�?
-PetEvent_SC_StatusChanged				= Event_Group_Pet + 8	--鏈嶅姟鍙嶉瀹犵墿鐘舵€佸凡缁忚鏀瑰彉
-PetEvent_CS_SetAttrDistribution			= Event_Group_Pet + 9	--瀹㈡埛绔姹傝缃疇鐗╁睘鎬х��?
-PetEvent_SC_AttrConfirmed				= Event_Group_Pet + 10	--鏈嶅姟鍣ㄥ弽棣堝疇鐗╁睘鎬у垎閰嶅凡缁忚纭��?
-PetEvent_CS_SetName						= Event_Group_Pet + 11	--瀹㈡埛绔姹傝缃疇鐗╁悕锟斤拷?
-PetEvent_SC_NameConfirmed				= Event_Group_Pet + 12	--鏈嶅姟鍣ㄥ弽棣堝疇鐗╁悕绉板凡缁忚纭��?
-PetEvent_CS_DeletePet					= Event_Group_Pet + 13	--瀹㈡埛绔姹傞仯鏁ｅ疇锟斤��??
-PetEvent_SC_PetLeaved					= Event_Group_Pet + 14	--鏈嶅姟鍣ㄥ弽棣堝疇鐗╁凡缁忛仯锟斤拷?
-PetEvent_CS_PromotePet                  = Event_Group_Pet + 15  --瀹犵墿杩涢樁
-PetEvent_SC_PetPromoted		            = Event_Group_Pet + 16	--瀹犵墿杩涢樁鍙嶉��?
-PetEvent_CS_RepairPet					= Event_Group_Pet + 17	--瀹犵墿淇
-PetEvent_SC_ConfirmPetRepair			= Event_Group_Pet + 18	--瀹犵墿淇鍙嶉��?
-PetEvent_CS_EnchancePet					= Event_Group_Pet + 19  --瀹犵墿寮哄寲
-PetEvent_SC_PetEnchanced		        = Event_Group_Pet + 20  --瀹犵墿寮哄寲杩斿��?
-PetEvent_CS_RebirthPet					= Event_Group_Pet + 21  --瀹犵墿杩樼
-PetEvent_SC_PetRebirthed				= Event_Group_Pet + 22  --瀹犵墿杩樼杩斿��?
-PetEvent_CS_SetPhaseDistribution		= Event_Group_Pet + 23	--瀹㈡埛绔姹傝缃疇鐗╃浉鎬х��?
-PetEvent_SC_PhaseConfirmed				= Event_Group_Pet + 24	--鐩告€х偣宸茬粡纭
-PetEvent_SC_PetDeadPunish				= Event_Group_Pet + 25	--瀹犵墿姝讳骸鎯╃��? 鏈牳锟斤拷?
-PetEvent_CS_CombinePets					= Event_Group_Pet + 26	--瀹㈡埛绔姹傚悎鎴愬疇锟斤��??
-PetEvent_SC_PetsCombined				= Event_Group_Pet + 27	--鏈嶅姟鍣ㄥ弽棣堝疇鐗╁凡缁忓悎锟斤拷?
+PetEvent_SC_PetJoined					= Event_Group_Pet + 4	--宠物加入
+PetEvent_CS_RequireFullBatch			= Event_Group_Pet + 5	--客户端请求完整的Prop批更新
+PetEvent_SC_FullBatchPushed				= Event_Group_Pet + 6	--服务器反馈完整的Prop批已经发送
+PetEvent_CS_SetStatus					= Event_Group_Pet + 7	--客户端请求改变宠物的状态
+PetEvent_SC_StatusChanged				= Event_Group_Pet + 8	--服务反馈宠物状态已经被改变
+PetEvent_CS_SetAttrDistribution			= Event_Group_Pet + 9	--客户端请求设置宠物属性点
+PetEvent_SC_AttrConfirmed				= Event_Group_Pet + 10	--服务器反馈宠物属性分配已经被确认
+PetEvent_CS_SetName						= Event_Group_Pet + 11	--客户端请求设置宠物名称
+PetEvent_SC_NameConfirmed				= Event_Group_Pet + 12	--服务器反馈宠物名称已经被确认
+PetEvent_CS_DeletePet					= Event_Group_Pet + 13	--客户端请求遣散宠物
+PetEvent_SC_PetLeaved					= Event_Group_Pet + 14	--服务器反馈宠物已经遣散
+PetEvent_CS_PromotePet                  = Event_Group_Pet + 15  --宠物进阶
+PetEvent_SC_PetPromoted		            = Event_Group_Pet + 16	--宠物进阶反馈
+PetEvent_CS_RepairPet					= Event_Group_Pet + 17	--宠物修复
+PetEvent_SC_ConfirmPetRepair			= Event_Group_Pet + 18	--宠物修复反馈
+PetEvent_CS_EnchancePet					= Event_Group_Pet + 19  --宠物强化
+PetEvent_SC_PetEnchanced		        = Event_Group_Pet + 20  --宠物强化返回
+PetEvent_CS_RebirthPet					= Event_Group_Pet + 21  --宠物还童
+PetEvent_SC_PetRebirthed				= Event_Group_Pet + 22  --宠物还童返回
+PetEvent_CS_SetPhaseDistribution		= Event_Group_Pet + 23	--客户端请求设置宠物相性点
+PetEvent_SC_PhaseConfirmed				= Event_Group_Pet + 24	--相性点已经确认
+PetEvent_SC_PetDeadPunish				= Event_Group_Pet + 25	--宠物死亡惩罚
+PetEvent_CS_CombinePets					= Event_Group_Pet + 26	--客户端请求合成宠物
+PetEvent_SC_PetsCombined				= Event_Group_Pet + 27	--服务器反馈宠物已经合成
 
-PetEvent_SC_SkillsArrived				= Event_Group_Pet + 28	--瀹犵墿鎶€鑳藉埌锟斤��??
-PetEvent_SC_SkillForgotten				= Event_Group_Pet + 29	--閬楀繕浜嗙殑瀹犵墿鎶€锟斤拷?
-PetEvent_SC_SkillBookRead				= Event_Group_Pet + 30	--鎶€鑳戒功浣跨敤缁撴��?
-PetEvent_CS_ReadSkillBook				= Event_Group_Pet + 31	--瀹犵墿浣跨敤鎶€鑳戒��?
+PetEvent_SC_SkillsArrived				= Event_Group_Pet + 28	--宠物技能到达
+PetEvent_SC_SkillForgotten				= Event_Group_Pet + 29	--遗忘了的宠物技能
+PetEvent_SC_SkillBookRead				= Event_Group_Pet + 30	--技能书使用结果
+PetEvent_CS_ReadSkillBook				= Event_Group_Pet + 31	--宠物使用技能书
 
-PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 32	--璇锋眰鎷撳睍瀹犵墿锟斤拷?
-PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 33	--瀹犵墿鏍忔暟閲忓埌锟斤拷?
+PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 32	--请求拓展宠物栏
+PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 33	--宠物栏数量到达
 
-PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 34	--浜ゆ槗瀹犵墿淇℃伅宸茬粡鍒拌揪
+PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 34	--交易宠物信息已经到达
 --[[
 	¤╭⌒╮ ╭⌒╮	{ Keep Distance }	
 	╱◥██◣ ╭╭ ⌒╮
@@ -596,18 +602,18 @@ Experience_SC_SendLevel					= Event_Group_Experience + 1
 Experience_CS_Learn						= Event_Group_Experience + 2
 Experience_SC_Learn						= Event_Group_Experience + 3
 
---坐骑系统
-RideEvent_SC_LoadRide					= Event_Group_Ride + 1 --鐜╁涓婄嚎锛屽姞杞藉潗锟斤��??
-RideEvent_SC_AddRide					= Event_Group_Ride + 2
-RideEvent_CS_UpOrDownRide				= Event_Group_Ride + 3	--涓婂潗锟斤拷?
-RideEvent_CS_GrowUp						= Event_Group_Ride + 4	--楠戝疇杩涢樁
-RideEvent_SC_GrowUp						= Event_Group_Ride + 5
-RideEvent_CS_RideToItem					= Event_Group_Ride + 6	--鍧愰獞鍥炵
-RideEvent_SC_RideToItem					= Event_Group_Ride + 7
-RideEvent_CS_ExpandRideBar				= Event_Group_Ride + 8	--鎵╁厖鍧愰獞锟斤��??
-RideEvent_SC_ExpandRideBar				= Event_Group_Ride + 9
-RideEvent_SC_AddRideVigor				= Event_Group_Ride + 10 --澧炲姞鍧愰獞浣撳姏锟斤拷?
 
+--坐骑系统
+RideEvent_SC_LoadRide					= Event_Group_Ride + 1 --玩家上线，加载坐骑
+RideEvent_SC_AddRide					= Event_Group_Ride + 2
+RideEvent_CS_UpOrDownRide				= Event_Group_Ride + 3	--上坐骑
+RideEvent_CS_GrowUp						= Event_Group_Ride + 4	--骑宠进阶
+RideEvent_SC_GrowUp						= Event_Group_Ride + 5
+RideEvent_CS_RideToItem					= Event_Group_Ride + 6	--坐骑回笼
+RideEvent_SC_RideToItem					= Event_Group_Ride + 7
+RideEvent_CS_ExpandRideBar				= Event_Group_Ride + 8	--扩充坐骑栏
+RideEvent_SC_ExpandRideBar				= Event_Group_Ride + 9
+RideEvent_SC_AddRideVigor				= Event_Group_Ride + 10 --增加坐骑体力值
 
 --在线奖励系统事件集合
 OnlineRewardEvent_CS_RequestRandom      = Event_Group_OnlineReward + 1
@@ -641,10 +647,12 @@ EquipPlayingEvent_CS_AdornMake_Request           = Event_Group_EquipPlaying + 11
 EquipPlayingEvent_SC_AdornMake_Result            = Event_Group_EquipPlaying + 12
 EquipPlayingEvent_CS_AdornSynthetict_Request     = Event_Group_EquipPlaying + 13
 EquipPlayingEvent_SC_AdornSynthetict_Result      = Event_Group_EquipPlaying + 14
-EquipPlayingEvent_CS_ViewEquips_Request			 = Event_Group_EquipPlaying + 15 --鏌ョ湅鐜╁瑁呭淇℃伅
-EquipPlayingEvent_SC_ViewEquips_Request			 = Event_Group_EquipPlaying + 16 --鏌ョ湅鐜╁瑁呭淇℃伅
-EquipPlayingEvent_CS_EquipAnalyse_Request		 = Event_Group_EquipPlaying + 17 --鎷嗚В鐜╁瑁呭
-EquipPlayingEvent_SC_EquipAnalyse_Result		 = Event_Group_EquipPlaying + 18 --鎷嗚В鐜╁瑁呭
+EquipPlayingEvent_CS_ViewEquips_Request			 = Event_Group_EquipPlaying + 15 --查看玩家装备信息
+EquipPlayingEvent_SC_ViewEquips_Request			 = Event_Group_EquipPlaying + 16 --查看玩家装备信息
+EquipPlayingEvent_CS_EquipAnalyse_Request		 = Event_Group_EquipPlaying + 17 --拆解玩家装备
+EquipPlayingEvent_SC_EquipAnalyse_Result		 = Event_Group_EquipPlaying + 18 --拆解玩家装备
+
+
 
 
 --剧情动画
@@ -670,12 +678,11 @@ GoodsEvents_SS_ItemRemoved 						= Event_Group_Collecting + 10
 NewcomerGifsEvent_CS_doRequestItemData		= event_Group_NewcomerGifts + 1
 NewcomerGifsEvent_SC_doGetGiftsData			= event_Group_NewcomerGifts + 2
 
-
 --自动加点事件
-AutoPointEvent_SC_DistributionComfirmed			= Event_Group_AutoPoint + 1	--鍔犵偣鏂规宸茬粡纭
-AutoPointEvent_SC_OrderComfirmed				= Event_Group_AutoPoint + 2	--鐩告€у垎閰嶉『搴忓凡缁忕‘锟斤拷?
-AutoPointEvent_CS_ModifyDistribution			= Event_Group_AutoPoint + 3	--璇锋眰鏇存敼鍔犵偣鏂规
-AutoPointEvent_CS_ModifyOrder					= Event_Group_AutoPoint + 4	--璇锋眰鏇存敼鐩告€у垎閰嶉『锟斤拷?
+AutoPointEvent_SC_DistributionComfirmed			= Event_Group_AutoPoint + 1	--加点方案已经确认
+AutoPointEvent_SC_OrderComfirmed				= Event_Group_AutoPoint + 2	--相性分配顺序已经确认
+AutoPointEvent_CS_ModifyDistribution			= Event_Group_AutoPoint + 3	--请求更改加点方案
+AutoPointEvent_CS_ModifyOrder					= Event_Group_AutoPoint + 4	--请求更改相性分配顺序
 
 --生活技能系统
 LifeSkillEvent_CS_product                       = Event_Group_LifeSkill + 1

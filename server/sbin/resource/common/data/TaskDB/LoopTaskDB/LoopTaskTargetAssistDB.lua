@@ -6329,24 +6329,7 @@ LoopTaskTargetAssistDB =
 			},
 		},
 	},
-
-	[10030] =
-	{
-		[1] =
-		{
-			[1] = 
-			{
-				[LoopTaskTargetType.collectMaterials] = 
-				{
-					collectTrace = 
-					{
-						[1] = {itemsInfo = {{itemID = 1051005, itemNum = 10},{itemID = 1051006,itemNum = 20}},npcID = 29081, mapID = 10, x = 49, y = 229},
-					},
-				},
-			},
-		},
-		
-	},
+-------压测任务-------------------------
 	[1] =
 	{
 		-- 1 - 151 级

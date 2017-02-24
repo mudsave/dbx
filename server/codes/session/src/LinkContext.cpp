@@ -268,7 +268,14 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 			int s = account.status;
 			if ( s == ACCOUNT_STATE_LOGINED )
 			{
-				LinkContext_Client* pOther = g_session.getClientLink(account.hLink); ASSERT_(pOther);
+				LinkContext_Client* pOther = g_session.getClientLink(account.hLink);
+				if (0 == pOther)
+				{
+					TRACE1_L0("Account %d can not find LinkContext!\n", pRet->accountId);
+					ASSERT_( g_accountMgr.unregAccount(pRet->accountId) );	
+					doLoginAccount(pRet);
+					return;
+				}
 				if ( pOther->state == LINK_CONTEXT_ROLE_CREATEING || pOther->state == LINK_CONTEXT_ROLE_DELETEING )
 				{
 					onLoginError(LOGIN_FAILED_PROCESSING, pRet);

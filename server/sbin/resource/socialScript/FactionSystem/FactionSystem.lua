@@ -228,11 +228,8 @@ function FactionSystem:onAdmitPlayerJoin( event )
 				g_eventMgr:fireWorldsEvent(
 					Event.getEvent(
 						TaskEvent_BS_GuideJoinFaction,true,playerDBID	-- palyerDBID为申请入帮的玩家
-					),0
+					),CurWorldID
 				)
-				
-
-
             end
         end
     else
@@ -541,6 +538,12 @@ function FactionSystem:onCreateFaction( event )
         local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
         g_eventMgr:fireRemoteEvent(event_Notify,player)
     else
+		-- 创建帮派成功（用于指引加入帮派的行为）
+		g_eventMgr:fireWorldsEvent(
+			Event.getEvent(
+				TaskEvent_BS_GuideJoinFaction,true,factionOwnerDBID	
+			),CurWorldID
+		)
         LuaDBAccess.CreateFaction(factionName,factionOwnerName)
         LuaDBAccess.getFactionInfo(0,factionName,FactionSystem.onLoadFactionInfo,factionOwnerDBID)
     end

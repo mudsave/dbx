@@ -348,6 +348,14 @@ ScriptFightDB[27] = {					---------------野怪
 }
 
 
+-----------------------------------------------测试怪物属性脚本，请勿删除------------------------------------------------------
+ScriptFightDB[98] = {              --------------测试1
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20115},{ID = 20116},{ID = 20116},},
+}
+ScriptFightDB[99] = {              --------------测试2
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20117},{ID = 20118},{ID = 20118},},
+}
+-----------------------------------------------测试怪物属性脚本，请勿删除------------------------------------------------------
 -----------------------------------------------1-25级主线脚本------------------------------------------------------
 ScriptFightDB[100] = {              --------------玄都玉京——玉清神将
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20010}},
@@ -1848,6 +1856,167 @@ ScriptFightDB[415] = {
 			},
 	},
 },
+}
+-------------------------------------------41-42级主线-----------------------------------------------------
+ScriptFightDB[451] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21103},{ID = 21101},{ID = 21102},{ID = 21101},{ID = 21102},},
+}
+ScriptFightDB[452] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21104},{ID = 21101},{ID = 21102},{ID = 21101},{ID = 21102},},
+}
+ScriptFightDB[453] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21105},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21105},bubbleID = 481},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21105},}, }
+			},
+	},
+},
+}
+ScriptFightDB[454] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21109},{ID = 21107},{ID = 21108},{ID = 21107},{ID = 21108},},
+}
+ScriptFightDB[455] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21110},{ID = 21107},{ID = 21108},{ID = 21107},{ID = 21108},},
+}
+ScriptFightDB[456] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21111},{ID = 21107},{ID = 21108},{ID = 21107},{ID = 21108},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21111},bubbleID = 482},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21111},}, }
+			},
+	},
+},
+}
+ScriptFightDB[457] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21114},{ID = 21112},{ID = 21113},{ID = 21112},{ID = 21113},},
+}
+ScriptFightDB[458] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21115},{ID = 21112},{ID = 21113},{ID = 21112},{ID = 21113},},
+}
+ScriptFightDB[459] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21116},{ID = 21112},{ID = 21113},{ID = 21112},{ID = 21113},},
+}
+ScriptFightDB[460] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21119},{ID = 21117},{ID = 21118},{ID = 21117},{ID = 21118},},
+}
+ScriptFightDB[461] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21120},{ID = 21117},{ID = 21118},{ID = 21117},{ID = 21118},},
+}
+ScriptFightDB[462] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21121},},
+}
+ScriptFightDB[463] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21125},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
+}
+ScriptFightDB[464] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21126},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
+}
+ScriptFightDB[465] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21127},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
+}
+ScriptFightDB[466] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21130},{ID = 21128},{ID = 21129},{ID = 21128},{ID = 21129},},
+}
+ScriptFightDB[467] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21131},{ID = 21128},{ID = 21129},{ID = 21128},{ID = 21129},},
+}
+ScriptFightDB[468] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21132},},
+}
+ScriptFightDB[469] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21136},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+}
+ScriptFightDB[470] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21137},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+}
+ScriptFightDB[471] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21138},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+}
+ScriptFightDB[472] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21139},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+}
+ScriptFightDB[473] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21140},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+}
+ScriptFightDB[474] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21141},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+}
+ScriptFightDB[475] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21144},{ID = 21142},{ID = 21143},{ID = 21142},{ID = 21143},},
+}
+ScriptFightDB[476] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21145},{ID = 21142},{ID = 21143},{ID = 21142},{ID = 21143},},
+}
+ScriptFightDB[477] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21146},},
+}
+ScriptFightDB[478] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21149},{ID = 21147},{ID = 21148},{ID = 21147},{ID = 21148},},
+}
+ScriptFightDB[479] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21150},{ID = 21147},{ID = 21148},{ID = 21147},{ID = 21148},},
+}
+ScriptFightDB[480] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21151},{ID = 21147},{ID = 21148},{ID = 21147},{ID = 21148},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21151,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21151,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21151},bubbleID = 483},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21151},}, }
+			},
+	},
+},
+}
+ScriptFightDB[481] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21155},{ID = 21153},{ID = 21154},{ID = 21153},{ID = 21154},},
+}
+ScriptFightDB[482] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21156},{ID = 21153},{ID = 21154},{ID = 21153},{ID = 21154},},
+}
+ScriptFightDB[483] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21157},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21157,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21157,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21157},bubbleID = 484},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21157},}, }
+			},
+	                      },
+},
+}
+ScriptFightDB[484] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21161},{ID = 21159},{ID = 21160},{ID = 21159},{ID = 21160},},
+}
+ScriptFightDB[485] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21162},{ID = 21159},{ID = 21160},{ID = 21159},{ID = 21160},},
+}
+ScriptFightDB[486] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21163},{ID = 21159},{ID = 21160},{ID = 21159},{ID = 21160},},
 }
 
 
