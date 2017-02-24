@@ -6,6 +6,8 @@
 #include <vector>
 #include "vsdef.h"
 
+#pragma pack(push, 1)
+
 enum msg_id
 {
     C_DOACTION = 1,
@@ -601,5 +603,6 @@ public:
     }
 };
 
+#pragma pack(pop)
 
 #endif //__DBX_MSGDEF_
