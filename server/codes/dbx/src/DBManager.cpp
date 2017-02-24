@@ -102,24 +102,6 @@ void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)p_appMsg;
     DbxMessageBuilder<CCSResultMsg>::locateContent(pQueryMsg);
 
-    TRACE1_L0("size of CCSResultMsg %i", sizeof(CCSResultMsg));
-    TRACE1_L0("query message start at %i", pQueryMsg);
-    TRACE2_L0("message msgLen %i, at %i", pQueryMsg->msgLen, &pQueryMsg->msgLen);
-    TRACE2_L0("message msgFlags %i, at %i", pQueryMsg->msgFlags, &pQueryMsg->msgFlags);
-    TRACE2_L0("message msgCls %i, at %i", pQueryMsg->msgCls, &pQueryMsg->msgCls);
-    TRACE2_L0("message msgId %i, at %i", pQueryMsg->msgId, &pQueryMsg->msgId);
-    TRACE2_L0("message context %i, at %i", pQueryMsg->context, &pQueryMsg->context);
-    TRACE1_L0("message paramCount %i", pQueryMsg->getParamCount());
-    TRACE2_L0("message attribute_cols %i, at %i", pQueryMsg->getAttributeCols(), &pQueryMsg->attribute_cols);
-    TRACE2_L0("message attribute_count %i, at %i", pQueryMsg->getAttributeCount(), &pQueryMsg->attribute_count);
-    TRACE2_L0("message p_content %i, at %i", pQueryMsg->content_offset, &pQueryMsg->content_offset);
-    TRACE2_L0("message m_nTempObjId %i, at %i", pQueryMsg->m_nTempObjId, &pQueryMsg->m_nTempObjId);
-    TRACE2_L0("message m_nSessionId %i, at %i", pQueryMsg->m_nSessionId, &pQueryMsg->m_nSessionId);
-    TRACE2_L0("message m_spId %i, at %i", pQueryMsg->m_spId, &pQueryMsg->m_spId);
-    TRACE2_L0("message m_bEnd %i, at %i", pQueryMsg->m_bEnd, &pQueryMsg->m_bEnd);
-    TRACE2_L0("message m_bNeedCallback %i, at %i", pQueryMsg->m_bNeedCallback, &pQueryMsg->m_bNeedCallback);
-    TRACE2_L0("message m_nLevel %i, at %i", pQueryMsg->m_nLevel, &pQueryMsg->m_nLevel);
-
     if (pQueryMsg->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
     {
         queryIndex = *(int *)pValue;
