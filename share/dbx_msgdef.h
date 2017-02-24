@@ -562,6 +562,7 @@ public:
 
     void getInit()
     {
+        DbxMessageBuilder<CSSResultMsg>::locateContent(this);
     }
 
     CSSResultMsg & operator=(CSSResultMsg &obj)
@@ -587,6 +588,7 @@ public:
     }
     void getInit()
     {
+        DbxMessageBuilder<CCSResultMsg>::locateContent(this);
     }
 };
 
@@ -600,6 +602,7 @@ public:
     }
     void getInit()
     {
+        DbxMessageBuilder<CSCResultMsg>::locateContent(this);
     }
 };
 
