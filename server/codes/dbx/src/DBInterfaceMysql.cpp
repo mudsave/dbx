@@ -59,6 +59,8 @@ public:
         case MYSQL_TYPE_TIME:
         case MYSQL_TYPE_DATETIME:
             return PARAM_DATATYPE_CHAR;
+		default:
+			return 0;
         }
         return 0;
     }
@@ -79,7 +81,9 @@ public:
         case MYSQL_TYPE_TIMESTAMP:
         case MYSQL_TYPE_TIME:
         case MYSQL_TYPE_DATETIME:
-            return info->length;
+			return info->length;
+		default:
+			return 0;
         }
         return 0;
     }
