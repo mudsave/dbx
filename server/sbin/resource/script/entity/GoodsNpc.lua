@@ -21,7 +21,11 @@ function GoodsNpc:__init()
 end
 
 function GoodsNpc:__release()
-	--todo
+	for htype,handler in pairs(self._handlers or {}) do
+		release(handler)
+		self._handlers[htype] = nil
+	end
+	self._handlers = nil
 end
 
 function GoodsNpc:setDBID(dbID)

@@ -182,6 +182,7 @@ function GMSystem:set_all( roleID, value, targetID)
 		if curMp > maxMp then
 			player:setMP(maxMp)
 		end
+		player:flushPropBatch()
 	end
 end
 
@@ -194,11 +195,12 @@ function GMSystem:inc_all( roleID, value, targetID)
 			return
 		else
 			value = tonumber(value)
-			player:setAttrValue(player_add_str, player:getAttrValue(player_add_str) + value)
-			player:setAttrValue(player_add_int, player:getAttrValue(player_add_int) + value)
-			player:setAttrValue(player_add_sta, player:getAttrValue(player_add_sta) + value)
-			player:setAttrValue(player_add_spi, player:getAttrValue(player_add_spi) + value)
-			player:setAttrValue(player_add_dex, player:getAttrValue(player_add_dex) + value)
+			player:addAttrValue(value)
+			player:addAttrValue(value)
+			player:addAttrValue(value)
+			player:addAttrValue(value)
+			player:addAttrValue(value)
+			player:flushPropBatch()
 		end
 	end
 end

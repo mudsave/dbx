@@ -360,7 +360,7 @@ end
 -- 经验减少 因为等级的关系
 function DropManager:getCompareLevel(monsterConfig, role, fightID)
 	--收集材料任务物品世界掉落
-	--1051021 0.3 1051022 0.6 不掉落0.1
+	--1051005 0.2 1051006 0.4 不掉落0.4
 	if monsterConfig.level and instanceof(role ,Player) then
 		if role:getLevel() >= monsterConfig.level + 5 or role:getLevel() <= monsterConfig.level - 5 then
 			local packetHandler = role:getHandler(HandlerDef_Packet)

@@ -68,6 +68,7 @@ function FightSystem:__init()
 		[FightEvents_SF_CreatePet]	    = FightSystem.onCreatePet,
 		[FrameEvents_SS_playerDropLine] = FightSystem.onDropLine,
 		[FrameEvents_SS_playerOnLine]	= FightSystem.onOnline,
+		[FrameEvents_CS_Ping]			= FightSystem.onPingReturn,
 	}
 end
 function FightSystem.onCollectGarbage()
@@ -470,8 +471,16 @@ function FightSystem:onStartScriptFight(event)
 	end
 	--生成怪物ID
 	local monsterDBIDs,bAssign
-	if ScriptFightDB[scriptFightID].phases and ScriptFightDB[scriptFightID].phases[1] then
-		monsterDBIDs = ScriptFightDB[scriptFightID].phases[1].monsters
+	local phaseInfo = ScriptFightDB[scriptFightID].phases
+	local phaseID
+	if  phaseInfo and table.size(phaseInfo) > 0 then
+		local scriptConfig = ScriptFightDB[scriptFightID]
+		if scriptConfig.subType and scriptConfig.subType == ScriptType.Random then
+			local rand = math.random(table.size(phaseInfo))
+			monsterDBIDs = phaseInfo[rand].monsters
+		else
+			monsterDBIDs = ScriptFightDB[scriptFightID].phases[1].monsters
+		end
 	else
 		monsterConfig = ScriptFightDB[scriptFightID].monsters
 		if monsterConfig.type == ScriptMonsterCreateType.Random then
@@ -564,6 +573,9 @@ function FightSystem:onStartScriptFight(event)
 		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, monsterDBIDs, fightNpcs, bNpcAssign and npcIDs)
 	end
 	fight:setFightID(fightID)
+	if phaseID then
+		fight:setPhaseID(phaseID)
+	end
 	self:sendScriptFightInfo2Client(srcWorldID, mapID, fightRolesA, fightMonsters, fightNpcs,scriptFightID,fight:getID())
 	
 
@@ -1112,6 +1124,15 @@ print("FightSystem:onOnline")
 	end
 	
 	fight:onPlayerAttached(player)
+end
+
+function FightSystem:onPingReturn(event)
+	local params = event:getParams()
+	local DBID = event.DBID
+	local gatewayID = params[1]
+	local clientLink = params[2]
+	-- 返回消息
+	RPCEngine:sendToPeer(gatewayID, clientLink, FrameEvents_SC_Ping, g_serverId)
 end
 
 function FightSystem:update(timerID)

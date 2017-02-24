@@ -28,6 +28,11 @@ function MineNpc:__release()
 	self._centerTile = nil
 	self._radius = nil
 	self._period = nil
+	for htype,handler in pairs(self._handlers or {}) do
+		release(handler)
+		self._handlers[htype] = nil
+	end
+	self._handlers = nil
 end
 
 function MineNpc:setDBID(dbID)

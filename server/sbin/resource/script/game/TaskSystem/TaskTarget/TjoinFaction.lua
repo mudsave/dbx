@@ -29,5 +29,5 @@ function TjoinFaction:completed()
 end
 
 function TjoinFaction:removeWatchers()
-	self:removeWatcher("TjoinFaction")
+	self:removeWatcher("onjoinFaction")
 end
