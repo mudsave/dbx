@@ -73,8 +73,14 @@ void DBManager::CallSP(handle p_linkIndex, AppMsg *p_appMsg)
         return;
     }
 
-    //对于sp调用来说，queryID默认是-1
-    dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, -1, p_linkIndex));
+    //获取queryIndex
+	PType type; const void * pValue; int queryIndex = -1;
+	if (((CCSResultMsg *)p_appMsg)->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
+	{
+		queryIndex = *(int *)pValue;
+	}
+
+	dbTaskPool->AddIssue(new DBIssueCallSP(p_appMsg, queryIndex, p_linkIndex));
 }
 
 void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
@@ -87,7 +93,15 @@ void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
         TRACE1_ERROR("DBManager::CallSQL:Cant get task pool(id:%i), it is maybe destroyed.\n", DBX_DEFALT_DATABASE_ID);
         return;
     }
-    dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, -1, p_linkIndex));
+
+	//获取queryIndex
+	PType type; const void * pValue; int queryIndex = -1;
+	if (((CCSResultMsg *)p_appMsg)->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
+	{
+		queryIndex = *(int *)pValue;
+	}
+
+	dbTaskPool->AddIssue(new DBIssueCallSQL(p_appMsg, queryIndex, p_linkIndex));
 }
 
 void DBManager::SendResult(handle p_linkIndex, AppMsg *p_appMsg)
