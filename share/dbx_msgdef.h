@@ -299,6 +299,7 @@ public:
     }
 
 protected:
+public:
     template<class T> friend class DbxMessageBuilder;
 
     int attribute_cols;     //属性的列数
