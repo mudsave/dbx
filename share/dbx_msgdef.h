@@ -205,24 +205,22 @@ public:
 
     bool getAttibuteByName(const char * name, const int & row, PType & valueType/*out*/, const void *& pValue/*out*/)
     {
-        char * currentName = (char *)malloc(MAX_PARAMNAME_LEN);
-        if (currentName == NULL)
-            return false;
-
+        char * currentName = NULL;
         void * currentValue = NULL;
         bool found = false;
 
         for (int i = 0; i < attribute_cols; i++)
         {
-            memset(currentName, 0, MAX_PARAMNAME_LEN);
             if (getAttribute(currentName, valueType, currentValue, i, row))
             {
                 if (strcmp(currentName, name) == 0)
                 {
                     pValue = currentValue;
                     found = true;
-                    break;
                 }
+                free(currentName);
+
+                if (found) break;
             }
             else
             {
@@ -230,7 +228,6 @@ public:
             }
         }
 
-        free(currentName);
         return found;
     }
 
