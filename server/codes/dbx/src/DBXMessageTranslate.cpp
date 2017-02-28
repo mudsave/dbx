@@ -158,7 +158,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
     if (ok)
     {
         char * pEnd = NULL;
-        pEnd = strmov(pBuffer, "call");
+        pEnd = strmov(pBuffer, "call ");
 
         //存储过程名
         pEnd = strmov(pEnd, spName);
