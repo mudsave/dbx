@@ -59,10 +59,11 @@ struct SAppMsgNode
 class DbxMessage : public AppMsg
 {
 public:
-    DbxMessage() : p_content(NULL) {}
+    DbxMessage() : content_offset(0) {}
 
     int getParamCount()
     {
+        BYTE * p_content = getContent();
         return p_content ? *(int *)p_content : 0;
     }
 
@@ -71,7 +72,7 @@ public:
         int param_count = getParamCount();
         if (param_count == 0) return 0;
 
-        const BYTE * rpos = p_content;
+        const BYTE * rpos = getContent();
         const PType * temp;
 
         //跳过数量字节
@@ -100,7 +101,7 @@ public:
         if (index >= getParamCount())
             return false;
 
-        const BYTE * rpos = p_content;
+        const BYTE * rpos = getContent();
         const PType * temp;
 
         //跳过数量字节
@@ -256,6 +257,11 @@ public:
         return attribute_count;
     }
 
+    BYTE * getContent()
+    {
+        return content_offset != 0 ? ((BYTE *)this) + content_offset : NULL;
+    }
+
     static int getTypeSize(const PType & paramType)
     {
         if (paramType >= 0) return paramType;
@@ -306,7 +312,7 @@ public:
     int attribute_count;    //属性总数
 
     //数据结构：|变量数量|变量1类型|变量1的数据|变量2类型|变量2的数据|...|
-    BYTE * p_content;
+    int content_offset;     //数据存放位置的偏移量（从当前对象的首地址开始）
 };
 
 
@@ -387,10 +393,9 @@ public:
         int param_count = params.size();
         if (param_count <= 0) return p_msg;
 
-        /*定位p_content指针，指向结构末尾*/
-        p_msg->p_content = (BYTE *)p_msg;
-        p_msg->p_content += sizeof(MessageType);
-        BYTE * wpos = p_msg->p_content;
+        /*设置内容偏移量，指向结构末尾*/
+        p_msg->content_offset = sizeof(MessageType);
+        BYTE * wpos = p_msg->getContent();
 
         //写参数数量
         memcpy(wpos, &param_count, sizeof(int));
@@ -459,13 +464,12 @@ public:
     {
         if (p_msg->msgLen <= sizeof(MessageType))
         {
-            p_msg->p_content = NULL;
+            p_msg->content_offset = 0;
         }
         else
         {
-            /*定位p_content指针，指向结构末尾*/
-            p_msg->p_content = (BYTE *)p_msg;
-            p_msg->p_content += sizeof(MessageType);
+            /*设置内容存放位置的偏移值，指向结构末尾*/
+            p_msg->content_offset = sizeof(MessageType);
         }
     }
 
