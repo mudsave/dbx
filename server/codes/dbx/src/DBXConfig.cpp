@@ -34,6 +34,7 @@ bool DBXConfig::LoadConfig(std::string p_filePath)
     for (; databaseElem != NULL; databaseElem = databaseElem->NextSiblingElement())
     {
         DBInterfaceInfo dbinfo;
+        m_dbxPort = GetElementAttributeInt(databaseElem, "dbxport");
         dbinfo.id = GetElementAttributeInt(databaseElem, "databaseid");
         strncpy((char *)&dbinfo.db_type, GetElementAttributeStr(databaseElem, "type").c_str(), DBX_MAX_BUF);
 
@@ -103,4 +104,9 @@ DBInterfaceInfo *DBXConfig::GetDBInterfaceInfo(int p_dbInterfaceID)
 DBXConfig::DB_INTERFACE_INFOS const &DBXConfig::GetAllDBInterfaceInfo()
 {
     return m_interfaceInfos;
+}
+
+int DBXConfig::GetDBXPort() const
+{
+    return m_dbxPort;
 }

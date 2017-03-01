@@ -47,7 +47,11 @@ public:
     typedef std::vector<DBInterfaceInfo> DB_INTERFACE_INFOS;
     DB_INTERFACE_INFOS const &GetAllDBInterfaceInfo();
 
+    int GetDBXPort() const;
+protected:
     DB_INTERFACE_INFOS m_interfaceInfos;
+
+    int m_dbxPort;
 
 protected:
     std::string GetElementAttributeStr(TiXmlElement *p_element, const char *p_key);

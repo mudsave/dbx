@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <scheme>
-	<database databaseid = '1' type = "mysql">
+	<database databaseid = '1' type = "mysql" dbxport = "3000">
 		<baseinfo servername = '172.16.2.230' port = '3306' databasename = 'dream'></baseinfo>
 		<popedom username = 'wsf' password = '123456'></popedom>
 		<asynqueue num = '5'></asynqueue>
