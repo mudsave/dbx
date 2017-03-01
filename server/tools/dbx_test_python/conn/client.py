@@ -12,7 +12,8 @@ class Client:
 		self._socket = None
 		
 		self._request = ""
-		self._buffer = b""
+		self._recvbuffer = b""
+		self._sendbuffer = b""
 		
 	def connect(self, ip, port):
 		if self.connected():
@@ -25,6 +26,8 @@ class Client:
 			self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			#self._socket.setblocking( True )
 			#self._socket.settimeout( 1.0 )
+			self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 5 * 1024 * 1024)
+			self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 5 * 1024 * 1024)
 			self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 			self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, True)
 			self._socket.connect( (ip, port) )
@@ -38,7 +41,7 @@ class Client:
 		return self._socket is not None
 	
 	def message(self):
-		return self._buffer
+		return self._recvbuffer
 	
 	def socket(self):
 		return self._socket
@@ -49,16 +52,17 @@ class Client:
 	def send(self, message):
 		if self.connected():
 			self._request = message
+			self._sendbuffer = BytesIO.ensureBytes(message)
 			self._socket.sendall(BytesIO.ensureBytes(message))
 	
 	def parseMessage(self, bytes):
-		self._buffer += bytes
+		self._recvbuffer += bytes
 		return bytes
 		
 	def recvMessage(self, callbackFunc, timeout = 3.0):
 		print("Client %s receiving message ..." % self._socket.fileno())
 		
-		self._buffer = b""
+		self._recvbuffer = b""
 		rl = [self._socket.fileno()]
 		
 		start = time.time()
