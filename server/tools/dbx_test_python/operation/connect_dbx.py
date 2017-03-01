@@ -52,22 +52,18 @@ def on_connect_test_recv(stream):
 	print("message msgCls %i" % message.msgCls)
 	print("message msgId %i" % message.msgId)
 	print("message context %i" % message.context)
-	print("message m_nAttriIndex %i" % message.m_nAttriIndex)
-	print("message m_nAttriNameCount %i" % message.m_nAttriNameCount)
-	print("message m_nAttriCount %i" % message.m_nAttriCount)
 	print("message m_nTempObjId %i" % message.m_nTempObjId)
 	print("message m_nSessionId %i" % message.m_nSessionId)
 	print("message m_spId %i" % message.m_spId)
 	print("message m_bEnd %i" % message.m_bEnd)
 	print("message m_bNeedCallback %i" % message.m_bNeedCallback)
 	print("message m_nLevel %i" % message.m_nLevel)
-	print("message m_objDoMsg.object_id %i" % message.m_objDoMsg.object_id)
-	print("message m_objDoMsg.paramCount %i" % message.m_objDoMsg.paramCount)
-	print("message m_objDoMsg.typeList %s" % message.m_objDoMsg.typeList)
-	#print("message m_objDoMsg.dataList %s" % message.m_objDoMsg.dataList)
+	print("message paramCount %i" % message.paramCount)
+	print("message typeList %s" % message.typeList)
+	print("message dataList %s" % message.dataList)
 	f = open("connect_test_data.txt", "w", encoding="latin1")
-	#f.writelines(message.m_objDoMsg.dataList)
-	for d in message.m_objDoMsg.dataList:
+	#f.writelines(message.dataList)
+	for d in message.dataList:
 		f.write(str(d) + "\n")
 		continue
 		
@@ -100,37 +96,38 @@ def message_test(type, *args):
 		message.msgId = dbx_msg_define.MSG_ID.C_DO_ACTION
 		message.context = dbx_msg_define.MSG_TYPE.CCSRESMSG
 	
+	#message.addAttr("testKey1")
+	#message.addValue(dbx_msg_define.DATA_TYPE.FLOAT, 1.0)
+	
+	#message.addAttr("testKey2")
+	#message.addValue(dbx_msg_define.DATA_TYPE.INT, 2)
+	
 	reader = MessageStream.MessageStreamReader(message.getIOBytes())
 	newMessage = dbx_msg_define.CCSResultMsg()
 	newMessage.read(reader)
 	
+	print("message.getParamSize() = %i" % message.getParamSize())
+	
 	print("Size of message %i" % message.size())
-	print("Size of ObjDoMsg %i" % message.m_objDoMsg.size())
 	print("message msgLen %i" % message.msgLen)
 	print("message msgFlags %i" % message.msgFlags)
 	print("message msgCls %i" % message.msgCls)
 	print("message msgId %i" % message.msgId)
 	print("message context %i" % message.context)
-	print("message m_nAttriIndex %i" % message.m_nAttriIndex)
-	print("message m_nAttriNameCount %i" % message.m_nAttriNameCount)
-	print("message m_nAttriCount %i" % message.m_nAttriCount)
+	print("message paramCount %i" % message.paramCount)
+	print("message attribute_cols %i" % message.attribute_cols)
+	print("message attribute_count %i" % message.attribute_count)
+	print("message typeList %s" % message.typeList)
+	print("message dataList %s" % message.dataList)
 	print("message m_nTempObjId %i" % message.m_nTempObjId)
 	print("message m_nSessionId %i" % message.m_nSessionId)
 	print("message m_spId %i" % message.m_spId)
 	print("message m_bEnd %i" % message.m_bEnd)
 	print("message m_bNeedCallback %i" % message.m_bNeedCallback)
 	print("message m_nLevel %i" % message.m_nLevel)
-	print("message m_objDoMsg.object_id %i" % message.m_objDoMsg.object_id)
-	print("message m_objDoMsg.paramCount %i" % message.m_objDoMsg.paramCount)
-	print("message m_objDoMsg.typeList %s" % message.m_objDoMsg.typeList)
-	print("message m_objDoMsg.dataList %s" % message.m_objDoMsg.dataList)
 	
 	assert message.size() == newMessage.size()
-	assert message.m_objDoMsg.size() == newMessage.m_objDoMsg.size()
 	
-	assert message.m_nAttriIndex == newMessage.m_nAttriIndex
-	assert message.m_nAttriNameCount == newMessage.m_nAttriNameCount
-	assert message.m_nAttriCount == newMessage.m_nAttriCount
 	assert message.m_nTempObjId == newMessage.m_nTempObjId
 	assert message.m_nSessionId == newMessage.m_nSessionId
 	assert message.m_spId == newMessage.m_spId
@@ -143,10 +140,14 @@ def message_test(type, *args):
 	assert message.msgId == newMessage.msgId
 	assert message.context == newMessage.context
 	
-	assert message.m_objDoMsg.object_id == newMessage.m_objDoMsg.object_id
-	assert message.m_objDoMsg.paramCount == newMessage.m_objDoMsg.paramCount
-	assert message.m_objDoMsg.typeList == newMessage.m_objDoMsg.typeList
-	assert message.m_objDoMsg.dataList == newMessage.m_objDoMsg.dataList
+	assert message.attribute_cols == newMessage.attribute_cols
+	assert message.attribute_count == newMessage.attribute_count
+	assert message.paramCount == newMessage.paramCount
+	assert message.typeList == newMessage.typeList
+	assert message.dataList == newMessage.dataList
+	
+	#assert newMessage.getAttibuteByName("testKey1", 0) != None
+	#assert newMessage.getAttibuteByName("testKey2", 0) != None
 	
 	print("Test OK!")
 	
@@ -181,6 +182,24 @@ def exec_sql(*args):
 	sql = sql_args[0] % tuple(eval(i) for i in sql_args[1:])
 	print("sql =", sql)
 	message = dbx_build_msg.default_sql_message(sql)
+	
+	print("Size of message %i" % message.size())
+	print("message msgLen %i" % message.msgLen)
+	print("message msgFlags %i" % message.msgFlags)
+	print("message msgCls %i" % message.msgCls)
+	print("message msgId %i" % message.msgId)
+	print("message context %i" % message.context)
+	print("message paramCount %i" % message.paramCount)
+	print("message attribute_cols %i" % message.attribute_cols)
+	print("message attribute_count %i" % message.attribute_count)
+	print("message typeList %s" % message.typeList)
+	print("message dataList %s" % message.dataList)
+	print("message m_nTempObjId %i" % message.m_nTempObjId)
+	print("message m_nSessionId %i" % message.m_nSessionId)
+	print("message m_spId %i" % message.m_spId)
+	print("message m_bEnd %i" % message.m_bEnd)
+	print("message m_bNeedCallback %i" % message.m_bNeedCallback)
+	print("message m_nLevel %i" % message.m_nLevel)
 	
 	c = client.Client()
 	c.connect(host, port)
@@ -238,6 +257,10 @@ def exec_sp(*args):
 	
 	print("params =", params)
 	message = dbx_build_msg.default_sp_message(sp_name, database, sort, params)
+	
+	print("message typeList %s" % message.typeList)
+	print("message dataList %s" % message.dataList)
+	
 	c = client.Client()
 	c.connect(host, port)
 	c.send(message.getIOBytes())

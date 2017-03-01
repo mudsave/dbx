@@ -79,6 +79,7 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex
 {
     m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
     memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
+    DbxMessageBuilder<CCSResultMsg>::locateContent((CCSResultMsg *)m_pAppMsg);
 }
 
 bool DBIssueCallSP::OnProgress()
@@ -163,6 +164,7 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID, handle p_linkInd
 {
     m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
     memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
+    DbxMessageBuilder<CCSResultMsg>::locateContent((CCSResultMsg *)m_pAppMsg);
 }
 
 bool DBIssueCallSQL::OnProgress()
