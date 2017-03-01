@@ -33,6 +33,7 @@ TYPE_TO_SIZE = {
 	DATA_TYPE.FLOAT: struct.calcsize("=f")
 }
 
+LOCATION_TAIL = None
 
 class MessageBase:
 	
@@ -63,10 +64,10 @@ class AppMsg(MessageBase):
 		self.msgFlags = 0			# unsigned char
 		self.msgCls = 0				# unsigned char
 		self.msgId = 0				# unsigned short
-		self.context = 0			# long
+		self.context = 0			# int
 	
 	def size(self):
-		return struct.calcsize("=HBBHl")
+		return struct.calcsize("=HBBHi")
 	
 	def read(self, reader):
 		MessageBase.read(self, reader)
@@ -84,32 +85,43 @@ class AppMsg(MessageBase):
 		writer.writeUint16(self.msgId)
 		writer.writeInt32(self.context)
 
-
-class ObjDoMsg(MessageBase):
+		
+class DbxMessage(AppMsg):
 	
 	def __init__(self):
-		MessageBase.__init__(self)
-		self.object_id = 0			# int
-		#self.param = 0				# int Param[1]
-		
+		AppMsg.__init__(self)
+		# 以下是仅在脚本使用的
 		self.paramCount = 0			# int
 		self.typeList = []			# int []
 		self.dataList = []			# void * []
 		
+		# 以下是协议的数据
+		self.attribute_cols = 0		# int
+		self.attribute_count = 0	# int
+		self.content_offset = 0		# int
+	
 	def size(self):
+		return AppMsg.size(self) + struct.calcsize("=iii") + self.getParamSize()
+	
+	def getParamSize(self):
 		typeSize = struct.calcsize("=i") * len(self.typeList)
 		dataSize = sum(self.getTypeSize(t) for t in self.typeList)
-		return struct.calcsize("=iI") + typeSize + dataSize
+		# 数据段前端存放参数数量
+		return struct.calcsize("=i") + typeSize + dataSize
 	
 	def read(self, reader):
-		MessageBase.read(self, reader)
-		self.object_id = reader.readInt32()
+		AppMsg.read(self, reader)
+		self.attribute_cols = reader.readInt32()
+		self.attribute_count = reader.readInt32()
+		self.content_offset = reader.readInt32()
+		
+	def readContent(self, reader):
 		self.paramCount = reader.readInt32()
 		
 		for i in range(self.paramCount):
-			self.typeList.append(reader.readInt32())
-		
-		for t in self.typeList:
+			t = reader.readInt32()
+			self.typeList.append(t)
+			
 			if t == DATA_TYPE.INT:
 				self.dataList.append(reader.readInt32())
 			elif t == DATA_TYPE.BOOL:
@@ -120,28 +132,46 @@ class ObjDoMsg(MessageBase):
 				self.dataList.append(reader.readBlob(t).decode("latin1"))
 	
 	def write(self, writer):
-		MessageBase.write(self, writer)
-		writer.writeInt32(self.object_id)
+		AppMsg.write(self, writer)
+		writer.writeInt32(self.attribute_cols)
+		writer.writeInt32(self.attribute_count)
+		writer.writeInt32(self.content_offset)
+	
+	def writeContent(self, writer):
 		writer.writeInt32(self.paramCount)
 		
-		for i in self.typeList:
-			writer.writeInt32(i)
-		
-		for t, d in zip(self.typeList, self.dataList):
+		for i in range(self.paramCount):
+			t = self.typeList[i]
+			writer.writeInt32(t)
+			
 			if t == DATA_TYPE.INT:
-				writer.writeInt32(d)
+				writer.writeInt32(self.dataList[i])
 			elif t == DATA_TYPE.BOOL:
-				writer.writeBool(d)
+				writer.writeBool(self.dataList[i])
 			elif t == DATA_TYPE.FLOAT:
-				writer.writeFloat(d)
+				writer.writeFloat(self.dataList[i])
 			else:
-				writer.writeBlob(BytesIO.ensureBytes(d))
+				writer.writeBlob(BytesIO.ensureBytes(self.dataList[i]))
 	
-	def addData(self, type, value):
+	def addData(self, type, value, location = LOCATION_TAIL):
 		self.paramCount += 1
-		self.typeList.append(type)
-		self.dataList.append(value)
-		
+		if location == LOCATION_TAIL:
+			self.typeList.append(type)
+			self.dataList.append(value)
+		else:
+			self.typeList.insert(location, type)
+			self.dataList.insert(location, value)
+	
+	def addAttr(self, name):
+		assert name
+		self.addData(len(name), name, self.attribute_cols)
+		self.attribute_cols += 1
+	
+	def addValue(self, valueType, value):
+		assert value is not None and valueType is not None
+		self.addData(valueType, value, self.attribute_cols + self.attribute_count)
+		self.attribute_count += 1
+
 	def getTypeSize(self, type):
 		if type >= 0:
 			return type
@@ -150,99 +180,89 @@ class ObjDoMsg(MessageBase):
 
 	def getParam(self, index):
 		return self.typeList[index], self.dataList[index]
+	
+	def getAttribute(self, col, row):
+		if col < self.attribute_cols:
+			return self.getAttributeByIndex(row * self.attribute_cols + col)
+		return None
+
+	def getAttributeByIndex(self, index):
+		if index < self.attribute_count:
+			return self.getParam(index)
+		else:
+			return None
+	
+	def getAttibuteByName(self, name, row):
+		for col in range(self.attribute_cols):
+			attr_tuple = self.getAttribute(col, row)
+			if attr_tuple is not None and attr_tuple[1] == name:
+				return attr_tuple
+		return None
 		
 		
-class CResultMsg(AppMsg):
+class DbxResultMessage(DbxMessage):
 	
 	def __init__(self):
-		AppMsg.__init__(self)
-		self.m_nAttriIndex = 0		# int
-		self.m_nAttriNameCount = 0	# int
-		self.m_nAttriCount = 0		# int
+		DbxMessage.__init__(self)
 		self.m_nTempObjId = 0		# int	流水号
 		self.m_nSessionId = 0		# int	sessionID
 		self.m_spId = 0				# int	存储过程ID
 		self.m_bEnd = True			# bool	
 		self.m_bNeedCallback = True	# bool	
 		self.m_nLevel = 0			# short	
-		self.m_pObjDoMsg = None		# unsigned int	指针
 	
 	def size(self):
-		# 考虑c++内存对齐为8，这里插入对齐后空出来的空间
-		return AppMsg.size(self) + 2 + struct.calcsize("=iiiiiibbhI")
+		return DbxMessage.size(self) + struct.calcsize("=iiibbh")
 		
 	def read(self, reader):
-		AppMsg.read(self, reader)
-		reader.readInt16()			# 内存对齐的空隙，2个字节
-		self.m_nAttriIndex = reader.readInt32()
-		self.m_nAttriNameCount = reader.readInt32()
-		self.m_nAttriCount = reader.readInt32()
+		DbxMessage.read(self, reader)
 		self.m_nTempObjId = reader.readInt32()
 		self.m_nSessionId = reader.readInt32()
 		self.m_spId = reader.readInt32()
 		self.m_bEnd = reader.readBool()
 		self.m_bNeedCallback = reader.readBool()
 		self.m_nLevel = reader.readInt16()
-		reader.readUint32()			# self.m_pObjDoMsg
 	
 	def write(self, writer):
-		AppMsg.write(self, writer)
-		writer.writeInt16(0)		# 内存对齐的空隙，2个字节
-		writer.writeInt32(self.m_nAttriIndex)
-		writer.writeInt32(self.m_nAttriNameCount)
-		writer.writeInt32(self.m_nAttriCount)
+		DbxMessage.write(self, writer)
 		writer.writeInt32(self.m_nTempObjId)
 		writer.writeInt32(self.m_nSessionId)
 		writer.writeInt32(self.m_spId)
 		writer.writeBool(self.m_bEnd)
 		writer.writeBool(self.m_bNeedCallback)
 		writer.writeInt16(self.m_nLevel)
-		writer.writeUint32(0)		# self.m_pObjDoMsg
-	
-	def addAttr(self, name):
-		assert name
-		self.m_pObjDoMsg.addData(len(name), name)
-		self.m_nAttriNameCount += 1
-	
-	def addValue(self, valueType, value):
-		assert value is not None and valueType is not None
-		self.m_pObjDoMsg.addData(valueType, value)
-		self.m_nAttriCount += 1
-
 		
-class CCSResultMsg(CResultMsg):
+		
+class CCSResultMsg(DbxResultMessage):
 	
 	def __init__(self):
-		CResultMsg.__init__(self)
-		self.m_objDoMsg = ObjDoMsg()
-		self.m_pObjDoMsg = self.m_objDoMsg
+		DbxResultMessage.__init__(self)
 		
 	def size(self):
-		return CResultMsg.size(self) + self.m_objDoMsg.size()
+		return DbxResultMessage.size(self)
 	
 	def read(self, reader):
-		CResultMsg.read(self, reader)
-		self.m_objDoMsg.read(reader)
+		DbxResultMessage.read(self, reader)
+		self.readContent(reader)
 	
 	def write(self, writer):
-		CResultMsg.write(self, writer)
-		self.m_objDoMsg.write(writer)
+		DbxResultMessage.write(self, writer)
+		self.writeContent(writer)
 
 
-class CSCResultMsg(CResultMsg):
+class CSCResultMsg(DbxResultMessage):
 	
 	def __init__(self):
-		CResultMsg.__init__(self)
-		self.m_objDoMsg = ObjDoMsg()
-		self.m_pObjDoMsg = self.m_objDoMsg
+		DbxResultMessage.__init__(self)
 		
 	def size(self):
-		return CResultMsg.size(self) + self.m_objDoMsg.size()
+		return DbxResultMessage.size(self)
 	
 	def read(self, reader):
-		CResultMsg.read(self, reader)
-		self.m_objDoMsg.read(reader)
+		DbxResultMessage.read(self, reader)
+		self.readContent(reader)
 	
 	def write(self, writer):
-		CResultMsg.write(self, writer)
-		self.m_objDoMsg.write(writer)
+		DbxResultMessage.write(self, writer)
+		self.writeContent(writer)
+

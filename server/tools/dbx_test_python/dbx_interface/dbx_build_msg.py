@@ -74,7 +74,7 @@ def default_sp_message(spName, database = 1, sort = "", others = {}):
 	return call_sp_message(params, False, 20)
 	
 	
-def default_sql_message(sql, database = 1, cmdID = 0, queueIndex = 0, level = 20):
+def default_sql_message(sql, database = 1, cmdID = 0, queueIndex = -1, level = 20):
 	params = {1:{}}
 	params[1]["sql"] = sql
 	params[1]["dataBase"] = database
