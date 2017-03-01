@@ -13,7 +13,7 @@ end
 function DialogFactory:createDialogObject(player, dialogID, check, npcID)
 	local dialogData = DialogModelDB[dialogID]
 	if not dialogData then
-		print("对话ID出错,ID为",dialogID)
+		print("对话表中不存在对话配置,对话ID出错,ID为",dialogID)
 		return
 	end
 
@@ -21,14 +21,14 @@ function DialogFactory:createDialogObject(player, dialogID, check, npcID)
 		print("对话ID类型出错,ID为",dialogID)
 		return
 	end
-	if not check then
+	if not check then 
 		local result, errorID = g_dialogCondtion:checkDialogID(player, dialogID, npcID)
 		if not result then
 			if errorID and errorID > 0 then
 				g_dialogFty:createErrorDialogObject(player, errorID)
 				g_dialogDoer:openErrorDialog(player, errorID)
+				print("对话不满足条件",dialogID)
 			end
-			print("对话不满足条件",dialogID)
 			return 
 		end
 	end

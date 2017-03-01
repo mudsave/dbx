@@ -380,11 +380,14 @@ struct _MsgCS_LittleBackInfo :public AppMsg
 
 struct _MsgCS_StateChanged_Info : public AppMsg
 {
-	int				accountId;
+	char 		accountName[_USER_ACCOUNT_LEN];
+	char		passwd[_USER_PASSWD_LEN];
+	bool		roleList;
 };
 
 struct _MsgSC_StateChanged_ResultInfo : public AppMsg
 {
+	bool ret;
 };
 
 

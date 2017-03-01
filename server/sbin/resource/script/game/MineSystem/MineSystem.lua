@@ -152,7 +152,10 @@ function MineSystem:onEnterMineFight(event)
 	mineNpc:getScene():detachEntity(mineNpc)
 	local mineHandler = player:getHandler(HandlerDef_Mine)
 	local fightID = mineHandler:startObviousFight(config)
+	
 	self:addFightID(fightID)
+	g_taskSystem:addFightID(fightID)
+
 	local period = mineNpc:getUpdatePeriod()
 	-- 判断是否有刷新
 	if period then
@@ -224,7 +227,7 @@ function MineSystem:addFightID(fightID)
 	end
 end
 
---传送到复活点
+--传送到复活点，
 function MineSystem:onFightEnd(event)
 	local params = event:getParams()
 	local results = params[1]

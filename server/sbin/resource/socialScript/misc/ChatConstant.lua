@@ -17,7 +17,7 @@ ChatChannelType =
 	Horn	= 8,--小喇叭
 }
 
-WorldChannelMinLevel = 15
+WorldChannelMinLevel = 20
 WorldChannelCoolTime = 30 --s
 ChatCoolTime = 2 --s
 ChatMessageMaxLen = 254 * 2

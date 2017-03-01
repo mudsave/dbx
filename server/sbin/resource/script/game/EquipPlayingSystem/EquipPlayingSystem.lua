@@ -404,7 +404,6 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 		for i,weight in pairs(EquipRemouldWeightDB) do 
 			tWeigt = tWeigt +weight
 		end
-			max = weight
 		local color = 1
 		local rWeight = math.random(1,tWeigt)
 		local max = tWeigt
@@ -437,6 +436,10 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			end
 			local attrAddValue = math.ceil(attrValue*(1+allAttrAdd)/takingValueUnit)*takingValueUnit
 			baseEffect[i][2] = attrAddValue
+			if equip:getContainerID() == PackContainerID.Equip then
+				player:addAttrValue(attrType, attrAddValue-attrValue)
+				player:flushPropBatch()
+			end
 		end
 		-- 记录基础属性加成
 		equip:setEffectEx(propertyContext)
@@ -511,6 +514,7 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 		local baseEffect = propertyContext.baseEffect
 		for i = 1, table.getn(baseEffect) do
 			local attrType = baseEffect[i][1]
+			local attrValue1 = baseEffect[i][2]
 			local takingValueUnit = AddAttrValueDB[attrType].takingValueUnit
 			local attrValue = 0
 			if i == 1 then
@@ -522,6 +526,10 @@ function EquipPlayingSystem:onEquipRemouldRequest(event)
 			end
 			local attrAddValue = math.floor(attrValue*(1+attrAdd)/takingValueUnit)*takingValueUnit
 			baseEffect[i][2] = attrAddValue
+			if equip:getContainerID() == PackContainerID.Equip then
+				player:addAttrValue(attrType, attrValue-attrValue1)
+				player:flushPropBatch()
+			end
 		end
 
 		-- 记录基础属性加成
@@ -631,6 +639,7 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 	--随机重置属性
 	local attr = addEffect[attrIndex]
 	local attrType = attr[1]
+	local attrValue = attr[2]
 	local attrTable = AddAttrTypeDB[subClass][equipMent:getEquipClass()]
 	if isBind then
 		equipMent:setBindFlag(isBind)
@@ -645,7 +654,7 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 				count = count+1
 			end
 		end
-		if count <= 2 and rAttrType ~= attrType then
+		if count <= 1 and rAttrType ~= attrType then
 			break
 		end
 	end
@@ -665,6 +674,11 @@ function EquipPlayingSystem:onAttrResetRequest(event)
 	rattrValue = rattrValue / multiple
 	attr = {rAttrType,rattrValue}
 	addEffect[attrIndex] = attr
+	if equipMent:getContainerID() == PackContainerID.Equip then
+		player:addAttrValue(attrType, -attrValue)
+		player:addAttrValue(attr[1], attr[2])
+		player:flushPropBatch()
+	end
 	
 	--设置绑定
 	if isBind then
@@ -819,6 +833,10 @@ function EquipPlayingSystem:onAttrImproveRequest(event)
 	end
 	if isSuccess then
 		attr[2] = attrValue + fluctuate > maxValue and maxValue or attrValue + fluctuate 
+		if equipMent:getContainerID() == PackContainerID.Equip then
+			player:addAttrValue(attr[1], attr[2] > maxValue and maxValue-attrValue or fluctuate )
+			player:flushPropBatch()
+		end
 	end
 	--设置绑定
 	if isBind then

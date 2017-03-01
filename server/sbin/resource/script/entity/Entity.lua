@@ -3,6 +3,8 @@
 	实体基类
 --]]
 
+local setPropValue = setPropValue
+
 require "entity.Speed"
 
 Entity = class()
@@ -25,13 +27,21 @@ end
 function Entity:__release()
 	self._id			= nil
 	self._scene			= nil
-	self._handlers		= nil
 	self._entityType	= nil
 	self._pos			= nil
 	self._speed			= nil
-	if self._peer then
-		self._peer:release()
-		self._peer		= nil
+
+	local _handlers = self._handlers
+	if _handlers then
+		for handlerID,handler in pairs(_handlers) do
+			release(handler)
+		end
+		self._handlers = nil
+	end
+	local _peer = self._peer
+	if _peer then
+		_peer:release()
+		self._peer = nil
 	end
 end
 

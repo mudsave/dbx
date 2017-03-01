@@ -66,9 +66,7 @@ function System._LoadSocialServerData(player, socialServerData)
 
 end
 
-function System.OnPlayerLoaded(player, recordList)
-
-	-- 玩家上线加载坐骑数据
+function System.OnPlayerLoaded(player, recordList)	-- 玩家上线加载坐骑数据
 	g_rideMgr:loadRides(player,recordList[20])
 
 	-- 加载所有道具，因为有坐骑坐骑包裹才会开启，没有坐骑，坐骑包裹时关闭的，所以得在加载坐骑后面
@@ -85,9 +83,11 @@ function System.OnPlayerLoaded(player, recordList)
 	g_ectypeMgr:setEctypeData(player, ectypeRecord, ringEctypeRecord)
 
 	-- 加载任务系统
+	g_taskDoer:loadDailyTaskConfiguration(player,recordList[35])
 	g_taskDoer:loadHistoryTask(player, recordList[9])
 	g_taskDoer:loadNormalTask(player, recordList[10])
 	g_taskDoer:loadLoopTaskRing(player, recordList[22])
+	g_taskDoer:loadDailyTask(player,recordList[34])
 	g_taskDoer:loadLoopTask(player, recordList[11])
 	g_taskDoer:loadTaskTrace(player, recordList[12])
 	g_taskDoer:loadTaskPrivateData(player, recordList[13])
@@ -107,28 +107,30 @@ function System.OnPlayerLoaded(player, recordList)
 	g_treasureMgr:createTreasureFromDB(player,recordList[23])
 	
 	-- 加载系统功能设置
-	g_RoleConfigMgr:loadDataFromDB(player,recordList[26])
+	g_RoleConfigMgr:loadDataFromDB(player,recordList[25])
 
 	--加载生活技能数据
-	g_LifeSkillMgr:loadLifeSkill(player, recordList[28])
+	g_LifeSkillMgr:loadLifeSkill(player, recordList[27])
 
-	g_tirednessdMgr:loadTirednessFromDB(player,recordList[29])
+	g_tirednessdMgr:loadTirednessFromDB(player,recordList[28])
 	--加载快捷键数据
 	local keyRecord = recordList[4]
 	g_ShortCutKeyMgr:updateDataToClient(player,keyRecord)
 	-- 修改
-	g_practiseMgr:loadPractiseFromDB(player,recordList[30])
+	g_practiseMgr:loadPractiseFromDB(player,recordList[29])
 	--加载玩家宠物仓库数据
 	g_PetDepotMgr:playerCheckIn(player,recordList[1][1])
 
 	--加载邮箱系统
 	g_mailMgr:loadPlayerMails(player,recordList[14])
 	--加载猎金场活动
-	g_goldHuntMgr:loadGoldHunt(player,recordList[31])
+	g_goldHuntMgr:loadGoldHunt(player,recordList[30])
 	-- 活动上线
 	g_activityMgr:onPlayerOnline(player,recordList)
 	--加载兑换物品数据
-	g_exchangeItemMgr:playerOnLine(player,recordList[34])
+	g_exchangeItemMgr:playerOnLine(player,recordList[33])
+	-- 
+	g_taskDoer:loadBabelTask(player, recordList[36])
 end
 
 function System.OnPlayerLogout(player, reason)

@@ -21,6 +21,12 @@ end
 function FightScript_Random:setPhaseID(phaseID)
 	self._curPhase = phaseID
 end
+
+function FightScript_Random:getSystemActions()
+			
+	return self._scriptPrototype.phases[self._curPhase].systemActions
+end
+
 function FightScript_Random:_getRandomPhase()
 	local phaseInfo = self._scriptPrototype.phases
 	local count = table.size(self._unpassedPhase)
@@ -71,6 +77,7 @@ function FightScript_Random:onPlayOver(params)
 				end
 				g_fightFactory:initFightByMonsters(self,fightMonsters)
 				self._curPhase = nextPhase
+				self._roundCount = 0--回合清0
 				self:gotoState(FightState.PhaseStart)
 			--战斗结束
 			else

@@ -283,20 +283,27 @@ function TaskCondition.SpecialTeamTask(team, taskID)
 end
 
 --日常任务条件检测
-function TaskCondition.DailyTask( player, taskID, GM )
-	local DailyTaskData = DailyTaskDB[taskID]
-	local levelLimit = taskData.level
-	local consume = taskData.consume
-	local school = taskData.school
-	local level = player:getLevel()
-	local taskHandler = player:getHandler(taskHandler)
+function TaskCondition.dailyTask( player, taskID, GM )
 
-	if level < levelLimit[1] or level > levelLimit[2] then
-		print("玩家等级不够>>>>>>>>>>>>>>>>>>>>>>>")
-		return false
-	elseif taskHandler:getTask(taskID) or taskHandler:getTask(taskID).remainCount < 1  then
-		print("当日可接次数不够>>>>>>>>>>>>>>>>>>>>>>>")
+	if DailyTaskDB[taskID] then
+		local DailyTaskData = DailyTaskDB[taskID]
+		local levelLimit = DailyTaskData.level
+		local consume = DailyTaskData.consume
+		local school = DailyTaskData.school
+		local level = player:getLevel()
+		local taskHandler = player:getHandler(HandlerDef_Task)
+		if level < levelLimit[1] or level > levelLimit[2] then
+			return false
+		elseif taskHandler:getDailyTaskConfigurationByID(taskID) == nil then
+				return true
+		elseif not taskHandler:getDailyTaskConfigurationByID(taskID) then
+			return false
+		else
+			return true
+		end
+	else
 		return false
 	end
-	
 end
+
+

@@ -11,12 +11,13 @@ end
 
 --创建一个和npc有关的对话框
 function DialogDoer:createNpcDialog(player, npc)
+
 	local handler = npc:getHandler(HandlerDef_Dialog)
 	if not handler then 
 		return 
 	end
 	local npcID = npc:getID()
-	local dialogID = self:checkTaskDialog(player, npcID)
+	local dialogID = self:checkTaskDialog(player, npcID) --先检测任务ID，是不是任务对话
 	if not dialogID then
 		local dialogIDs = handler:getDialogIDs()							--获取npc身上的对话
 		dialogID = g_dialogCondtion:choseDialogID(player, dialogIDs, npcID)	--检测条件选出对话id
@@ -25,12 +26,13 @@ function DialogDoer:createNpcDialog(player, npc)
 			return
 		end
 	end
-	
-	g_dialogDoer:createDialogByID(player, dialogID, true, npcID)
+	g_dialogDoer:createDialogByID(player, dialogID, true, npcID) --创建对话
+
 end
 
---检测任务对话
+--检测任务对话,普通任务和日常任务由任务配置表决定，然后进行判断显示哪个
 function DialogDoer:checkTaskDialog(player, npcID)
+
 	local dialogID
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local providerTaskID, taskTypeA = taskHandler:checkTaskProvider(npcID)
@@ -44,6 +46,11 @@ function DialogDoer:checkTaskDialog(player, npcID)
 		elseif taskTypeB == TaskType.loop then
 			local loopTask = taskHandler:getTask(RecetiveTaskID)
 			dialogID = loopTask:getEndDialogID()
+		elseif taskTypeB == TaskType.daily then
+			dialogID = DailyTaskDB[RecetiveTaskID].endDialogID
+			if type(dialogID) == "table" then
+				dialogID = g_dialogCondtion:choseDialogID(player, dialogID)
+			end
 		end
 	elseif providerTaskID then
 		if taskTypeA == TaskType.normal then
@@ -53,8 +60,16 @@ function DialogDoer:checkTaskDialog(player, npcID)
 			end
 		elseif taskTypeA == TaskType.loop then
 			dialogID = LoopTaskDB[providerTaskID].startDialogID
+		elseif taskTypeA == TaskType.daily then
+
+			dialogID = DailyTaskDB[providerTaskID].startDialogID
+			if type(dialogID) == "table" then
+				dialogID = g_dialogCondtion:choseDialogID(player, dialogID)
+			end
+			
 		end
 	end
+
 	return dialogID
 end
 
@@ -127,9 +142,9 @@ function DialogDoer:openDialog(player, dialog ,npcID)
 		data.optionIDs = {}	
 		if dialogType == DialogType.HasOption then
 			for optionID, optionInfo in ipairs(dialog:getOptions()) do
-				 if g_dialogCondtion:choseOption(player, optionInfo.showConditions) then
+				if g_dialogCondtion:choseOption(player, optionInfo.showConditions) then
 					table.insert(data.optionIDs, optionID)
-				 end
+				end
 			end
 		end
 		g_dialogSym:openDialog(player, data, npcID)

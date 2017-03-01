@@ -16,12 +16,14 @@ end
 
 --对话功能之切换对话框
 function DialogAction:doGotos(player, param)
+
 	local dialogID = g_dialogCondtion:choseDialogID(player, param.dialogIDs)		--检测条件选出对话id
 	if not dialogID then
 		print("配置出错，对话ID为空")
 		return
 	end
 	g_dialogDoer:createDialogByID(player, dialogID, true)
+	
 end
 
 --有返回值的对话之间切换对话框主要是连环副本
@@ -182,6 +184,46 @@ function DialogAction:doRecetiveTasks(player, param)
 	local taskIDs = param.taskIDs
 	for _,taskID in pairs(taskIDs) do
 		g_taskDoer:doRecetiveTask(player,taskID)
+	end
+end
+
+-- 接受通天塔任务，没有任务 设置任务奖励类型，切换场景
+function DialogAction:doReceiveBabelTask(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	-- 如果没有任务，接受一个任务
+	if not task then
+		-- 之后还要改，根据玩家等级来确定层数
+		local finishFlag = taskHandler:getBabelFinishFlag(param.taskID)
+		-- 今日也完成
+		if finishFlag == 1 then
+			print("今天已经完成，请明日再来")
+			return
+		end
+		local layer = 1
+		g_taskDoer:doReceiveBabelTask(player, param.taskID, param.rewardType, layer)
+		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
+		print("mapID任务数据",mapID, param.taskID, layer)
+		if mapID then
+			-- 切换玩家到场景
+			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+			taskHandler:setReceiveBabelTaskTime(param.taskID)
+		end
+	end
+end
+
+-- 如果有通天塔任务，点击对话直接进入
+function DialogAction:doEnterBabel(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	if task then
+		local layer = task:getLayer()
+		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
+		print("mapID任务数据",mapID, param.taskID, layer)
+		if mapID then
+			-- 切换玩家到场景
+			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+		end
 	end
 end
 
@@ -616,6 +658,52 @@ function DialogAction:doGoldHuntFight(player, param, npcID)
 	g_goldHuntMgr:doGoldHuntPVEFight(player, param, npcID)
 	
 end
+
+--领取活动
+function DialogAction:doGetTheActivity(player, param)
+	local activityID = param.activityID
+	local activity = g_activityMgr:getActivity(activityID)
+	print("领取活动-----------------",activity,activity:isOpening())
+	if activity and activity:isOpening() then
+		activity:joinActivity(player)
+	else
+		print("activityID活动还没开启",activityID)
+		return
+	end
+end
+
+function DialogAction:doDekaronSchoolFight(player,param)
+	local targetID = param.activityTargetID
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if teamHandler and teamHandler:isLeader() then
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		local activityTarget = team:getDekaronActivityTarget()
+		if activityTarget and activityTarget:getActivityTargetId() == targetID then
+			local playerList = {}
+			playerList = teamHandler:getTeamPlayerList()
+			--加宠物
+			local finalList = {}
+			for k,player in ipairs(playerList) do
+				table.insert(finalList,player)
+				local petID = player:getFollowPetID()
+				if petID then
+					local pet = g_entityMgr:getPet(petID)
+					table.insert(finalList,pet)
+				end
+			end	
+
+			local scriptID = activityTarget:getScriptID() 
+			local bPass = g_fightMgr:checkStartScriptFight(finalList, scriptID)
+			print("进入脚本战斗战斗，scriptID，bPass",scriptID,bPass)
+			if bPass then
+				g_dekaronSchoolMgr:addFightFlagList(teamID,scriptID)
+				g_fightMgr:startScriptFight(finalList, scriptID,  nil ,FightBussinessType.Wild)
+			end
+		end
+	end
+end
+
 
 --猎金场玩家提交积分
 function DialogAction:doGoldHuntCommit(player, param)

@@ -415,7 +415,7 @@ public:
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 
-	void send_MsgSC_ChangeSessionState_ResultInfo(handle hLink)
+	void send_MsgSC_ChangeSessionState_ResultInfo(handle hLink, bool result)
 	{
 		_MsgSC_StateChanged_ResultInfo msg;
 		msg.msgCls = MSG_CLS_LOGIN;
@@ -423,6 +423,7 @@ public:
 		msg.msgLen = sizeof(_MsgSC_StateChanged_ResultInfo);
 		msg.msgFlags = 0;
 		msg.context	= 0;
+		msg.ret = result;
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, &msg);
 	}
 

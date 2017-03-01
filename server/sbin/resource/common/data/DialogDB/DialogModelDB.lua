@@ -10,6 +10,7 @@
 	30001-35000循环任务（30100-30300 帮派任务）
 	35001-35099抓宠任务
 	35100-35199瑞兽降福
+	35500-37000为指引任务对话
 	现在副本用到的ID是3000 ---3100
 	这一段跳过，我们配置主线任务的时候注意这个。
 	50100-50199 每日任务（新增）
@@ -180,58 +181,6 @@ DialogModelDB =
 	},
 
 ----------------------------31-32级主线任务NPC绑定对话--------------------------
-	[1110] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.HasTask, param = {taskID = 1153, statue = true}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "那孙将军现在何处？可有杀出重围？",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1153}},
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1154}},
-					{action = DialogActionType.Goto, param = {dialogID = 1111}},
-
-						},
-			}
-		},
-	},
-
-	[1120] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.HasTask, param = {taskID = 1156, statue = true}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "孙将军，我已将二位将军救下。恕我直言，以将军之兵力，何以不敌那徐荣。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1156}},
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1157}},
-					{action = DialogActionType.Goto, param = {dialogID = 1121}},
-
-						},
-			}
-		},
-	},
-
 	[1166] =
 	{
 		dialogType = DialogType.NotOption,
@@ -252,195 +201,6 @@ DialogModelDB =
 			},
 		},
 	},
-
-	[1172] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.HasTask, param = {taskID = 1169, statue = true}},
-		},
-		speakerID = 20639,
-		soundID = nil,
-		txt = "小娃娃，没想到你竟然还敢回来，这次绝不会再让你逃了。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.Goto, param = {dialogID = 1173}},
-
-						},
-			}
-		},
-	},
-
-	[1177] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.HasTask, param = {taskID = 1171, statue = true}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "黄盖将军，那妖人吕岳已被我杀死，妖阵已破，不会再有魔兵出现捣乱！",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.Goto, param = {dialogID = 1178}},
-
-						},
-			}
-		},
-	},
-
---------------------31-32级主线任务NPC绑定对话完毕------------------------------------
-
-	[1221] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "貂蝉姑娘莫慌，我这便回师门问策，我师父定有办法可解吕将军之毒。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1206}},
-						},
-			}
-		},
-	},
-
-         [1222] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "貂蝉姑娘莫慌，我这便回师门问策，我师父定有办法可解吕将军之毒。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1207}},
-						},
-			}
-		},
-	},
-
-         [1223] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "貂蝉姑娘莫慌，我这便回师门问策，我师父定有办法可解吕将军之毒。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1208}},
-						},
-			}
-		},
-	},
-
-         [1224] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "貂蝉姑娘莫慌，我这便回师门问策，我师父定有办法可解吕将军之毒。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1209}},
-						},
-			}
-		},
-	},
-
-	 [1225] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "貂蝉姑娘莫慌，我这便回师门问策，我师父定有办法可解吕将军之毒。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1210}},
-						},
-			}
-		},
-	},
-
-	[1226] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-		{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
-		},
-		speakerID = 0,
-		soundID = nil,
-		txt = "貂蝉姑娘莫慌，我这便回师门问策，我师父定有办法可解吕将军之毒。",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1211}},
-						},
-			}
-		},
-	},
-
 	----------------------33-34级主线对话-----------------------
 	 [1287] =
 	{
@@ -459,8 +219,9 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1210}},
-						},
+				{action = DialogActionType.FinishTask, param = {taskID = 1209}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1210}},
+				},
 			}
 		},
 	},
@@ -481,6 +242,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1209}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1211}},
 						},
 			}
@@ -503,6 +265,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1209}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1212}},
 						},
 			}
@@ -525,6 +288,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1209}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1213}},
 						},
 			}
@@ -547,6 +311,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1209}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1214}},
 						},
 			}
@@ -569,6 +334,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1209}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1215}},
 						},
 			}
@@ -658,7 +424,8 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1310}},
+				{action = DialogActionType.FinishTask, param = {taskID = 1309}},
+				{action = DialogActionType.RecetiveTask, param = {taskID = 1310}},
 						},
 			}
 		},
@@ -702,6 +469,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1309}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1312}},
 						},
 			}
@@ -746,6 +514,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1309}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1314}},
 						},
 			}
@@ -790,6 +559,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1309}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1316}},
 						},
 			}
@@ -834,6 +604,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1309}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1318}},
 						},
 			}
@@ -878,6 +649,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
+				{action = DialogActionType.FinishTask, param = {taskID = 1309}},
 					{action = DialogActionType.RecetiveTask, param = {taskID = 1320}},
 						},
 			}
@@ -14554,7 +14326,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20015,
-		txt = "我这里出售珍贵的宠物以及相关道具，客官要不要来看看？",
+		txt = "我这里出售珍宠物的相关道具，客官要不要来看看？",
 		options =
 		{
 		[1] = {
@@ -14652,290 +14424,36 @@ DialogModelDB =
 			},
 		}
 	},
-	[20033] =             --218世界传送npc
+	[20007] =
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
-		speakerID =30250 ,
-		txt = "我是218车夫",
+		speakerID = 29082,
+		txt = "我这里出售珍贵的宠物，客官要不要来看看？",
 		options =
 		{
-			[1] =
-			{
+		[1] = {
 				showConditions = {},
-				optionTxt = "桃园镇",  --主城
+				optionTxt = "看看卖啥",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 81, tarY = 91}},--切换场景
+					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 22},},
+				},
+				icon = DialogIcon.Trade,
+			},
+		[2] = {
+				showConditions = {},
+				optionTxt = "只是路过",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+		},
+	},
 
-                        [2] =
-			{
-				showConditions = {},
-				optionTxt = "洛阳",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "长安",  --主城
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "襄阳",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "金霞山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
-				},
-			},
-			[7] =
-			{
-				showConditions = {},
-				optionTxt = "乾元岛",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
-				},
-			},
-			[8] =
-			{
-				showConditions = {},
-				optionTxt = "桃源洞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
-				},
-			},
-			[9] =
-			{
-				showConditions = {},
-				optionTxt = "云霄宫",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
-				},
-			},
-			[10] =
-			{
-				showConditions = {},
-				optionTxt = "紫阳门",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
-				},
-			},
-			[11] =
-			{
-				showConditions = {},
-				optionTxt = "巨鹿",  --野外地图
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 101, tarX = 93, tarY = 200}},--切换场景
-				},
-			},
-			[12] =
-			{
-				showConditions = {},
-				optionTxt = "岐山",   --野外地图2016/7/27
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 102, tarX = 136, tarY = 118}},--切换场景
-				},
-			},
-			[13] =
-			{
-				showConditions = {},
-				optionTxt = "黑风岭",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 104, tarX = 87, tarY = 191}},--切换场景
-				},
-			},
-			[14] =
-			{
-				showConditions = {},
-				optionTxt = "郿坞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 106, tarX = 77, tarY = 147}},--切换场景
-				},
-			},
-			[15] = {
-				showConditions = {},
-				optionTxt = "暂时不走",
-				actions =
-				{
-					{action = DialogActionType.CloseDialog, param ={}},
-				},
-			},
-		}
-	},
-	[20034] =             --洛阳城内世界传送npc
-	{
-		dialogType = DialogType.HasOption,
-		conditions =
-		{
-		},
-		speakerID =30251 ,
-		txt = "我是218车夫",
-		options =
-		{
-		        [1] =
-			{
-				showConditions = {},
-				optionTxt = "东郡",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 107, tarX = 167, tarY = 99}},--切换场景
-				},
-			},
-			[2] =
-			{
-				showConditions = {},
-				optionTxt = "虎牢关",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 109, tarX = 186, tarY = 106}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "潼关",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 110 , tarX = 80, tarY = 129}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "天山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 115, tarX = 149, tarY = 128}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "西凉",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 116, tarX = 227, tarY = 135}},--切换场景
-				},
-			},
-		        [6] =
-			{
-				showConditions = {},
-				optionTxt = "徐州",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 118, tarX = 257, tarY = 128}},--切换场景
-				},
-			},
-			[7] =
-			{
-				showConditions = {},
-				optionTxt = "北海",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 119, tarX = 164, tarY = 134}},--切换场景
-				},
-			},
-			[8] =
-			{
-				showConditions = {},
-				optionTxt = "江夏",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 120, tarX = 114, tarY = 151}},--切换场景
-				},
-			},
-		        [9] =
-			{
-				showConditions = {},
-				optionTxt = "宛城",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 122, tarX = 161, tarY = 153}},--切换场景
-				},
-			},
-			[10] =
-			{
-				showConditions = {},
-				optionTxt = "寿春",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 124, tarX = 175, tarY = 59}},--切换场景
-				},
-			},
-			[11] =
-			{
-				showConditions = {},
-				optionTxt = "河北",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 126, tarX = 147, tarY = 140}},--切换场景
-				},
-			},
-			[12] =
-			{
-				showConditions = {},
-				optionTxt = "轩辕坟",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 127, tarX = 133, tarY = 228}},--切换场景
-				},
-			},
-			[13] =
-			{
-				showConditions = {},
-				optionTxt = "官渡",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 128, tarX = 92, tarY = 205}},--切换场景
-				},
-			},
-                        [14] = {
-				showConditions = {},
-				optionTxt = "暂时不走",
-				actions =
-				{
-					{action = DialogActionType.CloseDialog, param ={}},
-				},
-			},
-		},
-	},
 	[20008] =
 	{
 		dialogType = DialogType.HasOption,
@@ -15760,6 +15278,18 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param = {},},
 				},
 			},
+			[9] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15019, statue = true}},
+				},
+				optionTxt = "了解生活技能",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35510}},
+				},
+				icon = DialogIcon.Help,
+			},
 		},
 	},
 	[20022] =
@@ -16000,6 +15530,18 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param = {},},
 				},
 			},
+			[10] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15014, statue = true}},
+				},
+				optionTxt = "了解天道任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35507}},
+				},
+				icon = DialogIcon.Help,
+			},
 		},
 	},
 	[20025] =
@@ -16223,7 +15765,6 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-
 		},
 	},
 	[20028] =            -----------------洛阳-陆萧然
@@ -16251,6 +15792,18 @@ DialogModelDB =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
+			},
+			[3] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15013, statue = true}},
+				},
+				optionTxt = "了解试炼任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35506}},
+				},
+				icon = DialogIcon.Help,
 			},
 		},
 	},
@@ -16408,28 +15961,283 @@ DialogModelDB =
 			},
 		},
 	},
-	[20032] =    ----洛阳宠物商店
+	[20033] =             --218世界传送npc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
-		speakerID = 29082,
-		txt = "特殊物品可在这买",
+		speakerID =30250 ,
+		txt = "我是218车夫",
 		options =
 		{
-		[1] = {
+			[1] =
+			{
 				showConditions = {},
-				optionTxt = "看看卖啥",
+				optionTxt = "桃园镇",  --主城
 				actions =
 				{
-					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 22},},
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 81, tarY = 91}},--切换场景
 				},
-				icon = DialogIcon.Trade,
 			},
-		[2] = {
+
+                        [2] =
+			{
 				showConditions = {},
-				optionTxt = "只是路过",
+				optionTxt = "洛阳",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--切换场景
+				},
+			},
+			[3] =
+			{
+				showConditions = {},
+				optionTxt = "长安",  --主城
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--切换场景
+				},
+			},
+			[4] =
+			{
+				showConditions = {},
+				optionTxt = "襄阳",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--切换场景
+				},
+			},
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "金霞山",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
+				},
+			},
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "蓬莱阁",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
+				},
+			},
+			[7] =
+			{
+				showConditions = {},
+				optionTxt = "乾元岛",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
+				},
+			},
+			[8] =
+			{
+				showConditions = {},
+				optionTxt = "桃源洞",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
+				},
+			},
+			[9] =
+			{
+				showConditions = {},
+				optionTxt = "云霄宫",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
+				},
+			},
+			[10] =
+			{
+				showConditions = {},
+				optionTxt = "紫阳门",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
+				},
+			},
+			[11] =
+			{
+				showConditions = {},
+				optionTxt = "巨鹿",  --野外地图
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 101, tarX = 93, tarY = 200}},--切换场景
+				},
+			},
+			[12] =
+			{
+				showConditions = {},
+				optionTxt = "岐山",   --野外地图2016/7/27
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 102, tarX = 136, tarY = 118}},--切换场景
+				},
+			},
+			[13] =
+			{
+				showConditions = {},
+				optionTxt = "黑风岭",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 104, tarX = 87, tarY = 191}},--切换场景
+				},
+			},
+			[14] =
+			{
+				showConditions = {},
+				optionTxt = "郿坞",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 106, tarX = 77, tarY = 147}},--切换场景
+				},
+			},
+			[15] = {
+				showConditions = {},
+				optionTxt = "暂时不走",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		}
+	},
+	[20034] =             --洛阳城内世界传送npc
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID =30251 ,
+		txt = "我是218车夫",
+		options =
+		{
+		        [1] =
+			{
+				showConditions = {},
+				optionTxt = "东郡",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 107, tarX = 167, tarY = 99}},--切换场景
+				},
+			},
+			[2] =
+			{
+				showConditions = {},
+				optionTxt = "虎牢关",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 109, tarX = 186, tarY = 106}},--切换场景
+				},
+			},
+			[3] =
+			{
+				showConditions = {},
+				optionTxt = "潼关",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 110 , tarX = 80, tarY = 129}},--切换场景
+				},
+			},
+			[4] =
+			{
+				showConditions = {},
+				optionTxt = "天山",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 115, tarX = 149, tarY = 128}},--切换场景
+				},
+			},
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "西凉",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 116, tarX = 227, tarY = 135}},--切换场景
+				},
+			},
+		        [6] =
+			{
+				showConditions = {},
+				optionTxt = "徐州",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 118, tarX = 257, tarY = 128}},--切换场景
+				},
+			},
+			[7] =
+			{
+				showConditions = {},
+				optionTxt = "北海",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 119, tarX = 164, tarY = 134}},--切换场景
+				},
+			},
+			[8] =
+			{
+				showConditions = {},
+				optionTxt = "江夏",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 120, tarX = 114, tarY = 151}},--切换场景
+				},
+			},
+		        [9] =
+			{
+				showConditions = {},
+				optionTxt = "宛城",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 122, tarX = 161, tarY = 153}},--切换场景
+				},
+			},
+			[10] =
+			{
+				showConditions = {},
+				optionTxt = "寿春",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 124, tarX = 175, tarY = 59}},--切换场景
+				},
+			},
+			[11] =
+			{
+				showConditions = {},
+				optionTxt = "河北",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 126, tarX = 147, tarY = 140}},--切换场景
+				},
+			},
+			[12] =
+			{
+				showConditions = {},
+				optionTxt = "轩辕坟",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 127, tarX = 133, tarY = 228}},--切换场景
+				},
+			},
+			[13] =
+			{
+				showConditions = {},
+				optionTxt = "官渡",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 128, tarX = 92, tarY = 205}},--切换场景
+				},
+			},
+                        [14] = {
+				showConditions = {},
+				optionTxt = "暂时不走",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -16437,7 +16245,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[20033] =
+	[20035] =
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -18547,13 +18355,14 @@ DialogModelDB =
 			[6] = {
 				showConditions = 
 				{
-				{condition = DialogCondition.HasTask, param = {taskID = 2001, statue = true}},
+				{condition = DialogCondition.HasTask, param = {taskID = 15001, statue = true}},
 				},
 				optionTxt = "了解师门任务",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 700}},
+					{action = DialogActionType.Goto, param = {dialogID = 35500}},
 				},
+				icon = DialogIcon.Help,
 			},
 		},
 	},
@@ -18841,6 +18650,18 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+			[6] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15009, statue = true}},
+				},
+				optionTxt = "了解师门任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35504}},
+				},
+				icon = DialogIcon.Help,
+			},
 		},
 	},
 	[20553] =    -----------桃源洞长老
@@ -19126,6 +18947,18 @@ DialogModelDB =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
+			},
+			[6] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15003, statue = true}},
+				},
+				optionTxt = "了解师门任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35501}},
+				},
+				icon = DialogIcon.Help,
 			},
 		},
 	},
@@ -19414,6 +19247,18 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+			[6] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15011, statue = true}},
+				},
+				optionTxt = "了解师门任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35505}},
+				},
+				icon = DialogIcon.Help,
+			},
 		},
 	},
 	[20653] =    -----------蓬莱阁长老
@@ -19701,6 +19546,18 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+			[6] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15005, statue = true}},
+				},
+				optionTxt = "了解师门任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35502}},
+				},
+				icon = DialogIcon.Help,
+			},
 		},
 	},
 	[20703] =    -----------紫阳门长老
@@ -19987,6 +19844,18 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+			[6] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15007, statue = true}},
+				},
+				optionTxt = "了解师门任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35503}},
+				},
+				icon = DialogIcon.Help,
+			},
 		},
 	},
 	[20753] =    -----------云霄宫长老
@@ -20127,6 +19996,18 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+			[3] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15016, statue = true}},
+				},
+				optionTxt = "了解帮派",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 15016}},
+				},
+				icon = DialogIcon.Help,
+			}
 		},
 	},
 	[20802] =
@@ -20167,13 +20048,14 @@ DialogModelDB =
 			[4] = {
 				showConditions = 
 				{
-				{condition = DialogCondition.HasTask, param = {taskID = 2003, statue = true}},
+				{condition = DialogCondition.HasTask, param = {taskID = 15016, statue = true}},
 				},
 				optionTxt = "了解帮派",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 701}},
+					{action = DialogActionType.Goto, param = {dialogID = 35508}},
 				},
+				icon = DialogIcon.Help,
 			}
 		},
 	},
@@ -24392,6 +24274,227 @@ DialogModelDB =
 
 		},
 	},
+-------------------------------------------------炎魔窟对话----------------------------------------
+[10135] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31300,
+		soundID =0 ,
+		txt = "你竟胆敢擅闯炎魔窟！找死？",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10136}},
+				},
+			}
+
+		},
+	},
+	[10136] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "张宝如今身在何处，我特来此取他人头！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3103 ,mapID =621},},
+				},
+			}
+
+		},
+	},
+[10137] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31308,
+		soundID =0 ,
+		txt = "有本将在此，岂容你在我炎魔窟放肆！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10138}},
+				},
+			}
+
+		},
+	},
+	[10138] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "嗯？那就先灭了你们这群小贼再找张宝！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3104 ,mapID =621},},
+				},
+			}
+
+		},
+	},
+[10139] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31316,
+		soundID =0 ,
+		txt = "本将奉张宝大人令在此护法，入此地者皆死！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10140}},
+				},
+			}
+
+		},
+	},
+	[10140] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "那张宝藏在何处？快快道来，尚可饶你一命！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3105 ,mapID =621},},
+				},
+			}
+
+		},
+	},
+[10141] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31324,
+		soundID =0 ,
+		txt = "吾乃张宝大帅账下大将波才是也！敢来此撒野，纳命来吧！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10142}},
+				},
+			}
+
+		},
+	},
+	[10142] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "先灭了你等贼子，看那张宝躲到何时！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3106 ,mapID =621},},
+				},
+			}
+
+		},
+	},
+[10143] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 31332,
+		soundID =0 ,
+		txt = "小子，不管本帅在哪，你都阴魂不散！今日本帅定要将你千刀万剐，方可消心头之恨！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID=10144}},
+				},
+			}
+
+		},
+	},
+	[10144] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 0,--
+		soundID =0 ,
+		txt = "张宝，我找你多时了，今日定要叫你魂飞魄散！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3107 ,mapID =621},},
+				},
+			}
+
+		},
+	},
 
 
 
@@ -24441,6 +24544,18 @@ DialogModelDB =
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5074,5169,5185,5201,5217}}},
 				--{action = DialogActionType.Gotos, param = {dialogIDs = {5169,5185,5201,5217}}},
 				},
+			},
+			[4] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15020, statue = true}},
+				},
+				optionTxt = "了解副本",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35511}},
+				},
+				icon = DialogIcon.Help,
 			},
 		}
 	},
@@ -24742,6 +24857,18 @@ DialogModelDB =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
+			},
+			[4] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15018, statue = true}},
+				},
+				optionTxt = "了解如何兑换坐骑",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35509}},
+				},
+				icon = DialogIcon.Help,
 			},
 		},
 	},
@@ -27172,39 +27299,60 @@ DialogModelDB =
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
-		{
-		
-		},
-		speakerID = 20001,
+		{},
+		speakerID = 29081,
 		soundID =26159,
-		txt = "修炼之路并非一日而功，只有打稳根基，平时多磨炼自己，每天坚持上阵杀敌方为正道。",
+		txt = "如今黄巾教兴风作浪，皇子们又为太子之位明争暗斗。将士无心守疆卫境，百姓颠簸流离。真是里忧外患啊！",
 		options =
 		{
 			[1] = 
 			{
-				showConditions = {},
-				optionTxt = "修炼之路（接受任务）",
+				showConditions = 
+				{ 
+				{condition = DialogCondition.HasTask,param = {taskID = 40001,statue = false,},},
+				},
+				optionTxt = "平邦卫境",
 				actions =
 				{
-					{action = DialogActionType.Gotos , param = {dialogIDs = {50102,50103,50104}},},
+				{action = DialogActionType.Gotos , param = {dialogIDs = {50103,50104,50102}},},
 				},
+				icon = DialogIcon.Task2,
 			},
 			[2] = 
 			{
-				showConditions = {},
-				optionTxt = "修炼之路（完成任务）",
-				actions =
-				{
-					{action = DialogActionType.Gotos , param = {dialogIDs = {50105,50106}}},
+				showConditions = 
+				{ 
+				{condition = DialogCondition.HasTask,param = {taskID = 40001,statue = true },},
+				{condition = DialogCondition.TkillMonster, param = {taskID = 40001,statue = true}},
 				},
+				optionTxt = "平邦卫境",
+				actions = 
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 50105}},
+				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = 
+			{
+				showConditions = 
+				{ 
+				{condition = DialogCondition.HasTask,param = {taskID = 40001,statue = true },},
+				{condition = DialogCondition.TkillMonster, param = {taskID = 40001,statue = false}},
+				},
+				optionTxt = "平邦卫境",
+				actions = 
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 50106}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[4] = 
 			{
 				showConditions = {},
 				optionTxt = "我还有事，告辞",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog , param = {},},
+				{action = DialogActionType.CloseDialog , param = {},},
 				},
 			},
 		},
@@ -27213,30 +27361,39 @@ DialogModelDB =
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
-		{
-		
-		},
-		speakerID = 20001,
+		{},
+		speakerID = 29081,
 		soundID =26159,
-		txt = "要上阵杀敌武艺不可不精，平时要多磨炼自己才行！这样吧，你在今天之内替我消灭200只与你等级相差5级以内的任意妖怪，提升自身武艺的同时，我依然会给你奖励作为报酬，是不是很划算啊！",
+		txt = "据手下来报，大批妖物正在洛阳周边兴妖作乱，威胁百姓性命安全，你辛苦一趟替我解决他们吧！",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "我这就去完成任务！",
+				optionTxt = "我明白了，这就出发！",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask , param = {taskID = 40001}},
+				{action = DialogActionType.RecetiveTask , param = {taskID = 40001}},
 				},
+				icon = DialogIcon.Task2,
 			},
 			[2] = 
+			{
+				showConditions = {},
+				optionTxt = "任务说明",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 50107}},
+				},
+				icon = DialogIcon.Help,
+			},
+			[3] = 
 			{
 				showConditions = {},
 				optionTxt = "我还有事，告辞",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog , param = {},},
+				{action = DialogActionType.CloseDialog , param = {},},
 				},
 			},
 		},
@@ -27246,9 +27403,9 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		
+		{condition = DialogCondition.Level, param = {level=0,maxLevel =25,errorID =1 }},
 		},
-		speakerID = 20001,
+		speakerID = 29081,
 		soundID =26159,
 		txt = "以你现在的能力，还不足以对抗那些可怕的妖怪，请回去修炼到25级再回来找我吧！",
 		options =
@@ -27259,7 +27416,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog , param = {},},
+				{action = DialogActionType.CloseDialog , param = {},},
 				},
 			},
 		},
@@ -27269,11 +27426,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		
+		{condition = DialogCondition.DailyTaskTimes, param = {taskID = 40001,errorID = 1}},
 		},
-		speakerID = 20001,
+		speakerID = 29081,
 		soundID =26159,
-		txt = "修炼之路要循序渐进，绝不是一步而蹴。你今天已经消灭足够多的妖怪了，明天再过来吧！",
+		txt = "你今天已经在我这里领取过任务了，明天再过来看看吧！",
 		options =
 		{
 			[1] = 
@@ -27291,12 +27448,10 @@ DialogModelDB =
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
-		{
-		
-		},
+		{},
 		speakerID = 20001,
 		soundID =26159,
-		txt = "很好，你完成得不错，这些都是给你的奖励！明天记得还要来我这接任务啊！",
+		txt = "看来你的本领还不错嘛，这么快就回来了！这是给你的报酬，别客气收下吧！",
 		options =
 		{
 			[1] = 
@@ -27305,7 +27460,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask , param = {taskID = 40001},},
+				{action = DialogActionType.FinishTask , param = {taskID = 40001},},
 				},
 			},
 		},
@@ -27314,12 +27469,10 @@ DialogModelDB =
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
-		{
-		
-		},
-		speakerID = 20001,
+		{},
+		speakerID = 29081,
 		soundID =26159,
-		txt = "你好像还没消灭200只怪物吧，请再接再厉吧！",
+		txt = "你完成我交给你的任务了？",
 		options =
 		{
 			[1] = 
@@ -27329,6 +27482,37 @@ DialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+	[50107] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 29081,
+		soundID =26159,
+		txt = "每天你能在我这里领取到1次任务，在任意玩法中只要你累计击杀200只与你等级相近的任意妖物，我都会给你一定奖励作为报酬！",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "听起来不错，我这就出发！",
+				actions =
+				{
+				{action = DialogActionType.RecetiveTask , param = {taskID = 40001}},
+				},
+				icon = DialogIcon.Task2,
+			},
+			[2] = 
+			{
+				showConditions = {},
+				optionTxt = "抱歉，现在没空。",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog , param = {},},
 				},
 			},
 		},

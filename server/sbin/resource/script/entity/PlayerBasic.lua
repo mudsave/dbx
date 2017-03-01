@@ -246,6 +246,11 @@ function Player:getStoreXp()
 	return self.storeXp
 end
 
+function Player:addTao( tao )
+	local tao = tao + self:getAttrValue(player_tao)
+	self:setAttrValue(player_tao, tao)
+end
+
 -- 设置玩家状态，摆摊，组队等
 function Player:setActionState(playerState)
 	local teamHandler = self:getHandler(HandlerDef_Team)

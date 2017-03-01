@@ -44,6 +44,7 @@ TaskType2 = {
 	Challenge		= 0x400,	--挑战任务
 	Trial			= 0x800,	--试炼任务
 	Heaven			= 0x1000,	--天道任务
+	Babel			= 0x2000,	--通天塔任务
 
 }
 

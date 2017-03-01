@@ -79,7 +79,8 @@ function Fight:__init()
 	self._fightStartTimerID = nil--战斗开始超时定时器
 	self._roundCalculateTimerID = nil --执行动作超时(用于执行出错时)
 	self._offlineTimeOutTimerID = nil --离线超时定时器
-	self._roundCount = 0 --回合数
+	self._roundCount = 0 --回合数(多阶段战斗可能会被重置)
+	self._totalRound = 0
 	self._winSide = FightStand.A --战斗胜利的一方
 	self._escapedRoles = {}--{role1,role2}
 	self._oldActions = {}--{[entityID1]=action1,[entityID2]=action2}
@@ -228,6 +229,18 @@ function Fight:hasMonster(DBID)
 		end
 	end
 	return false
+end
+
+function Fight:getMonsterNum(DBID)
+	local i = 0
+	for side,roles in pairs(self._members) do
+		for _ ,role in pairs(roles) do
+			if instanceof(role,FightMonster) and role:getDBID() == DBID and (role:getLifeState() == RoleLifeState.Normal or role:getIsGBH() == true ) then
+				i = i + 1
+			end
+		end
+	end
+	return i
 end
 
 function Fight:setOldAction(entityID,action)
@@ -502,6 +515,7 @@ end
 function Fight:onEnterRoundStart()
 	self._curResultIndex = 1
 	self._roundCount = self._roundCount +1
+	self._totalRound = self._totalRound + 1
 	self:_clearFightActionSet()
 	self._actionSet.curIndex = 1
 	self._curWaitActionNum = self._waitActionNum
@@ -654,7 +668,7 @@ function Fight:_canFightEnd()
 		self._winSide = FightStand.A
 		return true
 	else
-		if self._roundCount >=FightMaxRound then
+		if self._totalRound >=FightMaxRound then
 			self._winSide = FightStand.A
 			return true
 		end
@@ -916,8 +930,8 @@ end
 function Fight:_checkFightResults(results)
 	for k, result in pairs(results) do
 		local actionType = result.actionType
-		
-		if actionType == FightActionType.System then
+		local type = result.type
+		if actionType == FightActionType.System and type ~= ScriptFightActionType.PlayBubble then
 			if result.params then
 				if result.params.IDs then
 					local IDs = result.params.IDs
@@ -1528,9 +1542,13 @@ function Fight:onEnterFightEnd()
 		end
 	end
 
-	local fightInfo
+	local fightInfo 
+	if instanceof(self, FightScript) then
+		fightInfo = {}
+		fightInfo.common = self:getRewardFactorInfo()
+	end
 	if instanceof(self, FightScript_LuckyMonster) then
-		fightInfo = {LuckMonster = self:getDeadMonsterInfo()}
+		fightInfo.LuckMonster = self:getDeadMonsterInfo()
 	end
 
 	local event = Event.getEvent(FightEvents_FS_FightEnd,AttrsPool4transfer,scriptID,self._allMonsterDBIDs,storedPets4transfer,self._world_fightID, fightInfo)

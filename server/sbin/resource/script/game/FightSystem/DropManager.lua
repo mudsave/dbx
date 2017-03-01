@@ -367,9 +367,9 @@ function DropManager:getCompareLevel(monsterConfig, role, fightID)
 			local rand = math.random(100)
 			local itemInfo = {}
 			local allItem = {}
-			if rand >= 1 and rand <= 40 then
+			if rand >= 1 and rand <= 50 then
 				itemInfo = nil
-			elseif rand > 40 and rand <= 60 then
+			elseif rand > 50 and rand <= 60 then
 				packetHandler:addItemsToPacket(1051005 ,1)
 				itemInfo.itemID = 1051005
 				itemInfo.itemNum = 1

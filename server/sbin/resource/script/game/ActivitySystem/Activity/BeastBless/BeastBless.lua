@@ -126,8 +126,8 @@ end
 
 -- 上线加入活动
 function BeastBless:joinPlayer(player,recordList)
-	local beastBlessRecord = recordList[32]
-	print("上线加入活动2")
+	local beastBlessRecord = recordList[31]
+	--print("上线加入活动2", toString(beastBlessRecord))
 	g_beastBlessMgr:joinPlayer(player,beastBlessRecord)
 end
 

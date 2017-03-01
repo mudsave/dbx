@@ -76,6 +76,11 @@ NpcDB = {
 	     level = 1,
 	     dialogIDs = {30003},
      },
+     [3] = {
+	     name = "白鹤童子",
+	     modelID =723,
+	     desc = "开场动画演员",
+     },
      [20001] = {
 	     name = "白鹤童子",
 	     title = "静待",
@@ -3579,7 +3584,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     dialogIDs = {1602},
 	     modelTextures =1,
      },
      [21104] = {
@@ -3590,7 +3594,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     dialogIDs = {1604},
 	     modelTextures =3,
      },
      [21105] = {
@@ -3601,14 +3604,12 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     dialogIDs = {1606},
      },
      [21106] = {
 	     name = "李丰",
 	     modelID =104,
 	     desc = "主线41-42",
 	     level = 41,
-	     dialogIDs = {1609},
      },
      [21107] = {
 	     name = "袁营亲兵",
@@ -3638,7 +3639,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
-	     dialogIDs = {1610},
 	     modelTextures =1,
      },
      [21110] = {
@@ -3649,7 +3649,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
-	     dialogIDs = {1612},
 	     modelTextures =1,
      },
      [21111] = {
@@ -3660,7 +3659,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     dialogIDs = {1615},
      },
      [21112] = {
 	     name = "虎牢关守卫",
@@ -3690,7 +3688,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006,1007},
-	     dialogIDs = {1621},
 	     modelTextures =1,
      },
      [21115] = {
@@ -3701,7 +3698,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     dialogIDs = {1623},
 	     modelTextures =4,
      },
      [21116] = {
@@ -3712,7 +3708,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     dialogIDs = {1625},
      },
      [21117] = {
 	     name = "张勋亲兵",
@@ -3742,7 +3737,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     dialogIDs = {1628},
 	     modelTextures =3,
      },
      [21120] = {
@@ -3753,7 +3747,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     dialogIDs = {1630},
 	     modelTextures =3,
      },
      [21121] = {
@@ -3764,7 +3757,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     dialogIDs = {1632},
 	     modelTextures =3,
      },
      [21122] = {
@@ -3772,7 +3764,9 @@ NpcDB = {
 	     modelID =598,
 	     desc = "主线41-42",
 	     level = 41,
-	     dialogIDs = {1639,1653},
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1025},
      },
      [21123] = {
 	     name = "汝南守卫",
@@ -3802,7 +3796,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     dialogIDs = {1640},
 	     modelTextures =2,
      },
      [21126] = {
@@ -3813,7 +3806,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     dialogIDs = {1642},
 	     modelTextures =2,
      },
      [21127] = {
@@ -3824,7 +3816,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006,1007},
-	     dialogIDs = {1644},
      },
      [21128] = {
 	     name = "汝南步兵",
@@ -3854,7 +3845,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     dialogIDs = {1647},
 	     modelTextures =2,
      },
      [21131] = {
@@ -3865,7 +3855,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     dialogIDs = {1649},
 	     modelTextures =2,
      },
      [21132] = {
@@ -3876,14 +3865,12 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     dialogIDs = {1651},
      },
      [21133] = {
 	     name = "曹操",
 	     modelID =608,
 	     desc = "主线41-42",
 	     level = 41,
-	     dialogIDs = {1637,1663,1678,1702},
      },
      [21134] = {
 	     name = "宛城护卫",
@@ -3913,7 +3900,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     dialogIDs = {1656},
 	     modelTextures =3,
      },
      [21137] = {
@@ -3924,7 +3910,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
-	     dialogIDs = {1658},
 	     modelTextures =4,
      },
      [21138] = {
@@ -3935,7 +3920,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
-	     dialogIDs = {1660},
 	     modelTextures =2,
      },
      [21139] = {
@@ -3946,7 +3930,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006,1007},
-	     dialogIDs = {1664},
 	     modelTextures =3,
      },
      [21140] = {
@@ -3957,7 +3940,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     dialogIDs = {1666},
 	     modelTextures =1,
      },
      [21141] = {
@@ -3968,7 +3950,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
-	     dialogIDs = {1668},
 	     modelTextures =1,
      },
      [21142] = {
@@ -3979,7 +3960,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     dialogIDs = {1671},
 	     modelTextures =1,
      },
      [21143] = {
@@ -4010,7 +3990,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     dialogIDs = {1673},
 	     modelTextures =4,
      },
      [21146] = {
@@ -4021,7 +4000,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     dialogIDs = {1675},
 	     modelTextures =2,
      },
      [21147] = {
@@ -4051,7 +4029,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     dialogIDs = {1679},
 	     modelTextures =3,
      },
      [21150] = {
@@ -4062,7 +4039,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     dialogIDs = {1681},
 	     modelTextures =4,
      },
      [21151] = {
@@ -4073,7 +4049,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
-	     dialogIDs = {1683},
 	     modelTextures =1,
      },
      [21152] = {
@@ -4081,7 +4056,6 @@ NpcDB = {
 	     modelID =175,
 	     desc = "主线41-42",
 	     level = 41,
-	     dialogIDs = {1686},
      },
      [21153] = {
 	     name = "张绣亲兵",
@@ -4110,7 +4084,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     dialogIDs = {1687},
 	     modelTextures =4,
      },
      [21156] = {
@@ -4121,7 +4094,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
-	     dialogIDs = {1689},
 	     modelTextures =4,
      },
      [21157] = {
@@ -4132,7 +4104,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     dialogIDs = {1691},
 	     modelTextures =3,
      },
      [21158] = {
@@ -4140,7 +4111,6 @@ NpcDB = {
 	     modelID =514,
 	     desc = "主线41-42",
 	     level = 41,
-	     dialogIDs = {1694},
      },
      [21159] = {
 	     name = "火焰窟妖人",
@@ -4168,7 +4138,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     dialogIDs = {1695},
      },
      [21162] = {
 	     name = "火焰窟魔人",
@@ -4178,7 +4147,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     dialogIDs = {1697},
      },
      [21163] = {
 	     name = "罗宣",
@@ -4188,13 +4156,754 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018.1019},
-	     dialogIDs = {1699},
      },
      [21164] = {
 	     name = "典韦",
 	     modelID =228,
 	     desc = "主线41-42",
 	     level = 41,
+     },
+     [21202] = {
+	     name = "曹仁",
+	     modelID =598,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1025},
+     },
+     [21203] = {
+	     name = "偷袭将领",
+	     modelID =112,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+	     modelTextures =3,
+     },
+     [21204] = {
+	     name = "偷袭护卫",
+	     modelID =160,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1025},
+     },
+     [21205] = {
+	     name = "偷袭护卫",
+	     modelID =160,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1009},
+     },
+     [21206] = {
+	     name = "偷袭小兵",
+	     modelID =148,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018},
+     },
+     [21207] = {
+	     name = "偷袭小兵",
+	     modelID =148,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1021},
+     },
+     [21208] = {
+	     name = "偷袭头目",
+	     modelID =140,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+	     modelTextures =2,
+     },
+     [21209] = {
+	     name = "陈就",
+	     modelID =178,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1020,1021},
+     },
+     [21210] = {
+	     name = "程普",
+	     modelID =514,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1010},
+     },
+     [21211] = {
+	     name = "樊城暗哨",
+	     modelID =117,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+	     modelTextures =3,
+     },
+     [21212] = {
+	     name = "樊城护卫",
+	     modelID =139,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024},
+     },
+     [21213] = {
+	     name = "樊城护卫",
+	     modelID =139,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008},
+     },
+     [21214] = {
+	     name = "樊城小兵",
+	     modelID =100,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017},
+     },
+     [21215] = {
+	     name = "樊城小兵",
+	     modelID =100,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020},
+     },
+     [21216] = {
+	     name = "樊城守卫",
+	     modelID =124,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+	     modelTextures =4,
+     },
+     [21217] = {
+	     name = "黄射",
+	     modelID =162,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008,1009},
+     },
+     [21218] = {
+	     name = "寿春统领",
+	     modelID =127,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1019},
+	     modelTextures =2,
+     },
+     [21219] = {
+	     name = "寿春守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1025},
+     },
+     [21220] = {
+	     name = "寿春守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1009},
+     },
+     [21221] = {
+	     name = "寿春护卫",
+	     modelID =116,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017},
+     },
+     [21222] = {
+	     name = "寿春护卫",
+	     modelID =116,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21223] = {
+	     name = "寿春监军",
+	     modelID =130,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21224] = {
+	     name = "阎象",
+	     modelID =180,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1014},
+     },
+     [21225] = {
+	     name = "寿春督查",
+	     modelID =114,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020},
+     },
+     [21226] = {
+	     name = "寿春巡史",
+	     modelID =121,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008},
+     },
+     [21227] = {
+	     name = "袁胤",
+	     modelID =122,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1017,1018},
+     },
+     [21228] = {
+	     name = "孙策",
+	     modelID =603,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008},
+     },
+     [21229] = {
+	     name = "门下督军",
+	     modelID =125,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+     },
+     [21230] = {
+	     name = "九江守卫",
+	     modelID =126,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1025},
+     },
+     [21231] = {
+	     name = "九江守卫",
+	     modelID =126,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008,1009},
+     },
+     [21232] = {
+	     name = "九江小兵",
+	     modelID =139,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017,1018},
+     },
+     [21233] = {
+	     name = "九江小兵",
+	     modelID =139,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21234] = {
+	     name = "前锋校",
+	     modelID =130,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21235] = {
+	     name = "桥蕤",
+	     modelID =162,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1014},
+     },
+     [21236] = {
+	     name = "九江门将",
+	     modelID =178,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008},
+	     modelTextures =3,
+     },
+     [21237] = {
+	     name = "九江守将",
+	     modelID =124,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+	     modelTextures =4,
+     },
+     [21238] = {
+	     name = "舒邵",
+	     modelID =514,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008,1009},
+     },
+     [21239] = {
+	     name = "周瑜",
+	     modelID =604,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1017},
+     },
+     [21240] = {
+	     name = "江夏主将",
+	     modelID =121,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+     },
+     [21241] = {
+	     name = "江夏守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1025},
+     },
+     [21242] = {
+	     name = "江夏守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008,1009},
+     },
+     [21243] = {
+	     name = "江夏小兵",
+	     modelID =100,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017,1018},
+     },
+     [21244] = {
+	     name = "江夏小兵",
+	     modelID =100,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21245] = {
+	     name = "江夏守将",
+	     modelID =117,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1020,1021},
+     },
+     [21246] = {
+	     name = "张硕",
+	     modelID =140,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1019},
+     },
+     [21247] = {
+	     name = "营地首领",
+	     modelID =140,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+     },
+     [21248] = {
+	     name = "营地守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1025},
+     },
+     [21249] = {
+	     name = "营地守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008,1009},
+     },
+     [21250] = {
+	     name = "营地小兵",
+	     modelID =139,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017,1018},
+     },
+     [21251] = {
+	     name = "营地小兵",
+	     modelID =139,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21252] = {
+	     name = "营地统领",
+	     modelID =175,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21253] = {
+	     name = "黄祖",
+	     modelID =177,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1024},
+     },
+     [21254] = {
+	     name = "袁营卫士",
+	     modelID =114,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+     },
+     [21255] = {
+	     name = "袁营武将",
+	     modelID =104,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1025},
+	     modelTextures =3,
+     },
+     [21256] = {
+	     name = "袁营守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008,1009},
+     },
+     [21257] = {
+	     name = "袁营守卫",
+	     modelID =157,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017,1018},
+     },
+     [21258] = {
+	     name = "袁营小兵",
+	     modelID =100,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21259] = {
+	     name = "袁营小兵",
+	     modelID =100,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020,1021},
+     },
+     [21260] = {
+	     name = "荀正",
+	     modelID =135,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1024},
+     },
+     [21261] = {
+	     name = "巡逻城卫队长",
+	     modelID =117,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1025},
+	     modelTextures =4,
+     },
+     [21262] = {
+	     name = "千夫长",
+	     modelID =130,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1020,1021},
+	     modelTextures =3,
+     },
+     [21263] = {
+	     name = "纪灵",
+	     modelID =134,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1022,1023},
+     },
+     [21264] = {
+	     name = "侍卫领班",
+	     modelID =517,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1014},
+     },
+     [21265] = {
+	     name = "寿春守将",
+	     modelID =115,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020},
+     },
+     [21266] = {
+	     name = "刘勋",
+	     modelID =132,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1010,1007},
+     },
+     [21267] = {
+	     name = "守阵将军",
+	     modelID =206,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1008,1010},
+     },
+     [21268] = {
+	     name = "守阵护法",
+	     modelID =200,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1012},
+     },
+     [21269] = {
+	     name = "守镇护卫",
+	     modelID =193,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1005},
+     },
+     [21270] = {
+	     name = "守阵护卫",
+	     modelID =193,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1006,1007},
+     },
+     [21271] = {
+	     name = "守阵小兵",
+	     modelID =192,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1004,1006},
+     },
+     [21272] = {
+	     name = "守阵小兵",
+	     modelID =192,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1006,1008},
+     },
+     [21273] = {
+	     name = "王魔",
+	     modelID =223,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1004,1007},
+     },
+     [21274] = {
+	     name = "亲兵统领",
+	     modelID =175,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1016,1017},
+     },
+     [21275] = {
+	     name = "侍卫总管",
+	     modelID =189,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1018,1019},
+     },
+     [21276] = {
+	     name = "守阵大将",
+	     modelID =559,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016,1018},
+     },
+     [21277] = {
+	     name = "守阵大将",
+	     modelID =559,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1022,1023},
+     },
+     [21278] = {
+	     name = "袁术",
+	     modelID =132,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1010,1020},
+	     modelScale =14,
+     },
+     [21279] = {
+	     name = "阎象",
+	     modelID =180,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+     },
+     [21280] = {
+	     name = "桥蕤",
+	     modelID =162,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     modelTextures =2,
+     },
+     [21281] = {
+	     name = "张硕",
+	     modelID =175,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+     },
+     [21282] = {
+	     name = "刘勋",
+	     modelID =177,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     modelTextures =3,
+     },
+     [21283] = {
+	     name = "程普",
+	     modelID =514,
+	     desc = "主线43-44",
+	     level = 43,
+	     attrID = 1,
+	     phaseType = PhaseType.None,
      },
      [25001] = {
 	     name = "山臊",
@@ -4582,9 +5291,9 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1028},
 	     dialogIDs = {4030},
-	     taoExpPrize =-1,
-	     potencyPrize =-1,
-	     petTaoPrize =-1,
+	     taoExpPrize =5,
+	     potencyPrize =5,
+	     petTaoPrize =5,
      },
      [25031] = {
 	     name = "帮凶",
@@ -4594,9 +5303,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.None,
 	     skillCfg = {1029},
-	     taoExpPrize =5,
-	     potencyPrize =5,
-	     petTaoPrize =5,
      },
      [25501] = {
 	     name = "瑞兽",
@@ -4633,6 +5339,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.None,
 	     dialogIDs = {35104},
+	     modelTextures =2,
      },
      [25505] = {
 	     name = "金钱小仙",
@@ -4641,7 +5348,7 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.None,
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [25506] = {
 	     name = "经验小仙",
@@ -4659,7 +5366,7 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.None,
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [25508] = {
 	     name = "道行小仙",
@@ -4668,7 +5375,6 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.None,
-	     modelTextures =2,
      },
      [25509] = {
 	     name = "返生雪莲",
@@ -4700,7 +5406,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 20,
 	     attrID = 1,
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [26002] = {
 	     name = "捣乱小妖",
@@ -4708,7 +5414,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 20,
 	     attrID = 1,
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [26003] = {
 	     name = "狡猾盗贼",
@@ -4716,7 +5422,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 30,
 	     attrID = 1,
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [26004] = {
 	     name = "狡猾盗贼",
@@ -4732,7 +5438,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 40,
 	     attrID = 1,
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [26006] = {
 	     name = "作歹流氓",
@@ -4740,7 +5446,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 40,
 	     attrID = 1,
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [26007] = {
 	     name = "恶毒山贼",
@@ -4748,7 +5454,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 50,
 	     attrID = 1,
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [26008] = {
 	     name = "恶毒山贼",
@@ -4756,7 +5462,6 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = 50,
 	     attrID = 1,
-	     modelTextures =3,
      },
      [26009] = {
 	     name = "截教奸细",
@@ -4765,6 +5470,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     dialogIDs = {4307},
+	     modelTextures =4,
      },
      [26010] = {
 	     name = "偷天大盗",
@@ -4782,7 +5488,6 @@ NpcDB = {
 	     level = 45,
 	     attrID = 1,
 	     dialogIDs = {4309},
-	     modelTextures =4,
      },
      [26012] = {
 	     name = "门派叛徒",
@@ -4805,6 +5510,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = -1,
 	     attrID = 1,
+	     modelTextures =4,
      },
      [26016] = {
 	     name = "神秘商人",
@@ -4812,7 +5518,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = -1,
 	     attrID = 1,
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [26018] = {
 	     name = "拦路强盗",
@@ -4820,7 +5526,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = -1,
 	     attrID = 1,
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [26019] = {
 	     name = "拦路强盗",
@@ -4828,7 +5534,6 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = -1,
 	     attrID = 1,
-	     modelTextures =3,
      },
      [26020] = {
 	     name = "帮凶",
@@ -4836,6 +5541,7 @@ NpcDB = {
 	     desc = "师门任务",
 	     level = -1,
 	     attrID = 1,
+	     modelTextures =4,
      },
      [26021] = {
 	     name = "迷途女子",
@@ -4843,7 +5549,6 @@ NpcDB = {
 	     desc = "师门护送任务",
 	     level = -1,
 	     attrID = 1,
-	     modelTextures =4,
      },
      [26028] = {
 	     name = "仇敌",
@@ -4929,6 +5634,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
 	     dialogIDs = {5007},
+	     modelScale =14,
      },
      [27008] = {
 	     name = "玉泉行者",
@@ -4939,7 +5645,6 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
 	     dialogIDs = {5008},
-	     modelScale =14,
      },
      [27009] = {
 	     name = "飞贼",
@@ -5100,6 +5805,7 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
 	     dialogIDs = {5024},
+	     modelScale =14,
      },
      [27025] = {
 	     name = "胡力",
@@ -5627,7 +6333,6 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
 	     dialogIDs = {5072},
-	     modelScale =14,
      },
      [27073] = {
 	     name = "杨森",
@@ -5678,6 +6383,7 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
 	     dialogIDs = {20262},
+	     modelScale =14,
      },
      [27078] = {
 	     name = "黑风小妖",
@@ -6469,7 +7175,6 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
 	     dialogIDs = {5160},
-	     modelScale =14,
      },
      [27150] = {
 	     name = "陆萧枭",
@@ -7027,20 +7732,20 @@ NpcDB = {
 	     modelID =173,
 	     desc = "帮派生活技能学习",
 	     dialogIDs = {20030},
+	     modelTextures =3,
      },
      [29081] = {
 	     name = "伏完",
 	     title = "辅国将军",
 	     modelID =162,
 	     desc = "辅国将军",
-	     dialogIDs = {20033},
-	     modelTextures =3,
+	     dialogIDs = {50101},
      },
      [29082] = {
 	     name = "宠物商店",
 	     modelID =505,
 	     desc = "洛阳宠物商店",
-	     dialogIDs = {20032},
+	     dialogIDs = {20007},
      },
      [30001] = {
 	     name = "秋风原巡逻护卫",
@@ -7550,6 +8255,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelScale =15,
      },
      [30080] = {
 	     name = "天牢山主将",
@@ -7559,7 +8265,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelScale =15,
      },
      [30081] = {
 	     name = "天牢山偏将",
@@ -7596,6 +8301,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelScale =15,
      },
      [30085] = {
 	     name = "天牢山副帅",
@@ -7605,7 +8311,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelScale =15,
+	     modelTextures =2,
      },
      [30086] = {
 	     name = "侍卫",
@@ -7625,7 +8331,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =2,
      },
      [30088] = {
 	     name = "守卫",
@@ -7644,6 +8349,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [30090] = {
 	     name = "天牢山祭祀",
@@ -7653,7 +8359,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     modelTextures =2,
      },
      [30091] = {
 	     name = "持剑护法",
@@ -7672,6 +8377,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =4,
      },
      [30093] = {
 	     name = "大刀守卫",
@@ -7682,6 +8388,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
 	     modelTextures =4,
+	     unhitRate = 1,
+	     unhitSkills = {1021,1023},
      },
      [30094] = {
 	     name = "大刀守卫",
@@ -7691,9 +8399,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =4,
-	     unhitRate = 1,
-	     unhitSkills = {1021,1023},
      },
      [30095] = {
 	     name = "郭汜",
@@ -7977,7 +8682,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30161] = {
 	     name = "魔魂峰哨兵",
@@ -7997,7 +8702,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =3,
      },
      [30163] = {
 	     name = "魔魂峰暗卫",
@@ -8016,6 +8720,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelScale =15,
      },
      [30165] = {
 	     name = "魔魂峰护卫队长",
@@ -8025,7 +8730,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1020},
-	     modelScale =15,
+	     modelTextures =2,
      },
      [30166] = {
 	     name = "魔魂峰枪兵",
@@ -8045,7 +8750,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1025},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30168] = {
 	     name = "魔魂峰大刀兵",
@@ -8065,7 +8770,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =4,
+	     modelScale =15,
      },
      [30170] = {
 	     name = "魔魂峰护军",
@@ -8075,7 +8780,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30171] = {
 	     name = "魔魂峰鬼面刀兵",
@@ -8095,7 +8800,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
      },
      [30173] = {
 	     name = "魔魂峰暗卫",
@@ -8114,6 +8818,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [30175] = {
 	     name = "魔魂峰副帅",
@@ -8123,7 +8828,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     modelTextures =2,
      },
      [30176] = {
 	     name = "魔魂峰刀盾兵",
@@ -8142,6 +8846,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =4,
      },
      [30178] = {
 	     name = "魔魂峰鬼面刀兵",
@@ -8161,7 +8866,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =4,
+	     modelScale =16,
      },
      [30180] = {
 	     name = "樊稠",
@@ -8171,7 +8876,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1011},
-	     modelScale =16,
      },
      [30181] = {
 	     name = "魔魂峰护卫",
@@ -8181,6 +8885,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
+	     modelTextures =4,
      },
      [30182] = {
 	     name = "魔魂峰大刀兵",
@@ -8200,7 +8905,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30184] = {
 	     name = "魔魂峰鬼面刀兵",
@@ -8725,7 +9429,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009,1011},
-	     modelScale =13,
+	     modelTextures =4,
      },
      [30322] = {
 	     name = "潜龙岭巡卫",
@@ -8745,7 +9449,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [30324] = {
 	     name = "潜龙岭哨兵",
@@ -8765,7 +9469,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [30326] = {
 	     name = "潜龙岭铁甲兵",
@@ -8793,6 +9496,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
+	     modelScale =13,
      },
      [30329] = {
 	     name = "潜龙岭护卫头领",
@@ -8802,7 +9506,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelScale =13,
+	     modelTextures =3,
      },
      [30330] = {
 	     name = "潜龙岭护卫",
@@ -8822,7 +9526,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30332] = {
 	     name = "潜龙岭士卒",
@@ -8842,7 +9546,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30334] = {
 	     name = "潜龙岭弓兵",
@@ -8873,6 +9577,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005},
 	     modelTextures =3,
+	     modelScale =13,
      },
      [30337] = {
 	     name = "潜龙岭影卫头领",
@@ -8883,7 +9588,6 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005,1007},
 	     modelTextures =3,
-	     modelScale =13,
      },
      [30338] = {
 	     name = "潜龙岭影卫",
@@ -8903,7 +9607,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30340] = {
 	     name = "潜龙岭刺客",
@@ -8923,7 +9627,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
      },
      [30342] = {
 	     name = "潜龙岭剑士",
@@ -8951,6 +9654,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
+	     modelScale =13,
      },
      [30345] = {
 	     name = "潜龙岭暗卫头领",
@@ -8961,7 +9666,6 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005,1007},
 	     modelTextures =2,
-	     modelScale =13,
      },
      [30346] = {
 	     name = "潜龙岭暗卫",
@@ -9032,6 +9736,7 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
 	     modelTextures =2,
+	     modelScale =13,
      },
      [30353] = {
 	     name = "李儒贴身护卫高手",
@@ -9042,7 +9747,6 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1019},
 	     modelTextures =2,
-	     modelScale =13,
      },
      [30354] = {
 	     name = "李儒贴身侍从",
@@ -9062,7 +9766,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30356] = {
 	     name = "李儒贴身侍女",
@@ -9082,7 +9786,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30358] = {
 	     name = "潜龙岭金甲卫",
@@ -9113,6 +9817,7 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
 	     modelTextures =2,
+	     modelScale =15,
      },
      [30361] = {
 	     name = "李儒",
@@ -9122,8 +9827,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelTextures =2,
-	     modelScale =15,
      },
      [30370] = {
 	     name = "火陨石",
@@ -9265,8 +9968,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelTextures =2,
-	     modelScale =15,
      },
      [30421] = {
 	     name = "黄巾贼部下",
@@ -9312,6 +10013,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [30426] = {
 	     name = "黄巾贼暗哨",
@@ -9331,7 +10033,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30428] = {
 	     name = "黄巾贼队率",
@@ -9341,7 +10043,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     modelScale =15,
+	     modelTextures =2,
      },
      [30429] = {
 	     name = "黄巾贼枪兵",
@@ -9371,7 +10073,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
      },
      [30432] = {
 	     name = "黄巾贼锤手",
@@ -9390,6 +10091,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [30434] = {
 	     name = "黄巾贼斧手",
@@ -9409,7 +10111,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     modelTextures =3,
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30436] = {
 	     name = "黄巾贼军侯",
@@ -9419,8 +10122,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =2,
-	     modelScale =15,
      },
      [30437] = {
 	     name = "黄巾贼霹雳手",
@@ -9439,6 +10140,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =3,
      },
      [30439] = {
 	     name = "黄巾贼刀兵",
@@ -9468,7 +10170,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [30442] = {
 	     name = "黄巾贼盔将",
@@ -9488,7 +10190,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =4,
+	     modelScale =15,
      },
      [30444] = {
 	     name = "黄巾贼军司马",
@@ -9498,7 +10200,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30445] = {
 	     name = "黄巾贼枪兵",
@@ -9548,7 +10250,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
      },
      [30450] = {
 	     name = "黄巾贼盾破兵",
@@ -9567,6 +10268,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30452] = {
 	     name = "黄巾贼校尉",
@@ -9576,8 +10279,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =2,
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30453] = {
 	     name = "黄巾贼岗哨",
@@ -9607,7 +10309,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30456] = {
 	     name = "黄巾贼前锋",
@@ -9647,7 +10349,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelScale =16,
+	     unhitRate = 0.4,
+	     unhitSkills = {1018,1019},
      },
      [30460] = {
 	     name = "波才",
@@ -9657,9 +10361,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
-	     modelScale =16,
-	     unhitRate = 0.4,
-	     unhitSkills = {1018,1019},
      },
      [30461] = {
 	     name = "",
@@ -9959,7 +10660,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30514] = {
 	     name = "碧波岛兵勇",
@@ -9977,7 +10678,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
      },
      [30516] = {
 	     name = "黄巾精兵",
@@ -9994,6 +10694,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
+	     modelTextures =3,
      },
      [30518] = {
 	     name = "碧波岛都尉",
@@ -10003,7 +10704,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     modelTextures =3,
      },
      [30519] = {
 	     name = "碧波岛突击士兵",
@@ -10020,6 +10720,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =2,
      },
      [30521] = {
 	     name = "碧波岛兵勇",
@@ -10037,7 +10738,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
      },
      [30523] = {
 	     name = "碧波岛枪卫",
@@ -10054,6 +10754,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
+	     modelTextures =2,
      },
      [30525] = {
 	     name = "碧波岛枪卫",
@@ -10062,7 +10763,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =2,
      },
      [30526] = {
 	     name = "碧波岛校尉",
@@ -10088,6 +10788,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =3,
      },
      [30529] = {
 	     name = "碧波岛哨兵",
@@ -10105,7 +10806,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =3,
      },
      [30531] = {
 	     name = "碧波岛突击士兵",
@@ -10130,6 +10830,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
      },
      [30534] = {
 	     name = "碧波岛中郎将",
@@ -10139,7 +10840,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1021},
-	     modelTextures =3,
      },
      [30535] = {
 	     name = "黄巾精兵",
@@ -10156,6 +10856,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026},
+	     modelTextures =3,
      },
      [30537] = {
 	     name = "碧波岛枪卫",
@@ -10182,7 +10883,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
      },
      [30540] = {
 	     name = "碧波岛盾卫",
@@ -10208,6 +10908,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
+	     modelTextures =2,
      },
      [30543] = {
 	     name = "碧波岛巡逻士兵",
@@ -10225,7 +10926,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30545] = {
 	     name = "碧波岛刀手",
@@ -10243,7 +10944,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =4,
      },
      [30547] = {
 	     name = "碧波岛盾卫",
@@ -10268,6 +10968,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1022},
      },
      [30550] = {
 	     name = "张曼成",
@@ -10277,9 +10980,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1022},
      },
      [30551] = {
 	     name = "箭雨1",
@@ -10492,8 +11192,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =4,
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30651] = {
 	     name = "冰风原铁枪兵",
@@ -10538,7 +11237,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
      },
      [30656] = {
 	     name = "冰风原莽夫",
@@ -10555,6 +11253,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =4,
+	     modelScale =15,
      },
      [30658] = {
 	     name = "冰风原参将",
@@ -10563,8 +11263,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1019},
-	     modelTextures =4,
-	     modelScale =15,
      },
      [30659] = {
 	     name = "冰风原悍卒",
@@ -10589,6 +11287,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =4,
      },
      [30662] = {
 	     name = "冰风原材官",
@@ -10606,7 +11305,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [30664] = {
 	     name = "冰风原刺客",
@@ -10624,7 +11323,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30666] = {
 	     name = "冰风原中尉",
@@ -10633,7 +11332,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelScale =15,
      },
      [30667] = {
 	     name = "冰风原伏击士兵",
@@ -10674,6 +11372,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =3,
      },
      [30672] = {
 	     name = "冰风原铁枪兵",
@@ -10692,6 +11391,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     modelTextures =3,
+	     modelScale =15,
      },
      [30674] = {
 	     name = "冰风原偏将",
@@ -10700,8 +11400,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009,1011},
-	     modelTextures =3,
-	     modelScale =15,
+	     modelTextures =4,
      },
      [30675] = {
 	     name = "冰风原近卫",
@@ -10728,7 +11427,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30678] = {
 	     name = "冰风原突击士兵",
@@ -10746,7 +11445,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30680] = {
 	     name = "冰风原悍卒",
@@ -10763,6 +11461,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelScale =15,
      },
      [30682] = {
 	     name = "冰风原护军",
@@ -10771,7 +11470,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelScale =15,
      },
      [30683] = {
 	     name = "冰风原锤卫",
@@ -10796,6 +11494,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1001},
+	     modelTextures =4,
      },
      [30686] = {
 	     name = "冰风原近卫",
@@ -10831,7 +11530,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1005},
-	     modelTextures =4,
+	     modelScale =15,
+	     unhitRate = 1,
+	     unhitSkills = {1014},
      },
      [30690] = {
 	     name = "张燕",
@@ -10840,9 +11541,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelScale =15,
-	     unhitRate = 1,
-	     unhitSkills = {1014},
      },
      [30700] = {
 	     name = "冰风暴",
@@ -11002,6 +11700,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =4,
      },
      [30743] = {
 	     name = "黄巾兵勇",
@@ -11051,7 +11750,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30748] = {
 	     name = "黄巾射雕士",
@@ -11101,7 +11800,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30753] = {
 	     name = "黄巾盾卫",
@@ -11121,7 +11820,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =4,
      },
      [30755] = {
 	     name = "黄巾盾卫",
@@ -11158,6 +11856,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =3,
      },
      [30759] = {
 	     name = "黄巾精英刀兵",
@@ -11177,7 +11876,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
      },
      [30761] = {
 	     name = "黄巾枪卫",
@@ -11304,6 +12002,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =2,
      },
      [30775] = {
 	     name = "黄巾突击士兵",
@@ -11323,7 +12022,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
      },
      [30777] = {
 	     name = "黄巾大力士",
@@ -11351,6 +12049,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1026,1027},
      },
      [30780] = {
 	     name = "张角",
@@ -11360,9 +12061,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
-	     modelScale =16,
-	     unhitRate = 1,
-	     unhitSkills = {1026,1027},
      },
      [30781] = {
 	     name = "暗箭",
@@ -11553,6 +12251,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =3,
      },
      [30830] = {
 	     name = "邪盘山剑卒",
@@ -11579,7 +12278,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
-	     modelTextures =3,
      },
      [30833] = {
 	     name = "邪盘山甲兵司马",
@@ -11840,6 +12538,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [30865] = {
 	     name = "徐荣",
@@ -11849,9 +12550,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [30866] = {
 	     name = "邪盘山冰刺1",
@@ -11993,6 +12691,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =2,
      },
      [30895] = {
 	     name = "毒龙峰丛林枪兵",
@@ -12012,7 +12711,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
      },
      [30897] = {
 	     name = "毒龙峰屠夫",
@@ -12031,6 +12729,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelTextures =3,
      },
      [30899] = {
 	     name = "毒龙峰都头",
@@ -12050,7 +12749,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
      },
      [30901] = {
 	     name = "毒龙峰屠夫",
@@ -12069,6 +12767,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
      },
      [30903] = {
 	     name = "毒龙峰丛林枪兵",
@@ -12088,7 +12787,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30905] = {
 	     name = "毒龙峰都头",
@@ -12098,7 +12797,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30906] = {
 	     name = "胡赤儿",
@@ -12108,7 +12807,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30907] = {
 	     name = "毒龙峰绘面鬼刀兵",
@@ -12138,7 +12837,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30910] = {
 	     name = "毒龙峰鱼叉兵",
@@ -12158,7 +12857,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30912] = {
 	     name = "毒龙峰都头",
@@ -12178,7 +12877,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
      },
      [30914] = {
 	     name = "毒龙峰中郎将",
@@ -12215,6 +12913,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =3,
      },
      [30918] = {
 	     name = "毒龙峰绘面鬼刀兵",
@@ -12234,7 +12933,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [30920] = {
 	     name = "毒龙峰刀盾兵",
@@ -12254,7 +12953,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =4,
      },
      [30922] = {
 	     name = "毒龙峰偏将军",
@@ -12264,6 +12962,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
+	     modelTextures =4,
      },
      [30923] = {
 	     name = "毒龙峰刀盾兵",
@@ -12293,7 +12992,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =4,
      },
      [30926] = {
 	     name = "毒龙峰亲卫",
@@ -12312,6 +13010,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30928] = {
 	     name = "毒龙峰鱼叉兵",
@@ -12331,7 +13030,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelTextures =2,
+	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1026,1027},
      },
      [30930] = {
 	     name = "牛辅",
@@ -12341,9 +13042,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
-	     modelScale =16,
-	     unhitRate = 1,
-	     unhitSkills = {1026,1027},
      },
      [30931] = {
 	     name = "暗箭",
@@ -12770,6 +13468,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =4,
      },
      [31023] = {
 	     name = "幻天宫刺客",
@@ -12787,7 +13486,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [31025] = {
 	     name = "西凉剑客",
@@ -12814,7 +13513,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
      },
      [31028] = {
 	     name = "幻天宫守备",
@@ -12825,6 +13523,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
+	     modelTextures =3,
      },
      [31029] = {
 	     name = "幻天宫熊皮武士",
@@ -12842,7 +13541,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31031] = {
 	     name = "西凉剑客",
@@ -12887,7 +13586,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =2,
      },
      [31036] = {
 	     name = "幻天宫都尉",
@@ -12898,6 +13596,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
+	     modelTextures =2,
      },
      [31037] = {
 	     name = "西凉道士",
@@ -12915,7 +13614,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [31039] = {
 	     name = "幻天宫刺客",
@@ -12933,7 +13632,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =4,
      },
      [31041] = {
 	     name = "幻天宫仙人",
@@ -13000,6 +13698,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
+	     modelTextures =2,
      },
      [31049] = {
 	     name = "幻天宫仙子",
@@ -13026,7 +13725,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =2,
      },
      [31052] = {
 	     name = "幻天宫偏将",
@@ -13053,6 +13751,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
+	     modelTextures =2,
      },
      [31055] = {
 	     name = "西凉道士",
@@ -13070,7 +13769,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31057] = {
 	     name = "幻天宫熊皮武士",
@@ -13097,7 +13796,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [31060] = {
 	     name = "华雄",
@@ -13108,9 +13809,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [31061] = {
 	     name = "剑气1",
@@ -13298,6 +13996,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [31113] = {
 	     name = "北地长枪兵",
@@ -13315,7 +14014,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
      },
      [31115] = {
 	     name = "西凉武卒",
@@ -13340,6 +14038,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =2,
      },
      [31118] = {
 	     name = "赤魂岭校尉",
@@ -13350,7 +14049,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
-	     modelTextures =2,
      },
      [31119] = {
 	     name = "赤魂岭牛角兵",
@@ -13367,6 +14065,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [31121] = {
 	     name = "赤魂岭双刀客",
@@ -13384,7 +14083,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
      },
      [31123] = {
 	     name = "赤魂岭杀手",
@@ -13475,6 +14173,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =4,
      },
      [31134] = {
 	     name = "赤魂岭偏将",
@@ -13485,7 +14184,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1013,1014},
-	     modelTextures =4,
      },
      [31135] = {
 	     name = "赤魂岭精兵",
@@ -13608,6 +14306,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelScale =14,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [31150] = {
 	     name = "董卓",
@@ -13618,9 +14319,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1015},
-	     modelScale =14,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [31151] = {
 	     name = "暗箭",
@@ -13749,8 +14447,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1015},
 	     dialogIDs = {10105},
-	     modelTextures =3,
-	     modelScale =14,
      },
      [31191] = {
 	     name = "天公山黄巾巡卫",
@@ -13791,6 +14487,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1019},
+	     modelTextures =3,
      },
      [31196] = {
 	     name = "天公山侍卫",
@@ -13808,7 +14505,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
+	     modelTextures =4,
+	     modelScale =14,
      },
      [31198] = {
 	     name = "天公山守山大将",
@@ -13819,8 +14517,7 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
 	     dialogIDs = {10107},
-	     modelTextures =4,
-	     modelScale =14,
+	     modelTextures =2,
      },
      [31199] = {
 	     name = "天公山死士",
@@ -13838,7 +14535,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =2,
      },
      [31201] = {
 	     name = "天公山守卫",
@@ -13879,6 +14575,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =2,
+	     modelScale =16,
      },
      [31206] = {
 	     name = "天公山近卫头领",
@@ -13889,8 +14587,6 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
 	     dialogIDs = {10109},
-	     modelTextures =2,
-	     modelScale =16,
      },
      [31207] = {
 	     name = "天公山近卫",
@@ -13907,6 +14603,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [31209] = {
 	     name = "天公山力士",
@@ -13933,7 +14630,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =2,
      },
      [31212] = {
 	     name = "天公山暗部刺客",
@@ -13950,6 +14646,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017},
+	     modelScale =16,
      },
      [31214] = {
 	     name = "杨凤",
@@ -13960,7 +14657,7 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
 	     dialogIDs = {10111},
-	     modelScale =16,
+	     modelTextures =3,
      },
      [31215] = {
 	     name = "天公山重甲骑兵",
@@ -13987,7 +14684,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelTextures =3,
      },
      [31218] = {
 	     name = "天公山精英弓兵",
@@ -14004,6 +14700,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
+	     modelTextures =3,
      },
      [31220] = {
 	     name = "天公山侍卫",
@@ -14021,7 +14718,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
+	     modelScale =16,
      },
      [31222] = {
 	     name = "张角",
@@ -14032,7 +14729,6 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1022,1027},
 	     dialogIDs = {10113},
-	     modelScale =16,
      },
      [31225] = {
 	     name = "天公山飞剑",
@@ -14135,6 +14831,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1007},
+	     modelTextures =2,
      },
      [31251] = {
 	     name = "迷雾林巡逻士兵",
@@ -14161,7 +14858,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
      },
      [31254] = {
 	     name = "迷雾林看守哨兵",
@@ -14194,6 +14890,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =2,
      },
      [31258] = {
 	     name = "迷雾林伏击将领",
@@ -14230,7 +14927,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
      },
      [31262] = {
 	     name = "黄巾砍刀手",
@@ -14247,6 +14943,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [31264] = {
 	     name = "黄巾随行金疮医生",
@@ -14264,7 +14961,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31266] = {
 	     name = "迷雾林黄巾贼将",
@@ -14274,6 +14970,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
+	     modelTextures =3,
      },
      [31267] = {
 	     name = "黄巾斩马刀兵",
@@ -14300,7 +14997,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31270] = {
 	     name = "黄巾长枪步兵",
@@ -14318,7 +15015,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31272] = {
 	     name = "黄巾弓弩手",
@@ -14336,7 +15033,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
      },
      [31274] = {
 	     name = "韩忠",
@@ -14386,6 +15082,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [31280] = {
 	     name = "黄巾随行金疮医生",
@@ -14403,7 +15100,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
+	     unhitRate = 1,
+	     unhitSkills = {1001,1002},
      },
      [31282] = {
 	     name = "程远志",
@@ -14413,8 +15111,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1001,1002},
-	     unhitRate = 1,
-	     unhitSkills = {1001,1002},
      },
      [31283] = {
 	     name = "迷雾林毒雾1",
@@ -14464,7 +15160,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
-	     modelScale =16,
      },
      [31301] = {
 	     name = "炎魔窟士兵",
@@ -14481,6 +15176,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =4,
      },
      [31303] = {
 	     name = "炎魔窟长戟士兵",
@@ -14507,7 +15203,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31306] = {
 	     name = "炎魔窟长枪士兵",
@@ -14526,6 +15222,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
 	     modelTextures =3,
+	     modelScale =16,
      },
      [31308] = {
 	     name = "炎魔窟黄巾守将",
@@ -14535,8 +15232,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     modelTextures =3,
-	     modelScale =16,
+	     modelTextures =1,
      },
      [31309] = {
 	     name = "炎魔窟精锐弓兵",
@@ -14554,7 +15250,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =1,
+	     modelTextures =3,
      },
      [31311] = {
 	     name = "炎魔窟重盾步兵",
@@ -14581,7 +15277,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [31314] = {
 	     name = "炎魔窟守卫",
@@ -14599,7 +15295,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =4,
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31316] = {
 	     name = "巨斧黄巾首领",
@@ -14609,8 +15306,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     modelTextures =3,
-	     modelScale =16,
+	     modelTextures =4,
      },
      [31317] = {
 	     name = "黄巾枭首兵",
@@ -14628,7 +15324,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =4,
      },
      [31319] = {
 	     name = "黄巾死士",
@@ -14653,6 +15348,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
      },
      [31322] = {
 	     name = "炎魔窟枪卫",
@@ -14670,7 +15366,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelTextures =2,
+	     modelScale =16,
      },
      [31324] = {
 	     name = "波才",
@@ -14680,7 +15376,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelScale =16,
+	     modelTextures =2,
      },
      [31325] = {
 	     name = "黄巾擂鼓兵",
@@ -14698,7 +15394,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [31327] = {
 	     name = "黄巾碎骨步兵",
@@ -14723,6 +15418,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [31330] = {
 	     name = "炎魔窟盾卫",
@@ -14732,6 +15428,7 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
 	     modelTextures =3,
+	     modelScale =16,
      },
      [31331] = {
 	     name = "炎魔窟盾卫",
@@ -14740,8 +15437,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
-	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1008,1009},
      },
      [31332] = {
 	     name = "张宝",
@@ -14750,8 +15447,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     unhitRate = 1,
-	     unhitSkills = {1008,1009},
      },
      [31333] = {
 	     name = "火球",
@@ -14885,8 +15580,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =2,
-	     modelScale =14,
+	     modelTextures =3,
      },
      [31371] = {
 	     name = "黄风岭巡逻士兵",
@@ -14910,7 +15604,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [31374] = {
 	     name = "黄风岭迅捷斥候",
@@ -14926,7 +15620,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
-	     modelTextures =4,
      },
      [31376] = {
 	     name = "黄风岭黄巾悍匪",
@@ -14941,6 +15634,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
+	     modelScale =14,
      },
      [31378] = {
 	     name = "黄风岭铁血将领",
@@ -14949,7 +15643,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelScale =14,
+	     modelTextures =3,
      },
      [31379] = {
 	     name = "黄风岭黄巾新军",
@@ -14973,7 +15667,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [31382] = {
 	     name = "黄风岭精锐刀兵",
@@ -14989,7 +15683,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
-	     modelTextures =4,
      },
      [31384] = {
 	     name = "黄风岭弓箭手",
@@ -15004,6 +15697,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
+	     modelTextures =4,
+	     modelScale =14,
      },
      [31386] = {
 	     name = "黄风岭步兵校尉",
@@ -15012,8 +15707,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
-	     modelTextures =4,
-	     modelScale =14,
      },
      [31387] = {
 	     name = "黄风岭轻甲兵",
@@ -15063,6 +15756,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
+	     modelTextures =3,
+	     modelScale =14,
      },
      [31394] = {
 	     name = "赵弘",
@@ -15071,8 +15766,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
-	     modelScale =14,
      },
      [31395] = {
 	     name = "黄巾死士",
@@ -15094,6 +15787,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
+	     modelTextures =2,
      },
      [31398] = {
 	     name = "黄风岭随行军医",
@@ -15109,7 +15803,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31400] = {
 	     name = "黄风岭精英步兵",
@@ -15125,7 +15819,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
-	     modelTextures =3,
+	     modelScale =16,
      },
      [31402] = {
 	     name = "张梁",
@@ -15133,7 +15827,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
-	     modelScale =16,
      },
      [31403] = {
 	     name = "黄沙旋风",
@@ -15221,6 +15914,10 @@ NpcDB = {
 	     modelID =149,
 	     desc = "坐骑任务接取",
 	     dialogIDs = {27090,27091},
+	     dropID =31,
+	     taoExpPrize =300,
+	     combatNumPrize =100,
+	     modelScale =14,
      },
      [39001] = {
 	     name = "神龙教主",
@@ -15231,9 +15928,9 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1028},
 	     dialogIDs = {27001,27012,27011},
-	     dropID =31,
-	     taoExpPrize =300,
-	     combatNumPrize =100,
+	     dropID =32,
+	     taoExpPrize =200,
+	     combatNumPrize =200,
 	     modelScale =14,
      },
      [39002] = {
@@ -15245,9 +15942,9 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1028},
 	     dialogIDs = {27002,27012,27011},
-	     dropID =32,
-	     taoExpPrize =200,
-	     combatNumPrize =200,
+	     dropID =33,
+	     taoExpPrize =100,
+	     combatNumPrize =300,
 	     modelScale =14,
      },
      [39003] = {
@@ -15259,9 +15956,9 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1028},
 	     dialogIDs = {27003,27012,27011},
-	     dropID =33,
-	     taoExpPrize =100,
-	     combatNumPrize =300,
+	     dropID =34,
+	     taoExpPrize =300,
+	     combatNumPrize =100,
 	     modelScale =14,
      },
      [39004] = {
@@ -15273,9 +15970,9 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1028},
 	     dialogIDs = {27004,27012,27011},
-	     dropID =34,
-	     taoExpPrize =300,
-	     combatNumPrize =100,
+	     dropID =35,
+	     taoExpPrize =200,
+	     combatNumPrize =200,
 	     modelScale =14,
      },
      [39005] = {
@@ -15287,9 +15984,9 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1028},
 	     dialogIDs = {27005,27012,27011},
-	     dropID =35,
-	     taoExpPrize =200,
-	     combatNumPrize =200,
+	     dropID =36,
+	     taoExpPrize =100,
+	     combatNumPrize =300,
 	     modelScale =14,
      },
      [39006] = {
@@ -15301,9 +15998,9 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1028},
 	     dialogIDs = {27006,27012,27011},
-	     dropID =36,
-	     taoExpPrize =100,
-	     combatNumPrize =300,
+	     dropID =37,
+	     taoExpPrize =300,
+	     combatNumPrize =100,
 	     modelScale =14,
      },
      [39007] = {
@@ -15315,9 +16012,9 @@ NpcDB = {
 	     phaseType = PhaseType.None,
 	     skillCfg = {1028},
 	     dialogIDs = {27007,27012,27011},
-	     dropID =37,
+	     dropID =38,
 	     taoExpPrize =300,
-	     combatNumPrize =100,
+	     combatNumPrize =300,
 	     modelScale =14,
      },
      [39008] = {
@@ -15329,8 +16026,8 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1028},
 	     dialogIDs = {27008,27012,27011},
-	     dropID =38,
-	     taoExpPrize =300,
+	     dropID =39,
+	     taoExpPrize =100,
 	     combatNumPrize =300,
 	     modelScale =14,
      },
@@ -15343,9 +16040,9 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1028},
 	     dialogIDs = {27009,27012,27011},
-	     dropID =39,
-	     taoExpPrize =100,
-	     combatNumPrize =300,
+	     dropID =40,
+	     taoExpPrize =300,
+	     combatNumPrize =100,
 	     modelScale =14,
      },
      [39010] = {
@@ -15357,10 +16054,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1028},
 	     dialogIDs = {27010,27012,27011},
-	     dropID =40,
-	     taoExpPrize =300,
-	     combatNumPrize =100,
-	     modelScale =14,
      },
      [39050] = {
 	     name = "天子猎金场活动使",
@@ -15479,10 +16172,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39996},
-	     dropID =24,
-	     expPrize =320000,
-	     bindMoneyPrize =400000,
-	     modelScale =16,
+	     modelTextures =2,
+	     modelScale =12,
      },
      [50001] = {
 	     name = "尸妖",
@@ -15514,8 +16205,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
-	     modelScale =12,
+	     modelScale =6,
      },
      [50004] = {
 	     name = "尸蹩",
@@ -15555,7 +16245,10 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =6,
+	     dropID =25,
+	     bindMoneyPrize =400000,
+	     taoExpPrize =172,
+	     modelScale =16,
      },
      [50008] = {
 	     name = "鬼王",
@@ -15566,10 +16259,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39997},
-	     dropID =25,
-	     bindMoneyPrize =400000,
-	     taoExpPrize =172,
-	     modelScale =16,
+	     modelTextures =3,
+	     modelScale =12,
      },
      [50009] = {
 	     name = "恶鬼",
@@ -15634,7 +16325,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
 	     modelScale =12,
      },
      [50015] = {
@@ -15645,7 +16335,11 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =12,
+	     dropID =26,
+	     expPrize =150000,
+	     bindMoneyPrize =100000,
+	     modelTextures =2,
+	     modelScale =13,
      },
      [50016] = {
 	     name = "尸妖",
@@ -15656,11 +16350,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39998},
-	     dropID =26,
-	     expPrize =150000,
-	     bindMoneyPrize =100000,
-	     modelTextures =2,
-	     modelScale =13,
+	     modelScale =6,
      },
      [50017] = {
 	     name = "尸蹩",
@@ -15700,7 +16390,11 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =6,
+	     dropID =27,
+	     bindMoneyPrize =100000,
+	     taoExpPrize =39,
+	     modelTextures =3,
+	     modelScale =13,
      },
      [50021] = {
 	     name = "恶鬼",
@@ -15711,11 +16405,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39999},
-	     dropID =27,
-	     bindMoneyPrize =100000,
-	     taoExpPrize =39,
 	     modelTextures =3,
-	     modelScale =13,
+	     modelScale =12,
      },
      [50022] = {
 	     name = "小鬼",
@@ -15758,8 +16449,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
-	     modelScale =12,
+	     dropID =28,
+	     expPrize =160000,
+	     bindMoneyPrize =80000,
      },
      [50026] = {
 	     name = "九尾狐",
@@ -15769,9 +16461,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     dropID =28,
-	     expPrize =160000,
-	     bindMoneyPrize =80000,
+	     modelTextures =1,
      },
      [50027] = {
 	     name = "一尾狐",
@@ -15811,7 +16501,10 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =1,
+	     dropID =29,
+	     bindMoneyPrize =80000,
+	     taoExpPrize =45,
+	     modelScale =11,
      },
      [50031] = {
 	     name = "愤怒的地魔",
@@ -15821,10 +16514,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     dropID =29,
-	     bindMoneyPrize =80000,
-	     taoExpPrize =45,
-	     modelScale =11,
+	     modelScale =9,
      },
      [50032] = {
 	     name = "地精",
@@ -15864,7 +16554,10 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =9,
+	     dropID =30,
+	     bindMoneyPrize =80000,
+	     potencyPrize =300000,
+	     modelScale =16,
      },
      [50036] = {
 	     name = "无名老妖",
@@ -15874,10 +16567,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     dropID =30,
-	     bindMoneyPrize =80000,
-	     potencyPrize =300000,
-	     modelScale =16,
      },
      [50037] = {
 	     name = "随从小妖",
@@ -16242,72 +16931,866 @@ NpcDB = {
 	     name = "骑虎妖女",
 	     modelID =591,
 	     desc = "30巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60302] = {
 	     name = "骑兽妖魔",
 	     modelID =571,
 	     desc = "30巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60303] = {
 	     name = "骑虎妖女",
 	     modelID =591,
 	     desc = "40巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60304] = {
 	     name = "骑兽妖魔",
 	     modelID =571,
 	     desc = "40巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60305] = {
 	     name = "骑虎妖女",
 	     modelID =591,
 	     desc = "50巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60306] = {
 	     name = "骑兽妖魔",
 	     modelID =571,
 	     desc = "50巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60307] = {
 	     name = "骑虎妖女",
 	     modelID =591,
 	     desc = "60巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60308] = {
 	     name = "骑兽妖魔",
 	     modelID =571,
 	     desc = "60巡逻捕捉元灵",
-	     modelScale =18,
      },
      [60401] = {
 	     name = "魔道女将",
 	     modelID =581,
 	     desc = "30抓宠捕捉元灵怪",
-	     modelScale =20,
      },
      [60402] = {
 	     name = "邪恶祭祀",
 	     modelID =577,
 	     desc = "40抓宠捕捉元灵怪",
-	     modelScale =20,
      },
      [60403] = {
 	     name = "巨斧魔王",
 	     modelID =592,
 	     desc = "50抓宠捕捉元灵怪",
-	     modelScale =20,
      },
      [60404] = {
 	     name = "万骨魔君",
 	     modelID =697,
 	     desc = "60抓宠捕捉元灵怪",
-	     modelScale =20,
+     },
+     [60500] = {
+	     name = "封神台擂主",
+	     title = "封神台挑战",
+	     modelID =560,
+	     desc = "封神台擂台",
+     },
+     [60501] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第一层",
+     },
+     [60502] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第一层",
+     },
+     [60503] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第一层",
+     },
+     [60504] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第一层",
+     },
+     [60505] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第一层",
+     },
+     [60506] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第一层",
+     },
+     [60507] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第一层",
+     },
+     [60508] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第一层",
+     },
+     [60509] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第二层",
+     },
+     [60510] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第二层",
+     },
+     [60511] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第二层",
+     },
+     [60512] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第二层",
+     },
+     [60513] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第二层",
+     },
+     [60514] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第二层",
+     },
+     [60515] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第二层",
+     },
+     [60516] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第二层",
+     },
+     [60517] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第三层",
+     },
+     [60518] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第三层",
+     },
+     [60519] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第三层",
+     },
+     [60520] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第三层",
+     },
+     [60521] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第三层",
+     },
+     [60522] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第三层",
+     },
+     [60523] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第三层",
+     },
+     [60524] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第三层",
+     },
+     [60525] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第四层",
+     },
+     [60526] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第四层",
+     },
+     [60527] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第四层",
+     },
+     [60528] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第四层",
+     },
+     [60529] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第四层",
+     },
+     [60530] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第四层",
+     },
+     [60531] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第四层",
+     },
+     [60532] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第四层",
+     },
+     [60533] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第五层",
+     },
+     [60534] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第五层",
+     },
+     [60535] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第五层",
+     },
+     [60536] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第五层",
+     },
+     [60537] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第五层",
+     },
+     [60538] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第五层",
+     },
+     [60539] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第五层",
+     },
+     [60540] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第五层",
+     },
+     [60541] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第六层",
+     },
+     [60542] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第六层",
+     },
+     [60543] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第六层",
+     },
+     [60544] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第六层",
+     },
+     [60545] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第六层",
+     },
+     [60546] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第六层",
+     },
+     [60547] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第六层",
+     },
+     [60548] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第六层",
+     },
+     [60549] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第七层",
+     },
+     [60550] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第七层",
+     },
+     [60551] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第七层",
+     },
+     [60552] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第七层",
+     },
+     [60553] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第七层",
+     },
+     [60554] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第七层",
+     },
+     [60555] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第七层",
+     },
+     [60556] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第七层",
+     },
+     [60557] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第八层",
+     },
+     [60558] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第八层",
+     },
+     [60559] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第八层",
+     },
+     [60560] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第八层",
+     },
+     [60561] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第八层",
+     },
+     [60562] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第八层",
+     },
+     [60563] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第八层",
+     },
+     [60564] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第八层",
+     },
+     [60565] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第九层",
+     },
+     [60566] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第九层",
+     },
+     [60567] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第九层",
+     },
+     [60568] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第九层",
+     },
+     [60569] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第九层",
+     },
+     [60570] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第九层",
+     },
+     [60571] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第九层",
+     },
+     [60572] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第九层",
+     },
+     [60573] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第十层",
+     },
+     [60574] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第十层",
+     },
+     [60575] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第十层",
+     },
+     [60576] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第十层",
+     },
+     [60577] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第十层",
+     },
+     [60578] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第十层",
+     },
+     [60579] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第十层",
+     },
+     [60580] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第十层",
+     },
+     [60581] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第11层",
+     },
+     [60582] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第11层",
+     },
+     [60583] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第11层",
+     },
+     [60584] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第11层",
+     },
+     [60585] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第11层",
+     },
+     [60586] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第11层",
+     },
+     [60587] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第11层",
+     },
+     [60588] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第11层",
+     },
+     [60589] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第12层",
+     },
+     [60590] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第12层",
+     },
+     [60591] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第12层",
+     },
+     [60592] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第12层",
+     },
+     [60593] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第12层",
+     },
+     [60594] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第12层",
+     },
+     [60595] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第12层",
+     },
+     [60596] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第12层",
+     },
+     [60597] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第13层",
+     },
+     [60598] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第13层",
+     },
+     [60599] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第13层",
+     },
+     [60600] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第13层",
+     },
+     [60601] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第13层",
+     },
+     [60602] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第13层",
+     },
+     [60603] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第13层",
+     },
+     [60604] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第13层",
+     },
+     [60605] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第14层",
+     },
+     [60606] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第14层",
+     },
+     [60607] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第14层",
+     },
+     [60608] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第14层",
+     },
+     [60609] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第14层",
+     },
+     [60610] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第14层",
+     },
+     [60611] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第14层",
+     },
+     [60612] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第14层",
+     },
+     [60613] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第15层",
+     },
+     [60614] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第15层",
+     },
+     [60615] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第15层",
+     },
+     [60616] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第15层",
+     },
+     [60617] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第15层",
+     },
+     [60618] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第15层",
+     },
+     [60619] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第15层",
+     },
+     [60620] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第15层",
+     },
+     [60621] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第16层",
+     },
+     [60622] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第16层",
+     },
+     [60623] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第16层",
+     },
+     [60624] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第16层",
+     },
+     [60625] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第16层",
+     },
+     [60626] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第16层",
+     },
+     [60627] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第16层",
+     },
+     [60628] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第16层",
+     },
+     [60629] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第17层",
+     },
+     [60630] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第17层",
+     },
+     [60631] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第17层",
+     },
+     [60632] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第17层",
+     },
+     [60633] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第17层",
+     },
+     [60634] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第17层",
+     },
+     [60635] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第17层",
+     },
+     [60636] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第17层",
+     },
+     [60637] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第18层",
+     },
+     [60638] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第18层",
+     },
+     [60639] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第18层",
+     },
+     [60640] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第18层",
+     },
+     [60641] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第18层",
+     },
+     [60642] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第18层",
+     },
+     [60643] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第18层",
+     },
+     [60644] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第18层",
+     },
+     [60645] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第19层",
+     },
+     [60646] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第19层",
+     },
+     [60647] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第19层",
+     },
+     [60648] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第19层",
+     },
+     [60649] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第19层",
+     },
+     [60650] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第19层",
+     },
+     [60651] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第19层",
+     },
+     [60652] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第19层",
+     },
+     [60653] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第20层",
+     },
+     [60654] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第20层",
+     },
+     [60655] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第20层",
+     },
+     [60656] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第20层",
+     },
+     [60657] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第20层",
+     },
+     [60658] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第20层",
+     },
+     [60659] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第20层",
+     },
+     [60660] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第20层",
      },
 }

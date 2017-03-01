@@ -22,7 +22,7 @@ ScriptType = {
 ScriptFightConditionType=
 {
 	AttrValue		= 1,--属性比例 {type = ScriptFightConditionType.AttrValue, params={DBID = 1052,type="hp",["<="] = 0},},
-	IDExist			= 2,--id是否存在 {type = ScriptFightConditionType.IDExist, params={DBID = {1052},},},
+	IDExist			= 2,--id是否存在 {type = ScriptFightConditionType.IDExist, params={DBID = 1052,relation =">", value = 1,},},
 	RoundCount		= 3,--第几回合 {type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
 	RoundInterval	= 4,--回合间隔 {type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
 	BuffStatus		= 5,--带有指定的buff(ID,或类型) {type = ScriptFightConditionType.BuffStatus, params={DBID = {1052},buffID = 1(or type=BuffKind.Dot),},},或{type = ScriptFightConditionType.BuffStatus, params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 1(or type=BuffKind.Dot),},}
@@ -31,6 +31,7 @@ ScriptFightConditionType=
 	FightPeriod		= 8,--战斗持续时间 {type = ScriptFightConditionType.FightPeriod, params={time = 10},},--分钟
 	PlayerDead		= 9,--玩家或宠物死亡{type = ScriptFightConditionType.PlayerDead, params={type = ScriptFightDeadType.PlayerOrPet},}
 	MonsterCatched  = 10,--怪物被捕捉{type = ScriptFightConditionType.MonsterCatched, params={DBID = {1052},}
+	ScoreNum        = 11,--玩家积分值{type = ScriptFightConditionType.ScoreNum, params={relation =">", value = 1,},},
 }
 ScriptFightDeadType = {
 	Player	= 1,
@@ -101,6 +102,8 @@ ScriptFightActionType=
 	ChangeHp	  = 18,--设置生命值(增大或减少最大值的百分比,如果是玩家的话params={DBID =-1,percent = -50}}是相对红蓝){type = ScriptFightActionType.ChangeHp,params={DBID ={22},percent = -50}}
 	SameTime	  =19,--同时执行一组
 	RefreshMembers = 20,--刷新怪物
+	AddScore = 21,--增加玩家积分{type = ScriptFightActionType.AddScore,params={value = 5} }
+	ChangeReward = 22,--影响奖励值{type = ScriptFightActionType.ChangeReward,params={type = "exp",mode = "value",value = 100} }--type = "exp","tao","money","expoint","pot";mode= "value" or "percent"
 }
 
 ScriptFightDB[1] = {
@@ -1869,7 +1872,7 @@ ScriptFightDB[453] = {
 	systemActions = {
 			[1] = {
 				condition = {
-							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",["<="]=20},},
 							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",[">"] = 0},},
 							isAnd = true,
 		                 },
@@ -1887,11 +1890,11 @@ ScriptFightDB[455] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21110},{ID = 21107},{ID = 21108},{ID = 21107},{ID = 21108},},
 }
 ScriptFightDB[456] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21111},{ID = 21107},{ID = 21108},{ID = 21107},{ID = 21108},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21111},},
 	systemActions = {
 			[1] = {
 				condition = {
-							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",["<="]=20},},
 							{type = ScriptFightConditionType.AttrValue, params={DBID = 21105,type="hp",[">"] = 0},},
 							isAnd = true,
 		                 },
@@ -1909,7 +1912,7 @@ ScriptFightDB[458] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21115},{ID = 21112},{ID = 21113},{ID = 21112},{ID = 21113},},
 }
 ScriptFightDB[459] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21116},{ID = 21112},{ID = 21113},{ID = 21112},{ID = 21113},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21116},},
 }
 ScriptFightDB[460] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21119},{ID = 21117},{ID = 21118},{ID = 21117},{ID = 21118},},
@@ -1922,21 +1925,27 @@ ScriptFightDB[462] = {
 }
 ScriptFightDB[463] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21125},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
+npcs = {{ID = 21122},},--跟随NPC曹仁
 }
 ScriptFightDB[464] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21126},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
+npcs = {{ID = 21122},},--跟随NPC曹仁
 }
 ScriptFightDB[465] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21127},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21127},},
+npcs = {{ID = 21122},},--跟随NPC曹仁
 }
 ScriptFightDB[466] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21130},{ID = 21128},{ID = 21129},{ID = 21128},{ID = 21129},},
+npcs = {{ID = 21122},},--跟随NPC曹仁
 }
 ScriptFightDB[467] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21131},{ID = 21128},{ID = 21129},{ID = 21128},{ID = 21129},},
+npcs = {{ID = 21122},},--跟随NPC曹仁
 }
 ScriptFightDB[468] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21132},},
+npcs = {{ID = 21122},},--跟随NPC曹仁
 }
 ScriptFightDB[469] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21136},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
@@ -1945,7 +1954,7 @@ ScriptFightDB[470] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21137},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
 }
 ScriptFightDB[471] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21138},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21138},},
 }
 ScriptFightDB[472] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21139},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
@@ -1954,7 +1963,7 @@ ScriptFightDB[473] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21140},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
 }
 ScriptFightDB[474] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21141},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21141},},
 }
 ScriptFightDB[475] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21144},{ID = 21142},{ID = 21143},{ID = 21142},{ID = 21143},},
@@ -1972,11 +1981,11 @@ ScriptFightDB[479] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21150},{ID = 21147},{ID = 21148},{ID = 21147},{ID = 21148},},
 }
 ScriptFightDB[480] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21151},{ID = 21147},{ID = 21148},{ID = 21147},{ID = 21148},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21151},},
 	systemActions = {
 			[1] = {
 				condition = {
-							{type = ScriptFightConditionType.AttrValue, params={DBID = 21151,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21151,type="hp",["<="]=20},},
 							{type = ScriptFightConditionType.AttrValue, params={DBID = 21151,type="hp",[">"] = 0},},
 							isAnd = true,
 		                 },
@@ -1998,7 +2007,7 @@ ScriptFightDB[483] = {
 	systemActions = {
 			[1] = {
 				condition = {
-							{type = ScriptFightConditionType.AttrValue, params={DBID = 21157,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21157,type="hp",["<="]=20},},
 							{type = ScriptFightConditionType.AttrValue, params={DBID = 21157,type="hp",[">"] = 0},},
 							isAnd = true,
 		                 },
@@ -2016,7 +2025,7 @@ ScriptFightDB[485] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21162},{ID = 21159},{ID = 21160},{ID = 21159},{ID = 21160},},
 }
 ScriptFightDB[486] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21163},{ID = 21159},{ID = 21160},{ID = 21159},{ID = 21160},},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21163},},
 }
 
 
@@ -2390,6 +2399,22 @@ ScriptFightDB[3101] = {
 	}
 ScriptFightDB[3102] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31402, },},
+	}
+--------------------------------------------炎魔窟-----年后首次副本------------------------------------------
+ScriptFightDB[3103] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31301, },{ID = 31302, },{ID = 31300, },{ID = 31303, },{ID = 31304, },{ID = 31305, },{ID = 31306, },{ID = 31307, },},
+	}
+ScriptFightDB[3104] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31309, },{ID = 31310, },{ID = 31308, },{ID = 31311, },{ID = 31312, },{ID = 31313, },{ID = 31314, },{ID = 31315, },},
+	}
+ScriptFightDB[3105] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31317, },{ID = 31318, },{ID = 31316, },{ID = 31319, },{ID = 31320, },{ID = 31321, },{ID = 31322, },{ID = 31323, },},
+	}
+ScriptFightDB[3106] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31325, },{ID = 31326, },{ID = 31324, },{ID = 31327, },{ID = 31328, },{ID = 31329, },{ID = 31330, },{ID = 31331, },},
+	}
+ScriptFightDB[3107] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31332, },},
 	}
 
 -- 下面是循环任务————天道任务的脚本战斗-------------------------------
@@ -3232,58 +3257,58 @@ systemActions = {
 
 -- 抓宠玩法（35001——35500）-------------------------------
 ScriptFightDB[35001] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10201,weight= 60}, {ID = 10301,weight= 35}, {ID = 10401,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10201,weight= 60}, {ID = 10301,weight= 35}, {ID = 10401,weight= 5}},
 }
 ScriptFightDB[35002] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10202,weight= 60}, {ID = 10302,weight= 35}, {ID = 10402,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10202,weight= 60}, {ID = 10302,weight= 35}, {ID = 10402,weight= 5}},
 }
 ScriptFightDB[35003] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10203,weight= 60}, {ID = 10303,weight= 35}, {ID = 10403,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10203,weight= 60}, {ID = 10303,weight= 35}, {ID = 10403,weight= 5}},
 }
 ScriptFightDB[35004] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10204,weight= 60}, {ID = 10304,weight= 35}, {ID = 10404,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10204,weight= 60}, {ID = 10304,weight= 35}, {ID = 10404,weight= 5}},
 }
 ScriptFightDB[35005] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10205,weight= 60}, {ID = 10305,weight= 35}, {ID = 10405,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10205,weight= 60}, {ID = 10305,weight= 35}, {ID = 10405,weight= 5}},
 }
 ScriptFightDB[35006] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10206,weight= 60}, {ID = 10306,weight= 35}, {ID = 10406,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10206,weight= 60}, {ID = 10306,weight= 35}, {ID = 10406,weight= 5}},
 }
 ScriptFightDB[35007] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10207,weight= 60}, {ID = 10307,weight= 35}, {ID = 10407,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10207,weight= 60}, {ID = 10307,weight= 35}, {ID = 10407,weight= 5}},
 }
 ScriptFightDB[35008] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10208,weight= 60}, {ID = 10308,weight= 35}, {ID = 10408,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10208,weight= 60}, {ID = 10308,weight= 35}, {ID = 10408,weight= 5}},
 }
 ScriptFightDB[35009] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10209,weight= 60}, {ID = 10309,weight= 35}, {ID = 10409,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10209,weight= 60}, {ID = 10309,weight= 35}, {ID = 10409,weight= 5}},
 }
 ScriptFightDB[35010] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10210,weight= 60}, {ID = 10310,weight= 35}, {ID = 10410,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10210,weight= 60}, {ID = 10310,weight= 35}, {ID = 10410,weight= 5}},
 }
 ScriptFightDB[35011] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10211,weight= 60}, {ID = 10311,weight= 35}, {ID = 10411,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10211,weight= 60}, {ID = 10311,weight= 35}, {ID = 10411,weight= 5}},
 }
 ScriptFightDB[35012] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10212,weight= 60}, {ID = 10312,weight= 35}, {ID = 10413,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10212,weight= 60}, {ID = 10312,weight= 35}, {ID = 10413,weight= 5}},
 }
 ScriptFightDB[35013] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10213,weight= 60}, {ID = 10313,weight= 35}, {ID = 10413,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10213,weight= 60}, {ID = 10313,weight= 35}, {ID = 10413,weight= 5}},
 }
 ScriptFightDB[35014] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10214,weight= 60}, {ID = 10314,weight= 35}, {ID = 10414,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10214,weight= 60}, {ID = 10314,weight= 35}, {ID = 10414,weight= 5}},
 }
 ScriptFightDB[35050] = {					---------------30地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10501,weight= 99}, {ID = 10601,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10501,weight= 999}, {ID = 10601,weight= 1}},
 }
 ScriptFightDB[35051] = {					---------------30地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10502,weight= 99}, {ID = 10602,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10502,weight= 999}, {ID = 10602,weight= 1}},
 }
 ScriptFightDB[35052] = {					---------------30地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10503,weight= 99}, {ID = 10601,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10503,weight= 999}, {ID = 10601,weight= 1}},
 }
 ScriptFightDB[35053] = {					---------------30地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10503,weight= 99}, {ID = 10602,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10504,weight= 999}, {ID = 10602,weight= 1}},
 }
 ScriptFightDB[35080] = {					---------------30地图抓宠终极boss
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10609,weight= 99}, {ID = 10602,weight= 1,max = 1}},
@@ -3292,43 +3317,43 @@ ScriptFightDB[35080] = {					---------------30地图抓宠终极boss
 
 -----------------------------40地图抓宠
 ScriptFightDB[35101] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10215,weight= 60}, {ID = 10315,weight= 35}, {ID = 10415,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10215,weight= 60}, {ID = 10315,weight= 35}, {ID = 10415,weight= 5}},
 }
 ScriptFightDB[35102] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10216,weight= 60}, {ID = 10316,weight= 35}, {ID = 10416,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10216,weight= 60}, {ID = 10316,weight= 35}, {ID = 10416,weight= 5}},
 }
 ScriptFightDB[35103] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10217,weight= 60}, {ID = 10317,weight= 35}, {ID = 10417,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10217,weight= 60}, {ID = 10317,weight= 35}, {ID = 10417,weight= 5}},
 }
 ScriptFightDB[35104] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10218,weight= 60}, {ID = 10318,weight= 35}, {ID = 10418,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10218,weight= 60}, {ID = 10318,weight= 35}, {ID = 10418,weight= 5}},
 }
 ScriptFightDB[35105] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10219,weight= 60}, {ID = 10319,weight= 35}, {ID = 10419,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10219,weight= 60}, {ID = 10319,weight= 35}, {ID = 10419,weight= 5}},
 }
 ScriptFightDB[35106] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10220,weight= 60}, {ID = 10320,weight= 35}, {ID = 10420,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10220,weight= 60}, {ID = 10320,weight= 35}, {ID = 10420,weight= 5}},
 }
 ScriptFightDB[35107] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10221,weight= 60}, {ID = 10321,weight= 35}, {ID = 10421,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10221,weight= 60}, {ID = 10321,weight= 35}, {ID = 10421,weight= 5}},
 }
 ScriptFightDB[35108] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10222,weight= 60}, {ID = 10322,weight= 35}, {ID = 10422,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10222,weight= 60}, {ID = 10322,weight= 35}, {ID = 10422,weight= 5}},
 }
 ScriptFightDB[35109] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10223,weight= 60}, {ID = 10323,weight= 35}, {ID = 10423,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10223,weight= 60}, {ID = 10323,weight= 35}, {ID = 10423,weight= 5}},
 }
 ScriptFightDB[35150] = {					---------------40地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10505,weight= 99}, {ID = 10603,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10505,weight= 99}, {ID = 10603,weight= 1}},
 }
 ScriptFightDB[35151] = {					---------------40地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10506,weight= 99}, {ID = 10604,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10506,weight= 99}, {ID = 10604,weight= 1}},
 }
 ScriptFightDB[35152] = {					---------------40地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10507,weight= 99}, {ID = 10603,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10507,weight= 99}, {ID = 10603,weight= 1}},
 }
 ScriptFightDB[35153] = {					---------------40地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10508,weight= 99}, {ID = 10604,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10508,weight= 99}, {ID = 10604,weight= 1}},
 }
 ScriptFightDB[35180] = {					---------------40地图抓宠终极boss
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10609,weight= 99}, {ID = 10602,weight= 1,max = 1}},
@@ -3337,49 +3362,49 @@ ScriptFightDB[35180] = {					---------------40地图抓宠终极boss
 
 -----------------------------50地图抓宠
 ScriptFightDB[35201] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10224,weight= 60}, {ID = 10324,weight= 35}, {ID = 10424,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10224,weight= 60}, {ID = 10324,weight= 35}, {ID = 10424,weight= 5}},
 }
 ScriptFightDB[35202] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10225,weight= 60}, {ID = 10325,weight= 35}, {ID = 10425,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10225,weight= 60}, {ID = 10325,weight= 35}, {ID = 10425,weight= 5}},
 }
 ScriptFightDB[35203] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10226,weight= 60}, {ID = 10326,weight= 35}, {ID = 10426,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10226,weight= 60}, {ID = 10326,weight= 35}, {ID = 10426,weight= 5}},
 }
 ScriptFightDB[35204] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10227,weight= 60}, {ID = 10327,weight= 35}, {ID = 10427,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10227,weight= 60}, {ID = 10327,weight= 35}, {ID = 10427,weight= 5}},
 }
 ScriptFightDB[35205] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10228,weight= 60}, {ID = 10328,weight= 35}, {ID = 10428,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10228,weight= 60}, {ID = 10328,weight= 35}, {ID = 10428,weight= 5}},
 }
 ScriptFightDB[35206] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10229,weight= 60}, {ID = 10329,weight= 35}, {ID = 10429,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10229,weight= 60}, {ID = 10329,weight= 35}, {ID = 10429,weight= 5}},
 }
 ScriptFightDB[35207] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10230,weight= 60}, {ID = 10330,weight= 35}, {ID = 10430,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10230,weight= 60}, {ID = 10330,weight= 35}, {ID = 10430,weight= 5}},
 }
 ScriptFightDB[35208] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10231,weight= 60}, {ID = 10331,weight= 35}, {ID = 10431,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10231,weight= 60}, {ID = 10331,weight= 35}, {ID = 10431,weight= 5}},
 }
 ScriptFightDB[35209] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10232,weight= 60}, {ID = 10332,weight= 35}, {ID = 10432,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10232,weight= 60}, {ID = 10332,weight= 35}, {ID = 10432,weight= 5}},
 }
 ScriptFightDB[35210] = {	
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10233,weight= 60}, {ID = 10333,weight= 35}, {ID = 10433,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10233,weight= 60}, {ID = 10333,weight= 35}, {ID = 10433,weight= 5}},
 }
 ScriptFightDB[35211] = {	
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10234,weight= 60}, {ID = 10334,weight= 35}, {ID = 10434,weight= 5,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10234,weight= 60}, {ID = 10334,weight= 35}, {ID = 10434,weight= 5}},
 }
 ScriptFightDB[35250] = {					---------------50地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10509,weight= 99}, {ID = 10605,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10509,weight= 99}, {ID = 10605,weight= 1}},
 }
 ScriptFightDB[35251] = {					---------------50地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10510,weight= 99}, {ID = 10606,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10510,weight= 99}, {ID = 10606,weight= 1}},
 }
 ScriptFightDB[35252] = {					---------------50地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10511,weight= 99}, {ID = 10605,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10511,weight= 99}, {ID = 10605,weight= 1}},
 }
 ScriptFightDB[35253] = {					---------------50地图抓宠巡逻怪
-	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10512,weight= 99}, {ID = 10606,weight= 1,max = 1}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10512,weight= 99}, {ID = 10606,weight= 1}},
 }
 ScriptFightDB[35280] = {					---------------50地图抓宠终极boss
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10609,weight= 99}, {ID = 10602,weight= 1,max = 1}},

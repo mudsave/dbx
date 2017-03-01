@@ -115,19 +115,19 @@ function CatchPet:setStartMoveTime()
 	local index1 = 1
 	local nowTime = os.time()
 	for _, patrolNpc1 in pairs(self.patrolMonster1) do
-		if index1 >= 1 and index1 <= 20 then
+		if index1 >= 1 and index1 <= 40 then
 			if not patrolNpc1:getStartMoveTime() then
 				patrolNpc1:setStartMoveTime(nowTime + 1)
 			end
-		elseif index1 >= 21 and index1 <= 40 then
+		elseif index1 >= 41 and index1 <= 80 then
 			if not patrolNpc1:getStartMoveTime() then
 				patrolNpc1:setStartMoveTime(nowTime + 2)
 			end
-		elseif index1 >= 41 and index1 <= 60 then
+		elseif index1 >= 81 and index1 <= 120 then
 			if not patrolNpc1:getStartMoveTime() then
 				patrolNpc1:setStartMoveTime(nowTime + 3)
 			end
-		elseif index1 >= 61 and index1 <= 80 then
+		elseif index1 >= 121 and index1 <= 160 then
 			if not patrolNpc1:getStartMoveTime() then
 				patrolNpc1:setStartMoveTime(nowTime + 4)
 			end
@@ -140,6 +140,13 @@ function CatchPet:setStartMoveTime()
 			patrolNpc2:setStartMoveTime(nowTime + 5)
 		end
 	end
+
+	for _, patrolNpc3 in pairs(self.patrolMonster3) do
+		if not patrolNpc3:getStartMoveTime() then
+			patrolNpc2:setStartMoveTime(nowTime + 5)
+		end
+	end
+
 end
 
 -- 里面的小的再进行权重随机
@@ -164,6 +171,7 @@ end
 
 -- 这个主要是定时让巡逻NPC行走
 function CatchPet:update(timerID)
+	
 	self.times = self.times + 1
 	-- 此时重新刷新场景NPC
 	if self.times % (self.monsterDB.refreshTime1 * 60) == 0 then
@@ -195,6 +203,7 @@ function CatchPet:update(timerID)
 			end
 		end
 	end
+	
 end
 
 -- 把战斗怪物存起来
@@ -294,7 +303,7 @@ function CatchPet:getEctypeValidEmptyPos()
 		x, y = g_sceneMgr:getRandomPosition(self.mapID)
 		for entityId, entity in pairs(scene:getEntityList()) do
 			if entity:getEntityType() == eLogicActivityPatrolNpc then
-				if entity:getPos()[2] == x and entity:getPos()[3] == y then
+				if self:checkTile(entity:getPos()[2], entity:getPos()[3], x, y) <= 5 then
 					checkSuccess = false
 					break
 				end
@@ -425,4 +434,11 @@ function CatchPet:addPet(player, petID)
 			),player
 		)
 	end
+end
+
+function CatchPet:checkTile(x1, y1, x2, y2)
+	local disX = math.abs(x1 - x2)
+	local disY = math.abs(y1 - y2)
+	local dis = disX * disX + disY * disY
+	return dis^(1/2)
 end

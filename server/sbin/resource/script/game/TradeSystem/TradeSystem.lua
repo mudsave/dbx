@@ -40,6 +40,8 @@ function TradeSystem:__init()
 		[TradeEvents_CS_P2PTradePet]			= TradeSystem.doP2PTradePet,
 		--宠物商店购买宠物
 		[TradeEvents_CS_BuyPet]						= TradeSystem.doBuyPet,
+		--处理P2P发过来的消息
+		[TradeEvents_CS_P2PMessageChoose] = TradeSystem.doMessageChoose,
 	}
 end
 
@@ -205,6 +207,7 @@ function TradeSystem:doPtoNBuyGoods(event)
 
 end
 
+--宠物商店购买宠物
 function TradeSystem:doBuyPet(event)
 	local params = event:getParams()
 	local petID = params[1]
@@ -220,6 +223,23 @@ function TradeSystem:doBuyPet(event)
 		return
 	end
 	g_tradeMgr:petBuyShop(player, petID, petBuyPrice, petBuyType)
+end 
+
+--处理P2P发过来的消息
+function TradeSystem:doMessageChoose(event)
+	local params = event:getParams()
+	local roleID = params[1]
+	local targetID = params[2]
+	local choose = params[3]
+	local playerID = event.playerID
+	if not playerID then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if not player then
+		return
+	end
+	g_tradeMgr:P2PMessageChoose(player,roleID, targetID, choose)
 end 
 
 function TradeSystem.getInstance()

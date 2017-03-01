@@ -41,7 +41,7 @@ function FightPVE:_canFightEnd()
 		self._winSide = FightStand.A
 		return true
 	else
-		if self._roundCount >=FightMaxRound then
+		if self._totalRound >=FightMaxRound then
 			self._winSide = FightStand.A
 			return true
 		end

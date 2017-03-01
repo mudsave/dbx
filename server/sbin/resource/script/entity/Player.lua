@@ -32,11 +32,6 @@ function Player:__release()
 
 	self:__release_logic()
 	self:__release_basic()
-	for htype,handler in pairs(self._handlers or {}) do
-		release(handler)
-		self._handlers[htype] = nil
-	end
-	self._handlers = nil
 
 end
 

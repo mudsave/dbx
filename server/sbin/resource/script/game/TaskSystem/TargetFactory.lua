@@ -21,8 +21,11 @@ require "game.TaskSystem.TaskTarget.Tescort"
 require "game.TaskSystem.TaskTarget.TwearEquip"
 require "game.TaskSystem.TaskTarget.TcollectItem"
 require "game.TaskSystem.TaskTarget.Tride"
+require "game.TaskSystem.TaskTarget.TbabelScript"
+require "game.TaskSystem.TaskTarget.TkillMonster"
 require "game.TaskSystem.TaskTarget.TguideTask"
 require "game.TaskSystem.TaskTarget.TjoinFaction"
+
 
 local targetList =
 {
@@ -45,15 +48,19 @@ local targetList =
 	["TwearEquip"]			= TwearEquip,	-- 上装
 	["TcollectItem"]		= TcollectItem,	-- 收集材料
 	["Tride"]				= Tride,		-- 上坐骑
+	["TbabelScript"]		= TbabelScript,
+	["TkillMonster"]		= TkillMonster, -- 击杀怪物
 	["TguideTask"]			= TguideTask,	-- 指引任务
 	["TjoinFaction"]		= TjoinFaction,	-- 加入帮派
 }
 
 -- 构造任务目标的函数
 function createTarget(player, task, targetType, param, state)
+	
 	if targetList[targetType] then
 		return targetList[targetType](player, task, param, state)
 	end
+	
 end
 
 -- 动态创建循环任务目标

@@ -53,5 +53,9 @@ DialogActionConfig =
 	[DialogActionType.EnterGoldHuntZone]		= DialogAction.doEnterGoldHuntZone,
 	[DialogActionType.GoldHuntFight]			= DialogAction.doGoldHuntFight,
 	[DialogActionType.GoldHuntCommit]			= DialogAction.doGoldHuntCommit,
+	[DialogActionType.GetTheActivity]			= DialogAction.doGetTheActivity,
+	[DialogActionType.DekaronSchoolFight]		= DialogAction.doDekaronSchoolFight,
 	[DialogActionType.RecetiveTasks]			= DialogAction.doRecetiveTasks,
+	[DialogActionType.ReceiveBabelTask]			= DialogAction.doReceiveBabelTask,
+	[DialogActionType.EnterBabel]				= DialogAction.doEnterBabel,
 }

@@ -124,14 +124,16 @@ function Task:stateChange(taskStatus, fromDB)
 		self:removeTarget()	
 		g_taskSystem:onTaskFaild(player, taskData)
 	elseif taskStatus == TaskStatus.Done then			--任务完成
+		print("任务完成>>>>>>>>>>>>>>>>>>>>>>>")
 		self:removeTarget()	
 		g_taskSystem:onDoneTask(player, taskData)
-	elseif taskStatus == TaskStatus.Finished then		--任务结束
+	elseif taskStatus == TaskStatus.Finished then
+		print("任务结束>>>>>>>>>>>>>>>>>>>>>>")		--任务结束
 		--给奖励	
 		self:removeTarget()	
 		self:removeAllWatchers()
+		self:addReward()
 		g_taskSystem:onFinishTask(player, self._taskID)
-		self:addReward()		
 	elseif taskStatus == TaskStatus.Deleted then			--任务删除
 		self:removeTarget()	
 		self:removeAllWatchers()
@@ -158,7 +160,18 @@ function Task:updateNpcHeader()
 		if endNpc then
 			g_taskDoer:updateNpcHeader(player, endNpc)
 		end
-	else
+	elseif self._type == TaskType.daily then
+		
+		local startNpcID = DailyTaskDB[self._taskID].startNpcID
+		local startNpc = g_entityMgr:getNpc(startNpcID)
+		if startNpc then
+			g_taskDoer:updateNpcHeader(player,startNpc)
+		end
+		local endNpc = g_entityMgr:getNpc(self._endNpcID)
+		if endNpc then
+			g_taskDoer:updateNpcHeader(player, endNpc)
+		end
+	elseif self._type == TaskType.loop then
 		local startNpcID = LoopTaskDB[self._taskID].startNpcID
 		local startNpc = g_entityMgr:getNpc(startNpcID)
 		if startNpc then
@@ -241,16 +254,21 @@ end
 function Task:createDataForClient(taskStatus)
 	local taskData = {}
 	local player = g_entityMgr:getPlayerByID(self._roleID)
+
 	taskData.taskID = self._taskID
 	taskData.taskStatus = taskStatus
+
 	if taskStatus == TaskStatus.Deleted or taskStatus == TaskStatus.Finished then
 		return taskData
 	end
 	if self._type == TaskType.normal then 
+
 		if table.size(self._targets) > 0 then
 			taskData.targets = self:getTargetState()
 		end
+
 	elseif self._type == TaskType.loop then
+
 		-- 接循环任务时，把当前任务的环数 ,没有的话顺便把值给设置进去 
 		local taskHandler = player:getHandler(HandlerDef_Task)
 		-- 对于天道任务只能取队长的
@@ -262,8 +280,14 @@ function Task:createDataForClient(taskStatus)
 		--taskData.gradeIdx = self:getGradeIdx()
 		-- 任务状态
 		taskData.targets = self:getTargetState()
-	
+	elseif self._type == TaskType.babel then
+		print("通天塔任务相关数据")
+	elseif self._type == TaskType.daily then
+		taskData.targetType = self:getTargetType()
+		taskData.targetParam = self:getTargetParam()
+		taskData.targets = self:getTargetState()	
 	end
+
 	return taskData
 end
 
@@ -285,6 +309,7 @@ function Task:addMultiple(multiple)
 end
 
 function Task:canEnd()
+
 	local bEnd = true
 	for idx, target in pairs(self._targets) do
 		if target then
@@ -305,6 +330,7 @@ function Task:canEnd()
 	if bEnd then
 		return true
 	end
+	
 end
 
 function Task:isFaild()

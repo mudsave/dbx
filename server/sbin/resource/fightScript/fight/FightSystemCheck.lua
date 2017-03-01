@@ -80,13 +80,23 @@ function FightSystemActionChecker.isIDExist(fight,params,condition)
 		if table.size(condition) == 0 then
 			return true
 		end
-		local DBIDs = condition.params.DBID
+		local DBID = condition.params.DBID
 		if condition and condition.type == ScriptFightConditionType.IDExist then
-			for _,DBID in ipairs(DBIDs) do
-				local role = fight:hasMonster(DBID)
-				if role then
-					return true
-				end
+			local relation = condition.params.relation
+			local count = fight:getMonsterNum(DBID)
+			local value = condition.params.value
+			if relation == ">" then
+				return count > value
+			elseif relation == ">=" then
+				return count >= value
+			elseif relation == "=" then
+				return count == value
+			elseif relation == "<" then
+				return count < value
+			elseif relation == "<=" then
+				return count <= value
+			else
+				return false
 			end
 		end
 		return false
@@ -289,4 +299,28 @@ function FightSystemActionChecker.isMonsterCatched(fight,params,condition)
 		end
 	end
 	return false
+end
+
+--[[
+params = nil
+condition.params ={relation =">", value = 1,},
+]]
+function FightSystemActionChecker.isScoreReached(fight,params,condition)
+	local curScore = fight:getScore()
+	local relation = condition.params.relation
+	local value = condition.params.value
+	if relation == ">" then
+		return curScore> value
+	elseif relation == ">=" then
+		return curScore >= value
+	elseif relation == "=" then
+		return curScore == value
+	elseif relation == "<=" then
+		return curScore <= value
+	elseif relation == "<" then
+		return curScore < value
+	else
+		return false
+	end
+	
 end

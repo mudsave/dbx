@@ -19,11 +19,6 @@ function Npc:__release()
 	self._dbID = nil
 	self.showParts = nil
 	self.detachTime = nil
-	for htype,handler in pairs(self._handlers or {}) do
-		release(handler)
-		self._handlers[htype] = nil
-	end
-	self._handlers = nil
 end
 
 function Npc:setDBID(dbID)

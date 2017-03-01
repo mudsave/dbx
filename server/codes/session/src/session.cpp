@@ -253,12 +253,10 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					_MsgGS_UserLoginInfo* pInfo = (_MsgGS_UserLoginInfo*)pMsg;
 					if(!verifyVersion(pInfo->accountId, pInfo->version, "CSession::OnGateMsg(), MSG_S_G_USER_LOADED"))
 						return;
-					g_accountMgr.unregOffFightAccount(pInfo->accountId);
+					AccountInfo* pAccount = g_accountMgr.getAccountPtr(pInfo->accountId);
+					pAccount->setIsOffline(false);
 					if ( pInfo->result == 0 )
 					{
-						AccountInfo* pAccount = g_accountMgr.getAccountPtr(pInfo->accountId);
-						ASSERT_( pAccount );
-						ASSERT_( pAccount->roleId == pInfo->roleId );
 						ASSERT_( pAccount->status == ACCOUNT_STATE_LOADING
 						 	|| pAccount->status == ACCOUNT_STATE_RECONNECTING_FIGHT);
 						pAccount->_SwitchStatus(ACCOUNT_STATE_LOADED);
@@ -332,7 +330,7 @@ void CSession::OnGateMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					account.hLink = 0;
 					account.hPendingLink = 0;
 					account._SwitchStatus(ACCOUNT_STATE_OFFLINE_IN_FIGHT);
-					g_accountMgr.regOffFightAccount(accountId);
+					account.setIsOffline(true);
 					TRACE0_L2("CSession::OnGateMsg(), player offline in fight\n");
 					TRACE1_L2("\taccountId = %i\n", accountId);
 					TRACE1_L2("\troleId = %i\n", roleId);
@@ -428,9 +426,10 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
-					ASSERT_(account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT || account.status == ACCOUNT_STATE_LOADED
-						|| account.status == ACCOUNT_STATE_RECONNECTING_FIGHT);
-					g_accountMgr.unregOffFightAccount(pInfo->accountId);
+					ASSERT_(account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT ||
+							account.status == ACCOUNT_STATE_LOADED ||
+							account.status == ACCOUNT_STATE_RECONNECTING_FIGHT);
+					account.setIsOffline(false);
 					if (account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT)
 						g_accountMgr.unregAccount(pInfo->accountId);
 					TRACE0_L2("CSession::OnWorldMsg(), clear fight offline info!\n");
@@ -447,7 +446,7 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
-					account.inFight = true;
+					account.setIsFight(true);
 					TRACE1_L2("CSession::OnWorldMsg(), account:%d is in fight!\n", pInfo->accountId);
 					return;
 				}
@@ -460,7 +459,7 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
-					account.inFight = false;
+					account.setIsFight(false);
 					TRACE1_L2("CSession::OnWorldMsg(), account:%d is out fight!\n", pInfo->accountId);
 					return;
 				}

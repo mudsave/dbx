@@ -7,6 +7,11 @@ DailyTask = class(Task)
 
 function DailyTask:__init()
 
+	self._targetType = nil
+	self._targetParam = nil
+	self._dailyTargets = nil
+	self.remainCount = 2
+
 end
 
 function DailyTask:__release()
@@ -29,9 +34,45 @@ function DailyTask:getTriggers()
 	return self._triggers
 end
 
+function DailyTask:setTargetType( targetType )
+
+	self._targetType = targetType
+
+end
+
+function DailyTask:getTargetType(  )
+	return self._targetType
+end
+
+function DailyTask:setTargetParam( targetParam )
+	
+	self._targetParam = targetParam
+
+end
+
+function DailyTask:getTargetParam(  )
+
+	return self._targetParam
+
+end
+
+function DailyTask:setDailyTargets( targets )
+	
+	self._dailyTargets = targets
+
+end
+
+function DailyTask:getDailyTargets(  )
+
+	return self._dailyTargets
+
+end
+
+
 function DailyTask:addReward()
 	local player = g_entityMgr:getPlayerByID(self._roleID)
 	for rewardType, value in pairs(self._rewards) do
+		
 		if rewardType == TaskRewardList.player_xp then
 			player:addXp(value)
 		elseif rewardType == TaskRewardList.money then
@@ -60,7 +101,6 @@ function DailyTask:addReward()
 		else
 			print("奖励类型没定义，",rewardType)
 		end	
-
 	end
 	player:flushPropBatch()
 	g_taskSystem:addMessageShow(player, self._rewards)

@@ -604,15 +604,17 @@ function SkillUtils.calcShield(role, damage, dmg_type)
 		return damage
 	end
 	Flog:log("盾的值是:",shield_value)	
-	if (-damage) > shield_value then
-		damage = damage + shield_value
+	if damage > shield_value then
+		damage = damage - shield_value
 		handler:setShieldEffect(0)
-		Flog:log("减盾值后的伤害是：:",damage)	
+		Flog:log("减盾值后的伤害是:",damage)	
+		print("减盾值后的伤害是:",damage)
 		-- 第二个值是这次护盾是否是以代盾
 		return damage,isMpShield,shield_value
 	else
-		Flog:log("伤害不足完全被吸收 剩余:",shield_value+damage)	
-		handler:setShieldEffect(shield_value+damage)
+		Flog:log("伤害不足,剩余护盾的值:",shield_value-damage)
+		print("伤害不足,剩余护盾的值:",shield_value-damage)
+		handler:setShieldEffect(shield_value-damage)
 		return 0,isMpShield,damage
 	end
 end

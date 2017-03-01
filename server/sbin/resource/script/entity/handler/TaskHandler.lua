@@ -15,7 +15,10 @@ function TaskHandler:__init(entity)
 	self.count = 0					--任务数量
 	self.loopTaskInfo = {}			--循环任务信息
 	self.canRecetiveTaskID = {}
-	self.dailyTaskList = {}
+	
+	self.dailyTaskConfiguration = {}   --日常任务配置表
+	-- 通天塔任务初
+	self.babelTaskInfo = {}	
 
 end
 
@@ -29,6 +32,8 @@ function TaskHandler:__release()
 	self.taskMineList = nil
 	self.count = nil
 	self.loopTaskInfo = nil
+	self.babelTaskInfo = nil
+	self.dailyTaskConfiguration = nil   --日常任务配置表
 end
 
 function TaskHandler:releaseCurTask()
@@ -51,6 +56,12 @@ function TaskHandler:addTask(task)
 		--self:updateCanRecetiveTask(taskID)
 		self.count = self.count + 1
 	end
+
+	if DailyTaskDB[taskID] then
+		self.dailyTaskConfiguration[taskID] = false
+		print("接受任务，更改配置表>>>>>>>>>>",toString(self.dailyTaskConfiguration))
+	end
+
 end
 
 function TaskHandler:loadHistoryTask(hisTasks)
@@ -234,6 +245,21 @@ function TaskHandler:updateDayTask()
 			self.loopTaskInfo[taskID].finishTimes = 0
 		end
 	end
+	-- 跟新通天塔任务, 有任务和没有任务的情况
+	local babelTaskID = 20001
+	if self.currentTask[babelTaskID] then
+		--完成任务
+		self:finishBabelTask(babelTaskID)
+		local mapID = self.entity:getScene():getMapID()
+		if mapID >= 1001 and mapID <= 1200 then
+			g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
+		end
+	end
+	local babelTaskInfo = self.babelTaskInfo[babelTaskID]
+	if babelTaskInfo then
+		babelTaskInfo.faildTimes = 0
+		babelTaskInfo.finishFlag = 0
+	end
 end
 
 function TaskHandler:updateWeekTask()
@@ -410,6 +436,16 @@ function TaskHandler:updateNpcHeader(taskID)
 		if endNpc then
 			g_taskDoer:updateNpcHeader(player, endNpc)
 		end
+	elseif DailyTaskDB[taskID] then
+		local startNpcID = DailyTaskDB[taskID].startNpcID
+		local startNpc = g_entityMgr:getNpc(startNpcID)
+		if startNpc then
+			g_taskDoer:updateNpcHeader(player, startNpc)
+		end
+		local endNpc = g_entityMgr:getNpc(self._endNpcID)
+		if endNpc then
+			g_taskDoer:updateNpcHeader(player, endNpc)
+		end
 	end
 
 end
@@ -535,6 +571,10 @@ function TaskHandler:deleteTaskToDB(taskID)
 		LuaDBAccess.deleteLoopTask(self._entity:getDBID(), taskID)
 		return true
 		-- 环数完成时不要清理数据库
+	elseif DailyTaskDB[taskID] then
+		LuaDBAccess.deleteDailyTask(self._entity:getDBID(), taskID)
+		print("将配置表置空>>>>>>>>>>>>>>>>>>>>>>>>>",self.dailyTaskConfiguration[taskID])
+		return true
 	else
 		LuaDBAccess.deleteNormalTask(self._entity:getDBID(), taskID)
 		return true
@@ -564,6 +604,13 @@ function TaskHandler:checkTaskProvider(npcID)
 				return taskID, TaskType.loop
 			end
 		end
+
+		for _,taskID in pairs(taskList) do
+			if TaskCondition.dailyTask(self._entity, taskID, true) then
+				return taskID, TaskType.daily
+			end
+		end
+
 	end
 end
 
@@ -587,11 +634,20 @@ function TaskHandler:checkTaskRecetiver(npcID)
 				end
 			end
 		end
+
+		for _, taskID in pairs(taskList) do
+			if DailyTaskDB[taskID] then
+				if self.currentTask[taskID] and self.currentTask[taskID]:getStatus() == TaskStatus.Done then
+					return taskID, TaskType.daily
+				end
+			end
+		end
+
 	end
 end
 
 -- 设置循环任务的环数
-function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
+function TaskHandler:loadLoopTaskInfo()
 	for _, loopTask in pairs(loopTaskRecord or {}) do
 		local offlineTime = loopTask.offlineTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数
@@ -639,7 +695,6 @@ end
 function TaskHandler:updateLoopTaskRingToDB()
 	local playerDBID = self._entity:getDBID()
 	for taskID, taskInfo in pairs(self.loopTaskInfo) do
-		print("taskInfo",toString(taskInfo))
 		LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	end
 end
@@ -650,6 +705,129 @@ function TaskHandler:resetCurrentRing(taskID)
 	end
 end
 
-function TaskHandler:getDailyTask( taskID )
-	return self.dailyTaskList[taskID]
+function TaskHandler:setDailyTaskConfiguration( taskConfiguration )
+	
+	self.dailyTaskConfiguration = taskConfiguration
+
+end
+
+function TaskHandler:getDailyTaskConfiguration( )
+
+	return self.dailyTaskConfiguration
+
+end
+
+function TaskHandler:getDailyTaskConfigurationByID( taskID )
+	return self.dailyTaskConfiguration[taskID]
+end
+
+function TaskHandler:addDailyTaskConfiguration( taskID )
+	self.dailyTaskConfiguration[taskID] = true
+end
+
+-- 通天塔任务初始化
+function TaskHandler:checkBabelTask(taskID)
+	local taskData = self.babelTaskInfo[taskID]
+	if not taskData then
+		taskData = {}
+		taskData.receiveTime = 0
+		taskData.faildTimes = 0
+		taskData.finishFlag = 0	
+		self.babelTaskInfo[taskID] = taskData
+	end
+end
+
+-- 完成通天塔任务接口, 通天塔任务相关记录
+function TaskHandler:finishBabelTask(taskID)
+	if self.currentTask[taskID] then
+		-- 清除taskPrivateHandler当中的绑定的npcID
+		local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
+		taskPrivateHandler:removeTraceInfo(taskID)
+		self.currentTask[taskID]:stateChange(TaskStatus.Finished)
+		-- 完成之后环数+1
+		release(self.currentTask[taskID])
+		self.currentTask[taskID] = nil
+		-- 完成任务时，重新设置这个任务列表
+		return true
+	else
+		print("任务不存在",taskID)
+		return false
+	end
+end
+
+function TaskHandler:addBabelFaildTimes(taskID)
+	self.babelTaskInfo[taskID].faildTimes = self.babelTaskInfo[taskID].faildTimes + 1
+end
+
+function TaskHandler:getBabelFaildTimes(taskID)
+	return self.babelTaskInfo[taskID].faildTimes
+end
+
+function TaskHandler:setBabelFinishFlag(taskID)
+	self.babelTaskInfo[taskID].finishFlag = 1
+end
+
+function TaskHandler:getBabelFinishFlag(taskID)
+	if self.babelTaskInfo[taskID] then
+		return self.babelTaskInfo[taskID].finishFlag
+	end
+end
+
+function TaskHandler:setReceiveBabelTaskTime(taskID)
+	self:checkBabelTask(taskID)
+	self.babelTaskInfo[taskID].receiveTime = os.time()
+end
+
+function TaskHandler:getReceiveBabelTaskTime(taskID)
+	return self.babelTaskInfo[taskID].receiveTime
+end
+
+-- 保存通天塔任务
+function TaskHandler:saveBabelTask()
+	local playerID = self._entity:getID()
+	for taskID, taskInfo in pairs(self.babelTaskInfo) do
+		if taskID then
+			LuaDBAccess.saveBabelTask(playerID, taskID, taskInfo)
+		end
+	end
+end
+
+function TaskHandler:loadBabelTask(taskData)
+	-- 接任务的时间
+	--print("taskDta.>>>>>>>>>>>>>>>>>", toString(taskData))
+	local receiveTime = taskData.receiveTime
+	-- 如果副本数据是上一个CD周期的，则要重置完成次数
+	local babelTaskConfig = BabelTaskDB[taskData.taskID]
+	if babelTaskConfig then
+		-- 如果是每日的循环任务
+		if babelTaskConfig.period == TaskPeriod.day then
+			-- 判断记录日期跟现在是不是同一天 判断这次登陆和上次离线的时间做比较
+			if not time.isSameDay(receiveTime) then
+				-- 不是同一天，重新设置当前可做的次数，
+				taskData.faildTimes = 0
+				taskData.finishFlag = 0
+			else
+				-- 如果是同一天， 判断不是完成标志
+				if taskData.finishFlag ~= 1 then
+					-- 此时要根据数据库的内容来创建任务，
+					local babelTask = g_taskFty:createBabelTaskFromDB(self._entity, taskData)
+					self:addTask(babelTask)
+				end
+			end
+		end
+		self:checkBabelTask(taskData.taskID)
+		local babelTaskInfo = self.babelTaskInfo[taskData.taskID]
+		babelTaskInfo.receiveTime = taskData.receiveTime
+		babelTaskInfo.faildTimes = taskData.faildTimes
+		babelTaskInfo.finishFlag = taskData.finishFlag
+	else
+		print("数据初始化出错，任务id是",taskData.taskID)
+	end
+end
+
+-- 挑战完成
+function TaskHandler:endFinishBabelTask(taskID)
+	self:setBabelFinishFlag(taskID)
+	g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
+	self:finishBabelTask(taskID)
 end

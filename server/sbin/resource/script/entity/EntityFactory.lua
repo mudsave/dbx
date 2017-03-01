@@ -261,7 +261,7 @@ function EntityFactory:createActivityPatrolNpc(dbID)
 
 	patrolNpc:addHandler(HandlerDef_Move, MoveHandler(patrolNpc))
 
-	patrolNpc:setEntityType(eLogicNpc)
+	patrolNpc:setEntityType(eLogicActivityPatrolNpc)
 	--将实体加入EntityManager管理
 	g_entityMgr:addPatrolNpc(patrolNpc)
 	return patrolNpc

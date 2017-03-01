@@ -74,32 +74,6 @@ function TradeManager:ptoNBuyBack(player, itemGuid, itemNum, moveItemInfo)
 					return
 				end
 			end 
-			--玩家交易的接口关闭
-			--[[	if player:getPayMode() then
-				--玩家绑银不足
-				if playerSubMoney >= totalPrice then
-					costSubMoney = totalPrice
-				else
-					local subMoney = totalPrice - playerSubMoney
-					if playerMoney >= subMoney then
-						costSubMoney = playerSubMoney
-						costMoney = subMoney
-					else
-						--玩家金钱不足无法购买
-						self:sendTradeMessage(player, 5)
-						return
-					end
-				end
-				
-			else
-				if playerMoney >= totalPrice then 
-					costMoney = totalPrice
-				else
-					--玩家金钱不足无法购买
-					self:sendTradeMessage(player, 5)
-					return
-				end
-			end --]]
 			--先看玩家的钱数再做移动操作再处理钱数成功失败
 			local result = self:onMoveItem(player, itemGuid, itemNum, moveItemInfo)
 			-- 这个地方应该还加一个判断成功和失败
@@ -230,16 +204,19 @@ function TradeManager:ptoNSellGoods(player, itemGuid, itemNum, moveItemInfo)
 				local money = 0
 				if saleMoneyType == ItemPriceType.BindMoney then
 					money = player:getSubMoney() + saleMoneyNum*itemNum
-					player:setSubMoney(money)
+					player:setSubMoney(money)					
+					--之后可能要发消息给客户端做一些提示处理
+					local money = saleMoneyNum * itemNum
+					self:sendTradeMessage(player, 3, money,itemNum,itemID)
 					player:flushPropBatch()
 				elseif saleMoneyType == ItemPriceType.Money then
 					money = player:getMoney() + saleMoneyNum*itemNum
 					player:setMoney(money)
+					--之后可能要发消息给客户端做一些提示处理
+					local money = saleMoneyNum * itemNum
+					self:sendTradeMessage(player, 12, money,itemNum,itemID)
 					player:flushPropBatch()
 				end
-				local money = saleMoneyNum * itemNum
-				--之后可能要发消息给客户端做一些提示处理
-				self:sendTradeMessage(player, 3, money,itemNum,itemID)
 			else
 				self:sendTradeMessage(player, result)
 			end
@@ -463,7 +440,6 @@ function TradeManager:doTradeVerifyState(roleID, targetID)
 	local reSult = self:canDoRequest(player, targetPlayer)
 	--状态不满足直接返回
 	if not reSult then return end
-
 	--记录当前发交易请求的玩家
 	if not self.requestList[roleID] then
 		self.requestList[roleID] = {}
@@ -566,7 +542,7 @@ function TradeManager:releaseP2PTrade(roleID, targetID)
 		--先给物品解锁
 		P2PTrade:unLockFlag(player, target)
 		--设置宠物的action
-		P2PTrade:setPetActionState()
+		P2PTrade:setPetActionState(player,target)
 		--释放交易
 		release(P2PTrade)
 		self.tradeList[roleID] = nil
@@ -583,7 +559,7 @@ function TradeManager:releaseTrade(roleID)
 		local target = g_entityMgr:getPlayerByID(targetID)
 		P2PTrade:unLockFlag(player, target)
 		--设置宠物的action
-		P2PTrade:setPetActionState()
+		P2PTrade:setPetActionState(player,target)
 		release(P2PTrade)
 		self.tradeList[roleID] = nil
 		self.tradeList[targetID] = nil
@@ -665,18 +641,7 @@ function TradeManager:doFinishTrade(roleID, targetID)
 	g_eventMgr:fireRemoteEvent(event, target)
 end
 
--- NPC货架交易提示信息
-function TradeManager:sendTradeMessage(player, msgID, money,itemNum,itemID)
-	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, msgID,itemNum,itemID,money)
-	g_eventMgr:fireRemoteEvent(event, player)
-end
-
--- p2p交易相关提示信息
-function TradeManager:sendP2PTradeMessage(player, msgID)
-	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, msgID)
-	g_eventMgr:fireRemoteEvent(event, player)
-end
-
+--宠物商店购买宠物
 function TradeManager:petBuyShop(player, petID, petBuyPrice, petBuyType)
 	local playerMoney = player:getMoney()
 	local playerSubMoney = player:getSubMoney()
@@ -729,6 +694,26 @@ function TradeManager:petBuyShop(player, petID, petBuyPrice, petBuyType)
 		return 
 	end 
 end 
+
+--处理P2P发过来的消息
+function TradeManager:P2PMessageChoose(player,roleID, targetID, choose)
+	local targetPlayer = g_entityMgr:getPlayerByID(targetID)
+	local choose = choose
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, choose)
+	g_eventMgr:fireRemoteEvent(event, targetPlayer)	
+end 
+
+-- NPC货架交易提示信息
+function TradeManager:sendTradeMessage(player, msgID, money,itemNum,itemID)
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, msgID,itemNum,itemID,money)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+-- p2p交易相关提示信息
+function TradeManager:sendP2PTradeMessage(player, msgID)
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, msgID)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
 
 function TradeManager.getInstance()
 	return TradeManager()

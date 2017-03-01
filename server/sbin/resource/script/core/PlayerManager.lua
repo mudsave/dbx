@@ -102,6 +102,7 @@ function PlayerManager:onPlayerReLogin(hGateLink, pLoginInfo, player)
 	local gatewayId = pLoginInfo.gatewayId
 	local hClientLink = pLoginInfo.hClientLink
 	local oldGateLink = player:getGateLink()
+	player:setVersion(pLoginInfo.version)
 	player:setGateLink(hGateLink)
 	player:setClientLink(hClientLink)
 	player:setGatewayID(gatewayId)
@@ -175,7 +176,7 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 
 	player:setStatus(ePlayerNormal)
 	player:setLastActive(os.time())
-	player:setMaxPet(MaxPetNum)
+	player:setMaxPet(DefPetNum)
 	player:loadBasicDataFromDB(recordList)
 	g_world:send_MsgWG_PlayerLogin_ResultInfo(player._hGateLink, dbId, player:getVersion(), 0)
 
@@ -197,9 +198,9 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 		end
 	end
 	g_sceneMgr:enterPublicScene(mapID, player, x, y)
-	System.OnPlayerLoaded(player, recordList)
 	System._LoadWorldServerData(player,recordList[24][1])
-	System._LoadSocialServerData(player,recordList[27][1])
+	System._LoadSocialServerData(player,recordList[26][1])
+	System.OnPlayerLoaded(player, recordList)
 
 	g_entityMgr:setPlayerName(player:getName(),dbId)
 	-- 设置可接任务列表, 在帮派设置完毕之后

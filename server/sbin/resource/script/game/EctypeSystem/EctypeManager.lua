@@ -176,7 +176,12 @@ function EctypeManager:enterEctype(player, ectypeID)
 		-- 执行进入副本需要的扣除条件
 		self:exeEnterEctypeDeductCondition(player, ectypeConfig)
 		-- 创建副本
-		local ectype = Ectype()
+		local ectype = nil
+		if ectypeConfig.EctypeType == EctypeType.HulaoPass then
+			ectype = RescueHulaoPassEctype()
+		else
+			ectype = Ectype()
+		end
 		if ectype:create(ectypeID) then
 			local ectypeMapID = ectype:getEctypeMapID()
 			-- 记录新副本
@@ -252,7 +257,12 @@ function EctypeManager:enterEctype(player, ectypeID)
 			self:exeEnterEctypeDeductCondition(teamMemberPlayer[i], ectypeConfig)
 		end
 		-- 创建副本
-		local ectype = Ectype()
+		local ectype = nil
+		if ectypeConfig.EctypeType == EctypeType.HulaoPass then
+			ectype = RescueHulaoPassEctype()
+		else
+			ectype = Ectype()
+		end
 		if ectype:create(ectypeID) then
 			local ectypeMapID = ectype:getEctypeMapID()
 			-- 记录新副本
@@ -566,7 +576,6 @@ function EctypeManager:enterFactionEctype(player, factionEctypeID)
 			end
 			factionID = roleFactionID
 		end
-		
 	end
 	-- 判断进入条件
 	for _, roleID in pairs(players) do
@@ -583,7 +592,12 @@ function EctypeManager:enterFactionEctype(player, factionEctypeID)
 	end
 	
 	-- 创建副本
-	local ectype = FactionEctype()
+	local ectype = nil
+	if ectypeConfig.EctypeType == EctypeType.HulaoPass then
+		ectype = RescueHulaoPassEctype()
+	else
+		ectype = FactionEctype()
+	end
 	if ectype:create(ectypeID) then
 		local ectypeMapID = ectype:getEctypeMapID()
 		-- 记录新副本
@@ -609,7 +623,6 @@ function EctypeManager:enterFactionEctype(player, factionEctypeID)
 		print("EctypeManager:enterEctype 创建失败 1，ectypeID = ", ectypeID)
 		release(ectype)
 	end
-
 end
 
 -- 这个条件补上呢

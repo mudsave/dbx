@@ -6,3 +6,4 @@
 require "game.TaskSystem.TaskTrigger.TTrigger"
 require "game.TaskSystem.TaskTrigger.TNormalTrigger"
 require "game.TaskSystem.TaskTrigger.TLoopTrigger"
+require "game.TaskSystem.TaskTrigger.TBabelTrigger"

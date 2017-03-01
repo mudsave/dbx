@@ -88,9 +88,7 @@ function FactionSysMgr.onLoadFactionMembers( dataList,roleDBID )
                     end
                 end
             end
-
         end
-        
     end
     
 end

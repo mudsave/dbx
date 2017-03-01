@@ -7,6 +7,8 @@ TaskType =
 {
 	normal	= 1,		-- 普通任务
 	loop	= 2,		-- 循环任务
+	babel	= 3,		-- 通天塔任务
+	daily	= 4,		-- 日常任务
 }
 
 TaskPeriod = 

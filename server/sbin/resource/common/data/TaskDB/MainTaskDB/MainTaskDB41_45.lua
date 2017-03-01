@@ -13,7 +13,7 @@ MainTaskDB41_45 =
 		endNpcID = 21106,	--任务结束npc
 		preTaskData = {1524},	--任务前置任务没有填nil
 		nextTaskID = 1602,	--任务后置任务没有填nil
-		startDialogID = 1575,	--接任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = 1608,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -44,7 +44,7 @@ MainTaskDB41_45 =
 					{npcID = 21102, x = 120, y = 41, noDelete = true},
 					{npcID = 21102, x = 124, y = 46, noDelete = true},
 				},
-				posData = {mapID = 409, x = 128, y = 38}, --踩雷坐标
+				posData = {mapID = 409, x = 126, y = 40}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			      },
@@ -62,7 +62,7 @@ MainTaskDB41_45 =
 					{npcID = 21102, x = 112, y = 90, noDelete = true},
 					{npcID = 21102, x = 116, y = 86, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 409, x = 110, y = 84}, --踩雷坐标
+			        posData = {mapID = 409, x = 111, y = 86}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			      },
@@ -75,7 +75,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 409, x = 155, y = 113}, --踩雷坐标
+			        posData = {mapID = 409, x = 155, y = 117}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			      },
@@ -92,7 +92,6 @@ MainTaskDB41_45 =
 							},
 					      },
 			},
-			{
 			{type="createPrivateNpc", ----------创建李丰
 					param={
 						npcs =
@@ -100,7 +99,6 @@ MainTaskDB41_45 =
 								[1] = {npcID = 21105,mapID = 409, x = 155, y = 117,dir = Direction.WestSouth,},
 						},
 					      },
-			},
 			},
 			},
 			[TaskStatus.Done]		=      ---完成目标状态 
@@ -141,8 +139,8 @@ MainTaskDB41_45 =
 		endNpcID = nil,	--任务结束npc
 		preTaskData = {1601},	--任务前置任务没有填nil
 		nextTaskID = 1603,	--任务后置任务没有填nil
-		startDialogID = 1609,	--接任务对话ID没有填nil
-		endDialogID = 1616,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -172,7 +170,7 @@ MainTaskDB41_45 =
 					{npcID = 21108, x = 215, y = 156, noDelete = true},
 					{npcID = 21108, x = 223, y = 156, noDelete = true},
 				},
-				posData = {mapID = 409, x = 219, y = 148}, --踩雷坐标
+				posData = {mapID = 409, x = 219, y = 154}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			     },
@@ -190,7 +188,7 @@ MainTaskDB41_45 =
 					{npcID = 21108, x = 125, y = 166, noDelete = true},
 					{npcID = 21108, x = 125, y = 172, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 409, x = 135, y = 169}, --踩雷坐标
+			        posData = {mapID = 409, x = 131, y = 169}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			     },
@@ -203,7 +201,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 409, x = 42, y = 137}, --踩雷坐标
+			        posData = {mapID = 409, x = 41, y = 141}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			      },
@@ -212,39 +210,23 @@ MainTaskDB41_45 =
 		{
 		    [TaskStatus.Active] =
 				{
-				{type="deletePrivateNpc",
-				param={
-						npcs =
-						{
-							{npcID = 21106, taskID = {1601}, index = 1}, --删除接任务对话李丰
-						},
-				      },
-				},
                         {type="createPrivateNpc", ----------创建袁术
 					param={
 						npcs =
 						{
 								[1] = {npcID = 21111,mapID = 409, x = 41, y = 141,dir = Direction.WestSouth,}, --袁术
-                                                                [2] = {npcID = 21107,mapID = 409, x = 36, y = 143,dir = Direction.WestSouth,}, --袁营亲兵
-						                [3] = {npcID = 21107,mapID = 409, x = 44, y = 143,dir = Direction.WestSouth,}, --袁营亲兵
-						                [4] = {npcID = 21108,mapID = 409, x = 38, y = 145,dir = Direction.WestSouth,}, --袁营步兵
-						                [5] = {npcID = 21108,mapID = 409, x = 42, y = 145,dir = Direction.WestSouth,}, --袁营步兵
-						
 						},
-					      },
+				},
 			},
-			        },
+			},
 			[TaskStatus.Done]		=      ---完成目标状态 
 			{
 			{type="deletePrivateNpc", ----------删除袁术
 				param={
 						npcs =
 						{
-							{npcID = 21111, taskID = {1602}, index = 1}, --删除袁术
-						        {npcID = 21107, taskID = {1602}, index = 2}, 
-						        {npcID = 21107, taskID = {1602}, index = 3}, 
-						        {npcID = 21108, taskID = {1602}, index = 4}, 
-						        {npcID = 21108, taskID = {1602}, index = 5}, 
+						     {npcID = 21106, taskID = {1601}, index = 1}, --删除接任务对话李丰
+							 {npcID = 21111, taskID = {1602}, index = 1}, --删除袁术
 						},
 					},
 			},
@@ -265,6 +247,7 @@ MainTaskDB41_45 =
 					      },
 			},
 			{type="openDialog", param={dialogID = 1616},}, --在任务结束时打开一个对话框
+			{type="finishTask", param = {recetiveTaskID = 1603}},
 			},
 	        },
 	},
@@ -272,10 +255,10 @@ MainTaskDB41_45 =
 	{
 		name = "回禀天尊",	--任务名字
 		startNpcID = nil,	--任务起始npc
-		endNpcID = nil,	--任务结束npc
+		endNpcID = 20002,	--任务结束npc
 		preTaskData = {1602}, --前置任务ID 
 		nextTaskID = 1604,	--任务后置任务没有填nil
-		startDialogID =	1616,	--接任务对话ID没有填nil
+		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 1617,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -298,23 +281,22 @@ MainTaskDB41_45 =
 			triggers = --任务触发器
 			{
 
-				[TaskStatus.Active] = nil,
+				[TaskStatus.Active] =
 				{
 				},
 				[TaskStatus.Done] =
-					{
-						{type="openDialog", param={dialogID = 1617},},--在任务目标完成时打开一个对话框
-						
-			                {type="deletePrivateTransfer",
+				{
+				{type="openDialog", param={dialogID = 1617},},--在任务目标完成时打开一个对话框
+			    {type="deletePrivateTransfer",
 					param={
 							transfers =
 							{
 								{taskID = 1602, index = 1},--删除私有传送阵陈留-江夏
 							},
-					       },
-				        },
-					},
-	                },
+					    },
+				     },
+				},
+	     },
 	},
         [1604] =
 	{
@@ -323,7 +305,7 @@ MainTaskDB41_45 =
 		endNpcID = 20049,	--任务结束npc
 		preTaskData = {1603}, --前置任务ID 
 		nextTaskID = 1605,	--任务后置任务没有填nil
-		startDialogID =	1618,	--接任务对话ID没有填nil
+		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 1619,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -344,7 +326,7 @@ MainTaskDB41_45 =
 		},
 			triggers = --任务触发器
 			{
-				[TaskStatus.Active] = nil,
+				[TaskStatus.Active] = 
 				{
 				},
 				[TaskStatus.Done] =
@@ -361,8 +343,8 @@ MainTaskDB41_45 =
 		endNpcID = nil,	--任务结束npc
 		preTaskData = {1604},	--任务前置任务没有填nil
 		nextTaskID = 1606,	--任务后置任务没有填nil
-		startDialogID = 1619,	--接任务对话ID没有填nil
-		endDialogID = 1627,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -392,7 +374,7 @@ MainTaskDB41_45 =
 					{npcID = 21113, x = 148, y = 214, noDelete = true},
 					{npcID = 21113, x = 148, y = 224, noDelete = true},
 				},
-				posData = {mapID = 109, x = 154, y = 220}, --踩雷坐标
+				posData = {mapID = 109, x = 150, y = 219}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			      },
@@ -410,7 +392,7 @@ MainTaskDB41_45 =
 					{npcID = 21113, x = 100, y = 173, noDelete = true},
 					{npcID = 21113, x = 100, y = 177, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 109, x = 108, y = 174}, --踩雷坐标
+			        posData = {mapID = 109, x = 104, y = 175}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			      },
@@ -423,7 +405,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 109, x = 146, y = 125}, --踩雷坐标
+			        posData = {mapID = 109, x = 149, y = 124}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -436,11 +418,7 @@ MainTaskDB41_45 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 21116,mapID = 109, x = 149, y = 124,dir = Direction.WestNorth,}, --杨弘
-                                                                [2] = {npcID = 21112,mapID = 109, x = 150, y = 121,dir = Direction.WestNorth,}, --虎牢关守卫
-						                [3] = {npcID = 21112,mapID = 109, x = 150, y = 127,dir = Direction.WestNorth,}, --虎牢关守卫
-						                [4] = {npcID = 21113,mapID = 109, x = 153, y = 122,dir = Direction.WestNorth,}, --虎牢关枪兵
-						                [5] = {npcID = 21113,mapID = 109, x = 153, y = 126,dir = Direction.WestNorth,}, --虎牢关枪兵						
+								[1] = {npcID = 21116,mapID = 109, x = 149, y = 124,dir = Direction.WestNorth,}, --杨弘					
 						},
 					},
 			},
@@ -452,13 +430,10 @@ MainTaskDB41_45 =
 						npcs =
 						{
 							{npcID = 21116, taskID = {1605}, index = 1}, --删除杨弘
-						        {npcID = 21112, taskID = {1605}, index = 2}, 
-						        {npcID = 21112, taskID = {1605}, index = 3}, 
-						        {npcID = 21113, taskID = {1605}, index = 4}, 
-						        {npcID = 21113, taskID = {1605}, index = 5}, 
 						},
 					},
 			},
+			{type="openDialog", param={dialogID = 1627},},	--在任务目标完成时打开一个对话框		
 			{type="finishTask", param = {recetiveTaskID = 1606}},--触发完成任务接受下一个任务
 			},
 	},
@@ -471,8 +446,8 @@ MainTaskDB41_45 =
 		endNpcID = nil,	--任务结束npc
 		preTaskData = {1605},	--任务前置任务没有填nil
 		nextTaskID = 1607,	--任务后置任务没有填nil
-		startDialogID = 1627,	--接任务对话ID没有填nil
-		endDialogID = 1634,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -502,7 +477,7 @@ MainTaskDB41_45 =
 					{npcID = 21118, x = 195, y = 111, noDelete = true},
 					{npcID = 21118, x = 198, y = 108, noDelete = true},
 				},
-				posData = {mapID = 109, x = 191, y = 107}, --踩雷坐标
+				posData = {mapID = 109, x = 194, y = 108}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -520,7 +495,7 @@ MainTaskDB41_45 =
 					{npcID = 21118, x = 244, y = 93, noDelete = true},
 					{npcID = 21118, x = 254, y = 93, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 109, x = 249, y = 99}, --踩雷坐标
+			        posData = {mapID = 109, x = 249, y = 96}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -533,7 +508,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 109, x = 256, y = 63}, --踩雷坐标
+			        posData = {mapID = 109, x = 256, y = 61}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -573,7 +548,7 @@ MainTaskDB41_45 =
 		preTaskData = {1606}, --前置任务ID 
 		nextTaskID = 1607,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
-		endDialogID = 1635,	--交任务对话ID没有填nil
+		endDialogID = 1634,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -595,19 +570,10 @@ MainTaskDB41_45 =
 			{
 				[TaskStatus.Active] = 
 				{
-				{type="createPrivateTransfer",
-					param={
-							transfers =
-							{
-								[1] = {mapID = 109, x = 120, y = 244, tarMapID = 410, tarX = 65, tarY = 186},--创建私有传送阵虎牢关-汝南
-							},
-					      },
-			        },
 				},
 				[TaskStatus.Done] =
 					{
 			 			{type="openDialog", param={dialogID = 1634},},						
-					        {type="finishTask", param = {recetiveTaskID = 1607}},--触发完成任务接受下一个任务
 					},
 			},
 	},
@@ -615,7 +581,7 @@ MainTaskDB41_45 =
 	{
 		name = "救援曹操",	--任务名字
 		startNpcID = 20049,	--任务起始npc
-		endNpcID = nil,	--任务结束npc
+		endNpcID = 21133,	--任务结束npc
 		preTaskData = {1620}, --前置任务ID 
 		nextTaskID = 1608,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
@@ -641,6 +607,14 @@ MainTaskDB41_45 =
 			{
 				[TaskStatus.Active] = 
 				{
+				{type="createPrivateTransfer",
+					param={
+							transfers =
+							{
+								[1] = {mapID = 109, x = 129, y = 243, tarMapID = 410, tarX = 65, tarY = 186},--创建私有传送阵虎牢关-汝南
+							},
+					      },
+			        },
                                    {type="createPrivateNpc", ----------创建曹操
 					param={
 						npcs =
@@ -656,7 +630,7 @@ MainTaskDB41_45 =
 					param={
 							transfers =
 							{
-								{taskID = 1620, index = 1},--删除私有传送阵虎牢关-汝南
+								{taskID = 1607, index = 1},--删除私有传送阵虎牢关-汝南
 							},
 						},
 			         },
@@ -668,10 +642,10 @@ MainTaskDB41_45 =
 	{
 		name = "协助曹仁",	--任务名字
 		startNpcID = 21133,	--任务起始npc
-		endNpcID = nil,	--任务结束npc
+		endNpcID = 21122,	--任务结束npc
 		preTaskData = {1607}, --前置任务ID 
 		nextTaskID = 1609,	--任务后置任务没有填nil
-		startDialogID =	1637,	--接任务对话ID没有填nil
+		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 1638,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -689,13 +663,13 @@ MainTaskDB41_45 =
 		},
 		targets =
 		{
-		[1] = {type='Tarea',param = {mapID = 410, x = 45, y = 150, bor = true},},-------到达指定坐标
+		[1] = {type='Tarea',param = {mapID = 410, x = 41, y = 151, bor = true},},-------到达指定坐标
 		},
 			triggers = --任务触发器
 			{
 				[TaskStatus.Active] = 
 				{
-                                   {type="createPrivateNpc", ----------创建曹仁
+                  {type="createPrivateNpc", ----------创建曹仁
 					param={
 						npcs =
 						{
@@ -705,18 +679,18 @@ MainTaskDB41_45 =
 			           },
 				},
 				[TaskStatus.Done] =
-					{					
-				                {type="deletePrivateNpc",----------删除曹操
-				                param={
+				{					
+				  {type="deletePrivateNpc",----------删除曹操
+				      param={
 						npcs =
 						{
-							{npcID = 21133, taskID = {1607}, index = 1}, --删除曹操
+						{npcID = 21133, taskID = {1607}, index = 1}, --删除曹操
 						},
-					               },
-				                {type="openDialog", param={dialogID = 1638},},	
-					        },
-			                },
-	                },
+					  },
+				},
+			{type="openDialog", param={dialogID = 1638},},	
+			},
+	   },
 	},
         [1609] =	            
 	{	
@@ -726,7 +700,7 @@ MainTaskDB41_45 =
 		preTaskData = {1608},	--任务前置任务没有填nil
 		nextTaskID = 1610,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID = 1646,	--交任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -756,7 +730,7 @@ MainTaskDB41_45 =
 					{npcID = 21124, x = 104, y = 198, noDelete = true},
 					{npcID = 21124, x = 109, y = 198, noDelete = true},
 				},
-				posData = {mapID = 410, x = 106, y = 192}, --踩雷坐标
+				posData = {mapID = 410, x = 107, y = 195}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -774,7 +748,7 @@ MainTaskDB41_45 =
 					{npcID = 21124, x = 214, y = 142, noDelete = true},
 					{npcID = 21124, x = 218, y = 138, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 410, x = 220, y = 144}, --踩雷坐标
+			        posData = {mapID = 410, x = 217, y = 141}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -787,7 +761,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 410, x = 106, y = 89}, --踩雷坐标
+			        posData = {mapID = 410, x = 103, y = 87}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -811,10 +785,6 @@ MainTaskDB41_45 =
 								npcs =
 								{
 									[1] = {npcID = 21127,mapID = 410, x = 103, y = 87,dir = Direction.East,}, --龚都
-									[2] = {npcID = 21123,mapID = 410, x = 100, y = 91,dir = Direction.East,}, 
-									[3] = {npcID = 21123,mapID = 410, x = 108, y = 83,dir = Direction.East,}, 
-									[4] = {npcID = 21124,mapID = 410, x = 100, y = 88,dir = Direction.East,}, 
-									[5] = {npcID = 21124,mapID = 410, x = 105, y = 83,dir = Direction.East,}, 
 								},
 							},
 					},
@@ -826,13 +796,10 @@ MainTaskDB41_45 =
 						npcs =
 						{
 							{npcID = 21127, taskID = {1609}, index = 1}, --删除龚都
-						        {npcID = 21123, taskID = {1609}, index = 2}, 
-						        {npcID = 21123, taskID = {1609}, index = 3}, 
-						        {npcID = 21124, taskID = {1609}, index = 4}, 
-						        {npcID = 21124, taskID = {1609}, index = 5}, 
 						},
 				      },
 			},
+			{type="openDialog", param={dialogID = 1646},},	
 			{type="finishTask", param = {recetiveTaskID = 1610}},--完成任务目标自动交接
 			},
 	        },
@@ -876,7 +843,7 @@ MainTaskDB41_45 =
 					{npcID = 21129, x = 101, y = 51, noDelete = true},
 					{npcID = 21129, x = 108, y = 51, noDelete = true},
 				},
-				posData = {mapID = 410, x = 105, y = 57}, --踩雷坐标
+				posData = {mapID = 410, x = 104, y = 54}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -894,7 +861,7 @@ MainTaskDB41_45 =
 					{npcID = 21129, x = 169, y = 112, noDelete = true},
 					{npcID = 21129, x = 173, y = 108, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 410, x = 167, y = 106}, --踩雷坐标
+			        posData = {mapID = 410, x = 170, y = 109}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -907,7 +874,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 410, x = 207, y = 108}, --踩雷坐标
+			        posData = {mapID = 410, x = 206, y = 105}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -915,15 +882,7 @@ MainTaskDB41_45 =
 		triggers = --任务触发器
 		{
 		    [TaskStatus.Active] =
-	            {
-			{type="createPrivateTransfer",
-					param={
-							transfers =
-							{
-								[1] = {mapID = 410, x = 187, y = 91, tarMapID = 109, tarX = 120, tarY = 244},--创建私有传送阵汝南-虎牢关
-							},
-					      },
-			 },      
+	            {  
 			{type="createPrivateNpc", ----------创建刘辟
 					param={
 						npcs =
@@ -963,8 +922,8 @@ MainTaskDB41_45 =
 		endNpcID = 20049,	--任务结束npc
 		preTaskData = {1610}, --前置任务ID 
 		nextTaskID = 1612,	--任务后置任务没有填nil
-		startDialogID =	1653,	--接任务对话ID没有填nil
-		endDialogID = 1655,	--交任务对话ID没有填nil
+		startDialogID =	nil,	--接任务对话ID没有填nil
+		endDialogID = 1654,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -984,8 +943,16 @@ MainTaskDB41_45 =
 		},
 			triggers = --任务触发器
 			{
-				[TaskStatus.Active] = nil,
+				[TaskStatus.Active] =
 				{
+				{type="createPrivateTransfer",
+					param={
+							transfers =
+							{
+								[1] = {mapID = 410, x = 158, y = 20, tarMapID = 109, tarX = 129, tarY = 243},--创建私有传送阵汝南-虎牢关
+							},
+					      },
+			    },    
 				},
 				[TaskStatus.Done] =
 					{
@@ -993,7 +960,7 @@ MainTaskDB41_45 =
 					param={
 							transfers =
 							{
-								{taskID = 1610, index = 1},--删除私有传送阵汝南-虎牢关
+								{taskID = 1611, index = 1},--删除私有传送阵汝南-虎牢关
 							},
 					       },
 			                        },
@@ -1017,8 +984,8 @@ MainTaskDB41_45 =
 		endNpcID = 21133,	--任务结束npc
 		preTaskData = {1611},	--任务前置任务没有填nil
 		nextTaskID = 1613,	--任务后置任务没有填nil
-		startDialogID = 1655,	--接任务对话ID没有填nil
-		endDialogID = 1663,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID = 1662,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -1048,7 +1015,7 @@ MainTaskDB41_45 =
 					{npcID = 21135, x = 155, y = 67, noDelete = true},
 					{npcID = 21135, x = 145, y = 68, noDelete = true},
 				},
-				posData = {mapID = 122, x = 152, y = 60}, --踩雷坐标
+				posData = {mapID = 122, x = 151, y = 64}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -1066,7 +1033,7 @@ MainTaskDB41_45 =
 					{npcID = 21135, x = 89, y = 108, noDelete = true},
 					{npcID = 21135, x = 93, y = 111, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 122, x = 97, y = 103}, --踩雷坐标
+			        posData = {mapID = 122, x = 93, y = 107}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -1079,7 +1046,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 122, x = 85, y = 143}, --踩雷坐标
+			        posData = {mapID = 122, x = 82, y = 146}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -1093,10 +1060,6 @@ MainTaskDB41_45 =
 								npcs =
 								{
 									[1] = {npcID = 21138,mapID = 122, x = 82, y = 146,dir = Direction.South,}, --韩暹
-									[2] = {npcID = 21134,mapID = 122, x = 79, y = 147,dir = Direction.South,}, 
-									[3] = {npcID = 21134,mapID = 122, x = 81, y = 149,dir = Direction.South,}, 
-									[4] = {npcID = 21135,mapID = 122, x = 76, y = 148,dir = Direction.South,}, 
-									[5] = {npcID = 21135,mapID = 122, x = 80, y = 152,dir = Direction.South,}, 
 								},
 							},
 					},
@@ -1108,10 +1071,6 @@ MainTaskDB41_45 =
 						npcs =
 						{
 							{npcID = 21138, taskID = {1612}, index = 1}, --删除韩暹
-						        {npcID = 21134, taskID = {1612}, index = 2}, 
-						        {npcID = 21134, taskID = {1612}, index = 3}, 
-						        {npcID = 21135, taskID = {1612}, index = 4}, 
-						        {npcID = 21135, taskID = {1612}, index = 5}, 
 						},
 					},
 			},
@@ -1123,8 +1082,7 @@ MainTaskDB41_45 =
 						},
 					      },
 		        },
-			{type="autoTrace", param = {tarMapID=122, x =78, y = 166,npcID = 21133,},}, --自动寻路到曹操身边
-			{type="openDialog", param={dialogID = 1662},},	--在任务目标完成时打开一个对话框
+				{type = "autoTrace", param = {tarMapID	= 122, x = 78, y = 169,npcID = 21133,},}, --寻路到曹操
 			},
 	        },
 	},        
@@ -1136,7 +1094,7 @@ MainTaskDB41_45 =
 		endNpcID = nil,	--任务结束npc
 		preTaskData = {1612},	--任务前置任务没有填nil
 		nextTaskID = 1614,	--任务后置任务没有填nil
-		startDialogID = 1663,	--接任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -1198,7 +1156,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 122, x = 128, y = 218}, --踩雷坐标
+			        posData = {mapID = 122, x = 128, y = 222}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			      },
@@ -1212,10 +1170,6 @@ MainTaskDB41_45 =
 								npcs =
 								{
 									[1] = {npcID = 21141,mapID = 122, x = 128, y = 222,dir = Direction.WestSouth,}, --韩猛
-									[2] = {npcID = 21134,mapID = 122, x = 125, y = 222,dir = Direction.WestSouth,}, 
-									[3] = {npcID = 21134,mapID = 122, x = 131, y = 222,dir = Direction.WestSouth,}, 
-									[4] = {npcID = 21135,mapID = 122, x = 126, y = 224,dir = Direction.WestSouth,}, 
-									[5] = {npcID = 21135,mapID = 122, x = 129, y = 224,dir = Direction.WestSouth,}, 
 								},
 							},
 					},
@@ -1227,22 +1181,9 @@ MainTaskDB41_45 =
 						npcs =
 						{
 							{npcID = 21141, taskID = {1613}, index = 1}, --删除韩猛
-						        {npcID = 21134, taskID = {1613}, index = 2}, 
-						        {npcID = 21134, taskID = {1613}, index = 3}, 
-						        {npcID = 21135, taskID = {1613}, index = 4}, 
-						        {npcID = 21135, taskID = {1613}, index = 5}, 
 						},
 					},
 			},
-			{type="createPrivateNpc", ----------创建典韦尸体
-					param={
-						npcs =
-						{
-								[1] = {npcID = 21164,mapID = 122, x = 118, y = 262,dir = Direction.EastSouth,}, --典韦尸体                                                         
-						},
-					      },
-		        },
-			{type="autoTrace", param = {tarMapID=122, x =121, y = 258,npcID = 21164,},}, --自动寻路到典韦尸体身边
 			{type="finishTask", param = {recetiveTaskID = 1614}},--完成任务目标自动交接
 			},
 	        },
@@ -1255,7 +1196,7 @@ MainTaskDB41_45 =
 		preTaskData = {1613}, --前置任务ID 
 		nextTaskID = 1615,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
-		endDialogID = 1670,	--交任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -1275,19 +1216,20 @@ MainTaskDB41_45 =
 		},
 			triggers = --任务触发器
 			{
-				[TaskStatus.Active] = nil,
+				[TaskStatus.Active] =
 				{
+				{type="createPrivateNpc", ----------创建典韦尸体
+					param={
+						npcs =
+						{
+								[1] = {npcID = 21164,mapID = 122, x = 118, y = 262,dir = Direction.EastSouth,}, --典韦尸体                                                         
+						},
+					      },
+		        },
 				},
 				[TaskStatus.Done] =
 					{
-					        {type="deletePrivateNpc", ----------删除典韦尸体
-		                     param={
-						npcs =
-						{
-							{npcID = 21164, taskID = {1613}, index = 1}, --删除曹仁				       
-						},
-				           },
-			                        },
+						{type="openDialog", param={dialogID = 1670},},	--在任务目标完成时打开一个对话框
 						{type="finishTask", param = {recetiveTaskID = 1615}},--完成任务目标自动交接		
 			                },
 	                },
@@ -1301,7 +1243,7 @@ MainTaskDB41_45 =
 		preTaskData = {1614},	--任务前置任务没有填nil
 		nextTaskID = 1616,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID = 1678,	--交任务对话ID没有填nil
+		endDialogID = 1677,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -1331,7 +1273,7 @@ MainTaskDB41_45 =
 					{npcID = 21143, x = 193, y = 168, noDelete = true},
 					{npcID = 21143, x = 198, y = 173, noDelete = true},
 				},
-				posData = {mapID = 122, x = 192, y = 174}, --踩雷坐标
+				posData = {mapID = 122, x = 194, y = 172}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -1349,7 +1291,7 @@ MainTaskDB41_45 =
 					{npcID = 21143, x = 243, y = 136, noDelete = true},
 					{npcID = 21143, x = 248, y = 141, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 122, x = 237, y = 147}, --踩雷坐标
+			        posData = {mapID = 122, x = 241, y = 143}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -1362,7 +1304,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 122, x = 225, y = 92}, --踩雷坐标
+			        posData = {mapID = 122, x = 224, y = 89}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -1394,12 +1336,12 @@ MainTaskDB41_45 =
 				param={
 						npcs =
 						{
+						    {npcID = 21164, taskID = {1614}, index = 1}, --删除典韦		
 							{npcID = 21146, taskID = {1615}, index = 1}, --删除胡车儿				       
 						},
 				      },
 			},	  
 			{type="autoTrace", param = {tarMapID=122, x =78, y = 166,npcID = 21133,},}, --自动寻路到曹操身边
-			{type="openDialog", param={dialogID = 1677},}, --在任务结束时打开一个对话框
 			},
 	       },
 	},        
@@ -1411,8 +1353,8 @@ MainTaskDB41_45 =
 		endNpcID = 21152,	--任务结束npc
 		preTaskData = {1615},	--任务前置任务没有填nil
 		nextTaskID = 1617,	--任务后置任务没有填nil
-		startDialogID = 1678,	--接任务对话ID没有填nil
-		endDialogID = 1686,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID = 1685,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -1442,7 +1384,7 @@ MainTaskDB41_45 =
 					{npcID = 21148, x = 115, y = 209, noDelete = true},
 					{npcID = 21148, x = 119, y = 209, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 411, x = 117, y = 214}, --踩雷坐标
+			        posData = {mapID = 411, x = 117, y = 212}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			      },
@@ -1460,7 +1402,7 @@ MainTaskDB41_45 =
 					{npcID = 21148, x = 98, y = 150, noDelete = true},
 					{npcID = 21148, x = 98, y = 147, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 411, x = 105, y = 148}, --踩雷坐标
+			        posData = {mapID = 411, x = 102, y = 148}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			       },
@@ -1473,7 +1415,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 411, x = 143, y = 122}, --踩雷坐标
+			        posData = {mapID = 411, x = 146, y = 121}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			      },
@@ -1529,8 +1471,8 @@ MainTaskDB41_45 =
 		endNpcID = 21158,	--任务结束npc
 		preTaskData = {1616},	--任务前置任务没有填nil
 		nextTaskID = 1618,	--任务后置任务没有填nil
-		startDialogID = 1686,	--接任务对话ID没有填nil
-		endDialogID = 1694,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID = 1693,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -1560,7 +1502,7 @@ MainTaskDB41_45 =
 					{npcID = 21154, x = 185, y = 188, noDelete = true},
 					{npcID = 21154, x = 191, y = 188, noDelete = true},
 				},
-				posData = {mapID = 411, x = 187, y = 195}, --踩雷坐标
+				posData = {mapID = 411, x = 188, y = 191}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -1578,7 +1520,7 @@ MainTaskDB41_45 =
 					{npcID = 21154, x = 185, y = 146, noDelete = true},
 					{npcID = 21154, x = 193, y = 146, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 411, x = 189, y = 139}, --踩雷坐标
+			        posData = {mapID = 411, x = 189, y = 142}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -1591,7 +1533,7 @@ MainTaskDB41_45 =
 			        npcsData =	        --刷出npc数据
 			        {
 			        },
-			        posData = {mapID = 411, x = 203, y = 156}, --踩雷坐标
+			        posData = {mapID = 411, x = 203, y = 159}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
 			},
@@ -1635,14 +1577,6 @@ MainTaskDB41_45 =
 						},
 					      },
 		        },
-			{type="createPrivateTransfer",
-					param={
-							transfers =
-							{
-								[1] = {mapID = 411, x = 201, y = 176, tarMapID = 412, tarX = 68, tarY = 155},--创建私有传送阵宛城城池-火焰窟
-							},
-					      },
-			 },  
 			{type="openDialog", param={dialogID = 1693},}, --在任务结束时打开一个对话框
 			},
 	       },
@@ -1653,9 +1587,9 @@ MainTaskDB41_45 =
 		name = "诛杀罗宣",	--任务名字
 		startNpcID = 21158,	--任务起始npc
 		endNpcID = nil,	--任务结束npc
-		preTaskData = {1618},	--任务前置任务没有填nil
+		preTaskData = {1617},	--任务前置任务没有填nil
 		nextTaskID = 1619,	--任务后置任务没有填nil
-		startDialogID = 1694,	--接任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -1686,7 +1620,7 @@ MainTaskDB41_45 =
 					{npcID = 21160, x = 80, y = 144, noDelete = true},
 					{npcID = 21160, x = 72, y = 144, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 412, x = 76, y = 148}, --踩雷坐标
+			        posData = {mapID = 412, x = 76, y = 140}, --踩雷坐标
 				bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			      },
@@ -1704,7 +1638,7 @@ MainTaskDB41_45 =
 					{npcID = 21160, x = 173, y = 185, noDelete = true},
 					{npcID = 21160, x = 179, y = 185, noDelete = true},
 				},                     --刷出npc数据
-			        posData = {mapID = 412, x = 176, y = 177}, --踩雷坐标
+			        posData = {mapID = 412, x = 176, y = 182}, --踩雷坐标
 			        bor = false,	--如果为true则完成此目标任务直接完成
 			},
 			       },
@@ -1726,46 +1660,38 @@ MainTaskDB41_45 =
 		{
 			[TaskStatus.Active] =
 				{
-				{type="deletePrivateTransfer",
-					param={
-							transfers =
-							{
-								{taskID = 1617, index = 1},--删除私有传送阵宛城城池-火焰窟
-							},
-					       },
-		                 },
 				{type="createPrivateTransfer",
 					param={
 							transfers =
 							{
-								[1] = {mapID = 412, x = 102, y = 248, tarMapID = 122, tarX = 53, tarY = 181},--创建私有传送阵火焰窟-宛城
+								[1] = {mapID = 411, x = 202, y = 171, tarMapID = 412, tarX = 25, tarY = 160},--创建私有传送阵宛城城池-火焰窟
 							},
 					      },
-			        },  
+			 },   
 					{type="createPrivateNpc", ----------创建罗宣
 						param={
 								npcs =
 								{
 									[1] = {npcID = 21163,mapID = 412, x = 114, y = 233,dir = Direction.WestSouth,}, --罗宣
-									[2] = {npcID = 21159,mapID = 412, x = 111, y = 235,dir = Direction.WestSouth,}, 
-									[3] = {npcID = 21159,mapID = 412, x = 117, y = 235,dir = Direction.WestSouth,}, 
-									[4] = {npcID = 21160,mapID = 412, x = 109, y = 237,dir = Direction.WestSouth,}, 
-									[5] = {npcID = 21160,mapID = 412, x = 119, y = 237,dir = Direction.WestSouth,}, 
 								},
 							},
 					},
 				},
 			[TaskStatus.Done]		=      ---完成目标状态 
 			{
+			{type="deletePrivateTransfer",
+					param={
+							transfers =
+							{
+								{taskID = 1618, index = 1},--删除私有传送阵宛城城池-火焰窟
+							},
+					},
+		     },
 			{type="deletePrivateNpc", ----------删除罗宣
 				param={
 						npcs =
 						{
 							{npcID = 21163, taskID = {1618}, index = 1}, --删除罗宣
-						        {npcID = 21159, taskID = {1618}, index = 2}, 
-						        {npcID = 21159, taskID = {1618}, index = 3}, 
-						        {npcID = 21160, taskID = {1618}, index = 4}, 
-						        {npcID = 21160, taskID = {1618}, index = 5}, 
 						},
 					},
 			},
@@ -1786,10 +1712,10 @@ MainTaskDB41_45 =
 		name = "再见曹操",	--任务名字
 		startNpcID = nil,	--任务起始npc
 		endNpcID = 21133,	--任务结束npc
-		preTaskData = {1619}, --前置任务ID 
+		preTaskData = {1618}, --前置任务ID 
 		nextTaskID = nil,	--任务后置任务没有填nil
-		startDialogID =	1701,	--接任务对话ID没有填nil
-		endDialogID = 1702,	--交任务对话ID没有填nil
+		startDialogID =	nil,	--接任务对话ID没有填nil
+		endDialogID = 1584,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -1809,30 +1735,30 @@ MainTaskDB41_45 =
 		},
 			triggers = --任务触发器
 			{
-				[TaskStatus.Active] = nil,
+				[TaskStatus.Active] = 
 				{
+				{type="createPrivateTransfer",
+					param={
+							transfers =
+							{
+								[1] = {mapID = 412, x = 102, y = 248, tarMapID = 122, tarX = 53, tarY = 181},--创建私有传送阵火焰窟-宛城
+							},
+					      },
+			        }, 
 				},
 				[TaskStatus.Done] =
-					{
-			 {type="deletePrivateTransfer",
+				{
+			  {type="deletePrivateTransfer",
 					param={
 							transfers =
 							{
 								{taskID = 1618, index = 1},--删除私有传送阵火焰窟-宛城
 							},
-					       },
-		                 },
-			 {type="deletePrivateNpc", ----------删除曹操
-		                     param={
-						npcs =
-						{
-							{npcID = 21133, taskID = {1619}, index = 1}, --删除曹操			       
-						},
-				           },
+					},
+		      },
+		     {type="openDialog", param={dialogID = 1584},}, --在任务结束时打开一个对话框			
 			 },
-		       	 {type="openDialog", param={dialogID = 1701},}, --在任务结束时打开一个对话框			
-			                },
-	                },
+	    },
 	},
 ------------------------------------------- 我是分割线 -----------------------------------------------------------
 

@@ -234,16 +234,39 @@ function FightSystem:_getScriptMonsters(monstersInfo,playerCount,bFullMonster)
 		maxCount = maxCount + (info.max or 0xFF)
 	end
 
+	local configCount = myMonsterConfig.count or 0xFF
+
+	if configCount < count then
+		count = configCount
+	end
+
 	if maxCount < count then
 		count = maxCount
 	end
 
+	local finalCount = count
 	for i = 1, count do
+		for k,info in ipairs(myMonsterConfig) do
+			if info.weight == -1 then
+				table.insert(ScriptMonsters,info.ID)
+				monsterCountMap[info.ID] = 	(monsterCountMap[info.ID] or 0) + 1
+				if info.max and  monsterCountMap[info.ID] >= info.max then
+					table.remove(myMonsterConfig,k)
+				end
+				finalCount = finalCount - 1
+				break
+			end
+		end
+	end
+	
+	for i = 1, finalCount do
 
 		local curWeight = 0
 		local totalWeight = 0
 		for _,info in ipairs(myMonsterConfig) do
-			totalWeight = totalWeight + info.weight
+			if info.weight > 0 then
+				totalWeight = totalWeight + info.weight
+			end
 		end
 
 		local rand = math.random(totalWeight)
@@ -478,6 +501,7 @@ function FightSystem:onStartScriptFight(event)
 		if scriptConfig.subType and scriptConfig.subType == ScriptType.Random then
 			local rand = math.random(table.size(phaseInfo))
 			monsterDBIDs = phaseInfo[rand].monsters
+			phaseID = rand
 		else
 			monsterDBIDs = ScriptFightDB[scriptFightID].phases[1].monsters
 		end

@@ -325,6 +325,9 @@ function LuaDBAccess.saveRingEctypeInfo(playerDBID, ringEctypeInfo)
 	LuaDBAccess.exeSP(params, true)
 end
 
+
+------------------任务相关数据处理----------------------------------
+
 function LuaDBAccess.updateNormalTask(playerDBID, task)
 	clearParams()
 	params[1]["spName"] = "sp_UpdateNormalTask"
@@ -336,6 +339,32 @@ function LuaDBAccess.updateNormalTask(playerDBID, task)
 	params[1]["_State"] = task:getStatus()
 	params[1]["_TargetState"] = toString(task:getTargetState())
 	params[1]["_EndTime"] = task:getEndTime() or 0
+	LuaDBAccess.exeSP(params, false)
+end
+
+function LuaDBAccess.updateDailyTask(playerDBID, task)
+	clearParams()
+	params[1]["spName"] = "sp_UpdateDailyTask"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = 'rID,taskID,state,targetState,targets'
+
+	params[1]["rID"] = playerDBID
+	params[1]["taskID"] = task:getID()
+	params[1]["state"] = task:getStatus()
+	params[1]["targetState"] = toString(task:getTargetState())
+	print("3.准备更新数据库>>>>>>>>>>>>>>>>>>>>>>",toString(task:getDailyTargets()),type(task:getDailyTargets()))
+	params[1]["targets"] = serialize(task:getDailyTargets())
+	LuaDBAccess.exeSP(params, false)
+end
+
+function LuaDBAccess.updateDailyTaskConfiguration(playerDBID, config)
+	clearParams()
+	params[1]["spName"] = "sp_UpdateDailyTaskConfiguration"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = 'rID,taskConfig '
+	params[1]["rID"] = playerDBID
+	params[1]["taskConfig "] = serialize(config)
+	print("3.准备更新日常任务配置表>>>>>>>>>>>>>>>>>>>>>>",toString(config))
 	LuaDBAccess.exeSP(params, false)
 end
 
@@ -411,6 +440,18 @@ function LuaDBAccess.deleteLoopTask(playerDBID, taskID)
 	LuaDBAccess.exeSP(params, false)
 end
 
+function LuaDBAccess.deleteDailyTask(playerDBID, taskID)
+	clearParams()
+	params[1]["spName"] = "sp_DeleteDailyTask"
+	params[1]["dataBase"] = 1
+
+	params[1]["_RoleID"] = playerDBID
+	params[1]["_TaskID"] = taskID
+
+	params[1]["sort"] = '_RoleID,_TaskID'
+	LuaDBAccess.exeSP(params, false)
+end
+
 function LuaDBAccess.updateHisTask(playerDBID, historyList)
 	clearParams()
 	params[1]["spName"] = "sp_AddHisTask"
@@ -438,6 +479,13 @@ function LuaDBAccess.updateRoleTaskPrivate(playerDBID, privateTaskData)
 	params[1]["sort"] = '_RoleID,_TaskPrivateData'
 	LuaDBAccess.exeSP(params, false)
 end
+
+
+
+
+
+
+
 
 -- 保存玩家挖宝的数据
 function LuaDBAccess.treasureSave(playerDBID,treasuresNum,treasuresBuffer)
@@ -814,12 +862,41 @@ function LuaDBAccess.UpdateWorldServerData( playerDBID,valueName,cvalue,ivalue )
 	params[1]["cvalue"] = cvalue
 	params[1]["ivalue"] = ivalue
 	LuaDBAccess.exeSP(params,false)
+end
 
+-- 下线保存通天塔任务数据
+function LuaDBAccess.saveBabelTask(playerID, taskID, taskInfo)
+	clearParams()
+	params[1]["spName"] = "sp_SaveBabelTask"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "_RoleID,_TaskID,_State,_TargetState,_Layer,_TaskIndex,_RewardType,_ReceiveTime,_FaildTimes,_FinishFlag"
+	local player = g_entityMgr:getPlayerByID(playerID)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(taskID)
+	if task then
+	-- 判断玩家有没有这个任务
+		params[1]["_State"] = task:getStatus()
+		params[1]["_TargetState"] = toString(task:getTargetState())
+		params[1]["_Layer"] = task:getLayer()
+		params[1]["_TaskIndex"] = task:getTaskIndex()
+		params[1]["_RewardType"] = task:getRewardType()
+	else
+		params[1]["_State"] = 0
+		params[1]["_TargetState"] = "{0}"
+		params[1]["_Layer"] = 0
+		params[1]["_TaskIndex"] = 0
+		params[1]["_RewardType"] = 0
+	end
+	params[1]["_RoleID"] = player:getDBID()
+	params[1]["_TaskID"] = taskID
+	params[1]["_ReceiveTime"] = taskInfo.receiveTime
+	params[1]["_FaildTimes"] = taskInfo.faildTimes
+	params[1]["_FinishFlag"] = taskInfo.finishFlag
+	LuaDBAccess.exeSP(params, false)
 end
 
 --保存兑换物品数据
 function LuaDBAccess.saveExchangeItemInfo( playerDBID,commitTimes,commitTime,commitID )
-
 	clearParams()
 	params[1]["spName"] = "sp_saveExchangeItemInfo"
 	params[1]["dataBase"] = 1

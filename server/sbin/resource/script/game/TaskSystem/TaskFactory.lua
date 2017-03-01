@@ -50,6 +50,7 @@ function TaskFactory:createLoopTask(player, taskID, tarType)
 	-- 设置开始时间
 	--loopTask:setStartTime(os.time())
 	-- 这个也是拷贝进去的
+	print("datas.ta.>>>>>>>>>>>>>>>>>>>>>>>>", toString(datas.targets), toString(datas.triggers))
 	loopTask:setTargetsConfig(datas.targets)
 	-- 动态拷贝进去
 	loopTask:setTriggers(datas.triggers)
@@ -74,6 +75,7 @@ function TaskFactory:createLoopTask(player, taskID, tarType)
 end
 
 function TaskFactory:createLoopByTask(task, roleID)
+
 	local player = g_entityMgr:getPlayerByID(roleID)
 	local loopTask = LoopTask()
 	loopTask:setID(task:getID())
@@ -107,9 +109,11 @@ function TaskFactory:createLoopByTask(task, roleID)
 		loopTask:stateChange(TaskStatus.Done, true)
 	end
 	return loopTask
+
 end
 
 function TaskFactory:createNormalTaskFromDB(player, taskData)
+
 	local normalTaskData = NormalTaskDB[taskData.taskID]
 	local normalTask = NormalTask()
 	normalTask:setID(taskData.taskID)
@@ -134,10 +138,12 @@ function TaskFactory:createNormalTaskFromDB(player, taskData)
 		normalTask:stateChange(TaskStatus.Done, true)
 	end
 	return normalTask
+
 end
 
 -- 从数据库读取, 超时不用创建，直接从数据库删除
 function TaskFactory:createLoopTaskFromDB(player, taskData)
+
 	local taskID = taskData.loopTaskID
 	if taskData.endTime and taskData.endTime > 0 then
 		if os.time() >= taskData.endTime then
@@ -187,10 +193,12 @@ function TaskFactory:createLoopTaskFromDB(player, taskData)
 	end
 	-- 这个地方还有做一下处理
 	return loopTask
+
 end
 
 -- 创建循环任务
 function TaskFactory:createLoopTaskData(player, taskID, tarType)
+
 	local loopTaskData = LoopTaskDB[taskID]
 	local levelFlag = loopTaskData.levelFlag
 	local targetsConfig = loopTaskData.targets
@@ -214,6 +222,7 @@ function TaskFactory:createLoopTaskData(player, taskID, tarType)
 	local levelIdx = GetLevelIndex(player, RandDataSectionDB[taskID])
 	local ringIdx =  GetRingIndex(player, TaskRingSectionDB[taskID], taskID)
 	return LoopTaskTargetsDB[taskID][targetType], targetType, levelIdx, ringIdx
+
 end
 
 --创建任务目标
@@ -221,7 +230,7 @@ function TaskFactory:buildTaskTarget(player, task, targetsData, taskData)
 	if table.size(targetsData) == 0 then
 		return false
 	end
-	for idx ,targetData in pairs(targetsData) do
+	for idx ,targetData in pairs(targetsData) do -- 为任务添加任务目标
 		local target = createTarget(player, task, targetData.type, targetData.param, taskData and taskData[idx])
 		task:addTarget(idx, target)
 	end
@@ -233,10 +242,13 @@ function TaskFactory:createDailyTask( player,taskID )
 	local dailyTaskData = DailyTaskDB[taskID]
 	local dailyTask = DailyTask()
 	dailyTask:setID(taskID)
-	dailyTask:setType(TaskType.normal)
+	dailyTask:setType(TaskType.daily)
 	dailyTask:setRewards(dailyTaskData.rewards)
 	dailyTask:setTriggers(dailyTaskData.triggers)
 	dailyTask:setSubType(dailyTaskData.taskType2)
+	dailyTask:setTargetType(dailyTaskData.targets[1].type)
+	dailyTask:setTargetParam(dailyTaskData.targets[1].param)
+	dailyTask:setDailyTargets(dailyTaskData.targets)
 	dailyTask:setRoleID(player:getID())
 	if dailyTaskData.limitTime then
 		dailyTask:setStartTime(os.time())
@@ -251,8 +263,108 @@ function TaskFactory:createDailyTask( player,taskID )
 	end
 	return dailyTask
 
+end
+
+function TaskFactory:createDailyTaskFromDB(player, taskData)
+
+	local dailyTaskData = DailyTaskDB[taskData.taskID]
+	local taskTarget = unserialize(taskData.targets)
+	local dailyTask = DailyTask()
+	dailyTask:setID(taskData.taskID)
+	dailyTask:setType(TaskType.daily)
+	dailyTask:setRewards(dailyTaskData.rewards)
+	dailyTask:setTriggers(dailyTaskData.triggers)
+	dailyTask:setSubType(dailyTaskData.taskType2)
+	dailyTask:setTargetType(taskTarget[1].type)
+	dailyTask:setTargetParam(taskTarget[1].param)
+	dailyTask:setDailyTargets(taskTarget)
+	dailyTask:setRoleID(player:getID())
+	if dailyTaskData.limitTime then
+		dailyTask:setStartTime(os.time())
+		dailyTask:setEndTime(dailyTaskData.limitTime)
+	end
+	local hasTarget = self:buildTaskTarget(player, dailyTask,taskTarget)
+	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
+	if hasTarget then
+		dailyTask:stateChange(TaskStatus.Active)
+	else
+		dailyTask:stateChange(TaskStatus.Done)
+	end
+	return dailyTask
 
 end
 
+-- 创建通天塔任务, rewardType 奖励类型， layer玩家任务对对应的层数, 数据库和普通的
+function TaskFactory:createBabelTask(player, taskID, rewardType, layer)
+	local babelTaskData = BabelTaskDB[taskID]
+	local babelTask = BabelTask()
+	-- 设置奖励类型
+	babelTask:setRewardType(rewardType)
+	-- 通过多少才层，来随机
+	babelTask:setLayer(layer)
+	babelTask:setID(taskID)
+	babelTask:setType(TaskType.babel)	
+	babelTask:setSubType(babelTaskData.taskType2)
+	-- 跨天跟新
+	babelTask:setPeriod(babelTaskData.period)
+	babelTask:setRoleID(player:getID())
+	-- 这个也是拷贝进去的， 刚开始配置为nil
+	babelTask:setTargetsConfig(babelTaskData.targets)
+	-- 动态拷贝进去, 这时候为NIl
+	babelTask:setTriggers(babelTaskData.triggers)
+	-- 此时创建任务目标和触发器的参数
+	local configParam = BabelEachLayerDB[taskID][layer]
+	babelTask:resetConfigParam(configParam)
+	-- 创建任务目标
+	local hasTarget = self:buildTaskTarget(player, babelTask, babelTask:getTargetsConfig())
+	if hasTarget then
+		if not babelTask:canEnd() then
+			babelTask:stateChange(TaskStatus.Active, true)
+		else
+			babelTask:stateChange(TaskStatus.Done, true)
+		end
+	else
+		babelTask:stateChange(TaskStatus.Done, true)
+	end
+	return babelTask
+end
+
+-- 从数据库来创建
+function TaskFactory:createBabelTaskFromDB(player, taskData) 
+	local babelTaskData = BabelTaskDB[taskData.taskID]
+	local babelTask = BabelTask()
+	-- 设置奖励类型
+	babelTask:setRewardType(taskData.rewardType)
+	-- 通过多少才层，来随机
+	babelTask:setLayer(taskData.layer)
+	babelTask:setID(taskData.taskID)
+	babelTask:setType(TaskType.babel)	
+	babelTask:setSubType(babelTaskData.taskType2)
+	babelTask:setTaskIndex(taskData.taskIndex)
+	-- 跨天跟新
+	babelTask:setPeriod(babelTaskData.period)
+	babelTask:setRoleID(player:getID())
+	-- 这个也是拷贝进去的， 刚开始配置为nil
+	babelTask:setTargetsConfig(babelTaskData.targets)
+	-- 动态拷贝进去, 这时候为NIl
+	babelTask:setTriggers(babelTaskData.triggers)
+	-- 此时创建任务目标和触发器的参数
+	local configParam = BabelEachLayerDB[taskData.taskID][taskData.layer]
+	babelTask:resetConfigParam(configParam, true)
+	-- 创建任务目标
+	local hasTarget = self:buildTaskTarget(player, babelTask, babelTask:getTargetsConfig(), taskData.targetState)
+	if hasTarget then
+		if not babelTask:canEnd() then
+			print(">>>>>>>>>>>>>>>>>>>>>1111")
+			babelTask:stateChange(TaskStatus.Active, true)
+		else
+			print("<<<<<<<<<<<<<<<<<<<<<22222")
+			babelTask:stateChange(TaskStatus.Done, true)
+		end
+	else
+		babelTask:stateChange(TaskStatus.Done, true)
+	end
+	return babelTask
+end
 
 g_taskFty = TaskFactory()

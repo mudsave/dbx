@@ -38,11 +38,6 @@ end
 function Pet:__release()
 	self:__logic_release()
 	self:setVisible(false)
-	for htype,handler in pairs(self._handlers or {}) do
-		release(handler)
-		self._handlers[htype] = nil
-	end
-	self._handlers = nil	
 end
 
 -- 所有者相关ID

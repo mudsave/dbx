@@ -140,6 +140,8 @@ FightSystemActionMap = {
 			[ScriptFightActionType.SetCounterRate]			= FightSystemAction.SetCounterRate,
 			[ScriptFightActionType.ExchangePos]				= FightSystemAction.ExchangePos,
 			[ScriptFightActionType.ChangeHp]				= FightSystemAction.ChangeHp,
+			[ScriptFightActionType.AddScore]				= FightSystemAction.AddScore,
+			[ScriptFightActionType.ChangeReward]			= FightSystemAction.ChangeReward,
  }
 
  ScriptFightConditionCheckMap ={

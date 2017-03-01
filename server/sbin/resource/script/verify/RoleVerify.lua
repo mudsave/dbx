@@ -314,6 +314,139 @@ function RoleVerify:checkTime(player, param)
 	end
 end
 
+
+-- 通天塔任务NPC三个条件， 匹配NPC, 任务状态为Active
+function RoleVerify:matchTaskNpc(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local taskID = param.taskID
+	local taskState = param.taskState
+	local npcID = param.npcID
+	local task = taskHandler:getTask(taskID)
+	if task then
+		if task:getStatus() == taskState then
+			local privateHandler = player:getHandler(HandlerDef_TaskPrData)
+			local taskNpcID = privateHandler:getTraceInfo(taskID)
+			if taskNpcID then
+				if taskNpcID == npcID then
+					--print("任务交接NPC不是这个")
+					return true
+				end
+			end
+		end
+	end
+end
+
+-- 状态为Activie ，不是匹配NPC
+function RoleVerify:noMatchTaskNpc(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local taskID = param.taskID
+	local taskState = param.taskState
+	local npcID = param.npcID
+	local task = taskHandler:getTask(taskID)
+	if task then
+		if task:getStatus() == taskState then
+			local privateHandler = player:getHandler(HandlerDef_TaskPrData)
+			local taskNpcID = privateHandler:getTraceInfo(taskID)
+			if taskNpcID then
+				if taskNpcID ~= npcID then
+					--print("任务交接NPC不是这个")
+					return true
+				end
+			end
+		end
+	end
+end
+
+-- 任务状态为Done
+function RoleVerify:matchTaskState(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local taskID = param.taskID
+	local taskState = param.taskState
+	local npcID = param.npcID
+	local task = taskHandler:getTask(taskID)
+	if task then
+		if task:getStatus() == taskState then
+			return true
+		end
+	end
+end
+
+
+function RoleVerify:checkActivityOpening(player, param)
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if not (teamHandler and teamHandler:isLeader()) then
+		return false,34
+	end
+	local activityID = param.activityID
+	local activity = g_activityMgr:getActivity(activityID)
+	if activity and activity:isOpening() then
+		return true
+	else
+		return false,34
+	end
+end
+
+function RoleVerify:checkActivityTarget(player, param)
+	print("-------param--param--------d-----d",param)
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if not (teamHandler and teamHandler:isLeader()) then
+		print("不是队长")
+		return false,33
+	end
+	local teamID = teamHandler:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	local activityTarget = team:getDekaronActivityTarget()
+	if activityTarget and activityTarget:getActivityTargetId() == param.activityTargetID then
+		print("-------param--param----2222----d-----d")
+		return true
+	else
+		print("-------param--param---33333---d-----d")
+		return false,34
+	end
+end
+
+function RoleVerify:checkKillMonster( player,param )
+	
+	local taskID = param.taskID
+	local statue = param.statue
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(taskID)
+	if task:canEnd() then
+		if statue then
+			return true
+		else
+			return false,1
+		end
+	else
+		if not statue then
+			return true
+		else
+			return false,1
+		end
+	end
+
+end
+
+function RoleVerify:checkDailyTaskTimes(  player,param  )	
+	local taskID = param.taskID
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local exist = false
+	for taskID,config in pairs(taskHandler:getDailyTaskConfiguration()) do  
+		if taskID == param.taskID then
+			if not taskHandler:getDailyTaskConfigurationByID(param.taskID) then
+				return true
+			else
+				return false,1
+			end
+		end
+	end
+	if not exist then
+		taskHandler:addDailyTaskConfiguration(taskID)
+		return false,1
+	end
+
+end
+
 function RoleVerify.getInstance()
 	return RoleVerify()
 end

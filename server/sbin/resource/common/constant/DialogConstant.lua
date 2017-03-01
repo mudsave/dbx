@@ -22,6 +22,14 @@ DialogCondition =
 	CheckBeastBless = 17,
 	Time	= 18,
 	PlayerCountInGoldHuntMap = 19,
+	DekaronSchoolActivity = 20,
+	DekaronSchoolActivityTarget = 21,
+	TkillMonster = 22,
+	DailyTaskTimes = 23,
+	MatchTaskNpc = 24,
+	NoMatchTaskNpc = 25,
+	MatchTaskState = 26,
+
 }
 
 --对话类型
@@ -86,7 +94,13 @@ DialogActionType =
 	EnterGoldHuntZone   = 49,		-- 进入猎金场
 	GoldHuntFight		= 50,		-- 猎金场战斗
 	GoldHuntCommit		= 51,		-- 猎金场提交分数
-	RecetiveTasks		= 52,		-- 同时接受多个任务
+
+	GetTheActivity		= 52,		-- 领取活动
+	DekaronSchoolFight	= 53,		-- 挑战活动目标
+	RecetiveTasks		= 54,		-- 同时接受多个任务
+
+	ReceiveBabelTask	= 55,		-- 接受天道任务
+	EnterBabel			= 56,		-- 进入通天塔
 }
 
 --对话框图标类型

@@ -693,3 +693,31 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 		end
 	end
 end
+
+--[[
+	params={value = 5}
+]]
+function FightSystemAction.AddScore(fight,params,result,bInserted)
+	local curScore = fight:getScore()
+	local score = curScore + params.value
+	fight:setScore(score)
+end
+
+--[[
+	params={type = "exp",mode = "value",value = 100}
+]]
+function FightSystemAction.ChangeReward(fight,params,result,bInserted)
+	local info = fight:getRewardFactorInfo()
+	local type = params.type
+	local mode = params.mode
+	local value = params.value
+
+	local factor = info[type]
+	if not factor then
+		info[type] = {mode = mode,value = value}
+	else
+		if mode == factor.mode then
+			factor.value = factor.value + value
+		end
+	end
+end

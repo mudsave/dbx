@@ -5,6 +5,7 @@
 
 require "game.EctypeSystem.Ectype"
 require "game.EctypeSystem.FactionEctype"
+require "game.EctypeSystem.RescueHulaoPassEctype"
 require "game.EctypeSystem.EctypeManager"
 
 EctypeSystem = class(EventSetDoer, Singleton)
@@ -115,7 +116,7 @@ function EctypeSystem:onDialogueEnd(event)
 end
 
 
--- 战斗结束后
+-- 战斗结束前
 function EctypeSystem:onFightEndBefor(event)
 	local params = event:getParams()
 	local fightEndResults = params[1]

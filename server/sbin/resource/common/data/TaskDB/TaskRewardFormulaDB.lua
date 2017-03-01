@@ -1,9 +1,9 @@
 --[[TaskRewardFormula.lua
-	寰幆浠诲姟鍏紡濂栧姳閰嶇疆
+	循环任务公式奖励配置
 --]]
--- 甯堥棬浠诲姟鍏紡濂栧姳
+-- 师门任务公式奖励
 MasterRewardFormula = {}
---缁忛獙
+--经验
 function MasterRewardFormula.addXp(curRing, level)
 	if level >= 1 and level <= 39 then
 		return math.floor(((curRing - 5)*100 + 500)*(level - 10)*0.5)
@@ -14,7 +14,7 @@ function MasterRewardFormula.addXp(curRing, level)
 	end
 end
 
--- 閬撹
+-- 道行
 function MasterRewardFormula.addTao(curRing, level)
 	if level >= 1 and level <= 39 then
 		return math.floor(2*curRing*(level - 19)*0.7)
@@ -25,7 +25,7 @@ function MasterRewardFormula.addTao(curRing, level)
 	end
 end
 
--- 娼滆兘
+-- 潜能
 function MasterRewardFormula.addPot(curRing, level)
 	if level >= 1 and level <= 39 then
 		return math.floor((curRing + 50)*(level - 19)*70)
@@ -36,7 +36,7 @@ function MasterRewardFormula.addPot(curRing, level)
 	end
 end
 
--- 缁戦摱
+-- 绑银
 function MasterRewardFormula.addSubMoney(curRing, level)
 	if level >= 1 and level <= 39 then
 		return math.floor(500*curRing*(level - 19))
@@ -47,9 +47,9 @@ function MasterRewardFormula.addSubMoney(curRing, level)
 	end
 end
 
--- 璇曠偧浠诲姟濂栧姳鍏紡
+-- 试炼任务奖励公式
 TrialRewardFormula = {}
--- 缁忛獙
+-- 经验
 function TrialRewardFormula.addXp(curRing, level)
 	if level >= 1 and level <= 59 then
 		return math.floor(((curRing - 100)*30 + (level - 20)*curRing)*0.5 + 2000)
@@ -60,7 +60,7 @@ function TrialRewardFormula.addXp(curRing, level)
 	end
 end
 
--- 閬撹
+-- 道行
 function TrialRewardFormula.addTao(curRing, level)
 	if level >= 1 and level <= 59 then
 		return math.floor((curRing + 5)*(level - 39)*0.7)
@@ -71,7 +71,7 @@ function TrialRewardFormula.addTao(curRing, level)
 	end
 end
 
--- 娼滆兘
+-- 潜能
 function TrialRewardFormula.addPot(curRing, level)
 	if level >= 1 and level <= 59 then
 		return math.floor((curRing + 20)*(level - 39)*3)
@@ -82,7 +82,7 @@ function TrialRewardFormula.addPot(curRing, level)
 	end
 end
 
--- 缁戦摱
+-- 绑银
 function TrialRewardFormula.addSubMoney(curRing, level)
 	if level >= 1 and level <= 59 then
 		return math.floor(50*curRing*(level - 39)*0.7)
@@ -93,7 +93,7 @@ function TrialRewardFormula.addSubMoney(curRing, level)
 	end
 end
 
--- 瀹犵墿缁忛獙
+-- 宠物经验
 function TrialRewardFormula.addPetXp(curRing, level, petLevel)
 	if not petLevel then
 		return
@@ -107,7 +107,7 @@ function TrialRewardFormula.addPetXp(curRing, level, petLevel)
 	end
 end
 
--- 瀹犵墿閬撹
+-- 宠物道行
 function TrialRewardFormula.addPetTao(curRing, level, petLevel)
 	if not petLevel then
 		return
@@ -121,15 +121,15 @@ function TrialRewardFormula.addPetTao(curRing, level, petLevel)
 	end
 end
 --]]
--- 甯細鍏紡濂栧姳
+-- 帮会公式奖励
 FactionRewardFormula = {}
 
--- 閬撹
+-- 道行
 function FactionRewardFormula.addTao(equipLevel, equipQuality)
 	return equipLevel*equipQuality
 end
 
--- 娼滆兘
+-- 潜能
 function FactionRewardFormula.addPot(equipLevel, equipQuality)
 	return equipLevel*equipQuality
 end

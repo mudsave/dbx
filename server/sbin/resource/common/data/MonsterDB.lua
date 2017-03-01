@@ -1808,7 +1808,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
 	     makePetID =1078,
-	     modelScale = 18,
      },
      [10602] = {
 	     name = "ÆïÊÞÑýÄ§",
@@ -1818,7 +1817,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
 	     makePetID =1079,
-	     modelScale = 18,
      },
      [10603] = {
 	     name = "Æï»¢ÑýÅ®",
@@ -1828,7 +1826,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
 	     makePetID =1078,
-	     modelScale = 18,
      },
      [10604] = {
 	     name = "ÆïÊÞÑýÄ§",
@@ -1838,7 +1835,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
 	     makePetID =1079,
-	     modelScale = 18,
      },
      [10605] = {
 	     name = "Æï»¢ÑýÅ®",
@@ -1848,7 +1844,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
 	     makePetID =1078,
-	     modelScale = 18,
      },
      [10606] = {
 	     name = "ÆïÊÞÑýÄ§",
@@ -1858,7 +1853,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
 	     makePetID =1079,
-	     modelScale = 18,
      },
      [10607] = {
 	     name = "Æï»¢ÑýÅ®",
@@ -1868,7 +1862,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
 	     makePetID =1078,
-	     modelScale = 18,
      },
      [10608] = {
 	     name = "ÆïÊÞÑýÄ§",
@@ -1878,7 +1871,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
 	     makePetID =1079,
-	     modelScale = 18,
      },
      [10609] = {
 	     name = "Ä§µÀÅ®½«",
@@ -1888,7 +1880,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
 	     makePetID =1301,
-	     modelScale = 20,
      },
      [10610] = {
 	     name = "Ð°¶ñ¼Àìë",
@@ -1898,7 +1889,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
 	     makePetID =1302,
-	     modelScale = 20,
      },
      [10611] = {
 	     name = "¾Þ¸«Ä§Íõ",
@@ -1908,7 +1898,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
 	     makePetID =1303,
-	     modelScale = 20,
      },
      [10612] = {
 	     name = "Íò¹ÇÄ§¾ý",
@@ -1918,7 +1907,6 @@ MonsterDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
 	     makePetID =1304,
-	     modelScale = 20,
      },
      [10801] = {
 	     name = "´ò²»ËÀµÄÐ¡ÏÉ",

@@ -1,6 +1,6 @@
 --[[Tride.lua
-ÃèÊö£º
-	ÉÏ×øÆïÄ¿±ê
+æè¿°ï¼š
+	ä¸Šåéª‘ç›®æ ‡
 ]]
 
 Tride = class(TaskTarget)

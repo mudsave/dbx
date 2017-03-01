@@ -527,7 +527,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if (msgId == MSG_W_G_OFFLINE_IN_FIGHT)
 				{
 					_MsgWG_OfflineInFight* pInfo = (_MsgWG_OfflineInFight*)pMsg;
-					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnSessionMsg(), _MsgWG_OfflineInFight"))
+					if (!verifyVersion(pInfo->roleId, pInfo->version, "CGateway::OnWorldMsg(), _MsgWG_OfflineInFight"))
 						return;
 					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->status != PLAYER_STATUS_UNLOADING && player->status != PLAYER_STATUS_LOADED)

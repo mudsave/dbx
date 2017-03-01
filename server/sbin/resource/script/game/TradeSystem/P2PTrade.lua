@@ -172,8 +172,10 @@ function P2PTrade:doTradePet(role, target, actionType, petID)
 		
 		-- 设置宠物的状态在交易当中
 		pet:setPetStatus(PetStatus.Sale)
+		pet:flushPropBatch(role)
 	else
 		pet:setPetStatus(PetStatus.Rest)
+		pet:flushPropBatch(role)
 		petInfo[petID] = nil
 	end
 
@@ -407,6 +409,7 @@ function P2PTrade:dealTrade(role, targetRole, tradeInfo1, tradeInfo2)
 	for petID1, pet in pairs(petInfo1) do
 		pet:setOwner(targetRole)
 		pet:setPetStatus(PetStatus.Rest)
+		pet:flushPropBatch(targetRole)
 		local petConfigID = pet:getConfigID()
 		local petName = PetDB[petConfigID].petName
 		pet:setName(petName)
@@ -417,6 +420,7 @@ function P2PTrade:dealTrade(role, targetRole, tradeInfo1, tradeInfo2)
 	for petID2, pet in pairs(petInfo2) do
 		pet:setOwner(role)
 		pet:setPetStatus(PetStatus.Rest)
+		pet:flushPropBatch(role)
 		local petConfigID = pet:getConfigID()
 		local petName = PetDB[petConfigID].petName
 		pet:setName(petName)
@@ -471,13 +475,25 @@ function P2PTrade:unLockFlag(player, target)
 end
 
 -- 设置宠物的状态
-function P2PTrade:setPetActionState()
+function P2PTrade:setPetActionState(player,target)
+	local playerID = player:getID()
+	local targetID = target:getID()
 	for _, pet1 in pairs(self.TradeInfo1.petInfo or {}) do
 		pet1:setPetStatus(PetStatus.Rest)
+		if pet1.ownerID == playerID then 
+			pet1:flushPropBatch(player)
+		else
+			pet1:flushPropBatch(target)
+		end
 	end
 
 	for _, pet2 in pairs(self.TradeInfo2.petInfo or {}) do
 		pet2:setPetStatus(PetStatus.Rest)
+		if pet2.ownerID == playerID then 
+			pet2:flushPropBatch(player)
+		else
+			pet2:flushPropBatch(target)
+		end
 	end
 end
 

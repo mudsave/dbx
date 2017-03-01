@@ -19,6 +19,8 @@ function FightScript:__init(scriptID)
 	self._isEnd = false--战斗结束标记
 	self._triggerCount = {} --同一个条件的触发次数
 	self.isNoEscape = self._scriptPrototype.isNoEscape
+	self._score = 0
+	self._rewardFactor = {}--[type]={"mode"="value",value = 2}
 end
 
 function FightScript:getScriptID()
@@ -33,8 +35,18 @@ function FightScript:clearPhaseStartTimerID()
 	self._phaseStartTimerID = nil
 end
 
+function FightScript:setScore(score)
+	self._score = score
+end
 
 
+function FightScript:getScore()
+	return self._score 
+end
+
+function FightScript:getRewardFactorInfo()
+	return self._rewardFactor
+end
 function FightScript:onEnterFightStart()
 	
 	--战斗开始，等待初始化
@@ -51,6 +63,11 @@ function FightScript:onEnterFightStart()
 		self:gotoState(FightState.RoundStart)
 	end
 
+end
+
+
+function FightScript:getSystemActions()
+	return self._scriptPrototype.systemActions
 end
 
 function FightScript:_doSystemActions(actions)
@@ -111,6 +128,8 @@ function FightScript:computeConditions(conditions,atStart,atFin)
 					bPass = FightSystemActionChecker.isBuffStatus(self,nil,condition)
 				elseif condition.type == ScriptFightConditionType.IsAttacked and atFin then
 					bPass = FightSystemActionChecker.isAttacked(self,nil,condition)
+				elseif condition.type == ScriptFightConditionType.ScoreNum and atFin then
+					bPass = FightSystemActionChecker.isScoreReached(self,nil,condition)
 				elseif condition.type == ScriptFightConditionType.PlayerDead  then
 					bPass = FightSystemActionChecker.isPlayerDead(self,nil,condition)
 				elseif condition.type == ScriptFightConditionType.AttrValue  then
@@ -160,6 +179,8 @@ function FightScript:computeConditionsEx(conditions,attrContext)
 					bPass = FightSystemActionChecker.AttrValueChanged(self,attrContext,condition)
 				elseif condition.type == ScriptFightConditionType.PlayerDead  then
 					bPass = FightSystemActionChecker.isPlayerDead(self,nil,condition)
+				elseif condition.type == ScriptFightConditionType.ScoreNum then
+					bPass = FightSystemActionChecker.isScoreReached(self,nil,condition)
 				end
 				print("bPass=",bPass)
 				if isAnd then
@@ -289,7 +310,7 @@ function FightScript:doActionsOnRoundStart()
 		end
 	end
 	--扫描系统行为
-	local systemActions = self._scriptPrototype.systemActions
+	local systemActions = self:getSystemActions()
 	if systemActions then
 		self:_check_doActions(systemActions,true,false)
 	end
@@ -345,7 +366,7 @@ end
 
 function FightScript:onActionsEnd()
 	--扫描系统行为
-	local systemActions = self._scriptPrototype.systemActions
+	local systemActions = self:getSystemActions()
 	if systemActions then
 		self:_check_doActions(systemActions,false,true)
 	end
@@ -445,6 +466,7 @@ function FightScript:onPlayOver(params)
 				end
 				g_fightFactory:initFightByMonsters(self,fightMonsters)
 				self._curPhase = nextPhase
+				self._roundCount = 0--回合清0
 				self:gotoState(FightState.PhaseStart)
 			--战斗结束
 			else
@@ -479,7 +501,7 @@ function FightScript:onRoleDead(role)
 		return
 	end
 	if instanceof(role ,FightPet) or instanceof(role ,FightPlayer) then
-		local actions = self._scriptPrototype.systemActions
+		local actions = self:getSystemActions()
 		if not actions then
 			return
 		end
@@ -514,7 +536,7 @@ end
 
 --处理怪物被捕捉时
 function FightScript:onMonsterCatched(monsterDBID)
-	local actions = self._scriptPrototype.systemActions
+	local actions = self:getSystemActions()
 	if not actions then
 		return
 	end
@@ -550,7 +572,7 @@ end
 local AttrContext = {role=nil,attrType="hp",curValue =0}
 function FightScript:onAttrChanged(monster,type,value)
 	if instanceof(monster ,FightMonster) then
-		local actions = self._scriptPrototype.systemActions
+		local actions = self:getSystemActions()
 		if not actions then
 			return
 		end
@@ -714,7 +736,7 @@ function FightScript:_canFightEnd()
 		self._winSide = FightStand.A
 		return true
 	else
-		if self._roundCount >=FightMaxRound then
+		if self._totalRound >=FightMaxRound then
 			self._winSide = FightStand.A
 			return true
 		end

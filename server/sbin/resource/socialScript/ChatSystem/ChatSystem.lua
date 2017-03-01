@@ -112,9 +112,9 @@ function ChatSystem:onGetMessage(event)
 	local msg = params[2]
 	local sign = params[3]
 	local DBID = params[4]
-	print("DBID",event.playerID,DBID)
+	print("Player____DBID",DBID)
 	local player = g_playerMgr:getPlayerByDBID(DBID)
-
+	print("eventGroup_Chat",eventGroup_Chat)
 	--帮会频道
 	if channelType == ChatChannelType.Faction then
 		local errorCode = self:_checkFaction(player)
@@ -197,7 +197,6 @@ function ChatSystem:onGetMessage(event)
 		end
 	--喇叭频道
 	elseif channelType == ChatChannelType.Horn then
-		print("channelType>>>>>>>>>",channelType)
 		self:_setExpireTime(player)
 		g_chatMgr:sendHornMessage(msg, player , sign)
 	end

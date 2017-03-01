@@ -21,11 +21,6 @@ function FollowEntity:__release()
 	self.modelID = nil
 	self.name = nil
 	self.taskType = nil
-	for htype,handler in pairs(self._handlers or {}) do
-		release(handler)
-		self._handlers[htype] = nil
-	end
-	self._handlers = nil
 end
 
 function FollowEntity:setDBID(dbID)

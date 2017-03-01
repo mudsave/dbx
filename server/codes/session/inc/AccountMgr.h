@@ -42,7 +42,8 @@ struct AccountInfo : public ITask
 	handle			hPendingLink;
 	IThreadsPool*	pThreadsPool;
 	std::string		m_accountName;
-	bool			inFight;
+	bool			isFight;
+	bool			isOffline;
 	int				version;
 
 	AccountInfo();
@@ -54,6 +55,11 @@ struct AccountInfo : public ITask
 	void _SwitchStatus(int s);
 
 	virtual HRESULT Do(HANDLE hContext);
+
+	bool getIsFight(){return isFight;}
+	bool getIsOffline(){return isOffline;}
+	void setIsFight(bool st) {isFight = st;}
+	void setIsOffline(bool st) {isOffline = st;}
 };
 
 class AccountMgr
@@ -96,65 +102,48 @@ public:
 
 public:
 
-	bool hasUserName(std::string& userName)
+	bool saveAccountInfo(std::string _name, int _id, std::string _pass)
 	{
-		PasswordMap::iterator iter = m_passwds.find(userName);
-		if(iter != m_passwds.end())
-			return true;
-		return false;
+		std::pair<SavedAccountInfoMap::iterator, bool> rt =
+			m_savedAccounts.insert(make_pair(_name, SavedAccountInfo(_id, _pass)));
+		return rt.second;
 	}
 
-	bool addUserNamePasswd(std::string& userName, std::string& passwd)
+	int getIdByName(std::string& userName)
 	{
-		std::pair<PasswordMap::iterator, bool> rt = m_passwds.insert(
-			PasswordMap::value_type(userName, passwd));
-		return rt.second;
+		SavedAccountInfoMap::iterator iter = m_savedAccounts.find(userName);
+		if (iter == m_savedAccounts.end())
+			return -1;
+		return (iter->second).accountId;
 	}
 
 	bool updateNamePasswd(std::string& userName, std::string& passwd)
 	{
-		if (hasUserName(userName))
-			m_passwds[userName] = passwd;
-		else
-			addUserNamePasswd(userName, passwd);
+		m_savedAccounts[userName].password = passwd;
 		return true;
 	}
 
 	bool verifyPasswd(std::string& userName, std::string& passwd)
 	{
-		return (m_passwds[userName] == passwd);
+		return (m_savedAccounts[userName].password == passwd);
 	}
 
-public:
-	void regOffFightAccount(int accountId)
-	{
-		m_offFightAccounts.insert(OffFightAccountMap::value_type
-			(getAccount(accountId).m_accountName, accountId));
-	}
-
-	void unregOffFightAccount(int accountId)
-	{
-		m_offFightAccounts.erase(getAccount(accountId).m_accountName);
-	}
-
-	int isOfflineInFight(std::string& userName)
-	{
-		OffFightAccountMap::iterator iter = m_offFightAccounts.find(userName);
-		if(iter != m_offFightAccounts.end())
-			return iter->second;
-		return -1;
-	}
-
+private:
+	struct SavedAccountInfo{
+		int accountId;
+		std::string password;
+		SavedAccountInfo(){}
+		SavedAccountInfo(int _id, std::string _pass):
+			accountId(_id), password(_pass){}
+	};
 public:
 	typedef std::map<int, AccountInfo> AccountMap;
 	typedef AccountMap::iterator AccountMapIter;
-	typedef std::map<std::string, int> OffFightAccountMap;
-	typedef std::map<std::string, std::string> PasswordMap;
+	typedef std::map<std::string, SavedAccountInfo> SavedAccountInfoMap;
 
 private:
 	AccountMap				m_accounts;
-	OffFightAccountMap 		m_offFightAccounts;
-	PasswordMap 			m_passwds;
+	SavedAccountInfoMap		m_savedAccounts;
 };
 
 extern AccountMgr g_accountMgr;

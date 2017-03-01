@@ -613,7 +613,9 @@ function GMSystem:add_equipment( roleID, itemId, itemNum, bindFlag, blueAttrNum,
 		-- 绑定属性
 		g_itemMgr:generateEquipBindAttr(propertyContext, itemConfig)
 		for i = 1,itemNum do
-			local equip = g_itemMgr:createItemFromContext(propertyContext, 1)
+			local propertyContext1 = {}
+			table.deepCopy(propertyContext, propertyContext1)
+			local equip = g_itemMgr:createItemFromContext(propertyContext1, 1)
 			if equip then
 				if bindFlag ~= nil then
 					equip:setBindFlag(Bind)

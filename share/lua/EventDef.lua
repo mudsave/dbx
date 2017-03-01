@@ -365,6 +365,8 @@ TaskEvent_SC_UpdateItemDataToClient		= Event_Group_Task + 59
 TaskEvent_CS_CommitItem					= Event_Group_Task + 60
 TaskEvent_SC_LoadLoopTaskInfoToClient	= Event_Group_Task + 61
 TaskEvent_BS_GuideJoinFaction			= Event_Group_Task + 62
+TaskEvent_SC_AddMatchNpc				= Event_Group_Task + 63
+TaskEvent_CS_EnterNextLayer				= Event_Group_Task + 64
 
 --定义交易系统事件
 --p2N交易消息
@@ -724,6 +726,8 @@ ActivityEvent_CS_GoldHunt_leave					= Event_Group_Activity + 11
 
 --
 ActivityEvent_CS_EnterPatrolFight				= Event_Group_Activity + 20
+
+ActivityEvent_SC_updateActivityPage				= Event_Group_Activity + 21
 
 --宠物仓库消息
 PetDepotEvent_CS_ExpandPetDepot					= Event_Group_PetDepot + 1

@@ -7,8 +7,8 @@ TgetItem = class(TaskTarget)
 
 function TgetItem:__init(entity, task, param, state)
 	self._state = state or 0
-	self:addWatcher("onBuyItem")
-	self:addWatcher("onRemoveItem")
+	self:addWatcher("onBuyItem")--添加监听器
+	self:addWatcher("onRemoveItem")--添加监听器，以便后面的时候调用相关方法
 	local packetHandler = entity:getHandler(HandlerDef_Packet)
 	self._state = packetHandler:getNumByItemID(param.itemID)
 	local itemInfo = 

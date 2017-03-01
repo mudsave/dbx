@@ -6,6 +6,7 @@
 require "game.TaskSystem.Task"
 require "game.TaskSystem.LoopTask"
 require "game.TaskSystem.NormalTask"
+require "game.TaskSystem.DailyTask"
 require "game.TaskSystem.TaskDoer"
 require "game.TaskSystem.TaskHelper"
 require "game.TaskSystem.TaskCallBack"
@@ -16,8 +17,12 @@ require "game.TaskSystem.TargetFactory"
 require "game.TaskSystem.TaskCondition"
 require "game.TaskSystem.TaskToNpc"
 require "game.TaskSystem.TaskRandFun"
+require "game.TaskSystem.BabelTask"
+require "game.TaskSystem.DailyTask"
 
 TaskSystem = class(EventSetDoer, Singleton)
+
+local fightIDs = {}
 
 function TaskSystem:__init()
 	self._doer = 
@@ -31,6 +36,7 @@ function TaskSystem:__init()
 		[TaskEvent_CS_CommitItem]				= TaskSystem.doCommitItem,
 		[FightEvents_SS_FightEnd_afterClient]	= TaskSystem.onFightEnd,
 		[TaskEvent_CS_RemoveTaskPet]			= TaskSystem.onRemoveTaskPet,
+		[TaskEvent_CS_EnterNextLayer]			= TaskSystem.onEnterNextLayer,
 		[TaskEvent_BS_GuideJoinFaction]			= TaskSystem.onJoinFaction,
 	}
 end
@@ -63,6 +69,7 @@ end
 
 --客户端主动发起接任务，比如点击ui
 function TaskSystem:doRecetiveTask(event)
+	print("服务端接收到任务>>>>>>>>>>>>>>>>")
 	local params = event:getParams()
 	local taskID = params[1]
 	local playerID = event.playerID
@@ -90,7 +97,7 @@ function TaskSystem:doDeleteTask(event)
 		return 
 	end
 
-	if LoopTaskDB[taskID] then
+	if LoopTaskDB[taskID] or DailyTaskDB[taskID] then
 		g_taskDoer:doDeleteTask(player, taskID, true)
 	elseif NormalTaskDB[taskID] then
 		if NormalTaskDB[taskID].taskType2 == TaskType2.Main then
@@ -218,13 +225,101 @@ function TaskSystem:onQuitSystem(event)
 	LuaDBAccess.updateTaskTrace(roleDBID,tasktraceList)
 end
 
+function TaskSystem:addFightID(fightID)
+	if fightID then
+		fightIDs[fightID] = true
+	end
+end
+
+
 -- 刷新任务
 function TaskSystem:onFightEnd(event)
 	local params = event:getParams()
 	local fightEndResults = params[1]
 	local fightID = params[2]
+	local monsterIDs = params[3]
 	local result = false
 	local roleIDs = {}
+
+	for playerID, fightResult in pairs(fightEndResults) do
+		local player = g_entityMgr:getPlayerByID(playerID)
+		if player then
+			--如果是遇雷杀怪，而且在任务中，执行相关方法
+			local taskHandler = player:getHandler(HandlerDef_Task)
+			for taskID ,taskData in pairs(taskHandler:getTasks()) do
+				if taskData.getTargetType and taskData:getTargetType() == "TkillMonster"  then
+
+					local killTaskMonster = false
+					--判断是否满足任务需求
+					local targetParams = taskData:getTargetParam()
+					if type(targetParams.monsterID) == "table" then
+						--判断怪物列表中是否有符合条件的怪物
+						for index,monsterID in pairs(monsterIDs) do
+							
+							if MonsterDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
+								MonsterDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
+								killTaskMonster = true
+							elseif NpcDB[monsterID].level == -1 then
+								killTaskMonster = true
+							end
+
+						end
+					elseif type(targetParams.monsterID) == "number" then
+						--判断怪物列表中是否有符合条件的怪物
+						for index,monsterID in pairs(monsterIDs) do
+							if monsterID == targetParams.monsterID  then
+								killTaskMonster = true
+							end
+						end
+					end
+					if killTaskMonster then
+						--如果击杀了任务怪物，则调用相关方法
+						print("准备开始计数>>>>>>>>>>>>>>>>")
+						TaskCallBack.onKillMonster(player:getID())
+					end
+					
+				end
+			end 
+		end
+	end
+
+
+	--如果是遇雷杀怪，而且在任务中，执行相关方法
+	-- local taskHandler = g_myRole:getHandler(HandlerDef_Task)
+	-- for taskID ,taskData in pairs(taskHandler:getTasks()) do
+	-- 	print("taskData:getTargetType()",taskData:getTargetType())
+	-- 	print("fightIDs[fightID]",fightIDs[fightID])
+	-- 	if taskData:getTargetType() == "TkillMonster" and fightIDs[fightID]  then
+	-- 		local killTaskMonster = false
+	-- 		--判断是否满足任务需求
+	-- 		local targetParams = taskData:getTargetParam()
+	-- 		if type(targetParams.monsterID) == "table" then
+	-- 			--判断怪物列表中是否有符合条件的怪物
+	-- 			for index,monsterID in pairs(monsterIDs) do
+	-- 				if MonsterDB[monsterID].level >= (g_myRole:getLevel()+targetParams.monsterID[1]) and
+	-- 					MonsterDB[monsterID].level <= (g_myRole:getLevel()+targetParams.monsterID[2]) then
+	-- 					killTaskMonster = true
+	-- 				end
+
+	-- 			end
+	-- 		elseif type(targetParams.monsterID) == "number" then
+
+	-- 			--判断怪物列表中是否有符合条件的怪物
+	-- 			for index,monsterID in pairs(monsterIDs) do
+	-- 				if monsterID == targetParams.monsterID  then
+	-- 					killTaskMonster = true
+	-- 				end
+	-- 			end
+	-- 		end
+	-- 		if killTaskMonster then
+	-- 			--如果击杀了任务怪物，则调用相关方法
+	-- 			TaskCallBack.onKillMonster(player:getID(), taskID)
+	-- 		end
+			
+	-- 	end
+	-- end 
+
+
 	for playerID, fightResult in pairs(fightEndResults) do
 		if fightResult then
 			result = true
@@ -239,35 +334,41 @@ function TaskSystem:onFightEnd(event)
 	end
 	-- 判断战斗 ，如果队伍当中队员个数大于1 调用队员，最后调用队长
 	if table.size(roleIDs) > 1 then
-		-- 坑定组队
+		-- 有可能组队，有可能是PK
 		local player = g_entityMgr:getPlayerByID(roleIDs[1])
 		local teamHandler = player:getHandler(HandlerDef_Team)
 		local teamID = teamHandler:getTeamID()
-		local team = g_teamMgr:getTeam(teamID)
-		for _, playerID in pairs(roleIDs) do
-			-- 不是队长就先回调
-			if team:getLeaderID() ~= playerID then
-				local curPlayer = g_entityMgr:getPlayerByID(playerID)
-				TaskCallBack.script(curPlayer, fightID, result)
+		-- 如果组队
+		if teamID > 0 then
+			local team = g_teamMgr:getTeam(teamID)
+			for _, playerID in pairs(roleIDs) do
+				-- 不是队长就先回调
+				if team:getLeaderID() ~= playerID then
+					local curPlayer = g_entityMgr:getPlayerByID(playerID)
+					TaskCallBack.script(curPlayer, fightID, result)
+				end
 			end
+			-- 最后通知队长
+			local leaderID = team:getLeaderID()
+			local leader = g_entityMgr:getPlayerByID(leaderID)
+			TaskCallBack.script(leader, fightID, result)
 		end
-		-- 最后通知队长
-		local leaderID = team:getLeaderID()
-		local leader = g_entityMgr:getPlayerByID(leaderID)
-		TaskCallBack.script(leader, fightID, result)
 	else
 		local curPlayer = g_entityMgr:getPlayerByID(roleIDs[1])
 		if curPlayer then
 			TaskCallBack.script(curPlayer, fightID, result)
 		end
 	end
+	
 end
 
 --------------------------------------------------------------
 --接受任务
 function TaskSystem:onRecetiveTask(player, taskData, fromDB)
-	local event = Event.getEvent(TaskEvent_SC_RecetiveTask, player:getID(), taskData, fromDB)
+
+	local event = Event.getEvent(TaskEvent_SC_RecetiveTask,player:getID(), taskData, fromDB)
 	g_eventMgr:fireRemoteEvent(event, player)
+
 end
 
 --删除任务
@@ -425,6 +526,12 @@ function TaskSystem:updateNormalTaskList(player, nextTaskID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+--更新可接每日任务
+function TaskSystem:updateNormalTaskList(player, nextTaskID)
+
+end
+
+
 -- 玩家首次上线设置可接循环任务列表
 function TaskSystem:loadLoopTaskList(player, loopTaskList)
 	local event = Event.getEvent(TaskEvent_SC_LoadLoopTaskList, loopTaskList)
@@ -499,6 +606,50 @@ end
 
 function TaskSystem:setTargetsState(player, taskID, targetsState)
 	local event = Event.getEvent(TaskEvent_SC_SetTargetsState, taskID, targetsState)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function TaskSystem:onEnterNextLayer(event)
+	-- 近入下一层之前，有删除当前任务，接下一个任务
+	local param = event:getParams()
+	local taskID = param[1]
+	local playerID = event.playerID
+	if not playerID then
+		return 
+	end
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if not player then
+		return 
+	end
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(taskID)
+	if not task then
+		print("通天塔任务删除，导致出错")
+		return
+	end
+	-- 完成任务
+	-- 先获取任务当前层数，
+	local layer = task:getLayer() + 1
+	local reWardType = task:getRewardType()
+	taskHandler:finishBabelTask(taskID)
+	-- 进入下一层
+	-- 在这可能还要判断一下层数， 之后再添加
+	g_taskDoer:doReceiveBabelTask(player, taskID, reWardType, layer)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(taskID)
+	if task then
+		local layer = task:getLayer()
+		local mapID = BabelEachLayerDB[taskID][layer].mapID
+		if mapID then
+			-- 切换玩家到场景
+			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+		end
+	end
+	
+end
+
+function TaskSystem:addMatchNpc(player, npcID)
+	local event = Event.getEvent(TaskEvent_SC_AddMatchNpc, player:getID(), npcID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

@@ -267,6 +267,7 @@ function Ectype:exeLogicFightClean(progress)
 		end
 	end
 end
+
 -- 执行指定步骤的结束动作进度奖励
 function Ectype:exeLogicProcedureEnd(progress)
 	local logicProcedure = self.ectypeConfig.LogicProcedure[progress]

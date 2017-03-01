@@ -25,6 +25,16 @@ DialogConditionDoer =
 	[DialogCondition.CheckBeastBless]			= RoleVerify.checkBeastBless,
 	[DialogCondition.Time]						= RoleVerify.checkTime,
 	[DialogCondition.PlayerCountInGoldHuntMap]	= SceneManager.checkPlayerCountInGoldHuntMap,
+
+	[DialogCondition.MatchTaskNpc] = RoleVerify.matchTaskNpc,
+	[DialogCondition.NoMatchTaskNpc] = RoleVerify.noMatchTaskNpc,
+	[DialogCondition.MatchTaskState] = RoleVerify.matchTaskState,
+
+	[DialogCondition.TkillMonster] = RoleVerify.checkKillMonster,
+	[DialogCondition.DekaronSchoolActivity]		= RoleVerify.checkActivityOpening,
+	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.checkActivityTarget,
+	[DialogCondition.TkillMonster]= RoleVerify.checkKillMonster,
+	[DialogCondition.DailyTaskTimes] = RoleVerify.checkDailyTaskTimes,
 }
 
 --对话条件对应的实例
@@ -49,4 +59,14 @@ DialogConditionInstance =
 	[DialogCondition.CheckLoopTasks] = RoleVerify.getInstance(),
 	[DialogCondition.Time] = RoleVerify.getInstance(),
 	[DialogCondition.PlayerCountInGoldHuntMap] = SceneManager.getInstance(),
+
+	[DialogCondition.MatchTaskNpc] = RoleVerify.getInstance(),
+	[DialogCondition.NoMatchTaskNpc] = RoleVerify.getInstance(),
+	[DialogCondition.MatchTaskState] = RoleVerify.getInstance(),
+
+	[DialogCondition.DekaronSchoolActivity] = RoleVerify.getInstance(),
+	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.getInstance(),
+	[DialogCondition.TkillMonster] = RoleVerify.getInstance(),
+	[DialogCondition.DailyTaskTimes] = RoleVerify.getInstance(),
+	
 }

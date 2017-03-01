@@ -11,14 +11,15 @@
 #include "session.h"
 
 AccountInfo::AccountInfo() : accountId(-1), roleId(-1), gatewayId(-1), worldId(-1),
-	status(-1), hAccountTimer(NULL), hLink(0), hPendingLink(0), inFight(false),
-	version(0)
+	status(-1), hAccountTimer(NULL), hLink(0), hPendingLink(0), isFight(false),
+	isOffline(false), version(0)
 {
 	pThreadsPool = GlobalThreadsPool();
 }
 
 AccountInfo::AccountInfo(int id, handle h) : accountId(id), roleId(-1), gatewayId(-1),
-	worldId(-1), status(ACCOUNT_STATE_LOGINED), hAccountTimer(NULL), hLink(h), hPendingLink(0), inFight(false), version(0)
+	worldId(-1), status(ACCOUNT_STATE_LOGINED), hAccountTimer(NULL), hLink(h),
+	hPendingLink(0), isFight(false), isOffline(false), version(0)
 {
 	pThreadsPool = GlobalThreadsPool();
 }
@@ -90,14 +91,13 @@ HRESULT AccountInfo::Do(HANDLE hContext)
 	return S_OK;
 }
 
+
 bool AccountMgr::unregAccount(int id)
 {
 	AccountMapIter iter = m_accounts.find(id);
 	if ( iter != m_accounts.end() )
 	{
 		AccountInfo& info = iter->second;
-		// if(isOfflineInFight(info.m_accountName))
-			// unregOffFightAccount(id);
 		handle hPending = info.hPendingLink;
 		m_accounts.erase(iter);
 		LinkContext_Client* pOtherClient = g_session.getClientLink(hPending);

@@ -185,3 +185,13 @@ function TaskCallBack.onUpRide(player, rideID)
 		eventHandler:notifyWatchers("onUpRide", rideID)
 	end
 end
+
+--野外杀怪
+function TaskCallBack.onKillMonster(roleID)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	local eventHandler = player:getHandler(HandlerDef_Event)
+	if eventHandler then
+		print("准备触发监听事件>>>>>>>>>>>>>>>")
+		eventHandler:notifyWatchers("onKillMonster")
+	end
+end

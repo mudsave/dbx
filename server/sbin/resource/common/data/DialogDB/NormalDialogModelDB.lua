@@ -4452,7 +4452,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "师傅，我与刘关张三兄弟前去击杀张角，不了张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
+		txt = "师傅，我与刘关张三兄弟前去击杀张角，不料张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
 		options = 
 		{
 			{
@@ -4495,7 +4495,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "师傅，我与刘关张三兄弟前去击杀张角，不了张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
+		txt = "师傅，我与刘关张三兄弟前去击杀张角，不料张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
 		options = 
 		{
 			{
@@ -4538,7 +4538,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "师傅，我与刘关张三兄弟前去击杀张角，不了张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
+		txt = "师傅，我与刘关张三兄弟前去击杀张角，不料张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
 		options = 
 		{
 			{
@@ -4581,7 +4581,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "师傅，我与刘关张三兄弟前去击杀张角，不了张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
+		txt = "师傅，我与刘关张三兄弟前去击杀张角，不料张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
 		options = 
 		{
 			{
@@ -4624,7 +4624,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "师傅，我与刘关张三兄弟前去击杀张角，不了张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
+		txt = "师傅，我与刘关张三兄弟前去击杀张角，不料张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
 		options = 
 		{
 			{
@@ -4667,7 +4667,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "师傅，我与刘关张三兄弟前去击杀张角，不了张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
+		txt = "师傅，我与刘关张三兄弟前去击杀张角，不料张角破除了封神台，放出了无数妖魔，而且张角还逃走了，这该如何是好！",
 		options = 
 		{
 			{
@@ -7405,6 +7405,1764 @@ NormalDialogModelDB =
 			}
 		},
 	},
+[1001] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20049,
+		soundID = nil,
+		txt = "袁绍虽已平安，但你要寻的另一位英雄曹操因不满董卓操控朝政，刺杀董卓失败，被他派兵追杀，现正困于东郡，还望英雄火速前往东郡，助其脱身！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1384}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1101}},
+			},
+			}
+		},
+	},
+[1002] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20302,
+		soundID = nil,
+		txt = "英雄救我！我乃曹操同伴，不幸被擒，我知道曹操身在何处！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1003}},
+					},
+			}
+		},
+	},
+[1003] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20305,
+		soundID = nil,
+		txt = "刚捉了一个曹操同伙，没想又来一个，正好一并都捉了交予董太师请功！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 161,mapID = 107}},
+				},
+			}
+		},
+	},
+[1004] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20302,
+		soundID = nil,
+		txt = "我乃董卓手下谋士陈宫，因佩服曹操为人，故背弃董卓，搭救曹操逃来此地，却被董军杀散。这次带兵追杀我们的是董军大将王方，只要找到此人，定能知晓曹将军下落！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1005}},
+					},
+			}
+		},
+	},
+[1005] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "那我这便出发，定要找到王方，打探到曹将军下落！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1101}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1102}},
+			},
+			}
+		},
+	},
+[1006] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20308,
+		soundID = nil,
+		txt = "站住！何人敢闯我军驻地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1007}},
+					},
+			}
+		},
+	},
+[1007] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "王方在哪！快让他出来！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 162,mapID = 107}},
+				},
+			}
+		},
+	},
+[1008] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20309,
+		soundID = nil,
+		txt = "站住！尔等竟想营救逆贼曹操，该当何罪！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1009}},
+					},
+			}
+		},
+	},
+[1009] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "曹操是不是已经落入你们手中，快快从实招来！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 163,mapID = 107}},
+				},
+			}
+		},
+	},
+[1010] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20309,
+		soundID = nil,
+		txt = "英雄饶命！那曹操已被我军抓住了，如今就被关押在前方军营里，由大将董越看守！英雄要救曹操，可往军营找那董越。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+						},
+			}
+		},
+	},
+[1011] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "曹将军休慌，我这就来救你！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1012}},
+					},
+			}
+		},
+	},
+[1012] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20312,
+		soundID = nil,
+		txt = "又来一个送死的，也罢，本将就一起拿下交由董太师处置！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 164,mapID = 107}},
+				},
+			}
+		},
+	},
+[1013] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "曹将军，我此番救你，乃是望你以自身之声望号召天下群雄共讨董卓，营救天子，匡扶汉室！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1014}},
+					},
+			}
+		},
+	},
+[1014] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20313,
+		soundID = nil,
+		txt = "曹某也正有此心！奈何我现仍身处险境，需先逃回老家许昌，方有机会举起讨董义旗。此去许昌，东郡关口如今由董军大将成廉驻守，还望英雄助我过关！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1103}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1104}},
+			},
+			}
+		},
+	},
+[1015] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20316,
+		soundID = nil,
+		txt = "曹操！本将在此等你多日，董太师有令，正要拿你问罪！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1016}},
+					},
+			}
+		},
+	},
+[1016] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "有我在此，何人敢动曹将军！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 165,mapID = 107}},
+				},
+			}
+		},
+	},
+[1017] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20317,
+		soundID = nil,
+		txt = "曹操！你竟敢背叛董太师，如今到了本将的地盘，本将这就擒你回去请赏！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1018}},
+					},
+			}
+		},
+	},
+[1018] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "废话少说，现在让开道路，尚可活命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 166,mapID = 107}},
+				},
+			}
+		},
+	},
+[1019] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20313,
+		soundID = nil,
+		txt = "东郡关口已过，前方正是许昌，曹某已平安无事！多谢英雄一路相送！曹某此番回去，便会立刻号召各地群雄，共讨逆贼董卓！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1020}},
+					},
+			}
+		},
+	},
+[1020] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "曹将军多保重！我这便返归上界向祖师复命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1104}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1105}},
+			},
+			}
+		},
+	},
+[1021] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "元始祖师，我已成功寻到袁绍、曹操二人，助其号召天下群雄，共讨董卓！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1022}},
+					},
+			}
+		},
+	},
+[1022] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20002,
+		soundID = nil,
+		txt = "如今袁绍、曹操二人已号召天下十八路诸侯共伐董卓。然董卓得截教妖魔暗中相助，十八路诸侯被阻虎牢关外，寸步难行。你且再下界去见那诸侯盟主袁绍，助其破敌。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1023}},
+					},
+			}
+		},
+	},
+[1023] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "没想袁绍、曹操二人动作如此迅速！弟子这就下界！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1105}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1106}},
+			},
+			}
+		},
+	},
+[1024] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁盟主，听闻你已联络到天下十八路诸侯共讨董卓，我特奉命前来助你破敌。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1025}},
+					},
+			}
+		},
+	},
+[1025] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20318,
+		soundID = nil,
+		txt = "我盟军与那董军已几番交战，只是那董卓手下有一员猛将华雄，有万夫不挡之勇，连斩我军数员大将。如今曹操已率军前往对付华雄，我恐他有失，还望英雄前去助他一臂之力！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1106}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1107}},
+			},
+			}
+		},
+	},
+[1026] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "曹将军，我奉袁盟主之令，前来助你对付那董军猛将华雄。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1027}},
+					},
+			}
+		},
+	},
+[1027] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20313,
+		soundID = nil,
+		txt = "曹某本欲邀战华雄，却听手下探子来报，有一自称关羽的英雄，竟孤身一人杀入虎牢关，声称要取华雄人头。我担心此人有失，还望英雄前往虎牢关寻此人相助！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1107}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1108}},
+			},
+			}
+		},
+	},
+[1028] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "关羽大哥，让我来助你一臂之力！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1029}},
+					},
+			}
+		},
+	},
+[1029] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20322,
+		soundID = nil,
+		txt = "来得正好！关某刚入虎牢关，却被贼将李蒙拦住！我们这便斩杀此人，再取华雄项上人头！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 167,mapID = 109}},
+				},
+			}
+		},
+	},
+[1030] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20322,
+		soundID = nil,
+		txt = "真是杀得痛快！我们这便前往诛杀华雄，为盟军立下首功！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1108}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1109}},
+			},
+			}
+		},
+	},
+[1031] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20325,
+		soundID = nil,
+		txt = "华雄在此！又来两个送死的！也罢，本将军这便送你二人上路！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1032}},
+					},
+			}
+		},
+	},
+[1032] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "华雄，休得猖狂，我俩今日便来取你项上人头！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 168,mapID = 109}},
+				},
+			}
+		},
+	},
+[1033] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20322,
+		soundID = nil,
+		txt = "关某此番乃是和我两位兄弟刘备、张飞分头行动，我两位兄弟早已潜入虎牢关内，欲趁华雄身亡之机袭占虎牢关！我们速去虎牢关与他们会合！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+						},
+			}
+		},
+	},
+[1034] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "刘大哥，华雄已被斩杀，董军已乱，何不趁此良机杀入董营，攻占虎牢关",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1035}},
+					},
+			}
+		},
+	},
+[1035] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20326,
+		soundID = nil,
+		txt = "二弟和小友果然立下奇功一件！如今在虎牢关下镇守的，乃是董军大将张辽，我们这便出发，诛杀张辽，袭占虎牢关！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1109}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1110}},
+			},
+			}
+		},
+	},
+[1036] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20330,
+		soundID = nil,
+		txt = "何人敢擅闯我虎牢关要地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1037}},
+					},
+			}
+		},
+	},
+[1037] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "今日我们便要剿灭尔等逆贼，夺取虎牢关，助盟军挥师西征！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 169,mapID = 109}},
+				},
+			}
+		},
+	},
+[1038] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20331,
+		soundID = nil,
+		txt = "张辽在此！敢来我虎牢关撒野，真是活得不耐烦了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1039}},
+					},
+			}
+		},
+	},
+[1039] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20326,
+		soundID = nil,
+		txt = "素闻张辽此人武艺高强，大家小心应付！只要打败张辽，虎牢关就是盟军的了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 170,mapID = 109}},
+				},
+			}
+		},
+	},
+[1040] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20331,
+		soundID = nil,
+		txt = "非张某不愿献关，乃是董卓义子吕布正在虎牢关督战，吕布乃盖世猛将，要如何对付他，就看各位了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+						},
+			}
+		},
+	},
+[1041] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20334,
+		soundID = nil,
+		txt = "居然敢到吕布大人的地盘来撒野，真是活腻了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1042}},
+					},
+			}
+		},
+	},
+[1042] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我倒要看看那吕布有何神通！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 171,mapID = 109}},
+				},
+			}
+		},
+	},
+[1043] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20335,
+		soundID = nil,
+		txt = "吕布在此！何人敢来一战！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1044}},
+					},
+			}
+		},
+	},
+[1044] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "吕布！今日便是你的死期！来决一死战吧！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 172,mapID = 109}},
+				},
+			}
+		},
+	},
+[1045] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20326,
+		soundID = nil,
+		txt = "这吕布不愧为天下第一猛将，我们联手还是让他跑了！如今华雄伏诛，吕布败逃，虎牢关已克，英雄快去将此事禀告袁盟主，请他挥师西进，和董卓决战！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1111}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1112}},
+			},
+			}
+		},
+	},
+[1046] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁盟主，华雄已被诛杀，吕布也已败逃，还望袁盟主率兵西征董贼！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1047}},
+					},
+			}
+		},
+	},
+[1047] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20318,
+		soundID = nil,
+		txt = "没想英雄竟立下如此盖世奇功！袁某这便点发大军，挥师西征，与董贼决一死战！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1048}},
+					},
+			}
+		},
+	},
+[1048] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "那我这便返归上界，向我祖师复命。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1112}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1113}},
+			},
+			}
+		},
+	},
+[1049] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "禀报祖师，弟子幸不辱命，已成功助盟军攻占虎牢关，挥师西征董卓！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1101}},
+					},
+			}
+		},
+	},
+[1101] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20002,
+		soundID = nil,
+		txt = "那吕布虽败，但董卓依然势大。如今伐董诸侯中有一英雄孙坚落入了董卓埋伏，被困潼关，此人关系到日后三分天下之大势，不容有失，你速下界往潼关搭救此人，助他脱困。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1113}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1151}},
+			},
+			}
+		},
+	},
+[1102] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20601,
+		soundID = nil,
+		txt = "何人擅闯潼关重地，有何图谋！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1103}},
+					},
+			}
+		},
+	},
+[1103] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙坚将军所在何处，还不速速招来！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 175,mapID = 110}},
+				},
+			}
+		},
+	},
+[1105] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20601,
+		soundID = nil,
+		txt = "英雄饶命，如今那孙坚已被我军生擒，正由杨定将军押送，就在前方不远处。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
+			}
+		},
+	},
+[1106] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "速速停下！快放了孙将军，我便饶你一命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1107}},
+					},
+			}
+		},
+	},
+[1107] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20602,
+		soundID = nil,
+		txt = "好大的口气，我倒要看看你有几分本事！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 176,mapID = 110}},
+				},
+			}
+		},
+	},
+[1108] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙将军可有受伤？不对！你不是孙将军，你是何人！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1152}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1153}},
+		    {action = DialogActionType.Goto, param = {dialogID = 1109}},
+				},
+			}
+		},
+	},
+[1109] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20606,
+		soundID = nil,
+		txt = "在下祖茂，乃将军部下，打扮成孙将军只为引开追兵。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1110}},
+					},
+			}
+		},
+	},
+[1110] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "那孙将军现在何处？可有杀出重围？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1111}},
+					},
+			}
+		},
+	},
+[1111] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20606,
+		soundID = nil,
+		txt = "将军和我分头突围，不知是否突围成功，还要拜托英雄前往搭救，感激不尽。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1153}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1154}},
+			},
+			}
+		},
+	},
+[1112] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "你们快放了孙将军，我便饶你们不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1113}},
+					},
+			}
+		},
+	},
+[1113] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20605,
+		soundID = nil,
+		txt = "哪里来的黄口小儿，竟敢大言不惭，受死吧！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 177,mapID = 110}},
+				},
+			}
+		},
+	},
+[1114] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20625,
+		soundID = nil,
+		txt = "多谢英雄救命之恩，孙某感激不尽。英雄，孙某军中两员大将朱治、吴景，就在前方，正由徐荣手下大将周恒押送，还望英雄能前往搭救。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1116}},
+					},
+			}
+		},
+	},
+[1116] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙将军，您且在此歇息，我这就去救下二位将军。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1154}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1155}},
+			},
+			}
+		},
+	},
+[1117] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20609,
+		soundID = nil,
+		txt = "黄口小儿，没想到你竟有能力来到此地，那就别想走了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1118}},
+					},
+			}
+		},
+	},
+[1118] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "口出狂言，想要我的命，就看你有没有这个能力了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 178,mapID = 110}},
+				},
+			}
+		},
+	},
+[1119] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20607,
+		soundID = nil,
+		txt = "多谢英雄救出我们，你且速去回复孙将军。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
+			}
+		},
+	},
+[1120] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙将军，我已将二位将军救下。恕我直言，以将军之兵力，何以不敌那徐荣。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1121}},
+					},
+			}
+		},
+	},
+[1121] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20625,
+		soundID = nil,
+		txt = "英雄有所不知，这徐荣军中凭空多出许多魔兵魔将，甚是厉害。此事十分蹊跷，我已派遣黄盖将军前往探查，但许久未归，英雄可否帮我探寻一番，孙某感激不尽。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1156}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1157}},
+			},
+			}
+		},
+	},
+[1122] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20610,
+		soundID = nil,
+		txt = "何人在此游荡，还不速速离去，难不成是那叛军探子。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1123}},
+					},
+			}
+		},
+	},
+[1123] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我正愁黄将军无迹可寻，你就自己送上门来，那就留下吧。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 179,mapID = 110}},
+				},
+			}
+		},
+	},
+[1124] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快快道来！黄盖将军的下落！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1125}},
+					},
+			}
+		},
+	},
+[1125] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20610,
+		soundID = nil,
+		txt = "英雄饶命，黄将军被我军生擒，正关押在北方大营，由梁兴将军看押。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
+			}
+		},
+	},
+[1126] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20612,
+		soundID = nil,
+		txt = "来者何人，竟敢擅闯我潼关重地，不知死活么！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1127}},
+					},
+			}
+		},
+	},
+[1127] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "休得猖狂，快告诉我梁兴身在何处？速叫他出来受死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 180,mapID = 110}},
+				},
+			}
+		},
+	},
+[1128] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "梁兴你终于出来了！速速放了黄盖将军，我便饶你不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1129}},
+					},
+			}
+		},
+	},
+[1129] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20613,
+		soundID = nil,
+		txt = "想让我放了黄盖，就看你有没有这个本事了。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 181,mapID = 110}},
+				},
+			}
+		},
+	},
+[1130] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "黄将军，我受孙坚将军之托，特来救你。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1131}},
+					},
+			}
+		},
+	},
+[1131] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20626,
+		soundID = nil,
+		txt = "多谢英雄救命之恩，经我数日查探徐荣营中魔兵皆来自西南方，英雄可前往一探究竟。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1133}},
+					},
+			}
+		},
+	},
+[1133] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我这就前去查探，将军可先去与孙将军汇合。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1158}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1159}},
+			},
+			}
+		},
+	},
+[1137] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20615,
+		soundID = nil,
+		txt = "我军中的魔兵魔将，出自此处西南方的一妖阵，在下听闻董卓派遣了手下大将张横镇守妖阵。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
+			}
+		},
+	},
+[1138] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20617,
+		soundID = nil,
+		txt = "吾乃张横，来者何人，擅闯禁地者杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1139}},
+					},
+			}
+		},
+	},
+[1139] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我今日偏要查探究竟，还不速速让开。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 183,mapID = 110}},
+				},
+			}
+		},
+	},
+[1140] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20640,
+		soundID = nil,
+		txt = "英雄饶命，太师命我在此把守阵法入口，为吕岳道长护法，那魔兵魔将便是从这阵法之中产生的。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
+			}
+		},
+	},
 [1142] = 
 	{
 		dialogType = DialogType.NotOption,
@@ -7421,9 +9179,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1160}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1143}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1143}},
+					},
 			}
 		},
 	},
@@ -7506,10 +9263,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1161}},
-				    {action = DialogActionType.RecetiveTask, param = {taskID = 1162}},
-		    {action = DialogActionType.Goto, param = {dialogID = 1147}},
-				},
+					{action = DialogActionType.Goto, param = {dialogID = 1147}},
+					},
 			}
 		},
 	},
@@ -7550,8 +9305,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1162}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1163}},
+			},
 			}
 		},
 	},
@@ -7592,7 +9348,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1163}},
+					{action = DialogActionType.Goto, param = {dialogID = 1151}},
 					},
 			}
 		},
@@ -7845,7 +9601,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1168}},
+					{action = DialogActionType.Goto, param = {dialogID = 1168}},
 					},
 			}
 		},
@@ -7890,6 +9646,27 @@ NormalDialogModelDB =
 					{action = DialogActionType.FinishTask, param = {taskID = 1168}},
 				    {action = DialogActionType.RecetiveTask, param = {taskID = 1169}},
 			},
+			}
+		},
+	},
+[1172] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20639,
+		soundID = nil,
+		txt = "小娃娃，没想到你竟然还敢回来，这次绝不会再让你逃了。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1173}},
+					},
 			}
 		},
 	},
@@ -7979,6 +9756,27 @@ NormalDialogModelDB =
 			}
 		},
 	},
+[1077] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "黄盖将军，那妖人吕岳已被我杀死，妖阵已破，不会再有魔兵出现捣乱！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1178}},
+					},
+			}
+		},
+	},
 [1178] = 
 	{
 		dialogType = DialogType.NotOption,
@@ -7995,10 +9793,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1171}},
-				    {action = DialogActionType.RecetiveTask, param = {taskID = 1172}},
-		    {action = DialogActionType.Goto, param = {dialogID = 1179}},
-				},
+					{action = DialogActionType.Goto, param = {dialogID = 1179}},
+					},
 			}
 		},
 	},
@@ -8039,8 +9835,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1171}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1172}},
+			},
 			}
 		},
 	},
@@ -8123,9 +9920,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1173}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1185}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1185}},
+					},
 			}
 		},
 	},
@@ -8166,8 +9962,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1174}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1173}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1174}},
+			},
 			}
 		},
 	},
@@ -8187,10 +9984,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1174}},
-				    {action = DialogActionType.RecetiveTask, param = {taskID = 1200}},
-		    {action = DialogActionType.Goto, param = {dialogID = 1200}},
-				},
+					{action = DialogActionType.Goto, param = {dialogID = 1200}},
+					},
 			}
 		},
 	},
@@ -8210,8 +10005,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1174}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1200}},
+			},
 			}
 		},
 	},
@@ -8231,9 +10027,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1200}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1202}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1202}},
+					},
 			}
 		},
 	},
@@ -8253,8 +10048,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1201}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1200}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1201}},
+			},
 			}
 		},
 	},
@@ -8402,9 +10198,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1203}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1210}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1210}},
+					},
 			}
 		},
 	},
@@ -8424,9 +10219,10 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1204}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1211}},
-			},
+					{action = DialogActionType.FinishTask, param = {taskID = 1203}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1204}},
+		    {action = DialogActionType.Goto, param = {dialogID = 1211}},
+				},
 			}
 		},
 	},
@@ -8488,8 +10284,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1204}},
-					},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -8509,9 +10305,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1205}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1215}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1215}},
+					},
 			}
 		},
 	},
@@ -8595,9 +10390,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1206}},
-				    {action = DialogActionType.Goto, param = {dialogID = 2019}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 2019}},
+					},
 			}
 		},
 	},
@@ -8617,8 +10411,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1207}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1206}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1207}},
+			},
 			}
 		},
 	},
@@ -8829,9 +10624,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1209}},
-				    {action = DialogActionType.Gotos, param = {dialogIDs = {1287,1288,1289,1290,1291,1292}}},
-					},
+						},
 			}
 		},
 	},
@@ -8851,9 +10644,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1210}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1252}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1252}},
+					},
 			}
 		},
 	},
@@ -8873,9 +10665,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1211}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1253}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1253}},
+					},
 			}
 		},
 	},
@@ -8895,9 +10686,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1212}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1254}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1254}},
+					},
 			}
 		},
 	},
@@ -8917,9 +10707,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1213}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1255}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1255}},
+					},
 			}
 		},
 	},
@@ -8939,9 +10728,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1214}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1256}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1256}},
+					},
 			}
 		},
 	},
@@ -8961,9 +10749,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1215}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1257}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1257}},
+					},
 			}
 		},
 	},
@@ -8983,8 +10770,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1216}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1210}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1216}},
+			},
 			}
 		},
 	},
@@ -9004,8 +10792,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1226}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1211}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1226}},
+			},
 			}
 		},
 	},
@@ -9025,8 +10814,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1227}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1212}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1227}},
+			},
 			}
 		},
 	},
@@ -9046,8 +10836,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1228}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1213}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1228}},
+			},
 			}
 		},
 	},
@@ -9067,8 +10858,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1229}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1214}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1229}},
+			},
 			}
 		},
 	},
@@ -9088,8 +10880,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1230}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1215}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1230}},
+			},
 			}
 		},
 	},
@@ -9109,9 +10902,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1216}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1259}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1578}},
+					},
 			}
 		},
 	},
@@ -9131,9 +10923,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1226}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1259}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1579}},
+					},
 			}
 		},
 	},
@@ -9153,9 +10944,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1227}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1259}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1580}},
+					},
 			}
 		},
 	},
@@ -9175,9 +10965,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1228}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1259}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1581}},
+					},
 			}
 		},
 	},
@@ -9197,9 +10986,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1229}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1259}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1582}},
+					},
 			}
 		},
 	},
@@ -9219,13 +11007,12 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1230}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1259}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1583}},
+					},
 			}
 		},
 	},
-[1259] = 
+[1578] = 
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9241,8 +11028,119 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1216}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
+			},
+			}
+		},
+	},
+[1579] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20711,
+		soundID = nil,
+		txt = "要解那截教上古魔毒，本座还差一味药材，天山雪莲，你这便前往下界，在天山打探天山雪莲的下落，取来予我，本座自有解毒之法。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1226}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
+			},
+			}
+		},
+	},
+[1580] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20711,
+		soundID = nil,
+		txt = "要解那截教上古魔毒，本座还差一味药材，天山雪莲，你这便前往下界，在天山打探天山雪莲的下落，取来予我，本座自有解毒之法。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1227}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
+			},
+			}
+		},
+	},
+[1581] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20711,
+		soundID = nil,
+		txt = "要解那截教上古魔毒，本座还差一味药材，天山雪莲，你这便前往下界，在天山打探天山雪莲的下落，取来予我，本座自有解毒之法。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1228}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
+			},
+			}
+		},
+	},
+[1582] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20711,
+		soundID = nil,
+		txt = "要解那截教上古魔毒，本座还差一味药材，天山雪莲，你这便前往下界，在天山打探天山雪莲的下落，取来予我，本座自有解毒之法。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1229}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
+			},
+			}
+		},
+	},
+[1583] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20711,
+		soundID = nil,
+		txt = "要解那截教上古魔毒，本座还差一味药材，天山雪莲，你这便前往下界，在天山打探天山雪莲的下落，取来予我，本座自有解毒之法。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1230}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1217}},
+			},
 			}
 		},
 	},
@@ -9347,9 +11245,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1218}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1264}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1264}},
+					},
 			}
 		},
 	},
@@ -9369,8 +11266,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1219}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1218}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1219}},
+			},
 			}
 		},
 	},
@@ -9625,8 +11523,7 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 1277}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1277}},
-			},
+					},
 			}
 		},
 	},
@@ -9838,9 +11735,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1225}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1301}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1301}},
+					},
 			}
 		},
 	},
@@ -9860,8 +11756,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1301}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1225}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1301}},
+			},
 			}
 		},
 	},
@@ -10154,9 +12051,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1304}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1316}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1316}},
+					},
 			}
 		},
 	},
@@ -10176,8 +12072,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1305}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1304}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1305}},
+			},
 			}
 		},
 	},
@@ -10491,9 +12388,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1309}},
-				    {action = DialogActionType.Gotos, param = {dialogIDs = {1332,1337,1342,1347,1352,1357}}},
-					},
+						},
 			}
 		},
 	},
@@ -10513,9 +12408,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1310}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1335}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1335}},
+					},
 			}
 		},
 	},
@@ -10535,8 +12429,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1311}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1310}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1311}},
+			},
 			}
 		},
 	},
@@ -10556,9 +12451,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1311}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1362}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1494}},
+					},
 			}
 		},
 	},
@@ -10578,9 +12472,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1312}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1340}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1340}},
+					},
 			}
 		},
 	},
@@ -10600,8 +12493,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1313}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1312}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1313}},
+			},
 			}
 		},
 	},
@@ -10621,9 +12515,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1313}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1362}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1495}},
+					},
 			}
 		},
 	},
@@ -10643,9 +12536,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1314}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1345}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1345}},
+					},
 			}
 		},
 	},
@@ -10665,8 +12557,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1315}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1314}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1315}},
+			},
 			}
 		},
 	},
@@ -10686,9 +12579,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1315}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1362}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1496}},
+					},
 			}
 		},
 	},
@@ -10708,9 +12600,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1316}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1350}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1350}},
+					},
 			}
 		},
 	},
@@ -10730,8 +12621,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1317}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1316}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1317}},
+			},
 			}
 		},
 	},
@@ -10751,9 +12643,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1317}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1362}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1497}},
+					},
 			}
 		},
 	},
@@ -10773,9 +12664,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1318}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1355}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1355}},
+					},
 			}
 		},
 	},
@@ -10795,8 +12685,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1319}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1318}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1319}},
+			},
 			}
 		},
 	},
@@ -10816,9 +12707,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1319}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1362}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1498}},
+					},
 			}
 		},
 	},
@@ -10838,9 +12728,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1320}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1360}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1360}},
+					},
 			}
 		},
 	},
@@ -10860,8 +12749,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1321}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1320}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1321}},
+			},
 			}
 		},
 	},
@@ -10881,31 +12771,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1321}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1362}},
-			},
-			}
-		},
-	},
-[1362] = 
-	{
-		dialogType = DialogType.NotOption,
-		conditions = 
-		{
-		},
-		speakerID = 20829,
-		soundID = nil,
-		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
-		options = 
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1363}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1499}},
+					},
 			}
 		},
 	},
@@ -11115,9 +12982,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1339}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1373}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1373}},
+					},
 			}
 		},
 	},
@@ -11137,8 +13003,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1326}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1339}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1326}},
+			},
 			}
 		},
 	},
@@ -11242,9 +13109,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1326}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1379}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1379}},
+					},
 			}
 		},
 	},
@@ -11264,8 +13130,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1327}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1326}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1327}},
+			},
 			}
 		},
 	},
@@ -11348,9 +13215,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1327}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1384}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1384}},
+					},
 			}
 		},
 	},
@@ -11370,8 +13236,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1328}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1327}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1328}},
+			},
 			}
 		},
 	},
@@ -11391,9 +13258,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1328}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1386}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1386}},
+					},
 			}
 		},
 	},
@@ -11413,8 +13279,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1329}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1328}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1329}},
+			},
 			}
 		},
 	},
@@ -11434,9 +13301,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1329}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1388}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1388}},
+					},
 			}
 		},
 	},
@@ -11456,8 +13322,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1330}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1329}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1330}},
+			},
 			}
 		},
 	},
@@ -11730,8 +13597,7 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 1482}},
-				    {action = DialogActionType.FinishTask, param = {taskID = 1334}},
-			},
+					},
 			}
 		},
 	},
@@ -11772,8 +13638,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1335}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1334}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1335}},
+			},
 			}
 		},
 	},
@@ -11919,9 +13786,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1336}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1491}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1491}},
+					},
 			}
 		},
 	},
@@ -11941,9 +13807,10 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1337}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1492}},
-			},
+					{action = DialogActionType.FinishTask, param = {taskID = 1336}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1337}},
+		    {action = DialogActionType.Goto, param = {dialogID = 1492}},
+				},
 			}
 		},
 	},
@@ -11985,8 +13852,139 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1338}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1401}},
+					{action = DialogActionType.Goto, param = {dialogID = 1401}},
+					},
+			}
+		},
+	},
+[1494] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20829,
+		soundID = nil,
+		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1311}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
+			},
+			}
+		},
+	},
+[1495] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20829,
+		soundID = nil,
+		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1313}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
+			},
+			}
+		},
+	},
+[1496] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20829,
+		soundID = nil,
+		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1315}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
+			},
+			}
+		},
+	},
+[1497] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20829,
+		soundID = nil,
+		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1317}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
+			},
+			}
+		},
+	},
+[1498] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20829,
+		soundID = nil,
+		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1319}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
+			},
+			}
+		},
+	},
+[1499] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20829,
+		soundID = nil,
+		txt = "要破解魔龙宫入口的封印，则需要四种材料炼制四道秘符。这四种材料分别在青峰山深处的龙血草、黑风山的血缨石髓、天山的翡翠碧沙、长安知天命的天河朱砂。你且前去找寻回来。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1321}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1322}},
 			},
 			}
 		},
@@ -12007,8 +14005,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1338}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1401}},
+			},
 			}
 		},
 	},
@@ -12050,7 +14049,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1401}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1402}},
+			},
 			}
 		},
 	},
@@ -12092,7 +14092,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1402}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1403}},
+			},
 			}
 		},
 	},
@@ -12155,7 +14156,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1403}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1404}},
+			},
 			}
 		},
 	},
@@ -12239,7 +14241,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1404}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1405}},
+			},
 			}
 		},
 	},
@@ -12302,7 +14305,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1405}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1406}},
+			},
 			}
 		},
 	},
@@ -12386,7 +14390,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1425}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1407}},
+			},
 			}
 		},
 	},
@@ -12428,7 +14433,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1407}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1408}},
+			},
 			}
 		},
 	},
@@ -12491,7 +14497,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1408}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1409}},
+			},
 			}
 		},
 	},
@@ -12575,7 +14582,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1409}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1410}},
+			},
 			}
 		},
 	},
@@ -12679,8 +14687,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1410}},
-					},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -12764,7 +14772,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1411}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1412}},
+			},
 			}
 		},
 	},
@@ -12785,8 +14794,7 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 1439}},
-				    {action = DialogActionType.FinishTask, param = {taskID = 1412}},
-			},
+					},
 			}
 		},
 	},
@@ -12827,8 +14835,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1412}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1413}},
+			},
 			}
 		},
 	},
@@ -12870,7 +14879,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1413}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1414}},
+			},
 			}
 		},
 	},
@@ -12912,7 +14922,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1414}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1415}},
+			},
 			}
 		},
 	},
@@ -12975,8 +14986,7 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 1448}},
-				    {action = DialogActionType.FinishTask, param = {taskID = 1426}},
-			},
+					},
 			}
 		},
 	},
@@ -13017,8 +15027,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1426}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1416}},
+			},
 			}
 		},
 	},
@@ -13060,7 +15071,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1416}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1417}},
+			},
 			}
 		},
 	},
@@ -13102,7 +15114,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1417}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1418}},
+			},
 			}
 		},
 	},
@@ -13164,8 +15177,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1418}},
-					},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -13227,8 +15240,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1419}},
-					},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -13291,7 +15304,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1420}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1421}},
+			},
 			}
 		},
 	},
@@ -13375,7 +15389,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1421}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1422}},
+			},
 			}
 		},
 	},
@@ -13459,7 +15474,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1423}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1427}},
+			},
 			}
 		},
 	},
@@ -13479,9 +15495,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1427}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1501}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1501}},
+					},
 			}
 		},
 	},
@@ -13502,7 +15517,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1406}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1425}},
+			},
 			}
 		},
 	},
@@ -13522,8 +15538,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1411}},
-					},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -13564,9 +15580,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1501}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1502}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1502}},
+					},
 			}
 		},
 	},
@@ -13586,8 +15601,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1427}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1501}},
+			},
 			}
 		},
 	},
@@ -13607,9 +15623,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1501}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1504}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1504}},
+					},
 			}
 		},
 	},
@@ -13629,9 +15644,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1502}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1505}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1505}},
+					},
 			}
 		},
 	},
@@ -13651,8 +15665,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1501}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1502}},
+			},
 			}
 		},
 	},
@@ -13672,9 +15687,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1502}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1507}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1507}},
+					},
 			}
 		},
 	},
@@ -13694,8 +15708,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1503}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1502}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1503}},
+			},
 			}
 		},
 	},
@@ -13907,7 +15922,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1505}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1506}},
+			},
 			}
 		},
 	},
@@ -13969,8 +15985,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1506}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1507}},
+			},
 			}
 		},
 	},
@@ -14032,9 +16049,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1508}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1524}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1524}},
+					},
 			}
 		},
 	},
@@ -14075,8 +16091,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1508}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1509}},
+			},
 			}
 		},
 	},
@@ -14243,9 +16260,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1511}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1535}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1535}},
+					},
 			}
 		},
 	},
@@ -14265,8 +16281,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1512}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1511}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1512}},
+			},
 			}
 		},
 	},
@@ -14349,8 +16366,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1513}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1514}},
+			},
 			}
 		},
 	},
@@ -14772,9 +16790,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1520}},
-				    {action = DialogActionType.Goto, param = {dialogID = 1561}},
-			},
+					{action = DialogActionType.Goto, param = {dialogID = 1561}},
+					},
 			}
 		},
 	},
@@ -14794,8 +16811,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1521}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1520}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1521}},
+			},
 			}
 		},
 	},
@@ -15091,7 +17109,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1524}},
+					{action = DialogActionType.Goto, param = {dialogID = 1601}},
 					},
 			}
 		},
@@ -15133,8 +17151,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.CloseDialog, param ={}},
-						},
+					{action = DialogActionType.FinishTask, param = {taskID = 1516}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1517}},
+			},
 			}
 		},
 	},
@@ -15154,8 +17173,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1601}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1524}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1601}},
+			},
 			}
 		},
 	},
@@ -15470,9 +17490,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1602}},
-				    {action = DialogActionType.RecetiveTask, param = {taskID = 1603}},
-			},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -17251,7 +19270,7 @@ NormalDialogModelDB =
 			}
 		},
 	},
-[1701] = 
+[1584] = 
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -17272,7 +19291,7 @@ NormalDialogModelDB =
 			}
 		},
 	},
-[1702] = 
+[1585] = 
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -17290,6 +19309,2162 @@ NormalDialogModelDB =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1619}},
 					},
+			}
+		},
+	},
+[1701] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21233,
+		soundID = nil,
+		txt = "吾已派遣大将曹仁前往寿春讨伐袁术，英雄可速往寿春相助于他，共伐袁术！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1701}},
+					},
+			}
+		},
+	},
+[1702] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "曹仁将军，我奉你家主公曹操之令，特前来助你讨伐袁术。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1701}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1703}},
+			},
+			}
+		},
+	},
+[1703] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21202,
+		soundID = nil,
+		txt = "袁术势大，我孤军难以对付，听闻驻守樊城的江东诸侯孙坚素来忠义，英雄若能说服他联手讨伐袁术，则袁术必败无疑！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1702}},
+					},
+			}
+		},
+	},
+[1704] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21203,
+		soundID = nil,
+		txt = "站住！樊城如今已是我家黄祖将军的地盘，擅闯者杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1705}},
+					},
+			}
+		},
+	},
+[1705] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "樊城乃是孙坚驻守之地，你们是何人，敢如此猖狂！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 501,mapID = 413}},
+				},
+			}
+		},
+	},
+[1706] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21208,
+		soundID = nil,
+		txt = "小子，你是什么人，敢擅闯我樊城之地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1707}},
+					},
+			}
+		},
+	},
+[1707] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙坚将军如今在何处！还不快快招来！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 502,mapID = 413}},
+				},
+			}
+		},
+	},
+[1708] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21209,
+		soundID = nil,
+		txt = "站住！我乃江夏太守黄祖手下大将陈就是也，奉黄祖将军令，攻占了樊城，你是何人，敢在此放肆？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1709}},
+					},
+			}
+		},
+	},
+[1709] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快说，孙坚将军在哪里？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 503,mapID = 413}},
+			    {action = DialogActionType.Goto, param = {dialogID = 1710}},
+			},
+			}
+		},
+	},
+[1710] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21210,
+		soundID = nil,
+		txt = "多谢英雄相救！江夏太守黄祖和袁术勾结，偷袭了樊城，我家主公孙坚如今樊城落入了黄祖埋伏，还望英雄助我前往相救！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1702}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1703}},
+			},
+			}
+		},
+	},
+[1711] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21211,
+		soundID = nil,
+		txt = "站住！本将奉命把守寿春，擅闯者杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1712}},
+					},
+			}
+		},
+	},
+[1712] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙坚将军如今在何处？速速道来，可饶你不死。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 504,mapID = 413}},
+				},
+			}
+		},
+	},
+[1713] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21216,
+		soundID = nil,
+		txt = "有本将把守此地，你们休想救走孙坚！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1714}},
+					},
+			}
+		},
+	},
+[1714] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "看来孙坚将军就在前方不远处了，先灭了你，再救孙坚将军！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 505,mapID = 413}},
+				},
+			}
+		},
+	},
+[1715] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21217,
+		soundID = nil,
+		txt = "吾乃黄祖之子黄射是也！奉吾父之命在此伏击孙坚，如今孙坚已死，你们既然来了，那就一并杀了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1716}},
+					},
+			}
+		},
+	},
+[1716] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "糟糕！看来孙坚凶多吉少。狗贼，受死吧！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 506,mapID = 413}},
+				},
+			}
+		},
+	},
+[1717] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙坚将军果然不幸遇难了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1703}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1718}},
+			},
+			}
+		},
+	},
+[1718] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21210,
+		soundID = nil,
+		txt = "黄祖勾结袁术谋害我家主公，程某定要报仇！程某先护送主公遗体回去安葬，我家小主公孙策驻守寿春，只怕袁术也要对其下手，还望英雄火速前往报信！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1704}},
+					},
+			}
+		},
+	},
+[1719] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21218,
+		soundID = nil,
+		txt = "站住！什么人，来寿春有何图谋！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1720}},
+					},
+			}
+		},
+	},
+[1720] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "寿春乃是孙策将军驻守之地，你们又是什么人！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 507,mapID = 124}},
+				},
+			}
+		},
+	},
+[1721] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21223,
+		soundID = nil,
+		txt = "寿春如今乃是袁术大人地盘，你还不速速退去！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1722}},
+					},
+			}
+		},
+	},
+[1722] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙策在哪，若不速速道来，定取你性命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 508,mapID = 124}},
+				},
+			}
+		},
+	},
+[1723] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21224,
+		soundID = nil,
+		txt = "吾乃袁术手下大将阎象是也！你是何人，敢独身来寿春放肆！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1724}},
+					},
+			}
+		},
+	},
+[1724] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙策是不是在你手中，还不快快放人，饶你不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 509,mapID = 124}},
+				},
+			}
+		},
+	},
+[1725] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快说，孙策将军如今在哪？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1704}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1726}},
+			},
+			}
+		},
+	},
+[1726] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21279,
+		soundID = nil,
+		txt = "孙策被我们偷袭抓住，如今已经被押往寿春监牢关押，英雄可往寿春监牢救他！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1705}},
+					},
+			}
+		},
+	},
+[1727] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21225,
+		soundID = nil,
+		txt = "站住！什么人，敢擅闯我寿春重地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1728}},
+					},
+			}
+		},
+	},
+[1728] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙策是不是关押在此，老实交代，饶你不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 510,mapID = 124}},
+				},
+			}
+		},
+	},
+[1729] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21226,
+		soundID = nil,
+		txt = "此乃关押要犯的重地，什么人敢来此放肆！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1730}},
+					},
+			}
+		},
+	},
+[1730] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "若带我去见孙策将军，尚可饶你一命。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 511,mapID = 124}},
+				},
+			}
+		},
+	},
+[1731] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21227,
+		soundID = nil,
+		txt = "大将袁胤在此！奉吾主袁术大人令，敢救孙策者，杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1732}},
+					},
+			}
+		},
+	},
+[1732] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "废话少说，若不放了孙策将军，今日就要你葬身于此！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 512,mapID = 124}},
+				},
+			}
+		},
+	},
+[1733] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "孙策将军，我受程普将军之托，特前来救你！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1705}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1734}},
+			},
+			}
+		},
+	},
+[1734] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21228,
+		soundID = nil,
+		txt = "袁术已经派人前往九江对付我的结拜兄弟周瑜，还望英雄和我一道火速前往九江救他！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1706}},
+					},
+			}
+		},
+	},
+[1735] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21229,
+		soundID = nil,
+		txt = "站住！你们是什么人，来九江做什么！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1736}},
+					},
+			}
+		},
+	},
+[1736] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "放肆，周瑜可是在此地！？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 513,mapID = 414}},
+				},
+			}
+		},
+	},
+[1737] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21234,
+		soundID = nil,
+		txt = "奉袁术大人令，特来此捉拿贼党周瑜，闲杂人等速速回避！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1738}},
+					},
+			}
+		},
+	},
+[1738] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我们正是来救周瑜大人的，受死吧！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 514,mapID = 414}},
+				},
+			}
+		},
+	},
+[1739] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21235,
+		soundID = nil,
+		txt = "吾乃袁军大将桥蕤是也！你们杀了我这么多弟兄，今日定要你们偿命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1740}},
+					},
+			}
+		},
+	},
+[1740] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "废话少说！周瑜如今在何处！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 515,mapID = 414}},
+				},
+			}
+		},
+	},
+[1741] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快说，周瑜大人如今在哪？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1706}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1742}},
+			},
+			}
+		},
+	},
+[1742] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21280,
+		soundID = nil,
+		txt = "周瑜已经被我们抓住，如今已被关押在九江，英雄可速去救他！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1707}},
+					},
+			}
+		},
+	},
+[1743] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21236,
+		soundID = nil,
+		txt = "站住！你们是什么人，擅闯九江有何图谋！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1744}},
+					},
+			}
+		},
+	},
+[1744] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "周瑜是不是关押在这里？老实招来，饶你不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 516,mapID = 414}},
+				},
+			}
+		},
+	},
+[1745] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21237,
+		soundID = nil,
+		txt = "站住！你们想救周瑜，怕是自身难保！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1746}},
+					},
+			}
+		},
+	},
+[1746] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "若不速速放了周瑜，定取你性命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 517,mapID = 414}},
+				},
+			}
+		},
+	},
+[1747] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21238,
+		soundID = nil,
+		txt = "本将奉袁术大人令，在此看押周瑜！任何人都休想救走他！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1748}},
+					},
+			}
+		},
+	},
+[1748] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "若不放了周瑜，今日就是你的死期！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 518,mapID = 414}},
+				},
+			}
+		},
+	},
+[1749] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "周瑜大人，我奉朝廷之令前来讨伐反贼袁术，还望大人教我破贼之策！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1707}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1708}},
+			},
+			}
+		},
+	},
+[1750] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21239,
+		soundID = nil,
+		txt = "江夏太守黄祖和袁术勾结，想要对付袁术，必先除掉黄祖，听闻黄祖手下心腹大将张硕正驻守江夏，我们可找他打听黄祖的藏身之地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1708}},
+					},
+			}
+		},
+	},
+[1751] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21240,
+		soundID = nil,
+		txt = "什么人，敢擅闯我江夏要地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1752}},
+					},
+			}
+		},
+	},
+[1752] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "张硕是不是正在江夏？我们要见他！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 519,mapID = 120}},
+				},
+			}
+		},
+	},
+[1753] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21245,
+		soundID = nil,
+		txt = "江夏乃张硕将军驻守之地，什么人敢在此放肆！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1754}},
+					},
+			}
+		},
+	},
+[1754] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快叫张硕出来见我们！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 520,mapID = 120}},
+				},
+			}
+		},
+	},
+[1755] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21246,
+		soundID = nil,
+		txt = "吾乃黄祖账下大将张硕是也！你们闯我江夏驻地，有何图谋！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1756}},
+					},
+			}
+		},
+	},
+[1756] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "张硕，你主子黄祖如今躲到哪里去了，从实招来，饶你不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 521,mapID = 120}},
+				},
+			}
+		},
+	},
+[1757] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快说，那黄祖如今躲在何处！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1708}},
+					},
+			}
+		},
+	},
+[1758] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21281,
+		soundID = nil,
+		txt = "黄祖如今就在这江夏帅营中，你们只管去找他算账，一切和我无关！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1709}},
+					},
+			}
+		},
+	},
+[1759] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21247,
+		soundID = nil,
+		txt = "站住！此乃黄祖大人的帅营重地，擅闯者杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1760}},
+					},
+			}
+		},
+	},
+[1760] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快叫黄祖滚出来受死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 522,mapID = 120}},
+				},
+			}
+		},
+	},
+[1761] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21252,
+		soundID = nil,
+		txt = "奉黄祖大人将令，特前来擒拿尔等问罪！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1762}},
+					},
+			}
+		},
+	},
+[1762] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "今日定要取黄祖贼子人头，挡我者皆死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 523,mapID = 120}},
+				},
+			}
+		},
+	},
+[1763] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21253,
+		soundID = nil,
+		txt = "黄祖在此！何人敢在本将帅营放肆！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1764}},
+					},
+			}
+		},
+	},
+[1764] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "黄祖！你竟敢和袁术勾结，谋害孙坚，拿命来吧！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 524,mapID = 120}},
+				},
+			}
+		},
+	},
+[1765] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21239,
+		soundID = nil,
+		txt = "黄祖一死，袁术外援已去。袁术如今盘踞于寿春宫中，其麾下大将纪灵统领大军驻守寿春宫外大营把守，只要击杀纪灵，我们便可闯入寿春宫除掉袁术！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1709}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1710}},
+			},
+			}
+		},
+	},
+[1766] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21254,
+		soundID = nil,
+		txt = "站住！此乃纪灵大帅镇守的寿春大营，何人敢擅闯！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1767}},
+					},
+			}
+		},
+	},
+[1767] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我们今日来此，正是要取纪灵人头！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 525,mapID = 415}},
+				},
+			}
+		},
+	},
+[1768] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21255,
+		soundID = nil,
+		txt = "站住！本将奉纪灵大帅令把守此地，擅闯者杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1769}},
+					},
+			}
+		},
+	},
+[1769] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "来得正好，我们正要找纪灵算账！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 526,mapID = 415}},
+				},
+			}
+		},
+	},
+[1770] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21260,
+		soundID = nil,
+		txt = "吾乃袁军副帅荀正是也！你们三人就敢来我大营放肆，真是活腻了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1771}},
+					},
+			}
+		},
+	},
+[1771] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "纪灵躲到哪里去了？速速招来，可饶你不死。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 527,mapID = 415}},
+				},
+			}
+		},
+	},
+[1772] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21239,
+		soundID = nil,
+		txt = "斩杀了副帅荀正，袁军必然已乱阵脚，那纪灵定然就在前方，我们速速闯阵，斩杀纪灵！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1710}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1711}},
+			},
+			}
+		},
+	},
+[1773] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21261,
+		soundID = nil,
+		txt = "何人敢擅闯帅营？活得不耐烦了！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1774}},
+					},
+			}
+		},
+	},
+[1774] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快叫纪灵出来受死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 528,mapID = 415}},
+				},
+			}
+		},
+	},
+[1775] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21262,
+		soundID = nil,
+		txt = "站住！本将奉纪灵大帅将令，前来擒拿尔等问罪！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1776}},
+					},
+			}
+		},
+	},
+[1776] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "纪灵自己躲到哪里去了，只会叫你们这些小兵来送死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 529,mapID = 415}},
+				},
+			}
+		},
+	},
+[1777] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21263,
+		soundID = nil,
+		txt = "袁军大帅纪灵在此！吾奉主公袁术之令把守寿春宫，岂容尔等小贼放肆！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1778}},
+					},
+			}
+		},
+	},
+[1778] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "纪灵，你助纣为虐，死期已至，纳命来吧！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 530,mapID = 415}},
+				},
+			}
+		},
+	},
+[1779] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21239,
+		soundID = nil,
+		txt = "纪灵已死，寿春宫外的袁军已溃！我们这便速速进入寿春，找那袁术算账！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1711}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1712}},
+			},
+			}
+		},
+	},
+[1780] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21264,
+		soundID = nil,
+		txt = "站住！何人敢擅闯寿春禁地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1781}},
+					},
+			}
+		},
+	},
+[1781] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁术那逆贼是不是正躲在宫中？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 531,mapID = 124}},
+				},
+			}
+		},
+	},
+[1782] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21265,
+		soundID = nil,
+		txt = "站住，寿春乃吾主宫禁要地，擅闯者杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1783}},
+					},
+			}
+		},
+	},
+[1783] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁术死到临头，还躲在这里做他的帝皇美梦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 532,mapID = 124}},
+				},
+			}
+		},
+	},
+[1784] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21266,
+		soundID = nil,
+		txt = "吾乃寿春统领刘勋是也！有本将在此，岂容你们放肆！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1785}},
+					},
+			}
+		},
+	},
+[1785] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "来得正好，袁术躲到哪里去了？老实招来，可饶你不死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 533,mapID = 124}},
+				},
+			}
+		},
+	},
+[1786] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快说，袁术躲到哪里去了？",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1712}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1787}},
+			},
+			}
+		},
+	},
+[1787] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21282,
+		soundID = nil,
+		txt = "吾主袁术如今不在宫中。有一高人王魔自称截教金仙，投靠吾主，于寿春宫外摆下一逆龙大阵，号称以此阵逆转神州龙脉，助吾主修成真龙天子之身，如今吾主便在那阵中修炼！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 1713}},
+					},
+			}
+		},
+	},
+[1788] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21267,
+		soundID = nil,
+		txt = "站住！此乃吾主修炼禁地，你们是什么人，竟敢闯入此地！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1789}},
+					},
+			}
+		},
+	},
+[1789] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "快叫袁术出来受死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 534,mapID = 416}},
+				},
+			}
+		},
+	},
+[1790] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21268,
+		soundID = nil,
+		txt = "本将奉吾主袁术之令，在此护法，敢惊扰吾主修炼者，杀无赦！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1791}},
+					},
+			}
+		},
+	},
+[1791] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁术恶贯满盈，今日死期已至！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 535,mapID = 416}},
+				},
+			}
+		},
+	},
+[1792] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21273,
+		soundID = nil,
+		txt = "吾乃截教金仙王魔是也！尔等蝼蚁之辈，敢闯入我逆龙阵内，本座岂容尔等活着出去！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1793}},
+					},
+			}
+		},
+	},
+[1793] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "王魔，你枉为截教高人，却在此助纣为虐，今日我便替天行道！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 536,mapID = 416}},
+				},
+			}
+		},
+	},
+[1794] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "好难缠的王魔，恐怕袁术还在逆龙阵深处，须得速速前去。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1713}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1714}},
+			},
+			}
+		},
+	},
+[1795] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21274,
+		soundID = nil,
+		txt = "什么人，竟敢擅闯逆龙大阵，惊扰吾主修炼！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1796}},
+					},
+			}
+		},
+	},
+[1796] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁术躲到哪里去了，还不叫他出来受死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 537,mapID = 416}},
+				},
+			}
+		},
+	},
+[1797] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21275,
+		soundID = nil,
+		txt = "本将奉主公袁术之令，在此护阵，擅闯者死！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1798}},
+					},
+			}
+		},
+	},
+[1798] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "那就先杀了你，再取袁术性命！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 538,mapID = 416}},
+				},
+			}
+		},
+	},
+[1799] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21278,
+		soundID = nil,
+		txt = "袁术在此！小子，别以为袁某还像上次那么好对付，我已修成魔功，你们都不是我的对手！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 1800}},
+					},
+			}
+		},
+	},
+[1800] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "袁术，传国玉玺在哪？速速交出来，可留你一个全尸！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 539,mapID = 416}},
+				},
+			}
+		},
+	},
+[1801] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 21239,
+		soundID = nil,
+		txt = "不料袁术临死前竟把传国玉玺送给了他兄长袁绍，那袁绍乃北方霸主，野心勃勃，玉玺落入其手，可是遗祸无穷！",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 1714}},
+				    {action = DialogActionType.Goto, param = {dialogID = 1802}},
+			},
+			}
+		},
+	},
+[1802] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 0,
+		soundID = nil,
+		txt = "我这便返回洛阳，把此事回禀于卢植大人，再从长计议。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
