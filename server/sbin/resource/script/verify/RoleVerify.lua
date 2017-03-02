@@ -170,6 +170,7 @@ function RoleVerify:checkLoopTask(player, param)
 	if taskHandler:getCountRing(taskID) >= loopTaskDB.loop then
 		return false, param.errorID and param.errorID or 31
 	end
+	return true
 end
 
 function RoleVerify:checkLoopTasks(player, param)
@@ -377,6 +378,11 @@ function RoleVerify:checkActivityOpening(player, param)
 	if not (teamHandler and teamHandler:isLeader()) then
 		return false,34
 	end
+	local handler = player:getHandler(HandlerDef_Activity)
+	local activityTarget = handler:getDekaronActivityTarget()
+	if activityTarget then
+		return false,34
+	end
 	local activityID = param.activityID
 	local activity = g_activityMgr:getActivity(activityID)
 	if activity and activity:isOpening() then
@@ -386,21 +392,37 @@ function RoleVerify:checkActivityOpening(player, param)
 	end
 end
 
+--检查是否领取了门派闯关活动
+function RoleVerify:haveActivityTarget(player)
+	local handler = player:getHandler(HandlerDef_Activity)
+	local activityTarget = handler:getDekaronActivityTarget()
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if not (teamHandler and teamHandler:isTeam()) then
+		if teamHandler:isLeader() and activityTarget  then
+			return true
+		else
+			return false,34
+		end
+	else
+		if activityTarget then
+			return true
+		else
+			return false,34
+		end
+	end
+end
+
 function RoleVerify:checkActivityTarget(player, param)
-	print("-------param--param--------d-----d",param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if not (teamHandler and teamHandler:isLeader()) then
 		print("不是队长")
 		return false,33
 	end
-	local teamID = teamHandler:getTeamID()
-	local team = g_teamMgr:getTeam(teamID)
-	local activityTarget = team:getDekaronActivityTarget()
+	local handler = player:getHandler(HandlerDef_Activity)
+	local activityTarget = handler:getDekaronActivityTarget()
 	if activityTarget and activityTarget:getActivityTargetId() == param.activityTargetID then
-		print("-------param--param----2222----d-----d")
 		return true
 	else
-		print("-------param--param---33333---d-----d")
 		return false,34
 	end
 end

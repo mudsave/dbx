@@ -793,7 +793,7 @@ end
 -- 查找优先级比当前道具优先级低的格子，如果有空格就直接返回空格位置
 function Pack:getLowerPriorityItemPos(srcItem)
 	local srcItemSortPriority = srcItem:getSortPriority()
-	local srcSalePrice = srcItem:getSalePrice()
+	local srcQuality = srcItem:getQuality()
 	-- 查找范围在本道具之前
 	local gridIndex = srcItem:getGridIndex() - 1
 	if gridIndex >= 1 and gridIndex <= self:getCapability() then
@@ -801,18 +801,23 @@ function Pack:getLowerPriorityItemPos(srcItem)
 			local gridItem = self.grids[i]
 			if gridItem then
 				local curSortPriority = gridItem:getSortPriority()
-				if curSortPriority < srcItemSortPriority then
+				if curSortPriority > srcItemSortPriority then
 					-- 优先级小于源道具
 					return i
 				elseif curSortPriority == srcItemSortPriority then
-					-- 优先级相等，继续判断下物品价值
-					local curSalePrice = gridItem:getSalePrice()
-					if curSalePrice < srcSalePrice then
+					-- 优先级相等，判断物品品质
+					local curQuality = gridItem:getQuality()
+					if curQuality < srcQuality then
 						return i
-					elseif curSalePrice == srcSalePrice then
-						-- 物品价值也相等，继续判断下物品数目
-						if gridItem:getNumber() < srcItem:getNumber() then
+					elseif curQuality == srcQuality then
+						-- 物品价值相等，判断物品使用等级
+						if gridItem:getUseNeedLvl() < srcItem:getUseNeedLvl() then
 							return i
+						elseif gridItem:getUseNeedLvl() == srcItem:getUseNeedLvl() then 
+							-- 物品使用等级相等，判断ID
+							if gridItem:getItemID() > srcItem:getItemID() then 
+								return i
+							end 
 						end
 					end
 				end

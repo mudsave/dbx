@@ -20,6 +20,6 @@ BabelTaskDB =
 				{type = "challengeNpcTrace", param = {}},
 			},
 		},
-		maxLayer = 1,
+		maxLayer = 200,
 	},
 }

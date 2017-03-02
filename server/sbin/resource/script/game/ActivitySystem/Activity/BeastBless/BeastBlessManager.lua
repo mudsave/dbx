@@ -52,6 +52,8 @@ function BeastBlessManager:initOnLinePlayerData()
 		print("在线玩家重置",activityId)
 		local activityHandler = player:getHandler(HandlerDef_Activity)
 		activityHandler:setPriDataById(activityId,0)
+		-- 更新到客户端
+		self:notifyToClient(player,0)
 	end
 end
 
@@ -65,6 +67,7 @@ function BeastBlessManager:joinPlayer(player,recordList)
 				if not time.isSameDay(data.recordTime) then
 					-- 重置数据
 					activityHandler:setPriDataById(activityId,0)
+					self:notifyToClient(player,0)
 				else
 					local fightCount = 0
 					if data.fightCount then
@@ -72,11 +75,13 @@ function BeastBlessManager:joinPlayer(player,recordList)
 					end
 					print("设置私有数据fightCount")
 					activityHandler:setPriDataById(activityId,fightCount)
+					self:notifyToClient(player,fightCount)
 				end
 			end
 		else
 			print("设置私有数据")
 			print("activityId",activityId)
+			self:notifyToClient(player,0)
 			activityHandler:setPriDataById(activityId,0)
 		end
 	end
@@ -428,6 +433,7 @@ function BeastBlessManager:dealFightCount(fightEndResults)
 			-- 计数加一个数
 			fightCount = fightCount + 1
 			activityHandler:setPriDataById(activityId,fightCount)
+			self:notifyToClient(player,fightCount)
 		end
 	end
 end
@@ -811,6 +817,14 @@ end
 function BeastBlessManager:sendRewardMessageTip(player, msgID, msgParams)
 	print("msgParams",toString(msgParams))
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, msgID, msgParams)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function BeastBlessManager:notifyToClient(player,fightCount)
+	local data = {}
+	local activityId = g_beastBless:getID()
+	data.count = fightCount
+	local event = Event.getEvent(ActivityEvent_SC_ActivityPageActivity,activityId,data)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

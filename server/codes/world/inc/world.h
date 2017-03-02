@@ -334,6 +334,12 @@ public:
 		}
 	}
 
+public:
+	void setPlayerCount(int count)
+	{
+		m_playerCount = count;	
+	}
+
 private:
 	bool luaStart(lua_State* pLuaState)
 	{

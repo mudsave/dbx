@@ -4464,7 +4464,7 @@ MainTaskDB1_20 =
 			param={
 					transfers =
 					{
-					[1] = {mapID = 16, x =41, y =57, tarMapID = 15, tarX = 27, tarY = 170},
+					[1] = {mapID = 10, x =31, y =201, tarMapID = 15, tarX = 27, tarY = 170},
 					},
 				},
 		},
@@ -4667,7 +4667,7 @@ MainTaskDB1_20 =
 			param={
 				transfers =
 				{
-				[1] = {mapID = 15, x =27, y =170, tarMapID = 16, tarX = 41, tarY = 57},
+				[1] = {mapID = 15, x =27, y =170, tarMapID = 10, tarX = 31, tarY = 201},
 				},
 			},
 		},

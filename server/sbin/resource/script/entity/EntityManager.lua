@@ -39,6 +39,7 @@ function EntityManager:addPlayer(player)
 	end
 	self.playerList[playerID] = player
 	self.playerDBIDList[dbId] = player
+	g_world:setPlayerCount(table.size(self.playerList))
 end
 
 function EntityManager:removePlayer(playerID)
@@ -52,6 +53,7 @@ function EntityManager:removePlayer(playerID)
 	self.playerDBIDList[dbId] = nil
 	self.playerNameList[playerName] = nil
 	release(player)
+	g_world:setPlayerCount(table.size(self.playerList))
 end
 
 function EntityManager:setPlayerName(name,DBID)

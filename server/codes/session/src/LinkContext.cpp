@@ -16,6 +16,7 @@ LinkContext_Client::~LinkContext_Client()
 {
 	if ( roleList )
 	{
+		memset(roleList->role,0, sizeof(DBRoleInfo) * MaxRoleSize);
 		roleList->Release();
 	}
 

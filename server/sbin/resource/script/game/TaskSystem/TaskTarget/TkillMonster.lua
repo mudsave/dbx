@@ -24,22 +24,26 @@ end
 function TkillMonster:onKillMonster()
 
 	self._monsterCounts.currentCount = self._monsterCounts.currentCount + 1
-	for _,target in ipairs(self._task:getDailyTargets()) do 
-		if target.type == "TkillMonster" then
-			target.param.currentCount = self._monsterCounts.currentCount
-			g_taskSystem:setTargetsState(self._entity,self._task:getID(),self._task:getTargetState())
+
+	if self._monsterCounts.currentCount <= self._monsterCounts.targetCount then
+		print("对执行次数进行统计",self._monsterCounts.currentCount)
+		for _,target in ipairs(self._task:getDailyTargets()) do 
+			if target.type == "TkillMonster" then
+				target.param.currentCount = self._monsterCounts.currentCount
+				g_taskSystem:setTargetsState(self._entity,self._task:getID(),self._task:getTargetState())
+			end
 		end
-	end
-	if self:completed() then
-		self:removeWatchers()
-		self._task:refresh()
+		if self:completed() then
+			self:removeWatchers()
+			self._task:refresh()
+		end
 	end
 	
 end
 
 function TkillMonster:completed()
 
-	return self._monsterCounts.currentCount >= self._monsterCounts.targetCount
+	return self._monsterCounts.currentCount == self._monsterCounts.targetCount
 
 end
 

@@ -1,32 +1,32 @@
 --[[DialogModelDB.lua
-	å¯¹è¯é…ç½®(å¯¹è¯ç³»ç»Ÿ)
-	1-100ç©ºç€ä¸ç”¨
-	100-10000 ä¸»çº¿å¯¹è¯
-	10001-20000å‰¯æœ¬ å„ç§å‰¯æœ¬çš„å¯¹è¯IDé›†åˆ
-	20001-21000ä¸»åŸŽå›ºå®šnpcä»¥åŠé»˜è®¤å¯¹è¯
-	21001-26000é€šå¤©å¡”ä»¥åŠå…¶ä»–
-	27001-27100åéª‘ä»»åŠ¡
-	27101-27150å¤©å­çŒŽé‡‘åœº
-	30001-35000å¾ªçŽ¯ä»»åŠ¡ï¼ˆ30100-30300 å¸®æ´¾ä»»åŠ¡ï¼‰
-	35001-35099æŠ“å® ä»»åŠ¡
-	35100-35199ç‘žå…½é™ç¦
-	35500-37000ä¸ºæŒ‡å¼•ä»»åŠ¡å¯¹è¯
-	çŽ°åœ¨å‰¯æœ¬ç”¨åˆ°çš„IDæ˜¯3000 ---3100
-	è¿™ä¸€æ®µè·³è¿‡ï¼Œæˆ‘ä»¬é…ç½®ä¸»çº¿ä»»åŠ¡çš„æ—¶å€™æ³¨æ„è¿™ä¸ªã€‚
-	50100-50199 æ¯æ—¥ä»»åŠ¡ï¼ˆæ–°å¢žï¼‰
+	¶Ô»°ÅäÖÃ(¶Ô»°ÏµÍ³)
+	1-100¿Õ×Å²»ÓÃ
+	100-10000 Ö÷Ïß¶Ô»°
+	10001-20000¸±±¾ ¸÷ÖÖ¸±±¾µÄ¶Ô»°ID¼¯ºÏ
+	20001-21000Ö÷³Ç¹Ì¶¨npcÒÔ¼°Ä¬ÈÏ¶Ô»°
+	21001-26000Í¨ÌìËþÒÔ¼°ÆäËû
+	27001-27100×øÆïÈÎÎñ
+	27101-27150Ìì×ÓÁÔ½ð³¡
+	30001-35000Ñ­»·ÈÎÎñ£¨30100-30300 °ïÅÉÈÎÎñ£©
+	35001-35099×¥³èÈÎÎñ
+	35100-35199ÈðÊÞ½µ¸£
+	35500-37000ÎªÖ¸ÒýÈÎÎñ¶Ô»°
+	ÏÖÔÚ¸±±¾ÓÃµ½µÄIDÊÇ3000 ---3100
+	ÕâÒ»¶ÎÌø¹ý£¬ÎÒÃÇÅäÖÃÖ÷ÏßÈÎÎñµÄÊ±ºò×¢ÒâÕâ¸ö¡£
+	50100-50199 Ã¿ÈÕÈÎÎñ£¨ÐÂÔö£©
 ]]
 
 DialogModelDB =
 {
--------------------ä¸»çº¿ä»»åŠ¡ç‰¹æ®Šå¤„ç†å¯¹è¯-----------------------------task---
--------------------1-25çº§ä¸»çº¿ä»»åŠ¡1087ç‰¹æ®Šå¤„ç†å¯¹è¯--------------------------------
+-------------------Ö÷ÏßÈÎÎñÌØÊâ´¦Àí¶Ô»°-----------------------------task---
+-------------------1-25¼¶Ö÷ÏßÈÎÎñ1087ÌØÊâ´¦Àí¶Ô»°--------------------------------
     [308] =
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å°ç¥žå°ä¹‹äº‹éžåŒå°å¯ï¼Œæˆ‘è¿™ä¾¿è¿”å›žé—¨æ´¾å°†æ­¤äº‹å‘ŠçŸ¥æŽŒé—¨å¸ˆå‚…ï¼",
+		txt = "·âÉñÌ¨Ö®ÊÂ·ÇÍ¬Ð¡¿É£¬ÎÒÕâ±ã·µ»ØÃÅÅÉ½«´ËÊÂ¸æÖªÕÆÃÅÊ¦¸µ£¡",
 		options =
 		{
 			{
@@ -40,8 +40,8 @@ DialogModelDB =
 			}
 		},
 	},
--------------------1-25çº§ä¸»çº¿ä»»åŠ¡1003ç‰¹æ®Šå¤„ç†å¯¹è¯--------------------------------
-    [452] =---ä¹¾å…ƒå²›
+-------------------1-25¼¶Ö÷ÏßÈÎÎñ1003ÌØÊâ´¦Àí¶Ô»°--------------------------------
+    [452] =---Ç¬Ôªµº
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -50,7 +50,7 @@ DialogModelDB =
 		},
 		speakerID = 20002,
 		soundID = nil,
-		txt = "æˆ‘é˜æ•™åœ¨äººä¼ æ‰¿æœ‰å…­å¤§ä»™é—¨ï¼Œæœ¬åº§å·²ä»¤å…¶ä¸­ä¸€æ´¾ä¹¾å…ƒå²›æŽŒé—¨å¤ªæžä»™ç¿æ”¶ä½ å…¥é—¨ï¼Œæ•™ä½ é™å¦–ä¼é­”æœ¬é¢†ï¼ä½ ä¸”åŽ»å¯»èŽ²èŠ±ç«¥å­åŠ©ä½ ä¸‹å‡¡ï¼",
+		txt = "ÎÒ²û½ÌÔÚÈË´«³ÐÓÐÁù´óÏÉÃÅ£¬±¾×ùÒÑÁîÆäÖÐÒ»ÅÉÇ¬ÔªµºÕÆÃÅÌ«¼«ÏÉÎÌÊÕÄãÈëÃÅ£¬½ÌÄã½µÑý·üÄ§±¾Áì£¡ÄãÇÒÈ¥Ñ°Á«»¨Í¯×ÓÖúÄãÏÂ·²£¡",
 		options =
 		{
 			{
@@ -64,7 +64,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[453] =---æ¡ƒæºæ´ž
+	[453] =---ÌÒÔ´¶´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -73,7 +73,7 @@ DialogModelDB =
 		},
 		speakerID = 20002,
 		soundID = nil,
-		txt = "æˆ‘é˜æ•™åœ¨äººä¼ æ‰¿æœ‰å…­å¤§ä»™é—¨ï¼Œæœ¬åº§å·²ä»¤å…¶ä¸­ä¸€æ´¾æ¡ƒæºæ´žæŽŒé—¨é¾™è™Žå¤©å¸ˆæ”¶ä½ å…¥é—¨ï¼Œæ•™ä½ é™å¦–ä¼é­”æœ¬é¢†ï¼ä½ ä¸”åŽ»å¯»èŽ²èŠ±ç«¥å­åŠ©ä½ ä¸‹å‡¡ï¼",
+		txt = "ÎÒ²û½ÌÔÚÈË´«³ÐÓÐÁù´óÏÉÃÅ£¬±¾×ùÒÑÁîÆäÖÐÒ»ÅÉÌÒÔ´¶´ÕÆÃÅÁú»¢ÌìÊ¦ÊÕÄãÈëÃÅ£¬½ÌÄã½µÑý·üÄ§±¾Áì£¡ÄãÇÒÈ¥Ñ°Á«»¨Í¯×ÓÖúÄãÏÂ·²£¡",
 		options =
 		{
 			{
@@ -87,7 +87,7 @@ DialogModelDB =
 			}
 		},
 	},
-    [454] =---é‡‘éœžå±±
+    [454] =---½ðÏ¼É½
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -96,7 +96,7 @@ DialogModelDB =
 		},
 		speakerID = 20002,
 		soundID = nil,
-		txt = "æˆ‘é˜æ•™åœ¨äººé—´ä¼ æ‰¿æœ‰å…­å¤§ä»™é—¨ï¼Œæœ¬åº§å·²ä»¤å…¶ä¸­ä¸€æ´¾é‡‘éœžå±±æŽŒé—¨å¦™é“çœŸå›æ”¶ä½ å…¥é—¨ï¼Œæ•™ä½ é™å¦–ä¼é­”æœ¬é¢†ï¼ä½ ä¸”åŽ»å¯»èŽ²èŠ±ç«¥å­åŠ©ä½ ä¸‹å‡¡ï¼",
+		txt = "ÎÒ²û½ÌÔÚÈË¼ä´«³ÐÓÐÁù´óÏÉÃÅ£¬±¾×ùÒÑÁîÆäÖÐÒ»ÅÉ½ðÏ¼É½ÕÆÃÅÃîµÀÕæ¾ýÊÕÄãÈëÃÅ£¬½ÌÄã½µÑý·üÄ§±¾Áì£¡ÄãÇÒÈ¥Ñ°Á«»¨Í¯×ÓÖúÄãÏÂ·²£¡",
 		options =
 		{
 			{
@@ -110,7 +110,7 @@ DialogModelDB =
 			}
 		},
 	},
-    [455] =---è“¬èŽ±é˜
+    [455] =---ÅîÀ³¸ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -119,7 +119,7 @@ DialogModelDB =
 		},
 		speakerID = 20002,
 		soundID = nil,
-		txt = "æˆ‘é˜æ•™åœ¨äººé—´ä¼ æ‰¿æœ‰å…­å¤§ä»™é—¨ï¼Œæœ¬åº§å·²ä»¤å…¶ä¸­ä¸€æ´¾è“¬èŽ±é˜æŽŒé—¨å—æµ·é¾™å¥³æ”¶ä½ å…¥é—¨ï¼Œæ•™ä½ é™å¦–ä¼é­”æœ¬é¢†ï¼ä½ ä¸”åŽ»å¯»èŽ²èŠ±ç«¥å­åŠ©ä½ ä¸‹å‡¡ï¼",
+		txt = "ÎÒ²û½ÌÔÚÈË¼ä´«³ÐÓÐÁù´óÏÉÃÅ£¬±¾×ùÒÑÁîÆäÖÐÒ»ÅÉÅîÀ³¸óÕÆÃÅÄÏº£ÁúÅ®ÊÕÄãÈëÃÅ£¬½ÌÄã½µÑý·üÄ§±¾Áì£¡ÄãÇÒÈ¥Ñ°Á«»¨Í¯×ÓÖúÄãÏÂ·²£¡",
 		options =
 		{
 			{
@@ -133,7 +133,7 @@ DialogModelDB =
 			}
 		},
 	},
-    [456] =---ç´«é˜³é—¨
+    [456] =---×ÏÑôÃÅ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -142,7 +142,7 @@ DialogModelDB =
 		},
 		speakerID = 20002,
 		soundID = nil,
-		txt = "æˆ‘é˜æ•™åœ¨äººé—´ä¼ æ‰¿æœ‰å…­å¤§ä»™é—¨ï¼Œæœ¬åº§å·²ä»¤å…¶ä¸­ä¸€æ´¾ç´«é˜³é—¨æŽŒé—¨é»„å¤©åŒ–æ”¶ä½ å…¥é—¨ï¼Œæ•™ä½ é™å¦–ä¼é­”æœ¬é¢†ï¼ä½ ä¸”åŽ»å¯»èŽ²èŠ±ç«¥å­åŠ©ä½ ä¸‹å‡¡ï¼",
+		txt = "ÎÒ²û½ÌÔÚÈË¼ä´«³ÐÓÐÁù´óÏÉÃÅ£¬±¾×ùÒÑÁîÆäÖÐÒ»ÅÉ×ÏÑôÃÅÕÆÃÅ»ÆÌì»¯ÊÕÄãÈëÃÅ£¬½ÌÄã½µÑý·üÄ§±¾Áì£¡ÄãÇÒÈ¥Ñ°Á«»¨Í¯×ÓÖúÄãÏÂ·²£¡",
 		options =
 		{
 			{
@@ -156,7 +156,7 @@ DialogModelDB =
 			}
 		},
 	},
-    [457] =---äº‘éœ„å®«
+    [457] =---ÔÆÏö¹¬
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -165,7 +165,7 @@ DialogModelDB =
 		},
 		speakerID = 20002,
 		soundID = nil,
-		txt = "æˆ‘é˜æ•™åœ¨äººé—´ä¼ æ‰¿æœ‰å…­å¤§ä»™é—¨ï¼Œæœ¬åº§å·²ä»¤å…¶ä¸­ä¸€æ´¾äº‘éœ„å®«æŽŒé—¨çº¯é˜³çœŸäººæ”¶ä½ å…¥é—¨ï¼Œæ•™ä½ é™å¦–ä¼é­”æœ¬é¢†ï¼ä½ ä¸”åŽ»å¯»èŽ²èŠ±ç«¥å­åŠ©ä½ ä¸‹å‡¡ï¼",
+		txt = "ÎÒ²û½ÌÔÚÈË¼ä´«³ÐÓÐÁù´óÏÉÃÅ£¬±¾×ùÒÑÁîÆäÖÐÒ»ÅÉÔÆÏö¹¬ÕÆÃÅ´¿ÑôÕæÈËÊÕÄãÈëÃÅ£¬½ÌÄã½µÑý·üÄ§±¾Áì£¡ÄãÇÒÈ¥Ñ°Á«»¨Í¯×ÓÖúÄãÏÂ·²£¡",
 		options =
 		{
 			{
@@ -180,7 +180,7 @@ DialogModelDB =
 		},
 	},
 
-----------------------------31-32çº§ä¸»çº¿ä»»åŠ¡NPCç»‘å®šå¯¹è¯--------------------------
+----------------------------31-32¼¶Ö÷ÏßÈÎÎñNPC°ó¶¨¶Ô»°--------------------------
 	[1166] =
 	{
 		dialogType = DialogType.NotOption,
@@ -188,7 +188,7 @@ DialogModelDB =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ç«¥å­ï¼Œæˆ‘å·²èŽ·å¾—å››å¦–å…½çš„é­‚é­„ï¼Œè¯·æ‚¨ç‚¼åˆ¶ç­é­‚ç å§ï¼",
+		txt = "Í¯×Ó£¬ÎÒÒÑ»ñµÃËÄÑýÊÞµÄ»êÆÇ£¬ÇëÄúÁ¶ÖÆÃð»êÖé°É£¡",
 		options = 
 		{
 			{
@@ -201,7 +201,7 @@ DialogModelDB =
 			},
 		},
 	},
-	----------------------33-34çº§ä¸»çº¿å¯¹è¯-----------------------
+	----------------------33-34¼¶Ö÷Ïß¶Ô»°-----------------------
 	 [1287] =
 	{
 		dialogType = DialogType.NotOption,
@@ -211,7 +211,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "æ­¤äº‹ä¸å¦™ï¼Œéœ€é€Ÿé€Ÿå›žé—¨æ´¾è¯·æ±‚æŽŒé—¨æ´åŠ©ï¼",
+		txt = "´ËÊÂ²»Ãî£¬ÐèËÙËÙ»ØÃÅÅÉÇëÇóÕÆÃÅÔ®Öú£¡",
 		options =
 		{
 			{
@@ -234,7 +234,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "æ­¤äº‹ä¸å¦™ï¼Œéœ€é€Ÿé€Ÿå›žé—¨æ´¾è¯·æ±‚æŽŒé—¨æ´åŠ©ï¼",
+		txt = "´ËÊÂ²»Ãî£¬ÐèËÙËÙ»ØÃÅÅÉÇëÇóÕÆÃÅÔ®Öú£¡",
 		options =
 		{
 			{
@@ -257,7 +257,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "æ­¤äº‹ä¸å¦™ï¼Œéœ€é€Ÿé€Ÿå›žé—¨æ´¾è¯·æ±‚æŽŒé—¨æ´åŠ©ï¼",
+		txt = "´ËÊÂ²»Ãî£¬ÐèËÙËÙ»ØÃÅÅÉÇëÇóÕÆÃÅÔ®Öú£¡",
 		options =
 		{
 			{
@@ -280,7 +280,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "æ­¤äº‹ä¸å¦™ï¼Œéœ€é€Ÿé€Ÿå›žé—¨æ´¾è¯·æ±‚æŽŒé—¨æ´åŠ©ï¼",
+		txt = "´ËÊÂ²»Ãî£¬ÐèËÙËÙ»ØÃÅÅÉÇëÇóÕÆÃÅÔ®Öú£¡",
 		options =
 		{
 			{
@@ -303,7 +303,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "æ­¤äº‹ä¸å¦™ï¼Œéœ€é€Ÿé€Ÿå›žé—¨æ´¾è¯·æ±‚æŽŒé—¨æ´åŠ©ï¼",
+		txt = "´ËÊÂ²»Ãî£¬ÐèËÙËÙ»ØÃÅÅÉÇëÇóÕÆÃÅÔ®Öú£¡",
 		options =
 		{
 			{
@@ -326,7 +326,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "æ­¤äº‹ä¸å¦™ï¼Œéœ€é€Ÿé€Ÿå›žé—¨æ´¾è¯·æ±‚æŽŒé—¨æ´åŠ©ï¼",
+		txt = "´ËÊÂ²»Ãî£¬ÐèËÙËÙ»ØÃÅÅÉÇëÇóÕÆÃÅÔ®Öú£¡",
 		options =
 		{
 			{
@@ -340,7 +340,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[1298] =            -------------ä¸»çº¿ä»»åŠ¡33-34ä¼ é€é’å³°å±±
+	[1298] =            -------------Ö÷ÏßÈÎÎñ33-34´«ËÍÇà·åÉ½
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -348,12 +348,12 @@ DialogModelDB =
 		{condition = DialogCondition.HasTasks, param = {taskIDs = {1217,1224}, statue = true}},	
 		},
 		speakerID = 20726,
-		txt = "é˜æ•™å¼Ÿå­ï¼Œæˆ‘å¯ä»¥é€ä½ åˆ°é•¿å®‰ã€‚",
+		txt = "²û½ÌµÜ×Ó£¬ÎÒ¿ÉÒÔËÍÄãµ½³¤°²¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "é•¿å®‰",
+				optionTxt = "³¤°²",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 13, tarX = 100, tarY = 100}},
@@ -362,7 +362,7 @@ DialogModelDB =
 
 		},
 	},
-	[1299] =            -------------ä¸»çº¿ä»»åŠ¡33-34ä¼ é€é’å³°å±±
+	[1299] =            -------------Ö÷ÏßÈÎÎñ33-34´«ËÍÇà·åÉ½
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -370,12 +370,12 @@ DialogModelDB =
 		{condition = DialogCondition.HasTasks, param = {taskIDs = {1223}, statue = true}},	
 		},
 		speakerID = 30256,
-		txt = "é˜æ•™å¼Ÿå­ï¼Œæˆ‘å¯ä»¥é€ä½ åˆ°è“¬èŽ±å±±ã€‚",
+		txt = "²û½ÌµÜ×Ó£¬ÎÒ¿ÉÒÔËÍÄãµ½ÅîÀ³É½¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è“¬èŽ±å±±",
+				optionTxt = "ÅîÀ³É½",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 114, tarX = 57, tarY = 113}},
@@ -384,17 +384,17 @@ DialogModelDB =
 
 		},
 	},
-		----------------------------ä¸»çº¿35-36å¯¹è¯é—¨æ´¾åˆ†æ®µ---------------------
+		----------------------------Ö÷Ïß35-36¶Ô»°ÃÅÅÉ·Ö¶Î---------------------
 	[1332] =
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.QYD}},----ä¹¾å…ƒå²›
+		{condition = DialogCondition.School, param = {school = SchoolType.QYD}},----Ç¬Ôªµº
 		},
 		speakerID = 20820,
 		soundID = nil,
-		txt = "æ²¡é”™ï¼é‚£é­”é¾™å®«çš„å…¥å£å°±åœ¨æˆ‘èº«åŽä¸è¿œã€‚ä¸è¿‡é­”é¾™å®«çš„å…¥å£å·²ç»è¢«æŠ•é è‘£å“çš„é­”å°†é£žå»‰å°å°ï¼Œå°å°çš„é˜µæ³•åˆ†åˆ«ä½äºŽè¥¿å‡‰åœ°å›¾çš„å››ä¸ªä¸åŒæ–¹ä½ï¼Œåªæœ‰è§£é™¤è¿™å››å¤„å°å°ï¼Œæ‰èƒ½å¼€å¯é­”é¾™å®«çœŸæ­£çš„å…¥å£ã€‚",
+		txt = "Ã»´í£¡ÄÇÄ§Áú¹¬µÄÈë¿Ú¾ÍÔÚÎÒÉíºó²»Ô¶¡£²»¹ýÄ§Áú¹¬µÄÈë¿ÚÒÑ¾­±»Í¶¿¿¶­×¿µÄÄ§½«·ÉÁ®·âÓ¡£¬·âÓ¡µÄÕó·¨·Ö±ðÎ»ÓÚÎ÷Á¹µØÍ¼µÄËÄ¸ö²»Í¬·½Î»£¬Ö»ÓÐ½â³ýÕâËÄ´¦·âÓ¡£¬²ÅÄÜ¿ªÆôÄ§Áú¹¬ÕæÕýµÄÈë¿Ú¡£",
 		options =
 		{
 			{
@@ -412,11 +412,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.QYD}},----ä¹¾å…ƒå²›
+		{condition = DialogCondition.School, param = {school = SchoolType.QYD}},----Ç¬Ôªµº
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "çœ‹æ¥åªèƒ½å›žå¸ˆé—¨æ‰¾å¸ˆå‚…è¯¢é—®ä¸‹æœ‰ä½•è§£å†³åŠžæ³•ã€‚",
+		txt = "¿´À´Ö»ÄÜ»ØÊ¦ÃÅÕÒÊ¦¸µÑ¯ÎÊÏÂÓÐºÎ½â¾ö°ì·¨¡£",
 		options =
 		{
 			{
@@ -435,11 +435,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.TYD}},--æ¡ƒæºæ´ž
+		{condition = DialogCondition.School, param = {school = SchoolType.TYD}},--ÌÒÔ´¶´
 		},
 		speakerID = 20820,
 		soundID = nil,
-		txt = "æ²¡é”™ï¼é‚£é­”é¾™å®«çš„å…¥å£å°±åœ¨æˆ‘èº«åŽä¸è¿œã€‚ä¸è¿‡é­”é¾™å®«çš„å…¥å£å·²ç»è¢«æŠ•é è‘£å“çš„é­”å°†é£žå»‰å°å°ï¼Œå°å°çš„é˜µæ³•åˆ†åˆ«ä½äºŽè¥¿å‡‰åœ°å›¾çš„å››ä¸ªä¸åŒæ–¹ä½ï¼Œåªæœ‰è§£é™¤è¿™å››å¤„å°å°ï¼Œæ‰èƒ½å¼€å¯é­”é¾™å®«çœŸæ­£çš„å…¥å£ã€‚",
+		txt = "Ã»´í£¡ÄÇÄ§Áú¹¬µÄÈë¿Ú¾ÍÔÚÎÒÉíºó²»Ô¶¡£²»¹ýÄ§Áú¹¬µÄÈë¿ÚÒÑ¾­±»Í¶¿¿¶­×¿µÄÄ§½«·ÉÁ®·âÓ¡£¬·âÓ¡µÄÕó·¨·Ö±ðÎ»ÓÚÎ÷Á¹µØÍ¼µÄËÄ¸ö²»Í¬·½Î»£¬Ö»ÓÐ½â³ýÕâËÄ´¦·âÓ¡£¬²ÅÄÜ¿ªÆôÄ§Áú¹¬ÕæÕýµÄÈë¿Ú¡£",
 		options =
 		{
 			{
@@ -457,11 +457,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.TYD}},--æ¡ƒæºæ´ž
+		{condition = DialogCondition.School, param = {school = SchoolType.TYD}},--ÌÒÔ´¶´
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "çœ‹æ¥åªèƒ½å›žå¸ˆé—¨æ‰¾å¸ˆå‚…è¯¢é—®ä¸‹æœ‰ä½•è§£å†³åŠžæ³•ã€‚",
+		txt = "¿´À´Ö»ÄÜ»ØÊ¦ÃÅÕÒÊ¦¸µÑ¯ÎÊÏÂÓÐºÎ½â¾ö°ì·¨¡£",
 		options =
 		{
 			{
@@ -480,11 +480,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.JXS}},--é‡‘éœžå±±
+		{condition = DialogCondition.School, param = {school = SchoolType.JXS}},--½ðÏ¼É½
 		},
 		speakerID = 20820,
 		soundID = nil,
-		txt = "æ²¡é”™ï¼é‚£é­”é¾™å®«çš„å…¥å£å°±åœ¨æˆ‘èº«åŽä¸è¿œã€‚ä¸è¿‡é­”é¾™å®«çš„å…¥å£å·²ç»è¢«æŠ•é è‘£å“çš„é­”å°†é£žå»‰å°å°ï¼Œå°å°çš„é˜µæ³•åˆ†åˆ«ä½äºŽè¥¿å‡‰åœ°å›¾çš„å››ä¸ªä¸åŒæ–¹ä½ï¼Œåªæœ‰è§£é™¤è¿™å››å¤„å°å°ï¼Œæ‰èƒ½å¼€å¯é­”é¾™å®«çœŸæ­£çš„å…¥å£ã€‚",
+		txt = "Ã»´í£¡ÄÇÄ§Áú¹¬µÄÈë¿Ú¾ÍÔÚÎÒÉíºó²»Ô¶¡£²»¹ýÄ§Áú¹¬µÄÈë¿ÚÒÑ¾­±»Í¶¿¿¶­×¿µÄÄ§½«·ÉÁ®·âÓ¡£¬·âÓ¡µÄÕó·¨·Ö±ðÎ»ÓÚÎ÷Á¹µØÍ¼µÄËÄ¸ö²»Í¬·½Î»£¬Ö»ÓÐ½â³ýÕâËÄ´¦·âÓ¡£¬²ÅÄÜ¿ªÆôÄ§Áú¹¬ÕæÕýµÄÈë¿Ú¡£",
 		options =
 		{
 			{
@@ -502,11 +502,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.JXS}},--é‡‘éœžå±±
+		{condition = DialogCondition.School, param = {school = SchoolType.JXS}},--½ðÏ¼É½
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "çœ‹æ¥åªèƒ½å›žå¸ˆé—¨æ‰¾å¸ˆå‚…è¯¢é—®ä¸‹æœ‰ä½•è§£å†³åŠžæ³•ã€‚",
+		txt = "¿´À´Ö»ÄÜ»ØÊ¦ÃÅÕÒÊ¦¸µÑ¯ÎÊÏÂÓÐºÎ½â¾ö°ì·¨¡£",
 		options =
 		{
 			{
@@ -525,11 +525,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.PLG}},--è“¬èŽ±é˜
+		{condition = DialogCondition.School, param = {school = SchoolType.PLG}},--ÅîÀ³¸ó
 		},
 		speakerID = 20820,
 		soundID = nil,
-		txt = "æ²¡é”™ï¼é‚£é­”é¾™å®«çš„å…¥å£å°±åœ¨æˆ‘èº«åŽä¸è¿œã€‚ä¸è¿‡é­”é¾™å®«çš„å…¥å£å·²ç»è¢«æŠ•é è‘£å“çš„é­”å°†é£žå»‰å°å°ï¼Œå°å°çš„é˜µæ³•åˆ†åˆ«ä½äºŽè¥¿å‡‰åœ°å›¾çš„å››ä¸ªä¸åŒæ–¹ä½ï¼Œåªæœ‰è§£é™¤è¿™å››å¤„å°å°ï¼Œæ‰èƒ½å¼€å¯é­”é¾™å®«çœŸæ­£çš„å…¥å£ã€‚",
+		txt = "Ã»´í£¡ÄÇÄ§Áú¹¬µÄÈë¿Ú¾ÍÔÚÎÒÉíºó²»Ô¶¡£²»¹ýÄ§Áú¹¬µÄÈë¿ÚÒÑ¾­±»Í¶¿¿¶­×¿µÄÄ§½«·ÉÁ®·âÓ¡£¬·âÓ¡µÄÕó·¨·Ö±ðÎ»ÓÚÎ÷Á¹µØÍ¼µÄËÄ¸ö²»Í¬·½Î»£¬Ö»ÓÐ½â³ýÕâËÄ´¦·âÓ¡£¬²ÅÄÜ¿ªÆôÄ§Áú¹¬ÕæÕýµÄÈë¿Ú¡£",
 		options =
 		{
 			{
@@ -547,11 +547,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.PLG}},--è“¬èŽ±é˜
+		{condition = DialogCondition.School, param = {school = SchoolType.PLG}},--ÅîÀ³¸ó
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "çœ‹æ¥åªèƒ½å›žå¸ˆé—¨æ‰¾å¸ˆå‚…è¯¢é—®ä¸‹æœ‰ä½•è§£å†³åŠžæ³•ã€‚",
+		txt = "¿´À´Ö»ÄÜ»ØÊ¦ÃÅÕÒÊ¦¸µÑ¯ÎÊÏÂÓÐºÎ½â¾ö°ì·¨¡£",
 		options =
 		{
 			{
@@ -570,11 +570,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},--ç´«é˜³é—¨
+		{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},--×ÏÑôÃÅ
 		},
 		speakerID = 20820,
 		soundID = nil,
-		txt = "æ²¡é”™ï¼é‚£é­”é¾™å®«çš„å…¥å£å°±åœ¨æˆ‘èº«åŽä¸è¿œã€‚ä¸è¿‡é­”é¾™å®«çš„å…¥å£å·²ç»è¢«æŠ•é è‘£å“çš„é­”å°†é£žå»‰å°å°ï¼Œå°å°çš„é˜µæ³•åˆ†åˆ«ä½äºŽè¥¿å‡‰åœ°å›¾çš„å››ä¸ªä¸åŒæ–¹ä½ï¼Œåªæœ‰è§£é™¤è¿™å››å¤„å°å°ï¼Œæ‰èƒ½å¼€å¯é­”é¾™å®«çœŸæ­£çš„å…¥å£ã€‚",
+		txt = "Ã»´í£¡ÄÇÄ§Áú¹¬µÄÈë¿Ú¾ÍÔÚÎÒÉíºó²»Ô¶¡£²»¹ýÄ§Áú¹¬µÄÈë¿ÚÒÑ¾­±»Í¶¿¿¶­×¿µÄÄ§½«·ÉÁ®·âÓ¡£¬·âÓ¡µÄÕó·¨·Ö±ðÎ»ÓÚÎ÷Á¹µØÍ¼µÄËÄ¸ö²»Í¬·½Î»£¬Ö»ÓÐ½â³ýÕâËÄ´¦·âÓ¡£¬²ÅÄÜ¿ªÆôÄ§Áú¹¬ÕæÕýµÄÈë¿Ú¡£",
 		options =
 		{
 			{
@@ -592,11 +592,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},--ç´«é˜³é—¨
+		{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},--×ÏÑôÃÅ
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "çœ‹æ¥åªèƒ½å›žå¸ˆé—¨æ‰¾å¸ˆå‚…è¯¢é—®ä¸‹æœ‰ä½•è§£å†³åŠžæ³•ã€‚",
+		txt = "¿´À´Ö»ÄÜ»ØÊ¦ÃÅÕÒÊ¦¸µÑ¯ÎÊÏÂÓÐºÎ½â¾ö°ì·¨¡£",
 		options =
 		{
 			{
@@ -615,11 +615,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.YXG}},--äº‘éœ„å®«
+		{condition = DialogCondition.School, param = {school = SchoolType.YXG}},--ÔÆÏö¹¬
 		},
 		speakerID = 20820,
 		soundID = nil,
-		txt = "æ²¡é”™ï¼é‚£é­”é¾™å®«çš„å…¥å£å°±åœ¨æˆ‘èº«åŽä¸è¿œã€‚ä¸è¿‡é­”é¾™å®«çš„å…¥å£å·²ç»è¢«æŠ•é è‘£å“çš„é­”å°†é£žå»‰å°å°ï¼Œå°å°çš„é˜µæ³•åˆ†åˆ«ä½äºŽè¥¿å‡‰åœ°å›¾çš„å››ä¸ªä¸åŒæ–¹ä½ï¼Œåªæœ‰è§£é™¤è¿™å››å¤„å°å°ï¼Œæ‰èƒ½å¼€å¯é­”é¾™å®«çœŸæ­£çš„å…¥å£ã€‚",
+		txt = "Ã»´í£¡ÄÇÄ§Áú¹¬µÄÈë¿Ú¾ÍÔÚÎÒÉíºó²»Ô¶¡£²»¹ýÄ§Áú¹¬µÄÈë¿ÚÒÑ¾­±»Í¶¿¿¶­×¿µÄÄ§½«·ÉÁ®·âÓ¡£¬·âÓ¡µÄÕó·¨·Ö±ðÎ»ÓÚÎ÷Á¹µØÍ¼µÄËÄ¸ö²»Í¬·½Î»£¬Ö»ÓÐ½â³ýÕâËÄ´¦·âÓ¡£¬²ÅÄÜ¿ªÆôÄ§Áú¹¬ÕæÕýµÄÈë¿Ú¡£",
 		options =
 		{
 			{
@@ -637,11 +637,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.School, param = {school = SchoolType.YXG}},--äº‘éœ„å®«
+		{condition = DialogCondition.School, param = {school = SchoolType.YXG}},--ÔÆÏö¹¬
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "çœ‹æ¥åªèƒ½å›žå¸ˆé—¨æ‰¾å¸ˆå‚…è¯¢é—®ä¸‹æœ‰ä½•è§£å†³åŠžæ³•ã€‚",
+		txt = "¿´À´Ö»ÄÜ»ØÊ¦ÃÅÕÒÊ¦¸µÑ¯ÎÊÏÂÓÐºÎ½â¾ö°ì·¨¡£",
 		options =
 		{
 			{
@@ -655,15 +655,15 @@ DialogModelDB =
 			}
 		},
 	},
-	---37~38çº§ä»»åŠ¡---------
-	[1475] =    -----------æ´›é˜³å¢æ¤
+	---37~38¼¶ÈÎÎñ---------
+	[1475] =    -----------ÂåÑôÂ¬Ö²
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 20049,
-		txt = "å·¦é“é•¿æ¯”ä½ å…ˆä¸€æ­¥åˆ°äº†ï¼Œä»–æ­¤æ—¶æ­£åœ¨çš‡å®«æ•‘é†’é™›ä¸‹ï¼Œä½ ä¹Ÿå¿«è¿›åŽ»å§ã€‚",
+		txt = "×óµÀ³¤±ÈÄãÏÈÒ»²½µ½ÁË£¬Ëû´ËÊ±ÕýÔÚ»Ê¹¬¾ÈÐÑ±ÝÏÂ£¬ÄãÒ²¿ì½øÈ¥°É¡£",
 		options =
 		{
 			{
@@ -671,12 +671,12 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 131, tarX = 35, tarY = 10}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 131, tarX = 35, tarY = 10}},--ÇÐ»»³¡¾°
 						},
 			}
 		},
 	},
-	[1476] =             -------------ä¸»çº¿ä»»åŠ¡37-38ï¼Œä»»åŠ¡ID1426ï¼Œä¸Šäº¤ç‰©å“ï¼Œè€äººè´¢äº§ã€‚
+	[1476] =             -------------Ö÷ÏßÈÎÎñ37-38£¬ÈÎÎñID1426£¬ÉÏ½»ÎïÆ·£¬ÀÏÈË²Æ²ú¡£
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -685,12 +685,12 @@ DialogModelDB =
 		},
 		speakerID = 20944,
 		soundID = nil,
-		txt = "æˆ‘çš„ä¸œè¥¿ä½ æ‰¾åˆ°äº†å—ï¼Ÿ",
+		txt = "ÎÒµÄ¶«Î÷ÄãÕÒµ½ÁËÂð£¿",
 		options = 
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ææ–™",
+				optionTxt = "ÉÏ½»²ÄÁÏ",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 1426,itemsInfo = {{itemID = 1041010, count = 1}}},},
@@ -698,7 +698,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[1477] =             -------------ä¸»çº¿ä»»åŠ¡37-38ï¼Œä»»åŠ¡ID1420ï¼Œä¸Šäº¤ç‰©å“ï¼Œç‚¼åŒ–è½©è¾•å›¾ã€‚
+	[1477] =             -------------Ö÷ÏßÈÎÎñ37-38£¬ÈÎÎñID1420£¬ÉÏ½»ÎïÆ·£¬Á¶»¯ÐùÔ¯Í¼¡£
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -707,12 +707,12 @@ DialogModelDB =
 		},
 		speakerID = 20929,
 		soundID = nil,
-		txt = "é’çŽ„ä¹‹æ°”ï¼Œç´«é˜³ä¹‹ç«ï¼Œå‡æ˜¯ç‚¼åŒ–è½©è¾•å›¾å¿…å¤‡ææ–™ï¼Œä½ éƒ½æ‰¾é½äº†å—ï¼Ÿ",
+		txt = "ÇàÐþÖ®Æø£¬×ÏÑôÖ®»ð£¬¾ùÊÇÁ¶»¯ÐùÔ¯Í¼±Ø±¸²ÄÁÏ£¬Äã¶¼ÕÒÆëÁËÂð£¿",
 		options = 
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ææ–™",
+				optionTxt = "ÉÏ½»²ÄÁÏ",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 1420,itemsInfo = {{itemID = 1041009, count = 1},{itemID = 1041011, count = 1},{itemID = 1041012, count = 1}}},},
@@ -720,7 +720,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[1478] =             -------------ä¸»çº¿ä»»åŠ¡37-38ï¼Œä»»åŠ¡ID1423ï¼Œä¸Šäº¤ç‰©å“ï¼ŒçœŸé¾™ä¹‹æ°”ã€‚
+	[1478] =             -------------Ö÷ÏßÈÎÎñ37-38£¬ÈÎÎñID1423£¬ÉÏ½»ÎïÆ·£¬ÕæÁúÖ®Æø¡£
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -729,12 +729,12 @@ DialogModelDB =
 		},
 		speakerID = 20929,
 		soundID = nil,
-		txt = "çœŸé¾™ä¹‹æ°”ä¹ƒæ•‘é†’é™›ä¸‹çš„å…³é”®ï¼Œå°†ä¹‹äº¤ç»™æˆ‘ï¼Œè´«é“è‡ªæœ‰æ–¹æ³•æ•‘é†’é™›ä¸‹ã€‚",
+		txt = "ÕæÁúÖ®ÆøÄË¾ÈÐÑ±ÝÏÂµÄ¹Ø¼ü£¬½«Ö®½»¸øÎÒ£¬Æ¶µÀ×ÔÓÐ·½·¨¾ÈÐÑ±ÝÏÂ¡£",
 		options = 
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ææ–™",
+				optionTxt = "ÉÏ½»²ÄÁÏ",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 1423,itemsInfo = {{itemID = 1041013, count = 1}}},},
@@ -749,7 +749,7 @@ DialogModelDB =
 		{},
 		speakerID = 29030,
 		soundID = nil,
-		txt = "å¤šè°¢è‹±é›„ç›¸åŠ©ï¼ŒæŠŠä½ å–å¾—çš„ææ–™äº¤åˆ°æˆ‘è¿™ï¼Œè€å¤«è¿™ä¾¿ä¿®å¤ç½—ç›˜ä¸ºä½ ç®—å¾—æŽå‚•çš„ä¸‹è½ã€‚",
+		txt = "¶àÐ»Ó¢ÐÛÏàÖú£¬°ÑÄãÈ¡µÃµÄ²ÄÁÏ½»µ½ÎÒÕâ£¬ÀÏ·òÕâ±ãÐÞ¸´ÂÞÅÌÎªÄãËãµÃÀî‚àµÄÏÂÂä¡£",
 		options =
 		{
 			{
@@ -769,7 +769,7 @@ DialogModelDB =
 		{},
 		speakerID = 29030,
 		soundID = nil,
-		txt = "è‹±é›„è¾›è‹¦äº†ï¼Œå¾è¿™ä¾¿æ–½æ³•ä¸ºä½ å¬å”¤é‚£æŽå‚•çš„äº¡é­‚ï¼",
+		txt = "Ó¢ÐÛÐÁ¿àÁË£¬ÎáÕâ±ãÊ©·¨ÎªÄãÕÙ»½ÄÇÀî‚àµÄÍö»ê£¡",
 		options =
 		{
 			{
@@ -782,8 +782,8 @@ DialogModelDB =
 			}
 		},
 	},
----å¾ªçŽ¯ä»»åŠ¡--------------------------------------------------------------
-----------å¤©é“ä»»åŠ¡å¯¹è¯ï¼ŒIDï¼š4001~4500-----------
+---Ñ­»·ÈÎÎñ--------------------------------------------------------------
+----------ÌìµÀÈÎÎñ¶Ô»°£¬ID£º4001~4500-----------
 	[4001] =
 	{
 		dialogType = DialogType.HasOption,
@@ -791,12 +791,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25001,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å±±è‡Šï¼Œå½“å¹´è¢«é˜æ•™å›°äºŽå°ç¥žå°å†…ï¼Œä»Šæ—¥æˆ‘é‡èŽ·è‡ªç”±ï¼Œå®šè¦æ€å®ƒä¸ªç—›å¿«ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§É½ëý£¬µ±Äê±»²û½ÌÀ§ÓÚ·âÉñÌ¨ÄÚ£¬½ñÈÕÎÒÖØ»ñ×ÔÓÉ£¬¶¨ÒªÉ±Ëü¸öÍ´¿ì£¡",
 		options =
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4001,mapID = nil,type = "heaven", value = 1,}},
@@ -804,7 +804,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -820,12 +820,12 @@ DialogModelDB =
 		},
 		speakerID = 25002,
 		
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”é’¦åŽŸï¼Œå½“å¹´æƒœè´¥äºŽé˜æ•™æ‰‹ä¸­ï¼Œè¢«å¼ºè¡Œå›°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™è¡€å€ºè¡€å¿ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÇÕÔ­£¬µ±ÄêÏ§°ÜÓÚ²û½ÌÊÖÖÐ£¬±»Ç¿ÐÐÀ§ÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÑªÕ®Ñª³¥£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4002,mapID = nil,type = "heaven", value = 1,}},
@@ -833,7 +833,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -848,12 +848,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25003,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”è¯¸çŠï¼Œå½“å¹´è¢«é˜æ•™å°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å¿…è¦é˜æ•™ä»˜å‡ºä»£ä»·ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Öîêù£¬µ±Äê±»²û½Ì·âÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ±ØÒª²û½Ì¸¶³ö´ú¼Û£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4003,mapID = nil,type = "heaven", value = 1,}},
@@ -861,7 +861,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -876,12 +876,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25004,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å†¥é˜´ï¼Œå½“å¹´åŠ›æŒºæˆªæ•™ï¼Œå´è¢«é˜æ•™å°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥æˆ‘ç ´å°è€Œå‡ºï¼Œå®šè¦åŠ©æˆªæ•™è¦†ç­é˜æ•™ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Ú¤Òõ£¬µ±ÄêÁ¦Í¦½Ø½Ì£¬È´±»²û½Ì·âÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕÎÒÆÆ·â¶ø³ö£¬¶¨ÒªÖú½Ø½Ì¸²Ãð²û½Ì£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4004,mapID = nil,type = "heaven", value = 1,}},
@@ -889,7 +889,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -904,12 +904,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25005,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ç‚Žé¡·ï¼Œå½“å¹´è¢«é˜æ•™å›°äºŽå°ç¥žå°å†…ï¼Œä»Šæ—¥æˆ‘é‡èŽ·è‡ªç”±ï¼Œå®šè¦æ€å®ƒä¸ªç—›å¿«ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Ñ×Çê£¬µ±Äê±»²û½ÌÀ§ÓÚ·âÉñÌ¨ÄÚ£¬½ñÈÕÎÒÖØ»ñ×ÔÓÉ£¬¶¨ÒªÉ±Ëü¸öÍ´¿ì£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4005,mapID = nil,type = "heaven", value = 1,}},
@@ -917,7 +917,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -932,12 +932,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25006,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å½“åº·ï¼Œå½“å¹´æƒœè´¥äºŽé˜æ•™æ‰‹ä¸­ï¼Œè¢«å¼ºè¡Œå›°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™è¡€å€ºè¡€å¿ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§µ±¿µ£¬µ±ÄêÏ§°ÜÓÚ²û½ÌÊÖÖÐ£¬±»Ç¿ÐÐÀ§ÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÑªÕ®Ñª³¥£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4006,mapID = nil,type = "heaven", value = 1,}},
@@ -945,7 +945,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -960,12 +960,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25007,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”èƒ¡ä½™ï¼Œå½“å¹´è¢«é˜æ•™å°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å¿…è¦é˜æ•™ä»˜å‡ºä»£ä»·ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ºúÓà£¬µ±Äê±»²û½Ì·âÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ±ØÒª²û½Ì¸¶³ö´ú¼Û£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4007,mapID = nil,type = "heaven", value = 1,}},
@@ -973,7 +973,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -988,12 +988,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25008,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å¥‘ä¿žï¼Œå½“å¹´åŠ›æŒºæˆªæ•™ï¼Œå´è¢«é˜æ•™å°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥æˆ‘ç ´å°è€Œå‡ºï¼Œå®šè¦åŠ©æˆªæ•™è¦†ç­é˜æ•™ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÆõÓá£¬µ±ÄêÁ¦Í¦½Ø½Ì£¬È´±»²û½Ì·âÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕÎÒÆÆ·â¶ø³ö£¬¶¨ÒªÖú½Ø½Ì¸²Ãð²û½Ì£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4008,mapID = nil,type = "heaven", value = 1,}},
@@ -1001,7 +1001,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1016,12 +1016,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25009,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ç‹»çŒŠï¼Œå½“å¹´è¢«é˜æ•™å›°äºŽå°ç¥žå°å†…ï¼Œä»Šæ—¥æˆ‘é‡èŽ·è‡ªç”±ï¼Œå®šè¦æ€å®ƒä¸ªç—›å¿«ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§â¡â¥£¬µ±Äê±»²û½ÌÀ§ÓÚ·âÉñÌ¨ÄÚ£¬½ñÈÕÎÒÖØ»ñ×ÔÓÉ£¬¶¨ÒªÉ±Ëü¸öÍ´¿ì£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4009,mapID = nil,type = "heaven", value = 1,}},
@@ -1029,7 +1029,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1044,12 +1044,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25010,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ä¿®è›‡ï¼Œå½“å¹´æƒœè´¥äºŽé˜æ•™æ‰‹ä¸­ï¼Œè¢«å¼ºè¡Œå›°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™è¡€å€ºè¡€å¿ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÐÞÉß£¬µ±ÄêÏ§°ÜÓÚ²û½ÌÊÖÖÐ£¬±»Ç¿ÐÐÀ§ÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÑªÕ®Ñª³¥£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4010,mapID = nil,type = "heaven", value = 1,}},
@@ -1057,7 +1057,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1072,12 +1072,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25011,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”æ—¥çŒ‹ï¼Œå½“å¹´è¢«é˜æ•™å°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å¿…è¦é˜æ•™ä»˜å‡ºä»£ä»·ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÈÕªY£¬µ±Äê±»²û½Ì·âÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ±ØÒª²û½Ì¸¶³ö´ú¼Û£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4011,mapID = nil,type = "heaven", value = 1,}},
@@ -1085,7 +1085,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1100,12 +1100,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25012,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å‰‘é­”ï¼Œå½“å¹´åŠ›æŒºæˆªæ•™ï¼Œå´è¢«é˜æ•™å°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥æˆ‘ç ´å°è€Œå‡ºï¼Œå®šè¦åŠ©æˆªæ•™è¦†ç­é˜æ•™ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§½£Ä§£¬µ±ÄêÁ¦Í¦½Ø½Ì£¬È´±»²û½Ì·âÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕÎÒÆÆ·â¶ø³ö£¬¶¨ÒªÖú½Ø½Ì¸²Ãð²û½Ì£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4012,mapID = nil,type = "heaven", value = 1,}},
@@ -1113,7 +1113,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1128,12 +1128,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25013,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”è‹±æ‹› ï¼Œå½“å¹´è¢«é˜æ•™å›°äºŽå°ç¥žå°å†…ï¼Œä»Šæ—¥æˆ‘é‡èŽ·è‡ªç”±ï¼Œå®šè¦æ€å®ƒä¸ªç—›å¿«ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Ó¢ÕÐ £¬µ±Äê±»²û½ÌÀ§ÓÚ·âÉñÌ¨ÄÚ£¬½ñÈÕÎÒÖØ»ñ×ÔÓÉ£¬¶¨ÒªÉ±Ëü¸öÍ´¿ì£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4013,mapID = nil,type = "heaven", value = 1,}},
@@ -1141,7 +1141,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1156,12 +1156,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25014,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”é’ä¸˜ï¼Œå½“å¹´ä¸æ…Žè¢«å›°äºŽå°ç¥žå°ä¸‹ï¼Œä»Šæ—¥å¿…è¦å°†äººé—´æ£ä¸ªå¤©ç¿»åœ°è¦†ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÇàÇð£¬µ±Äê²»É÷±»À§ÓÚ·âÉñÌ¨ÏÂ£¬½ñÈÕ±ØÒª½«ÈË¼äµ·¸öÌì·­µØ¸²£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4014,mapID = nil,type = "heaven", value = 1,}},
@@ -1169,7 +1169,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1184,12 +1184,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25015,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å¤”ç‰›ï¼Œå…¥æµ·åˆ™å¿…é£Žé›¨ï¼Œä½•äººæ•¢æ‹¦æˆ‘ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÙçÅ££¬Èëº£Ôò±Ø·çÓê£¬ºÎÈË¸ÒÀ¹ÎÒ£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4015,mapID = nil,type = "heaven", value = 1,}},
@@ -1197,7 +1197,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1212,12 +1212,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25016,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”è‚¥é—ï¼Œå¾æ³•åŠ›é€šå¤©ï¼Œå‡ºåˆ™å¿…æ—±ï¼Œæ— äººèƒ½æ•Œï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§·ÊÒÅ£¬Îá·¨Á¦Í¨Ìì£¬³öÔò±Øºµ£¬ÎÞÈËÄÜµÐ£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4016,mapID = nil,type = "heaven", value = 1,}},
@@ -1225,7 +1225,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1240,12 +1240,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25017,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–å…½å¼€æ˜Žï¼ŒåŠ›å¤§æ— ç©·ï¼Œå¤©ä¸‹åªä¸è¿‡æ˜¯æˆ‘å–é£Ÿçš„åœºæ‰€ã€‚",
+		txt = "ÎáÄËÉÏ¹ÅÑýÊÞ¿ªÃ÷£¬Á¦´óÎÞÇî£¬ÌìÏÂÖ»²»¹ýÊÇÎÒÈ¡Ê³µÄ³¡Ëù¡£",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4017,mapID = nil,type = "heaven", value = 1,}},
@@ -1253,7 +1253,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1268,12 +1268,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25018,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–å…½ç´«é­ƒï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÊÞ×Ï÷É£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4018,mapID = nil,type = "heaven", value = 1,}},
@@ -1281,7 +1281,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1296,12 +1296,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25019,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”èžŸè›Ÿï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÃøòÔ£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4019,mapID = nil,type = "heaven", value = 1,}},
@@ -1309,7 +1309,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1324,12 +1324,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25020,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å¥èŠ’ï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§¾äÃ¢£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4020,mapID = nil,type = "heaven", value = 1,}},
@@ -1337,7 +1337,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1352,12 +1352,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25021,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å‡¿é½¿ï¼Œå¾èº«åšå¦‚ç£çŸ³ï¼Œå¾æŠ“å‰Šé“å¦‚æ³¥ï¼Œè¿™å¤©ä¸‹è¿˜æ²¡æœ‰æˆ‘ä¸èƒ½åšçš„äº‹ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Ôä³Ý£¬ÎáÉí¼áÈçÅÍÊ¯£¬Îá×¥Ï÷ÌúÈçÄà£¬ÕâÌìÏÂ»¹Ã»ÓÐÎÒ²»ÄÜ×öµÄÊÂ£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4021,mapID = nil,type = "heaven", value = 1,}},
@@ -1365,7 +1365,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1380,12 +1380,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25022,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”è²”è²…ï¼Œå¾å¥½æ€æˆ®ï¼Œå¤©ä¸‹ä¼—ç”Ÿï¼Œå‡æ˜¯å¯æ€ä¹‹ç‰©ï¼Œä¸Žè¼èšä½•å¼‚ï¼Ÿ",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§õùõ÷£¬ÎáºÃÉ±Â¾£¬ÌìÏÂÖÚÉú£¬¾ùÊÇ¿ÉÉ±Ö®Îï£¬Óëò÷ÒÏºÎÒì£¿",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4022,mapID = nil,type = "heaven", value = 1,}},
@@ -1393,7 +1393,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1408,12 +1408,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25023,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ç‹¡çŒŠï¼Œå¾å¥½æ€æˆ®ï¼Œå¤©ä¸‹ä¼—ç”Ÿï¼Œå‡æ˜¯å¯æ€ä¹‹ç‰©ï¼Œä¸Žè¼èšä½•å¼‚ï¼Ÿ",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§½Æâ¥£¬ÎáºÃÉ±Â¾£¬ÌìÏÂÖÚÉú£¬¾ùÊÇ¿ÉÉ±Ö®Îï£¬Óëò÷ÒÏºÎÒì£¿",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4023,mapID = nil,type = "heaven", value = 1,}},
@@ -1421,7 +1421,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1436,12 +1436,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25024,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ç‹é¹—ï¼Œå¾å¥½æ€æˆ®ï¼Œå¤©ä¸‹ä¼—ç”Ÿï¼Œå‡æ˜¯å¯æ€ä¹‹ç‰©ï¼Œä¸Žè¼èšä½•å¼‚ï¼Ÿ",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§áóðÊ£¬ÎáºÃÉ±Â¾£¬ÌìÏÂÖÚÉú£¬¾ùÊÇ¿ÉÉ±Ö®Îï£¬Óëò÷ÒÏºÎÒì£¿",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4024,mapID = nil,type = "heaven", value = 1,}},
@@ -1449,7 +1449,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1464,12 +1464,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25025,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–å…½è¯¸æ€€ï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÊÞÖî»³£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4025,mapID = nil,type = "heaven", value = 1,}},
@@ -1477,7 +1477,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1492,12 +1492,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25026,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–å…½å¿…æ–¹ï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÊÞ±Ø·½£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4026,mapID = nil,type = "heaven", value = 1,}},
@@ -1505,7 +1505,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1520,12 +1520,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25027,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ç‰›æŸƒï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Å£èÚ£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4027,mapID = nil,type = "heaven", value = 1,}},
@@ -1533,7 +1533,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1548,12 +1548,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25028,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”å°šé£¨ï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÉÐ÷Ï£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4028,mapID = nil,type = "heaven", value = 1,}},
@@ -1561,7 +1561,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1576,12 +1576,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25029,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”ç¦ºå·ï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§Ø®ºÅ£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4029,mapID = nil,type = "heaven", value = 1,}},
@@ -1589,7 +1589,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1604,12 +1604,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 25030,
-		txt = "å¾ä¹ƒä¸Šå¤å¦–é­”é›¨å±ï¼Œå½“å¹´ä¸æœé˜æ•™ï¼Œè¢«å¼ºè¡Œå°äºŽå°é­”å°ä¸‹ï¼Œä»Šæ—¥å®šè¦é˜æ•™åå€å¥‰è¿˜ï¼",
+		txt = "ÎáÄËÉÏ¹ÅÑýÄ§ÓêÆÁ£¬µ±Äê²»·þ²û½Ì£¬±»Ç¿ÐÐ·âÓÚ·âÄ§Ì¨ÏÂ£¬½ñÈÕ¶¨Òª²û½ÌÊ®±¶·î»¹£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},tiredness = 1,},},},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4030,mapID = nil,type = "heaven", value = 1,}},
@@ -1617,7 +1617,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç­‰æˆ‘ç»„å¥½é˜Ÿå†æ¥",
+				optionTxt = "µÈÎÒ×éºÃ¶ÓÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -1625,14 +1625,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4031] =            ------------------å¤©é“æŒ‡å¼•å¯¹è¯
+	[4031] =            ------------------ÌìµÀÖ¸Òý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "å°ç¥žå°ä¸€å¦–é­”<npcID>ç ´å°è€Œå‡ºï¼Œå…¶å‡¶æš´å—œè¡€ï¼Œå¯¹æˆ‘é˜æ•™ä¸€ç›´é¢‡æœ‰æ„è§ï¼Œä»»å…¶å‘å±•å®šä¼šå±å®³ä¸€æ–¹ï¼Œä½ é€Ÿå‰å¾€<mapID,x,y>å°†ä»–æ–©æ€ã€‚",
+		txt = "·âÉñÌ¨Ò»ÑýÄ§<npcID>ÆÆ·â¶ø³ö£¬ÆäÐ×±©ÊÈÑª£¬¶ÔÎÒ²û½ÌÒ»Ö±ÆÄÓÐÒâ¼û£¬ÈÎÆä·¢Õ¹¶¨»áÎ£º¦Ò»·½£¬ÄãËÙÇ°Íù<mapID,x,y>½«ËûÕ¶É±¡£",
 		options =
 		{
 			{
@@ -1654,7 +1654,7 @@ DialogModelDB =
 		{condition = DialogCondition.HasTask, param = {taskID = 10008, statue = false,errorID = 28}},
 		},
 		speakerID = 29008,
-		txt = "æˆªæ•™å¦–é“ï¼Œä¸Šå¤é‚ªé­”ï¼Œå‡ä¼šä¸ºç¥¸äººé—´ï¼Œè¿˜æœ›é“å‹èƒ½é™å¦–ä¼é­”ï¼ŒåŒ¡æ‰¶å¤©é“ã€‚",
+		txt = "½Ø½ÌÑýµÀ£¬ÉÏ¹ÅÐ°Ä§£¬¾ù»áÎª»öÈË¼ä£¬»¹ÍûµÀÓÑÄÜ½µÑý·üÄ§£¬¿ï·öÌìµÀ¡£",
 		options = 
 		{
 			{
@@ -1667,8 +1667,8 @@ DialogModelDB =
 			},
 		},
 	},
-----------å¸ˆé—¨ä»»åŠ¡å¯¹è¯ï¼ŒIDï¼š4200~5000-----------------------------
-----------------------æŽ¥ä»»åŠ¡æ–‡æœ¬-------------------------------
+----------Ê¦ÃÅÈÎÎñ¶Ô»°£¬ID£º4200~5000-----------------------------
+----------------------½ÓÈÎÎñÎÄ±¾-------------------------------
      [4201] =
 	{
 		dialogType = DialogType.HasOption,
@@ -1676,7 +1676,7 @@ DialogModelDB =
 		{},
 		speakerID = 29040,
 		
-		txt = "å‘ƒ~å¸ˆé—¨ä»»åŠ¡è¯·ç§»æ­¥æœ¬é—¨æ´¾æŽŒé—¨é¢†å–ï¼",
+		txt = "ßÀ~Ê¦ÃÅÈÎÎñÇëÒÆ²½±¾ÃÅÅÉÕÆÃÅÁìÈ¡£¡",
 		options =
 		{},
 	},
@@ -1691,7 +1691,7 @@ DialogModelDB =
 		},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "è¶Šæ˜¯å¤§çš„é—¨æ´¾æ—¥å¸¸æ‚ç‰©è¶Šå¤šï¼ä½ æ¥å¾—æ­£å¥½ï¼Œæˆ‘è¿™é‡Œæ­£æœ‰äº›ä»»åŠ¡äº¤ç»™ä½ åŽ»åšï¼Œä¹Ÿæ˜¯ä½ é”¤ç‚¼é“å¿ƒçš„å¤§å¥½æœºä¼šã€‚",
+		txt = "Ô½ÊÇ´óµÄÃÅÅÉÈÕ³£ÔÓÎïÔ½¶à£¡ÄãÀ´µÃÕýºÃ£¬ÎÒÕâÀïÕýÓÐÐ©ÈÎÎñ½»¸øÄãÈ¥×ö£¬Ò²ÊÇÄã´¸Á¶µÀÐÄµÄ´óºÃ»ú»á¡£",
 		options = 
 		{
 			{
@@ -1713,7 +1713,7 @@ DialogModelDB =
 		},
 		speakerID = 29041,
 		
-		txt = "å‘ƒ~å¸ˆé—¨ä»»åŠ¡è¯·ç§»æ­¥æœ¬é—¨æ´¾æŽŒé—¨é¢†å–ï¼",
+		txt = "ßÀ~Ê¦ÃÅÈÎÎñÇëÒÆ²½±¾ÃÅÅÉÕÆÃÅÁìÈ¡£¡",
 		options =
 		{},
 	},
@@ -1728,7 +1728,7 @@ DialogModelDB =
 		},
 		speakerID = 20006,
 		
-		txt = "è¶Šæ˜¯å¤§çš„é—¨æ´¾æ—¥å¸¸æ‚ç‰©è¶Šå¤šï¼ä½ æ¥å¾—æ­£å¥½ï¼Œæˆ‘è¿™é‡Œæ­£æœ‰äº›ä»»åŠ¡äº¤ç»™ä½ åŽ»åšï¼Œä¹Ÿæ˜¯ä½ é”¤ç‚¼é“å¿ƒçš„å¤§å¥½æœºä¼šã€‚",
+		txt = "Ô½ÊÇ´óµÄÃÅÅÉÈÕ³£ÔÓÎïÔ½¶à£¡ÄãÀ´µÃÕýºÃ£¬ÎÒÕâÀïÕýÓÐÐ©ÈÎÎñ½»¸øÄãÈ¥×ö£¬Ò²ÊÇÄã´¸Á¶µÀÐÄµÄ´óºÃ»ú»á¡£",
 		options = 
 		{
 			{
@@ -1750,7 +1750,7 @@ DialogModelDB =
 		},
 		speakerID = 29043,
 		
-		txt = "å‘ƒ~å¸ˆé—¨ä»»åŠ¡è¯·ç§»æ­¥æœ¬é—¨æ´¾æŽŒé—¨é¢†å–ï¼",
+		txt = "ßÀ~Ê¦ÃÅÈÎÎñÇëÒÆ²½±¾ÃÅÅÉÕÆÃÅÁìÈ¡£¡",
 		options =
 		{},
 	},
@@ -1765,7 +1765,7 @@ DialogModelDB =
 		},
 		speakerID = 20008,
 		
-		txt = "è¶Šæ˜¯å¤§çš„é—¨æ´¾æ—¥å¸¸æ‚ç‰©è¶Šå¤šï¼ä½ æ¥å¾—æ­£å¥½ï¼Œæˆ‘è¿™é‡Œæ­£æœ‰äº›ä»»åŠ¡äº¤ç»™ä½ åŽ»åšï¼Œä¹Ÿæ˜¯ä½ é”¤ç‚¼é“å¿ƒçš„å¤§å¥½æœºä¼šã€‚",
+		txt = "Ô½ÊÇ´óµÄÃÅÅÉÈÕ³£ÔÓÎïÔ½¶à£¡ÄãÀ´µÃÕýºÃ£¬ÎÒÕâÀïÕýÓÐÐ©ÈÎÎñ½»¸øÄãÈ¥×ö£¬Ò²ÊÇÄã´¸Á¶µÀÐÄµÄ´óºÃ»ú»á¡£",
 		options = 
 		{
 			{
@@ -1785,7 +1785,7 @@ DialogModelDB =
 		{},
 		speakerID = 29042,
 		
-		txt = "å‘ƒ~å¸ˆé—¨ä»»åŠ¡è¯·ç§»æ­¥æœ¬é—¨æ´¾æŽŒé—¨é¢†å–ï¼",
+		txt = "ßÀ~Ê¦ÃÅÈÎÎñÇëÒÆ²½±¾ÃÅÅÉÕÆÃÅÁìÈ¡£¡",
 		options =
 		{},
 	},
@@ -1800,7 +1800,7 @@ DialogModelDB =
 		},
 		speakerID = 20009,
 		
-		txt = "è¶Šæ˜¯å¤§çš„é—¨æ´¾æ—¥å¸¸æ‚ç‰©è¶Šå¤šï¼ä½ æ¥å¾—æ­£å¥½ï¼Œæˆ‘è¿™é‡Œæ­£æœ‰äº›ä»»åŠ¡äº¤ç»™ä½ åŽ»åšï¼Œä¹Ÿæ˜¯ä½ é”¤ç‚¼é“å¿ƒçš„å¤§å¥½æœºä¼šã€‚",
+		txt = "Ô½ÊÇ´óµÄÃÅÅÉÈÕ³£ÔÓÎïÔ½¶à£¡ÄãÀ´µÃÕýºÃ£¬ÎÒÕâÀïÕýÓÐÐ©ÈÎÎñ½»¸øÄãÈ¥×ö£¬Ò²ÊÇÄã´¸Á¶µÀÐÄµÄ´óºÃ»ú»á¡£",
 		options = 
 		{
 			{
@@ -1820,7 +1820,7 @@ DialogModelDB =
 		{},
 		speakerID = 29044,
 		
-		txt = "å‘ƒ~å¸ˆé—¨ä»»åŠ¡è¯·ç§»æ­¥æœ¬é—¨æ´¾æŽŒé—¨é¢†å–ï¼",
+		txt = "ßÀ~Ê¦ÃÅÈÎÎñÇëÒÆ²½±¾ÃÅÅÉÕÆÃÅÁìÈ¡£¡",
 		options =
 		{},
 	},
@@ -1835,7 +1835,7 @@ DialogModelDB =
 		},
 		speakerID = 20005,
 		
-		txt = "è¶Šæ˜¯å¤§çš„é—¨æ´¾æ—¥å¸¸æ‚ç‰©è¶Šå¤šï¼ä½ æ¥å¾—æ­£å¥½ï¼Œæˆ‘è¿™é‡Œæ­£æœ‰äº›ä»»åŠ¡äº¤ç»™ä½ åŽ»åšï¼Œä¹Ÿæ˜¯ä½ é”¤ç‚¼é“å¿ƒçš„å¤§å¥½æœºä¼šã€‚",
+		txt = "Ô½ÊÇ´óµÄÃÅÅÉÈÕ³£ÔÓÎïÔ½¶à£¡ÄãÀ´µÃÕýºÃ£¬ÎÒÕâÀïÕýÓÐÐ©ÈÎÎñ½»¸øÄãÈ¥×ö£¬Ò²ÊÇÄã´¸Á¶µÀÐÄµÄ´óºÃ»ú»á¡£",
 		options = 
 		{
 			{
@@ -1855,7 +1855,7 @@ DialogModelDB =
 		{},
 		speakerID = 29045,
 		
-		txt = "å‘ƒ~å¸ˆé—¨ä»»åŠ¡è¯·ç§»æ­¥æœ¬é—¨æ´¾æŽŒé—¨é¢†å–ï¼",
+		txt = "ßÀ~Ê¦ÃÅÈÎÎñÇëÒÆ²½±¾ÃÅÅÉÕÆÃÅÁìÈ¡£¡",
 		options =
 		{},
 	},
@@ -1870,7 +1870,7 @@ DialogModelDB =
 		},
 		speakerID = 20007,
 		
-		txt = "è¶Šæ˜¯å¤§çš„é—¨æ´¾æ—¥å¸¸æ‚ç‰©è¶Šå¤šï¼ä½ æ¥å¾—æ­£å¥½ï¼Œæˆ‘è¿™é‡Œæ­£æœ‰äº›ä»»åŠ¡äº¤ç»™ä½ åŽ»åšï¼Œä¹Ÿæ˜¯ä½ é”¤ç‚¼é“å¿ƒçš„å¤§å¥½æœºä¼šã€‚",
+		txt = "Ô½ÊÇ´óµÄÃÅÅÉÈÕ³£ÔÓÎïÔ½¶à£¡ÄãÀ´µÃÕýºÃ£¬ÎÒÕâÀïÕýÓÐÐ©ÈÎÎñ½»¸øÄãÈ¥×ö£¬Ò²ÊÇÄã´¸Á¶µÀÐÄµÄ´óºÃ»ú»á¡£",
 		options = 
 		{
 			{
@@ -1883,15 +1883,15 @@ DialogModelDB =
 			},
 		},
 	},
-------------------------æš—é›·æˆ˜æ–—------------------------------
-	[4230] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+------------------------°µÀ×Õ½¶·------------------------------
+	[4230] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œè¿žæˆ‘å±±é—¨ä¹Ÿä¸èƒ½å¹¸å…ã€‚èº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œæ›´åº”ä»¥æå«é—¨æ´¾å®‰å±ä¸ºå·±ä»»ã€‚æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘å‡ºçŽ°äº†ä¸€äº›<npcID>ï¼Œæˆ‘å¸Œæœ›ä½ è§£å†³å®ƒä»¬ï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬Á¬ÎÒÉ½ÃÅÒ²²»ÄÜÐÒÃâ¡£ÉíÎª±¾ÃÅµÜ×Ó£¬¸üÓ¦ÒÔº´ÎÀÃÅÅÉ°²Î£Îª¼ºÈÎ¡£¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½ü³öÏÖÁËÒ»Ð©<npcID>£¬ÎÒÏ£ÍûÄã½â¾öËüÃÇ£¡",
 		options =
 		{
 			{
@@ -1904,14 +1904,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-    [4231] =             ------------------ä¹¾å…ƒå²›æ£ä¹±å°å¦–ï¼ˆ20-30çº§ï¼‰
+    [4231] =             ------------------Ç¬Ôªµºµ·ÂÒÐ¡Ñý£¨20-30¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26001,
 		soundID = nil,
-		txt = "å˜¿å˜¿å˜¿ï¼Œæœ‰ä¸çŸ¥æ­»æ´»çš„å‡¡äººé€å‘½æ¥äº†ï¼",
+		txt = "ºÙºÙºÙ£¬ÓÐ²»ÖªËÀ»îµÄ·²ÈËËÍÃüÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -1924,14 +1924,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4232] =             ------------------ä¹¾å…ƒå²›ç‹¡çŒ¾ç›—è´¼ï¼ˆ30-40çº§ï¼‰
+    [4232] =             ------------------Ç¬Ôªµº½Æ»«µÁÔô£¨30-40¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26003,
 		soundID = nil,
-		txt = "å¯æ¶ï¼å±…ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è¸ªè¿¹ï¼Œé‚£å°±ä¸èƒ½ç•™ä½ æ´»å£äº†ï¼",
+		txt = "¿É¶ñ£¡¾ÓÈ»±»Äã·¢ÏÖÎÒµÄ×Ù¼££¬ÄÇ¾Í²»ÄÜÁôÄã»î¿ÚÁË£¡",
 		options = 
 		{
 			{
@@ -1944,14 +1944,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4233] =             ------------------ä¹¾å…ƒå²›ä½œæ­¹æµæ°“ï¼ˆ40-50çº§ï¼‰
+    [4233] =             ------------------Ç¬Ôªµº×÷´õÁ÷Ã¥£¨40-50¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26005,
 		soundID = nil,
-		txt = "æ—©å¬é—»ä»™é—¨å¼Ÿå­ä¸ªä¸ªé“æ³•éžå‡¡ï¼Œæˆ‘å°±è¦è¯•è¯•è¿™æ‰€è°“çš„é“æ³•æœ‰ä½•å¨åŠ›ï¼Ÿ",
+		txt = "ÔçÌýÎÅÏÉÃÅµÜ×Ó¸ö¸öµÀ·¨·Ç·²£¬ÎÒ¾ÍÒªÊÔÊÔÕâËùÎ½µÄµÀ·¨ÓÐºÎÍþÁ¦£¿",
 		options = 
 		{
 			{
@@ -1964,14 +1964,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4234] =             ------------------ä¹¾å…ƒå²›æ¶æ¯’å±±è´¼ï¼ˆ50-60çº§ï¼‰
+    [4234] =             ------------------Ç¬Ôªµº¶ñ¶¾É½Ôô£¨50-60¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26007,
 		soundID = nil,
-		txt = "ä»™é—¨å®åœ°ï¼Œæœ‰èƒ½è€…å±…ä¹‹ï¼Œä½ ä»¬æ˜¯æ—¶å€™è¦è®©å‡ºæ¥äº†ï¼",
+		txt = "ÏÉÃÅ±¦µØ£¬ÓÐÄÜÕß¾ÓÖ®£¬ÄãÃÇÊÇÊ±ºòÒªÈÃ³öÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -1984,14 +1984,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4235] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4235] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œè¿žæˆ‘å±±é—¨ä¹Ÿä¸èƒ½å¹¸å…ã€‚èº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œæ›´åº”ä»¥æå«é—¨æ´¾å®‰å±ä¸ºå·±ä»»ã€‚æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘å‡ºçŽ°äº†ä¸€äº›<npcID>ï¼Œæˆ‘å¸Œæœ›ä½ è§£å†³å®ƒä»¬ï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬Á¬ÎÒÉ½ÃÅÒ²²»ÄÜÐÒÃâ¡£ÉíÎª±¾ÃÅµÜ×Ó£¬¸üÓ¦ÒÔº´ÎÀÃÅÅÉ°²Î£Îª¼ºÈÎ¡£¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½ü³öÏÖÁËÒ»Ð©<npcID>£¬ÎÒÏ£ÍûÄã½â¾öËüÃÇ£¡",
 		options =
 		{
 			{
@@ -2004,14 +2004,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-    [4236] =             ------------------é‡‘éœžå±±æ£ä¹±å°å¦–ï¼ˆ20-30çº§ï¼‰
+    [4236] =             ------------------½ðÏ¼É½µ·ÂÒÐ¡Ñý£¨20-30¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26001,
 		soundID = nil,
-		txt = "å˜¿å˜¿å˜¿ï¼Œæœ‰ä¸çŸ¥æ­»æ´»çš„å‡¡äººé€å‘½æ¥äº†ï¼",
+		txt = "ºÙºÙºÙ£¬ÓÐ²»ÖªËÀ»îµÄ·²ÈËËÍÃüÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2024,14 +2024,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4237] =             ------------------é‡‘éœžå±±ç‹¡çŒ¾ç›—è´¼ï¼ˆ30-40çº§ï¼‰
+    [4237] =             ------------------½ðÏ¼É½½Æ»«µÁÔô£¨30-40¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26003,
 		soundID = nil,
-		txt = "å¯æ¶ï¼å±…ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è¸ªè¿¹ï¼Œé‚£å°±ä¸èƒ½ç•™ä½ æ´»å£äº†ï¼",
+		txt = "¿É¶ñ£¡¾ÓÈ»±»Äã·¢ÏÖÎÒµÄ×Ù¼££¬ÄÇ¾Í²»ÄÜÁôÄã»î¿ÚÁË£¡",
 		options = 
 		{
 			{
@@ -2044,14 +2044,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4238] =             ------------------é‡‘éœžå±±ä½œæ­¹æµæ°“ï¼ˆ40-50çº§ï¼‰
+    [4238] =             ------------------½ðÏ¼É½×÷´õÁ÷Ã¥£¨40-50¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26005,
 		soundID = nil,
-		txt = "æ—©å¬é—»ä»™é—¨å¼Ÿå­ä¸ªä¸ªé“æ³•éžå‡¡ï¼Œæˆ‘å°±è¦è¯•è¯•è¿™æ‰€è°“çš„é“æ³•æœ‰ä½•å¨åŠ›ï¼Ÿ",
+		txt = "ÔçÌýÎÅÏÉÃÅµÜ×Ó¸ö¸öµÀ·¨·Ç·²£¬ÎÒ¾ÍÒªÊÔÊÔÕâËùÎ½µÄµÀ·¨ÓÐºÎÍþÁ¦£¿",
 		options = 
 		{
 			{
@@ -2064,14 +2064,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4239] =             ------------------é‡‘éœžå±±æ¶æ¯’å±±è´¼ï¼ˆ50-60çº§ï¼‰
+    [4239] =             ------------------½ðÏ¼É½¶ñ¶¾É½Ôô£¨50-60¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26007,
 		soundID = nil,
-		txt = "ä»™é—¨å®åœ°ï¼Œæœ‰èƒ½è€…å±…ä¹‹ï¼Œä½ ä»¬æ˜¯æ—¶å€™è¦è®©å‡ºæ¥äº†ï¼",
+		txt = "ÏÉÃÅ±¦µØ£¬ÓÐÄÜÕß¾ÓÖ®£¬ÄãÃÇÊÇÊ±ºòÒªÈÃ³öÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2084,14 +2084,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4240] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4240] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œè¿žæˆ‘å±±é—¨ä¹Ÿä¸èƒ½å¹¸å…ã€‚èº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œæ›´åº”ä»¥æå«é—¨æ´¾å®‰å±ä¸ºå·±ä»»ã€‚æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘å‡ºçŽ°äº†ä¸€äº›<npcID>ï¼Œæˆ‘å¸Œæœ›ä½ è§£å†³å®ƒä»¬ï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬Á¬ÎÒÉ½ÃÅÒ²²»ÄÜÐÒÃâ¡£ÉíÎª±¾ÃÅµÜ×Ó£¬¸üÓ¦ÒÔº´ÎÀÃÅÅÉ°²Î£Îª¼ºÈÎ¡£¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½ü³öÏÖÁËÒ»Ð©<npcID>£¬ÎÒÏ£ÍûÄã½â¾öËüÃÇ£¡",
 		options =
 		{
 			{
@@ -2104,14 +2104,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-    [4241] =             ------------------ç´«é˜³é—¨æ£ä¹±å°å¦–ï¼ˆ20-30çº§ï¼‰
+    [4241] =             ------------------×ÏÑôÃÅµ·ÂÒÐ¡Ñý£¨20-30¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26001,
 		soundID = nil,
-		txt = "å˜¿å˜¿å˜¿ï¼Œæœ‰ä¸çŸ¥æ­»æ´»çš„å‡¡äººé€å‘½æ¥äº†ï¼",
+		txt = "ºÙºÙºÙ£¬ÓÐ²»ÖªËÀ»îµÄ·²ÈËËÍÃüÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2124,14 +2124,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4242] =             ------------------ç´«é˜³é—¨ç‹¡çŒ¾ç›—è´¼ï¼ˆ30-40çº§ï¼‰
+    [4242] =             ------------------×ÏÑôÃÅ½Æ»«µÁÔô£¨30-40¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26003,
 		soundID = nil,
-		txt = "å¯æ¶ï¼å±…ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è¸ªè¿¹ï¼Œé‚£å°±ä¸èƒ½ç•™ä½ æ´»å£äº†ï¼",
+		txt = "¿É¶ñ£¡¾ÓÈ»±»Äã·¢ÏÖÎÒµÄ×Ù¼££¬ÄÇ¾Í²»ÄÜÁôÄã»î¿ÚÁË£¡",
 		options = 
 		{
 			{
@@ -2144,14 +2144,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4243] =             ------------------ç´«é˜³é—¨ä½œæ­¹æµæ°“ï¼ˆ40-50çº§ï¼‰
+    [4243] =             ------------------×ÏÑôÃÅ×÷´õÁ÷Ã¥£¨40-50¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26005,
 		soundID = nil,
-		txt = "æ—©å¬é—»ä»™é—¨å¼Ÿå­ä¸ªä¸ªé“æ³•éžå‡¡ï¼Œæˆ‘å°±è¦è¯•è¯•è¿™æ‰€è°“çš„é“æ³•æœ‰ä½•å¨åŠ›ï¼Ÿ",
+		txt = "ÔçÌýÎÅÏÉÃÅµÜ×Ó¸ö¸öµÀ·¨·Ç·²£¬ÎÒ¾ÍÒªÊÔÊÔÕâËùÎ½µÄµÀ·¨ÓÐºÎÍþÁ¦£¿",
 		options = 
 		{
 			{
@@ -2164,14 +2164,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4244] =             ------------------ç´«é˜³é—¨æ¶æ¯’å±±è´¼ï¼ˆ50-60çº§ï¼‰
+    [4244] =             ------------------×ÏÑôÃÅ¶ñ¶¾É½Ôô£¨50-60¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26007,
 		soundID = nil,
-		txt = "ä»™é—¨å®åœ°ï¼Œæœ‰èƒ½è€…å±…ä¹‹ï¼Œä½ ä»¬æ˜¯æ—¶å€™è¦è®©å‡ºæ¥äº†ï¼",
+		txt = "ÏÉÃÅ±¦µØ£¬ÓÐÄÜÕß¾ÓÖ®£¬ÄãÃÇÊÇÊ±ºòÒªÈÃ³öÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2184,14 +2184,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4245] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4245] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œè¿žæˆ‘å±±é—¨ä¹Ÿä¸èƒ½å¹¸å…ã€‚èº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œæ›´åº”ä»¥æå«é—¨æ´¾å®‰å±ä¸ºå·±ä»»ã€‚æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘å‡ºçŽ°äº†ä¸€äº›<npcID>ï¼Œæˆ‘å¸Œæœ›ä½ è§£å†³å®ƒä»¬ï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬Á¬ÎÒÉ½ÃÅÒ²²»ÄÜÐÒÃâ¡£ÉíÎª±¾ÃÅµÜ×Ó£¬¸üÓ¦ÒÔº´ÎÀÃÅÅÉ°²Î£Îª¼ºÈÎ¡£¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½ü³öÏÖÁËÒ»Ð©<npcID>£¬ÎÒÏ£ÍûÄã½â¾öËüÃÇ£¡",
 		options =
 		{
 			{
@@ -2204,14 +2204,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-    [4246] =             ------------------äº‘éœ„å®«æ£ä¹±å°å¦–ï¼ˆ20-30çº§ï¼‰
+    [4246] =             ------------------ÔÆÏö¹¬µ·ÂÒÐ¡Ñý£¨20-30¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26001,
 		soundID = nil,
-		txt = "å˜¿å˜¿å˜¿ï¼Œæœ‰ä¸çŸ¥æ­»æ´»çš„å‡¡äººé€å‘½æ¥äº†ï¼",
+		txt = "ºÙºÙºÙ£¬ÓÐ²»ÖªËÀ»îµÄ·²ÈËËÍÃüÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2224,14 +2224,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4247] =             ------------------äº‘éœ„å®«ç‹¡çŒ¾ç›—è´¼ï¼ˆ30-40çº§ï¼‰
+    [4247] =             ------------------ÔÆÏö¹¬½Æ»«µÁÔô£¨30-40¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26003,
 		soundID = nil,
-		txt = "å¯æ¶ï¼å±…ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è¸ªè¿¹ï¼Œé‚£å°±ä¸èƒ½ç•™ä½ æ´»å£äº†ï¼",
+		txt = "¿É¶ñ£¡¾ÓÈ»±»Äã·¢ÏÖÎÒµÄ×Ù¼££¬ÄÇ¾Í²»ÄÜÁôÄã»î¿ÚÁË£¡",
 		options = 
 		{
 			{
@@ -2244,14 +2244,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4248] =             ------------------äº‘éœ„å®«ä½œæ­¹æµæ°“ï¼ˆ40-50çº§ï¼‰
+    [4248] =             ------------------ÔÆÏö¹¬×÷´õÁ÷Ã¥£¨40-50¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26005,
 		soundID = nil,
-		txt = "æ—©å¬é—»ä»™é—¨å¼Ÿå­ä¸ªä¸ªé“æ³•éžå‡¡ï¼Œæˆ‘å°±è¦è¯•è¯•è¿™æ‰€è°“çš„é“æ³•æœ‰ä½•å¨åŠ›ï¼Ÿ",
+		txt = "ÔçÌýÎÅÏÉÃÅµÜ×Ó¸ö¸öµÀ·¨·Ç·²£¬ÎÒ¾ÍÒªÊÔÊÔÕâËùÎ½µÄµÀ·¨ÓÐºÎÍþÁ¦£¿",
 		options = 
 		{
 			{
@@ -2264,14 +2264,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4249] =             ------------------äº‘éœ„å®«æ¶æ¯’å±±è´¼ï¼ˆ50-60çº§ï¼‰
+    [4249] =             ------------------ÔÆÏö¹¬¶ñ¶¾É½Ôô£¨50-60¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26007,
 		soundID = nil,
-		txt = "ä»™é—¨å®åœ°ï¼Œæœ‰èƒ½è€…å±…ä¹‹ï¼Œä½ ä»¬æ˜¯æ—¶å€™è¦è®©å‡ºæ¥äº†ï¼",
+		txt = "ÏÉÃÅ±¦µØ£¬ÓÐÄÜÕß¾ÓÖ®£¬ÄãÃÇÊÇÊ±ºòÒªÈÃ³öÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2284,14 +2284,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4250] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4250] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œè¿žæˆ‘å±±é—¨ä¹Ÿä¸èƒ½å¹¸å…ã€‚èº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œæ›´åº”ä»¥æå«é—¨æ´¾å®‰å±ä¸ºå·±ä»»ã€‚æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘å‡ºçŽ°äº†ä¸€äº›<npcID>ï¼Œæˆ‘å¸Œæœ›ä½ è§£å†³å®ƒä»¬ï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬Á¬ÎÒÉ½ÃÅÒ²²»ÄÜÐÒÃâ¡£ÉíÎª±¾ÃÅµÜ×Ó£¬¸üÓ¦ÒÔº´ÎÀÃÅÅÉ°²Î£Îª¼ºÈÎ¡£¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½ü³öÏÖÁËÒ»Ð©<npcID>£¬ÎÒÏ£ÍûÄã½â¾öËüÃÇ£¡",
 		options =
 		{
 			{
@@ -2304,14 +2304,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-    [4251] =             ------------------æ¡ƒæºæ´žæ£ä¹±å°å¦–ï¼ˆ20-30çº§ï¼‰
+    [4251] =             ------------------ÌÒÔ´¶´µ·ÂÒÐ¡Ñý£¨20-30¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26001,
 		soundID = nil,
-		txt = "å˜¿å˜¿å˜¿ï¼Œæœ‰ä¸çŸ¥æ­»æ´»çš„å‡¡äººé€å‘½æ¥äº†ï¼",
+		txt = "ºÙºÙºÙ£¬ÓÐ²»ÖªËÀ»îµÄ·²ÈËËÍÃüÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2324,14 +2324,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4252] =             ------------------æ¡ƒæºæ´žç‹¡çŒ¾ç›—è´¼ï¼ˆ30-40çº§ï¼‰
+    [4252] =             ------------------ÌÒÔ´¶´½Æ»«µÁÔô£¨30-40¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26003,
 		soundID = nil,
-		txt = "å¯æ¶ï¼å±…ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è¸ªè¿¹ï¼Œé‚£å°±ä¸èƒ½ç•™ä½ æ´»å£äº†ï¼",
+		txt = "¿É¶ñ£¡¾ÓÈ»±»Äã·¢ÏÖÎÒµÄ×Ù¼££¬ÄÇ¾Í²»ÄÜÁôÄã»î¿ÚÁË£¡",
 		options = 
 		{
 			{
@@ -2344,14 +2344,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4253] =             ------------------æ¡ƒæºæ´žä½œæ­¹æµæ°“ï¼ˆ40-50çº§ï¼‰
+    [4253] =             ------------------ÌÒÔ´¶´×÷´õÁ÷Ã¥£¨40-50¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26005,
 		soundID = nil,
-		txt = "æ—©å¬é—»ä»™é—¨å¼Ÿå­ä¸ªä¸ªé“æ³•éžå‡¡ï¼Œæˆ‘å°±è¦è¯•è¯•è¿™æ‰€è°“çš„é“æ³•æœ‰ä½•å¨åŠ›ï¼Ÿ",
+		txt = "ÔçÌýÎÅÏÉÃÅµÜ×Ó¸ö¸öµÀ·¨·Ç·²£¬ÎÒ¾ÍÒªÊÔÊÔÕâËùÎ½µÄµÀ·¨ÓÐºÎÍþÁ¦£¿",
 		options = 
 		{
 			{
@@ -2364,14 +2364,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4254] =             ------------------æ¡ƒæºæ´žæ¶æ¯’å±±è´¼ï¼ˆ50-60çº§ï¼‰
+    [4254] =             ------------------ÌÒÔ´¶´¶ñ¶¾É½Ôô£¨50-60¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26007,
 		soundID = nil,
-		txt = "ä»™é—¨å®åœ°ï¼Œæœ‰èƒ½è€…å±…ä¹‹ï¼Œä½ ä»¬æ˜¯æ—¶å€™è¦è®©å‡ºæ¥äº†ï¼",
+		txt = "ÏÉÃÅ±¦µØ£¬ÓÐÄÜÕß¾ÓÖ®£¬ÄãÃÇÊÇÊ±ºòÒªÈÃ³öÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2384,14 +2384,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4255] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4255] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œè¿žæˆ‘å±±é—¨ä¹Ÿä¸èƒ½å¹¸å…ã€‚èº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œæ›´åº”ä»¥æå«é—¨æ´¾å®‰å±ä¸ºå·±ä»»ã€‚æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘å‡ºçŽ°äº†ä¸€äº›<npcID>ï¼Œæˆ‘å¸Œæœ›ä½ è§£å†³å®ƒä»¬ï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬Á¬ÎÒÉ½ÃÅÒ²²»ÄÜÐÒÃâ¡£ÉíÎª±¾ÃÅµÜ×Ó£¬¸üÓ¦ÒÔº´ÎÀÃÅÅÉ°²Î£Îª¼ºÈÎ¡£¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½ü³öÏÖÁËÒ»Ð©<npcID>£¬ÎÒÏ£ÍûÄã½â¾öËüÃÇ£¡",
 		options =
 		{
 			{
@@ -2404,14 +2404,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-    [4256] =             ------------------è“¬èŽ±é˜æ£ä¹±å°å¦–ï¼ˆ20-30çº§ï¼‰
+    [4256] =             ------------------ÅîÀ³¸óµ·ÂÒÐ¡Ñý£¨20-30¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26001,
 		soundID = nil,
-		txt = "å˜¿å˜¿å˜¿ï¼Œæœ‰ä¸çŸ¥æ­»æ´»çš„å‡¡äººé€å‘½æ¥äº†ï¼",
+		txt = "ºÙºÙºÙ£¬ÓÐ²»ÖªËÀ»îµÄ·²ÈËËÍÃüÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2424,14 +2424,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4257] =             ------------------è“¬èŽ±é˜ç‹¡çŒ¾ç›—è´¼ï¼ˆ30-40çº§ï¼‰
+    [4257] =             ------------------ÅîÀ³¸ó½Æ»«µÁÔô£¨30-40¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26003,
 		soundID = nil,
-		txt = "å¯æ¶ï¼å±…ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è¸ªè¿¹ï¼Œé‚£å°±ä¸èƒ½ç•™ä½ æ´»å£äº†ï¼",
+		txt = "¿É¶ñ£¡¾ÓÈ»±»Äã·¢ÏÖÎÒµÄ×Ù¼££¬ÄÇ¾Í²»ÄÜÁôÄã»î¿ÚÁË£¡",
 		options = 
 		{
 			{
@@ -2444,14 +2444,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4258] =             ------------------è“¬èŽ±é˜ä½œæ­¹æµæ°“ï¼ˆ40-50çº§ï¼‰
+    [4258] =             ------------------ÅîÀ³¸ó×÷´õÁ÷Ã¥£¨40-50¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26005,
 		soundID = nil,
-		txt = "æ—©å¬é—»ä»™é—¨å¼Ÿå­ä¸ªä¸ªé“æ³•éžå‡¡ï¼Œæˆ‘å°±è¦è¯•è¯•è¿™æ‰€è°“çš„é“æ³•æœ‰ä½•å¨åŠ›ï¼Ÿ",
+		txt = "ÔçÌýÎÅÏÉÃÅµÜ×Ó¸ö¸öµÀ·¨·Ç·²£¬ÎÒ¾ÍÒªÊÔÊÔÕâËùÎ½µÄµÀ·¨ÓÐºÎÍþÁ¦£¿",
 		options = 
 		{
 			{
@@ -2464,14 +2464,14 @@ DialogModelDB =
 			}
 		},
 	},
-    [4259] =             ------------------è“¬èŽ±é˜æ¶æ¯’å±±è´¼ï¼ˆ50-60çº§ï¼‰
+    [4259] =             ------------------ÅîÀ³¸ó¶ñ¶¾É½Ôô£¨50-60¼¶£©
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26007,
 		soundID = nil,
-		txt = "ä»™é—¨å®åœ°ï¼Œæœ‰èƒ½è€…å±…ä¹‹ï¼Œä½ ä»¬æ˜¯æ—¶å€™è¦è®©å‡ºæ¥äº†ï¼",
+		txt = "ÏÉÃÅ±¦µØ£¬ÓÐÄÜÕß¾ÓÖ®£¬ÄãÃÇÊÇÊ±ºòÒªÈÃ³öÀ´ÁË£¡",
 		options = 
 		{
 			{
@@ -2484,20 +2484,20 @@ DialogModelDB =
 			}
 		},
 	},
-    [4260] =             ------------------ä¹žä¸äº‹ä»¶
+    [4260] =             ------------------ÆòØ¤ÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26014,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¡Œè¡Œå¥½ï¼ç»™æˆ‘2000ç»‘é“¶åƒé¥­å§ï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÐÐÐÐºÃ£¡¸øÎÒ2000°óÒø³Ô·¹°É£¡",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ•‘äººä¸€å‘½èƒœé€ ä¸ƒçº§æµ®å± ï¼ˆæ”¯ä»˜ç»‘é“¶2000ï¼‰",
+				optionTxt = "¾ÈÈËÒ»ÃüÊ¤ÔìÆß¼¶¸¡ÍÀ£¨Ö§¸¶°óÒø2000£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4261}},		
@@ -2506,7 +2506,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "å“¼ï¼ä½ è¿™æ˜¯åœ¨æ•²è¯ˆï¼ï¼ˆè¿›å…¥æˆ˜æ–—ï¼‰",
+				optionTxt = "ºß£¡ÄãÕâÊÇÔÚÇÃÕ©£¡£¨½øÈëÕ½¶·£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4262}},
@@ -2514,7 +2514,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[4261] =            ------------------ä¹žä¸é“è°¢
+	[4261] =            ------------------ÆòØ¤µÀÐ»
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -2523,7 +2523,7 @@ DialogModelDB =
 		},
 		speakerID = 26014,
 		soundID = nil,
-		txt = "è‹±é›„çœŸæ˜¯å¥½å¿ƒäººï¼Œæ„Ÿæ¿€ä¸å°½å•Šï¼",
+		txt = "Ó¢ÐÛÕæÊÇºÃÐÄÈË£¬¸Ð¼¤²»¾¡°¡£¡",
 		options =
 		{
 			{
@@ -2536,14 +2536,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4262] =            ------------------ä¹žä¸æˆ˜æ–—å¯¹è¯
+	[4262] =            ------------------ÆòØ¤Õ½¶·¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26018,
 		soundID = nil,
-		txt = "æˆ‘åƒè¾›ä¸‡è‹¦ä½œäº†ä¼ªè£…æ²¡æƒ³åˆ°è¿˜æ˜¯è¢«ä½ è¯†ç ´ï¼Œä»Šå¤©ä½ åˆ«æƒ³æ´»ç€å›žåŽ»äº†ï¼",
+		txt = "ÎÒÇ§ÐÁÍò¿à×÷ÁËÎ±×°Ã»Ïëµ½»¹ÊÇ±»ÄãÊ¶ÆÆ£¬½ñÌìÄã±ðÏë»î×Å»ØÈ¥ÁË£¡",
 		options =
 		{
 			{
@@ -2557,15 +2557,15 @@ DialogModelDB =
 		},		
 	},
 	
-------------------------æ˜Žé›·æŒ‘æˆ˜------------------------------
-	[4270] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+------------------------Ã÷À×ÌôÕ½------------------------------
+	[4270] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "æœ¬é—¨<npcID>æ­¦è‰ºé«˜å¼ºã€‚ä½ ä¿®ä¸ºå¦‚ä»Šå°šæµ…ï¼Œä¸ºå¸ˆå¸Œæœ›ä½ èƒ½å‰å¾€ä¸Žå…¶åˆ‡ç£‹ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒï¼Œä»¥ä¾¿æ›´å¿«è¿›æ­¥ï¼",
+		txt = "±¾ÃÅ<npcID>ÎäÒÕ¸ßÇ¿¡£ÄãÐÞÎªÈç½ñÉÐÇ³£¬ÎªÊ¦Ï£ÍûÄãÄÜÇ°ÍùÓëÆäÇÐ´è£¬Ñ§Ï°Õ½¶·¾­Ñé£¬ÒÔ±ã¸ü¿ì½ø²½£¡",
 		options =
 		{
 			{
@@ -2578,18 +2578,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4271] =            ------------------ä¹¾å…ƒå²›å¤§å¼Ÿå­ï¼ˆ30-45çº§ï¼‰
+	[4271] =            ------------------Ç¬Ôªµº´óµÜ×Ó£¨30-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20021,
-		txt = "æ—¢ç„¶ä½ æƒ³è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÏëÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4105,mapID = 1}},
@@ -2597,7 +2597,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2606,18 +2606,18 @@ DialogModelDB =
 
 		},
 	},
-	[4272] =            ------------------ä¹¾å…ƒå²›æ‰§æ³•é•¿è€ï¼ˆ45-60çº§ï¼‰
+	[4272] =            ------------------Ç¬ÔªµºÖ´·¨³¤ÀÏ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29066,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4111,mapID = 1}},
@@ -2625,7 +2625,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2634,14 +2634,14 @@ DialogModelDB =
 
 		},
 	},
-	[4273] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4273] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "æœ¬é—¨<npcID>æ­¦è‰ºé«˜å¼ºã€‚ä½ ä¿®ä¸ºå¦‚ä»Šå°šæµ…ï¼Œä¸ºå¸ˆå¸Œæœ›ä½ èƒ½å‰å¾€ä¸Žå…¶åˆ‡ç£‹ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒï¼Œä»¥ä¾¿æ›´å¿«è¿›æ­¥ï¼",
+		txt = "±¾ÃÅ<npcID>ÎäÒÕ¸ßÇ¿¡£ÄãÐÞÎªÈç½ñÉÐÇ³£¬ÎªÊ¦Ï£ÍûÄãÄÜÇ°ÍùÓëÆäÇÐ´è£¬Ñ§Ï°Õ½¶·¾­Ñé£¬ÒÔ±ã¸ü¿ì½ø²½£¡",
 		options =
 		{
 			{
@@ -2654,18 +2654,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4274] =            ------------------é‡‘éœžå±±å¤§å¼Ÿå­ï¼ˆ30-45çº§ï¼‰
+	[4274] =            ------------------½ðÏ¼É½´óµÜ×Ó£¨30-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20023,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4107,mapID = 3}},
@@ -2673,7 +2673,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2682,18 +2682,18 @@ DialogModelDB =
 
 		},
 	},
-	[4275] =            ------------------é‡‘éœžå±±æ‰§æ³•é•¿è€ï¼ˆ45-60çº§ï¼‰
+	[4275] =            ------------------½ðÏ¼É½Ö´·¨³¤ÀÏ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29068,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4113,mapID = 3}},
@@ -2701,7 +2701,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2710,14 +2710,14 @@ DialogModelDB =
 
 		},
 	},
-	[4276] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4276] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "æœ¬é—¨<npcID>æ­¦è‰ºé«˜å¼ºã€‚ä½ ä¿®ä¸ºå¦‚ä»Šå°šæµ…ï¼Œä¸ºå¸ˆå¸Œæœ›ä½ èƒ½å‰å¾€ä¸Žå…¶åˆ‡ç£‹ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒï¼Œä»¥ä¾¿æ›´å¿«è¿›æ­¥ï¼",
+		txt = "±¾ÃÅ<npcID>ÎäÒÕ¸ßÇ¿¡£ÄãÐÞÎªÈç½ñÉÐÇ³£¬ÎªÊ¦Ï£ÍûÄãÄÜÇ°ÍùÓëÆäÇÐ´è£¬Ñ§Ï°Õ½¶·¾­Ñé£¬ÒÔ±ã¸ü¿ì½ø²½£¡",
 		options =
 		{
 			{
@@ -2730,18 +2730,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4277] =            ------------------ç´«é˜³é—¨å¤§å¼Ÿå­ï¼ˆ30-45çº§ï¼‰
+	[4277] =            ------------------×ÏÑôÃÅ´óµÜ×Ó£¨30-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20026,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4109,mapID = 6}},
@@ -2749,7 +2749,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2758,18 +2758,18 @@ DialogModelDB =
 
 		},
 	},
-	[4278] =            ------------------ç´«é˜³é—¨æ‰§æ³•é•¿è€ï¼ˆ45-60çº§ï¼‰
+	[4278] =            ------------------×ÏÑôÃÅÖ´·¨³¤ÀÏ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29070,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4115,mapID = 6}},
@@ -2777,7 +2777,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2786,14 +2786,14 @@ DialogModelDB =
 
 		},
 	},
-	[4279] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4279] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "æœ¬é—¨<npcID>æ­¦è‰ºé«˜å¼ºã€‚ä½ ä¿®ä¸ºå¦‚ä»Šå°šæµ…ï¼Œä¸ºå¸ˆå¸Œæœ›ä½ èƒ½å‰å¾€ä¸Žå…¶åˆ‡ç£‹ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒï¼Œä»¥ä¾¿æ›´å¿«è¿›æ­¥ï¼",
+		txt = "±¾ÃÅ<npcID>ÎäÒÕ¸ßÇ¿¡£ÄãÐÞÎªÈç½ñÉÐÇ³£¬ÎªÊ¦Ï£ÍûÄãÄÜÇ°ÍùÓëÆäÇÐ´è£¬Ñ§Ï°Õ½¶·¾­Ñé£¬ÒÔ±ã¸ü¿ì½ø²½£¡",
 		options =
 		{
 			{
@@ -2806,18 +2806,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4280] =            ------------------äº‘éœ„å®«å¤§å¼Ÿå­ï¼ˆ30-45çº§ï¼‰
+	[4280] =            ------------------ÔÆÏö¹¬´óµÜ×Ó£¨30-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20024,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4110,mapID = 5}},
@@ -2825,7 +2825,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2834,18 +2834,18 @@ DialogModelDB =
 
 		},
 	},
-	[4281] =            ------------------äº‘éœ„å®«æ‰§æ³•é•¿è€ï¼ˆ45-60çº§ï¼‰
+	[4281] =            ------------------ÔÆÏö¹¬Ö´·¨³¤ÀÏ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29071,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4116,mapID = 5}},
@@ -2853,7 +2853,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2862,14 +2862,14 @@ DialogModelDB =
 
 		},
 	},
-	[4282] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4282] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "æœ¬é—¨<npcID>æ­¦è‰ºé«˜å¼ºã€‚ä½ ä¿®ä¸ºå¦‚ä»Šå°šæµ…ï¼Œä¸ºå¸ˆå¸Œæœ›ä½ èƒ½å‰å¾€ä¸Žå…¶åˆ‡ç£‹ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒï¼Œä»¥ä¾¿æ›´å¿«è¿›æ­¥ï¼",
+		txt = "±¾ÃÅ<npcID>ÎäÒÕ¸ßÇ¿¡£ÄãÐÞÎªÈç½ñÉÐÇ³£¬ÎªÊ¦Ï£ÍûÄãÄÜÇ°ÍùÓëÆäÇÐ´è£¬Ñ§Ï°Õ½¶·¾­Ñé£¬ÒÔ±ã¸ü¿ì½ø²½£¡",
 		options =
 		{
 			{
@@ -2882,18 +2882,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4283] =            ------------------æ¡ƒæºæ´žå¤§å¼Ÿå­ï¼ˆ30-45çº§ï¼‰
+	[4283] =            ------------------ÌÒÔ´¶´´óµÜ×Ó£¨30-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20025,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4106,mapID = 4}},
@@ -2901,7 +2901,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2910,18 +2910,18 @@ DialogModelDB =
 
 		},
 	},
-	[4284] =            ------------------æ¡ƒæºæ´žæ‰§æ³•é•¿è€ï¼ˆ45-60çº§ï¼‰
+	[4284] =            ------------------ÌÒÔ´¶´Ö´·¨³¤ÀÏ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29067,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4112,mapID = 4}},
@@ -2929,7 +2929,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2938,14 +2938,14 @@ DialogModelDB =
 
 		},
 	},
-	[4285] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4285] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "æœ¬é—¨<npcID>æ­¦è‰ºé«˜å¼ºã€‚ä½ ä¿®ä¸ºå¦‚ä»Šå°šæµ…ï¼Œä¸ºå¸ˆå¸Œæœ›ä½ èƒ½å‰å¾€ä¸Žå…¶åˆ‡ç£‹ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒï¼Œä»¥ä¾¿æ›´å¿«è¿›æ­¥ï¼",
+		txt = "±¾ÃÅ<npcID>ÎäÒÕ¸ßÇ¿¡£ÄãÐÞÎªÈç½ñÉÐÇ³£¬ÎªÊ¦Ï£ÍûÄãÄÜÇ°ÍùÓëÆäÇÐ´è£¬Ñ§Ï°Õ½¶·¾­Ñé£¬ÒÔ±ã¸ü¿ì½ø²½£¡",
 		options =
 		{
 			{
@@ -2958,18 +2958,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4286] =            ------------------è“¬èŽ±é˜å¤§å¼Ÿå­ï¼ˆ30-45çº§ï¼‰
+	[4286] =            ------------------ÅîÀ³¸ó´óµÜ×Ó£¨30-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20022,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4108,mapID = 2}},
@@ -2977,7 +2977,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -2986,18 +2986,18 @@ DialogModelDB =
 
 		},
 	},
-	[4287] =            ------------------è“¬èŽ±é˜æ‰§æ³•é•¿è€ï¼ˆ45-60çº§ï¼‰
+	[4287] =            ------------------ÅîÀ³¸óÖ´·¨³¤ÀÏ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29069,
-		txt = "æ—¢ç„¶ä½ è¦åŒæˆ‘åˆ‡ç£‹ï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "¼ÈÈ»ÄãÒªÍ¬ÎÒÇÐ´è£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4114,mapID = 2}},
@@ -3005,7 +3005,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -3014,15 +3014,15 @@ DialogModelDB =
 
 		},
 	},
-------------------------æ‚¬èµä»»åŠ¡------------------------------
-	[4301] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+------------------------ÐüÉÍÈÎÎñ------------------------------
+	[4301] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "æœ‰å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰<npcID>å‡ºæ²¡ï¼Œæˆ‘å¸Œæœ›ä½ èƒ½åŽ»ä¸€è¶Ÿï¼Œé“²é™¤å®ƒä»¬ï¼Œä¸ºæ°‘é™¤å®³ï¼",
+		txt = "ÓÐµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐ<npcID>³öÃ»£¬ÎÒÏ£ÍûÄãÄÜÈ¥Ò»ÌË£¬²ù³ýËüÃÇ£¬ÎªÃñ³ýº¦£¡",
 		options =
 		{
 			{
@@ -3035,14 +3035,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4302] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4302] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "æœ‰å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰<npcID>å‡ºæ²¡ï¼Œæˆ‘å¸Œæœ›ä½ èƒ½åŽ»ä¸€è¶Ÿï¼Œé“²é™¤å®ƒä»¬ï¼Œä¸ºæ°‘é™¤å®³ï¼",
+		txt = "ÓÐµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐ<npcID>³öÃ»£¬ÎÒÏ£ÍûÄãÄÜÈ¥Ò»ÌË£¬²ù³ýËüÃÇ£¬ÎªÃñ³ýº¦£¡",
 		options =
 		{
 			{
@@ -3055,14 +3055,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4303] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4303] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "æœ‰å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰<npcID>å‡ºæ²¡ï¼Œæˆ‘å¸Œæœ›ä½ èƒ½åŽ»ä¸€è¶Ÿï¼Œé“²é™¤å®ƒä»¬ï¼Œä¸ºæ°‘é™¤å®³ï¼",
+		txt = "ÓÐµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐ<npcID>³öÃ»£¬ÎÒÏ£ÍûÄãÄÜÈ¥Ò»ÌË£¬²ù³ýËüÃÇ£¬ÎªÃñ³ýº¦£¡",
 		options =
 		{
 			{
@@ -3075,14 +3075,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4304] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4304] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "æœ‰å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰<npcID>å‡ºæ²¡ï¼Œæˆ‘å¸Œæœ›ä½ èƒ½åŽ»ä¸€è¶Ÿï¼Œé“²é™¤å®ƒä»¬ï¼Œä¸ºæ°‘é™¤å®³ï¼",
+		txt = "ÓÐµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐ<npcID>³öÃ»£¬ÎÒÏ£ÍûÄãÄÜÈ¥Ò»ÌË£¬²ù³ýËüÃÇ£¬ÎªÃñ³ýº¦£¡",
 		options =
 		{
 			{
@@ -3095,14 +3095,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4305] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4305] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "æœ‰å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰<npcID>å‡ºæ²¡ï¼Œæˆ‘å¸Œæœ›ä½ èƒ½åŽ»ä¸€è¶Ÿï¼Œé“²é™¤å®ƒä»¬ï¼Œä¸ºæ°‘é™¤å®³ï¼",
+		txt = "ÓÐµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐ<npcID>³öÃ»£¬ÎÒÏ£ÍûÄãÄÜÈ¥Ò»ÌË£¬²ù³ýËüÃÇ£¬ÎªÃñ³ýº¦£¡",
 		options =
 		{
 			{
@@ -3115,14 +3115,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4306] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4306] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "æœ‰å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰<npcID>å‡ºæ²¡ï¼Œæˆ‘å¸Œæœ›ä½ èƒ½åŽ»ä¸€è¶Ÿï¼Œé“²é™¤å®ƒä»¬ï¼Œä¸ºæ°‘é™¤å®³ï¼",
+		txt = "ÓÐµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐ<npcID>³öÃ»£¬ÎÒÏ£ÍûÄãÄÜÈ¥Ò»ÌË£¬²ù³ýËüÃÇ£¬ÎªÃñ³ýº¦£¡",
 		options =
 		{
 			{
@@ -3135,18 +3135,18 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4307] =            ------------------æˆªæ•™å¥¸ç»†ï¼ˆ35-45çº§ï¼‰
+	[4307] =            ------------------½Ø½Ì¼éÏ¸£¨35-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26009,
-		txt = "ä½ æ˜¯é˜æ•™å¼Ÿå­ï¼Ÿæ¥ä¸€ä¸ªï¼Œæˆ‘æ€ä¸€ä¸ªï¼",
+		txt = "ÄãÊÇ²û½ÌµÜ×Ó£¿À´Ò»¸ö£¬ÎÒÉ±Ò»¸ö£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä»Šå¤©ä½ æ­»åˆ°ä¸´å¤´äº†ï¼ï¼ˆè¿›å…¥æˆ˜æ–—ï¼‰",
+				optionTxt = "½ñÌìÄãËÀµ½ÁÙÍ·ÁË£¡£¨½øÈëÕ½¶·£©",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4117,mapID = nil}},
@@ -3154,7 +3154,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘å‡†å¤‡å®Œæ¯•å†å›žæ¥æ‰¾ä½ ï¼",
+				optionTxt = "ÎÒ×¼±¸Íê±ÏÔÙ»ØÀ´ÕÒÄã£¡",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -3162,18 +3162,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[4308] =            ------------------é—¨æ´¾å›å¾’ï¼ˆ35-45çº§ï¼‰
+	[4308] =            ------------------ÃÅÅÉÅÑÍ½£¨35-45¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26012,
-		txt = "å¾å¶å¾—ç§˜ç±ï¼Œç»ƒæˆä¸€èº«ç¥žåŠŸï¼Œå¦‚ä»Šç¥žåŠŸåˆæˆï¼Œè¿™å¤©ä¸‹è¿˜æœ‰è°èƒ½æŒ¡æˆ‘ï¼",
+		txt = "ÎáÅ¼µÃÃØ¼®£¬Á·³ÉÒ»ÉíÉñ¹¦£¬Èç½ñÉñ¹¦³õ³É£¬ÕâÌìÏÂ»¹ÓÐË­ÄÜµ²ÎÒ£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä»Šå¤©ä½ æ­»åˆ°ä¸´å¤´äº†ï¼ï¼ˆè¿›å…¥æˆ˜æ–—ï¼‰",
+				optionTxt = "½ñÌìÄãËÀµ½ÁÙÍ·ÁË£¡£¨½øÈëÕ½¶·£©",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4118,mapID = nil}},
@@ -3181,7 +3181,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘å‡†å¤‡å®Œæ¯•å†å›žæ¥æ‰¾ä½ ï¼",
+				optionTxt = "ÎÒ×¼±¸Íê±ÏÔÙ»ØÀ´ÕÒÄã£¡",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -3190,18 +3190,18 @@ DialogModelDB =
 
 		},
 	},
-	[4309] =            ------------------å…¥ä¾µåˆºå®¢ï¼ˆ45-60çº§ï¼‰
+	[4309] =            ------------------ÈëÇÖ´Ì¿Í£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26011,
-		txt = "åœ¨æˆ‘çš„åœ°ç›˜ï¼Œå³ä¾¿æ˜¯é¾™ä¹Ÿå¾—ç»™æˆ‘ç›˜ç€ï¼Œæ²¡äººå¯ä»¥æ‹‚é€†æˆ‘ï¼",
+		txt = "ÔÚÎÒµÄµØÅÌ£¬¼´±ãÊÇÁúÒ²µÃ¸øÎÒÅÌ×Å£¬Ã»ÈË¿ÉÒÔ·÷ÄæÎÒ£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä»Šå¤©ä½ æ­»åˆ°ä¸´å¤´äº†ï¼ï¼ˆè¿›å…¥æˆ˜æ–—ï¼‰",
+				optionTxt = "½ñÌìÄãËÀµ½ÁÙÍ·ÁË£¡£¨½øÈëÕ½¶·£©",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4119,mapID = nil}},
@@ -3209,7 +3209,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘å‡†å¤‡å®Œæ¯•å†å›žæ¥æ‰¾ä½ ï¼",
+				optionTxt = "ÎÒ×¼±¸Íê±ÏÔÙ»ØÀ´ÕÒÄã£¡",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -3217,18 +3217,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[4310] =            ------------------å·å¤©å¤§ç›—ï¼ˆ45-60çº§ï¼‰
+	[4310] =            ------------------ÍµÌì´óµÁ£¨45-60¼¶£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26010,
-		txt = "æ—¢ç„¶è¢«ä½ å‘çŽ°æˆ‘çš„è—èº«å¤„ï¼Œé‚£å°±åˆ«æƒ³æ´»ç€å›žåŽ»äº†ï¼",
+		txt = "¼ÈÈ»±»Äã·¢ÏÖÎÒµÄ²ØÉí´¦£¬ÄÇ¾Í±ðÏë»î×Å»ØÈ¥ÁË£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä»Šå¤©ä½ æ­»åˆ°ä¸´å¤´äº†ï¼ï¼ˆè¿›å…¥æˆ˜æ–—ï¼‰",
+				optionTxt = "½ñÌìÄãËÀµ½ÁÙÍ·ÁË£¡£¨½øÈëÕ½¶·£©",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4120,mapID = nil}},
@@ -3236,7 +3236,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘å‡†å¤‡å®Œæ¯•å†å›žæ¥æ‰¾ä½ ï¼",
+				optionTxt = "ÎÒ×¼±¸Íê±ÏÔÙ»ØÀ´ÕÒÄã£¡",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -3244,15 +3244,15 @@ DialogModelDB =
 			},
 		},
 	},
-------------------------å¯¹è¯ä»»åŠ¡------------------------------
-	[4350] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+------------------------¶Ô»°ÈÎÎñ------------------------------
+	[4350] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆå‰äº›æ—¥å­æ‰˜ä»˜äº†ä¸€äº›äº‹æƒ…ç»™<npcID>ï¼Œä»–ç›®å‰åœ¨<mapID,x,y>ï¼Œä½ æ›¿æˆ‘å‰åŽ»è¯¢é—®è¿›åº¦å¦‚ä½•ï¼Ÿ",
+		txt = "ÎªÊ¦Ç°Ð©ÈÕ×ÓÍÐ¸¶ÁËÒ»Ð©ÊÂÇé¸ø<npcID>£¬ËûÄ¿Ç°ÔÚ<mapID,x,y>£¬ÄãÌæÎÒÇ°È¥Ñ¯ÎÊ½ø¶ÈÈçºÎ£¿",
 		options =
 		{
 			{
@@ -3266,14 +3266,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4351] =            ------------------ä¹¾å…ƒå²›æ´›é˜³åº„å¯å¹´å¯¹è¯
+	[4351] =            ------------------Ç¬ÔªµºÂåÑô×¯ÆôÄê¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29005,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3286,14 +3286,14 @@ DialogModelDB =
 		    },
 		},
 	},		
-	[4352] =            ------------------ä¹¾å…ƒå²›æ´›é˜³å¼ é“é•¿å¯¹è¯
+	[4352] =            ------------------Ç¬ÔªµºÂåÑôÕÅµÀ³¤¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3306,14 +3306,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4353] =            ------------------ä¹¾å…ƒå²›æ¡ƒå›­é•‡åˆ˜å…ƒèµ·å¯¹è¯
+	[4353] =            ------------------Ç¬ÔªµºÌÒÔ°ÕòÁõÔªÆð¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20027,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3326,14 +3326,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4354] =            ------------------ä¹¾å…ƒå²›æ´›é˜³å‘¨éœå…´å¯¹è¯
+	[4354] =            ------------------Ç¬ÔªµºÂåÑôÖÜ»ôÐË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29001,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3346,14 +3346,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4355] =            ------------------ä¹¾å…ƒå²›æ´›é˜³æ— åè€äººå¯¹è¯
+	[4355] =            ------------------Ç¬ÔªµºÂåÑôÎÞÃûÀÏÈË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3366,14 +3366,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4356] =            ------------------ä¹¾å…ƒå²›æ¡ƒå›­é•‡åŒ…æ‰“å¬å¯¹è¯
+	[4356] =            ------------------Ç¬ÔªµºÌÒÔ°Õò°ü´òÌý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29012,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3386,14 +3386,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4357] =            ------------------ä¹¾å…ƒå²›çŽ©å®¶å›žå¤
+	[4357] =            ------------------Ç¬ÔªµºÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å¤šè°¢ç›¸å‘Šï¼Œå‘Šè¾žï¼",
+		txt = "¶àÐ»Ïà¸æ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -3406,14 +3406,14 @@ DialogModelDB =
 		    },	
 		    },
 		},			
-	[4358] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4358] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆå‰äº›æ—¥å­æ‰˜ä»˜äº†ä¸€äº›äº‹æƒ…ç»™<npcID>ï¼Œä»–ç›®å‰äººåœ¨<mapID,x,y>ï¼Œä½ æ›¿æˆ‘å‰åŽ»è¯¢é—®è¿›åº¦å¦‚ä½•ï¼Ÿ",
+		txt = "ÎªÊ¦Ç°Ð©ÈÕ×ÓÍÐ¸¶ÁËÒ»Ð©ÊÂÇé¸ø<npcID>£¬ËûÄ¿Ç°ÈËÔÚ<mapID,x,y>£¬ÄãÌæÎÒÇ°È¥Ñ¯ÎÊ½ø¶ÈÈçºÎ£¿",
 		options =
 		{
 			{
@@ -3426,14 +3426,14 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4359] =            ------------------é‡‘éœžå±±æ´›é˜³åº„å¯å¹´å¯¹è¯
+	[4359] =            ------------------½ðÏ¼É½ÂåÑô×¯ÆôÄê¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29005,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3446,14 +3446,14 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4360] =            ------------------é‡‘éœžå±±æ´›é˜³å¼ é“é•¿å¯¹è¯
+	[4360] =            ------------------½ðÏ¼É½ÂåÑôÕÅµÀ³¤¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3466,14 +3466,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4361] =            ------------------é‡‘éœžå±±æ¡ƒå›­é•‡åˆ˜å…ƒèµ·å¯¹è¯
+	[4361] =            ------------------½ðÏ¼É½ÌÒÔ°ÕòÁõÔªÆð¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20027,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3486,14 +3486,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4362] =            ------------------é‡‘éœžå±±æ´›é˜³å‘¨éœå…´å¯¹è¯
+	[4362] =            ------------------½ðÏ¼É½ÂåÑôÖÜ»ôÐË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29001,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3506,14 +3506,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4363] =            ------------------é‡‘éœžå±±æ´›é˜³æ— åè€äººå¯¹è¯
+	[4363] =            ------------------½ðÏ¼É½ÂåÑôÎÞÃûÀÏÈË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3526,14 +3526,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4364] =            ------------------é‡‘éœžå±±æ¡ƒå›­é•‡åŒ…æ‰“å¬å¯¹è¯
+	[4364] =            ------------------½ðÏ¼É½ÌÒÔ°Õò°ü´òÌý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29012,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3546,14 +3546,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4365] =            ------------------é‡‘éœžå±±çŽ©å®¶å›žå¤
+	[4365] =            ------------------½ðÏ¼É½Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å¤šè°¢ç›¸å‘Šï¼Œå‘Šè¾žï¼",
+		txt = "¶àÐ»Ïà¸æ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -3566,14 +3566,14 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4366] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4366] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆå‰äº›æ—¥å­æ‰˜ä»˜äº†ä¸€äº›äº‹æƒ…ç»™<npcID>ï¼Œä»–ç›®å‰äººåœ¨<mapID,x,y>ï¼Œä½ æ›¿æˆ‘å‰åŽ»è¯¢é—®è¿›åº¦å¦‚ä½•ï¼Ÿ",
+		txt = "ÎªÊ¦Ç°Ð©ÈÕ×ÓÍÐ¸¶ÁËÒ»Ð©ÊÂÇé¸ø<npcID>£¬ËûÄ¿Ç°ÈËÔÚ<mapID,x,y>£¬ÄãÌæÎÒÇ°È¥Ñ¯ÎÊ½ø¶ÈÈçºÎ£¿",
 		options =
 		{
 			{
@@ -3586,14 +3586,14 @@ DialogModelDB =
 		    },
 		},
 	},		
-	[4367] =            ------------------ç´«é˜³é—¨æ´›é˜³åº„å¯å¹´å¯¹è¯
+	[4367] =            ------------------×ÏÑôÃÅÂåÑô×¯ÆôÄê¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29005,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3606,14 +3606,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4368] =            ------------------ç´«é˜³é—¨æ´›é˜³å¼ é“é•¿å¯¹è¯
+	[4368] =            ------------------×ÏÑôÃÅÂåÑôÕÅµÀ³¤¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3626,14 +3626,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4369] =            ------------------ç´«é˜³é—¨æ¡ƒå›­é•‡åˆ˜å…ƒèµ·å¯¹è¯
+	[4369] =            ------------------×ÏÑôÃÅÌÒÔ°ÕòÁõÔªÆð¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20027,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3646,14 +3646,14 @@ DialogModelDB =
 		    },
 		},	
 	},
-	[4370] =            ------------------ç´«é˜³é—¨æ´›é˜³å‘¨éœå…´å¯¹è¯
+	[4370] =            ------------------×ÏÑôÃÅÂåÑôÖÜ»ôÐË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29001,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3666,14 +3666,14 @@ DialogModelDB =
 		    },
 		},	
 	},
-	[4371] =            ------------------ç´«é˜³é—¨æ´›é˜³æ— åè€äººå¯¹è¯
+	[4371] =            ------------------×ÏÑôÃÅÂåÑôÎÞÃûÀÏÈË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3686,14 +3686,14 @@ DialogModelDB =
 		    },
 		},	
 	},
-	[4372] =            ------------------ç´«é˜³é—¨æ¡ƒå›­é•‡åŒ…æ‰“å¬å¯¹è¯
+	[4372] =            ------------------×ÏÑôÃÅÌÒÔ°Õò°ü´òÌý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29012,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3706,14 +3706,14 @@ DialogModelDB =
 		    },
 		},	
 	},
-	[4373] =            ------------------ç´«é˜³é—¨çŽ©å®¶å›žå¤
+	[4373] =            ------------------×ÏÑôÃÅÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å¤šè°¢ç›¸å‘Šï¼Œå‘Šè¾žï¼",
+		txt = "¶àÐ»Ïà¸æ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -3726,14 +3726,14 @@ DialogModelDB =
 		    },
 		},			
 	},
-	[4374] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4374] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆå‰äº›æ—¥å­æ‰˜ä»˜äº†ä¸€äº›äº‹æƒ…ç»™<npcID>ï¼Œä»–ç›®å‰äººåœ¨<mapID,x,y>ï¼Œä½ æ›¿æˆ‘å‰åŽ»è¯¢é—®è¿›åº¦å¦‚ä½•ï¼Ÿ",
+		txt = "ÎªÊ¦Ç°Ð©ÈÕ×ÓÍÐ¸¶ÁËÒ»Ð©ÊÂÇé¸ø<npcID>£¬ËûÄ¿Ç°ÈËÔÚ<mapID,x,y>£¬ÄãÌæÎÒÇ°È¥Ñ¯ÎÊ½ø¶ÈÈçºÎ£¿",
 		options =
 		{
 			{
@@ -3746,14 +3746,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4375] =            -------------------äº‘éœ„å®«æ´›é˜³åº„å¯å¹´å¯¹è¯
+	[4375] =            -------------------ÔÆÏö¹¬ÂåÑô×¯ÆôÄê¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29005,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3766,14 +3766,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4376] =            -------------------äº‘éœ„å®«æ´›é˜³å¼ é“é•¿å¯¹è¯
+	[4376] =            -------------------ÔÆÏö¹¬ÂåÑôÕÅµÀ³¤¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3786,14 +3786,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4377] =            -------------------äº‘éœ„å®«æ¡ƒå›­é•‡åˆ˜å…ƒèµ·å¯¹è¯
+	[4377] =            -------------------ÔÆÏö¹¬ÌÒÔ°ÕòÁõÔªÆð¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20027,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3806,14 +3806,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4378] =            -------------------äº‘éœ„å®«æ´›é˜³å‘¨éœå…´å¯¹è¯
+	[4378] =            -------------------ÔÆÏö¹¬ÂåÑôÖÜ»ôÐË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29001,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3826,14 +3826,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4379] =            -------------------äº‘éœ„å®«æ´›é˜³æ— åè€äººå¯¹è¯
+	[4379] =            -------------------ÔÆÏö¹¬ÂåÑôÎÞÃûÀÏÈË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3846,14 +3846,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4380] =            -------------------äº‘éœ„å®«æ¡ƒå›­é•‡åŒ…æ‰“å¬å¯¹è¯
+	[4380] =            -------------------ÔÆÏö¹¬ÌÒÔ°Õò°ü´òÌý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29012,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3866,14 +3866,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4381] =            -------------------äº‘éœ„å®«çŽ©å®¶å›žå¤
+	[4381] =            -------------------ÔÆÏö¹¬Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å¤šè°¢ç›¸å‘Šï¼Œå‘Šè¾žï¼",
+		txt = "¶àÐ»Ïà¸æ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -3886,14 +3886,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4382] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4382] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆå‰äº›æ—¥å­æ‰˜ä»˜äº†ä¸€äº›äº‹æƒ…ç»™<npcID>ï¼Œä»–ç›®å‰äººåœ¨<mapID,x,y>ï¼Œä½ æ›¿æˆ‘å‰åŽ»è¯¢é—®è¿›åº¦å¦‚ä½•ï¼Ÿ",
+		txt = "ÎªÊ¦Ç°Ð©ÈÕ×ÓÍÐ¸¶ÁËÒ»Ð©ÊÂÇé¸ø<npcID>£¬ËûÄ¿Ç°ÈËÔÚ<mapID,x,y>£¬ÄãÌæÎÒÇ°È¥Ñ¯ÎÊ½ø¶ÈÈçºÎ£¿",
 		options =
 		{
 			{
@@ -3906,14 +3906,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4383] =            -------------------æ¡ƒæºæ´žæ´›é˜³åº„å¯å¹´å¯¹è¯
+	[4383] =            -------------------ÌÒÔ´¶´ÂåÑô×¯ÆôÄê¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29005,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3926,14 +3926,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4384] =            -------------------æ¡ƒæºæ´žæ´›é˜³å¼ é“é•¿å¯¹è¯
+	[4384] =            -------------------ÌÒÔ´¶´ÂåÑôÕÅµÀ³¤¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3946,14 +3946,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4385] =            -------------------æ¡ƒæºæ´žæ¡ƒå›­é•‡åˆ˜å…ƒèµ·å¯¹è¯
+	[4385] =            -------------------ÌÒÔ´¶´ÌÒÔ°ÕòÁõÔªÆð¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20027,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3966,14 +3966,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4386] =            -------------------æ¡ƒæºæ´žæ´›é˜³å‘¨éœå…´å¯¹è¯
+	[4386] =            -------------------ÌÒÔ´¶´ÂåÑôÖÜ»ôÐË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29001,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -3986,14 +3986,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4387] =            -------------------æ¡ƒæºæ´žæ´›é˜³æ— åè€äººå¯¹è¯
+	[4387] =            -------------------ÌÒÔ´¶´ÂåÑôÎÞÃûÀÏÈË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4006,14 +4006,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4388] =            -------------------æ¡ƒæºæ´žæ¡ƒå›­é•‡åŒ…æ‰“å¬å¯¹è¯
+	[4388] =            -------------------ÌÒÔ´¶´ÌÒÔ°Õò°ü´òÌý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29012,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4026,14 +4026,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4389] =            -------------------æ¡ƒæºæ´žçŽ©å®¶å›žå¤
+	[4389] =            -------------------ÌÒÔ´¶´Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å¤šè°¢ç›¸å‘Šï¼Œå‘Šè¾žï¼",
+		txt = "¶àÐ»Ïà¸æ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -4046,14 +4046,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4390] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4390] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆå‰äº›æ—¥å­æ‰˜ä»˜äº†ä¸€äº›äº‹æƒ…ç»™<npcID>ï¼Œä»–ç›®å‰äººåœ¨<mapID,x,y>ï¼Œä½ æ›¿æˆ‘å‰åŽ»è¯¢é—®è¿›åº¦å¦‚ä½•ï¼Ÿ",
+		txt = "ÎªÊ¦Ç°Ð©ÈÕ×ÓÍÐ¸¶ÁËÒ»Ð©ÊÂÇé¸ø<npcID>£¬ËûÄ¿Ç°ÈËÔÚ<mapID,x,y>£¬ÄãÌæÎÒÇ°È¥Ñ¯ÎÊ½ø¶ÈÈçºÎ£¿",
 		options =
 		{
 			{
@@ -4066,14 +4066,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4391] =            -------------------è“¬èŽ±é˜æ´›é˜³åº„å¯å¹´å¯¹è¯
+	[4391] =            -------------------ÅîÀ³¸óÂåÑô×¯ÆôÄê¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29005,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4086,14 +4086,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4392] =            -------------------è“¬èŽ±é˜æ´›é˜³å¼ é“é•¿å¯¹è¯
+	[4392] =            -------------------ÅîÀ³¸óÂåÑôÕÅµÀ³¤¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4106,14 +4106,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4393] =            -------------------è“¬èŽ±é˜æ¡ƒå›­é•‡åˆ˜å…ƒèµ·å¯¹è¯
+	[4393] =            -------------------ÅîÀ³¸óÌÒÔ°ÕòÁõÔªÆð¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20027,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹å·²ç»å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂÒÑ¾­Íê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4126,14 +4126,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4394] =            -------------------è“¬èŽ±é˜æ´›é˜³å‘¨éœå…´å¯¹è¯
+	[4394] =            -------------------ÅîÀ³¸óÂåÑôÖÜ»ôÐË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29001,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4146,14 +4146,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4395] =            -------------------è“¬èŽ±é˜æ´›é˜³æ— åè€äººå¯¹è¯
+	[4395] =            -------------------ÅîÀ³¸óÂåÑôÎÞÃûÀÏÈË¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4166,14 +4166,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4396] =            -------------------è“¬èŽ±é˜æ¡ƒå›­é•‡åŒ…æ‰“å¬å¯¹è¯
+	[4396] =            -------------------ÅîÀ³¸óÌÒÔ°Õò°ü´òÌý¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29012,
 		soundID = nil,
-		txt = "ä½ å¸ˆå°Šæ‰€äº¤å¾…ä¹‹äº‹è¿˜éœ€è¦äº›æ—¶æ—¥æ‰èƒ½å®Œæˆï¼Œè¯·ä»£æˆ‘è½¬å‘Šä½ å¸ˆå°Šã€‚",
+		txt = "ÄãÊ¦×ðËù½»´ýÖ®ÊÂ»¹ÐèÒªÐ©Ê±ÈÕ²ÅÄÜÍê³É£¬Çë´úÎÒ×ª¸æÄãÊ¦×ð¡£",
 		options =
 		{
 			{
@@ -4186,14 +4186,14 @@ DialogModelDB =
 		    },
 		},
 	},
-	[4397] =            -------------------è“¬èŽ±é˜çŽ©å®¶å›žå¤
+	[4397] =            -------------------ÅîÀ³¸óÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å¤šè°¢ç›¸å‘Šï¼Œå‘Šè¾žï¼",
+		txt = "¶àÐ»Ïà¸æ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -4206,15 +4206,15 @@ DialogModelDB =
 		    },
 		},		
 	},
-------------------------é€ä¿¡ä»»åŠ¡------------------------------
-	[4450] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+------------------------ËÍÐÅÈÎÎñ------------------------------
+	[4450] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆè¿™é‡Œæœ‰ä¸€å°é‡è¦çš„ä¿¡ï¼Œéœ€è¦ä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘äº¤ç»™<mapID,x,y>çš„<npcID>ï¼Œä¸å¾—æœ‰è¯¯ï¼",
+		txt = "ÎªÊ¦ÕâÀïÓÐÒ»·âÖØÒªµÄÐÅ£¬ÐèÒªÄãÐÁ¿àÒ»ÌËÌæÎÒ½»¸ø<mapID,x,y>µÄ<npcID>£¬²»µÃÓÐÎó£¡",
 		options =
 		{
 			{
@@ -4227,14 +4227,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4451] =            ------------------ä¹¾å…ƒå²›æ´›é˜³å¢æ¤é€ä¿¡ä»»åŠ¡
+	[4451] =            ------------------Ç¬ÔªµºÂåÑôÂ¬Ö²ËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4247,14 +4247,14 @@ DialogModelDB =
 		        },
 		},		
 	},
-	[4452] =            ------------------ä¹¾å…ƒå²›é•¿å®‰æ¨æ–‡è¾‰é€ä¿¡ä»»åŠ¡
+	[4452] =            ------------------Ç¬Ôªµº³¤°²ÑîÎÄ»ÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4267,14 +4267,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4453] =            ------------------ä¹¾å…ƒå²›æ´›é˜³é’±å–œæ»¡é€ä¿¡ä»»åŠ¡
+	[4453] =            ------------------Ç¬ÔªµºÂåÑôÇ®Ï²ÂúËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20017,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4287,14 +4287,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4454] =            ------------------ä¹¾å…ƒå²›æ´›é˜³è°¢ä¸žæ¶›é€ä¿¡ä»»åŠ¡
+	[4454] =            ------------------Ç¬ÔªµºÂåÑôÐ»Ø©ÌÎËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29079,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4307,14 +4307,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4455] =            ------------------ä¹¾å…ƒå²›é•¿å®‰é¢ç‚¹ç‚¹é€ä¿¡ä»»åŠ¡
+	[4455] =            ------------------Ç¬Ôªµº³¤°²ÃæµãµãËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29036,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4327,14 +4327,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4456] =            ------------------ä¹¾å…ƒå²›é•¿å®‰é™†å°å…­é€ä¿¡ä»»åŠ¡
+	[4456] =            ------------------Ç¬Ôªµº³¤°²Â½Ð¡ÁùËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29034,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4347,14 +4347,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4457] =            ------------------ä¹¾å…ƒå²›æ´›é˜³çš‡èŽ†åµ©é€ä¿¡ä»»åŠ¡
+	[4457] =            ------------------Ç¬ÔªµºÂåÑô»ÊÆÎáÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4367,14 +4367,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4458] =            ------------------ä¹¾å…ƒå²›é•¿å®‰çŽ‹å…é€ä¿¡ä»»åŠ¡
+	[4458] =            ------------------Ç¬Ôªµº³¤°²ÍõÔÊËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4387,14 +4387,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4459] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4459] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆè¿™é‡Œæœ‰ä¸€å°é‡è¦çš„ä¿¡ï¼Œéœ€è¦ä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘äº¤ç»™<mapID,x,y>çš„<npcID>ï¼Œä¸å¾—æœ‰è¯¯ï¼",
+		txt = "ÎªÊ¦ÕâÀïÓÐÒ»·âÖØÒªµÄÐÅ£¬ÐèÒªÄãÐÁ¿àÒ»ÌËÌæÎÒ½»¸ø<mapID,x,y>µÄ<npcID>£¬²»µÃÓÐÎó£¡",
 		options =
 		{
 			{
@@ -4407,14 +4407,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4460] =            ------------------é‡‘éœžå±±æ´›é˜³å¢æ¤é€ä¿¡ä»»åŠ¡
+	[4460] =            ------------------½ðÏ¼É½ÂåÑôÂ¬Ö²ËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4427,14 +4427,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4461] =            ------------------é‡‘éœžå±±é•¿å®‰æ¨æ–‡è¾‰é€ä¿¡ä»»åŠ¡
+	[4461] =            ------------------½ðÏ¼É½³¤°²ÑîÎÄ»ÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4447,14 +4447,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4462] =            ------------------é‡‘éœžå±±æ´›é˜³é’±å–œæ»¡é€ä¿¡ä»»åŠ¡
+	[4462] =            ------------------½ðÏ¼É½ÂåÑôÇ®Ï²ÂúËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20017,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4467,14 +4467,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4463] =            ------------------é‡‘éœžå±±æ´›é˜³è°¢ä¸žæ¶›é€ä¿¡ä»»åŠ¡
+	[4463] =            ------------------½ðÏ¼É½ÂåÑôÐ»Ø©ÌÎËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29079,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4487,14 +4487,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4464] =            ------------------é‡‘éœžå±±é•¿å®‰é¢ç‚¹ç‚¹é€ä¿¡ä»»åŠ¡
+	[4464] =            ------------------½ðÏ¼É½³¤°²ÃæµãµãËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29036,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4507,14 +4507,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4465] =            ------------------é‡‘éœžå±±é•¿å®‰é™†å°å…­é€ä¿¡ä»»åŠ¡
+	[4465] =            ------------------½ðÏ¼É½³¤°²Â½Ð¡ÁùËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29034,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4527,14 +4527,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4466] =            ------------------é‡‘éœžå±±æ´›é˜³çš‡èŽ†åµ©é€ä¿¡ä»»åŠ¡
+	[4466] =            ------------------½ðÏ¼É½ÂåÑô»ÊÆÎáÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4547,14 +4547,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4467] =            ------------------é‡‘éœžå±±é•¿å®‰çŽ‹å…é€ä¿¡ä»»åŠ¡
+	[4467] =            ------------------½ðÏ¼É½³¤°²ÍõÔÊËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4567,14 +4567,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4468] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4468] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆè¿™é‡Œæœ‰ä¸€å°é‡è¦çš„ä¿¡ï¼Œéœ€è¦ä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘äº¤ç»™<mapID,x,y>çš„<npcID>ï¼Œä¸å¾—æœ‰è¯¯ï¼",
+		txt = "ÎªÊ¦ÕâÀïÓÐÒ»·âÖØÒªµÄÐÅ£¬ÐèÒªÄãÐÁ¿àÒ»ÌËÌæÎÒ½»¸ø<mapID,x,y>µÄ<npcID>£¬²»µÃÓÐÎó£¡",
 		options =
 		{
 			{
@@ -4587,14 +4587,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4469] =            ------------------ç´«é˜³é—¨æ´›é˜³å¢æ¤é€ä¿¡ä»»åŠ¡
+	[4469] =            ------------------×ÏÑôÃÅÂåÑôÂ¬Ö²ËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4607,14 +4607,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4470] =            ------------------ç´«é˜³é—¨é•¿å®‰æ¨æ–‡è¾‰é€ä¿¡ä»»åŠ¡
+	[4470] =            ------------------×ÏÑôÃÅ³¤°²ÑîÎÄ»ÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4627,14 +4627,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4471] =            ------------------ç´«é˜³é—¨æ´›é˜³é’±å–œæ»¡é€ä¿¡ä»»åŠ¡
+	[4471] =            ------------------×ÏÑôÃÅÂåÑôÇ®Ï²ÂúËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20017,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4647,14 +4647,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4472] =            ------------------ç´«é˜³é—¨æ´›é˜³è°¢ä¸žæ¶›é€ä¿¡ä»»åŠ¡
+	[4472] =            ------------------×ÏÑôÃÅÂåÑôÐ»Ø©ÌÎËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29079,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4667,14 +4667,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4473] =            ------------------ç´«é˜³é—¨é•¿å®‰é¢ç‚¹ç‚¹é€ä¿¡ä»»åŠ¡
+	[4473] =            ------------------×ÏÑôÃÅ³¤°²ÃæµãµãËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29036,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4687,14 +4687,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4474] =            ------------------ç´«é˜³é—¨é•¿å®‰é™†å°å…­é€ä¿¡ä»»åŠ¡
+	[4474] =            ------------------×ÏÑôÃÅ³¤°²Â½Ð¡ÁùËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29034,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4707,14 +4707,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4475] =            ------------------ç´«é˜³é—¨æ´›é˜³çš‡èŽ†åµ©é€ä¿¡ä»»åŠ¡
+	[4475] =            ------------------×ÏÑôÃÅÂåÑô»ÊÆÎáÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4727,14 +4727,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4476] =            ------------------ç´«é˜³é—¨é•¿å®‰çŽ‹å…é€ä¿¡ä»»åŠ¡
+	[4476] =            ------------------×ÏÑôÃÅ³¤°²ÍõÔÊËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4747,14 +4747,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4477] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4477] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆè¿™é‡Œæœ‰ä¸€å°é‡è¦çš„ä¿¡ï¼Œéœ€è¦ä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘äº¤ç»™<mapID,x,y>çš„<npcID>ï¼Œä¸å¾—æœ‰è¯¯ï¼",
+		txt = "ÎªÊ¦ÕâÀïÓÐÒ»·âÖØÒªµÄÐÅ£¬ÐèÒªÄãÐÁ¿àÒ»ÌËÌæÎÒ½»¸ø<mapID,x,y>µÄ<npcID>£¬²»µÃÓÐÎó£¡",
 		options =
 		{
 			{
@@ -4767,14 +4767,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4478] =            ------------------äº‘éœ„å®«æ´›é˜³å¢æ¤é€ä¿¡ä»»åŠ¡
+	[4478] =            ------------------ÔÆÏö¹¬ÂåÑôÂ¬Ö²ËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4787,14 +4787,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4479] =            ------------------äº‘éœ„å®«é•¿å®‰æ¨æ–‡è¾‰é€ä¿¡ä»»åŠ¡
+	[4479] =            ------------------ÔÆÏö¹¬³¤°²ÑîÎÄ»ÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4807,14 +4807,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4480] =            ------------------äº‘éœ„å®«æ´›é˜³é’±å–œæ»¡é€ä¿¡ä»»åŠ¡
+	[4480] =            ------------------ÔÆÏö¹¬ÂåÑôÇ®Ï²ÂúËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20017,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4827,14 +4827,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4481] =            ------------------äº‘éœ„å®«æ´›é˜³è°¢ä¸žæ¶›é€ä¿¡ä»»åŠ¡
+	[4481] =            ------------------ÔÆÏö¹¬ÂåÑôÐ»Ø©ÌÎËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29079,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4847,14 +4847,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4482] =            ------------------äº‘éœ„å®«é•¿å®‰é¢ç‚¹ç‚¹é€ä¿¡ä»»åŠ¡
+	[4482] =            ------------------ÔÆÏö¹¬³¤°²ÃæµãµãËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29036,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4867,14 +4867,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4483] =            ------------------äº‘éœ„å®«é•¿å®‰é™†å°å…­é€ä¿¡ä»»åŠ¡
+	[4483] =            ------------------ÔÆÏö¹¬³¤°²Â½Ð¡ÁùËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29034,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4887,14 +4887,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4484] =            ------------------äº‘éœ„å®«æ´›é˜³çš‡èŽ†åµ©é€ä¿¡ä»»åŠ¡
+	[4484] =            ------------------ÔÆÏö¹¬ÂåÑô»ÊÆÎáÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4907,14 +4907,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4485] =            ------------------äº‘éœ„å®«é•¿å®‰çŽ‹å…é€ä¿¡ä»»åŠ¡
+	[4485] =            ------------------ÔÆÏö¹¬³¤°²ÍõÔÊËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4927,14 +4927,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4486] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4486] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆè¿™é‡Œæœ‰ä¸€å°é‡è¦çš„ä¿¡ï¼Œéœ€è¦ä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘äº¤ç»™<mapID,x,y>çš„<npcID>ï¼Œä¸å¾—æœ‰è¯¯ï¼",
+		txt = "ÎªÊ¦ÕâÀïÓÐÒ»·âÖØÒªµÄÐÅ£¬ÐèÒªÄãÐÁ¿àÒ»ÌËÌæÎÒ½»¸ø<mapID,x,y>µÄ<npcID>£¬²»µÃÓÐÎó£¡",
 		options =
 		{
 			{
@@ -4947,14 +4947,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4487] =            ------------------æ¡ƒæºæ´žæ´›é˜³å¢æ¤é€ä¿¡ä»»åŠ¡
+	[4487] =            ------------------ÌÒÔ´¶´ÂåÑôÂ¬Ö²ËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4967,14 +4967,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4488] =            ------------------æ¡ƒæºæ´žé•¿å®‰æ¨æ–‡è¾‰é€ä¿¡ä»»åŠ¡
+	[4488] =            ------------------ÌÒÔ´¶´³¤°²ÑîÎÄ»ÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -4987,14 +4987,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4489] =            ------------------æ¡ƒæºæ´žæ´›é˜³é’±å–œæ»¡é€ä¿¡ä»»åŠ¡
+	[4489] =            ------------------ÌÒÔ´¶´ÂåÑôÇ®Ï²ÂúËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20017,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5007,14 +5007,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4490] =            ------------------æ¡ƒæºæ´žæ´›é˜³è°¢ä¸žæ¶›é€ä¿¡ä»»åŠ¡
+	[4490] =            ------------------ÌÒÔ´¶´ÂåÑôÐ»Ø©ÌÎËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29079,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5027,14 +5027,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4491] =            ------------------æ¡ƒæºæ´žé•¿å®‰é¢ç‚¹ç‚¹é€ä¿¡ä»»åŠ¡
+	[4491] =            ------------------ÌÒÔ´¶´³¤°²ÃæµãµãËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29036,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5047,14 +5047,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4492] =            ------------------æ¡ƒæºæ´žé•¿å®‰é™†å°å…­é€ä¿¡ä»»åŠ¡
+	[4492] =            ------------------ÌÒÔ´¶´³¤°²Â½Ð¡ÁùËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29034,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5067,14 +5067,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4493] =            ------------------æ¡ƒæºæ´žæ´›é˜³çš‡èŽ†åµ©é€ä¿¡ä»»åŠ¡
+	[4493] =            ------------------ÌÒÔ´¶´ÂåÑô»ÊÆÎáÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5087,14 +5087,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4494] =            ------------------æ¡ƒæºæ´žé•¿å®‰çŽ‹å…é€ä¿¡ä»»åŠ¡
+	[4494] =            ------------------ÌÒÔ´¶´³¤°²ÍõÔÊËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5107,14 +5107,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4495] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4495] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "ä¸ºå¸ˆè¿™é‡Œæœ‰ä¸€å°é‡è¦çš„ä¿¡ï¼Œéœ€è¦ä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘äº¤ç»™<mapID,x,y>çš„<npcID>ï¼Œä¸å¾—æœ‰è¯¯ï¼",
+		txt = "ÎªÊ¦ÕâÀïÓÐÒ»·âÖØÒªµÄÐÅ£¬ÐèÒªÄãÐÁ¿àÒ»ÌËÌæÎÒ½»¸ø<mapID,x,y>µÄ<npcID>£¬²»µÃÓÐÎó£¡",
 		options =
 		{
 			{
@@ -5127,14 +5127,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4496] =            ------------------è“¬èŽ±é˜æ´›é˜³å¢æ¤é€ä¿¡ä»»åŠ¡
+	[4496] =            ------------------ÅîÀ³¸óÂåÑôÂ¬Ö²ËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5147,14 +5147,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4497] =            ------------------è“¬èŽ±é˜é•¿å®‰æ¨æ–‡è¾‰é€ä¿¡ä»»åŠ¡
+	[4497] =            ------------------ÅîÀ³¸ó³¤°²ÑîÎÄ»ÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5167,14 +5167,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4498] =            ------------------è“¬èŽ±é˜æ´›é˜³é’±å–œæ»¡é€ä¿¡ä»»åŠ¡
+	[4498] =            ------------------ÅîÀ³¸óÂåÑôÇ®Ï²ÂúËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20017,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5187,14 +5187,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4499] =            ------------------è“¬èŽ±é˜æ´›é˜³è°¢ä¸žæ¶›é€ä¿¡ä»»åŠ¡
+	[4499] =            ------------------ÅîÀ³¸óÂåÑôÐ»Ø©ÌÎËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29079,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5207,14 +5207,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4500] =            ------------------è“¬èŽ±é˜é•¿å®‰é¢ç‚¹ç‚¹é€ä¿¡ä»»åŠ¡
+	[4500] =            ------------------ÅîÀ³¸ó³¤°²ÃæµãµãËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29036,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5227,14 +5227,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4501] =            ------------------è“¬èŽ±é˜é•¿å®‰é™†å°å…­é€ä¿¡ä»»åŠ¡
+	[4501] =            ------------------ÅîÀ³¸ó³¤°²Â½Ð¡ÁùËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 29034,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5247,14 +5247,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4502] =            ------------------è“¬èŽ±é˜æ´›é˜³çš‡èŽ†åµ©é€ä¿¡ä»»åŠ¡
+	[4502] =            ------------------ÅîÀ³¸óÂåÑô»ÊÆÎáÔËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5267,14 +5267,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4503] =            ------------------è“¬èŽ±é˜é•¿å®‰çŽ‹å…é€ä¿¡ä»»åŠ¡
+	[4503] =            ------------------ÅîÀ³¸ó³¤°²ÍõÔÊËÍÐÅÈÎÎñ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "ä½ å°†é‚£å°ä¿¡å¸¦è¿‡æ¥äº†ï¼Ÿ",
+		txt = "Äã½«ÄÇ·âÐÅ´ø¹ýÀ´ÁË£¿",
 		options =
 		{
 			{
@@ -5288,16 +5288,16 @@ DialogModelDB =
 		},		
 	},
 
-------------------------æŠ“å® ä»»åŠ¡------------------------------
+------------------------×¥³èÈÎÎñ------------------------------
 
-	[4550] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4550] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "è¿™é—¨æ´¾è¶Šæ¥è¶Šå£®å¤§ï¼Œå¼Ÿå­ä¹Ÿè¶Šæ‹›è¶Šå¤šäº†ã€‚æœ¬é—¨ä¹ƒä¿®ç‚¼åœ£åœ°ï¼Œä½ ä¸”è¾›è‹¦ä¸€è¶ŸåŽ»<mapID,x,y>é™„è¿‘æŠ“ä¸€åª<petID>å›žæ¥ä¾›å¸ˆå¼Ÿå¸ˆå¦¹ä¿®ç‚¼å§ï¼",
+		txt = "ÕâÃÅÅÉÔ½À´Ô½×³´ó£¬µÜ×ÓÒ²Ô½ÕÐÔ½¶àÁË¡£±¾ÃÅÄËÐÞÁ¶Ê¥µØ£¬ÄãÇÒÐÁ¿àÒ»ÌËÈ¥<mapID,x,y>¸½½ü×¥Ò»Ö»<petID>»ØÀ´¹©Ê¦µÜÊ¦ÃÃÐÞÁ¶°É£¡",
 		options =
 		{
 			{
@@ -5310,20 +5310,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4551] =           --------------------- ä¹¾å…ƒå²›ä¸Šäº¤å® ç‰©
+	[4551] =           --------------------- Ç¬ÔªµºÉÏ½»³èÎï
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼ä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„å® ç‰©äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¡ÄãÕÒµ½ÎÒÐèÒªµÄ³èÎïÁËÂð£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10001}},		
@@ -5332,7 +5332,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5340,14 +5340,14 @@ DialogModelDB =
 			},			
 		},
 	},
-	[4552] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4552] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "è¿™é—¨æ´¾è¶Šæ¥è¶Šå£®å¤§ï¼Œå¼Ÿå­ä¹Ÿè¶Šæ‹›è¶Šå¤šäº†ã€‚æœ¬é—¨ä¹ƒä¿®ç‚¼åœ£åœ°ï¼Œä½ ä¸”è¾›è‹¦ä¸€è¶ŸåŽ»<mapID,x,y>é™„è¿‘æŠ“ä¸€åª<petID>å›žæ¥ä¾›å¸ˆå¼Ÿå¸ˆå¦¹ä¿®ç‚¼å§ï¼",
+		txt = "ÕâÃÅÅÉÔ½À´Ô½×³´ó£¬µÜ×ÓÒ²Ô½ÕÐÔ½¶àÁË¡£±¾ÃÅÄËÐÞÁ¶Ê¥µØ£¬ÄãÇÒÐÁ¿àÒ»ÌËÈ¥<mapID,x,y>¸½½ü×¥Ò»Ö»<petID>»ØÀ´¹©Ê¦µÜÊ¦ÃÃÐÞÁ¶°É£¡",
 		options =
 		{
 			{
@@ -5360,20 +5360,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4553] =             ---------------------é‡‘éœžå±±ä¸Šäº¤å® ç‰©
+	[4553] =             ---------------------½ðÏ¼É½ÉÏ½»³èÎï
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼ä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„å® ç‰©äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¡ÄãÕÒµ½ÎÒÐèÒªµÄ³èÎïÁËÂð£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10002}},		
@@ -5382,7 +5382,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5390,14 +5390,14 @@ DialogModelDB =
 			},			
 		},
 	},
-	[4554] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4554] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "è¿™é—¨æ´¾è¶Šæ¥è¶Šå£®å¤§ï¼Œå¼Ÿå­ä¹Ÿè¶Šæ‹›è¶Šå¤šäº†ã€‚æœ¬é—¨ä¹ƒä¿®ç‚¼åœ£åœ°ï¼Œä½ ä¸”è¾›è‹¦ä¸€è¶ŸåŽ»<mapID,x,y>é™„è¿‘æŠ“ä¸€åª<petID>å›žæ¥ä¾›å¸ˆå¼Ÿå¸ˆå¦¹ä¿®ç‚¼å§ï¼",
+		txt = "ÕâÃÅÅÉÔ½À´Ô½×³´ó£¬µÜ×ÓÒ²Ô½ÕÐÔ½¶àÁË¡£±¾ÃÅÄËÐÞÁ¶Ê¥µØ£¬ÄãÇÒÐÁ¿àÒ»ÌËÈ¥<mapID,x,y>¸½½ü×¥Ò»Ö»<petID>»ØÀ´¹©Ê¦µÜÊ¦ÃÃÐÞÁ¶°É£¡",
 		options =
 		{
 			{
@@ -5410,20 +5410,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4555] =              ---------------------ç´«é˜³é—¨ä¸Šäº¤å® ç‰©
+	[4555] =              ---------------------×ÏÑôÃÅÉÏ½»³èÎï
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼ä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„å® ç‰©äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¡ÄãÕÒµ½ÎÒÐèÒªµÄ³èÎïÁËÂð£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10003}},		
@@ -5432,7 +5432,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5440,14 +5440,14 @@ DialogModelDB =
 			},			
 		},
 	},
-	[4556] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4556] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "è¿™é—¨æ´¾è¶Šæ¥è¶Šå£®å¤§ï¼Œå¼Ÿå­ä¹Ÿè¶Šæ‹›è¶Šå¤šäº†ã€‚æœ¬é—¨ä¹ƒä¿®ç‚¼åœ£åœ°ï¼Œä½ ä¸”è¾›è‹¦ä¸€è¶ŸåŽ»<mapID,x,y>é™„è¿‘æŠ“ä¸€åª<petID>å›žæ¥ä¾›å¸ˆå¼Ÿå¸ˆå¦¹ä¿®ç‚¼å§ï¼",
+		txt = "ÕâÃÅÅÉÔ½À´Ô½×³´ó£¬µÜ×ÓÒ²Ô½ÕÐÔ½¶àÁË¡£±¾ÃÅÄËÐÞÁ¶Ê¥µØ£¬ÄãÇÒÐÁ¿àÒ»ÌËÈ¥<mapID,x,y>¸½½ü×¥Ò»Ö»<petID>»ØÀ´¹©Ê¦µÜÊ¦ÃÃÐÞÁ¶°É£¡",
 		options =
 		{
 			{
@@ -5460,20 +5460,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4557] =                 ---------------------äº‘éœ„å®«ä¸Šäº¤å® ç‰©
+	[4557] =                 ---------------------ÔÆÏö¹¬ÉÏ½»³èÎï
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼ä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„å® ç‰©äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¡ÄãÕÒµ½ÎÒÐèÒªµÄ³èÎïÁËÂð£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10004}},	
@@ -5482,7 +5482,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5490,14 +5490,14 @@ DialogModelDB =
 			},			
 		},
 	},
-	[4558] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4558] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "è¿™é—¨æ´¾è¶Šæ¥è¶Šå£®å¤§ï¼Œå¼Ÿå­ä¹Ÿè¶Šæ‹›è¶Šå¤šäº†ã€‚æœ¬é—¨ä¹ƒä¿®ç‚¼åœ£åœ°ï¼Œä½ ä¸”è¾›è‹¦ä¸€è¶ŸåŽ»<mapID,x,y>é™„è¿‘æŠ“ä¸€åª<petID>å›žæ¥ä¾›å¸ˆå¼Ÿå¸ˆå¦¹ä¿®ç‚¼å§ï¼",
+		txt = "ÕâÃÅÅÉÔ½À´Ô½×³´ó£¬µÜ×ÓÒ²Ô½ÕÐÔ½¶àÁË¡£±¾ÃÅÄËÐÞÁ¶Ê¥µØ£¬ÄãÇÒÐÁ¿àÒ»ÌËÈ¥<mapID,x,y>¸½½ü×¥Ò»Ö»<petID>»ØÀ´¹©Ê¦µÜÊ¦ÃÃÐÞÁ¶°É£¡",
 		options =
 		{
 			{
@@ -5510,20 +5510,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4559] =                  ---------------------æ¡ƒæºæ´žä¸Šäº¤å® ç‰©
+	[4559] =                  ---------------------ÌÒÔ´¶´ÉÏ½»³èÎï
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼ä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„å® ç‰©äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¡ÄãÕÒµ½ÎÒÐèÒªµÄ³èÎïÁËÂð£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10005}},		
@@ -5532,7 +5532,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5540,14 +5540,14 @@ DialogModelDB =
 			},			
 		},
 	},
-	[4560] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4560] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "è¿™é—¨æ´¾è¶Šæ¥è¶Šå£®å¤§ï¼Œå¼Ÿå­ä¹Ÿè¶Šæ‹›è¶Šå¤šäº†ã€‚æœ¬é—¨ä¹ƒä¿®ç‚¼åœ£åœ°ï¼Œä½ ä¸”è¾›è‹¦ä¸€è¶ŸåŽ»<mapID,x,y>é™„è¿‘æŠ“ä¸€åª<petID>å›žæ¥ä¾›å¸ˆå¼Ÿå¸ˆå¦¹ä¿®ç‚¼å§ï¼",
+		txt = "ÕâÃÅÅÉÔ½À´Ô½×³´ó£¬µÜ×ÓÒ²Ô½ÕÐÔ½¶àÁË¡£±¾ÃÅÄËÐÞÁ¶Ê¥µØ£¬ÄãÇÒÐÁ¿àÒ»ÌËÈ¥<mapID,x,y>¸½½ü×¥Ò»Ö»<petID>»ØÀ´¹©Ê¦µÜÊ¦ÃÃÐÞÁ¶°É£¡",
 		options =
 		{
 			{
@@ -5560,20 +5560,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4561] =                ---------------------è“¬èŽ±é˜ä¸Šäº¤å® ç‰©
+	[4561] =                ---------------------ÅîÀ³¸óÉÏ½»³èÎï
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼ä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„å® ç‰©äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¡ÄãÕÒµ½ÎÒÐèÒªµÄ³èÎïÁËÂð£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10006}},	
@@ -5582,7 +5582,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5590,15 +5590,15 @@ DialogModelDB =
 			},			
 		},
 	},
-------------------------ä¸Šäº¤é“å…·------------------------------
- 	[4600] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+------------------------ÉÏ½»µÀ¾ß------------------------------
+ 	[4600] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "éšç€é—¨ä¸‹å¼Ÿå­è¶Šæ¥è¶Šå¤šï¼Œ<itemID>çš„å‚¨å¤‡ä¹Ÿä¸è¶³äº†ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿå¸®æˆ‘æœé›†1ä¸ª<itemID>ï¼Œæ‹¿å›žæ¥äº¤ç»™æˆ‘å§ï¼",
+		txt = "Ëæ×ÅÃÅÏÂµÜ×ÓÔ½À´Ô½¶à£¬<itemID>µÄ´¢±¸Ò²²»×ãÁË£¬ÄãÐÁ¿àÒ»ÌË°ïÎÒËÑ¼¯1¸ö<itemID>£¬ÄÃ»ØÀ´½»¸øÎÒ°É£¡",
 		options =
 		{
 			{
@@ -5611,18 +5611,18 @@ DialogModelDB =
 		    },
 		},		
 	},	
-	[4601] =            ------------------ä¹¾å…ƒå²›ä¸Šäº¤é“å…·
+	[4601] =            ------------------Ç¬ÔªµºÉÏ½»µÀ¾ß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20004,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼Ÿæ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸¹è¯äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¿ÕÒµ½ÎÒÐèÒªµÄµ¤Ò©ÁËÂð£¿",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é“å…·",
+				optionTxt = "ÉÏ½»µÀ¾ß",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10001, itemsInfo = {count = 1},},},
@@ -5630,7 +5630,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5639,14 +5639,14 @@ DialogModelDB =
 
 		},
 	},
- 	[4602] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+ 	[4602] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "éšç€é—¨ä¸‹å¼Ÿå­è¶Šæ¥è¶Šå¤šï¼Œ<itemID>çš„å‚¨å¤‡ä¹Ÿä¸è¶³äº†ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿå¸®æˆ‘æœé›†1ä¸ª<itemID>ï¼Œæ‹¿å›žæ¥äº¤ç»™æˆ‘å§ï¼",
+		txt = "Ëæ×ÅÃÅÏÂµÜ×ÓÔ½À´Ô½¶à£¬<itemID>µÄ´¢±¸Ò²²»×ãÁË£¬ÄãÐÁ¿àÒ»ÌË°ïÎÒËÑ¼¯1¸ö<itemID>£¬ÄÃ»ØÀ´½»¸øÎÒ°É£¡",
 		options =
 		{
 			{
@@ -5659,18 +5659,18 @@ DialogModelDB =
 		    },
 		},		
 	},
- 	[4603] =            ------------------é‡‘éœžå±±ä¸Šäº¤é“å…·
+ 	[4603] =            ------------------½ðÏ¼É½ÉÏ½»µÀ¾ß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20006,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼Ÿæ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸¹è¯äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¿ÕÒµ½ÎÒÐèÒªµÄµ¤Ò©ÁËÂð£¿",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é“å…·",
+				optionTxt = "ÉÏ½»µÀ¾ß",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10002, itemsInfo = {count = 1},},},
@@ -5678,7 +5678,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5687,14 +5687,14 @@ DialogModelDB =
 
 		},
 	},
- 	[4604] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+ 	[4604] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "éšç€é—¨ä¸‹å¼Ÿå­è¶Šæ¥è¶Šå¤šï¼Œ<itemID>çš„å‚¨å¤‡ä¹Ÿä¸è¶³äº†ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿå¸®æˆ‘æœé›†1ä¸ª<itemID>ï¼Œæ‹¿å›žæ¥äº¤ç»™æˆ‘å§ï¼",
+		txt = "Ëæ×ÅÃÅÏÂµÜ×ÓÔ½À´Ô½¶à£¬<itemID>µÄ´¢±¸Ò²²»×ãÁË£¬ÄãÐÁ¿àÒ»ÌË°ïÎÒËÑ¼¯1¸ö<itemID>£¬ÄÃ»ØÀ´½»¸øÎÒ°É£¡",
 		options =
 		{
 			{
@@ -5707,18 +5707,18 @@ DialogModelDB =
 		    },
 		},		
 	},
- 	[4605] =            ------------------ç´«é˜³é—¨ä¸Šäº¤é“å…·
+ 	[4605] =            ------------------×ÏÑôÃÅÉÏ½»µÀ¾ß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20008,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼Ÿæ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸¹è¯äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¿ÕÒµ½ÎÒÐèÒªµÄµ¤Ò©ÁËÂð£¿",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é“å…·",
+				optionTxt = "ÉÏ½»µÀ¾ß",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10003, itemsInfo = {count = 1},},},
@@ -5726,7 +5726,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5735,14 +5735,14 @@ DialogModelDB =
 
 		},
 	},
- 	[4606] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+ 	[4606] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "éšç€é—¨ä¸‹å¼Ÿå­è¶Šæ¥è¶Šå¤šï¼Œ<itemID>çš„å‚¨å¤‡ä¹Ÿä¸è¶³äº†ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿå¸®æˆ‘æœé›†1ä¸ª<itemID>ï¼Œæ‹¿å›žæ¥äº¤ç»™æˆ‘å§ï¼",
+		txt = "Ëæ×ÅÃÅÏÂµÜ×ÓÔ½À´Ô½¶à£¬<itemID>µÄ´¢±¸Ò²²»×ãÁË£¬ÄãÐÁ¿àÒ»ÌË°ïÎÒËÑ¼¯1¸ö<itemID>£¬ÄÃ»ØÀ´½»¸øÎÒ°É£¡",
 		options =
 		{
 			{
@@ -5755,18 +5755,18 @@ DialogModelDB =
 		    },
 		},		
 	},
- 	[4607] =            ------------------äº‘éœ„å®«ä¸Šäº¤é“å…·
+ 	[4607] =            ------------------ÔÆÏö¹¬ÉÏ½»µÀ¾ß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20009,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼Ÿæ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸¹è¯äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¿ÕÒµ½ÎÒÐèÒªµÄµ¤Ò©ÁËÂð£¿",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é“å…·",
+				optionTxt = "ÉÏ½»µÀ¾ß",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10004, itemsInfo = {count = 1},},},
@@ -5774,7 +5774,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5783,14 +5783,14 @@ DialogModelDB =
 
 		},
 	},
- 	[4608] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+ 	[4608] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "éšç€é—¨ä¸‹å¼Ÿå­è¶Šæ¥è¶Šå¤šï¼Œ<itemID>çš„å‚¨å¤‡ä¹Ÿä¸è¶³äº†ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿå¸®æˆ‘æœé›†1ä¸ª<itemID>ï¼Œæ‹¿å›žæ¥äº¤ç»™æˆ‘å§ï¼",
+		txt = "Ëæ×ÅÃÅÏÂµÜ×ÓÔ½À´Ô½¶à£¬<itemID>µÄ´¢±¸Ò²²»×ãÁË£¬ÄãÐÁ¿àÒ»ÌË°ïÎÒËÑ¼¯1¸ö<itemID>£¬ÄÃ»ØÀ´½»¸øÎÒ°É£¡",
 		options =
 		{
 			{
@@ -5803,18 +5803,18 @@ DialogModelDB =
 		    },
 		},		
 	},
- 	[4609] =            ------------------æ¡ƒæºæ´žä¸Šäº¤é“å…·
+ 	[4609] =            ------------------ÌÒÔ´¶´ÉÏ½»µÀ¾ß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20005,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼Ÿæ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸¹è¯äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¿ÕÒµ½ÎÒÐèÒªµÄµ¤Ò©ÁËÂð£¿",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é“å…·",
+				optionTxt = "ÉÏ½»µÀ¾ß",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10005, itemsInfo = {count = 1},},},
@@ -5822,7 +5822,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5831,14 +5831,14 @@ DialogModelDB =
 
 		},
 	},
- 	[4610] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+ 	[4610] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "éšç€é—¨ä¸‹å¼Ÿå­è¶Šæ¥è¶Šå¤šï¼Œ<itemID>çš„å‚¨å¤‡ä¹Ÿä¸è¶³äº†ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿå¸®æˆ‘æœé›†1ä¸ª<itemID>ï¼Œæ‹¿å›žæ¥äº¤ç»™æˆ‘å§ï¼",
+		txt = "Ëæ×ÅÃÅÏÂµÜ×ÓÔ½À´Ô½¶à£¬<itemID>µÄ´¢±¸Ò²²»×ãÁË£¬ÄãÐÁ¿àÒ»ÌË°ïÎÒËÑ¼¯1¸ö<itemID>£¬ÄÃ»ØÀ´½»¸øÎÒ°É£¡",
 		options =
 		{
 			{
@@ -5851,18 +5851,18 @@ DialogModelDB =
 		    },
 		},		
 	},
- 	[4611] =            ------------------è“¬èŽ±é˜ä¸Šäº¤é“å…·
+ 	[4611] =            ------------------ÅîÀ³¸óÉÏ½»µÀ¾ß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20007,
-		txt = "è¿™ä¹ˆå¿«å°±å›žæ¥å•¦ï¼Ÿæ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸¹è¯äº†å—ï¼Ÿ",
+		txt = "ÕâÃ´¿ì¾Í»ØÀ´À²£¿ÕÒµ½ÎÒÐèÒªµÄµ¤Ò©ÁËÂð£¿",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é“å…·",
+				optionTxt = "ÉÏ½»µÀ¾ß",
 				actions =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10006, itemsInfo = {count = 1},},},
@@ -5870,7 +5870,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -5880,17 +5880,17 @@ DialogModelDB =
 		},
 	},
 
-------------------------ä¸Šäº¤è£…å¤‡------------------------------
+------------------------ÉÏ½»×°±¸------------------------------
 
-----------------------------ææ¬¾------------------------------
-	[4701] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+----------------------------¾è¿î------------------------------
+	[4701] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "ä½œä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä»¥æ‰¶è´«æµŽå¼±ä¸ºå·±ä»»ï¼æ®é—»æ±Ÿæ¹–ä¸Šäººç§°â€œä¹å–„æ–½â€çš„<npcID>çŽ°åœ¨äººåœ¨<mapID,x,y>ï¼Œä½ åŽ»çœ‹çœ‹æœ‰ä»€ä¹ˆèƒ½å¤Ÿå¸®å¾—ä¸Šå¿™çš„å§ï¼",
+		txt = "×÷Îª±¾ÃÅµÜ×Ó£¬Ó¦ÒÔ·öÆ¶¼ÃÈõÎª¼ºÈÎ£¡¾ÝÎÅ½­ºþÉÏÈË³Æ¡°ÀÖÉÆÊ©¡±µÄ<npcID>ÏÖÔÚÈËÔÚ<mapID,x,y>£¬ÄãÈ¥¿´¿´ÓÐÊ²Ã´ÄÜ¹»°ïµÃÉÏÃ¦µÄ°É£¡",
 		options =
 		{
 			{
@@ -5910,7 +5910,7 @@ DialogModelDB =
 		{},
 		speakerID = 29079,
 		
-		txt = "åƒé‡‘æ•£å°½è¿˜å¤æ¥ï¼Œä½ æœ‰è¿™ç§è§‰æ‚ŸçœŸæ˜¯ä»¤äººæ¬£æ…°å•Šï¼",
+		txt = "Ç§½ðÉ¢¾¡»¹¸´À´£¬ÄãÓÐÕâÖÖ¾õÎòÕæÊÇÁîÈËÐÀÎ¿°¡£¡",
 		options = 
 		{
 			{
@@ -5923,14 +5923,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4703] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4703] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "ä½œä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä»¥æ‰¶è´«æµŽå¼±ä¸ºå·±ä»»ï¼æ®é—»æ±Ÿæ¹–ä¸Šäººç§°â€œä¹å–„æ–½â€çš„<npcID>çŽ°åœ¨äººåœ¨<mapID,x,y>ï¼Œä½ åŽ»çœ‹çœ‹æœ‰ä»€ä¹ˆèƒ½å¤Ÿå¸®å¾—ä¸Šå¿™çš„å§ï¼",
+		txt = "×÷Îª±¾ÃÅµÜ×Ó£¬Ó¦ÒÔ·öÆ¶¼ÃÈõÎª¼ºÈÎ£¡¾ÝÎÅ½­ºþÉÏÈË³Æ¡°ÀÖÉÆÊ©¡±µÄ<npcID>ÏÖÔÚÈËÔÚ<mapID,x,y>£¬ÄãÈ¥¿´¿´ÓÐÊ²Ã´ÄÜ¹»°ïµÃÉÏÃ¦µÄ°É£¡",
 		options =
 		{
 			{
@@ -5950,7 +5950,7 @@ DialogModelDB =
 		{},
 		speakerID = 29079,
 		
-		txt = "åƒé‡‘æ•£å°½è¿˜å¤æ¥ï¼Œä½ æœ‰è¿™ç§è§‰æ‚ŸçœŸæ˜¯ä»¤äººæ¬£æ…°å•Šï¼",
+		txt = "Ç§½ðÉ¢¾¡»¹¸´À´£¬ÄãÓÐÕâÖÖ¾õÎòÕæÊÇÁîÈËÐÀÎ¿°¡£¡",
 		options = 
 		{
 			{
@@ -5963,14 +5963,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4705] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4705] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "ä½œä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä»¥æ‰¶è´«æµŽå¼±ä¸ºå·±ä»»ï¼æ®é—»æ±Ÿæ¹–ä¸Šäººç§°â€œä¹å–„æ–½â€çš„<npcID>çŽ°åœ¨äººåœ¨<mapID,x,y>ï¼Œä½ åŽ»çœ‹çœ‹æœ‰ä»€ä¹ˆèƒ½å¤Ÿå¸®å¾—ä¸Šå¿™çš„å§ï¼",
+		txt = "×÷Îª±¾ÃÅµÜ×Ó£¬Ó¦ÒÔ·öÆ¶¼ÃÈõÎª¼ºÈÎ£¡¾ÝÎÅ½­ºþÉÏÈË³Æ¡°ÀÖÉÆÊ©¡±µÄ<npcID>ÏÖÔÚÈËÔÚ<mapID,x,y>£¬ÄãÈ¥¿´¿´ÓÐÊ²Ã´ÄÜ¹»°ïµÃÉÏÃ¦µÄ°É£¡",
 		options =
 		{
 			{
@@ -5990,7 +5990,7 @@ DialogModelDB =
 		{},
 		speakerID = 29079,
 		
-		txt = "åƒé‡‘æ•£å°½è¿˜å¤æ¥ï¼Œä½ æœ‰è¿™ç§è§‰æ‚ŸçœŸæ˜¯ä»¤äººæ¬£æ…°å•Šï¼",
+		txt = "Ç§½ðÉ¢¾¡»¹¸´À´£¬ÄãÓÐÕâÖÖ¾õÎòÕæÊÇÁîÈËÐÀÎ¿°¡£¡",
 		options = 
 		{
 			{
@@ -6003,14 +6003,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4707] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4707] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "ä½œä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä»¥æ‰¶è´«æµŽå¼±ä¸ºå·±ä»»ï¼æ®é—»æ±Ÿæ¹–ä¸Šäººç§°â€œä¹å–„æ–½â€çš„<npcID>çŽ°åœ¨äººåœ¨<mapID,x,y>ï¼Œä½ åŽ»çœ‹çœ‹æœ‰ä»€ä¹ˆèƒ½å¤Ÿå¸®å¾—ä¸Šå¿™çš„å§ï¼",
+		txt = "×÷Îª±¾ÃÅµÜ×Ó£¬Ó¦ÒÔ·öÆ¶¼ÃÈõÎª¼ºÈÎ£¡¾ÝÎÅ½­ºþÉÏÈË³Æ¡°ÀÖÉÆÊ©¡±µÄ<npcID>ÏÖÔÚÈËÔÚ<mapID,x,y>£¬ÄãÈ¥¿´¿´ÓÐÊ²Ã´ÄÜ¹»°ïµÃÉÏÃ¦µÄ°É£¡",
 		options =
 		{
 			{
@@ -6030,7 +6030,7 @@ DialogModelDB =
 		{},
 		speakerID = 29079,
 		
-		txt = "åƒé‡‘æ•£å°½è¿˜å¤æ¥ï¼Œä½ æœ‰è¿™ç§è§‰æ‚ŸçœŸæ˜¯ä»¤äººæ¬£æ…°å•Šï¼",
+		txt = "Ç§½ðÉ¢¾¡»¹¸´À´£¬ÄãÓÐÕâÖÖ¾õÎòÕæÊÇÁîÈËÐÀÎ¿°¡£¡",
 		options = 
 		{
 			{
@@ -6043,14 +6043,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4709] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4709] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "ä½œä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä»¥æ‰¶è´«æµŽå¼±ä¸ºå·±ä»»ï¼æ®é—»æ±Ÿæ¹–ä¸Šäººç§°â€œä¹å–„æ–½â€çš„<npcID>çŽ°åœ¨äººåœ¨<mapID,x,y>ï¼Œä½ åŽ»çœ‹çœ‹æœ‰ä»€ä¹ˆèƒ½å¤Ÿå¸®å¾—ä¸Šå¿™çš„å§ï¼",
+		txt = "×÷Îª±¾ÃÅµÜ×Ó£¬Ó¦ÒÔ·öÆ¶¼ÃÈõÎª¼ºÈÎ£¡¾ÝÎÅ½­ºþÉÏÈË³Æ¡°ÀÖÉÆÊ©¡±µÄ<npcID>ÏÖÔÚÈËÔÚ<mapID,x,y>£¬ÄãÈ¥¿´¿´ÓÐÊ²Ã´ÄÜ¹»°ïµÃÉÏÃ¦µÄ°É£¡",
 		options =
 		{
 			{
@@ -6070,7 +6070,7 @@ DialogModelDB =
 		{},
 		speakerID = 29079,
 		
-		txt = "åƒé‡‘æ•£å°½è¿˜å¤æ¥ï¼Œä½ æœ‰è¿™ç§è§‰æ‚ŸçœŸæ˜¯ä»¤äººæ¬£æ…°å•Šï¼",
+		txt = "Ç§½ðÉ¢¾¡»¹¸´À´£¬ÄãÓÐÕâÖÖ¾õÎòÕæÊÇÁîÈËÐÀÎ¿°¡£¡",
 		options = 
 		{
 			{
@@ -6083,14 +6083,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4711] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4711] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "ä½œä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä»¥æ‰¶è´«æµŽå¼±ä¸ºå·±ä»»ï¼æ®é—»æ±Ÿæ¹–ä¸Šäººç§°â€œä¹å–„æ–½â€çš„<npcID>çŽ°åœ¨äººåœ¨<mapID,x,y>ï¼Œä½ åŽ»çœ‹çœ‹æœ‰ä»€ä¹ˆèƒ½å¤Ÿå¸®å¾—ä¸Šå¿™çš„å§ï¼",
+		txt = "×÷Îª±¾ÃÅµÜ×Ó£¬Ó¦ÒÔ·öÆ¶¼ÃÈõÎª¼ºÈÎ£¡¾ÝÎÅ½­ºþÉÏÈË³Æ¡°ÀÖÉÆÊ©¡±µÄ<npcID>ÏÖÔÚÈËÔÚ<mapID,x,y>£¬ÄãÈ¥¿´¿´ÓÐÊ²Ã´ÄÜ¹»°ïµÃÉÏÃ¦µÄ°É£¡",
 		options =
 		{
 			{
@@ -6110,7 +6110,7 @@ DialogModelDB =
 		{},
 		speakerID = 29079,
 		
-		txt = "åƒé‡‘æ•£å°½è¿˜å¤æ¥ï¼Œä½ æœ‰è¿™ç§è§‰æ‚ŸçœŸæ˜¯ä»¤äººæ¬£æ…°å•Šï¼",
+		txt = "Ç§½ðÉ¢¾¡»¹¸´À´£¬ÄãÓÐÕâÖÖ¾õÎòÕæÊÇÁîÈËÐÀÎ¿°¡£¡",
 		options = 
 		{
 			{
@@ -6123,15 +6123,15 @@ DialogModelDB =
 			}
 		},
 	},
-----------------------------å·¡é€»è§¦å‘äº‹ä»¶------------------------------
-	[4751] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+----------------------------Ñ²Âß´¥·¢ÊÂ¼þ------------------------------
+	[4751] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œèº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä¸æ‡ˆä½™åŠ›å®ˆå«å¸ˆé—¨ï¼æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰å¤–æ¥äººå£«å‡ºæ²¡ï¼Œä½ ä¸”å‰å¾€æŸ¥çœ‹ä¸€ç•ªï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬ÉíÎª±¾ÃÅµÜ×Ó£¬Ó¦²»Ð¸ÓàÁ¦ÊØÎÀÊ¦ÃÅ£¡¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐÍâÀ´ÈËÊ¿³öÃ»£¬ÄãÇÒÇ°Íù²é¿´Ò»·¬£¡",
 		options =
 		{
 			{
@@ -6144,14 +6144,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4752] =            ------------------ä¹¾å…ƒå²›çŽ©å®¶ä»»åŠ¡æŒ‡å¼•
+	[4752] =            ------------------Ç¬ÔªµºÍæ¼ÒÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "è¯¶ï¼Ÿé‚£è¾¹å¥½åƒæœ‰ä¸ªå¥‡æ€ªçš„äººï¼Œè¿‡åŽ»çœ‹çœ‹ï¼",
+		txt = "ÚÀ£¿ÄÇ±ßºÃÏñÓÐ¸öÆæ¹ÖµÄÈË£¬¹ýÈ¥¿´¿´£¡",
 		options =
 		{
 			{
@@ -6164,20 +6164,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4753] =            ------------------ä¹¾å…ƒå²›ç¥žç§˜äººäº‹ä»¶
+	[4753] =            ------------------Ç¬ÔªµºÉñÃØÈËÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "â€œè‹±é›„è€…,èƒ¸æ€€å¤§å¿—,è…¹æœ‰è‰¯è°‹â€æœ€è¿‘çœŸæ˜¯è¶Šæ¥è¶Šè§‰å¾—è¿™å¥è¯æœ‰é“ç†äº†ï¼è¿™ä½ä»™å‹ï¼Œä½ è§‰å¾—å¿—å‘è¿˜æ˜¯è°‹ç•¥é‡è¦å‘¢ï¼Ÿ",
+		txt = "¡°Ó¢ÐÛÕß,ÐØ»³´óÖ¾,¸¹ÓÐÁ¼Ä±¡±×î½üÕæÊÇÔ½À´Ô½¾õµÃÕâ¾ä»°ÓÐµÀÀíÁË£¡ÕâÎ»ÏÉÓÑ£¬Äã¾õµÃÖ¾Ïò»¹ÊÇÄ±ÂÔÖØÒªÄØ£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å½“ç„¶æ˜¯å¿—å‘å•¦ï¼",
+				optionTxt = "µ±È»ÊÇÖ¾ÏòÀ²£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10001},},
@@ -6187,7 +6187,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è‚¯å®šæ˜¯è°‹ç•¥å•Šï¼",
+				optionTxt = "¿Ï¶¨ÊÇÄ±ÂÔ°¡£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10001},},
@@ -6196,14 +6196,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4754] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4754] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œèº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä¸æ‡ˆä½™åŠ›å®ˆå«å¸ˆé—¨ï¼æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰å¤–æ¥äººå£«å‡ºæ²¡ï¼Œä½ ä¸”å‰å¾€æŸ¥çœ‹ä¸€ç•ªï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬ÉíÎª±¾ÃÅµÜ×Ó£¬Ó¦²»Ð¸ÓàÁ¦ÊØÎÀÊ¦ÃÅ£¡¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐÍâÀ´ÈËÊ¿³öÃ»£¬ÄãÇÒÇ°Íù²é¿´Ò»·¬£¡",
 		options =
 		{
 			{
@@ -6216,14 +6216,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4755] =            ------------------é‡‘éœžå±±çŽ©å®¶ä»»åŠ¡æŒ‡å¼•
+	[4755] =            ------------------½ðÏ¼É½Íæ¼ÒÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "è¯¶ï¼Ÿé‚£è¾¹å¥½åƒæœ‰ä¸ªå¥‡æ€ªçš„äººï¼Œè¿‡åŽ»çœ‹çœ‹ï¼",
+		txt = "ÚÀ£¿ÄÇ±ßºÃÏñÓÐ¸öÆæ¹ÖµÄÈË£¬¹ýÈ¥¿´¿´£¡",
 		options =
 		{
 			{
@@ -6236,20 +6236,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4756] =            ------------------é‡‘éœžå±±ç¥žç§˜äººäº‹ä»¶
+	[4756] =            ------------------½ðÏ¼É½ÉñÃØÈËÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "â€œè‹±é›„è€…,èƒ¸æ€€å¤§å¿—,è…¹æœ‰è‰¯è°‹â€æœ€è¿‘çœŸæ˜¯è¶Šæ¥è¶Šè§‰å¾—è¿™å¥è¯æœ‰é“ç†äº†ï¼è¿™ä½ä»™å‹ï¼Œä½ è§‰å¾—å¿—å‘è¿˜æ˜¯è°‹ç•¥é‡è¦å‘¢ï¼Ÿ",
+		txt = "¡°Ó¢ÐÛÕß,ÐØ»³´óÖ¾,¸¹ÓÐÁ¼Ä±¡±×î½üÕæÊÇÔ½À´Ô½¾õµÃÕâ¾ä»°ÓÐµÀÀíÁË£¡ÕâÎ»ÏÉÓÑ£¬Äã¾õµÃÖ¾Ïò»¹ÊÇÄ±ÂÔÖØÒªÄØ£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å½“ç„¶æ˜¯å¿—å‘å•¦ï¼",
+				optionTxt = "µ±È»ÊÇÖ¾ÏòÀ²£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10002},},
@@ -6259,7 +6259,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è‚¯å®šæ˜¯è°‹ç•¥å•Šï¼",
+				optionTxt = "¿Ï¶¨ÊÇÄ±ÂÔ°¡£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10002},},
@@ -6268,14 +6268,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4757] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4757] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œèº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä¸æ‡ˆä½™åŠ›å®ˆå«å¸ˆé—¨ï¼æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰å¤–æ¥äººå£«å‡ºæ²¡ï¼Œä½ ä¸”å‰å¾€æŸ¥çœ‹ä¸€ç•ªï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬ÉíÎª±¾ÃÅµÜ×Ó£¬Ó¦²»Ð¸ÓàÁ¦ÊØÎÀÊ¦ÃÅ£¡¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐÍâÀ´ÈËÊ¿³öÃ»£¬ÄãÇÒÇ°Íù²é¿´Ò»·¬£¡",
 		options =
 		{
 			{
@@ -6288,14 +6288,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4758] =            ------------------ç´«é˜³é—¨çŽ©å®¶ä»»åŠ¡æŒ‡å¼•
+	[4758] =            ------------------×ÏÑôÃÅÍæ¼ÒÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "è¯¶ï¼Ÿé‚£è¾¹å¥½åƒæœ‰ä¸ªå¥‡æ€ªçš„äººï¼Œè¿‡åŽ»çœ‹çœ‹ï¼",
+		txt = "ÚÀ£¿ÄÇ±ßºÃÏñÓÐ¸öÆæ¹ÖµÄÈË£¬¹ýÈ¥¿´¿´£¡",
 		options =
 		{
 			{
@@ -6308,20 +6308,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4759] =            ------------------ç´«é˜³é—¨ç¥žç§˜äººäº‹ä»¶
+	[4759] =            ------------------×ÏÑôÃÅÉñÃØÈËÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "â€œè‹±é›„è€…,èƒ¸æ€€å¤§å¿—,è…¹æœ‰è‰¯è°‹â€æœ€è¿‘çœŸæ˜¯è¶Šæ¥è¶Šè§‰å¾—è¿™å¥è¯æœ‰é“ç†äº†ï¼è¿™ä½ä»™å‹ï¼Œä½ è§‰å¾—å¿—å‘è¿˜æ˜¯è°‹ç•¥é‡è¦å‘¢ï¼Ÿ",
+		txt = "¡°Ó¢ÐÛÕß,ÐØ»³´óÖ¾,¸¹ÓÐÁ¼Ä±¡±×î½üÕæÊÇÔ½À´Ô½¾õµÃÕâ¾ä»°ÓÐµÀÀíÁË£¡ÕâÎ»ÏÉÓÑ£¬Äã¾õµÃÖ¾Ïò»¹ÊÇÄ±ÂÔÖØÒªÄØ£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å½“ç„¶æ˜¯å¿—å‘å•¦ï¼",
+				optionTxt = "µ±È»ÊÇÖ¾ÏòÀ²£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10003},},
@@ -6331,7 +6331,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è‚¯å®šæ˜¯è°‹ç•¥å•Šï¼",
+				optionTxt = "¿Ï¶¨ÊÇÄ±ÂÔ°¡£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10003},},
@@ -6340,14 +6340,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4760] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4760] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œèº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä¸æ‡ˆä½™åŠ›å®ˆå«å¸ˆé—¨ï¼æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰å¤–æ¥äººå£«å‡ºæ²¡ï¼Œä½ ä¸”å‰å¾€æŸ¥çœ‹ä¸€ç•ªï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬ÉíÎª±¾ÃÅµÜ×Ó£¬Ó¦²»Ð¸ÓàÁ¦ÊØÎÀÊ¦ÃÅ£¡¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐÍâÀ´ÈËÊ¿³öÃ»£¬ÄãÇÒÇ°Íù²é¿´Ò»·¬£¡",
 		options =
 		{
 			{
@@ -6360,14 +6360,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4761] =            ------------------äº‘éœ„æ´žçŽ©å®¶ä»»åŠ¡æŒ‡å¼•
+	[4761] =            ------------------ÔÆÏö¶´Íæ¼ÒÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "è¯¶ï¼Ÿé‚£è¾¹å¥½åƒæœ‰ä¸ªå¥‡æ€ªçš„äººï¼Œè¿‡åŽ»çœ‹çœ‹ï¼",
+		txt = "ÚÀ£¿ÄÇ±ßºÃÏñÓÐ¸öÆæ¹ÖµÄÈË£¬¹ýÈ¥¿´¿´£¡",
 		options =
 		{
 			{
@@ -6380,20 +6380,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4762] =            ------------------äº‘éœ„å®«ç¥žç§˜äººäº‹ä»¶
+	[4762] =            ------------------ÔÆÏö¹¬ÉñÃØÈËÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "â€œè‹±é›„è€…,èƒ¸æ€€å¤§å¿—,è…¹æœ‰è‰¯è°‹â€æœ€è¿‘çœŸæ˜¯è¶Šæ¥è¶Šè§‰å¾—è¿™å¥è¯æœ‰é“ç†äº†ï¼è¿™ä½ä»™å‹ï¼Œä½ è§‰å¾—å¿—å‘è¿˜æ˜¯è°‹ç•¥é‡è¦å‘¢ï¼Ÿ",
+		txt = "¡°Ó¢ÐÛÕß,ÐØ»³´óÖ¾,¸¹ÓÐÁ¼Ä±¡±×î½üÕæÊÇÔ½À´Ô½¾õµÃÕâ¾ä»°ÓÐµÀÀíÁË£¡ÕâÎ»ÏÉÓÑ£¬Äã¾õµÃÖ¾Ïò»¹ÊÇÄ±ÂÔÖØÒªÄØ£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å½“ç„¶æ˜¯å¿—å‘å•¦ï¼",
+				optionTxt = "µ±È»ÊÇÖ¾ÏòÀ²£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10004},},
@@ -6403,7 +6403,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è‚¯å®šæ˜¯è°‹ç•¥å•Šï¼",
+				optionTxt = "¿Ï¶¨ÊÇÄ±ÂÔ°¡£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10004},},
@@ -6412,14 +6412,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4763] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4763] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œèº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä¸æ‡ˆä½™åŠ›å®ˆå«å¸ˆé—¨ï¼æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰å¤–æ¥äººå£«å‡ºæ²¡ï¼Œä½ ä¸”å‰å¾€æŸ¥çœ‹ä¸€ç•ªï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬ÉíÎª±¾ÃÅµÜ×Ó£¬Ó¦²»Ð¸ÓàÁ¦ÊØÎÀÊ¦ÃÅ£¡¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐÍâÀ´ÈËÊ¿³öÃ»£¬ÄãÇÒÇ°Íù²é¿´Ò»·¬£¡",
 		options =
 		{
 			{
@@ -6432,14 +6432,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4764] =            ------------------æ¡ƒæºæ´žçŽ©å®¶ä»»åŠ¡æŒ‡å¼•
+	[4764] =            ------------------ÌÒÔ´¶´Íæ¼ÒÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "è¯¶ï¼Ÿé‚£è¾¹å¥½åƒæœ‰ä¸ªå¥‡æ€ªçš„äººï¼Œè¿‡åŽ»çœ‹çœ‹ï¼",
+		txt = "ÚÀ£¿ÄÇ±ßºÃÏñÓÐ¸öÆæ¹ÖµÄÈË£¬¹ýÈ¥¿´¿´£¡",
 		options =
 		{
 			{
@@ -6452,20 +6452,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4765] =            ------------------æ¡ƒæºæ´žç¥žç§˜äººäº‹ä»¶
+	[4765] =            ------------------ÌÒÔ´¶´ÉñÃØÈËÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "â€œè‹±é›„è€…,èƒ¸æ€€å¤§å¿—,è…¹æœ‰è‰¯è°‹â€æœ€è¿‘çœŸæ˜¯è¶Šæ¥è¶Šè§‰å¾—è¿™å¥è¯æœ‰é“ç†äº†ï¼è¿™ä½ä»™å‹ï¼Œä½ è§‰å¾—æ˜¯å¿—å‘è¿˜æ˜¯è°‹ç•¥é‡è¦å‘¢ï¼Ÿ",
+		txt = "¡°Ó¢ÐÛÕß,ÐØ»³´óÖ¾,¸¹ÓÐÁ¼Ä±¡±×î½üÕæÊÇÔ½À´Ô½¾õµÃÕâ¾ä»°ÓÐµÀÀíÁË£¡ÕâÎ»ÏÉÓÑ£¬Äã¾õµÃÊÇÖ¾Ïò»¹ÊÇÄ±ÂÔÖØÒªÄØ£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å½“ç„¶æ˜¯å¿—å‘å•¦ï¼",
+				optionTxt = "µ±È»ÊÇÖ¾ÏòÀ²£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10005},},
@@ -6475,7 +6475,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è‚¯å®šæ˜¯è°‹ç•¥å•Šï¼",
+				optionTxt = "¿Ï¶¨ÊÇÄ±ÂÔ°¡£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10005},},
@@ -6484,14 +6484,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4766] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4766] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "ä¸–é“çº·ä¹±ï¼Œèº«ä¸ºæœ¬é—¨å¼Ÿå­ï¼Œåº”ä¸æ‡ˆä½™åŠ›å®ˆå«å¸ˆé—¨ï¼æ®å¼Ÿå­æ¥æŠ¥ï¼Œ<mapID,x,y>é™„è¿‘æœ‰å¤–æ¥äººå£«å‡ºæ²¡ï¼Œä½ ä¸”å‰å¾€æŸ¥çœ‹ä¸€ç•ªï¼",
+		txt = "ÊÀµÀ·×ÂÒ£¬ÉíÎª±¾ÃÅµÜ×Ó£¬Ó¦²»Ð¸ÓàÁ¦ÊØÎÀÊ¦ÃÅ£¡¾ÝµÜ×ÓÀ´±¨£¬<mapID,x,y>¸½½üÓÐÍâÀ´ÈËÊ¿³öÃ»£¬ÄãÇÒÇ°Íù²é¿´Ò»·¬£¡",
 		options =
 		{
 			{
@@ -6504,14 +6504,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4767] =            ------------------è“¬èŽ±é˜çŽ©å®¶ä»»åŠ¡æŒ‡å¼•
+	[4767] =            ------------------ÅîÀ³¸óÍæ¼ÒÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "è¯¶ï¼Ÿé‚£è¾¹å¥½åƒæœ‰ä¸ªå¥‡æ€ªçš„äººï¼Œè¿‡åŽ»çœ‹çœ‹ï¼",
+		txt = "ÚÀ£¿ÄÇ±ßºÃÏñÓÐ¸öÆæ¹ÖµÄÈË£¬¹ýÈ¥¿´¿´£¡",
 		options =
 		{
 			{
@@ -6524,20 +6524,20 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4768] =            ------------------è“¬èŽ±é˜ç¥žç§˜äººäº‹ä»¶
+	[4768] =            ------------------ÅîÀ³¸óÉñÃØÈËÊÂ¼þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "â€œè‹±é›„è€…,èƒ¸æ€€å¤§å¿—,è…¹æœ‰è‰¯è°‹â€æœ€è¿‘çœŸæ˜¯è¶Šæ¥è¶Šè§‰å¾—è¿™å¥è¯æœ‰é“ç†äº†ï¼è¿™ä½ä»™å‹ï¼Œä½ è§‰å¾—æ˜¯å¿—å‘è¿˜æ˜¯è°‹ç•¥é‡è¦å‘¢ï¼Ÿ",
+		txt = "¡°Ó¢ÐÛÕß,ÐØ»³´óÖ¾,¸¹ÓÐÁ¼Ä±¡±×î½üÕæÊÇÔ½À´Ô½¾õµÃÕâ¾ä»°ÓÐµÀÀíÁË£¡ÕâÎ»ÏÉÓÑ£¬Äã¾õµÃÊÇÖ¾Ïò»¹ÊÇÄ±ÂÔÖØÒªÄØ£¿",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å½“ç„¶æ˜¯å¿—å‘å•¦ï¼",
+				optionTxt = "µ±È»ÊÇÖ¾ÏòÀ²£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10006},},
@@ -6547,7 +6547,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è‚¯å®šæ˜¯è°‹ç•¥å•Šï¼",
+				optionTxt = "¿Ï¶¨ÊÇÄ±ÂÔ°¡£¡",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10006},},
@@ -6556,14 +6556,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[4769] =            ------------------ç¥žç§˜äººæ˜Žé›·æˆ˜æ–—æŒ‡å¼•
+	[4769] =            ------------------ÉñÃØÈËÃ÷À×Õ½¶·Ö¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{},
 		speakerID = 26015,
 		soundID = nil,
-		txt = "å“ˆå“ˆå“ˆ~è¯´å¾—å¾ˆæœ‰é“ç†çš„æ ·å­å•Šï¼å¦‚ä»Šæˆ‘æœ‰ä¸€<npcID>è¿œåœ¨<mapID,x,y>,åªè¦ä½ èƒ½æ›¿æˆ‘æ•™è®­ä»–ï¼Œæˆ‘å°±æ‰¿è®¤ä½ é…å¾—ä¸Šè‹±é›„çš„åå·ï¼",
+		txt = "¹þ¹þ¹þ~ËµµÃºÜÓÐµÀÀíµÄÑù×Ó°¡£¡Èç½ñÎÒÓÐÒ»<npcID>Ô¶ÔÚ<mapID,x,y>,Ö»ÒªÄãÄÜÌæÎÒ½ÌÑµËû£¬ÎÒ¾Í³ÐÈÏÄãÅäµÃÉÏÓ¢ÐÛµÄÃûºÅ£¡",
 		options = 
 		{
 			{
@@ -6573,13 +6573,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[4770] =            ------------------ä»‡æ•Œ
+	[4770] =            ------------------³ðµÐ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26028,
-		txt = "ä½ æ˜¯ä½•äººï¼Ÿæˆ‘ä¸Žä½ ç´ ä¸ç›¸è¯†ï¼Œä½ ä¸ºä½•å¯¹æˆ‘è‹¦è‹¦ç›¸é€¼ï¼",
+		txt = "ÄãÊÇºÎÈË£¿ÎÒÓëÄãËØ²»ÏàÊ¶£¬ÄãÎªºÎ¶ÔÎÒ¿à¿àÏà±Æ£¡",
 		options = 
 		{
 			{
@@ -6592,13 +6592,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[4771] =            ------------------çŽ©å®¶å›žå¤
+	[4771] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
-		txt = "å“ˆå“ˆå“ˆ~ä¸ç®¡æ€Žä¹ˆæ ·ï¼Œä¸ºäº†è¯æ˜Žæˆ‘çš„ç¡®æ˜¯ä¸ªè‹±é›„ï¼Œæˆ‘å¯æ˜¯åƒé‡Œè¿¢è¿¢æ¥åˆ°è¿™é‡Œï¼",
+		txt = "¹þ¹þ¹þ~²»¹ÜÔõÃ´Ñù£¬ÎªÁËÖ¤Ã÷ÎÒµÄÈ·ÊÇ¸öÓ¢ÐÛ£¬ÎÒ¿ÉÊÇÇ§ÀïÌöÌöÀ´µ½ÕâÀï£¡",
 		options = 
 		{
 			{
@@ -6611,13 +6611,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[4772] =            ------------------ä»‡æ•Œ
+	[4772] =            ------------------³ðµÐ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26028,
-		txt = "......æ—¢ç„¶å¦‚æ­¤ï¼Œé‚£å°±æ¥å§ï¼èµ¢äº†æˆ‘ä½ å°±æ˜¯è‹±é›„ï¼",
+		txt = "......¼ÈÈ»Èç´Ë£¬ÄÇ¾ÍÀ´°É£¡Ó®ÁËÎÒÄã¾ÍÊÇÓ¢ÐÛ£¡",
 		options = 
 		{
 			{
@@ -6630,14 +6630,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[4773] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4773] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "æ®é—»äº‘æ¸¸å››æ–¹çš„<npcID>åˆå‘æ˜Žäº†æ–°çš„èœè°±ï¼Œä¿—è¯è¯´â€œå”¯å¸ˆé—¨ä»»åŠ¡ä¸Žç¾Žé£Ÿä¸å¯è¾œè´Ÿâ€ã€‚ä½ æ¯å¤©ä¸ºå¸ˆé—¨å‡ºåŠ›æƒ³å¿…ä¹Ÿæ˜¯å¾ˆè¾›è‹¦ï¼Œè¿™æ¬¡å°±ç ´ä¾‹ç»™ä½ æ”¾ä¸ªå‡ï¼Œä½ ä¸‹å±±åŽ»å°å°<npcID>çš„æ–°èœè°±ï¼Œå†å›žæ¥å‘Šè¯‰æˆ‘æ„Ÿå—å§ï¼",
+		txt = "¾ÝÎÅÔÆÓÎËÄ·½µÄ<npcID>ÓÖ·¢Ã÷ÁËÐÂµÄ²ËÆ×£¬Ë×»°Ëµ¡°Î¨Ê¦ÃÅÈÎÎñÓëÃÀÊ³²»¿É¹¼¸º¡±¡£ÄãÃ¿ÌìÎªÊ¦ÃÅ³öÁ¦Ïë±ØÒ²ÊÇºÜÐÁ¿à£¬Õâ´Î¾ÍÆÆÀý¸øÄã·Å¸ö¼Ù£¬ÄãÏÂÉ½È¥³¢³¢<npcID>µÄÐÂ²ËÆ×£¬ÔÙ»ØÀ´¸æËßÎÒ¸ÐÊÜ°É£¡",
 		options =
 		{
 			{
@@ -6651,14 +6651,14 @@ DialogModelDB =
 		},
 		
 	},
-	[4774] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4774] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "æ®é—»äº‘æ¸¸å››æ–¹çš„<npcID>åˆå‘æ˜Žäº†æ–°çš„èœè°±ï¼Œä¿—è¯è¯´â€œå”¯å¸ˆé—¨ä»»åŠ¡ä¸Žç¾Žé£Ÿä¸å¯è¾œè´Ÿâ€ã€‚ä½ æ¯å¤©ä¸ºå¸ˆé—¨å‡ºåŠ›æƒ³å¿…ä¹Ÿæ˜¯å¾ˆè¾›è‹¦ï¼Œè¿™æ¬¡å°±ç ´ä¾‹ç»™ä½ æ”¾ä¸ªå‡ï¼Œä½ ä¸‹å±±åŽ»å°å°<npcID>çš„æ–°èœè°±ï¼Œå†å›žæ¥å‘Šè¯‰æˆ‘æ„Ÿå—å§ï¼",
+		txt = "¾ÝÎÅÔÆÓÎËÄ·½µÄ<npcID>ÓÖ·¢Ã÷ÁËÐÂµÄ²ËÆ×£¬Ë×»°Ëµ¡°Î¨Ê¦ÃÅÈÎÎñÓëÃÀÊ³²»¿É¹¼¸º¡±¡£ÄãÃ¿ÌìÎªÊ¦ÃÅ³öÁ¦Ïë±ØÒ²ÊÇºÜÐÁ¿à£¬Õâ´Î¾ÍÆÆÀý¸øÄã·Å¸ö¼Ù£¬ÄãÏÂÉ½È¥³¢³¢<npcID>µÄÐÂ²ËÆ×£¬ÔÙ»ØÀ´¸æËßÎÒ¸ÐÊÜ°É£¡",
 		options =
 		{
 			{
@@ -6672,14 +6672,14 @@ DialogModelDB =
 		},
 		
 	},
-	[4775] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4775] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "æ®é—»äº‘æ¸¸å››æ–¹çš„<npcID>åˆå‘æ˜Žäº†æ–°çš„èœè°±ï¼Œä¿—è¯è¯´â€œå”¯å¸ˆé—¨ä»»åŠ¡ä¸Žç¾Žé£Ÿä¸å¯è¾œè´Ÿâ€ã€‚ä½ æ¯å¤©ä¸ºå¸ˆé—¨å‡ºåŠ›æƒ³å¿…ä¹Ÿæ˜¯å¾ˆè¾›è‹¦ï¼Œè¿™æ¬¡å°±ç ´ä¾‹ç»™ä½ æ”¾ä¸ªå‡ï¼Œä½ ä¸‹å±±åŽ»å°å°<npcID>çš„æ–°èœè°±ï¼Œå†å›žæ¥å‘Šè¯‰æˆ‘æ„Ÿå—å§ï¼",
+		txt = "¾ÝÎÅÔÆÓÎËÄ·½µÄ<npcID>ÓÖ·¢Ã÷ÁËÐÂµÄ²ËÆ×£¬Ë×»°Ëµ¡°Î¨Ê¦ÃÅÈÎÎñÓëÃÀÊ³²»¿É¹¼¸º¡±¡£ÄãÃ¿ÌìÎªÊ¦ÃÅ³öÁ¦Ïë±ØÒ²ÊÇºÜÐÁ¿à£¬Õâ´Î¾ÍÆÆÀý¸øÄã·Å¸ö¼Ù£¬ÄãÏÂÉ½È¥³¢³¢<npcID>µÄÐÂ²ËÆ×£¬ÔÙ»ØÀ´¸æËßÎÒ¸ÐÊÜ°É£¡",
 		options =
 		{
 			{
@@ -6693,14 +6693,14 @@ DialogModelDB =
 		},
 		
 	},
-	[4776] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4776] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "æ®é—»äº‘æ¸¸å››æ–¹çš„<npcID>åˆå‘æ˜Žäº†æ–°çš„èœè°±ï¼Œä¿—è¯è¯´â€œå”¯å¸ˆé—¨ä»»åŠ¡ä¸Žç¾Žé£Ÿä¸å¯è¾œè´Ÿâ€ã€‚ä½ æ¯å¤©ä¸ºå¸ˆé—¨å‡ºåŠ›æƒ³å¿…ä¹Ÿæ˜¯å¾ˆè¾›è‹¦ï¼Œè¿™æ¬¡å°±ç ´ä¾‹ç»™ä½ æ”¾ä¸ªå‡ï¼Œä½ ä¸‹å±±åŽ»å°å°<npcID>çš„æ–°èœè°±ï¼Œå†å›žæ¥å‘Šè¯‰æˆ‘æ„Ÿå—å§ï¼",
+		txt = "¾ÝÎÅÔÆÓÎËÄ·½µÄ<npcID>ÓÖ·¢Ã÷ÁËÐÂµÄ²ËÆ×£¬Ë×»°Ëµ¡°Î¨Ê¦ÃÅÈÎÎñÓëÃÀÊ³²»¿É¹¼¸º¡±¡£ÄãÃ¿ÌìÎªÊ¦ÃÅ³öÁ¦Ïë±ØÒ²ÊÇºÜÐÁ¿à£¬Õâ´Î¾ÍÆÆÀý¸øÄã·Å¸ö¼Ù£¬ÄãÏÂÉ½È¥³¢³¢<npcID>µÄÐÂ²ËÆ×£¬ÔÙ»ØÀ´¸æËßÎÒ¸ÐÊÜ°É£¡",
 		options =
 		{
 			{
@@ -6714,14 +6714,14 @@ DialogModelDB =
 		},
 		
 	},
-	[4777] =            ------------------æ¡ƒæºæ´žæŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4777] =            ------------------ÌÒÔ´¶´ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "æ®é—»äº‘æ¸¸å››æ–¹çš„<npcID>åˆå‘æ˜Žäº†æ–°çš„èœè°±ï¼Œä¿—è¯è¯´â€œå”¯å¸ˆé—¨ä»»åŠ¡ä¸Žç¾Žé£Ÿä¸å¯è¾œè´Ÿâ€ã€‚ä½ æ¯å¤©ä¸ºå¸ˆé—¨å‡ºåŠ›æƒ³å¿…ä¹Ÿæ˜¯å¾ˆè¾›è‹¦ï¼Œè¿™æ¬¡å°±ç ´ä¾‹ç»™ä½ æ”¾ä¸ªå‡ï¼Œä½ ä¸‹å±±åŽ»å°å°<npcID>çš„æ–°èœè°±ï¼Œå†å›žæ¥å‘Šè¯‰æˆ‘æ„Ÿå—å§ï¼",
+		txt = "¾ÝÎÅÔÆÓÎËÄ·½µÄ<npcID>ÓÖ·¢Ã÷ÁËÐÂµÄ²ËÆ×£¬Ë×»°Ëµ¡°Î¨Ê¦ÃÅÈÎÎñÓëÃÀÊ³²»¿É¹¼¸º¡±¡£ÄãÃ¿ÌìÎªÊ¦ÃÅ³öÁ¦Ïë±ØÒ²ÊÇºÜÐÁ¿à£¬Õâ´Î¾ÍÆÆÀý¸øÄã·Å¸ö¼Ù£¬ÄãÏÂÉ½È¥³¢³¢<npcID>µÄÐÂ²ËÆ×£¬ÔÙ»ØÀ´¸æËßÎÒ¸ÐÊÜ°É£¡",
 		options =
 		{
 			{
@@ -6735,14 +6735,14 @@ DialogModelDB =
 		},
 		
 	},
-	[4778] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4778] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "æ®é—»äº‘æ¸¸å››æ–¹çš„<npcID>åˆå‘æ˜Žäº†æ–°çš„èœè°±ï¼Œä¿—è¯è¯´â€œå”¯å¸ˆé—¨ä»»åŠ¡ä¸Žç¾Žé£Ÿä¸å¯è¾œè´Ÿâ€ã€‚ä½ æ¯å¤©ä¸ºå¸ˆé—¨å‡ºåŠ›æƒ³å¿…ä¹Ÿæ˜¯å¾ˆè¾›è‹¦ï¼Œè¿™æ¬¡å°±ç ´ä¾‹ç»™ä½ æ”¾ä¸ªå‡ï¼Œä½ ä¸‹å±±åŽ»å°å°<npcID>çš„æ–°èœè°±ï¼Œå†å›žæ¥å‘Šè¯‰æˆ‘æ„Ÿå—å§ï¼",
+		txt = "¾ÝÎÅÔÆÓÎËÄ·½µÄ<npcID>ÓÖ·¢Ã÷ÁËÐÂµÄ²ËÆ×£¬Ë×»°Ëµ¡°Î¨Ê¦ÃÅÈÎÎñÓëÃÀÊ³²»¿É¹¼¸º¡±¡£ÄãÃ¿ÌìÎªÊ¦ÃÅ³öÁ¦Ïë±ØÒ²ÊÇºÜÐÁ¿à£¬Õâ´Î¾ÍÆÆÀý¸øÄã·Å¸ö¼Ù£¬ÄãÏÂÉ½È¥³¢³¢<npcID>µÄÐÂ²ËÆ×£¬ÔÙ»ØÀ´¸æËßÎÒ¸ÐÊÜ°É£¡",
 		options =
 		{
 			{
@@ -6755,14 +6755,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4780] =            ------------------çŽ©å®¶è¯„ä»·
+	[4780] =            ------------------Íæ¼ÒÆÀ¼Û
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å—¯å—¯å—¯~æ»‘è€Œä¸è…» é¦™è¾£çˆ½å£ï¼ŒçœŸä¹ƒäººé—´æžå“å•Šï¼ä¸æ„§æ˜¯å½“ä»£åŽ¨ç¥žå‘¢ï¼",
+		txt = "àÅàÅàÅ~»¬¶ø²»Äå ÏãÀ±Ë¬¿Ú£¬ÕæÄËÈË¼ä¼«Æ·°¡£¡²»À¢ÊÇµ±´ú³øÉñÄØ£¡",
 		options =
 		{
 			{
@@ -6775,14 +6775,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4781] =            ------------------ä¹¾å…ƒå²›æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4781] =            ------------------Ç¬ÔªµºÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "å¾’å„¿ï¼Œä»Šå¤©ä¸‹å±±ä¹‹è¡Œæ„Ÿå—å¦‚ä½•å‘€ï¼Ÿ",
+		txt = "Í½¶ù£¬½ñÌìÏÂÉ½Ö®ÐÐ¸ÐÊÜÈçºÎÑ½£¿",
 		options =
 		{
 			{
@@ -6795,14 +6795,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4782] =            ------------------çŽ©å®¶å›žå¤
+	[4782] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ä¸‹å±±ä¸€è¡Œç€å®žè®©å¼Ÿå­é•¿äº†è§è¯†ï¼Œå¤šè°¢æŽŒé—¨æ©å…¸ï¼Œå¼Ÿå­å‘Šé€€ï¼",
+		txt = "ÏÂÉ½Ò»ÐÐ×ÅÊµÈÃµÜ×Ó³¤ÁË¼ûÊ¶£¬¶àÐ»ÕÆÃÅ¶÷µä£¬µÜ×Ó¸æÍË£¡",
 		options =
 		{
 			{
@@ -6815,14 +6815,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4783] =            ------------------é‡‘éœžå±±æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4783] =            ------------------½ðÏ¼É½ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20006,
 		soundID = nil,
-		txt = "å¾’å„¿ï¼Œä»Šå¤©ä¸‹å±±ä¹‹è¡Œæ„Ÿå—å¦‚ä½•å‘€ï¼Ÿ",
+		txt = "Í½¶ù£¬½ñÌìÏÂÉ½Ö®ÐÐ¸ÐÊÜÈçºÎÑ½£¿",
 		options =
 		{
 			{
@@ -6835,14 +6835,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4784] =            ------------------çŽ©å®¶å›žå¤
+	[4784] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ä¸‹å±±ä¸€è¡Œç€å®žè®©å¼Ÿå­é•¿äº†è§è¯†ï¼Œå¤šè°¢æŽŒé—¨æ©å…¸ï¼Œå¼Ÿå­å‘Šé€€ï¼",
+		txt = "ÏÂÉ½Ò»ÐÐ×ÅÊµÈÃµÜ×Ó³¤ÁË¼ûÊ¶£¬¶àÐ»ÕÆÃÅ¶÷µä£¬µÜ×Ó¸æÍË£¡",
 		options =
 		{
 			{
@@ -6855,14 +6855,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4785] =            ------------------ç´«é˜³é—¨æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4785] =            ------------------×ÏÑôÃÅÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20008,
 		soundID = nil,
-		txt = "å¾’å„¿ï¼Œä»Šå¤©ä¸‹å±±ä¹‹è¡Œæ„Ÿå—å¦‚ä½•å‘€ï¼Ÿ",
+		txt = "Í½¶ù£¬½ñÌìÏÂÉ½Ö®ÐÐ¸ÐÊÜÈçºÎÑ½£¿",
 		options =
 		{
 			{
@@ -6875,14 +6875,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4786] =            ------------------çŽ©å®¶å›žå¤
+	[4786] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ä¸‹å±±ä¸€è¡Œç€å®žè®©å¼Ÿå­é•¿äº†è§è¯†ï¼Œå¤šè°¢æŽŒé—¨æ©å…¸ï¼Œå¼Ÿå­å‘Šé€€ï¼",
+		txt = "ÏÂÉ½Ò»ÐÐ×ÅÊµÈÃµÜ×Ó³¤ÁË¼ûÊ¶£¬¶àÐ»ÕÆÃÅ¶÷µä£¬µÜ×Ó¸æÍË£¡",
 		options =
 		{
 			{
@@ -6895,14 +6895,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4787] =            ------------------äº‘éœ„å®«æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4787] =            ------------------ÔÆÏö¹¬ÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20009,
 		soundID = nil,
-		txt = "å¾’å„¿ï¼Œä»Šå¤©ä¸‹å±±ä¹‹è¡Œæ„Ÿå—å¦‚ä½•å‘€ï¼Ÿ",
+		txt = "Í½¶ù£¬½ñÌìÏÂÉ½Ö®ÐÐ¸ÐÊÜÈçºÎÑ½£¿",
 		options =
 		{
 			{
@@ -6915,14 +6915,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4788] =            ------------------çŽ©å®¶å›žå¤
+	[4788] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ä¸‹å±±ä¸€è¡Œç€å®žè®©å¼Ÿå­é•¿äº†è§è¯†ï¼Œå¤šè°¢æŽŒé—¨æ©å…¸ï¼Œå¼Ÿå­å‘Šé€€ï¼",
+		txt = "ÏÂÉ½Ò»ÐÐ×ÅÊµÈÃµÜ×Ó³¤ÁË¼ûÊ¶£¬¶àÐ»ÕÆÃÅ¶÷µä£¬µÜ×Ó¸æÍË£¡",
 		options =
 		{
 			{
@@ -6935,14 +6935,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4789] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4789] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20005,
 		soundID = nil,
-		txt = "å¾’å„¿ï¼Œä»Šå¤©ä¸‹å±±ä¹‹è¡Œæ„Ÿå—å¦‚ä½•å‘€ï¼Ÿ",
+		txt = "Í½¶ù£¬½ñÌìÏÂÉ½Ö®ÐÐ¸ÐÊÜÈçºÎÑ½£¿",
 		options =
 		{
 			{
@@ -6955,14 +6955,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4790] =            ------------------çŽ©å®¶å›žå¤
+	[4790] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ä¸‹å±±ä¸€è¡Œç€å®žè®©å¼Ÿå­é•¿äº†è§è¯†ï¼Œå¤šè°¢æŽŒé—¨æ©å…¸ï¼Œå¼Ÿå­å‘Šé€€ï¼",
+		txt = "ÏÂÉ½Ò»ÐÐ×ÅÊµÈÃµÜ×Ó³¤ÁË¼ûÊ¶£¬¶àÐ»ÕÆÃÅ¶÷µä£¬µÜ×Ó¸æÍË£¡",
 		options =
 		{
 			{
@@ -6975,14 +6975,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4791] =            ------------------è“¬èŽ±é˜æŽŒé—¨ä»»åŠ¡æŒ‡å¼•
+	[4791] =            ------------------ÅîÀ³¸óÕÆÃÅÈÎÎñÖ¸Òý
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 20007,
 		soundID = nil,
-		txt = "å¾’å„¿ï¼Œä»Šå¤©ä¸‹å±±ä¹‹è¡Œæ„Ÿå—å¦‚ä½•å‘€ï¼Ÿ",
+		txt = "Í½¶ù£¬½ñÌìÏÂÉ½Ö®ÐÐ¸ÐÊÜÈçºÎÑ½£¿",
 		options =
 		{
 			{
@@ -6995,14 +6995,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4792] =            ------------------çŽ©å®¶å›žå¤
+	[4792] =            ------------------Íæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "ä¸‹å±±ä¸€è¡Œç€å®žè®©å¼Ÿå­é•¿äº†è§è¯†ï¼Œå¤šè°¢æŽŒé—¨æ©å…¸ï¼Œå¼Ÿå­å‘Šé€€ï¼",
+		txt = "ÏÂÉ½Ò»ÐÐ×ÅÊµÈÃµÜ×Ó³¤ÁË¼ûÊ¶£¬¶àÐ»ÕÆÃÅ¶÷µä£¬µÜ×Ó¸æÍË£¡",
 		options =
 		{
 			{
@@ -7015,7 +7015,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4793] =            ------------------ä¹¾å…ƒå²›å¤ªæžæŠ¤å›½ç¾¹ä»‹ç»
+	[4793] =            ------------------Ç¬ÔªµºÌ«¼«»¤¹ú¸þ½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7024,7 +7024,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœï¼Œä½¿ç”¨èŒè‡ã€é²œè±†è…ã€å—ç“œå¶ç­‰ç²¾å¿ƒç‚®åˆ¶è€Œæˆï¼Œä»¥é²œé¦™ã€é€ åž‹ç‹¬ç‰¹æµä¼ äºŽä¸–ã€‚å› å…¶å¤–å½¢é…·ä¼¼å¤ªæžå…«å¦ï¼Œæˆ‘å°†å…¶å‘½åä¸ºâ€œå¤ªæžæŠ¤å›½ç¾¹â€ï¼ è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²Ë£¬Ê¹ÓÃ¾ú¹½¡¢ÏÊ¶¹¸¯¡¢ÄÏ¹ÏÒ¶µÈ¾«ÐÄÅÚÖÆ¶ø³É£¬ÒÔÏÊÏã¡¢ÔìÐÍ¶ÀÌØÁ÷´«ÓÚÊÀ¡£ÒòÆäÍâÐÎ¿áËÆÌ«¼«°ËØÔ£¬ÎÒ½«ÆäÃüÃûÎª¡°Ì«¼«»¤¹ú¸þ¡±£¡ ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7037,7 +7037,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4794] =            ------------------é‡‘éœžå±±å¤ªæžæŠ¤å›½ç¾¹ä»‹ç»
+	[4794] =            ------------------½ðÏ¼É½Ì«¼«»¤¹ú¸þ½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7046,7 +7046,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœï¼Œä½¿ç”¨èŒè‡ã€é²œè±†è…ã€å—ç“œå¶ç­‰ç²¾å¿ƒç‚®åˆ¶è€Œæˆï¼Œä»¥é²œé¦™ã€é€ åž‹ç‹¬ç‰¹æµä¼ äºŽä¸–ã€‚å› å…¶å¤–å½¢é…·ä¼¼å¤ªæžå…«å¦ï¼Œæˆ‘å°†å…¶å‘½åä¸ºâ€œå¤ªæžæŠ¤å›½ç¾¹â€ï¼ è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²Ë£¬Ê¹ÓÃ¾ú¹½¡¢ÏÊ¶¹¸¯¡¢ÄÏ¹ÏÒ¶µÈ¾«ÐÄÅÚÖÆ¶ø³É£¬ÒÔÏÊÏã¡¢ÔìÐÍ¶ÀÌØÁ÷´«ÓÚÊÀ¡£ÒòÆäÍâÐÎ¿áËÆÌ«¼«°ËØÔ£¬ÎÒ½«ÆäÃüÃûÎª¡°Ì«¼«»¤¹ú¸þ¡±£¡ ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7059,7 +7059,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4795] =            ------------------ç´«é˜³é—¨å¤ªæžæŠ¤å›½ç¾¹ä»‹ç»
+	[4795] =            ------------------×ÏÑôÃÅÌ«¼«»¤¹ú¸þ½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7068,7 +7068,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœï¼Œä½¿ç”¨èŒè‡ã€é²œè±†è…ã€å—ç“œå¶ç­‰ç²¾å¿ƒç‚®åˆ¶è€Œæˆï¼Œä»¥é²œé¦™ã€é€ åž‹ç‹¬ç‰¹æµä¼ äºŽä¸–ã€‚å› å…¶å¤–å½¢é…·ä¼¼å¤ªæžå…«å¦ï¼Œæˆ‘å°†å…¶å‘½åä¸ºâ€œå¤ªæžæŠ¤å›½ç¾¹â€ï¼ è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²Ë£¬Ê¹ÓÃ¾ú¹½¡¢ÏÊ¶¹¸¯¡¢ÄÏ¹ÏÒ¶µÈ¾«ÐÄÅÚÖÆ¶ø³É£¬ÒÔÏÊÏã¡¢ÔìÐÍ¶ÀÌØÁ÷´«ÓÚÊÀ¡£ÒòÆäÍâÐÎ¿áËÆÌ«¼«°ËØÔ£¬ÎÒ½«ÆäÃüÃûÎª¡°Ì«¼«»¤¹ú¸þ¡±£¡ ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7081,7 +7081,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4796] =            ------------------äº‘éœ„å®«å¤ªæžæŠ¤å›½ç¾¹ä»‹ç»
+	[4796] =            ------------------ÔÆÏö¹¬Ì«¼«»¤¹ú¸þ½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7090,7 +7090,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœï¼Œä½¿ç”¨èŒè‡ã€é²œè±†è…ã€å—ç“œå¶ç­‰ç²¾å¿ƒç‚®åˆ¶è€Œæˆï¼Œä»¥é²œé¦™ã€é€ åž‹ç‹¬ç‰¹æµä¼ äºŽä¸–ã€‚å› å…¶å¤–å½¢é…·ä¼¼å¤ªæžå…«å¦ï¼Œæˆ‘å°†å…¶å‘½åä¸ºâ€œå¤ªæžæŠ¤å›½ç¾¹â€ï¼ è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²Ë£¬Ê¹ÓÃ¾ú¹½¡¢ÏÊ¶¹¸¯¡¢ÄÏ¹ÏÒ¶µÈ¾«ÐÄÅÚÖÆ¶ø³É£¬ÒÔÏÊÏã¡¢ÔìÐÍ¶ÀÌØÁ÷´«ÓÚÊÀ¡£ÒòÆäÍâÐÎ¿áËÆÌ«¼«°ËØÔ£¬ÎÒ½«ÆäÃüÃûÎª¡°Ì«¼«»¤¹ú¸þ¡±£¡ ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7103,7 +7103,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4797] =            ------------------æ¡ƒæºæ´žå¤ªæžæŠ¤å›½ç¾¹ä»‹ç»
+	[4797] =            ------------------ÌÒÔ´¶´Ì«¼«»¤¹ú¸þ½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7112,7 +7112,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœï¼Œä½¿ç”¨èŒè‡ã€é²œè±†è…ã€å—ç“œå¶ç­‰ç²¾å¿ƒç‚®åˆ¶è€Œæˆï¼Œä»¥é²œé¦™ã€é€ åž‹ç‹¬ç‰¹æµä¼ äºŽä¸–ã€‚å› å…¶å¤–å½¢é…·ä¼¼å¤ªæžå…«å¦ï¼Œæˆ‘å°†å…¶å‘½åä¸ºâ€œå¤ªæžæŠ¤å›½ç¾¹â€ï¼ è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²Ë£¬Ê¹ÓÃ¾ú¹½¡¢ÏÊ¶¹¸¯¡¢ÄÏ¹ÏÒ¶µÈ¾«ÐÄÅÚÖÆ¶ø³É£¬ÒÔÏÊÏã¡¢ÔìÐÍ¶ÀÌØÁ÷´«ÓÚÊÀ¡£ÒòÆäÍâÐÎ¿áËÆÌ«¼«°ËØÔ£¬ÎÒ½«ÆäÃüÃûÎª¡°Ì«¼«»¤¹ú¸þ¡±£¡ ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7125,7 +7125,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4798] =            ------------------è“¬èŽ±é˜å¤ªæžæŠ¤å›½ç¾¹ä»‹ç»
+	[4798] =            ------------------ÅîÀ³¸óÌ«¼«»¤¹ú¸þ½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7134,7 +7134,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœï¼Œä½¿ç”¨èŒè‡ã€é²œè±†è…ã€å—ç“œå¶ç­‰ç²¾å¿ƒç‚®åˆ¶è€Œæˆï¼Œä»¥é²œé¦™ã€é€ åž‹ç‹¬ç‰¹æµä¼ äºŽä¸–ã€‚å› å…¶å¤–å½¢é…·ä¼¼å¤ªæžå…«å¦ï¼Œæˆ‘å°†å…¶å‘½åä¸ºâ€œå¤ªæžæŠ¤å›½ç¾¹â€ï¼ è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²Ë£¬Ê¹ÓÃ¾ú¹½¡¢ÏÊ¶¹¸¯¡¢ÄÏ¹ÏÒ¶µÈ¾«ÐÄÅÚÖÆ¶ø³É£¬ÒÔÏÊÏã¡¢ÔìÐÍ¶ÀÌØÁ÷´«ÓÚÊÀ¡£ÒòÆäÍâÐÎ¿áËÆÌ«¼«°ËØÔ£¬ÎÒ½«ÆäÃüÃûÎª¡°Ì«¼«»¤¹ú¸þ¡±£¡ ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7147,7 +7147,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4799] =            ------------------ä¹¾å…ƒå²›æ›¹æ“é¸¡ä»‹ç»
+	[4799] =            ------------------Ç¬Ôªµº²Ü²Ù¼¦½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7156,7 +7156,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœä¸»è¦åŽŸæ–™ä¸ºæ¯é¸¡ã€ç™½é…’ã€‚æˆå“è‰²æ³½çº¢æ¶¦ï¼Œé¦™æ°”æµ“éƒï¼Œçš®è„†æ²¹äº®ã€‚ç›¸ä¼ å½“å¹´ï¼Œæ›¹å°†å†›å±¯å…µåºå·žï¼Œå› å†›æ”¿äº‹åŠ¡ç¹å¿™ï¼Œæ“åŠ³è¿‡åº¦è€Œå§åºŠä¸èµ·ã€‚æ²»ç–—è¿‡ç¨‹ä¸­ï¼Œæœ¬åŽ¨ç¥žåœ¨é¸¡å†…æ·»åŠ ä¸­è¯ï¼Œçƒ¹åˆ¶æˆè¯è†³é¸¡ã€‚æ›¹å°†å†›é£ŸåŽç—…æƒ…æžœç„¶æ—¥è¶‹å¥½è½¬ã€‚äºŽæ˜¯ï¼Œè¿™é“èœæœ¬äººå°†å…¶å‘½åä¸ºâ€œæ›¹æ“é¸¡â€ã€‚è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²ËÖ÷ÒªÔ­ÁÏÎªÄ¸¼¦¡¢°×¾Æ¡£³ÉÆ·É«ÔóºìÈó£¬ÏãÆøÅ¨Óô£¬Æ¤´àÓÍÁÁ¡£Ïà´«µ±Äê£¬²Ü½«¾üÍÍ±øÂ®ÖÝ£¬Òò¾üÕþÊÂÎñ·±Ã¦£¬²ÙÀÍ¹ý¶È¶øÎÔ´²²»Æð¡£ÖÎÁÆ¹ý³ÌÖÐ£¬±¾³øÉñÔÚ¼¦ÄÚÌí¼ÓÖÐÒ©£¬ÅëÖÆ³ÉÒ©ÉÅ¼¦¡£²Ü½«¾üÊ³ºó²¡Çé¹ûÈ»ÈÕÇ÷ºÃ×ª¡£ÓÚÊÇ£¬ÕâµÀ²Ë±¾ÈË½«ÆäÃüÃûÎª¡°²Ü²Ù¼¦¡±¡£ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7169,7 +7169,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4800] =            ------------------é‡‘éœžå±±æ›¹æ“é¸¡ä»‹ç»
+	[4800] =            ------------------½ðÏ¼É½²Ü²Ù¼¦½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7178,7 +7178,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœä¸»è¦åŽŸæ–™ä¸ºæ¯é¸¡ã€ç™½é…’ã€‚æˆå“è‰²æ³½çº¢æ¶¦ï¼Œé¦™æ°”æµ“éƒï¼Œçš®è„†æ²¹äº®ã€‚ç›¸ä¼ å½“å¹´ï¼Œæ›¹å°†å†›å±¯å…µåºå·žï¼Œå› å†›æ”¿äº‹åŠ¡ç¹å¿™ï¼Œæ“åŠ³è¿‡åº¦è€Œå§åºŠä¸èµ·ã€‚æ²»ç–—è¿‡ç¨‹ä¸­ï¼Œæœ¬åŽ¨ç¥žåœ¨é¸¡å†…æ·»åŠ ä¸­è¯ï¼Œçƒ¹åˆ¶æˆè¯è†³é¸¡ã€‚æ›¹å°†å†›é£ŸåŽç—…æƒ…æžœç„¶æ—¥è¶‹å¥½è½¬ã€‚äºŽæ˜¯ï¼Œè¿™é“èœæœ¬äººå°†å…¶å‘½åä¸ºâ€œæ›¹æ“é¸¡â€ã€‚è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²ËÖ÷ÒªÔ­ÁÏÎªÄ¸¼¦¡¢°×¾Æ¡£³ÉÆ·É«ÔóºìÈó£¬ÏãÆøÅ¨Óô£¬Æ¤´àÓÍÁÁ¡£Ïà´«µ±Äê£¬²Ü½«¾üÍÍ±øÂ®ÖÝ£¬Òò¾üÕþÊÂÎñ·±Ã¦£¬²ÙÀÍ¹ý¶È¶øÎÔ´²²»Æð¡£ÖÎÁÆ¹ý³ÌÖÐ£¬±¾³øÉñÔÚ¼¦ÄÚÌí¼ÓÖÐÒ©£¬ÅëÖÆ³ÉÒ©ÉÅ¼¦¡£²Ü½«¾üÊ³ºó²¡Çé¹ûÈ»ÈÕÇ÷ºÃ×ª¡£ÓÚÊÇ£¬ÕâµÀ²Ë±¾ÈË½«ÆäÃüÃûÎª¡°²Ü²Ù¼¦¡±¡£ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7191,7 +7191,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4801] =            ------------------ç´«é˜³é—¨æ›¹æ“é¸¡ä»‹ç»
+	[4801] =            ------------------×ÏÑôÃÅ²Ü²Ù¼¦½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7200,7 +7200,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœä¸»è¦åŽŸæ–™ä¸ºæ¯é¸¡ã€ç™½é…’ã€‚æˆå“è‰²æ³½çº¢æ¶¦ï¼Œé¦™æ°”æµ“éƒï¼Œçš®è„†æ²¹äº®ã€‚ç›¸ä¼ å½“å¹´ï¼Œæ›¹å°†å†›å±¯å…µåºå·žï¼Œå› å†›æ”¿äº‹åŠ¡ç¹å¿™ï¼Œæ“åŠ³è¿‡åº¦è€Œå§åºŠä¸èµ·ã€‚æ²»ç–—è¿‡ç¨‹ä¸­ï¼Œæœ¬åŽ¨ç¥žåœ¨é¸¡å†…æ·»åŠ ä¸­è¯ï¼Œçƒ¹åˆ¶æˆè¯è†³é¸¡ã€‚æ›¹å°†å†›é£ŸåŽç—…æƒ…æžœç„¶æ—¥è¶‹å¥½è½¬ã€‚äºŽæ˜¯ï¼Œè¿™é“èœæœ¬äººå°†å…¶å‘½åä¸ºâ€œæ›¹æ“é¸¡â€ã€‚è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²ËÖ÷ÒªÔ­ÁÏÎªÄ¸¼¦¡¢°×¾Æ¡£³ÉÆ·É«ÔóºìÈó£¬ÏãÆøÅ¨Óô£¬Æ¤´àÓÍÁÁ¡£Ïà´«µ±Äê£¬²Ü½«¾üÍÍ±øÂ®ÖÝ£¬Òò¾üÕþÊÂÎñ·±Ã¦£¬²ÙÀÍ¹ý¶È¶øÎÔ´²²»Æð¡£ÖÎÁÆ¹ý³ÌÖÐ£¬±¾³øÉñÔÚ¼¦ÄÚÌí¼ÓÖÐÒ©£¬ÅëÖÆ³ÉÒ©ÉÅ¼¦¡£²Ü½«¾üÊ³ºó²¡Çé¹ûÈ»ÈÕÇ÷ºÃ×ª¡£ÓÚÊÇ£¬ÕâµÀ²Ë±¾ÈË½«ÆäÃüÃûÎª¡°²Ü²Ù¼¦¡±¡£ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7213,7 +7213,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4802] =            ------------------äº‘éœ„å®«æ›¹æ“é¸¡ä»‹ç»
+	[4802] =            ------------------ÔÆÏö¹¬²Ü²Ù¼¦½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7222,7 +7222,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœä¸»è¦åŽŸæ–™ä¸ºæ¯é¸¡ã€ç™½é…’ã€‚æˆå“è‰²æ³½çº¢æ¶¦ï¼Œé¦™æ°”æµ“éƒï¼Œçš®è„†æ²¹äº®ã€‚ç›¸ä¼ å½“å¹´ï¼Œæ›¹å°†å†›å±¯å…µåºå·žï¼Œå› å†›æ”¿äº‹åŠ¡ç¹å¿™ï¼Œæ“åŠ³è¿‡åº¦è€Œå§åºŠä¸èµ·ã€‚æ²»ç–—è¿‡ç¨‹ä¸­ï¼Œæœ¬åŽ¨ç¥žåœ¨é¸¡å†…æ·»åŠ ä¸­è¯ï¼Œçƒ¹åˆ¶æˆè¯è†³é¸¡ã€‚æ›¹å°†å†›é£ŸåŽç—…æƒ…æžœç„¶æ—¥è¶‹å¥½è½¬ã€‚äºŽæ˜¯ï¼Œè¿™é“èœæœ¬äººå°†å…¶å‘½åä¸ºâ€œæ›¹æ“é¸¡â€ã€‚è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²ËÖ÷ÒªÔ­ÁÏÎªÄ¸¼¦¡¢°×¾Æ¡£³ÉÆ·É«ÔóºìÈó£¬ÏãÆøÅ¨Óô£¬Æ¤´àÓÍÁÁ¡£Ïà´«µ±Äê£¬²Ü½«¾üÍÍ±øÂ®ÖÝ£¬Òò¾üÕþÊÂÎñ·±Ã¦£¬²ÙÀÍ¹ý¶È¶øÎÔ´²²»Æð¡£ÖÎÁÆ¹ý³ÌÖÐ£¬±¾³øÉñÔÚ¼¦ÄÚÌí¼ÓÖÐÒ©£¬ÅëÖÆ³ÉÒ©ÉÅ¼¦¡£²Ü½«¾üÊ³ºó²¡Çé¹ûÈ»ÈÕÇ÷ºÃ×ª¡£ÓÚÊÇ£¬ÕâµÀ²Ë±¾ÈË½«ÆäÃüÃûÎª¡°²Ü²Ù¼¦¡±¡£ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7235,7 +7235,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4803] =            ------------------æ¡ƒæºæ´žæ›¹æ“é¸¡ä»‹ç»
+	[4803] =            ------------------ÌÒÔ´¶´²Ü²Ù¼¦½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7244,7 +7244,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœä¸»è¦åŽŸæ–™ä¸ºæ¯é¸¡ã€ç™½é…’ã€‚æˆå“è‰²æ³½çº¢æ¶¦ï¼Œé¦™æ°”æµ“éƒï¼Œçš®è„†æ²¹äº®ã€‚ç›¸ä¼ å½“å¹´ï¼Œæ›¹å°†å†›å±¯å…µåºå·žï¼Œå› å†›æ”¿äº‹åŠ¡ç¹å¿™ï¼Œæ“åŠ³è¿‡åº¦è€Œå§åºŠä¸èµ·ã€‚æ²»ç–—è¿‡ç¨‹ä¸­ï¼Œæœ¬åŽ¨ç¥žåœ¨é¸¡å†…æ·»åŠ ä¸­è¯ï¼Œçƒ¹åˆ¶æˆè¯è†³é¸¡ã€‚æ›¹å°†å†›é£ŸåŽç—…æƒ…æžœç„¶æ—¥è¶‹å¥½è½¬ã€‚äºŽæ˜¯ï¼Œè¿™é“èœæœ¬äººå°†å…¶å‘½åä¸ºâ€œæ›¹æ“é¸¡â€ã€‚è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²ËÖ÷ÒªÔ­ÁÏÎªÄ¸¼¦¡¢°×¾Æ¡£³ÉÆ·É«ÔóºìÈó£¬ÏãÆøÅ¨Óô£¬Æ¤´àÓÍÁÁ¡£Ïà´«µ±Äê£¬²Ü½«¾üÍÍ±øÂ®ÖÝ£¬Òò¾üÕþÊÂÎñ·±Ã¦£¬²ÙÀÍ¹ý¶È¶øÎÔ´²²»Æð¡£ÖÎÁÆ¹ý³ÌÖÐ£¬±¾³øÉñÔÚ¼¦ÄÚÌí¼ÓÖÐÒ©£¬ÅëÖÆ³ÉÒ©ÉÅ¼¦¡£²Ü½«¾üÊ³ºó²¡Çé¹ûÈ»ÈÕÇ÷ºÃ×ª¡£ÓÚÊÇ£¬ÕâµÀ²Ë±¾ÈË½«ÆäÃüÃûÎª¡°²Ü²Ù¼¦¡±¡£ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7257,7 +7257,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4804] =            ------------------è“¬èŽ±é˜æ›¹æ“é¸¡ä»‹ç»
+	[4804] =            ------------------ÅîÀ³¸ó²Ü²Ù¼¦½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7266,7 +7266,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "è¿™é“èœä¸»è¦åŽŸæ–™ä¸ºæ¯é¸¡ã€ç™½é…’ã€‚æˆå“è‰²æ³½çº¢æ¶¦ï¼Œé¦™æ°”æµ“éƒï¼Œçš®è„†æ²¹äº®ã€‚ç›¸ä¼ å½“å¹´ï¼Œæ›¹å°†å†›å±¯å…µåºå·žï¼Œå› å†›æ”¿äº‹åŠ¡ç¹å¿™ï¼Œæ“åŠ³è¿‡åº¦è€Œå§åºŠä¸èµ·ã€‚æ²»ç–—è¿‡ç¨‹ä¸­ï¼Œæœ¬åŽ¨ç¥žåœ¨é¸¡å†…æ·»åŠ ä¸­è¯ï¼Œçƒ¹åˆ¶æˆè¯è†³é¸¡ã€‚æ›¹å°†å†›é£ŸåŽç—…æƒ…æžœç„¶æ—¥è¶‹å¥½è½¬ã€‚äºŽæ˜¯ï¼Œè¿™é“èœæœ¬äººå°†å…¶å‘½åä¸ºâ€œæ›¹æ“é¸¡â€ã€‚è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "ÕâµÀ²ËÖ÷ÒªÔ­ÁÏÎªÄ¸¼¦¡¢°×¾Æ¡£³ÉÆ·É«ÔóºìÈó£¬ÏãÆøÅ¨Óô£¬Æ¤´àÓÍÁÁ¡£Ïà´«µ±Äê£¬²Ü½«¾üÍÍ±øÂ®ÖÝ£¬Òò¾üÕþÊÂÎñ·±Ã¦£¬²ÙÀÍ¹ý¶È¶øÎÔ´²²»Æð¡£ÖÎÁÆ¹ý³ÌÖÐ£¬±¾³øÉñÔÚ¼¦ÄÚÌí¼ÓÖÐÒ©£¬ÅëÖÆ³ÉÒ©ÉÅ¼¦¡£²Ü½«¾üÊ³ºó²¡Çé¹ûÈ»ÈÕÇ÷ºÃ×ª¡£ÓÚÊÇ£¬ÕâµÀ²Ë±¾ÈË½«ÆäÃüÃûÎª¡°²Ü²Ù¼¦¡±¡£ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7279,7 +7279,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4805] =            ------------------ä¹¾å…ƒå²›å‰‘é—¨è±†è…ä»‹ç»
+	[4805] =            ------------------Ç¬Ôªµº½£ÃÅ¶¹¸¯½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7288,7 +7288,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "â€œå‰‘é—¨è±†è…â€ï¼Œä¸Žåšä¸å¯æ‘§çš„å‰‘é—¨å…³ç›¸é½åã€‚ç›¸ä¼ å½“å¹´å¤§å°†å†›å§œç»´å…µè´¥é€€åˆ°å‰‘é—¨å…³ã€‚å½“æ—¶è¥ä¸­å…µç–²ä¸èƒ½æˆ˜ï¼Œé©¬ä¹ä¸èƒ½éª‘ï¼Œçœ¼çœ‹å‰‘é—¨å…³å±åœ¨æ—¦å¤•ã€‚æœ¬åŽ¨ç¥žå–æ¥è‡ªå‰‘é—¨ä¸ƒåä¸€å³°çš„â€œå‰‘æ³‰â€æ°´ï¼Œç»æµ¸è±†ã€ç£¨æµ†ã€æ»¤æ¸£ã€ç…®æµ†ã€ç‚¹æµ†ã€è„±æ°´ç­‰å·¥åºï¼Œç²¾å¿ƒåˆ¶ä½œã€‚ä»¥è±†è…çŠ’èµå£«å…µï¼Œä»¥è±†æ¸£å–‚æˆ˜é©¬ï¼Œå£«å…µå’Œæˆ˜é©¬ä½“åŠ›è¿…é€Ÿå¾—åˆ°æ¢å¤ã€‚ä¸‰æ—¥ä¹‹åŽï¼Œå§œç»´ä»…å¼•äº”åƒå…µå°†å°±å¤§è´¥æ•Œäººã€‚â€œå‰‘é—¨è±†è…â€çš„ç¾Žèª‰ä¹Ÿå°±åœ¨æ­¤è¯žç”Ÿäº†ï¼è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "¡°½£ÃÅ¶¹¸¯¡±£¬Óë¼á²»¿É´ÝµÄ½£ÃÅ¹ØÏàÆëÃû¡£Ïà´«µ±Äê´ó½«¾ü½ªÎ¬±ø°ÜÍËµ½½£ÃÅ¹Ø¡£µ±Ê±ÓªÖÐ±øÆ£²»ÄÜÕ½£¬Âí·¦²»ÄÜÆï£¬ÑÛ¿´½£ÃÅ¹ØÎ£ÔÚµ©Ï¦¡£±¾³øÉñÈ¡À´×Ô½£ÃÅÆßÊ®Ò»·åµÄ¡°½£Èª¡±Ë®£¬¾­½þ¶¹¡¢Ä¥½¬¡¢ÂËÔü¡¢Öó½¬¡¢µã½¬¡¢ÍÑË®µÈ¹¤Ðò£¬¾«ÐÄÖÆ×÷¡£ÒÔ¶¹¸¯êûÉÍÊ¿±ø£¬ÒÔ¶¹ÔüÎ¹Õ½Âí£¬Ê¿±øºÍÕ½ÂíÌåÁ¦Ñ¸ËÙµÃµ½»Ö¸´¡£ÈýÈÕÖ®ºó£¬½ªÎ¬½öÒýÎåÇ§±ø½«¾Í´ó°ÜµÐÈË¡£¡°½£ÃÅ¶¹¸¯¡±µÄÃÀÓþÒ²¾ÍÔÚ´Ëµ®ÉúÁË£¡ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7301,7 +7301,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4806] =            ------------------é‡‘éœžå±±å‰‘é—¨è±†è…ä»‹ç»
+	[4806] =            ------------------½ðÏ¼É½½£ÃÅ¶¹¸¯½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7310,7 +7310,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "â€œå‰‘é—¨è±†è…â€ï¼Œä¸Žåšä¸å¯æ‘§çš„å‰‘é—¨å…³ç›¸é½åã€‚ç›¸ä¼ å½“å¹´å¤§å°†å†›å§œç»´å…µè´¥é€€åˆ°å‰‘é—¨å…³ã€‚å½“æ—¶è¥ä¸­å…µç–²ä¸èƒ½æˆ˜ï¼Œé©¬ä¹ä¸èƒ½éª‘ï¼Œçœ¼çœ‹å‰‘é—¨å…³å±åœ¨æ—¦å¤•ã€‚æœ¬åŽ¨ç¥žå–æ¥è‡ªå‰‘é—¨ä¸ƒåä¸€å³°çš„â€œå‰‘æ³‰â€æ°´ï¼Œç»æµ¸è±†ã€ç£¨æµ†ã€æ»¤æ¸£ã€ç…®æµ†ã€ç‚¹æµ†ã€è„±æ°´ç­‰å·¥åºï¼Œç²¾å¿ƒåˆ¶ä½œã€‚ä»¥è±†è…çŠ’èµå£«å…µï¼Œä»¥è±†æ¸£å–‚æˆ˜é©¬ï¼Œå£«å…µå’Œæˆ˜é©¬ä½“åŠ›è¿…é€Ÿå¾—åˆ°æ¢å¤ã€‚ä¸‰æ—¥ä¹‹åŽï¼Œå§œç»´ä»…å¼•äº”åƒå…µå°†å°±å¤§è´¥æ•Œäººã€‚â€œå‰‘é—¨è±†è…â€çš„ç¾Žèª‰ä¹Ÿå°±åœ¨æ­¤è¯žç”Ÿäº†ï¼è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "¡°½£ÃÅ¶¹¸¯¡±£¬Óë¼á²»¿É´ÝµÄ½£ÃÅ¹ØÏàÆëÃû¡£Ïà´«µ±Äê´ó½«¾ü½ªÎ¬±ø°ÜÍËµ½½£ÃÅ¹Ø¡£µ±Ê±ÓªÖÐ±øÆ£²»ÄÜÕ½£¬Âí·¦²»ÄÜÆï£¬ÑÛ¿´½£ÃÅ¹ØÎ£ÔÚµ©Ï¦¡£±¾³øÉñÈ¡À´×Ô½£ÃÅÆßÊ®Ò»·åµÄ¡°½£Èª¡±Ë®£¬¾­½þ¶¹¡¢Ä¥½¬¡¢ÂËÔü¡¢Öó½¬¡¢µã½¬¡¢ÍÑË®µÈ¹¤Ðò£¬¾«ÐÄÖÆ×÷¡£ÒÔ¶¹¸¯êûÉÍÊ¿±ø£¬ÒÔ¶¹ÔüÎ¹Õ½Âí£¬Ê¿±øºÍÕ½ÂíÌåÁ¦Ñ¸ËÙµÃµ½»Ö¸´¡£ÈýÈÕÖ®ºó£¬½ªÎ¬½öÒýÎåÇ§±ø½«¾Í´ó°ÜµÐÈË¡£¡°½£ÃÅ¶¹¸¯¡±µÄÃÀÓþÒ²¾ÍÔÚ´Ëµ®ÉúÁË£¡ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7323,7 +7323,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4807] =            ------------------ç´«é˜³é—¨å‰‘é—¨è±†è…ä»‹ç»
+	[4807] =            ------------------×ÏÑôÃÅ½£ÃÅ¶¹¸¯½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7332,7 +7332,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "â€œå‰‘é—¨è±†è…â€ï¼Œä¸Žåšä¸å¯æ‘§çš„å‰‘é—¨å…³ç›¸é½åã€‚ç›¸ä¼ å½“å¹´å¤§å°†å†›å§œç»´å…µè´¥é€€åˆ°å‰‘é—¨å…³ã€‚å½“æ—¶è¥ä¸­å…µç–²ä¸èƒ½æˆ˜ï¼Œé©¬ä¹ä¸èƒ½éª‘ï¼Œçœ¼çœ‹å‰‘é—¨å…³å±åœ¨æ—¦å¤•ã€‚æœ¬åŽ¨ç¥žå–æ¥è‡ªå‰‘é—¨ä¸ƒåä¸€å³°çš„â€œå‰‘æ³‰â€æ°´ï¼Œç»æµ¸è±†ã€ç£¨æµ†ã€æ»¤æ¸£ã€ç…®æµ†ã€ç‚¹æµ†ã€è„±æ°´ç­‰å·¥åºï¼Œç²¾å¿ƒåˆ¶ä½œã€‚ä»¥è±†è…çŠ’èµå£«å…µï¼Œä»¥è±†æ¸£å–‚æˆ˜é©¬ï¼Œå£«å…µå’Œæˆ˜é©¬ä½“åŠ›è¿…é€Ÿå¾—åˆ°æ¢å¤ã€‚ä¸‰æ—¥ä¹‹åŽï¼Œå§œç»´ä»…å¼•äº”åƒå…µå°†å°±å¤§è´¥æ•Œäººã€‚â€œå‰‘é—¨è±†è…â€çš„ç¾Žèª‰ä¹Ÿå°±åœ¨æ­¤è¯žç”Ÿäº†ï¼è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "¡°½£ÃÅ¶¹¸¯¡±£¬Óë¼á²»¿É´ÝµÄ½£ÃÅ¹ØÏàÆëÃû¡£Ïà´«µ±Äê´ó½«¾ü½ªÎ¬±ø°ÜÍËµ½½£ÃÅ¹Ø¡£µ±Ê±ÓªÖÐ±øÆ£²»ÄÜÕ½£¬Âí·¦²»ÄÜÆï£¬ÑÛ¿´½£ÃÅ¹ØÎ£ÔÚµ©Ï¦¡£±¾³øÉñÈ¡À´×Ô½£ÃÅÆßÊ®Ò»·åµÄ¡°½£Èª¡±Ë®£¬¾­½þ¶¹¡¢Ä¥½¬¡¢ÂËÔü¡¢Öó½¬¡¢µã½¬¡¢ÍÑË®µÈ¹¤Ðò£¬¾«ÐÄÖÆ×÷¡£ÒÔ¶¹¸¯êûÉÍÊ¿±ø£¬ÒÔ¶¹ÔüÎ¹Õ½Âí£¬Ê¿±øºÍÕ½ÂíÌåÁ¦Ñ¸ËÙµÃµ½»Ö¸´¡£ÈýÈÕÖ®ºó£¬½ªÎ¬½öÒýÎåÇ§±ø½«¾Í´ó°ÜµÐÈË¡£¡°½£ÃÅ¶¹¸¯¡±µÄÃÀÓþÒ²¾ÍÔÚ´Ëµ®ÉúÁË£¡ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7345,7 +7345,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4808] =            ------------------äº‘éœ„å®«å‰‘é—¨è±†è…ä»‹ç»
+	[4808] =            ------------------ÔÆÏö¹¬½£ÃÅ¶¹¸¯½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7354,7 +7354,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "â€œå‰‘é—¨è±†è…â€ï¼Œä¸Žåšä¸å¯æ‘§çš„å‰‘é—¨å…³ç›¸é½åã€‚ç›¸ä¼ å½“å¹´å¤§å°†å†›å§œç»´å…µè´¥é€€åˆ°å‰‘é—¨å…³ã€‚å½“æ—¶è¥ä¸­å…µç–²ä¸èƒ½æˆ˜ï¼Œé©¬ä¹ä¸èƒ½éª‘ï¼Œçœ¼çœ‹å‰‘é—¨å…³å±åœ¨æ—¦å¤•ã€‚æœ¬åŽ¨ç¥žå–æ¥è‡ªå‰‘é—¨ä¸ƒåä¸€å³°çš„â€œå‰‘æ³‰â€æ°´ï¼Œç»æµ¸è±†ã€ç£¨æµ†ã€æ»¤æ¸£ã€ç…®æµ†ã€ç‚¹æµ†ã€è„±æ°´ç­‰å·¥åºï¼Œç²¾å¿ƒåˆ¶ä½œã€‚ä»¥è±†è…çŠ’èµå£«å…µï¼Œä»¥è±†æ¸£å–‚æˆ˜é©¬ï¼Œå£«å…µå’Œæˆ˜é©¬ä½“åŠ›è¿…é€Ÿå¾—åˆ°æ¢å¤ã€‚ä¸‰æ—¥ä¹‹åŽï¼Œå§œç»´ä»…å¼•äº”åƒå…µå°†å°±å¤§è´¥æ•Œäººã€‚â€œå‰‘é—¨è±†è…â€çš„ç¾Žèª‰ä¹Ÿå°±åœ¨æ­¤è¯žç”Ÿäº†ï¼è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "¡°½£ÃÅ¶¹¸¯¡±£¬Óë¼á²»¿É´ÝµÄ½£ÃÅ¹ØÏàÆëÃû¡£Ïà´«µ±Äê´ó½«¾ü½ªÎ¬±ø°ÜÍËµ½½£ÃÅ¹Ø¡£µ±Ê±ÓªÖÐ±øÆ£²»ÄÜÕ½£¬Âí·¦²»ÄÜÆï£¬ÑÛ¿´½£ÃÅ¹ØÎ£ÔÚµ©Ï¦¡£±¾³øÉñÈ¡À´×Ô½£ÃÅÆßÊ®Ò»·åµÄ¡°½£Èª¡±Ë®£¬¾­½þ¶¹¡¢Ä¥½¬¡¢ÂËÔü¡¢Öó½¬¡¢µã½¬¡¢ÍÑË®µÈ¹¤Ðò£¬¾«ÐÄÖÆ×÷¡£ÒÔ¶¹¸¯êûÉÍÊ¿±ø£¬ÒÔ¶¹ÔüÎ¹Õ½Âí£¬Ê¿±øºÍÕ½ÂíÌåÁ¦Ñ¸ËÙµÃµ½»Ö¸´¡£ÈýÈÕÖ®ºó£¬½ªÎ¬½öÒýÎåÇ§±ø½«¾Í´ó°ÜµÐÈË¡£¡°½£ÃÅ¶¹¸¯¡±µÄÃÀÓþÒ²¾ÍÔÚ´Ëµ®ÉúÁË£¡ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7367,7 +7367,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4809] =            ------------------æ¡ƒæºæ´žå‰‘é—¨è±†è…ä»‹ç»
+	[4809] =            ------------------ÌÒÔ´¶´½£ÃÅ¶¹¸¯½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7376,7 +7376,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "â€œå‰‘é—¨è±†è…â€ï¼Œä¸Žåšä¸å¯æ‘§çš„å‰‘é—¨å…³ç›¸é½åã€‚ç›¸ä¼ å½“å¹´å¤§å°†å†›å§œç»´å…µè´¥é€€åˆ°å‰‘é—¨å…³ã€‚å½“æ—¶è¥ä¸­å…µç–²ä¸èƒ½æˆ˜ï¼Œé©¬ä¹ä¸èƒ½éª‘ï¼Œçœ¼çœ‹å‰‘é—¨å…³å±åœ¨æ—¦å¤•ã€‚æœ¬åŽ¨ç¥žå–æ¥è‡ªå‰‘é—¨ä¸ƒåä¸€å³°çš„â€œå‰‘æ³‰â€æ°´ï¼Œç»æµ¸è±†ã€ç£¨æµ†ã€æ»¤æ¸£ã€ç…®æµ†ã€ç‚¹æµ†ã€è„±æ°´ç­‰å·¥åºï¼Œç²¾å¿ƒåˆ¶ä½œã€‚ä»¥è±†è…çŠ’èµå£«å…µï¼Œä»¥è±†æ¸£å–‚æˆ˜é©¬ï¼Œå£«å…µå’Œæˆ˜é©¬ä½“åŠ›è¿…é€Ÿå¾—åˆ°æ¢å¤ã€‚ä¸‰æ—¥ä¹‹åŽï¼Œå§œç»´ä»…å¼•äº”åƒå…µå°†å°±å¤§è´¥æ•Œäººã€‚â€œå‰‘é—¨è±†è…â€çš„ç¾Žèª‰ä¹Ÿå°±åœ¨æ­¤è¯žç”Ÿäº†ï¼è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "¡°½£ÃÅ¶¹¸¯¡±£¬Óë¼á²»¿É´ÝµÄ½£ÃÅ¹ØÏàÆëÃû¡£Ïà´«µ±Äê´ó½«¾ü½ªÎ¬±ø°ÜÍËµ½½£ÃÅ¹Ø¡£µ±Ê±ÓªÖÐ±øÆ£²»ÄÜÕ½£¬Âí·¦²»ÄÜÆï£¬ÑÛ¿´½£ÃÅ¹ØÎ£ÔÚµ©Ï¦¡£±¾³øÉñÈ¡À´×Ô½£ÃÅÆßÊ®Ò»·åµÄ¡°½£Èª¡±Ë®£¬¾­½þ¶¹¡¢Ä¥½¬¡¢ÂËÔü¡¢Öó½¬¡¢µã½¬¡¢ÍÑË®µÈ¹¤Ðò£¬¾«ÐÄÖÆ×÷¡£ÒÔ¶¹¸¯êûÉÍÊ¿±ø£¬ÒÔ¶¹ÔüÎ¹Õ½Âí£¬Ê¿±øºÍÕ½ÂíÌåÁ¦Ñ¸ËÙµÃµ½»Ö¸´¡£ÈýÈÕÖ®ºó£¬½ªÎ¬½öÒýÎåÇ§±ø½«¾Í´ó°ÜµÐÈË¡£¡°½£ÃÅ¶¹¸¯¡±µÄÃÀÓþÒ²¾ÍÔÚ´Ëµ®ÉúÁË£¡ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7389,7 +7389,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4810] =            ------------------è“¬èŽ±é˜å‰‘é—¨è±†è…ä»‹ç»
+	[4810] =            ------------------ÅîÀ³¸ó½£ÃÅ¶¹¸¯½éÉÜ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7398,7 +7398,7 @@ DialogModelDB =
 		},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "â€œå‰‘é—¨è±†è…â€ï¼Œä¸Žåšä¸å¯æ‘§çš„å‰‘é—¨å…³ç›¸é½åã€‚ç›¸ä¼ å½“å¹´å¤§å°†å†›å§œç»´å…µè´¥é€€åˆ°å‰‘é—¨å…³ã€‚å½“æ—¶è¥ä¸­å…µç–²ä¸èƒ½æˆ˜ï¼Œé©¬ä¹ä¸èƒ½éª‘ï¼Œçœ¼çœ‹å‰‘é—¨å…³å±åœ¨æ—¦å¤•ã€‚æœ¬åŽ¨ç¥žå–æ¥è‡ªå‰‘é—¨ä¸ƒåä¸€å³°çš„â€œå‰‘æ³‰â€æ°´ï¼Œç»æµ¸è±†ã€ç£¨æµ†ã€æ»¤æ¸£ã€ç…®æµ†ã€ç‚¹æµ†ã€è„±æ°´ç­‰å·¥åºï¼Œç²¾å¿ƒåˆ¶ä½œã€‚ä»¥è±†è…çŠ’èµå£«å…µï¼Œä»¥è±†æ¸£å–‚æˆ˜é©¬ï¼Œå£«å…µå’Œæˆ˜é©¬ä½“åŠ›è¿…é€Ÿå¾—åˆ°æ¢å¤ã€‚ä¸‰æ—¥ä¹‹åŽï¼Œå§œç»´ä»…å¼•äº”åƒå…µå°†å°±å¤§è´¥æ•Œäººã€‚â€œå‰‘é—¨è±†è…â€çš„ç¾Žèª‰ä¹Ÿå°±åœ¨æ­¤è¯žç”Ÿäº†ï¼è¿™ä½å°å‹ï¼Œå¿«åŽ»ç‰©å“æ ä¸­å³é”®å³é”®å“å°å§ï¼",
+		txt = "¡°½£ÃÅ¶¹¸¯¡±£¬Óë¼á²»¿É´ÝµÄ½£ÃÅ¹ØÏàÆëÃû¡£Ïà´«µ±Äê´ó½«¾ü½ªÎ¬±ø°ÜÍËµ½½£ÃÅ¹Ø¡£µ±Ê±ÓªÖÐ±øÆ£²»ÄÜÕ½£¬Âí·¦²»ÄÜÆï£¬ÑÛ¿´½£ÃÅ¹ØÎ£ÔÚµ©Ï¦¡£±¾³øÉñÈ¡À´×Ô½£ÃÅÆßÊ®Ò»·åµÄ¡°½£Èª¡±Ë®£¬¾­½þ¶¹¡¢Ä¥½¬¡¢ÂËÔü¡¢Öó½¬¡¢µã½¬¡¢ÍÑË®µÈ¹¤Ðò£¬¾«ÐÄÖÆ×÷¡£ÒÔ¶¹¸¯êûÉÍÊ¿±ø£¬ÒÔ¶¹ÔüÎ¹Õ½Âí£¬Ê¿±øºÍÕ½ÂíÌåÁ¦Ñ¸ËÙµÃµ½»Ö¸´¡£ÈýÈÕÖ®ºó£¬½ªÎ¬½öÒýÎåÇ§±ø½«¾Í´ó°ÜµÐÈË¡£¡°½£ÃÅ¶¹¸¯¡±µÄÃÀÓþÒ²¾ÍÔÚ´Ëµ®ÉúÁË£¡ÕâÎ»Ð¡ÓÑ£¬¿ìÈ¥ÎïÆ·À¸ÖÐÓÒ¼üÓÒ¼üÆ·³¢°É£¡",
 		options =
 		{
 			{
@@ -7411,14 +7411,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4811] =            ------------------ä¹¾å…ƒå²›æŠ¤é€äº‹ä»¶
+	[4811] =            ------------------Ç¬Ôªµº»¤ËÍÊÂ¼þ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¯·ç•™æ­¥å•Šï¼çœ‹ä½ ä¹Ÿæ˜¯é¢ç›®å’Œå–„ä¹‹äººï¼Œèƒ½å¦å¸®å°å¥³å­ä¸€ä¸ªå°å¿™å•Šï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÇëÁô²½°¡£¡¿´ÄãÒ²ÊÇÃæÄ¿ºÍÉÆÖ®ÈË£¬ÄÜ·ñ°ïÐ¡Å®×ÓÒ»¸öÐ¡Ã¦°¡£¡",
 		options =
 		{
 			{
@@ -7431,14 +7431,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4812] =            ------------------ä¹¾å…ƒå²›æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4812] =            ------------------Ç¬Ôªµº»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¸å¦¨è¯´æ¥å¬å¬ï¼Œçœ‹åœ¨ä¸‹èƒ½å¦å¸®åˆ°ä½ ï¼",
+		txt = "¹ÃÄï²»·ÁËµÀ´ÌýÌý£¬¿´ÔÚÏÂÄÜ·ñ°ïµ½Äã£¡",
 		options =
 		{
 			{
@@ -7451,14 +7451,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4813] =            ------------------é‡‘éœžå±±æŠ¤é€äº‹ä»¶
+	[4813] =            ------------------½ðÏ¼É½»¤ËÍÊÂ¼þ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¯·ç•™æ­¥å•Šï¼çœ‹ä½ ä¹Ÿæ˜¯é¢ç›®å’Œå–„ä¹‹äººï¼Œèƒ½å¦å¸®å°å¥³å­ä¸€ä¸ªå°å¿™å•Šï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÇëÁô²½°¡£¡¿´ÄãÒ²ÊÇÃæÄ¿ºÍÉÆÖ®ÈË£¬ÄÜ·ñ°ïÐ¡Å®×ÓÒ»¸öÐ¡Ã¦°¡£¡",
 		options =
 		{
 			{
@@ -7471,14 +7471,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4814] =            ------------------é‡‘éœžå±±æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4814] =            ------------------½ðÏ¼É½»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¸å¦¨è¯´æ¥å¬å¬ï¼Œçœ‹åœ¨ä¸‹èƒ½å¦å¸®åˆ°ä½ ï¼",
+		txt = "¹ÃÄï²»·ÁËµÀ´ÌýÌý£¬¿´ÔÚÏÂÄÜ·ñ°ïµ½Äã£¡",
 		options =
 		{
 			{
@@ -7491,14 +7491,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4815] =            ------------------ç´«é˜³é—¨æŠ¤é€äº‹ä»¶
+	[4815] =            ------------------×ÏÑôÃÅ»¤ËÍÊÂ¼þ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¯·ç•™æ­¥å•Šï¼çœ‹ä½ ä¹Ÿæ˜¯é¢ç›®å’Œå–„ä¹‹äººï¼Œèƒ½å¦å¸®å°å¥³å­ä¸€ä¸ªå°å¿™å•Šï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÇëÁô²½°¡£¡¿´ÄãÒ²ÊÇÃæÄ¿ºÍÉÆÖ®ÈË£¬ÄÜ·ñ°ïÐ¡Å®×ÓÒ»¸öÐ¡Ã¦°¡£¡",
 		options =
 		{
 			{
@@ -7511,14 +7511,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4816] =            ------------------ç´«é˜³é—¨æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4816] =            ------------------×ÏÑôÃÅ»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¸å¦¨è¯´æ¥å¬å¬ï¼Œçœ‹åœ¨ä¸‹èƒ½å¦å¸®åˆ°ä½ ï¼",
+		txt = "¹ÃÄï²»·ÁËµÀ´ÌýÌý£¬¿´ÔÚÏÂÄÜ·ñ°ïµ½Äã£¡",
 		options =
 		{
 			{
@@ -7531,14 +7531,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4817] =            ------------------äº‘éœ„å®«æŠ¤é€äº‹ä»¶
+	[4817] =            ------------------ÔÆÏö¹¬»¤ËÍÊÂ¼þ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¯·ç•™æ­¥å•Šï¼çœ‹ä½ ä¹Ÿæ˜¯é¢ç›®å’Œå–„ä¹‹äººï¼Œèƒ½å¦å¸®å°å¥³å­ä¸€ä¸ªå°å¿™å•Šï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÇëÁô²½°¡£¡¿´ÄãÒ²ÊÇÃæÄ¿ºÍÉÆÖ®ÈË£¬ÄÜ·ñ°ïÐ¡Å®×ÓÒ»¸öÐ¡Ã¦°¡£¡",
 		options =
 		{
 			{
@@ -7551,14 +7551,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4818] =            ------------------äº‘éœ„å®«æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4818] =            ------------------ÔÆÏö¹¬»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¸å¦¨è¯´æ¥å¬å¬ï¼Œçœ‹åœ¨ä¸‹èƒ½å¦å¸®åˆ°ä½ ï¼",
+		txt = "¹ÃÄï²»·ÁËµÀ´ÌýÌý£¬¿´ÔÚÏÂÄÜ·ñ°ïµ½Äã£¡",
 		options =
 		{
 			{
@@ -7571,14 +7571,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4819] =            ------------------æ¡ƒæºæ´žæŠ¤é€äº‹ä»¶
+	[4819] =            ------------------ÌÒÔ´¶´»¤ËÍÊÂ¼þ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¯·ç•™æ­¥å•Šï¼çœ‹ä½ ä¹Ÿæ˜¯é¢ç›®å’Œå–„ä¹‹äººï¼Œèƒ½å¦å¸®å°å¥³å­ä¸€ä¸ªå°å¿™å•Šï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÇëÁô²½°¡£¡¿´ÄãÒ²ÊÇÃæÄ¿ºÍÉÆÖ®ÈË£¬ÄÜ·ñ°ïÐ¡Å®×ÓÒ»¸öÐ¡Ã¦°¡£¡",
 		options =
 		{
 			{
@@ -7591,14 +7591,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4820] =            ------------------æ¡ƒæºæ´žæŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4820] =            ------------------ÌÒÔ´¶´»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¸å¦¨è¯´æ¥å¬å¬ï¼Œçœ‹åœ¨ä¸‹èƒ½å¦å¸®åˆ°ä½ ï¼",
+		txt = "¹ÃÄï²»·ÁËµÀ´ÌýÌý£¬¿´ÔÚÏÂÄÜ·ñ°ïµ½Äã£¡",
 		options =
 		{
 			{
@@ -7611,14 +7611,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4821] =            ------------------è“¬èŽ±é˜æŠ¤é€äº‹ä»¶
+	[4821] =            ------------------ÅîÀ³¸ó»¤ËÍÊÂ¼þ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "è¿™ä½è‹±é›„ï¼Œè¯·ç•™æ­¥å•Šï¼çœ‹ä½ ä¹Ÿæ˜¯é¢ç›®å’Œå–„ä¹‹äººï¼Œèƒ½å¦å¸®å°å¥³å­ä¸€ä¸ªå°å¿™å•Šï¼",
+		txt = "ÕâÎ»Ó¢ÐÛ£¬ÇëÁô²½°¡£¡¿´ÄãÒ²ÊÇÃæÄ¿ºÍÉÆÖ®ÈË£¬ÄÜ·ñ°ïÐ¡Å®×ÓÒ»¸öÐ¡Ã¦°¡£¡",
 		options =
 		{
 			{
@@ -7631,14 +7631,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4822] =            ------------------æ¡ƒæºæ´žæŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4822] =            ------------------ÌÒÔ´¶´»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¸å¦¨è¯´æ¥å¬å¬ï¼Œçœ‹åœ¨ä¸‹èƒ½å¦å¸®åˆ°ä½ ï¼",
+		txt = "¹ÃÄï²»·ÁËµÀ´ÌýÌý£¬¿´ÔÚÏÂÄÜ·ñ°ïµ½Äã£¡",
 		options =
 		{
 			{
@@ -7651,14 +7651,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4823] =            ------------------æŠ¤é€äº‹ä»¶è¿·é€”å°‘å¥³å›žå¤
+	[4823] =            ------------------»¤ËÍÊÂ¼þÃÔÍ¾ÉÙÅ®»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "å‰å‡ æ—¥ï¼Œå¾ä¸Žæ—§å‹<npcID>ç»“ä¼´åŒæ¸¸ï¼Œè°æ–™åœ¨é€”ä¸­èµ°æ•£äº†ï¼å¦‚ä»Šæˆ‘ä¿©çº¦å¥½åœ¨<mapID,x,y>ç¢°é¢ï¼Œå¥ˆä½•å°å¥³å­äººç”Ÿåœ°ä¸ç†Ÿï¼Œè¿˜è¯·è‹±é›„èƒ½ä¸ºæˆ‘å¸¦ä¸ªè·¯å•Šï¼",
+		txt = "Ç°¼¸ÈÕ£¬ÎáÓë¾ÉÓÑ<npcID>½á°éÍ¬ÓÎ£¬Ë­ÁÏÔÚÍ¾ÖÐ×ßÉ¢ÁË£¡Èç½ñÎÒÁ©Ô¼ºÃÔÚ<mapID,x,y>ÅöÃæ£¬ÄÎºÎÐ¡Å®×ÓÈËÉúµØ²»Êì£¬»¹ÇëÓ¢ÐÛÄÜÎªÎÒ´ø¸öÂ·°¡£¡",
 		options =
 		{
 			{
@@ -7671,14 +7671,14 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4824] =            ------------------æŠ¤é€äº‹ä»¶è¿·é€”å°‘å¥³å›žå¤
+	[4824] =            ------------------»¤ËÍÊÂ¼þÃÔÍ¾ÉÙÅ®»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{},
 		speakerID = 26021,
 		soundID = nil,
-		txt = "æ„Ÿè°¢è‹±é›„å¸¦è·¯ï¼Œåˆ°è¿™é‡Œå°±å¯ä»¥äº†,è¿™å°±æ˜¯æˆ‘è¦æ‰¾çš„äººï¼",
+		txt = "¸ÐÐ»Ó¢ÐÛ´øÂ·£¬µ½ÕâÀï¾Í¿ÉÒÔÁË,Õâ¾ÍÊÇÎÒÒªÕÒµÄÈË£¡",
 		options =
 		{
 			{
@@ -7691,7 +7691,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4825] =            ------------------ä¹¾å…ƒå²›æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4825] =            ------------------Ç¬Ôªµº»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7700,7 +7700,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¿é‡ï¼Œå‘Šè¾žï¼",
+		txt = "¹ÃÄï±£ÖØ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -7713,7 +7713,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4826] =            ------------------é‡‘éœžå±±æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4826] =            ------------------½ðÏ¼É½»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7722,7 +7722,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¿é‡ï¼Œå‘Šè¾žï¼",
+		txt = "¹ÃÄï±£ÖØ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -7735,7 +7735,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4827] =            ------------------ç´«é˜³é—¨æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4827] =            ------------------×ÏÑôÃÅ»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7744,7 +7744,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¿é‡ï¼Œå‘Šè¾žï¼",
+		txt = "¹ÃÄï±£ÖØ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -7757,7 +7757,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4828] =            ------------------æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4828] =            ------------------»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7766,7 +7766,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¿é‡ï¼Œå‘Šè¾žï¼",
+		txt = "¹ÃÄï±£ÖØ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -7779,7 +7779,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4829] =            ------------------æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4829] =            ------------------»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7788,7 +7788,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¿é‡ï¼Œå‘Šè¾žï¼",
+		txt = "¹ÃÄï±£ÖØ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -7801,7 +7801,7 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4830] =            ------------------æŠ¤é€äº‹ä»¶çŽ©å®¶å›žå¤
+	[4830] =            ------------------»¤ËÍÊÂ¼þÍæ¼Ò»Ø¸´
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -7810,7 +7810,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "å§‘å¨˜ä¿é‡ï¼Œå‘Šè¾žï¼",
+		txt = "¹ÃÄï±£ÖØ£¬¸æ´Ç£¡",
 		options =
 		{
 			{
@@ -7823,21 +7823,21 @@ DialogModelDB =
 		    },
 		},		
 	},
-	[4850] =            ------------------ä¹¾å…ƒå²›åŽ¨ç¥žäº‹ä»¶ï¼ˆå¤ªæžæŠ¤å›½ç¾¹ï¼‰
+	[4850] =            ------------------Ç¬Ôªµº³øÉñÊÂ¼þ£¨Ì«¼«»¤¹ú¸þ£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å¤ªæžæŠ¤å›½ç¾¹",
+				optionTxt = "Ì«¼«»¤¹ú¸þ",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4793}},
@@ -7846,21 +7846,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4851] =            ------------------é‡‘éœžå±±åŽ¨ç¥žäº‹ä»¶ï¼ˆå¤ªæžæŠ¤å›½ç¾¹ï¼‰
+	[4851] =            ------------------½ðÏ¼É½³øÉñÊÂ¼þ£¨Ì«¼«»¤¹ú¸þ£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å¤ªæžæŠ¤å›½ç¾¹",
+				optionTxt = "Ì«¼«»¤¹ú¸þ",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4794}},
@@ -7869,21 +7869,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4852] =            ------------------ç´«é˜³é—¨åŽ¨ç¥žäº‹ä»¶ï¼ˆå¤ªæžæŠ¤å›½ç¾¹ï¼‰
+	[4852] =            ------------------×ÏÑôÃÅ³øÉñÊÂ¼þ£¨Ì«¼«»¤¹ú¸þ£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å¤ªæžæŠ¤å›½ç¾¹",
+				optionTxt = "Ì«¼«»¤¹ú¸þ",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4795}},
@@ -7892,21 +7892,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4853] =            ------------------äº‘éœ„å®«åŽ¨ç¥žäº‹ä»¶ï¼ˆå¤ªæžæŠ¤å›½ç¾¹ï¼‰
+	[4853] =            ------------------ÔÆÏö¹¬³øÉñÊÂ¼þ£¨Ì«¼«»¤¹ú¸þ£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å¤ªæžæŠ¤å›½ç¾¹",
+				optionTxt = "Ì«¼«»¤¹ú¸þ",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4796}},
@@ -7915,21 +7915,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4854] =            ------------------æ¡ƒæºæ´žåŽ¨ç¥žäº‹ä»¶ï¼ˆå¤ªæžæŠ¤å›½ç¾¹ï¼‰
+	[4854] =            ------------------ÌÒÔ´¶´³øÉñÊÂ¼þ£¨Ì«¼«»¤¹ú¸þ£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å¤ªæžæŠ¤å›½ç¾¹",
+				optionTxt = "Ì«¼«»¤¹ú¸þ",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4797}},
@@ -7938,21 +7938,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4855] =            ------------------è“¬èŽ±é˜åŽ¨ç¥žäº‹ä»¶ï¼ˆå¤ªæžæŠ¤å›½ç¾¹ï¼‰
+	[4855] =            ------------------ÅîÀ³¸ó³øÉñÊÂ¼þ£¨Ì«¼«»¤¹ú¸þ£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å¤ªæžæŠ¤å›½ç¾¹",
+				optionTxt = "Ì«¼«»¤¹ú¸þ",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4798}},
@@ -7961,21 +7961,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4856] =            ------------------ä¹¾å…ƒå²›åŽ¨ç¥žäº‹ä»¶ï¼ˆæ›¹æ“é¸¡ï¼‰
+	[4856] =            ------------------Ç¬Ôªµº³øÉñÊÂ¼þ£¨²Ü²Ù¼¦£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "æ›¹æ“é¸¡",
+				optionTxt = "²Ü²Ù¼¦",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4799}},
@@ -7984,21 +7984,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4857] =            ------------------é‡‘éœžå±±åŽ¨ç¥žäº‹ä»¶ï¼ˆæ›¹æ“é¸¡ï¼‰
+	[4857] =            ------------------½ðÏ¼É½³øÉñÊÂ¼þ£¨²Ü²Ù¼¦£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "æ›¹æ“é¸¡",
+				optionTxt = "²Ü²Ù¼¦",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4800}},
@@ -8007,21 +8007,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4858] =            ------------------ç´«é˜³é—¨åŽ¨ç¥žäº‹ä»¶ï¼ˆæ›¹æ“é¸¡ï¼‰
+	[4858] =            ------------------×ÏÑôÃÅ³øÉñÊÂ¼þ£¨²Ü²Ù¼¦£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "æ›¹æ“é¸¡",
+				optionTxt = "²Ü²Ù¼¦",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4801}},
@@ -8030,21 +8030,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4859] =            ------------------äº‘éœ„å®«åŽ¨ç¥žäº‹ä»¶ï¼ˆæ›¹æ“é¸¡ï¼‰
+	[4859] =            ------------------ÔÆÏö¹¬³øÉñÊÂ¼þ£¨²Ü²Ù¼¦£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "æ›¹æ“é¸¡",
+				optionTxt = "²Ü²Ù¼¦",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4802}},
@@ -8053,21 +8053,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4860] =            ------------------æ¡ƒæºæ´žåŽ¨ç¥žäº‹ä»¶ï¼ˆæ›¹æ“é¸¡ï¼‰
+	[4860] =            ------------------ÌÒÔ´¶´³øÉñÊÂ¼þ£¨²Ü²Ù¼¦£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "æ›¹æ“é¸¡",
+				optionTxt = "²Ü²Ù¼¦",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4803}},
@@ -8076,21 +8076,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4861] =            ------------------è“¬èŽ±é˜åŽ¨ç¥žäº‹ä»¶ï¼ˆæ›¹æ“é¸¡ï¼‰
+	[4861] =            ------------------ÅîÀ³¸ó³øÉñÊÂ¼þ£¨²Ü²Ù¼¦£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "æ›¹æ“é¸¡",
+				optionTxt = "²Ü²Ù¼¦",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4804}},
@@ -8099,21 +8099,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4862] =            ------------------ä¹¾å…ƒå²›åŽ¨ç¥žäº‹ä»¶ï¼ˆå‰‘é—¨è±†è…ï¼‰
+	[4862] =            ------------------Ç¬Ôªµº³øÉñÊÂ¼þ£¨½£ÃÅ¶¹¸¯£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å‰‘é—¨è±†è…",
+				optionTxt = "½£ÃÅ¶¹¸¯",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4805}},
@@ -8122,21 +8122,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4863] =            ------------------é‡‘éœžå±±åŽ¨ç¥žäº‹ä»¶ï¼ˆå‰‘é—¨è±†è…ï¼‰
+	[4863] =            ------------------½ðÏ¼É½³øÉñÊÂ¼þ£¨½£ÃÅ¶¹¸¯£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å‰‘é—¨è±†è…",
+				optionTxt = "½£ÃÅ¶¹¸¯",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4806}},
@@ -8145,21 +8145,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4864] =            ------------------ç´«é˜³é—¨åŽ¨ç¥žäº‹ä»¶ï¼ˆå‰‘é—¨è±†è…ï¼‰
+	[4864] =            ------------------×ÏÑôÃÅ³øÉñÊÂ¼þ£¨½£ÃÅ¶¹¸¯£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å‰‘é—¨è±†è…",
+				optionTxt = "½£ÃÅ¶¹¸¯",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4807}},
@@ -8168,21 +8168,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4865] =            ------------------äº‘éœ„å®«åŽ¨ç¥žäº‹ä»¶ï¼ˆå‰‘é—¨è±†è…ï¼‰
+	[4865] =            ------------------ÔÆÏö¹¬³øÉñÊÂ¼þ£¨½£ÃÅ¶¹¸¯£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å‰‘é—¨è±†è…",
+				optionTxt = "½£ÃÅ¶¹¸¯",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4808}},
@@ -8191,21 +8191,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4866] =            ------------------æ¡ƒæºæ´žåŽ¨ç¥žäº‹ä»¶ï¼ˆå‰‘é—¨è±†è…ï¼‰
+	[4866] =            ------------------ÌÒÔ´¶´³øÉñÊÂ¼þ£¨½£ÃÅ¶¹¸¯£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å‰‘é—¨è±†è…",
+				optionTxt = "½£ÃÅ¶¹¸¯",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4809}},
@@ -8214,21 +8214,21 @@ DialogModelDB =
 			},
 		},		
 	},
-	[4867] =            ------------------è“¬èŽ±é˜åŽ¨ç¥žäº‹ä»¶ï¼ˆå‰‘é—¨è±†è…ï¼‰
+	[4867] =            ------------------ÅîÀ³¸ó³øÉñÊÂ¼þ£¨½£ÃÅ¶¹¸¯£©
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 26029,
 		soundID = nil,
-		txt = "çŸ¥é“æˆ‘æ˜¯è°å—ï¼Ÿæˆ‘å¯æ˜¯ä¼ è¯´ä¸­çš„åŽ¨ç¥žï¼æˆ‘ä¸€ç›´è‡´åŠ›äºŽç ”ç©¶æ–°çš„èœè°±ï¼Œæ—¢ç„¶æˆ‘ä»¬æœ‰ç¼˜åœ¨æ­¤ç›¸è§ï¼Œé‚£å°±è®©ä½ å¸®å¿™è¯•è¯•å£å‘³å§ï¼é‚£ä¹ˆä»Šå¤©çš„èœè°±æ˜¯......",
+		txt = "ÖªµÀÎÒÊÇË­Âð£¿ÎÒ¿ÉÊÇ´«ËµÖÐµÄ³øÉñ£¡ÎÒÒ»Ö±ÖÂÁ¦ÓÚÑÐ¾¿ÐÂµÄ²ËÆ×£¬¼ÈÈ»ÎÒÃÇÓÐÔµÔÚ´ËÏà¼û£¬ÄÇ¾ÍÈÃÄã°ïÃ¦ÊÔÊÔ¿ÚÎ¶°É£¡ÄÇÃ´½ñÌìµÄ²ËÆ×ÊÇ......",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
 				{},
-				optionTxt = "å‰‘é—¨è±†è…",
+				optionTxt = "½£ÃÅ¶¹¸¯",
 				actions =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4810}},
@@ -8237,10 +8237,10 @@ DialogModelDB =
 			},
 		},		
 	},
-------------------------æ­¤åœ°ä¹ƒè¯•ç‚¼ä»»åŠ¡ä¹‹åœ°ï¼Œè¯·ä¸è¦éšæ„ä¹±é—¯----------------------------------
----------------------------------æš—é›·æˆ˜æ–—---40-44çº§----------------------------------
-------------------------------------1-50çŽ¯----------------------------------
-    [5001] =             -----------------æš—é›·æˆ˜æ–—-è‘£å“ä½™å…š
+------------------------´ËµØÄËÊÔÁ¶ÈÎÎñÖ®µØ£¬Çë²»ÒªËæÒâÂÒ´³----------------------------------
+---------------------------------°µÀ×Õ½¶·---40-44¼¶----------------------------------
+------------------------------------1-50»·----------------------------------
+    [5001] =             -----------------°µÀ×Õ½¶·-¶­×¿Óàµ³
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8248,7 +8248,7 @@ DialogModelDB =
 		},
 		speakerID = 27001,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8261,7 +8261,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5002] =             -----------------æš—é›·æˆ˜æ–—-é»„å·¾ä½™å…š
+	[5002] =             -----------------°µÀ×Õ½¶·-»Æ½íÓàµ³
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8269,7 +8269,7 @@ DialogModelDB =
 		},
 		speakerID = 27002,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8282,7 +8282,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5003] =             -----------------æš—é›·æˆ˜æ–—-æ‚åŒª
+	[5003] =             -----------------°µÀ×Õ½¶·-º··Ë
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8290,7 +8290,7 @@ DialogModelDB =
 		},
 		speakerID = 27003,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8303,7 +8303,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5004] =             -----------------æš—é›·æˆ˜æ–—-å¼ºç›—
+	[5004] =             -----------------°µÀ×Õ½¶·-Ç¿µÁ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8311,7 +8311,7 @@ DialogModelDB =
 		},
 		speakerID = 27004,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8324,7 +8324,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5005] =             -----------------æš—é›·æˆ˜æ–—-æµæ°“
+	[5005] =             -----------------°µÀ×Õ½¶·-Á÷Ã¥
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8332,7 +8332,7 @@ DialogModelDB =
 		},
 		speakerID = 27005,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8345,7 +8345,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5006] =             -----------------æš—é›·æˆ˜æ–—-è´¼å¯‡
+	[5006] =             -----------------°µÀ×Õ½¶·-Ôô¿Ü
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8353,7 +8353,7 @@ DialogModelDB =
 		},
 		speakerID = 27006,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8366,9 +8366,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---40-44çº§----------------------------------
-------------------------------------50-100çŽ¯----------------------------------
-	[5007] =             -----------------æš—é›·æˆ˜æ–—-é©¬åŒª
+---------------------------------°µÀ×Õ½¶·---40-44¼¶----------------------------------
+------------------------------------50-100»·----------------------------------
+	[5007] =             -----------------°µÀ×Õ½¶·-Âí·Ë
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8376,7 +8376,7 @@ DialogModelDB =
 		},
 		speakerID = 27007,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8389,7 +8389,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5008] =             -----------------æš—é›·æˆ˜æ–—-çŽ‰æ³‰è¡Œè€…
+	[5008] =             -----------------°µÀ×Õ½¶·-ÓñÈªÐÐÕß
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8397,7 +8397,7 @@ DialogModelDB =
 		},
 		speakerID = 27008,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8410,7 +8410,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5009] =             -----------------æš—é›·æˆ˜æ–—-é£žè´¼
+	[5009] =             -----------------°µÀ×Õ½¶·-·ÉÔô
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8418,7 +8418,7 @@ DialogModelDB =
 		},
 		speakerID = 27009,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8431,7 +8431,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5010] =             -----------------æš—é›·æˆ˜æ–—-è‘£å†›ä¼é•¿
+	[5010] =             -----------------°µÀ×Õ½¶·-¶­¾üÎé³¤
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8439,7 +8439,7 @@ DialogModelDB =
 		},
 		speakerID = 27010,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8452,7 +8452,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5011] =             -----------------æš—é›·æˆ˜æ–—-é»„å·¾æŠ¤å«é•¿
+	[5011] =             -----------------°µÀ×Õ½¶·-»Æ½í»¤ÎÀ³¤
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8460,7 +8460,7 @@ DialogModelDB =
 		},
 		speakerID = 27011,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8473,7 +8473,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5012] =             -----------------æš—é›·æˆ˜æ–—-è’æ¼ ç›—åŒª
+	[5012] =             -----------------°µÀ×Õ½¶·-»ÄÄ®µÁ·Ë
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8481,7 +8481,7 @@ DialogModelDB =
 		},
 		speakerID = 27012,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8494,9 +8494,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---40-44çº§----------------------------------
-------------------------------------100-150çŽ¯----------------------------------
-	[5013] =             -----------------æš—é›·æˆ˜æ–—-å€­å¯‡
+---------------------------------°µÀ×Õ½¶·---40-44¼¶----------------------------------
+------------------------------------100-150»·----------------------------------
+	[5013] =             -----------------°µÀ×Õ½¶·-ÙÁ¿Ü
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8504,7 +8504,7 @@ DialogModelDB =
 		},
 		speakerID = 27013,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8517,7 +8517,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5014] =             -----------------æš—é›·æˆ˜æ–—-å±±è´¼
+	[5014] =             -----------------°µÀ×Õ½¶·-É½Ôô
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8525,7 +8525,7 @@ DialogModelDB =
 		},
 		speakerID = 27014,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8538,7 +8538,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5015] =             -----------------æš—é›·æˆ˜æ–—-æ°´è´¼
+	[5015] =             -----------------°µÀ×Õ½¶·-Ë®Ôô
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8546,7 +8546,7 @@ DialogModelDB =
 		},
 		speakerID = 27015,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8559,7 +8559,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5016] =             -----------------æš—é›·æˆ˜æ–—-è‘£å†›å†›é˜€
+	[5016] =             -----------------°µÀ×Õ½¶·-¶­¾ü¾ü·§
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8567,7 +8567,7 @@ DialogModelDB =
 		},
 		speakerID = 27016,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8580,7 +8580,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5017] =             -----------------æš—é›·æˆ˜æ–—-é»„å·¾å†›é˜€
+	[5017] =             -----------------°µÀ×Õ½¶·-»Æ½í¾ü·§
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8588,7 +8588,7 @@ DialogModelDB =
 		},
 		speakerID = 27017,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8601,7 +8601,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5018] =             -----------------æš—é›·æˆ˜æ–—-é»‘å±±å†›
+	[5018] =             -----------------°µÀ×Õ½¶·-ºÚÉ½¾ü
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8609,7 +8609,7 @@ DialogModelDB =
 		},
 		speakerID = 27018,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8622,9 +8622,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---40-44çº§----------------------------------
-------------------------------------150-200çŽ¯----------------------------------
-	[5019] =             -----------------æš—é›·æˆ˜æ–—-é‚ªæ•™ä½™å…š
+---------------------------------°µÀ×Õ½¶·---40-44¼¶----------------------------------
+------------------------------------150-200»·----------------------------------
+	[5019] =             -----------------°µÀ×Õ½¶·-Ð°½ÌÓàµ³
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8632,7 +8632,7 @@ DialogModelDB =
 		},
 		speakerID = 27019,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8645,7 +8645,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5020] =             -----------------æš—é›·æˆ˜æ–—-ç›Ÿå†›å›å…š
+	[5020] =             -----------------°µÀ×Õ½¶·-ÃË¾üÅÑµ³
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8653,7 +8653,7 @@ DialogModelDB =
 		},
 		speakerID = 27020,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8666,7 +8666,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5021] =             -----------------æš—é›·æˆ˜æ–—-é‚ªç¥žæ•™å¾’
+	[5021] =             -----------------°µÀ×Õ½¶·-Ð°Éñ½ÌÍ½
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8674,7 +8674,7 @@ DialogModelDB =
 		},
 		speakerID = 27021,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8687,7 +8687,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5022] =             -----------------æš—é›·æˆ˜æ–—-é‚ªæ¶ç¥­ç¥€
+	[5022] =             -----------------°µÀ×Õ½¶·-Ð°¶ñ¼Àìë
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8695,7 +8695,7 @@ DialogModelDB =
 		},
 		speakerID = 27022,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8708,7 +8708,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5023] =             -----------------æš—é›·æˆ˜æ–—-é€†é“å¤©å¸ˆ
+	[5023] =             -----------------°µÀ×Õ½¶·-ÄæµÀÌìÊ¦
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8716,7 +8716,7 @@ DialogModelDB =
 		},
 		speakerID = 27023,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8729,7 +8729,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5024] =             -----------------æš—é›·æˆ˜æ–—-æˆªæ•™å›å¾’
+	[5024] =             -----------------°µÀ×Õ½¶·-½Ø½ÌÅÑÍ½
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8737,7 +8737,7 @@ DialogModelDB =
 		},
 		speakerID = 27024,
 		soundID = nil,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä»¬ä¸å®¢æ°”äº†ï¼",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁË£¬ÄÇ¾Í±ð¹ÖÎÒÃÇ²»¿ÍÆøÁË£¡",
 		options = 
 		{
 			{
@@ -8750,9 +8750,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---45-49çº§----------------------------------
-------------------------------------1-50çŽ¯----------------------------------
-	[5025] =             -----------------æš—é›·æˆ˜æ–—-èƒ¡åŠ›
+---------------------------------°µÀ×Õ½¶·---45-49¼¶----------------------------------
+------------------------------------1-50»·----------------------------------
+	[5025] =             -----------------°µÀ×Õ½¶·-ºúÁ¦
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8760,7 +8760,7 @@ DialogModelDB =
 		},
 		speakerID = 27025,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8773,7 +8773,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5026] =             -----------------æš—é›·æˆ˜æ–—-å¼ é¾™
+	[5026] =             -----------------°µÀ×Õ½¶·-ÕÅÁú
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8781,7 +8781,7 @@ DialogModelDB =
 		},
 		speakerID = 27026,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8794,7 +8794,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5027] =             -----------------æš—é›·æˆ˜æ–—-ä¹é¾™
+	[5027] =             -----------------°µÀ×Õ½¶·-¾ÅÁú
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8802,7 +8802,7 @@ DialogModelDB =
 		},
 		speakerID = 27027,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8815,7 +8815,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5028] =             -----------------æš—é›·æˆ˜æ–—-çŽ‹çŸ³
+	[5028] =             -----------------°µÀ×Õ½¶·-ÍõÊ¯
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8823,7 +8823,7 @@ DialogModelDB =
 		},
 		speakerID = 27028,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8836,7 +8836,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5029] =             -----------------æš—é›·æˆ˜æ–—-é£Žé‚ª
+	[5029] =             -----------------°µÀ×Õ½¶·-·çÐ°
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8844,7 +8844,7 @@ DialogModelDB =
 		},
 		speakerID = 27029,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8857,7 +8857,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5030] =             -----------------æš—é›·æˆ˜æ–—-çµå§¬
+	[5030] =             -----------------°µÀ×Õ½¶·-Áé¼§
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8865,7 +8865,7 @@ DialogModelDB =
 		},
 		speakerID = 27030,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8878,9 +8878,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---45-49çº§----------------------------------
-------------------------------------50-100çŽ¯----------------------------------
-	[5031] =             -----------------æš—é›·æˆ˜æ–—-èµµèž
+---------------------------------°µÀ×Õ½¶·---45-49¼¶----------------------------------
+------------------------------------50-100»·----------------------------------
+	[5031] =             -----------------°µÀ×Õ½¶·-ÕÔÈÚ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8888,7 +8888,7 @@ DialogModelDB =
 		},
 		speakerID = 27031,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8901,7 +8901,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5032] =             -----------------æš—é›·æˆ˜æ–—-å†¯èŠ³
+	[5032] =             -----------------°µÀ×Õ½¶·-·ë·¼
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8909,7 +8909,7 @@ DialogModelDB =
 		},
 		speakerID = 27032,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8922,7 +8922,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5033] =             -----------------æš—é›·æˆ˜æ–—-ç¨‹æ™®
+	[5033] =             -----------------°µÀ×Õ½¶·-³ÌÆÕ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8930,7 +8930,7 @@ DialogModelDB =
 		},
 		speakerID = 27033,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8943,7 +8943,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5034] =             -----------------æš—é›·æˆ˜æ–—-ç”˜å®
+	[5034] =             -----------------°µÀ×Õ½¶·-¸ÊÄþ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8951,7 +8951,7 @@ DialogModelDB =
 		},
 		speakerID = 27034,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8964,7 +8964,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5035] =             -----------------æš—é›·æˆ˜æ–—-è¢é—
+	[5035] =             -----------------°µÀ×Õ½¶·-Ô¬ÒÅ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8972,7 +8972,7 @@ DialogModelDB =
 		},
 		speakerID = 27035,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -8985,7 +8985,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5036] =             -----------------æš—é›·æˆ˜æ–—-æ¨å¥‰
+	[5036] =             -----------------°µÀ×Õ½¶·-Ñî·î
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -8993,7 +8993,7 @@ DialogModelDB =
 		},
 		speakerID = 27036,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9006,9 +9006,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---45-49çº§----------------------------------
-------------------------------------100-150çŽ¯----------------------------------
-	[5037] =             -----------------æš—é›·æˆ˜æ–—-é»„æ‰¿ä¹™
+---------------------------------°µÀ×Õ½¶·---45-49¼¶----------------------------------
+------------------------------------100-150»·----------------------------------
+	[5037] =             -----------------°µÀ×Õ½¶·-»Æ³ÐÒÒ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9016,7 +9016,7 @@ DialogModelDB =
 		},
 		speakerID = 27037,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9029,7 +9029,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5038] =             -----------------æš—é›·æˆ˜æ–—-æŽå¥‡
+	[5038] =             -----------------°µÀ×Õ½¶·-ÀîÆæ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9037,7 +9037,7 @@ DialogModelDB =
 		},
 		speakerID = 27038,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9050,7 +9050,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5039] =             -----------------æš—é›·æˆ˜æ–—-æ™é›·
+	[5039] =             -----------------°µÀ×Õ½¶·-êËÀ×
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9058,7 +9058,7 @@ DialogModelDB =
 		},
 		speakerID = 27039,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9071,7 +9071,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5040] =             -----------------æš—é›·æˆ˜æ–—-æ™å¤©
+	[5040] =             -----------------°µÀ×Õ½¶·-êËÌì
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9079,7 +9079,7 @@ DialogModelDB =
 		},
 		speakerID = 27040,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9092,7 +9092,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5041] =             -----------------æš—é›·æˆ˜æ–—-æŽä¸™
+	[5041] =             -----------------°µÀ×Õ½¶·-Àî±û
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9100,7 +9100,7 @@ DialogModelDB =
 		},
 		speakerID = 27041,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9113,7 +9113,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5042] =             -----------------æš—é›·æˆ˜æ–—-å¸¸æ˜Š
+	[5042] =             -----------------°µÀ×Õ½¶·-³£ê»
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9121,7 +9121,7 @@ DialogModelDB =
 		},
 		speakerID = 27042,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9134,9 +9134,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---45-49çº§----------------------------------
-------------------------------------150-200çŽ¯----------------------------------
-	[5043] =             -----------------æš—é›·æˆ˜æ–—-æ¨æ˜¾
+---------------------------------°µÀ×Õ½¶·---45-49¼¶----------------------------------
+------------------------------------150-200»·----------------------------------
+	[5043] =             -----------------°µÀ×Õ½¶·-ÑîÏÔ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9144,7 +9144,7 @@ DialogModelDB =
 		},
 		speakerID = 27043,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9157,7 +9157,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5044] =             -----------------æš—é›·æˆ˜æ–—-æŽå…´éœ¸
+	[5044] =             -----------------°µÀ×Õ½¶·-ÀîÐË°Ô
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9165,7 +9165,7 @@ DialogModelDB =
 		},
 		speakerID = 27044,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9178,7 +9178,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5045] =             -----------------æš—é›·æˆ˜æ–—-æ¨ä¿®
+	[5045] =             -----------------°µÀ×Õ½¶·-ÑîÐÞ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9186,7 +9186,7 @@ DialogModelDB =
 		},
 		speakerID = 27045,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9199,7 +9199,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5046] =             -----------------æš—é›·æˆ˜æ–—-é©¬æ–¹
+	[5046] =             -----------------°µÀ×Õ½¶·-Âí·½
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9207,7 +9207,7 @@ DialogModelDB =
 		},
 		speakerID = 27046,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9220,7 +9220,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5047] =             -----------------æš—é›·æˆ˜æ–—-å´é¾™
+	[5047] =             -----------------°µÀ×Õ½¶·-ÎâÁú
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9228,7 +9228,7 @@ DialogModelDB =
 		},
 		speakerID = 27047,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9241,7 +9241,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5048] =             -----------------æš—é›·æˆ˜æ–—-å‘¨ä¿¡
+	[5048] =             -----------------°µÀ×Õ½¶·-ÖÜÐÅ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9249,7 +9249,7 @@ DialogModelDB =
 		},
 		speakerID = 27048,
 		soundID = nil,
-		txt = "è¿™å¤©ä¸‹å°†æ˜¯æˆ‘ä»¬é­”æ•™çš„ï¼Œä½ ä»¬è¿™ç¾¤å‡¡äººè¿˜å¦„æƒ³å‡»æ€æˆ‘ä»¬ï¼Œç®€ç›´ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "ÕâÌìÏÂ½«ÊÇÎÒÃÇÄ§½ÌµÄ£¬ÄãÃÇÕâÈº·²ÈË»¹ÍýÏë»÷É±ÎÒÃÇ£¬¼òÖ±³ÕÐÄÍýÏë¡£",
 		options = 
 		{
 			{
@@ -9262,9 +9262,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---50-54çº§----------------------------------
-------------------------------------1-50çŽ¯----------------------------------
-	[5049] =             -----------------æš—é›·æˆ˜æ–—-è¯¡å¼‚æœ¯å£«ç¬¦è¡€
+---------------------------------°µÀ×Õ½¶·---50-54¼¶----------------------------------
+------------------------------------1-50»·----------------------------------
+	[5049] =             -----------------°µÀ×Õ½¶·-¹îÒìÊõÊ¿·ûÑª
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9272,7 +9272,7 @@ DialogModelDB =
 		},
 		speakerID = 27049,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9285,7 +9285,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5050] =             -----------------æš—é›·æˆ˜æ–—-é‚ªæ•™é­”åŒ–æŠ¤æ³•
+	[5050] =             -----------------°µÀ×Õ½¶·-Ð°½ÌÄ§»¯»¤·¨
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9293,7 +9293,7 @@ DialogModelDB =
 		},
 		speakerID = 27050,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9306,7 +9306,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5051] =             -----------------æš—é›·æˆ˜æ–—-é­”å›ç™½ä¹…
+	[5051] =             -----------------°µÀ×Õ½¶·-Ä§¾ý°×¾Ã
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9314,7 +9314,7 @@ DialogModelDB =
 		},
 		speakerID = 27051,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9327,7 +9327,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5052] =             -----------------æš—é›·æˆ˜æ–—-é­”å°†é™ˆåƒå†›
+	[5052] =             -----------------°µÀ×Õ½¶·-Ä§½«³ÂÇ§¾ü
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9335,7 +9335,7 @@ DialogModelDB =
 		},
 		speakerID = 27052,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9348,7 +9348,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5053] =             -----------------æš—é›·æˆ˜æ–—-å¦–å°†ç«ç
+	[5053] =             -----------------°µÀ×Õ½¶·-Ñý½«»ðâ¯
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9356,7 +9356,7 @@ DialogModelDB =
 		},
 		speakerID = 27053,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9369,7 +9369,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5054] =             -----------------æš—é›·æˆ˜æ–—-é•‡ç‹±æ˜ŽçŽ‹
+	[5054] =             -----------------°µÀ×Õ½¶·-ÕòÓüÃ÷Íõ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9377,7 +9377,7 @@ DialogModelDB =
 		},
 		speakerID = 27054,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9390,9 +9390,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---50-54çº§----------------------------------
-------------------------------------50-100çŽ¯----------------------------------
-	[5055] =             -----------------æš—é›·æˆ˜æ–—-é­”å›çŽ„éœ“
+---------------------------------°µÀ×Õ½¶·---50-54¼¶----------------------------------
+------------------------------------50-100»·----------------------------------
+	[5055] =             -----------------°µÀ×Õ½¶·-Ä§¾ýÐþÄÞ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9400,7 +9400,7 @@ DialogModelDB =
 		},
 		speakerID = 27055,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9413,7 +9413,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5056] =             -----------------æš—é›·æˆ˜æ–—-é­”å°†è§æ€€é’
+	[5056] =             -----------------°µÀ×Õ½¶·-Ä§½«Ïô»³Çà
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9421,7 +9421,7 @@ DialogModelDB =
 		},
 		speakerID = 27056,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9434,7 +9434,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5057] =             -----------------æš—é›·æˆ˜æ–—-åƒå¹´è—¤å¦–
+	[5057] =             -----------------°µÀ×Õ½¶·-Ç§ÄêÌÙÑý
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9442,7 +9442,7 @@ DialogModelDB =
 		},
 		speakerID = 27057,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9455,7 +9455,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5058] =             -----------------æš—é›·æˆ˜æ–—-å¦–å°†é™†é­
+	[5058] =             -----------------°µÀ×Õ½¶·-Ñý½«Â½¿ý
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9463,7 +9463,7 @@ DialogModelDB =
 		},
 		speakerID = 27058,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9476,7 +9476,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5059] =             -----------------æš—é›·æˆ˜æ–—-é‚ªé“åˆ˜é‚‘
+	[5059] =             -----------------°µÀ×Õ½¶·-Ð°µÀÁõÒØ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9484,7 +9484,7 @@ DialogModelDB =
 		},
 		speakerID = 27059,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9497,7 +9497,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5060] =             -----------------æš—é›·æˆ˜æ–—-æœ¯å£«æ–¹ç›¸
+	[5060] =             -----------------°µÀ×Õ½¶·-ÊõÊ¿·½Ïà
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9505,7 +9505,7 @@ DialogModelDB =
 		},
 		speakerID = 27060,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9518,9 +9518,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---50-54çº§----------------------------------
-------------------------------------100-150çŽ¯----------------------------------
-	[5061] =             -----------------æš—é›·æˆ˜æ–—-é­”å›å§¬å‘
+---------------------------------°µÀ×Õ½¶·---50-54¼¶----------------------------------
+------------------------------------100-150»·----------------------------------
+	[5061] =             -----------------°µÀ×Õ½¶·-Ä§¾ý¼§·¢
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9528,7 +9528,7 @@ DialogModelDB =
 		},
 		speakerID = 27061,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9541,7 +9541,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5062] =             -----------------æš—é›·æˆ˜æ–—-é­”å°†ä¹”å¤
+	[5062] =             -----------------°µÀ×Õ½¶·-Ä§½«ÇÇÀ¤
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9549,7 +9549,7 @@ DialogModelDB =
 		},
 		speakerID = 27062,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9562,7 +9562,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5063] =             -----------------æš—é›·æˆ˜æ–—-å¦–å°†æ›¹å®
+	[5063] =             -----------------°µÀ×Õ½¶·-Ñý½«²Ü±¦
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9570,7 +9570,7 @@ DialogModelDB =
 		},
 		speakerID = 27063,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9583,7 +9583,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5064] =             -----------------æš—é›·æˆ˜æ–—-é‚ªé“è§è‡»
+	[5064] =             -----------------°µÀ×Õ½¶·-Ð°µÀÏôÕé
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9591,7 +9591,7 @@ DialogModelDB =
 		},
 		speakerID = 27064,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9604,7 +9604,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5065] =             -----------------æš—é›·æˆ˜æ–—-æœ¯å£«æ–¹å¼¼
+	[5065] =             -----------------°µÀ×Õ½¶·-ÊõÊ¿·½åö
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9612,7 +9612,7 @@ DialogModelDB =
 		},
 		speakerID = 27065,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9625,7 +9625,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5066] =             -----------------æš—é›·æˆ˜æ–—-è–›æ¶è™Ž
+	[5066] =             -----------------°µÀ×Õ½¶·-Ñ¦¶ñ»¢
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9633,7 +9633,7 @@ DialogModelDB =
 		},
 		speakerID = 27066,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9646,9 +9646,9 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æš—é›·æˆ˜æ–—---50-54çº§----------------------------------
-------------------------------------150-200çŽ¯----------------------------------
-	[5067] =             -----------------æš—é›·æˆ˜æ–—-éŸ©æ¯’é¾™
+---------------------------------°µÀ×Õ½¶·---50-54¼¶----------------------------------
+------------------------------------150-200»·----------------------------------
+	[5067] =             -----------------°µÀ×Õ½¶·-º«¶¾Áú
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9656,7 +9656,7 @@ DialogModelDB =
 		},
 		speakerID = 27067,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9669,7 +9669,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5068] =             -----------------æš—é›·æˆ˜æ–—-èµ¤ç²¾å­
+	[5068] =             -----------------°µÀ×Õ½¶·-³à¾«×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9677,7 +9677,7 @@ DialogModelDB =
 		},
 		speakerID = 27068,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9690,7 +9690,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5069] =             -----------------æš—é›·æˆ˜æ–—-é›ªå³°è€å¦–
+	[5069] =             -----------------°µÀ×Õ½¶·-Ñ©·åÀÏÑý
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9698,7 +9698,7 @@ DialogModelDB =
 		},
 		speakerID = 27069,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9711,7 +9711,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5070] =             -----------------æš—é›·æˆ˜æ–—-æ°´ç«ç«¥å­
+	[5070] =             -----------------°µÀ×Õ½¶·-Ë®»ðÍ¯×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9719,7 +9719,7 @@ DialogModelDB =
 		},
 		speakerID = 27070,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9732,7 +9732,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5071] =             -----------------æš—é›·æˆ˜æ–—-é­”å°†é©¬å–„
+	[5071] =             -----------------°µÀ×Õ½¶·-Ä§½«ÂíÉÆ
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9740,7 +9740,7 @@ DialogModelDB =
 		},
 		speakerID = 27071,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9753,7 +9753,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[5072] =             -----------------æš—é›·æˆ˜æ–—-å¦–å°†çŽ‹è™Ž
+	[5072] =             -----------------°µÀ×Õ½¶·-Ñý½«Íõ»¢
 	{
 		dialogType = DialogType.NotOption,
 		conditions = 
@@ -9761,7 +9761,7 @@ DialogModelDB =
 		}, 
 		speakerID = 27072,
 		soundID = nil,
-		txt = "ä½ ç­‰ç«Ÿæ•¢æ‰“æ–­æœ¬ç¥žæ–½æ³•ï¼Œçœ‹æ¥æ˜¯å«Œè‡ªå·±æ´»å¾—å¤ªå¥½äº†ï¼",
+		txt = "ÄãµÈ¾¹¸Ò´ò¶Ï±¾ÉñÊ©·¨£¬¿´À´ÊÇÏÓ×Ô¼º»îµÃÌ«ºÃÁË£¡",
 		options = 
 		{
 			{
@@ -9774,8 +9774,8 @@ DialogModelDB =
 			}
 		},
 	},
----------------------------------æŒ‘æˆ˜æ˜Žé›·---æ— é™åˆ¶ç­‰çº§ã€æ— çŽ¯æ•°é™åˆ¶----------------------------------
-	[5073] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ´›é˜³-å¢æ¤
+---------------------------------ÌôÕ½Ã÷À×---ÎÞÏÞÖÆµÈ¼¶¡¢ÎÞ»·ÊýÏÞÖÆ----------------------------------
+	[5073] =            -----------------ÌôÕ½Ã÷À×-ÂåÑô-Â¬Ö²
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9783,12 +9783,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20049}},
 		},
 		speakerID = 20049,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5073,mapID = 10}},
@@ -9796,7 +9796,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9805,7 +9805,7 @@ DialogModelDB =
 
 		},
 	},
-	[5074] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ´›é˜³-çŽ‹å­å¸ˆ
+	[5074] =            -----------------ÌôÕ½Ã÷À×-ÂåÑô-Íõ×ÓÊ¦
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9813,12 +9813,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 30320}},
 		},
 		speakerID = 30320,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5074,mapID = 10}},
@@ -9826,7 +9826,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9835,7 +9835,7 @@ DialogModelDB =
 
 		},
 	},
-	[5075] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ´›é˜³-çš‡ç”«åµ©
+	[5075] =            -----------------ÌôÕ½Ã÷À×-ÂåÑô-»Ê¸¦áÔ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9843,12 +9843,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20059}},
 		},
 		speakerID = 20059,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5075,mapID = 10}},
@@ -9856,7 +9856,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9865,7 +9865,7 @@ DialogModelDB =
 
 		},
 	},
-	[5076] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ´›é˜³-å¼ ç»´ä¹‰
+	[5076] =            -----------------ÌôÕ½Ã÷À×-ÂåÑô-ÕÅÎ¬Òå
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9873,12 +9873,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 29008}},
 		},
 		speakerID = 29008,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5076,mapID = 10}},
@@ -9886,7 +9886,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9895,7 +9895,7 @@ DialogModelDB =
 
 		},
 	},
-	[5077] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ¡ƒå›­-æ¨æ£®
+	[5077] =            -----------------ÌôÕ½Ã÷À×-ÌÒÔ°-ÑîÉ­
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9903,12 +9903,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 27073}},
 		},
 		speakerID = 27073,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5077,mapID = 9}},
@@ -9916,7 +9916,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9925,7 +9925,7 @@ DialogModelDB =
 
 		},
 	},
-	[5078] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ¡ƒå›­-é«˜å‹ä¹¾
+	[5078] =            -----------------ÌôÕ½Ã÷À×-ÌÒÔ°-¸ßÓÑÇ¬
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9933,12 +9933,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 27074}},
 		},
 		speakerID = 27074,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5078,mapID = 9}},
@@ -9946,7 +9946,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9955,7 +9955,7 @@ DialogModelDB =
 
 		},
 	},
-	[5079] =            -----------------æŒ‘æˆ˜æ˜Žé›·-é•¿å®‰-çŽ‹å…
+	[5079] =            -----------------ÌôÕ½Ã÷À×-³¤°²-ÍõÔÊ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9963,12 +9963,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20701}},
 		},
 		speakerID = 20701,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5079,mapID = 13}},
@@ -9976,7 +9976,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -9985,7 +9985,7 @@ DialogModelDB =
 
 		},
 	},
-	[5080] =            -----------------æŒ‘æˆ˜æ˜Žé›·-é•¿å®‰-æ¨æ–‡è¾‰
+	[5080] =            -----------------ÌôÕ½Ã÷À×-³¤°²-ÑîÎÄ»Ô
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -9993,12 +9993,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 27075}},
 		},
 		speakerID = 27075,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5080,mapID = 13}},
@@ -10006,7 +10006,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10015,7 +10015,7 @@ DialogModelDB =
 
 		},
 	},
-	[5081] =            -----------------æŒ‘æˆ˜æ˜Žé›·-è¥„é˜³-éƒ‘ä¼¦
+	[5081] =            -----------------ÌôÕ½Ã÷À×-ÏåÑô-Ö£Â×
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10023,12 +10023,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 27076}},
 		},
 		speakerID = 27076,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5081,mapID = 14}},
@@ -10036,7 +10036,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10045,7 +10045,7 @@ DialogModelDB =
 
 		},
 	},
-	[5082] =            -----------------æŒ‘æˆ˜æ˜Žé›·-è¥„é˜³-é™ˆå¥‡
+	[5082] =            -----------------ÌôÕ½Ã÷À×-ÏåÑô-³ÂÆæ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10053,12 +10053,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 27077}},
 		},
 		speakerID = 27077,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5082,mapID = 14}},
@@ -10066,7 +10066,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10075,7 +10075,7 @@ DialogModelDB =
 
 		},
 	},
-	[5083] =            -----------------æŒ‘æˆ˜æ˜Žé›·-ä¹¾å…ƒå²›-æ®µå²³
+	[5083] =            -----------------ÌôÕ½Ã÷À×-Ç¬Ôªµº-¶ÎÔÀ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10083,12 +10083,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20021}},
 		},
 		speakerID = 20021,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5083,mapID = 1}},
@@ -10096,7 +10096,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10105,7 +10105,7 @@ DialogModelDB =
 
 		},
 	},
-	[5084] =            -----------------æŒ‘æˆ˜æ˜Žé›·-è“¬èŽ±é˜-å…®é¢œ
+	[5084] =            -----------------ÌôÕ½Ã÷À×-ÅîÀ³¸ó-ÙâÑÕ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10113,12 +10113,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20022}},	
 		},
 		speakerID = 20022,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5084,mapID = 2}},
@@ -10126,7 +10126,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10135,7 +10135,7 @@ DialogModelDB =
 
 		},
 	},
-	[5085] =            -----------------æŒ‘æˆ˜æ˜Žé›·-é‡‘éœžå±±-æŽé•¿é£Ž
+	[5085] =            -----------------ÌôÕ½Ã÷À×-½ðÏ¼É½-Àî³¤·ç
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10143,12 +10143,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20023}},	
 		},
 		speakerID = 20023,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5085,mapID = 3}},
@@ -10156,7 +10156,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10165,7 +10165,7 @@ DialogModelDB =
 
 		},
 	},
-	[5086] =            -----------------æŒ‘æˆ˜æ˜Žé›·-æ¡ƒæºæ´ž-åº„æ¢¦è¶
+	[5086] =            -----------------ÌôÕ½Ã÷À×-ÌÒÔ´¶´-×¯ÃÎµû
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10173,12 +10173,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20025}},
 		},
 		speakerID = 20025,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5086,mapID = 4}},
@@ -10186,7 +10186,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10195,7 +10195,7 @@ DialogModelDB =
 
 		},
 	},
-	[5087] =            -----------------æŒ‘æˆ˜æ˜Žé›·-äº‘éœ„å®«-çŽ„ç´ 
+	[5087] =            -----------------ÌôÕ½Ã÷À×-ÔÆÏö¹¬-ÐþËØ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10203,12 +10203,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20024}},	
 		},
 		speakerID = 20024,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5087,mapID = 5}},
@@ -10216,7 +10216,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10225,7 +10225,7 @@ DialogModelDB =
 
 		},
 	},
-	[5088] =            -----------------æŒ‘æˆ˜æ˜Žé›·-ç´«é˜³é—¨-æ®¿é£žç™½
+	[5088] =            -----------------ÌôÕ½Ã÷À×-×ÏÑôÃÅ-µî·É°×
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10233,12 +10233,12 @@ DialogModelDB =
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.brightMine,npcID = 20026}},	
 		},
 		speakerID = 20026,
-		txt = "æ˜¯ä½ è¦æŒ‘æˆ˜æˆ‘ä¹ˆï¼Œé‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÊÇÄãÒªÌôÕ½ÎÒÃ´£¬ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5088,mapID = 6}},
@@ -10246,7 +10246,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10255,9 +10255,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---40-44çº§----------------------------------
-------------------------------------1-50çŽ¯----------------------------------------------
-	[5089] =            -----------------å¤©é“æ‚¬èµ-é»‘é£Žå°å¦–
+---------------------------------ÌìµÀÐüÉÍ---40-44¼¶----------------------------------
+------------------------------------1-50»·----------------------------------------------
+	[5089] =            -----------------ÌìµÀÐüÉÍ-ºÚ·çÐ¡Ñý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10265,12 +10265,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27078}},
 		},
 		speakerID = 27078,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5089,mapID = nil}},
@@ -10278,7 +10278,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10287,7 +10287,7 @@ DialogModelDB =
 
 		},
 	},
-	[5090] =            -----------------å¤©é“æ‚¬èµ-å…¥é­”åŒåˆ€å®¢
+	[5090] =            -----------------ÌìµÀÐüÉÍ-ÈëÄ§Ë«µ¶¿Í
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10295,12 +10295,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27079}},
 		},
 		speakerID = 27079,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5090,mapID = nil}},
@@ -10308,7 +10308,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10317,7 +10317,7 @@ DialogModelDB =
 
 		},
 	},
-	[5091] =            -----------------å¤©é“æ‚¬èµ-é­”åŒ–å¥³åˆºå®¢
+	[5091] =            -----------------ÌìµÀÐüÉÍ-Ä§»¯Å®´Ì¿Í
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10325,12 +10325,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27080}},
 		},
 		speakerID = 27080,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5091,mapID = nil}},
@@ -10338,7 +10338,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10347,7 +10347,7 @@ DialogModelDB =
 
 		},
 	},
-	[5092] =            -----------------å¤©é“æ‚¬èµ-é­”åŒ–å‰‘å¥´
+	[5092] =            -----------------ÌìµÀÐüÉÍ-Ä§»¯½£Å«
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10355,12 +10355,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27081}},	
 		},
 		speakerID = 27081,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5092,mapID = nil}},
@@ -10368,7 +10368,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10377,7 +10377,7 @@ DialogModelDB =
 
 		},
 	},
-	[5093] =            -----------------å¤©é“æ‚¬èµ-é»‘è¡£äºº
+	[5093] =            -----------------ÌìµÀÐüÉÍ-ºÚÒÂÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10385,12 +10385,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27082}},	
 		},
 		speakerID = 27082,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5093,mapID = nil}},
@@ -10398,7 +10398,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10407,7 +10407,7 @@ DialogModelDB =
 
 		},
 	},
-	[5094] =            -----------------å¤©é“æ‚¬èµ-é‚ªæ¶ç¥­ç¥€
+	[5094] =            -----------------ÌìµÀÐüÉÍ-Ð°¶ñ¼Àìë
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10415,12 +10415,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27083}},
 		},
 		speakerID = 27083,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5094,mapID = nil}},
@@ -10428,7 +10428,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10437,9 +10437,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---40-44çº§----------------------------------
-------------------------------------50-100çŽ¯----------------------------------------------
-	[5095] =            -----------------å¤©é“æ‚¬èµ-è›‡å¦–å¸¸æ—­
+---------------------------------ÌìµÀÐüÉÍ---40-44¼¶----------------------------------
+------------------------------------50-100»·----------------------------------------------
+	[5095] =            -----------------ÌìµÀÐüÉÍ-ÉßÑý³£Ðñ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10447,12 +10447,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27084}},	
 		},
 		speakerID = 27084,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5095,mapID = nil}},
@@ -10460,7 +10460,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10469,7 +10469,7 @@ DialogModelDB =
 
 		},
 	},
-	[5096] =            -----------------å¤©é“æ‚¬èµ-é­”ä»™é»„é¾™
+	[5096] =            -----------------ÌìµÀÐüÉÍ-Ä§ÏÉ»ÆÁú
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10477,12 +10477,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27085}},
 		},
 		speakerID = 27085,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5096,mapID = nil}},
@@ -10490,7 +10490,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10499,7 +10499,7 @@ DialogModelDB =
 
 		},
 	},
-	[5097] =            -----------------å¤©é“æ‚¬èµ-ç”²èƒ„ç¿°èµ¤
+	[5097] =            -----------------ÌìµÀÐüÉÍ-¼×ëÐº²³à
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10507,12 +10507,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27086}},
 		},
 		speakerID = 27086,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5097,mapID = nil}},
@@ -10520,7 +10520,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10529,7 +10529,7 @@ DialogModelDB =
 
 		},
 	},
-	[5098] =            -----------------å¤©é“æ‚¬èµ-ç¬¦å’’ç¿°èµ¤
+	[5098] =            -----------------ÌìµÀÐüÉÍ-·ûÖäº²³à
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10537,12 +10537,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27087}},
 		},
 		speakerID = 27087,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5098,mapID = nil}},
@@ -10550,7 +10550,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10559,7 +10559,7 @@ DialogModelDB =
 
 		},
 	},
-	[5099] =            -----------------å¤©é“æ‚¬èµ-ç¿ å²©å¦–
+	[5099] =            -----------------ÌìµÀÐüÉÍ-´äÑÒÑý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10567,12 +10567,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27088}},
 		},
 		speakerID = 27088,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5099,mapID = nil}},
@@ -10580,7 +10580,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10589,7 +10589,7 @@ DialogModelDB =
 
 		},
 	},
-	[5100] =            -----------------å¤©é“æ‚¬èµ-èŠ±é­”
+	[5100] =            -----------------ÌìµÀÐüÉÍ-»¨Ä§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10597,12 +10597,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27089}},
 		},
 		speakerID = 27089,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5100,mapID = nil}},
@@ -10610,7 +10610,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10619,9 +10619,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---40-44çº§----------------------------------
-------------------------------------100-150çŽ¯----------------------------------------------
-	[5101] =            -----------------å¤©é“æ‚¬èµ-æœ¯å¦–
+---------------------------------ÌìµÀÐüÉÍ---40-44¼¶----------------------------------
+------------------------------------100-150»·----------------------------------------------
+	[5101] =            -----------------ÌìµÀÐüÉÍ-ÊõÑý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10629,12 +10629,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27090}},
 		},
 		speakerID = 27090,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5101,mapID = nil}},
@@ -10642,7 +10642,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10651,7 +10651,7 @@ DialogModelDB =
 
 		},
 	},
-	[5102] =            -----------------å¤©é“æ‚¬èµ-é¬¼å§¬
+	[5102] =            -----------------ÌìµÀÐüÉÍ-¹í¼§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10659,12 +10659,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27091}},
 		},
 		speakerID = 27091,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5102,mapID = nil}},
@@ -10672,7 +10672,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10681,7 +10681,7 @@ DialogModelDB =
 
 		},
 	},
-	[5103] =            -----------------å¤©é“æ‚¬èµ-è™Žå¤´æ€ª
+	[5103] =            -----------------ÌìµÀÐüÉÍ-»¢Í·¹Ö
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10689,12 +10689,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27092}},
 		},
 		speakerID = 27092,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5103,mapID = nil}},
@@ -10702,7 +10702,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10711,7 +10711,7 @@ DialogModelDB =
 
 		},
 	},
-	[5104] =            -----------------å¤©é“æ‚¬èµ-å·«çµ
+	[5104] =            -----------------ÌìµÀÐüÉÍ-Î×Áé
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10719,12 +10719,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27093}},	
 		},
 		speakerID = 27093,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5104,mapID = nil}},
@@ -10732,7 +10732,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10741,7 +10741,7 @@ DialogModelDB =
 
 		},
 	},
-	[5105] =            -----------------å¤©é“æ‚¬èµ-å¿§è‰å§¬
+	[5105] =            -----------------ÌìµÀÐüÉÍ-ÓÇ²Ý¼§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10749,12 +10749,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27094}},	
 		},
 		speakerID = 27094,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5105,mapID = nil}},
@@ -10762,7 +10762,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10771,7 +10771,7 @@ DialogModelDB =
 
 		},
 	},
-	[5106] =            -----------------å¤©é“æ‚¬èµ-é»‘ç¿°èµ¤
+	[5106] =            -----------------ÌìµÀÐüÉÍ-ºÚº²³à
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10779,12 +10779,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27095}},	
 		},
 		speakerID = 27095,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5106,mapID = nil}},
@@ -10792,7 +10792,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10801,9 +10801,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---40-44çº§----------------------------------
-------------------------------------150-200çŽ¯----------------------------------------------
-	[5107] =            -----------------å¤©é“æ‚¬èµ-ç™½ç¿°èµ¤
+---------------------------------ÌìµÀÐüÉÍ---40-44¼¶----------------------------------
+------------------------------------150-200»·----------------------------------------------
+	[5107] =            -----------------ÌìµÀÐüÉÍ-°×º²³à
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10811,12 +10811,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27096}},
 		},
 		speakerID = 27096,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5107,mapID = nil}},
@@ -10824,7 +10824,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10833,7 +10833,7 @@ DialogModelDB =
 
 		},
 	},
-	[5108] =            -----------------å¤©é“æ‚¬èµ-å¹»å§¬
+	[5108] =            -----------------ÌìµÀÐüÉÍ-»Ã¼§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10841,12 +10841,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27097}},
 		},
 		speakerID = 27097,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5108,mapID = nil}},
@@ -10854,7 +10854,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10863,7 +10863,7 @@ DialogModelDB =
 
 		},
 	},
-	[5109] =            -----------------å¤©é“æ‚¬èµ-çƒ½éª‘
+	[5109] =            -----------------ÌìµÀÐüÉÍ-·éÆï
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10871,12 +10871,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27098}},
 		},
 		speakerID = 27098,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5109,mapID = nil}},
@@ -10884,7 +10884,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10893,7 +10893,7 @@ DialogModelDB =
 
 		},
 	},
-	[5110] =            -----------------å¤©é“æ‚¬èµ-å¹»å¦–å§¬
+	[5110] =            -----------------ÌìµÀÐüÉÍ-»ÃÑý¼§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10901,12 +10901,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27099}},	
 		},
 		speakerID = 27099,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5110,mapID = nil}},
@@ -10914,7 +10914,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10923,7 +10923,7 @@ DialogModelDB =
 
 		},
 	},
-	[5111] =            -----------------å¤©é“æ‚¬èµ-å¹»çµå§¬
+	[5111] =            -----------------ÌìµÀÐüÉÍ-»ÃÁé¼§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10931,12 +10931,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27100}},
 		},
 		speakerID = 27100,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5111,mapID = nil}},
@@ -10944,7 +10944,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10953,7 +10953,7 @@ DialogModelDB =
 
 		},
 	},
-	[5112] =            -----------------å¤©é“æ‚¬èµ-æ— åŒèµ¤é¬¼
+	[5112] =            -----------------ÌìµÀÐüÉÍ-ÎÞË«³à¹í
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10961,12 +10961,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 270101}},	
 		},
 		speakerID = 27101,
-		txt = "åˆæœ‰äººè¿‡æ¥é€æ­»äº†ï¼é‚£å°±åˆ«æ€ªæˆ‘äº†",
+		txt = "ÓÖÓÐÈË¹ýÀ´ËÍËÀÁË£¡ÄÇ¾Í±ð¹ÖÎÒÁË",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5112,mapID = nil}},
@@ -10974,7 +10974,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -10983,9 +10983,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---45-49çº§----------------------------------
-------------------------------------1-50çŽ¯----------------------------------------------
-	[5113] =            -----------------å¤©é“æ‚¬èµ-é­”æ•™å¤§æŠ¤æ³•
+---------------------------------ÌìµÀÐüÉÍ---45-49¼¶----------------------------------
+------------------------------------1-50»·----------------------------------------------
+	[5113] =            -----------------ÌìµÀÐüÉÍ-Ä§½Ì´ó»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -10993,12 +10993,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27102}},
 		},
 		speakerID = 27102,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5113,mapID = nil}},
@@ -11006,7 +11006,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11015,7 +11015,7 @@ DialogModelDB =
 
 		},
 	},
-	[5114] =            -----------------å¤©é“æ‚¬èµ-é‚ªæ¶å¥³å¦–
+	[5114] =            -----------------ÌìµÀÐüÉÍ-Ð°¶ñÅ®Ñý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11023,12 +11023,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27103}},
 		},
 		speakerID = 27103,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5114,mapID = nil}},
@@ -11036,7 +11036,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11045,7 +11045,7 @@ DialogModelDB =
 
 		},
 	},
-	[5115] =            -----------------å¤©é“æ‚¬èµ-é­”åŒ–å¦–é“
+	[5115] =            -----------------ÌìµÀÐüÉÍ-Ä§»¯ÑýµÀ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11053,12 +11053,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27104}},
 		},
 		speakerID = 27104,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5115,mapID = nil}},
@@ -11066,7 +11066,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11075,7 +11075,7 @@ DialogModelDB =
 
 		},
 	},
-	[5116] =            -----------------å¤©é“æ‚¬èµ-é»„å·¾é­”å°†
+	[5116] =            -----------------ÌìµÀÐüÉÍ-»Æ½íÄ§½«
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11083,12 +11083,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27105}},
 		},
 		speakerID = 27105,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5116,mapID = nil}},
@@ -11096,7 +11096,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11105,7 +11105,7 @@ DialogModelDB =
 
 		},
 	},
-	[5117] =            -----------------å¤©é“æ‚¬èµ-å†°çŸ³å‚€
+	[5117] =            -----------------ÌìµÀÐüÉÍ-±ùÊ¯¿þ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11113,12 +11113,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27106}},
 		},
 		speakerID = 27106,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5117,mapID = nil}},
@@ -11126,7 +11126,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11135,7 +11135,7 @@ DialogModelDB =
 
 		},
 	},
-	[5118] =            -----------------å¤©é“æ‚¬èµ-é£žç†Š
+	[5118] =            -----------------ÌìµÀÐüÉÍ-·ÉÐÜ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11143,12 +11143,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27107}},	
 		},
 		speakerID = 27107,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5118,mapID = nil}},
@@ -11156,7 +11156,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11165,9 +11165,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---45-49çº§----------------------------------
-------------------------------------50-100çŽ¯----------------------------------------------
-	[5119] =            -----------------å¤©é“æ‚¬èµ-è¡€é­”å›
+---------------------------------ÌìµÀÐüÉÍ---45-49¼¶----------------------------------
+------------------------------------50-100»·----------------------------------------------
+	[5119] =            -----------------ÌìµÀÐüÉÍ-ÑªÄ§¾ý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11175,12 +11175,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27108}},
 		},
 		speakerID = 27108,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5119,mapID = nil}},
@@ -11188,7 +11188,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11197,7 +11197,7 @@ DialogModelDB =
 
 		},
 	},
-	[5120] =            -----------------å¤©é“æ‚¬èµ-è¡€ç‹‚
+	[5120] =            -----------------ÌìµÀÐüÉÍ-Ñª¿ñ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11205,12 +11205,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27109}},	
 		},
 		speakerID = 27109,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5120,mapID = nil}},
@@ -11218,7 +11218,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11227,7 +11227,7 @@ DialogModelDB =
 
 		},
 	},
-	[5121] =            -----------------å¤©é“æ‚¬èµ-èŽ²é­‚å½±
+	[5121] =            -----------------ÌìµÀÐüÉÍ-Á«»êÓ°
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11235,12 +11235,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27110}},
 		},
 		speakerID = 27110,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5121,mapID = nil}},
@@ -11248,7 +11248,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11257,7 +11257,7 @@ DialogModelDB =
 
 		},
 	},
-	[5122] =            -----------------å¤©é“æ‚¬èµ-èŠ±æ€€é£Ž
+	[5122] =            -----------------ÌìµÀÐüÉÍ-»¨»³·ç
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11265,12 +11265,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27111}},
 		},
 		speakerID = 27111,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5122,mapID = nil}},
@@ -11278,7 +11278,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11287,7 +11287,7 @@ DialogModelDB =
 
 		},
 	},
-	[5123] =            -----------------å¤©é“æ‚¬èµ-é¾™é­‚
+	[5123] =            -----------------ÌìµÀÐüÉÍ-Áú»ê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11295,12 +11295,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27112}},
 		},
 		speakerID = 27112,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5123,mapID = nil}},
@@ -11308,7 +11308,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11317,7 +11317,7 @@ DialogModelDB =
 
 		},
 	},
-	[5124] =            -----------------å¤©é“æ‚¬èµ-é‡‘ç¿…è¿¦æ¥¼æ´›
+	[5124] =            -----------------ÌìµÀÐüÉÍ-½ð³áåÈÂ¥Âå
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11325,12 +11325,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27113}},
 		},
 		speakerID = 27113,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5124,mapID = nil}},
@@ -11338,7 +11338,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11347,9 +11347,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---45-49çº§----------------------------------
-------------------------------------100-150çŽ¯----------------------------------------------
-	[5125] =            -----------------å¤©é“æ‚¬èµ-é›ªé£Ž
+---------------------------------ÌìµÀÐüÉÍ---45-49¼¶----------------------------------
+------------------------------------100-150»·----------------------------------------------
+	[5125] =            -----------------ÌìµÀÐüÉÍ-Ñ©·ç
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11357,12 +11357,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27114}},	
 		},
 		speakerID = 27114,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5125,mapID = nil}},
@@ -11370,7 +11370,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11379,7 +11379,7 @@ DialogModelDB =
 
 		},
 	},
-	[5126] =            -----------------å¤©é“æ‚¬èµ-é­”é“ç¾½çµ
+	[5126] =            -----------------ÌìµÀÐüÉÍ-Ä§µÀÓðÁé
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11387,12 +11387,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27115}},
 		},
 		speakerID = 27115,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5126,mapID = nil}},
@@ -11400,7 +11400,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11409,7 +11409,7 @@ DialogModelDB =
 
 		},
 	},
-	[5127] =            -----------------å¤©é“æ‚¬èµ-é¬¼é“ç¾½çµ
+	[5127] =            -----------------ÌìµÀÐüÉÍ-¹íµÀÓðÁé
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11417,12 +11417,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27116}},	
 		},
 		speakerID = 27116,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5127,mapID = nil}},
@@ -11430,7 +11430,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11439,7 +11439,7 @@ DialogModelDB =
 
 		},
 	},
-	[5128] =            -----------------å¤©é“æ‚¬èµ-å¤æ ¼
+	[5128] =            -----------------ÌìµÀÐüÉÍ-¹Å¸ñ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11447,12 +11447,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27117}},	
 		},
 		speakerID = 27117,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5128,mapID = nil}},
@@ -11460,7 +11460,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11469,7 +11469,7 @@ DialogModelDB =
 
 		},
 	},
-	[5129] =            -----------------å¤©é“æ‚¬èµ-å¤œé­”
+	[5129] =            -----------------ÌìµÀÐüÉÍ-Ò¹Ä§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11477,12 +11477,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27118}},	
 		},
 		speakerID = 27118,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5129,mapID = nil}},
@@ -11490,7 +11490,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11499,7 +11499,7 @@ DialogModelDB =
 
 		},
 	},
-	[5130] =            -----------------å¤©é“æ‚¬èµ-çŽ„é£Ž
+	[5130] =            -----------------ÌìµÀÐüÉÍ-Ðþ·ç
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11507,12 +11507,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27119}},	
 		},
 		speakerID = 27119,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5130,mapID = nil}},
@@ -11520,7 +11520,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11529,9 +11529,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---45-49çº§----------------------------------
-------------------------------------150-200çŽ¯----------------------------------------------
-	[5131] =            -----------------å¤©é“æ‚¬èµ-è¡€çµé­‘é­…
+---------------------------------ÌìµÀÐüÉÍ---45-49¼¶----------------------------------
+------------------------------------150-200»·----------------------------------------------
+	[5131] =            -----------------ÌìµÀÐüÉÍ-ÑªÁé÷Î÷È
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11539,12 +11539,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27120}},
 		},
 		speakerID = 27120,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5131,mapID = nil}},
@@ -11552,7 +11552,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11561,7 +11561,7 @@ DialogModelDB =
 
 		},
 	},
-	[5132] =            -----------------å¤©é“æ‚¬èµ-åœ°è—å¦–
+	[5132] =            -----------------ÌìµÀÐüÉÍ-µØ²ØÑý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11569,12 +11569,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27121}},
 		},
 		speakerID = 27121,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5132,mapID = nil}},
@@ -11582,7 +11582,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11591,7 +11591,7 @@ DialogModelDB =
 
 		},
 	},
-	[5133] =            -----------------å¤©é“æ‚¬èµ-é›ªå¦–
+	[5133] =            -----------------ÌìµÀÐüÉÍ-Ñ©Ñý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11599,12 +11599,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27122}},
 		},
 		speakerID = 27122,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5133,mapID = nil}},
@@ -11612,7 +11612,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11621,7 +11621,7 @@ DialogModelDB =
 
 		},
 	},
-	[5134] =            -----------------å¤©é“æ‚¬èµ-å‰‘é­‚
+	[5134] =            -----------------ÌìµÀÐüÉÍ-½£»ê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11629,12 +11629,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27123}},
 		},
 		speakerID = 27123,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5134,mapID = nil}},
@@ -11642,7 +11642,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11651,7 +11651,7 @@ DialogModelDB =
 
 		},
 	},
-	[5135] =            -----------------å¤©é“æ‚¬èµ-é«˜æ¸Š
+	[5135] =            -----------------ÌìµÀÐüÉÍ-¸ßÔ¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11659,12 +11659,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27124}},	
 		},
 		speakerID = 27124,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5135,mapID = nil}},
@@ -11672,7 +11672,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11681,7 +11681,7 @@ DialogModelDB =
 
 		},
 	},
-	[5136] =            -----------------å¤©é“æ‚¬èµ-é­…æƒ‘å¦–å§¬
+	[5136] =            -----------------ÌìµÀÐüÉÍ-÷È»óÑý¼§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11689,12 +11689,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27125}},	
 		},
 		speakerID = 27125,
-		txt = "æ²¡æƒ³åˆ°ç«Ÿç„¶è¢«ä½ å‘çŽ°äº†æˆ‘çš„ä¸‹è½ï¼Œé‚£å°±åˆ«æ€ªæˆ‘ä¸å®¢æ°”ï¼Œåªæœ‰æ­»äººæ‰èƒ½ä¿å®ˆç§˜å¯†ã€‚",
+		txt = "Ã»Ïëµ½¾¹È»±»Äã·¢ÏÖÁËÎÒµÄÏÂÂä£¬ÄÇ¾Í±ð¹ÖÎÒ²»¿ÍÆø£¬Ö»ÓÐËÀÈË²ÅÄÜ±£ÊØÃØÃÜ¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5136,mapID = nil}},
@@ -11702,7 +11702,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11711,9 +11711,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---50-54çº§----------------------------------
-------------------------------------1-50çŽ¯----------------------------------------------
-	[5137] =            -----------------å¤©é“æ‚¬èµ-é­”åŒ–å™¨çµ
+---------------------------------ÌìµÀÐüÉÍ---50-54¼¶----------------------------------
+------------------------------------1-50»·----------------------------------------------
+	[5137] =            -----------------ÌìµÀÐüÉÍ-Ä§»¯Æ÷Áé
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11721,12 +11721,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27126}},
 		},
 		speakerID = 27126,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5137,mapID = nil}},
@@ -11734,7 +11734,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11743,7 +11743,7 @@ DialogModelDB =
 
 		},
 	},
-	[5138] =            -----------------å¤©é“æ‚¬èµ-ç‰›é­”
+	[5138] =            -----------------ÌìµÀÐüÉÍ-Å£Ä§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11751,12 +11751,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27127}},
 		},
 		speakerID = 27127,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5138,mapID = nil}},
@@ -11764,7 +11764,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11773,7 +11773,7 @@ DialogModelDB =
 
 		},
 	},
-	[5139] =            -----------------å¤©é“æ‚¬èµ-é‡‘ç¿…å¤§é¹çŽ‹
+	[5139] =            -----------------ÌìµÀÐüÉÍ-½ð³á´óÅôÍõ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11781,12 +11781,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27128}},	
 		},
 		speakerID = 27128,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5139,mapID = nil}},
@@ -11794,7 +11794,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11803,7 +11803,7 @@ DialogModelDB =
 
 		},
 	},
-	[5140] =            -----------------å¤©é“æ‚¬èµ-é‚ªçµåˆ†èº«
+	[5140] =            -----------------ÌìµÀÐüÉÍ-Ð°Áé·ÖÉí
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11811,12 +11811,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27129}},
 		},
 		speakerID = 27129,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5140,mapID = nil}},
@@ -11824,7 +11824,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11833,7 +11833,7 @@ DialogModelDB =
 
 		},
 	},
-	[5141] =            -----------------å¤©é“æ‚¬èµ-è¡€æ³•ç¥­ç¥€
+	[5141] =            -----------------ÌìµÀÐüÉÍ-Ñª·¨¼Àìë
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11841,12 +11841,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27130}},
 		},
 		speakerID = 27130,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5141,mapID = nil}},
@@ -11854,7 +11854,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11863,7 +11863,7 @@ DialogModelDB =
 
 		},
 	},
-	[5142] =            -----------------å¤©é“æ‚¬èµ-é­”çµå‚€å„¡
+	[5142] =            -----------------ÌìµÀÐüÉÍ-Ä§Áé¿þÀÜ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11871,12 +11871,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27131}},	
 		},
 		speakerID = 27131,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5142,mapID = nil}},
@@ -11884,7 +11884,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11893,9 +11893,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---50-54çº§----------------------------------
-------------------------------------50-100çŽ¯----------------------------------------------
-	[5143] =            -----------------å¤©é“æ‚¬èµ-å†°é­”
+---------------------------------ÌìµÀÐüÉÍ---50-54¼¶----------------------------------
+------------------------------------50-100»·----------------------------------------------
+	[5143] =            -----------------ÌìµÀÐüÉÍ-±ùÄ§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11903,12 +11903,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27132}},	
 		},
 		speakerID = 27132,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5143,mapID = nil}},
@@ -11916,7 +11916,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11925,7 +11925,7 @@ DialogModelDB =
 
 		},
 	},
-	[5144] =            -----------------å¤©é“æ‚¬èµ-ç½—åˆ¹æ¶é¬¼
+	[5144] =            -----------------ÌìµÀÐüÉÍ-ÂÞÉ²¶ñ¹í
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11933,12 +11933,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27133}},
 		},
 		speakerID = 27133,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5144,mapID = nil}},
@@ -11946,7 +11946,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11955,7 +11955,7 @@ DialogModelDB =
 
 		},
 	},
-	[5145] =            -----------------å¤©é“æ‚¬èµ-è›Ÿé­”
+	[5145] =            -----------------ÌìµÀÐüÉÍ-òÔÄ§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11963,12 +11963,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27134}},
 		},
 		speakerID = 27134,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5145,mapID = nil}},
@@ -11976,7 +11976,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -11985,7 +11985,7 @@ DialogModelDB =
 
 		},
 	},
-	[5146] =            -----------------å¤©é“æ‚¬èµ-åŒå¤´é­”ç‹¼
+	[5146] =            -----------------ÌìµÀÐüÉÍ-Ë«Í·Ä§ÀÇ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -11993,12 +11993,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27135}},
 		},
 		speakerID = 27135,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5146,mapID = nil}},
@@ -12006,7 +12006,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12015,7 +12015,7 @@ DialogModelDB =
 
 		},
 	},
-	[5147] =            -----------------å¤©é“æ‚¬èµ-å—œè¡€é­”å°†
+	[5147] =            -----------------ÌìµÀÐüÉÍ-ÊÈÑªÄ§½«
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12023,12 +12023,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27136}},	
 		},
 		speakerID = 27136,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5147,mapID = nil}},
@@ -12036,7 +12036,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12045,7 +12045,7 @@ DialogModelDB =
 
 		},
 	},
-	[5148] =            -----------------å¤©é“æ‚¬èµ-å—œè¡€è›®å°†
+	[5148] =            -----------------ÌìµÀÐüÉÍ-ÊÈÑªÂù½«
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12053,12 +12053,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27137}},	
 		},
 		speakerID = 27137,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5148,mapID = nil}},
@@ -12066,7 +12066,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12075,9 +12075,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---50-54çº§----------------------------------
-------------------------------------100-150çŽ¯----------------------------------------------
-	[5149] =            -----------------å¤©é“æ‚¬èµ-ç½—åˆ¹å¥³å¦–
+---------------------------------ÌìµÀÐüÉÍ---50-54¼¶----------------------------------
+------------------------------------100-150»·----------------------------------------------
+	[5149] =            -----------------ÌìµÀÐüÉÍ-ÂÞÉ²Å®Ñý
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12085,12 +12085,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27138}},	
 		},
 		speakerID = 27138,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5149,mapID = nil}},
@@ -12098,7 +12098,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12107,7 +12107,7 @@ DialogModelDB =
 
 		},
 	},
-	[5150] =            -----------------å¤©é“æ‚¬èµ-å¹½çµé¬¼å¸ˆ
+	[5150] =            -----------------ÌìµÀÐüÉÍ-ÓÄÁé¹íÊ¦
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12115,12 +12115,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27139}},	
 		},
 		speakerID = 27139,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5150,mapID = nil}},
@@ -12128,7 +12128,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12137,7 +12137,7 @@ DialogModelDB =
 
 		},
 	},
-	[5151] =            -----------------å¤©é“æ‚¬èµ-è¡€ç‚¼çŒªé­”
+	[5151] =            -----------------ÌìµÀÐüÉÍ-ÑªÁ¶ÖíÄ§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12145,12 +12145,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27140}},	
 		},
 		speakerID = 27140,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5151,mapID = nil}},
@@ -12158,7 +12158,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12167,7 +12167,7 @@ DialogModelDB =
 
 		},
 	},
-	[5152] =            -----------------å¤©é“æ‚¬èµ-é­”çµçŠ¬
+	[5152] =            -----------------ÌìµÀÐüÉÍ-Ä§ÁéÈ®
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12175,12 +12175,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27141}},	
 		},
 		speakerID = 27141,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5152,mapID = nil}},
@@ -12188,7 +12188,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12197,7 +12197,7 @@ DialogModelDB =
 
 		},
 	},
-	[5153] =            -----------------å¤©é“æ‚¬èµ-é­”å¥´
+	[5153] =            -----------------ÌìµÀÐüÉÍ-Ä§Å«
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12205,12 +12205,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27142}},
 		},
 		speakerID = 27142,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5153,mapID = nil}},
@@ -12218,7 +12218,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12227,7 +12227,7 @@ DialogModelDB =
 
 		},
 	},
-	[5154] =            -----------------å¤©é“æ‚¬èµ-é­”å°†ç«¯æ— 
+	[5154] =            -----------------ÌìµÀÐüÉÍ-Ä§½«¶ËÎÞ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12235,12 +12235,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27143}},
 		},
 		speakerID = 27143,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5154,mapID = nil}},
@@ -12248,7 +12248,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12257,9 +12257,9 @@ DialogModelDB =
 
 		},
 	},
----------------------------------å¤©é“æ‚¬èµ---50-54çº§----------------------------------
-------------------------------------150-200çŽ¯----------------------------------------------
-	[5155] =            -----------------å¤©é“æ‚¬èµ-æ¶çµç«¥å­
+---------------------------------ÌìµÀÐüÉÍ---50-54¼¶----------------------------------
+------------------------------------150-200»·----------------------------------------------
+	[5155] =            -----------------ÌìµÀÐüÉÍ-¶ñÁéÍ¯×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12267,12 +12267,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27144}},
 		},
 		speakerID = 27144,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5155,mapID = nil}},
@@ -12280,7 +12280,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12289,7 +12289,7 @@ DialogModelDB =
 
 		},
 	},
-	[5156] =            -----------------å¤©é“æ‚¬èµ-æžªé­”
+	[5156] =            -----------------ÌìµÀÐüÉÍ-Ç¹Ä§
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12297,12 +12297,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27145}},
 		},
 		speakerID = 27145,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5156,mapID = nil}},
@@ -12310,7 +12310,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12319,7 +12319,7 @@ DialogModelDB =
 
 		},
 	},
-	[5157] =            -----------------å¤©é“æ‚¬èµ-èµ¤é­‚çŽ‹
+	[5157] =            -----------------ÌìµÀÐüÉÍ-³à»êÍõ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12327,12 +12327,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27146}},	
 		},
 		speakerID = 27146,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5157,mapID = nil}},
@@ -12340,7 +12340,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12349,7 +12349,7 @@ DialogModelDB =
 
 		},
 	},
-	[5158] =            -----------------å¤©é“æ‚¬èµ-é‡‘èŸ¾é¬¼æ¯
+	[5158] =            -----------------ÌìµÀÐüÉÍ-½ðó¸¹íÄ¸
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12357,12 +12357,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27147}},	
 		},
 		speakerID = 27147,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5158,mapID = nil}},
@@ -12370,7 +12370,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12379,7 +12379,7 @@ DialogModelDB =
 
 		},
 	},
-	[5159] =            -----------------å¤©é“æ‚¬èµ-æ¯’å¨˜å­
+	[5159] =            -----------------ÌìµÀÐüÉÍ-¶¾Äï×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12387,12 +12387,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27148}},	
 		},
 		speakerID = 27148,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5159,mapID = nil}},
@@ -12400,7 +12400,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12409,7 +12409,7 @@ DialogModelDB =
 
 		},
 	},
-	[5160] =            -----------------å¤©é“æ‚¬èµ-å¦–é¬¼çš‡
+	[5160] =            -----------------ÌìµÀÐüÉÍ-Ñý¹í»Ê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -12417,12 +12417,12 @@ DialogModelDB =
 		--{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.script,npcID = 27149}},
 		},
 		speakerID = 27149,
-		txt = "å°±å‡­ä½ è¿˜æƒ³è¯›æ€æˆ‘ï¼Œç®€ç›´æ˜¯ç—´å¿ƒå¦„æƒ³ã€‚",
+		txt = "¾ÍÆ¾Äã»¹ÏëÖïÉ±ÎÒ£¬¼òÖ±ÊÇ³ÕÐÄÍýÏë¡£",
 		options =
         {
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—",
+				optionTxt = "½øÈëÕ½¶·",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 5160,mapID = nil}},
@@ -12430,7 +12430,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -12439,14 +12439,14 @@ DialogModelDB =
 
 		},
 	},
---------------------------æŽ¥ä»»åŠ¡å¯¹è¯------------------------------------------
-	[5161] =           -----------------æš—é›·æˆ˜æ–—
+--------------------------½ÓÈÎÎñ¶Ô»°------------------------------------------
+	[5161] =           -----------------°µÀ×Õ½¶·
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¤§ä¹±ï¼Œå¦–ç‰©å¼ºç›—åˆ°å¤„æ®‹å®³ç™¾å§“ï¼Œå¬é—»<mapID,x,y>é™„è¿‘æœ‰<npcID>åœ¨å››å¤„ä½œä¹±ï¼Œä½ ä¸”å‰åŽ»æŸ¥è¯¢æƒ…å†µã€‚",
+		txt = "Èç½ñÌìÏÂ´óÂÒ£¬ÑýÎïÇ¿µÁµ½´¦²Ðº¦°ÙÐÕ£¬ÌýÎÅ<mapID,x,y>¸½½üÓÐ<npcID>ÔÚËÄ´¦×÷ÂÒ£¬ÄãÇÒÇ°È¥²éÑ¯Çé¿ö¡£",
 		options = 
 		{
 			{
@@ -12459,13 +12459,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[5162] =           -----------------æŒ‘æˆ˜æ˜Žé›·--------------------
+	[5162] =           -----------------ÌôÕ½Ã÷À×--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¦–ç‰©ä¸ºç¥¸äººé—´ï¼Œæ³•åŠ›é«˜å¼ºï¼Œéœ€é”»ç‚¼è‡ªå·±ï¼Œå‰åŽ»<mapID,x,y>å¤„æŒ‘æˆ˜<npcID>ï¼Œå­¦ä¹ æˆ˜æ–—ç»éªŒã€‚",
+		txt = "Èç½ñÑýÎïÎª»öÈË¼ä£¬·¨Á¦¸ßÇ¿£¬Ðè¶ÍÁ¶×Ô¼º£¬Ç°È¥<mapID,x,y>´¦ÌôÕ½<npcID>£¬Ñ§Ï°Õ½¶·¾­Ñé¡£",
 		options = 
 		{
 			{
@@ -12478,13 +12478,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[5163] =           -----------------å¤©é“æ‚¬èµ--------------------
+	[5163] =           -----------------ÌìµÀÐüÉÍ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "æ®æŽ¢å­æ¥æŠ¥ï¼Œåœ¨<mapID,x,y>å¤„ï¼Œå‘çŽ°æœ‰<npcID>å‡ºçŽ°ï¼Œæ€å®³å¹³æ°‘ç™¾å§“ï¼Œå‰åŽ»å°†å…¶è¯›æ€ã€‚ ",
+		txt = "¾ÝÌ½×ÓÀ´±¨£¬ÔÚ<mapID,x,y>´¦£¬·¢ÏÖÓÐ<npcID>³öÏÖ£¬É±º¦Æ½Ãñ°ÙÐÕ£¬Ç°È¥½«ÆäÖïÉ±¡£ ",
 		options = 
 		{
 			{
@@ -12497,13 +12497,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[5164] =           -----------------å¯¹è¯--------------------
+	[5164] =           -----------------¶Ô»°--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å‰å¾€<mapID,x,y>å¤„ï¼Œå¯»æ‰¾<npcID>è¯¢é—®å½“ä»Šå¤©ä¸‹æ˜¯ä½•å½¢åŠ¿ã€‚",
+		txt = "Ç°Íù<mapID,x,y>´¦£¬Ñ°ÕÒ<npcID>Ñ¯ÎÊµ±½ñÌìÏÂÊÇºÎÐÎÊÆ¡£",
 		options = 
 		{
 			{
@@ -12516,13 +12516,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[5165] =           -----------------é€ä¿¡--------------------
+	[5165] =           -----------------ËÍÐÅ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "ä¸‹ä¸ªæœˆåˆä¸€æ˜¯ä¸ªå¥½æ—¥ï¼Œå°†è¿™å°ä¿¡ä»¶é€å¾€<mapID,x,y>å¤„ï¼Œé€ç»™<npcID>ï¼Œé‚€è¯·ä»–èšä¸€èšã€‚",
+		txt = "ÏÂ¸öÔÂ³õÒ»ÊÇ¸öºÃÈÕ£¬½«Õâ·âÐÅ¼þËÍÍù<mapID,x,y>´¦£¬ËÍ¸ø<npcID>£¬ÑûÇëËû¾ÛÒ»¾Û¡£",
 		options = 
 		{
 			{
@@ -12535,13 +12535,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[5166] =           -----------------ä¸Šäº¤é“å…·--------------------
+	[5166] =           -----------------ÉÏ½»µÀ¾ß--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å‰åŽ»<mapID,x,y>è´­ä¹°ä¸€ä»¶<itemID>ã€‚",
+		txt = "Ç°È¥<mapID,x,y>¹ºÂòÒ»¼þ<itemID>¡£",
 		options = 
 		{
 			{
@@ -12554,13 +12554,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[5167] =           -----------------ä¸Šäº¤å® ç‰©--------------------
+	[5167] =           -----------------ÉÏ½»³èÎï--------------------
 	{
 		dialogType = DialogType.NotOption,
 	    conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å¬é—»æœ€è¿‘<petID>æœ‰äº›å¼‚å¸¸ï¼Œä½ ä¸”å‰åŽ»å°†å…¶æŠ“æ¥ï¼Œäº¤äºŽ<npcID>å¤„æŸ¥è¯¢æƒ…å†µã€‚",
+		txt = "ÌýÎÅ×î½ü<petID>ÓÐÐ©Òì³££¬ÄãÇÒÇ°È¥½«Æä×¥À´£¬½»ÓÚ<npcID>´¦²éÑ¯Çé¿ö¡£",
 		options = 
 		{
 			{
@@ -12573,8 +12573,8 @@ DialogModelDB =
 			}
 		},
 	},
------------------------------------å¯¹è¯ä»»åŠ¡------------------------------
-	[5168] =           -----------------å¯¹è¯ä»»åŠ¡--å¢æ¤--------------------
+-----------------------------------¶Ô»°ÈÎÎñ------------------------------
+	[5168] =           -----------------¶Ô»°ÈÎÎñ--Â¬Ö²--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12582,7 +12582,7 @@ DialogModelDB =
 		},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12595,7 +12595,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5169] =           -----------------å¯¹è¯ä»»åŠ¡--çŽ‹å­å¸ˆ--------------------
+	[5169] =           -----------------¶Ô»°ÈÎÎñ--Íõ×ÓÊ¦--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12603,7 +12603,7 @@ DialogModelDB =
 		},
 		speakerID = 30320,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12616,7 +12616,7 @@ DialogModelDB =
 		    },
 		},
 	},
-    [5170] =           -----------------å¯¹è¯ä»»åŠ¡--çš‡ç”«åµ©--------------------
+    [5170] =           -----------------¶Ô»°ÈÎÎñ--»Ê¸¦áÔ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12624,7 +12624,7 @@ DialogModelDB =
 		},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12637,7 +12637,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5171] =           -----------------å¯¹è¯ä»»åŠ¡--å¼ ç»´ä¹‰--------------------
+	[5171] =           -----------------¶Ô»°ÈÎÎñ--ÕÅÎ¬Òå--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12645,7 +12645,7 @@ DialogModelDB =
 		},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12658,7 +12658,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5172] =           -----------------å¯¹è¯ä»»åŠ¡--æ¨æ£®--------------------
+	[5172] =           -----------------¶Ô»°ÈÎÎñ--ÑîÉ­--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12666,7 +12666,7 @@ DialogModelDB =
 		},
 		speakerID = 27073,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12679,7 +12679,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5173] =           -----------------å¯¹è¯ä»»åŠ¡--é«˜å‹ä¹¾--------------------
+	[5173] =           -----------------¶Ô»°ÈÎÎñ--¸ßÓÑÇ¬--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12687,7 +12687,7 @@ DialogModelDB =
 		},
 		speakerID = 27074,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12700,7 +12700,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5174] =           -----------------å¯¹è¯ä»»åŠ¡--çŽ‹å…--------------------
+	[5174] =           -----------------¶Ô»°ÈÎÎñ--ÍõÔÊ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12708,7 +12708,7 @@ DialogModelDB =
 		},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12721,7 +12721,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5175] =           -----------------å¯¹è¯ä»»åŠ¡--æ¨æ–‡è¾‰--------------------
+	[5175] =           -----------------¶Ô»°ÈÎÎñ--ÑîÎÄ»Ô--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12729,7 +12729,7 @@ DialogModelDB =
 		},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12742,7 +12742,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5176] =           -----------------å¯¹è¯ä»»åŠ¡--éƒ‘ä¼¦--------------------
+	[5176] =           -----------------¶Ô»°ÈÎÎñ--Ö£Â×--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12750,7 +12750,7 @@ DialogModelDB =
 		},
 		speakerID = 27076,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12763,7 +12763,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5177] =           -----------------å¯¹è¯ä»»åŠ¡--é™ˆå¥‡--------------------
+	[5177] =           -----------------¶Ô»°ÈÎÎñ--³ÂÆæ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12771,7 +12771,7 @@ DialogModelDB =
 		},
 		speakerID = 27077,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12784,7 +12784,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5178] =           -----------------å¯¹è¯ä»»åŠ¡--æ®µå²³--------------------
+	[5178] =           -----------------¶Ô»°ÈÎÎñ--¶ÎÔÀ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12792,7 +12792,7 @@ DialogModelDB =
 		},
 		speakerID = 20021,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12805,7 +12805,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5179] =           -----------------å¯¹è¯ä»»åŠ¡--å…®é¢œ--------------------
+	[5179] =           -----------------¶Ô»°ÈÎÎñ--ÙâÑÕ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12813,7 +12813,7 @@ DialogModelDB =
 		},
 		speakerID = 20022,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12826,7 +12826,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5180] =           -----------------å¯¹è¯ä»»åŠ¡--æŽé•¿é£Ž--------------------
+	[5180] =           -----------------¶Ô»°ÈÎÎñ--Àî³¤·ç--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12834,7 +12834,7 @@ DialogModelDB =
 		},
 		speakerID = 20023,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12847,7 +12847,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5181] =           -----------------å¯¹è¯ä»»åŠ¡--åº„æ¢¦è¶--------------------
+	[5181] =           -----------------¶Ô»°ÈÎÎñ--×¯ÃÎµû--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12855,7 +12855,7 @@ DialogModelDB =
 		},
 		speakerID = 20025,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12868,7 +12868,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5182] =           -----------------å¯¹è¯ä»»åŠ¡--çŽ„ç´ --------------------
+	[5182] =           -----------------¶Ô»°ÈÎÎñ--ÐþËØ--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12876,7 +12876,7 @@ DialogModelDB =
 		},
 		speakerID = 20024,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12889,7 +12889,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5183] =           -----------------å¯¹è¯ä»»åŠ¡--æ®¿é£žç™½--------------------
+	[5183] =           -----------------¶Ô»°ÈÎÎñ--µî·É°×--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={
@@ -12897,7 +12897,7 @@ DialogModelDB =
 		},
 		speakerID = 20026,
 		soundID = nil,
-		txt = "å¦‚ä»Šå¤©ä¸‹å¦–ç‰©æ¨ªè¡Œï¼Œé—¨ä¸‹å¼Ÿå­éƒ½åœ¨åŠªåŠ›ä¿®ç‚¼ï¼Œäº‰å–æ—©æ—¥é™¤é­”å«é“ã€‚",
+		txt = "Èç½ñÌìÏÂÑýÎïºáÐÐ£¬ÃÅÏÂµÜ×Ó¶¼ÔÚÅ¬Á¦ÐÞÁ¶£¬ÕùÈ¡ÔçÈÕ³ýÄ§ÎÀµÀ¡£",
 		options =
 		{
 			{
@@ -12910,8 +12910,8 @@ DialogModelDB =
 		    },
 		},
 	},
--------------------------------- é€ä¿¡-----------------------
-    [5184] =           -----------------é€ä¿¡ä»»åŠ¡--å¢æ¤--------------------
+-------------------------------- ËÍÐÅ-----------------------
+    [5184] =           -----------------ËÍÐÅÈÎÎñ--Â¬Ö²--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -12919,12 +12919,12 @@ DialogModelDB =
 		},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -12932,7 +12932,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5185] =           -----------------é€ä¿¡ä»»åŠ¡--çŽ‹å­å¸ˆ--------------------
+	[5185] =           -----------------ËÍÐÅÈÎÎñ--Íõ×ÓÊ¦--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -12940,12 +12940,12 @@ DialogModelDB =
 		},
 		speakerID = 30320,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -12953,7 +12953,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5186] =           -----------------é€ä¿¡ä»»åŠ¡--çš‡ç”«åµ©--------------------
+	[5186] =           -----------------ËÍÐÅÈÎÎñ--»Ê¸¦áÔ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -12961,12 +12961,12 @@ DialogModelDB =
 		},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -12974,7 +12974,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5187] =           -----------------é€ä¿¡ä»»åŠ¡--å¼ ç»´ä¹‰--------------------
+	[5187] =           -----------------ËÍÐÅÈÎÎñ--ÕÅÎ¬Òå--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -12982,12 +12982,12 @@ DialogModelDB =
 		},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -12995,7 +12995,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5188] =           -----------------é€ä¿¡ä»»åŠ¡--æ¨æ£®--------------------
+	[5188] =           -----------------ËÍÐÅÈÎÎñ--ÑîÉ­--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13003,12 +13003,12 @@ DialogModelDB =
 		},
 		speakerID = 27073,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13016,7 +13016,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5189] =           -----------------é€ä¿¡ä»»åŠ¡--é«˜å‹ä¹¾--------------------
+	[5189] =           -----------------ËÍÐÅÈÎÎñ--¸ßÓÑÇ¬--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13024,12 +13024,12 @@ DialogModelDB =
 		},
 		speakerID = 27074,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13037,7 +13037,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5190] =           -----------------é€ä¿¡ä»»åŠ¡--çŽ‹å…--------------------
+	[5190] =           -----------------ËÍÐÅÈÎÎñ--ÍõÔÊ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13045,12 +13045,12 @@ DialogModelDB =
 		},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13058,7 +13058,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5191] =           -----------------é€ä¿¡ä»»åŠ¡--æ¨æ–‡è¾‰--------------------
+	[5191] =           -----------------ËÍÐÅÈÎÎñ--ÑîÎÄ»Ô--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13066,12 +13066,12 @@ DialogModelDB =
 		},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13079,7 +13079,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5192] =           -----------------é€ä¿¡ä»»åŠ¡--éƒ‘ä¼¦--------------------
+	[5192] =           -----------------ËÍÐÅÈÎÎñ--Ö£Â×--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13087,12 +13087,12 @@ DialogModelDB =
 		},
 		speakerID = 27076,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13100,7 +13100,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5193] =           -----------------é€ä¿¡ä»»åŠ¡--é™ˆå¥‡--------------------
+	[5193] =           -----------------ËÍÐÅÈÎÎñ--³ÂÆæ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13108,12 +13108,12 @@ DialogModelDB =
 		},
 		speakerID = 27077,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13121,7 +13121,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5194] =           -----------------é€ä¿¡ä»»åŠ¡--æ®µå²³--------------------
+	[5194] =           -----------------ËÍÐÅÈÎÎñ--¶ÎÔÀ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13129,12 +13129,12 @@ DialogModelDB =
 		},
 		speakerID = 20021,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13142,7 +13142,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5195] =           -----------------é€ä¿¡ä»»åŠ¡--å…®é¢œ--------------------
+	[5195] =           -----------------ËÍÐÅÈÎÎñ--ÙâÑÕ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13150,12 +13150,12 @@ DialogModelDB =
 		},
 		speakerID = 20022,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13163,7 +13163,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5196] =           -----------------é€ä¿¡ä»»åŠ¡--æŽé•¿é£Ž--------------------
+	[5196] =           -----------------ËÍÐÅÈÎÎñ--Àî³¤·ç--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13171,12 +13171,12 @@ DialogModelDB =
 		},
 		speakerID = 20023,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13184,7 +13184,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5197] =           -----------------é€ä¿¡ä»»åŠ¡--åº„æ¢¦è¶--------------------
+	[5197] =           -----------------ËÍÐÅÈÎÎñ--×¯ÃÎµû--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13192,12 +13192,12 @@ DialogModelDB =
 		},
 		speakerID = 20025,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13205,7 +13205,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5198] =           -----------------é€ä¿¡ä»»åŠ¡--çŽ„ç´ --------------------
+	[5198] =           -----------------ËÍÐÅÈÎÎñ--ÐþËØ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13213,12 +13213,12 @@ DialogModelDB =
 		},
 		speakerID = 20024,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13226,7 +13226,7 @@ DialogModelDB =
 		    },
 		},
 	},
-	[5199] =           -----------------é€ä¿¡ä»»åŠ¡--æ®¿é£žç™½--------------------
+	[5199] =           -----------------ËÍÐÅÈÎÎñ--µî·É°×--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions ={
@@ -13234,12 +13234,12 @@ DialogModelDB =
 		},
 		speakerID = 20026,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ å°†äº¤äºŽæˆ‘çš„ä¹¦ä¿¡ï¼Œå¸¦æ¥äº†ä¹ˆï¼",
+		txt = "ÉÙÏÀ£¬Äã½«½»ÓÚÎÒµÄÊéÐÅ£¬´øÀ´ÁËÃ´£¡",
 		options =
 		{
 			[1] = {
 			 showConditions = {},
-			 optionTxt = "ç»™äºŽä¿¡ä»¶",
+			 optionTxt = "¸øÓÚÐÅ¼þ",
 		     actions =
 		              {
 		             {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo ={count = 1},},},	
@@ -13247,8 +13247,8 @@ DialogModelDB =
 		    },
 		},
 	},
--------------------------------- ä¸Šç¼´ç‰©å“-----------------------
-    [5200] =           -----------------ä¸Šç¼´ç‰©å“--å¢æ¤--------------------
+-------------------------------- ÉÏ½ÉÎïÆ·-----------------------
+    [5200] =           -----------------ÉÏ½ÉÎïÆ·--Â¬Ö²--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13257,12 +13257,12 @@ DialogModelDB =
 		},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13271,7 +13271,7 @@ DialogModelDB =
 
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13279,7 +13279,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5201] =           -----------------ä¸Šç¼´ç‰©å“--çŽ‹å­å¸ˆ--------------------
+	[5201] =           -----------------ÉÏ½ÉÎïÆ·--Íõ×ÓÊ¦--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13288,12 +13288,12 @@ DialogModelDB =
 		},
 		speakerID = 30320,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13301,7 +13301,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13309,7 +13309,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5202] =           -----------------ä¸Šç¼´ç‰©å“--çš‡ç”«åµ©--------------------
+	[5202] =           -----------------ÉÏ½ÉÎïÆ·--»Ê¸¦áÔ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13318,12 +13318,12 @@ DialogModelDB =
 		},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13331,7 +13331,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13339,7 +13339,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5203] =           -----------------ä¸Šç¼´ç‰©å“--å¼ ç»´ä¹‰--------------------
+	[5203] =           -----------------ÉÏ½ÉÎïÆ·--ÕÅÎ¬Òå--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13348,12 +13348,12 @@ DialogModelDB =
 		},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13361,7 +13361,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13369,7 +13369,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5204] =           -----------------ä¸Šç¼´ç‰©å“--æ¨æ£®--------------------
+	[5204] =           -----------------ÉÏ½ÉÎïÆ·--ÑîÉ­--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13378,12 +13378,12 @@ DialogModelDB =
 		},
 		speakerID = 27073,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13391,7 +13391,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13399,7 +13399,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5205] =           -----------------ä¸Šç¼´ç‰©å“--é«˜å‹ä¹¾--------------------
+	[5205] =           -----------------ÉÏ½ÉÎïÆ·--¸ßÓÑÇ¬--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13408,12 +13408,12 @@ DialogModelDB =
 		},
 		speakerID = 27074,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13421,7 +13421,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13429,7 +13429,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5206] =           -----------------ä¸Šç¼´ç‰©å“--çŽ‹å…--------------------
+	[5206] =           -----------------ÉÏ½ÉÎïÆ·--ÍõÔÊ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13438,12 +13438,12 @@ DialogModelDB =
 		},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13451,7 +13451,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13459,7 +13459,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5207] =           -----------------ä¸Šç¼´ç‰©å“--æ¨æ–‡è¾‰--------------------
+	[5207] =           -----------------ÉÏ½ÉÎïÆ·--ÑîÎÄ»Ô--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13468,12 +13468,12 @@ DialogModelDB =
 		},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13481,7 +13481,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13489,7 +13489,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5208] =           -----------------ä¸Šç¼´ç‰©å“--éƒ‘ä¼¦--------------------
+	[5208] =           -----------------ÉÏ½ÉÎïÆ·--Ö£Â×--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13498,12 +13498,12 @@ DialogModelDB =
 		},
 		speakerID = 27076,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13511,7 +13511,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13519,7 +13519,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5209] =           -----------------ä¸Šç¼´ç‰©å“--é™ˆå¥‡--------------------
+	[5209] =           -----------------ÉÏ½ÉÎïÆ·--³ÂÆæ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13528,12 +13528,12 @@ DialogModelDB =
 		},
 		speakerID = 27077,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13541,7 +13541,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13549,7 +13549,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5210] =           -----------------ä¸Šç¼´ç‰©å“--æ®µå²³--------------------
+	[5210] =           -----------------ÉÏ½ÉÎïÆ·--¶ÎÔÀ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13558,12 +13558,12 @@ DialogModelDB =
 		},
 		speakerID = 20021,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13571,7 +13571,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13579,7 +13579,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5211] =           -----------------ä¸Šç¼´ç‰©å“--å…®é¢œ--------------------
+	[5211] =           -----------------ÉÏ½ÉÎïÆ·--ÙâÑÕ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13588,12 +13588,12 @@ DialogModelDB =
 		},
 		speakerID = 20022,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13601,7 +13601,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13609,7 +13609,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5212] =           -----------------ä¸Šç¼´ç‰©å“--æŽé•¿é£Ž--------------------
+	[5212] =           -----------------ÉÏ½ÉÎïÆ·--Àî³¤·ç--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13618,12 +13618,12 @@ DialogModelDB =
 		},
 		speakerID = 20023,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13631,7 +13631,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13639,7 +13639,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5213] =           -----------------ä¸Šç¼´ç‰©å“--åº„æ¢¦è¶--------------------
+	[5213] =           -----------------ÉÏ½ÉÎïÆ·--×¯ÃÎµû--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13648,12 +13648,12 @@ DialogModelDB =
 		},
 		speakerID = 20025,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13661,7 +13661,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13669,7 +13669,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5214] =           -----------------ä¸Šç¼´ç‰©å“--çŽ„ç´ --------------------
+	[5214] =           -----------------ÉÏ½ÉÎïÆ·--ÐþËØ--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13678,12 +13678,12 @@ DialogModelDB =
 		},
 		speakerID = 20024,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13691,7 +13691,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13699,7 +13699,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5215] =           -----------------ä¸Šç¼´ç‰©å“--æ®¿é£žç™½--------------------
+	[5215] =           -----------------ÉÏ½ÉÎïÆ·--µî·É°×--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13708,12 +13708,12 @@ DialogModelDB =
 		},
 		speakerID = 20026,
 		soundID = nil,
-		txt = "è¿™ä½å°‘ä¾ ï¼Œä½ æ‰¾åˆ°æˆ‘éœ€è¦çš„ä¸œè¥¿äº†ä¹ˆï¼Ÿ",
+		txt = "ÕâÎ»ÉÙÏÀ£¬ÄãÕÒµ½ÎÒÐèÒªµÄ¶«Î÷ÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ç‰©å“",
+				optionTxt = "ÉÏ½»ÎïÆ·",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10007, itemsInfo = {count = 1},},},
@@ -13721,7 +13721,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13729,8 +13729,8 @@ DialogModelDB =
 			},
 		},
 	},
-	-------------------------------- ä¸Šç¼´å® ç‰©-----------------------
-    [5216] =           -----------------ä¸Šç¼´å® ç‰©--å¢æ¤--------------------
+	-------------------------------- ÉÏ½É³èÎï-----------------------
+    [5216] =           -----------------ÉÏ½É³èÎï--Â¬Ö²--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13739,12 +13739,12 @@ DialogModelDB =
 		},
 		speakerID = 20049,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13752,7 +13752,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13760,7 +13760,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5217] =           -----------------ä¸Šç¼´å® ç‰©--çŽ‹å­å¸ˆ--------------------
+	[5217] =           -----------------ÉÏ½É³èÎï--Íõ×ÓÊ¦--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13769,12 +13769,12 @@ DialogModelDB =
 		},
 		speakerID = 30320,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13782,7 +13782,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13790,7 +13790,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5218] =           -----------------ä¸Šç¼´å® ç‰©--çš‡ç”«åµ©	--------------------
+	[5218] =           -----------------ÉÏ½É³èÎï--»Ê¸¦áÔ	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13799,12 +13799,12 @@ DialogModelDB =
 		},
 		speakerID = 20059,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13812,7 +13812,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13820,7 +13820,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5219] =           -----------------ä¸Šç¼´å® ç‰©--å¼ ç»´ä¹‰	--------------------
+	[5219] =           -----------------ÉÏ½É³èÎï--ÕÅÎ¬Òå	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13829,12 +13829,12 @@ DialogModelDB =
 		},
 		speakerID = 29008,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13842,7 +13842,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13850,7 +13850,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5220] =           -----------------ä¸Šç¼´å® ç‰©--æ¨æ£®	--------------------
+	[5220] =           -----------------ÉÏ½É³èÎï--ÑîÉ­	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13859,12 +13859,12 @@ DialogModelDB =
 		},
 		speakerID = 27073,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13872,7 +13872,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13880,7 +13880,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5221] =           -----------------ä¸Šç¼´å® ç‰©--é«˜å‹ä¹¾	--------------------
+	[5221] =           -----------------ÉÏ½É³èÎï--¸ßÓÑÇ¬	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13889,12 +13889,12 @@ DialogModelDB =
 		},
 		speakerID = 27074,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13902,7 +13902,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13910,7 +13910,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5222] =           -----------------ä¸Šç¼´å® ç‰©--çŽ‹å…	--------------------
+	[5222] =           -----------------ÉÏ½É³èÎï--ÍõÔÊ	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13919,12 +13919,12 @@ DialogModelDB =
 		},
 		speakerID = 20701,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13932,7 +13932,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13940,7 +13940,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5223] =           -----------------ä¸Šç¼´å® ç‰©--æ¨æ–‡è¾‰	--------------------
+	[5223] =           -----------------ÉÏ½É³èÎï--ÑîÎÄ»Ô	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13949,12 +13949,12 @@ DialogModelDB =
 		},
 		speakerID = 27075,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13962,7 +13962,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -13970,7 +13970,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5224] =           -----------------ä¸Šç¼´å® ç‰©--éƒ‘ä¼¦	--------------------
+	[5224] =           -----------------ÉÏ½É³èÎï--Ö£Â×	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -13979,12 +13979,12 @@ DialogModelDB =
 		},
 		speakerID = 27076,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -13992,7 +13992,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14000,7 +14000,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5225] =           -----------------ä¸Šç¼´å® ç‰©--é™ˆå¥‡	--------------------
+	[5225] =           -----------------ÉÏ½É³èÎï--³ÂÆæ	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14009,12 +14009,12 @@ DialogModelDB =
 		},
 		speakerID = 27077,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14022,7 +14022,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14030,7 +14030,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5226] =           -----------------ä¸Šç¼´å® ç‰©--æ®µå²³	--------------------
+	[5226] =           -----------------ÉÏ½É³èÎï--¶ÎÔÀ	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14039,12 +14039,12 @@ DialogModelDB =
 		},
 		speakerID = 20021,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14052,7 +14052,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14060,7 +14060,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5227] =           -----------------ä¸Šç¼´å® ç‰©--å…®é¢œ	--------------------
+	[5227] =           -----------------ÉÏ½É³èÎï--ÙâÑÕ	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14069,12 +14069,12 @@ DialogModelDB =
 		},
 		speakerID = 20022,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14082,7 +14082,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14090,7 +14090,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5228] =           -----------------ä¸Šç¼´å® ç‰©--æŽé•¿é£Ž	--------------------
+	[5228] =           -----------------ÉÏ½É³èÎï--Àî³¤·ç	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14099,12 +14099,12 @@ DialogModelDB =
 		},
 		speakerID = 20023,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14112,7 +14112,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14120,7 +14120,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5229] =           -----------------ä¸Šç¼´å® ç‰©--åº„æ¢¦è¶	--------------------
+	[5229] =           -----------------ÉÏ½É³èÎï--×¯ÃÎµû	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14129,12 +14129,12 @@ DialogModelDB =
 		},
 		speakerID = 20025,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14142,7 +14142,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14150,7 +14150,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5230] =           -----------------ä¸Šç¼´å® ç‰©--çŽ„ç´ 	--------------------
+	[5230] =           -----------------ÉÏ½É³èÎï--ÐþËØ	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14159,12 +14159,12 @@ DialogModelDB =
 		},
 		speakerID = 20024,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14172,7 +14172,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14180,7 +14180,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[5231] =           -----------------ä¸Šç¼´å® ç‰©--æ®¿é£žç™½	--------------------
+	[5231] =           -----------------ÉÏ½É³èÎï--µî·É°×	--------------------
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -14189,12 +14189,12 @@ DialogModelDB =
 		},
 		speakerID = 20026,
 		soundID = nil,
-		txt = "å°‘ä¾ ï¼Œä½ æ‰åˆ°å¼‚å¸¸çš„å® ç‰©äº†ä¹ˆï¼Ÿ",
+		txt = "ÉÙÏÀ£¬Äã×½µ½Òì³£µÄ³èÎïÁËÃ´£¿",
 		options = 
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤å® ç‰©",
+				optionTxt = "ÉÏ½»³èÎï",
 				actions =
 				{
 					{action = DialogActionType.PaidPet, param = {taskID = 10007}},
@@ -14202,7 +14202,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14210,13 +14210,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[5232] =           -----------------ä¸Šäº¤é“å…·æŽ¥å¯¹è¯2--------------------
+	[5232] =           -----------------ÉÏ½»µÀ¾ß½Ó¶Ô»°2--------------------
 	{
 		dialogType = DialogType.NotOption,
 		conditions ={},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å°†ä¹°åˆ°çš„ç‰©å“äº¤äºŽ<mapID,x,y>çš„<npcID>å¤„ã€‚",
+		txt = "½«Âòµ½µÄÎïÆ·½»ÓÚ<mapID,x,y>µÄ<npcID>´¦¡£",
 		options = 
 		{
 			{
@@ -14229,22 +14229,22 @@ DialogModelDB =
 			}
 		},
 	},
-----------------------------------------è¯•ç‚¼ä»»åŠ¡åˆ†æ®µå®Œæ¯•ï¼ŒæŽ¥ä¸‹æ¥è¯¥ä½ ä»¬äº†---------------------------------------------
-----------------------------æˆ‘æ˜¯åˆ†å‰²çº¿ï¼Œä¸Šé¢æ˜¯ä¸»çº¿å¯¹è¯ï¼Œä¸‹é¢æ˜¯npcå¯¹è¯-----------------------------------
-	----------------------------æ´›é˜³ä¸»åŸŽIDè§„åˆ’ï¼š20001~20150-------------------
-	[20001] =    ----æ´›é˜³å•†åº—
+----------------------------------------ÊÔÁ¶ÈÎÎñ·Ö¶ÎÍê±Ï£¬½ÓÏÂÀ´¸ÃÄãÃÇÁË---------------------------------------------
+----------------------------ÎÒÊÇ·Ö¸îÏß£¬ÉÏÃæÊÇÖ÷Ïß¶Ô»°£¬ÏÂÃæÊÇnpc¶Ô»°-----------------------------------
+	----------------------------ÂåÑôÖ÷³ÇID¹æ»®£º20001~20150-------------------
+	[20001] =    ----ÂåÑôÉÌµê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20012,
-		txt = "æ€ªç‰©æŽ‰è½ç›¸å…³çš„ç‰©å“å¤§éƒ½å¯ä»¥åœ¨è¿™é‡Œä¹°åˆ°ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "¹ÖÎïµôÂäÏà¹ØµÄÎïÆ·´ó¶¼¿ÉÒÔÔÚÕâÀïÂòµ½£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¿",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 1},},
@@ -14253,7 +14253,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14268,12 +14268,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20013,
-		txt = "æ­¦å™¨ç›¸å…³çš„é“å…·éƒ½å¯ä»¥åœ¨æˆ‘è¿™é‡Œè´­ä¹°",
+		txt = "ÎäÆ÷Ïà¹ØµÄµÀ¾ß¶¼¿ÉÒÔÔÚÎÒÕâÀï¹ºÂò",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 20},},
@@ -14282,7 +14282,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14297,12 +14297,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20014,
-		txt = "æˆ‘è¿™é‡Œä¸“é—¨å‡ºå”®ç‰¹æ®ŠåŠŸèƒ½ç‰©å“ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "ÎÒÕâÀï×¨ÃÅ³öÊÛÌØÊâ¹¦ÄÜÎïÆ·£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¿",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 3},},
@@ -14311,7 +14311,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14326,12 +14326,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20015,
-		txt = "æˆ‘è¿™é‡Œå‡ºå”®çå® ç‰©çš„ç›¸å…³é“å…·ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "ÎÒÕâÀï³öÊÛÕä³èÎïµÄÏà¹ØµÀ¾ß£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¿",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 4},},
@@ -14340,7 +14340,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14355,12 +14355,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20016,
-		txt = "ä¼˜è‰¯ä¾¿æ·çš„åéª‘ï¼Œèƒ½ä¸ºä½ çœä¸‹è®¸å¤šæ—¶é—´ï¼Œæ˜¯ä½ å‡ºè¡Œçš„å¿…å¤‡å·¥å…·ã€‚",
+		txt = "ÓÅÁ¼±ã½ÝµÄ×øÆï£¬ÄÜÎªÄãÊ¡ÏÂÐí¶àÊ±¼ä£¬ÊÇÄã³öÐÐµÄ±Ø±¸¹¤¾ß¡£",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 5},},
@@ -14369,7 +14369,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14377,46 +14377,46 @@ DialogModelDB =
 			},
 		},
 	},
-	[20006] =             --218ä¸–ç•Œä¼ é€npc
+	[20006] =             --218ÊÀ½ç´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID =30252 ,
-		txt = "æˆ‘æ˜¯æ´›é˜³è½¦å¤«",
+		txt = "ÎÒÊÇÂåÑô³µ·ò",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒå›­é•‡",  --ä¸»åŸŽ
+				optionTxt = "ÌÒÔ°Õò",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 81, tarY = 91}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 81, tarY = 91}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "é•¿å®‰",  --ä¸»åŸŽ
+				optionTxt = "³¤°²",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "è¥„é˜³",
+				optionTxt = "ÏåÑô",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] = {
 				showConditions = {},
-				optionTxt = "æš‚æ—¶ä¸èµ°",
+				optionTxt = "ÔÝÊ±²»×ß",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14431,12 +14431,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29082,
-		txt = "æˆ‘è¿™é‡Œå‡ºå”®çè´µçš„å® ç‰©ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "ÎÒÕâÀï³öÊÛÕä¹óµÄ³èÎï£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¿",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 22},},
@@ -14445,7 +14445,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14460,7 +14460,7 @@ DialogModelDB =
 		conditions =
 		{},
 		speakerID = 20017,
-		txt = "èº«ä¸Šä¸œè¥¿å¤ªå¤šäº†ï¼Ÿæˆ‘å¯ä»¥å…è´¹å¸®å®¢å®˜ä¿ç®¡é’±è´¢ç‰©å“ï¼", 
+		txt = "ÉíÉÏ¶«Î÷Ì«¶àÁË£¿ÎÒ¿ÉÒÔÃâ·Ñ°ï¿Í¹Ù±£¹ÜÇ®²ÆÎïÆ·£¡", 
 		options =
 		{
 			[1] = {
@@ -14468,7 +14468,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4453}},
@@ -14479,7 +14479,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4462}},
@@ -14490,7 +14490,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4471}},
@@ -14501,7 +14501,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4480}},
@@ -14512,7 +14512,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4489}},
@@ -14523,7 +14523,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4498}},
@@ -14532,20 +14532,20 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "å­˜æ”¾ç‰©å“",
+				optionTxt = "´æ·ÅÎïÆ·",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {v = "DepotWin"},},--æ‰“å¼€ç‰©å“ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {v = "DepotWin"},},--´ò¿ªÎïÆ·²Ö¿â
 				},
 				icon = DialogIcon.Box,
 			},
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "å­˜æ”¾å® ç‰©",
+				optionTxt = "´æ·Å³èÎï",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {v = "PetDepotWin"},},--æ‰“å¼€å® ç‰©ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {v = "PetDepotWin"},},--´ò¿ª³èÎï²Ö¿â
 				},
 				icon = DialogIcon.Box,
 			},
@@ -14558,12 +14558,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20106,
-		txt = "ä½ ä»¬è¿™äº›å¹´è½»äººæ´»æ³¼å¥½åŠ¨ï¼Œåˆçˆ±èˆžåˆ€å¼„æžªï¼Œè¯´ä¸å®šä»€ä¹ˆæ—¶å€™å°±ä¼šå—ä¼¤ï¼Œè¦è®°å¾—å¤šå‡†å¤‡äº›è‰è¯å¸¦ç€å‘€ã€‚",
+		txt = "ÄãÃÇÕâÐ©ÄêÇáÈË»îÆÃºÃ¶¯£¬ÓÖ°®Îèµ¶ÅªÇ¹£¬Ëµ²»¶¨Ê²Ã´Ê±ºò¾Í»áÊÜÉË£¬Òª¼ÇµÃ¶à×¼±¸Ð©²ÝÒ©´ø×ÅÑ½¡£",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 2},},
@@ -14572,7 +14572,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14580,19 +14580,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20010] =           ----------------------------æ´›é˜³ç‚¹ç‚¹ï¼Œæ‚è´§åº—
+	[20010] =           ----------------------------ÂåÑôµãµã£¬ÔÓ»õµê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20107,
-		txt = "æ¬¢è¿Žå…‰ä¸´ï¼Œæœ¬åº—å•†å“é½å…¨ï¼Œç‰©ç¾Žä»·å»‰ï¼Œè¯·éšä¾¿é€‰è´­ã€‚",
+		txt = "»¶Ó­¹âÁÙ£¬±¾µêÉÌÆ·ÆëÈ«£¬ÎïÃÀ¼ÛÁ®£¬ÇëËæ±ãÑ¡¹º¡£",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 1},},
@@ -14601,7 +14601,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14609,19 +14609,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20011] =         --------------------------æ´›é˜³è¯¸è‘›ç™¾é‡Œï¼Œåéª‘åº—
+	[20011] =         --------------------------ÂåÑôÖî¸ð°ÙÀï£¬×øÆïµê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20108,
-		txt = "ç»™é’±æˆ‘å°±è®©ä½ é£žã€‚",
+		txt = "¸øÇ®ÎÒ¾ÍÈÃÄã·É¡£",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 5},},
@@ -14630,7 +14630,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14638,19 +14638,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20012] =        --------æ´›é˜³å…ƒå®å•†äºº
+	[20012] =        --------ÂåÑôÔª±¦ÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29046,
-		txt = "æˆ‘æ˜¯å…ƒå®å•†äººï¼Œåœ¨æˆ‘è¿™é‡Œå¯ä»¥ä¹°åˆ°ç‰¹æ®Šçš„å•†å“ã€‚",
+		txt = "ÎÒÊÇÔª±¦ÉÌÈË£¬ÔÚÎÒÕâÀï¿ÉÒÔÂòµ½ÌØÊâµÄÉÌÆ·¡£",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 17},},
@@ -14659,7 +14659,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14667,82 +14667,82 @@ DialogModelDB =
 			},
 		},
 	},
-	[20013] =             --æ´›é˜³é—¨æ´¾ä¼ é€npc
+	[20013] =             --ÂåÑôÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29056,
-		txt = "é˜æ•™å¼Ÿå­ï¼Œæˆ‘å¯ä»¥é€ä½ åˆ°å„å¤§é—¨æ´¾ã€‚",
+		txt = "²û½ÌµÜ×Ó£¬ÎÒ¿ÉÒÔËÍÄãµ½¸÷´óÃÅÅÉ¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬",
+				optionTxt = "Ðþ¶¼Óñ¾©",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--ÇÐ»»³¡¾°
 				},
 			},
 			[8] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¿˜ä¸æƒ³èµ°",
+				optionTxt = "ÎÒ»¹²»Ïë×ß",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14750,20 +14750,20 @@ DialogModelDB =
 			},
 		},
 	},
-	[20014] =            -------------æ´›é˜³åŸŽåŸŽé—¨å®ˆå«
+	[20014] =            -------------ÂåÑô³Ç³ÇÃÅÊØÎÀ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20060,
-		txt = "é™›ä¸‹æžä¸ºå® ä¿¡å’±å®¶ï¼Œåœ¨è¿™æ´›é˜³å°±æ˜¯æˆ‘èµµå¸¸ä¾çš„åœ°ç›˜ã€‚",
+		txt = "±ÝÏÂ¼«Îª³èÐÅÔÛ¼Ò£¬ÔÚÕâÂåÑô¾ÍÊÇÎÒÕÔ³£ÊÌµÄµØÅÌ¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1078, statue = true}},	
 				},
-				optionTxt = "è´¨é—®èµµå¿ ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÖÊÎÊÕÔÖÒ£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 259}},
@@ -14771,7 +14771,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å¼ºé¾™éš¾åŽ‹åœ°å¤´è›‡ï¼Œæˆ‘å…ˆé—ªã€‚",
+				optionTxt = "Ç¿ÁúÄÑÑ¹µØÍ·Éß£¬ÎÒÏÈÉÁ¡£",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14779,13 +14779,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20015] =    -----------æ´›é˜³çš‡ç”«åµ©
+	[20015] =    -----------ÂåÑô»Ê¸¦áÔ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20059,
-		txt = "æ±‰æœå¤±æ”¿ï¼Œå¤©ä¸‹å€’æ‚¬ï¼Œèƒ½å®‰å±å®šå€¾è€…ï¼Œå”¯å¾è€³ã€‚",
+		txt = "ºº³¯Ê§Õþ£¬ÌìÏÂµ¹Ðü£¬ÄÜ°²Î£¶¨ÇãÕß£¬Î¨Îá¶ú¡£",
 		options =
 		{
 			[1] = {
@@ -14793,7 +14793,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4457}},
@@ -14804,7 +14804,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4466}},
@@ -14815,7 +14815,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4475}},
@@ -14826,7 +14826,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4484}},
@@ -14837,7 +14837,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4493}},
@@ -14848,7 +14848,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4502}},
@@ -14860,7 +14860,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20059}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5075,5170,5186,5202,5218}}},
@@ -14869,7 +14869,7 @@ DialogModelDB =
 			},
 			[8] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -14877,14 +14877,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20016] =    -----------æ´›é˜³å¢æ¤
+	[20016] =    -----------ÂåÑôÂ¬Ö²
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20049,
-		txt = "é£Žéœœä»¥åˆ«è‰æœ¨ä¹‹æ€§ï¼Œå±ä¹±è€Œè§è´žè‰¯ä¹‹èŠ‚ã€‚å¤©ä¸‹å¤§ä¹±ã€‚æ­£æ˜¯æˆ‘ç­‰æœ‰è¯†ä¹‹å£«ä¸ºå›½å°½å¿ ä¹‹æ—¶ã€‚",
+		txt = "·çËªÒÔ±ð²ÝÄ¾Ö®ÐÔ£¬Î£ÂÒ¶ø¼ûÕêÁ¼Ö®½Ú¡£ÌìÏÂ´óÂÒ¡£ÕýÊÇÎÒµÈÓÐÊ¶Ö®Ê¿Îª¹ú¾¡ÖÒÖ®Ê±¡£",
 		options =
 		{
 			[1] = {
@@ -14892,7 +14892,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 1427, statue = true}},	
 				},
-				optionTxt = "çš‡å¸è‹é†’ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "»ÊµÛËÕÐÑ£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1475}},
@@ -14903,7 +14903,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4451}},
@@ -14914,7 +14914,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4460}},
@@ -14925,7 +14925,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4469}},
@@ -14936,7 +14936,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4478}},
@@ -14947,7 +14947,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4487}},
@@ -14958,7 +14958,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4496}},
@@ -14970,7 +14970,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20049}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5073,5168,5184,5200,5216 }}},
@@ -14980,7 +14980,7 @@ DialogModelDB =
 			[9] =
 			{
 				showConditions = {},
-				optionTxt = "å¢å¤§äººä¹ƒå¿ è‰¯ä¹‹å£«ï¼Œåœ¨ä¸‹ä½©æœã€‚",
+				optionTxt = "Â¬´óÈËÄËÖÒÁ¼Ö®Ê¿£¬ÔÚÏÂÅå·þ¡£",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -14995,7 +14995,7 @@ DialogModelDB =
 		conditions =
 		{},
 		speakerID = 29001,
-		txt = "å¬é—»è¿™ä¸€å¸¦ç››äº§é“çŸ¿çŸ³ï¼Œç”¨æ¥æ‰“é€ å…µå™¨è‚¯å®šä¸é”™ï¼<myName>ï¼Œå¦‚æžœä½ èƒ½æ›¿æˆ‘å¼„åˆ°ä¸€äº›ï¼ŒæŠ¥é…¬æˆ‘å¯ä¸ä¼šå°‘ä»˜ç»™ä½ ï¼",
+		txt = "ÌýÎÅÕâÒ»´øÊ¢²úÌú¿óÊ¯£¬ÓÃÀ´´òÔì±øÆ÷¿Ï¶¨²»´í£¡<myName>£¬Èç¹ûÄãÄÜÌæÎÒÅªµ½Ò»Ð©£¬±¨³êÎÒ¿É²»»áÉÙ¸¶¸øÄã£¡",
 		options =
 		{
 			[1] = {
@@ -15003,7 +15003,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4354}},
@@ -15014,7 +15014,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4362}},
@@ -15025,7 +15025,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4370}},
@@ -15036,7 +15036,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4378}},
@@ -15047,7 +15047,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4386}},
@@ -15058,7 +15058,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4394}},
@@ -15066,7 +15066,7 @@ DialogModelDB =
 			},
 			[7] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆæ­¦å™¨",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÎäÆ÷",
 				actions =
 				{
 				{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 6},},
@@ -15079,10 +15079,10 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.Level, param = {level = 30,},},
 				},
-				optionTxt = "ä¸Šäº¤é“çŸ¿çŸ³",
+				optionTxt = "ÉÏ½»Ìú¿óÊ¯",
 				actions =
 				{
-				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = true, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
 				},
                                 icon = DialogIcon.Function,
 			},
@@ -15091,7 +15091,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.Level, param = {level = 30,},},
 				},
-				optionTxt = "äº†è§£çŽ©æ³•",
+				optionTxt = "ÁË½âÍæ·¨",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 50110}},
@@ -15100,7 +15100,7 @@ DialogModelDB =
 			},
 			[10] ={
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param = {},},
@@ -15115,12 +15115,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29002,
-		txt = "æœ€æ–°æ‰“é€ çš„æŠ¤ç”²ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "×îÐÂ´òÔìµÄ»¤¼×£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¿",
 		options =
 		{
 			[1] ={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆé˜²å…·",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´·À¾ß",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 7},},
@@ -15129,7 +15129,7 @@ DialogModelDB =
 			},
 			[2] ={
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15144,12 +15144,12 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29003,
-		txt = "æƒ³è¦ä»€ä¹ˆé¦–é¥°å—ï¼Ÿ",
+		txt = "ÏëÒªÊ²Ã´Ê×ÊÎÂð£¿",
 		options =
 		{
 			[1] ={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆé¥°å“",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÊÎÆ·",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 8},},
@@ -15158,7 +15158,7 @@ DialogModelDB =
 			},
 			[2] ={
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15173,7 +15173,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29004,
-		txt = "æˆ‘æ˜¯å®¶å›­ç»¼ç®¡ï¼Œæœ‰ä»€ä¹ˆäº‹å—ï¼Ÿ",
+		txt = "ÎÒÊÇ¼ÒÔ°×Û¹Ü£¬ÓÐÊ²Ã´ÊÂÂð£¿",
 		options =
 		{
 			{
@@ -15191,7 +15191,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29005,
-		txt = "æˆ‘å–œæ¬¢ç ”ç©¶å¤©ä¸‹å„å¤§å¸®ä¼šçš„ç”Ÿäº§æŠ€èƒ½ï¼Œæˆ‘å¯ä»¥å°†æˆ‘çš„ç ”ç©¶ä¼ æŽˆä¸Žä½ ï¼Œä¸è¿‡æˆ‘æ”¶å–çš„è´¹ç”¨å¯ä¸ä½Žå“¦ï¼Œè€Œä¸”ä½ è¿˜å¾—è€—è´¹ä¸€å®šçš„ç»éªŒã€‚æˆ‘çš„ç ”ç©¶æ˜¯å·å¸ˆä¸Žå„å¤§å¸®ä¼šï¼Œå› æ­¤ä»Žæˆ‘è¿™é‡Œå­¦ä¹ åˆ°çš„ç”Ÿäº§æŠ€èƒ½ç­‰çº§æ˜¯ä¸ä¼šè¶…å‡ºå„å¤§å¸®ä¼šç ”å‘å‡ºçš„ç­‰çº§çš„ï¼",
+		txt = "ÎÒÏ²»¶ÑÐ¾¿ÌìÏÂ¸÷´ó°ï»áµÄÉú²ú¼¼ÄÜ£¬ÎÒ¿ÉÒÔ½«ÎÒµÄÑÐ¾¿´«ÊÚÓëÄã£¬²»¹ýÎÒÊÕÈ¡µÄ·ÑÓÃ¿É²»µÍÅ¶£¬¶øÇÒÄã»¹µÃºÄ·ÑÒ»¶¨µÄ¾­Ñé¡£ÎÒµÄÑÐ¾¿ÊÇÍµÊ¦Óë¸÷´ó°ï»á£¬Òò´Ë´ÓÎÒÕâÀïÑ§Ï°µ½µÄÉú²ú¼¼ÄÜµÈ¼¶ÊÇ²»»á³¬³ö¸÷´ó°ï»áÑÐ·¢³öµÄµÈ¼¶µÄ£¡",
 		options =
 		{
 			[1] = {
@@ -15199,7 +15199,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4351}},
@@ -15210,7 +15210,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4359}},
@@ -15221,7 +15221,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4367}},
@@ -15232,7 +15232,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4375}},
@@ -15243,7 +15243,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4383}},
@@ -15254,7 +15254,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4391}},
@@ -15263,16 +15263,16 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "å­¦ä¹ ç”Ÿæ´»æŠ€èƒ½",
+				optionTxt = "Ñ§Ï°Éú»î¼¼ÄÜ",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {v = "LifeSkillStudyWin",show = 1,},},--æ‰“å¼€ç”Ÿæ´»æŠ€èƒ½ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {v = "LifeSkillStudyWin",show = 1,},},--´ò¿ªÉú»î¼¼ÄÜ²Ö¿â
 				},
 			},
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘å†çœ‹çœ‹",
+				optionTxt = "ÎÒÔÙ¿´¿´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15283,7 +15283,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15019, statue = true}},
 				},
-				optionTxt = "äº†è§£ç”Ÿæ´»æŠ€èƒ½",
+				optionTxt = "ÁË½âÉú»î¼¼ÄÜ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35510}},
@@ -15297,13 +15297,13 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 29006,
-		txt = "æ‰€è°“è·¯è§ä¸å¹³ï¼Œæ‹”åˆ€ç›¸åŠ©ï¼Œå°‘ä¾ æœ‰æ²¡æœ‰æ—¶é—´æ¥å¸®åŠ©åˆ«äººï¼Ÿ",
+		txt = "ËùÎ½Â·¼û²»Æ½£¬°Îµ¶ÏàÖú£¬ÉÙÏÀÓÐÃ»ÓÐÊ±¼äÀ´°ïÖú±ðÈË£¿",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "è·¯è§ä¸å¹³ä¸€å£°å¼ï¼Œæˆ‘æ¥ï¼ï¼ˆæš‚æ— é…ç½®ï¼‰",
+				optionTxt = "Â·¼û²»Æ½Ò»Éùºð£¬ÎÒÀ´£¡£¨ÔÝÎÞÅäÖÃ£©",
 				actions =
 				{
 					{action = DialogActionType.FrozenBuff, param = {},},
@@ -15313,7 +15313,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15327,7 +15327,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 29007,
-		txt = "çŽ°åœ¨æ­£å€¼ä¹±ä¸–ï¼Œå„åœ°ç‰©è´¨éƒ½ç´§ç¼ºï¼Œé•–å±€äººæ‰‹è¿œè¿œä¸å¤Ÿï¼Œå°‘ä¾ å¯æœ‰ç©ºæ¥å¸®æˆ‘ä»¬ï¼Œè¿é•–çš„é£Žé™©è¶Šé«˜ï¼Œæ”¶ç›Šä¹Ÿå°†è¶Šå¥½ã€‚",
+		txt = "ÏÖÔÚÕýÖµÂÒÊÀ£¬¸÷µØÎïÖÊ¶¼½ôÈ±£¬ïÚ¾ÖÈËÊÖÔ¶Ô¶²»¹»£¬ÉÙÏÀ¿ÉÓÐ¿ÕÀ´°ïÎÒÃÇ£¬ÔËïÚµÄ·çÏÕÔ½¸ß£¬ÊÕÒæÒ²½«Ô½ºÃ¡£",
 		options =
 		{
 			[1] =
@@ -15336,7 +15336,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -15348,7 +15348,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -15360,7 +15360,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -15372,7 +15372,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -15384,7 +15384,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -15396,7 +15396,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -15405,7 +15405,7 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "æŽ¥å—è¿é•–ä»»åŠ¡ï¼ˆæš‚æ— é…ç½®ï¼‰",
+				optionTxt = "½ÓÊÜÔËïÚÈÎÎñ£¨ÔÝÎÞÅäÖÃ£©",
 				actions =
 				{
 					{action = DialogActionType.FrozenBuff, param = {},},
@@ -15414,7 +15414,7 @@ DialogModelDB =
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15422,13 +15422,13 @@ DialogModelDB =
 			},
 		}
 	},
-	[20024] =            -------------æ´›é˜³å¼ é“é•¿ï¼Œå¤©é“ä»»åŠ¡
+	[20024] =            -------------ÂåÑôÕÅµÀ³¤£¬ÌìµÀÈÎÎñ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29008,
-		txt = "å½“æ—¥å¼ è§’ç ´åå°ç¥žå°ï¼Œä½¿å¾—é‚ªé­”å°½å‡ºï¼Œå¤©ä¸‹å¤§ä¹±ï¼Œé“å‹å¯æœ‰æ—¶é—´åŠ©æˆ‘ç­‰ä¸€è‡‚ä¹‹åŠ›ï¼Œä¸ºæ°‘é™¤å®³ï¼Œæ–©æ€é‚ªé­”ï¼Ÿ",
+		txt = "µ±ÈÕÕÅ½ÇÆÆ»µ·âÉñÌ¨£¬Ê¹µÃÐ°Ä§¾¡³ö£¬ÌìÏÂ´óÂÒ£¬µÀÓÑ¿ÉÓÐÊ±¼äÖúÎÒµÈÒ»±ÛÖ®Á¦£¬ÎªÃñ³ýº¦£¬Õ¶É±Ð°Ä§£¿",
 		options =
 		{
 			[1] = {
@@ -15436,7 +15436,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4352}},
@@ -15447,7 +15447,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4360}},
@@ -15458,7 +15458,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4368}},
@@ -15469,7 +15469,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4376}},
@@ -15480,7 +15480,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4384}},
@@ -15491,7 +15491,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4392}},
@@ -15502,7 +15502,7 @@ DialogModelDB =
 				{
 				 {condition = DialogCondition.Level, param = {level = 30}},
 				},
-				optionTxt = "æŽ¥å—å¤©é“ä»»åŠ¡",
+				optionTxt = "½ÓÊÜÌìµÀÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4032}},
@@ -15514,7 +15514,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 29008}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5076,5171,5187,5203,5219}}},
@@ -15524,7 +15524,7 @@ DialogModelDB =
 			[9] =
 			{
 				showConditions = {},
-				optionTxt = "æš‚ä¸”æ²¡ç©º",
+				optionTxt = "ÔÝÇÒÃ»¿Õ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15535,7 +15535,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15014, statue = true}},
 				},
-				optionTxt = "äº†è§£å¤©é“ä»»åŠ¡",
+				optionTxt = "ÁË½âÌìµÀÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35507}},
@@ -15549,13 +15549,13 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 29065,
-		txt = "æˆ‘èµ°éå¤§æ±Ÿå—åŒ—ï¼Œçœ‹è¿‡çš„äº‹ç‰©ä½•å…¶å¤šï¼Œä»»ä½•ä¸œè¥¿åˆ°æˆ‘æ‰‹é‡Œï¼Œæˆ‘éƒ½èƒ½ä¸€çœ¼çœ‹ç©¿çœŸå‡ã€‚",
+		txt = "ÎÒ×ß±é´ó½­ÄÏ±±£¬¿´¹ýµÄÊÂÎïºÎÆä¶à£¬ÈÎºÎ¶«Î÷µ½ÎÒÊÖÀï£¬ÎÒ¶¼ÄÜÒ»ÑÛ¿´´©Õæ¼Ù¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‰´å®šè£…å¤‡",
+				optionTxt = "¼ø¶¨×°±¸",
 				actions =
 				{
 					{action = DialogActionType.OpenEquipAppraisal, param = {},},
@@ -15564,7 +15564,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ç»‘å®šè£…å¤‡ï¼ˆæš‚æ— é…ç½®ï¼‰",
+				optionTxt = "°ó¶¨×°±¸£¨ÔÝÎÞÅäÖÃ£©",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15573,7 +15573,7 @@ DialogModelDB =
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15587,7 +15587,7 @@ DialogModelDB =
 		conditions = 
 		{},
 		speakerID = 29079,
-		txt = "å¤©ä¸‹å¤§ä¹±å…®å¸‚ä¸ºå¢Ÿï¼Œæ¯ä¸ä¿å­å…®å¦»å¤±å¤«ï¼Œå¾æ„¿ä¸ºå¤©ä¸‹è‹ç”Ÿæ•£å°½åƒé‡‘ï¼Œé“å‹å¯æ„¿ä¸ºå¤©ä¸‹è‹ç”Ÿå°½ä¸€ä»½åŠ›ï¼Ÿ",
+		txt = "ÌìÏÂ´óÂÒÙâÊÐÎªÐæ£¬Ä¸²»±£×ÓÙâÆÞÊ§·ò£¬ÎáÔ¸ÎªÌìÏÂ²ÔÉúÉ¢¾¡Ç§½ð£¬µÀÓÑ¿ÉÔ¸ÎªÌìÏÂ²ÔÉú¾¡Ò»·ÝÁ¦£¿",
 		options = 
 		{
 			[1] = {
@@ -15595,7 +15595,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4454}},
@@ -15606,7 +15606,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4463}},
@@ -15617,7 +15617,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4472}},
@@ -15628,7 +15628,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4481}},
@@ -15639,7 +15639,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4490}},
@@ -15650,7 +15650,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4499}},
@@ -15661,7 +15661,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "æ‰¶è´«æµŽå¼±ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "·öÆ¶¼ÃÈõ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4702}},
@@ -15672,7 +15672,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "æ‰¶è´«æµŽå¼±ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "·öÆ¶¼ÃÈõ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4704}},
@@ -15683,7 +15683,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "æ‰¶è´«æµŽå¼±ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "·öÆ¶¼ÃÈõ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4706}},
@@ -15694,7 +15694,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "æ‰¶è´«æµŽå¼±ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "·öÆ¶¼ÃÈõ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4708}},
@@ -15705,7 +15705,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "æ‰¶è´«æµŽå¼±ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "·öÆ¶¼ÃÈõ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4710}},
@@ -15716,7 +15716,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "æ‰¶è´«æµŽå¼±ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "·öÆ¶¼ÃÈõ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4712}},
@@ -15725,7 +15725,7 @@ DialogModelDB =
 			[13] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÎÒÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15733,7 +15733,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[20027] =            -----------------æ´›é˜³-é™†è§ç„¶
+	[20027] =            -----------------ÂåÑô-Â½ÏôÈ»
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -15743,23 +15743,23 @@ DialogModelDB =
 		{condition = DialogCondition.Level, param = {level = 40,errorID = 22},},	
 		},
 		speakerID = 27150,
-		txt = "çŽ°å¦‚ä»Šå¦–ç‰©å¼ºç›—åœ¨äººé—´ç¥¸ä¹±ç™¾å§“ï¼Œéœ€è¦å¼ºåŠ›çš„è‹±é›„å‰åŽ»æ–©æ€é‚£äº›å¦–ç‰©å¼ºç›—ï¼Œå¦‚ä»Šæˆ‘è¿™é‡Œæœ‰ä¸€ä¸ªè¯•ç‚¼ä»»åŠ¡æå‡ä¿®ä¸ºï¼Œæ‚¨æ˜¯å¦æŽ¥å—æ­¤ä»»åŠ¡ï¼Ÿ",
+		txt = "ÏÖÈç½ñÑýÎïÇ¿µÁÔÚÈË¼ä»öÂÒ°ÙÐÕ£¬ÐèÒªÇ¿Á¦µÄÓ¢ÐÛÇ°È¥Õ¶É±ÄÇÐ©ÑýÎïÇ¿µÁ£¬Èç½ñÎÒÕâÀïÓÐÒ»¸öÊÔÁ¶ÈÎÎñÌáÉýÐÞÎª£¬ÄúÊÇ·ñ½ÓÊÜ´ËÈÎÎñ£¿",
 		options =
         {
 			[1] = {
 				showConditions = {
 				},
-				optionTxt = "æŽ¥å—ä»»åŠ¡ï¼ˆèŠ±è´¹10000é“¶ä¸¤ï¼‰",
+				optionTxt = "½ÓÊÜÈÎÎñ£¨»¨·Ñ10000ÒøÁ½£©",
 				actions =
 				{
-				  {action = DialogActionType.ConsumeRecetiveTask ,param = {type  = "money", value = 10000, taskID = 10007}},--èŠ±è´¹ä¸€å®šé‡‘é’±æŽ¥å—ä»»åŠ¡
+				  {action = DialogActionType.ConsumeRecetiveTask ,param = {type  = "money", value = 10000, taskID = 10007}},--»¨·ÑÒ»¶¨½ðÇ®½ÓÊÜÈÎÎñ
 				--{action = DialogActionType.RecetiveTask, param = {taskID = 10007}},
 				--{action = DialogActionType.Gotos, param = {dialogIDs = {5161,5163,5164,5165,5166,5167 }}},
 				},
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†è¯´",
+				optionTxt = "ÉÔºóÔÙËµ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -15767,19 +15767,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20028] =            -----------------æ´›é˜³-é™†è§ç„¶
+	[20028] =            -----------------ÂåÑô-Â½ÏôÈ»
 	{
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 27150,
 		soundID = nil,
-		txt = "å¤©åœ°ä¸ä»ï¼Œä»¥ä¸‡ç‰©ä¸ºåˆç‹—ã€‚å¦‚ä»Šä¸–é“å¦–ç‰©æ¨ªè¡Œï¼Œå°†æœ‰å¤§ä¹±ä¹Ÿï¼",
+		txt = "ÌìµØ²»ÈÊ£¬ÒÔÍòÎïÎªÛ»¹·¡£Èç½ñÊÀµÀÑýÎïºáÐÐ£¬½«ÓÐ´óÂÒÒ²£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 20027},},
@@ -15787,7 +15787,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å¥½æ·±å¥¥ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚",
+				optionTxt = "ºÃÉî°Â¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -15798,7 +15798,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15013, statue = true}},
 				},
-				optionTxt = "äº†è§£è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÁË½âÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35506}},
@@ -15807,13 +15807,13 @@ DialogModelDB =
 			},
 		},
 	},
-    [20029] =            -----------------æ´›é˜³-æ— åè€äºº
+    [20029] =            -----------------ÂåÑô-ÎÞÃûÀÏÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 20928,
 		soundID = nil,
-		txt = "æ´›é˜³ï¼Œåœ°å¤„å¤æ´›æ°´åŒ—å²¸è€Œå¾—åï¼Œå› å¤„ä¹å·žä¹‹ä¸­ï¼Œç´ æœ‰â€œä¹å·žè…¹åœ°â€ä¹‹ç§°ã€‚",
+		txt = "ÂåÑô£¬µØ´¦¹ÅÂåË®±±°¶¶øµÃÃû£¬Òò´¦¾ÅÖÝÖ®ÖÐ£¬ËØÓÐ¡°¾ÅÖÝ¸¹µØ¡±Ö®³Æ¡£",
 		options = 
 		{
 			[1] = {
@@ -15821,7 +15821,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001,taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4355}},
@@ -15832,7 +15832,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002,taskType = LoopTaskTargetType.talk, npcID = 20928}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4363}},
@@ -15843,7 +15843,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4371}},
@@ -15854,7 +15854,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4379}},
@@ -15865,7 +15865,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4387}},
@@ -15876,7 +15876,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006,taskType = LoopTaskTargetType.talk, npcID = 20928}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4395}},
@@ -15885,7 +15885,7 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "å—æ•™äº†ï¼Œæ™šè¾ˆå…ˆå‘Šè¾žã€‚",
+				optionTxt = "ÊÜ½ÌÁË£¬Íí±²ÏÈ¸æ´Ç¡£",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15900,22 +15900,22 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29080,
-		txt = "æˆ‘å–œæ¬¢ç ”ç©¶å¤©ä¸‹å„å¤§å¸®ä¼šçš„ç”Ÿäº§æŠ€èƒ½ï¼Œæˆ‘å¯ä»¥å°†æˆ‘çš„ç ”ç©¶ä¼ æŽˆä¸Žä½ ï¼Œä¸è¿‡æˆ‘æ”¶å–çš„è´¹ç”¨å¯ä¸ä½Žå“¦ï¼Œè€Œä¸”ä½ è¿˜å¾—è€—è´¹ä¸€å®šçš„ç»éªŒã€‚æˆ‘çš„ç ”ç©¶æ˜¯å·å¸ˆä¸Žå„å¤§å¸®ä¼šï¼Œå› æ­¤ä»Žæˆ‘è¿™é‡Œå­¦ä¹ åˆ°çš„ç”Ÿäº§æŠ€èƒ½ç­‰çº§æ˜¯ä¸ä¼šè¶…å‡ºå„å¤§å¸®ä¼šç ”å‘å‡ºçš„ç­‰çº§çš„ï¼",
+		txt = "ÎÒÏ²»¶ÑÐ¾¿ÌìÏÂ¸÷´ó°ï»áµÄÉú²ú¼¼ÄÜ£¬ÎÒ¿ÉÒÔ½«ÎÒµÄÑÐ¾¿´«ÊÚÓëÄã£¬²»¹ýÎÒÊÕÈ¡µÄ·ÑÓÃ¿É²»µÍÅ¶£¬¶øÇÒÄã»¹µÃºÄ·ÑÒ»¶¨µÄ¾­Ñé¡£ÎÒµÄÑÐ¾¿ÊÇÍµÊ¦Óë¸÷´ó°ï»á£¬Òò´Ë´ÓÎÒÕâÀïÑ§Ï°µ½µÄÉú²ú¼¼ÄÜµÈ¼¶ÊÇ²»»á³¬³ö¸÷´ó°ï»áÑÐ·¢³öµÄµÈ¼¶µÄ£¡",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å­¦ä¹ ç”Ÿæ´»æŠ€èƒ½",
+				optionTxt = "Ñ§Ï°Éú»î¼¼ÄÜ",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {v = "LifeSkillStudyWin",show = 2,},},--æ‰“å¼€ç”Ÿæ´»æŠ€èƒ½ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {v = "LifeSkillStudyWin",show = 2,},},--´ò¿ªÉú»î¼¼ÄÜ²Ö¿â
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘å†çœ‹çœ‹",
+				optionTxt = "ÎÒÔÙ¿´¿´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -15923,19 +15923,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20031] =    ----æ´›é˜³æµ‹è¯•npc
+	[20031] =    ----ÂåÑô²âÊÔnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20011,
-		txt = "ç‰¹æ®Šç‰©å“å¯åœ¨è¿™ä¹°",
+		txt = "ÌØÊâÎïÆ·¿ÉÔÚÕâÂò",
 		options =
 		{
 		[1] = {
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹å–å•¥",
+				optionTxt = "¿´¿´ÂôÉ¶",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 21},},
@@ -15944,7 +15944,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "åªæ˜¯è·¯è¿‡",
+				optionTxt = "Ö»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -15953,7 +15953,7 @@ DialogModelDB =
 		[3] =
 			{
 				showConditions = {},
-				optionTxt = "æµ‹è¯•æˆ˜æ–—ç”¨",
+				optionTxt = "²âÊÔÕ½¶·ÓÃ",
 				actions =
 				{
 				{action = DialogActionType.EnterScriptFight, param = {scriptID = 4001}},
@@ -15961,146 +15961,146 @@ DialogModelDB =
 			},
 		},
 	},
-	[20033] =             --218ä¸–ç•Œä¼ é€npc
+	[20033] =             --218ÊÀ½ç´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID =30250 ,
-		txt = "æˆ‘æ˜¯218è½¦å¤«",
+		txt = "ÎÒÊÇ218³µ·ò",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒå›­é•‡",  --ä¸»åŸŽ
+				optionTxt = "ÌÒÔ°Õò",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 81, tarY = 91}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 81, tarY = 91}},--ÇÐ»»³¡¾°
 				},
 			},
 
                         [2] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",
+				optionTxt = "ÂåÑô",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "é•¿å®‰",  --ä¸»åŸŽ
+				optionTxt = "³¤°²",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "è¥„é˜³",
+				optionTxt = "ÏåÑô",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[9] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[11] =
 			{
 				showConditions = {},
-				optionTxt = "å·¨é¹¿",  --é‡Žå¤–åœ°å›¾
+				optionTxt = "¾ÞÂ¹",  --Ò°ÍâµØÍ¼
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 101, tarX = 93, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 101, tarX = 93, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[12] =
 			{
 				showConditions = {},
-				optionTxt = "å²å±±",   --é‡Žå¤–åœ°å›¾2016/7/27
+				optionTxt = "áªÉ½",   --Ò°ÍâµØÍ¼2016/7/27
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 102, tarX = 136, tarY = 118}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 102, tarX = 136, tarY = 118}},--ÇÐ»»³¡¾°
 				},
 			},
 			[13] =
 			{
 				showConditions = {},
-				optionTxt = "é»‘é£Žå²­",
+				optionTxt = "ºÚ·çÁë",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 104, tarX = 87, tarY = 191}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 104, tarX = 87, tarY = 191}},--ÇÐ»»³¡¾°
 				},
 			},
 			[14] =
 			{
 				showConditions = {},
-				optionTxt = "éƒ¿åž",
+				optionTxt = "àdÎë",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 106, tarX = 77, tarY = 147}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 106, tarX = 77, tarY = 147}},--ÇÐ»»³¡¾°
 				},
 			},
 			[15] = {
 				showConditions = {},
-				optionTxt = "æš‚æ—¶ä¸èµ°",
+				optionTxt = "ÔÝÊ±²»×ß",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -16108,136 +16108,136 @@ DialogModelDB =
 			},
 		}
 	},
-	[20034] =             --æ´›é˜³åŸŽå†…ä¸–ç•Œä¼ é€npc
+	[20034] =             --ÂåÑô³ÇÄÚÊÀ½ç´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID =30251 ,
-		txt = "æˆ‘æ˜¯218è½¦å¤«",
+		txt = "ÎÒÊÇ218³µ·ò",
 		options =
 		{
 		        [1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸œéƒ¡",
+				optionTxt = "¶«¿¤",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 107, tarX = 167, tarY = 99}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 107, tarX = 167, tarY = 99}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è™Žç‰¢å…³",
+				optionTxt = "»¢ÀÎ¹Ø",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 109, tarX = 186, tarY = 106}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 109, tarX = 186, tarY = 106}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "æ½¼å…³",
+				optionTxt = "äü¹Ø",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 110 , tarX = 80, tarY = 129}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 110 , tarX = 80, tarY = 129}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "å¤©å±±",
+				optionTxt = "ÌìÉ½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 115, tarX = 149, tarY = 128}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 115, tarX = 149, tarY = 128}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "è¥¿å‡‰",
+				optionTxt = "Î÷Á¹",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 116, tarX = 227, tarY = 135}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 116, tarX = 227, tarY = 135}},--ÇÐ»»³¡¾°
 				},
 			},
 		        [6] =
 			{
 				showConditions = {},
-				optionTxt = "å¾å·ž",
+				optionTxt = "ÐìÖÝ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 118, tarX = 257, tarY = 128}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 118, tarX = 257, tarY = 128}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "åŒ—æµ·",
+				optionTxt = "±±º£",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 119, tarX = 164, tarY = 134}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 119, tarX = 164, tarY = 134}},--ÇÐ»»³¡¾°
 				},
 			},
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "æ±Ÿå¤",
+				optionTxt = "½­ÏÄ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 120, tarX = 114, tarY = 151}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 120, tarX = 114, tarY = 151}},--ÇÐ»»³¡¾°
 				},
 			},
 		        [9] =
 			{
 				showConditions = {},
-				optionTxt = "å®›åŸŽ",
+				optionTxt = "Íð³Ç",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 122, tarX = 161, tarY = 153}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 122, tarX = 161, tarY = 153}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] =
 			{
 				showConditions = {},
-				optionTxt = "å¯¿æ˜¥",
+				optionTxt = "ÊÙ´º",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 124, tarX = 175, tarY = 59}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 124, tarX = 175, tarY = 59}},--ÇÐ»»³¡¾°
 				},
 			},
 			[11] =
 			{
 				showConditions = {},
-				optionTxt = "æ²³åŒ—",
+				optionTxt = "ºÓ±±",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 126, tarX = 147, tarY = 140}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 126, tarX = 147, tarY = 140}},--ÇÐ»»³¡¾°
 				},
 			},
 			[12] =
 			{
 				showConditions = {},
-				optionTxt = "è½©è¾•åŸ",
+				optionTxt = "ÐùÔ¯·Ø",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 127, tarX = 133, tarY = 228}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 127, tarX = 133, tarY = 228}},--ÇÐ»»³¡¾°
 				},
 			},
 			[13] =
 			{
 				showConditions = {},
-				optionTxt = "å®˜æ¸¡",
+				optionTxt = "¹Ù¶É",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 128, tarX = 92, tarY = 205}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 128, tarX = 92, tarY = 205}},--ÇÐ»»³¡¾°
 				},
 			},
                         [14] = {
 				showConditions = {},
-				optionTxt = "æš‚æ—¶ä¸èµ°",
+				optionTxt = "ÔÝÊ±²»×ß",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param ={}},
@@ -16251,13 +16251,13 @@ DialogModelDB =
 		conditions = 
 		{},
 		speakerID = 29081,
-		txt = "çŽ°åœ¨é»„å·¾æ•™å…´é£Žä½œæµªï¼Œçš‡å­ä»¬åˆä¸ºå¤ªå­ä¹‹ä½æ˜Žäº‰æš—æ–—ï¼ŒçœŸæ˜¯å†…å¿§å¤–æ‚£å•Šï¼",
+		txt = "ÏÖÔÚ»Æ½í½ÌÐË·ç×÷ÀË£¬»Ê×ÓÃÇÓÖÎªÌ«×ÓÖ®Î»Ã÷Õù°µ¶·£¬ÕæÊÇÄÚÓÇÍâ»¼°¡£¡",
 		options = 
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å°†å†›è‹±æ˜Ž",
+					optionTxt = "½«¾üÓ¢Ã÷",
 					actions =
 					{
 					{action = DialogActionType.CloseDialog ,param = {}},
@@ -16265,7 +16265,7 @@ DialogModelDB =
 				}, 
 		},
 	},
-	--------------------------------æ¡ƒå›­é•‡å¯¹è¯IDè§„åˆ’ï¼š20151~20250------
+	--------------------------------ÌÒÔ°Õò¶Ô»°ID¹æ»®£º20151~20250------
 	[20151] =
 	{
 		dialogType = DialogType.HasOption,
@@ -16273,122 +16273,122 @@ DialogModelDB =
 		{
 		},
 		speakerID = 30253,
-		txt = "æˆ‘æ˜¯æ¡ƒå›­é•‡è½¦å¤«",
+		txt = "ÎÒÊÇÌÒÔ°Õò³µ·ò",
 		options =
 		{
 
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "å¾å·ž",   --ä¸»åŸŽ
+				optionTxt = "ÐìÖÝ",   --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 118, tarX = 80, tarY = 156}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 118, tarX = 80, tarY = 156}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "é•¿å®‰",  --ä¸»åŸŽ
+				optionTxt = "³¤°²",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "å·¨é¹¿",  --é‡Žå¤–åœ°å›¾
+				optionTxt = "¾ÞÂ¹",  --Ò°ÍâµØÍ¼
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 101, tarX = 93, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 101, tarX = 93, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "å²å±±",   --é‡Žå¤–åœ°å›¾2016/7/27
+				optionTxt = "áªÉ½",   --Ò°ÍâµØÍ¼2016/7/27
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 102, tarX = 136, tarY = 118}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 102, tarX = 136, tarY = 118}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "é»‘é£Žå²­",
+				optionTxt = "ºÚ·çÁë",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 104, tarX = 87, tarY = 191}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 104, tarX = 87, tarY = 191}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "éƒ¿åž",
+				optionTxt = "àdÎë",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 106, tarX = 77, tarY = 147}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 106, tarX = 77, tarY = 147}},--ÇÐ»»³¡¾°
 				},
 			},
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸œéƒ¡",
+				optionTxt = "¶«¿¤",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 107, tarX = 167, tarY = 99}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 107, tarX = 167, tarY = 99}},--ÇÐ»»³¡¾°
 				},
 			},
 			[9] =
 			{
 				showConditions = {},
-				optionTxt = "è™Žç‰¢å…³",
+				optionTxt = "»¢ÀÎ¹Ø",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 109, tarX = 186, tarY = 106}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 109, tarX = 186, tarY = 106}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] =
 			{
 				showConditions = {},
-				optionTxt = "æ½¼å…³",
+				optionTxt = "äü¹Ø",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 110 , tarX = 80, tarY = 129}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 110 , tarX = 80, tarY = 129}},--ÇÐ»»³¡¾°
 				},
 			},
 			[11] =
 			{
 				showConditions = {},
-				optionTxt = "å¤©å±±",
+				optionTxt = "ÌìÉ½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 115, tarX = 149, tarY = 128}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 115, tarX = 149, tarY = 128}},--ÇÐ»»³¡¾°
 				},
 			},
 			[12] =
 			{
 				showConditions = {},
-				optionTxt = "è¥¿å‡‰",
+				optionTxt = "Î÷Á¹",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 116, tarX = 227, tarY = 135}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 116, tarX = 227, tarY = 135}},--ÇÐ»»³¡¾°
 				},
 			},
 			[13] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘å†è½¬è½¬",
+				optionTxt = "ÎÒÔÙ×ª×ª",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16396,19 +16396,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20153] =        --------æ¡ƒå›­é•‡æ­¦å™¨å•†äºº
+	[20153] =        --------ÌÒÔ°ÕòÎäÆ÷ÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29009,
-		txt = "åº—æ˜¯å°åº—ï¼Œä½†æˆ‘è¿™çš„æ­¦å™¨éƒ½ååˆ†é”‹åˆ©ï¼Œç»å¯¹ç‰©è¶…æ‰€å€¼ï¼",
+		txt = "µêÊÇÐ¡µê£¬µ«ÎÒÕâµÄÎäÆ÷¶¼Ê®·Ö·æÀû£¬¾ø¶ÔÎï³¬ËùÖµ£¡",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆæ­¦å™¨",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÎäÆ÷",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 9},},
@@ -16418,7 +16418,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘åªæ˜¯è·¯è¿‡",
+				optionTxt = "ÎÒÖ»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16426,14 +16426,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20154] =        --------æ¡ƒå›­é•‡è¯è‰å•†äºº
+	[20154] =        --------ÌÒÔ°ÕòÒ©²ÝÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29010,
-		txt = "è¡Œèµ°æ±Ÿæ¹–ï¼Œéš¾å…ä»€ä¹ˆæ—¶å€™ä¼šå—ä¼¤çš„ï¼Œå¤šå¤‡äº›è¯æå‡†æ²¡é”™ã€‚",
+		txt = "ÐÐ×ß½­ºþ£¬ÄÑÃâÊ²Ã´Ê±ºò»áÊÜÉËµÄ£¬¶à±¸Ð©Ò©²Ä×¼Ã»´í¡£",
 		options =
 		{
 			[1] =
@@ -16442,7 +16442,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -16454,7 +16454,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -16466,7 +16466,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -16478,7 +16478,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -16490,7 +16490,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -16502,7 +16502,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -16511,7 +16511,7 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "è´­ä¹°è¯è‰",
+				optionTxt = "¹ºÂòÒ©²Ý",
 				actions =
 				{
 				{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 10},},
@@ -16521,7 +16521,7 @@ DialogModelDB =
 			[8] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘åªæ˜¯è·¯è¿‡",
+				optionTxt = "ÎÒÖ»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16529,19 +16529,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20155] =        --------æ¡ƒå›­é•‡é˜²å…·å•†äºº
+	[20155] =        --------ÌÒÔ°Õò·À¾ßÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29011,
-		txt = "åˆ€å‰‘æ— çœ¼ï¼Œè¡Œèµ°åœ¨å¤–æ€Žèƒ½ä¸å¸¦å¥—æŠ¤ç”²ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Œç»å¯¹æœ‰ä½ æƒ³è¦çš„å•†å“ï¼",
+		txt = "µ¶½£ÎÞÑÛ£¬ÐÐ×ßÔÚÍâÔõÄÜ²»´øÌ×»¤¼×£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¬¾ø¶ÔÓÐÄãÏëÒªµÄÉÌÆ·£¡",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆé˜²å…·",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´·À¾ß",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 11},},
@@ -16551,7 +16551,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘åªæ˜¯è·¯è¿‡",
+				optionTxt = "ÎÒÖ»ÊÇÂ·¹ý",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16565,7 +16565,7 @@ DialogModelDB =
 		conditions =
 		{},
 		speakerID = 29012,
-		txt = "æˆ‘è™½æ˜¯å®¢æ ˆå°äºŒï¼Œä½†æˆ‘çŸ¥é“çš„äº‹å¯å¤šäº†ï¼Œä½ æƒ³çŸ¥é“ä»€ä¹ˆï¼Ÿ",
+		txt = "ÎÒËäÊÇ¿ÍÕ»Ð¡¶þ£¬µ«ÎÒÖªµÀµÄÊÂ¿É¶àÁË£¬ÄãÏëÖªµÀÊ²Ã´£¿",
 		options =
 		{
 			[1] = {
@@ -16573,7 +16573,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4356}},
@@ -16584,7 +16584,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,pcID = 29012}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4364}},
@@ -16595,7 +16595,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4372}},
@@ -16606,7 +16606,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4380}},
@@ -16617,7 +16617,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4388}},
@@ -16628,7 +16628,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4396}},
@@ -16637,7 +16637,7 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ‰¾ä½ ",
+				optionTxt = "ÏÂ´ÎÔÙÕÒÄã",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16645,19 +16645,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20157] =    -----------æ¡ƒå›­é•‡å®¢æ ˆè€æ¿
+	[20157] =    -----------ÌÒÔ°Õò¿ÍÕ»ÀÏ°å
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29013,
-		txt = "æ¡ƒå›­é•‡é£Žæ™¯ç§€ä¸½ï¼Œæ¡ƒå›­å®¢æ ˆæ›´æ˜¯ä¼‘æ¯çš„ç»ä½³åœ°æ–¹ï¼Œå®¢å®˜è¦ä¸è¦ä¼‘æ¯ä¸€ä¸‹ï¼Ÿ",
+		txt = "ÌÒÔ°Õò·ç¾°ÐãÀö£¬ÌÒÔ°¿ÍÕ»¸üÊÇÐÝÏ¢µÄ¾ø¼ÑµØ·½£¬¿Í¹ÙÒª²»ÒªÐÝÏ¢Ò»ÏÂ£¿",
 		options =
 		{
 			[1] ={
 				showConditions = {},
-				optionTxt = "é£žåˆ°æ´›é˜³",
+				optionTxt = "·Éµ½ÂåÑô",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 73}},
@@ -16666,7 +16666,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "æš‚æ—¶ä¸ç”¨",
+				optionTxt = "ÔÝÊ±²»ÓÃ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16674,19 +16674,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20158] =        --------æ¡ƒå›­é•‡æ‚è´§å•†äºº
+	[20158] =        --------ÌÒÔ°ÕòÔÓ»õÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29014,
-		txt = "æˆ‘åº—è™½å°ï¼Œä½†æˆ‘è¿™é‡Œå•†å“ç§ç±»ç¹å¤šï¼Œè¯´ä¸å®šå°±æœ‰ä½ æƒ³è¦çš„ï¼",
+		txt = "ÎÒµêËäÐ¡£¬µ«ÎÒÕâÀïÉÌÆ·ÖÖÀà·±¶à£¬Ëµ²»¶¨¾ÍÓÐÄãÏëÒªµÄ£¡",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆå•†å“",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÉÌÆ·",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 14},},
@@ -16696,7 +16696,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "æš‚æ—¶ä¸ç”¨",
+				optionTxt = "ÔÝÊ±²»ÓÃ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16704,18 +16704,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20159] =   ------------æ¡ƒå›­é•‡å® ç‰©åŒ»ç”Ÿ
+	[20159] =   ------------ÌÒÔ°Õò³èÎïÒ½Éú
 	{
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 29015,
-		txt = "æˆ‘æ˜¯å® ç‰©åŒ»ç”Ÿï¼Œæœ‰å—ä¼¤çš„å® ç‰©éƒ½å¯ä»¥æ¥æ‰¾æˆ‘ï¼Œè§’è‰²20çº§å‰å…è´¹ï¼Œ20çº§åŽæ”¶è´¹å°‘é‡çš„é‡‘é’±ï¼Œéœ€è¦å¸®åŠ©å—ï¼Ÿ",
+		txt = "ÎÒÊÇ³èÎïÒ½Éú£¬ÓÐÊÜÉËµÄ³èÎï¶¼¿ÉÒÔÀ´ÕÒÎÒ£¬½ÇÉ«20¼¶Ç°Ãâ·Ñ£¬20¼¶ºóÊÕ·ÑÉÙÁ¿µÄ½ðÇ®£¬ÐèÒª°ïÖúÂð£¿",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤å½“å‰å‡ºæˆ˜å® ç‰©",
+				optionTxt = "ÐÞ¸´µ±Ç°³öÕ½³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairPet, param = {},},
@@ -16725,7 +16725,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤æ‰€æœ‰å® ç‰©",
+				optionTxt = "ÐÞ¸´ËùÓÐ³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairAllPet, param = {},},
@@ -16735,7 +16735,7 @@ DialogModelDB =
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "æ²¡äº‹ï¼Œæ‰“æ‰°äº†",
+				optionTxt = "Ã»ÊÂ£¬´òÈÅÁË",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16743,13 +16743,13 @@ DialogModelDB =
 			},
 		}
 	},
-	[20160] =    -----------æ¡ƒå›­é•‡é•¿åˆ˜å…ƒèµ·
+	[20160] =    -----------ÌÒÔ°Õò³¤ÁõÔªÆð
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20027,
-		txt = "æˆ‘æ˜¯æ¡ƒå›­é•‡é•‡é•¿åˆ˜å…ƒèµ·ï¼Œè¿™é™„è¿‘å‘ç”Ÿä»€ä¹ˆäº‹éƒ½å¯ä»¥æ‰¾æˆ‘ã€‚",
+		txt = "ÎÒÊÇÌÒÔ°ÕòÕò³¤ÁõÔªÆð£¬Õâ¸½½ü·¢ÉúÊ²Ã´ÊÂ¶¼¿ÉÒÔÕÒÎÒ¡£",
 		options =
 		{
 			[1] = {
@@ -16757,7 +16757,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4353}},
@@ -16768,7 +16768,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4361}},
@@ -16779,7 +16779,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4369}},
@@ -16790,7 +16790,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4377}},
@@ -16801,7 +16801,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4385}},
@@ -16812,7 +16812,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "æ‹œè®¿ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "°Ý·Ã£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4393}},
@@ -16821,7 +16821,7 @@ DialogModelDB =
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16829,14 +16829,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20161] =    -----------æ¡ƒå›­-æ¨æ£®
+	[20161] =    -----------ÌÒÔ°-ÑîÉ­
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 27073,
-		txt = "å¦‚ä»Šå¦–ç‰©æ¨ªè¡Œï¼Œè¿™å¯å¦‚ä½•æ˜¯å¥½ï¼",
+		txt = "Èç½ñÑýÎïºáÐÐ£¬Õâ¿ÉÈçºÎÊÇºÃ£¡",
 		options =
 		{
 		    [1] = {
@@ -16845,7 +16845,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 27073}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5077,5172,5188,5204,5220}}},
@@ -16854,7 +16854,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -16862,14 +16862,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[20162] =    -----------æ¡ƒå›­-é«˜å‹ä¹¾
+	[20162] =    -----------ÌÒÔ°-¸ßÓÑÇ¬
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 27074,
-		txt = "å¤©ä¸‹å¤§åŠ¿ï¼Œè‡ªæœ‰å¤§åŠ¿æ‰€å®šå¤ºï¼",
+		txt = "ÌìÏÂ´óÊÆ£¬×ÔÓÐ´óÊÆËù¶¨¶á£¡",
 		options =
 		{
 		    [1] = {
@@ -16878,7 +16878,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 27074}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5078,5173,5189,5205,5221}}},
@@ -16887,7 +16887,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -16895,38 +16895,38 @@ DialogModelDB =
 			}
 		},
 	},
-	-----------------è¥„é˜³ä¸»åŸŽIDè§„åˆ’ï¼š20251~20350---------
-	[20251] =             --è¥„é˜³ä¸–ç•Œä¼ é€npc
+	-----------------ÏåÑôÖ÷³ÇID¹æ»®£º20251~20350---------
+	[20251] =             --ÏåÑôÊÀ½ç´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID =30254 ,
-		txt = "æˆ‘æ˜¯è¥„é˜³è½¦å¤«",
+		txt = "ÎÒÊÇÏåÑô³µ·ò",
 		options =
 		{
 		[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",
+				optionTxt = "ÂåÑô",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "é•¿å®‰",  --ä¸»åŸŽ
+				optionTxt = "³¤°²",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 13, tarX = 107, tarY = 93}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -16934,18 +16934,18 @@ DialogModelDB =
 			},
 		}
 	},
-	[20253] =   ------------è¥„é˜³å® ç‰©åŒ»ç”Ÿ
+	[20253] =   ------------ÏåÑô³èÎïÒ½Éú
 	{
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 29018,
-		txt = "æˆ‘æ˜¯å® ç‰©åŒ»ç”Ÿï¼Œæœ‰å—ä¼¤çš„å® ç‰©éƒ½å¯ä»¥æ¥æ‰¾æˆ‘ï¼Œè§’è‰²20çº§å‰å…è´¹ï¼Œ20çº§åŽæ”¶è´¹å°‘é‡çš„é‡‘é’±ï¼Œéœ€è¦å¸®åŠ©å—ï¼Ÿ",
+		txt = "ÎÒÊÇ³èÎïÒ½Éú£¬ÓÐÊÜÉËµÄ³èÎï¶¼¿ÉÒÔÀ´ÕÒÎÒ£¬½ÇÉ«20¼¶Ç°Ãâ·Ñ£¬20¼¶ºóÊÕ·ÑÉÙÁ¿µÄ½ðÇ®£¬ÐèÒª°ïÖúÂð£¿",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤å½“å‰å‡ºæˆ˜å® ç‰©",
+				optionTxt = "ÐÞ¸´µ±Ç°³öÕ½³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairPet, param = {},},
@@ -16955,7 +16955,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤æ‰€æœ‰å® ç‰©",
+				optionTxt = "ÐÞ¸´ËùÓÐ³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairAllPet, param = {},},
@@ -16965,7 +16965,7 @@ DialogModelDB =
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "æ²¡äº‹ï¼Œæ‰“æ‰°äº†",
+				optionTxt = "Ã»ÊÂ£¬´òÈÅÁË",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -16974,14 +16974,14 @@ DialogModelDB =
 			},
 		}
 	},
-	[20254] =    -----------è¥„é˜³æ­¦å™¨å¤§å¸ˆ
+	[20254] =    -----------ÏåÑôÎäÆ÷´óÊ¦
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29019,
-		txt = "è€å¤«æ‰“é€ æ­¦å™¨é‚£ä¹ˆå¤šå¹´ï¼Œè¿˜æ²¡æœ‰äººåœ¨è¿™æ–¹é¢çš„é€ è¯£è¶…è¿‡æˆ‘çš„ã€‚",
+		txt = "ÀÏ·ò´òÔìÎäÆ÷ÄÇÃ´¶àÄê£¬»¹Ã»ÓÐÈËÔÚÕâ·½ÃæµÄÔìÒè³¬¹ýÎÒµÄ¡£",
 		options =
 		{
 			{
@@ -16992,19 +16992,19 @@ DialogModelDB =
 			}
 		},
 	},
-	[20255] =        --------è¥„é˜³æ‚è´§å•†äºº
+	[20255] =        --------ÏåÑôÔÓ»õÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29020,
-		txt = "åœ¨è¥„é˜³ï¼Œæˆ‘è¿™é‡Œçš„ä¸œè¥¿æ˜¯æœ€å…¨çš„ï¼Œå®¢å®˜è¦ä¸è¦æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "ÔÚÏåÑô£¬ÎÒÕâÀïµÄ¶«Î÷ÊÇ×îÈ«µÄ£¬¿Í¹ÙÒª²»ÒªÀ´¿´¿´£¿",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆå•†å“",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÉÌÆ·",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 12},},
@@ -17013,7 +17013,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17021,19 +17021,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20256] =        --------è¥„é˜³è¯æå•†äºº
+	[20256] =        --------ÏåÑôÒ©²ÄÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29021,
-		txt = "ä½ ä»¬è¡Œèµ°æ±Ÿæ¹–ï¼Œéƒ½è¦å°å¿ƒä¸€äº›ï¼Œè®°å¾—å¤šå¤‡äº›è¯æï¼Œä»¥é˜²ä¸æµ‹å•Šã€‚",
+		txt = "ÄãÃÇÐÐ×ß½­ºþ£¬¶¼ÒªÐ¡ÐÄÒ»Ð©£¬¼ÇµÃ¶à±¸Ð©Ò©²Ä£¬ÒÔ·À²»²â°¡¡£",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "è´­ä¹°è¯æ",
+				optionTxt = "¹ºÂòÒ©²Ä",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 2},},
@@ -17042,7 +17042,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17050,14 +17050,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20257] =    -----------è¥„é˜³é’±åº„è€æ¿
+	[20257] =    -----------ÏåÑôÇ®×¯ÀÏ°å
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29022,
-		txt = "æˆ‘ä»¬å¯ä»¥å¸®ä½ ç®¡ç†é’±è´¢ã€‚",
+		txt = "ÎÒÃÇ¿ÉÒÔ°ïÄã¹ÜÀíÇ®²Æ¡£",
 		options =
 		{
 			{
@@ -17068,13 +17068,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[20258] =    -----------è¥„é˜³é…’åº—è€æ¿
+	[20258] =    -----------ÏåÑô¾ÆµêÀÏ°å
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29023,
-		txt = "æˆ‘è¿™é‡Œå¯æ˜¯è¥„é˜³å”¯ä¸€çš„é…’åº—ã€‚",
+		txt = "ÎÒÕâÀï¿ÉÊÇÏåÑôÎ¨Ò»µÄ¾Æµê¡£",
 		options =
 		{
 			[1] =
@@ -17083,7 +17083,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17095,7 +17095,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17107,7 +17107,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17119,7 +17119,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17131,7 +17131,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17143,7 +17143,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17151,7 +17151,7 @@ DialogModelDB =
 			},
 			[7] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17159,18 +17159,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20259] =    -----------è¥„é˜³é˜²å…·å•†äºº
+	[20259] =    -----------ÏåÑô·À¾ßÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29057,
-		txt = "æ²¡æœ‰ä¸€å¥—å¥½çš„é˜²å…·ï¼Œåˆæ€Žä¹ˆä¿å…¨è‡ªå·±ï¼Ÿå®¢å®˜æ¥çœ‹çœ‹å§ï¼Œæˆ‘å¯¹æˆ‘çš„é˜²å…·æœ‰è¶³å¤Ÿçš„ä¿¡å¿ƒã€‚",
+		txt = "Ã»ÓÐÒ»Ì×ºÃµÄ·À¾ß£¬ÓÖÔõÃ´±£È«×Ô¼º£¿¿Í¹ÙÀ´¿´¿´°É£¬ÎÒ¶ÔÎÒµÄ·À¾ßÓÐ×ã¹»µÄÐÅÐÄ¡£",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆé˜²å…·",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´·À¾ß",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 19},},
@@ -17179,7 +17179,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17187,19 +17187,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20260] =        --------è¥„é˜³æ­¦å™¨å•†äºº
+	[20260] =        --------ÏåÑôÎäÆ÷ÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29058,
-		txt = "åº—æ˜¯å°åº—ï¼Œä½†æˆ‘è¿™çš„æ­¦å™¨éƒ½ååˆ†é”‹åˆ©ï¼Œç»å¯¹ç‰©è¶…æ‰€å€¼ï¼",
+		txt = "µêÊÇÐ¡µê£¬µ«ÎÒÕâµÄÎäÆ÷¶¼Ê®·Ö·æÀû£¬¾ø¶ÔÎï³¬ËùÖµ£¡",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆæ­¦å™¨",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÎäÆ÷",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 18},},
@@ -17208,7 +17208,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘åªæ˜¯è·¯è¿‡",
+				optionTxt = "ÎÒÖ»ÊÇÂ·¹ý",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17216,14 +17216,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20261] =    -----------è¥„é˜³-éƒ‘ä¼¦
+	[20261] =    -----------ÏåÑô-Ö£Â×
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 27076,
-		txt = "å¾ä¹ƒä¸‰è¿ç²®æ€»ç£å®˜éƒ‘ä¼¦æ˜¯ä¹Ÿï¼Œä½ æ˜¯ä½•äººï¼Ÿ",
+		txt = "ÎáÄËÈýÔËÁ¸×Ü¶½¹ÙÖ£Â×ÊÇÒ²£¬ÄãÊÇºÎÈË£¿",
 		options =
 		{
 		 [1] = {
@@ -17232,7 +17232,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 27076}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5081,5176,5192,5208,5224}}},
@@ -17241,7 +17241,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17249,14 +17249,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[20262] =    -----------è¥„é˜³-é™ˆå¥‡
+	[20262] =    -----------ÏåÑô-³ÂÆæ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 27077,
-		txt = "å¾ä¹ƒç£ç²®ä¸Šå°†å†›é™ˆå¥‡æ˜¯ä¹Ÿï¼Œä½ æ˜¯ä½•äººï¼Ÿ",
+		txt = "ÎáÄË¶½Á¸ÉÏ½«¾ü³ÂÆæÊÇÒ²£¬ÄãÊÇºÎÈË£¿",
 		options =
 		{
 		[1] = {
@@ -17265,7 +17265,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 27077}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5082,5177,5193,5209,5225}}},
@@ -17274,7 +17274,7 @@ DialogModelDB =
 			},
 		[2] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17282,38 +17282,38 @@ DialogModelDB =
 			},
 		},
 	},
-	---------------é•¿å®‰ä¸»åŸŽå¯¹è¯IDè§„åˆ’ï¼š20351~20450--------
-	[20351] =             --é•¿å®‰åŸŽå†…ä¸–ç•Œä¼ é€npc
+	---------------³¤°²Ö÷³Ç¶Ô»°ID¹æ»®£º20351~20450--------
+	[20351] =             --³¤°²³ÇÄÚÊÀ½ç´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID =30255 ,
-		txt = "æˆ‘æ˜¯é•¿å®‰è½¦å¤«",
+		txt = "ÎÒÊÇ³¤°²³µ·ò",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",
+				optionTxt = "ÂåÑô",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 177, tarY = 193}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è¥„é˜³",
+				optionTxt = "ÏåÑô",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 14, tarX = 94, tarY = 73}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17321,14 +17321,14 @@ DialogModelDB =
 			},
 		}
 	},
-	[20353] =    -----------é•¿å®‰é±¼åº—è€æ¿
+	[20353] =    -----------³¤°²ÓãµêÀÏ°å
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29029,
-		txt = "ä»Šå¤©åˆšè¿›è´§çš„é±¼ï¼Œä¿è¯ç»å¯¹æ–°é²œï¼Œå®¢å®˜éœ€ä¸éœ€è¦æ¥ä¸€æ¡ï¼Ÿ",
+		txt = "½ñÌì¸Õ½ø»õµÄÓã£¬±£Ö¤¾ø¶ÔÐÂÏÊ£¬¿Í¹ÙÐè²»ÐèÒªÀ´Ò»Ìõ£¿",
 		options =
 		{
 			{
@@ -17339,20 +17339,20 @@ DialogModelDB =
 			}
 		},
 	},
-	[20354] =    -----------é•¿å®‰ç®—å¦å…ˆç”Ÿ
+	[20354] =    -----------³¤°²ËãØÔÏÈÉú
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29030,
-		txt = "éŠ•å£ç›´æ–­ï¼Œæ¶ˆç¾è§£éš¾ï¼Œè£åŽå¯Œè´µåœ¨æˆ‘ï¼Œç”Ÿæ­»æœ‰å‘½åœ¨å¤©ã€‚",
+		txt = "ãŽ¿ÚÖ±¶Ï£¬ÏûÔÖ½âÄÑ£¬ÈÙ»ª¸»¹óÔÚÎÒ£¬ÉúËÀÓÐÃüÔÚÌì¡£",
 		options =
         {
 			[1] = {
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1326, statue = true}},	
 				},
-				optionTxt = "å¾—çŸ¥ä¸‹è½ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "µÃÖªÏÂÂä£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1378}},
@@ -17362,7 +17362,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1327, statue = true}},	
 				},
-				optionTxt = "é“²é™¤å¼ºç›—ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "²ù³ýÇ¿µÁ£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1383}},
@@ -17372,7 +17372,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1511, statue = true}},	
 				},
-				optionTxt = "ç¥žå™¨å¤åŽŸï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉñÆ÷¸´Ô­£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1532}},
@@ -17382,7 +17382,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1516, statue = true}},	
 				},
-				optionTxt = "å¬å”¤äº¡çµï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÙ»½ÍöÁé£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1546}},
@@ -17392,7 +17392,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1509, statue = true}},	
 				},
-				optionTxt = "æ”¶é›†é¾™é³žï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÊÕ¼¯ÁúÁÛ£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1524}},
@@ -17400,7 +17400,7 @@ DialogModelDB =
 			},
 			[6] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17408,14 +17408,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20355] =    -----------é•¿å®‰ç®—å¦å…ˆç”Ÿ
+	[20355] =    -----------³¤°²ËãØÔÏÈÉú
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29031,
-		txt = "æœ‰æ­¤è‰¯ç”°ï¼Œä»Šå¹´çš„è”¬æžœä¸€å®šå¯ä»¥å¤§ä¸°æ”¶äº†ã€‚",
+		txt = "ÓÐ´ËÁ¼Ìï£¬½ñÄêµÄÊß¹ûÒ»¶¨¿ÉÒÔ´ó·áÊÕÁË¡£",
 		options =
 		{
 			[1] =
@@ -17424,7 +17424,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17436,7 +17436,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17448,7 +17448,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17460,7 +17460,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17472,7 +17472,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17484,7 +17484,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "è¿·é€”å°‘å¥³ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÃÔÍ¾ÉÙÅ®£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
@@ -17492,7 +17492,7 @@ DialogModelDB =
 			},
 			[7] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17500,14 +17500,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20356] =    -----------é•¿å®‰é…’åº—è€æ¿
+	[20356] =    -----------³¤°²¾ÆµêÀÏ°å
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29032,
-		txt = "æˆ‘è¿™å¯æ˜¯é•¿å®‰æœ€å¤§æœ€å¥½çš„é…’åº—ï¼Œå®¢å®˜è¦ä¸è¦è¿›æ¥çœ‹çœ‹ï¼Ÿ",
+		txt = "ÎÒÕâ¿ÉÊÇ³¤°²×î´ó×îºÃµÄ¾Æµê£¬¿Í¹ÙÒª²»Òª½øÀ´¿´¿´£¿",
 		options =
 		{
 			{
@@ -17518,18 +17518,18 @@ DialogModelDB =
 			}
 		},
 	},
-	[20357] =   ------------é•¿å®‰å® ç‰©åŒ»ç”Ÿ
+	[20357] =   ------------³¤°²³èÎïÒ½Éú
 	{
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 29033,
-		txt = "æˆ‘æ˜¯å® ç‰©åŒ»ç”Ÿï¼Œæœ‰å—ä¼¤çš„å® ç‰©éƒ½å¯ä»¥æ¥æ‰¾æˆ‘ï¼Œè§’è‰²20çº§å‰å…è´¹ï¼Œ20çº§åŽæ”¶è´¹å°‘é‡çš„é‡‘é’±ï¼Œéœ€è¦å¸®åŠ©å—ï¼Ÿ",
+		txt = "ÎÒÊÇ³èÎïÒ½Éú£¬ÓÐÊÜÉËµÄ³èÎï¶¼¿ÉÒÔÀ´ÕÒÎÒ£¬½ÇÉ«20¼¶Ç°Ãâ·Ñ£¬20¼¶ºóÊÕ·ÑÉÙÁ¿µÄ½ðÇ®£¬ÐèÒª°ïÖúÂð£¿",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤å½“å‰å‡ºæˆ˜å® ç‰©",
+				optionTxt = "ÐÞ¸´µ±Ç°³öÕ½³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairPet, param = {},},
@@ -17538,7 +17538,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤æ‰€æœ‰å® ç‰©",
+				optionTxt = "ÐÞ¸´ËùÓÐ³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairAllPet, param = {},},
@@ -17547,7 +17547,7 @@ DialogModelDB =
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "æ²¡äº‹ï¼Œæ‰“æ‰°äº†",
+				optionTxt = "Ã»ÊÂ£¬´òÈÅÁË",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
@@ -17555,14 +17555,14 @@ DialogModelDB =
 			},
 		}
 	},
-	[20358] =    -----------é•¿å®‰é•–å¸ˆ
+	[20358] =    -----------³¤°²ïÚÊ¦
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29034,
-		txt = "æƒ³åšæˆ‘ä»¬è¿™ä¸€è¡Œï¼Œå°±è¦æœ‰åœ¨åˆ€å£ä¸Šè°‹ç”Ÿçš„å‡†å¤‡ã€‚",
+		txt = "Ïë×öÎÒÃÇÕâÒ»ÐÐ£¬¾ÍÒªÓÐÔÚµ¶¿ÚÉÏÄ±ÉúµÄ×¼±¸¡£",
 		options =
 		{
 			[1] = {
@@ -17570,7 +17570,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4456}},
@@ -17581,7 +17581,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4465}},
@@ -17592,7 +17592,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4474}},
@@ -17603,7 +17603,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4483}},
@@ -17614,7 +17614,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4492}},
@@ -17625,7 +17625,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4501}},
@@ -17633,7 +17633,7 @@ DialogModelDB =
 			},
 			[7] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17641,19 +17641,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20359] =    -----------é•¿å®‰æ‚è´§åº—
+	[20359] =    -----------³¤°²ÔÓ»õµê
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29035,
-		txt = "åœ¨é•¿å®‰ï¼Œå°±å±žæˆ‘è¿™é‡Œçš„ç§ç±»æœ€å¤šï¼Œä¸€å®šæœ‰å®¢å®˜å–œæ¬¢çš„å•†å“",
+		txt = "ÔÚ³¤°²£¬¾ÍÊôÎÒÕâÀïµÄÖÖÀà×î¶à£¬Ò»¶¨ÓÐ¿Í¹ÙÏ²»¶µÄÉÌÆ·",
 		options =
 		{
 			[2] ={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆå–çš„",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÂôµÄ",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 13},},
@@ -17662,7 +17662,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17670,13 +17670,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20360] =    -----------é•¿å®‰é¦’å¤´åº—è€æ¿
+	[20360] =    -----------³¤°²ÂøÍ·µêÀÏ°å
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29036,
-		txt = "æˆ‘è¿™é¦’å¤´åº—å¯æ˜¯è€å­—å·ï¼Œä¿è¯ç»å¯¹ç¾Žå‘³ã€‚",
+		txt = "ÎÒÕâÂøÍ·µê¿ÉÊÇÀÏ×ÖºÅ£¬±£Ö¤¾ø¶ÔÃÀÎ¶¡£",
 		options =
 		{
 			[1] = {
@@ -17684,7 +17684,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4455}},
@@ -17695,7 +17695,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4464}},
@@ -17706,7 +17706,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4473}},
@@ -17717,7 +17717,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4482}},
@@ -17728,7 +17728,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4491}},
@@ -17739,7 +17739,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4500}},
@@ -17747,7 +17747,7 @@ DialogModelDB =
 			},
 			[7] = {
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17755,19 +17755,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20361] =    -----------é•¿å®‰æ­¦å™¨å•†äºº
+	[20361] =    -----------³¤°²ÎäÆ÷ÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29037,
-		txt = "æˆ‘è¿™é‡Œæœ‰ä¸Šä½³çš„æ­¦å™¨ï¼Œä¿è¯è¶³å¤Ÿé”‹åˆ©ï¼",
+		txt = "ÎÒÕâÀïÓÐÉÏ¼ÑµÄÎäÆ÷£¬±£Ö¤×ã¹»·æÀû£¡",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆæ­¦å™¨",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´ÎäÆ÷",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 15},},
@@ -17776,7 +17776,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17784,19 +17784,19 @@ DialogModelDB =
 			},
 		},
 	},
-	[20362] =    -----------é•¿å®‰é˜²å…·å•†äºº
+	[20362] =    -----------³¤°²·À¾ßÉÌÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29038,
-		txt = "æ²¡æœ‰ä¸€å¥—å¥½çš„é˜²å…·ï¼Œåˆæ€Žä¹ˆä¿å…¨è‡ªå·±ï¼Ÿå®¢å®˜æ¥çœ‹çœ‹å§ï¼Œæˆ‘å¯¹æˆ‘çš„é˜²å…·æœ‰è¶³å¤Ÿçš„ä¿¡å¿ƒã€‚",
+		txt = "Ã»ÓÐÒ»Ì×ºÃµÄ·À¾ß£¬ÓÖÔõÃ´±£È«×Ô¼º£¿¿Í¹ÙÀ´¿´¿´°É£¬ÎÒ¶ÔÎÒµÄ·À¾ßÓÐ×ã¹»µÄÐÅÐÄ¡£",
 		options =
 		{
 			[1]={
 				showConditions = {},
-				optionTxt = "çœ‹çœ‹æœ‰ä»€ä¹ˆé˜²å…·",
+				optionTxt = "¿´¿´ÓÐÊ²Ã´·À¾ß",
 				actions =
 				{
 					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 16},},
@@ -17805,7 +17805,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17813,45 +17813,45 @@ DialogModelDB =
 			},
 		},
 	},
-	[20363] =        ---é•¿å®‰ä»“åº“ç®¡ç†å‘˜
+	[20363] =        ---³¤°²²Ö¿â¹ÜÀíÔ±
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29039,
-		txt = "å¦‚æžœè§‰å¾—èº«ä¸Šç´¯èµ˜å¤ªå¤šï¼Œå®¢å®˜å¯ä»¥å­˜ä¸€äº›åœ¨æˆ‘è¿™é‡Œã€‚",
+		txt = "Èç¹û¾õµÃÉíÉÏÀÛ×¸Ì«¶à£¬¿Í¹Ù¿ÉÒÔ´æÒ»Ð©ÔÚÎÒÕâÀï¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "å­˜æ”¾ç‰©å“",
+				optionTxt = "´æ·ÅÎïÆ·",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {v = "DepotWin"},},--æ‰“å¼€ç‰©å“ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {v = "DepotWin"},},--´ò¿ªÎïÆ·²Ö¿â
 				},
 				icon = DialogIcon.Box,
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "å­˜æ”¾å® ç‰©",
+				optionTxt = "´æ·Å³èÎï",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {},},--æ‰“å¼€å® ç‰©ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {},},--´ò¿ª³èÎï²Ö¿â
 				},
 				icon = DialogIcon.Box,
 			},
 		},
 	},
-	[20364] =    -----------é•¿å®‰çŽ‹å…
+	[20364] =    -----------³¤°²ÍõÔÊ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20701,
-		txt = "å±ˆè†å®¶å¦“ä¸ºæ±‰å›ï¼Œå®£å¹³æ¥¼ä¸‹æ¯å¥¸è‡£ã€‚ä¸ºå¤©ä¸‹è‹ç”Ÿï¼Œæˆ‘å¸å¾’çŽ‹å…æ„¿å°½ä¸€å·±ä¹‹åŠ›ï¼Œèª“è®¨æ±‰è´¼ï¼",
+		txt = "ÇüÏ¥¼Ò¼ËÎªºº¾ý£¬ÐûÆ½Â¥ÏÂ»Ù¼é³¼¡£ÎªÌìÏÂ²ÔÉú£¬ÎÒË¾Í½ÍõÔÊÔ¸¾¡Ò»¼ºÖ®Á¦£¬ÊÄÌÖººÔô£¡",
 		options =
 		{
 			[1] = {
@@ -17859,7 +17859,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4458}},
@@ -17870,7 +17870,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4467}},
@@ -17881,7 +17881,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4476}},
@@ -17892,7 +17892,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4485}},
@@ -17903,7 +17903,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4494}},
@@ -17914,7 +17914,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4503}},
@@ -17926,7 +17926,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20701}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5079,5174,5190,5206,5222}}},
@@ -17935,7 +17935,7 @@ DialogModelDB =
 			},
 			[8] = {
 				showConditions = {},
-				optionTxt = "ä¹…ä»°å¤§åï¼Œæˆ‘å…ˆå‘Šé€€ã€‚",
+				optionTxt = "¾ÃÑö´óÃû£¬ÎÒÏÈ¸æÍË¡£",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -17943,13 +17943,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20365] =    -----------é•¿å®‰-æ¨æ–‡è¾‰
+	[20365] =    -----------³¤°²-ÑîÎÄ»Ô
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 27075,
-		txt = "å¤©ä¸‹å¤§åŠ¿ï¼Œåˆ†ä¹…å¿…åˆï¼Œåˆä¹…å¿…åˆ†ï¼",
+		txt = "ÌìÏÂ´óÊÆ£¬·Ö¾Ã±ØºÏ£¬ºÏ¾Ã±Ø·Ö£¡",
 		options =
 		{
 			[1] = {
@@ -17957,7 +17957,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4452}},
@@ -17968,7 +17968,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4461}},
@@ -17979,7 +17979,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4470}},
@@ -17990,7 +17990,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4479}},
@@ -18001,7 +18001,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4488}},
@@ -18012,7 +18012,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "æŽŒé—¨çš„ä¿¡ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÕÆÃÅµÄÐÅ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4497}},
@@ -18024,7 +18024,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 27075}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5080,5175,5191,5207,5223}}},
@@ -18033,7 +18033,7 @@ DialogModelDB =
 			},
 			[8] = {
 				showConditions = {},
-				optionTxt = "ç¨åŽå†æ¥",
+				optionTxt = "ÉÔºóÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18041,75 +18041,75 @@ DialogModelDB =
 			},
 		},
 	},
-	------------------çŽ„éƒ½çŽ‰äº¬npcå¯¹è¯è§„åˆ’ï¼š20451~20500------------
-	[20451] =             --çŽ„éƒ½çŽ‰äº¬èŽ²èŠ±ç«¥å­ä¼ é€npc
+	------------------Ðþ¶¼Óñ¾©npc¶Ô»°¹æ»®£º20451~20500------------
+	[20451] =             --Ðþ¶¼Óñ¾©Á«»¨Í¯×Ó´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20003,
-		txt = "é˜æ•™å¼Ÿå­ï¼Œæˆ‘å¯ä»¥é€ä½ ä¸‹å‡¡ã€‚",
+		txt = "²û½ÌµÜ×Ó£¬ÎÒ¿ÉÒÔËÍÄãÏÂ·²¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 119}},
@@ -18119,7 +18119,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1168, statue = true}},	
 				},
-				optionTxt = "ç­é­‚ç ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ãð»êÖé£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 1166}},
@@ -18127,7 +18127,7 @@ DialogModelDB =
 			},
 			[9] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¿˜è¦å†èµ°èµ°",
+				optionTxt = "ÎÒ»¹ÒªÔÙ×ß×ß",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18135,14 +18135,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20452] =    -----------å…ƒå§‹å¤©å°Š
+	[20452] =    -----------ÔªÊ¼Ìì×ð
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20002,
-		txt = "é“è€…ï¼Œç´¯åŠ«è‰¯å› ä¹‹æ— æžåœ£ä¼—ï¼ŒäºŽæ˜¯çŽ°è¿ç¥žé€šï¼Œæ‘„ä¼—åœ£é“ï¼Œè—äºŽä¸‡æ°”ç¥–æ ¹é‡Œï¼Œçº³äºŽç²Ÿç±³ä¹‹ä¸­ï¼ŒäºŽæ— æžè€Œæ”¶ï¼Œå…­ç”µä¹‹æ°”ç¿¼å…¶çœŸï¼Œç¥–æ°”æŠ¤å…»æ¶¦å…¶ç¥žï¼Œç§¯ä¸ƒåƒä½™åŠ«ï¼Œå¤ªæžç»å’¸åº”åº¦ï¼Œæ— æžåœ£ä¼—å§‹å¸ƒå¤ªæžã€‚",
+		txt = "µÀÕß£¬ÀÛ½ÙÁ¼ÒòÖ®ÎÞ¼«Ê¥ÖÚ£¬ÓÚÊÇÏÖÔËÉñÍ¨£¬ÉãÖÚÊ¥µÀ£¬²ØÓÚÍòÆø×æ¸ùÀï£¬ÄÉÓÚËÚÃ×Ö®ÖÐ£¬ÓÚÎÞ¼«¶øÊÕ£¬ÁùµçÖ®ÆøÒíÆäÕæ£¬×æÆø»¤ÑøÈóÆäÉñ£¬»ýÆßÇ§Óà½Ù£¬Ì«¼«¾­ÏÌÓ¦¶È£¬ÎÞ¼«Ê¥ÖÚÊ¼²¼Ì«¼«¡£",
 		options =
 		{
 			[1] =
@@ -18151,7 +18151,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 1003, statue = true}},
 				},
-				optionTxt = "ä¸»çº¿ä»»åŠ¡",
+				optionTxt = "Ö÷ÏßÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 105}},
@@ -18159,14 +18159,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20453] =    -----------ç™½é¹¤ç«¥å­
+	[20453] =    -----------°×º×Í¯×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 20001,
-		txt = "å…ƒè€…ï¼Œæœ¬ä¹Ÿï¼›å§‹è€…ï¼Œåˆä¹Ÿï¼Œå…ˆå¤©ä¹‹æ°”ä¹Ÿã€‚æ­¤æ°”åŒ–ä¸ºå¼€è¾Ÿä¸–ç•Œä¹‹äººï¼Œå³ä¸ºç›˜å¤ï¼›åŒ–ä¸ºä¸»æŒå¤©ç•Œä¹‹ç¥–ï¼Œå³ä¸ºå…ƒå§‹ã€‚å¾å¸ˆå­˜äºŽå¼€å¤©ä¹‹å§‹ï¼Œæ±ä¸ºå¸ˆå°Šé€‰å®šä¹‹äººï¼Œå¿…æœ‰è¿‡äººä¹‹å¤„ã€‚",
+		txt = "ÔªÕß£¬±¾Ò²£»Ê¼Õß£¬³õÒ²£¬ÏÈÌìÖ®ÆøÒ²¡£´ËÆø»¯Îª¿ª±ÙÊÀ½çÖ®ÈË£¬¼´ÎªÅÌ¹Å£»»¯ÎªÖ÷³ÖÌì½çÖ®×æ£¬¼´ÎªÔªÊ¼¡£ÎáÊ¦´æÓÚ¿ªÌìÖ®Ê¼£¬ÈêÎªÊ¦×ðÑ¡¶¨Ö®ÈË£¬±ØÓÐ¹ýÈËÖ®´¦¡£",
 		options =
 		{
 			{
@@ -18177,69 +18177,69 @@ DialogModelDB =
 			}
 		},
 	},
-	---------ä¹¾å…ƒå²›npcå¯¹è¯IDè§„åˆ’ï¼š20501~20550
-	[20501] =             --ä¹¾å…ƒå²›é—¨æ´¾ä¼ é€npc
+	---------Ç¬Ôªµºnpc¶Ô»°ID¹æ»®£º20501~20550
+	[20501] =             --Ç¬ÔªµºÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29050,
-		txt = "ä¹¾å…ƒå²›æ™¯è‡´ç§€ä¸½ï¼Œä½ å¯å››å¤„æ¸¸çŽ©ä¸€ç•ªï¼Œè‹¥è¦ç¦»å¼€æˆ‘å¯ä»¥é€ä½ ä¸€ç¨‹",
+		txt = "Ç¬Ôªµº¾°ÖÂÐãÀö£¬Äã¿ÉËÄ´¦ÓÎÍæÒ»·¬£¬ÈôÒªÀë¿ªÎÒ¿ÉÒÔËÍÄãÒ»³Ì",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
@@ -18249,7 +18249,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTasks, param = {taskIDs = {1089,1378}, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
 				},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ðþ¶¼Óñ¾©£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 107}},
@@ -18262,7 +18262,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1362, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
 				},
-				optionTxt = "çŽ‰æ³‰å±±ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÓñÈªÉ½£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 113}},
@@ -18275,15 +18275,15 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1012, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
 				},
-				optionTxt = "æ¡ƒå›­é•‡ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌÒÔ°Õò£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
-				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--åˆ‡æ¢åœºæ™¯
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] = {
 				showConditions = {},
-				optionTxt = "æˆ‘å†è½¬è½¬",
+				optionTxt = "ÎÒÔÙ×ª×ª",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18291,13 +18291,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20502] =    -----------ä¹¾å…ƒå²›æŽŒé—¨
+	[20502] =    -----------Ç¬ÔªµºÕÆÃÅ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20004,
-		txt = "æµå…‰ç»¯ç«æ¯”æœˆåŽï¼Œåˆ€é”‹åˆƒå½±æ­£æ°”æµ©ã€‚é¾™æˆ˜å‡Œéœ„è°äººæ•Œï¼Œè¯›é‚ªé™é­”æœªæ›¾æ€•ã€‚",
+		txt = "Á÷¹âç³»ð±ÈÔÂ»ª£¬µ¶·æÈÐÓ°ÕýÆøºÆ¡£ÁúÕ½ÁèÏöË­ÈËµÐ£¬ÖïÐ°½µÄ§Î´ÔøÅÂ¡£",
 		options =
 		{
 			[1] = {
@@ -18305,7 +18305,7 @@ DialogModelDB =
 				{	
 				 {condition = DialogCondition.School, param = {school = SchoolType.QYD}},
 				},
-				optionTxt = "å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "Ê¦ÃÅÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4202}},
@@ -18316,7 +18316,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.catchPet, npcID = 20004}},
 				},
-				optionTxt = "ä¸Šäº¤å® ç‰©ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»³èÎï£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4551}},
@@ -18327,7 +18327,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.buyItem, npcID = 20004}},
 				},
-				optionTxt = "ä¸Šäº¤é“å…·ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»µÀ¾ß£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4601}},
@@ -18338,7 +18338,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.itemTalk, npcID = 20004}},
 				},
-				optionTxt = "ä¸‹å±±ä¹‹è¡Œï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÏÂÉ½Ö®ÐÐ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4781}},
@@ -18346,7 +18346,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "å¼Ÿå­å…ˆé€€ä¸‹",
+				optionTxt = "µÜ×ÓÏÈÍËÏÂ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18357,7 +18357,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15001, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "ÁË½âÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35500}},
@@ -18366,14 +18366,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20503] =    -----------ä¹¾å…ƒå²›é•¿è€
+	[20503] =    -----------Ç¬Ôªµº³¤ÀÏ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29059,
-		txt = "èº«ä¸ºæœ¬æ´¾å¼Ÿå­ï¼Œå½“ä¸€èº«æ­£æ°”ï¼Œæ–©å¦–é™¤é­”ï¼Œä»¥åŒ¡æ‰¶å¤©é“ä¸ºå·±ä»»ï¼Œæ‰æ— æ„§äºŽå¤©ä¸‹ã€‚",
+		txt = "ÉíÎª±¾ÅÉµÜ×Ó£¬µ±Ò»ÉíÕýÆø£¬Õ¶Ñý³ýÄ§£¬ÒÔ¿ï·öÌìµÀÎª¼ºÈÎ£¬²ÅÎÞÀ¢ÓÚÌìÏÂ¡£",
 		options =
 		{
 			{
@@ -18384,20 +18384,20 @@ DialogModelDB =
 			}
 		},
 	},
-	[20504] =    -----------ä¹¾å…ƒå²›å¤§å¼Ÿå­
+	[20504] =    -----------Ç¬Ôªµº´óµÜ×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20021,
-		txt = "ä¿®é“å½“è„šè¸å®žåœ°ï¼Œåˆ‡ä¸å¯æ€¥åŠŸè¿‘åˆ©ï¼Œæ‰“å¥½åŸºç¡€æœ€ä¸ºé‡è¦ã€‚",
+		txt = "ÐÞµÀµ±½ÅÌ¤ÊµµØ£¬ÇÐ²»¿É¼±¹¦½üÀû£¬´òºÃ»ù´¡×îÎªÖØÒª¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001,taskType = LoopTaskTargetType.brightMine,npcID = 20021}},	
 				},
-				optionTxt = "æŒ‘æˆ˜å¤§å¼Ÿå­ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½´óµÜ×Ó£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4271}},
@@ -18409,7 +18409,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20021}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5083,5178,5194,5210,5226}}},
@@ -18418,7 +18418,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18427,13 +18427,13 @@ DialogModelDB =
 		},
 	},
 
-	[20505] =    -----------ä¹¾å…ƒå²›æ‰§æ³•é•¿è€
+	[20505] =    -----------Ç¬ÔªµºÖ´·¨³¤ÀÏ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29066,
-		txt = "è¦ä¸Šé˜µæ€æ•Œæ­¦è‰ºä¸å¯ä¸ç²¾ï¼Œå¹³æ—¶è¦å¤šç£¨ç‚¼è‡ªå·±æ‰è¡Œï¼",
+		txt = "ÒªÉÏÕóÉ±µÐÎäÒÕ²»¿É²»¾«£¬Æ½Ê±Òª¶àÄ¥Á¶×Ô¼º²ÅÐÐ£¡",
 		options =
 		{
 			[1] = {
@@ -18441,7 +18441,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001,taskType = LoopTaskTargetType.brightMine,npcID = 29066}},
 				},
-				optionTxt = "æŒ‘æˆ˜é•¿è€ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½³¤ÀÏ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4272}},
@@ -18449,7 +18449,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18457,14 +18457,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20506] =    -----------ä¹¾å…ƒå²›ç²¾è‹±å¼Ÿå­
+	[20506] =    -----------Ç¬Ôªµº¾«Ó¢µÜ×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29072,
-		txt = "å¤§å“‰ä¹¾å…ƒï¼Œä¸‡ç‰©èµ„å§‹ï¼Œä¹ƒç»Ÿå¤©ã€‚ä¹¾å…ƒå³ä¸ºå¤©ä¸‹ï¼Œä¹¾å…ƒå¼Ÿå­å½“ä¸ºå¤©ä¸‹è€Œæˆ˜ã€‚",
+		txt = "´óÔÕÇ¬Ôª£¬ÍòÎï×ÊÊ¼£¬ÄËÍ³Ìì¡£Ç¬Ôª¼´ÎªÌìÏÂ£¬Ç¬ÔªµÜ×Óµ±ÎªÌìÏÂ¶øÕ½¡£",
 		options =
 		{
 			{
@@ -18475,69 +18475,69 @@ DialogModelDB =
 			}
 		},
 	},
-	---------æ¡ƒæºæ´žnpcå¯¹è¯IDè§„åˆ’ï¼š20551~20600-----------
-	[20551] =             --æ¡ƒæºæ´žé—¨æ´¾ä¼ é€npc
+	---------ÌÒÔ´¶´npc¶Ô»°ID¹æ»®£º20551~20600-----------
+	[20551] =             --ÌÒÔ´¶´ÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29051,
-		txt = "æ¡ƒæºæ´žå»ºäºŽä¸¤ä»ªä¹‹ä¸Šï¼Œä¸¤ä»ªæ­¥æ­¥çŽ„æœºï¼Œä½ ä¸å¦¨å››å¤„è½¬è½¬ï¼Œè‹¥è¦ç¦»å¼€ï¼Œæˆ‘å¯ä»¥é€ä½ ä¸€ç¨‹ã€‚",
+		txt = "ÌÒÔ´¶´½¨ÓÚÁ½ÒÇÖ®ÉÏ£¬Á½ÒÇ²½²½Ðþ»ú£¬Äã²»·ÁËÄ´¦×ª×ª£¬ÈôÒªÀë¿ª£¬ÎÒ¿ÉÒÔËÍÄãÒ»³Ì¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
@@ -18547,7 +18547,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTasks, param = {taskIDs = {1091,1378}, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
 				},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ðþ¶¼Óñ¾©£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 108}},
@@ -18560,7 +18560,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1364, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
 				},
-				optionTxt = "çŽ‰æ³‰å±±ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÓñÈªÉ½£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 114}},
@@ -18573,15 +18573,15 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1022, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
 				},
-				optionTxt = "æ¡ƒå›­é•‡ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌÒÔ°Õò£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
-				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--åˆ‡æ¢åœºæ™¯
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¦å†è½¬è½¬",
+				optionTxt = "ÎÒÒªÔÙ×ª×ª",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18589,13 +18589,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20552] =    -----------æ¡ƒæºæ´žæŽŒé—¨
+	[20552] =    -----------ÌÒÔ´¶´ÕÆÃÅ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20005,
-		txt = "æ‰‡åŠ¨ä¹éœ„æ±Ÿå±±å®šï¼Œæµæ°´è‹¥äº‘ä½•è§æ¬¢ã€‚ç”»åœ°ç©ºæŠŠæƒ…ä»‡å¿˜ï¼Œäº¦çœŸäº¦å¹»é€é¥å¹ã€‚",
+		txt = "ÉÈ¶¯¾ÅÏö½­É½¶¨£¬Á÷Ë®ÈôÔÆºÎ¼û»¶¡£»­µØ¿Õ°ÑÇé³ðÍü£¬ÒàÕæÒà»ÃåÐÒ£Ì¾¡£",
 		options =
 		{
 			[1] = {
@@ -18603,7 +18603,7 @@ DialogModelDB =
 				{
 				 {condition = DialogCondition.School, param = {school = SchoolType.TYD}},
 				},
-				optionTxt = "å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "Ê¦ÃÅÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4210}},
@@ -18614,7 +18614,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.catchPet, npcID = 20005}},
 				},
-				optionTxt = "ä¸Šäº¤å® ç‰©ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»³èÎï£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4559}},
@@ -18625,7 +18625,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.buyItem, npcID = 20005}},
 				},
-				optionTxt = "ä¸Šäº¤é“å…·ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»µÀ¾ß£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4609}},
@@ -18636,7 +18636,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.itemTalk, npcID = 20005}},
 				},
-				optionTxt = "ä¸‹å±±ä¹‹è¡Œï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÏÂÉ½Ö®ÐÐ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4789}},
@@ -18644,7 +18644,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "å¼Ÿå­å…ˆå‘Šé€€",
+				optionTxt = "µÜ×ÓÏÈ¸æÍË",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18655,7 +18655,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15009, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "ÁË½âÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35504}},
@@ -18664,14 +18664,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20553] =    -----------æ¡ƒæºæ´žé•¿è€
+	[20553] =    -----------ÌÒÔ´¶´³¤ÀÏ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29060,
-		txt = "èº«ä¸ºæœ¬æ´¾å¼Ÿå­ï¼Œå½“ä¸€èº«æ­£æ°”ï¼Œæ–©å¦–é™¤é­”ï¼Œä»¥åŒ¡æ‰¶å¤©é“ä¸ºå·±ä»»ï¼Œæ‰æ— æ„§äºŽå¤©ä¸‹ã€‚",
+		txt = "ÉíÎª±¾ÅÉµÜ×Ó£¬µ±Ò»ÉíÕýÆø£¬Õ¶Ñý³ýÄ§£¬ÒÔ¿ï·öÌìµÀÎª¼ºÈÎ£¬²ÅÎÞÀ¢ÓÚÌìÏÂ¡£",
 		options =
 		{
 			{
@@ -18682,13 +18682,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[20554] =    -----------æ¡ƒæºæ´žå¤§å¼Ÿå­
+	[20554] =    -----------ÌÒÔ´¶´´óµÜ×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20025,
-		txt = "ä¿®è¡Œå½“æ­¥æ­¥ä¸ºè¥ï¼Œåˆ‡å‹¿æ€¥åŠŸè¿‘åˆ©ï¼Œæ­¤ä¹ƒä¿®è¡Œä¹‹æ ¹æœ¬ã€‚",
+		txt = "ÐÞÐÐµ±²½²½ÎªÓª£¬ÇÐÎð¼±¹¦½üÀû£¬´ËÄËÐÞÐÐÖ®¸ù±¾¡£",
 		options =
 		{
 			[1] = {
@@ -18696,7 +18696,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005,taskType = LoopTaskTargetType.brightMine,npcID = 20025}},
 				},
-				optionTxt = "æŒ‘æˆ˜å¤§å¼Ÿå­ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½´óµÜ×Ó£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4283}},
@@ -18708,7 +18708,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20025}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5086,5181,5197,5213,5229}}},
@@ -18717,7 +18717,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18725,13 +18725,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20555] =    -----------æ¡ƒæºæ´žæ‰§æ³•é•¿è€
+	[20555] =    -----------ÌÒÔ´¶´Ö´·¨³¤ÀÏ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29067,
-		txt = "æ¡ƒæºé“æœ¯çŽ„å¦™æ— æ¯”ï¼Œå½“ç”¨äºŽæ­£é“ä¹‹ä¸Šï¼Œå¦åˆ™åŽæ‚£æ— ç©·ï¼Œåˆ‡è®°åˆ‡è®°ã€‚",
+		txt = "ÌÒÔ´µÀÊõÐþÃîÎÞ±È£¬µ±ÓÃÓÚÕýµÀÖ®ÉÏ£¬·ñÔòºó»¼ÎÞÇî£¬ÇÐ¼ÇÇÐ¼Ç¡£",
 		options =
 		{
 			[1] = {
@@ -18739,7 +18739,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005,taskType = LoopTaskTargetType.brightMine,npcID = 29067}},
 				},
-				optionTxt = "æŒ‘æˆ˜é•¿è€ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½³¤ÀÏ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4284}},
@@ -18747,7 +18747,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18755,14 +18755,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20556] =    -----------æ¡ƒæºæ´žç²¾è‹±å¼Ÿå­
+	[20556] =    -----------ÌÒÔ´¶´¾«Ó¢µÜ×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29073,
-		txt = "æ¡ƒæºé“æ³•æœ€æ˜¯å¥‡å¦™ï¼Œä½ éœ€ä»”ç»†ç¢ç£¨ï¼Œæ–¹å¯è¯†å¾—å…¶å¦™å¤„ã€‚",
+		txt = "ÌÒÔ´µÀ·¨×îÊÇÆæÃî£¬ÄãÐè×ÐÏ¸×ÁÄ¥£¬·½¿ÉÊ¶µÃÆäÃî´¦¡£",
 		options =
 		{
 			{
@@ -18773,69 +18773,69 @@ DialogModelDB =
 			}
 		},
 	},
-	---------é‡‘éœžå±±npcå¯¹è¯IDè§„åˆ’ï¼š20601~20650-----------
-	[20601] =             --é‡‘éœžå±±é—¨æ´¾ä¼ é€npc
+	---------½ðÏ¼É½npc¶Ô»°ID¹æ»®£º20601~20650-----------
+	[20601] =             --½ðÏ¼É½ÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29052,
-		txt = "å¤§æ¼ è¥¿é£Žã€é•¿çƒŸè½æ—¥çš„é£Žå…‰å¾ˆä¸ä¸€æ ·å§ï¼Ÿæœ‰ç©ºä½ å¯åˆ°å¤„çœ‹çœ‹ï¼Œè‹¥è¦ç¦»å¼€æˆ‘å¯ä»¥é€ä½ ä¸€ç¨‹ã€‚",
+		txt = "´óÄ®Î÷·ç¡¢³¤ÑÌÂäÈÕµÄ·ç¹âºÜ²»Ò»Ñù°É£¿ÓÐ¿ÕÄã¿Éµ½´¦¿´¿´£¬ÈôÒªÀë¿ªÎÒ¿ÉÒÔËÍÄãÒ»³Ì¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
@@ -18845,7 +18845,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTasks, param = {taskIDs = {1093,1378}, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
 				},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ðþ¶¼Óñ¾©£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 109}},
@@ -18858,7 +18858,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1366, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
 				},
-				optionTxt = "çŽ‰æ³‰å±±ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÓñÈªÉ½£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 115}},
@@ -18871,15 +18871,15 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1032, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
 				},
-				optionTxt = "æ¡ƒå›­é•‡ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌÒÔ°Õò£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
-				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--åˆ‡æ¢åœºæ™¯
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¦å†è½¬è½¬",
+				optionTxt = "ÎÒÒªÔÙ×ª×ª",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18887,13 +18887,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20602] =    -----------é‡‘éœžå±±æŽŒé—¨
+	[20602] =    -----------½ðÏ¼É½ÕÆÃÅ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20006,
-		txt = "é•¿æžªä¸€æ¨ªåŠ¨å±±æ²³ï¼Œå­¤éª‘ä¹è¿žç ´ä¹¾å¤ã€‚è¯›å°½å¦–é‚ªé‡‘éœžä¹‰ï¼Œå°ç¥žæ‹œå°†æ°¸ç•™åã€‚",
+		txt = "³¤Ç¹Ò»ºá¶¯É½ºÓ£¬¹ÂÆï¾ÅÁ¬ÆÆÇ¬À¤¡£Öï¾¡ÑýÐ°½ðÏ¼Òå£¬·âÉñ°Ý½«ÓÀÁôÃû¡£",
 		options =
 		{
 			[1] = {
@@ -18901,7 +18901,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
 				},
-				optionTxt = "å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "Ê¦ÃÅÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4204}},
@@ -18912,7 +18912,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.catchPet, npcID = 20006}},
 				},
-				optionTxt = "ä¸Šäº¤å® ç‰©ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»³èÎï£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4553}},
@@ -18923,7 +18923,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.buyItem, npcID = 20006}},
 				},
-				optionTxt = "ä¸Šäº¤é“å…·ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»µÀ¾ß£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4603}},
@@ -18934,7 +18934,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.itemTalk, npcID = 20006}},
 				},
-				optionTxt = "ä¸‹å±±ä¹‹è¡Œï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÏÂÉ½Ö®ÐÐ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4783}},
@@ -18942,7 +18942,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -18953,7 +18953,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15003, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "ÁË½âÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35501}},
@@ -18962,14 +18962,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20603] =    -----------é‡‘éœžå±±é•¿è€
+	[20603] =    -----------½ðÏ¼É½³¤ÀÏ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29061,
-		txt = "èº«ä¸ºæœ¬æ´¾å¼Ÿå­ï¼Œå½“ä¸€èº«æ­£æ°”ï¼Œæ–©å¦–é™¤é­”ï¼Œä»¥åŒ¡æ‰¶å¤©é“ä¸ºå·±ä»»ï¼Œæ‰æ— æ„§äºŽå¤©ä¸‹ã€‚",
+		txt = "ÉíÎª±¾ÅÉµÜ×Ó£¬µ±Ò»ÉíÕýÆø£¬Õ¶Ñý³ýÄ§£¬ÒÔ¿ï·öÌìµÀÎª¼ºÈÎ£¬²ÅÎÞÀ¢ÓÚÌìÏÂ¡£",
 		options =
 		{
 			{
@@ -18980,14 +18980,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[20604] =    -----------é‡‘éœžå±±å¤§å¼Ÿå­
+	[20604] =    -----------½ðÏ¼É½´óµÜ×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20023,
-		txt = "ä¿®è¡Œå½“æ­¥æ­¥ä¸ºè¥ï¼Œåˆ‡å‹¿æ€¥åŠŸè¿‘åˆ©ï¼Œæ­¤ä¹ƒä¿®è¡Œä¹‹æ ¹æœ¬ã€‚",
+		txt = "ÐÞÐÐµ±²½²½ÎªÓª£¬ÇÐÎð¼±¹¦½üÀû£¬´ËÄËÐÞÐÐÖ®¸ù±¾¡£",
 		options =
 		{
 			[1] = {
@@ -18995,7 +18995,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002,taskType = LoopTaskTargetType.brightMine,npcID = 20023}},	
 				},
-				optionTxt = "æŒ‘æˆ˜å¤§å¼Ÿå­ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½´óµÜ×Ó£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4274}},
@@ -19007,7 +19007,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20023}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5085,5180,5196,5212,5228}}},
@@ -19016,7 +19016,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19024,13 +19024,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20605] =    -----------é‡‘éœžå±±æ‰§æ³•é•¿è€
+	[20605] =    -----------½ðÏ¼É½Ö´·¨³¤ÀÏ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29068,
-		txt = "æ‹œäºŽé‡‘éœžå±±å±±ä¸‹ï¼Œå½“æ— æƒ§é©¬é©è£¹å°¸ä¹‹è‹¦ï¼Œä»¥æˆ˜æ­»æ²™åœºä¸ºè£ã€‚",
+		txt = "°ÝÓÚ½ðÏ¼É½É½ÏÂ£¬µ±ÎÞ¾åÂí¸ï¹üÊ¬Ö®¿à£¬ÒÔÕ½ËÀÉ³³¡ÎªÈÙ¡£",
 		options =
 		{
 			[1] = {
@@ -19038,7 +19038,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002,taskType = LoopTaskTargetType.brightMine,npcID = 29068}},
 				},
-				optionTxt = "æŒ‘æˆ˜é•¿è€ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½³¤ÀÏ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4275}},
@@ -19046,7 +19046,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19054,14 +19054,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20606] =    -----------é‡‘éœžå±±ç²¾è‹±å¼Ÿå­
+	[20606] =    -----------½ðÏ¼É½¾«Ó¢µÜ×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29074,
-		txt = "æœ¬æ´¾å…µåˆƒä»¥æžªä¸ºä¸»ï¼Œä¹ƒä¸Šé˜µæ€æ•Œé¦–é€‰å…µå™¨ã€‚",
+		txt = "±¾ÅÉ±øÈÐÒÔÇ¹ÎªÖ÷£¬ÄËÉÏÕóÉ±µÐÊ×Ñ¡±øÆ÷¡£",
 		options =
 		{
 			{
@@ -19072,69 +19072,70 @@ DialogModelDB =
 			}
 		},
 	},
-	---------è“¬èŽ±é˜npcå¯¹è¯IDè§„åˆ’ï¼š20651~20700-----------
-	[20651] =             --è“¬èŽ±é˜é—¨æ´¾ä¼ é€npc
+	---------ÅîÀ³¸ónpc¶Ô»°ID¹æ»®£º20651~20700-----------
+	[20651] =             --ÅîÀ³¸óÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29053,
-		txt = "è“¬èŽ±é˜æ™¯è‰²ç«¯åº„ï¼Œä½ å¯æ¸¸çŽ©ä¸€ç•ªï¼Œè‹¥è¦ç¦»å¼€ï¼Œæˆ‘å¯ä»¥é€ä½ ä¸€ç¨‹ã€‚",
+		txt = "ÅîÀ³¸ó¾°É«¶Ë×¯£¬Äã¿ÉÓÎÍæÒ»·¬£¬ÈôÒªÀë¿ª£¬ÎÒ¿ÉÒÔËÍÄãÒ»³Ì¡£",
 		options =
 		{
-			[1] =
+		        [1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
+
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
@@ -19144,7 +19145,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTasks, param = {taskIDs = {1095,1378}, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
 				},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ðþ¶¼Óñ¾©£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 110}},
@@ -19157,7 +19158,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1368, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
 				},
-				optionTxt = "çŽ‰æ³‰å±±ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÓñÈªÉ½£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 116}},
@@ -19170,15 +19171,15 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1042, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
 				},
-				optionTxt = "æ¡ƒå›­é•‡ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌÒÔ°Õò£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
-				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--åˆ‡æ¢åœºæ™¯
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¦å†è½¬è½¬",
+				optionTxt = "ÎÒÒªÔÙ×ª×ª",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19186,13 +19187,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20652] =    -----------è“¬èŽ±é˜æŽŒé—¨
+	[20652] =    -----------ÅîÀ³¸óÕÆÃÅ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20007,
-		txt = "å‡Œéœœå‡å¤©ç…§æ²§æµ·ï¼Œé’ä¸æ²å¿ƒé›ªæ»¡è¡£ã€‚æµŽä¸–æ‚¬å£¶æ€œä¼—ç”Ÿï¼ŒåŒ»å¿ƒå¦‚ä»™åŠ¨äººé—´ã€‚",
+		txt = "ÁèËªÄýÌìÕÕ²×º££¬ÇàË¿ÇßÐÄÑ©ÂúÒÂ¡£¼ÃÊÀÐüºøÁ¯ÖÚÉú£¬Ò½ÐÄÈçÏÉ¶¯ÈË¼ä¡£",
 		options =
 		{
 			[1] = {
@@ -19200,7 +19201,7 @@ DialogModelDB =
 				{
 			        {condition = DialogCondition.School, param = {school = SchoolType.PLG}},
 				},
-				optionTxt = "å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "Ê¦ÃÅÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4212}},
@@ -19211,7 +19212,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.catchPet, npcID = 20007}},
 				},
-				optionTxt = "ä¸Šäº¤å® ç‰©ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»³èÎï£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4561}},
@@ -19222,7 +19223,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.buyItem, npcID = 20007}},
 				},
-				optionTxt = "ä¸Šäº¤é“å…·ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»µÀ¾ß£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4611}},
@@ -19233,7 +19234,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.itemTalk, npcID = 20007}},
 				},
-				optionTxt = "ä¸‹å±±ä¹‹è¡Œï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÏÂÉ½Ö®ÐÐ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4791}},
@@ -19241,7 +19242,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19252,7 +19253,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15011, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "ÁË½âÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35505}},
@@ -19261,14 +19262,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20653] =    -----------è“¬èŽ±é˜é•¿è€
+	[20653] =    -----------ÅîÀ³¸ó³¤ÀÏ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29062,
-		txt = "èº«ä¸ºæœ¬æ´¾å¼Ÿå­ï¼Œå½“ä¸€èº«æ­£æ°”ï¼Œæ–©å¦–é™¤é­”ï¼Œä»¥åŒ¡æ‰¶å¤©é“ä¸ºå·±ä»»ï¼Œæ‰æ— æ„§äºŽå¤©ä¸‹ã€‚",
+		txt = "ÉíÎª±¾ÅÉµÜ×Ó£¬µ±Ò»ÉíÕýÆø£¬Õ¶Ñý³ýÄ§£¬ÒÔ¿ï·öÌìµÀÎª¼ºÈÎ£¬²ÅÎÞÀ¢ÓÚÌìÏÂ¡£",
 		options =
 		{
 			{
@@ -19279,14 +19280,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[20654] =    -----------è“¬èŽ±é˜å¤§å¼Ÿå­
+	[20654] =    -----------ÅîÀ³¸ó´óµÜ×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20022,
-		txt = "ä¿®è¡Œå½“æ­¥æ­¥ä¸ºè¥ï¼Œåˆ‡å‹¿æ€¥åŠŸè¿‘åˆ©ï¼Œæ­¤ä¹ƒä¿®è¡Œä¹‹æ ¹æœ¬ã€‚",
+		txt = "ÐÞÐÐµ±²½²½ÎªÓª£¬ÇÐÎð¼±¹¦½üÀû£¬´ËÄËÐÞÐÐÖ®¸ù±¾¡£",
 		options =
 		{
 			[1] = {
@@ -19294,7 +19295,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006,taskType = LoopTaskTargetType.brightMine,npcID = 20022}},
 				},
-				optionTxt = "æŒ‘æˆ˜å¤§å¼Ÿå­ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½´óµÜ×Ó£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4286}},
@@ -19306,7 +19307,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20022}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5084,5179,5195,5211,5227}}},
@@ -19315,7 +19316,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19323,13 +19324,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20655] =    -----------è“¬èŽ±é˜æ‰§æ³•é•¿è€
+	[20655] =    -----------ÅîÀ³¸óÖ´·¨³¤ÀÏ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29069,
-		txt = "åŒ»è€…ï¼Œå–„å¯æ•‘æ´»ä¸€æ–¹ï¼Œæ¶å¯æ¯’å®³ç™¾é‡Œï¼Œè°¨è®°ä¸å¯ç”¨é”™æ–¹å‘ã€‚",
+		txt = "Ò½Õß£¬ÉÆ¿É¾È»îÒ»·½£¬¶ñ¿É¶¾º¦°ÙÀï£¬½÷¼Ç²»¿ÉÓÃ´í·½Ïò¡£",
 		options =
 		{
 			[1] = {
@@ -19337,7 +19338,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006,taskType = LoopTaskTargetType.brightMine,npcID = 29069}},
 				},
-				optionTxt = "æŒ‘æˆ˜é•¿è€ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½³¤ÀÏ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4287}},
@@ -19345,7 +19346,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19353,14 +19354,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20656] =    -----------è“¬èŽ±é˜ç²¾è‹±å¼Ÿå­
+	[20656] =    -----------ÅîÀ³¸ó¾«Ó¢µÜ×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29075,
-		txt = "è“¬èŽ±é˜ä»¥æ•‘æ²»å¤©ä¸‹ä¸ºå·±ä»»ï¼Œå¥½æ–½è¡Œå–„æ–¹æ˜¯æˆ‘é˜æ ¸å¿ƒã€‚",
+		txt = "ÅîÀ³¸óÒÔ¾ÈÖÎÌìÏÂÎª¼ºÈÎ£¬ºÃÊ©ÐÐÉÆ·½ÊÇÎÒ¸óºËÐÄ¡£",
 		options =
 		{
 			{
@@ -19371,69 +19372,69 @@ DialogModelDB =
 			}
 		},
 	},
-	---------ç´«é˜³é—¨npcå¯¹è¯IDè§„åˆ’ï¼š20701~20750-----------
-	[20701] =             --ç´«é˜³é—¨é—¨æ´¾ä¼ é€npc
+	---------×ÏÑôÃÅnpc¶Ô»°ID¹æ»®£º20701~20750-----------
+	[20701] =             --×ÏÑôÃÅÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29054,
-		txt = "ç´«é˜³é—¨å±…äºŽç¾¤å±±ä¹‹ä¸­ï¼Œæ°”å€™å¤šå˜ï¼Œé“è·¯éš¾è¡Œï¼Œè‹¥è¦ç¦»å¼€ï¼Œæˆ‘å¯ä»¥é€ä½ ä¸€ç¨‹ã€‚",
+		txt = "×ÏÑôÃÅ¾ÓÓÚÈºÉ½Ö®ÖÐ£¬Æøºò¶à±ä£¬µÀÂ·ÄÑÐÐ£¬ÈôÒªÀë¿ª£¬ÎÒ¿ÉÒÔËÍÄãÒ»³Ì¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "äº‘éœ„å®«",
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÔÆÏö¹¬",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
@@ -19443,7 +19444,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTasks, param = {taskIDs = {1097,1378}, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
 				},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ðþ¶¼Óñ¾©£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 111}},
@@ -19456,7 +19457,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1370, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
 				},
-				optionTxt = "çŽ‰æ³‰å±±ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÓñÈªÉ½£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 117}},
@@ -19469,15 +19470,15 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1052, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
 				},
-				optionTxt = "æ¡ƒå›­é•‡ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌÒÔ°Õò£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
-				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--åˆ‡æ¢åœºæ™¯
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¦å†è½¬è½¬",
+				optionTxt = "ÎÒÒªÔÙ×ª×ª",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19485,13 +19486,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20702] =    -----------ç´«é˜³é—¨æŽŒé—¨
+	[20702] =    -----------×ÏÑôÃÅÕÆÃÅ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20008,
-		txt = "ä¸€ç®­å‡Œäº‘éœ‡ä¹å·žï¼Œé•¿è™¹è´¯æ—¥åˆå…«è’ã€‚ç‚¹è½å››æ–¹æ—¥æœˆé¿ï¼Œé£Žæ•£æµ®äº‘äººé—´å¯‚ã€‚",
+		txt = "Ò»¼ýÁèÔÆÕð¾ÅÖÝ£¬³¤ºç¹áÈÕºÏ°Ë»Ä¡£µãÂäËÄ·½ÈÕÔÂ±Ü£¬·çÉ¢¸¡ÔÆÈË¼ä¼Å¡£",
 		options =
 		{
 			[1] = {
@@ -19499,7 +19500,7 @@ DialogModelDB =
 				{
 				 {condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
 				},
-				optionTxt = "å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "Ê¦ÃÅÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4206}},
@@ -19510,7 +19511,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.catchPet, npcID = 20008}},
 				},
-				optionTxt = "ä¸Šäº¤å® ç‰©ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»³èÎï£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4555}},
@@ -19521,7 +19522,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.buyItem, npcID = 20008}},
 				},
-				optionTxt = "ä¸Šäº¤é“å…·ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»µÀ¾ß£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4605}},
@@ -19532,7 +19533,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.itemTalk, npcID = 20008}},
 				},
-				optionTxt = "ä¸‹å±±ä¹‹è¡Œï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÏÂÉ½Ö®ÐÐ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4785}},
@@ -19540,7 +19541,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "å¼Ÿå­å‘Šé€€",
+				optionTxt = "µÜ×Ó¸æÍË",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19551,7 +19552,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15005, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "ÁË½âÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35502}},
@@ -19560,14 +19561,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20703] =    -----------ç´«é˜³é—¨é•¿è€
+	[20703] =    -----------×ÏÑôÃÅ³¤ÀÏ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29063,
-		txt = "èº«ä¸ºæœ¬æ´¾å¼Ÿå­ï¼Œå½“ä¸€èº«æ­£æ°”ï¼Œæ–©å¦–é™¤é­”ï¼Œä»¥åŒ¡æ‰¶å¤©é“ä¸ºå·±ä»»ï¼Œæ‰æ— æ„§äºŽå¤©ä¸‹ã€‚",
+		txt = "ÉíÎª±¾ÅÉµÜ×Ó£¬µ±Ò»ÉíÕýÆø£¬Õ¶Ñý³ýÄ§£¬ÒÔ¿ï·öÌìµÀÎª¼ºÈÎ£¬²ÅÎÞÀ¢ÓÚÌìÏÂ¡£",
 		options =
 		{
 			{
@@ -19578,13 +19579,13 @@ DialogModelDB =
 			}
 		},
 	},
-	[20704] =    -----------ç´«é˜³é—¨å¤§å¼Ÿå­
+	[20704] =    -----------×ÏÑôÃÅ´óµÜ×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20026,
-		txt = "ä¿®è¡Œå½“æ­¥æ­¥ä¸ºè¥ï¼Œåˆ‡å‹¿æ€¥åŠŸè¿‘åˆ©ï¼Œæ­¤ä¹ƒä¿®è¡Œä¹‹æ ¹æœ¬ã€‚",
+		txt = "ÐÞÐÐµ±²½²½ÎªÓª£¬ÇÐÎð¼±¹¦½üÀû£¬´ËÄËÐÞÐÐÖ®¸ù±¾¡£",
 		options =
 		{
 			[1] = {
@@ -19592,7 +19593,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003,taskType = LoopTaskTargetType.brightMine,npcID = 20026}},
 				},
-				optionTxt = "æŒ‘æˆ˜å¤§å¼Ÿå­ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½´óµÜ×Ó£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4277}},
@@ -19604,7 +19605,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20026}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5088,5183,5199,5215,5231}}},
@@ -19613,7 +19614,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19621,13 +19622,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20705] =    -----------ç´«é˜³é—¨æ‰§æ³•é•¿è€
+	[20705] =    -----------×ÏÑôÃÅÖ´·¨³¤ÀÏ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29070,
-		txt = "ç´«é˜³ç®­æœ¯ä¸¾ä¸–æ— åŒï¼Œç™¾æ­¥ç©¿æ¨ä¹Ÿä¸åœ¨è¯ä¸‹ã€‚",
+		txt = "×ÏÑô¼ýÊõ¾ÙÊÀÎÞË«£¬°Ù²½´©ÑîÒ²²»ÔÚ»°ÏÂ¡£",
 		options =
 		{
 			[1] = {
@@ -19635,7 +19636,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003,taskType = LoopTaskTargetType.brightMine,npcID = 29070}},
 				},
-				optionTxt = "æŒ‘æˆ˜é•¿è€ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½³¤ÀÏ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4278}},
@@ -19643,7 +19644,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19651,14 +19652,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20706] =    -----------ç´«é˜³é—¨ç²¾è‹±å¼Ÿå­
+	[20706] =    -----------×ÏÑôÃÅ¾«Ó¢µÜ×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29076,
-		txt = "ç´«é˜³é—¨ä¸“äºŽå¼“å°„ä¹‹é“ï¼Œå–æ•Œé¦–çº§ä¸Žåƒé‡Œä¹‹å¤–ã€‚",
+		txt = "×ÏÑôÃÅ×¨ÓÚ¹­ÉäÖ®µÀ£¬È¡µÐÊ×¼¶ÓëÇ§ÀïÖ®Íâ¡£",
 		options =
 		{
 			{
@@ -19669,69 +19670,69 @@ DialogModelDB =
 			}
 		},
 	},
-	-----------äº‘éœ„å®«npcå¯¹è¯IDè§„åˆ’ï¼š20751~20800
-	[20751] =             --äº‘éœ„å®«é—¨æ´¾ä¼ é€npc
+	-----------ÔÆÏö¹¬npc¶Ô»°ID¹æ»®£º20751~20800
+	[20751] =             --ÔÆÏö¹¬ÃÅÅÉ´«ËÍnpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29055,
-		txt = "äº‘éœ„å®«ä¾å±±è€Œå»ºï¼Œé£Žæ™¯åˆ«æœ‰ä¸€ç•ªæ»‹å‘³ï¼Œä½ å¯ä»¥åˆ°å¤„èµ°èµ°ã€‚è‹¥è¦ç¦»å¼€ï¼Œæˆ‘å¯ä»¥é€ä½ ä¸€ç¨‹ã€‚",
+		txt = "ÔÆÏö¹¬ÒÀÉ½¶ø½¨£¬·ç¾°±ðÓÐÒ»·¬×ÌÎ¶£¬Äã¿ÉÒÔµ½´¦×ß×ß¡£ÈôÒªÀë¿ª£¬ÎÒ¿ÉÒÔËÍÄãÒ»³Ì¡£",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "é‡‘éœžå±±",
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è“¬èŽ±é˜",
+				optionTxt = "½ðÏ¼É½",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--ÇÐ»»³¡¾°
 				},
 			},
 			[3] =
 			{
 				showConditions = {},
-				optionTxt = "ä¹¾å…ƒå²›",
+				optionTxt = "ÅîÀ³¸ó",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--ÇÐ»»³¡¾°
 				},
 			},
 			[4] =
 			{
 				showConditions = {},
-				optionTxt = "æ¡ƒæºæ´ž",
+				optionTxt = "Ç¬Ôªµº",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--ÇÐ»»³¡¾°
 				},
 			},
 			[5] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÌÒÔ´¶´",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--ÇÐ»»³¡¾°
 				},
 			},
 			[6] =
 			{
 				showConditions = {},
-				optionTxt = "ç´«é˜³é—¨",
+				optionTxt = "×ÏÑôÃÅ",
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--ÇÐ»»³¡¾°
 				},
 			},
 			[7] =
@@ -19741,7 +19742,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTasks, param = {taskIDs = {1099,1378}, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
 				},
-				optionTxt = "çŽ„éƒ½çŽ‰äº¬ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "Ðþ¶¼Óñ¾©£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 112}},
@@ -19754,7 +19755,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1372, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
 				},
-				optionTxt = "çŽ‰æ³‰å±±ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÓñÈªÉ½£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 118}},
@@ -19767,15 +19768,15 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 1062, statue = true}},
 				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
 				},
-				optionTxt = "æ¡ƒå›­é•‡ï¼ˆä¸»çº¿ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌÒÔ°Õò£¨Ö÷ÏßÈÎÎñ£©",
 				actions =
 				{
-				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--åˆ‡æ¢åœºæ™¯
+				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--ÇÐ»»³¡¾°
 				},
 			},
 			[10] = {
 				showConditions = {},
-				optionTxt = "æˆ‘è¦å†è½¬è½¬",
+				optionTxt = "ÎÒÒªÔÙ×ª×ª",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19783,13 +19784,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20752] =    -----------äº‘éœ„å®«æŽŒé—¨
+	[20752] =    -----------ÔÆÏö¹¬ÕÆÃÅ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 20009,
-		txt = "æ—¥è½æ˜Ÿæ²‰çœè‹èŒ«ï¼Œå‰‘æŒ½å¤©åŽæƒŠæ³¢æ¾œã€‚ç»¿ç¦æ‹‚è¿‡ç©ºè™šæœ‰ï¼Œå´ç¬‘æ¡ƒå›­åœ¨æ¢¦ä¸­ã€‚",
+		txt = "ÈÕÂäÐÇ³Á±j²ÔÃ££¬½£ÍìÌì»ª¾ª²¨À½¡£ÂÌçù·÷¹ý¿ÕÐéÓÐ£¬È´Ð¦ÌÒÔ°ÔÚÃÎÖÐ¡£",
 		options =
 		{
 			[1] = {
@@ -19797,7 +19798,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
 				},
-				optionTxt = "å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "Ê¦ÃÅÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4208}},
@@ -19808,7 +19809,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.catchPet, npcID = 20009}},
 				},
-				optionTxt = "ä¸Šäº¤å® ç‰©ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»³èÎï£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4557}},
@@ -19819,7 +19820,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.buyItem, npcID = 20009}},
 				},
-				optionTxt = "ä¸Šäº¤é“å…·ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÉÏ½»µÀ¾ß£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4607}},
@@ -19830,7 +19831,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.itemTalk, npcID = 20009}},
 				},
-				optionTxt = "ä¸‹å±±ä¹‹è¡Œï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÏÂÉ½Ö®ÐÐ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4787}},
@@ -19838,7 +19839,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "å¼Ÿå­å‘Šé€€",
+				optionTxt = "µÜ×Ó¸æÍË",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19849,7 +19850,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15007, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "ÁË½âÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35503}},
@@ -19858,14 +19859,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20753] =    -----------äº‘éœ„å®«é•¿è€
+	[20753] =    -----------ÔÆÏö¹¬³¤ÀÏ
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29064,
-		txt = "èº«ä¸ºæœ¬æ´¾å¼Ÿå­ï¼Œå½“ä¸€èº«æ­£æ°”ï¼Œæ–©å¦–é™¤é­”ï¼Œä»¥åŒ¡æ‰¶å¤©é“ä¸ºå·±ä»»ï¼Œæ‰æ— æ„§äºŽå¤©ä¸‹ã€‚",
+		txt = "ÉíÎª±¾ÅÉµÜ×Ó£¬µ±Ò»ÉíÕýÆø£¬Õ¶Ñý³ýÄ§£¬ÒÔ¿ï·öÌìµÀÎª¼ºÈÎ£¬²ÅÎÞÀ¢ÓÚÌìÏÂ¡£",
 		options =
 		{
 			{
@@ -19876,14 +19877,14 @@ DialogModelDB =
 			}
 		},
 	},
-	[20754] =    -----------äº‘éœ„å®«å¤§å¼Ÿå­
+	[20754] =    -----------ÔÆÏö¹¬´óµÜ×Ó
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20024,
-		txt = "ä¿®è¡Œå½“æ­¥æ­¥ä¸ºè¥ï¼Œåˆ‡å‹¿æ€¥åŠŸè¿‘åˆ©ï¼Œæ­¤ä¹ƒä¿®è¡Œä¹‹æ ¹æœ¬ã€‚",
+		txt = "ÐÞÐÐµ±²½²½ÎªÓª£¬ÇÐÎð¼±¹¦½üÀû£¬´ËÄËÐÞÐÐÖ®¸ù±¾¡£",
 		options =
 		{
 			[1] = {
@@ -19891,7 +19892,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004,taskType = LoopTaskTargetType.brightMine,npcID = 20024}},
 				},
-				optionTxt = "æŒ‘æˆ˜å¤§å¼Ÿå­ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½´óµÜ×Ó£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4280}},
@@ -19903,7 +19904,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 20024}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5087,5182,5198,5214,5230}}},
@@ -19912,7 +19913,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19920,13 +19921,13 @@ DialogModelDB =
 			},
 		},
 	},
-	[20755] =    -----------äº‘éœ„å®«æ‰§æ³•é•¿è€
+	[20755] =    -----------ÔÆÏö¹¬Ö´·¨³¤ÀÏ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 29071,
-		txt = "äº‘éœ„åŠŸæ³•åœ¨äºŽå¿ƒï¼Œå¿ƒä¹‹æ‰€å‘ï¼Œå‰‘é”‹æ‰€æŒ‡ï¼Œåˆ™æ”»æ•Œæ‰€å¿…èƒœã€‚",
+		txt = "ÔÆÏö¹¦·¨ÔÚÓÚÐÄ£¬ÐÄÖ®ËùÏò£¬½£·æËùÖ¸£¬Ôò¹¥µÐËù±ØÊ¤¡£",
 		options =
 		{
 			[1] = {
@@ -19934,7 +19935,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004,taskType = LoopTaskTargetType.brightMine,npcID = 29071}},
 				},
-				optionTxt = "æŒ‘æˆ˜é•¿è€ï¼ˆå¸ˆé—¨ä»»åŠ¡ï¼‰",
+				optionTxt = "ÌôÕ½³¤ÀÏ£¨Ê¦ÃÅÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4281}},
@@ -19942,7 +19943,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -19950,14 +19951,14 @@ DialogModelDB =
 			},
 		},
 	},
-	[20756] =    -----------äº‘éœ„å®«ç²¾è‹±å¼Ÿå­
+	[20756] =    -----------ÔÆÏö¹¬¾«Ó¢µÜ×Ó
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
 		},
 		speakerID = 29077,
-		txt = "äº‘éœ„å®«ç´ æ¥ä¸ç®¡ä¸–ä¿—ï¼Œè‹¥éžæœ‰å¦–é­”ä½œä¹±ï¼Œäº‘éœ„å¼Ÿå­ä¸ä¼šè½»æ˜“ä¸‹å±±ã€‚",
+		txt = "ÔÆÏö¹¬ËØÀ´²»¹ÜÊÀË×£¬Èô·ÇÓÐÑýÄ§×÷ÂÒ£¬ÔÆÏöµÜ×Ó²»»áÇáÒ×ÏÂÉ½¡£",
 		options =
 		{
 			{
@@ -19968,7 +19969,7 @@ DialogModelDB =
 			}
 		},
 	},
-	--------------------å…¶ä»–ç‰¹æ®Šnpcå¯¹è¯IDï¼š20801~20850
+	--------------------ÆäËûÌØÊânpc¶Ô»°ID£º20801~20850
 	[20801] =
 	{
 		dialogType = DialogType.HasOption,
@@ -19977,12 +19978,12 @@ DialogModelDB =
 			{condition = DialogCondition.Faction, param = {factionDBID = 1}},
 		},
 		speakerID = 29048,
-		txt = "å¿ ä¹‰ä¸ºé¦–ï¼Œè‚èƒ†ç›¸ç…§ã€‚å¸®ä¼šçš„å®—æ—¨å°±æ˜¯è¿™æ ·çš„ï¼Œä½ è®¤ä¸ºå‘¢ï¼Ÿ",
+		txt = "ÖÒÒåÎªÊ×£¬¸Îµ¨ÏàÕÕ¡£°ï»áµÄ×ÚÖ¼¾ÍÊÇÕâÑùµÄ£¬ÄãÈÏÎªÄØ£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ‘çš„å¸®æ´¾é¢†åœ°",
+				optionTxt = "½øÈëÎÒµÄ°ïÅÉÁìµØ",
 				actions =
 				{
 					{action = DialogActionType.EnterFactionScene , param ={tarX = 86, tarY = 68}},
@@ -19990,7 +19991,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20001,10 +20002,22 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15016, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸®æ´¾",
+				optionTxt = "ÁË½â°ïÅÉ",
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 15016}},
+				},
+				icon = DialogIcon.Help,
+			},
+			[4] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15017, statue = true}},
+				},
+				optionTxt = "ÎÒÒÑ¾­¼ÓÈë°ïÅÉ",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 15017}},
 				},
 				icon = DialogIcon.Help,
 			}
@@ -20018,12 +20031,12 @@ DialogModelDB =
 			{condition = DialogCondition.Faction, param = {factionDBID = 0}},
 		},
 		speakerID = 29048,
-		txt = "å¿ ä¹‰ä¸ºé¦–ï¼Œè‚èƒ†ç›¸ç…§ã€‚å¸®ä¼šçš„å®—æ—¨å°±æ˜¯è¿™æ ·çš„ï¼Œä½ è®¤ä¸ºå‘¢ï¼Ÿ",
+		txt = "ÖÒÒåÎªÊ×£¬¸Îµ¨ÏàÕÕ¡£°ï»áµÄ×ÚÖ¼¾ÍÊÇÕâÑùµÄ£¬ÄãÈÏÎªÄØ£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "åˆ›å»ºæ–°å¸®æ´¾",
+				optionTxt = "´´½¨ÐÂ°ïÅÉ",
 				actions =
 				{
 					{action = DialogActionType.CreateFaction , param = {v = "FactionCreateWin"},},
@@ -20031,7 +20044,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æŸ¥çœ‹å¸®æ´¾åˆ—è¡¨",
+				optionTxt = "²é¿´°ïÅÉÁÐ±í",
 				actions =
 				{
 					{action = DialogActionType.ShowFactionList , param = {v = "FactionListWin"},},
@@ -20039,7 +20052,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20050,7 +20063,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15016, statue = true}},
 				},
-				optionTxt = "äº†è§£å¸®æ´¾",
+				optionTxt = "ÁË½â°ïÅÉ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35508}},
@@ -20067,12 +20080,12 @@ DialogModelDB =
 			
 		},
 		speakerID = 29049,
-		txt = "TPï¼Ÿï¼Ÿ",
+		txt = "TP£¿£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¼ é€åˆ°æ´›é˜³åŸŽ",
+				optionTxt = "´«ËÍµ½ÂåÑô³Ç",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 134, tarY = 204}},
@@ -20080,7 +20093,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20096,12 +20109,12 @@ DialogModelDB =
 			
 		},
 		speakerID = 29078,
-		txt = "è°¢è°¢ä½ é•¿å¾—è¿™ä¹ˆå¸…è¿˜ç‚¹æˆ‘",
+		txt = "Ð»Ð»Äã³¤µÃÕâÃ´Ë§»¹µãÎÒ",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "å¸®ä¼šæçŒ®",
+				optionTxt = "°ï»á¾èÏ×",
 				actions =
 				{
 					{action = DialogActionType.ContributeFaction , param ={v = "FactionContributeWin"}},
@@ -20109,7 +20122,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "å‘Šè¾ž",
+				optionTxt = "¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20117,29 +20130,29 @@ DialogModelDB =
 			},
 		},
 	},
-	--------------------å…¶ä»–ç‰¹æ®Šnpcå¯¹è¯IDï¼š20851~21000--------
-	[20851] =             --ä¸»çº¿35-36é’å³°å±±ä¼ é€äºº
+	--------------------ÆäËûÌØÊânpc¶Ô»°ID£º20851~21000--------
+	[20851] =             --Ö÷Ïß35-36Çà·åÉ½´«ËÍÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20834,
-		txt = "æˆ‘å¯ä»¥é€ä½ ä»¬åŽ»æ´›é˜³ï¼Œç¡®å®šè¦åŽ»ä¹ˆï¼",
+		txt = "ÎÒ¿ÉÒÔËÍÄãÃÇÈ¥ÂåÑô£¬È·¶¨ÒªÈ¥Ã´£¡",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--ÇÐ»»³¡¾°
 				},
 			},
 		},
 	},
-	[20852] =            -------------ä¸»çº¿ä»»åŠ¡35-36ä¼ é€é’å³°å±±
+	[20852] =            -------------Ö÷ÏßÈÎÎñ35-36´«ËÍÇà·åÉ½
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -20147,12 +20160,12 @@ DialogModelDB =
 		{condition = DialogCondition.HasTasks, param = {taskIDs = {1311,1313,1315,1317,1319,1321,1328,1339}, statue = true}},	
 		},
 		speakerID = 29055,
-		txt = "é˜æ•™å¼Ÿå­ï¼Œæˆ‘å¯ä»¥é€ä½ åˆ°é’å³°å±±ã€‚",
+		txt = "²û½ÌµÜ×Ó£¬ÎÒ¿ÉÒÔËÍÄãµ½Çà·åÉ½¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "é’å³°å±±",
+				optionTxt = "Çà·åÉ½",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 129, tarX = 121, tarY = 34}},
@@ -20161,7 +20174,7 @@ DialogModelDB =
 
 		},
 	},
-	[20853] =             -------------ä¸»çº¿ä»»åŠ¡35-36ï¼Œä»»åŠ¡ID1328ï¼Œä¸Šäº¤ç‰©å“ã€‚
+	[20853] =             -------------Ö÷ÏßÈÎÎñ35-36£¬ÈÎÎñID1328£¬ÉÏ½»ÎïÆ·¡£
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -20170,12 +20183,12 @@ DialogModelDB =
 		},
 		speakerID = 20829,
 		soundID = nil,
-		txt = "ä½ æ‰¾åˆ°ç‚¼åˆ¶ç§˜ç¬¦çš„ææ–™äº†ä¹ˆï¼",
+		txt = "ÄãÕÒµ½Á¶ÖÆÃØ·ûµÄ²ÄÁÏÁËÃ´£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ææ–™",
+				optionTxt = "ÉÏ½»²ÄÁÏ",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 1328,itemsInfo = {{itemID = 1041001, count = 1},{itemID = 1041002, count = 1},{itemID = 1041003, count = 1},{itemID = 1041004, count = 1}}},},
@@ -20183,7 +20196,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[20854] =             -------------ä¸»çº¿ä»»åŠ¡33-34ï¼Œä»»åŠ¡ID1328ï¼Œä¸Šäº¤ç‰©å“ã€‚
+	[20854] =             -------------Ö÷ÏßÈÎÎñ33-34£¬ÈÎÎñID1328£¬ÉÏ½»ÎïÆ·¡£
 	{
 		dialogType = DialogType.HasOption,
 		conditions = 
@@ -20192,12 +20205,12 @@ DialogModelDB =
 		},
 		speakerID = 20711,
 		soundID = nil,
-		txt = "ä½ å¯æœ‰æ‹¿åˆ°å¤©å±±é›ªèŽ²ï¼Ÿ",
+		txt = "Äã¿ÉÓÐÄÃµ½ÌìÉ½Ñ©Á«£¿",
 		options = 
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤ææ–™",
+				optionTxt = "ÉÏ½»²ÄÁÏ",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 1223,itemsInfo = {{itemID = 1041014, count = 1}}},},
@@ -20205,20 +20218,20 @@ DialogModelDB =
 			},
 		},
 	},
-	[20855] =             --ä¸»çº¿1-25çŽ‰æ³‰å±±ä¼ é€äºº
+	[20855] =             --Ö÷Ïß1-25ÓñÈªÉ½´«ËÍÈË
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 20113,
-		txt = "æˆ‘å¯ä»¥é€ä½ åŽ»æ´›é˜³ï¼Œç¡®å®šè¦åŽ»ä¹ˆï¼",
+		txt = "ÎÒ¿ÉÒÔËÍÄãÈ¥ÂåÑô£¬È·¶¨ÒªÈ¥Ã´£¡",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æ´›é˜³",  --ä¸»åŸŽ
+				optionTxt = "ÂåÑô",  --Ö÷³Ç
 				actions =
 				{
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 119}},
@@ -20226,20 +20239,20 @@ DialogModelDB =
 			},
 		},
 	},
-	----é—¨æ´¾é—¯å…³æ´»åŠ¨
+	----ÃÅÅÉ´³¹Ø»î¶¯
 
-	[20860] =    -----------é—¨æ´¾é—¯å…³ä½¿è€…
+	[20860] =    -----------ÃÅÅÉ´³¹ØÊ¹Õß
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50050,
-		txt = "è‹¥èƒ½åœ¨é—¨æ´¾é—¯å…³æ´»åŠ¨ä¸­è„±é¢–è€Œå‡ºï¼ŒåŠ¿å¿…å¾—åˆ°å…­å¤§ä»™é—¨å…±åŒå˜‰å¥–ï¼Œé“å‹å¯è¦ä¸€è¯•ï¼Ÿ",
+		txt = "ÈôÄÜÔÚÃÅÅÉ´³¹Ø»î¶¯ÖÐÍÑÓ±¶ø³ö£¬ÊÆ±ØµÃµ½Áù´óÏÉÃÅ¹²Í¬¼Î½±£¬µÀÓÑ¿ÉÒªÒ»ÊÔ£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "å¼Ÿå­å·²å‡†å¤‡å‘¨å…¨ï¼ï¼ˆæŽ¥å—ä»»åŠ¡ï¼‰",
+				optionTxt = "µÜ×ÓÒÑ×¼±¸ÖÜÈ«£¡£¨½ÓÊÜÈÎÎñ£©",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20247,7 +20260,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘å°±çœ‹çœ‹çƒ­é—¹ã€‚",
+				optionTxt = "ÎÒ¾Í¿´¿´ÈÈÄÖ¡£",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20255,18 +20268,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20861] =    -----------ä¹¾å…ƒå²›æŠ¤æ³•
+	[20861] =    -----------Ç¬Ôªµº»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50051,
-		txt = "å®ˆæŠ¤å±±é—¨å®‰å…¨ï¼Œä¹ƒæˆ‘è¾ˆæœ¬åˆ†ã€‚",
+		txt = "ÊØ»¤É½ÃÅ°²È«£¬ÄËÎÒ±²±¾·Ö¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¯·èµæ•™",
+				optionTxt = "Çë´Í½Ì",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20274,18 +20287,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20862] =    -----------ä¹¾å…ƒå²›æŠ¤æ³•
+	[20862] =    -----------Ç¬Ôªµº»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50052,
-		txt = "å®ˆæŠ¤å±±é—¨å®‰å…¨ï¼Œä¹ƒæˆ‘è¾ˆæœ¬åˆ†ã€‚",
+		txt = "ÊØ»¤É½ÃÅ°²È«£¬ÄËÎÒ±²±¾·Ö¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¯·èµæ•™",
+				optionTxt = "Çë´Í½Ì",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20293,18 +20306,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20863] =    -----------ä¹¾å…ƒå²›æŠ¤æ³•
+	[20863] =    -----------Ç¬Ôªµº»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50053,
-		txt = "å®ˆæŠ¤å±±é—¨å®‰å…¨ï¼Œä¹ƒæˆ‘è¾ˆæœ¬åˆ†ã€‚",
+		txt = "ÊØ»¤É½ÃÅ°²È«£¬ÄËÎÒ±²±¾·Ö¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¯·èµæ•™",
+				optionTxt = "Çë´Í½Ì",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20312,18 +20325,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20864] =    -----------ä¹¾å…ƒå²›æŠ¤æ³•
+	[20864] =    -----------Ç¬Ôªµº»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50054,
-		txt = "å®ˆæŠ¤å±±é—¨å®‰å…¨ï¼Œä¹ƒæˆ‘è¾ˆæœ¬åˆ†ã€‚",
+		txt = "ÊØ»¤É½ÃÅ°²È«£¬ÄËÎÒ±²±¾·Ö¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¯·èµæ•™",
+				optionTxt = "Çë´Í½Ì",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20331,18 +20344,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20865] =    -----------ä¹¾å…ƒå²›æŠ¤æ³•
+	[20865] =    -----------Ç¬Ôªµº»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50055,
-		txt = "å®ˆæŠ¤å±±é—¨å®‰å…¨ï¼Œä¹ƒæˆ‘è¾ˆæœ¬åˆ†ã€‚",
+		txt = "ÊØ»¤É½ÃÅ°²È«£¬ÄËÎÒ±²±¾·Ö¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¯·èµæ•™",
+				optionTxt = "Çë´Í½Ì",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20350,18 +20363,18 @@ DialogModelDB =
 			},
 		},
 	},
-	[20866] =    -----------ä¹¾å…ƒå²›æŠ¤æ³•
+	[20866] =    -----------Ç¬Ôªµº»¤·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 50056,
-		txt = "å®ˆæŠ¤å±±é—¨å®‰å…¨ï¼Œä¹ƒæˆ‘è¾ˆæœ¬åˆ†ã€‚",
+		txt = "ÊØ»¤É½ÃÅ°²È«£¬ÄËÎÒ±²±¾·Ö¡£",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "è¯·èµæ•™",
+				optionTxt = "Çë´Í½Ì",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -20369,7 +20382,7 @@ DialogModelDB =
 			},
 		},
 	},
-----------------------------æˆ‘æ˜¯å‰¯æœ¬åˆ†å‰²çº¿ï¼Œä¸Šé¢æ˜¯å¸¸é©»NPCå¯¹è¯ï¼Œä¸‹é¢æ˜¯å‰¯æœ¬-----------------------------------
+----------------------------ÎÒÊÇ¸±±¾·Ö¸îÏß£¬ÉÏÃæÊÇ³£×¤NPC¶Ô»°£¬ÏÂÃæÊÇ¸±±¾-----------------------------------
 	[3000] =
 	{
 		dialogType = DialogType.NotOption,
@@ -20378,7 +20391,7 @@ DialogModelDB =
 		},
 		speakerID = 30001,
 		soundID = 26142 ,
-		txt = "æ­¤åœ°ä¹ƒå¾ç­‰é•‡å®ˆï¼Œæƒ³è¦è§æŽå‚•å¤§äººï¼Œå…ˆè¿‡æˆ‘è¿™å…³ï¼",
+		txt = "´ËµØÄËÎáµÈÕòÊØ£¬ÏëÒª¼ûÀî‚à´óÈË£¬ÏÈ¹ýÎÒÕâ¹Ø£¡",
 		options =
 		{
 			{
@@ -20400,7 +20413,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26143 ,
-		txt = "æ‰¾çš„ä¾¿æ˜¯æŽå‚•ï¼Œä»Šæ—¥å¾å¿…å°†è¯›æ€æ­¤æ¶è´¼ï¼",
+		txt = "ÕÒµÄ±ãÊÇÀî‚à£¬½ñÈÕÎá±Ø½«ÖïÉ±´Ë¶ñÔô£¡",
 		options =
 		{
 			{
@@ -20422,7 +20435,7 @@ DialogModelDB =
 		},
 		speakerID = 30006,
 		soundID =26146 ,
-		txt = "èƒ†æ•¢æ‰“æ‰°æŽå‚•å¤§äººå¤§è®¡ï¼Œå—æ­»å§ï¼",
+		txt = "µ¨¸Ò´òÈÅÀî‚à´óÈË´ó¼Æ£¬ÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -20444,7 +20457,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26147 ,
-		txt = "å…ˆå‡»æ€ä½ ç­‰ï¼Œå†åŽ»è¯›æ€æŽå‚•ï¼",
+		txt = "ÏÈ»÷É±ÄãµÈ£¬ÔÙÈ¥ÖïÉ±Àî‚à£¡",
 		options =
 		{
 			{
@@ -20466,7 +20479,7 @@ DialogModelDB =
 		},
 		speakerID = 30011,
 		soundID =26150 ,
-		txt = "æ­¤åœ°ä¹ƒå¾ç­‰é•‡å®ˆï¼Œæƒ³è¦è§æŽå‚•å¤§äººï¼Œå…ˆè¿‡æˆ‘è¿™å…³ï¼",
+		txt = "´ËµØÄËÎáµÈÕòÊØ£¬ÏëÒª¼ûÀî‚à´óÈË£¬ÏÈ¹ýÎÒÕâ¹Ø£¡",
 		options =
 		{
 			{
@@ -20488,7 +20501,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26151 ,
-		txt = "è´¼å¿ƒä¸æ”¹ï¼Œé‚£å°±å…ˆå‡»æ€äº†ä½ ï¼Œå†åŽ»æ‰¾æŽå‚•ç®—è´¦ï¼",
+		txt = "ÔôÐÄ²»¸Ä£¬ÄÇ¾ÍÏÈ»÷É±ÁËÄã£¬ÔÙÈ¥ÕÒÀî‚àËãÕË£¡",
 		options =
 		{
 			{
@@ -20510,7 +20523,7 @@ DialogModelDB =
 		},
 		speakerID = 30016,
 		soundID =26154 ,
-		txt = "ç«Ÿæ•¢é—¯å…¥æŽå‚•å¤§äººé©»å®ˆä¹‹åœ°ï¼Œå—æ­»å§ï¼",
+		txt = "¾¹¸Ò´³ÈëÀî‚à´óÈË×¤ÊØÖ®µØ£¬ÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -20532,7 +20545,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26155 ,
-		txt = "æŽå‚•ç©¶ç«Ÿåœ¨ä½•å¤„ï¼Œè¯´å‡ºæ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "Àî‚à¾¿¾¹ÔÚºÎ´¦£¬Ëµ³öÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -20554,7 +20567,7 @@ DialogModelDB =
 		},
 		speakerID = 30021,
 		soundID =26158 ,
-		txt = "æŽå‚•å¤§äººå¤æ´»ä¸»å…¬å¤§æˆåœ¨å³ï¼Œå²‚å®¹ä½ æ¥ç ´å!",
+		txt = "Àî‚à´óÈË¸´»îÖ÷¹«´ó³ÉÔÚ¼´£¬ÆñÈÝÄãÀ´ÆÆ»µ!",
 		options =
 		{
 			{
@@ -20576,7 +20589,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26159 ,
-		txt = "æ‰¾çš„ä¾¿æ˜¯æŽå‚•ï¼Œé€Ÿé€Ÿè®©å¼€!",
+		txt = "ÕÒµÄ±ãÊÇÀî‚à£¬ËÙËÙÈÃ¿ª!",
 		options =
 		{
 			{
@@ -20598,7 +20611,7 @@ DialogModelDB =
 		},
 		speakerID = 30026,
 		soundID =26162 ,
-		txt = "å°è´¼ï¼èƒ†æ•¢é˜»æŒ æˆ‘å¤æ´»å¾ä¸»è‘£å“å¤§è®¡ï¼Œä»Šæ—¥å¿…å°†æŠŠä½ ç¢Žå°¸ä¸‡æ®µï¼",
+		txt = "Ð¡Ôô£¡µ¨¸Ò×èÄÓÎÒ¸´»îÎáÖ÷¶­×¿´ó¼Æ£¬½ñÈÕ±Ø½«°ÑÄãËéÊ¬Íò¶Î£¡",
 		options =
 		{
 			{
@@ -20620,7 +20633,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26163 ,
-		txt = "ç«Ÿç„¶å¦„æƒ³å¤æ´»å¦‚æ­¤ç½ªå¤§æ¶æžä¹‹äººï¼Œä»Šæ—¥å²‚èƒ½è®©ä½ å¦‚æ„¿ï¼",
+		txt = "¾¹È»ÍýÏë¸´»îÈç´Ë×ï´ó¶ñ¼«Ö®ÈË£¬½ñÈÕÆñÄÜÈÃÄãÈçÔ¸£¡",
 		options =
 		{
 			{
@@ -20641,22 +20654,22 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20019,
-		txt = "ä¿®å¤å® ç‰©è¦æ¶ˆè€—ç»‘é“¶å’Œé‡‘é’±çš„å“¦",
+		txt = "ÐÞ¸´³èÎïÒªÏûºÄ°óÒøºÍ½ðÇ®µÄÅ¶",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤å½“å‰å‡ºæˆ˜å® ç‰©",
+				optionTxt = "ÐÞ¸´µ±Ç°³öÕ½³èÎï",
 				actions =
 				{
-					{action = DialogActionType.RepairPet ,param = {}},--åˆ‡æ¢åœºæ™¯
+					{action = DialogActionType.RepairPet ,param = {}},--ÇÐ»»³¡¾°
 				},
 			},
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "ä¿®å¤æ‰€æœ‰å® ç‰©",
+				optionTxt = "ÐÞ¸´ËùÓÐ³èÎï",
 				actions =
 				{
 					{action = DialogActionType.RepairAllPet, param = {}},
@@ -20673,7 +20686,7 @@ DialogModelDB =
 		},
 		speakerID = 30070,
 		soundID =26168 ,
-		txt = "ä»€ä¹ˆäºº!ç«Ÿæ•¢æ¥æ­¤åœ°ç ´åéƒ­æ±œå¤§äººçš„è®¡åˆ’!ä¸æƒ³æ´»äº†!",
+		txt = "Ê²Ã´ÈË!¾¹¸ÒÀ´´ËµØÆÆ»µ¹ùãá´óÈËµÄ¼Æ»®!²»Ïë»îÁË!",
 		options =
 		{
 			{
@@ -20695,7 +20708,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26169 ,
-		txt = "æ‰¾çš„ä¾¿æ˜¯éƒ­æ±œ!å°†éƒ­æ±œä¸‹è½å‘Šè¯‰æˆ‘,é¥¶ä½ ä¸æ­»!",
+		txt = "ÕÒµÄ±ãÊÇ¹ùãá!½«¹ùãáÏÂÂä¸æËßÎÒ,ÈÄÄã²»ËÀ!",
 		options =
 		{
 			{
@@ -20717,7 +20730,7 @@ DialogModelDB =
 		},
 		speakerID = 30075,
 		soundID =26172 ,
-		txt = "èƒ†æ•¢é—¯å…¥åˆ°å¤©ç‰¢å±±ä¸­æ¥ï¼Œçº³å‘½æ¥å§ï¼",
+		txt = "µ¨¸Ò´³Èëµ½ÌìÀÎÉ½ÖÐÀ´£¬ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			{
@@ -20739,7 +20752,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26173 ,
-		txt = "å…ˆå‡»æ€äº†ä½ ä»¬ï¼Œå†åŽ»æ‰¾è¯›æ€éƒ­æ±œï¼",
+		txt = "ÏÈ»÷É±ÁËÄãÃÇ£¬ÔÙÈ¥ÕÒÖïÉ±¹ùãá£¡",
 		options =
 		{
 			{
@@ -20761,7 +20774,7 @@ DialogModelDB =
 		},
 		speakerID = 30080,
 		soundID =26176 ,
-		txt = "æœ‰æœ¬å°†åœ¨æ­¤é©»å®ˆå¤©ç‰¢å±±ï¼Œå°”ç­‰å°è´¼ä¼‘å¾—åš£å¼ ï¼",
+		txt = "ÓÐ±¾½«ÔÚ´Ë×¤ÊØÌìÀÎÉ½£¬¶ûµÈÐ¡ÔôÐÝµÃÏùÕÅ£¡",
 		options =
 		{
 			{
@@ -20783,7 +20796,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26177 ,
-		txt = "æ¥çš„å¥½ï¼Œå¿«è¯´ï¼éƒ­æ±œç©¶ç«Ÿåœ¨ä½•å¤„ï¼",
+		txt = "À´µÄºÃ£¬¿ìËµ£¡¹ùãá¾¿¾¹ÔÚºÎ´¦£¡",
 		options =
 		{
 			{
@@ -20805,7 +20818,7 @@ DialogModelDB =
 		},
 		speakerID = 30085,
 		soundID =26180 ,
-		txt = "å“ªé‡Œæ¥çš„å°è´¼ï¼Œç«Ÿç„¶å¦„æƒ³é˜»æ­¢éƒ­æ±œå¤§äººå¤§è®¡ï¼",
+		txt = "ÄÄÀïÀ´µÄÐ¡Ôô£¬¾¹È»ÍýÏë×èÖ¹¹ùãá´óÈË´ó¼Æ£¡",
 		options =
 		{
 			{
@@ -20827,7 +20840,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26181 ,
-		txt = "å«éƒ­æ±œé€Ÿé€Ÿå‡ºæ¥å—æ­»ï¼",
+		txt = "½Ð¹ùãáËÙËÙ³öÀ´ÊÜËÀ£¡",
 		options =
 		{
 			{
@@ -20849,7 +20862,7 @@ DialogModelDB =
 		},
 		speakerID = 30090,
 		soundID =26184 ,
-		txt = "å¥‰éƒ­æ±œå¤§äººä»¤ï¼Œç‰¹æ¥æ­¤å‡»æ€åŸ‹ä¼äºŽä½ ï¼Œçº³å‘½æ¥å§ï¼",
+		txt = "·î¹ùãá´óÈËÁî£¬ÌØÀ´´Ë»÷É±Âñ·üÓÚÄã£¬ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			{
@@ -20871,7 +20884,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26185 ,
-		txt = "åªä¼šæ´¾ä¸€äº›å°å…µè¿‡æ¥é€æ­»ï¼Œéƒ­æ±œä¸æ•¢äº²è‡ªè¿‡æ¥å—ï¼Ÿ",
+		txt = "Ö»»áÅÉÒ»Ð©Ð¡±ø¹ýÀ´ËÍËÀ£¬¹ùãá²»¸ÒÇ××Ô¹ýÀ´Âð£¿",
 		options =
 		{
 			{
@@ -20893,7 +20906,7 @@ DialogModelDB =
 		},
 		speakerID = 30095,
 		soundID =26188 ,
-		txt = "åˆæ˜¯ä½ ï¼Œå±¡å±¡åæˆ‘å¥½äº‹ï¼Œä»Šæ—¥èƒ†æ•¢é˜»æ­¢æˆ‘å¤æ´»ä¸»å…¬è®¡åˆ’ï¼Œå¾å¿…è®©ä½ é­‚é£žé­„æ•£ï¼",
+		txt = "ÓÖÊÇÄã£¬ÂÅÂÅ»µÎÒºÃÊÂ£¬½ñÈÕµ¨¸Ò×èÖ¹ÎÒ¸´»îÖ÷¹«¼Æ»®£¬Îá±ØÈÃÄã»ê·ÉÆÇÉ¢£¡",
 		options =
 		{
 			{
@@ -20915,7 +20928,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26189 ,
-		txt = "éƒ­æ±œï¼Œä½ æ—¢å¦‚æ­¤æ‰§è¿·ä¸æ‚Ÿï¼Œä»Šæ—¥æˆ‘ä¾¿æ›¿å¤©è¡Œé“ï¼",
+		txt = "¹ùãá£¬Äã¼ÈÈç´ËÖ´ÃÔ²»Îò£¬½ñÈÕÎÒ±ãÌæÌìÐÐµÀ£¡",
 		options =
 		{
 			{
@@ -20940,7 +20953,7 @@ DialogModelDB =
 		},
 		speakerID = 30181,
 		soundID =26194 ,
-		txt = "é­”é­‚å³°ä¹ƒæ¨Šç¨ å¤§äººé©»å®ˆä¹‹åœ°ï¼Œé—¯å…¥è€…æ­»ï¼",
+		txt = "Ä§»ê·åÄË·®³í´óÈË×¤ÊØÖ®µØ£¬´³ÈëÕßËÀ£¡",
 		options =
 		{
 			{
@@ -20962,7 +20975,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26195 ,
-		txt = "æ‰¾çš„ä¾¿æ˜¯æ¨Šç¨ ï¼è®©ä»–é€Ÿé€Ÿå‡ºæ¥å—æ­»ï¼",
+		txt = "ÕÒµÄ±ãÊÇ·®³í£¡ÈÃËûËÙËÙ³öÀ´ÊÜËÀ£¡",
 		options =
 		{
 			{
@@ -20985,7 +20998,7 @@ DialogModelDB =
 		},
 		speakerID = 30160,
 		soundID =26198 ,
-		txt = "æœ¬å°†å¥‰æ¨Šç¨ å¤§äººä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œæ“…é—¯è€…æ€ï¼",
+		txt = "±¾½«·î·®³í´óÈËÁîÔÚ´Ë»¤·¨£¬ÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			{
@@ -21007,7 +21020,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26199 ,
-		txt = "æ¨Šç¨ åœ¨ä½•å¤„ï¼Œé€Ÿé€Ÿæ‹›æ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "·®³íÔÚºÎ´¦£¬ËÙËÙÕÐÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -21030,7 +21043,7 @@ DialogModelDB =
 		},
 		speakerID = 30165,
 		soundID =26202 ,
-		txt = "å¾ä¹ƒæ¨Šç¨ æŠ¤å«é˜Ÿé•¿æ˜¯ä¹Ÿï¼Œä½ æ˜¯ä½•äººï¼Œèƒ†æ•¢æ“…é—¯æ¨Šç¨ å¤§äººé©»å®ˆä¹‹åœ°ï¼",
+		txt = "ÎáÄË·®³í»¤ÎÀ¶Ó³¤ÊÇÒ²£¬ÄãÊÇºÎÈË£¬µ¨¸ÒÉÃ´³·®³í´óÈË×¤ÊØÖ®µØ£¡",
 		options =
 		{
 			{
@@ -21052,7 +21065,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26203 ,
-		txt = "æ¨Šç¨ è—åœ¨ä½•å¤„ï¼Œå¿«å¿«é“æ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "·®³í²ØÔÚºÎ´¦£¬¿ì¿ìµÀÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -21075,7 +21088,7 @@ DialogModelDB =
 		},
 		speakerID = 30170,
 		soundID =26206 ,
-		txt = "å¥‰æ¨Šç¨ å¤§äººä»¤åœ¨æ­¤ä¼å‡»ï¼Œå°”ç­‰å—æ­»ï¼",
+		txt = "·î·®³í´óÈËÁîÔÚ´Ë·ü»÷£¬¶ûµÈÊÜËÀ£¡",
 		options =
 		{
 			{
@@ -21097,7 +21110,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26207 ,
-		txt = "æ¨Šç¨ åªä¼šæ´¾æ‰‹ä¸‹æ¥é€æ­»ï¼Œè¿™ç­‰é¼ è¾ˆä»Šæ—¥å¾å¿…å°†å…¶è¯›æ€ï¼",
+		txt = "·®³íÖ»»áÅÉÊÖÏÂÀ´ËÍËÀ£¬ÕâµÈÊó±²½ñÈÕÎá±Ø½«ÆäÖïÉ±£¡",
 		options =
 		{
 			{
@@ -21120,7 +21133,7 @@ DialogModelDB =
 		},
 		speakerID = 30175,
 		soundID =26210 ,
-		txt = "ç«™ä½ï¼Œä½ ç«Ÿæ•¢æ¥æ­¤ç ´åæ¨Šç¨ å¤§äººå¤§è®¡ï¼Œä»Šæ—¥å®šä¸é¥¶ä½ ï¼",
+		txt = "Õ¾×¡£¬Äã¾¹¸ÒÀ´´ËÆÆ»µ·®³í´óÈË´ó¼Æ£¬½ñÈÕ¶¨²»ÈÄÄã£¡",
 		options =
 		{
 			{
@@ -21142,7 +21155,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26211 ,
-		txt = "æ¨Šç¨ ä»Šæ—¥æˆ‘å¿…è¯›æ€ï¼Œä½ ä»¬é€Ÿé€Ÿè®©å¼€ï¼",
+		txt = "·®³í½ñÈÕÎÒ±ØÖïÉ±£¬ÄãÃÇËÙËÙÈÃ¿ª£¡",
 		options =
 		{
 			{
@@ -21166,7 +21179,7 @@ DialogModelDB =
 		},
 		speakerID = 30180,
 		soundID =26214 ,
-		txt = "å°è´¼ï¼Œç«Ÿç„¶é˜»æŒ æˆ‘å¤æ´»ä¸»å…¬è‘£å“å¤§è®¡ï¼Œä»Šæ—¥å®šè¦ä½ ç”Ÿä¸å¦‚æ­»ï¼",
+		txt = "Ð¡Ôô£¬¾¹È»×èÄÓÎÒ¸´»îÖ÷¹«¶­×¿´ó¼Æ£¬½ñÈÕ¶¨ÒªÄãÉú²»ÈçËÀ£¡",
 		options =
 		{
 			{
@@ -21188,7 +21201,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26215 ,
-		txt = "æ¨Šç¨ ï¼ä½ å±…ç„¶è¿˜å¦„å›¾å¤æ´»è‘£å“ä¸ºç¥¸äººé—´ï¼Œä»Šæ—¥æˆ‘ä¾¿æ›¿å¤©è¡Œé“ï¼",
+		txt = "·®³í£¡Äã¾ÓÈ»»¹ÍýÍ¼¸´»î¶­×¿Îª»öÈË¼ä£¬½ñÈÕÎÒ±ãÌæÌìÐÐµÀ£¡",
 		options =
 		{
 			{
@@ -21202,7 +21215,7 @@ DialogModelDB =
 
 		},
 	},
-		---æ½œé¾™å²­
+		---Ç±ÁúÁë
 
 [3075] =
 	{
@@ -21212,7 +21225,7 @@ DialogModelDB =
 		},
 		speakerID = 30321,
 		soundID =26220 ,
-		txt = "æŽå„’å¤§äººé©»å®ˆä¹‹åœ°ï¼Œå¤–äººä¸å¯æ“…é—¯ï¼",
+		txt = "ÀîÈå´óÈË×¤ÊØÖ®µØ£¬ÍâÈË²»¿ÉÉÃ´³£¡",
 		options =
 		{
 			{
@@ -21234,7 +21247,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26221 ,
-		txt = "æ‰¾çš„å°±æ˜¯æŽå„’ï¼Œä»Šæ—¥å®šè¦å°†å°”ç­‰æ¶è´¼æ¶ˆç­æ®†å°½ï¼",
+		txt = "ÕÒµÄ¾ÍÊÇÀîÈå£¬½ñÈÕ¶¨Òª½«¶ûµÈ¶ñÔôÏûÃð´ù¾¡£¡",
 		options =
 		{
 			{
@@ -21257,7 +21270,7 @@ DialogModelDB =
 		},
 		speakerID = 30329,
 		soundID =26224 ,
-		txt = "æ¿€æ€’æŽå„’å¤§äººå¯æ²¡æœ‰å¥½æžœå­åƒï¼Œè¯†ç›¸çš„å°±ä¹–ä¹–ç¦»å¼€è¿™é‡Œï¼",
+		txt = "¼¤Å­ÀîÈå´óÈË¿ÉÃ»ÓÐºÃ¹û×Ó³Ô£¬Ê¶ÏàµÄ¾Í¹Ô¹ÔÀë¿ªÕâÀï£¡",
 		options =
 		{
 			{
@@ -21279,7 +21292,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26225 ,
-		txt = "æŽå„’é¡¹ä¸Šäººå¤´æˆ‘éžå–ä¸å¯ï¼Œå°”ç­‰è‹¥æƒ³æ´»å‘½ï¼Œå°±èŽ«æ¨ªåŠ é˜»æ‹¦ï¼",
+		txt = "ÀîÈåÏîÉÏÈËÍ·ÎÒ·ÇÈ¡²»¿É£¬¶ûµÈÈôÏë»îÃü£¬¾ÍÄªºá¼Ó×èÀ¹£¡",
 		options =
 		{
 			{
@@ -21302,7 +21315,7 @@ DialogModelDB =
 		},
 		speakerID = 30337,
 		soundID =26228 ,
-		txt = "å°è´¼ç«Ÿå¦„å›¾é˜»æŒ æŽå„’å¤§äººï¼Œä¼‘æƒ³æ´»ç€ç¦»å¼€æ­¤å¤„ï¼",
+		txt = "Ð¡Ôô¾¹ÍýÍ¼×èÄÓÀîÈå´óÈË£¬ÐÝÏë»î×ÅÀë¿ª´Ë´¦£¡",
 		options =
 		{
 			{
@@ -21324,7 +21337,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26229 ,
-		txt = "æŽå„’é‚£è€è´¼æ­»æœŸå·²è‡³ï¼Œå°”ç­‰è¿˜æ•¢å¤§æ”¾åŽ¥è¯ï¼",
+		txt = "ÀîÈåÄÇÀÏÔôËÀÆÚÒÑÖÁ£¬¶ûµÈ»¹¸Ò´ó·ÅØÊ´Ê£¡",
 		options =
 		{
 			{
@@ -21347,7 +21360,7 @@ DialogModelDB =
 		},
 		speakerID = 30345,
 		soundID =26232 ,
-		txt = "èª“æ­»æŠ¤å«å¤§äººå‘¨å…¨ï¼Œè°æ•¢å¨èƒå¤§äººæ€§å‘½ï¼Œç«‹å³å¤„æ­»ï¼",
+		txt = "ÊÄËÀ»¤ÎÀ´óÈËÖÜÈ«£¬Ë­¸ÒÍþÐ²´óÈËÐÔÃü£¬Á¢¼´´¦ËÀ£¡",
 		options =
 		{
 			{
@@ -21369,7 +21382,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26233 ,
-		txt = "èž³è‡‚å½“è½¦ï¼Œæ„šä¸å¯åŠã€‚",
+		txt = "ó«±Ûµ±³µ£¬ÓÞ²»¿É¼°¡£",
 		options =
 		{
 			{
@@ -21393,7 +21406,7 @@ DialogModelDB =
 		},
 		speakerID = 30353,
 		soundID =26236 ,
-		txt = "ä¼‘æƒ³è¿‘æŽå„’å¤§äººçš„èº«ï¼Œé™¤éžå…ˆå‡»è´¥è€å¤«ï¼",
+		txt = "ÐÝÏë½üÀîÈå´óÈËµÄÉí£¬³ý·ÇÏÈ»÷°ÜÀÏ·ò£¡",
 		options =
 		{
 			{
@@ -21415,7 +21428,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26237 ,
-		txt = "é‚£ä¾¿è®©æˆ‘æ¥è¯•è¯•ä½ çš„èº«æ‰‹ï¼",
+		txt = "ÄÇ±ãÈÃÎÒÀ´ÊÔÊÔÄãµÄÉíÊÖ£¡",
 		options =
 		{
 			{
@@ -21439,7 +21452,7 @@ DialogModelDB =
 		},
 		speakerID = 30361,
 		soundID =26240 ,
-		txt = "åˆæ˜¯ä½ è¿™è´¼å­ï¼Œä»Šæ—¥å®šè¦å°†ä½ æŒ«éª¨æ‰¬ç°æ–¹å¯æ¶ˆæˆ‘å¿ƒå¤´ä¹‹æ¨ï¼",
+		txt = "ÓÖÊÇÄãÕâÔô×Ó£¬½ñÈÕ¶¨Òª½«Äã´ì¹ÇÑï»Ò·½¿ÉÏûÎÒÐÄÍ·Ö®ºÞ£¡",
 		options =
 		{
 			{
@@ -21461,7 +21474,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26241 ,
-		txt = "æŽå„’ï¼Œä½ å¤§éš¾ä¸´å¤´è¿˜é€žå£èˆŒä¹‹åˆ©ï¼Œæ‰¾æ­»ï¼",
+		txt = "ÀîÈå£¬Äã´óÄÑÁÙÍ·»¹³Ñ¿ÚÉàÖ®Àû£¬ÕÒËÀ£¡",
 		options =
 		{
 			{
@@ -21476,7 +21489,7 @@ DialogModelDB =
 		},
 	},
 
----------------------------------------------å‰¯æœ¬é¬¼å‡¤å³¡å¯¹è¯é…ç½®--------------------
+---------------------------------------------¸±±¾¹í·ïÏ¿¶Ô»°ÅäÖÃ--------------------
 [10001] =
 	{
 		dialogType = DialogType.NotOption,
@@ -21485,7 +21498,7 @@ DialogModelDB =
 		},
 		speakerID = 30428,
 		soundID =26246 ,
-		txt = "ç«™ä½ï¼ä½ æ˜¯ä½•äººï¼Ÿèƒ†æ•¢é—¯å…¥é¬¼å‡¤å³¡ï¼Œæ´»å¾—ä¸è€çƒ¦äº†ï¼Ÿ",
+		txt = "Õ¾×¡£¡ÄãÊÇºÎÈË£¿µ¨¸Ò´³Èë¹í·ïÏ¿£¬»îµÃ²»ÄÍ·³ÁË£¿",
 		options =
 		{
 			{
@@ -21507,7 +21520,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26247 ,
-		txt = "æˆ‘æ¥æ‰¾é‚£æ³¢æ‰è´¼å­ï¼Œå«ä»–é€Ÿé€Ÿå‡ºæ¥å—æ­»ï¼",
+		txt = "ÎÒÀ´ÕÒÄÇ²¨²ÅÔô×Ó£¬½ÐËûËÙËÙ³öÀ´ÊÜËÀ£¡",
 		options =
 		{
 			{
@@ -21529,7 +21542,7 @@ DialogModelDB =
 		},
 		speakerID = 30428,
 		soundID =26248 ,
-		txt = "ä½•äººæ•¢æ¥é¬¼å‡¤å³¡æ’’é‡Žï¼å®šæ€ä¸é¥¶ï¼",
+		txt = "ºÎÈË¸ÒÀ´¹í·ïÏ¿ÈöÒ°£¡¶¨É±²»ÈÄ£¡",
 		options =
 		{
 			{
@@ -21551,7 +21564,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26249 ,
-		txt = "ä»Šå¥‰æœå»·ä¹‹ä»¤å¹³ç­ä½ ç­‰ï¼Œå—æ­»å§ï¼",
+		txt = "½ñ·î³¯Í¢Ö®ÁîÆ½ÃðÄãµÈ£¬ÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -21573,7 +21586,7 @@ DialogModelDB =
 		},
 		speakerID = 30436,
 		soundID =26250 ,
-		txt = "æœå»·é¹°çŠ¬ï¼Œç«Ÿæ•¢é—¯å…¥å¤©å†›é©»åœ°ï¼Œè‡ªå¯»æ­»è·¯ï¼",
+		txt = "³¯Í¢Ó¥È®£¬¾¹¸Ò´³ÈëÌì¾ü×¤µØ£¬×ÔÑ°ËÀÂ·£¡",
 		options =
 		{
 			{
@@ -21595,7 +21608,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26251 ,
-		txt = "åŒºåŒºå°è´¼ï¼Œç«Ÿæ•¢é˜»æˆ‘ï¼Ÿ",
+		txt = "ÇøÇøÐ¡Ôô£¬¾¹¸Ò×èÎÒ£¿",
 		options =
 		{
 			{
@@ -21617,7 +21630,7 @@ DialogModelDB =
 		},
 		speakerID = 30444,
 		soundID =26252 ,
-		txt = "é»„å·¾å¤©å†›åœ¨æ­¤ï¼Œè¿˜ä¸é€Ÿé€Ÿæ­»æ¥ï¼Ÿ",
+		txt = "»Æ½íÌì¾üÔÚ´Ë£¬»¹²»ËÙËÙËÀÀ´£¿",
 		options =
 		{
 			{
@@ -21639,7 +21652,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26253 ,
-		txt = "ä¸€ç¾¤ä¹Œåˆä¹‹ä¼—ç«Ÿæ•¢ç‹‚å ï¼æ€ä½ ä»¬å¦‚æ€é¸¡å± ç‹—ï¼",
+		txt = "Ò»ÈºÎÚºÏÖ®ÖÚ¾¹¸Ò¿ñ·Í£¡É±ÄãÃÇÈçÉ±¼¦ÍÀ¹·£¡",
 		options =
 		{
 			{
@@ -21661,7 +21674,7 @@ DialogModelDB =
 		},
 		speakerID = 30452,
 		soundID =26254 ,
-		txt = "æˆ‘ç­‰å¥‰å°†å†›ä»¤ï¼Œå°†ä½ å‰ç¢Žäº†ï¼Œç¥­å¤©ï¼",
+		txt = "ÎÒµÈ·î½«¾üÁî£¬½«Äã¶çËéÁË£¬¼ÀÌì£¡",
 		options =
 		{
 			{
@@ -21683,7 +21696,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26255 ,
-		txt = "æ³¢æ‰è—åœ¨ä½•å¤„ï¼Œé€Ÿé€Ÿé“æ¥ï¼",
+		txt = "²¨²Å²ØÔÚºÎ´¦£¬ËÙËÙµÀÀ´£¡",
 		options =
 		{
 			{
@@ -21705,7 +21718,7 @@ DialogModelDB =
 		},
 		speakerID = 30460,
 		soundID =26256 ,
-		txt = "æ±‰æœå°è´¼ï¼Œä»Šæ—¥æˆ‘ç¥žåŠŸæœ‰æˆï¼Œçœ‹ä½ æœ‰å‡ åˆ†å³¥åµ˜ï¼Œè¿˜ä¸é€Ÿé€Ÿå½’é™æˆ‘å¤ªå¹³é“ã€‚",
+		txt = "ºº³¯Ð¡Ôô£¬½ñÈÕÎÒÉñ¹¦ÓÐ³É£¬¿´ÄãÓÐ¼¸·Öá¿áÉ£¬»¹²»ËÙËÙ¹é½µÎÒÌ«Æ½µÀ¡£",
 		options =
 		{
 			{
@@ -21727,7 +21740,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26257 ,
-		txt = "ä»Žæ¥æ±‰è´¼ä¸ä¸¤ç«‹ï¼Œå¤šè¯´æ— ç›Šï¼Œå€Ÿä½ é¡¹ä¸Šäººå¤´ä¸€ç”¨ï¼",
+		txt = "´ÓÀ´ººÔô²»Á½Á¢£¬¶àËµÎÞÒæ£¬½èÄãÏîÉÏÈËÍ·Ò»ÓÃ£¡",
 		options =
 		{
 			{
@@ -21743,7 +21756,7 @@ DialogModelDB =
 	},
 
 
-------------------------ç¢§æ³¢å²›å‰¯æœ¬å¯¹è¯é…ç½®-------------------------
+------------------------±Ì²¨µº¸±±¾¶Ô»°ÅäÖÃ-------------------------
 
 [10014] =
 	{
@@ -21753,7 +21766,7 @@ DialogModelDB =
 		},
 		speakerID = 30510,
 		soundID =26260 ,
-		txt = "æ­¤ä¹ƒé»„å·¾å¤©å†›é©»å®ˆä¹‹åœ°ï¼Œæ•¢æ“…é—¯è€…æ€ï¼",
+		txt = "´ËÄË»Æ½íÌì¾ü×¤ÊØÖ®µØ£¬¸ÒÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			{
@@ -21775,7 +21788,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26261 ,
-		txt = "å¼ æ›¼æˆåœ¨ä½•å¤„ï¼Ÿå¿«å¿«é“æ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "ÕÅÂü³ÉÔÚºÎ´¦£¿¿ì¿ìµÀÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -21797,7 +21810,7 @@ DialogModelDB =
 		},
 		speakerID = 30518,
 		soundID =26262 ,
-		txt = "ä½ æ˜¯ä½•äººï¼Ÿç«Ÿæ•¢æ“…é—¯å…µå®¶é‡åœ°ï¼Œè¿˜ä¸é€Ÿé€Ÿå°±æ“’ï¼",
+		txt = "ÄãÊÇºÎÈË£¿¾¹¸ÒÉÃ´³±ø¼ÒÖØµØ£¬»¹²»ËÙËÙ¾ÍÇÜ£¡",
 		options =
 		{
 			{
@@ -21819,7 +21832,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26263 ,
-		txt = "æˆ‘æ¥æ­¤æ‰¾é‚£å¼ æ›¼æˆé€†è´¼ï¼Œä½ ç­‰é€€å¼€ï¼Œå¦åˆ™ä¼‘æ€ªæˆ‘åˆ€ä¸‹æ— æƒ…ï¼",
+		txt = "ÎÒÀ´´ËÕÒÄÇÕÅÂü³ÉÄæÔô£¬ÄãµÈÍË¿ª£¬·ñÔòÐÝ¹ÖÎÒµ¶ÏÂÎÞÇé£¡",
 		options =
 		{
 			{
@@ -21841,7 +21854,7 @@ DialogModelDB =
 		},
 		speakerID = 30526,
 		soundID =26264 ,
-		txt = "ç«™ä½ï¼ä½ ç«Ÿæ•¢é—¯æˆ‘å¤©å†›å†›é˜µï¼Œä»Šæ—¥å®šè¦ä½ é­‚å½’ä¹æ³‰ï¼",
+		txt = "Õ¾×¡£¡Äã¾¹¸Ò´³ÎÒÌì¾ü¾üÕó£¬½ñÈÕ¶¨ÒªÄã»ê¹é¾ÅÈª£¡",
 		options =
 		{
 			{
@@ -21863,7 +21876,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26265 ,
-		txt = "åŒºåŒºé»„å·¾é€†è´¼ï¼Œæˆ‘çœ‹ä»Šæ—¥è°æ•¢é˜»æˆ‘ï¼",
+		txt = "ÇøÇø»Æ½íÄæÔô£¬ÎÒ¿´½ñÈÕË­¸Ò×èÎÒ£¡",
 		options =
 		{
 			{
@@ -21885,7 +21898,7 @@ DialogModelDB =
 		},
 		speakerID = 30534,
 		soundID =26266 ,
-		txt = "é¹°çŠ¬çˆªç‰™ï¼Œç«Ÿæ•¢æ€æˆ‘å°†å£«ï¼Œæˆ‘å¿…å°†ä½ ç¢Žå°¸ä¸‡æ®µï¼",
+		txt = "Ó¥È®×¦ÑÀ£¬¾¹¸ÒÉ±ÎÒ½«Ê¿£¬ÎÒ±Ø½«ÄãËéÊ¬Íò¶Î£¡",
 		options =
 		{
 			{
@@ -21907,7 +21920,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26267 ,
-		txt = "ä¹Œåˆä¹‹ä¼—ï¼Œä½•æ•¢è¨€å‹‡ï¼ŸæŒ¡æˆ‘è€…ï¼Œæ€æ— èµ¦ï¼",
+		txt = "ÎÚºÏÖ®ÖÚ£¬ºÎ¸ÒÑÔÓÂ£¿µ²ÎÒÕß£¬É±ÎÞÉâ£¡",
 		options =
 		{
 			{
@@ -21929,7 +21942,7 @@ DialogModelDB =
 		},
 		speakerID = 30542,
 		soundID =26268 ,
-		txt = "æŸå®¶å¥‰éŸ©å°†å†›ä»¤åœ¨æ­¤é•‡å®ˆï¼Œä½•äººæ•¢æ’„å¤©å†›é”‹èŠ’ï¼",
+		txt = "Ä³¼Ò·îº«½«¾üÁîÔÚ´ËÕòÊØ£¬ºÎÈË¸ÒÞüÌì¾ü·æÃ¢£¡",
 		options =
 		{
 			{
@@ -21951,7 +21964,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26269 ,
-		txt = "å°½æ˜¯äº›å°å…µå’å­ï¼Œå¼ æ›¼æˆä½•ä¸äº²è‡ªå‰æ¥ï¼Œéš¾é“æˆ‘æ‰‹ä¸­å…µåˆƒä¸åˆ©å—ï¼Ÿ",
+		txt = "¾¡ÊÇÐ©Ð¡±ø×ä×Ó£¬ÕÅÂü³ÉºÎ²»Ç××ÔÇ°À´£¬ÄÑµÀÎÒÊÖÖÐ±øÈÐ²»ÀûÂð£¿",
 		options =
 		{
 			{
@@ -21973,7 +21986,7 @@ DialogModelDB =
 		},
 		speakerID = 30550,
 		soundID =26270 ,
-		txt = "æˆ‘ä¹ƒé»„å·¾å†›å¤§å°†å¼ æ›¼æˆæ˜¯ä¹Ÿï¼ä»Šæ—¥ç¥žåŠŸå‘Šæˆï¼Œä½•äººæƒ³è¦è‡ªå¯»æ­»è·¯ï¼Ÿ",
+		txt = "ÎÒÄË»Æ½í¾ü´ó½«ÕÅÂü³ÉÊÇÒ²£¡½ñÈÕÉñ¹¦¸æ³É£¬ºÎÈËÏëÒª×ÔÑ°ËÀÂ·£¿",
 		options =
 		{
 			{
@@ -21995,7 +22008,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26271 ,
-		txt = "é€†è´¼çŒ–ç‹‚ï¼ä»Šæ—¥å®šè¦å°†ä½ æ–©äºŽåˆ€ä¸‹ï¼",
+		txt = "ÄæÔô²þ¿ñ£¡½ñÈÕ¶¨Òª½«ÄãÕ¶ÓÚµ¶ÏÂ£¡",
 		options =
 		{
 			{
@@ -22010,7 +22023,7 @@ DialogModelDB =
 		},
 	},
 
-------------------------å†°é£ŽåŽŸå‰¯æœ¬å¯¹è¯é…ç½®-------------------------
+------------------------±ù·çÔ­¸±±¾¶Ô»°ÅäÖÃ-------------------------
 
 [10030] =
 	{
@@ -22020,7 +22033,7 @@ DialogModelDB =
 		},
 		speakerID = 30650,
 		soundID =26274 ,
-		txt = "æ­¤å¤„ä¸ºæˆ‘é»„å·¾å†›é©»åœ°ï¼Œæ¥è€…æ­¢æ­¥ï¼Œæ“…é—¯è€…æ€ï¼",
+		txt = "´Ë´¦ÎªÎÒ»Æ½í¾ü×¤µØ£¬À´ÕßÖ¹²½£¬ÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			{
@@ -22042,7 +22055,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26275 ,
-		txt = "ä»Šæ—¥æˆ‘æ¥å–å¼ ç‡•æ€§å‘½ï¼Œè€åŒ¹å¤«å¯æ•¢å‡ºæ¥ä¸€æˆ˜ï¼",
+		txt = "½ñÈÕÎÒÀ´È¡ÕÅÑàÐÔÃü£¬ÀÏÆ¥·ò¿É¸Ò³öÀ´Ò»Õ½£¡",
 		options =
 		{
 			{
@@ -22064,7 +22077,7 @@ DialogModelDB =
 		},
 		speakerID = 30658,
 		soundID =26276 ,
-		txt = "ä½•äººæ•¢æƒŠæ‰°å¼ å°†å†›ä¿®ç‚¼ä¹‹åœ°ï¼Œæ­¤ä¹ƒæ­»ç½ªï¼",
+		txt = "ºÎÈË¸Ò¾ªÈÅÕÅ½«¾üÐÞÁ¶Ö®µØ£¬´ËÄËËÀ×ï£¡",
 		options =
 		{
 			{
@@ -22086,7 +22099,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26277 ,
-		txt = "ä½ ç­‰æ— åå°è¾ˆï¼Œå²‚èƒ½é˜»æˆ‘ï¼Ÿ",
+		txt = "ÄãµÈÎÞÃûÐ¡±²£¬ÆñÄÜ×èÎÒ£¿",
 		options =
 		{
 			{
@@ -22108,7 +22121,7 @@ DialogModelDB =
 		},
 		speakerID = 30526,
 		soundID =26278 ,
-		txt = "æœ¬å°†å¥‰å¼ ç‡•å¤§äººä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œé—¯å…¥è€…æ­»ï¼",
+		txt = "±¾½«·îÕÅÑà´óÈËÁîÔÚ´Ë»¤·¨£¬´³ÈëÕßËÀ£¡",
 		options =
 		{
 			{
@@ -22130,7 +22143,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26279 ,
-		txt = "ä»Šæ—¥å“ªæ€•é¾™æ½­è™Žç©´ä¹Ÿè¦é—¯ä¸€é—¯ï¼ŒåŒºåŒºä¸æ¯›ä¹‹åœ°æœ‰ä½•æƒ§å“‰ï¼",
+		txt = "½ñÈÕÄÄÅÂÁúÌ¶»¢Ñ¨Ò²Òª´³Ò»´³£¬ÇøÇø²»Ã«Ö®µØÓÐºÎ¾åÔÕ£¡",
 		options =
 		{
 			{
@@ -22152,7 +22165,7 @@ DialogModelDB =
 		},
 		speakerID = 30534,
 		soundID =26280 ,
-		txt = "èƒ†æ•¢æ“…é—¯æˆ‘å†°é£ŽåŽŸï¼Œä¸çŸ¥æ­»æ´»ï¼",
+		txt = "µ¨¸ÒÉÃ´³ÎÒ±ù·çÔ­£¬²»ÖªËÀ»î£¡",
 		options =
 		{
 			{
@@ -22174,7 +22187,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26281 ,
-		txt = "é—¯äº†åˆå½“å¦‚ä½•ï¼Ÿæ€çš„å°±æ˜¯ä½ ï¼",
+		txt = "´³ÁËÓÖµ±ÈçºÎ£¿É±µÄ¾ÍÊÇÄã£¡",
 		options =
 		{
 			{
@@ -22196,7 +22209,7 @@ DialogModelDB =
 		},
 		speakerID = 30542,
 		soundID =26282 ,
-		txt = "æœå»·èµ°ç‹—ï¼Œè¦è§å°†å†›éœ€è¿‡æˆ‘è¿™ä¸€å…³ï¼",
+		txt = "³¯Í¢×ß¹·£¬Òª¼û½«¾üÐè¹ýÎÒÕâÒ»¹Ø£¡",
 		options =
 		{
 			{
@@ -22218,7 +22231,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26283 ,
-		txt = "å¥½ï¼å…ˆæ€äº†ä½ ï¼Œå†åŽ»å–é‚£å¼ ç‡•ç‹—å‘½ï¼",
+		txt = "ºÃ£¡ÏÈÉ±ÁËÄã£¬ÔÙÈ¥È¡ÄÇÕÅÑà¹·Ãü£¡",
 		options =
 		{
 			{
@@ -22240,7 +22253,7 @@ DialogModelDB =
 		},
 		speakerID = 30550,
 		soundID =26284 ,
-		txt = "å°è´¼ï¼Œä½ æ€æˆ‘å°†å£«ï¼Œè¾±æˆ‘å£°åï¼Œæ­¤ä»‡ä¸å…±æˆ´å¤©ï¼",
+		txt = "Ð¡Ôô£¬ÄãÉ±ÎÒ½«Ê¿£¬ÈèÎÒÉùÃû£¬´Ë³ð²»¹²´÷Ìì£¡",
 		options =
 		{
 			{
@@ -22262,7 +22275,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26285 ,
-		txt = "å¼ ç‡•å°”ç­‰é€†è´¼çƒ§æ€æŠ¢æŽ ï¼Œæ— æ¶ä¸ä½œï¼Œä»Šæ—¥æˆ‘æ›¿å¤©è¡Œé“ï¼Œå‰¿ç­å°”ç­‰ï¼",
+		txt = "ÕÅÑà¶ûµÈÄæÔôÉÕÉ±ÇÀÂÓ£¬ÎÞ¶ñ²»×÷£¬½ñÈÕÎÒÌæÌìÐÐµÀ£¬½ËÃð¶ûµÈ£¡",
 		options =
 		{
 			{
@@ -22276,7 +22289,7 @@ DialogModelDB =
 
 		},
 	},
---------------------------é­”ç½—å³°å‰¯æœ¬é…ç½®-------------------------
+--------------------------Ä§ÂÞ·å¸±±¾ÅäÖÃ-------------------------
 [10045] =
 	{
 		dialogType = DialogType.NotOption,
@@ -22285,7 +22298,7 @@ DialogModelDB =
 		},
 		speakerID = 30740,
 		soundID =26288 ,
-		txt = "ç«™ä½ï¼æ­¤ä¹ƒé»„å·¾å†›é‡åœ°ï¼Œæ“…å…¥æ­¤åœ°è€…æ€æ— èµ¦ï¼",
+		txt = "Õ¾×¡£¡´ËÄË»Æ½í¾üÖØµØ£¬ÉÃÈë´ËµØÕßÉ±ÎÞÉâ£¡",
 		options =
 		{
 			{
@@ -22307,7 +22320,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26289 ,
-		txt = "å¼ è§’ä»Šåœ¨ä½•å¤„ï¼Ÿä»Žå®žæ‹›æ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "ÕÅ½Ç½ñÔÚºÎ´¦£¿´ÓÊµÕÐÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -22329,7 +22342,7 @@ DialogModelDB =
 		},
 		speakerID = 30748,
 		soundID =26290 ,
-		txt = "ä½ æ˜¯ä½•äººï¼Ÿæ•¢æ¥é­”ç½—å³°æ’’é‡Žï¼Œçº³å‘½æ¥ï¼",
+		txt = "ÄãÊÇºÎÈË£¿¸ÒÀ´Ä§ÂÞ·åÈöÒ°£¬ÄÉÃüÀ´£¡",
 		options =
 		{
 			{
@@ -22351,7 +22364,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26291 ,
-		txt = "ä¸€ç¾¤ä¹Œåˆä¹‹ä¼—ï¼Œæ€ä½ ä»¬å¦‚æŽ¢å›Šå–ç‰©ï¼",
+		txt = "Ò»ÈºÎÚºÏÖ®ÖÚ£¬É±ÄãÃÇÈçÌ½ÄÒÈ¡Îï£¡",
 		options =
 		{
 			{
@@ -22373,7 +22386,7 @@ DialogModelDB =
 		},
 		speakerID = 30756,
 		soundID =26292 ,
-		txt = "æœå»·é¹°çŠ¬ï¼Œè§†æˆ‘é»„å·¾å†›æ— äººä¹Žï¼Ÿä»Šæ—¥å®šè¦å°†ä½ å¼€è†›ç ´è‚šï¼",
+		txt = "³¯Í¢Ó¥È®£¬ÊÓÎÒ»Æ½í¾üÎÞÈËºõ£¿½ñÈÕ¶¨Òª½«Äã¿ªÌÅÆÆ¶Ç£¡",
 		options =
 		{
 			{
@@ -22395,7 +22408,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26293 ,
-		txt = "åŒºåŒºä¸€ç¾¤ç›—è´¼æµæ°“ï¼Œä½•è¶³é“å“‰ï¼Ÿ",
+		txt = "ÇøÇøÒ»ÈºµÁÔôÁ÷Ã¥£¬ºÎ×ãµÀÔÕ£¿",
 		options =
 		{
 			{
@@ -22417,7 +22430,7 @@ DialogModelDB =
 		},
 		speakerID = 30764,
 		soundID =26294 ,
-		txt = "æœ¬å°†åœ¨æ­¤é•‡å®ˆï¼Œå²‚å®¹ä½ å†²æ’žå¤§äººæ³•é©¾ï¼",
+		txt = "±¾½«ÔÚ´ËÕòÊØ£¬ÆñÈÝÄã³å×²´óÈË·¨¼Ý£¡",
 		options =
 		{
 			{
@@ -22439,7 +22452,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26295 ,
-		txt = "ä»Šæ—¥æˆ‘å®šè¦é‚£å¼ è§’é€†è´¼ç°é£žçƒŸç­ï¼Œå°¸éª¨æ— å­˜ï¼Œè°æ•¢æ‹¦æˆ‘ï¼Ÿï¼",
+		txt = "½ñÈÕÎÒ¶¨ÒªÄÇÕÅ½ÇÄæÔô»Ò·ÉÑÌÃð£¬Ê¬¹ÇÎÞ´æ£¬Ë­¸ÒÀ¹ÎÒ£¿£¡",
 		options =
 		{
 			{
@@ -22461,7 +22474,7 @@ DialogModelDB =
 		},
 		speakerID = 30772,
 		soundID =26296 ,
-		txt = "ä¹³è‡­æœªå¹²çš„å°å„¿ï¼Œç«Ÿæ•¢å¦„å›¾åå¤§è´¤å¸ˆä¿®ç‚¼ï¼Œé—®è¿‡æˆ‘æ‰‹ä¸­çš„åˆ€äº†å—ï¼Ÿ",
+		txt = "Èé³ôÎ´¸ÉµÄÐ¡¶ù£¬¾¹¸ÒÍýÍ¼»µ´óÏÍÊ¦ÐÞÁ¶£¬ÎÊ¹ýÎÒÊÖÖÐµÄµ¶ÁËÂð£¿",
 		options =
 		{
 			{
@@ -22483,7 +22496,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26297 ,
-		txt = "æ‚–é€†ç‹‚å¾’ï¼Œçœ‹æˆ‘å°†ä½ ç­‰æ€ä¸ªç‰‡ç”²ä¸ç•™ï¼",
+		txt = "ã£Äæ¿ñÍ½£¬¿´ÎÒ½«ÄãµÈÉ±¸öÆ¬¼×²»Áô£¡",
 		options =
 		{
 			{
@@ -22505,7 +22518,7 @@ DialogModelDB =
 		},
 		speakerID = 30780,
 		soundID =26298 ,
-		txt = "å°å„¿ï¼æ¥å¾—æ­£å¥½ï¼å¾æ‰‹ä¸­å°šç¼ºå‡ ä»½ç¥­å“ï¼Œä»Šæ—¥ä¾¿ç”¨å°”ç­‰æ€§å‘½åŠ©æˆ‘ç»ƒæˆç¥žåŠŸï¼Œå†ç«‹é»„å¤©ï¼",
+		txt = "Ð¡¶ù£¡À´µÃÕýºÃ£¡ÎáÊÖÖÐÉÐÈ±¼¸·Ý¼ÀÆ·£¬½ñÈÕ±ãÓÃ¶ûµÈÐÔÃüÖúÎÒÁ·³ÉÉñ¹¦£¬ÔÙÁ¢»ÆÌì£¡",
 		options =
 		{
 			{
@@ -22527,7 +22540,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26299 ,
-		txt = "å¼ è§’ï¼Œä½ å€’è¡Œé€†æ–½ï¼Œæ¶è´¯æ»¡ç›ˆï¼Œä»Šå¤©æˆ‘å¥‰å¤©å‘½ä»¥è®¨ä¸è‡£ï¼Œç§‰ç”Ÿæ°‘ä»¥è¯›é‚ªæ¶ï¼Œå®šè¦ä½ å°¸éª¨ä¸å­˜ï¼Œä¸‡åŠ«ä¸å¤ï¼",
+		txt = "ÕÅ½Ç£¬Äãµ¹ÐÐÄæÊ©£¬¶ñ¹áÂúÓ¯£¬½ñÌìÎÒ·îÌìÃüÒÔÌÖ²»³¼£¬±üÉúÃñÒÔÖïÐ°¶ñ£¬¶¨ÒªÄãÊ¬¹Ç²»´æ£¬Íò½Ù²»¸´£¡",
 		options =
 		{
 			{
@@ -22543,7 +22556,7 @@ DialogModelDB =
 	},
 
 
----------------é‚ªç›˜å±±å‰¯æœ¬é…ç½®ï¼Œåƒæˆ‘è¿™ä¹ˆèŒçš„ï¼Œè¿˜æœ‰200çª------------------------------
+---------------Ð°ÅÌÉ½¸±±¾ÅäÖÃ£¬ÏñÎÒÕâÃ´ÃÈµÄ£¬»¹ÓÐ200ÎÑ------------------------------
 
 
 [10057] =
@@ -22554,7 +22567,7 @@ DialogModelDB =
 		},
 		speakerID = 30825,
 		soundID =26288 ,
-		txt = "æ¥è€…ä½•äººï¼Ÿèƒ†æ•¢é—¯å…¥é‚ªç›˜å±±ï¼Œå«Œå‘½é•¿äº†å—ï¼Ÿ",
+		txt = "À´ÕßºÎÈË£¿µ¨¸Ò´³ÈëÐ°ÅÌÉ½£¬ÏÓÃü³¤ÁËÂð£¿",
 		options =
 		{
 			{
@@ -22576,7 +22589,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26289 ,
-		txt = "å¾è£æ­£åœ¨ä½•å¤„ï¼Œå¿«å¿«é“æ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "ÐìÈÙÕýÔÚºÎ´¦£¬¿ì¿ìµÀÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -22598,7 +22611,7 @@ DialogModelDB =
 		},
 		speakerID = 30833,
 		soundID =26290 ,
-		txt = "ä»€ä¹ˆäººç«Ÿæ•¢é—¯å…¥æˆ‘è¥¿å‡‰å†›é©»åœ°ï¼Œè¿˜ä¸æŸæ‰‹å°±æ“’ï¼",
+		txt = "Ê²Ã´ÈË¾¹¸Ò´³ÈëÎÒÎ÷Á¹¾ü×¤µØ£¬»¹²»ÊøÊÖ¾ÍÇÜ£¡",
 		options =
 		{
 			{
@@ -22620,7 +22633,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26291 ,
-		txt = "å«é‚£å¾è£å‰æ¥è§æˆ‘ï¼Œä¸ç„¶ç•™ä½ ä¸å¾—ï¼",
+		txt = "½ÐÄÇÐìÈÙÇ°À´¼ûÎÒ£¬²»È»ÁôÄã²»µÃ£¡",
 		options =
 		{
 			{
@@ -22642,7 +22655,7 @@ DialogModelDB =
 		},
 		speakerID = 30841,
 		soundID =26292 ,
-		txt = "æˆ‘å¥‰å°†å†›ä¹‹ä»¤åœ¨æ­¤é•‡å®ˆï¼Œè°æ•¢é—¯å…³ï¼Ÿï¼",
+		txt = "ÎÒ·î½«¾üÖ®ÁîÔÚ´ËÕòÊØ£¬Ë­¸Ò´³¹Ø£¿£¡",
 		options =
 		{
 			{
@@ -22664,7 +22677,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26293 ,
-		txt = "ä»Šæ—¥æˆ‘å®šè¦æ–©æ€å¾è£ï¼ŒæŒ¡æˆ‘è€…æ­»ï¼",
+		txt = "½ñÈÕÎÒ¶¨ÒªÕ¶É±ÐìÈÙ£¬µ²ÎÒÕßËÀ£¡",
 		options =
 		{
 			{
@@ -22686,7 +22699,7 @@ DialogModelDB =
 		},
 		speakerID = 30849,
 		soundID =26294 ,
-		txt = "å¤§èƒ†ç‹—è´¼ï¼ç«Ÿæ•¢æ„å›¾å¯¹å°†å†›ä¸åˆ©ï¼ä»Šæ—¥å®šä¸é¥¶ä½ ï¼",
+		txt = "´óµ¨¹·Ôô£¡¾¹¸ÒÒâÍ¼¶Ô½«¾ü²»Àû£¡½ñÈÕ¶¨²»ÈÄÄã£¡",
 		options =
 		{
 			{
@@ -22708,7 +22721,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26295 ,
-		txt = "å¾è£é‚£æ— èƒ†åŒªç±»ï¼Œæ€çš„å°±æ˜¯ä»–ï¼",
+		txt = "ÐìÈÙÄÇÎÞµ¨·ËÀà£¬É±µÄ¾ÍÊÇËû£¡",
 		options =
 		{
 			{
@@ -22730,7 +22743,7 @@ DialogModelDB =
 		},
 		speakerID = 30857,
 		soundID =26296 ,
-		txt = "æˆ‘ä¹ƒå¾å¤§äººé—¨ä¸‹å®¢å¿ï¼Œé˜ä¸‹è¿˜è¯·ç•™ä¸‹æ€§å‘½ï¼",
+		txt = "ÎÒÄËÐì´óÈËÃÅÏÂ¿ÍÇä£¬¸óÏÂ»¹ÇëÁôÏÂÐÔÃü£¡",
 		options =
 		{
 			{
@@ -22752,7 +22765,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26297 ,
-		txt = "é¸¡é¸£ç‹—ç›—ä¹‹è¾ˆï¼Œå¿«å¿«ä¸Šå‰é¢†æ­»ï¼",
+		txt = "¼¦Ãù¹·µÁÖ®±²£¬¿ì¿ìÉÏÇ°ÁìËÀ£¡",
 		options =
 		{
 			{
@@ -22774,7 +22787,7 @@ DialogModelDB =
 		},
 		speakerID = 30865,
 		soundID =26298 ,
-		txt = "å¾æŸäººåœ¨æ­¤ï¼ä½•äººæ•¢é˜»æŒ æˆ‘å®¶ä¸»å…¬å¤§è®¡ï¼",
+		txt = "ÐìÄ³ÈËÔÚ´Ë£¡ºÎÈË¸Ò×èÄÓÎÒ¼ÒÖ÷¹«´ó¼Æ£¡",
 		options =
 		{
 			{
@@ -22796,7 +22809,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26299 ,
-		txt = "ä¹±è‡£è´¼å­ï¼è¿˜æ•¢å¦„å›¾ä¸œå±±å†èµ·ï¼Œæˆ‘çœ‹ä½ ä»Šæ—¥è‡ªèº«éš¾ä¿ï¼Œçº³å‘½æ¥å§ï¼",
+		txt = "ÂÒ³¼Ôô×Ó£¡»¹¸ÒÍýÍ¼¶«É½ÔÙÆð£¬ÎÒ¿´Äã½ñÈÕ×ÔÉíÄÑ±££¬ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			{
@@ -22810,7 +22823,7 @@ DialogModelDB =
 
 		},
 	},
-------------------------------------------------æ¯’é¾™å³°å‰¯æœ¬å¯¹è¯--------------------
+------------------------------------------------¶¾Áú·å¸±±¾¶Ô»°--------------------
 
 [10069] =
 	{
@@ -22820,7 +22833,7 @@ DialogModelDB =
 		},
 		speakerID = 30890,
 		soundID =26317 ,
-		txt = "å°†å†›å‘½æˆ‘æ¥å·¡å±±ï¼Œä½ æ˜¯ä½•äººï¼Œæ¥æˆ‘æ¯’é¾™å³°æ‰€ä¸ºä½•äº‹ï¼Ÿ",
+		txt = "½«¾üÃüÎÒÀ´Ñ²É½£¬ÄãÊÇºÎÈË£¬À´ÎÒ¶¾Áú·åËùÎªºÎÊÂ£¿",
 		options =
 		{
 			{
@@ -22842,7 +22855,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26318 ,
-		txt = "æˆ‘å¥‰å‘½æ¥æ­¤æ‰¾é‚£ç‰›è¾…è€è´¼ï¼Œæ‹¿ä»–æ€§å‘½ï¼",
+		txt = "ÎÒ·îÃüÀ´´ËÕÒÄÇÅ£¸¨ÀÏÔô£¬ÄÃËûÐÔÃü£¡",
 		options =
 		{
 			{
@@ -22864,7 +22877,7 @@ DialogModelDB =
 		},
 		speakerID = 30898,
 		soundID =26319 ,
-		txt = "é˜µå‰ä½•äººï¼Œèƒ†æ•¢é—¯å…¥æˆ‘è¥¿å‡‰å†›é©»å®ˆä¹‹åœ°ï¼Œè¿˜ä¸æŸæ‰‹å°±æ“’ï¼",
+		txt = "ÕóÇ°ºÎÈË£¬µ¨¸Ò´³ÈëÎÒÎ÷Á¹¾ü×¤ÊØÖ®µØ£¬»¹²»ÊøÊÖ¾ÍÇÜ£¡",
 		options =
 		{
 			{
@@ -22886,7 +22899,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26320 ,
-		txt = "ç‰›è¾…çŽ°åœ¨ä½•å¤„ï¼Œä»Žå®žé“æ¥ï¼Œé¥¶ä½ ä»¬ä¸€å‘½ï¼",
+		txt = "Å£¸¨ÏÖÔÚºÎ´¦£¬´ÓÊµµÀÀ´£¬ÈÄÄãÃÇÒ»Ãü£¡",
 		options =
 		{
 			{
@@ -22908,7 +22921,7 @@ DialogModelDB =
 		},
 		speakerID = 30906,
 		soundID =26321 ,
-		txt = "æˆ‘ä¹ƒç‰›è¾…æ‰‹ä¸‹å¤§å°†èƒ¡èµ¤å„¿ï¼Œä½ ç­‰ç«Ÿæ•¢é—¯å…¥è¥¿å‡‰å¤§å†›é©»åœ°ï¼Œçœ‹æˆ‘ä»Šå¤©æ´»åŠˆäº†ä½ ï¼",
+		txt = "ÎÒÄËÅ£¸¨ÊÖÏÂ´ó½«ºú³à¶ù£¬ÄãµÈ¾¹¸Ò´³ÈëÎ÷Á¹´ó¾ü×¤µØ£¬¿´ÎÒ½ñÌì»îÅüÁËÄã£¡",
 		options =
 		{
 			{
@@ -22930,7 +22943,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26322 ,
-		txt = "å¤§èƒ†è´¼å­ï¼Œç«Ÿæ•¢å£å‡ºç‹‚è¨€ï¼Œçœ‹çœ‹ä»Šå¤©æ˜¯ä½ æ­»ï¼Œè¿˜æ˜¯æˆ‘æ´»ï¼",
+		txt = "´óµ¨Ôô×Ó£¬¾¹¸Ò¿Ú³ö¿ñÑÔ£¬¿´¿´½ñÌìÊÇÄãËÀ£¬»¹ÊÇÎÒ»î£¡",
 		options =
 		{
 			{
@@ -22952,7 +22965,7 @@ DialogModelDB =
 		},
 		speakerID = 30914,
 		soundID =26323 ,
-		txt = "æ­¤åœ°ä¹ƒç‰›è¾…å¤§äººé—­å…³ä¹‹åœ°ï¼Œå®µå°æ­¢æ­¥ï¼å¦åˆ™å®šæ–©ä¸é¥¶ï¼",
+		txt = "´ËµØÄËÅ£¸¨´óÈË±Õ¹ØÖ®µØ£¬ÏüÐ¡Ö¹²½£¡·ñÔò¶¨Õ¶²»ÈÄ£¡",
 		options =
 		{
 			{
@@ -22974,7 +22987,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26324 ,
-		txt = "æ¥æ­¤å°±æ˜¯è¦æ€äº†ç‰›è¾…è€è´¼ï¼Œè°æŒ¡æˆ‘ï¼Œæˆ‘æ€è°ï¼",
+		txt = "À´´Ë¾ÍÊÇÒªÉ±ÁËÅ£¸¨ÀÏÔô£¬Ë­µ²ÎÒ£¬ÎÒÉ±Ë­£¡",
 		options =
 		{
 			{
@@ -22996,7 +23009,7 @@ DialogModelDB =
 		},
 		speakerID = 30922,
 		soundID =26325 ,
-		txt = "æˆ‘å¥‰å¤§äººå‘½çŽ‡å†›å‰æ¥å‡»æ€ä½ ï¼Œè¿˜ä¸é€Ÿé€Ÿå—æ­»ï¼",
+		txt = "ÎÒ·î´óÈËÃüÂÊ¾üÇ°À´»÷É±Äã£¬»¹²»ËÙËÙÊÜËÀ£¡",
 		options =
 		{
 			{
@@ -23018,7 +23031,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "è¯´äº†æ€ç‰›è¾…ï¼Œå°±è¦æ€ç‰›è¾…ï¼Œæ¥å¤šå°‘äººéƒ½æ²¡ç”¨ï¼",
+		txt = "ËµÁËÉ±Å£¸¨£¬¾ÍÒªÉ±Å£¸¨£¬À´¶àÉÙÈË¶¼Ã»ÓÃ£¡",
 		options =
 		{
 			{
@@ -23040,7 +23053,7 @@ DialogModelDB =
 		},
 		speakerID = 30930,
 		soundID =26327 ,
-		txt = "æ€æˆ‘å°†å£«ï¼Œé˜»æˆ‘å¤§äº‹ï¼Œå°è´¼çŸ¥é“æ­»å­—æ€Žä¹ˆå†™å—ï¼Ÿ",
+		txt = "É±ÎÒ½«Ê¿£¬×èÎÒ´óÊÂ£¬Ð¡ÔôÖªµÀËÀ×ÖÔõÃ´Ð´Âð£¿",
 		options =
 		{
 			{
@@ -23062,7 +23075,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26328 ,
-		txt = "ä»Šæ—¥ä¸ä»…è¦æ€ä½ å°†å£«ï¼Œåä½ å¤§äº‹ï¼Œè¿˜è¦å–ä½ ç‹—å‘½ï¼çº³å‘½æ¥å§ï¼",
+		txt = "½ñÈÕ²»½öÒªÉ±Äã½«Ê¿£¬»µÄã´óÊÂ£¬»¹ÒªÈ¡Äã¹·Ãü£¡ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			{
@@ -23078,7 +23091,7 @@ DialogModelDB =
 	},
 
 
-------------------------------------------------å¹»å¤©å®«å‰¯æœ¬å¯¹è¯--------------------
+------------------------------------------------»ÃÌì¹¬¸±±¾¶Ô»°--------------------
 
 [10081] =
 	{
@@ -23088,7 +23101,7 @@ DialogModelDB =
 		},
 		speakerID = 31020,
 		soundID =26331 ,
-		txt = "ä½ æ˜¯ä½•äººï¼Ÿæ­¤ä¹ƒè¥¿å‡‰å†›é©»å®ˆä¹‹åœ°ï¼Œè¿˜ä¸é€Ÿé€Ÿé€€å¼€ï¼",
+		txt = "ÄãÊÇºÎÈË£¿´ËÄËÎ÷Á¹¾ü×¤ÊØÖ®µØ£¬»¹²»ËÙËÙÍË¿ª£¡",
 		options =
 		{
 			{
@@ -23110,7 +23123,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26332 ,
-		txt = "æ¥çš„å°±æ˜¯æ­¤å¤„ï¼Œæˆ‘æ­£è¦æ‰¾é‚£åŽé›„åŒ¹å¤«ç®—è´¦ï¼",
+		txt = "À´µÄ¾ÍÊÇ´Ë´¦£¬ÎÒÕýÒªÕÒÄÇ»ªÐÛÆ¥·òËãÕË£¡",
 		options =
 		{
 			{
@@ -23132,7 +23145,7 @@ DialogModelDB =
 		},
 		speakerID = 31028,
 		soundID =26333 ,
-		txt = "é˜µå‰ä½•äººï¼Ÿæ­¤åœ°ä¹ƒæˆ‘è¥¿å‡‰å†›é‡åœ°ï¼Œé—¯å…¥è€…æ­»ï¼",
+		txt = "ÕóÇ°ºÎÈË£¿´ËµØÄËÎÒÎ÷Á¹¾üÖØµØ£¬´³ÈëÕßËÀ£¡",
 		options =
 		{
 			{
@@ -23154,7 +23167,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26334 ,
-		txt = "åŽé›„æ­£åœ¨ä½•å¤„ï¼Œé€Ÿé€Ÿé“æ¥ï¼Œé¥¶ä½ ä¸æ­»ï¼",
+		txt = "»ªÐÛÕýÔÚºÎ´¦£¬ËÙËÙµÀÀ´£¬ÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -23176,7 +23189,7 @@ DialogModelDB =
 		},
 		speakerID = 31036,
 		soundID =26335 ,
-		txt = "èƒ†æ•¢é—¯å…¥æˆ‘å†›ç§˜åœ°ï¼Œçœ‹æ¥ä»Šæ—¥ç•™ä½ ä»¬ä¸å¾—ï¼",
+		txt = "µ¨¸Ò´³ÈëÎÒ¾üÃØµØ£¬¿´À´½ñÈÕÁôÄãÃÇ²»µÃ£¡",
 		options =
 		{
 			{
@@ -23198,7 +23211,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26336 ,
-		txt = "æˆ‘æ¥æ­¤æ‹¿åŽé›„åŒ¹å¤«çš„ç‹—å‘½ï¼Œè¯†è¶£çš„ä¸€è¾¹åŽ»ï¼Œä¸è¯†è¶£çš„çº³å‘½æ¥ï¼",
+		txt = "ÎÒÀ´´ËÄÃ»ªÐÛÆ¥·òµÄ¹·Ãü£¬Ê¶È¤µÄÒ»±ßÈ¥£¬²»Ê¶È¤µÄÄÉÃüÀ´£¡",
 		options =
 		{
 			{
@@ -23220,7 +23233,7 @@ DialogModelDB =
 		},
 		speakerID = 31044,
 		soundID =26337 ,
-		txt = "æˆ‘å¥‰å°†å†›å‘½åœ¨æ­¤é•‡å®ˆï¼Œæ“…é—¯è€…æ€æ— èµ¦ï¼",
+		txt = "ÎÒ·î½«¾üÃüÔÚ´ËÕòÊØ£¬ÉÃ´³ÕßÉ±ÎÞÉâ£¡",
 		options =
 		{
 			{
@@ -23242,7 +23255,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26338 ,
-		txt = "å¥½ä¸€ä¸ªæ€æ— èµ¦ï¼çœ‹çœ‹ä»Šå¤©æ˜¯è°æ€è°ï¼",
+		txt = "ºÃÒ»¸öÉ±ÎÞÉâ£¡¿´¿´½ñÌìÊÇË­É±Ë­£¡",
 		options =
 		{
 			{
@@ -23264,7 +23277,7 @@ DialogModelDB =
 		},
 		speakerID = 31052,
 		soundID =26339 ,
-		txt = "è´¼å­å¤§èƒ†ï¼ç«Ÿæ•¢æƒŠæ‰°å°†å†›ä¿®ç‚¼ï¼Œæ—¢ç„¶æ¥äº†å°±åˆ«æƒ³èµ°ï¼",
+		txt = "Ôô×Ó´óµ¨£¡¾¹¸Ò¾ªÈÅ½«¾üÐÞÁ¶£¬¼ÈÈ»À´ÁË¾Í±ðÏë×ß£¡",
 		options =
 		{
 			{
@@ -23286,7 +23299,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26340 ,
-		txt = "è€åŒ¹å¤«æ— èƒ†ï¼æ´¾äº›è™¾å…µèŸ¹å°†å‰æ¥ï¼Œé˜»å¾—äº†æˆ‘å—ï¼Ÿ",
+		txt = "ÀÏÆ¥·òÎÞµ¨£¡ÅÉÐ©Ïº±øÐ·½«Ç°À´£¬×èµÃÁËÎÒÂð£¿",
 		options =
 		{
 			{
@@ -23308,7 +23321,7 @@ DialogModelDB =
 		},
 		speakerID = 31060,
 		soundID =26341 ,
-		txt = "å°è´¼ï¼Œæƒ³è¦é˜»æŒ æˆ‘å®¶ä¸»å…¬å¤å…´å¤§è®¡ï¼Œä¹Ÿä¸æŽ‚é‡æŽ‚é‡è‡ªå·±ï¼Œä¸”åšæˆ‘åˆ€ä¸‹äº¡é­‚å§ï¼",
+		txt = "Ð¡Ôô£¬ÏëÒª×èÄÓÎÒ¼ÒÖ÷¹«¸´ÐË´ó¼Æ£¬Ò²²»µàÁ¿µàÁ¿×Ô¼º£¬ÇÒ×öÎÒµ¶ÏÂÍö»ê°É£¡",
 		options =
 		{
 			{
@@ -23330,7 +23343,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26342 ,
-		txt = "è€åŒ¹å¤«ä¹Ÿæ•¢ç§°é›„ï¼Œçœ‹æˆ‘å–ä½ ç‹—å‘½ï¼Œç»ä½ å¤§è®¡ï¼",
+		txt = "ÀÏÆ¥·òÒ²¸Ò³ÆÐÛ£¬¿´ÎÒÈ¡Äã¹·Ãü£¬¾øÄã´ó¼Æ£¡",
 		options =
 		{
 			{
@@ -23344,7 +23357,7 @@ DialogModelDB =
 
 		},
 	},
-------------------------------------------------èµ¤é­‚å²­å‰¯æœ¬å¯¹è¯--------------------------------------------------------------------
+------------------------------------------------³à»êÁë¸±±¾¶Ô»°--------------------------------------------------------------------
 
 [10093] =
 	{
@@ -23354,7 +23367,7 @@ DialogModelDB =
 		},
 		speakerID = 31110,
 		soundID =26325 ,
-		txt = "æ¥è€…ä½•äººï¼Œç«Ÿæ•¢çª¥æŽ¢æˆ‘è¥¿å‡‰å†›é©»åœ°ï¼",
+		txt = "À´ÕßºÎÈË£¬¾¹¸Ò¿úÌ½ÎÒÎ÷Á¹¾ü×¤µØ£¡",
 		options =
 		{
 			{
@@ -23376,7 +23389,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "è‘£å“é­”é­‚è—åœ¨ä½•å¤„ï¼Œä»Žå®žæ‹›æ¥ï¼Œé¥¶ä½ ä»¬ä¸æ­»ï¼",
+		txt = "¶­×¿Ä§»ê²ØÔÚºÎ´¦£¬´ÓÊµÕÐÀ´£¬ÈÄÄãÃÇ²»ËÀ£¡",
 		options =
 		{
 			{
@@ -23398,7 +23411,7 @@ DialogModelDB =
 		},
 		speakerID = 31118,
 		soundID =26325 ,
-		txt = "å®µå°ä¹‹å¾’ï¼Œèƒ†æ•¢é—¯å…¥å†¥ç«åŽŸï¼Œæ—¢ç„¶æ¥äº†ï¼Œå°±åˆ«æƒ³èµ°ï¼æ­»æ¥ï¼",
+		txt = "ÏüÐ¡Ö®Í½£¬µ¨¸Ò´³ÈëÚ¤»ðÔ­£¬¼ÈÈ»À´ÁË£¬¾Í±ðÏë×ß£¡ËÀÀ´£¡",
 		options =
 		{
 			{
@@ -23420,7 +23433,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "æˆ‘ä»Šæ—¥ä¸ºé‚£è‘£å“è€Œæ¥ï¼Œä½ ä»¬ä¸é˜»æˆ‘é“ï¼Œè‡ªç„¶æ— äº‹ï¼Œè‹¥æƒ³é˜»æˆ‘ï¼Œä¼‘æ€ªæˆ‘æ‰‹ä¸‹æ— æƒ…ï¼",
+		txt = "ÎÒ½ñÈÕÎªÄÇ¶­×¿¶øÀ´£¬ÄãÃÇ²»×èÎÒµÀ£¬×ÔÈ»ÎÞÊÂ£¬ÈôÏë×èÎÒ£¬ÐÝ¹ÖÎÒÊÖÏÂÎÞÇé£¡",
 		options =
 		{
 			{
@@ -23442,7 +23455,7 @@ DialogModelDB =
 		},
 		speakerID = 31126,
 		soundID =26325 ,
-		txt = "è¥ç›˜åé‡Œï¼Œçš†æ˜¯æˆ‘é•‡å®ˆä¹‹åœ°ï¼Œè°æ•¢è¸å‰ä¸€æ­¥ï¼",
+		txt = "ÓªÅÌÊ®Àï£¬½ÔÊÇÎÒÕòÊØÖ®µØ£¬Ë­¸ÒÌ¤Ç°Ò»²½£¡",
 		options =
 		{
 			{
@@ -23464,7 +23477,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "ä»Šæ—¥è‘£å“æˆ‘éžæ€ä¸å¯ï¼ŒæŒ¡æˆ‘è€…æ­»ï¼",
+		txt = "½ñÈÕ¶­×¿ÎÒ·ÇÉ±²»¿É£¬µ²ÎÒÕßËÀ£¡",
 		options =
 		{
 			{
@@ -23486,7 +23499,7 @@ DialogModelDB =
 		},
 		speakerID = 31134,
 		soundID =26325 ,
-		txt = "æˆ‘å¥‰å‘½åœ¨æ­¤é•‡å®ˆå¤šæ—¶ï¼Œå²‚å®¹ä½ æƒŠæ‰°ä¸»å…¬å¤§é©¾ï¼è¿˜ä¸é€Ÿé€Ÿé™æœï¼",
+		txt = "ÎÒ·îÃüÔÚ´ËÕòÊØ¶àÊ±£¬ÆñÈÝÄã¾ªÈÅÖ÷¹«´ó¼Ý£¡»¹²»ËÙËÙ½µ·þ£¡",
 		options =
 		{
 			{
@@ -23508,7 +23521,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "é¹¿æ­»è°æ‰‹è¿˜ä¸çŸ¥é“å‘¢ï¼å¤šè¯´æ— ç”¨ï¼Œæ‰‹åº•ä¸‹è§çœŸç« å§ï¼",
+		txt = "Â¹ËÀË­ÊÖ»¹²»ÖªµÀÄØ£¡¶àËµÎÞÓÃ£¬ÊÖµ×ÏÂ¼ûÕæÕÂ°É£¡",
 		options =
 		{
 			{
@@ -23530,7 +23543,7 @@ DialogModelDB =
 		},
 		speakerID = 31142,
 		soundID =26325 ,
-		txt = "ç«Ÿæ•¢æ„å›¾ç ´åä¸»å…¬å¤§è®¡ï¼Œä»Šæ—¥å®šè¦å°†ä½ æŒ«éª¨æ‰¬ç°ï¼",
+		txt = "¾¹¸ÒÒâÍ¼ÆÆ»µÖ÷¹«´ó¼Æ£¬½ñÈÕ¶¨Òª½«Äã´ì¹ÇÑï»Ò£¡",
 		options =
 		{
 			{
@@ -23552,7 +23565,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "å°”ç­‰ä¹±è‡£è´¼å­ï¼Œäººäººå¾—è€Œè¯›ä¹‹ï¼Œå—æ­»å§ï¼",
+		txt = "¶ûµÈÂÒ³¼Ôô×Ó£¬ÈËÈËµÃ¶øÖïÖ®£¬ÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -23574,7 +23587,7 @@ DialogModelDB =
 		},
 		speakerID = 31150,
 		soundID =26325 ,
-		txt = "å¾ä¹ƒè‘£å“ï¼ŒåŒºåŒºé»„å£å°å„¿ï¼Œç«Ÿæ•¢é˜»æŒ æˆ‘å¤å…´å¤§è®¡ï¼Œä»Šæ—¥å°±è¦å°†ä½ åƒåˆ€ä¸‡å‰ï¼",
+		txt = "ÎáÄË¶­×¿£¬ÇøÇø»Æ¿ÚÐ¡¶ù£¬¾¹¸Ò×èÄÓÎÒ¸´ÐË´ó¼Æ£¬½ñÈÕ¾ÍÒª½«ÄãÇ§µ¶Íò¹Ð£¡",
 		options =
 		{
 			{
@@ -23596,7 +23609,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26326 ,
-		txt = "è€è´¼ç‹‚å¦„ï¼è¿™æ¬¡å®šè¦è®©ä½ é­‚é£žé­„æ•£ï¼Œæ°¸ä¸è¶…ç”Ÿï¼",
+		txt = "ÀÏÔô¿ñÍý£¡Õâ´Î¶¨ÒªÈÃÄã»ê·ÉÆÇÉ¢£¬ÓÀ²»³¬Éú£¡",
 		options =
 		{
 			{
@@ -23610,7 +23623,7 @@ DialogModelDB =
 
 		},
 	},
-----------------------------------------------------------------å¤©å…¬å±±-------------------------------------------------------------------------------------------
+----------------------------------------------------------------Ìì¹«É½-------------------------------------------------------------------------------------------
 [10105] =
 	{
 		dialogType = DialogType.NotOption,
@@ -23619,7 +23632,7 @@ DialogModelDB =
 		},
 		speakerID = 31190,
 		soundID =0 ,
-		txt = "ç«™ä½ï¼æ­¤ä¹ƒå¤©å…¬å°†å†›å¼ è§’ä¿®ç‚¼ä¹‹æ‰€ï¼Œæ“…å…¥æ­¤åœ°è€…æ€æ— èµ¦ï¼",
+		txt = "Õ¾×¡£¡´ËÄËÌì¹«½«¾üÕÅ½ÇÐÞÁ¶Ö®Ëù£¬ÉÃÈë´ËµØÕßÉ±ÎÞÉâ£¡",
 		options =
 		{
 			{
@@ -23641,7 +23654,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¼ è§’è€è´¼åœ¨å“ªï¼Œè‹¥ä»Žå®žé“æ¥ï¼Œå¯é¥¶ä½ ä¸æ­»ã€‚",
+		txt = "ÕÅ½ÇÀÏÔôÔÚÄÄ£¬Èô´ÓÊµµÀÀ´£¬¿ÉÈÄÄã²»ËÀ¡£",
 		options =
 		{
 			{
@@ -23663,7 +23676,7 @@ DialogModelDB =
 		},
 		speakerID = 31198,
 		soundID =0 ,
-		txt = "å¾ä¹ƒå¤©å…¬å±±å®ˆå±±å¤§å°†ï¼Œæ­¤åœ°å²‚å®¹å°”ç­‰å°è´¼æ”¾è‚†ï¼",
+		txt = "ÎáÄËÌì¹«É½ÊØÉ½´ó½«£¬´ËµØÆñÈÝ¶ûµÈÐ¡Ôô·ÅËÁ£¡",
 		options =
 		{
 			{
@@ -23685,7 +23698,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "é™¤æŽ‰å¼ è§’ï¼Œæˆ‘è‡ªä¼šç¦»åŽ»ã€‚",
+		txt = "³ýµôÕÅ½Ç£¬ÎÒ×Ô»áÀëÈ¥¡£",
 		options =
 		{
 			{
@@ -23707,7 +23720,7 @@ DialogModelDB =
 		},
 		speakerID = 31206,
 		soundID =0 ,
-		txt = "å¼ è§’å¤§äººé©¬ä¸Šå°±è¦ä¿®ç‚¼å‡ºå…³äº†ï¼Œå°å­ï¼Œä½ ä»Šæ—¥æ­»æœŸå·²è‡³ï¼",
+		txt = "ÕÅ½Ç´óÈËÂíÉÏ¾ÍÒªÐÞÁ¶³ö¹ØÁË£¬Ð¡×Ó£¬Äã½ñÈÕËÀÆÚÒÑÖÁ£¡",
 		options =
 		{
 			{
@@ -23729,7 +23742,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¼ è§’è€è´¼å·²æ˜¯ç©·é€”æœ«è·¯ï¼Œä½ ç­‰è‹¥çŽ°åœ¨æ‚”æ‚Ÿï¼Œå°šå¯æ´»å‘½ã€‚",
+		txt = "ÕÅ½ÇÀÏÔôÒÑÊÇÇîÍ¾Ä©Â·£¬ÄãµÈÈôÏÖÔÚ»ÚÎò£¬ÉÐ¿É»îÃü¡£",
 		options =
 		{
 			{
@@ -23751,7 +23764,7 @@ DialogModelDB =
 		},
 		speakerID = 31214,
 		soundID =0 ,
-		txt = "å¤©å…¬å°†å†›éº¾ä¸‹å¤§å°†æ¨å‡¤åœ¨æ­¤ï¼æœ‰æœ¬å°†åœ¨ï¼Œè°ä¹Ÿä¼‘æƒ³æƒŠæ‰°å¼ è§’å¤§äººçš„ä¿®ç‚¼ï¼",
+		txt = "Ìì¹«½«¾ü÷âÏÂ´ó½«Ñî·ïÔÚ´Ë£¡ÓÐ±¾½«ÔÚ£¬Ë­Ò²ÐÝÏë¾ªÈÅÕÅ½Ç´óÈËµÄÐÞÁ¶£¡",
 		options =
 		{
 			{
@@ -23773,7 +23786,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¿«è®©å¼ è§’å‡ºæ¥è§æˆ‘ï¼Œä½ ä¸æ˜¯æˆ‘å¯¹æ‰‹ï¼",
+		txt = "¿ìÈÃÕÅ½Ç³öÀ´¼ûÎÒ£¬Äã²»ÊÇÎÒ¶ÔÊÖ£¡",
 		options =
 		{
 			{
@@ -23795,7 +23808,7 @@ DialogModelDB =
 		},
 		speakerID = 31222,
 		soundID =0 ,
-		txt = "å°å­ï¼Œä½ å±¡åæœ¬åº§å¤§äº‹ï¼Œæ€æˆ‘ä¼—å¤šå¼Ÿå…„ï¼Œå®žæ˜¯å¯æ¨ï¼ä»Šæ—¥æœ¬åº§å®šè¦å°†ä½ æŒ«éª¨æ‰¬ç°ï¼",
+		txt = "Ð¡×Ó£¬ÄãÂÅ»µ±¾×ù´óÊÂ£¬É±ÎÒÖÚ¶àµÜÐÖ£¬ÊµÊÇ¿ÉºÞ£¡½ñÈÕ±¾×ù¶¨Òª½«Äã´ì¹ÇÑï»Ò£¡",
 		options =
 		{
 			{
@@ -23817,7 +23830,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¼ è§’ï¼Œä½ æ­»æœŸå·²è‡³ï¼å‰ç•ªè®©ä½ å€Ÿæˆªæ•™ç§˜æœ¯é€ƒäº†ï¼Œä»Šæ—¥æˆ‘çœ‹ä½ å†å¾€å“ªé‡Œé€ƒï¼",
+		txt = "ÕÅ½Ç£¬ÄãËÀÆÚÒÑÖÁ£¡Ç°·¬ÈÃÄã½è½Ø½ÌÃØÊõÌÓÁË£¬½ñÈÕÎÒ¿´ÄãÔÙÍùÄÄÀïÌÓ£¡",
 		options =
 		{
 			{
@@ -23832,7 +23845,7 @@ DialogModelDB =
 		},
 	},
 
----------------------------------è¿·é›¾æž—ï¼Œé›¾éœ¾éº¦é˜¿ç±³é˜¿ç±³-----------------------------------------------------------------------
+---------------------------------ÃÔÎíÁÖ£¬Îíö²Âó°¢Ã×°¢Ã×-----------------------------------------------------------------------
 [10115] =
 	{
 		dialogType = DialogType.NotOption,
@@ -23841,7 +23854,7 @@ DialogModelDB =
 		},
 		speakerID = 31250,
 		soundID =0 ,
-		txt = "æ­¤ä¹ƒç¨‹è¿œå¿—å¤§å¸…ä¿®ç‚¼ä¹‹åœ°ï¼Œæ•¢æ“…é—¯è€…çš†æ€æ— èµ¦ï¼",
+		txt = "´ËÄË³ÌÔ¶Ö¾´óË§ÐÞÁ¶Ö®µØ£¬¸ÒÉÃ´³Õß½ÔÉ±ÎÞÉâ£¡",
 		options =
 		{
 			{
@@ -23863,7 +23876,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "æˆ‘åªæ‰¾ç¨‹è¿œå¿—ç®—è´¦ï¼Œå°”ç­‰çŽ°åœ¨è®©å¼€å°šå¯æ´»å‘½ï¼",
+		txt = "ÎÒÖ»ÕÒ³ÌÔ¶Ö¾ËãÕË£¬¶ûµÈÏÖÔÚÈÃ¿ªÉÐ¿É»îÃü£¡",
 		options =
 		{
 			{
@@ -23885,7 +23898,7 @@ DialogModelDB =
 		},
 		speakerID = 31258,
 		soundID =0 ,
-		txt = "å“ªé‡Œè·‘æ¥çš„å°è´¼ï¼Œç«Ÿæ•¢æ¥æ­¤åœ°æ‰“æ‰°æˆ‘å®¶å¤§å¸…çš„ä¿®ç‚¼ï¼",
+		txt = "ÄÄÀïÅÜÀ´µÄÐ¡Ôô£¬¾¹¸ÒÀ´´ËµØ´òÈÅÎÒ¼Ò´óË§µÄÐÞÁ¶£¡",
 		options =
 		{
 			{
@@ -23907,7 +23920,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "æ— éœ€å¤šè¨€ï¼Œå«ç¨‹è¿œå¿—é€Ÿé€Ÿå‰æ¥é¢†æ­»ï¼",
+		txt = "ÎÞÐè¶àÑÔ£¬½Ð³ÌÔ¶Ö¾ËÙËÙÇ°À´ÁìËÀ£¡",
 		options =
 		{
 			{
@@ -23929,7 +23942,7 @@ DialogModelDB =
 		},
 		speakerID = 31266,
 		soundID =0 ,
-		txt = "ç«™ä½ï¼ä½ ç«Ÿæ•¢æ‰“æ‰°ç¨‹å¤§å¸…çš„ä¿®ç‚¼ï¼Œæœ¬å°†ä»Šæ—¥å®šå–ä½ å°å‘½ï¼",
+		txt = "Õ¾×¡£¡Äã¾¹¸Ò´òÈÅ³Ì´óË§µÄÐÞÁ¶£¬±¾½«½ñÈÕ¶¨È¡ÄãÐ¡Ãü£¡",
 		options =
 		{
 			{
@@ -23951,7 +23964,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "ç¨‹è¿œå¿—æˆ‘ä»Šæ—¥æ˜¯æ€å®šäº†ï¼Œæ•¢æŒ¡æˆ‘è€…ä¸€å¹¶è¯›æ€ï¼",
+		txt = "³ÌÔ¶Ö¾ÎÒ½ñÈÕÊÇÉ±¶¨ÁË£¬¸Òµ²ÎÒÕßÒ»²¢ÖïÉ±£¡",
 		options =
 		{
 			{
@@ -23973,7 +23986,7 @@ DialogModelDB =
 		},
 		speakerID = 31274,
 		soundID =0 ,
-		txt = "å¾ä¹ƒé»„å·¾å¤§å°†éŸ©å¿ æ˜¯ä¹Ÿï¼å¥‰ç¨‹è¿œå¿—å¤§å¸…ä»¤åœ¨æ­¤åŸ‹ä¼å¤šæ—¶ï¼å—æ­»å§ï¼",
+		txt = "ÎáÄË»Æ½í´ó½«º«ÖÒÊÇÒ²£¡·î³ÌÔ¶Ö¾´óË§ÁîÔÚ´ËÂñ·ü¶àÊ±£¡ÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -23995,7 +24008,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "æ¥å¾—æ­£æ˜¯æ—¶å€™ï¼Œå€’çœäº†æˆ‘æ‰¾çš„åŠŸå¤«ï¼",
+		txt = "À´µÃÕýÊÇÊ±ºò£¬µ¹Ê¡ÁËÎÒÕÒµÄ¹¦·ò£¡",
 		options =
 		{
 			{
@@ -24017,7 +24030,7 @@ DialogModelDB =
 		},
 		speakerID = 31282,
 		soundID =0 ,
-		txt = "å°è´¼ï¼ä½ è‹¦è‹¦ç›¸é€¼ï¼Œå±¡æ¬¡åæœ¬å¸…å¤§äº‹ï¼ä»Šæ—¥å°±å’Œä½ å†³ä¸€æ­»æˆ˜ï¼",
+		txt = "Ð¡Ôô£¡Äã¿à¿àÏà±Æ£¬ÂÅ´Î»µ±¾Ë§´óÊÂ£¡½ñÈÕ¾ÍºÍÄã¾öÒ»ËÀÕ½£¡",
 		options =
 		{
 			{
@@ -24039,7 +24052,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "ç¨‹è¿œå¿—ï¼Œä¸Šæ¬¡åªæ˜¯ç­äº†ä½ è‚‰èº«ï¼Œä¸æ–™ä½ ç«Ÿåˆå¤æ´»äº†ï¼ä»Šæ—¥æˆ‘å°±è®©ä½ å½»åº•é­‚é£žé­„æ•£ï¼",
+		txt = "³ÌÔ¶Ö¾£¬ÉÏ´ÎÖ»ÊÇÃðÁËÄãÈâÉí£¬²»ÁÏÄã¾¹ÓÖ¸´»îÁË£¡½ñÈÕÎÒ¾ÍÈÃÄã³¹µ×»ê·ÉÆÇÉ¢£¡",
 		options =
 		{
 			{
@@ -24053,7 +24066,7 @@ DialogModelDB =
 
 		},
 	},
----------------------------------------------------------é»„é£Žå²­-------------------------------------------
+---------------------------------------------------------»Æ·çÁë-------------------------------------------
 [10125] =
 	{
 		dialogType = DialogType.NotOption,
@@ -24062,7 +24075,7 @@ DialogModelDB =
 		},
 		speakerID = 31370,
 		soundID =0 ,
-		txt = "å°è´¼ï¼Œç«Ÿæ•¢æ“…è‡ªé—¯å…¥æˆ‘é»„é£Žå²­é©»åœ°ï¼èƒ†å­ä¸å°ï¼",
+		txt = "Ð¡Ôô£¬¾¹¸ÒÉÃ×Ô´³ÈëÎÒ»Æ·çÁë×¤µØ£¡µ¨×Ó²»Ð¡£¡",
 		options =
 		{
 			{
@@ -24084,7 +24097,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "ä½ è¿™å°å°çš„é»„é£Žå²­ï¼Œè¿˜ä¸ä»»æˆ‘æ¥åŽ»è‡ªç”±ï¼Ÿ",
+		txt = "ÄãÕâÐ¡Ð¡µÄ»Æ·çÁë£¬»¹²»ÈÎÎÒÀ´È¥×ÔÓÉ£¿",
 		options =
 		{
 			{
@@ -24106,7 +24119,7 @@ DialogModelDB =
 		},
 		speakerID = 31378,
 		soundID =0 ,
-		txt = "ç«™ä½ï¼ç«Ÿæ•¢æ“…é—¯ä¿ºé»„é£Žå²­ï¼ŒæƒŠæ‰°å¼ æ¢å¤§å¸…ä¿®ç‚¼ï¼ŒçœŸæ˜¯æ´»è…»äº†ï¼",
+		txt = "Õ¾×¡£¡¾¹¸ÒÉÃ´³°³»Æ·çÁë£¬¾ªÈÅÕÅÁº´óË§ÐÞÁ¶£¬ÕæÊÇ»îÄåÁË£¡",
 		options =
 		{
 			{
@@ -24128,7 +24141,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¿«å¿«äº¤å¾…å¼ æ¢çŽ°åœ¨ä½•å¤„ï¼Ÿè¿˜å¯é¥¶ä½ ä¸æ­»ï¼",
+		txt = "¿ì¿ì½»´ýÕÅÁºÏÖÔÚºÎ´¦£¿»¹¿ÉÈÄÄã²»ËÀ£¡",
 		options =
 		{
 			{
@@ -24150,7 +24163,7 @@ DialogModelDB =
 		},
 		speakerID = 31386,
 		soundID =0 ,
-		txt = "ä½ ç«Ÿæ•¢æ¥é»„é£Žå²­æ’’é‡Žï¼å¥‰å¼ æ¢å¤§å¸…ä¹‹ä»¤ï¼Œä»Šæ—¥å®šè¦å°†ä½ å°±åœ°æ ¼æ€ï¼",
+		txt = "Äã¾¹¸ÒÀ´»Æ·çÁëÈöÒ°£¡·îÕÅÁº´óË§Ö®Áî£¬½ñÈÕ¶¨Òª½«Äã¾ÍµØ¸ñÉ±£¡",
 		options =
 		{
 			{
@@ -24172,7 +24185,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "æˆ‘ä»Šæ—¥å°±æ˜¯è¦æ‰¾ä½ å®¶å¤§å¸…å¼ æ¢ç®—è´¦çš„ï¼Œå—æ­»å§ï¼",
+		txt = "ÎÒ½ñÈÕ¾ÍÊÇÒªÕÒÄã¼Ò´óË§ÕÅÁºËãÕËµÄ£¬ÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -24194,7 +24207,7 @@ DialogModelDB =
 		},
 		speakerID = 31394,
 		soundID =0 ,
-		txt = "é»„å·¾å¤§å°†èµµå¼˜åœ¨æ­¤ï¼å¼ æ¢å¤§äººçš„ä¿®ç‚¼ä¹‹åœ°ï¼Œå²‚å®¹ä½ è¿™æ— åå°è¾ˆæ”¾è‚†ï¼",
+		txt = "»Æ½í´ó½«ÕÔºëÔÚ´Ë£¡ÕÅÁº´óÈËµÄÐÞÁ¶Ö®µØ£¬ÆñÈÝÄãÕâÎÞÃûÐ¡±²·ÅËÁ£¡",
 		options =
 		{
 			{
@@ -24216,7 +24229,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "æ¥å¾—æ­£å¥½ï¼Œæ­£è¦æ‰¾ä½ ä»¬ç®—è´¦ï¼",
+		txt = "À´µÃÕýºÃ£¬ÕýÒªÕÒÄãÃÇËãÕË£¡",
 		options =
 		{
 			{
@@ -24238,7 +24251,7 @@ DialogModelDB =
 		},
 		speakerID = 31402,
 		soundID =0 ,
-		txt = "å‰ç•ªæ¯æˆ‘è‚‰èº«ï¼Œåæˆ‘å…„å¼Ÿå¥½äº‹ï¼Œä»Šæ—¥åˆé—¯æˆ‘é»„é£Žå²­ï¼Œæ€æˆ‘éƒ¨ä¸‹ï¼ä¸å°†ä½ å‰¥çš®æŠ½ç­‹æˆ‘å¼ æ¢èª“ä¸ä¸ºäººï¼",
+		txt = "Ç°·¬»ÙÎÒÈâÉí£¬»µÎÒÐÖµÜºÃÊÂ£¬½ñÈÕÓÖ´³ÎÒ»Æ·çÁë£¬É±ÎÒ²¿ÏÂ£¡²»½«Äã°þÆ¤³é½îÎÒÕÅÁºÊÄ²»ÎªÈË£¡",
 		options =
 		{
 			{
@@ -24260,7 +24273,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¼ æ¢ï¼ä¸Šæ¬¡å–äº†ä½ å°å‘½ï¼Œæ²¡æ–™ä½ ç«Ÿèƒ½è¿˜é­‚ï¼é‚£å°±å†åº¦å—æ­»å§ï¼",
+		txt = "ÕÅÁº£¡ÉÏ´ÎÈ¡ÁËÄãÐ¡Ãü£¬Ã»ÁÏÄã¾¹ÄÜ»¹»ê£¡ÄÇ¾ÍÔÙ¶ÈÊÜËÀ°É£¡",
 		options =
 		{
 			{
@@ -24274,7 +24287,7 @@ DialogModelDB =
 
 		},
 	},
--------------------------------------------------ç‚Žé­”çªŸå¯¹è¯----------------------------------------
+-------------------------------------------------Ñ×Ä§¿ß¶Ô»°----------------------------------------
 [10135] =
 	{
 		dialogType = DialogType.NotOption,
@@ -24283,7 +24296,7 @@ DialogModelDB =
 		},
 		speakerID = 31300,
 		soundID =0 ,
-		txt = "ä½ ç«Ÿèƒ†æ•¢æ“…é—¯ç‚Žé­”çªŸï¼æ‰¾æ­»ï¼Ÿ",
+		txt = "Äã¾¹µ¨¸ÒÉÃ´³Ñ×Ä§¿ß£¡ÕÒËÀ£¿",
 		options =
 		{
 			{
@@ -24305,7 +24318,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¼ å®å¦‚ä»Šèº«åœ¨ä½•å¤„ï¼Œæˆ‘ç‰¹æ¥æ­¤å–ä»–äººå¤´ï¼",
+		txt = "ÕÅ±¦Èç½ñÉíÔÚºÎ´¦£¬ÎÒÌØÀ´´ËÈ¡ËûÈËÍ·£¡",
 		options =
 		{
 			{
@@ -24327,7 +24340,7 @@ DialogModelDB =
 		},
 		speakerID = 31308,
 		soundID =0 ,
-		txt = "æœ‰æœ¬å°†åœ¨æ­¤ï¼Œå²‚å®¹ä½ åœ¨æˆ‘ç‚Žé­”çªŸæ”¾è‚†ï¼",
+		txt = "ÓÐ±¾½«ÔÚ´Ë£¬ÆñÈÝÄãÔÚÎÒÑ×Ä§¿ß·ÅËÁ£¡",
 		options =
 		{
 			{
@@ -24349,7 +24362,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å—¯ï¼Ÿé‚£å°±å…ˆç­äº†ä½ ä»¬è¿™ç¾¤å°è´¼å†æ‰¾å¼ å®ï¼",
+		txt = "àÅ£¿ÄÇ¾ÍÏÈÃðÁËÄãÃÇÕâÈºÐ¡ÔôÔÙÕÒÕÅ±¦£¡",
 		options =
 		{
 			{
@@ -24371,7 +24384,7 @@ DialogModelDB =
 		},
 		speakerID = 31316,
 		soundID =0 ,
-		txt = "æœ¬å°†å¥‰å¼ å®å¤§äººä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œå…¥æ­¤åœ°è€…çš†æ­»ï¼",
+		txt = "±¾½«·îÕÅ±¦´óÈËÁîÔÚ´Ë»¤·¨£¬Èë´ËµØÕß½ÔËÀ£¡",
 		options =
 		{
 			{
@@ -24393,7 +24406,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "é‚£å¼ å®è—åœ¨ä½•å¤„ï¼Ÿå¿«å¿«é“æ¥ï¼Œå°šå¯é¥¶ä½ ä¸€å‘½ï¼",
+		txt = "ÄÇÕÅ±¦²ØÔÚºÎ´¦£¿¿ì¿ìµÀÀ´£¬ÉÐ¿ÉÈÄÄãÒ»Ãü£¡",
 		options =
 		{
 			{
@@ -24415,7 +24428,7 @@ DialogModelDB =
 		},
 		speakerID = 31324,
 		soundID =0 ,
-		txt = "å¾ä¹ƒå¼ å®å¤§å¸…è´¦ä¸‹å¤§å°†æ³¢æ‰æ˜¯ä¹Ÿï¼æ•¢æ¥æ­¤æ’’é‡Žï¼Œçº³å‘½æ¥å§ï¼",
+		txt = "ÎáÄËÕÅ±¦´óË§ÕËÏÂ´ó½«²¨²ÅÊÇÒ²£¡¸ÒÀ´´ËÈöÒ°£¬ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			{
@@ -24437,7 +24450,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å…ˆç­äº†ä½ ç­‰è´¼å­ï¼Œçœ‹é‚£å¼ å®èº²åˆ°ä½•æ—¶ï¼",
+		txt = "ÏÈÃðÁËÄãµÈÔô×Ó£¬¿´ÄÇÕÅ±¦¶ãµ½ºÎÊ±£¡",
 		options =
 		{
 			{
@@ -24459,7 +24472,7 @@ DialogModelDB =
 		},
 		speakerID = 31332,
 		soundID =0 ,
-		txt = "å°å­ï¼Œä¸ç®¡æœ¬å¸…åœ¨å“ªï¼Œä½ éƒ½é˜´é­‚ä¸æ•£ï¼ä»Šæ—¥æœ¬å¸…å®šè¦å°†ä½ åƒåˆ€ä¸‡å‰ï¼Œæ–¹å¯æ¶ˆå¿ƒå¤´ä¹‹æ¨ï¼",
+		txt = "Ð¡×Ó£¬²»¹Ü±¾Ë§ÔÚÄÄ£¬Äã¶¼Òõ»ê²»É¢£¡½ñÈÕ±¾Ë§¶¨Òª½«ÄãÇ§µ¶Íò¹Ð£¬·½¿ÉÏûÐÄÍ·Ö®ºÞ£¡",
 		options =
 		{
 			{
@@ -24481,7 +24494,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "å¼ å®ï¼Œæˆ‘æ‰¾ä½ å¤šæ—¶äº†ï¼Œä»Šæ—¥å®šè¦å«ä½ é­‚é£žé­„æ•£ï¼",
+		txt = "ÕÅ±¦£¬ÎÒÕÒÄã¶àÊ±ÁË£¬½ñÈÕ¶¨Òª½ÐÄã»ê·ÉÆÇÉ¢£¡",
 		options =
 		{
 			{
@@ -24505,7 +24518,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions = {},
 		speakerID = 30320,
-		txt = "æ®æŽ¢å­å›žæŠ¥ï¼Œå¼ è§’ä¸Žå…¶æ‰‹ä¸‹å°†é¢†æ­£è—åŒ¿åœ¨é¬¼å‡¤å³¡ã€é»‘åŽŒå²­ã€è¡€é­”æ´žã€é­”ç½—å³°ä¸€å¸¦ä¿®ç»ƒé­”åŠŸï¼Œè¯·çŽ©å®¶è¶å…¶é­”åŠŸæœªæˆï¼Œå°†å¼ è§’ä¸Žæ‰‹ä¸‹å¼ ç‡•ï¼Œå¼ æ›¼æˆï¼Œæ³¢æ‰ç­‰äººæ–©æ€ï¼",
+		txt = "¾ÝÌ½×Ó»Ø±¨£¬ÕÅ½ÇÓëÆäÊÖÏÂ½«ÁìÕý²ØÄäÔÚ¹í·ïÏ¿¡¢ºÚÑáÁë¡¢ÑªÄ§¶´¡¢Ä§ÂÞ·åÒ»´øÐÞÁ·Ä§¹¦£¬ÇëÍæ¼Ò³ÃÆäÄ§¹¦Î´³É£¬½«ÕÅ½ÇÓëÊÖÏÂÕÅÑà£¬ÕÅÂü³É£¬²¨²ÅµÈÈËÕ¶É±£¡",
 		options =
 		{
 			[1] =
@@ -24513,7 +24526,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.Level, param = {level = 45 ,maxLevel = 55}},
 				},
-				optionTxt = "è¿›å…¥ç»éªŒå‰¯æœ¬ã€45çº§ã€‘",
+				optionTxt = "½øÈë¾­Ñé¸±±¾¡¾45¼¶¡¿",
 				actions =
 				{
 					{action = DialogActionType.EnterRingEctype , param = {ringEctypeID = 1},},
@@ -24525,7 +24538,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.Level, param = {level = 35 ,maxLevel = 45}},
 				},
-				optionTxt = "è¿›å…¥æ½œèƒ½å‰¯æœ¬ã€35çº§ã€‘",
+				optionTxt = "½øÈëÇ±ÄÜ¸±±¾¡¾35¼¶¡¿",
 				actions =
 				{
 					{action = DialogActionType.EnterRingEctype , param = {ringEctypeID = 2},},
@@ -24538,7 +24551,7 @@ DialogModelDB =
 				--{condition = DialogCondition.HasTask, param = {taskID = 10007, statue = true}},	
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,npcID = 30320}},
 				},
-				optionTxt = "è¯•ç‚¼ä»»åŠ¡",
+				optionTxt = "ÊÔÁ¶ÈÎÎñ",
 				actions =
 				{
 				{action = DialogActionType.Gotos, param = {dialogIDs = {5074,5169,5185,5201,5217}}},
@@ -24550,7 +24563,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15020, statue = true}},
 				},
-				optionTxt = "äº†è§£å‰¯æœ¬",
+				optionTxt = "ÁË½â¸±±¾",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35511}},
@@ -24560,24 +24573,24 @@ DialogModelDB =
 		}
 	},
 
-----------------------åéª‘ä»»åŠ¡  å¼€å§‹----------------------------
+----------------------×øÆïÈÎÎñ  ¿ªÊ¼----------------------------
 
-	[27001] =					--åéª‘å¬å”¤ä»»åŠ¡1
+	[27001] =					--×øÆïÕÙ»½ÈÎÎñ1
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 101}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 101}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39001,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘ç¥žé¾™æ•™ä¸»å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÉñÁú½ÌÖ÷ÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7001},},
@@ -24586,22 +24599,22 @@ DialogModelDB =
 
 		},
 	},
-	[27002] =					--åéª‘å¬å”¤ä»»åŠ¡2
+	[27002] =					--×øÆïÕÙ»½ÈÎÎñ2
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 102}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 102}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39002,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘ç‚¼ç‹±ç¥žç‰›å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÁ¶ÓüÉñÅ£ÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7002},},
@@ -24609,22 +24622,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27003] =					--åéª‘å¬å”¤ä»»åŠ¡3
+	[27003] =					--×øÆïÕÙ»½ÈÎÎñ3
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 103}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 103}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39003,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘é‡‘ç¿…å¤§é¹çŽ‹å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒ½ð³á´óÅôÍõÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7003},},
@@ -24632,22 +24645,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27004] =					--åéª‘å¬å”¤ä»»åŠ¡4
+	[27004] =					--×øÆïÕÙ»½ÈÎÎñ4
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 104}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 104}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39004,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘å¤œåˆƒçŒŽæ‰‹å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÒ¹ÈÐÁÔÊÖÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7004},},
@@ -24655,22 +24668,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27005] =					--åéª‘å¬å”¤ä»»åŠ¡5
+	[27005] =					--×øÆïÕÙ»½ÈÎÎñ5
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 105}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 105}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39005,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘å½±ç‹å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÓ°ºüÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7005},},
@@ -24678,22 +24691,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27006] =					--åéª‘å¬å”¤ä»»åŠ¡6
+	[27006] =					--×øÆïÕÙ»½ÈÎÎñ6
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 106}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 106}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39006,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘å·¨æ–§é­”çŽ‹å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒ¾Þ¸«Ä§ÍõÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7006},},
@@ -24701,22 +24714,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27007] =					--åéª‘å¬å”¤ä»»åŠ¡7
+	[27007] =					--×øÆïÕÙ»½ÈÎÎñ7
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 107}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 107}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39007,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘ç¢§è“é­”å°†å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒ±ÌÀ¶Ä§½«ÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7007},},
@@ -24724,22 +24737,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27008] =					--åéª‘å¬å”¤ä»»åŠ¡8
+	[27008] =					--×øÆïÕÙ»½ÈÎÎñ8
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.CheckOwner, param = {taskID = 108}},    -----åéª‘ä»»åŠ¡åªæœ‰å¬å”¤äººèƒ½æŒ‘æˆ˜
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.CheckOwner, param = {taskID = 108}},    -----×øÆïÈÎÎñÖ»ÓÐÕÙ»½ÈËÄÜÌôÕ½
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39008,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘éšå£«å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÒþÊ¿ÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7008},},
@@ -24747,22 +24760,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27009] =					--åéª‘å¬å”¤ä»»åŠ¡9
+	[27009] =					--×øÆïÕÙ»½ÈÎÎñ9
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.HasTask, param = {taskID = 109, statue = true}},  -----ç•™ç€æµ‹è¯•ä»»åŠ¡æ¡ä»¶
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.HasTask, param = {taskID = 109, statue = true}},  -----Áô×Å²âÊÔÈÎÎñÌõ¼þ
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39009,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘å›¾è…¾åŠ›å£«å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÍ¼ÌÚÁ¦Ê¿ÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7009},},
@@ -24770,22 +24783,22 @@ DialogModelDB =
 			}
 		},
 	},
-	[27010] =					--åéª‘å¬å”¤ä»»åŠ¡10
+	[27010] =					--×øÆïÕÙ»½ÈÎÎñ10
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-		{condition = DialogCondition.HasTask, param = {taskID = 110, statue = true}},  -----ç•™ç€æµ‹è¯•ä»»åŠ¡æ¡ä»¶
-		{condition = DialogCondition.Team, param = {statue = false}},	------é™å®šæ¡ä»¶éžç»„é˜ŸçŠ¶æ€ä¸‹
+		{condition = DialogCondition.HasTask, param = {taskID = 110, statue = true}},  -----Áô×Å²âÊÔÈÎÎñÌõ¼þ
+		{condition = DialogCondition.Team, param = {statue = false}},	------ÏÞ¶¨Ìõ¼þ·Ç×é¶Ó×´Ì¬ÏÂ
 		},
 		speakerID = 39010,
 		soundID =nil ,
-		txt = "ç­‰å€™ä½ å¤šæ—¶äº†ï¼Œä½ æ˜¯æˆ‘ä¸‡éª¨é­”å›å‘½ä¸­æ³¨å®šçš„å¯¹æ‰‹å—ï¼Ÿ",
+		txt = "µÈºòÄã¶àÊ±ÁË£¬ÄãÊÇÎÒÍò¹ÇÄ§¾ýÃüÖÐ×¢¶¨µÄ¶ÔÊÖÂð£¿",
 		options =
 		{
 			{
 				showConditions = {},
-				optionTxt = "å°±è®©ä½ è§è¯†ä¸€ä¸‹æˆ‘çš„åŽ‰å®³ï¼",
+				optionTxt = "¾ÍÈÃÄã¼ûÊ¶Ò»ÏÂÎÒµÄÀ÷º¦£¡",
 				actions =
 				{
 					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7010},},
@@ -24793,7 +24806,7 @@ DialogModelDB =
 			}
 		},
 	},
-	[27011] =					--æ— ä»»åŠ¡ç»Ÿä¸€è·³è½¬å¯¹è¯
+	[27011] =					--ÎÞÈÎÎñÍ³Ò»Ìø×ª¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -24802,26 +24815,26 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		soundID =nil ,
-		txt = "æ²¡æœ‰ä¸“å±žçš„çµç¬¦æˆ‘æ˜¯æ‰“ä¸è¿‡ä»–çš„ï¼Œè¿˜æ˜¯èµ¶å¿«ç¦»å¼€å§",
+		txt = "Ã»ÓÐ×¨ÊôµÄÁé·ûÎÒÊÇ´ò²»¹ýËûµÄ£¬»¹ÊÇ¸Ï¿ìÀë¿ª°É",
 		options =
 		{
 		},
 	},
-	[27012] =					--ç»„é˜Ÿç»Ÿä¸€è·³è½¬å¯¹è¯
+	[27012] =					--×é¶ÓÍ³Ò»Ìø×ª¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.Team, param = {statue = true}},	------é™å®šæ¡ä»¶ç»„é˜ŸçŠ¶æ€ä¸‹	
+		{condition = DialogCondition.Team, param = {statue = true}},	------ÏÞ¶¨Ìõ¼þ×é¶Ó×´Ì¬ÏÂ	
 		},
 		speakerID = 0,
 		soundID =nil ,
-		txt = "æ­¤å¦–å…½å¤©èµ‹å¼‚ç¦€ï¼Œå”¯æœ‰å•äººæŒ‘æˆ˜å°†å…¶é™æœæ‰èƒ½é©¾é©­",
+		txt = "´ËÑýÊÞÌì¸³ÒìÙ÷£¬Î¨ÓÐµ¥ÈËÌôÕ½½«Æä½µ·þ²ÅÄÜ¼ÝÔ¦",
 		options =
 		{
 		},
 	},
-	[27090] =					--ç¥žç®—å­npc
+	[27090] =					--ÉñËã×Ónpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -24829,14 +24842,14 @@ DialogModelDB =
 		},
 		speakerID = 39000,
 		soundID =nil ,
-		txt = "ä»Šå¤©ä¸‹å¤§ä¹±ï¼Œæœå»·åŠ¨è¡ï¼Œå¦–é­”å››å¤„æ¨ªè¡Œï¼Œå½“ä½ åˆ°è¾¾35çº§ä»¥åŽï¼Œä¸ºæˆ‘æ‰¾æ¥ä¸€äº›å¤æ–‡ç§˜ç±ï¼Œæˆ‘å¯ä»¥ä¸ºä½ åˆ¶ä½œé™æœè¿™äº›å¦–å…½çš„çµç¬¦ï¼Œè‹¥æˆåŠŸé™æœå¦–å…½ä¾¿å¯æˆä¸ºä½ çš„åº§é©¾",
+		txt = "½ñÌìÏÂ´óÂÒ£¬³¯Í¢¶¯µ´£¬ÑýÄ§ËÄ´¦ºáÐÐ£¬µ±Äãµ½´ï35¼¶ÒÔºó£¬ÎªÎÒÕÒÀ´Ò»Ð©¹ÅÎÄÃØ¼®£¬ÎÒ¿ÉÒÔÎªÄãÖÆ×÷½µ·þÕâÐ©ÑýÊÞµÄÁé·û£¬Èô³É¹¦½µ·þÑýÊÞ±ã¿É³ÉÎªÄãµÄ×ù¼Ý",
 		options =
 		{
 			[1] = {
 				showConditions = {
 				{condition = DialogCondition.Level, param = {level = 35}},
 				},
-				optionTxt = "å…‘æ¢å¦–å…½å¬å”¤ç¬¦",
+				optionTxt = "¶Ò»»ÑýÊÞÕÙ»½·û",
 				actions =
 				{
 					{action = DialogActionType.ExchangeProps , param = {},},
@@ -24844,7 +24857,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æŸ¥è¯¢å¬å”¤ç¬¦æ‰€éœ€ææ–™",
+				optionTxt = "²éÑ¯ÕÙ»½·ûËùÐè²ÄÁÏ",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 27091}},
@@ -24852,7 +24865,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "æˆ‘ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÎÒÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -24863,7 +24876,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15018, statue = true}},
 				},
-				optionTxt = "äº†è§£å¦‚ä½•å…‘æ¢åéª‘",
+				optionTxt = "ÁË½âÈçºÎ¶Ò»»×øÆï",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35509}},
@@ -24872,7 +24885,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[27091] =					--ç¥žç®—å­npc
+	[27091] =					--ÉñËã×Ónpc
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -24880,12 +24893,12 @@ DialogModelDB =
 		},
 		speakerID = 39000,
 		soundID =nil ,
-		txt = "æ¯ä¸ªå¦–å…½å¬å”¤çµç¬¦éœ€è¦æ¶ˆè€—åŸºç¡€ææ–™ä¸ºé’é¾™å·x20ï¼Œæœ±é›€å·x20ï¼Œç™½è™Žå·x20ï¼ŒçŽ„æ­¦å·x20ï¼Œå¤–åŠ ç‹¬æœ‰å¬å”¤ææ–™x1æ‰èƒ½åˆæˆä¸€ä¸ªå®Œæ•´çš„çµç¬¦",
+		txt = "Ã¿¸öÑýÊÞÕÙ»½Áé·ûÐèÒªÏûºÄ»ù´¡²ÄÁÏÎªÇàÁú¾íx20£¬ÖìÈ¸¾íx20£¬°×»¢¾íx20£¬ÐþÎä¾íx20£¬Íâ¼Ó¶ÀÓÐÕÙ»½²ÄÁÏx1²ÅÄÜºÏ³ÉÒ»¸öÍêÕûµÄÁé·û",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "æˆ‘æ˜Žç™½äº†",
+				optionTxt = "ÎÒÃ÷°×ÁË",
 				actions =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 27090}},
@@ -24893,7 +24906,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[27092] =					--ç¥žç®—å­æŽ¥ä»»åŠ¡è·³å¯¹è¯
+	[27092] =					--ÉñËã×Ó½ÓÈÎÎñÌø¶Ô»°
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
@@ -24901,13 +24914,13 @@ DialogModelDB =
 		},
 		speakerID = 39000,
 		soundID =nil ,
-		txt = "çŽ°å·²çµç¬¦ä¸Šå·²ç»æ˜¾çŽ°äº†å¦–å…½çš„è¸ªè¿¹ï¼Œå¿«å¿«åŽ»é™æœå®ƒ",
+		txt = "ÏÖÒÑÁé·ûÉÏÒÑ¾­ÏÔÏÖÁËÑýÊÞµÄ×Ù¼££¬¿ì¿ìÈ¥½µ·þËü",
 		options =
 		{
 		},
 	},
-------------------------------åéª‘ä»»åŠ¡   ç»“æŸ-------------------
-------------------------------------------------------å¤©å­çŒŽé‡‘åœºæ´»åŠ¨å¼€å§‹
+------------------------------×øÆïÈÎÎñ   ½áÊø-------------------
+------------------------------------------------------Ìì×ÓÁÔ½ð³¡»î¶¯¿ªÊ¼
 	[27101] =
 	{
 		dialogType = DialogType.HasOption,
@@ -24917,13 +24930,13 @@ DialogModelDB =
 		},
 		speakerID = 39050,
 		soundID =0,
-		txt = "å—æ–¹è›®è’ä¹‹åœ°å‘çŽ°ä¸€å¤„ä¸Šå¤é—è¿¹ï¼Œé—è¿¹ä¸­ç››äº§ä¸€ç§ä¸Šå¤é‡‘æ™¶ï¼Œæ˜¯é‡è¦çš„å†›å¤‡ç‰©èµ„ï¼Œæœå»·éœ€è¦å¾é›†æœ‰å¿—ä¹‹å£«å‰å¾€ï¼Œä½ å¯æ„¿æ„ï¼Ÿ",
+		txt = "ÄÏ·½Âù»ÄÖ®µØ·¢ÏÖÒ»´¦ÉÏ¹ÅÒÅ¼££¬ÒÅ¼£ÖÐÊ¢²úÒ»ÖÖÉÏ¹Å½ð¾§£¬ÊÇÖØÒªµÄ¾ü±¸Îï×Ê£¬³¯Í¢ÐèÒªÕ÷¼¯ÓÐÖ¾Ö®Ê¿Ç°Íù£¬Äã¿ÉÔ¸Òâ£¿",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "å‰å¾€å¤©å­çŒŽé‡‘åœº",
+				optionTxt = "Ç°ÍùÌì×ÓÁÔ½ð³¡",
 				actions =
 				{
 					{action = DialogActionType.EnterGoldHuntZone , param = {x = 103, y = 283},},
@@ -24931,7 +24944,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘ç¨åŽå†æ¥",
+				optionTxt = "ÎÒÉÔºóÔÙÀ´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -24948,13 +24961,13 @@ DialogModelDB =
 		},
 		speakerID = 39051,
 		soundID =0,
-		txt = "çŽ°åœ¨è¿™ä¸ªå…µè’é©¬ä¹±çš„å¹´ä»£ï¼Œå‘è´¢å®¹æ˜“ï¼Œå°±æ€•æ˜¯æœ‰å‘½èµšæ²¡å‘½èŠ±ï¼Œé‡‘æ™¶çŸ¿å¸¦æ¥äº†å—ï¼Ÿ",
+		txt = "ÏÖÔÚÕâ¸ö±ø»ÄÂíÂÒµÄÄê´ú£¬·¢²ÆÈÝÒ×£¬¾ÍÅÂÊÇÓÐÃü×¬Ã»Ãü»¨£¬½ð¾§¿ó´øÀ´ÁËÂð£¿",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "ä¸Šäº¤é‡‡é›†çš„é‡‘æ™¶çŸ¿",
+				optionTxt = "ÉÏ½»²É¼¯µÄ½ð¾§¿ó",
 				actions =
 				{
 					{action = DialogActionType.GoldHuntCommit , param = {},},
@@ -24962,7 +24975,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘ç¨åŽå†æ¥",
+				optionTxt = "ÎÒÉÔºóÔÙÀ´",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -24979,13 +24992,13 @@ DialogModelDB =
 		},
 		speakerID = 39052,
 		soundID =0,
-		txt = "æ­¤å¤„æœ‰æˆ‘é©»å®ˆï¼Œä»»ä½•äººä¼‘æƒ³é€šè¿‡",
+		txt = "´Ë´¦ÓÐÎÒ×¤ÊØ£¬ÈÎºÎÈËÐÝÏëÍ¨¹ý",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "è°æŠ¢åˆ°äº†å°±æ˜¯è°çš„",
+				optionTxt = "Ë­ÇÀµ½ÁË¾ÍÊÇË­µÄ",
 				actions =
 				{
 					{action = DialogActionType.GoldHuntFight , param = {scriptID = 6001 ,mapID =909},},
@@ -24993,7 +25006,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ä¸å’Œä½ æ‰“",
+				optionTxt = "²»ºÍÄã´ò",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -25010,13 +25023,13 @@ DialogModelDB =
 		},
 		speakerID = 39053,
 		soundID =0,
-		txt = "æ­¤å¤„æœ‰æˆ‘é©»å®ˆï¼Œä»»ä½•äººä¼‘æƒ³é€šè¿‡",
+		txt = "´Ë´¦ÓÐÎÒ×¤ÊØ£¬ÈÎºÎÈËÐÝÏëÍ¨¹ý",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "è°æŠ¢åˆ°äº†å°±æ˜¯è°çš„",
+				optionTxt = "Ë­ÇÀµ½ÁË¾ÍÊÇË­µÄ",
 				actions =
 				{
 					{action = DialogActionType.GoldHuntFight , param = {scriptID = 6002 ,mapID =909},},
@@ -25024,7 +25037,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "ä¸å’Œä½ æ‰“",
+				optionTxt = "²»ºÍÄã´ò",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -25034,7 +25047,7 @@ DialogModelDB =
 	},
 
 
--- ä¹¾å…ƒå²›å¸ˆé—¨ä»»åŠ¡å‘æ”¾äººï¼Œç¬¬ä¸€å±‚å¯¹è¯
+-- Ç¬ÔªµºÊ¦ÃÅÈÎÎñ·¢·ÅÈË£¬µÚÒ»²ã¶Ô»°
 [30001] =
 	{
 		dialogType = DialogType.HasOption,
@@ -25044,13 +25057,13 @@ DialogModelDB =
 		},
 		speakerID = 29040,
 		
-		txt = "å¾ªçŽ¯ä»»åŠ¡NPCå‘æ”¾äººï¼Œä»Žè¿™é‡Œå¯ä»¥é¢†å–å¾ªçŽ¯ä»»åŠ¡ï¼",
+		txt = "Ñ­»·ÈÎÎñNPC·¢·ÅÈË£¬´ÓÕâÀï¿ÉÒÔÁìÈ¡Ñ­»·ÈÎÎñ£¡",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "æŽ¥å—å¸ˆé—¨ä»»åŠ¡",
+				optionTxt = "½ÓÊÜÊ¦ÃÅÈÎÎñ",
 				actions =
 				{
 				    {action = DialogActionType.RecetiveTask, param = {taskID = 10020}},
@@ -25063,7 +25076,7 @@ DialogModelDB =
 				{
 					{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10020, taskType = LoopTaskTargetType.escort, npcID = 29040}},
 				},
-				optionTxt = "å®ŒæˆæŠ¤é€ä»»åŠ¡",
+				optionTxt = "Íê³É»¤ËÍÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.FinishLoopTask, param = {taskID = 10020}},
@@ -25072,7 +25085,7 @@ DialogModelDB =
 		},
 	},
 
--- è„šæœ¬æˆ˜æ–—ID
+-- ½Å±¾Õ½¶·ID
 [30003] =
 	{
 		dialogType = DialogType.NotOption,
@@ -25081,7 +25094,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "å•å²³ï¼Œä½ å ‚å ‚æˆªæ•™çœŸä»™ï¼Œç«ŸåŠ©é‚£è‘£å“ä¸ºæ¶ï¼ä»Šæ—¥æˆ‘ä¾¿è¦æ›¿å¤©è¡Œé“ï¼",
+		txt = "ÂÀÔÀ£¬ÄãÌÃÌÃ½Ø½ÌÕæÏÉ£¬¾¹ÖúÄÇ¶­×¿Îª¶ñ£¡½ñÈÕÎÒ±ãÒªÌæÌìÐÐµÀ£¡",
 		options = 
 		{
 			{
@@ -25095,7 +25108,7 @@ DialogModelDB =
 		},
 	},
 
--- ä¸Šç¼´ç‰©å“
+-- ÉÏ½ÉÎïÆ·
 [30004] =
 	{
 		dialogType = DialogType.NotOption,
@@ -25105,7 +25118,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "æŠŠä½ ä¹°åˆ°çš„ç‰©å“ï¼Œäº¤æŽ¥ç‰©å“å¯ä»¥å®Œæˆæ­¤é¡¹ä»»åŠ¡ï¼Œå“ˆå“ˆå“ˆå“ˆå“ˆ!",
+		txt = "°ÑÄãÂòµ½µÄÎïÆ·£¬½»½ÓÎïÆ·¿ÉÒÔÍê³É´ËÏîÈÎÎñ£¬¹þ¹þ¹þ¹þ¹þ!",
 		options = 
 		{
 			{
@@ -25118,7 +25131,7 @@ DialogModelDB =
 			}
 		},
 	},
--- å¯¹è¯äº¤è°ˆ
+-- ¶Ô»°½»Ì¸
 [30005] =
 	{
 		dialogType = DialogType.NotOption,
@@ -25128,7 +25141,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "å¯¹è¯å®Œæˆä»»åŠ¡ï¼Œè¦å—!",
+		txt = "¶Ô»°Íê³ÉÈÎÎñ£¬ÒªÂð!",
 		options = 
 		{
 			{
@@ -25143,7 +25156,7 @@ DialogModelDB =
 		},
 	},
 
--- ä¸Šç¼´å® ç‰©NPC
+-- ÉÏ½É³èÎïNPC
 [30006] =
 	{
 		dialogType = DialogType.NotOption,
@@ -25153,7 +25166,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "æ­¤æ—¶ä½ è¦ä¸Šç¼´ä½ æ‰€æ•æ‰çš„å® ç‰©ï¼Œå°±èƒ½èŽ·å–å½“å‰å¾ªçŽ¯ä»»åŠ¡çš„å¥–åŠ±ï¼Œèµ¶å¿«æŠŠ",
+		txt = "´ËÊ±ÄãÒªÉÏ½ÉÄãËù²¶×½µÄ³èÎï£¬¾ÍÄÜ»ñÈ¡µ±Ç°Ñ­»·ÈÎÎñµÄ½±Àø£¬¸Ï¿ì°Ñ",
 		options = 
 		{
 			{
@@ -25175,13 +25188,13 @@ DialogModelDB =
 		},
 		speakerID = 20079,
 		
-		txt = "æœ‰å¯èƒ½ç›´æŽ¥å®Œæˆä»»åŠ¡ï¼Œæœ‰å¯èƒ½è§¦å‘ä¸‹ä¸€ä¸ªæˆ˜æ–—ï¼Œçœ‹ä½ çš„è¿æ°”å‘¢ï¼",
+		txt = "ÓÐ¿ÉÄÜÖ±½ÓÍê³ÉÈÎÎñ£¬ÓÐ¿ÉÄÜ´¥·¢ÏÂÒ»¸öÕ½¶·£¬¿´ÄãµÄÔËÆøÄØ£¡",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ç¢°è¿æ°”å‘¢",
+				optionTxt = "ÅöÔËÆøÄØ",
 				actions =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10020},},
@@ -25198,7 +25211,7 @@ DialogModelDB =
 		{},
 		speakerID = 20079,
 		
-		txt = "ä»Žè¿™é‡Œè´­èŠ±è´¹ä¸€å®šçš„é‡‘é’±è´­ä¹°ä»»åŠ¡é“å…·ï¼Œå³é”®ä½¿ç”¨ä»»åŠ¡é“å…·æœ‰å¯èƒ½ç›´æŽ¥å®Œæˆä»»åŠ¡",
+		txt = "´ÓÕâÀï¹º»¨·ÑÒ»¶¨µÄ½ðÇ®¹ºÂòÈÎÎñµÀ¾ß£¬ÓÒ¼üÊ¹ÓÃÈÎÎñµÀ¾ßÓÐ¿ÉÄÜÖ±½ÓÍê³ÉÈÎÎñ",
 		options = 
 		{
 			{
@@ -25211,7 +25224,7 @@ DialogModelDB =
 			}
 		},
 	},
--- å°å·å¯¹è¯
+-- Ð¡Íµ¶Ô»°
 [30009] =
 	{
 		dialogType = DialogType.HasOption,
@@ -25220,13 +25233,13 @@ DialogModelDB =
 		},
 		speakerID = 20079,
 		
-		txt = "èŠ±è´¹é‡‘é’±æ¥å®Œæˆä»»åŠ¡æˆ–è€…æˆ˜æ–—ï¼",
+		txt = "»¨·Ñ½ðÇ®À´Íê³ÉÈÎÎñ»òÕßÕ½¶·£¡",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "è€—è´¹é“¶ä¸¤æ¥å®Œæˆä»»åŠ¡(1000)",
+				optionTxt = "ºÄ·ÑÒøÁ½À´Íê³ÉÈÎÎñ(1000)",
 				actions =
 				{
 					{action = DialogActionType.CostMoney, param = {money = 1000, scriptID = 100}},
@@ -25235,7 +25248,7 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—æ¥å®Œæˆä»»åŠ¡",
+				optionTxt = "½øÈëÕ½¶·À´Íê³ÉÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.Fight, param = {scriptID = 100}},
@@ -25245,7 +25258,7 @@ DialogModelDB =
 	},
 
 	
--- å¾ªçŽ¯ä»»åŠ¡æ¡ä»¶æ»¡è¶³å‡ºçŽ°çš„å¯¹è¯
+-- Ñ­»·ÈÎÎñÌõ¼þÂú×ã³öÏÖµÄ¶Ô»°
 [30010] =
 	{
 		dialogType = DialogType.NotOption,
@@ -25255,7 +25268,7 @@ DialogModelDB =
 		},
 		speakerID = 20079,
 		
-		txt = "å“ˆå“ˆèµ¶å¿«æŽ¥å–è¿™ä¸ªè®­è¯ä»»åŠ¡å§",
+		txt = "¹þ¹þ¸Ï¿ì½ÓÈ¡Õâ¸öÑµ»°ÈÎÎñ°É",
 		options = 
 		{
 			{
@@ -25277,7 +25290,7 @@ DialogModelDB =
 		},
 		speakerID = 40009,
 		
-		txt = "èµ¶ç´§æŠŠä¿¡é€å‡ºåŽ»ï¼",
+		txt = "¸Ï½ô°ÑÐÅËÍ³öÈ¥£¡",
 		options = 
 		{
 			{
@@ -25300,12 +25313,12 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "éªšå¹´ææ¬¾å§ï¼",
+		txt = "É§Äê¾è¿î°É£¡",
 		options = 
 		{
 			{
 				showConditions = {},
-				optionTxt = "ææ¬¾--------------111",
+				optionTxt = "¾è¿î--------------111",
 				actions =
 				{
 					{action = DialogActionType.openLookTaskWin,param = {taskID = 10020}},
@@ -25313,7 +25326,7 @@ DialogModelDB =
 			}
 		},
 	},
-	-- æš—é›·å¯¹è¯æŒ‡å®šçš„è„šæœ¬æˆ˜æ–—
+	-- °µÀ×¶Ô»°Ö¸¶¨µÄ½Å±¾Õ½¶·
 	[30013] =
 	{
 		dialogType = DialogType.NotOption,
@@ -25321,7 +25334,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 0,
-		txt = "å•å²³ï¼Œä½ å ‚å ‚æˆªæ•™çœŸä»™ï¼Œç«ŸåŠ©é‚£è‘£å“ä¸ºæ¶ï¼ä»Šæ—¥æˆ‘ä¾¿è¦æ›¿å¤©è¡Œé“ï¼",
+		txt = "ÂÀÔÀ£¬ÄãÌÃÌÃ½Ø½ÌÕæÏÉ£¬¾¹ÖúÄÇ¶­×¿Îª¶ñ£¡½ñÈÕÎÒ±ãÒªÌæÌìÐÐµÀ£¡",
 		options = 
 		{
 			{
@@ -25342,7 +25355,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 0,
-		txt = "å¯¹è¯å®Œæˆä¸Šç¼´å°¾éšNPCï¼Œèƒ½å¤Ÿå®Œæˆä»»åŠ¡",
+		txt = "¶Ô»°Íê³ÉÉÏ½ÉÎ²ËæNPC£¬ÄÜ¹»Íê³ÉÈÎÎñ",
 		options = 
 		{
 			{
@@ -25363,7 +25376,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20004,
-		txt = "å‡ºçŽ°æ­¤å¯¹è¯å¯å®Œæˆä»»åŠ¡",
+		txt = "³öÏÖ´Ë¶Ô»°¿ÉÍê³ÉÈÎÎñ",
 		options = 
 		{
 			{
@@ -25383,7 +25396,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 20004,
-		txt = "ç‚¹å‡»å¯¹è¯èŽ·å¾—å°¾éšNPCï¼Œæ”¹å˜ä»»åŠ¡çŠ¶æ€",
+		txt = "µã»÷¶Ô»°»ñµÃÎ²ËæNPC£¬¸Ä±äÈÎÎñ×´Ì¬",
 		options = 
 		{
 			{
@@ -25403,7 +25416,7 @@ DialogModelDB =
 		conditions = 
 		{},
 		speakerID = 29040,	
-		txt = "æ‰“ä¸€æž¶å§..",
+		txt = "´òÒ»¼Ü°É..",
 		options = 
 		{
 			[1] =
@@ -25417,8 +25430,8 @@ DialogModelDB =
 			},
 		},
 	},
---------------------------------å¸®æ´¾ä»»åŠ¡ï¼Œä¸Šäº¤è£…å¤‡---------------------
-	--æŽ¥æ”¶å¸®ä¼šä»»åŠ¡
+--------------------------------°ïÅÉÈÎÎñ£¬ÉÏ½»×°±¸---------------------
+	--½ÓÊÕ°ï»áÈÎÎñ
 	[30100] = 
 	{
 		dialogType = DialogType.HasOption,
@@ -25427,13 +25440,13 @@ DialogModelDB =
 			{condition = DialogCondition.NotHasFactionTask, param = {taskID = 10009}},
 		},
 		speakerID = 30817,
-		txt = "æ„æ„æ„ï¼Œå¸®ä¼šç‰©èµ„æ€»æ˜¯ä¸å¤Ÿç”¨ï¼Œè¿™å¯å¦‚ä½•æ˜¯å¥½ï¼",
+		txt = "³î³î³î£¬°ï»áÎï×Ê×ÜÊÇ²»¹»ÓÃ£¬Õâ¿ÉÈçºÎÊÇºÃ£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {
 				},
-				optionTxt = "ã€æŽ¥å—ä»»åŠ¡ã€‘æçŒ®ç‰©èµ„",
+				optionTxt = "¡¾½ÓÊÜÈÎÎñ¡¿¾èÏ×Îï×Ê",
 				actions =
 				{
 					
@@ -25443,7 +25456,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘åªæ˜¯è·¯è¿‡çš„",
+				optionTxt = "ÎÒÖ»ÊÇÂ·¹ýµÄ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -25451,7 +25464,7 @@ DialogModelDB =
 			},
 		},
 	},
-	--ä¸Šäº¤å¸®ä¼šä»»åŠ¡
+	--ÉÏ½»°ï»áÈÎÎñ
 	[30101] = 
 	{
 		dialogType = DialogType.HasOption,
@@ -25460,12 +25473,12 @@ DialogModelDB =
 		},
 		speakerID = 30817,
 		
-		txt = "æ„æ„æ„ï¼Œå¸®ä¼šç‰©èµ„æ€»æ˜¯ä¸å¤Ÿç”¨ï¼Œè¿™å¯å¦‚ä½•æ˜¯å¥½ï¼",
+		txt = "³î³î³î£¬°ï»áÎï×Ê×ÜÊÇ²»¹»ÓÃ£¬Õâ¿ÉÈçºÎÊÇºÃ£¡",
 		options = 
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ã€å®Œæˆä»»åŠ¡ã€‘æçŒ®ç‰©èµ„",
+				optionTxt = "¡¾Íê³ÉÈÎÎñ¡¿¾èÏ×Îï×Ê",
 				actions =
 				{
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10009, itemsInfo ={{count = 1}}}},
@@ -25473,7 +25486,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æˆ‘åªæ˜¯è·¯è¿‡çš„",
+				optionTxt = "ÎÒÖ»ÊÇÂ·¹ýµÄ",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -25481,21 +25494,21 @@ DialogModelDB =
 			},
 		},
 	},
-----------------------æŠ“å® çŽ©æ³•ï¼ˆ35001â€”â€”36000ï¼‰
-	[35001] =        --------æŠ“å® çŽ©æ³•
+----------------------×¥³èÍæ·¨£¨35001¡ª¡ª36000£©
+	[35001] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60000,
-		txt = "ä¸“å±žæŠ“å® åœ°å›¾ï¼Œåœºæ™¯å†…å„ç§å„æ ·çš„å® ç‰©ä¾›çŽ©å®¶æ•æ‰ï¼Œæ›´æœ‰å‡ çŽ‡èƒ½åˆ·æ–°å…ƒçµç±»çš„å® ç‰©ï¼Œå¿«è¿›æ¥æŒ‘æˆ˜è¯•è¯•è¿æ°”å§",
+		txt = "×¨Êô×¥³èµØÍ¼£¬³¡¾°ÄÚ¸÷ÖÖ¸÷ÑùµÄ³èÎï¹©Íæ¼Ò²¶×½£¬¸üÓÐ¼¸ÂÊÄÜË¢ÐÂÔªÁéÀàµÄ³èÎï£¬¿ì½øÀ´ÌôÕ½ÊÔÊÔÔËÆø°É",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "æŸ¥çœ‹åœ°å›¾å® ç‰©",
+					optionTxt = "²é¿´µØÍ¼³èÎï",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35002}},
@@ -25504,7 +25517,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥ä¸€æŽ¢ç©¶ç«Ÿ",
+					optionTxt = "½øÈëÒ»Ì½¾¿¾¹",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35003}},
@@ -25513,7 +25526,7 @@ DialogModelDB =
 			[3] = 
 				{
 					showConditions = {},
-					optionTxt = "æˆ‘ä¼šæ”¹æ—¥å†æ¥",
+					optionTxt = "ÎÒ»á¸ÄÈÕÔÙÀ´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25528,7 +25541,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 60000,
-		txt = "30çº§åœ°å›¾å¯æ•æ‰å® ç‰©ï¼šé»„å·¾å…µã€å¦–é“ã€å¤é­”ã€æŠ¤æ³•ç¥žã€è å¦–ã€å¹½çµã€é—¨å®¢ã€æ²³å†…å®ˆå«ã€æµå¯‡ã€åˆºå®¢ã€å…³å°†ã€åˆ€ç›¾æ‰‹ã€è™Žå¦–ã€ä¸­åŽŸå¦–å…µ<br>40çº§åœ°å›¾å¯æ•æ‰å® ç‰©ï¼šè¥¿å‡‰å…µã€æ¸¸æ–¹å¦–å¸ˆã€é­”çŠ¬ã€æµ·æ€ªã€é²›å¦–ã€æµ·ç›—<br>50çº§åœ°å›¾èƒ½æ•æ‰å® ç‰©ï¼šå¦–çµã€ç´é­”å¥³ã€æ­»å£«ã€è›®æ—ã€è™Žå°†ã€è°‹å£«ã€ç‰›å¤´ã€é©¬é¢ã€éª·é«…å°†ã€é­”å…µ",
+		txt = "30¼¶µØÍ¼¿É²¶×½³èÎï£º»Æ½í±ø¡¢ÑýµÀ¡¢¹ÅÄ§¡¢»¤·¨Éñ¡¢òðÑý¡¢ÓÄÁé¡¢ÃÅ¿Í¡¢ºÓÄÚÊØÎÀ¡¢Á÷¿Ü¡¢´Ì¿Í¡¢¹Ø½«¡¢µ¶¶ÜÊÖ¡¢»¢Ñý¡¢ÖÐÔ­Ñý±ø<br>40¼¶µØÍ¼¿É²¶×½³èÎï£ºÎ÷Á¹±ø¡¢ÓÎ·½ÑýÊ¦¡¢Ä§È®¡¢º£¹Ö¡¢öÞÑý¡¢º£µÁ<br>50¼¶µØÍ¼ÄÜ²¶×½³èÎï£ºÑýÁé¡¢ÇÙÄ§Å®¡¢ËÀÊ¿¡¢Âù×å¡¢»¢½«¡¢Ä±Ê¿¡¢Å£Í·¡¢ÂíÃæ¡¢÷¼÷Ã½«¡¢Ä§±ø",
 		options =
 		{
 		},
@@ -25540,13 +25553,13 @@ DialogModelDB =
 		{
 		},
 		speakerID = 60000,
-		txt = "æ¯ä¸ªåœºæ™¯éƒ½æš—è—ç€æ— æ³•çš„çå®ï¼Œå¹´è½»çš„ä¾ å®¢ï¼Œä½ æ˜¯å¦ä¹Ÿæƒ³è¿›å…¥ä¸€æŽ¢ç©¶ç«Ÿå‘¢ï¼Ÿ",
+		txt = "Ã¿¸ö³¡¾°¶¼°µ²Ø×ÅÎÞ·¨µÄÕä±¦£¬ÄêÇáµÄÏÀ¿Í£¬ÄãÊÇ·ñÒ²Ïë½øÈëÒ»Ì½¾¿¾¹ÄØ£¿",
 		options =
 		{
 			[1] =
 				{
 					showConditions = {},
-					optionTxt = "30çº§æŠ“å® åœ°å›¾",
+					optionTxt = "30¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 901, x = 35, y = 157, level = 30}},
@@ -25555,7 +25568,7 @@ DialogModelDB =
 			[2] =
 				{
 					showConditions = {},
-					optionTxt = "40çº§æŠ“å® åœ°å›¾",
+					optionTxt = "40¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 902, x = 35, y = 157, level = 30}},
@@ -25564,7 +25577,7 @@ DialogModelDB =
 			[3] =
 				{
 					showConditions = {},
-					optionTxt = "50çº§æŠ“å® åœ°å›¾",
+					optionTxt = "50¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 903, x = 35, y = 157, level = 30}},
@@ -25573,7 +25586,7 @@ DialogModelDB =
 			[4] =
 				{
 					showConditions = {},
-					optionTxt = "60çº§æŠ“å® åœ°å›¾",
+					optionTxt = "60¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 904, x = 35, y = 157, level = 30}},
@@ -25581,20 +25594,20 @@ DialogModelDB =
 				},
 		},
 	},
-	[35004] =        --------æŠ“å® çŽ©æ³•
+	[35004] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60001,
-		txt = "ç´¯äº†å›°äº†ï¼Œç‚¹æˆ‘ä¼ é€å‡ºåŽ»å§",
+		txt = "ÀÛÁËÀ§ÁË£¬µãÎÒ´«ËÍ³öÈ¥°É",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "ä¼ é€å‡ºåœºæ™¯",
+					optionTxt = "´«ËÍ³ö³¡¾°",
 					actions =
 					{
 						{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 185, tarY = 131}},
@@ -25603,7 +25616,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25611,20 +25624,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35005] =        --------æŠ“å® çŽ©æ³•
+	[35005] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60002,
-		txt = "ç´¯äº†å›°äº†ï¼Œç‚¹æˆ‘ä¼ é€å‡ºåŽ»å§",
+		txt = "ÀÛÁËÀ§ÁË£¬µãÎÒ´«ËÍ³öÈ¥°É",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "ä¼ é€å‡ºåœºæ™¯",
+					optionTxt = "´«ËÍ³ö³¡¾°",
 					actions =
 					{
 						{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 185, tarY = 131}},
@@ -25633,7 +25646,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25641,20 +25654,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35006] =        --------æŠ“å® çŽ©æ³•
+	[35006] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60003,
-		txt = "ç´¯äº†å›°äº†ï¼Œç‚¹æˆ‘ä¼ é€å‡ºåŽ»å§",
+		txt = "ÀÛÁËÀ§ÁË£¬µãÎÒ´«ËÍ³öÈ¥°É",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "ä¼ é€å‡ºåœºæ™¯",
+					optionTxt = "´«ËÍ³ö³¡¾°",
 					actions =
 					{
 						{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 185, tarY = 131}},
@@ -25663,7 +25676,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25671,20 +25684,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35007] =        --------æŠ“å® çŽ©æ³•
+	[35007] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60004,
-		txt = "ç´¯äº†å›°äº†ï¼Œç‚¹æˆ‘ä¼ é€å‡ºåŽ»å§",
+		txt = "ÀÛÁËÀ§ÁË£¬µãÎÒ´«ËÍ³öÈ¥°É",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "ä¼ é€å‡ºåœºæ™¯",
+					optionTxt = "´«ËÍ³ö³¡¾°",
 					actions =
 					{
 						{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 185, tarY = 131}},
@@ -25693,7 +25706,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25701,20 +25714,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35021] =        --------æŠ“å® çŽ©æ³•
+	[35021] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60011,
-		txt = "æ­¤åœ°ä¹ƒå¾ç­‰é•‡å®ˆï¼Œæƒ³è¦è¿‡åŽ»ï¼Œå…ˆè¿‡æˆ‘è¿™å…³ï¼",
+		txt = "´ËµØÄËÎáµÈÕòÊØ£¬ÏëÒª¹ýÈ¥£¬ÏÈ¹ýÎÒÕâ¹Ø£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å°æ ·çœ‹æ‹›",
+					optionTxt = "Ð¡Ñù¿´ÕÐ",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35001 ,mapID =901},},
@@ -25723,7 +25736,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25731,20 +25744,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35022] =        --------æŠ“å® çŽ©æ³•
+	[35022] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60012,
-		txt = "æ¥äº†è¿˜æƒ³èµ°ï¼Œä»Šæ—¥å¾å¿…å°†å°”é­‚æ–­äºŽæ­¤ï¼",
+		txt = "À´ÁË»¹Ïë×ß£¬½ñÈÕÎá±Ø½«¶û»ê¶ÏÓÚ´Ë£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å¤§èƒ†å­½è´¼ï¼Œçœ‹æ‹›",
+					optionTxt = "´óµ¨ÄõÔô£¬¿´ÕÐ",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35002 ,mapID =901},},
@@ -25753,7 +25766,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25761,20 +25774,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35023] =        --------æŠ“å® çŽ©æ³•
+	[35023] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60013,
-		txt = "ç«Ÿç„¶å¦„æƒ³åœ¨æˆ‘å¤„èƒ¡ä½œéžä¸ºï¼Œä»Šæ—¥å²‚èƒ½è®©ä½ å¦‚æ„¿ï¼",
+		txt = "¾¹È»ÍýÏëÔÚÎÒ´¦ºú×÷·ÇÎª£¬½ñÈÕÆñÄÜÈÃÄãÈçÔ¸£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35003 ,mapID =901},},
@@ -25783,7 +25796,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25791,20 +25804,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35024] =        --------æŠ“å® çŽ©æ³•
+	[35024] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60014,
-		txt = "ä»€ä¹ˆäºº!ç«Ÿæ•¢æ¥æ­¤åœ°æ’’é‡Žï¼ä¸æƒ³æ´»äº†!",
+		txt = "Ê²Ã´ÈË!¾¹¸ÒÀ´´ËµØÈöÒ°£¡²»Ïë»îÁË!",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35004 ,mapID =901},},
@@ -25813,7 +25826,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25821,20 +25834,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35025] =        --------æŠ“å® çŽ©æ³•
+	[35025] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60015,
-		txt = "èƒ†æ•¢é—¯å…¥åˆ°è¿™é‡Œæ¥äº†ï¼Œè¿˜æƒ³æ´»ç€å‡ºåŽ»ï¼Ÿçº³å‘½æ¥å§ï¼",
+		txt = "µ¨¸Ò´³Èëµ½ÕâÀïÀ´ÁË£¬»¹Ïë»î×Å³öÈ¥£¿ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35005 ,mapID =901},},
@@ -25843,7 +25856,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "èµ¶ç´§å¥”è·‘",
+					optionTxt = "¸Ï½ô±¼ÅÜ",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25851,20 +25864,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35026] =        --------æŠ“å® çŽ©æ³•
+	[35026] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60016,
-		txt = "æœ‰å¤§çˆ·æˆ‘åœ¨æ­¤é©»å®ˆï¼Œå°”ç­‰å°è´¼ä¼‘å¾—åš£å¼ ï¼",
+		txt = "ÓÐ´óÒ¯ÎÒÔÚ´Ë×¤ÊØ£¬¶ûµÈÐ¡ÔôÐÝµÃÏùÕÅ£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å…ˆæ”¶æ‹¾ä½ ",
+					optionTxt = "ÏÈÊÕÊ°Äã",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35006 ,mapID =901},},
@@ -25873,7 +25886,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25881,20 +25894,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35027] =        --------æŠ“å® çŽ©æ³•
+	[35027] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60017,
-		txt = "å“ªé‡Œæ¥çš„å°è´¼ï¼Œç«Ÿç„¶å¦„æƒ³åœ¨æˆ‘è¿™é‡Œæžå¾—å¥½å¤„ï¼",
+		txt = "ÄÄÀïÀ´µÄÐ¡Ôô£¬¾¹È»ÍýÏëÔÚÎÒÕâÀïÀÌµÃºÃ´¦£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "æ‰“èµ¢å†è¯´",
+					optionTxt = "´òÓ®ÔÙËµ",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35007 ,mapID =901},},
@@ -25903,7 +25916,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25911,20 +25924,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35028] =        --------æŠ“å® çŽ©æ³•
+	[35028] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60018,
-		txt = "æœ¬å°†å¥‰ä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œæ“…é—¯è€…æ€ï¼",
+		txt = "±¾½«·îÁîÔÚ´Ë»¤·¨£¬ÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35008 ,mapID =901},},
@@ -25933,7 +25946,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25941,20 +25954,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35029] =        --------æŠ“å® çŽ©æ³•
+	[35029] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60019,
-		txt = "ä¸€äºŒä¸‰å››äº”å…­ä¸ƒï¼Œç»ˆäºŽéƒ½æœ‰äººæ¥å•¦ï¼Œå…ˆæ€ä¸ªäººçŽ©ä¸€çŽ©",
+		txt = "Ò»¶þÈýËÄÎåÁùÆß£¬ÖÕÓÚ¶¼ÓÐÈËÀ´À²£¬ÏÈÉ±¸öÈËÍæÒ»Íæ",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35009 ,mapID =901},},
@@ -25963,7 +25976,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -25971,20 +25984,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35030] =        --------æŠ“å® çŽ©æ³•
+	[35030] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60020,
-		txt = "èž³è‡‚å½“è½¦ï¼Œæ„šä¸å¯åŠï¼",
+		txt = "ó«±Ûµ±³µ£¬ÓÞ²»¿É¼°£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35010 ,mapID =901},},
@@ -25993,7 +26006,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26001,20 +26014,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35031] =        --------æŠ“å® çŽ©æ³•
+	[35031] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60021,
-		txt = "åˆæ˜¯ä½ è¿™è´¼å­ï¼Œä»Šæ—¥å®šè¦å°†ä½ æŒ«éª¨æ‰¬ç°æ–¹å¯æ¶ˆæˆ‘å¿ƒå¤´ä¹‹æ¨ï¼",
+		txt = "ÓÖÊÇÄãÕâÔô×Ó£¬½ñÈÕ¶¨Òª½«Äã´ì¹ÇÑï»Ò·½¿ÉÏûÎÒÐÄÍ·Ö®ºÞ£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35011 ,mapID =901},},
@@ -26023,7 +26036,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26031,20 +26044,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35032] =        --------æŠ“å® çŽ©æ³•
+	[35032] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60022,
-		txt = "æ¥äº†è¿˜æƒ³èµ°ï¼Œä»Šæ—¥å¾å¿…å°†å°”é­‚æ–­äºŽæ­¤ï¼",
+		txt = "À´ÁË»¹Ïë×ß£¬½ñÈÕÎá±Ø½«¶û»ê¶ÏÓÚ´Ë£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å¤§èƒ†å­½è´¼ï¼Œçœ‹æ‹›",
+					optionTxt = "´óµ¨ÄõÔô£¬¿´ÕÐ",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35012 ,mapID =901},},
@@ -26053,7 +26066,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26061,20 +26074,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35033] =        --------æŠ“å® çŽ©æ³•
+	[35033] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60023,
-		txt = "ç«Ÿç„¶å¦„æƒ³åœ¨æˆ‘å¤„èƒ¡ä½œéžä¸ºï¼Œä»Šæ—¥å²‚èƒ½è®©ä½ å¦‚æ„¿ï¼",
+		txt = "¾¹È»ÍýÏëÔÚÎÒ´¦ºú×÷·ÇÎª£¬½ñÈÕÆñÄÜÈÃÄãÈçÔ¸£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35013 ,mapID =901},},
@@ -26083,7 +26096,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26091,20 +26104,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35034] =        --------æŠ“å® çŽ©æ³•
+	[35034] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60024,
-		txt = "ä»€ä¹ˆäºº!ç«Ÿæ•¢æ¥æ­¤åœ°æ’’é‡Žï¼ä¸æƒ³æ´»äº†!",
+		txt = "Ê²Ã´ÈË!¾¹¸ÒÀ´´ËµØÈöÒ°£¡²»Ïë»îÁË!",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35014 ,mapID =901},},
@@ -26113,7 +26126,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26121,20 +26134,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35035] =        --------æŠ“å® çŽ©æ³•
+	[35035] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60025,
-		txt = "èƒ†æ•¢é—¯å…¥åˆ°è¿™é‡Œæ¥äº†ï¼Œè¿˜æƒ³æ´»ç€å‡ºåŽ»ï¼Ÿçº³å‘½æ¥å§ï¼",
+		txt = "µ¨¸Ò´³Èëµ½ÕâÀïÀ´ÁË£¬»¹Ïë»î×Å³öÈ¥£¿ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35015 ,mapID =902},},
@@ -26143,7 +26156,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26151,20 +26164,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35036] =        --------æŠ“å® çŽ©æ³•
+	[35036] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60026,
-		txt = "æœ‰å¤§çˆ·æˆ‘åœ¨æ­¤é©»å®ˆï¼Œå°”ç­‰å°è´¼ä¼‘å¾—åš£å¼ ï¼",
+		txt = "ÓÐ´óÒ¯ÎÒÔÚ´Ë×¤ÊØ£¬¶ûµÈÐ¡ÔôÐÝµÃÏùÕÅ£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å…ˆæ”¶æ‹¾ä½ ",
+					optionTxt = "ÏÈÊÕÊ°Äã",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35016 ,mapID =902},},
@@ -26173,7 +26186,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26181,20 +26194,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35037] =        --------æŠ“å® çŽ©æ³•
+	[35037] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60027,
-		txt = "å“ªé‡Œæ¥çš„å°è´¼ï¼Œç«Ÿç„¶å¦„æƒ³åœ¨æˆ‘è¿™é‡Œæžå¾—å¥½å¤„ï¼",
+		txt = "ÄÄÀïÀ´µÄÐ¡Ôô£¬¾¹È»ÍýÏëÔÚÎÒÕâÀïÀÌµÃºÃ´¦£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "æ‰“èµ¢å†è¯´",
+					optionTxt = "´òÓ®ÔÙËµ",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35017 ,mapID =902},},
@@ -26203,7 +26216,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26211,20 +26224,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35038] =        --------æŠ“å® çŽ©æ³•
+	[35038] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60028,
-		txt = "æœ¬å°†å¥‰ä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œæ“…é—¯è€…æ€ï¼",
+		txt = "±¾½«·îÁîÔÚ´Ë»¤·¨£¬ÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35018 ,mapID =902},},
@@ -26233,7 +26246,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26241,20 +26254,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35039] =        --------æŠ“å® çŽ©æ³•
+	[35039] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60029,
-		txt = "ä¸€äºŒä¸‰å››äº”å…­ä¸ƒï¼Œç»ˆäºŽéƒ½æœ‰äººæ¥å•¦ï¼Œå…ˆå–ä½ é¦–çº§çŽ©ä¸€çŽ©",
+		txt = "Ò»¶þÈýËÄÎåÁùÆß£¬ÖÕÓÚ¶¼ÓÐÈËÀ´À²£¬ÏÈÈ¡ÄãÊ×¼¶ÍæÒ»Íæ",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35019 ,mapID =902},},
@@ -26263,7 +26276,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26271,20 +26284,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35040] =        --------æŠ“å® çŽ©æ³•
+	[35040] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60030,
-		txt = "æœ¬å°†å¥‰ä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œæ“…é—¯è€…æ€ï¼",
+		txt = "±¾½«·îÁîÔÚ´Ë»¤·¨£¬ÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35020 ,mapID =902},},
@@ -26293,7 +26306,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26301,20 +26314,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35041] =        --------æŠ“å® çŽ©æ³•
+	[35041] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60031,
-		txt = "èž³è‡‚å½“è½¦ï¼Œæ„šä¸å¯åŠï¼",
+		txt = "ó«±Ûµ±³µ£¬ÓÞ²»¿É¼°£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35021 ,mapID =902},},
@@ -26323,7 +26336,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26331,20 +26344,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35042] =        --------æŠ“å® çŽ©æ³•
+	[35042] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60032,
-		txt = "åˆæ˜¯ä½ è¿™è´¼å­ï¼Œä»Šæ—¥å®šè¦å°†ä½ æŒ«éª¨æ‰¬ç°æ–¹å¯æ¶ˆæˆ‘å¿ƒå¤´ä¹‹æ¨ï¼",
+		txt = "ÓÖÊÇÄãÕâÔô×Ó£¬½ñÈÕ¶¨Òª½«Äã´ì¹ÇÑï»Ò·½¿ÉÏûÎÒÐÄÍ·Ö®ºÞ£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35022 ,mapID =902},},
@@ -26353,7 +26366,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26361,20 +26374,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35043] =        --------æŠ“å® çŽ©æ³•
+	[35043] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60033,
-		txt = "æ­¤åœ°ä¹ƒå¾ç­‰é•‡å®ˆï¼Œæƒ³è¦è¿‡åŽ»ï¼Œå…ˆè¿‡æˆ‘è¿™å…³ï¼",
+		txt = "´ËµØÄËÎáµÈÕòÊØ£¬ÏëÒª¹ýÈ¥£¬ÏÈ¹ýÎÒÕâ¹Ø£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35023 ,mapID =902},},
@@ -26383,7 +26396,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26391,20 +26404,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35044] =        --------æŠ“å® çŽ©æ³•
+	[35044] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60034,
-		txt = "æ¥äº†è¿˜æƒ³èµ°ï¼Œä»Šæ—¥å¾å¿…å°†å°”é­‚æ–­äºŽæ­¤ï¼",
+		txt = "À´ÁË»¹Ïë×ß£¬½ñÈÕÎá±Ø½«¶û»ê¶ÏÓÚ´Ë£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "å°æ ·çœ‹æ‹›",
+					optionTxt = "Ð¡Ñù¿´ÕÐ",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35024 ,mapID =903},},
@@ -26413,7 +26426,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26421,20 +26434,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35045] =        --------æŠ“å® çŽ©æ³•
+	[35045] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60035,
-		txt = "ç«Ÿç„¶å¦„æƒ³åœ¨æˆ‘å¤„èƒ¡ä½œéžä¸ºï¼Œä»Šæ—¥å²‚èƒ½è®©ä½ å¦‚æ„¿ï¼",
+		txt = "¾¹È»ÍýÏëÔÚÎÒ´¦ºú×÷·ÇÎª£¬½ñÈÕÆñÄÜÈÃÄãÈçÔ¸£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35025 ,mapID =903},},
@@ -26443,7 +26456,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26451,20 +26464,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35046] =        --------æŠ“å® çŽ©æ³•
+	[35046] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60036,
-		txt = "ä»€ä¹ˆäºº!ç«Ÿæ•¢æ¥æ­¤åœ°æ’’é‡Žï¼ä¸æƒ³æ´»äº†!",
+		txt = "Ê²Ã´ÈË!¾¹¸ÒÀ´´ËµØÈöÒ°£¡²»Ïë»îÁË!",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35026 ,mapID =903},},
@@ -26473,7 +26486,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26481,20 +26494,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35047] =        --------æŠ“å® çŽ©æ³•
+	[35047] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60037,
-		txt = "èƒ†æ•¢é—¯å…¥åˆ°è¿™é‡Œæ¥äº†ï¼Œè¿˜æƒ³æ´»ç€å‡ºåŽ»ï¼Ÿçº³å‘½æ¥å§ï¼",
+		txt = "µ¨¸Ò´³Èëµ½ÕâÀïÀ´ÁË£¬»¹Ïë»î×Å³öÈ¥£¿ÄÉÃüÀ´°É£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35027 ,mapID =903},},
@@ -26503,7 +26516,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26511,20 +26524,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35048] =        --------æŠ“å® çŽ©æ³•
+	[35048] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60038,
-		txt = "æœ‰å¤§çˆ·æˆ‘åœ¨æ­¤é©»å®ˆï¼Œå°”ç­‰å°è´¼ä¼‘å¾—åš£å¼ ",
+		txt = "ÓÐ´óÒ¯ÎÒÔÚ´Ë×¤ÊØ£¬¶ûµÈÐ¡ÔôÐÝµÃÏùÕÅ",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35028 ,mapID =903},},
@@ -26533,7 +26546,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26541,20 +26554,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35049] =        --------æŠ“å® çŽ©æ³•
+	[35049] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60039,
-		txt = "ä¸€äºŒä¸‰å››äº”å…­ä¸ƒï¼Œç»ˆäºŽéƒ½æœ‰äººæ¥å•¦ï¼Œå…ˆå–ä½ é¦–çº§çŽ©ä¸€çŽ©",
+		txt = "Ò»¶þÈýËÄÎåÁùÆß£¬ÖÕÓÚ¶¼ÓÐÈËÀ´À²£¬ÏÈÈ¡ÄãÊ×¼¶ÍæÒ»Íæ",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35029 ,mapID =903},},
@@ -26563,7 +26576,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26571,20 +26584,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35050] =        --------æŠ“å® çŽ©æ³•
+	[35050] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60040,
-		txt = "å“ªé‡Œæ¥çš„å°è´¼ï¼Œç«Ÿç„¶å¦„æƒ³åœ¨æˆ‘è¿™é‡Œæžå¾—å¥½å¤„",
+		txt = "ÄÄÀïÀ´µÄÐ¡Ôô£¬¾¹È»ÍýÏëÔÚÎÒÕâÀïÀÌµÃºÃ´¦",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35030 ,mapID =903},},
@@ -26593,7 +26606,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26601,20 +26614,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35051] =        --------æŠ“å® çŽ©æ³•
+	[35051] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60041,
-		txt = "æœ¬å°†å¥‰ä»¤åœ¨æ­¤æŠ¤æ³•ï¼Œæ“…é—¯è€…æ€ï¼",
+		txt = "±¾½«·îÁîÔÚ´Ë»¤·¨£¬ÉÃ´³ÕßÉ±£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35031 ,mapID =903},},
@@ -26623,7 +26636,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26631,20 +26644,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35052] =        --------æŠ“å® çŽ©æ³•
+	[35052] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60041,
-		txt = "ä¸€äºŒä¸‰å››äº”å…­ä¸ƒï¼Œç»ˆäºŽéƒ½æœ‰äººæ¥å•¦ï¼Œå…ˆæ€ä¸ªäººçŽ©ä¸€çŽ©ï¼Œå¤§åˆ€å·²ç»é¥¥æ¸´éš¾è€",
+		txt = "Ò»¶þÈýËÄÎåÁùÆß£¬ÖÕÓÚ¶¼ÓÐÈËÀ´À²£¬ÏÈÉ±¸öÈËÍæÒ»Íæ£¬´óµ¶ÒÑ¾­¼¢¿ÊÄÑÄÍ",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35032 ,mapID =903},},
@@ -26653,7 +26666,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26661,20 +26674,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35053] =        --------æŠ“å® çŽ©æ³•
+	[35053] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60041,
-		txt = "èž³è‡‚å½“è½¦ï¼Œæ„šä¸å¯åŠï¼",
+		txt = "ó«±Ûµ±³µ£¬ÓÞ²»¿É¼°£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35033 ,mapID =903},},
@@ -26683,7 +26696,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26691,20 +26704,20 @@ DialogModelDB =
 				},
 			},
 		},
-	[35054] =        --------æŠ“å® çŽ©æ³•
+	[35054] =        --------×¥³èÍæ·¨
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 60041,
-		txt = "åˆæ˜¯ä½ è¿™è´¼å­ï¼Œä»Šæ—¥å®šè¦å°†ä½ æŒ«éª¨æ‰¬ç°æ–¹å¯æ¶ˆæˆ‘å¿ƒå¤´ä¹‹æ¨ï¼",
+		txt = "ÓÖÊÇÄãÕâÔô×Ó£¬½ñÈÕ¶¨Òª½«Äã´ì¹ÇÑï»Ò·½¿ÉÏûÎÒÐÄÍ·Ö®ºÞ£¡",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "è¿›å…¥æˆ˜æ–—",
+					optionTxt = "½øÈëÕ½¶·",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 35034 ,mapID =903},},
@@ -26713,7 +26726,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "éšä¾¿çœ‹çœ‹",
+					optionTxt = "Ëæ±ã¿´¿´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26722,19 +26735,19 @@ DialogModelDB =
 			},
 		},
 
-------------ç‘žå…½èµç¦------------------------------------
-	[35101] =        --------é’é¾™
+------------ÈðÊÞ´Í¸£------------------------------------
+	[35101] =        --------ÇàÁú
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 25501,
-		txt = "æƒ³è¦å¤©é™ç¦æ³½ï¼Œå°±å¾—æŽ¥å—æˆ‘çš„æŒ‘æˆ˜ï¼èŽ·å¾—æˆ‘çš„èµè¯†ï¼Œå¥–åŠ±è‡ªç„¶ä¹Ÿå°‘ä¸äº†ä½ ï¼Œè¯·åŠ¡å¿…æŠŠæ¡æœºä¼šï¼",
+		txt = "ÏëÒªÌì½µ¸£Ôó£¬¾ÍµÃ½ÓÊÜÎÒµÄÌôÕ½£¡»ñµÃÎÒµÄÉÍÊ¶£¬½±Àø×ÔÈ»Ò²ÉÙ²»ÁËÄã£¬ÇëÎñ±Ø°ÑÎÕ»ú»á£¡",
 		options =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "è¯·æŒ‡ç‚¹ä¸€äºŒï¼",
+					optionTxt = "ÇëÖ¸µãÒ»¶þ£¡",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35105}},
@@ -26742,7 +26755,7 @@ DialogModelDB =
 				},
 			[2] =	{
 					showConditions = {},
-					optionTxt = "å‡†å¤‡å¥½å†æ¥",
+					optionTxt = "×¼±¸ºÃÔÙÀ´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26750,18 +26763,18 @@ DialogModelDB =
 				},
 		},
 	},
-	[35102] =        --------ç™½è™Ž
+	[35102] =        --------°×»¢
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 25502,
-		txt = "æƒ³è¦å¤©é™ç¦æ³½ï¼Œå°±å¾—æŽ¥å—æˆ‘çš„æŒ‘æˆ˜ï¼èŽ·å¾—æˆ‘çš„èµè¯†ï¼Œå¥–åŠ±è‡ªç„¶ä¹Ÿå°‘ä¸äº†ä½ ï¼Œè¯·åŠ¡å¿…æŠŠæ¡æœºä¼šï¼",
+		txt = "ÏëÒªÌì½µ¸£Ôó£¬¾ÍµÃ½ÓÊÜÎÒµÄÌôÕ½£¡»ñµÃÎÒµÄÉÍÊ¶£¬½±Àø×ÔÈ»Ò²ÉÙ²»ÁËÄã£¬ÇëÎñ±Ø°ÑÎÕ»ú»á£¡",
 		options =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "è¯·æŒ‡ç‚¹ä¸€äºŒï¼",
+					optionTxt = "ÇëÖ¸µãÒ»¶þ£¡",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35106}},
@@ -26769,7 +26782,7 @@ DialogModelDB =
 				},
 			[2] =	{
 					showConditions = {},
-					optionTxt = "å‡†å¤‡å¥½å†æ¥",
+					optionTxt = "×¼±¸ºÃÔÙÀ´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26777,18 +26790,18 @@ DialogModelDB =
 				},
 		},
 	},
-	[35103] =        --------æœ±é›€
+	[35103] =        --------ÖìÈ¸
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 25503,
-		txt = "æƒ³è¦å¤©é™ç¦æ³½ï¼Œå°±å¾—æŽ¥å—æˆ‘çš„æŒ‘æˆ˜ï¼èŽ·å¾—æˆ‘çš„èµè¯†ï¼Œå¥–åŠ±è‡ªç„¶ä¹Ÿå°‘ä¸äº†ä½ ï¼Œè¯·åŠ¡å¿…æŠŠæ¡æœºä¼šï¼",
+		txt = "ÏëÒªÌì½µ¸£Ôó£¬¾ÍµÃ½ÓÊÜÎÒµÄÌôÕ½£¡»ñµÃÎÒµÄÉÍÊ¶£¬½±Àø×ÔÈ»Ò²ÉÙ²»ÁËÄã£¬ÇëÎñ±Ø°ÑÎÕ»ú»á£¡",
 		options =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "è¯·æŒ‡ç‚¹ä¸€äºŒï¼",
+					optionTxt = "ÇëÖ¸µãÒ»¶þ£¡",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35107}},
@@ -26796,7 +26809,7 @@ DialogModelDB =
 				},
 			[2] =	{
 					showConditions = {},
-					optionTxt = "å‡†å¤‡å¥½å†æ¥",
+					optionTxt = "×¼±¸ºÃÔÙÀ´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26804,18 +26817,18 @@ DialogModelDB =
 				},
 		},
 	},
-	[35104] =        --------çŽ„æ­¦
+	[35104] =        --------ÐþÎä
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{},
 		speakerID = 25504,
-		txt = "æƒ³è¦å¤©é™ç¦æ³½ï¼Œå°±å¾—æŽ¥å—æˆ‘çš„æŒ‘æˆ˜ï¼èŽ·å¾—æˆ‘çš„èµè¯†ï¼Œå¥–åŠ±è‡ªç„¶ä¹Ÿå°‘ä¸äº†ä½ ï¼Œè¯·åŠ¡å¿…æŠŠæ¡æœºä¼šï¼",
+		txt = "ÏëÒªÌì½µ¸£Ôó£¬¾ÍµÃ½ÓÊÜÎÒµÄÌôÕ½£¡»ñµÃÎÒµÄÉÍÊ¶£¬½±Àø×ÔÈ»Ò²ÉÙ²»ÁËÄã£¬ÇëÎñ±Ø°ÑÎÕ»ú»á£¡",
 		options =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "è¯·æŒ‡ç‚¹ä¸€äºŒï¼",
+					optionTxt = "ÇëÖ¸µãÒ»¶þ£¡",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35108}},
@@ -26823,7 +26836,7 @@ DialogModelDB =
 				},
 			[2] =	{
 					showConditions = {},
-					optionTxt = "å‡†å¤‡å¥½å†æ¥",
+					optionTxt = "×¼±¸ºÃÔÙÀ´",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -26838,7 +26851,7 @@ DialogModelDB =
 		{},
 		speakerID = 25501,
 		soundID =nil,
-		txt = "é‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
 		{
 			{
@@ -26858,7 +26871,7 @@ DialogModelDB =
 		{},
 		speakerID = 25502,
 		soundID =nil ,
-		txt = "é‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
 		{
 			{
@@ -26878,7 +26891,7 @@ DialogModelDB =
 		{},
 		speakerID = 25503,
 		soundID =nil,
-		txt = "é‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
 		{
 			{
@@ -26898,7 +26911,7 @@ DialogModelDB =
 		{},
 		speakerID = 25504,
 		soundID =nil,
-		txt = "é‚£å°±å¼€å§‹å§ï¼",
+		txt = "ÄÇ¾Í¿ªÊ¼°É£¡",
 		options =
 		{
 			{
@@ -26912,7 +26925,7 @@ DialogModelDB =
 		},
 	},
 
- -------æŒ–å®æ”¾å¦–
+ -------ÍÚ±¦·ÅÑý
 	[39996] =
 	{
 		dialogType = DialogType.HasOption,
@@ -26921,12 +26934,12 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26159 ,
-		txt = "ä½ ï¼Œæ˜¯æ¥é€æ–°é²œçš„è¡€æ¶²ç»™æœ¬åº§è¿›è¡¥çš„å—",
+		txt = "Äã£¬ÊÇÀ´ËÍÐÂÏÊµÄÑªÒº¸ø±¾×ù½ø²¹µÄÂð",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸è¦æ€•ï¼Œç§’äº†ä»–",
+				optionTxt = "²»ÒªÅÂ£¬ÃëÁËËû",
 				actions =
 				{
 					{action = DialogActionType.EnterTreasureFight , param = {scriptID = 40001 ,mapID =600},},
@@ -26934,7 +26947,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æ‰“ä¸èµ¢å°±è·‘",
+				optionTxt = "´ò²»Ó®¾ÍÅÜ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -26951,12 +26964,12 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26159 ,
-		txt = "å“ˆå“ˆå“ˆæˆ‘å·²é‡èŽ·æ–°ç”Ÿï¼Œè°éƒ½åˆ«æƒ³å†ç¦é”¢æˆ‘ï¼",
+		txt = "¹þ¹þ¹þÎÒÒÑÖØ»ñÐÂÉú£¬Ë­¶¼±ðÏëÔÙ½ûïÀÎÒ£¡",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸è¦æ€•ï¼Œç§’äº†ä»–",
+				optionTxt = "²»ÒªÅÂ£¬ÃëÁËËû",
 				actions =
 				{
 					{action = DialogActionType.EnterTreasureFight , param = {scriptID = 40002 ,mapID =600},},
@@ -26964,7 +26977,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æ‰“ä¸èµ¢å°±è·‘",
+				optionTxt = "´ò²»Ó®¾ÍÅÜ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -26981,12 +26994,12 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26159 ,
-		txt = "å˜»å˜»å˜»ï¼Œæˆ‘è¦å¤§å¼€æ€æˆ’ï¼",
+		txt = "ÎûÎûÎû£¬ÎÒÒª´ó¿ªÉ±½ä£¡",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸è¦æ€•ï¼Œç§’äº†ä»–",
+				optionTxt = "²»ÒªÅÂ£¬ÃëÁËËû",
 				actions =
 				{
 					{action = DialogActionType.EnterTreasureFight , param = {scriptID = 40003 ,mapID =600},},
@@ -26994,7 +27007,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æ‰“ä¸èµ¢å°±è·‘",
+				optionTxt = "´ò²»Ó®¾ÍÅÜ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -27012,12 +27025,12 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =26159 ,
-		txt = "äººé—´æœ‰è¿™ä¹ˆå¤šç¾Žå‘³ï¼Œå†ä¹Ÿä¸æƒ³å›žåŽ»äº†ï¼",
+		txt = "ÈË¼äÓÐÕâÃ´¶àÃÀÎ¶£¬ÔÙÒ²²»Ïë»ØÈ¥ÁË£¡",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¸è¦æ€•ï¼Œç§’äº†ä»–",
+				optionTxt = "²»ÒªÅÂ£¬ÃëÁËËû",
 				actions =
 				{
 					{action = DialogActionType.EnterTreasureFight , param = {scriptID = 40004 ,mapID =600},},
@@ -27025,7 +27038,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "æ‰“ä¸èµ¢å°±è·‘",
+				optionTxt = "´ò²»Ó®¾ÍÅÜ",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -27034,7 +27047,7 @@ DialogModelDB =
 
 		},
 	},
----æŒ–å®ç»“æŸ
+---ÍÚ±¦½áÊø
 	[40002] =
 	{
 		dialogType = DialogType.HasOption,
@@ -27044,12 +27057,12 @@ DialogModelDB =
 		},
 		speakerID = 29048,
 		soundID =1,
-		txt = "å¿ ä¹‰ä¸ºé¦–ï¼Œè‚èƒ†ç›¸ç…§ã€‚å¸®ä¼šçš„å®—æ—¨å°±æ˜¯è¿™æ ·çš„ï¼Œä½ è®¤ä¸ºå‘¢ï¼Ÿ",
+		txt = "ÖÒÒåÎªÊ×£¬¸Îµ¨ÏàÕÕ¡£°ï»áµÄ×ÚÖ¼¾ÍÊÇÕâÑùµÄ£¬ÄãÈÏÎªÄØ£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "æŸ¥çœ‹å¸®æ´¾åˆ—è¡¨",
+				optionTxt = "²é¿´°ïÅÉÁÐ±í",
 				actions =
 				{
 					{action = DialogActionType.ShowFactionList , param = {v = "FactionListWin"},},
@@ -27057,7 +27070,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ‘çš„å¸®æ´¾é¢†åœ°",
+				optionTxt = "½øÈëÎÒµÄ°ïÅÉÁìµØ",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 7, tarX = 86, tarY = 68}},
@@ -27075,12 +27088,12 @@ DialogModelDB =
 		},
 		speakerID = 29048,
 		soundID =1,
-		txt = "å¿ ä¹‰ä¸ºé¦–ï¼Œè‚èƒ†ç›¸ç…§ã€‚å¸®ä¼šçš„å®—æ—¨å°±æ˜¯è¿™æ ·çš„ï¼Œä½ è®¤ä¸ºå‘¢ï¼Ÿ",
+		txt = "ÖÒÒåÎªÊ×£¬¸Îµ¨ÏàÕÕ¡£°ï»áµÄ×ÚÖ¼¾ÍÊÇÕâÑùµÄ£¬ÄãÈÏÎªÄØ£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "æŸ¥çœ‹å¸®æ´¾åˆ—è¡¨",
+				optionTxt = "²é¿´°ïÅÉÁÐ±í",
 				actions =
 				{
 					{action = DialogActionType.ShowFactionList , param = {v = "FactionListWin"},},
@@ -27097,12 +27110,12 @@ DialogModelDB =
 		},
 		speakerID = 29048,
 		soundID =26159,
-		txt = "TPï¼Ÿï¼Ÿ",
+		txt = "TP£¿£¿",
 		options =
 		{
 			[1] = {
 				showConditions = {},
-				optionTxt = "ä¼ é€åˆ°æ´›é˜³åŸŽ",
+				optionTxt = "´«ËÍµ½ÂåÑô³Ç",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 133, tarY = 210}},
@@ -27120,7 +27133,7 @@ DialogModelDB =
 		},
 		speakerID = 20001,
 		soundID =26159,
-		txt = "æµ‹è¯•å¸®ä¼šå¯¹è¯",
+		txt = "²âÊÔ°ï»á¶Ô»°",
 		options =
 		{
 			[1] = {
@@ -27128,7 +27141,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask, param = {taskID = 10002, statue = false}},
 				{condition = DialogCondition.Level, param = {level = 30}},	
 				},
-				optionTxt = "æŽ¥å—å¸®ä¼šä»»åŠ¡",
+				optionTxt = "½ÓÊÜ°ï»áÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 133, tarY = 210}},
@@ -27136,7 +27149,7 @@ DialogModelDB =
 			},
 			[2] = {
 				showConditions = {{condition = DialogCondition.HasTask, param = {taskID = 10002, statue = true}},},
-				optionTxt = "æäº¤å¸®ä¼šä»»åŠ¡",
+				optionTxt = "Ìá½»°ï»áÈÎÎñ",
 				actions =
 				{
 					{action = DialogActionType.SwithScene , param ={tarMapID  = 10, tarX = 133, tarY = 210}},
@@ -27146,20 +27159,20 @@ DialogModelDB =
 		},
 	},
 
-	[40006] =        --------æŠ“å® çŽ©æ³•æµ‹è¯•
+	[40006] =        --------×¥³èÍæ·¨²âÊÔ
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29046,
-		txt = "æŠ“å® æµ‹è¯•",
+		txt = "×¥³è²âÊÔ",
 		options =
 		{
 			[1] = 
 				{
 					showConditions = {},
-					optionTxt = "æŸ¥çœ‹åœ°å›¾å® ç‰©",
+					optionTxt = "²é¿´µØÍ¼³èÎï",
 					actions =
 					{
 						{},
@@ -27168,7 +27181,7 @@ DialogModelDB =
 			[2] = 
 				{
 					showConditions = {},
-					optionTxt = "ä¼ é€åœºæ™¯",
+					optionTxt = "´«ËÍ³¡¾°",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=40007}},
@@ -27183,7 +27196,7 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29046,
-		txt = "æŠ“å® ä»»åŠ¡æè¿°<br>30çº§åœ°å›¾èƒ½æŠ“å® ç‰©xx1ã€xx2,<br>40çº§åœ°å›¾èƒ½æŠ“å†²æˆ‘xxx1ã€xxx2,<br>50çº§åœ°å›¾èƒ½æŠ“å® ç‰©x1ã€x2,<br>60çº§åœ°å›¾èƒ½æŠ“å® ç‰©xxxx1ã€xxxx2",
+		txt = "×¥³èÈÎÎñÃèÊö<br>30¼¶µØÍ¼ÄÜ×¥³èÎïxx1¡¢xx2,<br>40¼¶µØÍ¼ÄÜ×¥³åÎÒxxx1¡¢xxx2,<br>50¼¶µØÍ¼ÄÜ×¥³èÎïx1¡¢x2,<br>60¼¶µØÍ¼ÄÜ×¥³èÎïxxxx1¡¢xxxx2",
 		options =
 		{
 		},
@@ -27195,13 +27208,13 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29046,
-		txt = "æŠ“å® æµ‹è¯•",
+		txt = "×¥³è²âÊÔ",
 		options =
 		{
 			[1] =
 				{
 					showConditions = {},
-					optionTxt = "30çº§æŠ“å® åœ°å›¾",
+					optionTxt = "30¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{action = DialogActionType.EnterCatchPetMap , param ={mapID = 901, x = 100, y = 100, itemID = 1025001, itemNum = 1}},
@@ -27210,7 +27223,7 @@ DialogModelDB =
 			[2] =
 				{
 					showConditions = {},
-					optionTxt = "40çº§æŠ“å® åœ°å›¾",
+					optionTxt = "40¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{},
@@ -27219,7 +27232,7 @@ DialogModelDB =
 			[3] =
 				{
 					showConditions = {},
-					optionTxt = "50çº§æŠ“å® åœ°å›¾",
+					optionTxt = "50¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{},
@@ -27228,7 +27241,7 @@ DialogModelDB =
 			[4] =
 				{
 					showConditions = {},
-					optionTxt = "60çº§æŠ“å® åœ°å›¾",
+					optionTxt = "60¼¶×¥³èµØÍ¼",
 					actions =
 					{
 						{},
@@ -27245,22 +27258,22 @@ DialogModelDB =
 		},
 		speakerID = 29048,
 		soundID =26159,
-		txt = "åš¯åš¯åš¯ï¼ŒæŠŠä¸œè¥¿äº¤å‡ºæ¥",
+		txt = "àëàëàë£¬°Ñ¶«Î÷½»³öÀ´",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "ç»™æˆ‘ä¸œè¥¿",
+				optionTxt = "¸øÎÒ¶«Î÷",
 				actions =
 				{
-					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin"},},--æ‰“å¼€ç‰©å“ä»“åº“
+					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin"},},--´ò¿ªÎïÆ·²Ö¿â
 					{action = DialogActionType.OpenUI ,param = {v = "ItemEquipWin"},},--0
 				},
 			},
 			[2] = {
 				showConditions = {},
-				optionTxt = "åš¯åš¯åš¯ï¼Œä½ æ²¡æœ‰æˆ‘è¦çš„çš„ä¸œè¥¿",
+				optionTxt = "àëàëàë£¬ÄãÃ»ÓÐÎÒÒªµÄµÄ¶«Î÷",
 				actions =
 				{
 					{action = DialogActionType.CloseDialog , param ={}},
@@ -27278,13 +27291,13 @@ DialogModelDB =
 		},
 		speakerID = 20001,
 		soundID =26159,
-		txt = "æƒ³è¿›å…¥æˆ˜æ–—å—",
+		txt = "Ïë½øÈëÕ½¶·Âð",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "è¿›å…¥æˆ˜æ–—ã€‹ã€‹ã€‹ã€‹",
+				optionTxt = "½øÈëÕ½¶·¡·¡·¡·¡·",
 				actions =
 				{
 					{action = DialogActionType.EnterCatchPetFight , param = {scriptID = 100 ,mapID =600},},
@@ -27293,8 +27306,8 @@ DialogModelDB =
 		},
 	},
 
-------------------------------æ—¥å¸¸ä»»åŠ¡----------------------------------------------------------------------------------------------------------------------------
----------------------------------------æ¯æ—¥æ€æ€ªè®¡æ•°---------------------------------------------------------------------------------------------------
+------------------------------ÈÕ³£ÈÎÎñ----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------Ã¿ÈÕÉ±¹Ö¼ÆÊý---------------------------------------------------------------------------------------------------
 	[50101] =
 	{
 		dialogType = DialogType.HasOption,
@@ -27302,7 +27315,7 @@ DialogModelDB =
 		{},
 		speakerID = 29081,
 		soundID =26159,
-		txt = "å¦‚ä»Šé»„å·¾æ•™å…´é£Žä½œæµªï¼Œçš‡å­ä»¬åˆä¸ºå¤ªå­ä¹‹ä½æ˜Žäº‰æš—æ–—ã€‚å°†å£«æ— å¿ƒå®ˆç–†å«å¢ƒï¼Œç™¾å§“é¢ ç°¸æµç¦»ã€‚çœŸæ˜¯é‡Œå¿§å¤–æ‚£å•Šï¼",
+		txt = "Èç½ñ»Æ½í½ÌÐË·ç×÷ÀË£¬»Ê×ÓÃÇÓÖÎªÌ«×ÓÖ®Î»Ã÷Õù°µ¶·¡£½«Ê¿ÎÞÐÄÊØ½®ÎÀ¾³£¬°ÙÐÕµßô¤Á÷Àë¡£ÕæÊÇÀïÓÇÍâ»¼°¡£¡",
 		options =
 		{
 			[1] = 
@@ -27311,7 +27324,7 @@ DialogModelDB =
 				{ 
 				{condition = DialogCondition.HasTask,param = {taskID = 40001,statue = false,},},
 				},
-				optionTxt = "å¹³é‚¦å«å¢ƒ",
+				optionTxt = "Æ½°îÎÀ¾³",
 				actions =
 				{
 				{action = DialogActionType.Gotos , param = {dialogIDs = {50103,50104,50102}},},
@@ -27325,7 +27338,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask,param = {taskID = 40001,statue = true },},
 				{condition = DialogCondition.TkillMonster, param = {taskID = 40001,statue = true}},
 				},
-				optionTxt = "å¹³é‚¦å«å¢ƒ",
+				optionTxt = "Æ½°îÎÀ¾³",
 				actions = 
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 50105}},
@@ -27339,7 +27352,7 @@ DialogModelDB =
 				{condition = DialogCondition.HasTask,param = {taskID = 40001,statue = true },},
 				{condition = DialogCondition.TkillMonster, param = {taskID = 40001,statue = false}},
 				},
-				optionTxt = "å¹³é‚¦å«å¢ƒ",
+				optionTxt = "Æ½°îÎÀ¾³",
 				actions = 
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 50106}},
@@ -27349,7 +27362,7 @@ DialogModelDB =
 			[4] = 
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘è¿˜æœ‰äº‹ï¼Œå‘Šè¾ž",
+				optionTxt = "ÎÒ»¹ÓÐÊÂ£¬¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog , param = {},},
@@ -27364,13 +27377,13 @@ DialogModelDB =
 		{},
 		speakerID = 29081,
 		soundID =26159,
-		txt = "æ®æ‰‹ä¸‹æ¥æŠ¥ï¼Œå¤§æ‰¹å¦–ç‰©æ­£åœ¨æ´›é˜³å‘¨è¾¹å…´å¦–ä½œä¹±ï¼Œå¨èƒç™¾å§“æ€§å‘½å®‰å…¨ï¼Œä½ è¾›è‹¦ä¸€è¶Ÿæ›¿æˆ‘è§£å†³ä»–ä»¬å§ï¼",
+		txt = "¾ÝÊÖÏÂÀ´±¨£¬´óÅúÑýÎïÕýÔÚÂåÑôÖÜ±ßÐËÑý×÷ÂÒ£¬ÍþÐ²°ÙÐÕÐÔÃü°²È«£¬ÄãÐÁ¿àÒ»ÌËÌæÎÒ½â¾öËûÃÇ°É£¡",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘æ˜Žç™½äº†ï¼Œè¿™å°±å‡ºå‘ï¼",
+				optionTxt = "ÎÒÃ÷°×ÁË£¬Õâ¾Í³ö·¢£¡",
 				actions =
 				{
 				{action = DialogActionType.RecetiveTask , param = {taskID = 40001}},
@@ -27380,7 +27393,7 @@ DialogModelDB =
 			[2] = 
 			{
 				showConditions = {},
-				optionTxt = "ä»»åŠ¡è¯´æ˜Ž",
+				optionTxt = "ÈÎÎñËµÃ÷",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 50107}},
@@ -27390,7 +27403,7 @@ DialogModelDB =
 			[3] = 
 			{
 				showConditions = {},
-				optionTxt = "æˆ‘è¿˜æœ‰äº‹ï¼Œå‘Šè¾ž",
+				optionTxt = "ÎÒ»¹ÓÐÊÂ£¬¸æ´Ç",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog , param = {},},
@@ -27407,7 +27420,7 @@ DialogModelDB =
 		},
 		speakerID = 29081,
 		soundID =26159,
-		txt = "ä»¥ä½ çŽ°åœ¨çš„èƒ½åŠ›ï¼Œè¿˜ä¸è¶³ä»¥å¯¹æŠ—é‚£äº›å¯æ€•çš„å¦–æ€ªï¼Œè¯·å›žåŽ»ä¿®ç‚¼åˆ°25çº§å†å›žæ¥æ‰¾æˆ‘å§ï¼",
+		txt = "ÒÔÄãÏÖÔÚµÄÄÜÁ¦£¬»¹²»×ãÒÔ¶Ô¿¹ÄÇÐ©¿ÉÅÂµÄÑý¹Ö£¬Çë»ØÈ¥ÐÞÁ¶µ½25¼¶ÔÙ»ØÀ´ÕÒÎÒ°É£¡",
 		options =
 		{
 			[1] = 
@@ -27430,7 +27443,7 @@ DialogModelDB =
 		},
 		speakerID = 29081,
 		soundID =26159,
-		txt = "ä½ ä»Šå¤©å·²ç»åœ¨æˆ‘è¿™é‡Œé¢†å–è¿‡ä»»åŠ¡äº†ï¼Œæ˜Žå¤©å†è¿‡æ¥çœ‹çœ‹å§ï¼",
+		txt = "Äã½ñÌìÒÑ¾­ÔÚÎÒÕâÀïÁìÈ¡¹ýÈÎÎñÁË£¬Ã÷ÌìÔÙ¹ýÀ´¿´¿´°É£¡",
 		options =
 		{
 			[1] = 
@@ -27451,7 +27464,7 @@ DialogModelDB =
 		{},
 		speakerID = 20001,
 		soundID =26159,
-		txt = "çœ‹æ¥ä½ çš„æœ¬é¢†è¿˜ä¸é”™å˜›ï¼Œè¿™ä¹ˆå¿«å°±å›žæ¥äº†ï¼è¿™æ˜¯ç»™ä½ çš„æŠ¥é…¬ï¼Œåˆ«å®¢æ°”æ”¶ä¸‹å§ï¼",
+		txt = "¿´À´ÄãµÄ±¾Áì»¹²»´íÂï£¬ÕâÃ´¿ì¾Í»ØÀ´ÁË£¡ÕâÊÇ¸øÄãµÄ±¨³ê£¬±ð¿ÍÆøÊÕÏÂ°É£¡",
 		options =
 		{
 			[1] = 
@@ -27472,7 +27485,7 @@ DialogModelDB =
 		{},
 		speakerID = 29081,
 		soundID =26159,
-		txt = "ä½ å®Œæˆæˆ‘äº¤ç»™ä½ çš„ä»»åŠ¡äº†ï¼Ÿ",
+		txt = "ÄãÍê³ÉÎÒ½»¸øÄãµÄÈÎÎñÁË£¿",
 		options =
 		{
 			[1] = 
@@ -27493,13 +27506,13 @@ DialogModelDB =
 		{},
 		speakerID = 29081,
 		soundID =26159,
-		txt = "æ¯å¤©ä½ èƒ½åœ¨æˆ‘è¿™é‡Œé¢†å–åˆ°1æ¬¡ä»»åŠ¡ï¼Œåœ¨ä»»æ„çŽ©æ³•ä¸­åªè¦ä½ ç´¯è®¡å‡»æ€200åªä¸Žä½ ç­‰çº§ç›¸è¿‘çš„ä»»æ„å¦–ç‰©ï¼Œæˆ‘éƒ½ä¼šç»™ä½ ä¸€å®šå¥–åŠ±ä½œä¸ºæŠ¥é…¬ï¼",
+		txt = "Ã¿ÌìÄãÄÜÔÚÎÒÕâÀïÁìÈ¡µ½1´ÎÈÎÎñ£¬ÔÚÈÎÒâÍæ·¨ÖÐÖ»ÒªÄãÀÛ¼Æ»÷É±200Ö»ÓëÄãµÈ¼¶Ïà½üµÄÈÎÒâÑýÎï£¬ÎÒ¶¼»á¸øÄãÒ»¶¨½±Àø×÷Îª±¨³ê£¡",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "å¬èµ·æ¥ä¸é”™ï¼Œæˆ‘è¿™å°±å‡ºå‘ï¼",
+				optionTxt = "ÌýÆðÀ´²»´í£¬ÎÒÕâ¾Í³ö·¢£¡",
 				actions =
 				{
 				{action = DialogActionType.RecetiveTask , param = {taskID = 40001}},
@@ -27509,7 +27522,7 @@ DialogModelDB =
 			[2] = 
 			{
 				showConditions = {},
-				optionTxt = "æŠ±æ­‰ï¼ŒçŽ°åœ¨æ²¡ç©ºã€‚",
+				optionTxt = "±§Ç¸£¬ÏÖÔÚÃ»¿Õ¡£",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog , param = {},},
@@ -27517,7 +27530,7 @@ DialogModelDB =
 			},
 		},
 	},
----------------------------------------æ¯æ—¥é“å…·è®¡æ•°---------------------------------------------------------------------------------------------------
+---------------------------------------Ã¿ÈÕµÀ¾ß¼ÆÊý---------------------------------------------------------------------------------------------------
 	[50110] =
 	{
 		dialogType = DialogType.HasOption,
@@ -27525,17 +27538,17 @@ DialogModelDB =
 		{},
 		speakerID = 29001,
 		soundID =nil,
-		txt = "æˆ‘éœ€è¦çš„æ˜¯5ä¸ªåƒå¹´å¯’é“æˆ–20ä¸ªé»‘é“çŸ¿çŸ³ï¼Œè¿™ç§é“çŸ¿çŸ³æœ‰å‡ çŽ‡åœ¨ç­‰çº§å·®5çº§ä»¥å†…çš„æˆ˜æ–—ä¸­æŽ‰è½ã€‚å¦‚æžœä½ é›†é½äº†å°±å¯ä»¥å¸¦è¿‡æ¥ç»™æˆ‘ã€‚æˆ‘ä¸€å¤©èƒ½å¤Ÿæ”¶ä½ 10æ¬¡ï¼",
+		txt = "ÎÒÐèÒªµÄÊÇ5¸öÇ§Äêº®Ìú»ò20¸öºÚÌú¿óÊ¯£¬ÕâÖÖÌú¿óÊ¯ÓÐ¼¸ÂÊÔÚµÈ¼¶²î5¼¶ÒÔÄÚµÄÕ½¶·ÖÐµôÂä¡£Èç¹ûÄã¼¯ÆëÁË¾Í¿ÉÒÔ´ø¹ýÀ´¸øÎÒ¡£ÎÒÒ»ÌìÄÜ¹»ÊÕÄã10´Î£¡",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = 
 				{},
-				optionTxt = "ä¸Šäº¤é“çŸ¿çŸ³",
+				optionTxt = "ÉÏ½»Ìú¿óÊ¯",
 				actions =
 				{
-				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = true, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
 				},
 				icon = DialogIcon.Function,
 			},
@@ -27548,17 +27561,17 @@ DialogModelDB =
 		conditions = 
 		{},
 		speakerID = 29001,
-		txt = "è¿™äº›æ˜¯ç»™ä½ çš„æŠ¥é…¬ï¼Œè¯·æ”¶å¥½ï¼",
+		txt = "ÕâÐ©ÊÇ¸øÄãµÄ±¨³ê£¬ÇëÊÕºÃ£¡",
 		options = 
 		{
 			[1] = 
 			{
 				showConditions = 
 				{},
-				optionTxt = "ç»§ç»­ä¸Šäº¤é“çŸ¿çŸ³",
+				optionTxt = "¼ÌÐøÉÏ½»Ìú¿óÊ¯",
 				actions =
 				{
-				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = false, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskFlag = true, itemsInfo ={{itemID = 1051005,count = 5},{itemID = 1051006,count = 20}},commitID = 101}},
 				},
 				icon = DialogIcon.Function,
 			},
@@ -27566,7 +27579,7 @@ DialogModelDB =
 			{
 				showConditions = 
 				{},
-				optionTxt = "ä¸‹æ¬¡å†æ¥",
+				optionTxt = "ÏÂ´ÎÔÙÀ´",
 				actions =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
@@ -27579,7 +27592,7 @@ DialogModelDB =
 --------------------------------------------------------------------------------------------------------------------------------
 
 
-	--æŽ¥å—å¸®ä¼šä»»åŠ¡
+	--½ÓÊÜ°ï»áÈÎÎñ
 	[10000001] = 
 	{
 		dialogType = DialogType.NotOption,
@@ -27589,7 +27602,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "æŽ¥å—å¸®ä¼šä»»åŠ¡",
+		txt = "½ÓÊÜ°ï»áÈÎÎñ",
 		options = 
 		{
 			{
@@ -27605,7 +27618,7 @@ DialogModelDB =
 		},
 	},
 
-	--ä¸Šäº¤å¸®ä¼šä»»åŠ¡
+	--ÉÏ½»°ï»áÈÎÎñ
 	[10000002] = 
 	{
 		dialogType = DialogType.NotOption,
@@ -27615,7 +27628,7 @@ DialogModelDB =
 		},
 		speakerID = 0,
 		
-		txt = "äº¤è£…å¤‡ï¼",
+		txt = "½»×°±¸£¡",
 		options = 
 		{
 			{
@@ -27626,6 +27639,781 @@ DialogModelDB =
 					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10001,equipFlag = true, itemsInfo = {count = 1},},},
 				},
 			}
+		},
+	},
+
+------------------------------------------------------------------Í¨ÌìËþ¶Ô»°---------------------------------------------------------------------------
+	-- Í¨ÌìËþÈÎÎñ¶Ô»°, Ã»ÈÎÎñ
+	[80001] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.HasTask, param = {taskID = 20001, statue = false}},
+		},
+		speakerID = 60500,
+		soundID =26159,
+		txt = "³ÏÕß£¬ÌìÖ®µÀÒ²£¬³ÏÖ®Õß£¬ÈÏÖªµÀÒ²¡£·²³ÏÐÄÏòµÀÕß£¬½Ô¿ÉÔÚÍ¨ÌìËþÇåÐÂÐÞÁ¶£¬ÁìÎòÌìµÀ",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "½øËþÐÞÁ¶",
+				actions =
+				{
+					-- Ö±½Ó½øÈë³¡¾°, ¸ù¾ÝÈÎÎñ²ãÊý
+					{action = DialogActionType.Goto , param ={dialogID = 80003}},
+				},
+			},
+		},
+	},
+	
+	-- ÓÐÈÎÎñ
+	[80002] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.HasTask, param = {taskID = 20001, statue = true}},
+		},
+		speakerID = 60500,
+		soundID =26159,
+		txt = "³ÏÕß£¬ÌìÖ®µÀÒ²£¬³ÏÖ®Õß£¬ÈÏÖªµÀÒ²¡£·²³ÏÐÄÏòµÀÕß£¬½Ô¿ÉÔÚÍ¨ÌìËþÇåÐÂÐÞÁ¶£¬ÁìÎòÌìµÀ",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "½øËþÐÞÁ¶",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterBabel , param ={taskID  = 20001}},
+				},
+			},
+
+		},
+	},
+
+	[80003] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 60500,
+		soundID =26159,
+		txt = "ÇëÑ¡ÔñÈÎÎñ½±ÀøÀàÐÍ",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "¾­ÑéÀàÐÍ",
+				actions =
+				{
+					-- ½ÓÊÜÍ¨ÌìËþÈÎÎñID
+					{action = DialogActionType.ReceiveBabelTask , param ={taskID = 20001, rewardType = 1, level = 50}},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "µÀÐÐÀàÐÍ",
+				actions =
+				{
+					-- ½ÓÊÜÍ¨ÌìÈÎÎñID
+					{action = DialogActionType.ReceiveBabelTask , param ={taskID = 20001, rewardType = 2, level = 50}},
+				},
+			},
+
+		},
+	},
+
+	-- µÚÒ»²ãNPC¶Ô»°£¬ µÚÒ»¸öNPC
+	[80004] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60501}},
+		},
+		speakerID = 60501,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4117 ,mapID =602},},
+				},
+			},
+		},
+	},
+	
+	[80005] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60501}},
+		},
+		speakerID = 60501,
+		soundID =26159,
+		txt = "±¾²ãÓÐ<font color = '#FFFF00FF'>%s</font>°ÑÊØ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80006] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60501,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã 2
+	[80007] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60502}},
+		},
+		speakerID = 60502,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4118 ,mapID =602},},
+				},
+			},
+		},
+	},
+
+	[80008] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60502}},
+		},
+		speakerID = 60502,
+		soundID =26159,
+		txt = "±¾²ãÓÉ<font color = '#FFFF00FF'>%s</font>°ÑÊÖ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80009] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60502,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã3
+	[80010] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60503}},
+		},
+		speakerID = 60503,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4117 ,mapID =602},},
+				},
+			},
+		},
+	},
+
+	[80011] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60503}},
+		},
+		speakerID = 60503,
+		soundID =26159,
+		txt = "±¾²ãÓÉ<font color = '#FFFF00FF'>%s</font>°ÑÊÖ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80012] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60503,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã4
+	[80013] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60504}},
+		},
+		speakerID = 60504,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4118 ,mapID =602},},
+				},
+			},
+		},
+	},
+
+	[80014] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60504}},
+		},
+		speakerID = 60504,
+		soundID =26159,
+		txt = "±¾²ãÓÉ<font color = '#FFFF00FF'>%s</font>°ÑÊÖ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80015] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60504,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã5
+	[80016] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60505}},
+		},
+		speakerID = 60505,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4117 ,mapID =602},},
+				},
+			},
+		},
+	},
+
+	[80017] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60505}},
+		},
+		speakerID = 60505,
+		soundID =26159,
+		txt = "±¾²ãÓÉ<font color = '#FFFF00FF'>%s</font>°ÑÊÖ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80018] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60505,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã6
+	[80019] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60506}},
+		},
+		speakerID = 60506,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4118 ,mapID =602},},
+				},
+			},
+		},
+	},
+
+	[80020] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60506}},
+		},
+		speakerID = 60506,
+		soundID =26159,
+		txt = "±¾²ãÓÉ<font color = '#FFFF00FF'>%s</font>°ÑÊÖ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80021] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60506,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã7
+	[80022] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60507}},
+		},
+		speakerID = 60507,
+		soundID =26159,
+		txt = "ÌôÕ½Õâ¸öNPC",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "ÌôÕ½",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4117 ,mapID =602},},
+				},
+			},
+		},
+	},
+
+	[80023] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+			{condition = DialogCondition.NoMatchTaskNpc, param = {taskID = 20001, taskState = TaskStatus.Active, npcID = 60507}},
+		},
+		speakerID = 60507,
+		soundID =26159,
+		txt = "±¾²ãÓÉ<font color = '#FFFF00FF'>%s</font>°ÑÊÖ",
+		babelSpecialFlag = true,
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
+	[80024] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+		},
+		speakerID = 60507,
+		soundID =26159,
+		txt = "Ñ¡ÔñÌôÕ½²ãÊý",
+		options =
+		{
+			 {
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				
+				},
+			},
+
+		},
+	},
+
+	-- 1²ã8
+	[80025] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID = 60508,
+		soundID =26159,
+		txt = "ÖÐ¼äNPCËæÄãÑ¡Ôñ¸ÉÊ²Ã´¶«¶«",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "¸ú»»½±ÀøÀàÐÍ",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.ChangeRewardType , param = {taskID = 20001},},
+				},
+			},
+			[2] = {
+				showConditions = 
+				{
+					{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+				},
+				optionTxt = "ÌôÕ½ÏÂÒ»²ã",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.EnterNextLayer , param = {taskID = 20001},},
+				},
+			},
+
+			[3] = {
+				showConditions = 
+				{
+					{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Active}},
+				},
+				optionTxt = "¸ú»»ÌôÕ½Ä¿±ê",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°£¬¹¦ÄÜ£¬¸ú»»ÌôÕ½Ä¿±ê
+					{action = DialogActionType.ChangeTarget , param = {taskID = 20001, itemID = 1031020, itemNum = 1},},
+				},
+			},
+
+			[4] = {
+				showConditions = 
+				{
+					{condition = DialogCondition.MatchTaskState, param = {taskID = 20001, taskState = TaskStatus.Done}},
+				},
+				optionTxt = "·ÉÉý",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.Goto , param = {dialogID = 80026},},
+				},
+
+			},
+			[5] = {
+				showConditions = {},
+				optionTxt = "Àë¿ª",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°£¬ÇÐ»»³¡¾°
+					{action = DialogActionType.SwithScene , param = {tarMapID = 10, tarX = 118, tarY = 266}},
+				},
+			},
+		},
+	},
+
+	-- ·ÉÉý¹¦ÄÜÏÞÖÆ
+	[80026] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+
+		},
+		speakerID = 60508,
+		soundID =26159,
+		txt = "Ñ¡ÔñÔª±¦»òÕßÓ¢Á½·ÉÉý",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "½ðÇ®·ÉÉý¡·¡·¡·¡·¡·¡·",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.Goto , param = {dialogID = 80027},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "Ôª±¦·ÉÉý¡·¡·¡·¡·¡·¡·",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.Goto , param = {dialogID = 80028},},
+				},
+			},
+		},
+	},
+
+	-- ·ÉÉý¹¦ÄÜÏÞÖÆ£¬½üÇ×
+	[80027] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+
+		},
+		speakerID = 60508,
+		soundID =26159,
+		txt = "½ðÇ®·ÉÉý²ãÊý",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "2²ã(1000)",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.FlyUp , param = {taskID = 20001, costType = 1, addLayer = 2, money = 1000},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "3²ã(1500)",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.FlyUp , param = {taskID = 20001, costType = 1, addLayer = 3, money = 1500},},
+				},
+			},
+		},
+	},
+
+	[80028] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+
+		},
+		speakerID = 60508,
+		soundID =26159,
+		txt = "Ñ¡ÔñÔª±¦·ÉÉý²ãÊý",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "2²ã(1000)",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.FlyUp , param = {taskID = 20001, costType = 2, addLayer = 2, money = 1000},},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "3²ã(1500)",
+				actions =
+				{
+					-- Ìø×ª¶Ô»°
+					{action = DialogActionType.FlyUp , param = {taskID = 20001, costType = 2, addLayer = 3, money = 1500},},
+				},
+			},
 		},
 	},
 }

@@ -13,6 +13,8 @@ function BabelTask:__init(taskData)
 	-- 
 	self._index = nil
 	self._period = nil
+	-- 飞升层数
+	self._flyLayer = nil
 end
 
 -- 前面的拷贝到后面, 触发器拷贝
@@ -43,7 +45,6 @@ function BabelTask:getLayer()
 end
 
 function BabelTask:setRewardType(rewardType)
-	print("shezhi jinagli leing>>>>>>>>>>",rewardType)
 	self._rewardType = rewardType
 end
 
@@ -70,19 +71,9 @@ function BabelTask:resetConfigParam(configParam, fromDB)
 	activeTriggerParam.mapID = randomParam.mapID
 	activeTriggerParam.x = randomParam.x
 	activeTriggerParam.y = randomParam.y
-	-- 设置任务出发器参数，状态为Done
-	--[[
-	local talkNpcTrace = configParam.talkNpcTrace[1]
-	local doneTriggerParam = self._triggers[TaskStatus.Done][1].param
-	doneTriggerParam.npcID = talkNpcTrace.npcID
-	doneTriggerParam.mapID = talkNpcTrace.mapID
-	doneTriggerParam.x = talkNpcTrace.x
-	doneTriggerParam.y = talkNpcTrace.y
-	--]]
 end
 
 function BabelTask:setTaskIndex(index)
-	print("随机只》》》》》》", index)
 	self._index = index
 end
 
@@ -97,4 +88,12 @@ end
 
 function BabelTask:getPeriod()
 	return self._period
+end
+
+function BabelTask:setFlyLayer(flyLayer)
+	self._flyLayer = flyLayer
+end
+
+function BabelTask:getFlyLayer()
+	return self._flyLayer
 end

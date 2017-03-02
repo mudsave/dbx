@@ -201,4 +201,10 @@ BroadCastMsgGroupID = {
         SummonMounts_SummonSixGrade     = 8,
     
     },
+	Group_DekaronSchool                 = {
+        EventID = 26,
+        ActivityPreOpening				= 1,
+        ActivityOpening					= 2,
+		ActivityClose					= 3,
+    },
 }

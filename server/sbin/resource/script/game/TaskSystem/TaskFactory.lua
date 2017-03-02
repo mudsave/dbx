@@ -50,7 +50,6 @@ function TaskFactory:createLoopTask(player, taskID, tarType)
 	-- 设置开始时间
 	--loopTask:setStartTime(os.time())
 	-- 这个也是拷贝进去的
-	print("datas.ta.>>>>>>>>>>>>>>>>>>>>>>>>", toString(datas.targets), toString(datas.triggers))
 	loopTask:setTargetsConfig(datas.targets)
 	-- 动态拷贝进去
 	loopTask:setTriggers(datas.triggers)
@@ -257,7 +256,11 @@ function TaskFactory:createDailyTask( player,taskID )
 	local hasTarget = self:buildTaskTarget(player, dailyTask, dailyTaskData.targets)
 	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
 	if hasTarget then
-		dailyTask:stateChange(TaskStatus.Active)
+		if dailyTask:canEnd() then
+			dailyTask:stateChange(TaskStatus.Done)
+		else
+			dailyTask:stateChange(TaskStatus.Active)
+		end
 	else
 		dailyTask:stateChange(TaskStatus.Done)
 	end
@@ -286,7 +289,11 @@ function TaskFactory:createDailyTaskFromDB(player, taskData)
 	local hasTarget = self:buildTaskTarget(player, dailyTask,taskTarget)
 	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
 	if hasTarget then
-		dailyTask:stateChange(TaskStatus.Active)
+		if dailyTask:canEnd() then
+			dailyTask:stateChange(TaskStatus.Done)
+		else
+			dailyTask:stateChange(TaskStatus.Active)
+		end
 	else
 		dailyTask:stateChange(TaskStatus.Done)
 	end
@@ -294,8 +301,8 @@ function TaskFactory:createDailyTaskFromDB(player, taskData)
 
 end
 
--- 创建通天塔任务, rewardType 奖励类型， layer玩家任务对对应的层数, 数据库和普通的
-function TaskFactory:createBabelTask(player, taskID, rewardType, layer)
+-- 创建通天塔任务, rewardType 奖励类型， layer玩家任务对对应的层数, 数据库和普通的, 最后飞升层数
+function TaskFactory:createBabelTask(player, taskID, rewardType, layer, flyLayer)
 	local babelTaskData = BabelTaskDB[taskID]
 	local babelTask = BabelTask()
 	-- 设置奖励类型
@@ -305,6 +312,8 @@ function TaskFactory:createBabelTask(player, taskID, rewardType, layer)
 	babelTask:setID(taskID)
 	babelTask:setType(TaskType.babel)	
 	babelTask:setSubType(babelTaskData.taskType2)
+	-- 传递飞升层数
+	babelTask:setFlyLayer(flyLayer)
 	-- 跨天跟新
 	babelTask:setPeriod(babelTaskData.period)
 	babelTask:setRoleID(player:getID())
@@ -355,10 +364,8 @@ function TaskFactory:createBabelTaskFromDB(player, taskData)
 	local hasTarget = self:buildTaskTarget(player, babelTask, babelTask:getTargetsConfig(), taskData.targetState)
 	if hasTarget then
 		if not babelTask:canEnd() then
-			print(">>>>>>>>>>>>>>>>>>>>>1111")
 			babelTask:stateChange(TaskStatus.Active, true)
 		else
-			print("<<<<<<<<<<<<<<<<<<<<<22222")
 			babelTask:stateChange(TaskStatus.Done, true)
 		end
 	else

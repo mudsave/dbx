@@ -26,4 +26,5 @@ ActivityState =
 {
 	PreOpening = 1,
 	Opening = 2,
+	Close = 3,
 }

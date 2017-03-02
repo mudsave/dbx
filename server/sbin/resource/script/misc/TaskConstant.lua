@@ -25,3 +25,17 @@ TaskNotifyClientType =
 	randomEquip = 1,
 	item		= 2,
 }
+
+-- 封神台任务奖励类型
+RewardType =
+{
+	expe = 1,
+	tao = 2,
+}
+
+-- 消耗类型
+CostType =
+{
+	money = 1,
+	gold = 2,
+}

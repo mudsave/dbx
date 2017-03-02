@@ -2508,6 +2508,28 @@ ScriptFightDB[4029] = {
 ScriptFightDB[4030] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 25030},{ID = 25031},{ID = 25031},{ID = 25031},{ID = 25031},},
 	}
+	---------------------------------------------------帮会休闲副本：驰援虎牢关--------------------------------------------------
+ScriptFightDB[4050] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31451, },{ID = 31452, },{ID = 31450, },{ID = 31453, },{ID = 31454, },},
+	}
+ScriptFightDB[4051] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31458, },{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31459, },},
+	}
+ScriptFightDB[4052] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31461, },{ID = 31462, },{ID = 31460, },{ID = 31463, },{ID = 31464, },},
+	}
+ScriptFightDB[4053] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31466, },{ID = 31467, },{ID = 31465, },{ID = 31468, },{ID = 31469, },},
+	}
+ScriptFightDB[4054] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31471, },{ID = 31472, },{ID = 31470, },{ID = 31473, },{ID = 31474, },},
+	}
+ScriptFightDB[4055] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31476, },{ID = 31477, },{ID = 31475, },{ID = 31478, },{ID = 31479, },},
+	}
+ScriptFightDB[4056] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31480, },},
+	}
 --------------------------------------------师门任务的脚本战斗-------------------------------
 --------------------------------------------任务的脚本战斗-------------------------------
 ScriptFightDB[4101] = {             -----------------暗雷战斗-捣乱小妖

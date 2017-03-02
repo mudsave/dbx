@@ -59,7 +59,6 @@ function TaskHandler:addTask(task)
 
 	if DailyTaskDB[taskID] then
 		self.dailyTaskConfiguration[taskID] = false
-		print("接受任务，更改配置表>>>>>>>>>>",toString(self.dailyTaskConfiguration))
 	end
 
 end
@@ -647,7 +646,7 @@ function TaskHandler:checkTaskRecetiver(npcID)
 end
 
 -- 设置循环任务的环数
-function TaskHandler:loadLoopTaskInfo()
+function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 	for _, loopTask in pairs(loopTaskRecord or {}) do
 		local offlineTime = loopTask.offlineTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数

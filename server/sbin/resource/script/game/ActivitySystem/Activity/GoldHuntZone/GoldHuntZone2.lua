@@ -2,9 +2,7 @@
 	描述：猎金场
 --]]
 
-
-ActivityID = ActivityID + 1
-gGoldHuntID2 = ActivityID
+gGoldHuntID2 = 5
 --活动基础配置
 local GoldHuntZone_scoreNpcPos ={x=223,y=78}
 GoldHuntZoneActivityDB2 = 

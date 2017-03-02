@@ -21,6 +21,7 @@ function Faction:__init()
     self._factionPurpose    = ""
     self._standByPlayerList = {}
     self._memberList        = {}
+    self._extendSkillList   = {}
 
 end
 
@@ -37,7 +38,7 @@ function Faction:__release()
     self._factionPurpose    = nil
     self._memberList        = nil
     self._standByPlayerList = nil
-
+    self._extendSkillList   = nil
 end
 
 function Faction:getFactionDBID()
@@ -319,4 +320,30 @@ function Faction:isFactionMemberListFull(  )
         return true
     end
 
+end
+
+--设置研发技能
+function Faction:setExtendSkillList(skillID,skillLevel)
+    self._extendSkillList[skillID] = skillLevel
+end
+
+--获取研发技能表
+function Faction:getExtendSkillList()
+    return self._extendSkillList
+end
+
+--研发技能升级
+function Faction:skillLvlUp(skillID,costMoney,playerName)
+    if playerName ~= self._factionOwnerName then 
+        print("not factionOwner")
+        return false
+    end
+    if self._factionMoney < costMoney then 
+        print("factionMoney not enogh")
+        return false 
+    end
+    local curSkillLvl = self._extendSkillList[skillID]
+    self._extendSkillList[skillID] = curSkillLvl + 1
+    self:addFactionMoney(-costMoney)
+    return true
 end

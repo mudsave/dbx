@@ -107,7 +107,15 @@ PetEnchanceProbability = {
 	[6] = 65,
 	[7] = 49,
 	[8] = 23
-} 
+}
+
+--研发技能学习消耗类型
+PetSkillCostType = {
+	money 	= 1,	--银两
+	contrib = 2,	--帮贡
+
+}
+ 
 
 PS_StartID = 1001	-- 宠物技能开始ID
 PS_EndID = 1102		-- 宠物技能结束ID
@@ -157,5 +165,6 @@ function GetRebirthConsume(pet)
 	local count = 1
 	return 1024005,count
 end
+
 
 

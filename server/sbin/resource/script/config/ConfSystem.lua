@@ -87,11 +87,12 @@ function loadSystem()
 	g_dropMgr			= DropManager.getInstance()
 	g_mailMgr			= MailManager.getInstance()
 	
-	-- 活动
-	g_activityMgr = ActivityManager.getInstance()
 	-- 瑞兽降临活动
 	g_beastBlessMgr		= BeastBlessManager.getInstance()
 	g_goldHuntMgr		= GoldHuntManager.getInstance()
+
+	g_activityMgr		= ActivityManager.getInstance()
+	g_dekaronSchoolMgr	= DekaronSchoolManager.getInstance()
 	g_catchPetMgr		= CatchPetManager.getInstance()
 
 	g_exchangeItemMgr = ExchangeItemManager.getInstance()

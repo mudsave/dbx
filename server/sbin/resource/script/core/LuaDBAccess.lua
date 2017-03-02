@@ -825,28 +825,27 @@ function LuaDBAccess.updateSchoolActivity(player,activityId)
 	if handler then
 		clearParams()
 		local integral = handler:getDekaronIntegral()
+		local targetID = 0
+		local target = handler:setDekaronActivityTarget()
+		if terget then
+			targetID = target:getActivityTargetId()
+		end
 		params[1]["spName"]			= "sp_UpdateSchoolActivity"
 		params[1]["dataBase"]		= 1
-		params[1]["sort"]			= "_roleID,_integral"
+		params[1]["sort"]			= "_roleID,_integral,_targetID"
 		params[1]["_roleID"]		= player:getDBID()
 		params[1]["_integral"]		= integral
-		--LuaDBAccess.exeSP(params, false)
+		params[1]["_targetID"]		= targetID
+		LuaDBAccess.exeSP(params, false)
 	end
 end
 
-function LuaDBAccess.deleteSchoolActivity(player)
+function LuaDBAccess.deleteSchoolActivity()
 	print("活动结束，删除门派闯关活动的数据。。。。")
-	local handler = player:getHandler(HandlerDef_Activity)
-	if handler then
-		clearParams()
-		--[[local integral = handler:getDekaronIntegral()
-		params[1]["spName"]			= "sp_DeleteSchoolActivity"
-		params[1]["dataBase"]		= 1
-		params[1]["sort"]			= "_roleID,_integral"
-		params[1]["_roleID"]		= player:getDBID()
-		params[1]["_integral"]		= integral
-		LuaDBAccess.exeSP(params, false)]]
-	end
+	clearParams()
+	params[1]["spName"]			= "sp_DeleteSchoolActivity"
+	params[1]["dataBase"]		= 1
+	LuaDBAccess.exeSP(params, false)
 end
 
 ---------------------------------------------------------------------------------------------------

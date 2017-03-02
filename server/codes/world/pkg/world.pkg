@@ -12,6 +12,7 @@ public:
 	int send_MsgWS_ClearOffFightInfo(int accountId, int version);
 	int send_MsgWS_StartFight(int accountId, int version);
 	int send_MsgWS_StopFight(int accountId, int version);
+	void setPlayerCount(int count);
 };
 
 CWorld g_world;

@@ -591,6 +591,9 @@ PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 32	--请求拓展宠物栏
 PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 33	--宠物栏数量到达
 
 PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 34	--交易宠物信息已经到达
+
+PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 35	--宠物学习研发技能
+PetEvent_SC_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技能结果
 --[[
 	¤╭⌒╮ ╭⌒╮	{ Keep Distance }	
 	╱◥██◣ ╭╭ ⌒╮
@@ -750,7 +753,7 @@ PractiseEvent_SC_addPractise					= Event_Group_Practise + 4
 
 
 DekaronSchool_SC_AddActvityTarget				= Event_Group_DekaronSchool + 1
-DekaronSchool_SC_updateBox						= Event_Group_DekaronSchool + 2
+DekaronSchool_SC_GiveUpActvityTarget			= Event_Group_DekaronSchool + 2
 DekaronSchool_CS_updatePractise					= Event_Group_DekaronSchool + 3
 DekaronSchool_SC_addPractise					= Event_Group_DekaronSchool + 4
 

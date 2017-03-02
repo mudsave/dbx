@@ -240,7 +240,7 @@ function TaskSystem:onFightEnd(event)
 	local monsterIDs = params[3]
 	local result = false
 	local roleIDs = {}
-
+	print("此次战斗碰到了以下怪物：",toString(monsterIDs))
 	for playerID, fightResult in pairs(fightEndResults) do
 		local player = g_entityMgr:getPlayerByID(playerID)
 		if player then
@@ -248,34 +248,39 @@ function TaskSystem:onFightEnd(event)
 			local taskHandler = player:getHandler(HandlerDef_Task)
 			for taskID ,taskData in pairs(taskHandler:getTasks()) do
 				if taskData.getTargetType and taskData:getTargetType() == "TkillMonster"  then
-
 					local killTaskMonster = false
 					--判断是否满足任务需求
 					local targetParams = taskData:getTargetParam()
 					if type(targetParams.monsterID) == "table" then
 						--判断怪物列表中是否有符合条件的怪物
 						for index,monsterID in pairs(monsterIDs) do
-							
-							if MonsterDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
-								MonsterDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
-								killTaskMonster = true
-							elseif NpcDB[monsterID].level == -1 then
-								killTaskMonster = true
-							end
+							if MonsterDB[monsterID] then
+								print("该怪ID为%d,等级为%d",monsterID,MonsterDB[monsterID].level)
+								if MonsterDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
+									MonsterDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
+									killTaskMonster = true
+									print("准备开始计数>>>>>>>>>>>>>>>>")
+									TaskCallBack.onKillMonster(player:getID())
+								end
 
+							elseif NpcDB[monsterID] then
+								print("该怪ID为%d,等级为%d",monsterID,NpcDB[monsterID].level)
+								if NpcDB[monsterID].level == -1 then
+									killTaskMonster = true
+									print("准备开始计数>>>>>>>>>>>>>>>>")
+									TaskCallBack.onKillMonster(player:getID())
+								end
+							end
 						end
 					elseif type(targetParams.monsterID) == "number" then
 						--判断怪物列表中是否有符合条件的怪物
 						for index,monsterID in pairs(monsterIDs) do
 							if monsterID == targetParams.monsterID  then
 								killTaskMonster = true
+								print("准备开始计数>>>>>>>>>>>>>>>>")
+								TaskCallBack.onKillMonster(player:getID())
 							end
 						end
-					end
-					if killTaskMonster then
-						--如果击杀了任务怪物，则调用相关方法
-						print("准备开始计数>>>>>>>>>>>>>>>>")
-						TaskCallBack.onKillMonster(player:getID())
 					end
 					
 				end

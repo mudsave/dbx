@@ -97,24 +97,25 @@ function ChooseCondition.isAttrPercent(me,fight,params)
 	end
 end
 --[[
-params ={ID = 1}或params ={ID = 1,isNot = true }
+params ={ID = 1}或params ={ID = 1,relation= ">",value = 1 }
 ]]
 function ChooseCondition.isIDExist(me,fight,params)
 			local DBID = params.ID
-			local role = fight:hasMonster(DBID)
-			local isNot = params.isNot
-			if role then
-				if not isNot then
-					return true
-				else
-					return false
-				end
-			end
-			
-			if not isNot then
-				return false
+			local count = fight:getMonsterNum(DBID)
+			local relation = params.relation
+			local value = params.value
+			if relation == ">" then
+				return count > value
+			elseif relation == ">=" then
+				return count >= value
+			elseif relation == "=" then
+				return count == value
+			elseif relation == "<" then
+				return count < value
+			elseif relation == "<=" then
+				return count <= value
 			else
-				return true
+				return false
 			end
 end
 

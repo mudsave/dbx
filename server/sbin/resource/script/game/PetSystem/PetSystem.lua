@@ -35,6 +35,8 @@ function PetSystem:__init()
 		[PetEvent_CS_ExpandPetBar]			= PetSystem.onExpandPetBar,		-- 拓展宠物栏
 		[PetEvent_CS_CombinePets]			= PetSystem.onCombinePets,		-- 宠物合成
 		[PetEvent_CS_ReadSkillBook]			= PetSystem.onPetLearn,			-- 宠物学习技能
+		[PetEvent_CS_LearnExtendSkill]		= PetSystem.onPetExtendSkill,	-- 宠物学习研发技能
+	
 	}
 end
 
@@ -988,6 +990,47 @@ function PetSystem:onPetLearn(event)
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(PetEvent_CS_SkillBookRead,petID,skillID,replacedID),player
 	)
+end
+
+--宠物学习研发技能消耗
+local function GetExtendSkillConsume(skillID,skillLvl)
+	local contrCostIndex = PetExtendSkillUPDB[skillID][PetSkillCostType.money] 
+	local contrCost = PetSkillDataDB[contrCostIndex][skillLvl] 
+	local moneyCostIndex = PetExtendSkillUPDB[skillID][PetSkillCostType.contrib]
+	local moneyCost = PetSkillDataDB[moneyCostIndex]
+	return contrCost,moneyCost
+end
+
+--消耗帮贡银两
+local function PetExtendConsume(player,skillID,skillLevel)
+	local curContr = player:getFactionMoney()--当前帮贡
+	local curMoney = player:getMoney()
+	local contrCost,moneyCost = GetExtendSkillConsume(skillID,skillLvl)
+	if (curContr < contrCost) or (curMoney < moneyCost) then
+		print("Money or contribute not enough")
+		return false
+	else
+		player:setMoney(curMoney - moneyCost)
+		player:setFactionMoney(curContr - contrCost)
+		return true
+	end
+end
+
+--宠物学习研发技能
+function PetSystem.onPetExtendSkill(event)
+	local player = g_entityMgr:getPlayerByID(event.playerID)
+	local params = event:getParams()
+
+	local petID = params[1]
+	local skillID = params[2]
+	local skillLevel = params[3]
+
+	--消耗帮贡银两
+	--if not PetExtendConsume(player,skillID,skillLvl) then return end
+
+
+	--返回信息给客户端
+	--返回客户端[PetEvent_SC_LearnExtendSkill]
 end
 
 function PetSystem.getInstance()

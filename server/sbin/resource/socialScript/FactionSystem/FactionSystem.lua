@@ -54,6 +54,7 @@ function FactionSystem:__init(  )
         [FactionEvent_CB_FireFactionMember]         = FactionSystem.onFireFactionMember,
         [FactionEvent_BB_ContributeFaction]         = FactionSystem.onShowFactionContributeWin,
         [FactionEvent_CB_ContributeFaction]         = FactionSystem.onContributeFaction,
+        [FactionEvent_CB_ExtendFactionSkill]        = FactionSystem.onExtendFactionSKill,   
 
     }
 
@@ -84,6 +85,9 @@ function FactionSystem:onLeaderDismissFaction( event )
 
     LuaDBAccess.DismissFaction(factionDBID)
     LuaDBAccess.updatePlayer(factionOwnerDBID,"FactionDBID",0)
+    
+    --解散帮派删除帮派技能数据库
+    LuaDBAccess.deleteFactionExtendSkillInfo(factionDBID)
 
     factionHandler:exitFaction()
     local event_UpdateWorldServerData = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,factionOwnerDBID,UpdateWorldServerDataCode.ExitFaction,factionDBID)
@@ -834,6 +838,47 @@ function FactionSystem:onContributeFaction( event )
     end
 
 end
+
+--帮主研发技能
+function FactionSystem.onExtendFactionSKill(event)
+    local params = event:getParams()
+    local playerDBID = params[1]
+    local skillID = params[2]
+    local costMoney = params[3]
+
+    local player = g_playerMgr:getPlayerByDBID(playerDBID)
+    local playerName = player:getName()
+
+    local factionHandler = player:getHandler(HandlerDef_Faction)
+    local factionDBID = factionHandler:getFactionDBID()
+    local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
+
+    --技能等级提升
+    local isUpdate = faction:skillLvlUp(skillID,costMoney,playerName)    
+    if not isUpdate then return end
+    --技能信息更新，执行操作
+    --更新数据库
+    local extendSkill = faction:getExtendSkillList()
+    local level = extendSkill[skillID]
+    LuaDBAccess.updateFactionExtendSkillInfo(factionDBID,skillID,level)
+    
+    --向在线帮众发送技能数据,以及帮派资金更改
+    local memberList = factionHandler:getMemberList()
+    for memberDBID,memberInfo in pairs(memberList) do
+        local member = g_playerMgr:getPlayerByDBID(memberDBID)
+        if  member then
+            local event = Event.getEvent(FactionEvent_BC_UpdateExtendSkill,extendSkill)
+            g_eventMgr:fireRemoteEvent(event,member)
+            
+            --通知客户端帮派资金更改
+            factionInfo = {{name = factionMoney,value = faction:getFactionMoney()}}
+            event = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfo)
+            g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
+
+        end
+    end
+end
+
 
 function FactionSystem.getInstance()
     return FactionSystem()
