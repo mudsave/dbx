@@ -135,7 +135,7 @@ void DBManager::SendResult(handle p_linkIndex, AppMsg *p_appMsg)
 
 HRESULT DBManager::Do(HANDLE hContext)
 {
-    TRACE0_L0("DBManager::Do...\n");
+    //TRACE0_L0("DBManager::Do...\n");
     DBFactory::InstancePtr()->MainTick();
     return S_OK;
 }

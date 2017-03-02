@@ -262,12 +262,12 @@ void DBTaskPool::AddFreeTask(DBTask *p_task)
 
 void DBTaskPool::MainTick()
 {
-    TRACE1_L0("DBTaskPool::MainTick:%i.\n", m_dbInterfaceID);
+    //TRACE1_L0("DBTaskPool::MainTick:%i.\n", m_dbInterfaceID);
     m_finishIssueMutex.Lock();
 
     if (m_finishIssueList.size() == 0)
     {
-        TRACE0_L0("DBTaskPool::MainTick:There is no finished issue.\n");
+        //TRACE0_L0("DBTaskPool::MainTick:There is no finished issue.\n");
         m_finishIssueMutex.Unlock();
         return;
     }
