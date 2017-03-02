@@ -100,18 +100,23 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
             }
             else
             {
-                SParam param(attrName.c_str(), attrType, pAttrValue);
+		char * attrNameStr = (char *)malloc(attrName.length() + 1);
+		strcpy(attrNameStr, attrName.c_str());
+		upper_first_char(attrNameStr);
+
+                SParam param(attrNameStr,attrType, pAttrValue);
                 //输出参数
-                if (attrName[0] == '@')
+                if (attrNameStr[0] == '@')
                 {
                     param.nDataDir = PARAM_DIR_OUT;
-                    outParams.push_back(SOutParam(attrName.c_str(), attrType));
+                    outParams.push_back(SOutParam(attrNameStr, attrType));
                 }
                 else
                 {
                     param.nDataDir = PARAM_DIR_IN;
                 }
-                mapped_params[attrName.c_str()] = param;
+                mapped_params[attrNameStr] = param;
+		free(attrNameStr);
             }
         }
     }
