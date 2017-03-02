@@ -88,7 +88,7 @@ struct SCharPtrCmp
 
 
 typedef std::list< SParam >  TListParam;
-typedef std::map<const char *, SParam, SCharPtrCmp> TMapParam;
+typedef std::map<char *, SParam, SCharPtrCmp> TMapParam;
 
 
 char * strmov(char * dst, const char * src);
