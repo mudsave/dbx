@@ -241,7 +241,7 @@ public:
 
     int getAttributeRows()
     {
-        return attribute_count / attribute_cols;
+        return attribute_cols == 0 ? 0 : attribute_count / attribute_cols;
     }
 
     int getAttributeCols()
