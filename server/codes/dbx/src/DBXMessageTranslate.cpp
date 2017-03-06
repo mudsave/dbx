@@ -17,7 +17,7 @@ void upper_first_char(char * buffer)
 void lower_first_char(char * buffer)
 {
     if (*buffer >= 'A' && *buffer <= 'Z')
-        if (*(buffer + 1) >= 'A' && *(buffer + 1) <= 'Z')
+        if (!(*(buffer + 1) >= 'A' && *(buffer + 1) <= 'Z'))
             *buffer += 'a' - 'A';
 }
 
