@@ -165,38 +165,27 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                     {
                         case PARAM_DATATYPE_INT:
                         {
-                            if (row[i] != NULL)
-                            {
-                                int nRowRestul = atoi(row[i]);
-                                m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMINT);
-                            }
+                            int nRowRestul = row[i] != NULL ? atoi(row[i]) : 0;
+                            m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMINT);
                             break;
                         }
                         case PARAM_DATATYPE_FLOAT:
                         {
-                            if (row[i] != NULL)
-                            {
-                                float fRowRestul = (float)atof(row[i]);
-                                m_SCMsgBuilder.addAttribute(name, &fRowRestul, PARAMFLOAT);
-                            }
+                            float fRowRestul = row[i] != NULL ? (float)atof(row[i]) : 0.0;
+                            m_SCMsgBuilder.addAttribute(name, &fRowRestul, PARAMFLOAT);
                             break;
                         }
                         case PARAM_DATATYPE_BOOL:
                         {
-                            if (row[i] != NULL)
-                            {
-                                bool nRowRestul = atoi(row[i]);
-                                m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMBOOL);
-                            }
+                            bool nRowRestul = row[i] != NULL ? atoi(row[i]) : false;
+                            m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMBOOL);
                             break;
                         }
                         default:
                         {
-                            if (row[i] != NULL)
-                            {
-                                int nSize = strlen((char*)row[i]);
-                                m_SCMsgBuilder.addAttribute(name, row[i], nSize);
-                            }
+                            int nSize = row[i] != NULL ? strlen((char *)row[i]): 0;
+                            const char * strRow = row[i] != NULL ? row[i] : "";
+                            m_SCMsgBuilder.addAttribute(name, strRow, nSize);
                             break;
                         }
                     }
