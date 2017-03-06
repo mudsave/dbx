@@ -31,7 +31,8 @@ function ActivityManager:openActivity(id, frameName,flag)
 	if clazz and type(clazz) == "table" then
 		self.curActivityList[id] = clazz()
 		self.curActivityList[id]:open(flag)
-		-- 在预开启 时通知客户端
+		-- 通知这个活动按钮开启
+		self:notifyAllActivityPageUpdateBtn(id,true)
 	else
 		print("活动编码有误")
 	end
@@ -43,6 +44,7 @@ end
 
 function ActivityManager:closeActivity(id)
 	self.curActivityList[id]:close()
+	self:notifyAllActivityPageUpdateBtn(id,false)
 end
 
 function ActivityManager:getActivity(id)
@@ -53,6 +55,14 @@ end
 function ActivityManager:notityJoinActivity(player)
 	for id, activity in pairs(self.curActivityList) do
 		activity:joinPlayer(player)
+		g_activitySym:notifyActivityPageUpdateBtn(player,id,true)
+	end
+end
+
+function ActivityManager:notifyAllActivityPageUpdateBtn(activityID,isOpenOrClose)
+	local playerList = g_entityMgr:getPlayers()
+	for playerID,player in pairs(playerList) do
+		g_activitySym:notifyActivityPageUpdateBtn(player,activityID,isOpenOrClose)
 	end
 end
 
@@ -69,6 +79,7 @@ function ActivityManager:onPlayerOnline(player, recordList)
 		for activityId, activity in pairs(curActivityList) do
 			if activity then
 				curActivityList[activityId]:joinPlayer(player,recordList)
+				g_activitySym:notifyActivityPageUpdateBtn(player,activityId,true)
 			else
 				print("活动已经关闭")
 			end

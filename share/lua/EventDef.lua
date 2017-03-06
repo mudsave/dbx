@@ -123,6 +123,7 @@ PlayerSysEvent_CS_RoleUpgrade			= Event_Group_PlayerSysMsg + 5
 PlayerSysEvent_SC_RoleUpgrade			= Event_Group_PlayerSysMsg + 6
 PlayerSysEvent_CS_PropsBatchStart		= Event_Group_PlayerSysMsg + 7
 PlayerSysEvent_SC_PropsBatchEnd			= Event_Group_PlayerSysMsg + 8
+PlayerSysEvent_CS_ShowDramaChanged		= Event_Group_PlayerSysMsg + 9
 
 --定义Event_Group_SceneMsg消息事件ID
 SceneEvent_CS_SwitchScene				= Event_Group_SceneMsg + 1
@@ -729,9 +730,11 @@ ActivityEvent_CS_GoldHunt_leave					= Event_Group_Activity + 11
 
 --
 ActivityEvent_CS_EnterPatrolFight				= Event_Group_Activity + 20
-
-ActivityEvent_SC_updateActivityPage				= Event_Group_Activity + 21
-
+-- 活动页面
+ActivityEvent_SC_ActivityPageActivity			= Event_Group_Activity + 21
+ActivityEvent_SC_ActivityPageDaliy				= Event_Group_Activity + 22
+ActivityEvent_SC_ActivityPageOther				= Event_Group_Activity + 23
+ActivityEvent_SC_notifyActivityPageUpdateBtn	= Event_Group_Activity + 24
 --宠物仓库消息
 PetDepotEvent_CS_ExpandPetDepot					= Event_Group_PetDepot + 1
 PetDepotEvent_SC_ExpandPetDepotReturn			= Event_Group_PetDepot + 2

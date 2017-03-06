@@ -450,8 +450,8 @@ bool CoEntity::bcPropUpdates(handle hSendTo)
 	int nPrivate = 0;		// 私有属性个数
 	static int aPrID[256];	// 存放私有属性的数组
 
-	int aid_debug[256] = {0};
-	int nlen_debug = 0;
+	// int aid_debug[256] = {0};
+	// int nlen_debug = 0;
 
 	// 写入公开属性,并记录更新了的私有属性ID
 	for( int i = 0; i < m_propSet.count; i++ )
@@ -471,10 +471,11 @@ bool CoEntity::bcPropUpdates(handle hSendTo)
 				nPublic++;
 
 				// 调试信息
-				aid_debug[nlen_debug++] = i; 
+				// aid_debug[nlen_debug++] = i; 
 			}
 		}
 	}
+
 	nPBlockSize = (signed)( p - s_propUpdateBuf );// 公开属性全部写入时,数据报大小
 
 	pMsg->msgFlags	= 0;
@@ -483,7 +484,16 @@ bool CoEntity::bcPropUpdates(handle hSendTo)
 	pMsg->context	= 0;
 	pMsg->unitId	= m_hand;
 
-	#define b2sz(exp) ((exp)?"true":"false")
+	//	if( nPublic > 0 )
+	//	{
+	//		printf("更新的公开属性有:[");
+	//		for(int i=0;i<nPublic;i++)
+	//		{
+	//			printf("%s,",getPropName(aid_debug[i]));
+	//		}
+	//		puts("]");
+	//	}
+	//	#define b2sz(exp) ((exp)?"true":"false")
 
 	// 发送属性更新给自己或者指定实体
 	if( nPrivate + nPublic > 0 && ( bSendToPeer || m_inSync ) )
@@ -498,17 +508,27 @@ bool CoEntity::bcPropUpdates(handle hSendTo)
 			property->casted = property->update;
 
 			// 调试信息
-			aid_debug[nlen_debug++] = nID;
+			// aid_debug[nlen_debug++] = nID;
 		}
+		//	if( nPrivate > 0 )
+		//	{
+		//		printf("更新的私有属性有:[");
+		//		for(int i=nPublic;i<nlen_debug;i++)
+		//		{
+		//			printf("%s,",getPropName(aid_debug[i]));
+		//		}
+		//		puts("]");
+		//	}
 
 		// 写入属性个数
 		pMsg->propCount = nPublic + nPrivate;
 
 		pMsg->msgLen = (signed)(p - s_propUpdateBuf);
 
-		if( pSendTo ) pSendTo->flushMessage(pMsg);
+		if( bSendToPeer ) pSendTo->flushMessage(pMsg);
 		if( m_inSync ) flushMessage(pMsg);
 	}
+	//	fflush(stdout);
 
 	if( nPublic > 0 && !m_aroundMe.empty() )
 	{

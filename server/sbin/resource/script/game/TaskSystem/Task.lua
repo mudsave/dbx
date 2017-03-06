@@ -125,6 +125,7 @@ function Task:stateChange(taskStatus, fromDB)
 		g_taskSystem:onTaskFaild(player, taskData)
 	elseif taskStatus == TaskStatus.Done then			--任务完成
 		self:removeTarget()	
+		self:addBabelReward()
 		g_taskSystem:onDoneTask(player, taskData)
 	elseif taskStatus == TaskStatus.Finished then
 		--给奖励	
@@ -340,4 +341,8 @@ function Task:isFaild()
 		end
 	end
 	return false
+end
+
+function Task:addBabelReward()
+
 end

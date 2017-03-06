@@ -35,6 +35,7 @@ struct DBRoleInfo
 	short level;
 	char name[MaxNameSize];
 	char remouldAttr[MaxNameSize];
+	int showDrama;
 };
 
 struct DBMsg_LoginResult : public _DBMsg

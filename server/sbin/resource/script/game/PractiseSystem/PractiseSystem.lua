@@ -9,7 +9,7 @@ function PractiseSystem:__init()
 	self._doer = {
 		[PractiseEvent_CS_updateBox]		= PractiseSystem.updateBox,
 		[PractiseEvent_CS_updatePractise]	= PractiseSystem.updatePractise,
-		[TaskEvent_SS_AddActivityPractise]	= PractiseSystem.addPractise,
+		[TaskEvent_SS_AddActivityPractise]	= PractiseSystem.addLoopTaskPractise,
 	}
 end
 
@@ -73,7 +73,8 @@ function PractiseSystem:updatePractise(event)
 	end
 end
 
-function PractiseSystem:addPractise(event)
+-- 循环任务完成奖励
+function PractiseSystem:addLoopTaskPractise(event)
 	local params = event:getParams()
 	local playerID = params[1]
 	local taskID = params[2]
@@ -84,11 +85,11 @@ function PractiseSystem:addPractise(event)
 	-- 任务
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local storeXp = player:getStoreXp()
-	local valueReword = 0
-	for _,data in pairs(tActivityPageDB) do
+	local valueReward = 0
+	for _,data in pairs(tActivityPageDaliyDB) do
 		-- 完成的是否是面板上的任务
 		if data.TaskID == taskID then
-			valueReword = data.PracticeReword
+			valueReward = data.PracticeReword
 			local taskConfig = LoopTaskDB[taskID]
 			-- 返回经验值
 			if taskConfig.taskType2 ~= TaskType2.Heaven then
@@ -128,18 +129,31 @@ function PractiseSystem:addPractise(event)
 		player
 	)
 	-- 通知消息
-	if valueReword > 0 then
-		valueReword =  math.floor(valueReword)
-		player:addPractise(valueReword)
+	if valueReward > 0 then
+		valueReward =  math.floor(valueReward)
+		player:addPractise(valueReward)
 		-- 通知给客户端里的界面
 		g_eventMgr:fireRemoteEvent(
 			Event.getEvent(
-				ClientEvents_SC_PromptMsg,eventGroup_Practise,3,valueReword
+				ClientEvents_SC_PromptMsg,eventGroup_Practise,3,valueReward
 			),
 			player
 		)
 	end
 	player:flushPropBatch()
+end
+
+function PractiseSystem:addPractise(player,practiseReward)
+	if practiseReward > 0 then
+		player:addPractise(valueReward)
+		-- 通知给客户端里的界面
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(
+				ClientEvents_SC_PromptMsg,eventGroup_Practise,3,valueReward
+			),
+			player
+		)
+	end
 end
 
 function PractiseSystem:sendMessage(player, msgID, money,itemNum,itemID)

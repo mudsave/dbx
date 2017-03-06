@@ -743,7 +743,6 @@ function TaskHandler:finishBabelTask(taskID)
 		local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
 		taskPrivateHandler:removeTraceInfo(taskID)
 		self.currentTask[taskID]:stateChange(TaskStatus.Finished)
-		-- 完成之后环数+1
 		release(self.currentTask[taskID])
 		self.currentTask[taskID] = nil
 		-- 完成任务时，重新设置这个任务列表
@@ -827,6 +826,9 @@ end
 -- 挑战完成
 function TaskHandler:endFinishBabelTask(taskID)
 	self:setBabelFinishFlag(taskID)
-	g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
+	local mapID = self._entity:getScene():getMapID()
+	if mapID >= 1001 and mapID <= 1200 then
+		g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
+	end
 	self:finishBabelTask(taskID)
 end

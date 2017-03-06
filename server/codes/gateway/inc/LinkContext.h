@@ -19,9 +19,9 @@ enum _LinkContextState
 
 enum _ClientStateIntervals
 {
-	eClientConnectedInterval		= 1000 * 2,
+	eClientConnectedInterval		= 1000 * 30,
 	eClientRunningInterval			= -1,
-	eClientDisconnectedInterval		= 1000 * 10
+	eClientDisconnectedInterval		= 1000 * 60 * 1
 };
 
 struct _LinkContext

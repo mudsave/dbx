@@ -235,7 +235,7 @@ function Fight:getMonsterNum(DBID)
 	local i = 0
 	for side,roles in pairs(self._members) do
 		for _ ,role in pairs(roles) do
-			if instanceof(role,FightMonster) and role:getDBID() == DBID and (role:getLifeState() == RoleLifeState.Normal or role:getIsGBH() == true ) then
+			if instanceof(role,FightMonster) and role:getDBID() == DBID  then--and (role:getLifeState() == RoleLifeState.Normal or role:getIsGBH() == true )
 				i = i + 1
 			end
 		end

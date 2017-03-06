@@ -16,6 +16,7 @@ function ExperienceHandler:__init(entity)
 	self.experience[ExpSkilID.hitLev] = 0
 	self.experience[ExpSkilID.dodgeLev] = 0
 	self.experience[ExpSkilID.biphasicLev] = 0
+	self._changedData = {}
 end
 
 function ExperienceHandler:__release()
@@ -45,12 +46,15 @@ end
 -- 设置玩家对应技能ID对应的等级
 function ExperienceHandler:setExpSkillLev(expSkillID, level)
 	self.experience[expSkillID] = level
+	self._changedData[expSkillID] = true
 end
 
 -- 保存玩家数据
 function ExperienceHandler:saveExperience()
 	local playerDBID = self._entity:getDBID()
 	for expSkillID,expLevel in pairs(self.experience) do
-		LuaDBAccess.updatePlayerExperience(playerDBID, expSkillID, expLevel)
+		if self._changedData[expSkillID] then
+			LuaDBAccess.updatePlayerExperience(playerDBID, expSkillID, expLevel)
+		end
 	end
 end

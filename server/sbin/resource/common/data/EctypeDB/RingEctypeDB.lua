@@ -6,10 +6,700 @@
 -- 连环副本配置表
 tRingEctypeDB =
 {
-	-- 连环经验副本ID
+------------------------------------------------- 35级连环经验副本-----------------------------------------------------------
 	[1] =
 	{
-		EnterNeedLevel = {minLevel = 45, maxLevel = 150},
+		EnterNeedLevel = {minLevel = 35, maxLevel = 44},
+		-- 所有子副本
+		tAllEctypes =
+		{
+			-- 第1个子副本
+			[1] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2013,
+			},
+			-- 第2个子副本
+			[2] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2014,
+			},
+			-- 第3个子副本
+			[3] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2015,
+			},
+			-- 第4个子副本
+			[4] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2016,
+			},
+		},
+
+		-- 连环副本奖励，这个奖励跟环数和进度挂钩，跟具体的副本没关系
+		tPrizes =
+		{
+			-- 第1环
+			[1] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 1000,--经验
+					MoneyPrize = 1000,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 1000,--经验
+					MoneyPrize = 1000,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 1000,--经验
+					MoneyPrize = 1000,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 1000,--经验
+					MoneyPrize = 1000,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 1000,--经验
+					MoneyPrize = 1000,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+			},
+			-- 第2环
+			[2] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 1500,
+					MoneyPrize = 1500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 1500,
+					MoneyPrize = 1500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 1500,
+					MoneyPrize = 1500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 1500,
+					MoneyPrize = 1500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 1500,--经验
+					MoneyPrize = 1500,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+			},
+			-- 第3环
+			[3] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 2000,
+					MoneyPrize = 2000,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 2000,
+					MoneyPrize = 2000,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 2000,
+					MoneyPrize = 2000,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 2000,
+					MoneyPrize = 2000,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 2000,--经验
+					MoneyPrize = 2000,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+			},
+			-- 第4环
+			[4] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 2500,
+					MoneyPrize = 2500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 2500,
+					MoneyPrize = 2500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 2500,
+					MoneyPrize = 2500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 2500,
+					MoneyPrize = 2500,
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 2500,--经验
+					MoneyPrize = 2500,--金钱
+					TaoPrize = 10,--道行
+					PotPrize = 10,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+	            	},
+         	},
+           },
+--------------------------------------------------------- 35级连环潜能副本 -----------------------------------------------
+	[2] =
+	{
+		EnterNeedLevel = {minLevel = 35, maxLevel = 44},
+		-- 所有子副本
+		tAllEctypes =
+		{
+			-- 第1个子副本
+			[1] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2001,
+			},
+			-- 第2个子副本
+			[2] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2002,
+			},
+			-- 第3个子副本
+			[3] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2003,
+			},
+			-- 第4个子副本
+			[4] =
+			{
+				-- 对应的副本ID
+				EctypeID = 2004,
+			},
+		},
+
+		-- 连环副本奖励，这个奖励跟环数和进度挂钩，跟具体的副本没关系
+		tPrizes =
+		{
+			-- 第1环
+			[1] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1000,--道行
+					PotPrize = 1000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1000,--道行
+					PotPrize = 1000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1000,--道行
+					PotPrize = 1000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1000,--道行
+					PotPrize = 1000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1000,--道行
+					PotPrize = 1000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+				-- 进度6
+				[12] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1000,--道行
+					PotPrize = 1000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+			},
+			-- 第2环
+			[2] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1500,--道行
+					PotPrize = 1500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1500,--道行
+					PotPrize = 1500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1500,--道行
+					PotPrize = 1500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1500,--道行
+					PotPrize = 1500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1500,--道行
+					PotPrize = 1500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+				-- 进度6
+				[12] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 1500,--道行
+					PotPrize = 1500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+			},
+			-- 第3环
+			[3] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2000,--道行
+					PotPrize = 2000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2000,--道行
+					PotPrize = 2000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2000,--道行
+					PotPrize = 2000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2000,--道行
+					PotPrize = 2000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2000,--道行
+					PotPrize = 2000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+				-- 进度6
+				[12] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2000,--道行
+					PotPrize = 2000,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+			},
+			-- 第4环
+			[4] =
+			{
+				-- 进度1
+				[2] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2500,--道行
+					PotPrize = 2500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度2
+				[4] =
+				{
+					ExpPrize = 25,
+					MoneyPrize = 25,
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度3
+				[6] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2500,--道行
+					PotPrize = 2500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+				},
+				-- 进度4
+				[8] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2500,--道行
+					PotPrize = 2500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+				-- 进度5
+				[10] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2500,--道行
+					PotPrize = 2500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10000, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				},
+				-- 进度6
+				[12] =
+				{
+					ExpPrize = 50,--经验
+					MoneyPrize = 50,--金钱
+					TaoPrize = 2500,--道行
+					PotPrize = 2500,--潜能
+					ItemPrize =
+					{
+						{itemID = 10001, itemNum = 1},
+					},
+				},
+	            	},
+         	},
+           },
+------------------------------------------------- 45级连环经验副本-----------------------------------------------------------
+	[3] =
+	{
+		EnterNeedLevel = {minLevel = 45, maxLevel = 60},
 		-- 所有子副本
 		tAllEctypes =
 		{
@@ -116,6 +806,14 @@ tRingEctypeDB =
 					{
 						{itemID = 10001, itemNum = 1},
 					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
+				
 				},
 			},
 			-- 第2环
@@ -191,6 +889,13 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10001, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
 					},
 				},
 			},
@@ -268,6 +973,13 @@ tRingEctypeDB =
 					{
 						{itemID = 10001, itemNum = 1},
 					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
 				},
 			},
 			-- 第4环
@@ -344,14 +1056,21 @@ tRingEctypeDB =
 					{
 						{itemID = 10001, itemNum = 1},
 					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
+					},
 				},
 	            	},
          	},
            },
------------------------- 连环潜能副本 ------------------小火车来了---1---2---3---4---5---6---7---8---提莫前来报到---
-	[2] =
+------------------------------------------------ 45级连环潜能副本 ---------------------------------
+	[4] =
 	{
-		EnterNeedLevel = {minLevel = 35, maxLevel = 150},
+		EnterNeedLevel = {minLevel = 45, maxLevel = 60},
 		-- 所有子副本
 		tAllEctypes =
 		{
@@ -359,25 +1078,25 @@ tRingEctypeDB =
 			[1] =
 			{
 				-- 对应的副本ID
-				EctypeID = 2001,
+				EctypeID = 2009,
 			},
 			-- 第2个子副本
 			[2] =
 			{
 				-- 对应的副本ID
-				EctypeID = 2002,
+				EctypeID = 2010,
 			},
 			-- 第3个子副本
 			[3] =
 			{
 				-- 对应的副本ID
-				EctypeID = 2003,
+				EctypeID = 2011,
 			},
 			-- 第4个子副本
 			[4] =
 			{
 				-- 对应的副本ID
-				EctypeID = 2004,
+				EctypeID = 2012,
 			},
 		},
 
@@ -688,6 +1407,11 @@ tRingEctypeDB =
 	            	},
          	},
            },
+
+
+
+
+
 }
 
 -- 插入副本对应的连环副本ID

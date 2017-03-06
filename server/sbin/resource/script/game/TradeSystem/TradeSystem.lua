@@ -189,7 +189,7 @@ end
 
 --客户端点击购买按钮
 function TradeSystem:doPtoNBuyGoods(event)
-	print("------------购买物品------------")
+	print("-----购买物品-----")
 	local params = event:getParams()
 	local itemID = params[1]
 	local itemNum = params[2]

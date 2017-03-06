@@ -433,6 +433,7 @@ function RoleVerify:checkKillMonster( player,param )
 	local statue = param.statue
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local task = taskHandler:getTask(taskID)
+
 	if task:canEnd() then
 		if statue then
 			return true

@@ -126,7 +126,7 @@ function System.OnPlayerLoaded(player, recordList)	-- 玩家上线加载坐骑�
 	--加载猎金场活动
 	g_goldHuntMgr:loadGoldHunt(player,recordList[30])
 	-- 活动上线
-	g_dekaronSchoolMgr:onPlayerOnline(player,recordList[33])
+	g_activityMgr:onPlayerOnline(player,recordList)
 	--加载兑换物品数据
 	g_exchangeItemMgr:playerOnLine(player,recordList[33])
 	-- 

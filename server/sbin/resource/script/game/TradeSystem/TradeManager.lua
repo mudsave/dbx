@@ -384,7 +384,7 @@ end
 
 --把npcPackID发到客户端
 function TradeManager:requestNpcTrade(player, npcPackID)
-	print("-----------npcPackID---")
+	print("-----npcPackID-----", npcPackID)
 	if not player then 
 		return 
 	end
@@ -397,7 +397,6 @@ function TradeManager:requestNpcTrade(player, npcPackID)
 	end
 	--设置玩家的状态为交易状态
 	--player:setActionState(PlayerStates.P2NTrade)
-	print("-------111----npcPackID---")
 	local event = Event.getEvent(TradeEvents_SC_RequestNpc, npcPackID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end

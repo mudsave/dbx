@@ -80,6 +80,7 @@ end
 
 --更新玩家基础值
 function LuaDBAccess.updatePlayer(dbId, propName, value)
+--print("updatePlayer",propName)
 	clearParams()
 	params[1]["spName"] = "sp_UpdatePlayer"
 	params[1]["dataBase"] = 1
@@ -100,6 +101,32 @@ function LuaDBAccess.updatePlayer(dbId, propName, value)
 
 end
 
+--批量更新玩家基础值
+function LuaDBAccess.updatePlayerBatch(dbId, values)
+print("updatePlayerBatch")
+	clearParams()
+	params[1]["spName"] = "sp_UpdatePlayerBatch"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "rId,MapID,PosX,PosY,Level,ModelID,Money,SMoney,DMoney,DCap,Cash,Parts,Cap,Bar"
+	params[1]["rId"] = dbId
+	params[1]["MapID"] = values.MapID
+	params[1]["PosX"] = values.PosX
+	params[1]["PosY"] = values.PosY
+	params[1]["Level"] = values.Level
+	params[1]["ModelID"] = values.ModelID
+	params[1]["Money"] = values.Money
+	params[1]["SMoney"] = values.SMoney
+	params[1]["DMoney"] = values.DMoney
+	params[1]["DCap"] = values.DCap
+	params[1]["Cash"] = values.Cash
+	params[1]["Parts"] = values.Parts
+	params[1]["Cap"] = values.Cap
+	params[1]["Bar"] = values.Bar
+
+	LuaDBAccess.exeSP(params, true)
+
+end
+
 --更新roleAttribute
 function LuaDBAccess.onPlayerAttrUpdate(player)
 	clearParams()
@@ -112,6 +139,7 @@ function LuaDBAccess.onPlayerAttrUpdate(player)
 
 	for attrName,attribute in pairs(player:getAttrSet()) do
 		if attribute:isSaveDB() then
+			print("onPlayerAttrUpdate",attrName)
 			param["type"]	= attrName
 			param["value"] = attribute:getValue()
 			LuaDBAccess.exeSP(params,true)
@@ -121,6 +149,7 @@ end
 
 -- 删除玩家道具
 function LuaDBAccess.itemRemove(playerDBID, RemoveFlag)
+
 	clearParams()
 
 	params[1]["spName"]		 = "sp_ItemRemove"
@@ -169,6 +198,7 @@ function LuaDBAccess.updatePlayerRide(roleID,rideGuid,rideID,vigor,completeness,
 	if not roleID then
 		return
 	end
+
 	clearParams()
 	local param = params[1]
 	param['spName']			= "sp_UpdateRide"
@@ -181,7 +211,7 @@ function LuaDBAccess.updatePlayerRide(roleID,rideGuid,rideID,vigor,completeness,
 	param["completeness"]	= completeness
 	param["isFollow"]		= isFollow
 	param["ridingTime"]		= ridingTime
-	LuaDBAccess.exeSP(params,false)
+	LuaDBAccess.exeSP(params,true)
 	return true
 end
 
@@ -193,7 +223,7 @@ function LuaDBAccess.deletePlayerRide(rideGuid)
 	param["dataBase"]		= 1
 	param['sort']			= "guid"
 	param["guid"]			= rideGuid
-	LuaDBAccess.exeSP(params,false)
+	LuaDBAccess.exeSP(params,true)
 	return true
 end
 
@@ -244,7 +274,7 @@ function LuaDBAccess.DeletePet(pet)
 	param["sort"]		= "DBID"
 	param["DBID"]		= pet:getDBID()
 	
-	LuaDBAccess.exeSP(params,false)		
+	LuaDBAccess.exeSP(params,true)		
 end
 
 -- 进一步保存宠物数据
@@ -329,6 +359,7 @@ end
 ------------------任务相关数据处理----------------------------------
 
 function LuaDBAccess.updateNormalTask(playerDBID, task)
+
 	clearParams()
 	params[1]["spName"] = "sp_UpdateNormalTask"
 	params[1]["dataBase"] = 1
@@ -339,7 +370,7 @@ function LuaDBAccess.updateNormalTask(playerDBID, task)
 	params[1]["_State"] = task:getStatus()
 	params[1]["_TargetState"] = toString(task:getTargetState())
 	params[1]["_EndTime"] = task:getEndTime() or 0
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.updateDailyTask(playerDBID, task)
@@ -354,7 +385,7 @@ function LuaDBAccess.updateDailyTask(playerDBID, task)
 	params[1]["targetState"] = toString(task:getTargetState())
 	print("3.准备更新数据库>>>>>>>>>>>>>>>>>>>>>>",toString(task:getDailyTargets()),type(task:getDailyTargets()))
 	params[1]["targets"] = serialize(task:getDailyTargets())
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.updateDailyTaskConfiguration(playerDBID, config)
@@ -365,10 +396,11 @@ function LuaDBAccess.updateDailyTaskConfiguration(playerDBID, config)
 	params[1]["rID"] = playerDBID
 	params[1]["taskConfig "] = serialize(config)
 	print("3.准备更新日常任务配置表>>>>>>>>>>>>>>>>>>>>>>",toString(config))
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.updateLoopTask(playerDBID, task)
+
 	clearParams()
 	params[1]["spName"] = "sp_UpdateLoopTask"
 	params[1]["dataBase"] = 1
@@ -385,7 +417,7 @@ function LuaDBAccess.updateLoopTask(playerDBID, task)
 	params[1]["_EndTime"] = task:getEndTime() or 0
 	params[1]["_Triggers"] = toString(task:getTriggers())
 	params[1]["_Level"] = task:getReceiveTaskLvl()
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
@@ -400,7 +432,7 @@ function LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	params[1]["_CurrentRing"] = taskInfo.currentRing
 	params[1]["_OfflineTime"] = os.time()
 	params[1]["_finishTimes"] = taskInfo.finishTimes
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 
 end
 
@@ -413,7 +445,7 @@ function LuaDBAccess.updateTaskTrace(playerDBID, taskTraceList)
 	params[1]["_RoleID"] = playerDBID
 	params[1]["_TaskTraceList"] = toString(taskTraceList)
 
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.deleteNormalTask(playerDBID, taskID)
@@ -425,7 +457,7 @@ function LuaDBAccess.deleteNormalTask(playerDBID, taskID)
 	params[1]["_TaskID"] = taskID
 
 	params[1]["sort"] = '_RoleID,_TaskID'
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.deleteLoopTask(playerDBID, taskID)
@@ -437,7 +469,7 @@ function LuaDBAccess.deleteLoopTask(playerDBID, taskID)
 	params[1]["_TaskID"] = taskID
 
 	params[1]["sort"] = '_RoleID,_TaskID'
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.deleteDailyTask(playerDBID, taskID)
@@ -449,7 +481,7 @@ function LuaDBAccess.deleteDailyTask(playerDBID, taskID)
 	params[1]["_TaskID"] = taskID
 
 	params[1]["sort"] = '_RoleID,_TaskID'
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.updateHisTask(playerDBID, historyList)
@@ -466,7 +498,7 @@ function LuaDBAccess.updateHisTask(playerDBID, historyList)
 	params[1]["_HistoryTasks"] = toString(historyList)
 
 	params[1]["sort"] = '_RoleID,_HistoryTasks'
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 function LuaDBAccess.updateRoleTaskPrivate(playerDBID, privateTaskData)
@@ -477,7 +509,7 @@ function LuaDBAccess.updateRoleTaskPrivate(playerDBID, privateTaskData)
 	params[1]["_TaskPrivateData"] = toString(privateTaskData)
 
 	params[1]["sort"] = '_RoleID,_TaskPrivateData'
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 
@@ -593,6 +625,7 @@ end
 
 --更新玩家buff
 function LuaDBAccess.updatePlayerBuff(playerDBID, buffID, stayValue, freeze)
+
 	clearParams()
 	params[1]["spName"]		= "sp_UpdatePlayerBuff"
 	params[1]["dataBase"]	= 1
@@ -669,7 +702,7 @@ function LuaDBAccess.addMind(role_DBID, mind_id, mind_level)
 	params[1]["role_id"] = role_DBID
 	params[1]["mind_id"] = mind_id
 	params[1]["mind_level"] = mind_level
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 -- 保存在线抽奖数据
@@ -740,7 +773,7 @@ function LuaDBAccess.MailRemove(mail)
 	param["sort"] = "mailID"
 	param["mailID"]=mail.mailID
 	
-	LuaDBAccess.exeSP(params,false)
+	LuaDBAccess.exeSP(params,true)
 end
 
 function LuaDBAccess.MailNew(mail,dbID)
@@ -759,7 +792,7 @@ function LuaDBAccess.MailNew(mail,dbID)
 	param["expires"] = mail.expires
 	param["read"] = false
 	
-	LuaDBAccess.exeSP(params,false)
+	LuaDBAccess.exeSP(params,true)
 end
 
 -- 保存玩家历练等级
@@ -771,7 +804,7 @@ function LuaDBAccess.updatePlayerExperience(playerDBID, expSkillID, expLevel)
 	params[1]["_rID"]			= playerDBID
 	params[1]["_expSkillID"]	= expSkillID
 	params[1]["_expLevel"]		= expLevel
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 --保存实体的自动点数分配策略
@@ -782,7 +815,7 @@ function LuaDBAccess.SavePointSetting(entity)
 		local param = params[1]
 		if handler:onSave(param) then
 			param["dataBase"] = 1
-			LuaDBAccess.exeSP(params, false)
+			LuaDBAccess.exeSP(params, true)
 		end
 	end
 end
@@ -800,7 +833,7 @@ function LuaDBAccess.updateGoldHuntActivity(player)
 		params[1]["totalScore"]	= curTotal
 		params[1]["isPrized"]	= isPrized
 		
-		LuaDBAccess.exeSP(params, false)
+		LuaDBAccess.exeSP(params, true)
 	end
 end
 
@@ -815,7 +848,7 @@ function LuaDBAccess.updateBeastBless(player,activityId)
 		params[1]["_roleID"]		= player:getDBID()
 		params[1]["_fightCount"]	= fightCount
 		params[1]["_recordTime"]	= os.time()
-		LuaDBAccess.exeSP(params, false)
+		LuaDBAccess.exeSP(params, true)
 	end
 end
 
@@ -836,7 +869,7 @@ function LuaDBAccess.updateSchoolActivity(player,activityId)
 		params[1]["_roleID"]		= player:getDBID()
 		params[1]["_integral"]		= integral
 		params[1]["_targetID"]		= targetID
-		LuaDBAccess.exeSP(params, false)
+		LuaDBAccess.exeSP(params, true)
 	end
 end
 
@@ -845,7 +878,7 @@ function LuaDBAccess.deleteSchoolActivity()
 	clearParams()
 	params[1]["spName"]			= "sp_DeleteSchoolActivity"
 	params[1]["dataBase"]		= 1
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -860,7 +893,7 @@ function LuaDBAccess.UpdateWorldServerData( playerDBID,valueName,cvalue,ivalue )
 	params[1]["valueName"] = valueName
 	params[1]["cvalue"] = cvalue
 	params[1]["ivalue"] = ivalue
-	LuaDBAccess.exeSP(params,false)
+	LuaDBAccess.exeSP(params,true)
 end
 
 -- 下线保存通天塔任务数据
@@ -868,7 +901,7 @@ function LuaDBAccess.saveBabelTask(playerID, taskID, taskInfo)
 	clearParams()
 	params[1]["spName"] = "sp_SaveBabelTask"
 	params[1]["dataBase"] = 1
-	params[1]["sort"] = "_RoleID,_TaskID,_State,_TargetState,_Layer,_TaskIndex,_RewardType,_ReceiveTime,_FaildTimes,_FinishFlag"
+	params[1]["sort"] = "_RoleID,_TaskID,_State,_TargetState,_Layer,_TaskIndex,_RewardType,_ReceiveTime,_FaildTimes,_FinishFlag,_FlyLayer"
 	local player = g_entityMgr:getPlayerByID(playerID)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local task = taskHandler:getTask(taskID)
@@ -879,19 +912,21 @@ function LuaDBAccess.saveBabelTask(playerID, taskID, taskInfo)
 		params[1]["_Layer"] = task:getLayer()
 		params[1]["_TaskIndex"] = task:getTaskIndex()
 		params[1]["_RewardType"] = task:getRewardType()
+		params[1]["_FlyLayer"] = task:getFlyLayer()
 	else
 		params[1]["_State"] = 0
 		params[1]["_TargetState"] = "{0}"
 		params[1]["_Layer"] = 0
 		params[1]["_TaskIndex"] = 0
 		params[1]["_RewardType"] = 0
+		params[1]["_FlyLayer"] = 0
 	end
 	params[1]["_RoleID"] = player:getDBID()
 	params[1]["_TaskID"] = taskID
 	params[1]["_ReceiveTime"] = taskInfo.receiveTime
 	params[1]["_FaildTimes"] = taskInfo.faildTimes
 	params[1]["_FinishFlag"] = taskInfo.finishFlag
-	LuaDBAccess.exeSP(params, false)
+	LuaDBAccess.exeSP(params, true)
 end
 
 --保存兑换物品数据
@@ -904,5 +939,14 @@ function LuaDBAccess.saveExchangeItemInfo( playerDBID,commitTimes,commitTime,com
 	params[1]["_commitTimes"] = commitTimes
 	params[1]["_commitTime"] = commitTime
 	params[1]["_commitID"] = commitID
-	LuaDBAccess.exeSP(params,false)
+	LuaDBAccess.exeSP(params,true)
+end
+
+function LuaDBAccess.changeShowDrama(playerDBID)
+	clearParams()
+	params[1]["spName"] = "sp_ChangeShowDrama"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "rId"
+	params[1]["rId"] = playerDBID
+	LuaDBAccess.exeSP(params, true)
 end

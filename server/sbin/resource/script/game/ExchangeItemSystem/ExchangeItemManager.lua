@@ -60,10 +60,13 @@ function ExchangeItemManager:doExchange(player,tempInfo,commitID)
 		--保存数据到数据库
 		local roleDBID = player:getDBID()
 		LuaDBAccess.saveExchangeItemInfo(roleDBID,self.commitTimes[commitID],self.commitTime[commitID],commitID)
-		
+		-- 把次数更新到客户端
+		self:notifyToClient(player,self.commitTimes[commitID])
 		local event = Event.getEvent(ExchangeItemEvent_SC_UpdateData,commitID,self.commitTimes[commitID])
 		g_eventMgr:fireRemoteEvent(event, player)
-
+		-- 奖励修行值
+		-- 修行值增加
+		g_practisesym:addPractise(player,PractiseAddRewardData.Two)
 		tempValue = {}
 		count = 0
 
@@ -147,11 +150,13 @@ function ExchangeItemManager:playerOnLine(player,record)
 			if not time.isSameDay(value.commitTime) then							--不是同一天
 				self.commitTimes[value.commitID] = 0
 				self.commitTime[value.commitID] = 0
+				self:notifyToClient(player,0)
 				local event = Event.getEvent(ExchangeItemEvent_SC_UpdateData,value.commitID,0)
 				g_eventMgr:fireRemoteEvent(event, player)
 			else																	--同一天
 				self.commitTimes[value.commitID] = value.commitTimes
 				self.commitTime[value.commitID] = value.commitTime
+				self:notifyToClient(player,value.commitTimes)
 				local event = Event.getEvent(ExchangeItemEvent_SC_UpdateData,value.commitID,value.commitTimes)
 				g_eventMgr:fireRemoteEvent(event, player)
 			end
@@ -167,6 +172,16 @@ function ExchangeItemManager:playerOnLine(player,record)
 			[101] = 0,
 		}
 		local event = Event.getEvent(ExchangeItemEvent_SC_ResetData)
+		g_eventMgr:fireRemoteEvent(event, player)
+	end
+end
+
+function ExchangeItemManager:notifyToClient(player,times)
+	if times then
+		local data = {}
+		data.count = times
+		data.finishTimes = times
+		local event = Event.getEvent(ActivityEvent_SC_ActivityPageOther,ActivityPageUpdateData.DaliyKill,data)
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
 end

@@ -503,9 +503,7 @@ function TeamManager:quitTeam(playerID)
 				end
 			end
 		end
-		local localEvent = Event.getEvent(TeamEvents_SS_DissolveEctypeTeam,playerID)
-		g_eventMgr:fireEvent(localEvent)
-		localEvent = Event.getEvent(TeamEvents_SS_QuitTeam,playerID)
+		localEvent = Event.getEvent(TeamEvents_SS_QuitTeam, playerID)
 		g_eventMgr:fireEvent(localEvent)
 	end
 end

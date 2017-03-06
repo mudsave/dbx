@@ -2,16 +2,6 @@
 描述：活动常量
 ]]
 
--- 宝箱的个数
-ActivityMaxBoxNum = 5
-
--- 宝箱的状态
-ActivityBoxState = 
-{
-	Close	= 0,
-	Light	= 1,
-	Open	= 2,
-}
 
 -- 活动开启时间类型
 AtyStartType = 
@@ -27,4 +17,20 @@ ActivityState =
 	PreOpening = 1,
 	Opening = 2,
 	Close = 3,
+}
+
+-- 活动页面
+ActivityPageDataType = 
+{
+	-- 取数据的类型
+	LoopTask	= 1,
+	Activity	= 2,
+	DaliyTask	= 3,
+	OtherTask	= 4,
+}
+
+
+ActivityPageUpdateData = 
+{
+	DaliyKill		= 1, -- 每日杀怪	
 }

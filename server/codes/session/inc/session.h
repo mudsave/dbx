@@ -272,6 +272,7 @@ public:
 		    strcpy(msg->roleList[i].showPart, pRet->role[i].showPart);
 		    strcpy(msg->roleList[i].name, pRet->role[i].name);
 			strcpy(msg->roleList[i].remouldAttr, pRet->role[i].remouldAttr);
+			msg->roleList[i].showDrama = pRet->role[i].showDrama ;
 		}
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, msg);
 	}

@@ -19,11 +19,14 @@ function TguideTask:onGuideTask(guideTaskID)
 	-- 说明已经创建的改类型的任务目标
 	local taskHandler = self._entity:getHandler(HandlerDef_Task)
 	local taskID = self._task:getID()	
-	self._state = self._state + 1
-	if self._param.taskID == guideTaskID and self:completed() then
-		taskHandler:finishTaskByID(taskID)
-		self:removeWatchers()
-		return
+	if self._param.taskID == guideTaskID  then
+		if self:completed() then
+			taskHandler:finishTaskByID(taskID)
+			self:removeWatchers()
+			return
+		else
+			self._state = self._state + 1
+		end	
 	end
 	local targetsState = self._task:getTargetState()
 	g_taskSystem:setTargetsState(self._entity,taskID,targetsState)

@@ -99,7 +99,7 @@ end
 
 --初始化加载玩家的所有邮件
 function MailManager:loadPlayerMails(player,mails)
-print("youjian--------------------------------2",toString(mails))
+-- print("youjian--------------------------------2",toString(mails))
 	local _box = self:getMailBox(player:getDBID())
 	if not mails then
 		return

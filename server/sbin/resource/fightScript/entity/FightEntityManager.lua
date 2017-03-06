@@ -25,6 +25,7 @@ function FightEntityManager:addPlayer(player)
 		self._roleMap[playerID] = player
 		local DBID = player:getDBID()
 		self._playerByDBID[DBID] = player
+		g_world:setPlayerCount(table.size(self._playerList))
 	end
 end
 --删除Player对象

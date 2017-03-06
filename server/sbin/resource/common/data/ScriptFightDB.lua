@@ -1,37 +1,38 @@
 --[[ScriptFightDB.lua
-æè¿°ï¼š
-	--è„šæœ¬æˆ˜æ–—DB
-	--è„šæœ¬IDæ®µåˆ’åˆ†
---1~100			æ—¥å¸¸æµ‹è¯•ä½¿ç”¨
---101~999		ä¸»çº¿ä¸“ç”¨
---1000~3000		æ™®é€šå‰¯æœ¬
---3001~4000		è¿ç¯å‰¯æœ¬
---4001~5000		æ—¥å¸¸æ´»åŠ¨å‰¯æœ¬ã€å¸®æ´¾å‰¯æœ¬ã€è‹±é›„æœ¬
---5001~6000		é€šå¤©å¡”
---6001~7000		è—å®å›¾ã€é‡å¤–æš—é›·ã€èŠ‚æ—¥æ´»åŠ¨
---7001~7100		åéª‘å¬å”¤ä»»åŠ¡
---7101+			å…¶ä»–ç©æ³•
+ÃèÊö£º
+	--½Å±¾Õ½¶·DB
+	--½Å±¾ID¶Î»®·Ö
+--1~100			ÈÕ³£²âÊÔÊ¹ÓÃ
+--101~999		Ö÷Ïß×¨ÓÃ
+--1000~3000		ÆÕÍ¨¸±±¾
+--3001~4000		Á¬»·¸±±¾
+--4001~5000		ÈÕ³£»î¶¯¸±±¾¡¢°ïÅÉ¸±±¾¡¢Ó¢ĞÛ±¾
+--5001~6000		Í¨ÌìËş
+--6001~7000		²Ø±¦Í¼¡¢Ò°Íâ°µÀ×¡¢½ÚÈÕ»î¶¯
+--7001~7100		×øÆïÕÙ»½ÈÎÎñ
+--7101+			ÆäËûÍæ·¨
+--8001~9000             »î¶¯Íæ·¨
 --]]
 ScriptFightDB={}
 ScriptType = {
 				Common = 1,
-				LuckyMonster = 2,--ç‘å…½é™ç¦
-				Random = 3,--éšæœºé˜¶æ®µ
+				LuckyMonster = 2,--ÈğÊŞ½µ¸£
+				Random = 3,--Ëæ»ú½×¶Î
 }
---æ¡ä»¶ç±»å‹
+--Ìõ¼şÀàĞÍ
 ScriptFightConditionType=
 {
-	AttrValue		= 1,--å±æ€§æ¯”ä¾‹ {type = ScriptFightConditionType.AttrValue, params={DBID = 1052,type="hp",["<="] = 0},},
-	IDExist			= 2,--idæ˜¯å¦å­˜åœ¨ {type = ScriptFightConditionType.IDExist, params={DBID = 1052,relation =">", value = 1,},},
-	RoundCount		= 3,--ç¬¬å‡ å›åˆ {type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
-	RoundInterval	= 4,--å›åˆé—´éš” {type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
-	BuffStatus		= 5,--å¸¦æœ‰æŒ‡å®šçš„buff(ID,æˆ–ç±»å‹) {type = ScriptFightConditionType.BuffStatus, params={DBID = {1052},buffID = 1(or type=BuffKind.Dot),},},æˆ–{type = ScriptFightConditionType.BuffStatus, params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 1(or type=BuffKind.Dot),},}
-	LiveNum			= 6,--å­˜æ´»çš„å•ä½æ•° {type = ScriptFightConditionType.LiveNum, params={isEnemy = true ,count = 2},},
-	IsAttacked		= 7,--æŒ‡å®šå•ä½æ˜¯å¦å—å‡» {type = ScriptFightConditionType.IsAttacked, params={DBID = {1052},}, },
-	FightPeriod		= 8,--æˆ˜æ–—æŒç»­æ—¶é—´ {type = ScriptFightConditionType.FightPeriod, params={time = 10},},--åˆ†é’Ÿ
-	PlayerDead		= 9,--ç©å®¶æˆ–å® ç‰©æ­»äº¡{type = ScriptFightConditionType.PlayerDead, params={type = ScriptFightDeadType.PlayerOrPet},}
-	MonsterCatched  = 10,--æ€ªç‰©è¢«æ•æ‰{type = ScriptFightConditionType.MonsterCatched, params={DBID = {1052},}
-	ScoreNum        = 11,--ç©å®¶ç§¯åˆ†å€¼{type = ScriptFightConditionType.ScoreNum, params={relation =">", value = 1,},},
+	AttrValue		= 1,--ÊôĞÔ±ÈÀı {type = ScriptFightConditionType.AttrValue, params={DBID = 1052,type="hp",["<="] = 0},},
+	IDExist			= 2,--idÊÇ·ñ´æÔÚ {type = ScriptFightConditionType.IDExist, params={DBID = 1052,relation =">", value = 1,},},
+	RoundCount		= 3,--µÚ¼¸»ØºÏ {type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+	RoundInterval	= 4,--»ØºÏ¼ä¸ô {type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+	BuffStatus		= 5,--´øÓĞÖ¸¶¨µÄbuff(ID,»òÀàĞÍ) {type = ScriptFightConditionType.BuffStatus, params={DBID = {1052},buffID = 1(or type=BuffKind.Dot),},},»ò{type = ScriptFightConditionType.BuffStatus, params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 1(or type=BuffKind.Dot),},}
+	LiveNum			= 6,--´æ»îµÄµ¥Î»Êı {type = ScriptFightConditionType.LiveNum, params={isEnemy = true ,count = 2},},
+	IsAttacked		= 7,--Ö¸¶¨µ¥Î»ÊÇ·ñÊÜ»÷ {type = ScriptFightConditionType.IsAttacked, params={DBID = {1052},}, },
+	FightPeriod		= 8,--Õ½¶·³ÖĞøÊ±¼ä {type = ScriptFightConditionType.FightPeriod, params={time = 10},},--·ÖÖÓ
+	PlayerDead		= 9,--Íæ¼Ò»ò³èÎïËÀÍö{type = ScriptFightConditionType.PlayerDead, params={type = ScriptFightDeadType.PlayerOrPet},}
+	MonsterCatched  = 10,--¹ÖÎï±»²¶×½{type = ScriptFightConditionType.MonsterCatched, params={DBID = {1052},}
+	ScoreNum        = 11,--Íæ¼Ò»ı·ÖÖµ{type = ScriptFightConditionType.ScoreNum, params={relation =">", value = 1,},},
 }
 ScriptFightDeadType = {
 	Player	= 1,
@@ -39,85 +40,85 @@ ScriptFightDeadType = {
 	PlayerOrPet = 3,
 }
 ScriptFightTargetType = {
-	AnyOfFriends = 1,--å‹æ–¹éšæœº
-	AnyOfEnemys = 2,--æ•Œæ–¹éšæœº
+	AnyOfFriends = 1,--ÓÑ·½Ëæ»ú
+	AnyOfEnemys = 2,--µĞ·½Ëæ»ú
 }
 ScriptMonsterCreateType = {
-	Random = 1,--éšæœº
-	Assign = 2,--æŒ‡å®š
+	Random = 1,--Ëæ»ú
+	Assign = 2,--Ö¸¶¨
 }
 --[[
-1.å±æ€§æ¯”ä¾‹çš„å‚æ•°ä¸­ type çš„å€¼ä¸º"hp"ç”Ÿå‘½,"mp"è“,"kill"æ€æ°”
-2.å¸¦æœ‰æŒ‡å®šç±»å‹çš„buff,buffç±»å‹å®šä¹‰ä¸º
---buffç±»å‹
+1.ÊôĞÔ±ÈÀıµÄ²ÎÊıÖĞ type µÄÖµÎª"hp"ÉúÃü,"mp"À¶,"kill"É±Æø
+2.´øÓĞÖ¸¶¨ÀàĞÍµÄbuff,buffÀàĞÍ¶¨ÒåÎª
+--buffÀàĞÍ
 BuffKind = {
-	AddPhase		= 0x01,--ç›¸æ€§å¢ç›Š
-	AddAttr			= 0x02,--å±æ€§å¢ç›Š
-	Sub				= 0x03,--å‡ç›Š
+	AddPhase		= 0x01,--ÏàĞÔÔöÒæ
+	AddAttr			= 0x02,--ÊôĞÔÔöÒæ
+	Sub				= 0x03,--¼õÒæ
 	Dot				= 0x04,--dot
-	TransCard		= 0x05,--å˜èº«å¡
-	ChaosObstacle	= 0x06,--æ··ä¹±éšœç¢
-	PoisonObstacle	= 0x07,--ä¸­æ¯’éšœç¢
-	FreezeObstacle	= 0x08,--å†°å†»éšœç¢
-	SilenceObstacle	= 0x09,--æ²‰é»˜éšœç¢
-	TauntObstacle	= 0x10,--å˜²è®½éšœç¢
-	SoporObstacle	= 0x11,--æ˜ç¡éšœç¢
-	Shield			= 0x12,--æŠ¤ç›¾Buff
-	JXSTrans		= 0x13,--é‡‘éœå±±å˜èº«
-	QYDXuLi			= 0x14,--ä¹¾å…ƒå²›è“„åŠ›
-	QYDXuRuo		= 0x15,--ä¹¾å…ƒå²›è™šå¼±
-	ZYMXuLi			= 0x16,--ç´«é˜³é—¨è“„åŠ›
-	Special			= 0x17,--ç‰¹æ®Šç±»buff
+	TransCard		= 0x05,--±äÉí¿¨
+	ChaosObstacle	= 0x06,--»ìÂÒÕÏ°­
+	PoisonObstacle	= 0x07,--ÖĞ¶¾ÕÏ°­
+	FreezeObstacle	= 0x08,--±ù¶³ÕÏ°­
+	SilenceObstacle	= 0x09,--³ÁÄ¬ÕÏ°­
+	TauntObstacle	= 0x10,--³°·íÕÏ°­
+	SoporObstacle	= 0x11,--»èË¯ÕÏ°­
+	Shield			= 0x12,--»¤¶ÜBuff
+	JXSTrans		= 0x13,--½ğÏ¼É½±äÉí
+	QYDXuLi			= 0x14,--Ç¬ÔªµºĞîÁ¦
+	QYDXuRuo		= 0x15,--Ç¬ÔªµºĞéÈõ
+	ZYMXuLi			= 0x16,--×ÏÑôÃÅĞîÁ¦
+	Special			= 0x17,--ÌØÊâÀàbuff
 }
 
 --
 ]]
---å…‰æ•ˆç±»å‹
+--¹âĞ§ÀàĞÍ
 LightEffectType = {
-			Unit = 0,--å•ä½ID
-			All = 1,--æ•Œå‹å…¨éƒ¨
-			EnyOfAll = 2,--æ•Œå‹ä»»ä¸€
-			Center	 = 3,--åœºæ™¯ä¸­å¤®
+			Unit = 0,--µ¥Î»ID
+			All = 1,--µĞÓÑÈ«²¿
+			EnyOfAll = 2,--µĞÓÑÈÎÒ»
+			Center	 = 3,--³¡¾°ÖĞÑë
 }
---åŠ¨ä½œç±»å‹
+--¶¯×÷ÀàĞÍ
 ScriptFightActionType=
 {
-	PlayAnimation = 1,--æ’­åŠ¨ç”» {type = ScriptFightActionType.PlayAnimation,params={fileName = "XXX"},}
-	PlayBubble	  = 2,--æ’­æ°”æ³¡ {type = ScriptFightActionType.PlayBubble,params={DBID={11},bubbleID = XXX},}
-	PlayDialog	  = 3,--æ’­å¯¹è¯ {type = ScriptFightActionType.PlayDialog,params={ID=11}, }
-	PlayAction	  = 4,--æ’­åŠ¨ä½œ {type = ScriptFightActionType.PlayAction,params={DBID={11},actionID =22} }
-	PlayEffect	  = 5,--æ’­å…‰æ•ˆ {type = ScriptFightActionType.PlayEffect,params={magicID = 1,DBID ={22},type = LightEffectType.Unit } }
-	ReplaceEntity = 6,--æ›¿æ¢å®ä½“ {type = ScriptFightActionType.ReplaceEntity,params={curID ={22},replaceID = 11,actionID = 1} }
-	EntityQuit	  = 7,--å®ä½“é€€åœº {type = ScriptFightActionType.EntityQuit,params={DBID ={22},actionID = 1} }
-	EntityEnter	  = 8,--å®ä½“è¿›åœº {type = ScriptFightActionType.EntityEnter,params={{DBID = 1,actionID = 1,count = 1},} }
-	UseSkill	  = 9,--ä½¿ç”¨æŠ€èƒ½ {type = ScriptFightActionType.UseSkill,params={DBID ={22},skillID = 1}}æˆ– {type = ScriptFightActionType.UseSkill,params={targetType = ScriptFightTargetType.AnyOfEnemys,skillID = 1}}
-	AddBuff		  = 10,--åŠ buff {type = ScriptFightActionType.AddBuff,params={DBID ={22},buffID = 2} }æˆ– {type = ScriptFightActionType.AddBuff,params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 2} }
-	RemoveBuff	  = 11,--å»buff {type = ScriptFightActionType.RemoveBuff,params={DBID ={22},buffID = 2} }æˆ– {type = ScriptFightActionType.RemoveBuff,params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 2} }
-	SetGBH		  = 12,--è®¾ç½®ä¸ºé‡ä¼¤ {type = ScriptFightActionType.SetGBH,params={DBID ={22},} }
-	FightPause	  = 13,--å®¢æˆ·ç«¯æˆ˜æ–—æš‚åœ {type = ScriptFightActionType.FightPause,params={time = 2} }--ç§’
-	FightEnd	  = 14,--æˆ˜æ–—ç»“æŸ {type = ScriptFightActionType.FightEnd,params={winner = "monster" æˆ– "player"} }
-	MakeEscape	  = 15,--å¼ºåˆ¶é€ƒè·‘ {type = ScriptFightActionType.MakeEscape,params={} }
-	SetCounterRate= 16,--è®¾ç½®åå‡»ç‡ {type = ScriptFightActionType.SetCounterRate,params={DBID ={22},value = 0.5} }
-	ExchangePos	  = 17,--äº¤æ¢æˆ–æ”¹å˜ä½ç½® {type = ScriptFightActionType.ExchangePos,params={curPos = 21,targetPos =23} }
-	ChangeHp	  = 18,--è®¾ç½®ç”Ÿå‘½å€¼(å¢å¤§æˆ–å‡å°‘æœ€å¤§å€¼çš„ç™¾åˆ†æ¯”,å¦‚æœæ˜¯ç©å®¶çš„è¯params={DBID =-1,percent = -50}}æ˜¯ç›¸å¯¹çº¢è“){type = ScriptFightActionType.ChangeHp,params={DBID ={22},percent = -50}}
-	SameTime	  =19,--åŒæ—¶æ‰§è¡Œä¸€ç»„
-	RefreshMembers = 20,--åˆ·æ–°æ€ªç‰©
-	AddScore = 21,--å¢åŠ ç©å®¶ç§¯åˆ†{type = ScriptFightActionType.AddScore,params={value = 5} }
-	ChangeReward = 22,--å½±å“å¥–åŠ±å€¼{type = ScriptFightActionType.ChangeReward,params={type = "exp",mode = "value",value = 100} }--type = "exp","tao","money","expoint","pot";mode= "value" or "percent"
+	PlayAnimation = 1,--²¥¶¯»­ {type = ScriptFightActionType.PlayAnimation,params={fileName = "XXX"},}
+	PlayBubble	  = 2,--²¥ÆøÅİ {type = ScriptFightActionType.PlayBubble,params={DBID={11},bubbleID = XXX},}
+	PlayDialog	  = 3,--²¥¶Ô»° {type = ScriptFightActionType.PlayDialog,params={ID=11}, }
+	PlayAction	  = 4,--²¥¶¯×÷ {type = ScriptFightActionType.PlayAction,params={DBID={11},actionID =22} }
+	PlayEffect	  = 5,--²¥¹âĞ§ {type = ScriptFightActionType.PlayEffect,params={magicID = 1,DBID ={22},type = LightEffectType.Unit } }
+	ReplaceEntity = 6,--Ìæ»»ÊµÌå {type = ScriptFightActionType.ReplaceEntity,params={curID ={22},replaceID = 11,actionID = 1} }
+	EntityQuit	  = 7,--ÊµÌåÍË³¡ {type = ScriptFightActionType.EntityQuit,params={DBID ={22},actionID = 1} }
+	EntityEnter	  = 8,--ÊµÌå½ø³¡ {type = ScriptFightActionType.EntityEnter,params={{DBID = 1,actionID = 1,count = 1},} }
+	UseSkill	  = 9,--Ê¹ÓÃ¼¼ÄÜ {type = ScriptFightActionType.UseSkill,params={DBID ={22},skillID = 1}}»ò {type = ScriptFightActionType.UseSkill,params={targetType = ScriptFightTargetType.AnyOfEnemys,skillID = 1}}
+	AddBuff		  = 10,--¼Óbuff {type = ScriptFightActionType.AddBuff,params={DBID ={22},buffID = 2} }»ò {type = ScriptFightActionType.AddBuff,params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 2} }
+	RemoveBuff	  = 11,--È¥buff {type = ScriptFightActionType.RemoveBuff,params={DBID ={22},buffID = 2} }»ò {type = ScriptFightActionType.RemoveBuff,params={targetType = ScriptFightTargetType.AnyOfEnemys,buffID = 2} }
+	SetGBH		  = 12,--ÉèÖÃÎªÖØÉË {type = ScriptFightActionType.SetGBH,params={DBID ={22},} }
+	FightPause	  = 13,--¿Í»§¶ËÕ½¶·ÔİÍ£ {type = ScriptFightActionType.FightPause,params={time = 2} }--Ãë
+	FightEnd	  = 14,--Õ½¶·½áÊø {type = ScriptFightActionType.FightEnd,params={winner = "monster" »ò "player"} }
+	MakeEscape	  = 15,--Ç¿ÖÆÌÓÅÜ {type = ScriptFightActionType.MakeEscape,params={} }
+	SetCounterRate= 16,--ÉèÖÃ·´»÷ÂÊ {type = ScriptFightActionType.SetCounterRate,params={DBID ={22},value = 0.5} }
+	ExchangePos	  = 17,--½»»»»ò¸Ä±äÎ»ÖÃ {type = ScriptFightActionType.ExchangePos,params={curPos = 21,targetPos =23} }
+	ChangeHp	  = 18,--ÉèÖÃÉúÃüÖµ(Ôö´ó»ò¼õÉÙ×î´óÖµµÄ°Ù·Ö±È,Èç¹ûÊÇÍæ¼ÒµÄ»°params={DBID =-1,percent = -50}}ÊÇÏà¶ÔºìÀ¶){type = ScriptFightActionType.ChangeHp,params={DBID ={22},percent = -50}}
+	SameTime	  =19,--Í¬Ê±Ö´ĞĞÒ»×é
+	RefreshMembers = 20,--Ë¢ĞÂ¹ÖÎï
+	AddScore = 21,--Ôö¼ÓÍæ¼Ò»ı·Ö{type = ScriptFightActionType.AddScore,params={value = 5} }
+	ChangeReward = 22,--Ó°Ïì½±ÀøÖµ{type = ScriptFightActionType.ChangeReward,params={type = "exp",mode = "value",value = 100} }--type = "exp","tao","money","expoint","pot";mode= "value" or "percent"
 }
 
 ScriptFightDB[1] = {
-			--æˆ˜æ–—è§¦å‘æ¡ä»¶
+			--Õ½¶·´¥·¢Ìõ¼ş
 			condition = {
-					mustSingle = false --æ˜¯å¦ç¦æ­¢ç»„é˜Ÿ
+					mustSingle = false --ÊÇ·ñ½ûÖ¹×é¶Ó
 			},
 			backgroundMusic = nil,
 			backgroundPic = nil,
-			--æœ‰å“ªäº›æ€ªç‰©(æ€ªç‰©é…ç½®ID)
-			--monsters = {type=ScriptMonsterCreateType.Random,minCount = 3,maxCount = 3,{ID = 1053,weight= 50}, {ID = 1052,weight= 50}},--éšæœº
-			monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10001,pos = 18},},--æŒ‡å®š
-			--npcs = {{ID = 1052},{ID = 1052,},},--æŒ‡å®š {{ID = 1052,pos=11},{ID = 1052,pos = 3},}
-			--ç³»ç»Ÿè¡Œä¸º
+			--ÓĞÄÄĞ©¹ÖÎï(¹ÖÎïÅäÖÃID)
+			--monsters = {type=ScriptMonsterCreateType.Random,minCount = 3,maxCount = 3,{ID = 1053,weight= 50}, {ID = 1052,weight= 50}},--Ëæ»ú
+			monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10001,pos = 18},},--Ö¸¶¨
+			--npcs = {{ID = 1052},{ID = 1052,},},--Ö¸¶¨ {{ID = 1052,pos=11},{ID = 1052,pos = 3},}
+			--ÏµÍ³ĞĞÎª
 			systemActions = {
 
 
@@ -145,21 +146,21 @@ ScriptFightDB[1] = {
 															--{type = ScriptFightActionType.AddBuff,params={targetType = ScriptFightTargetType.AnyOfFriends,buffID = 5000} },
 															--{type = ScriptFightActionType.ChangeHp,params={DBID ={1053},percent = -10}},
 														  },
-											   },--è¡Œä¸º1
+											   },--ĞĞÎª1
 
 			},
-			--æ¯å›åˆåšå“ªäº›äº‹
+			--Ã¿»ØºÏ×öÄÄĞ©ÊÂ
 
 
 						begin = {
 
-						},--å›åˆå¼€å§‹åšå“ªäº›äº‹
+						},--»ØºÏ¿ªÊ¼×öÄÄĞ©ÊÂ
 						fin = {
 
-						},--å›åˆç»“æŸåšå“ªäº›äº‹
+						},--»ØºÏ½áÊø×öÄÄĞ©ÊÂ
 
 
-			--é˜¶æ®µ(ç”¨äºåˆ†é˜¶æ®µçš„æˆ˜æ–—)
+			--½×¶Î(ÓÃÓÚ·Ö½×¶ÎµÄÕ½¶·)
 			phases = {
 
 					[1] = {
@@ -172,20 +173,20 @@ ScriptFightDB[1] = {
 					}
 
 			},
-			--æˆ˜æ–—å¼€å§‹åšå“ªäº›äº‹
+			--Õ½¶·¿ªÊ¼×öÄÄĞ©ÊÂ
 			fightBegin = {
 
 			},
-			--æˆ˜æ–—ç»“æŸåšå“ªäº›äº‹
+			--Õ½¶·½áÊø×öÄÄĞ©ÊÂ
 			fightEnd = {
 
 			},
 
 			rewards={
-						mats={},--ç‰©å“{{ID=10001,count = 1}}
+						mats={},--ÎïÆ·{{ID=10001,count = 1}}
 						exp = 1,
 						money = 1,
-			},--å¥–åŠ±
+			},--½±Àø
 			isNoEscape = true,
 }
 
@@ -247,11 +248,11 @@ ScriptFightDB[4] = {
 			},
 
 	},
-	phases = {		--å¤šé˜¶æ®µæˆ˜æ–—ï¼ˆæš‚æœªæµ‹è¯•ï¼‰
-		[1] = {		--é˜¶æ®µæ•°
+	phases = {		--¶à½×¶ÎÕ½¶·£¨ÔİÎ´²âÊÔ£©
+		[1] = {		--½×¶ÎÊı
 			typeID = 0, sceneID = "zd_yougu2.xml",isSpecialAction =true,
-			--typeID = è¿‡åœºåŠ¨ç”»æ–¹å¼ï¼Œé»˜è®¤0ï¼ŒsceneID = èƒŒæ™¯å›¾æ–‡ä»¶åï¼ŒisSpecialAction = trueï¼ˆç‰¹æ®ŠåŠ¨ä½œï¼Œé»˜è®¤trueï¼‰
-			monsters={1052},				--æ€ªç‰©é…ç½®
+			--typeID = ¹ı³¡¶¯»­·½Ê½£¬Ä¬ÈÏ0£¬sceneID = ±³¾°Í¼ÎÄ¼şÃû£¬isSpecialAction = true£¨ÌØÊâ¶¯×÷£¬Ä¬ÈÏtrue£©
+			monsters={1052},				--¹ÖÎïÅäÖÃ
 		},
 
 		[2] = {
@@ -270,103 +271,103 @@ ScriptFightDB[5] = {
 			isAnd = true,
 		 },
 		actions = {
-			 {type = ScriptFightActionType.FightEnd,params={winner = "player" } }  --æˆ– "player"
+			 {type = ScriptFightActionType.FightEnd,params={winner = "player" } }  --»ò "player"
 		}
 	},
 	},
 	rewards={
-		mats={{ID = 50005 , count = 1}},--ç‰©å“{{ID=10001,count = 1}}
+		mats={{ID = 50005 , count = 1}},--ÎïÆ·{{ID=10001,count = 1}}
 	},
 }
 
 
------------------------------------é‡å¤–æˆ˜æ–—è„šæœ¬ï¼ˆIDæ®µ10~99ï¼‰--------------------
-ScriptFightDB[10] = {					---------------å·¨é¹¿é‡æ€ª
+-----------------------------------Ò°ÍâÕ½¶·½Å±¾£¨ID¶Î10~99£©--------------------
+ScriptFightDB[10] = {					---------------¾ŞÂ¹Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10012,weight= 50}, {ID = 10013,weight= 50}},
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10001,weight= 50}, {ID = 10001,weight= 50}},
 }
 
-ScriptFightDB[11] = {					---------------å°ç¥å°é‡æ€ª
+ScriptFightDB[11] = {					---------------·âÉñÌ¨Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10014,weight= 50}, {ID = 10015,weight= 50}},
 }
 
-ScriptFightDB[12] = {					---------------é»‘é£å±±é‡æ€ª
+ScriptFightDB[12] = {					---------------ºÚ·çÉ½Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10016,weight= 50}, {ID = 10017,weight= 50}},
 }
 
-ScriptFightDB[13] = {					---------------å­Ÿæ´¥é‡æ€ª
+ScriptFightDB[13] = {					---------------ÃÏ½òÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10018,weight= 50}, {ID = 10019,weight= 50}},
 }
 
-ScriptFightDB[14] = {					---------------ä¸œéƒ¡é‡æ€ª
+ScriptFightDB[14] = {					---------------¶«¿¤Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10020,weight= 50}, {ID = 10021,weight= 50}},
 }
 
-ScriptFightDB[15] = {					---------------è™ç‰¢å…³é‡æ€ª
+ScriptFightDB[15] = {					---------------»¢ÀÎ¹ØÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10022,weight= 50}, {ID = 10023,weight= 50}},
 }
 
-ScriptFightDB[16] = {					---------------æ½¼å…³é‡æ€ª
+ScriptFightDB[16] = {					---------------äü¹ØÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10024,weight= 50}, {ID = 10025,weight= 50}},
 }
 
-ScriptFightDB[17] = {					---------------å¤©å±±é‡æ€ª
+ScriptFightDB[17] = {					---------------ÌìÉ½Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10026,weight= 50}, {ID = 10027,weight= 50}},
 }
 
-ScriptFightDB[18] = {					---------------è¥¿å‡‰é‡æ€ª
+ScriptFightDB[18] = {					---------------Î÷Á¹Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10028,weight= 50}, {ID = 10029,weight= 50}},
 }
 
-ScriptFightDB[19] = {					---------------åŒ—æµ·é‡æ€ª
+ScriptFightDB[19] = {					---------------±±º£Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10030,weight= 50}, {ID = 10031,weight= 50}},
 }
 
-ScriptFightDB[20] = {					---------------è¾½ä¸œé‡æ€ª
+ScriptFightDB[20] = {					---------------ÁÉ¶«Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10032,weight= 50}, {ID = 10033,weight= 50}},
 }
 
-ScriptFightDB[21] = {					---------------å®›åŸé‡æ€ª
+ScriptFightDB[21] = {					---------------Íğ³ÇÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10034,weight= 50}, {ID = 10035,weight= 50}},
 }
 
-ScriptFightDB[22] = {					---------------å¯¿æ˜¥é‡æ€ª
+ScriptFightDB[22] = {					---------------ÊÙ´ºÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10036,weight= 50}, {ID = 10037,weight= 50}},
 }
 
-ScriptFightDB[23] = {					---------------æ²³åŒ—é‡æ€ª
+ScriptFightDB[23] = {					---------------ºÓ±±Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10038,weight= 50}, {ID = 10039,weight= 50}},
 }
 
-ScriptFightDB[24] = {					---------------æ¿®é˜³é‡æ€ª
+ScriptFightDB[24] = {					---------------å§ÑôÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10040,weight= 50}, {ID = 10041,weight= 50}},
 }
 
-ScriptFightDB[25] = {					---------------å®˜æ¸¡é‡æ€ª
+ScriptFightDB[25] = {					---------------¹Ù¶ÉÒ°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10042,weight= 50}, {ID = 10043,weight= 50}},
 }
 
-ScriptFightDB[27] = {					---------------é‡æ€ª
+ScriptFightDB[27] = {					---------------Ò°¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10044,weight= 50}, {ID = 10045,weight= 50}},
 }
 
 
------------------------------------------------æµ‹è¯•æ€ªç‰©å±æ€§è„šæœ¬ï¼Œè¯·å‹¿åˆ é™¤------------------------------------------------------
-ScriptFightDB[98] = {              --------------æµ‹è¯•1
+-----------------------------------------------²âÊÔ¹ÖÎïÊôĞÔ½Å±¾£¬ÇëÎğÉ¾³ı------------------------------------------------------
+ScriptFightDB[98] = {              --------------²âÊÔ1
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20115},{ID = 20116},{ID = 20116},},
 }
-ScriptFightDB[99] = {              --------------æµ‹è¯•2
+ScriptFightDB[99] = {              --------------²âÊÔ2
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20117},{ID = 20118},{ID = 20118},},
 }
------------------------------------------------æµ‹è¯•æ€ªç‰©å±æ€§è„šæœ¬ï¼Œè¯·å‹¿åˆ é™¤------------------------------------------------------
------------------------------------------------1-25çº§ä¸»çº¿è„šæœ¬------------------------------------------------------
-ScriptFightDB[100] = {              --------------ç„éƒ½ç‰äº¬â€”â€”ç‰æ¸…ç¥å°†
+-----------------------------------------------²âÊÔ¹ÖÎïÊôĞÔ½Å±¾£¬ÇëÎğÉ¾³ı------------------------------------------------------
+-----------------------------------------------1-25¼¶Ö÷Ïß½Å±¾------------------------------------------------------
+ScriptFightDB[100] = {              --------------Ğş¶¼Óñ¾©¡ª¡ªÓñÇåÉñ½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20010}},
 }
-ScriptFightDB[101] = {              --------------é—¨æ´¾â€”â€”ç‰æ¸…ç¥å°†ï¼ˆæ•æ‰ï¼‰
+ScriptFightDB[101] = {              --------------ÃÅÅÉ¡ª¡ªÓñÇåÉñ½«£¨²¶×½£©
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10011}},
 }
-ScriptFightDB[102] = {              --------------æ¡ƒå›­é•‡â€”â€”å…³ç¾½
+ScriptFightDB[102] = {              --------------ÌÒÔ°Õò¡ª¡ª¹ØÓğ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20114}},
 	systemActions = {
 	[1] = {
@@ -382,7 +383,7 @@ ScriptFightDB[102] = {              --------------æ¡ƒå›­é•‡â€”â€”å…³ç¾½
 	},
 	},
 }
-ScriptFightDB[103] = {              --------------æ¡ƒå›­é•‡â€”â€”é™Œç”Ÿäºº
+ScriptFightDB[103] = {              --------------ÌÒÔ°Õò¡ª¡ªÄ°ÉúÈË
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20030}},
 	systemActions = {
 	[1] = {
@@ -398,9 +399,9 @@ ScriptFightDB[103] = {              --------------æ¡ƒå›­é•‡â€”â€”é™Œç”Ÿäºº
 	},
 	},
 }
-ScriptFightDB[104] = {              --------------é•‡å¤–æ¡ƒæ—â€”â€”å¼ å®	
+ScriptFightDB[104] = {              --------------ÕòÍâÌÒÁÖ¡ª¡ªÕÅ±¦	
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20031},{ID = 20033},{ID = 20034},{ID = 20035},{ID = 20036},},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 	systemActions = {
 	[1] = {
 		  condition = {
@@ -415,7 +416,7 @@ ScriptFightDB[104] = {              --------------é•‡å¤–æ¡ƒæ—â€”â€”å¼ å®
 	},
 	},
 }
-ScriptFightDB[105] = {              --------------å·¨é¹¿â€”â€”ä¸¥æ”¿	
+ScriptFightDB[105] = {              --------------¾ŞÂ¹¡ª¡ªÑÏÕş	
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20038},{ID = 20039},{ID = 20039},{ID = 20039},{ID = 20039},},
 	systemActions = {
 	[1] = {
@@ -431,28 +432,28 @@ ScriptFightDB[105] = {              --------------å·¨é¹¿â€”â€”ä¸¥æ”¿
 	},
 	},
 }
-ScriptFightDB[106] = {              --------------å·¨é¹¿â€”â€”é©¬ç›¸
+ScriptFightDB[106] = {              --------------¾ŞÂ¹¡ª¡ªÂíÏà
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20044},{ID = 20040},{ID = 20041},{ID = 20042},{ID = 20043},},
 }
-ScriptFightDB[107] = {              --------------å·¨é¹¿â€”â€”æœè¿œ
+ScriptFightDB[107] = {              --------------¾ŞÂ¹¡ª¡ª¶ÅÔ¶
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20045},{ID = 20040},{ID = 20041},{ID = 20042},{ID = 20043},},
-	npcs = {{ID = 20028},},--è·ŸéšNPCï¼Œåˆ˜å¤‡
+	npcs = {{ID = 20028},},--¸úËæNPC£¬Áõ±¸
 }
-ScriptFightDB[108] = {              --------------å·¨é¹¿â€”â€”æä¹
+ScriptFightDB[108] = {              --------------¾ŞÂ¹¡ª¡ªÀîÀÖ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20046},{ID = 20040},{ID = 20041},{ID = 20042},{ID = 20043},},
-	npcs = {{ID = 20028},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢ÕÅ·É¡£
 }
-ScriptFightDB[109] = {              --------------ç§˜å¯†å¤é˜µâ€”â€”å¼ å®
+ScriptFightDB[109] = {              --------------ÃØÃÜ¹ÅÕó¡ª¡ªÕÅ±¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20031}},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 }
-ScriptFightDB[110] = {              --------------å²å±±â€”â€”ç¨‹è¿œå¿—
+ScriptFightDB[110] = {              --------------áªÉ½¡ª¡ª³ÌÔ¶Ö¾
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20047},{ID = 20110},{ID = 20110},{ID = 20110},{ID = 20110},},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 }
-ScriptFightDB[111] = {              --------------å¤±é­‚é˜µâ€”â€”ç„ç…Œ
+ScriptFightDB[111] = {              --------------Ê§»êÕó¡ª¡ªĞş»Í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20048},{ID = 20050},{ID = 20050},{ID = 20050},{ID = 20050},},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 	systemActions = {
 	[1] = {
 		  condition = {
@@ -465,9 +466,9 @@ ScriptFightDB[111] = {              --------------å¤±é­‚é˜µâ€”â€”ç„ç…Œ
 	},
 	},
 }
-ScriptFightDB[112] = {              --------------è¡€é­‚é˜µâ€”â€”æ°´é›‰
+ScriptFightDB[112] = {              --------------Ñª»êÕó¡ª¡ªË®ïô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20051},{ID = 20052},{ID = 20052},{ID = 20052},{ID = 20052},},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 	systemActions = {
 	[1] = {
 		  condition = {
@@ -480,9 +481,9 @@ ScriptFightDB[112] = {              --------------è¡€é­‚é˜µâ€”â€”æ°´é›‰
 	},
 	},
 }
-ScriptFightDB[113] = {              --------------å™¬é­‚é˜µâ€”â€”ç«å¿ƒ
+ScriptFightDB[113] = {              --------------ÊÉ»êÕó¡ª¡ª»ğĞÄ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20053},{ID = 20054},{ID = 20054},{ID = 20054},{ID = 20054},},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 	systemActions = {
 	[1] = {
 		  condition = {
@@ -505,13 +506,13 @@ ScriptFightDB[113] = {              --------------å™¬é­‚é˜µâ€”â€”ç«å¿ƒ
 	},
 	},
 }
-ScriptFightDB[114] = {              --------------ä¸‡é­‚å¤§é˜µâ€”â€”å¼ æ¢
+ScriptFightDB[114] = {              --------------Íò»ê´óÕó¡ª¡ªÕÅÁº
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20055}},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 }
-ScriptFightDB[115] = {              --------------å°ç¥å°â€”â€”å¼ è§’	
+ScriptFightDB[115] = {              --------------·âÉñÌ¨¡ª¡ªÕÅ½Ç	
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20056},},
-	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--è·ŸéšNPCï¼Œåˆ˜å¤‡ã€å…³ç¾½ã€å¼ é£ã€‚
+	npcs = {{ID = 20028},{ID = 20032},{ID = 20037},},--¸úËæNPC£¬Áõ±¸¡¢¹ØÓğ¡¢ÕÅ·É¡£
 	systemActions = {
 	[1] = {
 		  condition = {
@@ -526,22 +527,22 @@ ScriptFightDB[115] = {              --------------å°ç¥å°â€”â€”å¼ è§’
 	},
 	},
 }
-ScriptFightDB[116] = {              --------------å¾¡èŠ±å›­â€”â€”å¾¡èŠ±å›­ç»Ÿé¢†
+ScriptFightDB[116] = {              --------------Óù»¨Ô°¡ª¡ªÓù»¨Ô°Í³Áì
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20060},{ID = 20057},{ID = 20057},{ID = 20058},{ID = 20058},},
 }
-ScriptFightDB[117] = {              --------------å¾¡èŠ±å›­â€”â€”è¹‡ç¡•å‰¯å°†
+ScriptFightDB[117] = {              --------------Óù»¨Ô°¡ª¡ªå¿Ë¶¸±½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20061},{ID = 20057},{ID = 20057},{ID = 20058},{ID = 20058},},
 }
-ScriptFightDB[118] = {              --------------å¾¡èŠ±å›­â€”â€”è¹‡ç¡•
+ScriptFightDB[118] = {              --------------Óù»¨Ô°¡ª¡ªå¿Ë¶
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20062},{ID = 20057},{ID = 20057},{ID = 20058},{ID = 20058},},
 }
-ScriptFightDB[119] = {              --------------å¾¡èŠ±å›­â€”â€”é˜‰å…šå¤´ç›®
+ScriptFightDB[119] = {              --------------Óù»¨Ô°¡ª¡ªÑËµ³Í·Ä¿
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20065},{ID = 20063},{ID = 20063},{ID = 20064},{ID = 20064},},
 }
-ScriptFightDB[120] = {              --------------å¾¡èŠ±å›­â€”â€”å¼ è®©äº²å«
+ScriptFightDB[120] = {              --------------Óù»¨Ô°¡ª¡ªÕÅÈÃÇ×ÎÀ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20066},{ID = 20063},{ID = 20063},{ID = 20064},{ID = 20064},},
 }
-ScriptFightDB[121] = {              --------------å¾¡èŠ±å›­â€”â€”å¼ è®©	
+ScriptFightDB[121] = {              --------------Óù»¨Ô°¡ª¡ªÕÅÈÃ	
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20067},{ID = 20063},{ID = 20063},{ID = 20064},{ID = 20064},},
 	systemActions = {
 	[1] = {
@@ -557,7 +558,7 @@ ScriptFightDB[121] = {              --------------å¾¡èŠ±å›­â€”â€”å¼ è®©
 	},
 	},
 }
-ScriptFightDB[122] = {              --------------å¾¡èŠ±å›­â€”â€”å†’ç‰Œå¾¡å‰ä¾å«å¤´ç›®
+ScriptFightDB[122] = {              --------------Óù»¨Ô°¡ª¡ªÃ°ÅÆÓùÇ°ÊÌÎÀÍ·Ä¿
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20069},{ID = 20068},{ID = 20068},{ID = 20068},{ID = 20068},},
 	systemActions = {
 	[1] = {
@@ -573,7 +574,7 @@ ScriptFightDB[122] = {              --------------å¾¡èŠ±å›­â€”â€”å†’ç‰Œå¾¡å‰ä¾
 	},
 	},
 }
-ScriptFightDB[123] = {              --------------æ´›é˜³â€”â€”èµµå¿ 
+ScriptFightDB[123] = {              --------------ÂåÑô¡ª¡ªÕÔÖÒ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20070},},
 	systemActions = {
 	[1] = {
@@ -589,7 +590,7 @@ ScriptFightDB[123] = {              --------------æ´›é˜³â€”â€”èµµå¿ 
 	},
 	},
 }
-ScriptFightDB[124] = {              --------------é»‘é£å±±â€”â€”æ¢å­
+ScriptFightDB[124] = {              --------------ºÚ·çÉ½¡ª¡ªÌ½×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20071},},
 	systemActions = {
 	[1] = {
@@ -615,13 +616,13 @@ ScriptFightDB[124] = {              --------------é»‘é£å±±â€”â€”æ¢å­
 	},
 	},
 }
-ScriptFightDB[125] = {              --------------é»‘é£å±±â€”â€”é»‘é£å±±è´¼å°†
+ScriptFightDB[125] = {              --------------ºÚ·çÉ½¡ª¡ªºÚ·çÉ½Ôô½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20074},{ID = 20072},{ID = 20072},{ID = 20073},{ID = 20073},},
 }
-ScriptFightDB[126] = {              --------------é»‘é£å±±â€”â€”é»‘é£å±±å®ˆå«
+ScriptFightDB[126] = {              --------------ºÚ·çÉ½¡ª¡ªºÚ·çÉ½ÊØÎÀ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20075},{ID = 20072},{ID = 20072},{ID = 20073},{ID = 20073},},
 }
-ScriptFightDB[127] = {              --------------é»‘é£å±±â€”â€”å¼ ç‡•
+ScriptFightDB[127] = {              --------------ºÚ·çÉ½¡ª¡ªÕÅÑà
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20076},{ID = 20072},{ID = 20072},{ID = 20073},{ID = 20073},},
 	systemActions = {
 	[1] = {
@@ -637,7 +638,7 @@ ScriptFightDB[127] = {              --------------é»‘é£å±±â€”â€”å¼ ç‡•
 	},
 	},
 }
-ScriptFightDB[128] = {              --------------é»‘é£æ´â€”â€”é»‘é£è€å¦–
+ScriptFightDB[128] = {              --------------ºÚ·ç¶´¡ª¡ªºÚ·çÀÏÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20077},},
 	systemActions = {
 	      [1] = {
@@ -651,9 +652,9 @@ ScriptFightDB[128] = {              --------------é»‘é£æ´â€”â€”é»‘é£è€å¦–
 	},
 	},
 }
-ScriptFightDB[129] = {              --------------é»‘é£æ´â€”â€”é»‘é£è€å¦–2
+ScriptFightDB[129] = {              --------------ºÚ·ç¶´¡ª¡ªºÚ·çÀÏÑı2
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20077},},
-	npcs = {{ID = 20079},},--è·ŸéšNPCï¼Œé‡‘éœç«¥å­
+	npcs = {{ID = 20079},},--¸úËæNPC£¬½ğÏ¼Í¯×Ó
 	systemActions = {
 	[1] = {
 		  condition = {
@@ -668,13 +669,13 @@ ScriptFightDB[129] = {              --------------é»‘é£æ´â€”â€”é»‘é£è€å¦–2
 	},
 	},
 }
-ScriptFightDB[130] = {              --------------å ³åâ€”â€”é•‡è¥å¤§å°†
+ScriptFightDB[130] = {              --------------ˆõÎë¡ª¡ªÕòÓª´ó½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20082},{ID = 20080},{ID = 20080},{ID = 20081},{ID = 20081},},
 }
-ScriptFightDB[131] = {              --------------å ³åâ€”â€”æ¨Šå®š
+ScriptFightDB[131] = {              --------------ˆõÎë¡ª¡ª·®¶¨
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20083},{ID = 20080},{ID = 20080},{ID = 20081},{ID = 20081},},
 }
-ScriptFightDB[132] = {              --------------å ³åâ€”â€”æ¨Šç¨ 
+ScriptFightDB[132] = {              --------------ˆõÎë¡ª¡ª·®³í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20084},{ID = 20080},{ID = 20080},{ID = 20081},{ID = 20081},},
 	systemActions = {
 	[1] = {
@@ -690,13 +691,13 @@ ScriptFightDB[132] = {              --------------å ³åâ€”â€”æ¨Šç¨ 
 	},
 	},
 }
-ScriptFightDB[133] = {              --------------å ³åâ€”â€”å ³åé­”å°†
+ScriptFightDB[133] = {              --------------ˆõÎë¡ª¡ªˆõÎëÄ§½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20087},{ID = 20085},{ID = 20085},{ID = 20086},{ID = 20086},},
 }
-ScriptFightDB[134] = {              --------------å ³åâ€”â€”éƒ¿åå¦–å°†
+ScriptFightDB[134] = {              --------------ˆõÎë¡ª¡ªàdÎëÑı½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20088},{ID = 20085},{ID = 20085},{ID = 20086},{ID = 20086},},
 }
-ScriptFightDB[135] = {              --------------å ³åâ€”â€”é£å»‰
+ScriptFightDB[135] = {              --------------ˆõÎë¡ª¡ª·ÉÁ®
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20089},},
 	systemActions = {
 	      [1] = {
@@ -710,13 +711,13 @@ ScriptFightDB[135] = {              --------------å ³åâ€”â€”é£å»‰
 	},
 	},
 }
-ScriptFightDB[136] = {              --------------å­Ÿæ´¥å¤§è¥â€”â€”å‰¯å°†ç»Ÿé¢†
+ScriptFightDB[136] = {              --------------ÃÏ½ò´óÓª¡ª¡ª¸±½«Í³Áì
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20093},{ID = 20090},{ID = 20090},{ID = 20092},{ID = 20092},},
 }
-ScriptFightDB[137] = {              --------------å­Ÿæ´¥å¤§è¥â€”â€”æè‚ƒäº²å«
+ScriptFightDB[137] = {              --------------ÃÏ½ò´óÓª¡ª¡ªÀîËàÇ×ÎÀ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20094},{ID = 20090},{ID = 20090},{ID = 20092},{ID = 20092},},
 }
-ScriptFightDB[138] = {              --------------å­Ÿæ´¥å¤§è¥â€”â€”æè‚ƒ
+ScriptFightDB[138] = {              --------------ÃÏ½ò´óÓª¡ª¡ªÀîËà
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20095},{ID = 20090},{ID = 20090},{ID = 20092},{ID = 20092},},
 	systemActions = {
 	[1] = {
@@ -732,24 +733,24 @@ ScriptFightDB[138] = {              --------------å­Ÿæ´¥å¤§è¥â€”â€”æè‚ƒ
 	},
 	},
 }
-ScriptFightDB[139] = {              --------------æ½¼å…³â€”â€”ä¾¯æˆ
+ScriptFightDB[139] = {              --------------äü¹Ø¡ª¡ªºî³É
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20098},{ID = 20096},{ID = 20097},{ID = 20111},{ID = 20112},},
 }
-ScriptFightDB[140] = {              --------------æ½¼å…³â€”â€”æ®µç…¨
+ScriptFightDB[140] = {              --------------äü¹Ø¡ª¡ª¶ÎìĞ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20101},{ID = 20099},{ID = 20099},{ID = 20100},{ID = 20100},},
-	npcs = {{ID = 20091},},--è·ŸéšNPCï¼Œè¢ç»
+	npcs = {{ID = 20091},},--¸úËæNPC£¬Ô¬ÉÜ
 }
-ScriptFightDB[141] = {              --------------æ½¼å…³â€”â€”è‘£æ—»
+ScriptFightDB[141] = {              --------------äü¹Ø¡ª¡ª¶­•F
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20109},{ID = 20102},{ID = 20103},{ID = 20104},{ID = 20105},},
-	npcs = {{ID = 20091},},--è·ŸéšNPCï¼Œè¢ç»
+	npcs = {{ID = 20091},},--¸úËæNPC£¬Ô¬ÉÜ
 }
-----1-25çº§è„šæœ¬æˆ˜æ–—å®Œäº‹------
+----1-25¼¶½Å±¾Õ½¶·ÍêÊÂ------
 
--------------------------------ä¸»çº¿25-30è„šæœ¬---------------------------------
-ScriptFightDB[161] = {           --[[è§£æ•‘é™ˆå®«--]]
+-------------------------------Ö÷Ïß25-30½Å±¾---------------------------------
+ScriptFightDB[161] = {           --[[½â¾È³Â¹¬--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20305},{ID = 20303},{ID = 20304},{ID = 20310},{ID = 20311},},
 }
-ScriptFightDB[162] = {           --[[æŸ¥æ¢æ›¹æ“ä¸‹è½--]]
+ScriptFightDB[162] = {           --[[²éÌ½²Ü²ÙÏÂÂä--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20309},{ID = 20306},{ID = 20306},{ID = 20306},{ID = 20306},},
 	systemActions = {
 			[1] = {
@@ -765,22 +766,22 @@ ScriptFightDB[162] = {           --[[æŸ¥æ¢æ›¹æ“ä¸‹è½--]]
 	},
 },
 }
-ScriptFightDB[163] = {           --[[è§£æ•‘æ›¹æ“--]]
+ScriptFightDB[163] = {           --[[½â¾È²Ü²Ù--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20312},{ID = 20307},{ID = 20319},{ID = 20320},{ID = 20324},},
 }
-ScriptFightDB[164] = {           --[[å†é‡é˜»æ‹¦--]]
+ScriptFightDB[164] = {           --[[ÔÙÓö×èÀ¹--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20317},{ID = 20316},{ID = 20328},{ID = 20329},{ID = 20332},},
 	npcs = {{ID = 20313,},},
 }
-ScriptFightDB[165] = {           --[[é©°æ´å…³ç¾½--]]
+ScriptFightDB[165] = {           --[[³ÛÔ®¹ØÓğ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20321},{ID = 20338},{ID = 20339},{ID = 20340},{ID = 20341},},
 	npcs = {{ID = 20322,},},
 }
-ScriptFightDB[166] = {           --[[æ¸©é…’æ–©åé›„--]]
+ScriptFightDB[166] = {           --[[ÎÂ¾ÆÕ¶»ªĞÛ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20325},{ID = 20323},{ID = 20343},{ID = 20344},{ID = 20345},},
 	npcs = {{ID = 20322,},},
 }
-ScriptFightDB[167] = {             --[[é™æœå¼ è¾½--]]
+ScriptFightDB[167] = {             --[[½µ·şÕÅÁÉ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20331},{ID = 20330},{ID = 20346},{ID = 20347},{ID = 20348},},
 	npcs = {{ID = 20322,},{ID = 20326,},{ID = 20327,},},
 	systemActions = {
@@ -797,7 +798,7 @@ ScriptFightDB[167] = {             --[[é™æœå¼ è¾½--]]
 	},
 },
 }
-ScriptFightDB[168] = {             --[[ä¸‰è‹±æˆ˜å•å¸ƒ--]]
+ScriptFightDB[168] = {             --[[ÈıÓ¢Õ½ÂÀ²¼--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20335},},
 	npcs = {{ID = 20322,},{ID = 20326,},{ID = 20327,},},
 	systemActions = {
@@ -814,7 +815,7 @@ ScriptFightDB[168] = {             --[[ä¸‰è‹±æˆ˜å•å¸ƒ--]]
 	},
 },
 }
-ScriptFightDB[169] = {             --[[å¤§æˆ˜é­”åŒ–å•å¸ƒ--]]
+ScriptFightDB[169] = {             --[[´óÕ½Ä§»¯ÂÀ²¼--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20342},},
 	npcs = {{ID = 20322,},{ID = 20326,},{ID = 20327,},},
 	systemActions = {
@@ -831,7 +832,7 @@ ScriptFightDB[169] = {             --[[å¤§æˆ˜é­”åŒ–å•å¸ƒ--]]
 	},
 },
 }
- --[[æŠ¤é€æ›¹æ“--]]
+ --[[»¤ËÍ²Ü²Ù--]]
 ScriptFightDB[170] = {          
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20314},{ID = 20306},{ID = 20306},{ID = 20306},{ID = 20306},},
 	npcs = {{ID = 20313,},},
@@ -846,8 +847,8 @@ ScriptFightDB[172] = {
 }
 
 
-----------------31-32çº§ä¸»çº¿-----------------------
-ScriptFightDB[175] = {             --[[æŸ¥æ¢å­™åšä¸‹è½--]]
+----------------31-32¼¶Ö÷Ïß-----------------------
+ScriptFightDB[175] = {             --[[²éÌ½Ëï¼áÏÂÂä--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20601},{ID = 20603},{ID = 20603},},
 	systemActions = {
 			[1] = {
@@ -863,10 +864,10 @@ ScriptFightDB[175] = {             --[[æŸ¥æ¢å­™åšä¸‹è½--]]
 	},
 },
 }
-ScriptFightDB[176] = {            --[[æ•‘ä¸‹å­™åš--]]
+ScriptFightDB[176] = {            --[[¾ÈÏÂËï¼á--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20602},{ID = 20604},{ID = 20629},{ID = 20630},{ID = 20631},},
 }
-ScriptFightDB[177] = {            --[[æ•‘äººäºæ°´ç«--]]
+ScriptFightDB[177] = {            --[[¾ÈÈËÓÚË®»ğ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20605},{ID = 20632},{ID = 20633},{ID = 20634},{ID = 20635},},
 	systemActions = {
 			[1] = {
@@ -882,10 +883,10 @@ ScriptFightDB[177] = {            --[[æ•‘äººäºæ°´ç«--]]
 			},
 	},
 }
-ScriptFightDB[178] = {           --[[è¥æ•‘æœ±æ²»å´æ™¯--]]
+ScriptFightDB[178] = {           --[[Óª¾ÈÖìÖÎÎâ¾°--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20609},{ID = 20604},{ID = 20604},{ID = 20604},{ID = 20604},},
 }
-ScriptFightDB[179] = {           --[[æ¢å¯»é»„ç›–--]]
+ScriptFightDB[179] = {           --[[Ì½Ñ°»Æ¸Ç--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20610},{ID = 20611},{ID = 20611},{ID = 20611},{ID = 20611},},
 	systemActions = {
 			[1] = {
@@ -901,13 +902,13 @@ ScriptFightDB[179] = {           --[[æ¢å¯»é»„ç›–--]]
 			},
 	},
 }
-ScriptFightDB[180] = {           --[[è¥æ•‘é»„ç›–--]]
+ScriptFightDB[180] = {           --[[Óª¾È»Æ¸Ç--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20612},{ID = 20603},{ID = 20603},{ID = 20603},{ID = 20603},},
 }
-ScriptFightDB[181] = {           --[[è¥æ•‘é»„ç›–ï¼ˆæ¢å…´ï¼‰--]]
+ScriptFightDB[181] = {           --[[Óª¾È»Æ¸Ç£¨ÁºĞË£©--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20613},{ID = 20614},{ID = 20614},},
 }
-ScriptFightDB[182] = {           --[[å¦–å…µä¹‹è°œ--]]
+ScriptFightDB[182] = {           --[[Ñı±øÖ®ÃÕ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20615},{ID = 20616},{ID = 20616},{ID = 20616},{ID = 20616},},
 	systemActions = {
 			[1] = {
@@ -933,7 +934,7 @@ ScriptFightDB[182] = {           --[[å¦–å…µä¹‹è°œ--]]
 			},
 	},
 }
-ScriptFightDB[183] = {           --[[æŠ¤é˜µå¤§å°†--]]
+ScriptFightDB[183] = {           --[[»¤Õó´ó½«--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20617},{ID = 20618},{ID = 20637},},
 	systemActions = {
 			[1] = {
@@ -949,13 +950,13 @@ ScriptFightDB[183] = {           --[[æŠ¤é˜µå¤§å°†--]]
 			},
 	},
 }
-ScriptFightDB[184] = {           --[[æ¢æŸ¥å¦–é˜µ--]]
+ScriptFightDB[184] = {           --[[Ì½²éÑıÕó--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20619},},
 }
-ScriptFightDB[185] = {           --[[é‡‘ç¼ ä¹‹é­‚--]]
+ScriptFightDB[185] = {           --[[½ğ²øÖ®»ê--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20620},},
 }
-ScriptFightDB[186] = {           --[[çƒ¬æä¹‹é­‚--]]
+ScriptFightDB[186] = {           --[[½ıÖ¦Ö®»ê--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20621},},
 	systemActions = {
 			[1] = {
@@ -971,31 +972,31 @@ ScriptFightDB[186] = {           --[[çƒ¬æä¹‹é­‚--]]
 				},
 			},
 }
-ScriptFightDB[187] = {           --[[ç«é­ä¹‹é­‚--]]
+ScriptFightDB[187] = {           --[[»ğ¿ıÖ®»ê--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20622},},
 }
-ScriptFightDB[188] = {           --[[å¤©ç¦„ä¹‹é­‚--]]
+ScriptFightDB[188] = {           --[[ÌìÂ»Ö®»ê--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20623},},
 }
-ScriptFightDB[189] = {           --[[æˆ˜å•å²³--]]
+ScriptFightDB[189] = {           --[[Õ½ÂÀÔÀ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20624},},
 }
-ScriptFightDB[190] = {           --[[é“²é™¤å¾è£--]]
+ScriptFightDB[190] = {           --[[²ù³ıĞìÈÙ--]]
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20605},{ID = 20616},{ID = 20616},{ID = 20618},{ID = 20618},},
 }
 
-----------------33-34çº§ä¸»çº¿-----------------------
+----------------33-34¼¶Ö÷Ïß-----------------------
 
-ScriptFightDB[200] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[200] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID =20704},{ID = 20737},{ID = 20739},{ID = 20736},{ID = 20738},},
 }
-ScriptFightDB[201] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[201] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID =20720},{ID = 20740},{ID = 20742},{ID = 20741},{ID = 20743},},
 }
-ScriptFightDB[202] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[202] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID =20703},},	
 }
-ScriptFightDB[203] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[203] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20707},},
 	systemActions = {
 	      [1] = {
@@ -1011,7 +1012,7 @@ ScriptFightDB[203] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 		  },
 },
 }
-ScriptFightDB[204] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[204] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20708},{ID = 20745},{ID = 20747},{ID = 20744},{ID = 20746},},
 	systemActions = {
 	      [1] = {
@@ -1027,7 +1028,7 @@ ScriptFightDB[204] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 		  },
 },
 }
-ScriptFightDB[205] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[205] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20710},{ID = 20721},{ID = 20754},{ID = 20722},{ID = 20753},},
 	systemActions = {
 	      [1] = {
@@ -1043,7 +1044,7 @@ ScriptFightDB[205] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 		  },
 },
 }
-ScriptFightDB[206] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[206] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20709},{ID = 20756},{ID = 20758},{ID = 20755},{ID = 20757},},
 	systemActions = {
 	      [1] = {
@@ -1059,10 +1060,10 @@ ScriptFightDB[206] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 		  },
 },
 }
-ScriptFightDB[207] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[207] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20712},},	
 }
-ScriptFightDB[208] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[208] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20713},{ID = 20762},{ID = 20763},},
 	systemActions = {
 	      [1] = {
@@ -1078,7 +1079,7 @@ ScriptFightDB[208] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 },
 },
 }
-ScriptFightDB[209] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[209] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20715},{ID = 20723},{ID = 20760},{ID = 20759},{ID = 20761},},
 	systemActions = {
 	      [1] = {
@@ -1094,10 +1095,10 @@ ScriptFightDB[209] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 },
 },
 }
-ScriptFightDB[210] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[210] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20716},{ID = 20748},{ID = 20749},},
 }
-ScriptFightDB[211] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[211] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID =20717},{ID = 20748},{ID = 20749},},
 	systemActions = {
 	      [1] = {
@@ -1114,7 +1115,7 @@ ScriptFightDB[211] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 },
 },
 }
-ScriptFightDB[212] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
+ScriptFightDB[212] = {         ---33-34¼¶Ö÷ÏßÈÎÎñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20718},{ID = 20724},{ID = 20727},{ID = 20750},{ID = 20751},},
 	systemActions = {
 	      [1] = {
@@ -1132,7 +1133,7 @@ ScriptFightDB[212] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡
 	
 }
 
-ScriptFightDB[213] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡é­”åŒ–å•å¸ƒ
+ScriptFightDB[213] = {         ---33-34¼¶Ö÷ÏßÈÎÎñÄ§»¯ÂÀ²¼
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20707},},
 	systemActions ={
 	      [1] =
@@ -1153,8 +1154,8 @@ ScriptFightDB[213] = {         ---33-34çº§ä¸»çº¿ä»»åŠ¡é­”åŒ–å•å¸ƒ
 }
 
 
--------------------------------------------35-36çº§ä¸»çº¿-----------------------------------------------------
-ScriptFightDB[220] = {             -----------------ç‰›è¾…
+-------------------------------------------35-36¼¶Ö÷Ïß-----------------------------------------------------
+ScriptFightDB[220] = {             -----------------Å£¸¨
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20804},{ID = 20802},{ID = 20802},{ID = 20803},{ID = 20803}},
@@ -1175,7 +1176,7 @@ ScriptFightDB[220] = {             -----------------ç‰›è¾…
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[221] = {             -----------------å·¦çµ
+ScriptFightDB[221] = {             -----------------×óÁé
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20809},{ID = 20805},{ID = 20805},{ID = 20806},{ID = 20806}},
@@ -1196,7 +1197,7 @@ ScriptFightDB[221] = {             -----------------å·¦çµ
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[222] = {             -----------------æ¢å†€
+ScriptFightDB[222] = {             -----------------Áº¼½
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20812},{ID = 20807},{ID = 20808},{ID = 20810},{ID = 20811}},
@@ -1217,7 +1218,7 @@ ScriptFightDB[222] = {             -----------------æ¢å†€
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[223] = {             -----------------æå„’
+ScriptFightDB[223] = {             -----------------ÀîÈå
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20813},},
@@ -1238,7 +1239,7 @@ ScriptFightDB[223] = {             -----------------æå„’
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[224] = {             -----------------è‡§éœ¸
+ScriptFightDB[224] = {             -----------------ê°°Ô
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20816},{ID = 20814},{ID = 20814},{ID = 20815},{ID = 20815}},
@@ -1259,7 +1260,7 @@ ScriptFightDB[224] = {             -----------------è‡§éœ¸
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[225] = {             -----------------é‚ªæ•™é­”åŒ–æŠ¤æ³•
+ScriptFightDB[225] = {             -----------------Ğ°½ÌÄ§»¯»¤·¨
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20817},},
@@ -1280,7 +1281,7 @@ ScriptFightDB[225] = {             -----------------é‚ªæ•™é­”åŒ–æŠ¤æ³•
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[226] = {             -----------------éƒ­æ±œ
+ScriptFightDB[226] = {             -----------------¹ùãá
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20818},{ID = 20814},{ID = 20814},{ID = 20815},{ID = 20815}},
@@ -1301,7 +1302,7 @@ ScriptFightDB[226] = {             -----------------éƒ­æ±œ
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[227] = {             -----------------é‡‘ç¿…å¤§é¹ç‹
+ScriptFightDB[227] = {             -----------------½ğ³á´óÅôÍõ
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20819},},
@@ -1322,7 +1323,7 @@ ScriptFightDB[227] = {             -----------------é‡‘ç¿…å¤§é¹ç‹
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[228] = {             -----------------é«˜é¡º
+ScriptFightDB[228] = {             -----------------¸ßË³
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20820},{ID = 20814},{ID = 20814},{ID = 20815},{ID = 20815}},
@@ -1343,7 +1344,7 @@ ScriptFightDB[228] = {             -----------------é«˜é¡º
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[229] = {             -----------------å®ˆæŠ¤çµå…½
+ScriptFightDB[229] = {             -----------------ÊØ»¤ÁéÊŞ
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20821},},
@@ -1364,7 +1365,7 @@ ScriptFightDB[229] = {             -----------------å®ˆæŠ¤çµå…½
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[230] = {             -----------------ç‰›é­”
+ScriptFightDB[230] = {             -----------------Å£Ä§
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20822},},
@@ -1385,7 +1386,7 @@ ScriptFightDB[230] = {             -----------------ç‰›é­”
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[231] = {             -----------------é›ªèæœ¨-ç¬¬ä¸€æ³¢æ€ª
+ScriptFightDB[231] = {             -----------------Ñ©ÈÚÄ¾-µÚÒ»²¨¹Ö
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10026},{ID = 10027},{ID = 10027},{ID = 10029},{ID = 10029}},
@@ -1406,7 +1407,7 @@ ScriptFightDB[231] = {             -----------------é›ªèæœ¨-ç¬¬ä¸€æ³¢æ€ª
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[232] = {             -----------------é›ªèæœ¨-ç¬¬äºŒæ³¢æ€ª
+ScriptFightDB[232] = {             -----------------Ñ©ÈÚÄ¾-µÚ¶ş²¨¹Ö
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20823},{ID = 10027},{ID = 10027},{ID = 10029},{ID = 10029}},
@@ -1438,7 +1439,7 @@ ScriptFightDB[232] = {             -----------------é›ªèæœ¨-ç¬¬äºŒæ³¢æ€ª
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[233] = {             -----------------èƒ¡å¤§åŠ›
+ScriptFightDB[233] = {             -----------------ºú´óÁ¦
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20824},{ID = 20832},{ID = 20832},{ID = 20832},{ID = 20832}},
@@ -1459,7 +1460,7 @@ ScriptFightDB[233] = {             -----------------èƒ¡å¤§åŠ›
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[234] = {             -----------------å®ˆé˜µé˜µçµ1
+ScriptFightDB[234] = {             -----------------ÊØÕóÕóÁé1
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20825},},
@@ -1480,7 +1481,7 @@ ScriptFightDB[234] = {             -----------------å®ˆé˜µé˜µçµ1
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[235] = {             -----------------å®ˆé˜µé˜µçµ2
+ScriptFightDB[235] = {             -----------------ÊØÕóÕóÁé2
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20826},},
@@ -1501,7 +1502,7 @@ ScriptFightDB[235] = {             -----------------å®ˆé˜µé˜µçµ2
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[236] = {             -----------------å®ˆé˜µé˜µçµ3
+ScriptFightDB[236] = {             -----------------ÊØÕóÕóÁé3
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20827},},
@@ -1522,7 +1523,7 @@ ScriptFightDB[236] = {             -----------------å®ˆé˜µé˜µçµ3
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[237] = {             -----------------å®ˆé˜µé˜µçµ4
+ScriptFightDB[237] = {             -----------------ÊØÕóÕóÁé4
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20828},},
@@ -1543,7 +1544,7 @@ ScriptFightDB[237] = {             -----------------å®ˆé˜µé˜µçµ4
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[238] = {             -----------------å¤§é­”é£å»‰
+ScriptFightDB[238] = {             -----------------´óÄ§·ÉÁ®
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20830},},
@@ -1565,7 +1566,7 @@ ScriptFightDB[238] = {             -----------------å¤§é­”é£å»‰
 	          mats={{ID=10001,count = 1}},
 	},
 }
-ScriptFightDB[239] = {             -----------------è‘£å“
+ScriptFightDB[239] = {             -----------------¶­×¿
 	backgroundMusic = nil,
 	backgroundPic = nil,
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20831},},
@@ -1586,7 +1587,7 @@ ScriptFightDB[239] = {             -----------------è‘£å“
 	          mats={{ID=10001,count = 1}},
 	},
 }
--------------------------------------------37-38çº§ä¸»çº¿-----------------------------------------------------
+-------------------------------------------37-38¼¶Ö÷Ïß-----------------------------------------------------
 ScriptFightDB[301] = {  
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20901},{ID = 20902},{ID = 20902},{ID = 20903},{ID = 20903},},
 	systemActions = {
@@ -1720,7 +1721,7 @@ ScriptFightDB[313] = {
 ScriptFightDB[314] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20943},},
 }
--------------------------------------------39-40çº§ä¸»çº¿-----------------------------------------------------
+-------------------------------------------39-40¼¶Ö÷Ïß-----------------------------------------------------
 ScriptFightDB[401] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21001},},
 	systemActions = {
@@ -1860,7 +1861,7 @@ ScriptFightDB[415] = {
 	},
 },
 }
--------------------------------------------41-42çº§ä¸»çº¿-----------------------------------------------------
+-------------------------------------------41-42¼¶Ö÷Ïß-----------------------------------------------------
 ScriptFightDB[451] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21103},{ID = 21101},{ID = 21102},{ID = 21101},{ID = 21102},},
 }
@@ -1925,27 +1926,27 @@ ScriptFightDB[462] = {
 }
 ScriptFightDB[463] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21125},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
-npcs = {{ID = 21122},},--è·ŸéšNPCæ›¹ä»
+npcs = {{ID = 21122},},--¸úËæNPC²ÜÈÊ
 }
 ScriptFightDB[464] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21126},{ID = 21123},{ID = 21124},{ID = 21123},{ID = 21124},},
-npcs = {{ID = 21122},},--è·ŸéšNPCæ›¹ä»
+npcs = {{ID = 21122},},--¸úËæNPC²ÜÈÊ
 }
 ScriptFightDB[465] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21127},},
-npcs = {{ID = 21122},},--è·ŸéšNPCæ›¹ä»
+npcs = {{ID = 21122},},--¸úËæNPC²ÜÈÊ
 }
 ScriptFightDB[466] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21130},{ID = 21128},{ID = 21129},{ID = 21128},{ID = 21129},},
-npcs = {{ID = 21122},},--è·ŸéšNPCæ›¹ä»
+npcs = {{ID = 21122},},--¸úËæNPC²ÜÈÊ
 }
 ScriptFightDB[467] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21131},{ID = 21128},{ID = 21129},{ID = 21128},{ID = 21129},},
-npcs = {{ID = 21122},},--è·ŸéšNPCæ›¹ä»
+npcs = {{ID = 21122},},--¸úËæNPC²ÜÈÊ
 }
 ScriptFightDB[468] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21132},},
-npcs = {{ID = 21122},},--è·ŸéšNPCæ›¹ä»
+npcs = {{ID = 21122},},--¸úËæNPC²ÜÈÊ
 }
 ScriptFightDB[469] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21136},{ID = 21134},{ID = 21135},{ID = 21134},{ID = 21135},},
@@ -2028,8 +2029,234 @@ ScriptFightDB[486] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21163},},
 }
 
+-------------------------------------------43-44¼¶Ö÷Ïß-----------------------------------------------------
+ScriptFightDB[501] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21203},{ID = 21204},{ID = 21205},{ID = 21206},{ID = 21207},},
+}
+ScriptFightDB[502] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21208},{ID = 21204},{ID = 21205},{ID = 21206},{ID = 21207},},
+}
+ScriptFightDB[503] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21209},{ID = 21204},{ID = 21205},{ID = 21206},{ID = 21207},},
+}
+ScriptFightDB[504] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21211},{ID = 21212},{ID = 21213},{ID = 21214},{ID = 21215},},
+	npcs = {{ID = 21210},},
+}
+ScriptFightDB[505] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21216},{ID = 21212},{ID = 21213},{ID = 21214},{ID = 21215},},
+	npcs = {{ID = 21210},},
+}
+ScriptFightDB[506] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21217},{ID = 21212},{ID = 21213},{ID = 21214},{ID = 21215},},
+	npcs = {{ID = 21210},},
+}
+ScriptFightDB[507] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21218},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+}
+ScriptFightDB[508] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21223},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+}
+ScriptFightDB[509] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21224},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21019,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21019,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21224},bubbleID = 510},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21224},}, }
+			},
+	},
+},
+}
+ScriptFightDB[510] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21225},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+}
+ScriptFightDB[511] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21226},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+}
+ScriptFightDB[512] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21227},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+}
+ScriptFightDB[513] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21229},{ID = 21230},{ID = 21231},{ID = 21232},{ID = 21233},},
+	npcs = {{ID = 21228},},
+}
+ScriptFightDB[514] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21234},{ID = 21230},{ID = 21231},{ID = 21232},{ID = 21233},},
+	npcs = {{ID = 21228},},
+}
+ScriptFightDB[515] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21235},{ID = 21230},{ID = 21231},{ID = 21232},{ID = 21233},},
+	npcs = {{ID = 21228},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21019,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21019,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21235},bubbleID = 511},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21235},}, }
+			},
+	},
+},
+}
+ScriptFightDB[516] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21236},{ID = 21230},{ID = 21231},{ID = 21232},{ID = 21233},},
+	npcs = {{ID = 21228},},
+}
+ScriptFightDB[517] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21237},{ID = 21230},{ID = 21231},{ID = 21232},{ID = 21233},},
+	npcs = {{ID = 21228},},
+}
+ScriptFightDB[518] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21238},{ID = 21230},{ID = 21231},{ID = 21232},{ID = 21233},},
+	npcs = {{ID = 21228},},
+}
+ScriptFightDB[519] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21240},{ID = 21241},{ID = 21242},{ID = 21243},{ID = 21244},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[520] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21245},{ID = 21241},{ID = 21242},{ID = 21243},{ID = 21244},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[521] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21246},},
+	npcs = {{ID = 21239},{ID = 21228},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21246,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21246,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21246},bubbleID = 512},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21246},}, }
+			},
+	},
+},
+}
+ScriptFightDB[522] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21247},{ID = 21248},{ID = 21249},{ID = 21250},{ID = 21251},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[523] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21252},{ID = 21248},{ID = 21249},{ID = 21250},{ID = 21251},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[524] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21253},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[525] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21254},{ID = 21256},{ID = 21257},{ID = 21258},{ID = 21259},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[526] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21255},{ID = 21256},{ID = 21257},{ID = 21258},{ID = 21259},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[527] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21260},{ID = 21256},{ID = 21257},{ID = 21258},{ID = 21259},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[528] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21261},{ID = 21256},{ID = 21257},{ID = 21258},{ID = 21259},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[529] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21262},{ID = 21256},{ID = 21257},{ID = 21258},{ID = 21259},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[530] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21263},{ID = 21256},{ID = 21257},{ID = 21258},{ID = 21259},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[531] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21264},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[532] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21265},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[533] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21266},{ID = 21219},{ID = 21220},{ID = 21221},{ID = 21222},},
+	npcs = {{ID = 21239},{ID = 21228},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21266,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21266,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21266},bubbleID = 513},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21266},}, }
+			},
+	},
+},
+}
+ScriptFightDB[534] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21267},{ID = 21269},{ID = 21270},{ID = 21271},{ID = 21272},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[535] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21268},{ID = 21269},{ID = 21270},{ID = 21271},{ID = 21272},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[536] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21273},{ID = 21269},{ID = 21270},{ID = 21271},{ID = 21272},},
+	npcs = {{ID = 21239},{ID = 21228},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21273,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21273,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21273},bubbleID = 514},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21273},}, }
+			},
+	},
+},
+}
+ScriptFightDB[537] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21274},{ID = 21276},{ID = 21277},{ID = 21271},{ID = 21272},},
+        npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[538] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21275},{ID = 21276},{ID = 21277},{ID = 21271},{ID = 21272},},
+	npcs = {{ID = 21239},{ID = 21228},},
+}
+ScriptFightDB[539] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21278},{ID = 21276},{ID = 21277},{ID = 21271},{ID = 21272},},
+	npcs = {{ID = 21239},{ID = 21228},},
+	systemActions = {
+			[1] = {
+				condition = {
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21278,type="hp",["<="]=40},},
+							{type = ScriptFightConditionType.AttrValue, params={DBID = 21278,type="hp",[">"] = 0},},
+							isAnd = true,
+		                 },
+				 actions = {
+					  {type = ScriptFightActionType.PlayBubble,params={DBID={21278},bubbleID = 515},},
+					  {type = ScriptFightActionType.EntityQuit,params={DBID ={21278},}, }
+			},
+	},
+},
+}
 
-------------------------------------------------å‰¯æœ¬åˆ†å‰²çº¿  -_- å¤§å®¶å¥½,æˆ‘æ˜¯åˆ†å‰²çº¿ --------------------------------------------------------------------------
+------------------------------------------------¸±±¾·Ö¸îÏß  -_- ´ó¼ÒºÃ,ÎÒÊÇ·Ö¸îÏß --------------------------------------------------------------------------
 ScriptFightDB[3001] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30001,},{ID = 30002,},{ID = 30003,},{ID = 30004,},{ID = 30005,},},
 	--[[begin = {
@@ -2169,7 +2396,7 @@ ScriptFightDB[3022] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30180,pos = 27 },},
 	}
 
---æ½œé¾™å²­
+--Ç±ÁúÁë
 ScriptFightDB[3025] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30322, },{ID = 30324, },{ID = 30321, },{ID = 30326, },{ID = 30327, },{ID = 30328, },{ID = 30325, },{ID = 30323, },},
 	}
@@ -2188,7 +2415,7 @@ ScriptFightDB[3029] = {
 ScriptFightDB[3030] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30361,pos = 26 },},
 	}
----------------------é¬¼å‡¤å³¡å‰¯æœ¬é…ç½®ï¼Œé¡ºä¾¿ç»™æ¥¼ä¸‹ä¸€ä¸ªæœºä¼š--------------------------------
+---------------------¹í·ïÏ¿¸±±¾ÅäÖÃ£¬Ë³±ã¸øÂ¥ÏÂÒ»¸ö»ú»á--------------------------------
 ScriptFightDB[3031] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30421,},{ID = 30422, },{ID = 30423, },{ID = 30420, },{ID = 30424, },{ID = 30425, },{ID = 30426, },{ID = 30427, },},
 	}
@@ -2208,7 +2435,7 @@ ScriptFightDB[3036] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30460,pos = 27 },},
 	}
 
---------------------è¿™é‡Œæ˜¯ç¢§æ³¢å²›å‰¯æœ¬é…ç½®åŸºåœ°ï¼Œåƒä¸‡ä¸è¦å‡»ä¸­å‹å†›ï¼--------------------------------------
+--------------------ÕâÀïÊÇ±Ì²¨µº¸±±¾ÅäÖÃ»ùµØ£¬Ç§Íò²»Òª»÷ÖĞÓÑ¾ü£¡--------------------------------------
 ScriptFightDB[3037] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30511,},{ID = 30512, },{ID = 30513, },{ID = 30510, },{ID = 30514, },{ID = 30515, },{ID = 30516, },{ID = 30517, },},
 	}
@@ -2228,7 +2455,7 @@ ScriptFightDB[3042] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30550,pos = 27 },},
 	}
 
------å†°é£åŸ---æ€ä¹ˆè¿™ä¹ˆå¤šè¯è¯´ï¼Œä¸è¦åˆ æ‰æˆ‘çš„å°±è¡Œäº†--------------------
+-----±ù·çÔ­---ÔõÃ´ÕâÃ´¶à»°Ëµ£¬²»ÒªÉ¾µôÎÒµÄ¾ÍĞĞÁË--------------------
 ScriptFightDB[3045] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30651, },{ID = 30653, },{ID = 30650, },{ID = 30655, },{ID = 30656, },{ID = 30657, },{ID = 30654, },{ID = 30652, },},
 	}
@@ -2247,7 +2474,7 @@ ScriptFightDB[3049] = {
 ScriptFightDB[3050] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30690,pos = 26 },},
 	}
------é­”ç½—å³°---åˆ æ‰å°±è®©ä½ æ„Ÿå—é­”ç‹çš„ææƒ§--------------
+-----Ä§ÂŞ·å---É¾µô¾ÍÈÃÄã¸ĞÊÜÄ§ÍõµÄ¿Ö¾å--------------
 
 ScriptFightDB[3055] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30741, },{ID = 30742, },{ID = 30740, },{ID = 30743, },{ID = 30744, },{ID = 30745, },{ID = 30746, },{ID = 30747, },},
@@ -2267,7 +2494,7 @@ ScriptFightDB[3059] = {
 ScriptFightDB[3060] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30780,pos = 26 },},
 	}
-----------------------é‚ªç›˜å±±â€œæ˜æ˜æ˜¯æˆ‘å…ˆçš„ï¼Œèè‰ä¹Ÿå¥½ï¼Œå¾¡å§ä¹Ÿå¥½ã€‚ä½ ä»¬ä¸ºä»€ä¹ˆæåŸºï¼Œæå¾—è¿™ä¹ˆç†Ÿç»ƒå•Šï¼â€-------------------------------
+----------------------Ğ°ÅÌÉ½¡°Ã÷Ã÷ÊÇÎÒÏÈµÄ£¬ÂÜÀòÒ²ºÃ£¬Óù½ãÒ²ºÃ¡£ÄãÃÇÎªÊ²Ã´¸ã»ù£¬¸ãµÃÕâÃ´ÊìÁ·°¡£¡¡±-------------------------------
 ScriptFightDB[3061] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30826, },{ID = 30827, },{ID = 30825, },{ID = 30828, },{ID = 30829, },{ID = 30830, },{ID = 30831, },{ID = 30832, },},
 	}
@@ -2287,7 +2514,7 @@ ScriptFightDB[3066] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30865,pos = 26 },},
 	}
 
-----------------------------------æ–°å‰¯æœ¬æ¯’é¾™å³°,æ¯’é¾™---------------------å³°-----------------------
+----------------------------------ĞÂ¸±±¾¶¾Áú·å,¶¾Áú---------------------·å-----------------------
 ScriptFightDB[3070] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30891, },{ID = 30892, },{ID = 30890, },{ID = 30893, },{ID = 30894, },{ID = 30895, },{ID = 30896, },{ID = 30897, },},
 	}
@@ -2307,7 +2534,7 @@ ScriptFightDB[3075] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30930, },},
 	}
 
------------------------------------------ä¸‡ç ä¸›ä¸­ï¼Œå–å‰¯æœ¬æ ‡è®°ï¼ˆå¤©å®«å¹»å¢ƒï¼‰--------------------------------------------------------------------------------------------------------
+-----------------------------------------ÍòÂë´ÔÖĞ£¬È¡¸±±¾±ê¼Ç£¨Ìì¹¬»Ã¾³£©--------------------------------------------------------------------------------------------------------
 
 
 ScriptFightDB[3076] = {
@@ -2329,9 +2556,9 @@ ScriptFightDB[3081] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31060, },},
 	}
 
------------------------------------è¿·é›¾æ—ï¼Œæ–°å¹´æ¥ä¸€å‘ï¼Œç¥å›å¤§å‰å§ï¼----------------------------------------------
+-----------------------------------ÃÔÎíÁÖ£¬ĞÂÄêÀ´Ò»·¢£¬×£¾ı´ó¼ª°É£¡----------------------------------------------
 
---------------------------------------------------------------èµ¤é­‚å²­å‰¯æœ¬--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------³à»êÁë¸±±¾--------------------------------------------------------------------------------------------------------
 ScriptFightDB[3082] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31111, },{ID = 31112, },{ID = 31110, },{ID = 31113, },{ID = 31114, },{ID = 31115, },{ID = 31116, },{ID = 31117, },},
 	}
@@ -2350,7 +2577,7 @@ ScriptFightDB[3086] = {
 ScriptFightDB[3087] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31150, },},
 	}
------------------------------------è¿·é›¾æ—ï¼Œæ–°å¹´æ¥ä¸€å‘ï¼Œç¥å›å¤§å‰å§ï¼----------------------------------------------
+-----------------------------------ÃÔÎíÁÖ£¬ĞÂÄêÀ´Ò»·¢£¬×£¾ı´ó¼ª°É£¡----------------------------------------------
 
 ScriptFightDB[3088] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31251, },{ID = 31252, },{ID = 31250, },{ID = 31253, },{ID = 31254, },{ID = 31255, },{ID = 31256, },{ID = 31257, },},
@@ -2368,7 +2595,7 @@ ScriptFightDB[3092] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31282, },},
 	}
 
--------------------------------------------å¤©å…¬å±±----è·¨å¹´é…å‰¯æœ¬----------------------------------
+-------------------------------------------Ìì¹«É½----¿çÄêÅä¸±±¾----------------------------------
 ScriptFightDB[3093] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31196, },{ID = 31191, },{ID = 31193, },{ID = 31190, },{ID = 31194, },{ID = 31195, },{ID = 31197, },{ID = 31192, },},
 	}
@@ -2384,7 +2611,7 @@ ScriptFightDB[3096] = {
 ScriptFightDB[3097] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31222, },},
 	}
--------------------------------------------é»„é£å²­--------------------------------------
+-------------------------------------------»Æ·çÁë--------------------------------------
 ScriptFightDB[3098] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31376, },{ID = 31374, },{ID = 31371, },{ID = 31372, },{ID = 31373, },{ID = 31370, },{ID = 31377, },{ID = 31375, },},
 	}
@@ -2400,7 +2627,7 @@ ScriptFightDB[3101] = {
 ScriptFightDB[3102] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31402, },},
 	}
---------------------------------------------ç‚é­”çªŸ-----å¹´åé¦–æ¬¡å‰¯æœ¬------------------------------------------
+--------------------------------------------Ñ×Ä§¿ß-----ÄêºóÊ×´Î¸±±¾------------------------------------------
 ScriptFightDB[3103] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31301, },{ID = 31302, },{ID = 31300, },{ID = 31303, },{ID = 31304, },{ID = 31305, },{ID = 31306, },{ID = 31307, },},
 	}
@@ -2417,7 +2644,7 @@ ScriptFightDB[3107] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31332, },},
 	}
 
--- ä¸‹é¢æ˜¯å¾ªç¯ä»»åŠ¡â€”â€”â€”â€”å¤©é“ä»»åŠ¡çš„è„šæœ¬æˆ˜æ–—-------------------------------
+-- ÏÂÃæÊÇÑ­»·ÈÎÎñ¡ª¡ª¡ª¡ªÌìµÀÈÎÎñµÄ½Å±¾Õ½¶·-------------------------------
 ScriptFightDB[4001] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 25001},{ID = 25031},{ID = 25031},{ID = 25031},{ID = 25031},},
 	}
@@ -2508,7 +2735,7 @@ ScriptFightDB[4029] = {
 ScriptFightDB[4030] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 25030},{ID = 25031},{ID = 25031},{ID = 25031},{ID = 25031},},
 	}
-	---------------------------------------------------å¸®ä¼šä¼‘é—²å‰¯æœ¬ï¼šé©°æ´è™ç‰¢å…³--------------------------------------------------
+	---------------------------------------------------°ï»áĞİÏĞ¸±±¾£º³ÛÔ®»¢ÀÎ¹Ø--------------------------------------------------
 ScriptFightDB[4050] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31451, },{ID = 31452, },{ID = 31450, },{ID = 31453, },{ID = 31454, },},
 	}
@@ -2530,670 +2757,670 @@ ScriptFightDB[4055] = {
 ScriptFightDB[4056] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31480, },},
 	}
---------------------------------------------å¸ˆé—¨ä»»åŠ¡çš„è„šæœ¬æˆ˜æ–—-------------------------------
---------------------------------------------ä»»åŠ¡çš„è„šæœ¬æˆ˜æ–—-------------------------------
-ScriptFightDB[4101] = {             -----------------æš—é›·æˆ˜æ–—-æ£ä¹±å°å¦–
+--------------------------------------------Ê¦ÃÅÈÎÎñµÄ½Å±¾Õ½¶·-------------------------------
+--------------------------------------------ÈÎÎñµÄ½Å±¾Õ½¶·-------------------------------
+ScriptFightDB[4101] = {             -----------------°µÀ×Õ½¶·-µ·ÂÒĞ¡Ñı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26001},{ID = 26001},{ID = 26002},{ID = 26002},{ID = 26002},},
 	}
-ScriptFightDB[4102] = {             -----------------æš—é›·æˆ˜æ–—-ç‹¡çŒ¾ç›—è´¼
+ScriptFightDB[4102] = {             -----------------°µÀ×Õ½¶·-½Æ»«µÁÔô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26003},{ID = 26003},{ID = 26004},{ID = 26004},{ID = 26004},},
 	}
-ScriptFightDB[4103] = {             -----------------æš—é›·æˆ˜æ–—-ä½œæ­¹æµæ°“
+ScriptFightDB[4103] = {             -----------------°µÀ×Õ½¶·-×÷´õÁ÷Ã¥
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26005},{ID = 26005},{ID = 26006},{ID = 26006},{ID = 26006},},
 	}
-ScriptFightDB[4104] = {             -----------------æš—é›·æˆ˜æ–—-æ¶æ¯’å±±è´¼
+ScriptFightDB[4104] = {             -----------------°µÀ×Õ½¶·-¶ñ¶¾É½Ôô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26007},{ID = 26007},{ID = 26008},{ID = 26008},{ID = 26008},},
 	}
-ScriptFightDB[4105] = {             -----------------æ˜é›·æŒ‘æˆ˜-ä¹¾å…ƒå²›å¤§å¼Ÿå­
+ScriptFightDB[4105] = {             -----------------Ã÷À×ÌôÕ½-Ç¬Ôªµº´óµÜ×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20021},},
 	}
-ScriptFightDB[4106] = {             -----------------æ˜é›·æŒ‘æˆ˜-æ¡ƒæºæ´å¤§å¼Ÿå­
+ScriptFightDB[4106] = {             -----------------Ã÷À×ÌôÕ½-ÌÒÔ´¶´´óµÜ×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20025},},
 	}
-ScriptFightDB[4107] = {             -----------------æ˜é›·æŒ‘æˆ˜-é‡‘éœå±±å¤§å¼Ÿå­
+ScriptFightDB[4107] = {             -----------------Ã÷À×ÌôÕ½-½ğÏ¼É½´óµÜ×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20023},},
 	}
-ScriptFightDB[4108] = {             -----------------æ˜é›·æŒ‘æˆ˜-è“¬è±é˜å¤§å¼Ÿå­
+ScriptFightDB[4108] = {             -----------------Ã÷À×ÌôÕ½-ÅîÀ³¸ó´óµÜ×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20022},},
 	}
-ScriptFightDB[4109] = {             -----------------æ˜é›·æŒ‘æˆ˜-ç´«é˜³é—¨å¤§å¼Ÿå­
+ScriptFightDB[4109] = {             -----------------Ã÷À×ÌôÕ½-×ÏÑôÃÅ´óµÜ×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20026},},
 	}
-ScriptFightDB[4110] = {             -----------------æ˜é›·æŒ‘æˆ˜-äº‘éœ„å®«å¤§å¼Ÿå­
+ScriptFightDB[4110] = {             -----------------Ã÷À×ÌôÕ½-ÔÆÏö¹¬´óµÜ×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20024},},
 	}
-ScriptFightDB[4111] = {             -----------------æ˜é›·æŒ‘æˆ˜-ä¹¾å…ƒå²›æ‰§æ³•é•¿è€
+ScriptFightDB[4111] = {             -----------------Ã÷À×ÌôÕ½-Ç¬ÔªµºÖ´·¨³¤ÀÏ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29066},},
 	}
-ScriptFightDB[4112] = {             -----------------æ˜é›·æŒ‘æˆ˜-æ¡ƒæºæ´æ‰§æ³•é•¿è€
+ScriptFightDB[4112] = {             -----------------Ã÷À×ÌôÕ½-ÌÒÔ´¶´Ö´·¨³¤ÀÏ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29067},},
 	}
-ScriptFightDB[4113] = {             -----------------æ˜é›·æŒ‘æˆ˜-é‡‘éœå±±æ‰§æ³•é•¿è€
+ScriptFightDB[4113] = {             -----------------Ã÷À×ÌôÕ½-½ğÏ¼É½Ö´·¨³¤ÀÏ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29068},},
 	}
-ScriptFightDB[4114] = {             -----------------æ˜é›·æŒ‘æˆ˜-è“¬è±é˜æ‰§æ³•é•¿è€
+ScriptFightDB[4114] = {             -----------------Ã÷À×ÌôÕ½-ÅîÀ³¸óÖ´·¨³¤ÀÏ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29069},},
 	}
-ScriptFightDB[4115] = {             -----------------æ˜é›·æŒ‘æˆ˜-ç´«é˜³é—¨æ‰§æ³•é•¿è€
+ScriptFightDB[4115] = {             -----------------Ã÷À×ÌôÕ½-×ÏÑôÃÅÖ´·¨³¤ÀÏ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29070},},
 	}
-ScriptFightDB[4116] = {             -----------------æ˜é›·æŒ‘æˆ˜-äº‘éœ„å®«æ‰§æ³•é•¿è€
+ScriptFightDB[4116] = {             -----------------Ã÷À×ÌôÕ½-ÔÆÏö¹¬Ö´·¨³¤ÀÏ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29071},},
 	}
-ScriptFightDB[4117] = {             -----------------æ‚¬èµä»»åŠ¡-æˆªæ•™å¥¸ç»†
+ScriptFightDB[4117] = {             -----------------ĞüÉÍÈÎÎñ-½Ø½Ì¼éÏ¸
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26009},{ID = 26020},{ID = 26020},},
 	}
-ScriptFightDB[4118] = {             -----------------æ‚¬èµä»»åŠ¡-é—¨æ´¾å›å¾’
+ScriptFightDB[4118] = {             -----------------ĞüÉÍÈÎÎñ-ÃÅÅÉÅÑÍ½
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26012},{ID = 26020},{ID = 26020},},
 	}
-ScriptFightDB[4119] = {             -----------------æ‚¬èµä»»åŠ¡-å…¥ä¾µåˆºå®¢
+ScriptFightDB[4119] = {             -----------------ĞüÉÍÈÎÎñ-ÈëÇÖ´Ì¿Í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26011},{ID = 26020},{ID = 26020},},
 	}
-ScriptFightDB[4120] = {             -----------------æ‚¬èµä»»åŠ¡-å·å¤©å¤§ç›—
+ScriptFightDB[4120] = {             -----------------ĞüÉÍÈÎÎñ-ÍµÌì´óµÁ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26010},{ID = 26020},{ID = 26020},},
 	}
-ScriptFightDB[4121] = {             -----------------æŠ“å® ä»»åŠ¡-ç‰æ¸…ç¥å°†
+ScriptFightDB[4121] = {             -----------------×¥³èÈÎÎñ-ÓñÇåÉñ½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10011},},
 	}
-ScriptFightDB[4122] = {             -----------------æŠ“å® ä»»åŠ¡-å¤é­”
+ScriptFightDB[4122] = {             -----------------×¥³èÈÎÎñ-¹ÅÄ§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10014},},
 	}
-ScriptFightDB[4123] = {             -----------------æŠ“å® ä»»åŠ¡-æŠ¤æ³•ç¥
+ScriptFightDB[4123] = {             -----------------×¥³èÈÎÎñ-»¤·¨Éñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10015},},
 	}
-ScriptFightDB[4124] = {             -----------------æŠ“å® ä»»åŠ¡-è™å¦–
+ScriptFightDB[4124] = {             -----------------×¥³èÈÎÎñ-òùÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10016},},
 	}
-ScriptFightDB[4125] = {             -----------------æŠ“å® ä»»åŠ¡-é—¨å®¢
+ScriptFightDB[4125] = {             -----------------×¥³èÈÎÎñ-ÃÅ¿Í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10018},},
 	}
-ScriptFightDB[4126] = {             -----------------æŠ“å® ä»»åŠ¡-å…³å°†
+ScriptFightDB[4126] = {             -----------------×¥³èÈÎÎñ-¹Ø½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10022},},
 	}
-ScriptFightDB[4127] = {             -----------------æŠ“å® ä»»åŠ¡-åˆ€ç›¾æ‰‹
+ScriptFightDB[4127] = {             -----------------×¥³èÈÎÎñ-µ¶¶ÜÊÖ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10023},},
 	}
-ScriptFightDB[4128] = {             -----------------æŠ“å® ä»»åŠ¡-è™å¦–
+ScriptFightDB[4128] = {             -----------------×¥³èÈÎÎñ-»¢Ñı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10024},},
 	}
-ScriptFightDB[4129] = {             -----------------æŠ“å® ä»»åŠ¡-åŒå¤´ç‹¼å¦–
+ScriptFightDB[4129] = {             -----------------×¥³èÈÎÎñ-Ë«Í·ÀÇÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10026},},
 	}
-ScriptFightDB[4130] = {             -----------------æŠ“å® ä»»åŠ¡-å†°å¦–
+ScriptFightDB[4130] = {             -----------------×¥³èÈÎÎñ-±ùÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10027},},
 	}
-ScriptFightDB[4131] = {             -----------------æŠ“å® ä»»åŠ¡-é­”çŠ¬
+ScriptFightDB[4131] = {             -----------------×¥³èÈÎÎñ-Ä§È®
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10029},},
 	}
-ScriptFightDB[4132] = {             -----------------æŠ“å® ä»»åŠ¡-æµ·æ€ª
+ScriptFightDB[4132] = {             -----------------×¥³èÈÎÎñ-º£¹Ö
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10030},},
 	}
-ScriptFightDB[4133] = {             -----------------æŠ“å® ä»»åŠ¡-é²›å¦–
+ScriptFightDB[4133] = {             -----------------×¥³èÈÎÎñ-öŞÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10031},},
 	}
-ScriptFightDB[4134] = {             -----------------æŠ“å® ä»»åŠ¡-å¦–çµ
+ScriptFightDB[4134] = {             -----------------×¥³èÈÎÎñ-ÑıÁé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10034},},
 	}
-ScriptFightDB[4135] = {             -----------------æŠ“å® ä»»åŠ¡-ç´é­”å¥³
+ScriptFightDB[4135] = {             -----------------×¥³èÈÎÎñ-ÇÙÄ§Å®
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10035},},
 	}
-ScriptFightDB[4136] = {             -----------------æŠ“å® ä»»åŠ¡-æ­»å£«
+ScriptFightDB[4136] = {             -----------------×¥³èÈÎÎñ-ËÀÊ¿
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10036},},
 	}
-ScriptFightDB[4137] = {             -----------------æŠ“å® ä»»åŠ¡-è™å°†
+ScriptFightDB[4137] = {             -----------------×¥³èÈÎÎñ-»¢½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10038},},
 	}
-ScriptFightDB[4138] = {             -----------------æŠ“å® ä»»åŠ¡-è°‹å£«
+ScriptFightDB[4138] = {             -----------------×¥³èÈÎÎñ-Ä±Ê¿
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10039},},
 	}
-ScriptFightDB[4139] = {             -----------------æŠ“å® ä»»åŠ¡-ç‰›å¤´
+ScriptFightDB[4139] = {             -----------------×¥³èÈÎÎñ-Å£Í·
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10040},},
 	}
-ScriptFightDB[4140] = {             -----------------æŠ“å® ä»»åŠ¡-é©¬é¢
+ScriptFightDB[4140] = {             -----------------×¥³èÈÎÎñ-ÂíÃæ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10041},},
 	}
-ScriptFightDB[4141] = {             -----------------å·¡é€»è§¦å‘ä¹ä¸äº‹ä»¶-æ‹¦è·¯å¼ºç›—
+ScriptFightDB[4141] = {             -----------------Ñ²Âß´¥·¢ÆòØ¤ÊÂ¼ş-À¹Â·Ç¿µÁ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26018},{ID = 26018},{ID = 26019},{ID = 26019},{ID = 26019},},
 	}
-ScriptFightDB[4142] = {             -----------------å·¡é€»è§¦å‘ç¥ç§˜äººäº‹ä»¶-ä»‡æ•Œ
+ScriptFightDB[4142] = {             -----------------Ñ²Âß´¥·¢ÉñÃØÈËÊÂ¼ş-³ğµĞ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 26028},},
 	}
 
 
------------------------------- æ’ä¸€è„š è¿™é‡Œæ˜¯è¯•ç‚¼ä»»åŠ¡çš„æˆ˜æ–—åˆ†å‰²-------------------------------
-ScriptFightDB[5001] = {             -----------------æš—é›·æˆ˜æ–—-è‘£å“ä½™å…š
+------------------------------ ²åÒ»½Å ÕâÀïÊÇÊÔÁ¶ÈÎÎñµÄÕ½¶··Ö¸î-------------------------------
+ScriptFightDB[5001] = {             -----------------°µÀ×Õ½¶·-¶­×¿Óàµ³
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27001},{ID = 27001},{ID = 27001},{ID = 27001},{ID = 27001},},
 }
-ScriptFightDB[5002] = {             -----------------æš—é›·æˆ˜æ–—-é»„å·¾ä½™å…š
+ScriptFightDB[5002] = {             -----------------°µÀ×Õ½¶·-»Æ½íÓàµ³
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27002},{ID = 27002},{ID = 27002},{ID = 27002},{ID = 27002},},
 }
-ScriptFightDB[5003] = {             -----------------æš—é›·æˆ˜æ–—-æ‚åŒª
+ScriptFightDB[5003] = {             -----------------°µÀ×Õ½¶·-º··Ë
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27003},{ID = 27003},{ID = 27003},{ID = 27003},{ID = 27003},},
 }
-ScriptFightDB[5004] = {             -----------------æš—é›·æˆ˜æ–—-å¼ºç›—
+ScriptFightDB[5004] = {             -----------------°µÀ×Õ½¶·-Ç¿µÁ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27004},{ID = 27004},{ID = 27004},{ID = 27004},{ID = 27004},},
 }
-ScriptFightDB[5005] = {             -----------------æš—é›·æˆ˜æ–—-æµæ°“
+ScriptFightDB[5005] = {             -----------------°µÀ×Õ½¶·-Á÷Ã¥
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27005},{ID = 27005},{ID = 27005},{ID = 27005},{ID = 27005},},
 }
-ScriptFightDB[5006] = {             -----------------æš—é›·æˆ˜æ–—-è´¼å¯‡
+ScriptFightDB[5006] = {             -----------------°µÀ×Õ½¶·-Ôô¿Ü
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27006},{ID = 27006},{ID = 27006},{ID = 27006},{ID = 27006},},
 }
-ScriptFightDB[5007] = {             -----------------æš—é›·æˆ˜æ–—-é©¬åŒª
+ScriptFightDB[5007] = {             -----------------°µÀ×Õ½¶·-Âí·Ë
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27007},{ID = 27007},{ID = 27007},{ID = 27007},{ID = 27007},},
 }
-ScriptFightDB[5008] = {             -----------------æš—é›·æˆ˜æ–—-ç‰æ³‰è¡Œè€…
+ScriptFightDB[5008] = {             -----------------°µÀ×Õ½¶·-ÓñÈªĞĞÕß
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27008},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5009] = {             -----------------æš—é›·æˆ˜æ–—-é£è´¼
+ScriptFightDB[5009] = {             -----------------°µÀ×Õ½¶·-·ÉÔô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27009},{ID = 27009},{ID = 27009},{ID = 27009},{ID = 27009},},
 }
-ScriptFightDB[5010] = {             -----------------æš—é›·æˆ˜æ–—-è‘£å†›ä¼é•¿
+ScriptFightDB[5010] = {             -----------------°µÀ×Õ½¶·-¶­¾üÎé³¤
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27010},{ID = 27001},{ID = 27001},{ID = 27001},{ID = 27001},},
 }
-ScriptFightDB[5011] = {             -----------------æš—é›·æˆ˜æ–—-é»„å·¾æŠ¤å«é•¿
+ScriptFightDB[5011] = {             -----------------°µÀ×Õ½¶·-»Æ½í»¤ÎÀ³¤
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27011},{ID = 27002},{ID = 27002},{ID = 27002},{ID = 27002},},
 }
-ScriptFightDB[5012] = {             -----------------æš—é›·æˆ˜æ–—-è’æ¼ ç›—åŒª
+ScriptFightDB[5012] = {             -----------------°µÀ×Õ½¶·-»ÄÄ®µÁ·Ë
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27012},{ID = 27012},{ID = 27012},{ID = 27012},{ID = 27012},},
 }
-ScriptFightDB[5013] = {             -----------------æš—é›·æˆ˜æ–—-å€­å¯‡
+ScriptFightDB[5013] = {             -----------------°µÀ×Õ½¶·-ÙÁ¿Ü
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27013},{ID = 27013},{ID = 27013},{ID = 27013},{ID = 27013},},
 }
-ScriptFightDB[5014] = {             -----------------æš—é›·æˆ˜æ–—-å±±è´¼
+ScriptFightDB[5014] = {             -----------------°µÀ×Õ½¶·-É½Ôô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27014},{ID = 27014},{ID = 27014},{ID = 27014},{ID = 27014},},
 }
-ScriptFightDB[5015] = {             -----------------æš—é›·æˆ˜æ–—-æ°´è´¼
+ScriptFightDB[5015] = {             -----------------°µÀ×Õ½¶·-Ë®Ôô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27015},{ID = 27015},{ID = 27015},{ID = 27015},{ID = 27015},},
 }
-ScriptFightDB[5016] = {             -----------------æš—é›·æˆ˜æ–—-è‘£å†›å†›é˜€
+ScriptFightDB[5016] = {             -----------------°µÀ×Õ½¶·-¶­¾ü¾ü·§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27016},{ID = 27001},{ID = 27001},{ID = 27001},{ID = 27001},},
 }
-ScriptFightDB[5017] = {             -----------------æš—é›·æˆ˜æ–—-é»„å·¾å†›é˜€
+ScriptFightDB[5017] = {             -----------------°µÀ×Õ½¶·-»Æ½í¾ü·§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27017},{ID = 27002},{ID = 27002},{ID = 27002},{ID = 27002},},
 }
-ScriptFightDB[5018] = {             -----------------æš—é›·æˆ˜æ–—-é»‘å±±å†›
+ScriptFightDB[5018] = {             -----------------°µÀ×Õ½¶·-ºÚÉ½¾ü
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27018},{ID = 27018},{ID = 27018},{ID = 27018},{ID = 27018},},
 }
-ScriptFightDB[5019] = {             -----------------æš—é›·æˆ˜æ–—-é‚ªæ•™ä½™å…š
+ScriptFightDB[5019] = {             -----------------°µÀ×Õ½¶·-Ğ°½ÌÓàµ³
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27019},{ID = 27019},{ID = 27019},{ID = 27019},{ID = 27019},},
 }
-ScriptFightDB[5020] = {             -----------------æš—é›·æˆ˜æ–—-ç›Ÿå†›å›å…š
+ScriptFightDB[5020] = {             -----------------°µÀ×Õ½¶·-ÃË¾üÅÑµ³
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27020},{ID = 27020},{ID = 27020},{ID = 27020},{ID = 27020},},
 }
-ScriptFightDB[5021] = {             -----------------æš—é›·æˆ˜æ–—-é‚ªç¥æ•™å¾’
+ScriptFightDB[5021] = {             -----------------°µÀ×Õ½¶·-Ğ°Éñ½ÌÍ½
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27021},{ID = 27021},{ID = 27021},{ID = 27021},{ID = 27021},},
 }
-ScriptFightDB[5022] = {             -----------------æš—é›·æˆ˜æ–—-é‚ªæ¶ç¥­ç¥€
+ScriptFightDB[5022] = {             -----------------°µÀ×Õ½¶·-Ğ°¶ñ¼Àìë
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27022},{ID = 27022},{ID = 27022},{ID = 27022},{ID = 27022},},
 }
-ScriptFightDB[5023] = {             -----------------æš—é›·æˆ˜æ–—-é€†é“å¤©å¸ˆ
+ScriptFightDB[5023] = {             -----------------°µÀ×Õ½¶·-ÄæµÀÌìÊ¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27023},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5024] = {             -----------------æš—é›·æˆ˜æ–—-æˆªæ•™å›å¾’
+ScriptFightDB[5024] = {             -----------------°µÀ×Õ½¶·-½Ø½ÌÅÑÍ½
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27024},{ID = 27024},{ID = 27024},{ID = 27024},{ID = 27024},},
 }
-ScriptFightDB[5025] = {             -----------------æš—é›·æˆ˜æ–—-é­”å°†èƒ¡åŠ›
+ScriptFightDB[5025] = {             -----------------°µÀ×Õ½¶·-Ä§½«ºúÁ¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27025},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5026] = {             -----------------æš—é›·æˆ˜æ–—-å¼ é¾™
+ScriptFightDB[5026] = {             -----------------°µÀ×Õ½¶·-ÕÅÁú
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27026},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5027] = {             -----------------æš—é›·æˆ˜æ–—-ä¹é¾™
+ScriptFightDB[5027] = {             -----------------°µÀ×Õ½¶·-¾ÅÁú
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27027},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5028] = {             -----------------æš—é›·æˆ˜æ–—-ç‹çŸ³
+ScriptFightDB[5028] = {             -----------------°µÀ×Õ½¶·-ÍõÊ¯
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27028},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5029] = {             -----------------æš—é›·æˆ˜æ–—-é£é‚ª
+ScriptFightDB[5029] = {             -----------------°µÀ×Õ½¶·-·çĞ°
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27029},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5030] = {             -----------------æš—é›·æˆ˜æ–—-çµå§¬
+ScriptFightDB[5030] = {             -----------------°µÀ×Õ½¶·-Áé¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27030},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5031] = {             -----------------æš—é›·æˆ˜æ–—-èµµè
+ScriptFightDB[5031] = {             -----------------°µÀ×Õ½¶·-ÕÔÈÚ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27031},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5032] = {             -----------------æš—é›·æˆ˜æ–—-å†¯èŠ³
+ScriptFightDB[5032] = {             -----------------°µÀ×Õ½¶·-·ë·¼
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27032},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5033] = {             -----------------æš—é›·æˆ˜æ–—-ç¨‹æ™®
+ScriptFightDB[5033] = {             -----------------°µÀ×Õ½¶·-³ÌÆÕ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27033},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5034] = {             -----------------æš—é›·æˆ˜æ–—-ç”˜å®
+ScriptFightDB[5034] = {             -----------------°µÀ×Õ½¶·-¸ÊÄş
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27034},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5035] = {             -----------------æš—é›·æˆ˜æ–—-è¢é—
+ScriptFightDB[5035] = {             -----------------°µÀ×Õ½¶·-Ô¬ÒÅ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27035},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5036] = {             -----------------æš—é›·æˆ˜æ–—-æ¨å¥‰
+ScriptFightDB[5036] = {             -----------------°µÀ×Õ½¶·-Ñî·î
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27036},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5037] = {             -----------------æš—é›·æˆ˜æ–—-é»„æ‰¿ä¹™
+ScriptFightDB[5037] = {             -----------------°µÀ×Õ½¶·-»Æ³ĞÒÒ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27037},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5038] = {             -----------------æš—é›·æˆ˜æ–—-æå¥‡
+ScriptFightDB[5038] = {             -----------------°µÀ×Õ½¶·-ÀîÆæ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27038},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5039] = {             -----------------æš—é›·æˆ˜æ–—-æ™é›·
+ScriptFightDB[5039] = {             -----------------°µÀ×Õ½¶·-êËÀ×
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27039},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5040] = {             -----------------æš—é›·æˆ˜æ–—-æ™å¤©
+ScriptFightDB[5040] = {             -----------------°µÀ×Õ½¶·-êËÌì
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27040},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5041] = {             -----------------æš—é›·æˆ˜æ–—-æä¸™
+ScriptFightDB[5041] = {             -----------------°µÀ×Õ½¶·-Àî±û
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27041},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5042] = {             -----------------æš—é›·æˆ˜æ–—-å¸¸æ˜Š
+ScriptFightDB[5042] = {             -----------------°µÀ×Õ½¶·-³£ê»
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27042},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5043] = {             -----------------æš—é›·æˆ˜æ–—-æ¨æ˜¾
+ScriptFightDB[5043] = {             -----------------°µÀ×Õ½¶·-ÑîÏÔ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27043},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5044] = {             -----------------æš—é›·æˆ˜æ–—-æå…´éœ¸
+ScriptFightDB[5044] = {             -----------------°µÀ×Õ½¶·-ÀîĞË°Ô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27044},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5045] = {             -----------------æš—é›·æˆ˜æ–—-æ¨ä¿®
+ScriptFightDB[5045] = {             -----------------°µÀ×Õ½¶·-ÑîĞŞ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27045},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5046] = {             -----------------æš—é›·æˆ˜æ–—-é©¬æ–¹
+ScriptFightDB[5046] = {             -----------------°µÀ×Õ½¶·-Âí·½
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27046},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5047] = {             -----------------æš—é›·æˆ˜æ–—-å´é¾™
+ScriptFightDB[5047] = {             -----------------°µÀ×Õ½¶·-ÎâÁú
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27047},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5048] = {             -----------------æš—é›·æˆ˜æ–—-å‘¨ä¿¡
+ScriptFightDB[5048] = {             -----------------°µÀ×Õ½¶·-ÖÜĞÅ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27048},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5049] = {             -----------------æš—é›·æˆ˜æ–—-è¯¡å¼‚æœ¯å£«ç¬¦è¡€
+ScriptFightDB[5049] = {             -----------------°µÀ×Õ½¶·-¹îÒìÊõÊ¿·ûÑª
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27049},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5050] = {             -----------------æš—é›·æˆ˜æ–—-é‚ªæ•™é­”åŒ–æŠ¤æ³•
+ScriptFightDB[5050] = {             -----------------°µÀ×Õ½¶·-Ğ°½ÌÄ§»¯»¤·¨
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27050},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5051] = {             -----------------æš—é›·æˆ˜æ–—-é­”å›ç™½ä¹…
+ScriptFightDB[5051] = {             -----------------°µÀ×Õ½¶·-Ä§¾ı°×¾Ã
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27051},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5052] = {             -----------------æš—é›·æˆ˜æ–—-é­”å°†é™ˆåƒå†›
+ScriptFightDB[5052] = {             -----------------°µÀ×Õ½¶·-Ä§½«³ÂÇ§¾ü
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27052},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5053] = {             -----------------æš—é›·æˆ˜æ–—-å¦–å°†ç«ç
+ScriptFightDB[5053] = {             -----------------°µÀ×Õ½¶·-Ñı½«»ğâ¯
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27053},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5054] = {             -----------------æš—é›·æˆ˜æ–—-é•‡ç‹±æ˜ç‹
+ScriptFightDB[5054] = {             -----------------°µÀ×Õ½¶·-ÕòÓüÃ÷Íõ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27054},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5055] = {             -----------------æš—é›·æˆ˜æ–—-é­”å›ç„éœ“
+ScriptFightDB[5055] = {             -----------------°µÀ×Õ½¶·-Ä§¾ıĞşÄŞ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27055},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5056] = {             -----------------æš—é›·æˆ˜æ–—-é­”å°†è§æ€€é’
+ScriptFightDB[5056] = {             -----------------°µÀ×Õ½¶·-Ä§½«Ïô»³Çà
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27056},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5057] = {             -----------------æš—é›·æˆ˜æ–—-åƒå¹´è—¤å¦–
+ScriptFightDB[5057] = {             -----------------°µÀ×Õ½¶·-Ç§ÄêÌÙÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27057},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5058] = {             -----------------æš—é›·æˆ˜æ–—-å¦–å°†é™†é­
+ScriptFightDB[5058] = {             -----------------°µÀ×Õ½¶·-Ñı½«Â½¿ı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27058},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5059] = {             -----------------æš—é›·æˆ˜æ–—-é‚ªé“åˆ˜é‚‘
+ScriptFightDB[5059] = {             -----------------°µÀ×Õ½¶·-Ğ°µÀÁõÒØ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27059},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5060] = {             -----------------æš—é›·æˆ˜æ–—-æœ¯å£«æ–¹ç›¸
+ScriptFightDB[5060] = {             -----------------°µÀ×Õ½¶·-ÊõÊ¿·½Ïà
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27060},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5061] = {             -----------------æš—é›·æˆ˜æ–—-é­”å›å§¬å‘
+ScriptFightDB[5061] = {             -----------------°µÀ×Õ½¶·-Ä§¾ı¼§·¢
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27061},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5062] = {             -----------------æš—é›·æˆ˜æ–—-é­”å°†ä¹”å¤
+ScriptFightDB[5062] = {             -----------------°µÀ×Õ½¶·-Ä§½«ÇÇÀ¤
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27062},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5063] = {             -----------------æš—é›·æˆ˜æ–—-å¦–å°†æ›¹å®
+ScriptFightDB[5063] = {             -----------------°µÀ×Õ½¶·-Ñı½«²Ü±¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27063},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5064] = {             -----------------æš—é›·æˆ˜æ–—-é‚ªé“è§è‡»
+ScriptFightDB[5064] = {             -----------------°µÀ×Õ½¶·-Ğ°µÀÏôÕé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27064},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5065] = {             -----------------æš—é›·æˆ˜æ–—-æœ¯å£«æ–¹å¼¼
+ScriptFightDB[5065] = {             -----------------°µÀ×Õ½¶·-ÊõÊ¿·½åö
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27065},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5066] = {             -----------------æš—é›·æˆ˜æ–—-è–›æ¶è™
+ScriptFightDB[5066] = {             -----------------°µÀ×Õ½¶·-Ñ¦¶ñ»¢
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27066},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5067] = {             -----------------æš—é›·æˆ˜æ–—-éŸ©æ¯’é¾™
+ScriptFightDB[5067] = {             -----------------°µÀ×Õ½¶·-º«¶¾Áú
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27067},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5068] = {             -----------------æš—é›·æˆ˜æ–—-èµ¤ç²¾å­
+ScriptFightDB[5068] = {             -----------------°µÀ×Õ½¶·-³à¾«×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27068},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5069] = {             -----------------æš—é›·æˆ˜æ–—-é›ªå³°è€å¦–
+ScriptFightDB[5069] = {             -----------------°µÀ×Õ½¶·-Ñ©·åÀÏÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27069},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5070] = {             -----------------æš—é›·æˆ˜æ–—-æ°´ç«ç«¥å­
+ScriptFightDB[5070] = {             -----------------°µÀ×Õ½¶·-Ë®»ğÍ¯×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27070},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5071] = {             -----------------æš—é›·æˆ˜æ–—-é­”å°†é©¬å–„
+ScriptFightDB[5071] = {             -----------------°µÀ×Õ½¶·-Ä§½«ÂíÉÆ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27071},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5072] = {             -----------------æš—é›·æˆ˜æ–—-å¦–å°†ç‹è™
+ScriptFightDB[5072] = {             -----------------°µÀ×Õ½¶·-Ñı½«Íõ»¢
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27072},{ID = 27151},{ID = 27151},{ID = 27151},{ID = 27151},},
 }
-ScriptFightDB[5073] = {             -----------------æŒ‘æˆ˜æ˜é›·-å¢æ¤
+ScriptFightDB[5073] = {             -----------------ÌôÕ½Ã÷À×-Â¬Ö²
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20049},},
 }
-ScriptFightDB[5074] = {             -----------------æŒ‘æˆ˜æ˜é›·-ç‹å­å¸ˆ
+ScriptFightDB[5074] = {             -----------------ÌôÕ½Ã÷À×-Íõ×ÓÊ¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30320},},
 }
-ScriptFightDB[5075] = {             -----------------æŒ‘æˆ˜æ˜é›·-çš‡ç”«åµ©
+ScriptFightDB[5075] = {             -----------------ÌôÕ½Ã÷À×-»Ê¸¦áÔ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20059},},
 }
-ScriptFightDB[5076] = {             -----------------æŒ‘æˆ˜æ˜é›·-å¼ ç»´ä¹‰
+ScriptFightDB[5076] = {             -----------------ÌôÕ½Ã÷À×-ÕÅÎ¬Òå
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 29008},},
 }
-ScriptFightDB[5077] = {             -----------------æŒ‘æˆ˜æ˜é›·-æ¨æ£®
+ScriptFightDB[5077] = {             -----------------ÌôÕ½Ã÷À×-ÑîÉ­
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27073},},
 }
-ScriptFightDB[5078] = {             -----------------æŒ‘æˆ˜æ˜é›·-é«˜å‹ä¹¾
+ScriptFightDB[5078] = {             -----------------ÌôÕ½Ã÷À×-¸ßÓÑÇ¬
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27074},},
 }
-ScriptFightDB[5079] = {             -----------------æŒ‘æˆ˜æ˜é›·-ç‹å…
+ScriptFightDB[5079] = {             -----------------ÌôÕ½Ã÷À×-ÍõÔÊ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20701},},
 }
-ScriptFightDB[5080] = {             -----------------æŒ‘æˆ˜æ˜é›·-æ¨æ–‡è¾‰
+ScriptFightDB[5080] = {             -----------------ÌôÕ½Ã÷À×-ÑîÎÄ»Ô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27075},},
 }
-ScriptFightDB[5081] = {             -----------------æŒ‘æˆ˜æ˜é›·-éƒ‘ä¼¦
+ScriptFightDB[5081] = {             -----------------ÌôÕ½Ã÷À×-Ö£Â×
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27076},},
 }
-ScriptFightDB[5082] = {             -----------------æŒ‘æˆ˜æ˜é›·-é™ˆå¥‡
+ScriptFightDB[5082] = {             -----------------ÌôÕ½Ã÷À×-³ÂÆæ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27077},},
 }
-ScriptFightDB[5083] = {             -----------------æŒ‘æˆ˜æ˜é›·-æ®µå²³
+ScriptFightDB[5083] = {             -----------------ÌôÕ½Ã÷À×-¶ÎÔÀ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20021},},
 }
-ScriptFightDB[5084] = {             -----------------æŒ‘æˆ˜æ˜é›·-å…®é¢œ
+ScriptFightDB[5084] = {             -----------------ÌôÕ½Ã÷À×-ÙâÑÕ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20022},},
 }
-ScriptFightDB[5085] = {             -----------------æŒ‘æˆ˜æ˜é›·-æé•¿é£
+ScriptFightDB[5085] = {             -----------------ÌôÕ½Ã÷À×-Àî³¤·ç
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20023},},
 }
-ScriptFightDB[5086] = {             -----------------æŒ‘æˆ˜æ˜é›·-åº„æ¢¦è¶
+ScriptFightDB[5086] = {             -----------------ÌôÕ½Ã÷À×-×¯ÃÎµû
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20025},},
 }
-ScriptFightDB[5087] = {             -----------------æŒ‘æˆ˜æ˜é›·-ç„ç´ 
+ScriptFightDB[5087] = {             -----------------ÌôÕ½Ã÷À×-ĞşËØ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20024},},
 }
-ScriptFightDB[5088] = {             -----------------æŒ‘æˆ˜æ˜é›·-æ®¿é£ç™½
+ScriptFightDB[5088] = {             -----------------ÌôÕ½Ã÷À×-µî·É°×
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20026},},
 }
-ScriptFightDB[5089] = {             -----------------å¤©é“æ‚¬èµ-é»‘é£å°å¦–
+ScriptFightDB[5089] = {             -----------------ÌìµÀĞüÉÍ-ºÚ·çĞ¡Ñı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27078},},
 }
-ScriptFightDB[5090] = {             -----------------å¤©é“æ‚¬èµ-å…¥é­”åŒåˆ€å®¢
+ScriptFightDB[5090] = {             -----------------ÌìµÀĞüÉÍ-ÈëÄ§Ë«µ¶¿Í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27079},},
 }
-ScriptFightDB[5091] = {             -----------------å¤©é“æ‚¬èµ-é­”åŒ–å¥³åˆºå®¢
+ScriptFightDB[5091] = {             -----------------ÌìµÀĞüÉÍ-Ä§»¯Å®´Ì¿Í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27080},},
 }
-ScriptFightDB[5092] = {             -----------------å¤©é“æ‚¬èµ-é­”åŒ–å‰‘å¥´
+ScriptFightDB[5092] = {             -----------------ÌìµÀĞüÉÍ-Ä§»¯½£Å«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27081},},
 }
-ScriptFightDB[5093] = {             -----------------å¤©é“æ‚¬èµ-é»‘è¡£äºº
+ScriptFightDB[5093] = {             -----------------ÌìµÀĞüÉÍ-ºÚÒÂÈË
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27082},},
 }
-ScriptFightDB[5094] = {             -----------------å¤©é“æ‚¬èµ-é‚ªæ¶ç¥­ç¥€
+ScriptFightDB[5094] = {             -----------------ÌìµÀĞüÉÍ-Ğ°¶ñ¼Àìë
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27083},},
 }
-ScriptFightDB[5095] = {             -----------------å¤©é“æ‚¬èµ-è›‡å¦–å¸¸æ—­
+ScriptFightDB[5095] = {             -----------------ÌìµÀĞüÉÍ-ÉßÑı³£Ğñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27084},},
 }
-ScriptFightDB[5096] = {             -----------------å¤©é“æ‚¬èµ-é­”ä»™é»„é¾™
+ScriptFightDB[5096] = {             -----------------ÌìµÀĞüÉÍ-Ä§ÏÉ»ÆÁú
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27085},},
 }
-ScriptFightDB[5097] = {             -----------------å¤©é“æ‚¬èµ-ç”²èƒ„ç¿°èµ¤
+ScriptFightDB[5097] = {             -----------------ÌìµÀĞüÉÍ-¼×ëĞº²³à
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27086},},
 }
-ScriptFightDB[5098] = {             -----------------å¤©é“æ‚¬èµ-ç¬¦å’’ç¿°èµ¤
+ScriptFightDB[5098] = {             -----------------ÌìµÀĞüÉÍ-·ûÖäº²³à
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27087},},
 }
-ScriptFightDB[5099] = {             -----------------å¤©é“æ‚¬èµ-ç¿ å²©å¦–
+ScriptFightDB[5099] = {             -----------------ÌìµÀĞüÉÍ-´äÑÒÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27088},},
 }
-ScriptFightDB[5100] = {             -----------------å¤©é“æ‚¬èµ-èŠ±é­”
+ScriptFightDB[5100] = {             -----------------ÌìµÀĞüÉÍ-»¨Ä§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27089},},
 }
-ScriptFightDB[5101] = {             -----------------å¤©é“æ‚¬èµ-æœ¯å¦–
+ScriptFightDB[5101] = {             -----------------ÌìµÀĞüÉÍ-ÊõÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27090},},
 }
-ScriptFightDB[5102] = {             -----------------å¤©é“æ‚¬èµ-é¬¼å§¬
+ScriptFightDB[5102] = {             -----------------ÌìµÀĞüÉÍ-¹í¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27091},},
 }
-ScriptFightDB[5103] = {             -----------------å¤©é“æ‚¬èµ-è™å¤´æ€ª
+ScriptFightDB[5103] = {             -----------------ÌìµÀĞüÉÍ-»¢Í·¹Ö
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27092},},
 }
-ScriptFightDB[5104] = {             -----------------å¤©é“æ‚¬èµ-å·«çµ
+ScriptFightDB[5104] = {             -----------------ÌìµÀĞüÉÍ-Î×Áé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27093},},
 }
-ScriptFightDB[5105] = {             -----------------å¤©é“æ‚¬èµ-å¿§è‰å§¬
+ScriptFightDB[5105] = {             -----------------ÌìµÀĞüÉÍ-ÓÇ²İ¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27094},},
 }
-ScriptFightDB[5106] = {             -----------------å¤©é“æ‚¬èµ-é»‘ç¿°èµ¤
+ScriptFightDB[5106] = {             -----------------ÌìµÀĞüÉÍ-ºÚº²³à
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27095},},
 }
-ScriptFightDB[5107] = {             -----------------å¤©é“æ‚¬èµ-ç™½ç¿°èµ¤
+ScriptFightDB[5107] = {             -----------------ÌìµÀĞüÉÍ-°×º²³à
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27096},},
 }
-ScriptFightDB[5108] = {             -----------------å¤©é“æ‚¬èµ-å¹»å§¬
+ScriptFightDB[5108] = {             -----------------ÌìµÀĞüÉÍ-»Ã¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27097},},
 }
-ScriptFightDB[5109] = {             -----------------å¤©é“æ‚¬èµ-çƒ½éª‘
+ScriptFightDB[5109] = {             -----------------ÌìµÀĞüÉÍ-·éÆï
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27098},},
 }
-ScriptFightDB[5110] = {             -----------------å¤©é“æ‚¬èµ-å¹»å¦–å§¬
+ScriptFightDB[5110] = {             -----------------ÌìµÀĞüÉÍ-»ÃÑı¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27099},},
 }
-ScriptFightDB[5111] = {             -----------------å¤©é“æ‚¬èµ-å¹»çµå§¬
+ScriptFightDB[5111] = {             -----------------ÌìµÀĞüÉÍ-»ÃÁé¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27100},},
 }
-ScriptFightDB[5112] = {             -----------------å¤©é“æ‚¬èµ-æ— åŒèµ¤é¬¼
+ScriptFightDB[5112] = {             -----------------ÌìµÀĞüÉÍ-ÎŞË«³à¹í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27101},},
 }
-ScriptFightDB[5113] = {             -----------------å¤©é“æ‚¬èµ-é­”æ•™å¤§æŠ¤æ³•
+ScriptFightDB[5113] = {             -----------------ÌìµÀĞüÉÍ-Ä§½Ì´ó»¤·¨
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27102},},
 }
-ScriptFightDB[5114] = {             -----------------å¤©é“æ‚¬èµ-é‚ªæ¶å¥³å¦–
+ScriptFightDB[5114] = {             -----------------ÌìµÀĞüÉÍ-Ğ°¶ñÅ®Ñı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27103},},
 }
-ScriptFightDB[5115] = {             -----------------å¤©é“æ‚¬èµ-é­”åŒ–å¦–é“
+ScriptFightDB[5115] = {             -----------------ÌìµÀĞüÉÍ-Ä§»¯ÑıµÀ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27104},},
 }
-ScriptFightDB[5116] = {             -----------------å¤©é“æ‚¬èµ-é»„å·¾é­”å°†
+ScriptFightDB[5116] = {             -----------------ÌìµÀĞüÉÍ-»Æ½íÄ§½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27105},},
 }
-ScriptFightDB[5117] = {             -----------------å¤©é“æ‚¬èµ-å†°çŸ³å‚€
+ScriptFightDB[5117] = {             -----------------ÌìµÀĞüÉÍ-±ùÊ¯¿ş
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27106},},
 }
-ScriptFightDB[5118] = {             -----------------å¤©é“æ‚¬èµ-é£ç†Š
+ScriptFightDB[5118] = {             -----------------ÌìµÀĞüÉÍ-·ÉĞÜ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27107},},
 }
-ScriptFightDB[5119] = {             -----------------å¤©é“æ‚¬èµ-è¡€é­”å›
+ScriptFightDB[5119] = {             -----------------ÌìµÀĞüÉÍ-ÑªÄ§¾ı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27108},},
 }
-ScriptFightDB[5120] = {             -----------------å¤©é“æ‚¬èµ-è¡€ç‹‚
+ScriptFightDB[5120] = {             -----------------ÌìµÀĞüÉÍ-Ñª¿ñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27109},},
 }
-ScriptFightDB[5121] = {             -----------------å¤©é“æ‚¬èµ-è²é­‚å½±
+ScriptFightDB[5121] = {             -----------------ÌìµÀĞüÉÍ-Á«»êÓ°
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27110},},
 }
-ScriptFightDB[5122] = {             -----------------å¤©é“æ‚¬èµ-èŠ±æ€€é£
+ScriptFightDB[5122] = {             -----------------ÌìµÀĞüÉÍ-»¨»³·ç
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27111},},
 }
-ScriptFightDB[5123] = {             -----------------å¤©é“æ‚¬èµ-é¾™é­‚
+ScriptFightDB[5123] = {             -----------------ÌìµÀĞüÉÍ-Áú»ê
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27112},},
 }
-ScriptFightDB[5124] = {             -----------------å¤©é“æ‚¬èµ-é‡‘ç¿…è¿¦æ¥¼æ´›
+ScriptFightDB[5124] = {             -----------------ÌìµÀĞüÉÍ-½ğ³áåÈÂ¥Âå
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27113},},
 }
-ScriptFightDB[5125] = {             -----------------å¤©é“æ‚¬èµ-é›ªé£
+ScriptFightDB[5125] = {             -----------------ÌìµÀĞüÉÍ-Ñ©·ç
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27114},},
 }
-ScriptFightDB[5126] = {             -----------------å¤©é“æ‚¬èµ-é­”é“ç¾½çµ
+ScriptFightDB[5126] = {             -----------------ÌìµÀĞüÉÍ-Ä§µÀÓğÁé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27115},},
 }
-ScriptFightDB[5127] = {             -----------------å¤©é“æ‚¬èµ-é¬¼é“ç¾½çµ
+ScriptFightDB[5127] = {             -----------------ÌìµÀĞüÉÍ-¹íµÀÓğÁé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27116},},
 }
-ScriptFightDB[5128] = {             -----------------å¤©é“æ‚¬èµ-å¤æ ¼
+ScriptFightDB[5128] = {             -----------------ÌìµÀĞüÉÍ-¹Å¸ñ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27117},},
 }
-ScriptFightDB[5129] = {             -----------------å¤©é“æ‚¬èµ-å¤œé­”
+ScriptFightDB[5129] = {             -----------------ÌìµÀĞüÉÍ-Ò¹Ä§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27118},},
 }
-ScriptFightDB[5130] = {             -----------------å¤©é“æ‚¬èµ-ç„é£
+ScriptFightDB[5130] = {             -----------------ÌìµÀĞüÉÍ-Ğş·ç
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27119},},
 }
-ScriptFightDB[5131] = {             -----------------å¤©é“æ‚¬èµ-è¡€çµé­‘é­…
+ScriptFightDB[5131] = {             -----------------ÌìµÀĞüÉÍ-ÑªÁé÷Î÷È
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27120},},
 }
-ScriptFightDB[5132] = {             -----------------å¤©é“æ‚¬èµ-åœ°è—å¦–
+ScriptFightDB[5132] = {             -----------------ÌìµÀĞüÉÍ-µØ²ØÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27121},},
 }
-ScriptFightDB[5133] = {             -----------------å¤©é“æ‚¬èµ-é›ªå¦–
+ScriptFightDB[5133] = {             -----------------ÌìµÀĞüÉÍ-Ñ©Ñı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27122},},
 }
-ScriptFightDB[5134] = {             -----------------å¤©é“æ‚¬èµ-å‰‘é­‚
+ScriptFightDB[5134] = {             -----------------ÌìµÀĞüÉÍ-½£»ê
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27123},},
 }
-ScriptFightDB[5135] = {             -----------------å¤©é“æ‚¬èµ-é«˜æ¸Š
+ScriptFightDB[5135] = {             -----------------ÌìµÀĞüÉÍ-¸ßÔ¨
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27124},},
 }
-ScriptFightDB[5136] = {             -----------------å¤©é“æ‚¬èµ-é­…æƒ‘å¦–å§¬
+ScriptFightDB[5136] = {             -----------------ÌìµÀĞüÉÍ-÷È»óÑı¼§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27125},},
 }
-ScriptFightDB[5137] = {             -----------------å¤©é“æ‚¬èµ-é­”åŒ–å™¨çµ
+ScriptFightDB[5137] = {             -----------------ÌìµÀĞüÉÍ-Ä§»¯Æ÷Áé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27126},},
 }
-ScriptFightDB[5138] = {             -----------------å¤©é“æ‚¬èµ-ç‰›é­”
+ScriptFightDB[5138] = {             -----------------ÌìµÀĞüÉÍ-Å£Ä§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27127},},
 }
-ScriptFightDB[5139] = {             -----------------å¤©é“æ‚¬èµ-é‡‘ç¿…å¤§é¹ç‹
+ScriptFightDB[5139] = {             -----------------ÌìµÀĞüÉÍ-½ğ³á´óÅôÍõ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27128},},
 }
-ScriptFightDB[5140] = {             -----------------å¤©é“æ‚¬èµ-é‚ªçµåˆ†èº«
+ScriptFightDB[5140] = {             -----------------ÌìµÀĞüÉÍ-Ğ°Áé·ÖÉí
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27129},},
 }
-ScriptFightDB[5141] = {             -----------------å¤©é“æ‚¬èµ-è¡€æ³•ç¥­ç¥€
+ScriptFightDB[5141] = {             -----------------ÌìµÀĞüÉÍ-Ñª·¨¼Àìë
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27130},},
 }
-ScriptFightDB[5142] = {             -----------------å¤©é“æ‚¬èµ-é­”çµå‚€å„¡
+ScriptFightDB[5142] = {             -----------------ÌìµÀĞüÉÍ-Ä§Áé¿şÀÜ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27131},},
 }
-ScriptFightDB[5143] = {             -----------------å¤©é“æ‚¬èµ-å†°é­”
+ScriptFightDB[5143] = {             -----------------ÌìµÀĞüÉÍ-±ùÄ§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27132},},
 }
-ScriptFightDB[5144] = {             -----------------å¤©é“æ‚¬èµ-ç½—åˆ¹æ¶é¬¼
+ScriptFightDB[5144] = {             -----------------ÌìµÀĞüÉÍ-ÂŞÉ²¶ñ¹í
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27133},},
 }
-ScriptFightDB[5145] = {             -----------------å¤©é“æ‚¬èµ-è›Ÿé­”
+ScriptFightDB[5145] = {             -----------------ÌìµÀĞüÉÍ-òÔÄ§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27134},},
 }
-ScriptFightDB[5146] = {             -----------------å¤©é“æ‚¬èµ-åŒå¤´é­”ç‹¼
+ScriptFightDB[5146] = {             -----------------ÌìµÀĞüÉÍ-Ë«Í·Ä§ÀÇ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27135},},
 }
-ScriptFightDB[5147] = {             -----------------å¤©é“æ‚¬èµ-å—œè¡€é­”å°†
+ScriptFightDB[5147] = {             -----------------ÌìµÀĞüÉÍ-ÊÈÑªÄ§½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27136},},
 }
-ScriptFightDB[5148] = {             -----------------å¤©é“æ‚¬èµ-å—œè¡€è›®å°†
+ScriptFightDB[5148] = {             -----------------ÌìµÀĞüÉÍ-ÊÈÑªÂù½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27137},},
 }
-ScriptFightDB[5149] = {             -----------------å¤©é“æ‚¬èµ-ç½—åˆ¹å¥³å¦–
+ScriptFightDB[5149] = {             -----------------ÌìµÀĞüÉÍ-ÂŞÉ²Å®Ñı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27138},},
 }
-ScriptFightDB[5150] = {             -----------------å¤©é“æ‚¬èµ-å¹½çµé¬¼å¸ˆ
+ScriptFightDB[5150] = {             -----------------ÌìµÀĞüÉÍ-ÓÄÁé¹íÊ¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27139},},
 }
-ScriptFightDB[5151] = {             -----------------å¤©é“æ‚¬èµ-è¡€ç‚¼çŒªé­”
+ScriptFightDB[5151] = {             -----------------ÌìµÀĞüÉÍ-ÑªÁ¶ÖíÄ§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27140},},
 }
-ScriptFightDB[5152] = {             -----------------å¤©é“æ‚¬èµ-é­”çµçŠ¬
+ScriptFightDB[5152] = {             -----------------ÌìµÀĞüÉÍ-Ä§ÁéÈ®
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27141},},
 }
-ScriptFightDB[5153] = {             -----------------å¤©é“æ‚¬èµ-é­”å¥´
+ScriptFightDB[5153] = {             -----------------ÌìµÀĞüÉÍ-Ä§Å«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27142},},
 }
-ScriptFightDB[5154] = {             -----------------å¤©é“æ‚¬èµ-é­”å°†ç«¯æ— 
+ScriptFightDB[5154] = {             -----------------ÌìµÀĞüÉÍ-Ä§½«¶ËÎŞ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27143},},
 }
-ScriptFightDB[5155] = {             -----------------å¤©é“æ‚¬èµ-æ¶çµç«¥å­
+ScriptFightDB[5155] = {             -----------------ÌìµÀĞüÉÍ-¶ñÁéÍ¯×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27144},},
 }
-ScriptFightDB[5156] = {             -----------------å¤©é“æ‚¬èµ-æªé­”
+ScriptFightDB[5156] = {             -----------------ÌìµÀĞüÉÍ-Ç¹Ä§
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27145},},
 }
-ScriptFightDB[5157] = {             -----------------å¤©é“æ‚¬èµ-èµ¤é­‚ç‹
+ScriptFightDB[5157] = {             -----------------ÌìµÀĞüÉÍ-³à»êÍõ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27146},},
 }
-ScriptFightDB[5158] = {             -----------------å¤©é“æ‚¬èµ-é‡‘èŸ¾é¬¼æ¯
+ScriptFightDB[5158] = {             -----------------ÌìµÀĞüÉÍ-½ğó¸¹íÄ¸
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27147},},
 }
-ScriptFightDB[5159] = {             -----------------å¤©é“æ‚¬èµ-æ¯’å¨˜å­
+ScriptFightDB[5159] = {             -----------------ÌìµÀĞüÉÍ-¶¾Äï×Ó
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27148},},
 }
-ScriptFightDB[5160] = {             -----------------å¤©é“æ‚¬èµ-å¦–é¬¼çš‡
+ScriptFightDB[5160] = {             -----------------ÌìµÀĞüÉÍ-Ñı¹í»Ê
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 27149},},
 }
-ScriptFightDB[5161] = {             -----------------ä¸Šäº¤å® ç‰©-40-44-æ²³å†…å®ˆå«
+ScriptFightDB[5161] = {             -----------------ÉÏ½»³èÎï-40-44-ºÓÄÚÊØÎÀ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10019},},
 }
-ScriptFightDB[5162] = {             -----------------ä¸Šäº¤å® ç‰©-40-44-åˆ€ç›¾æ‰‹
+ScriptFightDB[5162] = {             -----------------ÉÏ½»³èÎï-40-44-µ¶¶ÜÊÖ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10023},},
 }
-ScriptFightDB[5163] = {             -----------------ä¸Šäº¤å® ç‰©-40-44-å†°å¦–
+ScriptFightDB[5163] = {             -----------------ÉÏ½»³èÎï-40-44-±ùÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10027},},
 }
-ScriptFightDB[5164] = {             -----------------ä¸Šäº¤å® ç‰©-40-44-é²›å¦–
+ScriptFightDB[5164] = {             -----------------ÉÏ½»³èÎï-40-44-öŞÑı
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10031},},
 }
-ScriptFightDB[5165] = {             -----------------ä¸Šäº¤å® ç‰©-40-44-æ¸¸æ–¹å¦–å¸ˆ
+ScriptFightDB[5165] = {             -----------------ÉÏ½»³èÎï-40-44-ÓÎ·½ÑıÊ¦
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10045},},
 }
-ScriptFightDB[5166] = {             -----------------ä¸Šäº¤å® ç‰©-45-49-å¥³è´¼
+ScriptFightDB[5166] = {             -----------------ÉÏ½»³èÎï-45-49-Å®Ôô
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10033},},
 }
-ScriptFightDB[5167] = {             -----------------ä¸Šäº¤å® ç‰©-45-49-æ²³ç›—
+ScriptFightDB[5167] = {             -----------------ÉÏ½»³èÎï-45-49-ºÓµÁ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10032},},
 }
-ScriptFightDB[5168] = {             -----------------ä¸Šäº¤å® ç‰©-45-49-ç´é­”å¥³
+ScriptFightDB[5168] = {             -----------------ÉÏ½»³èÎï-45-49-ÇÙÄ§Å®
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10035},},
 }
-ScriptFightDB[5169] = {             -----------------ä¸Šäº¤å® ç‰©-45-49-å¦–çµ
+ScriptFightDB[5169] = {             -----------------ÉÏ½»³èÎï-45-49-ÑıÁé
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10034},},
 }
-ScriptFightDB[5170] = {             -----------------ä¸Šäº¤å® ç‰©-45-49-æ­»å£«
+ScriptFightDB[5170] = {             -----------------ÉÏ½»³èÎï-45-49-ËÀÊ¿
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10036},},
 }
-ScriptFightDB[5171] = {             -----------------ä¸Šäº¤å® ç‰©-45-49-è›®æ—
+ScriptFightDB[5171] = {             -----------------ÉÏ½»³èÎï-45-49-Âù×å
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10037},},
 }
-ScriptFightDB[5172] = {             -----------------ä¸Šäº¤å® ç‰©-50-54-è™å°†
+ScriptFightDB[5172] = {             -----------------ÉÏ½»³èÎï-50-54-»¢½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10038},},
 }
-ScriptFightDB[5173] = {             -----------------ä¸Šäº¤å® ç‰©-50-54-è°‹å£«
+ScriptFightDB[5173] = {             -----------------ÉÏ½»³èÎï-50-54-Ä±Ê¿
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10039},},
 }
-ScriptFightDB[5174] = {             -----------------ä¸Šäº¤å® ç‰©-50-54-ç‰›å¤´
+ScriptFightDB[5174] = {             -----------------ÉÏ½»³èÎï-50-54-Å£Í·
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10040},},
 }
-ScriptFightDB[5175] = {             -----------------ä¸Šäº¤å® ç‰©-50-54-é©¬é¢
+ScriptFightDB[5175] = {             -----------------ÉÏ½»³èÎï-50-54-ÂíÃæ
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10041},},
 }
-ScriptFightDB[5176] = {             -----------------ä¸Šäº¤å® ç‰©-50-54-éª·é«…å°†
+ScriptFightDB[5176] = {             -----------------ÉÏ½»³èÎï-50-54-÷¼÷Ã½«
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10042},},
 }
-ScriptFightDB[5177] = {             -----------------ä¸Šäº¤å® ç‰©-50-54-é­”å…µ
+ScriptFightDB[5177] = {             -----------------ÉÏ½»³èÎï-50-54-Ä§±ø
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10043},},
 }
--------------------è¯•ç‚¼ä»»åŠ¡å®Œæ¯•ï¼Œè¯·æ¥ä¸‹å»-------------------------------------
--------------------æ‰“èµ¢äº†å°±ç»™éª‘----åéª‘æˆ˜æ–—åˆ†å‰²çº¿----------------------------
+-------------------ÊÔÁ¶ÈÎÎñÍê±Ï£¬Çë½ÓÏÂÈ¥-------------------------------------
+-------------------´òÓ®ÁË¾Í¸øÆï----×øÆïÕ½¶··Ö¸îÏß----------------------------
 ScriptFightDB[7001] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39001,pos = 27 },},
 	}
@@ -3225,7 +3452,52 @@ ScriptFightDB[7010] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39010,pos = 27 },},
 	}
 
--- ç»™ä¸ªæœºä¼š è¿™é‡Œæ˜¯æŒ–å®çš„æˆ˜æ–—åˆ†å‰²-------------------------------
+
+-- 8001 - 9000 ÃÅÅÉ´³¹Ø»î¶¯Õ½¶·
+ScriptFightDB[8001] = {
+	-- Õ½¶·ÀàĞÍ
+	subType = ScriptType.LuckyMonster,
+	-- Ö÷¹ÖĞÅÏ¢
+	majorMonsterInfo = {{ID = 10013,pos = 21}},
+	-- ÒªË¢ĞÂ¹ÖµÄĞÅÏ¢
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 10012,weight= 50},{ID = 10011,weight= 20}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--Õ½¶·½áÊø£ºwinner = Ê¤Àû·½ £¨¡°monster¡±= ¹ÖÎï·½¡¢¡°player¡± = Íæ¼Ò·½£©
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- ½±ÀøĞÅÏ¢
+	LuckyRewardID = 1,
+}
+
+
+
+
+
+
+-- ¸ø¸ö»ú»á ÕâÀïÊÇÍÚ±¦µÄÕ½¶··Ö¸î-------------------------------
 
 ScriptFightDB[40001] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 50001, },{ID = 50002, },{ID = 50000, },{ID =  50003, },{ID = 50004, },{ID = 50005, },{ID = 50006, },{ID = 50007, },},
@@ -3277,67 +3549,67 @@ systemActions = {
 	                },
 	}
 
--- æŠ“å® ç©æ³•ï¼ˆ35001â€”â€”35500ï¼‰-------------------------------
+-- ×¥³èÍæ·¨£¨35001¡ª¡ª35500£©-------------------------------
 ScriptFightDB[35001] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10201,weight= 60}, {ID = 10301,weight= 35}, {ID = 10401,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10201,weight= 30}, {ID = 10301,weight= 40}, {ID = 10401,weight= 30}},
 }
 ScriptFightDB[35002] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10202,weight= 60}, {ID = 10302,weight= 35}, {ID = 10402,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10202,weight= 30}, {ID = 10302,weight= 40}, {ID = 10402,weight= 30}},
 }
 ScriptFightDB[35003] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10203,weight= 60}, {ID = 10303,weight= 35}, {ID = 10403,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10203,weight= 30}, {ID = 10303,weight= 40}, {ID = 10403,weight= 30}},
 }
 ScriptFightDB[35004] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10204,weight= 60}, {ID = 10304,weight= 35}, {ID = 10404,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10204,weight= 30}, {ID = 10304,weight= 40}, {ID = 10404,weight= 30}},
 }
 ScriptFightDB[35005] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10205,weight= 60}, {ID = 10305,weight= 35}, {ID = 10405,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10205,weight= 30}, {ID = 10305,weight= 40}, {ID = 10405,weight= 30}},
 }
 ScriptFightDB[35006] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10206,weight= 60}, {ID = 10306,weight= 35}, {ID = 10406,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10206,weight= 30}, {ID = 10306,weight= 40}, {ID = 10406,weight= 30}},
 }
 ScriptFightDB[35007] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10207,weight= 60}, {ID = 10307,weight= 35}, {ID = 10407,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10207,weight= 30}, {ID = 10307,weight= 40}, {ID = 10407,weight= 30}},
 }
 ScriptFightDB[35008] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10208,weight= 60}, {ID = 10308,weight= 35}, {ID = 10408,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10208,weight= 30}, {ID = 10308,weight= 40}, {ID = 10408,weight= 30}},
 }
 ScriptFightDB[35009] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10209,weight= 60}, {ID = 10309,weight= 35}, {ID = 10409,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10209,weight= 30}, {ID = 10309,weight= 40}, {ID = 10409,weight= 30}},
 }
 ScriptFightDB[35010] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10210,weight= 60}, {ID = 10310,weight= 35}, {ID = 10410,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10210,weight= 30}, {ID = 10310,weight= 40}, {ID = 10410,weight= 30}},
 }
 ScriptFightDB[35011] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10211,weight= 60}, {ID = 10311,weight= 35}, {ID = 10411,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10211,weight= 30}, {ID = 10311,weight= 40}, {ID = 10411,weight= 30}},
 }
 ScriptFightDB[35012] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10212,weight= 60}, {ID = 10312,weight= 35}, {ID = 10413,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10212,weight= 30}, {ID = 10312,weight= 40}, {ID = 10412,weight= 30}},
 }
 ScriptFightDB[35013] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10213,weight= 60}, {ID = 10313,weight= 35}, {ID = 10413,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10213,weight= 30}, {ID = 10313,weight= 40}, {ID = 10413,weight= 30}},
 }
 ScriptFightDB[35014] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10214,weight= 60}, {ID = 10314,weight= 35}, {ID = 10414,weight= 5}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10214,weight= 30}, {ID = 10314,weight= 40}, {ID = 10414,weight= 30}},
 }
-ScriptFightDB[35050] = {					---------------30åœ°å›¾æŠ“å® å·¡é€»æ€ª
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10501,weight= 999}, {ID = 10601,weight= 1}},
+ScriptFightDB[35050] = {					---------------30µØÍ¼×¥³èÑ²Âß¹Ö
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10501,weight= 50}, {ID = 10601,weight= 50}},
 }
-ScriptFightDB[35051] = {					---------------30åœ°å›¾æŠ“å® å·¡é€»æ€ª
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10502,weight= 999}, {ID = 10602,weight= 1}},
+ScriptFightDB[35051] = {					---------------30µØÍ¼×¥³èÑ²Âß¹Ö
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10502,weight= 50}, {ID = 10602,weight= 50}},
 }
-ScriptFightDB[35052] = {					---------------30åœ°å›¾æŠ“å® å·¡é€»æ€ª
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10503,weight= 999}, {ID = 10601,weight= 1}},
+ScriptFightDB[35052] = {					---------------30µØÍ¼×¥³èÑ²Âß¹Ö
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10503,weight= 50}, {ID = 10601,weight= 50}},
 }
-ScriptFightDB[35053] = {					---------------30åœ°å›¾æŠ“å® å·¡é€»æ€ª
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10504,weight= 999}, {ID = 10602,weight= 1}},
+ScriptFightDB[35053] = {					---------------30µØÍ¼×¥³èÑ²Âß¹Ö
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10504,weight= 50}, {ID = 10602,weight= 50}},
 }
-ScriptFightDB[35080] = {					---------------30åœ°å›¾æŠ“å® ç»ˆæboss
+ScriptFightDB[35080] = {					---------------30µØÍ¼×¥³èÖÕ¼«boss
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10609,weight= 99}, {ID = 10602,weight= 1,max = 1}},
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10609},},
 }
 
------------------------------40åœ°å›¾æŠ“å® 
+-----------------------------40µØÍ¼×¥³è
 ScriptFightDB[35101] = {					
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10215,weight= 60}, {ID = 10315,weight= 35}, {ID = 10415,weight= 5}},
 }
@@ -3365,24 +3637,24 @@ ScriptFightDB[35108] = {
 ScriptFightDB[35109] = {					
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10223,weight= 60}, {ID = 10323,weight= 35}, {ID = 10423,weight= 5}},
 }
-ScriptFightDB[35150] = {					---------------40åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35150] = {					---------------40µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10505,weight= 99}, {ID = 10603,weight= 1}},
 }
-ScriptFightDB[35151] = {					---------------40åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35151] = {					---------------40µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10506,weight= 99}, {ID = 10604,weight= 1}},
 }
-ScriptFightDB[35152] = {					---------------40åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35152] = {					---------------40µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10507,weight= 99}, {ID = 10603,weight= 1}},
 }
-ScriptFightDB[35153] = {					---------------40åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35153] = {					---------------40µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10508,weight= 99}, {ID = 10604,weight= 1}},
 }
-ScriptFightDB[35180] = {					---------------40åœ°å›¾æŠ“å® ç»ˆæboss
+ScriptFightDB[35180] = {					---------------40µØÍ¼×¥³èÖÕ¼«boss
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10609,weight= 99}, {ID = 10602,weight= 1,max = 1}},
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10610},},
 }
 
------------------------------50åœ°å›¾æŠ“å® 
+-----------------------------50µØÍ¼×¥³è
 ScriptFightDB[35201] = {					
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10224,weight= 60}, {ID = 10324,weight= 35}, {ID = 10424,weight= 5}},
 }
@@ -3416,30 +3688,30 @@ ScriptFightDB[35210] = {
 ScriptFightDB[35211] = {	
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10234,weight= 60}, {ID = 10334,weight= 35}, {ID = 10434,weight= 5}},
 }
-ScriptFightDB[35250] = {					---------------50åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35250] = {					---------------50µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10509,weight= 99}, {ID = 10605,weight= 1}},
 }
-ScriptFightDB[35251] = {					---------------50åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35251] = {					---------------50µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10510,weight= 99}, {ID = 10606,weight= 1}},
 }
-ScriptFightDB[35252] = {					---------------50åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35252] = {					---------------50µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10511,weight= 99}, {ID = 10605,weight= 1}},
 }
-ScriptFightDB[35253] = {					---------------50åœ°å›¾æŠ“å® å·¡é€»æ€ª
+ScriptFightDB[35253] = {					---------------50µØÍ¼×¥³èÑ²Âß¹Ö
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10512,weight= 99}, {ID = 10606,weight= 1}},
 }
-ScriptFightDB[35280] = {					---------------50åœ°å›¾æŠ“å® ç»ˆæboss
+ScriptFightDB[35280] = {					---------------50µØÍ¼×¥³èÖÕ¼«boss
 	--monsters = {type=ScriptMonsterCreateType.Random,{ID = 10609,weight= 99}, {ID = 10602,weight= 1,max = 1}},
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10611},},
 }
 
--- 45000 - 50000 ç‘å…½é™ç¦ è¿™ä¸ªåœ¨å…¶ä»–çš„é…ç½®ä¸­é…ç½®
+-- 45000 - 50000 ÈğÊŞ½µ¸£ Õâ¸öÔÚÆäËûµÄÅäÖÃÖĞÅäÖÃ
 ScriptFightDB[45000] = {
-	-- æˆ˜æ–—ç±»å‹
+	-- Õ½¶·ÀàĞÍ
 	subType = ScriptType.LuckyMonster,
-	-- ä¸»æ€ªä¿¡æ¯
+	-- Ö÷¹ÖĞÅÏ¢
 	majorMonsterInfo = {{ID = 25501,pos = 21}},
-	-- è¦åˆ·æ–°æ€ªçš„ä¿¡æ¯
+	-- ÒªË¢ĞÂ¹ÖµÄĞÅÏ¢
 	monsters = {type=ScriptMonsterCreateType.Random,minCount = 7,maxCount = 7,{ID = 25505,weight= 50},{ID = 25507,weight= 20}, {ID = 25508,weight= 50},{ID = 25509,weight= 50}, {ID = 25510,weight= 40},{ID = 25511,weight= 50},},
 	systemActions = {
 	      [1] = 
@@ -3451,7 +3723,7 @@ ScriptFightDB[45000] = {
 		  },
 		  actions = 
 		  {
-		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--æˆ˜æ–—ç»“æŸï¼šwinner = èƒœåˆ©æ–¹ ï¼ˆâ€œmonsterâ€= æ€ªç‰©æ–¹ã€â€œplayerâ€ = ç©å®¶æ–¹ï¼‰
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--Õ½¶·½áÊø£ºwinner = Ê¤Àû·½ £¨¡°monster¡±= ¹ÖÎï·½¡¢¡°player¡± = Íæ¼Ò·½£©
 		  },
 	      },
 	      [2] = 
@@ -3468,7 +3740,7 @@ ScriptFightDB[45000] = {
 		  },
 	      },
 	},
-	-- å¥–åŠ±ä¿¡æ¯
+	-- ½±ÀøĞÅÏ¢
 	LuckyRewardID = 1,
 }
 
