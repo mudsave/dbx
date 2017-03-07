@@ -217,6 +217,9 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             if (mysql_field_count(m_mysql) == 0)
             {
                 TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:mysql_field_count(m_mysql) == 0,affected rows:%i.\n", m_mysql->affected_rows);
+                //返回空消息
+                m_SCMsgBuilder.beginMessage();
+                p_issue->OnQueryReturn(m_SCMsgBuilder.finishMessage());
             }
             else
             {

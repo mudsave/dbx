@@ -122,7 +122,7 @@ void DBIssueCallSP::MainProgress()
             free(current->p_msg);
             dropped = current;
             current = current->next;
-            free(dropped);
+            delete dropped;
         }
         m_pResultHead = NULL;
         free(m_pAppMsg);
