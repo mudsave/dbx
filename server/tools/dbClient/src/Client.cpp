@@ -225,7 +225,7 @@ HRESULT CClient::Do(HANDLE hContext) {
 
 
 int CClient::addParam(const char* name, const char* value) {
-	m_msgBuilder.addAttribute(name, value, strlen(value) + 1);
+	m_msgBuilder.addAttribute(name, value, strlen(value));
 }
 
 int CClient::addParam(const char* name, int value) {
