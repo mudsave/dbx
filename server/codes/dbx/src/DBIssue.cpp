@@ -139,7 +139,15 @@ void DBIssueCallSP::OnQueryReturn(AppMsg * p_appMsg)
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
     CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
 
-    pResultMsg->msgId = S_DOACTION_RESULT;
+    if (m_pAppMsg->msgId == C_SP_FROM_CPP)
+    {
+        pResultMsg->msgId = S_SP_CPP_RESULT;
+    }
+    else
+    {
+        pResultMsg->msgId = S_DOACTION_RESULT;
+    }
+
     pResultMsg->m_spId = pQueryMsg->m_spId;
     pResultMsg->msgCls = pQueryMsg->msgCls;
     pResultMsg->m_nTempObjId = pQueryMsg->m_nTempObjId;
