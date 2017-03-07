@@ -185,7 +185,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if (pEnd + strlen(szInt) + 32/*用来放）号等*/ >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", nBufferLen, spName);
                         break;
                     }
 
@@ -200,7 +200,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if (pEnd + strlen(szFloat) + 32/*用来放）号等*/ >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", nBufferLen, spName);
                         break;
                     }
 
@@ -218,13 +218,13 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if (pEnd + strlen(szInt) + 32/*用来放）号等*/ >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", nBufferLen, spName);
                         break;
                     }
 
                     pEnd = strmov(pEnd, szInt);
                 }
-                else if (param.nDataType > 0)
+                else if (param.nDataType >= 0)
                 {
                     //字符串处理
 
@@ -232,7 +232,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if ((pEnd + param.size() * 2 + 32/*用来放）号等*/) >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", nBufferLen, spName);
                         break;
                     }
 
@@ -250,6 +250,11 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     // '
                     *pEnd++ = '\'';
                 }
+                else
+                {
+                    ok = false;
+                    TRACE2_ERROR("Fail to build query buffer, unknown param.nDataType(%d). spName %s\n", param.nDataType, spName);
+                }
             }
             else if (param.nDataDir == PARAM_DIR_OUT)
             {
@@ -257,11 +262,16 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                 if ((pEnd + param.size() + 32/*用来放）号等*/) >= (pBuffer + nBufferLen))
                 {
                     ok = false;
-                    TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
+                    TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", nBufferLen, spName);
                     break;
                 }
 
                 pEnd = strmov(pEnd, param.szVariableName);
+            }
+            else
+            {
+                ok = false;
+                TRACE2_ERROR("Fail to build query buffer, unknown param.nDataDir(%d). spName %s\n", param.nDataDir, spName);
             }
 
             pEnd = strmov(pEnd, ", ");
