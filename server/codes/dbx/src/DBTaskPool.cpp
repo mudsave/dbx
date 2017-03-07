@@ -43,6 +43,12 @@ void DBTaskPool::Finalise()
     TRACE1_L0("DBTaskPool::Finalise:%i.\n", m_dbInterfaceID );
     
     m_isDestroyed = true;
+
+    while (IsBusy())
+    {
+        Sleep(DB_TASK_DESTROY_TIME);
+    }
+
     m_freeBusyListMutex.Lock();
     std::list<DBTask *>::iterator taskIter = m_totalTaskList.begin();
     for (; taskIter != m_totalTaskList.end(); ++taskIter)
@@ -294,4 +300,16 @@ void DBTaskPool::OnTaskQuit(DBTask *p_task)
 bool DBTaskPool::IsDestroyed()
 {
     return m_isDestroyed;
+}
+
+bool DBTaskPool::IsBusy()
+{
+    TRACE3_L0("DBTaskPool::IsBusy:m_issueBufferList size(%i),m_orderQueryIssueMap size(%i),m_busyTaskList size(%i).\n", m_issueBufferList.size(), m_orderQueryIssueMap.size(), m_busyTaskList.size());
+    if (m_issueBufferList.size() > 0 || m_orderQueryIssueMap.size() > 0)
+        return true;
+
+    if (m_busyTaskList.size() > 0)
+        return true;
+
+    return false;
 }

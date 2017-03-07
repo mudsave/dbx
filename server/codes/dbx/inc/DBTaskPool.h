@@ -52,6 +52,7 @@ protected:
     bool TaskIssue(DBIssueBase *p_issue);
     void BufferIssue(DBIssueBase *p_issue);
 
+    bool IsBusy();
 protected:
     int m_dbInterfaceID;
 
