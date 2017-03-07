@@ -133,7 +133,7 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
 bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 {
-    TRACE0_L0("DBInterfaceMysql::ProcessQueryResult.\n");
+    //TRACE0_L0("DBInterfaceMysql::ProcessQueryResult.\n");
     if (p_issue == NULL)
         return true;
 
@@ -154,12 +154,12 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             bool isFirstRow = true;
             while (row = mysql_fetch_row(result))
             {
-                unsigned long *lengths = mysql_fetch_lengths(result);
+                //unsigned long *lengths = mysql_fetch_lengths(result);
                 for (unsigned int i = 0; i < fieldNum; ++i)
                 {
-                    const char * value = (row[i] == NULL ? "NULL" : row[i]);
+                    //const char * value = (row[i] == NULL ? "NULL" : row[i]);
                     const char * name = isFirstRow ? fields[i].name : NULL;     // 第一行写上属性名
-                    TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
+                    //TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
 
                    char * attrName = NULL;
                     if (name != NULL)
@@ -217,6 +217,9 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             if (mysql_field_count(m_mysql) == 0)
             {
                 TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:mysql_field_count(m_mysql) == 0,affected rows:%i.\n", m_mysql->affected_rows);
+                //返回空消息
+                m_SCMsgBuilder.beginMessage();
+                p_issue->OnQueryReturn(m_SCMsgBuilder.finishMessage());
             }
             else
             {

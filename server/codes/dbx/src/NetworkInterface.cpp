@@ -61,7 +61,6 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
     TRACE4_L0("NetworkInterface::DefaultMsgProc m_linkIndex(%i), pMsg->msgLen(%i) from:%s:%d\n", context->m_linkIndex, pMsg->msgLen, addr, port);
 
     char* contents = (char*)pMsg + sizeof(AppMsg);
-    TRACE1_L0("AppMsg : <<< %s\n", contents);
 
     //DBManager::InstancePtr()
 

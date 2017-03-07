@@ -43,6 +43,12 @@ void DBTaskPool::Finalise()
     TRACE1_L0("DBTaskPool::Finalise:%i.\n", m_dbInterfaceID );
     
     m_isDestroyed = true;
+
+    while (IsBusy())
+    {
+        Sleep(DB_TASK_DESTROY_TIME);
+    }
+
     m_freeBusyListMutex.Lock();
     std::list<DBTask *>::iterator taskIter = m_totalTaskList.begin();
     for (; taskIter != m_totalTaskList.end(); ++taskIter)
@@ -217,7 +223,7 @@ DBIssueBase *DBTaskPool::TryGetOrderIssue(int p_queryID)
 
 void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
 {
-    TRACE0_L0("DBTaskPool::OnIssueFinish.\n");
+    //TRACE0_L0("DBTaskPool::OnIssueFinish.\n");
 
     m_finishIssueMutex.Lock();
     m_finishIssueList.push_back(p_issue);
@@ -226,7 +232,7 @@ void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
 
 DBIssueBase *DBTaskPool::PopBufferIssue()
 {
-    TRACE0_L0("DBTaskPool::PopBufferIssue.\n");
+    //TRACE0_L0("DBTaskPool::PopBufferIssue.\n");
     DBIssueBase *dbIssue = NULL;
 
     m_bufferListMutex.Lock();
@@ -244,7 +250,7 @@ DBIssueBase *DBTaskPool::PopBufferIssue()
 
 void DBTaskPool::AddFreeTask(DBTask *p_task)
 {
-    TRACE0_L0("DBTaskPool::AddFreeTask.\n");
+    //TRACE0_L0("DBTaskPool::AddFreeTask.\n");
     m_freeBusyListMutex.Lock();
 
     std::list<DBTask *>::iterator iter;
@@ -294,4 +300,16 @@ void DBTaskPool::OnTaskQuit(DBTask *p_task)
 bool DBTaskPool::IsDestroyed()
 {
     return m_isDestroyed;
+}
+
+bool DBTaskPool::IsBusy()
+{
+    TRACE3_L0("DBTaskPool::IsBusy:m_issueBufferList size(%i),m_orderQueryIssueMap size(%i),m_busyTaskList size(%i).\n", m_issueBufferList.size(), m_orderQueryIssueMap.size(), m_busyTaskList.size());
+    if (m_issueBufferList.size() > 0 || m_orderQueryIssueMap.size() > 0)
+        return true;
+
+    if (m_busyTaskList.size() > 0)
+        return true;
+
+    return false;
 }
