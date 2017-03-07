@@ -133,7 +133,7 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
 bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 {
-    TRACE0_L0("DBInterfaceMysql::ProcessQueryResult.\n");
+    //TRACE0_L0("DBInterfaceMysql::ProcessQueryResult.\n");
     if (p_issue == NULL)
         return true;
 
@@ -159,7 +159,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                 {
                     const char * value = (row[i] == NULL ? "NULL" : row[i]);
                     const char * name = isFirstRow ? fields[i].name : NULL;     // 第一行写上属性名
-                    TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
+                    //TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
 
                    char * attrName = NULL;
                     if (name != NULL)

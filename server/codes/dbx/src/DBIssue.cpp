@@ -26,7 +26,7 @@ DBIssueBase::DBIssueBase(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex)
 
 bool DBIssueBase::Progress()
 {
-    TRACE0_L0("DBIssueBase::Progress.\n");
+    //TRACE0_L0("DBIssueBase::Progress.\n");
     return OnProgress();
 }
 
@@ -112,13 +112,12 @@ bool DBIssueCallSP::OnProgress()
 
 void DBIssueCallSP::MainProgress()
 {
-    TRACE0_L0("DBIssueCallSP::MainProgress.RESULT...RESULT...RESULT...\n");
     if (m_linkIndex > 0)
     {
         SAppMsgNode *dropped(NULL), *current(m_pResultHead);
         while (current != NULL)
         {
-            TRACE1_L0("DBIssueCallSP::MainProgress. send result to client, end: %i\n", ((CCSResultMsg *)current->p_msg)->m_bEnd);
+            //TRACE1_L0("DBIssueCallSP::MainProgress. send result to client, end: %i\n", ((CCSResultMsg *)current->p_msg)->m_bEnd);
             DBManager::InstancePtr()->SendResult(m_linkIndex, current->p_msg);
             free(current->p_msg);
             dropped = current;
@@ -132,7 +131,7 @@ void DBIssueCallSP::MainProgress()
 
 void DBIssueCallSP::OnQueryReturn(AppMsg * p_appMsg)
 {
-    TRACE1_L0("DBIssueCallSP::OnQueryReturn. message length %i\n", p_appMsg->msgLen);
+    //TRACE1_L0("DBIssueCallSP::OnQueryReturn. message length %i\n", p_appMsg->msgLen);
 
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
     CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
@@ -202,7 +201,7 @@ void DBIssueCallSQL::MainProgress()
 
 void DBIssueCallSQL::OnQueryReturn(AppMsg * p_appMsg)
 {
-    TRACE1_L0("DBIssueCallSQL::OnQueryReturn. message length %i\n", p_appMsg->msgLen);
+    //TRACE1_L0("DBIssueCallSQL::OnQueryReturn. message length %i\n", p_appMsg->msgLen);
 
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
     CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);

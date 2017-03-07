@@ -217,7 +217,7 @@ DBIssueBase *DBTaskPool::TryGetOrderIssue(int p_queryID)
 
 void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
 {
-    TRACE0_L0("DBTaskPool::OnIssueFinish.\n");
+    //TRACE0_L0("DBTaskPool::OnIssueFinish.\n");
 
     m_finishIssueMutex.Lock();
     m_finishIssueList.push_back(p_issue);
@@ -226,7 +226,7 @@ void DBTaskPool::OnIssueFinish(DBIssueBase *p_issue)
 
 DBIssueBase *DBTaskPool::PopBufferIssue()
 {
-    TRACE0_L0("DBTaskPool::PopBufferIssue.\n");
+    //TRACE0_L0("DBTaskPool::PopBufferIssue.\n");
     DBIssueBase *dbIssue = NULL;
 
     m_bufferListMutex.Lock();
@@ -244,7 +244,7 @@ DBIssueBase *DBTaskPool::PopBufferIssue()
 
 void DBTaskPool::AddFreeTask(DBTask *p_task)
 {
-    TRACE0_L0("DBTaskPool::AddFreeTask.\n");
+    //TRACE0_L0("DBTaskPool::AddFreeTask.\n");
     m_freeBusyListMutex.Lock();
 
     std::list<DBTask *>::iterator iter;
