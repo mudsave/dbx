@@ -17,9 +17,10 @@ function FactionSysMgr:__init()
 
 end
 
-function FactionSysMgr.loadData(roleDBID )
+function FactionSysMgr.loadData(roleDBID)
 
     if not AlreadyLoadData.FactionData then
+        --没有帮派信息，首先载入全部的帮派信息
         LuaDBAccess.getAllFactionInfos(roleDBID,FactionSysMgr.onGetAllFactionInfos,roleDBID)
     else
         LuaDBAccess.getRoleFactionInfo(roleDBID,FactionSysMgr.onLoadData,roleDBID)
@@ -46,6 +47,9 @@ function FactionSysMgr.onGetAllFactionInfos(dataList,roleDBID )
             g_socialEntityManager:addFactionToFactionList(faction)
 
             LuaDBAccess.getFactionMembers(factionInfo["factionDBID"],FactionSysMgr.onLoadFactionMembers,roleDBID)
+            LuaDBAccess.getFactionExtendSkillInfo(
+                factionInfo["factionDBID"],FactionSysMgr.onGetExtendSkillInfo,factionInfo["factionDBID"]
+                )
         end
 
     else
@@ -91,6 +95,19 @@ function FactionSysMgr.onLoadFactionMembers( dataList,roleDBID )
         end
     end
     
+end
+
+--载入帮派技能信息
+function FactionSysMgr.onGetExtendSkillInfo( dataList,factionDBID)
+   local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
+   if not faction then print("不存在帮派") return end
+   if dataList and table.size(dataList[1]) > 0 then
+        for _, skillInfo in pairs(dataList[1]) do
+            local skillID = skillInfo["ExtendID"]
+            local skillLevel = skillInfo["skillLevel"]
+            faction:setExtendSKillList(skillID,skillLevel)
+        end
+   end 
 end
 
 function FactionSysMgr.onGetRoleInfo( dataList,roleDBID )
@@ -176,6 +193,11 @@ function FactionSysMgr.onLoadData( dataList,roleDBID )
                     local rolePosition = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID):getMemberPosition(roleDBID)
                     local info,memberList = FactionDataSend[rolePosition](factionDBID)
                     local event = Event.getEvent(FactionEvent_BC_SendFactionInfoToClient,info)
+                    g_eventMgr:fireRemoteEvent(event,role)
+
+                    --载入帮派研发技能信息，发送。
+                    local extendSkill = faction:getExtendSkillList()        
+                    local event = Event.getEvent(FactionEvent_BC_UpdateExtendSkill,extendSkill)
                     g_eventMgr:fireRemoteEvent(event,role)
 
                     local roleModelInfos = {}

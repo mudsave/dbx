@@ -36,7 +36,13 @@ void LinkContext_Client::doLoginAccount(DBMsg_LoginResult* pRet)
 	account.m_accountName = accountName;
 	if(g_accountMgr.getIdByName(accountName) == -1)
 	{
-		g_accountMgr.saveAccountInfo(accountName, accountId, passwd);	
+		g_accountMgr.saveAccountInfo(accountName, accountId, passwd);
+		std::vector<int> roleIdList; 
+		for( int i = 0; i < pRet->roleNum; i++)
+		{
+			roleIdList.push_back(pRet->role[i].roleId);
+		}
+		g_accountMgr.saveAccountRoleInfo(accountId, roleIdList);
 	}
 	g_session.send_MsgSC_Login_ResultInfo(hLink, 0, roleList);
 	_SwitchState(LINK_CONTEXT_LOGINED);
@@ -142,6 +148,11 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 					AccountInfo *p_account = g_accountMgr.getAccountPtr(accountId);
 					if (p_account != 0)
 					{
+						if ( p_account->status == ACCOUNT_STATE_LOADING || p_account->status == ACCOUNT_STATE_KICKING )
+						{
+							g_session.send_MsgSC_Login_ResultInfo(hLink, LOGIN_FAILED_PROCESSING , NULL);
+							return;
+						}
 						if (p_account->getIsOffline())
 						{
 							ASSERT_(p_account->status == ACCOUNT_STATE_OFFLINE_IN_FIGHT);
@@ -231,6 +242,14 @@ void LinkContext_Client::OnNetMsg(AppMsg* pMsg)
 		{
 			_MsgCS_ChooseRoleInfo* pInfo = (_MsgCS_ChooseRoleInfo*)pMsg;
 			int roleId = pInfo->roleId;
+			if (!g_accountMgr.verifyRoleID(accountId,roleId))
+			{
+				//处理好连接，账户的清理
+				TRACE0_L2("LinkContext_Client::OnNetMsg(), MSG_S_C_CHOOSE_ROLE roleID error\n");
+				_Close(CLOSE_RELEASE);
+				g_accountMgr.unregAccount(accountId);
+				return;
+			}
 			short worldId = pInfo->worldId;
 			short gatewayId	= g_session.getRanGatewayId(worldId);
 			ASSERT_( gatewayId >= 0 );
@@ -361,6 +380,12 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 			DBMsg_CreateRoleResult* pRet = (DBMsg_CreateRoleResult*)pMsg;
 			g_session.send_MsgSC_CreateRole_ResultInfo(hLink, pRet);
 			_SwitchState(LINK_CONTEXT_LOGINED);
+			int roleID = pRet->roleId;
+			//创建角色给account的role表里添加roleID
+			if (!g_accountMgr.verifyRoleID(accountId,roleID))
+			{
+				g_accountMgr.updateRoleID(accountId, roleID,true);
+			}
 			return;
 		}
 	}
@@ -372,6 +397,11 @@ void LinkContext_Client::OnDBMsg(_DBMsg* pMsg)
 			DBMsg_DeleteRoleResult* pRet = (DBMsg_DeleteRoleResult*)pMsg;
 			g_session.send_MsgSC_DeleteRole_ResultInfo(hLink, pRet);
 			_SwitchState(LINK_CONTEXT_LOGINED);
+			int roleID = pRet->roleId;
+			if (g_accountMgr.verifyRoleID(accountId,roleID))
+			{
+				g_accountMgr.updateRoleID(accountId, roleID,false);
+			}
 			return;
 		}
 	}

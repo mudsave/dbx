@@ -23,12 +23,13 @@ DialogCondition =
 	Time	= 18,
 	PlayerCountInGoldHuntMap = 19,
 	DekaronSchoolActivity = 20,
-	DekaronSchoolActivityTarget = 21,
-	TkillMonster = 22,
-	DailyTaskTimes = 23,
-	MatchTaskNpc = 24,
-	NoMatchTaskNpc = 25,
-	MatchTaskState = 26,
+	HaveActivityTarget = 21,
+	DekaronSchoolActivityTarget = 22,
+	TkillMonster = 23,
+	DailyTaskTimes = 24,
+	MatchTaskNpc = 25,
+	NoMatchTaskNpc = 26,
+	MatchTaskState = 27,
 
 }
 
@@ -96,11 +97,16 @@ DialogActionType =
 	GoldHuntCommit		= 51,		-- 猎金场提交分数
 
 	GetTheActivity		= 52,		-- 领取活动
-	DekaronSchoolFight	= 53,		-- 挑战活动目标
-	RecetiveTasks		= 54,		-- 同时接受多个任务
+	GiveUpActivity		= 53,		--放弃门派闯关活动
+	DekaronSchoolFight	= 54,		-- 挑战活动目标
+	RecetiveTasks		= 55,		-- 同时接受多个任务
 
-	ReceiveBabelTask	= 55,		-- 接受天道任务
-	EnterBabel			= 56,		-- 进入通天塔
+	ReceiveBabelTask	= 56,		-- 接受天道任务
+	EnterBabel			= 57,		-- 进入通天塔
+	EnterNextLayer		= 58,		-- 挑战下一层
+	FlyUp				= 59,		-- 飞升
+	ChangeRewardType	= 60,		-- 跟换奖励类型
+	ChangeTarget		= 61,		-- 改变任务目标
 }
 
 --对话框图标类型

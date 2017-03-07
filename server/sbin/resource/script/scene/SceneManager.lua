@@ -56,6 +56,8 @@ function SceneManager:loadSystemByScene()
 	local instance = CollectionRefresher.getInstance()
 	instance:loadInitCollections()
 	instance:start()
+	--刷新活动
+	g_activityMgr:updateActivityByStart()
 end
 
 function SceneManager:enterPublicScene(mapID, role, x, y)

@@ -13,8 +13,8 @@ function ActivityTarget:__release()
 	
 end
 
-function ActivityTarget:getActivityId()
-	return self._activityId
+function ActivityTarget:getActivityTargetId()
+	return self._activityTargetId
 end
 
 function ActivityTarget:getActivityIndex()
@@ -22,7 +22,7 @@ function ActivityTarget:getActivityIndex()
 end
 
 function ActivityTarget:setEntity( role)
-	 self._entity = role
+	self._entity = role
 end
 
 function ActivityTarget:getEntity()

@@ -12,6 +12,9 @@ function ActivityHandler:__init(entity)
 	self.priData = {}
 	self._goldHuntData={ID=0,totalScore=0,isPrized = 0,rank = -1}
 	self.enterPos = {}
+	--门派闯关活动积分
+	self.dekaronIntegral = 0
+	self.activityTarget = nil
 end
 
 function ActivityHandler:__release()
@@ -21,6 +24,7 @@ function ActivityHandler:__release()
 	self.priData = nil
 	self._goldHuntData = nil
 	self.enterPos = nil
+	self.activityTarget = nil
 end
 
 function ActivityHandler:getGoldHuntData()
@@ -88,11 +92,6 @@ function ActivityHandler:offLine()
 			end
 		end
 	end
-	-- for targetIndex, flag in pairs(self.activityProgressData[activityId]) do
-		-- if flag == true then
-			-- LuaDBAccess[ActivityDB[activityId].dbName](player,activityId)
-		-- end
-	-- end
 	for _, targets in pairs(self.currentTargets) do
 		for targetIndex, target in pairs(targets) do
 			release(target)
@@ -123,4 +122,21 @@ end
 
 function ActivityHandler:getEnterPos()
 	return self.enterPos
+end
+
+--设置门派闯关个人积分
+function ActivityHandler:getDekaronIntegral()
+	return self.dekaronIntegral
+end
+
+function ActivityHandler:setDekaronIntegral(dekaronIntegral)
+	self.dekaronIntegral = dekaronIntegral
+end
+
+function ActivityHandler:getDekaronActivityTarget()
+	return self.activityTarget
+end
+
+function ActivityHandler:setDekaronActivityTarget(activityTarget)
+	self.activityTarget = activityTarget
 end

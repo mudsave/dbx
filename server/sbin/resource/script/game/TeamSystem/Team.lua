@@ -41,6 +41,8 @@ function Team:__init(teamID,leaderID)
 	self.allMemberList = {}
 	self.inviteList = {}
 	self:setLeader(leaderID)
+	self.dekaronProcess = 0
+	self.targetList = {}
 end
 
 function Team:__release()
@@ -48,6 +50,8 @@ function Team:__release()
 	self.leaderID = nil
 	self.allMemberList = nil
 	self.inviteList = nil
+	self.dekaronProcess = nil
+	self.targetList = nil
 end
 
 --获得队长ID
@@ -242,6 +246,7 @@ function Team:addMember(playerID,memberState)
 
 	--modify npc pet hide
 	setFollowVisible(playerID, false)
+	g_dekaronSchoolMgr:joinTeam(player, self.teamID)
 end
 
 --移除队员
@@ -294,10 +299,22 @@ function Team:comeBack(playerID)
 	end
 end
 
+function Team:dissolve()
+	for _, memberInfo in pairs(self.allMemberList) do
+		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
+		if self.leaderID ~= memberInfo.memberID then
+			if memberInfo.memberState == MemberState.Follow then
+				setFollowVisible(memberInfo.memberID, true)
+			end
+		end
+	end
+	self:release()
+end
+
 function Team:getMaxAndMinLvl()
 	local player = g_entityMgr:getPlayerByID(self.leaderID)
-	local maxLvl = player:getLevel()
-	local minLvl = maxLvl
+	local maxLvl = 0
+	local minLvl = player:getLevel()
 	local curLvl = 0
 	-- 求最大最小值
 	for _,memberInfo in pairs(self.allMemberList) do
@@ -313,14 +330,37 @@ function Team:getMaxAndMinLvl()
 	return maxLvl,minLvl
 end
 
-function Team:dissolve()
-	for _, memberInfo in pairs(self.allMemberList) do
+--门派闯关活动队伍进度
+function Team:setProcess(process)
+	self.dekaronProcess = process
+end
+
+function Team:getProcess()
+	return self.dekaronProcess
+end
+
+function Team:setDekaronActivityTarget(activityTarget)
+	local param = activityTarget:getParams()
+	for k,memberInfo in pairs(self.allMemberList) do
 		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
-		if self.leaderID ~= memberInfo.memberID then
-			if memberInfo.memberState == MemberState.Follow then
-				setFollowVisible(memberInfo.memberID, true)
-			end
+		local handler = player:getHandler(HandlerDef_Activity)
+		handler:setDekaronActivityTarget(activityTarget)
+		if activityTarget then
+			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,self.dekaronProcess,handler:getDekaronIntegral())
+			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
-	self:release()
+	if activityTarget then
+		self:addDekaronTargetList(param.school)
+	else
+		table.clear(self.targetList)
+	end
+end
+
+function Team:getDekaronTargetList()
+	return self.targetList
+end
+
+function Team:addDekaronTargetList(school)
+	table.insert(self.targetList,school)
 end

@@ -39,17 +39,19 @@ end
 
 -- 选择选项条件
 function DialogCondition:choseOption(player, showConditions)
-
 	for _, data in pairs(showConditions) do
 		local method = DialogConditionDoer[data.condition]
 		local instence = DialogConditionInstance[data.condition]
 		local result, errorID = method(instence, player, data.param) 
-		if not result and errorID and errorID > 0 then
-			return result, errorID
+		if not result then
+			if errorID and errorID > 0 then
+				return result, errorID
+			else 
+				return result, 0
+			end
 		end
 	end
 	return true, 0
-
 end
 
 --检测对话ID是否满足条件
@@ -60,8 +62,12 @@ function DialogCondition:checkDialogID(player, dialogID, npcID)
 		local method = DialogConditionDoer[data.condition]
 		local instence = DialogConditionInstance[data.condition]
 		local result, errorID = method(instence, player, data.param, npcID)
-		if not result and errorID and errorID > 0 then
-			return result, errorID
+		if not result then
+			if errorID and errorID > 0 then
+				return result, errorID
+			else 
+				return result, 0
+			end
 		end
 	end
 	return true, 0

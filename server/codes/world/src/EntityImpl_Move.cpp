@@ -205,10 +205,7 @@ void CoEntity::onMove()
 				setPosition(pPosData->path[pPosData->idx]);
 				if (getPropType() == eClsTypePlayer){
 					static LuaFunctor<TypeNull, int> tileChange(g_world.getLuaState(), "ManagedApp.onTileChange");
-					if ( !tileChange( TypeNull::nil(), getHandle() ) )
-					{
-						TRACE2_L1("[CoEntity::onMove] failed ! playerID: %d. because of:%s\n", getHandle(), tileChange.getLastError());
-					}
+					tileChange( TypeNull::nil(), getHandle() );
 				}
 			}
 			while(m_clipping >= m_stepTime)

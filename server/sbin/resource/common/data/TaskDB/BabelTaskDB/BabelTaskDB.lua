@@ -20,6 +20,25 @@ BabelTaskDB =
 				{type = "challengeNpcTrace", param = {}},
 			},
 		},
-		maxLayer = 1,
+		maxLayer = 200,
+		-- 奖励公式
+		formulaRewards =
+		{
+			[1] = 
+			{
+				--角色经验
+				[TaskRewardList.player_xp] = BabelRewardFormula.addXp,
+				-- 宠物
+				[TaskRewardList.pet_xp] = BabelRewardFormula.addPetXp,
+			},
+			[2] =
+			{
+				--任务道行
+				[TaskRewardList.player_tao] = BabelRewardFormula.addTao,
+				-- 宠物
+				-- 宠物道行
+				[TaskRewardList.pet_tao] = BabelRewardFormula.addPetTao,
+			},
+		},
 	},
 }

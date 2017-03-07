@@ -54,8 +54,13 @@ DialogActionConfig =
 	[DialogActionType.GoldHuntFight]			= DialogAction.doGoldHuntFight,
 	[DialogActionType.GoldHuntCommit]			= DialogAction.doGoldHuntCommit,
 	[DialogActionType.GetTheActivity]			= DialogAction.doGetTheActivity,
+	[DialogActionType.GiveUpActivity]			= DialogAction.doGiveUpActivity,
 	[DialogActionType.DekaronSchoolFight]		= DialogAction.doDekaronSchoolFight,
 	[DialogActionType.RecetiveTasks]			= DialogAction.doRecetiveTasks,
 	[DialogActionType.ReceiveBabelTask]			= DialogAction.doReceiveBabelTask,
 	[DialogActionType.EnterBabel]				= DialogAction.doEnterBabel,
+	[DialogActionType.EnterNextLayer]			= DialogAction.doEnterNextLayer,
+	[DialogActionType.FlyUp]					= DialogAction.doFlyUp,
+	[DialogActionType.ChangeRewardType]			= DialogAction.doChangeRewardType,
+	[DialogActionType.ChangeTarget]				= DialogAction.doChangeTarget,
 }

@@ -282,9 +282,9 @@ inline bool PopResult(lua_State *L,long long &result){
 
 //从lua栈中弹出整形数
 template<>
-inline bool PopResult(lua_State *L,int &result){
+inline bool PopResult(lua_State *L,int &result) {
 	bool b_success = false;
-	if(lua_isnumber(L,-1)){
+	if(lua_isnumber(L,-1)) {
 		result = (int)lua_tointeger(L,-1);
 		b_success = true;
 	}
@@ -294,9 +294,9 @@ inline bool PopResult(lua_State *L,int &result){
 
 //从lua栈中弹出短整形数
 template<>
-inline bool PopResult(lua_State *L,short &result){
+inline bool PopResult(lua_State *L,short &result) {
 	bool b_success = false;
-	if(lua_isnumber(L,-1)){
+	if(lua_isnumber(L,-1)) {
 		result = (short)lua_tointeger(L,-1);
 		b_success = true;
 	}
@@ -306,9 +306,9 @@ inline bool PopResult(lua_State *L,short &result){
 
 //从lua栈中弹出字节
 template<>
-inline bool PopResult(lua_State *L,unsigned char &result){
+inline bool PopResult(lua_State *L,unsigned char &result) {
 	bool b_success = false;
-	if(lua_isnumber(L,-1)){
+	if(lua_isnumber(L,-1)) {
 		result = (unsigned char)lua_tointeger(L,-1);
 		b_success = true;
 	}
@@ -318,7 +318,7 @@ inline bool PopResult(lua_State *L,unsigned char &result){
 
 //从lua栈中弹出一个handle
 template<>
-inline bool PopResult(lua_State *L,handle &result){
+inline bool PopResult(lua_State *L,handle &result) {
 	bool b_success = false;
 	if(lua_isnumber(L,-1)){
 		result = (handle)lua_tointeger(L,-1);
@@ -329,7 +329,7 @@ inline bool PopResult(lua_State *L,handle &result){
 
 //从lua栈中弹出布尔值
 template<>
-inline bool PopResult(lua_State *L,bool &result){
+inline bool PopResult(lua_State *L,bool &result) {
 	bool b_success = false;
 	if(lua_isboolean(L,-1)){
 		result = lua_toboolean(L,-1)?true:false;
@@ -341,7 +341,7 @@ inline bool PopResult(lua_State *L,bool &result){
 
 //从lua栈中弹出一个数字数组
 template<>
-inline bool PopResult(lua_State *L,NumberVector &result){
+inline bool PopResult(lua_State *L,NumberVector &result) {
 	if(lua_istable(L,-1)){
 		return GetLuaTable(L,-1,result);
 	}
@@ -350,7 +350,7 @@ inline bool PopResult(lua_State *L,NumberVector &result){
 
 //从lua栈中弹出一个字符串数组
 template<>
-inline bool PopResult(lua_State *L,StringVector &result){
+inline bool PopResult(lua_State *L,StringVector &result) {
 	if(lua_istable(L,-1)){
 		return GetLuaTable(L,-1,result);
 	}
@@ -359,11 +359,11 @@ inline bool PopResult(lua_State *L,StringVector &result){
 
 //弹出lua栈中的一个表到暂存区
 template<>
-inline bool PopResult(lua_State *L,TypeTable &result){
-	if(lua_istable(L,-1)){
+inline bool PopResult(lua_State *L,TypeTable &result) {
+	if(lua_istable(L,-1)) {
 		result.self = luaL_ref(L,LUA_REGISTRYINDEX);
 		return true;
-	}else{
+	}else {
 		lua_pop(L,1);
 		return false;
 	}
@@ -371,7 +371,7 @@ inline bool PopResult(lua_State *L,TypeTable &result){
 
 //弹出lua栈中的一个自定义数据
 template<>
-inline bool PopResult(lua_State *L,TypeUser &result){
+inline bool PopResult(lua_State *L,TypeUser &result) {
 	lua_pop(L,1);
 	return false;
 }
@@ -380,161 +380,181 @@ inline bool PopResult(lua_State *L,TypeUser &result){
 template<class T>
 class ResultPoper{
 public:
-	static bool Pop(lua_State *L,T &result){
+	static bool Pop(lua_State *L,T &result) {
 		return PopResult(L,result);
 	}
 };
 
 
 class LuaHelper{
-private:
-	static std::string &lastError(){
-		static std::string s_sLastError;
-		return s_sLastError;
-	}
 public:
-	static void setLastError(const char *szFmt,...){
-		static char buff[256];
-		va_list args;
-		va_start(args,szFmt);
-		vsprintf(buff,szFmt,args);
-		lastError() = buff;
-	}
-	static const std::string &getLastError(){
-		return lastError();
-	}
-};
-
-//从全局环境中搜索一个函数
-inline bool FindMethod(lua_State *L,const std::string &funcName){
-	int top = lua_gettop(L);
-	std::string::size_type i = funcName.find_first_of('.');
-	if(i != std::string::npos){
-		std::vector<std::string> parts;
-		std::string::size_type start = 0;
-		do{
-			parts.push_back(funcName.substr(start,i - start));
-			start = i + 1;
-			i = funcName.find_first_of('.',start);
-		}while(i!=std::string::npos);
-		parts.push_back(funcName.substr(start));
-
-		lua_getglobal(L,parts[0].c_str());
-		if(!lua_istable(L,-1)){
-			lua_settop(L,top);
-			goto FuncNotFound;
+	static bool findMethod(lua_State *L,const std::string &funcName){
+		std::string cmd = "return "+funcName;
+		if( luaL_loadstring(L,cmd.c_str()) || lua_pcall(L,0,1,0) ) {
+			// const char *errMsg = lua_tostring(L,-1);
+			lua_pop(L,1);
+			lua_pushnil(L);
+			return false;
+		} else if( !lua_isfunction(L,-1) ) {
+			return false;
 		}
-
-		std::vector<std::string>::size_type visz = parts.size();
-		if(visz-- > 2){
-			std::vector<std::string>::size_type vi = 1;
-			while(vi < visz){
-				lua_pushstring(L,parts[vi].c_str());
-				lua_gettable(L,-2);
-				if(!lua_istable(L,-1)){
-					goto FuncNotFound;
-				}vi++;
-			}
-		}
-
-		lua_pushstring(L,parts[visz].c_str());
-		lua_gettable(L,-2);
-		lua_remove(L,-2);
-	}else{
-		lua_getglobal(L,funcName.c_str());
-	}
-
-	if(!lua_isfunction(L,-1)){
-		goto FuncNotFound;
-	}else{
 		return true;
 	}
-FuncNotFound:
-	LuaHelper::setLastError("can not locate global function %s",funcName.c_str());
-	lua_settop(L,top);
-	return false;
-}
 
-//获得一个函数，并将这个函数放置到注册环境中
-inline int PushMethod(lua_State *L,const std::string &funcName){
-	if(FindMethod(L,funcName)){
-		return luaL_ref(L,LUA_REGISTRYINDEX);
-	}else{
-		return LUA_NOREF;
+	static int pushMethod(lua_State *L,const std::string &funcName) {
+		if( !findMethod(L,funcName) ) {
+			lua_pop(L,1);
+			return LUA_NOREF;
+		}
+		return lua_ref(L,LUA_REGISTRYINDEX);
 	}
-}
+
+	static int getPanic(lua_State *L) {
+		static void *panic = 0;
+		int top = lua_gettop(L);
+		lua_pushlightuserdata(L,&panic);
+		lua_rawget(L,LUA_REGISTRYINDEX);
+		if( !lua_isfunction(L,-1) ) {
+			lua_pop(L,1);
+			if( panic ) {
+				return 0;
+			}
+			panic = &panic; // 这样这个函数就只限于在单协程中使用了
+			if(!findMethod(L,"ManagedApp.onLuaError")) {
+				TRACE0_L0("Error handle function \"ManagedApp.onLuaError()\" not assigned!\n");
+				lua_pop(L,1);
+				return 0;
+			}
+			lua_pushlightuserdata(L,&panic);
+			lua_pushvalue(L,-2);
+			lua_rawset(L,LUA_REGISTRYINDEX);
+		}
+		return top + 1;
+	}
+};
 
 template<class R=TypeNull,class A=TypeNull,class B=TypeNull,class C=TypeNull,class D=TypeNull>
 class LuaFunctor{
 	private:
 		LuaFunctor& operator=(const LuaFunctor &functor){
 		}
+		void setFunc(int index) {
+			if( 0 == index ) {
+				lua_pushfstring(m_state,"can not locate global function %s",m_path.c_str());
+			} else if( lua_isfunction(m_state,index) ) {
+				lua_pushvalue(m_state,index);
+			} else {
+				lua_pushfstring(m_state,"unnamed Functor expected a function,got %s",lua_typename(m_state,lua_type(m_state,index)));
+			}
+			m_ref = &m_ref;
+			lua_pushlightuserdata(m_state,&m_ref);
+			lua_insert(m_state,-2);
+			lua_rawset(m_state,LUA_REGISTRYINDEX);
+		}
 	public:
-		//从栈中获得函数
-		LuaFunctor(lua_State *L, int func):m_pState(L),m_iFunc(func),m_bNeedAttain(false){
+		LuaFunctor(lua_State *L, int index = -1):m_state(L),m_ref(NULL) {
+			setFunc(index);
 		}
-		//通过函数名初始化这个函数
-		LuaFunctor(lua_State *L, const std::string &func):m_pState(L),m_iFunc(LUA_NOREF),m_bNeedAttain(true),m_sFuncName(func){
+		LuaFunctor(lua_State *L, const std::string &path):m_state(L),m_ref(NULL),m_path(path) {
 		}
-		//拷贝函数
-		LuaFunctor(const LuaFunctor &functor):m_pState(functor.m_pState),m_iFunc(functor.m_iFunc),m_bNeedAttain(functor.m_bNeedAttain),m_sFuncName(m_sFuncName){
-		}
-		~LuaFunctor(){
-			if(LUA_NOREF != m_iFunc){
-				luaL_unref(m_pState,LUA_REGISTRYINDEX,m_iFunc);
-				m_iFunc = LUA_NOREF;
+		~LuaFunctor() {
+			if( m_ref ) {
+				lua_pushlightuserdata(m_state,&m_ref);
+				lua_pushnil(m_state);
+				lua_rawset(m_state,LUA_REGISTRYINDEX);
 			}
 		}
-		//重载调用运算符，使得封装了lua函数的类可以作为函数调用
-		bool operator()(R& result=TypeNull::nil(),const A& a=TypeNull::nil(),const B& b=TypeNull::nil(),
-				const C& c=TypeNull::nil(),const D& d=TypeNull::nil())
-		{
-			if(m_bNeedAttain){
-				m_iFunc = PushMethod(m_pState,m_sFuncName);
-				if(LUA_NOREF == m_iFunc){
-					return false;
+
+		bool operator()(R& result=TypeNull::nil(),const A& a=TypeNull::nil(),const B& b=TypeNull::nil(),const C& c=TypeNull::nil(),const D& d=TypeNull::nil()) {
+			int panic = LuaHelper::getPanic(m_state);
+			bool bSuccess = false;
+			do {
+				lua_pushlightuserdata(m_state,&m_ref);
+				lua_rawget(m_state,LUA_REGISTRYINDEX);
+				if( !lua_isfunction(m_state,-1) && !m_ref ) {
+					lua_pop(m_state,1);
+					setFunc(LuaHelper::findMethod(m_state,m_path)?-1:0);
 				}
-				m_bNeedAttain = false;
+				if( !lua_isfunction(m_state,-1) ) {
+					if(!panic) {
+						lua_pop(m_state,1); //保留错误信息
+					}
+					break;
+				}
+				int args = 0;//参数个数
+				ParamPusher<A,B,C,D>::Push(m_state, args, a, b, c, d);
+	
+				if( lua_pcall( m_state,args,IsNull(result)?0:1,panic ) ) {
+					lua_pop(m_state,1);
+					break;
+				}
+
+				if( !IsNull(result) &&  !ResultPoper<R>::Pop(m_state,result) ) {
+					if ( panic ) {
+						// 弹出返回值失败,且有出错处理,则添加出错信息
+						lua_pushfstring(m_state,"Pop return value of %s failed!",m_path.c_str());
+					}
+					break;
+				}
+				bSuccess = true;
+			} while(false);
+			if(panic) {
+				int errs = lua_gettop(m_state) - panic;
+				if(errs) {
+					if( lua_pcall(m_state,errs,0,0) ) {
+						TRACE1_L0("fatal error:execute panic function failed:%s\n",lua_tostring(m_state,-1));
+						lua_pop(m_state,1);
+					}
+				} else {
+					lua_remove(m_state,panic);
+				}
 			}
-			//从暂存区取得函数
-			lua_rawgeti(m_pState, LUA_REGISTRYINDEX, m_iFunc);
-			int args = 0;//参数个数
-			ParamPusher<A,B,C,D>::Push(m_pState, args, a, b, c, d);
-			if( lua_pcall(m_pState, args, IsNull(result) ? 0 : 1, 0) ){
-				LuaHelper::setLastError("call lua function %s failed:\n%s",m_sFuncName.c_str(),lua_tostring(m_pState,-1));
-				lua_pop(m_pState,1);
-				return false;
-			}
-			if(!IsNull(result)){
-				return ResultPoper<R>::Pop(m_pState, result);
-			}
-			return true;
+			return bSuccess;
 		}
 		static bool Call(lua_State *L,const std::string& szFuncName,R& result=TypeNull::nil(),const A& a=TypeNull::nil(),const B& b=TypeNull::nil(),
 				const C& c=TypeNull::nil(),const D& d=TypeNull::nil()){
-			if(!FindMethod(L,szFuncName)){
-				return false;
+			int panic = LuaHelper::getPanic(L);
+			bool bSuccess = false;
+			do {
+				if(!LuaHelper::findMethod(L,szFuncName)){
+					lua_pop(L,1);
+					if( panic ) {
+						lua_pushfstring(L,"can not locate global function %s",szFuncName.c_str());
+					}
+					break;
+				}
+				int args = 0;
+				ParamPusher<A,B,C,D>::Push(L,args,a,b,c,d);
+				if( lua_pcall( L,args,IsNull(result)?0:1,panic ) ) {
+					lua_pop(L,1);
+					break;
+				}
+				if( !IsNull(result) && !ResultPoper<R>::Pop(L,result) ) {
+					if( panic ) {
+						lua_pushfstring(L,"Pop return value of %s failed!",szFuncName.c_str());
+					}
+					break;
+				}
+
+				bSuccess = true;
+			} while(false);
+			if(panic) {
+				int errs = lua_gettop(L) - panic;
+				if(errs) {
+					if( lua_pcall(L,errs,0,0) ) {
+						TRACE1_L0("fatal error:execute panic function failed:%s\n",lua_tostring(L,-1));
+						lua_pop(L,1);
+					}
+				} else {
+					lua_remove(L,panic);
+				}
 			}
-			int args = 0;	
-			ParamPusher<A,B,C,D>::Push(L,args,a,b,c,d);
-			if( lua_pcall(L,args,IsNull(result)?0:1,0) ){
-				LuaHelper::setLastError("call lua function %s failed:\n%s",szFuncName.c_str(),lua_tostring(L,-1));
-				lua_pop(L,1);
-				return false;
-			}
-			if(!IsNull(result)){
-				return ResultPoper<R>::Pop(L,result);
-			}
-			return true;
-		}
-		static const char* getLastError(){
-			return LuaHelper::getLastError().c_str();
+			return bSuccess;
 		}
 	private:
-		lua_State *m_pState;
-		int m_iFunc;
-		bool m_bNeedAttain;
-		std::string m_sFuncName;
+		lua_State *m_state;	// lua 状态
+		void *m_ref;		// lua 函数在注册表中的键,以地址作为键
+		std::string m_path;	// lua 函数的路径
 };
 
 //于未知的恐惧，于傲慢而无知的恐惧

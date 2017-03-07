@@ -187,45 +187,6 @@ function DialogAction:doRecetiveTasks(player, param)
 	end
 end
 
--- 接受通天塔任务，没有任务 设置任务奖励类型，切换场景
-function DialogAction:doReceiveBabelTask(player, param)
-	local taskHandler = player:getHandler(HandlerDef_Task)
-	local task = taskHandler:getTask(param.taskID)
-	-- 如果没有任务，接受一个任务
-	if not task then
-		-- 之后还要改，根据玩家等级来确定层数
-		local finishFlag = taskHandler:getBabelFinishFlag(param.taskID)
-		-- 今日也完成
-		if finishFlag == 1 then
-			print("今天已经完成，请明日再来")
-			return
-		end
-		local layer = 1
-		g_taskDoer:doReceiveBabelTask(player, param.taskID, param.rewardType, layer)
-		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
-		print("mapID任务数据",mapID, param.taskID, layer)
-		if mapID then
-			-- 切换玩家到场景
-			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
-			taskHandler:setReceiveBabelTaskTime(param.taskID)
-		end
-	end
-end
-
--- 如果有通天塔任务，点击对话直接进入
-function DialogAction:doEnterBabel(player, param)
-	local taskHandler = player:getHandler(HandlerDef_Task)
-	local task = taskHandler:getTask(param.taskID)
-	if task then
-		local layer = task:getLayer()
-		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
-		print("mapID任务数据",mapID, param.taskID, layer)
-		if mapID then
-			-- 切换玩家到场景
-			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
-		end
-	end
-end
 
 --接受一个任务
 function DialogAction:doRecetiveSpecialTask(player, param)
@@ -660,16 +621,13 @@ function DialogAction:doGoldHuntFight(player, param, npcID)
 end
 
 --领取活动
-function DialogAction:doGetTheActivity(player, param)
-	local activityID = param.activityID
-	local activity = g_activityMgr:getActivity(activityID)
-	print("领取活动-----------------",activity,activity:isOpening())
-	if activity and activity:isOpening() then
-		activity:joinActivity(player)
-	else
-		print("activityID活动还没开启",activityID)
-		return
-	end
+function DialogAction:doGetTheActivity(player)
+	g_dekaronSchoolMgr:joinActivity(player)
+end
+
+--放弃门派闯关活动
+function DialogAction:doGiveUpActivity(player)
+	g_dekaronSchoolMgr:giveUpActivity(player)
 end
 
 function DialogAction:doDekaronSchoolFight(player,param)
@@ -677,8 +635,8 @@ function DialogAction:doDekaronSchoolFight(player,param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler and teamHandler:isLeader() then
 		local teamID = teamHandler:getTeamID()
-		local team = g_teamMgr:getTeam(teamID)
-		local activityTarget = team:getDekaronActivityTarget()
+		local handler = player:getHandler(HandlerDef_Activity)
+		local activityTarget = handler:getDekaronActivityTarget()
 		if activityTarget and activityTarget:getActivityTargetId() == targetID then
 			local playerList = {}
 			playerList = teamHandler:getTeamPlayerList()
@@ -761,6 +719,126 @@ function DialogAction:doEnterBeastFight(player, param, npcID)
 		end
 	print("DialogAction:doEnterBeastFight")
 end	
+
+-- 接受通天塔任务，没有任务 设置任务奖励类型，切换场景
+function DialogAction:doReceiveBabelTask(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	-- 如果没有任务，接受一个任务
+	if not task then
+		-- 之后还要改，根据玩家等级来确定层数
+		local finishFlag = taskHandler:getBabelFinishFlag(param.taskID)
+		-- 今日也完成
+		if finishFlag == 1 then
+			print("今天已经完成，请明日再来")
+			return
+		end
+		local layer = 1
+		local flyLayer = 1
+		g_taskDoer:doReceiveBabelTask(player, param.taskID, param.rewardType, layer, flyLayer)
+		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
+		print("mapID任务数据",mapID, param.taskID, layer)
+		if mapID then
+			-- 切换玩家到场景
+			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+			taskHandler:setReceiveBabelTaskTime(param.taskID)
+		end
+	end
+end
+
+-- 如果有通天塔任务，点击对话直接进入
+function DialogAction:doEnterBabel(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	if task then
+		local teamHandler = player:getHandler(HandlerDef_Team)
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		if team then
+			print("组队玩家不能进入通天塔地图场景")
+			return
+		end
+		local layer = task:getLayer()
+		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
+		if mapID then
+			-- 切换玩家到场景
+			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+		end
+	end
+end
+
+-- 点击对话功能，进入下一层
+function DialogAction:doEnterNextLayer(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	if not task then
+		print("通天塔任务删除，导致出错")
+		return
+	end
+	-- 完成任务
+	-- 先获取任务当前层数，
+	local layer = task:getLayer() + 1
+	local reWardType = task:getRewardType()
+	taskHandler:finishBabelTask(param.taskID)
+	-- 在这可能还要判断一下层数， 之后再添加
+	local flyLayer = 1
+	g_taskDoer:doReceiveBabelTask(player, param.taskID, reWardType, layer, flyLayer)
+	local curTask = taskHandler:getTask(param.taskID)
+	if curTask then
+		local layer = curTask:getLayer()
+		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
+		if mapID then
+			-- 切换玩家到场景
+			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+		end
+	end
+end
+
+-- 飞升功能
+function DialogAction:doFlyUp(player, param)
+	g_taskDoer:doFlyUp(player, param)
+end
+
+--  跟换奖励类型
+function DialogAction:doChangeRewardType(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	if task then
+		local rewardType = task:getRewardType()
+		if rewardType == RewardType.expe then
+			rewardType = RewardType.tao
+		else
+			rewardType = RewardType.expe
+		end
+		task:setRewardType(rewardType)
+	end
+end
+
+-- 跟换任务目标
+function DialogAction:doChangeTarget(player, param)
+	local itemID = param.itemID
+	local itemNum = param.itemNum
+	local packetHandler = player:getHandler(HandlerDef_Packet)
+	local itemCount = packetHandler:getNumByItemID(itemID)
+	if itemCount < itemNum then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, 22)
+		g_eventMgr:fireRemoteEvent(event, player)
+	else
+		-- 删除任务，
+		local taskHandler = player:getHandler(HandlerDef_Task)
+		local task = taskHandler:getTask(param.taskID)
+		if task then
+			-- 移除物品
+			packetHandler:removeByItemId(itemID, itemNum)
+			local layer = task:getLayer()
+			local reWardType = task:getRewardType()
+			local flyLayer = task:getFlyLayer()
+			taskHandler:finishBabelTask(param.taskID)
+			-- 在这可能还要判断一下层数， 之后再添加
+			g_taskDoer:doReceiveBabelTask(player, param.taskID, reWardType, layer, flyLayer)
+		end
+	end
+end
 
 function DialogAction.getInstance()
 	return DialogAction()

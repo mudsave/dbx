@@ -17,7 +17,7 @@ void upper_first_char(char * buffer)
 void lower_first_char(char * buffer)
 {
     if (*buffer >= 'A' && *buffer <= 'Z')
-        if (*(buffer + 1) >= 'A' && *(buffer + 1) <= 'Z')
+        if (!(*(buffer + 1) >= 'A' && *(buffer + 1) <= 'Z'))
             *buffer += 'a' - 'A';
 }
 
@@ -95,14 +95,14 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
             if (attrName.length() >= MAX_PARAMNAME_LEN)
             {
                 ok = false;
-                TRACE3_ERROR("Attr name %s > MAX_PARAMNAME_LEN(%i), spName %s", attrName.c_str(), MAX_PARAMNAME_LEN, spName);
+                TRACE3_ERROR("Attr name %s > MAX_PARAMNAME_LEN(%i), spName %s\n", attrName.c_str(), MAX_PARAMNAME_LEN, spName);
                 break;
             }
             else
             {
-		char * attrNameStr = (char *)malloc(attrName.length() + 1);
-		strcpy(attrNameStr, attrName.c_str());
-		upper_first_char(attrNameStr);
+                char * attrNameStr = (char *)malloc(attrName.length() + 1);
+                strcpy(attrNameStr, attrName.c_str());
+                upper_first_char(attrNameStr);
 
                 SParam param(attrNameStr,attrType, pAttrValue);
                 //输出参数
@@ -116,7 +116,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     param.nDataDir = PARAM_DIR_IN;
                 }
                 mapped_params[attrNameStr] = param;
-		free(attrNameStr);
+                //free(attrNameStr); //需要等不再使用了才能free掉
             }
         }
     }
@@ -138,7 +138,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                 else
                 {
                     ok = false;
-                    TRACE2_ERROR("Invalid sort param %s, spName %s", *s_it, spName);
+                    TRACE2_ERROR("Invalid sort param %s, spName %s\n", *s_it, spName);
                     break;
                 }
             }
@@ -155,7 +155,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
         {
             //根据规则，参数中必须至少包含一个RoleID
             ok = false;
-            TRACE1_ERROR("Call sp no param found, need at least RoleID? spName %s", spName);
+            TRACE1_ERROR("Call sp no param found, need at least RoleID? spName %s\n", spName);
         }
     }
 
@@ -185,7 +185,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if (pEnd + strlen(szInt) + 32/*用来放）号等*/ >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
                         break;
                     }
 
@@ -200,7 +200,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if (pEnd + strlen(szFloat) + 32/*用来放）号等*/ >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
                         break;
                     }
 
@@ -218,7 +218,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if (pEnd + strlen(szInt) + 32/*用来放）号等*/ >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
                         break;
                     }
 
@@ -232,7 +232,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                     if ((pEnd + param.size() * 2 + 32/*用来放）号等*/) >= (pBuffer + nBufferLen))
                     {
                         ok = false;
-                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s", spName, nBufferLen);
+                        TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
                         break;
                     }
 
@@ -257,7 +257,7 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
                 if ((pEnd + param.size() + 32/*用来放）号等*/) >= (pBuffer + nBufferLen))
                 {
                     ok = false;
-                    TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s", spName, nBufferLen);
+                    TRACE2_ERROR("Fail to build query buffer, content larger than buffer length(%d). spName %s\n", spName, nBufferLen);
                     break;
                 }
 
@@ -286,6 +286,12 @@ bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & 
     for (; it != sort_params.end(); it++)
     {
         free(*it);
+    }
+
+    TMapParam::iterator m_it = mapped_params.begin();
+    for (; m_it != mapped_params.end(); m_it++)
+    {
+        free(m_it->first);
     }
 
     return ok;

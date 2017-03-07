@@ -60,10 +60,16 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 {
 	if (!CClient::getDBNetEvent())
 	{
-		return;
+            return;
 	}
 
-	CSCResultMsg* pDataMsg=(CSCResultMsg*)pMsg;
+	CSCResultMsg* pDataMsg=(CSCResultMsg*)malloc(pMsg->msgLen);
+        if (pDataMsg == NULL)
+        {
+           return; 
+        }
+        memcpy(pDataMsg, pMsg, pMsg->msgLen);
+        
 	switch(pMsg->msgId){
 	case S_DOACTION_RESULT:
 		{

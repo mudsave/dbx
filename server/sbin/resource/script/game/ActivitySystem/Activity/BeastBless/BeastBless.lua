@@ -1,14 +1,13 @@
 --[[BeastBless.lua
-	描述：瑞兽降福 活动的ID = 3
+	描述：瑞兽降福 活动的ID = 2
 --]]
 
 require "game.ActivitySystem.Activity.BeastBless.BeastBlessSystem"
 
-ActivityID = ActivityID + 1
-local beastBlessID = ActivityID
+gBeastBlessActivityID = 2
 local BeastBlessActivityDB = 
 {
-	[beastBlessID] = 
+	[2] = 
 	{
 		name = "BeastBless",
 		dbName = "updateBeastBless",
@@ -39,7 +38,7 @@ local openTimeID = 0
 local endTimeID = 1 
 
 function BeastBless:__init()
-	self._id = beastBlessID
+	self._id = gBeastBlessActivityID
 	self._config = nil
 	self._openTime = nil
 end
@@ -50,9 +49,9 @@ end
 -- 活动状态(预开启)
 function BeastBless:open()
 	-- 播放广播
-	print("播放广播")
 	-- 增加
-	self._config = BeastBlessActivityDB[self._id]
+	self._id = gBeastBlessActivityID
+	self._config = BeastBlessActivityDB[gBeastBlessActivityID]
 	-- 准备时间
 	local readyPeriod = self._config.readyPeriod
 	-- 出现地图信息

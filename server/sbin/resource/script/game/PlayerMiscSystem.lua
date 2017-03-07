@@ -14,7 +14,16 @@ function PlayerMiscSystem:__init()
 		[PlayerSysEvent_CS_RoleUpgrade]			= PlayerMiscSystem.doRoleUpgrade, 
 		[AutoPointEvent_CS_ModifyDistribution]	= PlayerMiscSystem.doModifyDistribution,
 		[AutoPointEvent_CS_ModifyOrder]			= PlayerMiscSystem.doModifyOrders,
+		[PlayerSysEvent_CS_ShowDramaChanged]    = PlayerMiscSystem.doChangeShowDrama,
 	}
+end
+
+function PlayerMiscSystem:doChangeShowDrama(event)
+	local player = g_entityMgr:getPlayerByID(event.playerID)
+	if player then
+		local dbid = player:getDBID()
+		LuaDBAccess.changeShowDrama(dbid)
+	end
 end
 
 -- 分配玩家属性点

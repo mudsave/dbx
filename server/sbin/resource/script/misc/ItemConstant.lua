@@ -25,6 +25,36 @@ WeaponSubClassSchoolID =
 	[WeaponSubClass.Rod]		= SchoolType.PLG,
 }
 
+-- 装备分类
+EquipmentClass =
+{
+	-- 武器
+	Weapon   = 1,
+	-- 防具
+	Armor    = 2,
+	-- 饰品
+	Adorn    = 3,
+	-- 法宝
+	Talisman = 4,
+}
+
+-- 武器子类
+WeaponSubClass =
+{
+	-- 杖
+	Rod      = 1,
+	-- 刀
+	Knife    = 2,
+	-- 剑
+	Sword    = 3,
+	-- 扇
+	Fan      = 4,
+	-- 弩
+	Crossbow = 5,
+	-- 枪
+	Spear    = 6,
+}
+
 -- 防具子类
 ArmorSubClass =
 {

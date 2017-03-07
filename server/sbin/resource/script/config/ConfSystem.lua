@@ -80,6 +80,7 @@ function loadSystem()
 	g_PetDepotMgr		= PetDepotManager.getInstance()
 	g_LifeSkillMgr      = LifeSkillManager.getInstance()
 	g_practiseMgr		= PractiseManager.getInstance()
+	g_practisesym		= PractiseSystem.getInstance()
 	g_tirednessdMgr		= TirednessManager.getInstance()
 	g_onlineRewardSessMgr = RewardSessionManager.getInstance()
 	g_newRewardsMgr		= NewReWardsManager.getInstance()
@@ -87,12 +88,15 @@ function loadSystem()
 	g_dropMgr			= DropManager.getInstance()
 	g_mailMgr			= MailManager.getInstance()
 	
-	-- 活动
-	g_activityMgr = ActivityManager.getInstance()
 	-- 瑞兽降临活动
 	g_beastBlessMgr		= BeastBlessManager.getInstance()
 	g_goldHuntMgr		= GoldHuntManager.getInstance()
+
+	g_activityMgr		= ActivityManager.getInstance()
+	g_activitySym		= ActivitySystem.getInstance()
+	g_dekaronSchoolMgr	= DekaronSchoolManager.getInstance()
 	g_catchPetMgr		= CatchPetManager.getInstance()
 
 	g_exchangeItemMgr = ExchangeItemManager.getInstance()
+	
 end

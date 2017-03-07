@@ -7,3 +7,9 @@ __pycache__
 *.log
 *.o
 *.d
+
+World
+Gateway
+Session
+
+/client

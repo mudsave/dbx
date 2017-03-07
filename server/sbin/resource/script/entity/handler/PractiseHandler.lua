@@ -11,6 +11,8 @@ function PractiseHandler:__init(owner)
 	self.tabBox = {}
 	-- 初始化宝箱状态
 	self:initBoxData()
+	-- 记录是否更新数据库 上一次的修行值
+	self.lastData = {}
 end
 
 function PractiseHandler:__release()
@@ -25,6 +27,7 @@ function PractiseHandler:initBoxData()
 end
 
 function PractiseHandler:savePracitseData()
+	--
 	local tabBox = self.tabBox
 	if  tabBox then
 		local player = self.owner
@@ -39,8 +42,33 @@ function PractiseHandler:savePracitseData()
 		data.BoxDFlage = tabBox[4]
 		data.BoxEFlage = tabBox[5]
 		data.recordTime = os.time()
-		LuaDBAccess.SavePractise(roleDBID,data)
+		-- 判断变化
+		if self:isSavetoDB(data) then
+			LuaDBAccess.SavePractise(roleDBID,data)
+		end
 	end
+end
+
+function PractiseHandler:isSavetoDB(data)
+	local lastData = self.lastData
+	-- if data.practise ~= lastData or  then
+	-- end
+end
+
+function PractiseHandler:setLastData(practise,storeXp,data,lastTime)
+	local data = self.lastData
+	data.practise = practise
+	data.storeXp = storeXp
+	data.practiseCount = practiseCount
+	data.boxAFlage = box.boxAFlage
+	data.boxBFlage = box.boxBFlage
+	data.boxCFlage = box.boxCFlage
+	data.boxDFlage = box.boxDFlage
+	data.boxEFlage = box.boxEFlage
+end
+
+function PractiseHandler:setLastBoxState(box)
+	-- self.lastBox
 end
 
 -- 更新单个宝箱

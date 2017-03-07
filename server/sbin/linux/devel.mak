@@ -1,11 +1,7 @@
 
-SERVER_IP = 172.16.2.230
-DB_IP = 172.16.2.230
-DB_PORT = 3010
-
-gjx_start: START_PORT=30001
-gjx_start: start_server
-
+SERVER_IP = 172.16.2.217
+DB_IP = 172.16.4.72
+DB_PORT = 3000
 
 # 后台和前台启动 - 赵国君 30000
 zgj_start: START_PORT=30000

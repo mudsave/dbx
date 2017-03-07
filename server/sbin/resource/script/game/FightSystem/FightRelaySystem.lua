@@ -25,7 +25,7 @@ function FightRelaySystem:__init()
 end
 
 function FightRelaySystem.onCollectGarbage()
-	--notice("onCollectGarbage():%s %s %s",collectgarbage("count"),collectgarbage("collect"),collectgarbage("count"))
+	notice("onCollectGarbage():%s %s %s",collectgarbage("count"),collectgarbage("collect"),collectgarbage("count"))
 end
 
 -- 战斗服通知世界服 战斗开始
@@ -53,6 +53,7 @@ function FightRelaySystem:Route( event )
 			pet:setStatus(ePlayerFight)
 		end
 	end
+	--print("********************gTestTempTick=",os.clock()-gTestTempTick)
 end
 
 -- 结算战斗结果
@@ -174,7 +175,7 @@ function FightRelaySystem:FightEnd(event)
 
 	--统一奖励和惩罚
 	g_dropMgr:dealWithPunish(FightEndResults, scriptID, fightID)
-	g_dropMgr:dealWithRewards(FightEndResults, scriptID, monsterDBIDs, fightID)
+	g_dropMgr:dealWithRewards(FightEndResults, scriptID, monsterDBIDs, fightID,fightInfo)
 
 	for playerID, info in pairs(newAddedPets) do
 		TaskCallBack.onObtainPet(playerID,info)
@@ -275,28 +276,39 @@ print("FightRelaySystem:QuitFight")
 	if player then
 		local eid = player:getID()
 		local teamHandler = player:getHandler(HandlerDef_Team)
-		if teamHandler:isTeam() then
-		
+		local ectypeHandler = player:getHandler(HandlerDef_Ectype)
+		local ectypeMapID = ectypeHandler:getEctypeMapID()
+		local ectype = g_ectypeMgr:getEctype(ectypeMapID)
+		if teamHandler:isTeam() then		
 			local playerList = teamHandler:getTeamAllPlayerList()
 			local memberCount = #playerList
-			if memberCount > 1 then
-
-				if teamHandler:isLeader() then
-					local validCount = teamHandler:getCurMemberNum()
-					if validCount > 1 then
-						g_teamMgr:changeLeader(eid)
-						g_teamMgr:stepOutTeam(eid)
-					else
-						player:setActionState(PlayerStates.Team)
-					end
+			if ectype then
+				--在副本中退队传送出副本
+				if memberCount > 1 then
+					g_teamMgr:changeLeader(eid)
+					g_teamMgr:quitTeam(eid)
 				else
-					g_teamMgr:stepOutTeam(eid)
-					player:setActionState(PlayerStates.Normal)
+					player:setActionState(PlayerStates.Team)
+					g_ectypeMgr:exitEctype(player)
 				end
-
 			else
+				if memberCount > 1 then
+					if teamHandler:isLeader() then
+						local validCount = teamHandler:getCurMemberNum()
+						if validCount > 1 then
+							g_teamMgr:changeLeader(eid)
+							g_teamMgr:stepOutTeam(eid)
+						else
+							player:setActionState(PlayerStates.Team)
+						end
+					else
+						g_teamMgr:stepOutTeam(eid)
+						player:setActionState(PlayerStates.Normal)
+					end
 
-				player:setActionState(PlayerStates.Team)
+				else
+					player:setActionState(PlayerStates.Team)
+				end
 			end
 		else
 			player:setActionState(player:getOldActionState())

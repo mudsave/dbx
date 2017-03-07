@@ -13,6 +13,8 @@ function RescueHulaoPassEctype:__init()
 	self.fightNpc = {}
 	-- 副本开始时间
 	self.startTime = os.time()
+	-- 定时器id
+	self.moveTimerID = nil
 end
 
 function RescueHulaoPassEctype:__release()
@@ -23,6 +25,22 @@ function RescueHulaoPassEctype:__release()
 	self.ectypePatrolNpc = nil
 	--  记录战斗NPC
 	self.fightNpc = nil
+
+	if self.moveTimerID ~= nil then
+		g_timerMgr:unRegTimer( self.moveTimerID )
+	end
+end
+
+function RescueHulaoPassEctype:createMoveTimer()
+	self.moveTimerID = g_timerMgr:regTimer(self, 2000, 2000, "定时扫描NPC定时")
+end
+
+-- 定时器回调
+function RescueHulaoPassEctype:update( timerID )
+	-- 副本生命定时器
+	if timerID == self.moveTimerID then
+		self:checkPatroNpc()
+	end
 end
 
 -- 创建场景物件的时候， 要监测副本场景当中有多少个物件
@@ -64,6 +82,7 @@ function RescueHulaoPassEctype:driveEctypeProcess()
 	self:openEctypeEffect()
 	-- 触发副本动作
 	self:exeLogicProcedure()
+	self:createMoveTimer()
 end
 
 -- 只有一个动作序列,不需要一步一步的执行
@@ -111,44 +130,21 @@ function RescueHulaoPassEctype:incIntegral()
 end
 
 -- 创建副本巡逻怪
-function RescueHulaoPassEctype:createPatrolNpc(params)
+function RescueHulaoPassEctype:createPatrolNpc( params )
 	local nowTime = os.time()
 	local patrolNpcID = params.npcID
-	-- 判断场景物件的个数
-	local objectsNum = table.size(self.ectypePatrolNpc)
-	if objectsNum < params.npcNum then
-		local needCreateNum = params.npcNum - objectsNum
-		for i = 1, needCreateNum do 
-			-- 随机坐标：
-			local xPos, yPos = self:getEctypeValidEmptyPos()
-			local patrolNpc = g_entityFct:createEctypePatrolNpc(patrolNpcID)
-			if not patrolNpc then
-				return
-			end
-			if not self.ectypePatrolNpc[patrolNpc:getID()] then
-				self.ectypePatrolNpc[patrolNpc:getID()] = patrolNpc
-				g_sceneMgr:enterEctypeScene(self.ectypeMapID, {patrolNpc, xPos, yPos})
-				-- 把对应配置的东西设置进去
-				patrolNpc:setScriptID(params.scriptID)
-				patrolNpc:setRadius(params.radius)
-				patrolNpc:setStartMoveTime(nowTime)
-			end
-		end
-		--[[
-		local patrolNpc = g_entityFct:createEctypePatrolNpc(patrolNpcID)
-		if not patrolNpc then
-			return
-		end
-		if not self.ectypePatrolNpc[patrolNpc:getID()] then
-			self.ectypePatrolNpc[patrolNpc:getID()] = patrolNpc
-			g_sceneMgr:enterEctypeScene(self.ectypeMapID, {patrolNpc, 126, 44})
-			-- 把对应配置的东西设置进去
-			patrolNpc:setScriptID(params.scriptID)
-			patrolNpc:setRadius(params.radius)
-			patrolNpc:setStartMoveTime(nowTime)
-		end
-		--]]
+	local xPos = params.xPos
+	local yPos = params.yPos
+	local patrolNpc = g_entityFct:createEctypePatrolNpc(patrolNpcID)
+	if not patrolNpc then
+		return
 	end
+	self.ectypePatrolNpc[patrolNpc:getID()] = patrolNpc
+	g_sceneMgr:enterEctypeScene(self.ectypeMapID, {patrolNpc, xPos, yPos})
+	-- 把对应配置的东西设置进去
+	patrolNpc:setScriptID(params.scriptID)
+	patrolNpc:setRadius(params.radius)
+	patrolNpc:setStartMoveTime(nowTime)
 end
 
 -- 移除巡逻NPC

@@ -158,68 +158,117 @@ function Item:getSalePrice()
 	return itemConfig.SaleMoneyNum or 0
 end
 
+-- 获得物品品质等级
+function Item:getQuality()
+	local itemConfig = tItemDB[self.itemID]
+	if not itemConfig then
+		return 0
+	end
+	return itemConfig.Quality or 0
+end
+
+-- 获得物品使用等级
+function Item:getUseNeedLvl()
+	local itemConfig = tItemDB[self.itemID]
+	if not itemConfig then
+		return 0
+	end
+	return itemConfig.UseNeedLvl or 1
+end
+
 -- 设置物品排序优先级
 function Item:setSortPriority()
 	local itemConfig = tItemDB[self.itemID]
 	if not itemConfig then
 		return
 	end
-	if itemConfig.Class == ItemClass.Warrant then
-		if itemConfig.SubClass == ItemSubClass.Task then
-			-- 任务物品
-			self.sortPriority = 1
-		else
-			-- 其他都算材料
-			self.sortPriority = 2
-		end
-	elseif itemConfig.Class == ItemClass.Medicament then
-		if itemConfig.SubClass == ItemSubClass.Medicament or itemConfig.SubClass == ItemSubClass.Food then
-			-- 消耗品
-			self.sortPriority = 3
-		else
-			-- 可使用非消耗品
-			self.sortPriority = 7
-		end
-		if itemConfig.SubClass == ItemSubClass.Medicament then
-			if itemConfig.ReactType == MedicamentReactType.ChangeHpMp then
-				-- 红蓝药
+	
+	if itemConfig.Class == ItemClass.Equipment then
+		if itemConfig.SubClass == EquipmentClass.Weapon then 
+			if itemConfig.EquipClass == WeaponSubClass.Knife then 
+				self.sortPriority = 1
+			elseif itemConfig.EquipClass == WeaponSubClass.Spear then
+				self.sortPriority = 2
+			elseif itemConfig.EquipClass == WeaponSubClass.Sword then
+				self.sortPriority = 3
+			elseif itemConfig.EquipClass == WeaponSubClass.Crossbow then
 				self.sortPriority = 4
-			elseif itemConfig.ReactType == MedicamentReactType.ChangeMp or itemConfig.ReactType == MedicamentReactType.UseMpPool then
-				-- 蓝药
+			elseif itemConfig.EquipClass == WeaponSubClass.Fan then
 				self.sortPriority = 5
-			elseif itemConfig.ReactType == MedicamentReactType.ChangeHp or itemConfig.ReactType == MedicamentReactType.UseHpPool then
-				-- 红药
+			elseif itemConfig.EquipClass == WeaponSubClass.Rod then
 				self.sortPriority = 6
-			end
-		elseif itemConfig.SubClass == ItemSubClass.Pack then
-			-- 扩展包裹
-			self.sortPriority = 8
-		end
-	elseif itemConfig.Class == ItemClass.Equipment then
-		-- 时装
-		if itemConfig.SubClass then
-			self.sortPriority = 9
-		end
-		-- 法宝
-		self.sortPriority = 10
-		-- 戒指
-		self.sortPriority = 11
-		-- 项链
-		self.sortPriority = 12
-		-- 鞋子
-		self.sortPriority = 13
-		-- 腰带
-		self.sortPriority = 14
-		-- 裤子
-		self.sortPriority = 15
-		-- 护肩
-		self.sortPriority = 16
-		-- 衣服
-		self.sortPriority = 17
-		-- 头盔
-		self.sortPriority = 18
-		-- 武器
-		self.sortPriority = 19
+			else
+				self.sortPriority = 9
+			end 
+		elseif itemConfig.SubClass == EquipmentClass.Armor then 
+			if itemConfig.EquipClass == ArmorSubClass.Helmet then 
+				self.sortPriority = 11
+			elseif itemConfig.EquipClass == ArmorSubClass.Shoulder then
+				self.sortPriority = 12
+			elseif itemConfig.EquipClass == ArmorSubClass.Clothes then
+				self.sortPriority = 13
+			elseif itemConfig.EquipClass == ArmorSubClass.Trousers then
+				self.sortPriority = 14
+			elseif itemConfig.EquipClass == ArmorSubClass.Shoes then
+				self.sortPriority = 15
+			else
+				self.sortPriority = 19
+			end 
+		elseif itemConfig.SubClass == EquipmentClass.Adorn then 
+			if itemConfig.EquipClass == AdornSubClass.Necklace then 
+				self.sortPriority = 21
+			elseif itemConfig.EquipClass == AdornSubClass.Amulet then
+				self.sortPriority = 22
+			elseif itemConfig.EquipClass == AdornSubClass.Ring then
+				self.sortPriority = 23
+			else 
+				self.sortPriority = 29
+			end 
+		else 
+			self.sortPriority = 50
+		end 
+	elseif itemConfig.Class == ItemClass.Medicament then
+		if itemConfig.SubClass == ItemSubClass.Medicament then 
+			self.sortPriority = 51
+		elseif itemConfig.SubClass == ItemSubClass.reservePool then
+			self.sortPriority = 52
+		elseif itemConfig.SubClass == ItemSubClass.LinglongPill then
+			self.sortPriority = 53
+		elseif itemConfig.SubClass == ItemSubClass.Function then
+			self.sortPriority = 55
+		elseif itemConfig.SubClass == ItemSubClass.ChangeCard then
+			self.sortPriority = 56
+		elseif itemConfig.SubClass == ItemSubClass.FlyingFlag then
+			self.sortPriority = 57
+		elseif itemConfig.SubClass == ItemSubClass.Food then
+			self.sortPriority = 58
+		else
+			self.sortPriority =100
+		end 
+	elseif itemConfig.Class == ItemClass.Warrant then
+		if itemConfig.SubClass == ItemSubClass.Material then 
+			self.sortPriority = 101
+		elseif itemConfig.SubClass == ItemSubClass.Drawing then
+			self.sortPriority = 102
+		elseif itemConfig.SubClass == ItemSubClass.manufacMat then
+			self.sortPriority = 103
+		elseif itemConfig.SubClass == ItemSubClass.Runes then
+			self.sortPriority = 104
+		elseif itemConfig.SubClass == ItemSubClass.SkillBook then
+			self.sortPriority = 105
+		elseif itemConfig.SubClass == ItemSubClass.Beast then
+			self.sortPriority = 106
+		elseif itemConfig.SubClass == ItemSubClass.LingShi then
+			self.sortPriority = 107
+		elseif itemConfig.SubClass == ItemSubClass.Function then
+			self.sortPriority = 108
+		elseif itemConfig.SubClass == ItemSubClass.Trophy then
+			self.sortPriority = 109
+		else
+			self.sortPriority =150
+		end 
+	else
+		self.sortPriority = 200
 	end
 	if self.sortPriority == -1 then
 		print("设置道具整理排序优先级错误，itemID = ", self.itemID)

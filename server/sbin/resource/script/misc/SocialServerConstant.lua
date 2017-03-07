@@ -173,3 +173,36 @@ GroupMsgTextKeyTable = {
 
 }
 
+BroadCastMsgGroupID = {
+
+    Group_TreasureEvent        = {
+        EventID = 20,
+        DigTreasure_RealeaseMonster     = 5106,
+        DigTreasure_GetGoldItem         = 5107,
+        DigTreasure_GetGreenItem        = 5108,
+        DigTreasure_GetPlentyTickets    = 5109,
+        
+    },
+    Group_RemakeEquipment      = {
+        EventID = 24,
+        RemakeEquip_AddPointToTwelve    = 1,
+        RemakeEquip_AddPointToSixth     = 2,
+    
+    },
+    Group_Ride                 = {
+        EventID = 15,
+        UpgradeMounts_AddPointToSix     = 4,
+        UpgradeMounts_AddPointToSeven   = 5,
+        UpgradeMounts_AddPointToEight   = 6,
+        UpgradeMounts_AddPointToNine    = 7,
+        SummonMounts_SummonSixGrade     = 8,
+    
+    },
+	Group_DekaronSchool                 = {
+        EventID = 26,
+        ActivityPreOpening				= 1,
+        ActivityOpening					= 2,
+		ActivityClose					= 3,
+		ActivityTopThree				= 4,
+    },
+}

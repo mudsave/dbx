@@ -1,7 +1,9 @@
 --[[CatchPetActivity.lua
 --]]
-ActivityID = ActivityID + 1
-catchPetActivityID = ActivityID
+
+
+require "game.ActivitySystem.Activity.CatchPet.CatchPetSystem"
+catchPetActivityID = 3
 print("捕宠活动ID", catchPetActivityID)
 local CatchPetActivityDB = 
 {

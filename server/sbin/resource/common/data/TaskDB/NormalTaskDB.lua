@@ -1,65 +1,65 @@
 --[[MainTaskDB.lua
-	ä»»åŠ¡é…ç½®(ä»»åŠ¡ç³»ç»Ÿ)
+	ÈÎÎñÅäÖÃ(ÈÎÎñÏµÍ³)
 ]]
 --{type='Tarea',param =	{mapID = 2 , x = 2, y =	3, bor = true},},
 --{type='Tscript',param	= {scriptID = 203 , count = 2, bor = true},},
---{type = "npcEscape",	param =	{npcs =	{{npcID	= 3, x = 50, y = 50}},}}, --npcé€ƒè·‘åˆ°ç›®æ ‡ç‚¹æ¶ˆå¤±
+--{type = "npcEscape",	param =	{npcs =	{{npcID	= 3, x = 50, y = 50}},}}, --npcÌÓÅÜµ½Ä¿±êµãÏûÊ§
 --preTaskData =	{2001},
 --preTaskData =	{condition = "and",{2002,2003}},
 --preTaskData =	{condition = "or",{2002,2003}},
 --preTaskData =	nil,
 
-INIT_DIALOGID =	100 --å‡ºç”Ÿå¯¹è¯
-INIT_TASKID =	1001 --å‡ºç”Ÿå¯¹è¯
+INIT_DIALOGID =	100 --³öÉú¶Ô»°
+INIT_TASKID =	1001 --³öÉú¶Ô»°
 NormalTaskDB =
 {
 	[2002] =
 	{
 
-		name = "æµ‹è¯•ä»»åŠ¡1",	--ä»»åŠ¡åå­—
-		startNpcID = 22562,	--ä»»åŠ¡èµ·å§‹npc
-		endNpcID = 20056,	--ä»»åŠ¡ç»“æŸnpc
-		preTaskData = {1003},	--ä»»åŠ¡å‰ç½®ä»»åŠ¡æ²¡æœ‰å¡«nil
-		nextTaskID = 2003,	--ä»»åŠ¡åç½®ä»»åŠ¡æ²¡æœ‰å¡«nil
-		startDialogID =	1,	--æ¥ä»»åŠ¡å¯¹è¯IDæ²¡æœ‰å¡«nil
-		endDialogID = 51,	--äº¤ä»»åŠ¡å¯¹è¯IDæ²¡æœ‰å¡«nil
-		taskType2 = TaskType2.Main,--ä»»åŠ¡ç±»å‹
-		school = nil,	--é—¨æ´¾é™åˆ¶æ²¡æœ‰å¡«nil
-		level =	{1,150},--ç­‰çº§é™åˆ¶
-		rewards	= --ä»»åŠ¡å¥–åŠ±æ²¡æœ‰å¡«{}
+		name = "²âÊÔÈÎÎñ1",	--ÈÎÎñÃû×Ö
+		startNpcID = 22562,	--ÈÎÎñÆğÊ¼npc
+		endNpcID = 20056,	--ÈÎÎñ½áÊønpc
+		preTaskData = {1003},	--ÈÎÎñÇ°ÖÃÈÎÎñÃ»ÓĞÌînil
+		nextTaskID = 2003,	--ÈÎÎñºóÖÃÈÎÎñÃ»ÓĞÌînil
+		startDialogID =	1,	--½ÓÈÎÎñ¶Ô»°IDÃ»ÓĞÌînil
+		endDialogID = 51,	--½»ÈÎÎñ¶Ô»°IDÃ»ÓĞÌînil
+		taskType2 = TaskType2.Main,--ÈÎÎñÀàĞÍ
+		school = nil,	--ÃÅÅÉÏŞÖÆÃ»ÓĞÌînil
+		level =	{1,150},--µÈ¼¶ÏŞÖÆ
+		rewards	= --ÈÎÎñ½±ÀøÃ»ÓĞÌî{}
 		{
-			[TaskRewardList.player_xp] = 5000,   --ç©å®¶ç»éªŒ
-			[TaskRewardList.pet_xp] = 5000,      --å® ç‰©ç»éªŒ
-			[TaskRewardList.subMoney] = 300,    --ç»‘é“¶
-			[TaskRewardList.player_pot] = 300,  	--äººç‰©æ½œèƒ½
-			--[TaskRewardList.money] = 200,       --é“¶ä¸¤
-			--[TaskRewardList.cashMoney] = 400, --é“¶å…ƒå®
-			--[TaskRewardList.goldCoin] = 500,  --é‡‘å…ƒå®
+			[TaskRewardList.player_xp] = 5000,   --Íæ¼Ò¾­Ñé
+			[TaskRewardList.pet_xp] = 5000,      --³èÎï¾­Ñé
+			[TaskRewardList.subMoney] = 300,    --°óÒø
+			[TaskRewardList.player_pot] = 300,  	--ÈËÎïÇ±ÄÜ
+			--[TaskRewardList.money] = 200,       --ÒøÁ½
+			--[TaskRewardList.cashMoney] = 400, --ÒøÔª±¦
+			--[TaskRewardList.goldCoin] = 500,  --½ğÔª±¦
 		},
-		consume	=--ä»»åŠ¡æ¶ˆè€—æ²¡æœ‰å¡«{}
+		consume	=--ÈÎÎñÏûºÄÃ»ÓĞÌî{}
 		{
 			["money"] = 100,
 			["xp"] = 100,
 		},
-		targets	= --ä»»åŠ¡ç›®æ ‡æ²¡æœ‰å¡«{}(å¿…é¡»å‰é¢å¡«ä¸Šç´¢å¼•[1][2][3])
+		targets	= --ÈÎÎñÄ¿±êÃ»ÓĞÌî{}(±ØĞëÇ°ÃæÌîÉÏË÷Òı[1][2][3])
 		{
-			--[1] = {type='TautoMeet',param = {mapID = 1 , x = 120, y = 47, bor =	false},},---åˆ°è¾¾ä¸€ä¸ªåæ ‡è‡ªåŠ¨é‡æ•Œ
-			--[1] =	{type='Tscript',param =	{scriptID = 203	, count	= 1, ignoreResult = true, bor =	true},},--ä¸è®ºèƒœè´Ÿ
+			--[1] = {type='TautoMeet',param = {mapID = 1 , x = 120, y = 47, bor =	false},},---µ½´ïÒ»¸ö×ø±ê×Ô¶¯ÓöµĞ
+			--[1] =	{type='Tscript',param =	{scriptID = 203	, count	= 1, ignoreResult = true, bor =	true},},--²»ÂÛÊ¤¸º
 			--lostTransfer = {mapID = , x = , y =},
-			[1] = {type='Tscript',param = {scriptID	= 203 ,	count =	1, bor = true},}, --æ‰“ä¸€ä¸ªè„šæœ¬æˆ˜æ–—(è„šæœ¬æˆ˜æ–—ID 203ï¼Œæ¬¡æ•°)
-			[2] = {type='Tmine',param = --ä¸»çº¿è¸©é›·ç›®æ ‡
+			[1] = {type='Tscript',param = {scriptID	= 203 ,	count =	1, bor = true},}, --´òÒ»¸ö½Å±¾Õ½¶·(½Å±¾Õ½¶·ID 203£¬´ÎÊı)
+			[2] = {type='Tmine',param = --Ö÷Ïß²ÈÀ×Ä¿±ê
 			{
-				mineIndex = 1,		--ç¬¬ä¸€ä¸ªé›·
-				lastMine = false,	--æ˜¯å¦ä¸ºæœ€åä¸€ä¸ªé›·
+				mineIndex = 1,		--µÚÒ»¸öÀ×
+				lastMine = false,	--ÊÇ·ñÎª×îºóÒ»¸öÀ×
 				scriptID = 203,
 				dialogID = 1,
-				npcsData =			--åˆ·å‡ºnpcæ•°æ®
+				npcsData =			--Ë¢³önpcÊı¾İ
 				{
-					{npcID = 20, x = 98, y = 78, noDelete = true,},--(åæ ‡ï¼ŒåŠ¨ä½œIDï¼Œå…‰æ•ˆIDï¼ŒåŠ¨ä½œç»“æŸæ‰“å¼€çš„å¯¹è¯æ¡†(é…ä¸€ä¸ªå°±è¡Œ))ç›®æ ‡å®Œæˆæ˜¯å¦åˆ é™¤npcï¼Œ
+					{npcID = 20, x = 98, y = 78, noDelete = true,},--(×ø±ê£¬¶¯×÷ID£¬¹âĞ§ID£¬¶¯×÷½áÊø´ò¿ªµÄ¶Ô»°¿ò(ÅäÒ»¸ö¾ÍĞĞ))Ä¿±êÍê³ÉÊÇ·ñÉ¾³ınpc£¬
 					{npcID = 21, x = 99, y = 78, noDelete = true},
 				},
-				posData	= {mapID = 2, x	= 96, y	= 78}, --è¸©é›·åæ ‡
-				bor = false,	--å¦‚æœä¸ºtrueåˆ™å®Œæˆæ­¤ç›®æ ‡ä»»åŠ¡ç›´æ¥å®Œæˆ
+				posData	= {mapID = 2, x	= 96, y	= 78}, --²ÈÀ××ø±ê
+				bor = false,	--Èç¹ûÎªtrueÔòÍê³É´ËÄ¿±êÈÎÎñÖ±½ÓÍê³É
 			},
 			},
 			[3] = {type='Tmine',param =
@@ -68,7 +68,7 @@ NormalTaskDB =
 				lastMine = true,
 				scriptID = 203 ,
 				dialogID = 1,
-				--lostTransfer = {mapID = , x = , y =},--------æ–°åŠ ï¼Œæš—é›·ç©å®¶æˆ˜æ–—é€ƒè·‘ï¼Œä¼ é€åˆ°æŒ‡å®šåœ°å›¾
+				--lostTransfer = {mapID = , x = , y =},--------ĞÂ¼Ó£¬°µÀ×Íæ¼ÒÕ½¶·ÌÓÅÜ£¬´«ËÍµ½Ö¸¶¨µØÍ¼
 				npcsData =
 				{
 					{npcID = 20, x = 198, y	= 178, noDelete =	true,},
@@ -78,15 +78,15 @@ NormalTaskDB =
 				bor = false,
 			},
 			},
-			[4] = {type='Tarea',param = {mapID = 2 , x = 164, y = 72, bor =	false},},-------åˆ°è¾¾æŒ‡å®šåæ ‡
-			[5] = {type='TlearnSkill',param	= {skillID = 164, tarLevel = 2 , bor = false},},--å­¦ä¹ ç‰¹å®šæŠ€èƒ½åˆ°å¤šå°‘çº§
-			--[6] = {type='TobtainPet',param	= {petID  = xx, count = 1 , bor = false},},--å­¦ä¹ ç‰¹å®šæŠ€èƒ½åˆ°å¤šå°‘çº§  bor= true åªè¦å®Œæˆä¸€ä¸ªä»»åŠ¡ç›®æ ‡ ä»»åŠ¡å°±ç®—å®Œæˆã€‚
-			--[[[7] = {type='TcollectGuard',param =   ---é‡‡é›†ç‰©å“æˆ˜æ–—
+			[4] = {type='Tarea',param = {mapID = 2 , x = 164, y = 72, bor =	false},},-------µ½´ïÖ¸¶¨×ø±ê
+			[5] = {type='TlearnSkill',param	= {skillID = 164, tarLevel = 2 , bor = false},},--Ñ§Ï°ÌØ¶¨¼¼ÄÜµ½¶àÉÙ¼¶
+			--[6] = {type='TobtainPet',param	= {petID  = xx, count = 1 , bor = false},},--Ñ§Ï°ÌØ¶¨¼¼ÄÜµ½¶àÉÙ¼¶  bor= true Ö»ÒªÍê³ÉÒ»¸öÈÎÎñÄ¿±ê ÈÎÎñ¾ÍËãÍê³É¡£
+			--[[[7] = {type='TcollectGuard',param =   ---²É¼¯ÎïÆ·Õ½¶·
 				{
-					mpwID = 2008,--é‡‡é›†çš„å®ä½“ID
+					mpwID = 2008,--²É¼¯µÄÊµÌåID
 					scriptID= 405,
 					dialogID = 2202,
-					npcsData =			--åˆ·å‡ºnpcæ•°æ®
+					npcsData =			--Ë¢³önpcÊı¾İ
 					{
 						{npcID = 20804, x = 187, y = 105, },
 						{npcID = 20805, x = 187, y = 105, },
@@ -95,28 +95,28 @@ NormalTaskDB =
 						
 				}
 			}]]
-			--[8] = {type = "TgetItem", param = {itemID = 1051013, count = 1 ,bor = true},}--ä»»åŠ¡ç›®æ ‡è·å–ç‰©å“
-			--[9] = {type='TcontactSeal',param = {sealID = xxxï¼Œ bor = false},},---ä»»åŠ¡ç›®æ ‡ ä¾‹å¦‚ï¼šæ‘§æ¯éœ€ç ´åçš„é˜µæ³•æˆ–è€…æ‘§æ¯é‡‡é›†çš„ç‰©å“
-			--[10] = {type='TattainLevel',param = {level = 30,bor = true},},---ç­‰çº§é™åˆ¶ç›®æ ‡
-			--[11] = {type='Tride',param = {rideID = 10, bor = false},}, ------è·å¾—åéª‘ä»»åŠ¡ç›®æ ‡
+			--[8] = {type = "TgetItem", param = {itemID = 1051013, count = 1 ,bor = true},}--ÈÎÎñÄ¿±ê»ñÈ¡ÎïÆ·
+			--[9] = {type='TcontactSeal',param = {sealID = xxx£¬ bor = false},},---ÈÎÎñÄ¿±ê ÀıÈç£º´İ»ÙĞèÆÆ»µµÄÕó·¨»òÕß´İ»Ù²É¼¯µÄÎïÆ·
+			--[10] = {type='TattainLevel',param = {level = 30,bor = true},},---µÈ¼¶ÏŞÖÆÄ¿±ê
+			--[11] = {type='Tride',param = {rideID = 10, bor = false},}, ------»ñµÃ×øÆïÈÎÎñÄ¿±ê
 
 		},
-		triggers = --ä»»åŠ¡è§¦å‘å™¨
+		triggers = --ÈÎÎñ´¥·¢Æ÷
 		{
-			--å¸¦æœ‰ä¸­é—´npcçš„é…åˆ°å¯¹è¯é‡Œ
+			--´øÓĞÖĞ¼änpcµÄÅäµ½¶Ô»°Àï
 			[TaskStatus.Active] =
 			{
-				{type = "createFollow", param = {npcs = {1,2,3},}},				--åˆ›å»ºæŒ‡å®šnpcè·Ÿéš(å‚æ•°npcID)
-				{type = "getItem", param = {itemID = 100225, count = 5,}},			--è·å¾—æŒ‡å®šæ•°é‡çš„ç‰©å“(å‚æ•°ç‰©å“IDï¼Œæ•°é‡)
-			--	{type = "doSwithScene", param = {tarMapID = 2,	x = 5, y = 5,}},	--ä¼ é€åˆ°å¦ä¸€ä¸ªåœºæ™¯
-			--	{type = "getRide", param = {rideID = 2, count = 5,}},				--è·å¾—æŒ‡å®šæ•°é‡åéª‘
-			--	{type = "getPet", param = {petID = 2, count = 5,}},				--è·å¾—æŒ‡å®šæ•°é‡å® ç‰©
-			--	{type = "enterScriptFight", param = {scriptID = 203, mapID = 2}},	--è¿›å…¥è„šæœ¬æˆ˜æ–—
-			--	{type = "enterEctype",	param =	{ectypeID = 5,}},					--è¿›å…¥å‰¯æœ¬
-			--	{type = "autoTrace", param = {tarMapID	= 3, x = 28, y = 92,npcID = 20006,},}, --å¯»è·¯åˆ°æŒé—¨
-			--	{type = "playAnimation", param = {playID = 1002, sceneID = 1,},},				--è§¦å‘æŒ‡å®šIDçš„è„šæœ¬åŠ¨ç”»(å‚æ•°å¾…å®š)
-			--	{type = "flyEffect", param = {flyEffectID = 1}},--é£å‰‘åŠ¨ç”»
-			--	{type = "createCage", param = {position = {mapID = ,x = ,y =},}},	--åˆ›å»ºç¬¼å­
+				{type = "createFollow", param = {npcs = {1,2,3},}},				--´´½¨Ö¸¶¨npc¸úËæ(²ÎÊınpcID)
+				{type = "getItem", param = {itemID = 100225, count = 5,}},			--»ñµÃÖ¸¶¨ÊıÁ¿µÄÎïÆ·(²ÎÊıÎïÆ·ID£¬ÊıÁ¿)
+			--	{type = "doSwithScene", param = {tarMapID = 2,	x = 5, y = 5,}},	--´«ËÍµ½ÁíÒ»¸ö³¡¾°
+			--	{type = "getRide", param = {rideID = 2, count = 5,}},				--»ñµÃÖ¸¶¨ÊıÁ¿×øÆï
+			--	{type = "getPet", param = {petID = 2, count = 5,}},				--»ñµÃÖ¸¶¨ÊıÁ¿³èÎï
+			--	{type = "enterScriptFight", param = {scriptID = 203, mapID = 2}},	--½øÈë½Å±¾Õ½¶·
+			--	{type = "enterEctype",	param =	{ectypeID = 5,}},					--½øÈë¸±±¾
+			--	{type = "autoTrace", param = {tarMapID	= 3, x = 28, y = 92,npcID = 20006,},}, --Ñ°Â·µ½ÕÆÃÅ
+			--	{type = "playAnimation", param = {playID = 1002, sceneID = 1,},},				--´¥·¢Ö¸¶¨IDµÄ½Å±¾¶¯»­(²ÎÊı´ı¶¨)
+			--	{type = "flyEffect", param = {flyEffectID = 1}},--·É½£¶¯»­
+			--	{type = "createCage", param = {position = {mapID = ,x = ,y =},}},	--´´½¨Áı×Ó
 
 			{type = "createMine",
 					param =
@@ -124,17 +124,17 @@ NormalTaskDB =
 						{mapID = 2, scriptID = 203},
 						{mapID = 3, scriptID = 208},
 					}
-				},	--åˆ›å»ºä»»åŠ¡é›·ï¼Œåœ¨æœ‰ä¸€ä¸ªä»»åŠ¡ä¸­æœ‰ä¸¤å¼ åœ°å›¾ï¼ŒåŠä¸¤å¼ åœ°å›¾ä»¥ä¸Šçš„å†™è¿™ä¸ªä»£ç 
+				},	--´´½¨ÈÎÎñÀ×£¬ÔÚÓĞÒ»¸öÈÎÎñÖĞÓĞÁ½ÕÅµØÍ¼£¬¼°Á½ÕÅµØÍ¼ÒÔÉÏµÄĞ´Õâ¸ö´úÂë
 			{type = "createMine",
 					param =
 					{
 					{mapID = 103, scriptID = {118,119},fightMapID = nil,stepFactor = 0.2,mustCatch = false},
 					}
-				} --åˆ›å»ºä»»åŠ¡é›·ï¼Œå¦‚æœä¸€ä¸ªä»»åŠ¡åœ¨ä¸€å¼ åœ°å›¾ä¸Šï¼Œéœ€è¦æ‰“ä¸¤åœºä»»åŠ¡é›·ï¼Œåœ¨ä¸¤åœºä»»åŠ¡é›·çš„æƒ…å†µä¸‹ï¼Œå†™è¿™ä¸ªä»£ç 
+				} --´´½¨ÈÎÎñÀ×£¬Èç¹ûÒ»¸öÈÎÎñÔÚÒ»ÕÅµØÍ¼ÉÏ£¬ĞèÒª´òÁ½³¡ÈÎÎñÀ×£¬ÔÚÁ½³¡ÈÎÎñÀ×µÄÇé¿öÏÂ£¬Ğ´Õâ¸ö´úÂë
 			},
 			[TaskStatus.Done]		=
 			{
-				{type = "createPrivateNpc", ----------åˆ›å»ºç§æœ‰npc
+				{type = "createPrivateNpc", ----------´´½¨Ë½ÓĞnpc
 					param={
 						npcs =
 						{
@@ -142,7 +142,7 @@ NormalTaskDB =
 						},
 					},
 				},
-				{type = "deletePrivateNpc", ----------åˆ é™¤å¼ å®å›´å›°
+				{type = "deletePrivateNpc", ----------É¾³ıÕÅ±¦Î§À§
 				param={
 						npcs =
 						{
@@ -150,7 +150,7 @@ NormalTaskDB =
 						},
 					},
 				},
-				{type = "createPrivateTransfer", ------åˆ›å»ºç§æœ‰ä¼ é€é˜µ--
+				{type = "createPrivateTransfer", ------´´½¨Ë½ÓĞ´«ËÍÕó--
 					param={
 							transfers =
 							{
@@ -158,7 +158,7 @@ NormalTaskDB =
 							},
 						},
 				},
-				{type = "deletePrivateTransfer", ------åˆ é™¤ç§æœ‰ä¼ é€é˜µ
+				{type = "deletePrivateTransfer", ------É¾³ıË½ÓĞ´«ËÍÕó
 					param={
 							transfers =
 							{
@@ -166,68 +166,68 @@ NormalTaskDB =
 							},
 						},
 				},
-				{type = "deleteFollow", param = {npcs = {3},}}, --åœ¨å®ŒæˆçŠ¶æ€åˆ é™¤æŒ‡å®šIDçš„npcè·Ÿéš
-				{type = "npcEscape", param = {npcs = {{npcID =	3, x = 50, y = 50}},}},	--npcé€ƒè·‘åˆ°ç›®æ ‡ç‚¹æ¶ˆå¤±
-				--{type = "finishTask", param = {}},--è§¦å‘å®Œæˆä»»åŠ¡
-				--{type = "recetiveTask", param = {taskIDs = {1}}},--è§¦å‘æ¥å—ä»»åŠ¡,æ”¹æˆè¡¨
-				--ä¸Šé¢ä¿®æ”¹æˆ
-				--{type = "finishTask", param = {recetiveTaskID = 1103}},--è§¦å‘å®Œæˆä»»åŠ¡æ¥å—ä¸‹ä¸€ä¸ªä»»åŠ¡
-				--{type = "finishTask", param = {recetiveTaskID = {1082,1084,1086,1088,1090,1092}}},--è§¦å‘å®Œæˆä»»åŠ¡æ¥å—ä¸‹å¤šä¸ªä»»åŠ¡
-				--{type = "forceStopAutoMeet", param = {}},---å¼ºè¡Œåœæ­¢è‡ªåŠ¨é‡æ•Œ
-			    --{type = "removeMine", param = {}}, -- ç§»é™¤ä»»åŠ¡ç±»
-				--{type = "enterScriptFight", param = {scriptID = 100, mapID = 8}}, --æ¥å—ä»»åŠ¡æ—¶ç›´æ¥è¿›å…¥æˆ˜æ–—
+				{type = "deleteFollow", param = {npcs = {3},}}, --ÔÚÍê³É×´Ì¬É¾³ıÖ¸¶¨IDµÄnpc¸úËæ
+				{type = "npcEscape", param = {npcs = {{npcID =	3, x = 50, y = 50}},}},	--npcÌÓÅÜµ½Ä¿±êµãÏûÊ§
+				--{type = "finishTask", param = {}},--´¥·¢Íê³ÉÈÎÎñ
+				--{type = "recetiveTask", param = {taskIDs = {1}}},--´¥·¢½ÓÊÜÈÎÎñ,¸Ä³É±í
+				--ÉÏÃæĞŞ¸Ä³É
+				--{type = "finishTask", param = {recetiveTaskID = 1103}},--´¥·¢Íê³ÉÈÎÎñ½ÓÊÜÏÂÒ»¸öÈÎÎñ
+				--{type = "finishTask", param = {recetiveTaskID = {1082,1084,1086,1088,1090,1092}}},--´¥·¢Íê³ÉÈÎÎñ½ÓÊÜÏÂ¶à¸öÈÎÎñ
+				--{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
+			    --{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
+				--{type = "enterScriptFight", param = {scriptID = 100, mapID = 8}}, --½ÓÊÜÈÎÎñÊ±Ö±½Ó½øÈëÕ½¶·
 			},
 			[TaskStatus.Finished]	=
 			{
-				{type = "openDialog", param={dialogID = 1},}, --åœ¨ä»»åŠ¡ç»“æŸæ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯æ¡†
-				{type = "openUI", param={v = "SkillBoard"},}  --åœ¨ä»»åŠ¡ç»“æŸæ‰“å¼€ä¸€ä¸ªUI
+				{type = "openDialog", param={dialogID = 1},}, --ÔÚÈÎÎñ½áÊøÊ±´ò¿ªÒ»¸ö¶Ô»°¿ò
+				{type = "openUI", param={v = "SkillBoard"},}  --ÔÚÈÎÎñ½áÊø´ò¿ªÒ»¸öUI
 			}
 		}
 	},
 
 
 
----[1] = {type='Tarea',param = {}, location={mapID=101,x=245,y=109}, tip = "å¯»æ‰¾åˆ˜å¤‡",linkTip = "åˆ˜å¤‡",count = 1,}, å®¢æˆ·ç«¯æŒ‡å¼•
----[2] = {type='Tride',param = {},tip = "è¯·ä¸Šåéª‘"}å®¢æˆ·ç«¯è·å¾—åéª‘ä»»åŠ¡ç›®æ ‡
+---[1] = {type='Tarea',param = {}, location={mapID=101,x=245,y=109}, tip = "Ñ°ÕÒÁõ±¸",linkTip = "Áõ±¸",count = 1,}, ¿Í»§¶ËÖ¸Òı
+---[2] = {type='Tride',param = {},tip = "ÇëÉÏ×øÆï"}¿Í»§¶Ë»ñµÃ×øÆïÈÎÎñÄ¿±ê
 
 	[935] = 
 	{
-		name = "æµ‹è¯•ä»»åŠ¡2",	--ä»»åŠ¡åå­—
-		startNpcID = 22562,	--ä»»åŠ¡èµ·å§‹npc
-		endNpcID = 20056,	--ä»»åŠ¡ç»“æŸnpc
-		preTaskData = {1003},	--ä»»åŠ¡å‰ç½®ä»»åŠ¡æ²¡æœ‰å¡«nil
-		nextTaskID = 2003,	--ä»»åŠ¡åç½®ä»»åŠ¡æ²¡æœ‰å¡«nil
-		startDialogID =	1,	--æ¥ä»»åŠ¡å¯¹è¯IDæ²¡æœ‰å¡«nil
-		endDialogID = 51,	--äº¤ä»»åŠ¡å¯¹è¯IDæ²¡æœ‰å¡«nil
-		taskType2 = TaskType2.Main,--ä»»åŠ¡ç±»å‹
-		school = nil,	--é—¨æ´¾é™åˆ¶æ²¡æœ‰å¡«nil
-		level =	{1,150},--ç­‰çº§é™åˆ¶
-		rewards	= --ä»»åŠ¡å¥–åŠ±æ²¡æœ‰å¡«{}
+		name = "²âÊÔÈÎÎñ2",	--ÈÎÎñÃû×Ö
+		startNpcID = 22562,	--ÈÎÎñÆğÊ¼npc
+		endNpcID = 20056,	--ÈÎÎñ½áÊønpc
+		preTaskData = {1003},	--ÈÎÎñÇ°ÖÃÈÎÎñÃ»ÓĞÌînil
+		nextTaskID = 2003,	--ÈÎÎñºóÖÃÈÎÎñÃ»ÓĞÌînil
+		startDialogID =	1,	--½ÓÈÎÎñ¶Ô»°IDÃ»ÓĞÌînil
+		endDialogID = 51,	--½»ÈÎÎñ¶Ô»°IDÃ»ÓĞÌînil
+		taskType2 = TaskType2.Main,--ÈÎÎñÀàĞÍ
+		school = nil,	--ÃÅÅÉÏŞÖÆÃ»ÓĞÌînil
+		level =	{1,150},--µÈ¼¶ÏŞÖÆ
+		rewards	= --ÈÎÎñ½±ÀøÃ»ÓĞÌî{}
 		{
-			[TaskRewardList.player_xp] = 5000,   --ç©å®¶ç»éªŒ
-			[TaskRewardList.pet_xp] = 5000,      --å® ç‰©ç»éªŒ
-			[TaskRewardList.subMoney] = 300,    --ç»‘é“¶
-			[TaskRewardList.player_pot] = 300,  	--äººç‰©æ½œèƒ½
-			--[TaskRewardList.money] = 200,       --é“¶ä¸¤
-			--[TaskRewardList.cashMoney] = 400, --é“¶å…ƒå®
-			--[TaskRewardList.goldCoin] = 500,  --é‡‘å…ƒå®
+			[TaskRewardList.player_xp] = 5000,   --Íæ¼Ò¾­Ñé
+			[TaskRewardList.pet_xp] = 5000,      --³èÎï¾­Ñé
+			[TaskRewardList.subMoney] = 300,    --°óÒø
+			[TaskRewardList.player_pot] = 300,  	--ÈËÎïÇ±ÄÜ
+			--[TaskRewardList.money] = 200,       --ÒøÁ½
+			--[TaskRewardList.cashMoney] = 400, --ÒøÔª±¦
+			--[TaskRewardList.goldCoin] = 500,  --½ğÔª±¦
 		},
-		consume	=--ä»»åŠ¡æ¶ˆè€—æ²¡æœ‰å¡«{}
+		consume	=--ÈÎÎñÏûºÄÃ»ÓĞÌî{}
 		{
 			["money"] = 100,
 			["xp"] = 100,
 		},
-		targets	= --ä»»åŠ¡ç›®æ ‡æ²¡æœ‰å¡«{}(å¿…é¡»å‰é¢å¡«ä¸Šç´¢å¼•[1][2][3])
+		targets	= --ÈÎÎñÄ¿±êÃ»ÓĞÌî{}(±ØĞëÇ°ÃæÌîÉÏË÷Òı[1][2][3])
 		{
-		    --ç©¿æˆ´æŒ‡å®šç‰©å“åŠè£…å¤‡ç›®æ ‡ï¼ˆå¯ä»¥å†™å¤šä¸ªï¼‰
-			[1] = {type='TwearEquip',param = {equipID	= 2001085, bor = false},},--æ­¦å™¨
-			[2] = {type='TwearEquip',param = {equipID	= 2001091, bor = false},},--æŠ¤è‚©
-			[3] = {type='TwearEquip',param = {equipID	= 2001092, bor = false},},--å¤´ç›”
-			[4] = {type='TwearEquip',param = {equipID	= 2001093, bor = false},},--æˆ˜è¢
-			[5] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},--è£¤å­
-			[6] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},--é‹å­
+		    --´©´÷Ö¸¶¨ÎïÆ·¼°×°±¸Ä¿±ê£¨¿ÉÒÔĞ´¶à¸ö£©
+			[1] = {type='TwearEquip',param = {equipID	= 2001085, bor = false},},--ÎäÆ÷
+			[2] = {type='TwearEquip',param = {equipID	= 2001091, bor = false},},--»¤¼ç
+			[3] = {type='TwearEquip',param = {equipID	= 2001092, bor = false},},--Í·¿ø
+			[4] = {type='TwearEquip',param = {equipID	= 2001093, bor = false},},--Õ½ÅÛ
+			[5] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},--¿ã×Ó
+			[6] = {type='TwearEquip',param = {equipID	= 2001094, bor = false},},--Ğ¬×Ó
 		},
-		triggers = --ä»»åŠ¡è§¦å‘å™¨
+		triggers = --ÈÎÎñ´¥·¢Æ÷
 		{
 			
 		},

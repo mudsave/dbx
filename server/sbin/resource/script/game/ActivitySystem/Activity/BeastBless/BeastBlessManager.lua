@@ -52,6 +52,8 @@ function BeastBlessManager:initOnLinePlayerData()
 		print("在线玩家重置",activityId)
 		local activityHandler = player:getHandler(HandlerDef_Activity)
 		activityHandler:setPriDataById(activityId,0)
+		-- 更新到客户端
+		self:notifyToClient(player,0)
 	end
 end
 
@@ -65,18 +67,21 @@ function BeastBlessManager:joinPlayer(player,recordList)
 				if not time.isSameDay(data.recordTime) then
 					-- 重置数据
 					activityHandler:setPriDataById(activityId,0)
+					self:notifyToClient(player,0)
 				else
 					local fightCount = 0
 					if data.fightCount then
 						fightCount = data.fightCount 
 					end
-					print("设置私有数据fightCount")
+					-- print("设置私有数据fightCount")
 					activityHandler:setPriDataById(activityId,fightCount)
+					self:notifyToClient(player,fightCount)
 				end
 			end
 		else
-			print("设置私有数据")
-			print("activityId",activityId)
+			-- print("设置私有数据")
+			-- print("activityId",activityId)
+			self:notifyToClient(player,0)
 			activityHandler:setPriDataById(activityId,0)
 		end
 	end
@@ -244,7 +249,7 @@ function BeastBlessManager:createBeastToMap(config)
 			local beast = Beast(npcDBID,mapID)
 			-- 随机坐标 并加到场景中 不能再同一个坐标
 			local npcID = beast:addBeastToMap(beasts)
-			print("npcID:",npcID)
+			-- print("npcID:",npcID)
 			if npcID then
 				-- 这个场景中的所有beast
 				beasts[npcID] = beast
@@ -321,13 +326,13 @@ function BeastBlessManager:updateAllMapBeast()
 		local beastMaxCount = curMapBeastList.beastMaxCount 
 		local beastCount = curMapBeastList.beastCount 
 		-- 数量没有满
-		print("补充addBeastNum:",beastMaxCount,beastCount)
+		-- print("补充addBeastNum:",beastMaxCount,beastCount)
 		if beastMaxCount >  beastCount then
 			-- 补充beast
 			local addBeastNum = beastMaxCount - beastCount
-			print("补充addBeastNum:",addBeastNum)
+			-- print("补充addBeastNum:",addBeastNum)
 			for index = 1,addBeastNum do
-				print("index",index)
+				-- print("index",index)
 				self:addBeastToList(mapID)
 			end
 		end
@@ -428,6 +433,10 @@ function BeastBlessManager:dealFightCount(fightEndResults)
 			-- 计数加一个数
 			fightCount = fightCount + 1
 			activityHandler:setPriDataById(activityId,fightCount)
+			self:notifyToClient(player,fightCount)
+			
+			-- 修行值增加
+			g_practisesym:addPractise(player,PractiseAddRewardData.Two)
 		end
 	end
 end
@@ -811,6 +820,15 @@ end
 function BeastBlessManager:sendRewardMessageTip(player, msgID, msgParams)
 	print("msgParams",toString(msgParams))
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, msgID, msgParams)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function BeastBlessManager:notifyToClient(player,fightCount)
+	local data = {}
+	local activityId = g_beastBless:getID()
+	data.count = fightCount
+	data.finishTimes = fightCount
+	local event = Event.getEvent(ActivityEvent_SC_ActivityPageActivity,activityId,data)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

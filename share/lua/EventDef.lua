@@ -123,6 +123,7 @@ PlayerSysEvent_CS_RoleUpgrade			= Event_Group_PlayerSysMsg + 5
 PlayerSysEvent_SC_RoleUpgrade			= Event_Group_PlayerSysMsg + 6
 PlayerSysEvent_CS_PropsBatchStart		= Event_Group_PlayerSysMsg + 7
 PlayerSysEvent_SC_PropsBatchEnd			= Event_Group_PlayerSysMsg + 8
+PlayerSysEvent_CS_ShowDramaChanged		= Event_Group_PlayerSysMsg + 9
 
 --定义Event_Group_SceneMsg消息事件ID
 SceneEvent_CS_SwitchScene				= Event_Group_SceneMsg + 1
@@ -591,6 +592,9 @@ PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 32	--请求拓展宠物栏
 PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 33	--宠物栏数量到达
 
 PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 34	--交易宠物信息已经到达
+
+PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 35	--宠物学习研发技能
+PetEvent_SC_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技能结果
 --[[
 	¤╭⌒╮ ╭⌒╮	{ Keep Distance }	
 	╱◥██◣ ╭╭ ⌒╮
@@ -726,9 +730,11 @@ ActivityEvent_CS_GoldHunt_leave					= Event_Group_Activity + 11
 
 --
 ActivityEvent_CS_EnterPatrolFight				= Event_Group_Activity + 20
-
-ActivityEvent_SC_updateActivityPage				= Event_Group_Activity + 21
-
+-- 活动页面
+ActivityEvent_SC_ActivityPageActivity			= Event_Group_Activity + 21
+ActivityEvent_SC_ActivityPageDaliy				= Event_Group_Activity + 22
+ActivityEvent_SC_ActivityPageOther				= Event_Group_Activity + 23
+ActivityEvent_SC_notifyActivityPageUpdateBtn	= Event_Group_Activity + 24
 --宠物仓库消息
 PetDepotEvent_CS_ExpandPetDepot					= Event_Group_PetDepot + 1
 PetDepotEvent_SC_ExpandPetDepotReturn			= Event_Group_PetDepot + 2
@@ -750,7 +756,7 @@ PractiseEvent_SC_addPractise					= Event_Group_Practise + 4
 
 
 DekaronSchool_SC_AddActvityTarget				= Event_Group_DekaronSchool + 1
-DekaronSchool_SC_updateBox						= Event_Group_DekaronSchool + 2
+DekaronSchool_SC_GiveUpActvityTarget			= Event_Group_DekaronSchool + 2
 DekaronSchool_CS_updatePractise					= Event_Group_DekaronSchool + 3
 DekaronSchool_SC_addPractise					= Event_Group_DekaronSchool + 4
 

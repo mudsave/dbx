@@ -1037,7 +1037,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[3] =
+			--[[[3] =
 			{
 				-- 步骤开始
 				Start =
@@ -1115,8 +1115,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[5] =
+			},]]--
+			[3] =
 			{
 				-- 步骤开始
 				Start =
@@ -1140,7 +1140,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 3, gotoNext = 6},
+						{hotAreaID = 3, gotoNext = 4},
 					},
 				},
 				-- 步骤结束
@@ -1148,7 +1148,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[6] =
+			[4] =
 			{
 				-- 步骤开始
 				Start =
@@ -1163,7 +1163,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3033, gotoNext = 7},
+						{fightID = 3033, gotoNext = 5},
 					},
 				},
 				-- 步骤结束
@@ -1195,7 +1195,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			[5] =
 			{
 				-- 步骤开始
 				Start =
@@ -1218,7 +1218,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 4, gotoNext = 8},
+						{hotAreaID = 4, gotoNext = 6},
 					},
 				},
 				-- 步骤结束
@@ -1226,7 +1226,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[8] =
+			[6] =
 			{
 				-- 步骤开始
 				Start =
@@ -1241,7 +1241,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3034, gotoNext = 9},
+						{fightID = 3034, gotoNext = 7},
 					},
 				},
 				-- 步骤结束
@@ -1273,7 +1273,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[9] =
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -1297,7 +1297,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -1305,7 +1305,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -1320,7 +1320,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3035, gotoNext = 11},
+						{fightID = 3035, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -1352,7 +1352,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -1369,7 +1369,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -1377,7 +1377,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -1392,7 +1392,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3036, gotoNext = 13},
+						{fightID = 3036, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -1417,7 +1417,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -1728,7 +1728,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			--[[[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -1802,8 +1802,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[9] =
+			},]]--
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -1825,7 +1825,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -1833,7 +1833,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -1848,7 +1848,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3041, gotoNext = 11},
+						{fightID = 3041, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -1878,7 +1878,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -1895,7 +1895,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -1903,7 +1903,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -1918,7 +1918,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3042, gotoNext = 13},
+						{fightID = 3042, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -1943,7 +1943,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -2001,8 +2001,8 @@ tEctypeDB =
 		-- 副本结束后出现传送门的坐标
 		TransferDoorLocs =
 		{
-			{locX = 261, locY = 109},
-			{locX = 261, locY = 106},
+			{locX = 261, locY = 112},
+			{locX = 261, locY = 108},
 			{locX = 261, locY = 103},
 			{locX = 258, locY = 100},
 		},
@@ -2102,7 +2102,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[3] =
+			--[[[3] =
 			{
 				-- 步骤开始
 				Start =
@@ -2178,8 +2178,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[5] =
+			},]]--
+			[3] =
 			{
 				-- 步骤开始
 				Start =
@@ -2201,7 +2201,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 3, gotoNext = 6},
+						{hotAreaID = 3, gotoNext = 4},
 					},
 				},
 				-- 步骤结束
@@ -2209,7 +2209,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[6] =
+			[4] =
 			{
 				-- 步骤开始
 				Start =
@@ -2224,7 +2224,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3047, gotoNext = 7},
+						{fightID = 3047, gotoNext = 5},
 					},
 				},
 				-- 步骤结束
@@ -2254,7 +2254,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			[5] =
 			{
 				-- 步骤开始
 				Start =
@@ -2276,7 +2276,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 4, gotoNext = 8},
+						{hotAreaID = 4, gotoNext = 6},
 					},
 				},
 				-- 步骤结束
@@ -2284,7 +2284,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[8] =
+			[6] =
 			{
 				-- 步骤开始
 				Start =
@@ -2299,7 +2299,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3048, gotoNext = 9},
+						{fightID = 3048, gotoNext = 7},
 					},
 				},
 				-- 步骤结束
@@ -2313,7 +2313,7 @@ tEctypeDB =
 					{Ectype_RemoveNpc, npcID = 30681},
 					
 					-- 删除热区
-					{Ectype_DestroyHotArea, hotAreaID = 4},
+					{Ectype_DestroyHotArea, hotAreaID = 7},
 				},
 				-- 进度奖励
 				Prizes =
@@ -2329,7 +2329,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[9] =
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -2354,7 +2354,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -2362,7 +2362,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -2377,7 +2377,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3049, gotoNext = 11},
+						{fightID = 3049, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -2410,7 +2410,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -2427,7 +2427,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -2435,7 +2435,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -2450,7 +2450,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3050, gotoNext = 13},
+						{fightID = 3050, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -2475,7 +2475,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -2633,7 +2633,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[3] =
+			--[[[3] =
 			{
 				-- 步骤开始
 				Start =
@@ -2709,8 +2709,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[5] =
+			},]]--
+			[3] =
 			{
 				-- 步骤开始
 				Start =
@@ -2732,7 +2732,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 3, gotoNext = 6},
+						{hotAreaID = 3, gotoNext = 4},
 					},
 				},
 				-- 步骤结束
@@ -2740,7 +2740,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[6] =
+			[4] =
 			{
 				-- 步骤开始
 				Start =
@@ -2755,7 +2755,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3057, gotoNext = 7},
+						{fightID = 3057, gotoNext = 5},
 					},
 				},
 				-- 步骤结束
@@ -2785,7 +2785,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			[5] =
 			{
 				-- 步骤开始
 				Start =
@@ -2807,7 +2807,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 4, gotoNext = 8},
+						{hotAreaID = 4, gotoNext = 6},
 					},
 				},
 				-- 步骤结束
@@ -2815,7 +2815,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[8] =
+			[6] =
 			{
 				-- 步骤开始
 				Start =
@@ -2830,7 +2830,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3058, gotoNext = 9},
+						{fightID = 3058, gotoNext = 7},
 					},
 				},
 				-- 步骤结束
@@ -2860,7 +2860,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[9] =
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -2883,7 +2883,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -2891,7 +2891,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -2906,7 +2906,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3059, gotoNext = 11},
+						{fightID = 3059, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -2937,7 +2937,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -2954,7 +2954,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 7, gotoNext = 12},
+						{hotAreaID = 7, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -2962,7 +2962,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -2977,7 +2977,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3060, gotoNext = 13},
+						{fightID = 3060, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -3002,7 +3002,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -3278,7 +3278,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3003, gotoNext = 8},
+						{fightID = 3003, gotoNext = 7},
 					},
 				},
 				-- 步骤结束
@@ -3349,9 +3349,9 @@ tEctypeDB =
 
 					},
 				},
-			},]]
+			},]]--
 
-			[8] =
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -3375,7 +3375,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第8步骤
-					{hotAreaID = 5, gotoNext = 9},
+					{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -3384,7 +3384,7 @@ tEctypeDB =
 
 				},
 			},
-			[9] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -3399,7 +3399,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第10步骤
-						{fightID = 3004, gotoNext = 10},
+						{fightID = 3004, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -3428,7 +3428,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[10] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -3449,7 +3449,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第11步骤
-						{hotAreaID = 6, gotoNext = 11},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -3457,7 +3457,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[11] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -3472,7 +3472,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第12步骤
-						{fightID = 3005, gotoNext = 12},
+						{fightID = 3005, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -3501,7 +3501,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[12] =
+			[11] =
 			{
 				-- 步骤开始
 				Start =
@@ -3518,7 +3518,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第11步骤
-						{hotAreaID = 7, gotoNext = 13},
+						{hotAreaID = 7, gotoNext = 12},
 					},
 				},
 				-- 步骤结束
@@ -3526,7 +3526,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[13] =
+			[12] =
 			{
 				-- 步骤开始
 				Start =
@@ -3540,7 +3540,7 @@ tEctypeDB =
 					-- 战斗结束触发
 					FightWin =
 					{
-							{fightID = 3006, gotoNext = 14},
+							{fightID = 3006, gotoNext = 13},
 					},
 				},
 				-- 步骤结束
@@ -3565,7 +3565,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[14]=
+			[13]=
 			{
 			-- 步骤开始
 				Start =
@@ -5212,7 +5212,7 @@ tEctypeDB =
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.team,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		--单人副本
 		--EctypeEnterType = EctypeEnterType.Single,
@@ -5231,6 +5231,9 @@ tEctypeDB =
 		TransferDoorLocs =
 		{
 			{locX = 51, locY = 152},
+			{locX = 43, locY = 151},
+			{locX = 39, locY = 146},
+			{locX = 39, locY = 139},
 			
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
@@ -5703,9 +5706,6 @@ tEctypeDB =
 			-- 步骤开始
 				Start =
 				{
-					{Ectype_StartSceneMagic, index = 2, magicID = 1109, xPos =47 , yPos = 151},
-					{Ectype_StartSceneMagic, index = 2, magicID = 1109, xPos =56 , yPos = 152},
-					{Ectype_StartSceneMagic, index = 2, magicID = 1109, xPos =58 , yPos = 147},
 				},
 				-- 步骤跳转
 				Goto =
@@ -5741,7 +5741,7 @@ tEctypeDB =
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		--单人副本
 		--EctypeEnterType = EctypeEnterType.Single,
@@ -6287,8 +6287,6 @@ tEctypeDB =
 			-- 步骤开始
 				Start =
 				{	
-				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 223, yPos = 63},
-				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 222, yPos = 76},
 				},
 				-- 步骤跳转
 				Goto =
@@ -6324,7 +6322,7 @@ tEctypeDB =
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		--单人副本
 		--EctypeEnterType = EctypeEnterType.Single,
@@ -6343,9 +6341,9 @@ tEctypeDB =
 		TransferDoorLocs =
 		{
 			{locX = 36, locY = 163},
-			
-			
-			
+			{locX = 39, locY = 166},
+			{locX = 33, locY = 160},
+			{locX = 33, locY = 155},
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
@@ -6865,8 +6863,6 @@ tEctypeDB =
 			-- 步骤开始
 				Start =
 				{	
-				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 33, yPos = 156},
-				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 36, yPos = 163},
 				},
 				-- 步骤跳转
 				Goto =
@@ -6898,22 +6894,20 @@ tEctypeDB =
 		-- 静态地图ID2
 		StaticMapID2 = 617,
 		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
-		EnterNeedLevel = {minLevel = 42, maxLevel = 100},
+		EnterNeedLevel = {minLevel = 45, maxLevel = 150},
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		--单人副本
 		--EctypeEnterType = EctypeEnterType.Single,
 		--组队
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 100,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
 		EnterInitLocs = {locX = 74, locY = 88},
 		--EnterInitLocs = {locX = 40, locY = 192},
@@ -6923,9 +6917,9 @@ tEctypeDB =
 		TransferDoorLocs =
 		{
 			{locX = 114, locY = 250},
-			--{locX = 223, locY = 63},
-			--{locX = 222, locY = 76},
-			--{locX = 219, locY = 59},
+			{locX = 223, locY = 63},
+			{locX = 222, locY = 76},
+			{locX = 219, locY = 59},
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
@@ -7449,8 +7443,6 @@ tEctypeDB =
 			-- 步骤开始
 				Start =
 				{	
-				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 114, yPos = 250},
-				--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 222, yPos = 76},
 				},
 				-- 步骤跳转
 				Goto =
@@ -7485,7 +7477,7 @@ tEctypeDB =
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		--组队副本
 		--EctypeEnterType = EctypeEnterType.Team,
@@ -7504,9 +7496,9 @@ tEctypeDB =
 		TransferDoorLocs =
 		{
 			{locX = 28, locY = 242},
-			--{locX = 31, locY = 247},
-			--{locX = 34, locY = 250},
-			--{locX = 37, locY = 253},
+			{locX = 31, locY = 247},
+			{locX = 34, locY = 250},
+			{locX = 37, locY = 253},
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
@@ -7977,8 +7969,7 @@ tEctypeDB =
 			{locX = 49, locY = 184},
 			{locX = 56, locY = 189},
 			{locX = 67, locY = 185},
-			
-			
+			{locX = 47, locY = 176},	
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},
@@ -8376,8 +8367,6 @@ tEctypeDB =
 			-- 步骤开始
 				Start =
 				{	
-				{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 49, yPos = 184},
-				--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 222, yPos = 76},
 				},
 				-- 步骤跳转
 				Goto =
@@ -8413,10 +8402,7 @@ tEctypeDB =
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
 		EctypeType = EctypeType.Ring,
-		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
-		--组队副本
-		--EctypeEnterType = EctypeEnterType.Team,
-		--单人
+		--组队
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
 		EctypeCDFinishTimes = 1,
@@ -8433,7 +8419,7 @@ tEctypeDB =
 			{locX = 134, locY = 232},
 			{locX = 138, locY = 229},
 			{locX = 142, locY = 224},
-			
+			{locX = 144, locY = 218},
 			
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
@@ -8844,8 +8830,6 @@ tEctypeDB =
 			-- 步骤开始
 				Start =
 				{	
-				--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 139, yPos = 230},
-				--{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 222, yPos = 76},
 				},
 				-- 步骤跳转
 				Goto =
@@ -8880,11 +8864,11 @@ tEctypeDB =
 		-- 进入副本最少人数，组队时有效
 		EnterNeedPlayerNum = 1,
 		-- 副本类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeType
-		EctypeType = EctypeType.Common,
+		EctypeType = EctypeType.Ring,
 		-- 副本进入类型，见server\sbin\resource\script\misc\EctypeConstant.lua中的EctypeEnterType
 		EctypeEnterType = EctypeEnterType.Team,
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
-		EctypeCDFinishTimes = 99,
+		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
@@ -8895,9 +8879,9 @@ tEctypeDB =
 		TransferDoorLocs =
 		{
 			{locX = 33, locY = 228},
-			
-			
-			
+			{locX = 38, locY = 222},
+			{locX = 36, locY = 233},
+			{locX = 38, locY = 238},	
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {itemID = 10000, itemNum = 1},

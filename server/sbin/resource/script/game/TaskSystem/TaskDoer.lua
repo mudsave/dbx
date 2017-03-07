@@ -14,7 +14,7 @@ function TaskDoer:__release()
 end
 
 -- 创建天道任务，，根据任务创建成功和失败，来决定是否进入场景
-function TaskDoer:doReceiveBabelTask(player, taskID, rewardType, layer)
+function TaskDoer:doReceiveBabelTask(player, taskID, rewardType, layer, flyLayer)
 	if not BabelTaskDB[taskID] then
 		print("通天塔任务ID配置错误", taskID)
 		return 
@@ -31,8 +31,7 @@ function TaskDoer:doReceiveBabelTask(player, taskID, rewardType, layer)
 		return 
 	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	-- 定义当前的层数
-	babelTask = g_taskFty:createBabelTask(player, taskID, rewardType, layer)
+	babelTask = g_taskFty:createBabelTask(player, taskID, rewardType, layer, flyLayer)
 	taskHandler:addTask(babelTask)
 end
 
@@ -163,7 +162,6 @@ end
 -- 任务目标的切换移除当前循环任务，接其他任务的任务目标, 
 -- 分为客户端的删除，和服务器的主动删除
 function TaskDoer:doDeleteTask(player, taskID, flag)
-
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	-- 在这之前还要移除私有NPC 和热区以及其他的任务物品
 	local privateHandler = player:getHandler(HandlerDef_TaskPrData)
@@ -243,7 +241,6 @@ function TaskDoer:loadNormalTask(player, recordList)
 				 local c,cc = pcall(loadstring("return "..taskData.targetState))
 				 taskData.targetState = cc
 			end
-			
 			local normalTask = g_taskFty:createNormalTaskFromDB(player, taskData)
 			taskHandler:addTask(normalTask)
 			g_taskSystem:updateNormalTaskList(player, taskHandler:getNextID())
@@ -407,29 +404,16 @@ function TaskDoer:updateNpcHeader(player, npc)
 	local npcStatue = nil
 	for _, taskID in ipairs(g_taskProvideNpcs[npc:getID()] or {}) do
 		local task = taskHandler:getTask(taskID)
-		if task then
-			if NormalTaskDB[taskID] then
-				if task:getStatus() == TaskStatus.Active then
-					npcStatue = nil
-				end
-				break
-			elseif DailyTaskDB[taskID] then
-				if task:getStatus() == TaskStatus.Active then
-					npcStatue = nil
-				end
-				break
-			elseif LoopTaskDB[taskID] then
-					npcStatue = nil
-				break
-			end
-		else
+		if not task then		
 			if TaskCondition.normalTask(player, taskID) then	
 				if NormalTaskDB[taskID].taskType2 == TaskType2.Main then
+					npcStatue = DialogIcon.Task1
+				elseif NormalTaskDB[taskID].taskType2 == TaskType2.NewBie then
 					npcStatue = DialogIcon.Task1
 				else
 					npcStatue = DialogIcon.Task2
 				end
-				break		
+				break
 			end	
 			
 			-- 如果玩家和NPC 不属于同一个门派那么就为nil
@@ -438,7 +422,7 @@ function TaskDoer:updateNpcHeader(player, npc)
 				break		
 			end
 			if TaskCondition.dailyTask(player,taskID) then
-				npcStatue = DialogIcon.Task1
+				npcStatue = DialogIcon.Task2
 				break
 			end
 		end	 
@@ -449,12 +433,15 @@ function TaskDoer:updateNpcHeader(player, npc)
 		if task then
 			if task:getStatus() == TaskStatus.Done then
 				npcStatue = DialogIcon.Task4
+				if task:getSubType() == TaskType2.NewBie then
+					npcStatue = DialogIcon.Task1
+				end
 				break
 			elseif task:getStatus() == TaskStatus.Active then
 				npcStatue = DialogIcon.Task3
-			break
+				break
+			end
 		end
-	end
 	end
 	g_taskSystem:onUpdateNpcStatue(player, npc:getID(), npcStatue)
 end
@@ -545,6 +532,81 @@ function TaskDoer:loadBabelTask(player, recordList)
 			end
 			taskHandler:loadBabelTask(babelTaskData)
 		end
+	end
+end
+
+-- 通天塔飞升
+--param = {taskID = 20001, costType = 1, addLayer = 2, money = 1000},
+function TaskDoer:doFlyUp(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	local result = self:checkFlyUpCondition(player, param)
+	if result > 0 then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, result)
+		g_eventMgr:fireRemoteEvent(event, player)
+	else
+		-- 删除当前任务
+		if task then
+			local layer = task:getLayer() + param.addLayer
+			local reWardType = task:getRewardType()
+			taskHandler:finishBabelTask(param.taskID)
+			-- 在这可能还要判断一下层数， 之后再添加
+			g_taskDoer:doReceiveBabelTask(player, param.taskID, reWardType, layer, param.addLayer)
+			local curTask = taskHandler:getTask(param.taskID)
+			if curTask then
+				local layer = curTask:getLayer()
+				local mapID = BabelEachLayerDB[param.taskID][layer].mapID
+				if mapID then
+					-- 切换玩家到场景
+					g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+				end
+			end
+		end
+	end
+
+end
+
+-- 监测飞升条件
+function TaskDoer:checkFlyUpCondition(player, param)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	if task then
+		local level = player:getLevel()
+		local curTaskLayer = task:getLayer()
+		if curTaskLayer <= level then
+			if curTaskLayer + param.addLayer > level then
+				return 18
+			end
+		end
+		if (curTaskLayer + param.addLayer) > BabelTaskDB[param.taskID].maxLayer then
+			return 19
+		end
+		local costType = param.costType
+		if costType == CostType.money then
+			local money = player:getMoney()
+			if money < param.money then
+				return 20
+			else
+				player:setMoney(money - param.money)
+			end
+		elseif costType == CostType.gold then
+			local goldCoin = player:getGoldCoin()
+			if goldCoin < param.money then
+				return 21
+			else
+				player:setGoldCoin(goldCoin - param.money)
+			end
+		end
+		return 0
+	end
+end
+
+-- 客户端点击删除通天塔任务接口
+function TaskDoer:doDeleteBabelTask(player, taskID)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(taskID)
+	if task then
+		taskHandler:endFinishBabelTask(taskID)
 	end
 end
 

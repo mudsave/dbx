@@ -161,45 +161,46 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
                     const char * name = isFirstRow ? fields[i].name : NULL;     // 第一行写上属性名
                     TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
 
+                   char * attrName = NULL;
+                    if (name != NULL)
+                    {
+                        attrName = (char *)malloc(strlen(name) + 1);
+                        if (attrName == NULL)
+                            return false;
+                        strcpy(attrName, name);
+                        lower_first_char(attrName);
+                    }
+
                     switch (Translate::getType(&fields[i]))
                     {
                         case PARAM_DATATYPE_INT:
                         {
-                            if (row[i] != NULL)
-                            {
-                                int nRowRestul = atoi(row[i]);
-                                m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMINT);
-                            }
+                            int nRowRestul = row[i] != NULL ? atoi(row[i]) : 0;
+                            m_SCMsgBuilder.addAttribute(attrName, &nRowRestul, PARAMINT);
                             break;
                         }
                         case PARAM_DATATYPE_FLOAT:
                         {
-                            if (row[i] != NULL)
-                            {
-                                float fRowRestul = (float)atof(row[i]);
-                                m_SCMsgBuilder.addAttribute(name, &fRowRestul, PARAMFLOAT);
-                            }
+                            float fRowRestul = row[i] != NULL ? (float)atof(row[i]) : 0.0;
+                            m_SCMsgBuilder.addAttribute(attrName, &fRowRestul, PARAMFLOAT);
                             break;
                         }
                         case PARAM_DATATYPE_BOOL:
                         {
-                            if (row[i] != NULL)
-                            {
-                                bool nRowRestul = atoi(row[i]);
-                                m_SCMsgBuilder.addAttribute(name, &nRowRestul, PARAMBOOL);
-                            }
+                            bool nRowRestul = row[i] != NULL ? atoi(row[i]) : false;
+                            m_SCMsgBuilder.addAttribute(attrName, &nRowRestul, PARAMBOOL);
                             break;
                         }
                         default:
                         {
-                            if (row[i] != NULL)
-                            {
-                                int nSize = strlen((char*)row[i]);
-                                m_SCMsgBuilder.addAttribute(name, row[i], nSize);
-                            }
+                            int nSize = row[i] != NULL ? strlen((char *)row[i]): 0;
+                            const char * strRow = row[i] != NULL ? row[i] : "";
+                            m_SCMsgBuilder.addAttribute(attrName, strRow, nSize);
                             break;
                         }
                     }
+                    if (attrName != NULL)
+                        free(attrName);
                 }
 
                 //属性名只写一次

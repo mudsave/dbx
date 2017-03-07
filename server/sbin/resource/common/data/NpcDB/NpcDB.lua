@@ -1019,7 +1019,7 @@ NpcDB = {
 	     modelID =512,
 	     desc = "坐骑商人",
 	     funcFlag = 15,
-	     dialogIDs = {20011},
+	     dialogIDs = {30060},
      },
      [20109] = {
 	     name = "董旻",
@@ -1531,6 +1531,14 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
+     },
+     [20349] = {
+	     name = "讨逆任务",
+	     modelID =573,
+	     desc = "测试讨逆任务",
+	     level = -1,
+	     attrID = -1,
+	     phaseType = PhaseType.Wind,
      },
      [20601] = {
 	     name = "吴明",
@@ -4884,7 +4892,7 @@ NpcDB = {
      },
      [21281] = {
 	     name = "张硕",
-	     modelID =175,
+	     modelID =140,
 	     desc = "主线43-44",
 	     level = 43,
 	     attrID = 1,
@@ -8255,7 +8263,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
      },
      [30080] = {
 	     name = "天牢山主将",
@@ -8265,6 +8272,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
+	     modelScale =15,
      },
      [30081] = {
 	     name = "天牢山偏将",
@@ -8301,7 +8309,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
      },
      [30085] = {
 	     name = "天牢山副帅",
@@ -8311,7 +8318,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30086] = {
 	     name = "侍卫",
@@ -8331,6 +8338,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =2,
      },
      [30088] = {
 	     name = "守卫",
@@ -8349,7 +8357,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30090] = {
 	     name = "天牢山祭祀",
@@ -8359,6 +8366,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
+	     modelTextures =2,
      },
      [30091] = {
 	     name = "持剑护法",
@@ -8377,7 +8385,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30093] = {
 	     name = "大刀守卫",
@@ -8388,8 +8395,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
 	     modelTextures =4,
-	     unhitRate = 1,
-	     unhitSkills = {1021,1023},
      },
      [30094] = {
 	     name = "大刀守卫",
@@ -8399,6 +8404,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =4,
      },
      [30095] = {
 	     name = "郭汜",
@@ -8408,6 +8414,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
+	     unhitRate = 1,
+	     unhitSkills = {1021,1023},
      },
      [30096] = {
 	     name = "空白模型",
@@ -8682,7 +8690,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30161] = {
 	     name = "魔魂峰哨兵",
@@ -8702,6 +8710,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =3,
      },
      [30163] = {
 	     name = "魔魂峰暗卫",
@@ -8720,7 +8729,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
      },
      [30165] = {
 	     name = "魔魂峰护卫队长",
@@ -8730,7 +8738,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1020},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30166] = {
 	     name = "魔魂峰枪兵",
@@ -8750,7 +8758,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1025},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30168] = {
 	     name = "魔魂峰大刀兵",
@@ -8770,7 +8778,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
+	     modelTextures =4,
      },
      [30170] = {
 	     name = "魔魂峰护军",
@@ -8780,7 +8788,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30171] = {
 	     name = "魔魂峰鬼面刀兵",
@@ -8800,6 +8808,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [30173] = {
 	     name = "魔魂峰暗卫",
@@ -8818,7 +8827,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30175] = {
 	     name = "魔魂峰副帅",
@@ -8828,6 +8836,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
+	     modelTextures =2,
      },
      [30176] = {
 	     name = "魔魂峰刀盾兵",
@@ -8846,7 +8855,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30178] = {
 	     name = "魔魂峰鬼面刀兵",
@@ -8866,7 +8874,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelScale =16,
+	     modelTextures =4,
      },
      [30180] = {
 	     name = "樊稠",
@@ -8876,6 +8884,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1011},
+	     modelScale =16,
      },
      [30181] = {
 	     name = "魔魂峰护卫",
@@ -8885,7 +8894,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
-	     modelTextures =4,
      },
      [30182] = {
 	     name = "魔魂峰大刀兵",
@@ -8905,6 +8913,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =4,
      },
      [30184] = {
 	     name = "魔魂峰鬼面刀兵",
@@ -9429,7 +9438,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009,1011},
-	     modelTextures =4,
+	     modelScale =13,
      },
      [30322] = {
 	     name = "潜龙岭巡卫",
@@ -9449,7 +9458,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [30324] = {
 	     name = "潜龙岭哨兵",
@@ -9469,6 +9478,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [30326] = {
 	     name = "潜龙岭铁甲兵",
@@ -9496,7 +9506,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelScale =13,
      },
      [30329] = {
 	     name = "潜龙岭护卫头领",
@@ -9506,7 +9515,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelTextures =3,
+	     modelScale =13,
      },
      [30330] = {
 	     name = "潜龙岭护卫",
@@ -9526,7 +9535,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30332] = {
 	     name = "潜龙岭士卒",
@@ -9546,7 +9555,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30334] = {
 	     name = "潜龙岭弓兵",
@@ -9577,7 +9586,6 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005},
 	     modelTextures =3,
-	     modelScale =13,
      },
      [30337] = {
 	     name = "潜龙岭影卫头领",
@@ -9588,6 +9596,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005,1007},
 	     modelTextures =3,
+	     modelScale =13,
      },
      [30338] = {
 	     name = "潜龙岭影卫",
@@ -9607,7 +9616,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30340] = {
 	     name = "潜龙岭刺客",
@@ -9627,6 +9636,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30342] = {
 	     name = "潜龙岭剑士",
@@ -9654,8 +9664,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
-	     modelScale =13,
      },
      [30345] = {
 	     name = "潜龙岭暗卫头领",
@@ -9666,6 +9674,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005,1007},
 	     modelTextures =2,
+	     modelScale =13,
      },
      [30346] = {
 	     name = "潜龙岭暗卫",
@@ -9736,7 +9745,6 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
 	     modelTextures =2,
-	     modelScale =13,
      },
      [30353] = {
 	     name = "李儒贴身护卫高手",
@@ -9747,6 +9755,7 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1019},
 	     modelTextures =2,
+	     modelScale =13,
      },
      [30354] = {
 	     name = "李儒贴身侍从",
@@ -9766,7 +9775,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30356] = {
 	     name = "李儒贴身侍女",
@@ -9786,7 +9795,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30358] = {
 	     name = "潜龙岭金甲卫",
@@ -9817,7 +9826,6 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
 	     modelTextures =2,
-	     modelScale =15,
      },
      [30361] = {
 	     name = "李儒",
@@ -9827,6 +9835,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30370] = {
 	     name = "火陨石",
@@ -9968,6 +9978,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30421] = {
 	     name = "黄巾贼部下",
@@ -10013,7 +10025,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30426] = {
 	     name = "黄巾贼暗哨",
@@ -10033,7 +10044,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelScale =15,
+	     modelTextures =2,
      },
      [30428] = {
 	     name = "黄巾贼队率",
@@ -10043,7 +10054,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30429] = {
 	     name = "黄巾贼枪兵",
@@ -10073,6 +10084,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
+	     modelTextures =2,
      },
      [30432] = {
 	     name = "黄巾贼锤手",
@@ -10091,7 +10103,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [30434] = {
 	     name = "黄巾贼斧手",
@@ -10111,8 +10122,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     modelTextures =2,
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30436] = {
 	     name = "黄巾贼军侯",
@@ -10122,6 +10132,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30437] = {
 	     name = "黄巾贼霹雳手",
@@ -10140,7 +10152,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30439] = {
 	     name = "黄巾贼刀兵",
@@ -10170,7 +10181,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [30442] = {
 	     name = "黄巾贼盔将",
@@ -10190,7 +10201,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelScale =15,
+	     modelTextures =4,
      },
      [30444] = {
 	     name = "黄巾贼军司马",
@@ -10200,7 +10211,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30445] = {
 	     name = "黄巾贼枪兵",
@@ -10250,6 +10261,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =3,
      },
      [30450] = {
 	     name = "黄巾贼盾破兵",
@@ -10268,8 +10280,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =2,
-	     modelScale =15,
      },
      [30452] = {
 	     name = "黄巾贼校尉",
@@ -10279,7 +10289,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =3,
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30453] = {
 	     name = "黄巾贼岗哨",
@@ -10309,7 +10320,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30456] = {
 	     name = "黄巾贼前锋",
@@ -10349,9 +10360,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =16,
-	     unhitRate = 0.4,
-	     unhitSkills = {1018,1019},
+	     modelTextures =2,
      },
      [30460] = {
 	     name = "波才",
@@ -10361,6 +10370,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
+	     modelScale =16,
+	     unhitRate = 0.4,
+	     unhitSkills = {1018,1019},
      },
      [30461] = {
 	     name = "",
@@ -10660,7 +10672,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30514] = {
 	     name = "碧波岛兵勇",
@@ -10678,6 +10690,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30516] = {
 	     name = "黄巾精兵",
@@ -10694,7 +10707,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelTextures =3,
      },
      [30518] = {
 	     name = "碧波岛都尉",
@@ -10704,6 +10716,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
+	     modelTextures =3,
      },
      [30519] = {
 	     name = "碧波岛突击士兵",
@@ -10720,7 +10733,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
      },
      [30521] = {
 	     name = "碧波岛兵勇",
@@ -10738,6 +10750,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30523] = {
 	     name = "碧波岛枪卫",
@@ -10754,7 +10767,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelTextures =2,
      },
      [30525] = {
 	     name = "碧波岛枪卫",
@@ -10763,6 +10775,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =2,
      },
      [30526] = {
 	     name = "碧波岛校尉",
@@ -10788,7 +10801,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30529] = {
 	     name = "碧波岛哨兵",
@@ -10806,6 +10818,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =3,
      },
      [30531] = {
 	     name = "碧波岛突击士兵",
@@ -10830,7 +10843,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
      },
      [30534] = {
 	     name = "碧波岛中郎将",
@@ -10840,6 +10852,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1021},
+	     modelTextures =3,
      },
      [30535] = {
 	     name = "黄巾精兵",
@@ -10856,7 +10869,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026},
-	     modelTextures =3,
      },
      [30537] = {
 	     name = "碧波岛枪卫",
@@ -10883,6 +10895,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
      },
      [30540] = {
 	     name = "碧波岛盾卫",
@@ -10908,7 +10921,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     modelTextures =2,
      },
      [30543] = {
 	     name = "碧波岛巡逻士兵",
@@ -10926,7 +10938,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30545] = {
 	     name = "碧波岛刀手",
@@ -10944,6 +10956,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =4,
      },
      [30547] = {
 	     name = "碧波岛盾卫",
@@ -10968,9 +10981,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1022},
      },
      [30550] = {
 	     name = "张曼成",
@@ -10980,6 +10990,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1022},
      },
      [30551] = {
 	     name = "箭雨1",
@@ -11192,7 +11205,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =3,
+	     modelTextures =4,
+	     modelScale =15,
      },
      [30651] = {
 	     name = "冰风原铁枪兵",
@@ -11237,6 +11251,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =3,
      },
      [30656] = {
 	     name = "冰风原莽夫",
@@ -11253,8 +11268,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
-	     modelScale =15,
      },
      [30658] = {
 	     name = "冰风原参将",
@@ -11263,6 +11276,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1019},
+	     modelTextures =4,
+	     modelScale =15,
      },
      [30659] = {
 	     name = "冰风原悍卒",
@@ -11287,7 +11302,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =4,
      },
      [30662] = {
 	     name = "冰风原材官",
@@ -11305,7 +11319,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [30664] = {
 	     name = "冰风原刺客",
@@ -11323,7 +11337,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30666] = {
 	     name = "冰风原中尉",
@@ -11332,6 +11346,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =15,
      },
      [30667] = {
 	     name = "冰风原伏击士兵",
@@ -11372,7 +11387,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30672] = {
 	     name = "冰风原铁枪兵",
@@ -11391,7 +11405,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     modelTextures =3,
-	     modelScale =15,
      },
      [30674] = {
 	     name = "冰风原偏将",
@@ -11400,7 +11413,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009,1011},
-	     modelTextures =4,
+	     modelTextures =3,
+	     modelScale =15,
      },
      [30675] = {
 	     name = "冰风原近卫",
@@ -11427,7 +11441,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30678] = {
 	     name = "冰风原突击士兵",
@@ -11445,6 +11459,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [30680] = {
 	     name = "冰风原悍卒",
@@ -11461,7 +11476,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelScale =15,
      },
      [30682] = {
 	     name = "冰风原护军",
@@ -11470,6 +11484,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
+	     modelScale =15,
      },
      [30683] = {
 	     name = "冰风原锤卫",
@@ -11494,7 +11509,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1001},
-	     modelTextures =4,
      },
      [30686] = {
 	     name = "冰风原近卫",
@@ -11530,9 +11544,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1005},
-	     modelScale =15,
-	     unhitRate = 1,
-	     unhitSkills = {1014},
+	     modelTextures =4,
      },
      [30690] = {
 	     name = "张燕",
@@ -11541,6 +11553,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =15,
+	     unhitRate = 1,
+	     unhitSkills = {1014},
      },
      [30700] = {
 	     name = "冰风暴",
@@ -11700,7 +11715,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30743] = {
 	     name = "黄巾兵勇",
@@ -11750,7 +11764,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30748] = {
 	     name = "黄巾射雕士",
@@ -11800,7 +11814,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30753] = {
 	     name = "黄巾盾卫",
@@ -11820,6 +11834,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =4,
      },
      [30755] = {
 	     name = "黄巾盾卫",
@@ -11856,7 +11871,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
      },
      [30759] = {
 	     name = "黄巾精英刀兵",
@@ -11876,6 +11890,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
+	     modelTextures =3,
      },
      [30761] = {
 	     name = "黄巾枪卫",
@@ -12002,7 +12017,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =2,
      },
      [30775] = {
 	     name = "黄巾突击士兵",
@@ -12022,6 +12036,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
      },
      [30777] = {
 	     name = "黄巾大力士",
@@ -12049,9 +12064,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelScale =16,
-	     unhitRate = 1,
-	     unhitSkills = {1026,1027},
      },
      [30780] = {
 	     name = "张角",
@@ -12061,6 +12073,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
+	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1026,1027},
      },
      [30781] = {
 	     name = "暗箭",
@@ -12251,7 +12266,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
      },
      [30830] = {
 	     name = "邪盘山剑卒",
@@ -12278,6 +12292,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
+	     modelTextures =3,
      },
      [30833] = {
 	     name = "邪盘山甲兵司马",
@@ -12538,9 +12553,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [30865] = {
 	     name = "徐荣",
@@ -12550,6 +12562,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [30866] = {
 	     name = "邪盘山冰刺1",
@@ -12691,7 +12706,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =2,
      },
      [30895] = {
 	     name = "毒龙峰丛林枪兵",
@@ -12711,6 +12725,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
      },
      [30897] = {
 	     name = "毒龙峰屠夫",
@@ -12729,7 +12744,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelTextures =3,
      },
      [30899] = {
 	     name = "毒龙峰都头",
@@ -12749,6 +12763,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [30901] = {
 	     name = "毒龙峰屠夫",
@@ -12767,7 +12782,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
      },
      [30903] = {
 	     name = "毒龙峰丛林枪兵",
@@ -12787,7 +12801,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30905] = {
 	     name = "毒龙峰都头",
@@ -12797,7 +12811,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30906] = {
 	     name = "胡赤儿",
@@ -12807,7 +12821,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30907] = {
 	     name = "毒龙峰绘面鬼刀兵",
@@ -12837,7 +12851,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30910] = {
 	     name = "毒龙峰鱼叉兵",
@@ -12857,7 +12871,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30912] = {
 	     name = "毒龙峰都头",
@@ -12877,6 +12891,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
      },
      [30914] = {
 	     name = "毒龙峰中郎将",
@@ -12913,7 +12928,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30918] = {
 	     name = "毒龙峰绘面鬼刀兵",
@@ -12933,7 +12947,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [30920] = {
 	     name = "毒龙峰刀盾兵",
@@ -12953,6 +12967,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =4,
      },
      [30922] = {
 	     name = "毒龙峰偏将军",
@@ -12962,7 +12977,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     modelTextures =4,
      },
      [30923] = {
 	     name = "毒龙峰刀盾兵",
@@ -12992,6 +13006,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =4,
      },
      [30926] = {
 	     name = "毒龙峰亲卫",
@@ -13010,7 +13025,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
      },
      [30928] = {
 	     name = "毒龙峰鱼叉兵",
@@ -13030,9 +13044,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelScale =16,
-	     unhitRate = 1,
-	     unhitSkills = {1026,1027},
+	     modelTextures =2,
      },
      [30930] = {
 	     name = "牛辅",
@@ -13042,6 +13054,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
+	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1026,1027},
      },
      [30931] = {
 	     name = "暗箭",
@@ -13468,7 +13483,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =4,
      },
      [31023] = {
 	     name = "幻天宫刺客",
@@ -13486,7 +13500,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [31025] = {
 	     name = "西凉剑客",
@@ -13513,6 +13527,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =2,
      },
      [31028] = {
 	     name = "幻天宫守备",
@@ -13523,7 +13538,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
-	     modelTextures =3,
      },
      [31029] = {
 	     name = "幻天宫熊皮武士",
@@ -13541,7 +13555,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31031] = {
 	     name = "西凉剑客",
@@ -13586,6 +13600,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =2,
      },
      [31036] = {
 	     name = "幻天宫都尉",
@@ -13596,7 +13611,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
-	     modelTextures =2,
      },
      [31037] = {
 	     name = "西凉道士",
@@ -13614,7 +13628,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [31039] = {
 	     name = "幻天宫刺客",
@@ -13632,6 +13646,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =4,
      },
      [31041] = {
 	     name = "幻天宫仙人",
@@ -13698,7 +13713,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
-	     modelTextures =2,
      },
      [31049] = {
 	     name = "幻天宫仙子",
@@ -13725,6 +13739,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =2,
      },
      [31052] = {
 	     name = "幻天宫偏将",
@@ -13751,7 +13766,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
-	     modelTextures =2,
      },
      [31055] = {
 	     name = "西凉道士",
@@ -13769,7 +13783,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31057] = {
 	     name = "幻天宫熊皮武士",
@@ -13796,9 +13810,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
+	     modelTextures =3,
      },
      [31060] = {
 	     name = "华雄",
@@ -13809,6 +13821,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [31061] = {
 	     name = "剑气1",
@@ -13996,7 +14011,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
      },
      [31113] = {
 	     name = "北地长枪兵",
@@ -14014,6 +14028,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =3,
      },
      [31115] = {
 	     name = "西凉武卒",
@@ -14038,7 +14053,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
      },
      [31118] = {
 	     name = "赤魂岭校尉",
@@ -14049,6 +14063,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
+	     modelTextures =2,
      },
      [31119] = {
 	     name = "赤魂岭牛角兵",
@@ -14065,7 +14080,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [31121] = {
 	     name = "赤魂岭双刀客",
@@ -14083,6 +14097,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =2,
      },
      [31123] = {
 	     name = "赤魂岭杀手",
@@ -14173,7 +14188,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =4,
      },
      [31134] = {
 	     name = "赤魂岭偏将",
@@ -14184,6 +14198,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1013,1014},
+	     modelTextures =4,
      },
      [31135] = {
 	     name = "赤魂岭精兵",
@@ -14306,9 +14321,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =14,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [31150] = {
 	     name = "董卓",
@@ -14319,6 +14331,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1015},
+	     modelScale =14,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [31151] = {
 	     name = "暗箭",
@@ -14447,6 +14462,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1015},
 	     dialogIDs = {10105},
+	     modelTextures =3,
+	     modelScale =14,
      },
      [31191] = {
 	     name = "天公山黄巾巡卫",
@@ -14487,7 +14504,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1019},
-	     modelTextures =3,
      },
      [31196] = {
 	     name = "天公山侍卫",
@@ -14505,8 +14521,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =4,
-	     modelScale =14,
+	     modelTextures =3,
      },
      [31198] = {
 	     name = "天公山守山大将",
@@ -14517,7 +14532,8 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
 	     dialogIDs = {10107},
-	     modelTextures =2,
+	     modelTextures =4,
+	     modelScale =14,
      },
      [31199] = {
 	     name = "天公山死士",
@@ -14535,6 +14551,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
+	     modelTextures =2,
      },
      [31201] = {
 	     name = "天公山守卫",
@@ -14575,8 +14592,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
-	     modelScale =16,
      },
      [31206] = {
 	     name = "天公山近卫头领",
@@ -14587,6 +14602,8 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
 	     dialogIDs = {10109},
+	     modelTextures =2,
+	     modelScale =16,
      },
      [31207] = {
 	     name = "天公山近卫",
@@ -14603,7 +14620,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [31209] = {
 	     name = "天公山力士",
@@ -14630,6 +14646,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =2,
      },
      [31212] = {
 	     name = "天公山暗部刺客",
@@ -14646,7 +14663,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017},
-	     modelScale =16,
      },
      [31214] = {
 	     name = "杨凤",
@@ -14657,7 +14673,7 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
 	     dialogIDs = {10111},
-	     modelTextures =3,
+	     modelScale =16,
      },
      [31215] = {
 	     name = "天公山重甲骑兵",
@@ -14684,6 +14700,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
+	     modelTextures =3,
      },
      [31218] = {
 	     name = "天公山精英弓兵",
@@ -14700,7 +14717,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
      },
      [31220] = {
 	     name = "天公山侍卫",
@@ -14718,7 +14734,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelScale =16,
+	     modelTextures =3,
      },
      [31222] = {
 	     name = "张角",
@@ -14729,6 +14745,7 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1022,1027},
 	     dialogIDs = {10113},
+	     modelScale =16,
      },
      [31225] = {
 	     name = "天公山飞剑",
@@ -14831,7 +14848,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1007},
-	     modelTextures =2,
+	     fightAI = {40},
      },
      [31251] = {
 	     name = "迷雾林巡逻士兵",
@@ -14858,6 +14875,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [31254] = {
 	     name = "迷雾林看守哨兵",
@@ -14890,7 +14908,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
      },
      [31258] = {
 	     name = "迷雾林伏击将领",
@@ -14927,6 +14944,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =2,
      },
      [31262] = {
 	     name = "黄巾砍刀手",
@@ -14943,7 +14961,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31264] = {
 	     name = "黄巾随行金疮医生",
@@ -14961,6 +14978,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [31266] = {
 	     name = "迷雾林黄巾贼将",
@@ -14970,7 +14988,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
-	     modelTextures =3,
      },
      [31267] = {
 	     name = "黄巾斩马刀兵",
@@ -14997,7 +15014,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31270] = {
 	     name = "黄巾长枪步兵",
@@ -15015,7 +15032,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31272] = {
 	     name = "黄巾弓弩手",
@@ -15033,6 +15050,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [31274] = {
 	     name = "韩忠",
@@ -15082,7 +15100,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31280] = {
 	     name = "黄巾随行金疮医生",
@@ -15100,17 +15117,18 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     unhitRate = 1,
-	     unhitSkills = {1001,1002},
+	     modelTextures =3,
      },
      [31282] = {
 	     name = "程远志",
 	     title = "BOSS",
-	     modelID =324,
+	     modelID =200,
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1001,1002},
+	     unhitRate = 1,
+	     unhitSkills = {1001,1002},
      },
      [31283] = {
 	     name = "迷雾林毒雾1",
@@ -15160,6 +15178,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
+	     modelScale =16,
      },
      [31301] = {
 	     name = "炎魔窟士兵",
@@ -15176,7 +15195,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =4,
      },
      [31303] = {
 	     name = "炎魔窟长戟士兵",
@@ -15203,7 +15221,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [31306] = {
 	     name = "炎魔窟长枪士兵",
@@ -15222,7 +15240,6 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
 	     modelTextures =3,
-	     modelScale =16,
      },
      [31308] = {
 	     name = "炎魔窟黄巾守将",
@@ -15232,7 +15249,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     modelTextures =1,
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31309] = {
 	     name = "炎魔窟精锐弓兵",
@@ -15250,7 +15268,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
+	     modelTextures =1,
      },
      [31311] = {
 	     name = "炎魔窟重盾步兵",
@@ -15277,7 +15295,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31314] = {
 	     name = "炎魔窟守卫",
@@ -15295,8 +15313,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
-	     modelScale =16,
+	     modelTextures =4,
      },
      [31316] = {
 	     name = "巨斧黄巾首领",
@@ -15306,7 +15323,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     modelTextures =4,
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31317] = {
 	     name = "黄巾枭首兵",
@@ -15324,6 +15342,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =4,
      },
      [31319] = {
 	     name = "黄巾死士",
@@ -15348,7 +15367,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
      },
      [31322] = {
 	     name = "炎魔窟枪卫",
@@ -15366,7 +15384,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelScale =16,
+	     modelTextures =2,
      },
      [31324] = {
 	     name = "波才",
@@ -15376,7 +15394,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
+	     modelScale =16,
      },
      [31325] = {
 	     name = "黄巾擂鼓兵",
@@ -15394,6 +15412,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [31327] = {
 	     name = "黄巾碎骨步兵",
@@ -15418,7 +15437,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31330] = {
 	     name = "炎魔窟盾卫",
@@ -15428,7 +15446,6 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
 	     modelTextures =3,
-	     modelScale =16,
      },
      [31331] = {
 	     name = "炎魔窟盾卫",
@@ -15437,8 +15454,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     unhitRate = 1,
-	     unhitSkills = {1008,1009},
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31332] = {
 	     name = "张宝",
@@ -15447,6 +15464,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
+	     unhitRate = 1,
+	     unhitSkills = {1008,1009},
      },
      [31333] = {
 	     name = "火球",
@@ -15580,7 +15599,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
+	     modelTextures =2,
+	     modelScale =14,
      },
      [31371] = {
 	     name = "黄风岭巡逻士兵",
@@ -15604,7 +15624,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31374] = {
 	     name = "黄风岭迅捷斥候",
@@ -15620,6 +15640,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
+	     modelTextures =4,
      },
      [31376] = {
 	     name = "黄风岭黄巾悍匪",
@@ -15634,7 +15655,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelScale =14,
      },
      [31378] = {
 	     name = "黄风岭铁血将领",
@@ -15643,7 +15663,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
+	     modelScale =14,
      },
      [31379] = {
 	     name = "黄风岭黄巾新军",
@@ -15667,7 +15687,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31382] = {
 	     name = "黄风岭精锐刀兵",
@@ -15683,6 +15703,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
+	     modelTextures =4,
      },
      [31384] = {
 	     name = "黄风岭弓箭手",
@@ -15697,8 +15718,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =4,
-	     modelScale =14,
      },
      [31386] = {
 	     name = "黄风岭步兵校尉",
@@ -15707,6 +15726,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
+	     modelTextures =4,
+	     modelScale =14,
      },
      [31387] = {
 	     name = "黄风岭轻甲兵",
@@ -15756,8 +15777,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
-	     modelTextures =3,
-	     modelScale =14,
      },
      [31394] = {
 	     name = "赵弘",
@@ -15766,6 +15785,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
+	     modelTextures =3,
+	     modelScale =14,
      },
      [31395] = {
 	     name = "黄巾死士",
@@ -15787,7 +15808,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =2,
      },
      [31398] = {
 	     name = "黄风岭随行军医",
@@ -15803,7 +15823,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31400] = {
 	     name = "黄风岭精英步兵",
@@ -15819,7 +15839,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
-	     modelScale =16,
+	     modelTextures =3,
      },
      [31402] = {
 	     name = "张梁",
@@ -15827,6 +15847,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
+	     modelScale =16,
      },
      [31403] = {
 	     name = "黄沙旋风",
@@ -15908,6 +15929,257 @@ NpcDB = {
 	     name = "箭雨",
 	     modelID =2000,
      },
+     [31450] = {
+	     name = "先锋小兵",
+	     modelID =112,
+	     desc = "第一场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+     },
+     [31451] = {
+	     name = "剑客",
+	     modelID =146,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31452] = {
+	     name = "剑客",
+	     modelID =146,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31453] = {
+	     name = "刀客",
+	     modelID =184,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31454] = {
+	     name = "刀客",
+	     modelID =184,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+     },
+     [31455] = {
+	     name = "真假魔兵",
+	     modelID =114,
+	     desc = "第二场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+     },
+     [31456] = {
+	     name = "真假魔兵",
+	     modelID =114,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31457] = {
+	     name = "真假魔兵",
+	     modelID =114,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31458] = {
+	     name = "剑卒",
+	     modelID =163,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+     },
+     [31459] = {
+	     name = "剑卒",
+	     modelID =163,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     modelTextures =3,
+     },
+     [31460] = {
+	     name = "指挥官",
+	     modelID =135,
+	     desc = "第三场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     modelTextures =3,
+     },
+     [31461] = {
+	     name = "杀手",
+	     modelID =147,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31462] = {
+	     name = "杀手",
+	     modelID =147,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31463] = {
+	     name = "流氓",
+	     modelID =138,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31464] = {
+	     name = "流氓",
+	     modelID =138,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31465] = {
+	     name = "妙回春",
+	     modelID =712,
+	     desc = "第四场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31466] = {
+	     name = "教头",
+	     modelID =139,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31467] = {
+	     name = "教头",
+	     modelID =139,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31468] = {
+	     name = "材士",
+	     modelID =117,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31469] = {
+	     name = "材士",
+	     modelID =117,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31470] = {
+	     name = "抗法将军",
+	     modelID =140,
+	     desc = "第五场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31471] = {
+	     name = "女刺客",
+	     modelID =575,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31472] = {
+	     name = "女刺客",
+	     modelID =575,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31473] = {
+	     name = "金瓜武士",
+	     modelID =135,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31474] = {
+	     name = "金瓜武士",
+	     modelID =135,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+     },
+     [31475] = {
+	     name = "纸老虎队长",
+	     modelID =162,
+	     desc = "第六场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+     },
+     [31476] = {
+	     name = "丛林枪兵",
+	     modelID =100,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+     },
+     [31477] = {
+	     name = "丛林枪兵",
+	     modelID =100,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Poison,
+	     modelTextures =2,
+     },
+     [31478] = {
+	     name = "绘面鬼刀兵",
+	     modelID =156,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     modelTextures =2,
+     },
+     [31479] = {
+	     name = "绘面鬼刀兵",
+	     modelID =156,
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Soil,
+	     modelTextures =3,
+     },
+     [31480] = {
+	     name = "徐荣",
+	     modelID =206,
+	     desc = "第七场",
+	     level = -1,
+	     attrID = 1,
+	     phaseType = PhaseType.Ice,
+	     modelTextures =3,
+     },
+     [31481] = {
+	     name = "弩车1",
+	     modelID =2008,
+     },
+     [31482] = {
+	     name = "弩车2",
+	     modelID =2008,
+     },
+     [31483] = {
+	     name = "弩车3",
+	     modelID =2008,
+     },
+     [31484] = {
+	     name = "弩车4",
+	     modelID =2008,
+     },
+     [31485] = {
+	     name = "弩车5",
+	     title = "驰援虎牢关",
+	     modelID =2008,
+     },
      [39000] = {
 	     name = "神算子",
 	     title = "坐骑灵符兑换",
@@ -15917,7 +16189,6 @@ NpcDB = {
 	     dropID =31,
 	     taoExpPrize =300,
 	     combatNumPrize =100,
-	     modelScale =14,
      },
      [39001] = {
 	     name = "神龙教主",
@@ -16054,6 +16325,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1028},
 	     dialogIDs = {27010,27012,27011},
+	     modelScale =14,
      },
      [39050] = {
 	     name = "天子猎金场活动使",
@@ -16172,8 +16444,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39996},
-	     modelTextures =2,
-	     modelScale =12,
+	     modelScale =16,
      },
      [50001] = {
 	     name = "尸妖",
@@ -16205,7 +16476,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =6,
+	     modelTextures =2,
+	     modelScale =12,
      },
      [50004] = {
 	     name = "尸蹩",
@@ -16248,7 +16520,7 @@ NpcDB = {
 	     dropID =25,
 	     bindMoneyPrize =400000,
 	     taoExpPrize =172,
-	     modelScale =16,
+	     modelScale =6,
      },
      [50008] = {
 	     name = "鬼王",
@@ -16259,8 +16531,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39997},
-	     modelTextures =3,
-	     modelScale =12,
+	     modelScale =16,
      },
      [50009] = {
 	     name = "恶鬼",
@@ -16325,6 +16596,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
 	     modelScale =12,
      },
      [50015] = {
@@ -16338,8 +16610,7 @@ NpcDB = {
 	     dropID =26,
 	     expPrize =150000,
 	     bindMoneyPrize =100000,
-	     modelTextures =2,
-	     modelScale =13,
+	     modelScale =12,
      },
      [50016] = {
 	     name = "尸妖",
@@ -16350,7 +16621,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39998},
-	     modelScale =6,
+	     modelTextures =2,
+	     modelScale =13,
      },
      [50017] = {
 	     name = "尸蹩",
@@ -16393,8 +16665,7 @@ NpcDB = {
 	     dropID =27,
 	     bindMoneyPrize =100000,
 	     taoExpPrize =39,
-	     modelTextures =3,
-	     modelScale =13,
+	     modelScale =6,
      },
      [50021] = {
 	     name = "恶鬼",
@@ -16406,7 +16677,7 @@ NpcDB = {
 	     skillCfg = {1012},
 	     dialogIDs = {39999},
 	     modelTextures =3,
-	     modelScale =12,
+	     modelScale =13,
      },
      [50022] = {
 	     name = "小鬼",
@@ -16452,6 +16723,8 @@ NpcDB = {
 	     dropID =28,
 	     expPrize =160000,
 	     bindMoneyPrize =80000,
+	     modelTextures =3,
+	     modelScale =12,
      },
      [50026] = {
 	     name = "九尾狐",
@@ -16461,7 +16734,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =1,
      },
      [50027] = {
 	     name = "一尾狐",
@@ -16504,7 +16776,7 @@ NpcDB = {
 	     dropID =29,
 	     bindMoneyPrize =80000,
 	     taoExpPrize =45,
-	     modelScale =11,
+	     modelTextures =1,
      },
      [50031] = {
 	     name = "愤怒的地魔",
@@ -16514,7 +16786,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =9,
+	     modelScale =11,
      },
      [50032] = {
 	     name = "地精",
@@ -16557,7 +16829,7 @@ NpcDB = {
 	     dropID =30,
 	     bindMoneyPrize =80000,
 	     potencyPrize =300000,
-	     modelScale =16,
+	     modelScale =9,
      },
      [50036] = {
 	     name = "无名老妖",
@@ -16567,6 +16839,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelScale =16,
      },
      [50037] = {
 	     name = "随从小妖",
@@ -16696,6 +16969,7 @@ NpcDB = {
 	     name = "护法神",
 	     modelID =559,
 	     desc = "抓宠玩法（30级）",
+	     modelScale =10,
      },
      [60015] = {
 	     name = "蝠妖",
@@ -16741,11 +17015,13 @@ NpcDB = {
 	     name = "虎妖",
 	     modelID =195,
 	     desc = "抓宠玩法（30级）",
+	     modelScale =10,
      },
      [60024] = {
 	     name = "中原乱兵",
 	     modelID =184,
 	     desc = "抓宠玩法（30级）",
+	     modelScale =11,
      },
      [60025] = {
 	     name = "采药妖童",
@@ -16992,46 +17268,55 @@ NpcDB = {
 	     title = "封神台挑战",
 	     modelID =560,
 	     desc = "封神台擂台",
+	     dialogIDs = {80001,80002},
      },
      [60501] = {
 	     name = "天枢守卫",
 	     modelID =1,
 	     desc = "封神台第一层",
+	     dialogIDs = {80004,80005,80006},
      },
      [60502] = {
 	     name = "天玑守卫",
 	     modelID =3,
 	     desc = "封神台第一层",
+	     dialogIDs = {80007,80008,80009},
      },
      [60503] = {
 	     name = "玉衡守卫",
 	     modelID =5,
 	     desc = "封神台第一层",
+	     dialogIDs = {80010,80011,80012},
      },
      [60504] = {
 	     name = "开阳守卫",
 	     modelID =7,
 	     desc = "封神台第一层",
+	     dialogIDs = {80013,80014,80015},
      },
      [60505] = {
 	     name = "天璇守卫",
 	     modelID =9,
 	     desc = "封神台第一层",
+	     dialogIDs = {80016,80017,80018},
      },
      [60506] = {
 	     name = "摇光守卫",
 	     modelID =11,
 	     desc = "封神台第一层",
+	     dialogIDs = {80019,80020,80021},
      },
      [60507] = {
 	     name = "天权守卫",
 	     modelID =13,
 	     desc = "封神台第一层",
+	     dialogIDs = {80022,80023,80024},
      },
      [60508] = {
 	     name = "层主",
 	     modelID =162,
 	     desc = "封神台第一层",
+	     dialogIDs = {80025},
      },
      [60509] = {
 	     name = "天枢守卫",
@@ -17792,5 +18077,7205 @@ NpcDB = {
 	     name = "层主",
 	     modelID =162,
 	     desc = "封神台第20层",
+     },
+     [60661] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第21层",
+     },
+     [60662] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第21层",
+     },
+     [60663] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第21层",
+     },
+     [60664] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第21层",
+     },
+     [60665] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第21层",
+     },
+     [60666] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第21层",
+     },
+     [60667] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第21层",
+     },
+     [60668] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第21层",
+     },
+     [60669] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第22层",
+     },
+     [60670] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第22层",
+     },
+     [60671] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第22层",
+     },
+     [60672] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第22层",
+     },
+     [60673] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第22层",
+     },
+     [60674] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第22层",
+     },
+     [60675] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第22层",
+     },
+     [60676] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第22层",
+     },
+     [60677] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第23层",
+     },
+     [60678] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第23层",
+     },
+     [60679] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第23层",
+     },
+     [60680] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第23层",
+     },
+     [60681] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第23层",
+     },
+     [60682] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第23层",
+     },
+     [60683] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第23层",
+     },
+     [60684] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第23层",
+     },
+     [60685] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第24层",
+     },
+     [60686] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第24层",
+     },
+     [60687] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第24层",
+     },
+     [60688] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第24层",
+     },
+     [60689] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第24层",
+     },
+     [60690] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第24层",
+     },
+     [60691] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第24层",
+     },
+     [60692] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第24层",
+     },
+     [60693] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第25层",
+     },
+     [60694] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第25层",
+     },
+     [60695] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第25层",
+     },
+     [60696] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第25层",
+     },
+     [60697] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第25层",
+     },
+     [60698] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第25层",
+     },
+     [60699] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第25层",
+     },
+     [60700] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第25层",
+     },
+     [60701] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第26层",
+     },
+     [60702] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第26层",
+     },
+     [60703] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第26层",
+     },
+     [60704] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第26层",
+     },
+     [60705] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第26层",
+     },
+     [60706] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第26层",
+     },
+     [60707] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第26层",
+     },
+     [60708] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第26层",
+     },
+     [60709] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第27层",
+     },
+     [60710] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第27层",
+     },
+     [60711] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第27层",
+     },
+     [60712] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第27层",
+     },
+     [60713] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第27层",
+     },
+     [60714] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第27层",
+     },
+     [60715] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第27层",
+     },
+     [60716] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第27层",
+     },
+     [60717] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第28层",
+     },
+     [60718] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第28层",
+     },
+     [60719] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第28层",
+     },
+     [60720] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第28层",
+     },
+     [60721] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第28层",
+     },
+     [60722] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第28层",
+     },
+     [60723] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第28层",
+     },
+     [60724] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第28层",
+     },
+     [60725] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第29层",
+     },
+     [60726] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第29层",
+     },
+     [60727] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第29层",
+     },
+     [60728] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第29层",
+     },
+     [60729] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第29层",
+     },
+     [60730] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第29层",
+     },
+     [60731] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第29层",
+     },
+     [60732] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第29层",
+     },
+     [60733] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第30层",
+     },
+     [60734] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第30层",
+     },
+     [60735] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第30层",
+     },
+     [60736] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第30层",
+     },
+     [60737] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第30层",
+     },
+     [60738] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第30层",
+     },
+     [60739] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第30层",
+     },
+     [60740] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第30层",
+     },
+     [60741] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第31层",
+     },
+     [60742] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第31层",
+     },
+     [60743] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第31层",
+     },
+     [60744] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第31层",
+     },
+     [60745] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第31层",
+     },
+     [60746] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第31层",
+     },
+     [60747] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第31层",
+     },
+     [60748] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第31层",
+     },
+     [60749] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第32层",
+     },
+     [60750] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第32层",
+     },
+     [60751] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第32层",
+     },
+     [60752] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第32层",
+     },
+     [60753] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第32层",
+     },
+     [60754] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第32层",
+     },
+     [60755] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第32层",
+     },
+     [60756] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第32层",
+     },
+     [60757] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第33层",
+     },
+     [60758] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第33层",
+     },
+     [60759] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第33层",
+     },
+     [60760] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第33层",
+     },
+     [60761] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第33层",
+     },
+     [60762] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第33层",
+     },
+     [60763] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第33层",
+     },
+     [60764] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第33层",
+     },
+     [60765] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第34层",
+     },
+     [60766] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第34层",
+     },
+     [60767] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第34层",
+     },
+     [60768] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第34层",
+     },
+     [60769] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第34层",
+     },
+     [60770] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第34层",
+     },
+     [60771] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第34层",
+     },
+     [60772] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第34层",
+     },
+     [60773] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第35层",
+     },
+     [60774] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第35层",
+     },
+     [60775] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第35层",
+     },
+     [60776] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第35层",
+     },
+     [60777] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第35层",
+     },
+     [60778] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第35层",
+     },
+     [60779] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第35层",
+     },
+     [60780] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第35层",
+     },
+     [60781] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第36层",
+     },
+     [60782] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第36层",
+     },
+     [60783] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第36层",
+     },
+     [60784] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第36层",
+     },
+     [60785] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第36层",
+     },
+     [60786] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第36层",
+     },
+     [60787] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第36层",
+     },
+     [60788] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第36层",
+     },
+     [60789] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第37层",
+     },
+     [60790] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第37层",
+     },
+     [60791] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第37层",
+     },
+     [60792] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第37层",
+     },
+     [60793] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第37层",
+     },
+     [60794] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第37层",
+     },
+     [60795] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第37层",
+     },
+     [60796] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第37层",
+     },
+     [60797] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第38层",
+     },
+     [60798] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第38层",
+     },
+     [60799] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第38层",
+     },
+     [60800] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第38层",
+     },
+     [60801] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第38层",
+     },
+     [60802] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第38层",
+     },
+     [60803] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第38层",
+     },
+     [60804] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第38层",
+     },
+     [60805] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第39层",
+     },
+     [60806] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第39层",
+     },
+     [60807] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第39层",
+     },
+     [60808] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第39层",
+     },
+     [60809] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第39层",
+     },
+     [60810] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第39层",
+     },
+     [60811] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第39层",
+     },
+     [60812] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第39层",
+     },
+     [60813] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第40层",
+     },
+     [60814] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第40层",
+     },
+     [60815] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第40层",
+     },
+     [60816] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第40层",
+     },
+     [60817] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第40层",
+     },
+     [60818] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第40层",
+     },
+     [60819] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第40层",
+     },
+     [60820] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第40层",
+     },
+     [60821] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第41层",
+     },
+     [60822] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第41层",
+     },
+     [60823] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第41层",
+     },
+     [60824] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第41层",
+     },
+     [60825] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第41层",
+     },
+     [60826] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第41层",
+     },
+     [60827] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第41层",
+     },
+     [60828] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第41层",
+     },
+     [60829] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第42层",
+     },
+     [60830] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第42层",
+     },
+     [60831] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第42层",
+     },
+     [60832] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第42层",
+     },
+     [60833] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第42层",
+     },
+     [60834] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第42层",
+     },
+     [60835] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第42层",
+     },
+     [60836] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第42层",
+     },
+     [60837] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第43层",
+     },
+     [60838] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第43层",
+     },
+     [60839] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第43层",
+     },
+     [60840] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第43层",
+     },
+     [60841] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第43层",
+     },
+     [60842] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第43层",
+     },
+     [60843] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第43层",
+     },
+     [60844] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第43层",
+     },
+     [60845] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第44层",
+     },
+     [60846] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第44层",
+     },
+     [60847] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第44层",
+     },
+     [60848] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第44层",
+     },
+     [60849] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第44层",
+     },
+     [60850] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第44层",
+     },
+     [60851] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第44层",
+     },
+     [60852] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第44层",
+     },
+     [60853] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第45层",
+     },
+     [60854] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第45层",
+     },
+     [60855] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第45层",
+     },
+     [60856] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第45层",
+     },
+     [60857] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第45层",
+     },
+     [60858] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第45层",
+     },
+     [60859] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第45层",
+     },
+     [60860] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第45层",
+     },
+     [60861] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第46层",
+     },
+     [60862] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第46层",
+     },
+     [60863] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第46层",
+     },
+     [60864] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第46层",
+     },
+     [60865] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第46层",
+     },
+     [60866] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第46层",
+     },
+     [60867] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第46层",
+     },
+     [60868] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第46层",
+     },
+     [60869] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第47层",
+     },
+     [60870] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第47层",
+     },
+     [60871] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第47层",
+     },
+     [60872] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第47层",
+     },
+     [60873] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第47层",
+     },
+     [60874] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第47层",
+     },
+     [60875] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第47层",
+     },
+     [60876] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第47层",
+     },
+     [60877] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第48层",
+     },
+     [60878] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第48层",
+     },
+     [60879] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第48层",
+     },
+     [60880] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第48层",
+     },
+     [60881] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第48层",
+     },
+     [60882] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第48层",
+     },
+     [60883] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第48层",
+     },
+     [60884] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第48层",
+     },
+     [60885] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第49层",
+     },
+     [60886] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第49层",
+     },
+     [60887] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第49层",
+     },
+     [60888] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第49层",
+     },
+     [60889] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第49层",
+     },
+     [60890] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第49层",
+     },
+     [60891] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第49层",
+     },
+     [60892] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第49层",
+     },
+     [60893] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第50层",
+     },
+     [60894] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第50层",
+     },
+     [60895] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第50层",
+     },
+     [60896] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第50层",
+     },
+     [60897] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第50层",
+     },
+     [60898] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第50层",
+     },
+     [60899] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第50层",
+     },
+     [60900] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第50层",
+     },
+     [60901] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第51层",
+     },
+     [60902] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第51层",
+     },
+     [60903] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第51层",
+     },
+     [60904] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第51层",
+     },
+     [60905] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第51层",
+     },
+     [60906] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第51层",
+     },
+     [60907] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第51层",
+     },
+     [60908] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第51层",
+     },
+     [60909] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第52层",
+     },
+     [60910] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第52层",
+     },
+     [60911] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第52层",
+     },
+     [60912] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第52层",
+     },
+     [60913] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第52层",
+     },
+     [60914] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第52层",
+     },
+     [60915] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第52层",
+     },
+     [60916] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第52层",
+     },
+     [60917] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第53层",
+     },
+     [60918] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第53层",
+     },
+     [60919] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第53层",
+     },
+     [60920] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第53层",
+     },
+     [60921] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第53层",
+     },
+     [60922] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第53层",
+     },
+     [60923] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第53层",
+     },
+     [60924] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第53层",
+     },
+     [60925] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第54层",
+     },
+     [60926] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第54层",
+     },
+     [60927] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第54层",
+     },
+     [60928] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第54层",
+     },
+     [60929] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第54层",
+     },
+     [60930] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第54层",
+     },
+     [60931] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第54层",
+     },
+     [60932] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第54层",
+     },
+     [60933] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第55层",
+     },
+     [60934] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第55层",
+     },
+     [60935] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第55层",
+     },
+     [60936] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第55层",
+     },
+     [60937] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第55层",
+     },
+     [60938] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第55层",
+     },
+     [60939] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第55层",
+     },
+     [60940] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第55层",
+     },
+     [60941] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第56层",
+     },
+     [60942] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第56层",
+     },
+     [60943] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第56层",
+     },
+     [60944] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第56层",
+     },
+     [60945] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第56层",
+     },
+     [60946] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第56层",
+     },
+     [60947] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第56层",
+     },
+     [60948] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第56层",
+     },
+     [60949] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第57层",
+     },
+     [60950] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第57层",
+     },
+     [60951] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第57层",
+     },
+     [60952] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第57层",
+     },
+     [60953] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第57层",
+     },
+     [60954] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第57层",
+     },
+     [60955] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第57层",
+     },
+     [60956] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第57层",
+     },
+     [60957] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第58层",
+     },
+     [60958] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第58层",
+     },
+     [60959] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第58层",
+     },
+     [60960] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第58层",
+     },
+     [60961] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第58层",
+     },
+     [60962] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第58层",
+     },
+     [60963] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第58层",
+     },
+     [60964] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第58层",
+     },
+     [60965] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第59层",
+     },
+     [60966] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第59层",
+     },
+     [60967] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第59层",
+     },
+     [60968] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第59层",
+     },
+     [60969] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第59层",
+     },
+     [60970] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第59层",
+     },
+     [60971] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第59层",
+     },
+     [60972] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第59层",
+     },
+     [60973] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第60层",
+     },
+     [60974] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第60层",
+     },
+     [60975] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第60层",
+     },
+     [60976] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第60层",
+     },
+     [60977] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第60层",
+     },
+     [60978] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第60层",
+     },
+     [60979] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第60层",
+     },
+     [60980] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第60层",
+     },
+     [60981] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第61层",
+     },
+     [60982] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第61层",
+     },
+     [60983] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第61层",
+     },
+     [60984] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第61层",
+     },
+     [60985] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第61层",
+     },
+     [60986] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第61层",
+     },
+     [60987] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第61层",
+     },
+     [60988] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第61层",
+     },
+     [60989] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第62层",
+     },
+     [60990] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第62层",
+     },
+     [60991] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第62层",
+     },
+     [60992] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第62层",
+     },
+     [60993] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第62层",
+     },
+     [60994] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第62层",
+     },
+     [60995] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第62层",
+     },
+     [60996] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第62层",
+     },
+     [60997] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第63层",
+     },
+     [60998] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第63层",
+     },
+     [60999] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第63层",
+     },
+     [61000] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第63层",
+     },
+     [61001] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第63层",
+     },
+     [61002] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第63层",
+     },
+     [61003] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第63层",
+     },
+     [61004] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第63层",
+     },
+     [61005] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第64层",
+     },
+     [61006] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第64层",
+     },
+     [61007] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第64层",
+     },
+     [61008] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第64层",
+     },
+     [61009] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第64层",
+     },
+     [61010] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第64层",
+     },
+     [61011] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第64层",
+     },
+     [61012] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第64层",
+     },
+     [61013] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第65层",
+     },
+     [61014] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第65层",
+     },
+     [61015] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第65层",
+     },
+     [61016] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第65层",
+     },
+     [61017] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第65层",
+     },
+     [61018] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第65层",
+     },
+     [61019] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第65层",
+     },
+     [61020] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第65层",
+     },
+     [61021] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第66层",
+     },
+     [61022] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第66层",
+     },
+     [61023] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第66层",
+     },
+     [61024] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第66层",
+     },
+     [61025] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第66层",
+     },
+     [61026] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第66层",
+     },
+     [61027] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第66层",
+     },
+     [61028] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第66层",
+     },
+     [61029] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第67层",
+     },
+     [61030] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第67层",
+     },
+     [61031] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第67层",
+     },
+     [61032] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第67层",
+     },
+     [61033] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第67层",
+     },
+     [61034] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第67层",
+     },
+     [61035] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第67层",
+     },
+     [61036] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第67层",
+     },
+     [61037] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第68层",
+     },
+     [61038] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第68层",
+     },
+     [61039] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第68层",
+     },
+     [61040] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第68层",
+     },
+     [61041] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第68层",
+     },
+     [61042] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第68层",
+     },
+     [61043] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第68层",
+     },
+     [61044] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第68层",
+     },
+     [61045] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第69层",
+     },
+     [61046] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第69层",
+     },
+     [61047] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第69层",
+     },
+     [61048] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第69层",
+     },
+     [61049] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第69层",
+     },
+     [61050] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第69层",
+     },
+     [61051] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第69层",
+     },
+     [61052] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第69层",
+     },
+     [61053] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第70层",
+     },
+     [61054] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第70层",
+     },
+     [61055] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第70层",
+     },
+     [61056] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第70层",
+     },
+     [61057] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第70层",
+     },
+     [61058] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第70层",
+     },
+     [61059] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第70层",
+     },
+     [61060] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第70层",
+     },
+     [61061] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第71层",
+     },
+     [61062] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第71层",
+     },
+     [61063] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第71层",
+     },
+     [61064] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第71层",
+     },
+     [61065] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第71层",
+     },
+     [61066] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第71层",
+     },
+     [61067] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第71层",
+     },
+     [61068] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第71层",
+     },
+     [61069] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第72层",
+     },
+     [61070] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第72层",
+     },
+     [61071] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第72层",
+     },
+     [61072] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第72层",
+     },
+     [61073] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第72层",
+     },
+     [61074] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第72层",
+     },
+     [61075] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第72层",
+     },
+     [61076] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第72层",
+     },
+     [61077] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第73层",
+     },
+     [61078] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第73层",
+     },
+     [61079] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第73层",
+     },
+     [61080] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第73层",
+     },
+     [61081] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第73层",
+     },
+     [61082] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第73层",
+     },
+     [61083] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第73层",
+     },
+     [61084] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第73层",
+     },
+     [61085] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第74层",
+     },
+     [61086] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第74层",
+     },
+     [61087] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第74层",
+     },
+     [61088] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第74层",
+     },
+     [61089] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第74层",
+     },
+     [61090] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第74层",
+     },
+     [61091] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第74层",
+     },
+     [61092] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第74层",
+     },
+     [61093] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第75层",
+     },
+     [61094] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第75层",
+     },
+     [61095] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第75层",
+     },
+     [61096] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第75层",
+     },
+     [61097] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第75层",
+     },
+     [61098] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第75层",
+     },
+     [61099] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第75层",
+     },
+     [61100] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第75层",
+     },
+     [61101] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第76层",
+     },
+     [61102] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第76层",
+     },
+     [61103] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第76层",
+     },
+     [61104] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第76层",
+     },
+     [61105] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第76层",
+     },
+     [61106] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第76层",
+     },
+     [61107] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第76层",
+     },
+     [61108] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第76层",
+     },
+     [61109] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第77层",
+     },
+     [61110] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第77层",
+     },
+     [61111] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第77层",
+     },
+     [61112] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第77层",
+     },
+     [61113] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第77层",
+     },
+     [61114] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第77层",
+     },
+     [61115] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第77层",
+     },
+     [61116] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第77层",
+     },
+     [61117] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第78层",
+     },
+     [61118] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第78层",
+     },
+     [61119] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第78层",
+     },
+     [61120] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第78层",
+     },
+     [61121] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第78层",
+     },
+     [61122] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第78层",
+     },
+     [61123] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第78层",
+     },
+     [61124] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第78层",
+     },
+     [61125] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第79层",
+     },
+     [61126] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第79层",
+     },
+     [61127] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第79层",
+     },
+     [61128] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第79层",
+     },
+     [61129] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第79层",
+     },
+     [61130] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第79层",
+     },
+     [61131] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第79层",
+     },
+     [61132] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第79层",
+     },
+     [61133] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第80层",
+     },
+     [61134] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第80层",
+     },
+     [61135] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第80层",
+     },
+     [61136] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第80层",
+     },
+     [61137] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第80层",
+     },
+     [61138] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第80层",
+     },
+     [61139] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第80层",
+     },
+     [61140] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第80层",
+     },
+     [61141] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第81层",
+     },
+     [61142] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第81层",
+     },
+     [61143] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第81层",
+     },
+     [61144] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第81层",
+     },
+     [61145] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第81层",
+     },
+     [61146] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第81层",
+     },
+     [61147] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第81层",
+     },
+     [61148] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第81层",
+     },
+     [61149] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第82层",
+     },
+     [61150] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第82层",
+     },
+     [61151] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第82层",
+     },
+     [61152] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第82层",
+     },
+     [61153] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第82层",
+     },
+     [61154] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第82层",
+     },
+     [61155] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第82层",
+     },
+     [61156] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第82层",
+     },
+     [61157] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第83层",
+     },
+     [61158] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第83层",
+     },
+     [61159] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第83层",
+     },
+     [61160] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第83层",
+     },
+     [61161] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第83层",
+     },
+     [61162] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第83层",
+     },
+     [61163] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第83层",
+     },
+     [61164] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第83层",
+     },
+     [61165] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第84层",
+     },
+     [61166] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第84层",
+     },
+     [61167] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第84层",
+     },
+     [61168] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第84层",
+     },
+     [61169] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第84层",
+     },
+     [61170] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第84层",
+     },
+     [61171] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第84层",
+     },
+     [61172] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第84层",
+     },
+     [61173] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第85层",
+     },
+     [61174] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第85层",
+     },
+     [61175] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第85层",
+     },
+     [61176] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第85层",
+     },
+     [61177] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第85层",
+     },
+     [61178] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第85层",
+     },
+     [61179] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第85层",
+     },
+     [61180] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第85层",
+     },
+     [61181] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第86层",
+     },
+     [61182] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第86层",
+     },
+     [61183] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第86层",
+     },
+     [61184] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第86层",
+     },
+     [61185] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第86层",
+     },
+     [61186] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第86层",
+     },
+     [61187] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第86层",
+     },
+     [61188] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第86层",
+     },
+     [61189] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第87层",
+     },
+     [61190] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第87层",
+     },
+     [61191] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第87层",
+     },
+     [61192] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第87层",
+     },
+     [61193] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第87层",
+     },
+     [61194] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第87层",
+     },
+     [61195] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第87层",
+     },
+     [61196] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第87层",
+     },
+     [61197] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第88层",
+     },
+     [61198] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第88层",
+     },
+     [61199] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第88层",
+     },
+     [61200] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第88层",
+     },
+     [61201] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第88层",
+     },
+     [61202] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第88层",
+     },
+     [61203] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第88层",
+     },
+     [61204] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第88层",
+     },
+     [61205] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第89层",
+     },
+     [61206] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第89层",
+     },
+     [61207] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第89层",
+     },
+     [61208] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第89层",
+     },
+     [61209] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第89层",
+     },
+     [61210] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第89层",
+     },
+     [61211] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第89层",
+     },
+     [61212] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第89层",
+     },
+     [61213] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第90层",
+     },
+     [61214] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第90层",
+     },
+     [61215] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第90层",
+     },
+     [61216] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第90层",
+     },
+     [61217] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第90层",
+     },
+     [61218] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第90层",
+     },
+     [61219] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第90层",
+     },
+     [61220] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第90层",
+     },
+     [61221] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第91层",
+     },
+     [61222] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第91层",
+     },
+     [61223] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第91层",
+     },
+     [61224] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第91层",
+     },
+     [61225] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第91层",
+     },
+     [61226] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第91层",
+     },
+     [61227] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第91层",
+     },
+     [61228] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第91层",
+     },
+     [61229] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第92层",
+     },
+     [61230] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第92层",
+     },
+     [61231] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第92层",
+     },
+     [61232] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第92层",
+     },
+     [61233] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第92层",
+     },
+     [61234] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第92层",
+     },
+     [61235] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第92层",
+     },
+     [61236] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第92层",
+     },
+     [61237] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第93层",
+     },
+     [61238] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第93层",
+     },
+     [61239] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第93层",
+     },
+     [61240] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第93层",
+     },
+     [61241] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第93层",
+     },
+     [61242] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第93层",
+     },
+     [61243] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第93层",
+     },
+     [61244] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第93层",
+     },
+     [61245] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第94层",
+     },
+     [61246] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第94层",
+     },
+     [61247] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第94层",
+     },
+     [61248] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第94层",
+     },
+     [61249] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第94层",
+     },
+     [61250] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第94层",
+     },
+     [61251] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第94层",
+     },
+     [61252] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第94层",
+     },
+     [61253] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第95层",
+     },
+     [61254] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第95层",
+     },
+     [61255] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第95层",
+     },
+     [61256] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第95层",
+     },
+     [61257] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第95层",
+     },
+     [61258] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第95层",
+     },
+     [61259] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第95层",
+     },
+     [61260] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第95层",
+     },
+     [61261] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第96层",
+     },
+     [61262] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第96层",
+     },
+     [61263] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第96层",
+     },
+     [61264] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第96层",
+     },
+     [61265] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第96层",
+     },
+     [61266] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第96层",
+     },
+     [61267] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第96层",
+     },
+     [61268] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第96层",
+     },
+     [61269] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第97层",
+     },
+     [61270] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第97层",
+     },
+     [61271] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第97层",
+     },
+     [61272] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第97层",
+     },
+     [61273] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第97层",
+     },
+     [61274] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第97层",
+     },
+     [61275] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第97层",
+     },
+     [61276] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第97层",
+     },
+     [61277] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第98层",
+     },
+     [61278] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第98层",
+     },
+     [61279] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第98层",
+     },
+     [61280] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第98层",
+     },
+     [61281] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第98层",
+     },
+     [61282] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第98层",
+     },
+     [61283] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第98层",
+     },
+     [61284] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第98层",
+     },
+     [61285] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第99层",
+     },
+     [61286] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第99层",
+     },
+     [61287] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第99层",
+     },
+     [61288] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第99层",
+     },
+     [61289] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第99层",
+     },
+     [61290] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第99层",
+     },
+     [61291] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第99层",
+     },
+     [61292] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第99层",
+     },
+     [61293] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第100层",
+     },
+     [61294] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第100层",
+     },
+     [61295] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第100层",
+     },
+     [61296] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第100层",
+     },
+     [61297] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第100层",
+     },
+     [61298] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第100层",
+     },
+     [61299] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第100层",
+     },
+     [61300] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第100层",
+     },
+     [61301] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第101层",
+     },
+     [61302] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第101层",
+     },
+     [61303] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第101层",
+     },
+     [61304] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第101层",
+     },
+     [61305] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第101层",
+     },
+     [61306] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第101层",
+     },
+     [61307] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第101层",
+     },
+     [61308] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第101层",
+     },
+     [61309] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第102层",
+     },
+     [61310] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第102层",
+     },
+     [61311] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第102层",
+     },
+     [61312] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第102层",
+     },
+     [61313] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第102层",
+     },
+     [61314] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第102层",
+     },
+     [61315] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第102层",
+     },
+     [61316] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第102层",
+     },
+     [61317] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第103层",
+     },
+     [61318] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第103层",
+     },
+     [61319] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第103层",
+     },
+     [61320] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第103层",
+     },
+     [61321] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第103层",
+     },
+     [61322] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第103层",
+     },
+     [61323] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第103层",
+     },
+     [61324] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第103层",
+     },
+     [61325] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第104层",
+     },
+     [61326] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第104层",
+     },
+     [61327] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第104层",
+     },
+     [61328] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第104层",
+     },
+     [61329] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第104层",
+     },
+     [61330] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第104层",
+     },
+     [61331] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第104层",
+     },
+     [61332] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第104层",
+     },
+     [61333] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第105层",
+     },
+     [61334] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第105层",
+     },
+     [61335] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第105层",
+     },
+     [61336] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第105层",
+     },
+     [61337] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第105层",
+     },
+     [61338] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第105层",
+     },
+     [61339] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第105层",
+     },
+     [61340] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第105层",
+     },
+     [61341] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第106层",
+     },
+     [61342] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第106层",
+     },
+     [61343] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第106层",
+     },
+     [61344] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第106层",
+     },
+     [61345] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第106层",
+     },
+     [61346] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第106层",
+     },
+     [61347] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第106层",
+     },
+     [61348] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第106层",
+     },
+     [61349] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第107层",
+     },
+     [61350] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第107层",
+     },
+     [61351] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第107层",
+     },
+     [61352] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第107层",
+     },
+     [61353] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第107层",
+     },
+     [61354] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第107层",
+     },
+     [61355] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第107层",
+     },
+     [61356] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第107层",
+     },
+     [61357] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第108层",
+     },
+     [61358] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第108层",
+     },
+     [61359] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第108层",
+     },
+     [61360] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第108层",
+     },
+     [61361] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第108层",
+     },
+     [61362] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第108层",
+     },
+     [61363] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第108层",
+     },
+     [61364] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第108层",
+     },
+     [61365] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第109层",
+     },
+     [61366] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第109层",
+     },
+     [61367] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第109层",
+     },
+     [61368] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第109层",
+     },
+     [61369] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第109层",
+     },
+     [61370] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第109层",
+     },
+     [61371] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第109层",
+     },
+     [61372] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第109层",
+     },
+     [61373] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第110层",
+     },
+     [61374] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第110层",
+     },
+     [61375] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第110层",
+     },
+     [61376] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第110层",
+     },
+     [61377] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第110层",
+     },
+     [61378] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第110层",
+     },
+     [61379] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第110层",
+     },
+     [61380] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第110层",
+     },
+     [61381] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第111层",
+     },
+     [61382] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第111层",
+     },
+     [61383] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第111层",
+     },
+     [61384] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第111层",
+     },
+     [61385] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第111层",
+     },
+     [61386] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第111层",
+     },
+     [61387] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第111层",
+     },
+     [61388] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第111层",
+     },
+     [61389] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第112层",
+     },
+     [61390] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第112层",
+     },
+     [61391] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第112层",
+     },
+     [61392] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第112层",
+     },
+     [61393] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第112层",
+     },
+     [61394] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第112层",
+     },
+     [61395] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第112层",
+     },
+     [61396] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第112层",
+     },
+     [61397] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第113层",
+     },
+     [61398] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第113层",
+     },
+     [61399] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第113层",
+     },
+     [61400] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第113层",
+     },
+     [61401] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第113层",
+     },
+     [61402] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第113层",
+     },
+     [61403] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第113层",
+     },
+     [61404] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第113层",
+     },
+     [61405] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第114层",
+     },
+     [61406] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第114层",
+     },
+     [61407] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第114层",
+     },
+     [61408] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第114层",
+     },
+     [61409] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第114层",
+     },
+     [61410] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第114层",
+     },
+     [61411] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第114层",
+     },
+     [61412] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第114层",
+     },
+     [61413] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第115层",
+     },
+     [61414] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第115层",
+     },
+     [61415] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第115层",
+     },
+     [61416] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第115层",
+     },
+     [61417] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第115层",
+     },
+     [61418] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第115层",
+     },
+     [61419] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第115层",
+     },
+     [61420] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第115层",
+     },
+     [61421] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第116层",
+     },
+     [61422] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第116层",
+     },
+     [61423] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第116层",
+     },
+     [61424] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第116层",
+     },
+     [61425] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第116层",
+     },
+     [61426] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第116层",
+     },
+     [61427] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第116层",
+     },
+     [61428] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第116层",
+     },
+     [61429] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第117层",
+     },
+     [61430] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第117层",
+     },
+     [61431] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第117层",
+     },
+     [61432] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第117层",
+     },
+     [61433] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第117层",
+     },
+     [61434] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第117层",
+     },
+     [61435] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第117层",
+     },
+     [61436] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第117层",
+     },
+     [61437] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第118层",
+     },
+     [61438] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第118层",
+     },
+     [61439] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第118层",
+     },
+     [61440] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第118层",
+     },
+     [61441] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第118层",
+     },
+     [61442] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第118层",
+     },
+     [61443] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第118层",
+     },
+     [61444] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第118层",
+     },
+     [61445] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第119层",
+     },
+     [61446] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第119层",
+     },
+     [61447] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第119层",
+     },
+     [61448] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第119层",
+     },
+     [61449] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第119层",
+     },
+     [61450] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第119层",
+     },
+     [61451] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第119层",
+     },
+     [61452] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第119层",
+     },
+     [61453] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第120层",
+     },
+     [61454] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第120层",
+     },
+     [61455] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第120层",
+     },
+     [61456] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第120层",
+     },
+     [61457] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第120层",
+     },
+     [61458] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第120层",
+     },
+     [61459] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第120层",
+     },
+     [61460] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第120层",
+     },
+     [61461] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第121层",
+     },
+     [61462] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第121层",
+     },
+     [61463] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第121层",
+     },
+     [61464] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第121层",
+     },
+     [61465] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第121层",
+     },
+     [61466] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第121层",
+     },
+     [61467] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第121层",
+     },
+     [61468] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第121层",
+     },
+     [61469] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第122层",
+     },
+     [61470] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第122层",
+     },
+     [61471] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第122层",
+     },
+     [61472] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第122层",
+     },
+     [61473] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第122层",
+     },
+     [61474] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第122层",
+     },
+     [61475] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第122层",
+     },
+     [61476] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第122层",
+     },
+     [61477] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第123层",
+     },
+     [61478] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第123层",
+     },
+     [61479] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第123层",
+     },
+     [61480] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第123层",
+     },
+     [61481] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第123层",
+     },
+     [61482] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第123层",
+     },
+     [61483] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第123层",
+     },
+     [61484] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第123层",
+     },
+     [61485] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第124层",
+     },
+     [61486] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第124层",
+     },
+     [61487] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第124层",
+     },
+     [61488] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第124层",
+     },
+     [61489] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第124层",
+     },
+     [61490] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第124层",
+     },
+     [61491] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第124层",
+     },
+     [61492] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第124层",
+     },
+     [61493] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第125层",
+     },
+     [61494] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第125层",
+     },
+     [61495] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第125层",
+     },
+     [61496] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第125层",
+     },
+     [61497] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第125层",
+     },
+     [61498] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第125层",
+     },
+     [61499] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第125层",
+     },
+     [61500] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第125层",
+     },
+     [61501] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第126层",
+     },
+     [61502] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第126层",
+     },
+     [61503] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第126层",
+     },
+     [61504] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第126层",
+     },
+     [61505] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第126层",
+     },
+     [61506] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第126层",
+     },
+     [61507] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第126层",
+     },
+     [61508] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第126层",
+     },
+     [61509] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第127层",
+     },
+     [61510] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第127层",
+     },
+     [61511] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第127层",
+     },
+     [61512] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第127层",
+     },
+     [61513] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第127层",
+     },
+     [61514] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第127层",
+     },
+     [61515] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第127层",
+     },
+     [61516] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第127层",
+     },
+     [61517] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第128层",
+     },
+     [61518] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第128层",
+     },
+     [61519] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第128层",
+     },
+     [61520] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第128层",
+     },
+     [61521] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第128层",
+     },
+     [61522] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第128层",
+     },
+     [61523] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第128层",
+     },
+     [61524] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第128层",
+     },
+     [61525] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第129层",
+     },
+     [61526] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第129层",
+     },
+     [61527] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第129层",
+     },
+     [61528] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第129层",
+     },
+     [61529] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第129层",
+     },
+     [61530] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第129层",
+     },
+     [61531] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第129层",
+     },
+     [61532] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第129层",
+     },
+     [61533] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第130层",
+     },
+     [61534] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第130层",
+     },
+     [61535] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第130层",
+     },
+     [61536] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第130层",
+     },
+     [61537] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第130层",
+     },
+     [61538] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第130层",
+     },
+     [61539] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第130层",
+     },
+     [61540] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第130层",
+     },
+     [61541] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第131层",
+     },
+     [61542] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第131层",
+     },
+     [61543] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第131层",
+     },
+     [61544] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第131层",
+     },
+     [61545] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第131层",
+     },
+     [61546] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第131层",
+     },
+     [61547] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第131层",
+     },
+     [61548] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第131层",
+     },
+     [61549] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第132层",
+     },
+     [61550] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第132层",
+     },
+     [61551] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第132层",
+     },
+     [61552] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第132层",
+     },
+     [61553] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第132层",
+     },
+     [61554] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第132层",
+     },
+     [61555] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第132层",
+     },
+     [61556] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第132层",
+     },
+     [61557] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第133层",
+     },
+     [61558] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第133层",
+     },
+     [61559] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第133层",
+     },
+     [61560] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第133层",
+     },
+     [61561] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第133层",
+     },
+     [61562] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第133层",
+     },
+     [61563] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第133层",
+     },
+     [61564] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第133层",
+     },
+     [61565] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第134层",
+     },
+     [61566] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第134层",
+     },
+     [61567] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第134层",
+     },
+     [61568] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第134层",
+     },
+     [61569] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第134层",
+     },
+     [61570] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第134层",
+     },
+     [61571] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第134层",
+     },
+     [61572] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第134层",
+     },
+     [61573] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第135层",
+     },
+     [61574] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第135层",
+     },
+     [61575] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第135层",
+     },
+     [61576] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第135层",
+     },
+     [61577] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第135层",
+     },
+     [61578] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第135层",
+     },
+     [61579] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第135层",
+     },
+     [61580] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第135层",
+     },
+     [61581] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第136层",
+     },
+     [61582] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第136层",
+     },
+     [61583] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第136层",
+     },
+     [61584] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第136层",
+     },
+     [61585] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第136层",
+     },
+     [61586] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第136层",
+     },
+     [61587] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第136层",
+     },
+     [61588] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第136层",
+     },
+     [61589] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第137层",
+     },
+     [61590] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第137层",
+     },
+     [61591] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第137层",
+     },
+     [61592] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第137层",
+     },
+     [61593] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第137层",
+     },
+     [61594] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第137层",
+     },
+     [61595] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第137层",
+     },
+     [61596] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第137层",
+     },
+     [61597] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第138层",
+     },
+     [61598] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第138层",
+     },
+     [61599] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第138层",
+     },
+     [61600] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第138层",
+     },
+     [61601] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第138层",
+     },
+     [61602] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第138层",
+     },
+     [61603] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第138层",
+     },
+     [61604] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第138层",
+     },
+     [61605] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第139层",
+     },
+     [61606] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第139层",
+     },
+     [61607] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第139层",
+     },
+     [61608] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第139层",
+     },
+     [61609] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第139层",
+     },
+     [61610] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第139层",
+     },
+     [61611] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第139层",
+     },
+     [61612] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第139层",
+     },
+     [61613] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第140层",
+     },
+     [61614] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第140层",
+     },
+     [61615] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第140层",
+     },
+     [61616] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第140层",
+     },
+     [61617] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第140层",
+     },
+     [61618] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第140层",
+     },
+     [61619] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第140层",
+     },
+     [61620] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第140层",
+     },
+     [61621] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第141层",
+     },
+     [61622] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第141层",
+     },
+     [61623] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第141层",
+     },
+     [61624] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第141层",
+     },
+     [61625] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第141层",
+     },
+     [61626] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第141层",
+     },
+     [61627] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第141层",
+     },
+     [61628] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第141层",
+     },
+     [61629] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第142层",
+     },
+     [61630] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第142层",
+     },
+     [61631] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第142层",
+     },
+     [61632] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第142层",
+     },
+     [61633] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第142层",
+     },
+     [61634] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第142层",
+     },
+     [61635] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第142层",
+     },
+     [61636] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第142层",
+     },
+     [61637] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第143层",
+     },
+     [61638] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第143层",
+     },
+     [61639] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第143层",
+     },
+     [61640] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第143层",
+     },
+     [61641] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第143层",
+     },
+     [61642] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第143层",
+     },
+     [61643] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第143层",
+     },
+     [61644] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第143层",
+     },
+     [61645] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第144层",
+     },
+     [61646] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第144层",
+     },
+     [61647] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第144层",
+     },
+     [61648] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第144层",
+     },
+     [61649] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第144层",
+     },
+     [61650] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第144层",
+     },
+     [61651] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第144层",
+     },
+     [61652] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第144层",
+     },
+     [61653] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第145层",
+     },
+     [61654] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第145层",
+     },
+     [61655] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第145层",
+     },
+     [61656] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第145层",
+     },
+     [61657] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第145层",
+     },
+     [61658] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第145层",
+     },
+     [61659] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第145层",
+     },
+     [61660] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第145层",
+     },
+     [61661] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第146层",
+     },
+     [61662] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第146层",
+     },
+     [61663] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第146层",
+     },
+     [61664] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第146层",
+     },
+     [61665] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第146层",
+     },
+     [61666] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第146层",
+     },
+     [61667] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第146层",
+     },
+     [61668] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第146层",
+     },
+     [61669] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第147层",
+     },
+     [61670] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第147层",
+     },
+     [61671] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第147层",
+     },
+     [61672] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第147层",
+     },
+     [61673] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第147层",
+     },
+     [61674] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第147层",
+     },
+     [61675] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第147层",
+     },
+     [61676] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第147层",
+     },
+     [61677] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第148层",
+     },
+     [61678] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第148层",
+     },
+     [61679] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第148层",
+     },
+     [61680] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第148层",
+     },
+     [61681] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第148层",
+     },
+     [61682] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第148层",
+     },
+     [61683] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第148层",
+     },
+     [61684] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第148层",
+     },
+     [61685] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第149层",
+     },
+     [61686] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第149层",
+     },
+     [61687] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第149层",
+     },
+     [61688] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第149层",
+     },
+     [61689] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第149层",
+     },
+     [61690] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第149层",
+     },
+     [61691] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第149层",
+     },
+     [61692] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第149层",
+     },
+     [61693] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第150层",
+     },
+     [61694] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第150层",
+     },
+     [61695] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第150层",
+     },
+     [61696] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第150层",
+     },
+     [61697] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第150层",
+     },
+     [61698] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第150层",
+     },
+     [61699] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第150层",
+     },
+     [61700] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第150层",
+     },
+     [61701] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第151层",
+     },
+     [61702] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第151层",
+     },
+     [61703] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第151层",
+     },
+     [61704] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第151层",
+     },
+     [61705] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第151层",
+     },
+     [61706] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第151层",
+     },
+     [61707] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第151层",
+     },
+     [61708] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第151层",
+     },
+     [61709] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第152层",
+     },
+     [61710] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第152层",
+     },
+     [61711] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第152层",
+     },
+     [61712] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第152层",
+     },
+     [61713] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第152层",
+     },
+     [61714] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第152层",
+     },
+     [61715] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第152层",
+     },
+     [61716] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第152层",
+     },
+     [61717] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第153层",
+     },
+     [61718] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第153层",
+     },
+     [61719] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第153层",
+     },
+     [61720] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第153层",
+     },
+     [61721] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第153层",
+     },
+     [61722] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第153层",
+     },
+     [61723] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第153层",
+     },
+     [61724] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第153层",
+     },
+     [61725] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第154层",
+     },
+     [61726] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第154层",
+     },
+     [61727] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第154层",
+     },
+     [61728] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第154层",
+     },
+     [61729] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第154层",
+     },
+     [61730] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第154层",
+     },
+     [61731] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第154层",
+     },
+     [61732] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第154层",
+     },
+     [61733] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第155层",
+     },
+     [61734] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第155层",
+     },
+     [61735] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第155层",
+     },
+     [61736] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第155层",
+     },
+     [61737] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第155层",
+     },
+     [61738] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第155层",
+     },
+     [61739] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第155层",
+     },
+     [61740] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第155层",
+     },
+     [61741] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第156层",
+     },
+     [61742] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第156层",
+     },
+     [61743] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第156层",
+     },
+     [61744] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第156层",
+     },
+     [61745] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第156层",
+     },
+     [61746] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第156层",
+     },
+     [61747] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第156层",
+     },
+     [61748] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第156层",
+     },
+     [61749] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第157层",
+     },
+     [61750] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第157层",
+     },
+     [61751] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第157层",
+     },
+     [61752] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第157层",
+     },
+     [61753] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第157层",
+     },
+     [61754] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第157层",
+     },
+     [61755] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第157层",
+     },
+     [61756] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第157层",
+     },
+     [61757] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第158层",
+     },
+     [61758] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第158层",
+     },
+     [61759] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第158层",
+     },
+     [61760] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第158层",
+     },
+     [61761] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第158层",
+     },
+     [61762] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第158层",
+     },
+     [61763] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第158层",
+     },
+     [61764] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第158层",
+     },
+     [61765] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第159层",
+     },
+     [61766] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第159层",
+     },
+     [61767] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第159层",
+     },
+     [61768] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第159层",
+     },
+     [61769] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第159层",
+     },
+     [61770] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第159层",
+     },
+     [61771] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第159层",
+     },
+     [61772] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第159层",
+     },
+     [61773] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第160层",
+     },
+     [61774] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第160层",
+     },
+     [61775] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第160层",
+     },
+     [61776] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第160层",
+     },
+     [61777] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第160层",
+     },
+     [61778] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第160层",
+     },
+     [61779] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第160层",
+     },
+     [61780] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第160层",
+     },
+     [61781] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第161层",
+     },
+     [61782] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第161层",
+     },
+     [61783] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第161层",
+     },
+     [61784] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第161层",
+     },
+     [61785] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第161层",
+     },
+     [61786] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第161层",
+     },
+     [61787] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第161层",
+     },
+     [61788] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第161层",
+     },
+     [61789] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第162层",
+     },
+     [61790] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第162层",
+     },
+     [61791] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第162层",
+     },
+     [61792] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第162层",
+     },
+     [61793] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第162层",
+     },
+     [61794] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第162层",
+     },
+     [61795] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第162层",
+     },
+     [61796] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第162层",
+     },
+     [61797] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第163层",
+     },
+     [61798] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第163层",
+     },
+     [61799] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第163层",
+     },
+     [61800] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第163层",
+     },
+     [61801] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第163层",
+     },
+     [61802] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第163层",
+     },
+     [61803] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第163层",
+     },
+     [61804] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第163层",
+     },
+     [61805] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第164层",
+     },
+     [61806] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第164层",
+     },
+     [61807] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第164层",
+     },
+     [61808] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第164层",
+     },
+     [61809] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第164层",
+     },
+     [61810] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第164层",
+     },
+     [61811] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第164层",
+     },
+     [61812] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第164层",
+     },
+     [61813] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第165层",
+     },
+     [61814] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第165层",
+     },
+     [61815] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第165层",
+     },
+     [61816] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第165层",
+     },
+     [61817] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第165层",
+     },
+     [61818] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第165层",
+     },
+     [61819] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第165层",
+     },
+     [61820] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第165层",
+     },
+     [61821] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第166层",
+     },
+     [61822] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第166层",
+     },
+     [61823] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第166层",
+     },
+     [61824] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第166层",
+     },
+     [61825] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第166层",
+     },
+     [61826] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第166层",
+     },
+     [61827] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第166层",
+     },
+     [61828] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第166层",
+     },
+     [61829] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第167层",
+     },
+     [61830] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第167层",
+     },
+     [61831] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第167层",
+     },
+     [61832] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第167层",
+     },
+     [61833] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第167层",
+     },
+     [61834] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第167层",
+     },
+     [61835] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第167层",
+     },
+     [61836] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第167层",
+     },
+     [61837] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第168层",
+     },
+     [61838] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第168层",
+     },
+     [61839] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第168层",
+     },
+     [61840] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第168层",
+     },
+     [61841] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第168层",
+     },
+     [61842] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第168层",
+     },
+     [61843] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第168层",
+     },
+     [61844] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第168层",
+     },
+     [61845] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第169层",
+     },
+     [61846] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第169层",
+     },
+     [61847] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第169层",
+     },
+     [61848] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第169层",
+     },
+     [61849] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第169层",
+     },
+     [61850] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第169层",
+     },
+     [61851] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第169层",
+     },
+     [61852] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第169层",
+     },
+     [61853] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第170层",
+     },
+     [61854] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第170层",
+     },
+     [61855] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第170层",
+     },
+     [61856] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第170层",
+     },
+     [61857] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第170层",
+     },
+     [61858] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第170层",
+     },
+     [61859] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第170层",
+     },
+     [61860] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第170层",
+     },
+     [61861] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第171层",
+     },
+     [61862] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第171层",
+     },
+     [61863] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第171层",
+     },
+     [61864] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第171层",
+     },
+     [61865] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第171层",
+     },
+     [61866] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第171层",
+     },
+     [61867] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第171层",
+     },
+     [61868] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第171层",
+     },
+     [61869] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第172层",
+     },
+     [61870] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第172层",
+     },
+     [61871] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第172层",
+     },
+     [61872] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第172层",
+     },
+     [61873] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第172层",
+     },
+     [61874] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第172层",
+     },
+     [61875] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第172层",
+     },
+     [61876] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第172层",
+     },
+     [61877] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第173层",
+     },
+     [61878] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第173层",
+     },
+     [61879] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第173层",
+     },
+     [61880] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第173层",
+     },
+     [61881] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第173层",
+     },
+     [61882] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第173层",
+     },
+     [61883] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第173层",
+     },
+     [61884] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第173层",
+     },
+     [61885] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第174层",
+     },
+     [61886] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第174层",
+     },
+     [61887] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第174层",
+     },
+     [61888] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第174层",
+     },
+     [61889] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第174层",
+     },
+     [61890] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第174层",
+     },
+     [61891] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第174层",
+     },
+     [61892] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第174层",
+     },
+     [61893] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第175层",
+     },
+     [61894] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第175层",
+     },
+     [61895] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第175层",
+     },
+     [61896] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第175层",
+     },
+     [61897] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第175层",
+     },
+     [61898] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第175层",
+     },
+     [61899] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第175层",
+     },
+     [61900] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第175层",
+     },
+     [61901] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第176层",
+     },
+     [61902] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第176层",
+     },
+     [61903] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第176层",
+     },
+     [61904] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第176层",
+     },
+     [61905] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第176层",
+     },
+     [61906] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第176层",
+     },
+     [61907] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第176层",
+     },
+     [61908] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第176层",
+     },
+     [61909] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第177层",
+     },
+     [61910] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第177层",
+     },
+     [61911] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第177层",
+     },
+     [61912] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第177层",
+     },
+     [61913] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第177层",
+     },
+     [61914] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第177层",
+     },
+     [61915] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第177层",
+     },
+     [61916] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第177层",
+     },
+     [61917] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第178层",
+     },
+     [61918] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第178层",
+     },
+     [61919] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第178层",
+     },
+     [61920] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第178层",
+     },
+     [61921] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第178层",
+     },
+     [61922] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第178层",
+     },
+     [61923] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第178层",
+     },
+     [61924] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第178层",
+     },
+     [61925] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第179层",
+     },
+     [61926] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第179层",
+     },
+     [61927] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第179层",
+     },
+     [61928] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第179层",
+     },
+     [61929] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第179层",
+     },
+     [61930] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第179层",
+     },
+     [61931] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第179层",
+     },
+     [61932] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第179层",
+     },
+     [61933] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第180层",
+     },
+     [61934] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第180层",
+     },
+     [61935] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第180层",
+     },
+     [61936] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第180层",
+     },
+     [61937] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第180层",
+     },
+     [61938] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第180层",
+     },
+     [61939] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第180层",
+     },
+     [61940] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第180层",
+     },
+     [61941] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第181层",
+     },
+     [61942] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第181层",
+     },
+     [61943] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第181层",
+     },
+     [61944] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第181层",
+     },
+     [61945] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第181层",
+     },
+     [61946] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第181层",
+     },
+     [61947] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第181层",
+     },
+     [61948] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第181层",
+     },
+     [61949] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第182层",
+     },
+     [61950] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第182层",
+     },
+     [61951] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第182层",
+     },
+     [61952] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第182层",
+     },
+     [61953] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第182层",
+     },
+     [61954] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第182层",
+     },
+     [61955] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第182层",
+     },
+     [61956] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第182层",
+     },
+     [61957] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第183层",
+     },
+     [61958] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第183层",
+     },
+     [61959] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第183层",
+     },
+     [61960] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第183层",
+     },
+     [61961] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第183层",
+     },
+     [61962] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第183层",
+     },
+     [61963] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第183层",
+     },
+     [61964] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第183层",
+     },
+     [61965] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第184层",
+     },
+     [61966] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第184层",
+     },
+     [61967] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第184层",
+     },
+     [61968] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第184层",
+     },
+     [61969] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第184层",
+     },
+     [61970] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第184层",
+     },
+     [61971] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第184层",
+     },
+     [61972] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第184层",
+     },
+     [61973] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第185层",
+     },
+     [61974] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第185层",
+     },
+     [61975] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第185层",
+     },
+     [61976] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第185层",
+     },
+     [61977] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第185层",
+     },
+     [61978] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第185层",
+     },
+     [61979] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第185层",
+     },
+     [61980] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第185层",
+     },
+     [61981] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第186层",
+     },
+     [61982] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第186层",
+     },
+     [61983] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第186层",
+     },
+     [61984] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第186层",
+     },
+     [61985] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第186层",
+     },
+     [61986] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第186层",
+     },
+     [61987] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第186层",
+     },
+     [61988] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第186层",
+     },
+     [61989] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第187层",
+     },
+     [61990] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第187层",
+     },
+     [61991] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第187层",
+     },
+     [61992] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第187层",
+     },
+     [61993] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第187层",
+     },
+     [61994] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第187层",
+     },
+     [61995] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第187层",
+     },
+     [61996] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第187层",
+     },
+     [61997] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第188层",
+     },
+     [61998] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第188层",
+     },
+     [61999] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第188层",
+     },
+     [62000] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第188层",
+     },
+     [62001] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第188层",
+     },
+     [62002] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第188层",
+     },
+     [62003] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第188层",
+     },
+     [62004] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第188层",
+     },
+     [62005] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第189层",
+     },
+     [62006] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第189层",
+     },
+     [62007] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第189层",
+     },
+     [62008] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第189层",
+     },
+     [62009] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第189层",
+     },
+     [62010] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第189层",
+     },
+     [62011] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第189层",
+     },
+     [62012] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第189层",
+     },
+     [62013] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第190层",
+     },
+     [62014] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第190层",
+     },
+     [62015] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第190层",
+     },
+     [62016] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第190层",
+     },
+     [62017] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第190层",
+     },
+     [62018] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第190层",
+     },
+     [62019] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第190层",
+     },
+     [62020] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第190层",
+     },
+     [62021] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第191层",
+     },
+     [62022] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第191层",
+     },
+     [62023] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第191层",
+     },
+     [62024] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第191层",
+     },
+     [62025] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第191层",
+     },
+     [62026] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第191层",
+     },
+     [62027] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第191层",
+     },
+     [62028] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第191层",
+     },
+     [62029] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第192层",
+     },
+     [62030] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第192层",
+     },
+     [62031] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第192层",
+     },
+     [62032] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第192层",
+     },
+     [62033] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第192层",
+     },
+     [62034] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第192层",
+     },
+     [62035] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第192层",
+     },
+     [62036] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第192层",
+     },
+     [62037] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第193层",
+     },
+     [62038] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第193层",
+     },
+     [62039] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第193层",
+     },
+     [62040] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第193层",
+     },
+     [62041] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第193层",
+     },
+     [62042] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第193层",
+     },
+     [62043] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第193层",
+     },
+     [62044] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第193层",
+     },
+     [62045] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第194层",
+     },
+     [62046] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第194层",
+     },
+     [62047] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第194层",
+     },
+     [62048] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第194层",
+     },
+     [62049] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第194层",
+     },
+     [62050] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第194层",
+     },
+     [62051] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第194层",
+     },
+     [62052] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第194层",
+     },
+     [62053] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第195层",
+     },
+     [62054] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第195层",
+     },
+     [62055] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第195层",
+     },
+     [62056] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第195层",
+     },
+     [62057] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第195层",
+     },
+     [62058] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第195层",
+     },
+     [62059] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第195层",
+     },
+     [62060] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第195层",
+     },
+     [62061] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第196层",
+     },
+     [62062] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第196层",
+     },
+     [62063] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第196层",
+     },
+     [62064] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第196层",
+     },
+     [62065] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第196层",
+     },
+     [62066] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第196层",
+     },
+     [62067] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第196层",
+     },
+     [62068] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第196层",
+     },
+     [62069] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第197层",
+     },
+     [62070] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第197层",
+     },
+     [62071] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第197层",
+     },
+     [62072] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第197层",
+     },
+     [62073] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第197层",
+     },
+     [62074] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第197层",
+     },
+     [62075] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第197层",
+     },
+     [62076] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第197层",
+     },
+     [62077] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第198层",
+     },
+     [62078] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第198层",
+     },
+     [62079] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第198层",
+     },
+     [62080] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第198层",
+     },
+     [62081] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第198层",
+     },
+     [62082] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第198层",
+     },
+     [62083] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第198层",
+     },
+     [62084] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第198层",
+     },
+     [62085] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第199层",
+     },
+     [62086] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第199层",
+     },
+     [62087] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第199层",
+     },
+     [62088] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第199层",
+     },
+     [62089] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第199层",
+     },
+     [62090] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第199层",
+     },
+     [62091] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第199层",
+     },
+     [62092] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第199层",
+     },
+     [62093] = {
+	     name = "天枢守卫",
+	     modelID =1,
+	     desc = "封神台第200层",
+     },
+     [62094] = {
+	     name = "天玑守卫",
+	     modelID =3,
+	     desc = "封神台第200层",
+     },
+     [62095] = {
+	     name = "玉衡守卫",
+	     modelID =5,
+	     desc = "封神台第200层",
+     },
+     [62096] = {
+	     name = "开阳守卫",
+	     modelID =7,
+	     desc = "封神台第200层",
+     },
+     [62097] = {
+	     name = "天璇守卫",
+	     modelID =9,
+	     desc = "封神台第200层",
+     },
+     [62098] = {
+	     name = "摇光守卫",
+	     modelID =11,
+	     desc = "封神台第200层",
+     },
+     [62099] = {
+	     name = "天权守卫",
+	     modelID =13,
+	     desc = "封神台第200层",
+     },
+     [62100] = {
+	     name = "层主",
+	     modelID =162,
+	     desc = "封神台第200层",
      },
 }

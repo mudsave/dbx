@@ -124,11 +124,10 @@ function Task:stateChange(taskStatus, fromDB)
 		self:removeTarget()	
 		g_taskSystem:onTaskFaild(player, taskData)
 	elseif taskStatus == TaskStatus.Done then			--任务完成
-		print("任务完成>>>>>>>>>>>>>>>>>>>>>>>")
 		self:removeTarget()	
+		self:addBabelReward()
 		g_taskSystem:onDoneTask(player, taskData)
 	elseif taskStatus == TaskStatus.Finished then
-		print("任务结束>>>>>>>>>>>>>>>>>>>>>>")		--任务结束
 		--给奖励	
 		self:removeTarget()	
 		self:removeAllWatchers()
@@ -161,13 +160,13 @@ function Task:updateNpcHeader()
 			g_taskDoer:updateNpcHeader(player, endNpc)
 		end
 	elseif self._type == TaskType.daily then
-		
 		local startNpcID = DailyTaskDB[self._taskID].startNpcID
 		local startNpc = g_entityMgr:getNpc(startNpcID)
 		if startNpc then
 			g_taskDoer:updateNpcHeader(player,startNpc)
 		end
-		local endNpc = g_entityMgr:getNpc(self._endNpcID)
+		local endNpcID = DailyTaskDB[self._taskID].endNpcID
+		local endNpc = g_entityMgr:getNpc(endNpcID)
 		if endNpc then
 			g_taskDoer:updateNpcHeader(player, endNpc)
 		end
@@ -281,7 +280,7 @@ function Task:createDataForClient(taskStatus)
 		-- 任务状态
 		taskData.targets = self:getTargetState()
 	elseif self._type == TaskType.babel then
-		print("通天塔任务相关数据")
+
 	elseif self._type == TaskType.daily then
 		taskData.targetType = self:getTargetType()
 		taskData.targetParam = self:getTargetParam()
@@ -342,4 +341,8 @@ function Task:isFaild()
 		end
 	end
 	return false
+end
+
+function Task:addBabelReward()
+
 end

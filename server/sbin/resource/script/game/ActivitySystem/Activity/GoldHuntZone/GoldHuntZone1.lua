@@ -2,10 +2,13 @@
 	描述：猎金场
 --]]
 
-
-ActivityID = ActivityID + 1
-gGoldHuntID1 = ActivityID
+gGoldHuntID1 = 4
 --活动基础配置
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PK"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_Collect"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHunt_PVE"
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntManager"
+
 local GoldHuntZone_scoreNpcPos ={x=103,y=283}					--活动地图地图入口坐标
 GoldHuntZoneActivityDB1 = 
 {

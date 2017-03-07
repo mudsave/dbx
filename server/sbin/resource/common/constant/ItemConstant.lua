@@ -77,6 +77,32 @@ WeaponSubClass =
 	Spear    = 6,
 }
 
+-- 防具子类
+ArmorSubClass =
+{
+	-- 头盔
+	Helmet   = 7,
+	-- 衣甲
+	Clothes  = 8,
+	-- 鞋子
+	Shoes    = 9,
+	-- 裤子
+	Trousers = 10,
+	-- 护肩
+	Shoulder = 11,
+}
+
+-- 饰品子类
+AdornSubClass =
+{
+	-- 戒指
+	Ring     = 12,
+	-- 护符
+	Amulet   = 13,
+	-- 项链
+	Necklace = 14,
+}
+
 -- 道具品质
 ItemQuality =
 {

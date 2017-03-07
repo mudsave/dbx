@@ -32,6 +32,7 @@ DialogConditionDoer =
 
 	[DialogCondition.TkillMonster] = RoleVerify.checkKillMonster,
 	[DialogCondition.DekaronSchoolActivity]		= RoleVerify.checkActivityOpening,
+	[DialogCondition.HaveActivityTarget]		= RoleVerify.haveActivityTarget,
 	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.checkActivityTarget,
 	[DialogCondition.TkillMonster]= RoleVerify.checkKillMonster,
 	[DialogCondition.DailyTaskTimes] = RoleVerify.checkDailyTaskTimes,
@@ -66,6 +67,7 @@ DialogConditionInstance =
 
 	[DialogCondition.DekaronSchoolActivity] = RoleVerify.getInstance(),
 	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.getInstance(),
+	[DialogCondition.HaveActivityTarget] = RoleVerify.getInstance(),
 	[DialogCondition.TkillMonster] = RoleVerify.getInstance(),
 	[DialogCondition.DailyTaskTimes] = RoleVerify.getInstance(),
 	

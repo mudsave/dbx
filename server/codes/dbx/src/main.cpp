@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     }
 
     //for test
-    DBTest().Run();
+    //DBTest().Run();
 
     HRESULT result = DBManager::InstancePtr()->Run();
     if (result == S_OK)

@@ -62,12 +62,11 @@ int ScriptTimer::OnTimeClick(){
 	ScriptTimerInfo* p = NULL;
 	while(!timerQueue.empty())
 	{
+		static LuaFunctor<TypeNull, long long, int> FireTimer(s_pLuaState, "ManagedApp.timerFired");
 		p = timerQueue.top();
 		if(p->m_isValid == -1)
 		{
-			static LuaFunctor<TypeNull, long long, int> timerStop(s_pLuaState, "ManagedApp.timerFired");
-			if (!timerStop(TypeNull::nil(), p->sn, ScriptTimerStop))
-				TRACE1_L0("%s\n", timerStop.getLastError());
+			FireTimer(TypeNull::nil(), p->sn, ScriptTimerStop);
 			delete p;
 			timerQueue.pop();
 			TRACE1_L4("--ScriptTimer::OnTimeClick(), canceled, queue size=%i\n", timerQueue.size());
@@ -87,17 +86,13 @@ int ScriptTimer::OnTimeClick(){
 			timerQueue.AdjustTop();
 		}
 
-		static LuaFunctor<TypeNull, long long, int> timerFired(s_pLuaState, "ManagedApp.timerFired");
-		if (!timerFired(TypeNull::nil(), p->sn, ScriptTimerNormal))
-			TRACE1_L0("%s\n", timerFired.getLastError());
+		FireTimer(TypeNull::nil(), p->sn, ScriptTimerNormal);
 		count++;
 		// getDebugInfo(p->sn);
 
 		if(p->uiPeriod <= 0)
 		{
-			static LuaFunctor<TypeNull, long long, int> timerExpire(s_pLuaState, "ManagedApp.timerFired");
-			if (!timerExpire(TypeNull::nil(), p->sn, ScriptTimerExpire))
-				TRACE1_L0("%s\n", timerExpire.getLastError());
+			FireTimer(TypeNull::nil(), p->sn, ScriptTimerExpire);
 			delete p;
 			timerQueue.pop();
 			s_pScriptTimer->m_timerCount--;
@@ -149,9 +144,7 @@ int ScriptTimer::toluaScriptTimerOpen(lua_State* pState)
 
 int ScriptTimer::getDebugInfo(int timerId)
 {
-	static int ref = LUA_NOREF;
-	if (ref == LUA_NOREF)
-		ref = PushMethod(s_pLuaState, "TimerManager.getDebugInfo");
+	static int ref = LuaHelper::pushMethod(s_pLuaState, "TimerManager.getDebugInfo");
 	ASSERT_(ref != LUA_NOREF);
 	lua_rawgeti(s_pLuaState, LUA_REGISTRYINDEX, ref);
 	lua_pushnumber(s_pLuaState, timerId);

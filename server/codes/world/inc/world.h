@@ -334,13 +334,18 @@ public:
 		}
 	}
 
+public:
+	void setPlayerCount(int count)
+	{
+		m_playerCount = count;	
+	}
+
 private:
 	bool luaStart(lua_State* pLuaState)
 	{
 		LuaFunctor<TypeNull, int> startFunc(pLuaState, "ManagedApp.start");
 		if ( !startFunc( TypeNull::nil(), m_worldId ) )
 		{
-			TRACE2_L1("[CWorld::luaStart] failed in worldID %d because of:%s\n", m_worldId, startFunc.getLastError());
 			return false;
 		}
 
@@ -349,9 +354,7 @@ private:
 
 	void setFightServerLoads(lua_State* pLuaState)
 	{
-		static int ref = LUA_NOREF;
-		if (ref == LUA_NOREF)
-			ref = PushMethod(pLuaState, "FightServerLoad.setLoad");
+		static int ref = LuaHelper::pushMethod(pLuaState, "FightServerLoad.setLoad");
 		ASSERT_(ref != LUA_NOREF);
 		lua_rawgeti(pLuaState, LUA_REGISTRYINDEX, ref);
 		lua_newtable(pLuaState);

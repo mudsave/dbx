@@ -671,23 +671,24 @@ function Player:onPlayerLogout(reason)
 		xPos = enterPos.xPos
 		yPos = enterPos.yPos
 	end
-	self:updateProperty("MapID",mapID)
-	self:updateProperty("PosX",xPos)
-	self:updateProperty("PosY",yPos)
-	self:updateProperty("Level",self:getLevel())
-	self:updateProperty("ModelID",self:getModelID())
-	self:updateProperty("Money",self:getMoney())
-	self:updateProperty("SubMoney",self:getSubMoney())
-	self:updateProperty("DepotMoney",self:getDepotMoney())
-	self:updateProperty("DepotCapacity",self:getDepotCapacity())
-	self:updateProperty("CashMoney",self:getCashMoney())
-	self:updateProperty("ShowParts",self:getShowParts())
-	self:updateProperty("PetDepotCapacity",self:getHandler(HandlerDef_PetDepot):getCapacity())
-	self:updateProperty("Tiredness",self:getTiredness())
-	self:updateProperty("Practise",self:getPractise())
-	self:updateProperty("PractiseCount",self:getPractiseCount())
-	self:updateProperty("StoreXp",self:getStoreXp())
-	self:updateProperty("RideBar",self:getHandler(HandlerDef_Ride):getRideCapacity())
+
+    local props = {}
+	props["MapID"] = mapID
+	props["PosX"] = xPos
+	props["PosY"] = yPos
+	props["Level"] = self:getLevel()
+	props["ModelID"] = self:getModelID()
+	props["Money"] = self:getMoney()
+	props["SMoney"] = self:getSubMoney()
+	props["DMoney"] = self:getDepotMoney()
+	props["DCap"] = self:getDepotCapacity()
+	props["Cash"] = self:getCashMoney()
+	props["Parts"] = self:getShowParts()
+	props["Cap"] = self:getHandler(HandlerDef_PetDepot):getCapacity()
+	props["Bar"] = self:getHandler(HandlerDef_Ride):getRideCapacity()
+	--注意新增要保存的属性需修改存储过程
+	local dbID = self._dbId
+	LuaDBAccess.updatePlayerBatch(dbID, props)
 end
 
 -- 提交玩家属性集合

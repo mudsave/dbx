@@ -3,14 +3,15 @@
 ]]
 
 ActivityDB = {}
-ActivityID = 1
 
 
-require "game.ActivitySystem.Activity.DekaronSchool.DekaronSchool"
-require "game.ActivitySystem.Activity.DekaronSchool.AScript"
-require "game.ActivitySystem.Activity.BeastBless.BeastBless"
-require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"
-
+-- 把各自的ID 设置成全局确定的ID值 方便客户端ID处理 后标注到这里
+require "game.ActivitySystem.Activity.DekaronSchool.DekaronSchool"	-- gId = 1
+require "game.ActivitySystem.Activity.BeastBless.BeastBless"	  	-- gId = 2
+require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"	-- gId = 3
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone1"	-- gId = 4
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone2"	-- gId = 5
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone3"	-- gId = 6
 
 ActivityManager = class(nil, Singleton)
 
@@ -24,12 +25,14 @@ function ActivityManager:__release()
 	self.lastTime = nil
 end
 
-function ActivityManager:openActivity(id, frameName)
+function ActivityManager:openActivity(id, frameName,flag)
 	print("-----------活动预开启-----------",frameName)
 	local clazz = _G[frameName]
 	if clazz and type(clazz) == "table" then
 		self.curActivityList[id] = clazz()
-		self.curActivityList[id]:open()
+		self.curActivityList[id]:open(flag)
+		-- 通知这个活动按钮开启
+		self:notifyAllActivityPageUpdateBtn(id,true)
 	else
 		print("活动编码有误")
 	end
@@ -41,7 +44,7 @@ end
 
 function ActivityManager:closeActivity(id)
 	self.curActivityList[id]:close()
-	
+	self:notifyAllActivityPageUpdateBtn(id,false)
 end
 
 function ActivityManager:getActivity(id)
@@ -52,6 +55,14 @@ end
 function ActivityManager:notityJoinActivity(player)
 	for id, activity in pairs(self.curActivityList) do
 		activity:joinPlayer(player)
+		g_activitySym:notifyActivityPageUpdateBtn(player,id,true)
+	end
+end
+
+function ActivityManager:notifyAllActivityPageUpdateBtn(activityID,isOpenOrClose)
+	local playerList = g_entityMgr:getPlayers()
+	for playerID,player in pairs(playerList) do
+		g_activitySym:notifyActivityPageUpdateBtn(player,activityID,isOpenOrClose)
 	end
 end
 
@@ -66,8 +77,9 @@ function ActivityManager:onPlayerOnline(player, recordList)
 	local curActivityList = self.curActivityList
 	if recordList then
 		for activityId, activity in pairs(curActivityList) do
-			 if activity then
+			if activity then
 				curActivityList[activityId]:joinPlayer(player,recordList)
+				g_activitySym:notifyActivityPageUpdateBtn(player,activityId,true)
 			else
 				print("活动已经关闭")
 			end
@@ -159,6 +171,39 @@ end
 function ActivityManager:removeActivity(activityID)
 	release(self.curActivityList[activityID])
 	self.curActivityList[activityID] = nil
+end
+
+--服务器启动时，更新活动
+function ActivityManager:updateActivityByStart()
+	local data = os.date("*t", currentTime)
+	for id, activityInfo in pairs(ActivityDB) do
+		if activityInfo.startType == AtyStartType.fixedDayHour then --每一天
+			local startTime = activityInfo.startTime
+			local endTime = activityInfo.endTime
+			if not self.curActivityList[id] then		
+				if data.hour >= startTime.hour and data.min >= startTime.min and data.hour <= endTime.hour and data.min <= endTime.min then
+					self:openActivity(id, activityInfo.name,true)
+				end
+			end
+		elseif activityInfo.startType == AtyStartType.fixedWeekHour then --每一周
+			local activityTime = activityInfo.activityTime
+			for _,time in pairs(activityTime) do
+				local startTime = time.startTime
+				local endTime = time.endTime
+				if not self.curActivityList[id] then
+					--	日	一	二	三	四	五	六
+					--	1	2	3	4	5	6	7	都加一对应的数值
+					--	0	1	2	3	4	5	6	可以使用这个
+					print("-----2222222-------来这里不。。。。。。。。。。",toString(data),toString(startTime),toString(endTime))
+					if data.wday >= startTime.week + 1 and (data.hour > startTime.hour or (data.hour == startTime.hour or data.min >= startTime.min)) and data.wday <= endTime.week + 1 and (data.hour < endTime.hour or (data.hour == endTime.hour and data.min <= endTime.min )) then
+						print("-----111111-------来这里不。。。。。。。。。。")
+						self:openActivity(id, activityInfo.name,true)
+						return
+					end
+				end
+			end
+		end
+	end
 end
 
 function ActivityManager.getInstance()

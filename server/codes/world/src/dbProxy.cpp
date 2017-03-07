@@ -83,8 +83,7 @@ void CDBProxy::onExeDBProc(int id, IInitClient* pInitClient, bool result)
 
 	static LuaFunctor<TypeNull, int, TypeUser, int> DBReturnToLua(s_pLuaState, "ManagedApp.onExeSP");
 	bool rt = DBReturnToLua(TypeNull::nil(), id, TypeUser(LuaArray, "CLuaArray"), ErrorCode);
-	if (!rt)
-		TRACE1_L0("%s\n", DBReturnToLua.getLastError());
+	(void)rt;
 
 	pInitClient->deleteAttributeSet(id);
 	for (int i=0; i<MAXRESNUM; i++)

@@ -59,7 +59,6 @@ function TaskHandler:addTask(task)
 
 	if DailyTaskDB[taskID] then
 		self.dailyTaskConfiguration[taskID] = false
-		print("接受任务，更改配置表>>>>>>>>>>",toString(self.dailyTaskConfiguration))
 	end
 
 end
@@ -647,7 +646,7 @@ function TaskHandler:checkTaskRecetiver(npcID)
 end
 
 -- 设置循环任务的环数
-function TaskHandler:loadLoopTaskInfo()
+function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 	for _, loopTask in pairs(loopTaskRecord or {}) do
 		local offlineTime = loopTask.offlineTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数
@@ -744,7 +743,6 @@ function TaskHandler:finishBabelTask(taskID)
 		local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
 		taskPrivateHandler:removeTraceInfo(taskID)
 		self.currentTask[taskID]:stateChange(TaskStatus.Finished)
-		-- 完成之后环数+1
 		release(self.currentTask[taskID])
 		self.currentTask[taskID] = nil
 		-- 完成任务时，重新设置这个任务列表
@@ -828,6 +826,9 @@ end
 -- 挑战完成
 function TaskHandler:endFinishBabelTask(taskID)
 	self:setBabelFinishFlag(taskID)
-	g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
+	local mapID = self._entity:getScene():getMapID()
+	if mapID >= 1001 and mapID <= 1200 then
+		g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
+	end
 	self:finishBabelTask(taskID)
 end
