@@ -315,7 +315,7 @@ function EctypeManager:enterEctype(player, ectypeID)
 	end
 end
 
--- 退出副本
+--  解算队伍， 退出副本，所有玩家全都离开副本
 function EctypeManager:exitEctype(player)
 	local ectypeHandler = player:getHandler(HandlerDef_Ectype)
 	local ectypeMapID = ectypeHandler:getEctypeMapID()
@@ -332,6 +332,16 @@ function EctypeManager:exitEctype(player)
 	end
 end
 
+-- 退出副本队伍, 只对当前玩家处理
+function EctypeManager:quitEctypeTeam(player)
+	local ectypeHandler = player:getHandler(HandlerDef_Ectype)
+	local ectypeMapID = ectypeHandler:getEctypeMapID()
+	local ectype = self.allEctypes[ectypeMapID]
+	if not ectype then
+		return
+	end
+	ectype:returnPublicScene(player)
+end
 -- 计算队伍指定连环副本的进入信息
 function EctypeManager:calcTeamRingEctypeEnterInfo(team, ringEctypeID)
 	-- 队伍当前最大环数

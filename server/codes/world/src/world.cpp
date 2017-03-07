@@ -101,8 +101,8 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	//notice: the order is fixed!
 	ScriptTimer::init(pLuaState);
 	CDBProxy::init(dbIP, dbPort, pLuaState);
-	luaStart(pLuaState);
 	RPCEngine::init(pLuaState);
+	luaStart(pLuaState);
 }
 
 void CWorld::Close()
@@ -267,10 +267,7 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 				if ( msgId == MSG_W_G_PLAYER_LOGIN || msgId == MSG_W_G_PLAYER_LOGOUT )
 				{
 					static LuaFunctor<TypeNull, handle, TypeUser> playerMsgFunc(m_pLuaEngine->GetLuaState(), "ManagedApp.onPlayerMessage");
-					if ( !playerMsgFunc( TypeNull::nil(), hLink, TypeUser(pMsg, "AppMsg") ) )
-					{
-						TRACE1_L1("[CWorld::OnGatewayMsg] ManagedApp.onPlayerMessage() failed, because of %s\n", playerMsgFunc.getLastError());
-					}
+					playerMsgFunc( TypeNull::nil(), hLink, TypeUser(pMsg, "AppMsg") ); 
 					return;
 				}
 				TRACE0_L2("CWorld::OnGatewayMsg(), Invalid msgId for MSG_CLS_STARTUP..\n");
@@ -569,10 +566,7 @@ void CWorld::handleCleanUp()
 void CWorld::CleanUp()
 {
 	LuaFunctor<TypeNull, int> closeFunc(getLuaState(), "ManagedApp.close");
-	if ( !closeFunc( TypeNull::nil(), m_worldId ) )
-	{
-		TRACE2_L1("[CWorld::CleanUp()] failed in worldID %d because of:%s\n", m_worldId, closeFunc.getLastError());
-	}
+	closeFunc( TypeNull::nil(), m_worldId ); 
 	HANDLE hCleanupTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eCleanUpHandle, 0, eCleanUpInterval, 0, "world clean up timer!");
 	ASSERT_(hCleanupTimer);
 }

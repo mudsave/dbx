@@ -19,11 +19,11 @@ void RPCEngine::init(lua_State* L)
     _rpc_ref = 0;
     _wrpc_ref = 0;
     _debug_ref = 0;
-    ASSERT_(pushluafunction(L, "RemoteEventProxy.receive"));
+    ASSERT_(pushluafunction(L, "ManagedApp.onReceive"));
     _rpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
-    ASSERT_(pushluafunction(L, "RemoteEventProxy.wreceive"));
+    ASSERT_(pushluafunction(L, "ManagedApp.onWReceive"));
     _wrpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
-    ASSERT_(pushluafunction(L, "RemoteEventProxy.debug"));
+    ASSERT_(pushluafunction(L, "ManagedApp.onLuaError"));
     _debug_ref = luaL_ref(L, LUA_REGISTRYINDEX);
     toluaRPCOpen(L);
 }

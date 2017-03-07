@@ -75,10 +75,7 @@ void MoveManager::AddMoveEntity(handle hand)
 	if (pState)
 	{
 		static LuaFunctor<TypeNull, handle> fStartMove(pState, "ManagedApp.EntityStartMove");
-		if (!fStartMove(TypeNull::nil(), hand))
-		{
-			TRACE2_WARNING("MoveManager Robot.apiEntityStartMove failed: because of %s, entity handle(%d)\n", fStartMove.getLastError(), hand);
-		}
+		fStartMove(TypeNull::nil(), hand);
 	}
 }
 
@@ -97,10 +94,7 @@ void MoveManager::RemoveMoveEntity(handle hand)
 	if (pState)
 	{
 		  static LuaFunctor<TypeNull, handle> fEndMove(pState, "ManagedApp.EntityEndMove");
-		  if (!fEndMove(TypeNull::nil(), hand))
-		  {
-				TRACE2_WARNING("MoveManager Robot.apiEntityEndMove failed: because of %s, entity handle(%d)\n", fEndMove.getLastError(), hand);
-		  }
+		  fEndMove(TypeNull::nil(), hand);
 	}
 }
 

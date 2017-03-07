@@ -564,7 +564,6 @@ void CSession::OnDBReturn(_DBMsg* pMsg, handle hLink)
 		if( pMsg->actionType == DB_MSG_LOGIN )
 		{
 			DBMsg_LoginResult* pLoginResult = ( DBMsg_LoginResult* ) pMsg;		
-			memset(pLoginResult->role,0, sizeof(DBRoleInfo) * MaxRoleSize);
 			pLoginResult->Release();
 		}
 		TRACE0_L0("client link has been closed\n");

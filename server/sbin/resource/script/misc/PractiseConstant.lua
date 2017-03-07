@@ -39,3 +39,11 @@ PractiseBoxState =
 	Light	= 1,
 	Open	= 2,
 }
+
+
+PractiseAddRewardData = 
+{
+	One		= 1,
+	Two		= 2,
+	Three	= 3,
+}

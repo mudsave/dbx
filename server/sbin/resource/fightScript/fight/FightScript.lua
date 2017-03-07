@@ -574,6 +574,12 @@ function FightScript:onAttrChanged(monster,type,value)
 	if instanceof(monster ,FightMonster) then
 		local actions = self:getSystemActions()
 		if not actions then
+			if value == 0 and type == "hp" then
+				--清除死怪--TODO 重伤
+				if not monster:getIsToGBH() then
+					self:removeRole(monster,true)
+				end
+			end
 			return
 		end
 		AttrContext.role = monster

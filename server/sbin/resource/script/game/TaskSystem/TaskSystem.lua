@@ -99,6 +99,8 @@ function TaskSystem:doDeleteTask(event)
 
 	if LoopTaskDB[taskID] or DailyTaskDB[taskID] then
 		g_taskDoer:doDeleteTask(player, taskID, true)
+	elseif BabelTaskDB[taskID] then
+		g_taskDoer:doDeleteBabelTask(player, taskID)
 	elseif NormalTaskDB[taskID] then
 		if NormalTaskDB[taskID].taskType2 == TaskType2.Main then
 			print("主线任务不能放弃！")
@@ -238,8 +240,7 @@ function TaskSystem:onFightEnd(event)
 	local fightEndResults = params[1]
 	local fightID = params[2]
 	local monsterIDs = params[3]
-	local result = false
-	local roleIDs = {}
+	
 	print("此次战斗碰到了以下怪物：",toString(monsterIDs))
 	for playerID, fightResult in pairs(fightEndResults) do
 		local player = g_entityMgr:getPlayerByID(playerID)
@@ -262,10 +263,14 @@ function TaskSystem:onFightEnd(event)
 									print("准备开始计数>>>>>>>>>>>>>>>>")
 									TaskCallBack.onKillMonster(player:getID())
 								end
-
 							elseif NpcDB[monsterID] then
 								print("该怪ID为%d,等级为%d",monsterID,NpcDB[monsterID].level)
 								if NpcDB[monsterID].level == -1 then
+									killTaskMonster = true
+									print("准备开始计数>>>>>>>>>>>>>>>>")
+									TaskCallBack.onKillMonster(player:getID())
+								elseif NpcDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
+									NpcDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
 									killTaskMonster = true
 									print("准备开始计数>>>>>>>>>>>>>>>>")
 									TaskCallBack.onKillMonster(player:getID())
@@ -288,83 +293,32 @@ function TaskSystem:onFightEnd(event)
 		end
 	end
 
-
-	--如果是遇雷杀怪，而且在任务中，执行相关方法
-	-- local taskHandler = g_myRole:getHandler(HandlerDef_Task)
-	-- for taskID ,taskData in pairs(taskHandler:getTasks()) do
-	-- 	print("taskData:getTargetType()",taskData:getTargetType())
-	-- 	print("fightIDs[fightID]",fightIDs[fightID])
-	-- 	if taskData:getTargetType() == "TkillMonster" and fightIDs[fightID]  then
-	-- 		local killTaskMonster = false
-	-- 		--判断是否满足任务需求
-	-- 		local targetParams = taskData:getTargetParam()
-	-- 		if type(targetParams.monsterID) == "table" then
-	-- 			--判断怪物列表中是否有符合条件的怪物
-	-- 			for index,monsterID in pairs(monsterIDs) do
-	-- 				if MonsterDB[monsterID].level >= (g_myRole:getLevel()+targetParams.monsterID[1]) and
-	-- 					MonsterDB[monsterID].level <= (g_myRole:getLevel()+targetParams.monsterID[2]) then
-	-- 					killTaskMonster = true
-	-- 				end
-
-	-- 			end
-	-- 		elseif type(targetParams.monsterID) == "number" then
-
-	-- 			--判断怪物列表中是否有符合条件的怪物
-	-- 			for index,monsterID in pairs(monsterIDs) do
-	-- 				if monsterID == targetParams.monsterID  then
-	-- 					killTaskMonster = true
-	-- 				end
-	-- 			end
-	-- 		end
-	-- 		if killTaskMonster then
-	-- 			--如果击杀了任务怪物，则调用相关方法
-	-- 			TaskCallBack.onKillMonster(player:getID(), taskID)
-	-- 		end
-			
-	-- 	end
-	-- end 
-
-
-	for playerID, fightResult in pairs(fightEndResults) do
-		if fightResult then
-			result = true
-			break
-		end
-	end
+	-- 组队和非组队，首先要处理队员，在处理队长
+	local leader, leaderResult
 	for playerID, fightResult in pairs(fightEndResults) do
 		local player = g_entityMgr:getPlayerByID(playerID)
 		if player then
-			table.insert(roleIDs, playerID)
-		end
-	end
-	-- 判断战斗 ，如果队伍当中队员个数大于1 调用队员，最后调用队长
-	if table.size(roleIDs) > 1 then
-		-- 有可能组队，有可能是PK
-		local player = g_entityMgr:getPlayerByID(roleIDs[1])
-		local teamHandler = player:getHandler(HandlerDef_Team)
-		local teamID = teamHandler:getTeamID()
-		-- 如果组队
-		if teamID > 0 then
-			local team = g_teamMgr:getTeam(teamID)
-			for _, playerID in pairs(roleIDs) do
-				-- 不是队长就先回调
-				if team:getLeaderID() ~= playerID then
-					local curPlayer = g_entityMgr:getPlayerByID(playerID)
-					TaskCallBack.script(curPlayer, fightID, result)
+			local teamHandler = player:getHandler(HandlerDef_Team)
+			local teamID = teamHandler:getTeamID()
+			local team
+			if teamID > 0 then
+				local team = g_teamMgr:getTeam(teamID)
+				-- 如果任务玩家是队长才能接
+				if team:getLeaderID() ~= player:getID() then
+					TaskCallBack.script(player, fightID, fightResult)
+				else
+					leader = player
+					leaderResult = fightResult
 				end
+			else
+				TaskCallBack.script(player, fightID, fightResult)
 			end
-			-- 最后通知队长
-			local leaderID = team:getLeaderID()
-			local leader = g_entityMgr:getPlayerByID(leaderID)
-			TaskCallBack.script(leader, fightID, result)
-		end
-	else
-		local curPlayer = g_entityMgr:getPlayerByID(roleIDs[1])
-		if curPlayer then
-			TaskCallBack.script(curPlayer, fightID, result)
 		end
 	end
-	
+	-- 如果队长存在的话
+	if leader then
+		TaskCallBack.script(leader, fightID, leaderResult)
+	end
 end
 
 --------------------------------------------------------------

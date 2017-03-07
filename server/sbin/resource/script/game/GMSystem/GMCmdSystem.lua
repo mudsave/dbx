@@ -814,20 +814,6 @@ function GMSystem:hideOrShow(roleID)
 	end
 end
 
-function GMSystem:openBeastBless(roleID)
-	local activityList =  g_activityMgr:getActivityList()
-	local id = g_beastBless:getID()
-	activityList[id] = g_beastBless
-	print("openBeastBless $$$$$$ ")
-	g_beastBless:open()
-end
-
-function GMSystem:closeBeastBless(roleID)
-	print("closeBeastBless $$$$$$")
-	g_beastBless:close()
-end
-
-
 --[[
 	同步玩家属性到战斗服
 	只能同步在属性集合中的属性
@@ -1031,22 +1017,26 @@ end
 
 -- 开启活动
 function GMSystem:openactivity(player, activityID)
-	local value = tonumber(activityID)
-	if value >= 0 then
-		local activity = g_activityMgr:getActivity(value)
-		if not activity then
-			g_activityMgr:openActivity(value, ActivityDB[value].name)
+	if activityID then
+		local value = tonumber(activityID)
+		if value >= 0 then
+			local activity = g_activityMgr:getActivity(value)
+			if not activity then
+				g_activityMgr:openActivity(value, ActivityDB[value].name)
+			end
 		end
 	end
 end
 
 -- 关闭活动
 function GMSystem:closeactivity(player, activityID)
-	local value = tonumber(activityID)
-	if value >= 0 then
-		local activity = g_activityMgr:getActivity(value)
-		if activity then
-			g_activityMgr:closeActivity(value)
+	if activityID then
+		local value = tonumber(activityID)
+		if value >= 0 then
+			local activity = g_activityMgr:getActivity(value)
+			if activity then
+				g_activityMgr:closeActivity(value)
+			end
 		end
 	end
 end

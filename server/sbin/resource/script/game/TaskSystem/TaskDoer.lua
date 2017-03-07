@@ -162,7 +162,6 @@ end
 -- 任务目标的切换移除当前循环任务，接其他任务的任务目标, 
 -- 分为客户端的删除，和服务器的主动删除
 function TaskDoer:doDeleteTask(player, taskID, flag)
-
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	-- 在这之前还要移除私有NPC 和热区以及其他的任务物品
 	local privateHandler = player:getHandler(HandlerDef_TaskPrData)
@@ -405,22 +404,7 @@ function TaskDoer:updateNpcHeader(player, npc)
 	local npcStatue = nil
 	for _, taskID in ipairs(g_taskProvideNpcs[npc:getID()] or {}) do
 		local task = taskHandler:getTask(taskID)
-		if task then
-			if NormalTaskDB[taskID] then
-				if task:getStatus() == TaskStatus.Active then
-					npcStatue = nil
-				end
-				break
-			elseif DailyTaskDB[taskID] then
-				if task:getStatus() == TaskStatus.Active then
-					npcStatue = nil
-				end
-				break
-			elseif LoopTaskDB[taskID] then
-					npcStatue = nil
-				break
-			end
-		else
+		if not task then		
 			if TaskCondition.normalTask(player, taskID) then	
 				if NormalTaskDB[taskID].taskType2 == TaskType2.Main then
 					npcStatue = DialogIcon.Task1
@@ -614,6 +598,15 @@ function TaskDoer:checkFlyUpCondition(player, param)
 			end
 		end
 		return 0
+	end
+end
+
+-- 客户端点击删除通天塔任务接口
+function TaskDoer:doDeleteBabelTask(player, taskID)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(taskID)
+	if task then
+		taskHandler:endFinishBabelTask(taskID)
 	end
 end
 

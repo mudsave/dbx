@@ -139,3 +139,26 @@ RewardFormula = {}
 function RewardFormula.addTao(curRing, level)
 	return curRing * 5 + level
 end
+
+-- 通天塔任务奖励公式
+BabelRewardFormula = {}
+
+-- 经验公式
+function BabelRewardFormula.addXp(level, layer)
+	return (level + layer) * 10
+end
+
+-- 道行公式
+function BabelRewardFormula.addTao(level, layer)
+	return (level + layer) * 5
+end
+
+-- 宠物经验
+function BabelRewardFormula.addPetXp(level, layer)
+	return (level + layer) * 10
+end
+
+-- 宠物道行
+function BabelRewardFormula.addPetTao(level, layer)
+	return (level + layer) * 5
+end

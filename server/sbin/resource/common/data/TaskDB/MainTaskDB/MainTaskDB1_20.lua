@@ -35,7 +35,6 @@ MainTaskDB1_20 =
 		{
 			[TaskStatus.Done]		=
 			{
-				{type="autoTrace", param = {tarMapID	= 8, x = 95, y = 184,npcID = 20001,},},
 			},
 		},
 	},

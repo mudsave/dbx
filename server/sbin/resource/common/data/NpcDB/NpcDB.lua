@@ -1019,7 +1019,7 @@ NpcDB = {
 	     modelID =512,
 	     desc = "×øÆïÉÌÈË",
 	     funcFlag = 15,
-	     dialogIDs = {20011},
+	     dialogIDs = {30060},
      },
      [20109] = {
 	     name = "¶­•F",
@@ -1531,6 +1531,14 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
+     },
+     [20349] = {
+	     name = "ÌÖÄæÈÎÎñ",
+	     modelID =573,
+	     desc = "²âÊÔÌÖÄæÈÎÎñ",
+	     level = -1,
+	     attrID = -1,
+	     phaseType = PhaseType.Wind,
      },
      [20601] = {
 	     name = "ÎâÃ÷",
@@ -4884,7 +4892,7 @@ NpcDB = {
      },
      [21281] = {
 	     name = "ÕÅË¶",
-	     modelID =175,
+	     modelID =140,
 	     desc = "Ö÷Ïß43-44",
 	     level = 43,
 	     attrID = 1,
@@ -8255,7 +8263,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
      },
      [30080] = {
 	     name = "ÌìÀÎÉ½Ö÷½«",
@@ -8265,6 +8272,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
+	     modelScale =15,
      },
      [30081] = {
 	     name = "ÌìÀÎÉ½Æ«½«",
@@ -8301,7 +8309,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
      },
      [30085] = {
 	     name = "ÌìÀÎÉ½¸±Ë§",
@@ -8311,7 +8318,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30086] = {
 	     name = "ÊÌÎÀ",
@@ -8331,6 +8338,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =2,
      },
      [30088] = {
 	     name = "ÊØÎÀ",
@@ -8349,7 +8357,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30090] = {
 	     name = "ÌìÀÎÉ½¼Àìë",
@@ -8359,6 +8366,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
+	     modelTextures =2,
      },
      [30091] = {
 	     name = "³Ö½£»¤·¨",
@@ -8377,7 +8385,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30093] = {
 	     name = "´óµ¶ÊØÎÀ",
@@ -8388,8 +8395,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
 	     modelTextures =4,
-	     unhitRate = 1,
-	     unhitSkills = {1021,1023},
      },
      [30094] = {
 	     name = "´óµ¶ÊØÎÀ",
@@ -8399,6 +8404,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =4,
      },
      [30095] = {
 	     name = "¹ùãá",
@@ -8408,6 +8414,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
+	     unhitRate = 1,
+	     unhitSkills = {1021,1023},
      },
      [30096] = {
 	     name = "¿Õ°×Ä£ÐÍ",
@@ -8682,7 +8690,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30161] = {
 	     name = "Ä§»ê·åÉÚ±ø",
@@ -8702,6 +8710,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =3,
      },
      [30163] = {
 	     name = "Ä§»ê·å°µÎÀ",
@@ -8720,7 +8729,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
      },
      [30165] = {
 	     name = "Ä§»ê·å»¤ÎÀ¶Ó³¤",
@@ -8730,7 +8738,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1020},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30166] = {
 	     name = "Ä§»ê·åÇ¹±ø",
@@ -8750,7 +8758,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1025},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30168] = {
 	     name = "Ä§»ê·å´óµ¶±ø",
@@ -8770,7 +8778,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =15,
+	     modelTextures =4,
      },
      [30170] = {
 	     name = "Ä§»ê·å»¤¾ü",
@@ -8780,7 +8788,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30171] = {
 	     name = "Ä§»ê·å¹íÃæµ¶±ø",
@@ -8800,6 +8808,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [30173] = {
 	     name = "Ä§»ê·å°µÎÀ",
@@ -8818,7 +8827,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30175] = {
 	     name = "Ä§»ê·å¸±Ë§",
@@ -8828,6 +8836,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
+	     modelTextures =2,
      },
      [30176] = {
 	     name = "Ä§»ê·åµ¶¶Ü±ø",
@@ -8846,7 +8855,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30178] = {
 	     name = "Ä§»ê·å¹íÃæµ¶±ø",
@@ -8866,7 +8874,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelScale =16,
+	     modelTextures =4,
      },
      [30180] = {
 	     name = "·®³í",
@@ -8876,6 +8884,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1011},
+	     modelScale =16,
      },
      [30181] = {
 	     name = "Ä§»ê·å»¤ÎÀ",
@@ -8885,7 +8894,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
-	     modelTextures =4,
      },
      [30182] = {
 	     name = "Ä§»ê·å´óµ¶±ø",
@@ -8905,6 +8913,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =4,
      },
      [30184] = {
 	     name = "Ä§»ê·å¹íÃæµ¶±ø",
@@ -9429,7 +9438,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009,1011},
-	     modelTextures =4,
+	     modelScale =13,
      },
      [30322] = {
 	     name = "Ç±ÁúÁëÑ²ÎÀ",
@@ -9449,7 +9458,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [30324] = {
 	     name = "Ç±ÁúÁëÉÚ±ø",
@@ -9469,6 +9478,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [30326] = {
 	     name = "Ç±ÁúÁëÌú¼×±ø",
@@ -9496,7 +9506,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelScale =13,
      },
      [30329] = {
 	     name = "Ç±ÁúÁë»¤ÎÀÍ·Áì",
@@ -9506,7 +9515,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
-	     modelTextures =3,
+	     modelScale =13,
      },
      [30330] = {
 	     name = "Ç±ÁúÁë»¤ÎÀ",
@@ -9526,7 +9535,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30332] = {
 	     name = "Ç±ÁúÁëÊ¿×ä",
@@ -9546,7 +9555,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30334] = {
 	     name = "Ç±ÁúÁë¹­±ø",
@@ -9577,7 +9586,6 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005},
 	     modelTextures =3,
-	     modelScale =13,
      },
      [30337] = {
 	     name = "Ç±ÁúÁëÓ°ÎÀÍ·Áì",
@@ -9588,6 +9596,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005,1007},
 	     modelTextures =3,
+	     modelScale =13,
      },
      [30338] = {
 	     name = "Ç±ÁúÁëÓ°ÎÀ",
@@ -9607,7 +9616,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30340] = {
 	     name = "Ç±ÁúÁë´Ì¿Í",
@@ -9627,6 +9636,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30342] = {
 	     name = "Ç±ÁúÁë½£Ê¿",
@@ -9654,8 +9664,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
-	     modelScale =13,
      },
      [30345] = {
 	     name = "Ç±ÁúÁë°µÎÀÍ·Áì",
@@ -9666,6 +9674,7 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005,1007},
 	     modelTextures =2,
+	     modelScale =13,
      },
      [30346] = {
 	     name = "Ç±ÁúÁë°µÎÀ",
@@ -9736,7 +9745,6 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
 	     modelTextures =2,
-	     modelScale =13,
      },
      [30353] = {
 	     name = "ÀîÈåÌùÉí»¤ÎÀ¸ßÊÖ",
@@ -9747,6 +9755,7 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1019},
 	     modelTextures =2,
+	     modelScale =13,
      },
      [30354] = {
 	     name = "ÀîÈåÌùÉíÊÌ´Ó",
@@ -9766,7 +9775,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30356] = {
 	     name = "ÀîÈåÌùÉíÊÌÅ®",
@@ -9786,7 +9795,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30358] = {
 	     name = "Ç±ÁúÁë½ð¼×ÎÀ",
@@ -9817,7 +9826,6 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
 	     modelTextures =2,
-	     modelScale =15,
      },
      [30361] = {
 	     name = "ÀîÈå",
@@ -9827,6 +9835,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1023},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30370] = {
 	     name = "»ðÔÉÊ¯",
@@ -9968,6 +9978,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30421] = {
 	     name = "»Æ½íÔô²¿ÏÂ",
@@ -10013,7 +10025,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [30426] = {
 	     name = "»Æ½íÔô°µÉÚ",
@@ -10033,7 +10044,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelScale =15,
+	     modelTextures =2,
      },
      [30428] = {
 	     name = "»Æ½íÔô¶ÓÂÊ",
@@ -10043,7 +10054,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
-	     modelTextures =2,
+	     modelScale =15,
      },
      [30429] = {
 	     name = "»Æ½íÔôÇ¹±ø",
@@ -10073,6 +10084,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
+	     modelTextures =2,
      },
      [30432] = {
 	     name = "»Æ½íÔô´¸ÊÖ",
@@ -10091,7 +10103,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [30434] = {
 	     name = "»Æ½íÔô¸«ÊÖ",
@@ -10111,8 +10122,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     modelTextures =2,
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30436] = {
 	     name = "»Æ½íÔô¾üºî",
@@ -10122,6 +10132,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30437] = {
 	     name = "»Æ½íÔôÅùö¨ÊÖ",
@@ -10140,7 +10152,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30439] = {
 	     name = "»Æ½íÔôµ¶±ø",
@@ -10170,7 +10181,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [30442] = {
 	     name = "»Æ½íÔô¿ø½«",
@@ -10190,7 +10201,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelScale =15,
+	     modelTextures =4,
      },
      [30444] = {
 	     name = "»Æ½íÔô¾üË¾Âí",
@@ -10200,7 +10211,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30445] = {
 	     name = "»Æ½íÔôÇ¹±ø",
@@ -10250,6 +10261,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =3,
      },
      [30450] = {
 	     name = "»Æ½íÔô¶ÜÆÆ±ø",
@@ -10268,8 +10280,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =2,
-	     modelScale =15,
      },
      [30452] = {
 	     name = "»Æ½íÔôÐ£Î¾",
@@ -10279,7 +10289,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =3,
+	     modelTextures =2,
+	     modelScale =15,
      },
      [30453] = {
 	     name = "»Æ½íÔô¸ÚÉÚ",
@@ -10309,7 +10320,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30456] = {
 	     name = "»Æ½íÔôÇ°·æ",
@@ -10349,9 +10360,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =16,
-	     unhitRate = 0.4,
-	     unhitSkills = {1018,1019},
+	     modelTextures =2,
      },
      [30460] = {
 	     name = "²¨²Å",
@@ -10361,6 +10370,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018,1019},
+	     modelScale =16,
+	     unhitRate = 0.4,
+	     unhitSkills = {1018,1019},
      },
      [30461] = {
 	     name = "",
@@ -10660,7 +10672,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30514] = {
 	     name = "±Ì²¨µº±øÓÂ",
@@ -10678,6 +10690,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30516] = {
 	     name = "»Æ½í¾«±ø",
@@ -10694,7 +10707,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelTextures =3,
      },
      [30518] = {
 	     name = "±Ì²¨µº¶¼Î¾",
@@ -10704,6 +10716,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
+	     modelTextures =3,
      },
      [30519] = {
 	     name = "±Ì²¨µºÍ»»÷Ê¿±ø",
@@ -10720,7 +10733,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
      },
      [30521] = {
 	     name = "±Ì²¨µº±øÓÂ",
@@ -10738,6 +10750,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [30523] = {
 	     name = "±Ì²¨µºÇ¹ÎÀ",
@@ -10754,7 +10767,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelTextures =2,
      },
      [30525] = {
 	     name = "±Ì²¨µºÇ¹ÎÀ",
@@ -10763,6 +10775,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =2,
      },
      [30526] = {
 	     name = "±Ì²¨µºÐ£Î¾",
@@ -10788,7 +10801,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30529] = {
 	     name = "±Ì²¨µºÉÚ±ø",
@@ -10806,6 +10818,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =3,
      },
      [30531] = {
 	     name = "±Ì²¨µºÍ»»÷Ê¿±ø",
@@ -10830,7 +10843,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
      },
      [30534] = {
 	     name = "±Ì²¨µºÖÐÀÉ½«",
@@ -10840,6 +10852,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1021},
+	     modelTextures =3,
      },
      [30535] = {
 	     name = "»Æ½í¾«±ø",
@@ -10856,7 +10869,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026},
-	     modelTextures =3,
      },
      [30537] = {
 	     name = "±Ì²¨µºÇ¹ÎÀ",
@@ -10883,6 +10895,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
      },
      [30540] = {
 	     name = "±Ì²¨µº¶ÜÎÀ",
@@ -10908,7 +10921,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     modelTextures =2,
      },
      [30543] = {
 	     name = "±Ì²¨µºÑ²ÂßÊ¿±ø",
@@ -10926,7 +10938,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30545] = {
 	     name = "±Ì²¨µºµ¶ÊÖ",
@@ -10944,6 +10956,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =4,
      },
      [30547] = {
 	     name = "±Ì²¨µº¶ÜÎÀ",
@@ -10968,9 +10981,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1022},
      },
      [30550] = {
 	     name = "ÕÅÂü³É",
@@ -10980,6 +10990,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1022},
      },
      [30551] = {
 	     name = "¼ýÓê1",
@@ -11192,7 +11205,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     modelTextures =3,
+	     modelTextures =4,
+	     modelScale =15,
      },
      [30651] = {
 	     name = "±ù·çÔ­ÌúÇ¹±ø",
@@ -11237,6 +11251,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =3,
      },
      [30656] = {
 	     name = "±ù·çÔ­Ã§·ò",
@@ -11253,8 +11268,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
-	     modelScale =15,
      },
      [30658] = {
 	     name = "±ù·çÔ­²Î½«",
@@ -11263,6 +11276,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1019},
+	     modelTextures =4,
+	     modelScale =15,
      },
      [30659] = {
 	     name = "±ù·çÔ­º·×ä",
@@ -11287,7 +11302,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =4,
      },
      [30662] = {
 	     name = "±ù·çÔ­²Ä¹Ù",
@@ -11305,7 +11319,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1005},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [30664] = {
 	     name = "±ù·çÔ­´Ì¿Í",
@@ -11323,7 +11337,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30666] = {
 	     name = "±ù·çÔ­ÖÐÎ¾",
@@ -11332,6 +11346,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =15,
      },
      [30667] = {
 	     name = "±ù·çÔ­·ü»÷Ê¿±ø",
@@ -11372,7 +11387,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30672] = {
 	     name = "±ù·çÔ­ÌúÇ¹±ø",
@@ -11391,7 +11405,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     modelTextures =3,
-	     modelScale =15,
      },
      [30674] = {
 	     name = "±ù·çÔ­Æ«½«",
@@ -11400,7 +11413,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009,1011},
-	     modelTextures =4,
+	     modelTextures =3,
+	     modelScale =15,
      },
      [30675] = {
 	     name = "±ù·çÔ­½üÎÀ",
@@ -11427,7 +11441,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30678] = {
 	     name = "±ù·çÔ­Í»»÷Ê¿±ø",
@@ -11445,6 +11459,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [30680] = {
 	     name = "±ù·çÔ­º·×ä",
@@ -11461,7 +11476,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelScale =15,
      },
      [30682] = {
 	     name = "±ù·çÔ­»¤¾ü",
@@ -11470,6 +11484,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
+	     modelScale =15,
      },
      [30683] = {
 	     name = "±ù·çÔ­´¸ÎÀ",
@@ -11494,7 +11509,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1001},
-	     modelTextures =4,
      },
      [30686] = {
 	     name = "±ù·çÔ­½üÎÀ",
@@ -11530,9 +11544,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1005},
-	     modelScale =15,
-	     unhitRate = 1,
-	     unhitSkills = {1014},
+	     modelTextures =4,
      },
      [30690] = {
 	     name = "ÕÅÑà",
@@ -11541,6 +11553,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =15,
+	     unhitRate = 1,
+	     unhitSkills = {1014},
      },
      [30700] = {
 	     name = "±ù·ç±©",
@@ -11700,7 +11715,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
      },
      [30743] = {
 	     name = "»Æ½í±øÓÂ",
@@ -11750,7 +11764,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [30748] = {
 	     name = "»Æ½íÉäµñÊ¿",
@@ -11800,7 +11814,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [30753] = {
 	     name = "»Æ½í¶ÜÎÀ",
@@ -11820,6 +11834,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =4,
      },
      [30755] = {
 	     name = "»Æ½í¶ÜÎÀ",
@@ -11856,7 +11871,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
      },
      [30759] = {
 	     name = "»Æ½í¾«Ó¢µ¶±ø",
@@ -11876,6 +11890,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
+	     modelTextures =3,
      },
      [30761] = {
 	     name = "»Æ½íÇ¹ÎÀ",
@@ -12002,7 +12017,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =2,
      },
      [30775] = {
 	     name = "»Æ½íÍ»»÷Ê¿±ø",
@@ -12022,6 +12036,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
      },
      [30777] = {
 	     name = "»Æ½í´óÁ¦Ê¿",
@@ -12049,9 +12064,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelScale =16,
-	     unhitRate = 1,
-	     unhitSkills = {1026,1027},
      },
      [30780] = {
 	     name = "ÕÅ½Ç",
@@ -12061,6 +12073,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
+	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1026,1027},
      },
      [30781] = {
 	     name = "°µ¼ý",
@@ -12251,7 +12266,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
      },
      [30830] = {
 	     name = "Ð°ÅÌÉ½½£×ä",
@@ -12278,6 +12292,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
+	     modelTextures =3,
      },
      [30833] = {
 	     name = "Ð°ÅÌÉ½¼×±øË¾Âí",
@@ -12538,9 +12553,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [30865] = {
 	     name = "ÐìÈÙ",
@@ -12550,6 +12562,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [30866] = {
 	     name = "Ð°ÅÌÉ½±ù´Ì1",
@@ -12691,7 +12706,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =2,
      },
      [30895] = {
 	     name = "¶¾Áú·å´ÔÁÖÇ¹±ø",
@@ -12711,6 +12725,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =2,
      },
      [30897] = {
 	     name = "¶¾Áú·åÍÀ·ò",
@@ -12729,7 +12744,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     modelTextures =3,
      },
      [30899] = {
 	     name = "¶¾Áú·å¶¼Í·",
@@ -12749,6 +12763,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [30901] = {
 	     name = "¶¾Áú·åÍÀ·ò",
@@ -12767,7 +12782,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
      },
      [30903] = {
 	     name = "¶¾Áú·å´ÔÁÖÇ¹±ø",
@@ -12787,7 +12801,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30905] = {
 	     name = "¶¾Áú·å¶¼Í·",
@@ -12797,7 +12811,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelScale =15,
+	     modelTextures =3,
      },
      [30906] = {
 	     name = "ºú³à¶ù",
@@ -12807,7 +12821,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010,1011},
-	     modelTextures =3,
+	     modelScale =15,
      },
      [30907] = {
 	     name = "¶¾Áú·å»æÃæ¹íµ¶±ø",
@@ -12837,7 +12851,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [30910] = {
 	     name = "¶¾Áú·åÓã²æ±ø",
@@ -12857,7 +12871,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [30912] = {
 	     name = "¶¾Áú·å¶¼Í·",
@@ -12877,6 +12891,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
      },
      [30914] = {
 	     name = "¶¾Áú·åÖÐÀÉ½«",
@@ -12913,7 +12928,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =3,
      },
      [30918] = {
 	     name = "¶¾Áú·å»æÃæ¹íµ¶±ø",
@@ -12933,7 +12947,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [30920] = {
 	     name = "¶¾Áú·åµ¶¶Ü±ø",
@@ -12953,6 +12967,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =4,
      },
      [30922] = {
 	     name = "¶¾Áú·åÆ«½«¾ü",
@@ -12962,7 +12977,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016,1017},
-	     modelTextures =4,
      },
      [30923] = {
 	     name = "¶¾Áú·åµ¶¶Ü±ø",
@@ -12992,6 +13006,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
+	     modelTextures =4,
      },
      [30926] = {
 	     name = "¶¾Áú·åÇ×ÎÀ",
@@ -13010,7 +13025,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
      },
      [30928] = {
 	     name = "¶¾Áú·åÓã²æ±ø",
@@ -13030,9 +13044,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1009},
-	     modelScale =16,
-	     unhitRate = 1,
-	     unhitSkills = {1026,1027},
+	     modelTextures =2,
      },
      [30930] = {
 	     name = "Å£¸¨",
@@ -13042,6 +13054,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
+	     modelScale =16,
+	     unhitRate = 1,
+	     unhitSkills = {1026,1027},
      },
      [30931] = {
 	     name = "°µ¼ý",
@@ -13468,7 +13483,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =4,
      },
      [31023] = {
 	     name = "»ÃÌì¹¬´Ì¿Í",
@@ -13486,7 +13500,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
+	     modelTextures =4,
      },
      [31025] = {
 	     name = "Î÷Á¹½£¿Í",
@@ -13513,6 +13527,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =2,
      },
      [31028] = {
 	     name = "»ÃÌì¹¬ÊØ±¸",
@@ -13523,7 +13538,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
-	     modelTextures =3,
      },
      [31029] = {
 	     name = "»ÃÌì¹¬ÐÜÆ¤ÎäÊ¿",
@@ -13541,7 +13555,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31031] = {
 	     name = "Î÷Á¹½£¿Í",
@@ -13586,6 +13600,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =2,
      },
      [31036] = {
 	     name = "»ÃÌì¹¬¶¼Î¾",
@@ -13596,7 +13611,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
-	     modelTextures =2,
      },
      [31037] = {
 	     name = "Î÷Á¹µÀÊ¿",
@@ -13614,7 +13628,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026},
-	     modelTextures =4,
+	     modelTextures =2,
      },
      [31039] = {
 	     name = "»ÃÌì¹¬´Ì¿Í",
@@ -13632,6 +13646,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =4,
      },
      [31041] = {
 	     name = "»ÃÌì¹¬ÏÉÈË",
@@ -13698,7 +13713,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
-	     modelTextures =2,
      },
      [31049] = {
 	     name = "»ÃÌì¹¬ÏÉ×Ó",
@@ -13725,6 +13739,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =2,
      },
      [31052] = {
 	     name = "»ÃÌì¹¬Æ«½«",
@@ -13751,7 +13766,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006},
-	     modelTextures =2,
      },
      [31055] = {
 	     name = "Î÷Á¹µÀÊ¿",
@@ -13769,7 +13783,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31057] = {
 	     name = "»ÃÌì¹¬ÐÜÆ¤ÎäÊ¿",
@@ -13796,9 +13810,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =18,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
+	     modelTextures =3,
      },
      [31060] = {
 	     name = "»ªÐÛ",
@@ -13809,6 +13821,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     modelScale =18,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [31061] = {
 	     name = "½£Æø1",
@@ -13996,7 +14011,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
      },
      [31113] = {
 	     name = "±±µØ³¤Ç¹±ø",
@@ -14014,6 +14028,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =3,
      },
      [31115] = {
 	     name = "Î÷Á¹Îä×ä",
@@ -14038,7 +14053,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
      },
      [31118] = {
 	     name = "³à»êÁëÐ£Î¾",
@@ -14049,6 +14063,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
+	     modelTextures =2,
      },
      [31119] = {
 	     name = "³à»êÁëÅ£½Ç±ø",
@@ -14065,7 +14080,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [31121] = {
 	     name = "³à»êÁëË«µ¶¿Í",
@@ -14083,6 +14097,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =2,
      },
      [31123] = {
 	     name = "³à»êÁëÉ±ÊÖ",
@@ -14173,7 +14188,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =4,
      },
      [31134] = {
 	     name = "³à»êÁëÆ«½«",
@@ -14184,6 +14198,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1013,1014},
+	     modelTextures =4,
      },
      [31135] = {
 	     name = "³à»êÁë¾«±ø",
@@ -14306,9 +14321,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelScale =14,
-	     unhitRate = 1,
-	     unhitSkills = {1014,1015},
      },
      [31150] = {
 	     name = "¶­×¿",
@@ -14319,6 +14331,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1015},
+	     modelScale =14,
+	     unhitRate = 1,
+	     unhitSkills = {1014,1015},
      },
      [31151] = {
 	     name = "°µ¼ý",
@@ -14447,6 +14462,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1015},
 	     dialogIDs = {10105},
+	     modelTextures =3,
+	     modelScale =14,
      },
      [31191] = {
 	     name = "Ìì¹«É½»Æ½íÑ²ÎÀ",
@@ -14487,7 +14504,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1019},
-	     modelTextures =3,
      },
      [31196] = {
 	     name = "Ìì¹«É½ÊÌÎÀ",
@@ -14505,8 +14521,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =4,
-	     modelScale =14,
+	     modelTextures =3,
      },
      [31198] = {
 	     name = "Ìì¹«É½ÊØÉ½´ó½«",
@@ -14517,7 +14532,8 @@ NpcDB = {
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
 	     dialogIDs = {10107},
-	     modelTextures =2,
+	     modelTextures =4,
+	     modelScale =14,
      },
      [31199] = {
 	     name = "Ìì¹«É½ËÀÊ¿",
@@ -14535,6 +14551,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022},
+	     modelTextures =2,
      },
      [31201] = {
 	     name = "Ìì¹«É½ÊØÎÀ",
@@ -14575,8 +14592,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
-	     modelTextures =2,
-	     modelScale =16,
      },
      [31206] = {
 	     name = "Ìì¹«É½½üÎÀÍ·Áì",
@@ -14587,6 +14602,8 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
 	     dialogIDs = {10109},
+	     modelTextures =2,
+	     modelScale =16,
      },
      [31207] = {
 	     name = "Ìì¹«É½½üÎÀ",
@@ -14603,7 +14620,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =2,
      },
      [31209] = {
 	     name = "Ìì¹«É½Á¦Ê¿",
@@ -14630,6 +14646,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
+	     modelTextures =2,
      },
      [31212] = {
 	     name = "Ìì¹«É½°µ²¿´Ì¿Í",
@@ -14646,7 +14663,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017},
-	     modelScale =16,
      },
      [31214] = {
 	     name = "Ñî·ï",
@@ -14657,7 +14673,7 @@ NpcDB = {
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
 	     dialogIDs = {10111},
-	     modelTextures =3,
+	     modelScale =16,
      },
      [31215] = {
 	     name = "Ìì¹«É½ÖØ¼×Æï±ø",
@@ -14684,6 +14700,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
+	     modelTextures =3,
      },
      [31218] = {
 	     name = "Ìì¹«É½¾«Ó¢¹­±ø",
@@ -14700,7 +14717,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020},
-	     modelTextures =3,
      },
      [31220] = {
 	     name = "Ìì¹«É½ÊÌÎÀ",
@@ -14718,7 +14734,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelScale =16,
+	     modelTextures =3,
      },
      [31222] = {
 	     name = "ÕÅ½Ç",
@@ -14729,6 +14745,7 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1022,1027},
 	     dialogIDs = {10113},
+	     modelScale =16,
      },
      [31225] = {
 	     name = "Ìì¹«É½·É½£",
@@ -14831,7 +14848,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1007},
-	     modelTextures =2,
+	     fightAI = {40},
      },
      [31251] = {
 	     name = "ÃÔÎíÁÖÑ²ÂßÊ¿±ø",
@@ -14858,6 +14875,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
+	     modelTextures =2,
      },
      [31254] = {
 	     name = "ÃÔÎíÁÖ¿´ÊØÉÚ±ø",
@@ -14890,7 +14908,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
      },
      [31258] = {
 	     name = "ÃÔÎíÁÖ·ü»÷½«Áì",
@@ -14927,6 +14944,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014},
+	     modelTextures =2,
      },
      [31262] = {
 	     name = "»Æ½í¿³µ¶ÊÖ",
@@ -14943,7 +14961,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31264] = {
 	     name = "»Æ½íËæÐÐ½ð´¯Ò½Éú",
@@ -14961,6 +14978,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
+	     modelTextures =3,
      },
      [31266] = {
 	     name = "ÃÔÎíÁÖ»Æ½íÔô½«",
@@ -14970,7 +14988,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
-	     modelTextures =3,
      },
      [31267] = {
 	     name = "»Æ½íÕ¶Âíµ¶±ø",
@@ -14997,7 +15014,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31270] = {
 	     name = "»Æ½í³¤Ç¹²½±ø",
@@ -15015,7 +15032,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31272] = {
 	     name = "»Æ½í¹­åóÊÖ",
@@ -15033,6 +15050,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1010},
+	     modelTextures =3,
      },
      [31274] = {
 	     name = "º«ÖÒ",
@@ -15082,7 +15100,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31280] = {
 	     name = "»Æ½íËæÐÐ½ð´¯Ò½Éú",
@@ -15100,17 +15117,18 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     unhitRate = 1,
-	     unhitSkills = {1001,1002},
+	     modelTextures =3,
      },
      [31282] = {
 	     name = "³ÌÔ¶Ö¾",
 	     title = "BOSS",
-	     modelID =324,
+	     modelID =200,
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1001,1002},
+	     unhitRate = 1,
+	     unhitSkills = {1001,1002},
      },
      [31283] = {
 	     name = "ÃÔÎíÁÖ¶¾Îí1",
@@ -15160,6 +15178,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1022},
+	     modelScale =16,
      },
      [31301] = {
 	     name = "Ñ×Ä§¿ßÊ¿±ø",
@@ -15176,7 +15195,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1018},
-	     modelTextures =4,
      },
      [31303] = {
 	     name = "Ñ×Ä§¿ß³¤êªÊ¿±ø",
@@ -15203,7 +15221,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
+	     modelTextures =4,
      },
      [31306] = {
 	     name = "Ñ×Ä§¿ß³¤Ç¹Ê¿±ø",
@@ -15222,7 +15240,6 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
 	     modelTextures =3,
-	     modelScale =16,
      },
      [31308] = {
 	     name = "Ñ×Ä§¿ß»Æ½íÊØ½«",
@@ -15232,7 +15249,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
-	     modelTextures =1,
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31309] = {
 	     name = "Ñ×Ä§¿ß¾«Èñ¹­±ø",
@@ -15250,7 +15268,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024},
-	     modelTextures =3,
+	     modelTextures =1,
      },
      [31311] = {
 	     name = "Ñ×Ä§¿ßÖØ¶Ü²½±ø",
@@ -15277,7 +15295,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31314] = {
 	     name = "Ñ×Ä§¿ßÊØÎÀ",
@@ -15295,8 +15313,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     modelTextures =3,
-	     modelScale =16,
+	     modelTextures =4,
      },
      [31316] = {
 	     name = "¾Þ¸«»Æ½íÊ×Áì",
@@ -15306,7 +15323,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1025},
-	     modelTextures =4,
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31317] = {
 	     name = "»Æ½íèÉÊ×±ø",
@@ -15324,6 +15342,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =4,
      },
      [31319] = {
 	     name = "»Æ½íËÀÊ¿",
@@ -15348,7 +15367,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
      },
      [31322] = {
 	     name = "Ñ×Ä§¿ßÇ¹ÎÀ",
@@ -15366,7 +15384,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021},
-	     modelScale =16,
+	     modelTextures =2,
      },
      [31324] = {
 	     name = "²¨²Å",
@@ -15376,7 +15394,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004},
-	     modelTextures =2,
+	     modelScale =16,
      },
      [31325] = {
 	     name = "»Æ½íÀÞ¹Ä±ø",
@@ -15394,6 +15412,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
+	     modelTextures =2,
      },
      [31327] = {
 	     name = "»Æ½íËé¹Ç²½±ø",
@@ -15418,7 +15437,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008},
-	     modelTextures =3,
      },
      [31330] = {
 	     name = "Ñ×Ä§¿ß¶ÜÎÀ",
@@ -15428,7 +15446,6 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
 	     modelTextures =3,
-	     modelScale =16,
      },
      [31331] = {
 	     name = "Ñ×Ä§¿ß¶ÜÎÀ",
@@ -15437,8 +15454,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1016},
-	     unhitRate = 1,
-	     unhitSkills = {1008,1009},
+	     modelTextures =3,
+	     modelScale =16,
      },
      [31332] = {
 	     name = "ÕÅ±¦",
@@ -15447,6 +15464,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1009},
+	     unhitRate = 1,
+	     unhitSkills = {1008,1009},
      },
      [31333] = {
 	     name = "»ðÇò",
@@ -15580,7 +15599,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
+	     modelTextures =2,
+	     modelScale =14,
      },
      [31371] = {
 	     name = "»Æ·çÁëÑ²ÂßÊ¿±ø",
@@ -15604,7 +15624,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31374] = {
 	     name = "»Æ·çÁëÑ¸½Ý³âºò",
@@ -15620,6 +15640,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
+	     modelTextures =4,
      },
      [31376] = {
 	     name = "»Æ·çÁë»Æ½íº··Ë",
@@ -15634,7 +15655,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelScale =14,
      },
      [31378] = {
 	     name = "»Æ·çÁëÌúÑª½«Áì",
@@ -15643,7 +15663,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
+	     modelScale =14,
      },
      [31379] = {
 	     name = "»Æ·çÁë»Æ½íÐÂ¾ü",
@@ -15667,7 +15687,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =4,
+	     modelTextures =3,
      },
      [31382] = {
 	     name = "»Æ·çÁë¾«Èñµ¶±ø",
@@ -15683,6 +15703,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
+	     modelTextures =4,
      },
      [31384] = {
 	     name = "»Æ·çÁë¹­¼ýÊÖ",
@@ -15697,8 +15718,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =4,
-	     modelScale =14,
      },
      [31386] = {
 	     name = "»Æ·çÁë²½±øÐ£Î¾",
@@ -15707,6 +15726,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
+	     modelTextures =4,
+	     modelScale =14,
      },
      [31387] = {
 	     name = "»Æ·çÁëÇá¼×±ø",
@@ -15756,8 +15777,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
-	     modelTextures =3,
-	     modelScale =14,
      },
      [31394] = {
 	     name = "ÕÔºë",
@@ -15766,6 +15785,8 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
+	     modelTextures =3,
+	     modelScale =14,
      },
      [31395] = {
 	     name = "»Æ½íËÀÊ¿",
@@ -15787,7 +15808,6 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =2,
      },
      [31398] = {
 	     name = "»Æ·çÁëËæÐÐ¾üÒ½",
@@ -15803,7 +15823,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31400] = {
 	     name = "»Æ·çÁë¾«Ó¢²½±ø",
@@ -15819,7 +15839,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
-	     modelScale =16,
+	     modelTextures =3,
      },
      [31402] = {
 	     name = "ÕÅÁº",
@@ -15827,6 +15847,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 1,
 	     phaseType = PhaseType.Thunder,
+	     modelScale =16,
      },
      [31403] = {
 	     name = "»ÆÉ³Ðý·ç",
@@ -15972,7 +15993,6 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
      },
      [31459] = {
 	     name = "½£×ä",
@@ -15989,6 +16009,7 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
+	     modelTextures =3,
      },
      [31461] = {
 	     name = "É±ÊÖ",
@@ -16104,7 +16125,6 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
-	     modelTextures =2,
      },
      [31477] = {
 	     name = "´ÔÁÖÇ¹±ø",
@@ -16120,7 +16140,7 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =3,
+	     modelTextures =2,
      },
      [31479] = {
 	     name = "»æÃæ¹íµ¶±ø",
@@ -16132,12 +16152,33 @@ NpcDB = {
      },
      [31480] = {
 	     name = "ÐìÈÙ",
-	     title = "³ÛÔ®»¢ÀÎ¹Ø",
 	     modelID =206,
 	     desc = "µÚÆß³¡",
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
+	     modelTextures =3,
+     },
+     [31481] = {
+	     name = "åó³µ1",
+	     modelID =2008,
+     },
+     [31482] = {
+	     name = "åó³µ2",
+	     modelID =2008,
+     },
+     [31483] = {
+	     name = "åó³µ3",
+	     modelID =2008,
+     },
+     [31484] = {
+	     name = "åó³µ4",
+	     modelID =2008,
+     },
+     [31485] = {
+	     name = "åó³µ5",
+	     title = "³ÛÔ®»¢ÀÎ¹Ø",
+	     modelID =2008,
      },
      [39000] = {
 	     name = "ÉñËã×Ó",
@@ -16148,7 +16189,6 @@ NpcDB = {
 	     dropID =31,
 	     taoExpPrize =300,
 	     combatNumPrize =100,
-	     modelScale =14,
      },
      [39001] = {
 	     name = "ÉñÁú½ÌÖ÷",
@@ -16285,6 +16325,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1028},
 	     dialogIDs = {27010,27012,27011},
+	     modelScale =14,
      },
      [39050] = {
 	     name = "Ìì×ÓÁÔ½ð³¡»î¶¯Ê¹",
@@ -16403,8 +16444,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39996},
-	     modelTextures =2,
-	     modelScale =12,
+	     modelScale =16,
      },
      [50001] = {
 	     name = "Ê¬Ñý",
@@ -16436,7 +16476,8 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =6,
+	     modelTextures =2,
+	     modelScale =12,
      },
      [50004] = {
 	     name = "Ê¬õ¿",
@@ -16479,7 +16520,7 @@ NpcDB = {
 	     dropID =25,
 	     bindMoneyPrize =400000,
 	     taoExpPrize =172,
-	     modelScale =16,
+	     modelScale =6,
      },
      [50008] = {
 	     name = "¹íÍõ",
@@ -16490,8 +16531,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39997},
-	     modelTextures =3,
-	     modelScale =12,
+	     modelScale =16,
      },
      [50009] = {
 	     name = "¶ñ¹í",
@@ -16556,6 +16596,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =3,
 	     modelScale =12,
      },
      [50015] = {
@@ -16569,8 +16610,7 @@ NpcDB = {
 	     dropID =26,
 	     expPrize =150000,
 	     bindMoneyPrize =100000,
-	     modelTextures =2,
-	     modelScale =13,
+	     modelScale =12,
      },
      [50016] = {
 	     name = "Ê¬Ñý",
@@ -16581,7 +16621,8 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39998},
-	     modelScale =6,
+	     modelTextures =2,
+	     modelScale =13,
      },
      [50017] = {
 	     name = "Ê¬õ¿",
@@ -16624,8 +16665,7 @@ NpcDB = {
 	     dropID =27,
 	     bindMoneyPrize =100000,
 	     taoExpPrize =39,
-	     modelTextures =3,
-	     modelScale =13,
+	     modelScale =6,
      },
      [50021] = {
 	     name = "¶ñ¹í",
@@ -16637,7 +16677,7 @@ NpcDB = {
 	     skillCfg = {1012},
 	     dialogIDs = {39999},
 	     modelTextures =3,
-	     modelScale =12,
+	     modelScale =13,
      },
      [50022] = {
 	     name = "Ð¡¹í",
@@ -16683,6 +16723,8 @@ NpcDB = {
 	     dropID =28,
 	     expPrize =160000,
 	     bindMoneyPrize =80000,
+	     modelTextures =3,
+	     modelScale =12,
      },
      [50026] = {
 	     name = "¾ÅÎ²ºü",
@@ -16692,7 +16734,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =1,
      },
      [50027] = {
 	     name = "Ò»Î²ºü",
@@ -16735,7 +16776,7 @@ NpcDB = {
 	     dropID =29,
 	     bindMoneyPrize =80000,
 	     taoExpPrize =45,
-	     modelScale =11,
+	     modelTextures =1,
      },
      [50031] = {
 	     name = "·ßÅ­µÄµØÄ§",
@@ -16745,7 +16786,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelScale =9,
+	     modelScale =11,
      },
      [50032] = {
 	     name = "µØ¾«",
@@ -16788,7 +16829,7 @@ NpcDB = {
 	     dropID =30,
 	     bindMoneyPrize =80000,
 	     potencyPrize =300000,
-	     modelScale =16,
+	     modelScale =9,
      },
      [50036] = {
 	     name = "ÎÞÃûÀÏÑý",
@@ -16798,6 +16839,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelScale =16,
      },
      [50037] = {
 	     name = "Ëæ´ÓÐ¡Ñý",
@@ -16927,6 +16969,7 @@ NpcDB = {
 	     name = "»¤·¨Éñ",
 	     modelID =559,
 	     desc = "×¥³èÍæ·¨£¨30¼¶£©",
+	     modelScale =10,
      },
      [60015] = {
 	     name = "òðÑý",
@@ -16972,11 +17015,13 @@ NpcDB = {
 	     name = "»¢Ñý",
 	     modelID =195,
 	     desc = "×¥³èÍæ·¨£¨30¼¶£©",
+	     modelScale =10,
      },
      [60024] = {
 	     name = "ÖÐÔ­ÂÒ±ø",
 	     modelID =184,
 	     desc = "×¥³èÍæ·¨£¨30¼¶£©",
+	     modelScale =11,
      },
      [60025] = {
 	     name = "²ÉÒ©ÑýÍ¯",
@@ -17223,49 +17268,49 @@ NpcDB = {
 	     title = "·âÉñÌ¨ÌôÕ½",
 	     modelID =560,
 	     desc = "·âÉñÌ¨ÀÞÌ¨",
-	     dialogIDs = {80001, 80002},
+	     dialogIDs = {80001,80002},
      },
      [60501] = {
 	     name = "ÌìÊàÊØÎÀ",
 	     modelID =1,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80004, 80005, 80006},
+	     dialogIDs = {80004,80005,80006},
      },
      [60502] = {
 	     name = "ÌìçáÊØÎÀ",
 	     modelID =3,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80007, 80008, 80009},
+	     dialogIDs = {80007,80008,80009},
      },
      [60503] = {
 	     name = "ÓñºâÊØÎÀ",
 	     modelID =5,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80010, 80011, 80012},
+	     dialogIDs = {80010,80011,80012},
      },
      [60504] = {
 	     name = "¿ªÑôÊØÎÀ",
 	     modelID =7,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80013, 80014, 80015},
+	     dialogIDs = {80013,80014,80015},
      },
      [60505] = {
 	     name = "Ììè¯ÊØÎÀ",
 	     modelID =9,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80016, 80017, 80018},
+	     dialogIDs = {80016,80017,80018},
      },
      [60506] = {
 	     name = "Ò¡¹âÊØÎÀ",
 	     modelID =11,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80019, 80020, 80021},
+	     dialogIDs = {80019,80020,80021},
      },
      [60507] = {
 	     name = "ÌìÈ¨ÊØÎÀ",
 	     modelID =13,
 	     desc = "·âÉñÌ¨µÚÒ»²ã",
-	     dialogIDs = {80022, 80023, 80024},
+	     dialogIDs = {80022,80023,80024},
      },
      [60508] = {
 	     name = "²ãÖ÷",

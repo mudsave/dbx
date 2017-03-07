@@ -84,7 +84,7 @@ function DropManager:addItemRewordToList(role,rewardNode)
 end
 
 -- 战斗奖励总接口
-function DropManager:dealWithRewards(FightEndResults,scriptID,monsterDBIDs, fightID)
+function DropManager:dealWithRewards(FightEndResults,scriptID,monsterDBIDs, fightID,fightInfo)
 	local bWin
 	for playerID,isWin in pairs(FightEndResults) do
 		bWin = isWin
@@ -95,6 +95,10 @@ function DropManager:dealWithRewards(FightEndResults,scriptID,monsterDBIDs, figh
 	end
 	-- 如果没有这个配置
 	if not ScriptFightDB[scriptID] then
+		-- 怪物掉落奖励
+		self:dealMonsterReword(FightEndResults, monsterDBIDs , fightID,fightInfo)
+		-- 最后再从记录的表中 处理奖励和提示信息
+		self:dealRewardsTip(FightEndResults, fightID)
 		return
 	end
 	-- 没有瑞兽奖励配置不是这个接口
@@ -104,7 +108,7 @@ function DropManager:dealWithRewards(FightEndResults,scriptID,monsterDBIDs, figh
 	-- 脚本奖励
 	self:dealSriptReword(FightEndResults, scriptID , fightID)
 	-- 怪物掉落奖励
-	self:dealMonsterReword(FightEndResults, monsterDBIDs , fightID)
+	self:dealMonsterReword(FightEndResults, monsterDBIDs , fightID,fightInfo)
 	-- 最后再从记录的表中 处理奖励和提示信息
 	self:dealRewardsTip(FightEndResults, fightID)
 end
@@ -148,7 +152,7 @@ end
 
 local randRewordWeight = 100
 
-function DropManager:dealMonsterReword(FightEndResults,monsterDBIDs, fightID)
+function DropManager:dealMonsterReword(FightEndResults,monsterDBIDs, fightID,fightInfo)
 	-- 玩家的人数 
 	local playerNum ,curPlayer = self:getPlayerNum(FightEndResults)
 	-- 物品的临时表
@@ -162,7 +166,7 @@ function DropManager:dealMonsterReword(FightEndResults,monsterDBIDs, fightID)
 			for roleID,isWin in pairs(FightEndResults) do
 				local player = g_entityMgr:getPlayerByID(roleID)
 				if player then
-					self:doMonsterValueReword(monsterConfig, player, playerNum,fightID)
+					self:doMonsterValueReword(monsterConfig, player, playerNum,fightID,fightInfo)
 				else
 					local pet = g_entityMgr:getPet(roleID)
 					if pet and (pet:getPetStatus() == PetStatus.Fight or pet:getPetStatus() == PetStatus.Ready) then
@@ -367,20 +371,20 @@ function DropManager:getCompareLevel(monsterConfig, role, fightID)
 			local rand = math.random(100)
 			local itemInfo = {}
 			local allItem = {}
-			if rand >= 1 and rand <= 50 then
+			if rand >= 1 and rand <= 80 then
 				itemInfo = nil
-			elseif rand > 50 and rand <= 60 then
+			elseif rand > 80 and rand <= 84 then
 				packetHandler:addItemsToPacket(1051005 ,1)
 				itemInfo.itemID = 1051005
 				itemInfo.itemNum = 1
-			elseif rand > 60 and rand <= 100 then
+			elseif rand > 84 and rand <= 100 then
 				packetHandler:addItemsToPacket(1051006 ,1)
 				itemInfo.itemID = 1051006
 				itemInfo.itemNum = 1
 			end
 			if table.size(itemInfo) > 0 then
 				table.insert(allItem,itemInfo)
-				self:sendRewardMessageTip(role, 8, allItem)
+				self:sendRewardMessageTip(role, 11, allItem)
 			end
 		end
 	end
@@ -453,7 +457,48 @@ function DropManager:getPrizeFormula(role, playerNum, value, type)
 	return nil
 end
 
-function DropManager:doMonsterValueReword(monsterConfig, role, playerNum,fightID)
+function DropManager:_getChangedRewardValue(oldValue, mode,value)
+	if mode == "value" then
+		return oldValue + value
+	elseif mode == "percent" then
+		return oldValue + math.floor(oldValue*(value/100))
+	else
+		return oldValue
+	end
+end
+
+function DropManager:monsterDropFactor(rewardNode,fightInfo)
+	if (not fightInfo) or (not fightInfo.common) then
+		return
+	end
+	if rewardNode.exp and fightInfo.common.exp then
+		local info = fightInfo.common.exp
+		local mode = info.mode
+		local value = info.value
+		rewardNode.exp = self:_getChangedRewardValue(rewardNode.exp, mode, value)
+	end
+	if rewardNode.subMoney and fightInfo.common.money then
+		local info = fightInfo.common.money
+		local mode = info.mode
+		local value = info.value
+		rewardNode.subMoney = self:_getChangedRewardValue(rewardNode.subMoney, mode, value)
+	end
+	if rewardNode.tao and fightInfo.common.tao then
+		local info = fightInfo.common.tao
+		local mode = info.mode
+		local value = info.value
+		rewardNode.tao = self:_getChangedRewardValue(rewardNode.tao, mode, value)
+
+	end
+	if rewardNode.potency and fightInfo.common.pot then
+		local info = fightInfo.common.pot
+		local mode = info.mode
+		local value = info.value
+		rewardNode.potency = self:_getChangedRewardValue(rewardNode.potency, mode, value)
+	end
+end
+
+function DropManager:doMonsterValueReword(monsterConfig, role, playerNum,fightID,fightInfo)
 	-- 把配置转化过来
 	local rewardNode = {}
 	-- 经验减少
@@ -464,6 +509,7 @@ function DropManager:doMonsterValueReword(monsterConfig, role, playerNum,fightID
 	rewardNode.tao		= self:getPrizeFormula(role,playerNum,monsterConfig.taoExpPrize, DropType.PlayerTao)
 	rewardNode.combatNum= self:getPrizeFormula(role,playerNum,monsterConfig.combatNumPrize, nil)
 	rewardNode.potency	= self:getPrizeFormula(role,playerNum,monsterConfig.potencyPrize, DropType.Pot)
+	self:monsterDropFactor(rewardNode,fightInfo)
 	if instanceof(role, Pet) then
 		rewardNode.petTao = self:getPrizeFormula(role,playerNum,monsterConfig.petTaoPrize, DropType.PetTao)
 	end

@@ -23,7 +23,7 @@ function EctypeSystem:__init()
 		[FightEvents_SS_FightEnd_afterClient]            = EctypeSystem.onFightEndAfter,
 		-- 连环副本传送门
 		[EctypeEvents_CS_TransferDoor]                   = EctypeSystem.onTransferDoor,
-		-- 解散队伍和退出队伍
+		-- 解散队伍
 		[TeamEvents_SS_DissolveEctypeTeam]               = EctypeSystem.onDissolveEctypeTeam,
 		-- 暂离队伍
 		[TeamEvents_SS_StepOutTeam]                      = EctypeSystem.onTeamMemberStepOut,
@@ -37,6 +37,8 @@ function EctypeSystem:__init()
 		[SceneEvent_SS_AttackEffect]                     = EctypeSystem.onAttackEffect,
 		-- 副本巡逻进入战斗
 		[EctypeEvents_CS_EnterPatrolFight]               = EctypeSystem.onEnterPatrolFight,
+		-- 退出队伍
+		[TeamEvents_SS_QuitTeam]                         = EctypeSystem.onEctypeQuitTeam,
 	}
 end
 
@@ -378,6 +380,16 @@ function EctypeSystem:startPatrolFight(player, scriptID)
 	end
 	local fightID = g_fightMgr:startScriptFight(finalList, scriptID, nil, FightBussinessType.EctypePatrol)
 	return fightID
+end
+
+--退出副本队伍
+function EctypeSystem:onEctypeQuitTeam(event)
+	local params = event:getParams()
+	local playerID = params[1]
+	local player = g_entityMgr:getPlayerByID(playerID)
+	if player then
+		g_ectypeMgr:quitEctypeTeam(player)
+	end
 end
 
 function EctypeSystem.getInstance()

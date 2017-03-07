@@ -173,6 +173,9 @@ function FightActionCheck.catch(fight,role,context)
 	if not target then
 		return false
 	end
+	if target:getLifeState() == RoleLifeState.Dead then
+		return false
+	end
 	if not instanceof(target, FightMonster) then
 		return false
 	end

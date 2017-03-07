@@ -91,6 +91,22 @@ function ManagedApp.onTileChange(playerID)
 	end
 end
 
+function ManagedApp.onReceive(...)
+	return RemoteEventProxy.receive(...)
+end
+
+function ManagedApp.onWReceive(...)
+	return RemoteEventProxy.wreceive(...)
+end
+
+-- lua出错处理接口
+-- 可提供的功能
+-- 1,直接返回错误信息,供C++层打印
+-- 2,在该函数中重定向错误信息
+function ManagedApp.onLuaError(errMsg)
+	print(("%s\n%s"):format(tostring(errMsg),debug.traceback()))
+end
+
 function ManagedApp.close()
 	print("World Server is closing!")
 	g_playerMgr:kickAllPlayer()

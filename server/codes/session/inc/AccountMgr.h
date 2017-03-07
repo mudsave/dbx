@@ -7,6 +7,7 @@
 #define __ACCOUNT_MGR_H_
 
 #include <map>
+#include <vector>
 
 enum _AccountState
 {
@@ -128,22 +129,65 @@ public:
 		return (m_savedAccounts[userName].password == passwd);
 	}
 
+	void saveAccountRoleInfo(int accountID, std::vector<int>& roleList)
+	{
+		m_accountRoleInfo.insert(make_pair(accountID, roleList));
+	}
+
+	bool verifyRoleID(int accountID,int roleID)
+	{
+		std::vector<int> &roleList = m_accountRoleInfo[accountID];
+		std::vector<int>::iterator iter = roleList.begin();
+		for (; iter != roleList.end(); iter++ )
+		{
+			if (*iter == roleID)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void updateRoleID(int accountID, int roleID,bool add)
+	{
+		std::vector<int> &roleList = m_accountRoleInfo[accountID];
+		if (add)
+		{
+			roleList.push_back(roleID);
+		}
+		else
+		{
+			std::vector<int>::iterator iter = roleList.begin();
+			for ( ; iter != roleList.end(); iter++ )
+			{
+				if (*iter == roleID)
+				{
+					roleList.erase(iter);
+					break;
+				}
+			}	
+		}
+	}
+
 private:
 	struct SavedAccountInfo{
 		int accountId;
 		std::string password;
 		SavedAccountInfo(){}
-		SavedAccountInfo(int _id, std::string _pass):
-			accountId(_id), password(_pass){}
+		SavedAccountInfo(int _id, std::string _pass):accountId(_id), password(_pass)
+		{
+		}
 	};
 public:
 	typedef std::map<int, AccountInfo> AccountMap;
+	typedef std::map<int,std::vector<int> >AccountRoleInfo;
 	typedef AccountMap::iterator AccountMapIter;
 	typedef std::map<std::string, SavedAccountInfo> SavedAccountInfoMap;
 
 private:
 	AccountMap				m_accounts;
 	SavedAccountInfoMap		m_savedAccounts;
+	AccountRoleInfo			m_accountRoleInfo;
 };
 
 extern AccountMgr g_accountMgr;

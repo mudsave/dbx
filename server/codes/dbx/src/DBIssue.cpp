@@ -84,8 +84,6 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex
 
 bool DBIssueCallSP::OnProgress()
 {
-    TRACE0_L0( "DBIssueCallSP::OnProgress.SPSPSPSPSPSPSPSPSPSPSPSPSPSPSP\n" );
-
     DBInterfaceMysql * pdbInterface = static_cast<DBInterfaceMysql *>(m_dbInterface);
 
     char * pszQueryBuffer = pdbInterface->GetQueryBuffer();
@@ -177,7 +175,6 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID, handle p_linkInd
 
 bool DBIssueCallSQL::OnProgress()
 {
-    TRACE0_L0("DBIssueCallSQL::OnProgress.SQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQLSQL\n");
     const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
     bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
     return success;

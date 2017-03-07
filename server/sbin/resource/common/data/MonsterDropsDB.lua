@@ -54,18 +54,6 @@ MonsterDropsDB = {
 			dropItemCount = {1},
 			dropItemPercent = 1
 		},
-		[1051005] = {
-			dropItemID = 1051005,
-			dropItemName = "ÕÅ½Ç»­Ïñ",
-			dropItemCount = {1},
-			dropItemPercent = 2
-		},
-		[1051006] = {
-			dropItemID = 1051006,
-			dropItemName = "ÆÆËéîø¼×",
-			dropItemCount = {1},
-			dropItemPercent = 3
-		},
 		[1051007] = {
 			dropItemID = 1051007,
 			dropItemName = "Î÷Á¹¾üÐ¬",
@@ -1091,6 +1079,7 @@ MonsterDropsDB = {
 		},
 	},
 	[24] = {
+		dropKindCount ={0,1},
 		[1021001] = {
 			dropItemID = 1021001,
 			dropItemName = "¾­ÑéÊé",
@@ -1123,6 +1112,7 @@ MonsterDropsDB = {
 		},
 	},
 	[25] = {
+		dropKindCount ={0,1},
 		[1021002] = {
 			dropItemID = 1021002,
 			dropItemName = "µÀÐÐµ¤",
@@ -1155,6 +1145,7 @@ MonsterDropsDB = {
 		},
 	},
 	[26] = {
+		dropKindCount ={0,1},
 		[1021001] = {
 			dropItemID = 1021001,
 			dropItemName = "¾­ÑéÊé",
@@ -1199,6 +1190,7 @@ MonsterDropsDB = {
 		},
 	},
 	[27] = {
+		dropKindCount ={0,1},
 		[1021002] = {
 			dropItemID = 1021002,
 			dropItemName = "µÀÐÐµ¤",
@@ -1243,6 +1235,7 @@ MonsterDropsDB = {
 		},
 	},
 	[28] = {
+		dropKindCount ={0,1},
 		[1021001] = {
 			dropItemID = 1021001,
 			dropItemName = "¾­ÑéÊé",
@@ -1263,6 +1256,7 @@ MonsterDropsDB = {
 		},
 	},
 	[29] = {
+		dropKindCount ={0,1},
 		[1021002] = {
 			dropItemID = 1021002,
 			dropItemName = "µÀÐÐµ¤",
@@ -1283,6 +1277,7 @@ MonsterDropsDB = {
 		},
 	},
 	[30] = {
+		dropKindCount ={0,1},
 		[1021003] = {
 			dropItemID = 1021003,
 			dropItemName = "Ç±ÄÜµ¤",
@@ -1300,6 +1295,384 @@ MonsterDropsDB = {
 			dropItemName = "ÌåÁ¦µ¤",
 			dropItemCount = {1},
 			dropItemPercent = 25
+		},
+	},
+	[31] = {
+		dropKindCount ={1,1},
+		[1062101] = {
+			dropItemID = 1062101,
+			dropItemName = "Ð«×Ó",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062102] = {
+			dropItemID = 1062102,
+			dropItemName = "Ð«×Ó",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062103] = {
+			dropItemID = 1062103,
+			dropItemName = "¿ñÑôÄ§Ð«",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062104] = {
+			dropItemID = 1062104,
+			dropItemName = "¿ñÑôÄ§Ð«",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062105] = {
+			dropItemID = 1062105,
+			dropItemName = "ÁáççÄ§Ð«",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062106] = {
+			dropItemID = 1062106,
+			dropItemName = "Ä®»ÊÄ§Ð«",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[32] = {
+		dropKindCount ={1,1},
+		[1062111] = {
+			dropItemID = 1062111,
+			dropItemName = "Ë®Å£",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062112] = {
+			dropItemID = 1062112,
+			dropItemName = "ÇàÈÖÉñÅ£",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062113] = {
+			dropItemID = 1062113,
+			dropItemName = "ÒøËªÉñÅ£",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062114] = {
+			dropItemID = 1062114,
+			dropItemName = "ÒøËªÉñÅ£",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062115] = {
+			dropItemID = 1062115,
+			dropItemName = "Áð»ðÉñÅ£",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062116] = {
+			dropItemID = 1062116,
+			dropItemName = "Áð»ðÉñÅ£",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[33] = {
+		dropKindCount ={1,1},
+		[1062121] = {
+			dropItemID = 1062121,
+			dropItemName = "ÏÉº×",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062122] = {
+			dropItemID = 1062122,
+			dropItemName = "¿ÕÉ£Óðº×",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062123] = {
+			dropItemID = 1062123,
+			dropItemName = "¿ÕÉ£Óðº×",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062124] = {
+			dropItemID = 1062124,
+			dropItemName = "ÇàÁÖÓðº×",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062125] = {
+			dropItemID = 1062125,
+			dropItemName = "ÇàÁÖÓðº×",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062126] = {
+			dropItemID = 1062126,
+			dropItemName = "ÇïÏüÓðº×",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[34] = {
+		dropKindCount ={1,1},
+		[1062131] = {
+			dropItemID = 1062131,
+			dropItemName = "±ª×Ó",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062132] = {
+			dropItemID = 1062132,
+			dropItemName = "×·¹â±ª",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062133] = {
+			dropItemID = 1062133,
+			dropItemName = "×·¹â±ª",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062134] = {
+			dropItemID = 1062134,
+			dropItemName = "ÔÂÓ°±ª",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062135] = {
+			dropItemID = 1062135,
+			dropItemName = "ÔÂÓ°±ª",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062136] = {
+			dropItemID = 1062136,
+			dropItemName = "Ë²»Ô±ª",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[35] = {
+		dropKindCount ={1,1},
+		[1062141] = {
+			dropItemID = 1062141,
+			dropItemName = "ºüÀê",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062142] = {
+			dropItemID = 1062142,
+			dropItemName = "÷ÈÑæÁéºü",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062143] = {
+			dropItemID = 1062143,
+			dropItemName = "÷ÈÑæÁéºü",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062144] = {
+			dropItemID = 1062144,
+			dropItemName = "±ùÎÆÁéºü",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062145] = {
+			dropItemID = 1062145,
+			dropItemName = "±ùÎÆÁéºü",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062146] = {
+			dropItemID = 1062146,
+			dropItemName = "Ò¹Ú¤Áéºü",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[36] = {
+		dropKindCount ={1,1},
+		[1062151] = {
+			dropItemID = 1062151,
+			dropItemName = "°×Ê¨",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062152] = {
+			dropItemID = 1062152,
+			dropItemName = "ÒøÑ©Ê¨",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062153] = {
+			dropItemID = 1062153,
+			dropItemName = "ÒøÑ©Ê¨",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062154] = {
+			dropItemID = 1062154,
+			dropItemName = "·üÄ§Ê¨",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062155] = {
+			dropItemID = 1062155,
+			dropItemName = "·üÄ§Ê¨",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062156] = {
+			dropItemID = 1062156,
+			dropItemName = "ÕòÑýÊ¨",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[37] = {
+		dropKindCount ={1,1},
+		[1062161] = {
+			dropItemID = 1062161,
+			dropItemName = "¹·ÐÜ",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062162] = {
+			dropItemID = 1062162,
+			dropItemName = "ÁÑµØÐÜ",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062163] = {
+			dropItemID = 1062163,
+			dropItemName = "ÁÑµØÐÜ",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062164] = {
+			dropItemID = 1062164,
+			dropItemName = "Ìú±³ÐÜ",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062165] = {
+			dropItemID = 1062165,
+			dropItemName = "Ìú±³ÐÜ",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062166] = {
+			dropItemID = 1062166,
+			dropItemName = "Óñ·åÐÜ",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[38] = {
+		dropKindCount ={1,1},
+		[1062171] = {
+			dropItemID = 1062171,
+			dropItemName = "¶ª¶ª",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062172] = {
+			dropItemID = 1062172,
+			dropItemName = "³É³É",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062173] = {
+			dropItemID = 1062173,
+			dropItemName = "ÍÌÍÌ",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062174] = {
+			dropItemID = 1062174,
+			dropItemName = "ÃÈÃÈ",
+			dropItemCount = {1},
+			dropItemPercent = 10
+		},
+	},
+	[39] = {
+		dropKindCount ={1,1},
+		[1062181] = {
+			dropItemID = 1062181,
+			dropItemName = "÷è÷ë",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062182] = {
+			dropItemID = 1062182,
+			dropItemName = "±ÌË®÷è÷ë",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062183] = {
+			dropItemID = 1062183,
+			dropItemName = "±ÌË®÷è÷ë",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062184] = {
+			dropItemID = 1062184,
+			dropItemName = "º£ÆÇ÷è÷ë",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062185] = {
+			dropItemID = 1062185,
+			dropItemName = "º£ÆÇ÷è÷ë",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062186] = {
+			dropItemID = 1062186,
+			dropItemName = "Óü»ð÷è÷ë",
+			dropItemCount = {1},
+			dropItemPercent = .5
+		},
+	},
+	[40] = {
+		dropKindCount ={1,1},
+		[1062191] = {
+			dropItemID = 1062191,
+			dropItemName = "Ö©Öë",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+		[1062192] = {
+			dropItemID = 1062192,
+			dropItemName = "×Ï½ðÖë",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062193] = {
+			dropItemID = 1062193,
+			dropItemName = "×Ï½ðÖë",
+			dropItemCount = {1},
+			dropItemPercent = 20
+		},
+		[1062194] = {
+			dropItemID = 1062194,
+			dropItemName = "¾øÃüÖë",
+			dropItemCount = {1},
+			dropItemPercent = 8
+		},
+		[1062195] = {
+			dropItemID = 1062195,
+			dropItemName = "¾øÃüÖë",
+			dropItemCount = {1},
+			dropItemPercent = 1.5
+		},
+		[1062196] = {
+			dropItemID = 1062196,
+			dropItemName = "¹ÂÐÇÖë",
+			dropItemCount = {1},
+			dropItemPercent = .5
 		},
 	},
 

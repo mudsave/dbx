@@ -21,6 +21,12 @@ function ActivitySystem:__release()
 
 end
 
+-- 活动更新按钮
+function ActivitySystem:notifyActivityPageUpdateBtn(player,activityId,isOpen)
+	local event = Event.getEvent(ActivityEvent_SC_notifyActivityPageUpdateBtn,activityId,isOpen)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
 function ActivitySystem.getInstance()
 	return ActivitySystem()
 end

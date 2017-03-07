@@ -290,12 +290,12 @@ function TaskFactory:createDailyTaskFromDB(player, taskData)
 	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
 	if hasTarget then
 		if dailyTask:canEnd() then
-			dailyTask:stateChange(TaskStatus.Done)
+			dailyTask:stateChange(TaskStatus.Done,true)
 		else
-			dailyTask:stateChange(TaskStatus.Active)
+			dailyTask:stateChange(TaskStatus.Active,true)
 		end
 	else
-		dailyTask:stateChange(TaskStatus.Done)
+		dailyTask:stateChange(TaskStatus.Done,true)
 	end
 	return dailyTask
 
@@ -307,6 +307,8 @@ function TaskFactory:createBabelTask(player, taskID, rewardType, layer, flyLayer
 	local babelTask = BabelTask()
 	-- 设置奖励类型
 	babelTask:setRewardType(rewardType)
+	-- 设置奖励公式
+	babelTask:setFormulaRewards(babelTaskData.formulaRewards)
 	-- 通过多少才层，来随机
 	babelTask:setLayer(layer)
 	babelTask:setID(taskID)
@@ -344,8 +346,12 @@ function TaskFactory:createBabelTaskFromDB(player, taskData)
 	local babelTask = BabelTask()
 	-- 设置奖励类型
 	babelTask:setRewardType(taskData.rewardType)
+	-- 设置配置奖励公式
+	-- 设置奖励公式
+	babelTask:setFormulaRewards(babelTaskData.formulaRewards)
 	-- 通过多少才层，来随机
 	babelTask:setLayer(taskData.layer)
+	babelTask:setFlyLayer(taskData.flyLayer)
 	babelTask:setID(taskData.taskID)
 	babelTask:setType(TaskType.babel)	
 	babelTask:setSubType(babelTaskData.taskType2)

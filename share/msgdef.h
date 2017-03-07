@@ -239,6 +239,8 @@ struct _Role_Element
 	short			level;
 	char			name[_PLAYER_NAME_LEN];
 	char			remouldAttr[_REMOULDATTR_LEN];
+	int				showDrama;
+
 };
 
 struct _MsgSC_Login_ResultInfo : public AppMsg

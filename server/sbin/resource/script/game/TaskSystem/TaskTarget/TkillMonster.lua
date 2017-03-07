@@ -43,7 +43,7 @@ end
 
 function TkillMonster:completed()
 
-	return self._monsterCounts.currentCount == self._monsterCounts.targetCount
+	return self._monsterCounts.currentCount >= self._monsterCounts.targetCount
 
 end
 
