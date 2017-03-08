@@ -139,11 +139,14 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 
     MYSQL_RES *result = NULL;
     int status = 0;
+    int totalResult = 0;
+
     do
     {
         result = mysql_store_result(m_mysql);
         if (result)
         {
+            totalResult ++;
             //准备好填充消息
             m_SCMsgBuilder.beginMessage();
 
@@ -217,9 +220,6 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             if (mysql_field_count(m_mysql) == 0)
             {
                 TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:mysql_field_count(m_mysql) == 0,affected rows:%i.\n", m_mysql->affected_rows);
-                //返回空消息
-                m_SCMsgBuilder.beginMessage();
-                p_issue->OnQueryReturn(m_SCMsgBuilder.finishMessage());
             }
             else
             {
@@ -237,6 +237,12 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
         }
     } while (status == 0);
 
+    if (totalResult == 0)
+    {
+        //返回空消息
+        m_SCMsgBuilder.beginMessage();
+        p_issue->OnQueryReturn(m_SCMsgBuilder.finishMessage());
+    }
     return true;
 }
 
