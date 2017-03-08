@@ -157,10 +157,10 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             bool isFirstRow = true;
             while (row = mysql_fetch_row(result))
             {
-                unsigned long *lengths = mysql_fetch_lengths(result);
+                //unsigned long *lengths = mysql_fetch_lengths(result);
                 for (unsigned int i = 0; i < fieldNum; ++i)
                 {
-                    const char * value = (row[i] == NULL ? "NULL" : row[i]);
+                    //const char * value = (row[i] == NULL ? "NULL" : row[i]);
                     const char * name = isFirstRow ? fields[i].name : NULL;     // 第一行写上属性名
                     //TRACE4_L0("DBInterfaceMysql::ProcessQueryResult:field(%s) data:type(%i),value(%s),length(%i).\n", fields[i].name, fields[i].type, value, lengths[i]);
 
