@@ -17,7 +17,7 @@ function TcommitItem:onCommitItem(itemsInfo)
 			local item = g_itemMgr:getItem(itemInfo.guid)
 			local itemID = item:getItemID()
 			if pItemInfo.itemID == itemID and pItemInfo.count <= itemInfo.count then
-				self._state = self._state + 1
+				self:setState(self._state + 1)
 				if self:completed() then
 					local packetHandler = self._entity:getHandler(HandlerDef_Packet)
 					-- 这个地方做移除的时候，不触发监听
@@ -59,7 +59,7 @@ function TcommitItem:onCommitItem(itemsInfo)
 			end
 		end
 		if t_count == table.size(self._param.itemsInfo) then
-			self._state = self._state + 1
+			self:setState(self._state + 1)
 			if self:completed() then
 				local packetHandler = self._entity:getHandler(HandlerDef_Packet)
 				for _,itemInfo in pairs(itemsInfo) do

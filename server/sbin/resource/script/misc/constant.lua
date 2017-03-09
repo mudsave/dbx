@@ -48,6 +48,10 @@ OnlineReason = {
 	Relogin	 = 3,
 }
 
+RegularTime =
+{
+	Second = 60,	-- 60�붨ʱ	
+}
 
 require "misc.EntityConstant"
 require "misc.ActivityConstant"

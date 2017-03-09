@@ -127,6 +127,6 @@ end
 
 --玩家上线加入到活动中
 function DekaronSchool:joinPlayer(player,recordList)
-	print("-----门派闯关活动玩家上线加入。。。。。。",toString(recordList))
+	--print("-----门派闯关活动玩家上线加入。。。。。。",toString(recordList))
 	local handler = player:getHandler(HandlerDef_Activity)
 end

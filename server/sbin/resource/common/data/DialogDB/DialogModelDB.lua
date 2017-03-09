@@ -1649,9 +1649,9 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{
-		{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},errorID=23,},},
-		{condition = DialogCondition.CheckTaskTeam, param = {tiredness = 10,errorID=27,},},
-		{condition = DialogCondition.HasTask, param = {taskID = 10008, statue = false,errorID = 28}},
+		--{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},errorID=23,},},
+		--{condition = DialogCondition.CheckTaskTeam, param = {tiredness = 10,errorID=27,},},
+		--{condition = DialogCondition.HasTask, param = {taskID = 10008, statue = false,errorID = 28}},
 		},
 		speakerID = 29008,
 		txt = "截教妖道，上古邪魔，均会为祸人间，还望道友能降妖伏魔，匡扶天道。",
@@ -7130,7 +7130,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		 {condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+		 {condition = DialogCondition.School, param = {school = SchoolType.PLG}},
 		},
 		speakerID = 26029,
 		soundID = nil,
@@ -25412,7 +25412,7 @@ DialogModelDB =
 		conditions = 
 		{},
 		speakerID = 29040,	
-		txt = "讨你任务",
+		txt = "讨逆任务",
 		options = 
 		{
 			[1] =
@@ -25421,7 +25421,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-				    
+				    {action = DialogActionType.RecetiveSpecialTask, param = {taskID = 10010}}, 
 				},
 			},
 		},

@@ -22,6 +22,7 @@ function TaskPrivateHandler:__init(entity)
 	self.followNpc = {}
 	self.equipData = {}				-- 记录装备信息
 	self.taskItem = {}				-- 神秘商人道具，和送信道具记录
+	self.updateDB = false
 	
 end
 
@@ -40,6 +41,12 @@ function TaskPrivateHandler:__release()
 	
 	self.specialArea = nil
 	self.followNpc = nil
+
+	self.updateDB = false
+end
+
+function TaskPrivateHandler:getPriUpdateDB()
+	return self.updateDB
 end
 
 --传送阵
@@ -55,6 +62,7 @@ function TaskPrivateHandler:addTransferData(taskID, index, transferData)
 		self.transferData[taskID] = {}	
 	end
 	self.transferData[taskID][index] = transferData
+	self.updateDB = true
 end
 
 function TaskPrivateHandler:removeTransferData(taskID, index)
@@ -63,6 +71,7 @@ function TaskPrivateHandler:removeTransferData(taskID, index)
 		return 
 	end
 	self.transferData[taskID][index] = nil
+	self.updateDB = true
 end
 
 function TaskPrivateHandler:getTransferData()
@@ -88,6 +97,7 @@ function TaskPrivateHandler:addNormalNpcData(taskID, index, npcData)
 		return false
 	end
 	self.normalNpcData[taskID][index] = npcData
+	self.updateDB = true
 	return true
 end
 
@@ -97,6 +107,7 @@ function TaskPrivateHandler:removeNormalNpcData(taskID, index)
 		return 
 	end
 	self.normalNpcData[taskID][index] = nil
+	self.updateDB = true
 end
 
 function TaskPrivateHandler:getNormalNpcData()
@@ -130,10 +141,12 @@ end
 
 function TaskPrivateHandler:addCage(taskID, position)
 	self.cageData[taskID] = position
+	self.updateDB = true
 end
 
 function TaskPrivateHandler:removeCage(taskID)
 	self.cageData[taskID] = nil
+	self.updateDB = true
 end
 
 function TaskPrivateHandler:getCage()

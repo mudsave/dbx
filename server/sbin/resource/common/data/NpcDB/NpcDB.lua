@@ -804,7 +804,7 @@ NpcDB = {
      },
      [20084] = {
 	     name = "樊稠",
-	     modelID =100,
+	     modelID =115,
 	     desc = "1-25级主线任务--BOSS",
 	     level = 23,
 	     attrID = 1,
@@ -831,7 +831,7 @@ NpcDB = {
      },
      [20087] = {
 	     name = "堳坞魔将",
-	     modelID =575,
+	     modelID =594,
 	     desc = "1-25级主线任务--头目",
 	     level = 23,
 	     attrID = 1,
@@ -840,7 +840,7 @@ NpcDB = {
      },
      [20088] = {
 	     name = "郿坞妖将",
-	     modelID =576,
+	     modelID =582,
 	     desc = "1-25级主线任务--头目",
 	     level = 23,
 	     attrID = 1,
@@ -5299,9 +5299,9 @@ NpcDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1028},
 	     dialogIDs = {4030},
-	     taoExpPrize =5,
-	     potencyPrize =5,
-	     petTaoPrize =5,
+	     taoExpPrize =-1,
+	     potencyPrize =-1,
+	     petTaoPrize =-1,
      },
      [25031] = {
 	     name = "帮凶",
@@ -5311,6 +5311,9 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.None,
 	     skillCfg = {1029},
+	     taoExpPrize =5,
+	     potencyPrize =5,
+	     petTaoPrize =5,
      },
      [25501] = {
 	     name = "瑞兽",
@@ -7754,6 +7757,12 @@ NpcDB = {
 	     modelID =505,
 	     desc = "洛阳宠物商店",
 	     dialogIDs = {20007},
+     },
+     [29083] = {
+	     name = "修理大师",
+	     title = "装备修理",
+	     modelID =505,
+	     dialogIDs = {20036},
      },
      [30001] = {
 	     name = "秋风原巡逻护卫",
@@ -15988,19 +15997,18 @@ NpcDB = {
 	     phaseType = PhaseType.Soil,
      },
      [31458] = {
-	     name = "剑卒",
+	     name = "刀卒",
 	     modelID =163,
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
      },
      [31459] = {
-	     name = "剑卒",
+	     name = "刀卒",
 	     modelID =163,
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =3,
      },
      [31460] = {
 	     name = "指挥官",
@@ -16009,7 +16017,6 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =3,
      },
      [31461] = {
 	     name = "杀手",
@@ -16125,6 +16132,7 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Poison,
+	     modelTextures =2,
      },
      [31477] = {
 	     name = "丛林枪兵",
@@ -16140,7 +16148,7 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Soil,
-	     modelTextures =2,
+	     modelTextures =3,
      },
      [31479] = {
 	     name = "绘面鬼刀兵",
@@ -16157,7 +16165,6 @@ NpcDB = {
 	     level = -1,
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
-	     modelTextures =3,
      },
      [31481] = {
 	     name = "弩车1",
@@ -16444,6 +16451,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39996},
+	     modelTextures =2,
 	     modelScale =16,
      },
      [50001] = {
@@ -16476,7 +16484,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =2,
 	     modelScale =12,
      },
      [50004] = {
@@ -16531,6 +16538,7 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39997},
+	     modelTextures =3,
 	     modelScale =16,
      },
      [50009] = {
@@ -16596,7 +16604,6 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
-	     modelTextures =3,
 	     modelScale =12,
      },
      [50015] = {
@@ -16610,6 +16617,7 @@ NpcDB = {
 	     dropID =26,
 	     expPrize =150000,
 	     bindMoneyPrize =100000,
+	     modelTextures =2,
 	     modelScale =12,
      },
      [50016] = {
@@ -16621,7 +16629,6 @@ NpcDB = {
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
 	     dialogIDs = {39998},
-	     modelTextures =2,
 	     modelScale =13,
      },
      [50017] = {
@@ -16665,6 +16672,7 @@ NpcDB = {
 	     dropID =27,
 	     bindMoneyPrize =100000,
 	     taoExpPrize =39,
+	     modelTextures =3,
 	     modelScale =6,
      },
      [50021] = {
@@ -16723,7 +16731,6 @@ NpcDB = {
 	     dropID =28,
 	     expPrize =160000,
 	     bindMoneyPrize =80000,
-	     modelTextures =3,
 	     modelScale =12,
      },
      [50026] = {
@@ -16734,6 +16741,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012},
+	     modelTextures =1,
      },
      [50027] = {
 	     name = "一尾狐",
@@ -16776,7 +16784,6 @@ NpcDB = {
 	     dropID =29,
 	     bindMoneyPrize =80000,
 	     taoExpPrize =45,
-	     modelTextures =1,
      },
      [50031] = {
 	     name = "愤怒的地魔",

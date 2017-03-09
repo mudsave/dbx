@@ -79,6 +79,13 @@ function FactionSystem:onLeaderDismissFaction( event )
 
             local event_UpdateWorldServerData = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,memberDBID,UpdateWorldServerDataCode.ExitFaction,factionDBID)
             g_eventMgr:fireWorldsEvent(event_UpdateWorldServerData,CurWorldID)
+
+            if memberInfo.memberPosition ~= FactionPosition.Leader then
+                local notifyParams = {msg = FactionMsgTextKeyTable.DismissFaction}
+                local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
+                g_eventMgr:fireRemoteEvent(event_Notify,member)
+            end
+        
         end
         LuaDBAccess.updatePlayer(memberDBID,"FactionDBID",0)
     end
@@ -95,9 +102,12 @@ function FactionSystem:onLeaderDismissFaction( event )
     g_socialEntityManager:deleteFactionInFactionList(factionDBID)
 
 
+
+
 end
 
 function FactionSystem:onInvitePlayerToFaction( event )
+
     local params = event:getParams()
     local playerName = params[1]
     local roleDBID   = params[2]
@@ -222,13 +232,16 @@ function FactionSystem:onAdmitPlayerJoin( event )
                     if member then
                         local event_UpdateFactionMemberList = Event.getEvent(FactionEvent_BC_UpdateFactionMemberList,factionInfo)
                         g_eventMgr:fireRemoteEvent(event_UpdateFactionMemberList,member)
+                        local memberName =  player:getName()
+                        local notifyParams = {msg = FactionMsgTextKeyTable.FactionMemberJoin,memberName = memberName}
+                        local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
+                        g_eventMgr:fireRemoteEvent(event_Notify,member)
                     end
                 end
 
                 local event_UpdateStandByPlayerList = Event.getEvent(FactionEvent_BC_UpdateStandByPlayerList,UpdateCode.Delete,playerDBID)
                 g_eventMgr:fireRemoteEvent(event_UpdateStandByPlayerList,role)
 
-				-- 添加加入帮派成功标记（用于指引加入帮派的行为）
 				g_eventMgr:fireWorldsEvent(
 					Event.getEvent(
 						TaskEvent_BS_GuideJoinFaction,true,playerDBID	-- palyerDBID为申请入帮的玩家
@@ -324,6 +337,10 @@ function FactionSystem:onFireFactionMember( event )
             if member then
                 local event_UpdateFactionMemberList = Event.getEvent(FactionEvent_BC_UpdateFactionMemberList,factionInfo)
                 g_eventMgr:fireRemoteEvent(event_UpdateFactionMemberList,member)
+                local memberName =  player:getName()
+                local notifyParams = {msg = FactionMsgTextKeyTable.FireFactionMember,memberName = memberName}
+                local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
+                g_eventMgr:fireRemoteEvent(event_Notify,member)
             end
         end
 
@@ -331,6 +348,11 @@ function FactionSystem:onFireFactionMember( event )
         if playerOnline then
             local event_fireFactionMember = Event.getEvent(FactionEvent_BC_ExitFaction)
             g_eventMgr:fireRemoteEvent(event_fireFactionMember,playerOnline)
+
+            local notifyParams = {msg = FactionMsgTextKeyTable.BeFiredInFaction}
+            local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
+            g_eventMgr:fireRemoteEvent(event_Notify,playerOnline)
+
         end
     end
 
@@ -390,6 +412,10 @@ function FactionSystem:onUpdateFactionMemberList( event )
             if member then
                 local event_UpdateFactionMemberList = Event.getEvent(FactionEvent_BC_UpdateFactionMemberList,factionInfo)
                 g_eventMgr:fireRemoteEvent(event_UpdateFactionMemberList,member)
+                local memberName =  player:getName()
+                local notifyParams = {msg = FactionMsgTextKeyTable.FactionMemberJoin,memberName = memberName}
+                local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
+                g_eventMgr:fireRemoteEvent(event_Notify,member)
             end
         end
 

@@ -1637,6 +1637,7 @@ LoopTaskTargetsDB =
 			},
 		},
 	},
+
 	[10020] =                        -------------乾元岛
 	{
 		[LoopTaskTargetType.script] = 
@@ -1704,15 +1705,13 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4550},},
+					{type="openDialog", param={dialogID =4550},},
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
 					{type = "removeMine", param = {}}, -- 移除任务类
-					--{type = "stopAutoMeet", param = {}},---停止自动遇敌
-					--{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
 				},	
 			},
 		},
@@ -1752,7 +1751,7 @@ LoopTaskTargetsDB =
 					{type = "removePartrolTalkTace", param = {}},
 					-- 指引和尾随NPC的添加
 					{type = "escortNpcTrace", param = {}},
-                    {type="openDialog", param={dialogID = 4823},},
+					{type="openDialog", param={dialogID = 4823},},
 				},
 				[TaskStatus.Finished] = 
 				{
@@ -1891,6 +1890,33 @@ LoopTaskTargetsDB =
 				-- 任务完成时候
 				[TaskStatus.Done] =
 				{
+					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
+				},
+			},
+		},
+	},
+	-- 讨逆任务
+	[10010] =
+	{
+		--创建私有NPC，
+		[LoopTaskTargetType.script] = 
+		{
+			-- 明雷战斗NPCID是随机的，坐标是从固定当中随机。
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					-- 随机NPC  一种指定NPC，不指定坐标。一种不指定NPC，不指定坐标
+					{type = "createRandomNpc", param = {index = 1}},
+					--{type="openDialog", param={dialogID = 4031},},
+				},
+				-- 任务完成时候
+				[TaskStatus.Done] =
+				{
+					{type = "removeRandomNpc", param = {index = 1}},
 					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
 				},
 			},

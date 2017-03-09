@@ -20,15 +20,20 @@ function Player:__init_logic()
 
 	self._intradayFactionContribute = 0
 	self._taskMineConfig = nil --任务雷配置
+	-- 开启60秒的定时器，体力值和杀气
+	self.timerID = g_timerMgr:regTimer(self, 1000 * RegularTime.Second, 1000 * RegularTime.Second, "PlayerLogic:Kill")
 end
 
 function Player:__release_logic()
 	-- todo
-
 	self._ectypeMapID = nil
 	self._offlineDate = nil
 	self._pkInfo	  = nil
 	self._bMustCatch  = nil
+	if self.timerID then
+		g_timerMgr:unRegTimer(self.timerID)
+		self.tiemrID = nil
+	end
 end
 
 
@@ -399,4 +404,23 @@ function Player:onWarEnded(attrs)
 	packet:setBattlePack(newBattlePack)
 
 	self:flushPropBatch()
+end
+
+-- 定时器回调
+function Player:update(timerID)
+	if timerID == self.timerID then
+		-- 增加玩家的体力值
+		local vigor = self:getVigor()
+		local maxVigor = self:getMaxVigor()
+		if vigor < maxVigor then
+			vigor = vigor + 1
+			self:setVigor(vigor)
+		end
+		-- 减玩家杀气
+		local killAir = self:getAttrValue(player_kill)
+		if killAir > 0 then
+			killAir = killAir - 1
+			self:setAttrValue(player_kill, killAir)
+		end
+	end
 end

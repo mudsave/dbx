@@ -58,18 +58,16 @@ void CCommandClient::parseMsg(MAPMSGPAIR iter)
 
 void CCommandClient::ParseMsg(AppMsg* pMsg)
 {
+    CSCResultMsg* pTempMsg=(CSCResultMsg*)pMsg;
 	if (!CClient::getDBNetEvent())
 	{
-            return;
+		return;
 	}
 
-	CSCResultMsg* pDataMsg=(CSCResultMsg*)malloc(pMsg->msgLen);
-        if (pDataMsg == NULL)
-        {
-           return; 
-        }
-        memcpy(pDataMsg, pMsg, pMsg->msgLen);
-        
+	CSCResultMsg* pDataMsg=pTempMsg;
+ 	pTempMsg->getInit();
+ 	pDataMsg=(CSCResultMsg*)pTempMsg->uncompressData(NonCompress);
+ 	pDataMsg->getInit();
 	switch(pMsg->msgId){
 	case S_DOACTION_RESULT:
 		{
@@ -95,9 +93,9 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 		break;
 	}
 
-	if (pMsg!=NULL)
-	{
+	if ((pDataMsg!=NULL)&&(pDataMsg!=pMsg)){
 		free(pMsg);
+		pDataMsg=NULL;
 	}
 
 }

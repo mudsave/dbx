@@ -19,7 +19,7 @@ export LD_LIBRARY_PATH = $(WORK_DIR)
 test : _server _client
 	@echo "--test client and server are running in background.."
 
-all : _session _gateway _world _fight _social _dbx
+all : _session _gateway _world _fight _social
 	@echo "--servers are running in background.."
 
 clean :

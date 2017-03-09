@@ -49,7 +49,7 @@ end
 function GetLevelIndex(player, data)
 	local level = player:getLevel()
 	local leveIdx
-	for index, section in pairs(data) do
+	for index, section in pairs(data or {}) do
 		if level >= section[1] and level <= section[2] then
 			leveIdx = index
 			break

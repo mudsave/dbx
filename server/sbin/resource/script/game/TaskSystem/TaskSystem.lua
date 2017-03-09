@@ -350,8 +350,10 @@ end
 
 --结束任务
 function TaskSystem:onFinishTask(player, taskID)
+
 	local event = Event.getEvent(TaskEvent_SC_FinishTask, player:getID(), taskID)
 	g_eventMgr:fireRemoteEvent(event, player)
+	
 end
 
 --任务奖励

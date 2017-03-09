@@ -168,6 +168,24 @@ function RescueHulaoPassEctype:attachPatrolNpc(fightID, patrolNpcID)
 	self:redIntegral(msgID, EctypeIntegral.Patrol)
 end
 
+-- 战斗结束。这个地方还要做下处理，战斗完看标志，
+function RescueHulaoPassEctype:onFightEndBefor(fightID, isWin)
+	local patrolNpcID = self.fightNpc[fightID]
+	if patrolNpcID then
+		local patrolNpc = g_entityMgr:getPatrolNpc(patrolNpcID)
+		if patrolNpc then
+			self.fightNpc[fightID] = nil
+			if isWin then
+				-- 战斗胜利移除NPC
+				self:removePatrolNpc(patrolNpcID)
+			else
+				patrolNpc:setOwnerID()
+				patrolNpc:moveNext()
+			end
+		end
+	end
+end
+
 -- 战斗结束后
 function RescueHulaoPassEctype:onFightEnd(player, fightID, fightResult)
 	local curProcedure = self.ectypeConfig.LogicProcedure[self.curProgress]

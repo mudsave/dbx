@@ -38,7 +38,7 @@ function TcommitEquip:onCommitEquip(equipGuid, count)
 						-- 记录装备的等级和品质
 						local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
 						taskPrivateHandler:addEquipData(self._param.taskID, equipNeedLevel, equipQuality)
-						self._state = self._state + 1
+						self:setState(self._state + 1)
 						if self:completed() then
 							self:removeWatchers()
 							self._task:refresh()

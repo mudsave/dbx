@@ -14,6 +14,7 @@
 
 TOLUA_API int tolua_api4lua_open(lua_State* tolua_S);
 TOLUA_API int lua_PropertySet_open(lua_State* tolua_S);
+TOLUA_API int lua_iconv_open(lua_State* tolua_S);
 
 CWorld::CWorld()
 {
@@ -75,6 +76,7 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	if (IS_WORLD_SERVER(m_worldId))
 	{
 		lua_PropertySet_open(pLuaState);
+		lua_iconv_open(pLuaState);
 		if ( !m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") )
 		{
 			TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());

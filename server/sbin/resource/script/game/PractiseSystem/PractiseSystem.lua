@@ -89,38 +89,46 @@ function PractiseSystem:addLoopTaskPractise(event)
 	for _,data in pairs(tActivityPageDaliyDB) do
 		-- 完成的是否是面板上的任务
 		if data.TaskID == taskID then
-			valueReward = data.PracticeReword
 			local taskConfig = LoopTaskDB[taskID]
-			-- 返回经验值
+			valueReward = data.PracticeReword
 			if taskConfig.taskType2 ~= TaskType2.Heaven then
-				-- 修行值的获得
-				local countRing = taskHandler:getCurrentRing(taskID)
+			-- 修行值的获得
+			local countRing = taskHandler:getCurrentRing(taskID)
 				-- local curRing = taskHandler:countRing(taskID)
-				local xpFuncName = taskConfig.formulaRewards[TaskRewardList.player_xp]
-				if xpFuncName then
-					local xpValue = xpFuncName(countRing,player:getLevel())
-					xpValue =  math.floor(xpValue*0.5)
-					if storeXp <= xpValue then
-						xpValue = storeXp
+				if taskConfig.formulaRewards then
+					local xpFuncName = taskConfig.formulaRewards[TaskRewardList.player_xp]
+					if xpFuncName then
+						local xpValue = xpFuncName(countRing,player:getLevel())
+						xpValue =  math.floor(xpValue*0.5)
+						if storeXp <= xpValue then
+							xpValue = storeXp
+						end
+						if xpValue > 0 then		
+						storeXp = storeXp - xpValue
+						player:setStoreXp(storeXp)
+						player:addXp(xpValue)
+						g_eventMgr:fireRemoteEvent(
+							Event.getEvent(
+								ClientEvents_SC_PromptMsg,eventGroup_Practise,1,xpValue
+							),
+							player
+						)
+						end
 					end
-					if xpValue > 0 then		
-					storeXp = storeXp - xpValue
-					player:setStoreXp(storeXp)
-					player:addXp(xpValue)
-					g_eventMgr:fireRemoteEvent(
-						Event.getEvent(
-							ClientEvents_SC_PromptMsg,eventGroup_Practise,1,xpValue
-						),
-						player
-					)
-					end
+				end
+			end
+			if taskConfig.taskType2 == TaskType2.Heaven then
+				local finishTimes = taskHandler:getFinishTimes(taskID)
+				local curReward = finishTimes*valueReward
+				if curReward > data.MaxPracticeReword then
+					valueReward = 0
 				end
 			end
 			break
 		end
 	end
 	local finishTimes =  taskHandler:getFinishTimes(taskID)
-	print("finishTimes:",finishTimes)
+	-- print("finishTimes:",finishTimes)
 	
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(

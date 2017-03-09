@@ -225,66 +225,8 @@ function TaskCondition.teamCheck(player, taskID)
 	end
 end
 
---特殊任务天道任务专用条件, 传进来的肯定是队长
-function TaskCondition.SpecialTeamTask(team, taskID)
-	local taskData = LoopTaskDB[taskID]
-	local condition = taskData.condition
-	local leader = g_entityMgr:getPlayerByID(team:getLeaderID())
-	local teamHandler = leader:getHandler(HandlerDef_Team)
-	if not condition then
-		print("你配了天道任务条件了吗？",taskID)
-		return false
-	end
-
-	if table.size(teamHandler:getTeamPlayerList()) < condition.teamerCount then
-		print("队伍人数不足")
-		return false
-	end
-	local maxLevel
-	local minLevel
-	for _, entity in pairs(teamHandler:getTeamPlayerList()) do
-		local levelLimit = taskData.level
-		local level = entity:getLevel()
-		if not maxLevel and not minLevel then
-			maxLevel = level
-			minLevel = level
-		else
-			if maxLevel < level then
-				maxLevel = level
-			end
-			if minLevel > level then
-				minLevel = level
-			end
-		end
-		
-		if level < levelLimit[1] or  level > levelLimit[2] then
-			print("有队员等级条件不满足")
-			return false
-		end
-		
-		--if < condition.vitalityConsume then
-
-		--end
-
-	end
-
-	if maxLevel > minLevel + taskData.condition.levelDiff then
-		print("队伍中等级差距太大")
-		return false
-	end
-	-- 判断队长有无次任务
-	local leaderTaskHandler = leader:getHandler(HandlerDef_Task)
-	if leaderTaskHandler:getTask(taskID) then
-		print("队长有此任务，不能再次接取")
-		return false
-	end
-	
-	return true
-end
-
 --日常任务条件检测
 function TaskCondition.dailyTask( player, taskID, GM )
-
 	if DailyTaskDB[taskID] then
 		local DailyTaskData = DailyTaskDB[taskID]
 		local levelLimit = DailyTaskData.level
@@ -306,4 +248,71 @@ function TaskCondition.dailyTask( player, taskID, GM )
 	end
 end
 
+-- 特殊任务，主要分三种，组队，单人， 组队和单人都可以
+function TaskCondition.SpecialTask(playerList, taskID, teamID)
+	local taskData = LoopTaskDB[taskID]
+	local teamType = taskData.teamType
+	local result 
+	for _, entity in pairs(playerList) do
+		local level = entity:getLevel()
+		if level < taskData.level[1] or level > taskData.level[2] then
+			return 42
+		end
+	end
 
+	if teamType == TeamType.single then
+		if teamID > 0 then
+			return 5
+		end
+	elseif teamType == TeamType.team then
+		if teamID <= 0 then
+			return 4
+		end
+		if taskData.condition.teamerCount then
+			if table.size(playerList) < taskData.condition.teamerCount then
+				return 44
+			end
+		end
+		-- 要判断队员之间的等级差
+		if table.size(playerList) > 1 then
+			result = TaskCondition.checkPlayerLevelDiff(playerList, taskID)
+		end
+	
+	elseif teamType == TeamType.special then
+		if table.size(playerList) > 1 then
+			-- 要判断队员之间的等级差
+			result = TaskCondition.checkPlayerLevelDiff(playerList, taskID)
+		end
+	end
+	if result then
+		if result > 0 then
+			return result 
+		end
+	end
+	return 0
+end
+
+-- 这个方法监测队员之间的等级差
+function TaskCondition.checkPlayerLevelDiff(playerList, taskID)
+	local taskData = LoopTaskDB[taskID]
+	local maxLevel
+	local minLevel
+	for _, entity in pairs(playerList) do
+		local level = entity:getLevel()
+		if not maxLevel and not minLevel then
+			maxLevel = level
+			minLevel = level
+		else
+			if maxLevel < level then
+				maxLevel = level
+			end
+			if minLevel > level then
+				minLevel = level
+			end
+		end
+	end
+	if maxLevel - minLevel > taskData.condition.levelDiff then
+		return 43
+	end
+	return 0
+end

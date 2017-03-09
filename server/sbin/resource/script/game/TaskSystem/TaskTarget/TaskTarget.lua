@@ -35,6 +35,7 @@ end
 
 function TaskTarget:setState(state)
 	self._state = state
+	self._task:setUpdateDB()
 end
 
 function TaskTarget:addWatcher(eventName)

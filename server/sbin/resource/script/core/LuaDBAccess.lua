@@ -131,19 +131,23 @@ end
 function LuaDBAccess.onPlayerAttrUpdate(player)
 	clearParams()
 	local param = params[1]
-
-	param["spName"]		= "sp_UpdatePlayerAttr"
+	param["spName"]		= "sp_UpdatePlayerAttrBatch"
 	param["dataBase"]	= 1
-	param["sort"]		= "roleId,type,value"
+	param["sort"]		= "roleId,buff,num"
 	param["roleId"]		= player:getDBID()
-
+    local num = 0
+	local buff = ""
 	for attrName,attribute in pairs(player:getAttrSet()) do
 		if attribute:isSaveDB() then
-			print("onPlayerAttrUpdate",attrName)
-			param["type"]	= attrName
-			param["value"] = attribute:getValue()
-			LuaDBAccess.exeSP(params,true)
+			num = num + 1
+			buff = buff..tostring(attrName)..","..tostring(attribute:getValue())..","
+			
 		end
+	end
+	if num > 0 then
+		param["buff"] = buff
+		param["num"] = num
+        LuaDBAccess.exeSP(params,true)
 	end
 end
 
@@ -430,7 +434,7 @@ function LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	params[1]["_TaskID"] = taskID
 	params[1]["_CountRing"] = taskInfo.countRing
 	params[1]["_CurrentRing"] = taskInfo.currentRing
-	params[1]["_OfflineTime"] = os.time()
+	params[1]["_OfflineTime"] = taskInfo.receiveTaskTime
 	params[1]["_finishTimes"] = taskInfo.finishTimes
 	LuaDBAccess.exeSP(params, true)
 

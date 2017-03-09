@@ -17,6 +17,7 @@ function Task:__init()
 	self._rewards	= nil
 	self._triggers	= {}
 	self._multipleReward = nil
+	self.updateDB = false
 end
 
 function Task:__release()	
@@ -32,6 +33,15 @@ function Task:__release()
 	self._startTime = nil
 	self._endTime = nil
 	self._multipleReward = nil
+	self.updateDB = false
+end
+
+function Task:setUpdateDB()
+	self.updateDB = true
+end
+
+function Task:getUpdateDB()
+	return self.updateDB
 end
 
 function Task:releaseTarget()

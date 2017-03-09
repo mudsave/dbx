@@ -49,7 +49,7 @@ function BeastBlessManager:initOnLinePlayerData()
 	local playerList = g_entityMgr:getPlayers()
 	local activityId = g_beastBless:getID()
 	for playerID,player in pairs(playerList) do
-		print("在线玩家重置",activityId)
+		-- print("在线玩家重置",activityId)
 		local activityHandler = player:getHandler(HandlerDef_Activity)
 		activityHandler:setPriDataById(activityId,0)
 		-- 更新到客户端
@@ -148,7 +148,7 @@ function BeastBlessManager:removeBeastFromDieList(beast)
 	else
 		print("$$　error:addBeastToDieList no ")
 	end 
-	print("从beastDie移除",toString(curMapDieList))
+	-- print("从beastDie移除",toString(curMapDieList))
 end 
 
 -- 检查死亡表中是否存在这种beast
@@ -194,22 +194,19 @@ function BeastBlessManager:addBeastToList(mapID)
 		local beastCount = curMapBeastList.beastCount
 		-- beasts不存在
 		if not beasts then
-			print("beasts no this")
 			beasts = {}
 		end
 		local npcDBID = BeastBlessUtils.randNpc(beastsTypes)
-		print("npcDBID",npcDBID)
+		-- print("npcDBID",npcDBID)
 		-- 检查死亡表中是否存在这种类型的beast
 		local beast = self:findBeastFromDieList(mapID,npcDBID)
 		-- 检查死亡表中是否存在这种beast 如果存在直接加入到活动表中 否则创建新的加入到 活动链表中
 		local npcID = nil
 		if beast then
-			print("beastDie")
 			-- print("beasts",toString(beasts))
 			npcID = beast:addBeastToMap(beasts)
 			self:removeBeastFromDieList(beast)
 		else
-			print("self create")
 			beast = Beast(npcDBID,mapID)
 			npcID = beast:addBeastToMap(beasts)
 		end
@@ -369,7 +366,7 @@ end
 
 -- 瑞兽活动奖励总接口
 function BeastBlessManager:dealWithRewards(fightEndResults, scriptID, monsterDBIDs, fightID, fightInfo)
-	print("fightInfo:::",toString(fightInfo))
+	-- print("fightInfo:::",toString(fightInfo))
 	-- 战斗胜利场数计数
 	self:dealFightCount(fightEndResults)
 	-- 奖励计数
@@ -492,17 +489,17 @@ function BeastBlessManager:getFormula(role,rewardsConfig,fightInfo)
 		return 2
 	end
 	-- 计算奖励基础值
-	print("计算奖励基础倢",toString(rewardsConfig),value)
+	-- print("计算奖励基础倢",toString(rewardsConfig),value)
 	for _,name in pairs(rewardNames) do
 		local value = rewardsConfig[name]
 		if value then
-			print("原有奖励基础值:",toString(name),value)
+			-- print("原有奖励基础值:",toString(name),value)
 			if eType == eClsTypePlayer then
 				value = BeastBlessUtils.getPlayerBaseRewardFormula(playerLvl,value)
 			else
 				value = BeastBlessUtils.getPetBaseRewardFormula(playerLvl,value)
 			end
-			print("计算奖励基础值:",toString(name),value)
+			-- print("计算奖励基础值:",toString(name),value)
 			rewardNode[name] = value
 		end
 	end
@@ -511,7 +508,7 @@ function BeastBlessManager:getFormula(role,rewardsConfig,fightInfo)
 		if luckMonster then
 			-- 额外奖励计数
 			if luckMonster.n then
-				print("额外奖励计数:",toString(luckMonster.n))
+				-- print("额外奖励计数:",toString(luckMonster.n))
 				for DBID,nTimes in pairs(luckMonster.n) do
 					local rewardType = BeastBlessExtraReward[DBID]
 					local name = BeastBlessToValueReward[rewardType]
@@ -623,7 +620,7 @@ function BeastBlessManager:dealItemReward(normalRewardPlayer,itemsConfig,fightIn
 	local itemID = BeastBlessUtils.randItem(curItems)
 	-- 把每这个个物品分配给玩家
 	local maxWeight = randRewordWeight*playerNum
-	print("maxWeight",maxWeight,randRewordWeight,playerNum)
+	-- print("maxWeight",maxWeight,randRewordWeight,playerNum)
 	local rand = math.random(maxWeight)
 	local curWeight = 0
 	for playerID,player in pairs(normalRewardPlayer) do
@@ -710,7 +707,6 @@ function BeastBlessManager:addItemRewordToList(role,rewardNode)
 			end
 		end
 	end
-	print("rewardList:",toString(rewardList))
 end
 
 function BeastBlessManager:dealRewardsTip(fightEndResults)
@@ -755,7 +751,7 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 					self:sendRewardMessageTip(role, 7, roleReward.pot)
 				end
 				if roleReward.item then
-					print("roleReward.item",toString(roleReward.item))
+					-- print("roleReward.item",toString(roleReward.item))
 					local packetHandler = role:getHandler(HandlerDef_Packet)
 					local params = false
 					local allItem = {}
@@ -818,7 +814,7 @@ end
 
 -- 发送给客户端消息
 function BeastBlessManager:sendRewardMessageTip(player, msgID, msgParams)
-	print("msgParams",toString(msgParams))
+	-- print("msgParams",toString(msgParams))
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, msgID, msgParams)
 	g_eventMgr:fireRemoteEvent(event, player)
 end

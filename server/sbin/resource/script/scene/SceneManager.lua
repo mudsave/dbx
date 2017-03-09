@@ -354,21 +354,41 @@ function SceneManager:doEnterFactionScene(roleID,x, y)
 
 	local player = g_entityMgr:getPlayerByID(roleID)
 	local factionDBID = player:getFactionDBID()
+	local canEnter = true
 
 	if not player then
 		return
 	end
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler:getTeamID() ~= -1 then
-		local msg = FactionMsgTextKeyTable.CantEnterFactionScene
-        local notifyParams = {msg = msg}
-        local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
-        g_eventMgr:fireRemoteEvent(event_Notify,player)
+		if teamHandler:isLeader() then
+			local teamList = teamHandler:getTeamPlayerList(false) 
+			if #teamList == 1 then
+				canEnter = true
+			else
+				canEnter = false
+			end
+		else
+			if not teamHandler:isStepOutState() then 
+				canEnter = false
+			else
+				canEnter = true
+			end
+		end
 	else
+		canEnter = true
+	end
+	if canEnter then
 		if self:enterFactionScene(factionDBID, {player, x ,y}) then
 			player:getHandler(HandlerDef_Follow):loadFollowEntity(7, x ,y)
 		end
+	else
+		local msg = FactionMsgTextKeyTable.CantEnterFactionScene
+		local notifyParams = {msg = msg}
+		local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
+		g_eventMgr:fireRemoteEvent(event_Notify,player)
 	end
+
 end
 
 --进入帮派场景

@@ -21,6 +21,8 @@ IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 CClient::CClient():m_bLink(false),INIT_THREAD_SAFETY_MEMBER_FAST(sock),INIT_THREAD_SAFETY_MEMBER_FAST(Attr)
 {
         //sleep(30);
+        m_param_num = 0;
+	m_query_msg = NULL;
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
 	m_pLinkCtrl=static_cast<ILinkCtrl*>(::CreateLinkCtrl());
 	if (m_pLinkCtrl==NULL)
@@ -225,29 +227,67 @@ HRESULT CClient::Do(HANDLE hContext) {
 
 
 int CClient::addParam(const char* name, const char* value) {
-	m_msgBuilder.addAttribute(name, value, strlen(value));
+	int tmp_t = strlen(name) + 1;
+	char* tmp_name = new char[tmp_t];
+	memcpy(tmp_name, name, tmp_t);
+	m_buffer_length += tmp_t;
+	m_buffer_length += sizeof(int);
+	m_param_names.insert(std::make_pair(m_param_num, tmp_name));
+	tmp_t = strlen(value) + 1;
+	char* tmp_value = new char[tmp_t];
+	memcpy(tmp_value, value, tmp_t);
+	m_buffer_length += tmp_t;
+	m_param_values.insert(std::make_pair(m_param_num, tmp_value));
+	m_param_types.insert(std::make_pair(m_param_num, tmp_t));
+	m_param_num++;
+	return m_param_num;
+
 }
 
 int CClient::addParam(const char* name, int value) {
-	m_msgBuilder.addAttribute(name, &value, PARAMINT);
+	int tmp_t = strlen(name) + 1;
+	char* tmp_name = new char[tmp_t];
+	memcpy(tmp_name, name, tmp_t);
+	m_param_names.insert(std::make_pair(m_param_num, tmp_name));
+	int* tmp_int = new int(value);
+	m_param_values.insert(std::make_pair(m_param_num, (void*)tmp_int));
+	m_param_types.insert(std::make_pair(m_param_num, PARAMINT));
+	m_buffer_length += tmp_t + sizeof(int) * 2;
+	m_param_num++;
+	return m_param_num;
 }
 
 void CClient::buildQuery(){
-	m_msgBuilder.beginMessage();
+	m_buffer_length = 0;
+	delete[] m_query_msg;
+	m_param_num = 0;
+	m_param_names.clear();
+	m_param_types.clear();
+	m_param_values.clear();
 }
 
 int CClient::callSPFROMCPP(IDBCallback* call_back) {
-	CCSResultMsg* pMsg = m_msgBuilder.finishMessage();
-	
+	int msg_len = sizeof(CSCResultMsg) + 2 * m_param_num * sizeof(int) + m_buffer_length;
+	m_query_msg = new char[msg_len];
+	memset(m_query_msg, 0, msg_len);
+	CCSResultMsg* pMsg = (CCSResultMsg*)m_query_msg;
+	pMsg->msgLen = msg_len;
+	TRACE1_L0("CClient::callSPFROMCPP--------%d---------",msg_len);
+	pMsg->init();
+	pMsg->initAttribute();
 	pMsg->m_spId = 0;
 	pMsg->m_bNeedCallback = true;
 	pMsg->m_nLevel = 20;
+	for(int i=0; i < m_param_num; i++){
+		pMsg->setAttribute(m_param_names[i], m_param_values[i], m_param_types[i]);
+	}
+	int nOperationId = 0;
+	nOperationId = CClient::generateOperationId();
+	m_callbacks.insert(std::make_pair(nOperationId, call_back));
 	pMsg->msgId = C_SP_FROM_CPP;
+	//pMsg->msgId = C_DOACTION;
 	pMsg->context = CCSRESMSG;
-	pMsg->m_nTempObjId = CClient::generateOperationId();
-	
-	m_callbacks.insert(std::make_pair(pMsg->m_nTempObjId, call_back));
-	
+	pMsg->m_nTempObjId = nOperationId;
 	if(m_hLink)
         {
             IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
@@ -256,5 +296,5 @@ int CClient::callSPFROMCPP(IDBCallback* call_back) {
         {
             TRACE0_L1("[CClient::callSPFROMCPP] connect with dbserver failed!\n");
         }
-	return pMsg->m_nTempObjId;
+	return nOperationId;
 }

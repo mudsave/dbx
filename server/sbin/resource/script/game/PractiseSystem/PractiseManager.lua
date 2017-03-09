@@ -31,19 +31,19 @@ function PractiseManager:update(period)
 									if period == "day" and periodTime == TaskPeriod.day then 
 										for index = countRing,loop do
 											local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
-											print("xpFuncName:",xpFuncName)
+											-- print("xpFuncName:",xpFuncName)
 											if xpFuncName then
 												xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
-												print("xpValue:",xpValue)
+												-- print("xpValue:",xpValue)
 											end
 										end
 									elseif period == "week" and periodTime == TaskPeriod.week then
 										for index = countRing,loop do
 											local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
-											print("xpFuncName:",xpFuncName)
+											-- print("xpFuncName:",xpFuncName)
 											if xpFuncName then
 												xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
-												print("xpValue:",xpValue)
+												-- print("xpValue:",xpValue)
 											end
 										end
 									end
@@ -92,6 +92,7 @@ function PractiseManager:loadPractiseFromDB(player, recordList)
 			practise = data.practise
 			practiseCount = practiseCount + data.practiseCount
 			player:setPractiseCount(practiseCount)
+			practiseHandler:setLastData(data)
 			-- 把数据存储起来
 			if not time.isSameDay(period) then
 				-- 更新到0
@@ -124,26 +125,22 @@ function PractiseManager:loadPractiseFromDB(player, recordList)
 								for index = countRing,loop do
 									if loopTask.formulaRewards then
 										local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
-										print("xpFuncName:",xpFuncName)
+										-- print("xpFuncName:",xpFuncName)
 										if xpFuncName then
 											xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
-											print("xpValue:",xpValue)
+											-- print("xpValue:",xpValue)
 										end
-									else
-										print("no this,formulaRewards",taskID)
 									end
 								end
 							elseif  not time.isSameWeek(period)  and periodTime == TaskPeriod.week then
 								for index = countRing,loop do
 									if loopTask.formulaRewards then
 										local xpFuncName = loopTask.formulaRewards[TaskRewardList.player_xp]
-										print("xpFuncName:",xpFuncName)
+										-- print("xpFuncName:",xpFuncName)
 										if xpFuncName then
 											xpValue = xpValue + xpFuncName(countRing,player:getLevel())	
-											print("xpValue:",xpValue)
+											-- print("xpValue:",xpValue)
 										end
-									else
-										print("no this,formulaRewards",taskID)
 									end
 								end
 							end

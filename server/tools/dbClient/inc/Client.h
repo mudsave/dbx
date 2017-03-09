@@ -52,10 +52,17 @@ private:
 	MAPATTRSET		m_MapAttrSet;
        
 	IThreadsPool*	m_pThreadPool;
-	
-	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 
 public:
+	typedef std::map<int, char*> MAPPARAMNAME;
+	typedef std::map<int, int> MAPPARAMTYPE;
+	typedef std::map<int, void*> MAPPARAMVALUE;
+	MAPPARAMNAME m_param_names;
+	MAPPARAMTYPE m_param_types;
+	MAPPARAMVALUE m_param_values;
+	char* m_query_msg;
+	int m_param_num;
+	int m_buffer_length;
 	virtual void buildQuery();
 	virtual int addParam(const char*, const char*);
 	virtual int addParam(const char*, int);

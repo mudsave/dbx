@@ -190,8 +190,11 @@ end
 
 --接受一个任务
 function DialogAction:doRecetiveSpecialTask(player, param)
-	print("接受一个天道任务")
-	g_taskDoer:doRecetiveTeamTask(player, param.taskID)
+	local result = g_taskDoer:doReceiveSpecialTask(player, param.taskID)
+	if result and result > 0 then
+		g_dialogFty:createErrorDialogObject(player, result)
+		g_dialogDoer:openErrorDialog(player, result)
+	end
 end
 
 --Npc货架交易

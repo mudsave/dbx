@@ -12,7 +12,7 @@ function PractiseHandler:__init(owner)
 	-- 初始化宝箱状态
 	self:initBoxData()
 	-- 记录是否更新数据库 上一次的修行值
-	self.lastData = {}
+	self.lastData = nil
 end
 
 function PractiseHandler:__release()
@@ -50,25 +50,34 @@ function PractiseHandler:savePracitseData()
 end
 
 function PractiseHandler:isSavetoDB(data)
-	local lastData = self.lastData
-	-- if data.practise ~= lastData or  then
-	-- end
+	if self.lastData then
+		local lastData = self.lastData
+		if data.practise ~= lastData.practise or 
+		data.practiseCount ~= lastData.practiseCount or
+		data.storeXp ~= lastData.storeXp then
+			return true
+		end
+		if data.BoxAFlage ~= lastData.boxAFlage then
+			return true
+		end
+		if data.BoxBFlage ~= lastData.boxBFlage then
+			return true
+		end
+		if data.BoxCFlage ~= lastData.boxCFlage or
+		data.BoxDFlage ~=  lastData.boxDFlage or
+		data.BoxEFlage ~= lastData.boxEFlage then
+			return true
+		end
+		if not time.isSameDay(lastData.recordTime) then
+			return true
+		end
+		return false
+	end
+	return true
 end
 
-function PractiseHandler:setLastData(practise,storeXp,data,lastTime)
-	local data = self.lastData
-	data.practise = practise
-	data.storeXp = storeXp
-	data.practiseCount = practiseCount
-	data.boxAFlage = box.boxAFlage
-	data.boxBFlage = box.boxBFlage
-	data.boxCFlage = box.boxCFlage
-	data.boxDFlage = box.boxDFlage
-	data.boxEFlage = box.boxEFlage
-end
-
-function PractiseHandler:setLastBoxState(box)
-	-- self.lastBox
+function PractiseHandler:setLastData(lastData)
+	self.lastData = lastData
 end
 
 -- 更新单个宝箱

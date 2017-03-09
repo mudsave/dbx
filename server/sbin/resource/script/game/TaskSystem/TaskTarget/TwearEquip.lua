@@ -43,7 +43,7 @@ end
 -- 监听上装
 function TwearEquip:onWearEquip(equipID)
 	if equipID == self._param.equipID then 
-		self._state = self._state + 1
+		self:setState(self._state + 1)
 		if self:completed() then
 			-- 如果完成，那么此时购买物品经停已经删除
 			
@@ -62,7 +62,7 @@ end
 -- 监听下装
 function TwearEquip:onDownEquip(equipID)
 	if equipID == self._param.equipID then 
-		self._state = self._state - 1
+		self:setState(self._state - 1)
 		if not self:completed() then
 			if self._task:getStatus() == TaskStatus.Done then
 				self._task._status = TaskStatus.Active

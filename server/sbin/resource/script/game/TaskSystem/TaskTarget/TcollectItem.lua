@@ -17,7 +17,7 @@ function TcollectItem:onCollectItem(itemsInfo)
 				local item = g_itemMgr:getItem(itemInfo.guid)
 				local itemID = item:getItemID()
 				if pItemInfo.itemID == itemID and itemInfo.count >= pItemInfo.count then
-					self._state = self._state + 1
+					self:setState(self._state + 1)
 					if self:completed() then
 						local packetHandler = self._entity:getHandler(HandlerDef_Packet)
 						for _,itemInfo in pairs(itemsInfo) do
@@ -46,7 +46,7 @@ function TcollectItem:onCollectItem(itemsInfo)
 			local item = g_itemMgr:getItem(itemInfo.guid)
 			local itemID = item:getItemID()
 			if pItemInfo.itemID == itemID and itemInfo.count >= pItemInfo.itemNum then
-				self._state = self._state + 1
+				self:setState(self._state + 1)
 				if self:completed() then
 					local packetHandler = self._entity:getHandler(HandlerDef_Packet)
 					--for _,itemInfo in pairs(itemsInfo) do

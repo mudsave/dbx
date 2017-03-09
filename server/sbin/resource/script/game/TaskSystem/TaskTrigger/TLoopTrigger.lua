@@ -367,7 +367,7 @@ function Triggers.removeSpecialArea(roleID, curParam, task, isRandom)
 	g_taskSystem:removeSpecialArea(player, task:getID(), mapID)
 end
 
--- 创建随机NPC 分两种：1不指定NPCID，不指定坐标。
+-- 创建随机NPC 1：坐标都是随机的 2：从指定坐标中随机
 function Triggers.createRandomNpc(roleID, curParam, task, isRandom)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	-- 根据配置的字段来创建NPC
@@ -376,14 +376,19 @@ function Triggers.createRandomNpc(roleID, curParam, task, isRandom)
 	if not isRandom then
 		-- 这是代表读的是配置
 		local npcConfig = GetRandData(task, "createRandomNpc")
-		local mapID, x, y = GetRandTitle(task)
-
-		-- 把随机到的参数传递到自己的配置当中
-		curParam.npcID = npcConfig.npcID
-		curParam.mapID = mapID
-		curParam.x = x
-		curParam.y = y
-
+		if npcConfig.mapID then
+			curParam.npcID = npcConfig.npcID
+			curParam.mapID = npcConfig.mapID
+			curParam.x = npcConfig.x
+			curParam.y = npcConfig.y
+		else
+			local mapID, x, y = GetRandTitle(task)
+			-- 把随机到的参数传递到自己的配置当中
+			curParam.npcID = npcConfig.npcID
+			curParam.mapID = mapID
+			curParam.x = x
+			curParam.y = y
+		end
 		-- 如果有配置任务目标字段，则动态创建任务目标, 不去执行
 		local targetParam =
 		{
@@ -414,7 +419,6 @@ function Triggers.createRandomNpc(roleID, curParam, task, isRandom)
 		}
 	}	
 	g_taskSystem:onAddPrivateNpc(player, npcsData)
-
 	-- 之后全都通过这来发送客户端动态指引参数(如果坐标随机才发)
 	local config =
 	{
@@ -909,16 +913,9 @@ function Triggers.collectTrace(roleID, curParam, task, isRandom)
 		curParam.mapID = config.mapID
 		curParam.x = config.x
 		curParam.y = config.y
-		--curParam.itemID = config.itemID
-		--curParam.itemNum = config.itemNum
 		curParam.itemsInfo = config.itemsInfo
 		local targetParam =  {}
-		--[[local itemsInfo = {}
-		itemsInfo.itemID = curParam.itemID
-		itemsInfo.count = curParam.itemNum
-		]]
 		targetParam.itemsInfo = curParam.itemsInfo--{}
-		--table.insert(targetParam.itemsInfo,itemsInfo)
 		local target = createDynamicTarget(player, task, "TcollectItem", targetParam)
 		task:addTarget(1, target)
 		local targets = {}
@@ -935,18 +932,14 @@ function Triggers.collectTrace(roleID, curParam, task, isRandom)
 		mapID = curParam.mapID,
 		x = curParam.x,
 		y = curParam.y,
-		--itemID = curParam.itemID,
-		--itemNum = curParam.itemNum,
+		
 		itemsInfo = curParam.itemsInfo,
 	}
 	local itemInfo = 
 	{
-		--itemID = curParam.itemID,
-		--count = curParam.itemNum,
 		itemsInfo = curParam.itemsInfo,
 		taskID = task:getID(),
 	}
-	print("hhh================555555555555",toString(itemInfo),toString(config))
 	g_taskSystem:notifyClient(player, TaskNotifyClientType.item, itemInfo)
 	g_taskSystem:onSetDirect(player, config)
 	
