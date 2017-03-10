@@ -168,6 +168,7 @@ ItemEvents_CS_RequestExchangeProps      = Event_Group_Item + 17
 ItemEvents_SC_ExchangePropsResult       = Event_Group_Item + 18
 ItemEvents_CS_RepairEquipMent	        = Event_Group_Item + 19
 ItemEvents_CS_RepairAllEquipMent	    = Event_Group_Item + 20
+ItemEvents_SC_RepairEquipment			= Event_Group_Item + 21
 
 --战斗系统消息事件
 FightEvents_FC_StartFight				= Event_Group_Fight + 1

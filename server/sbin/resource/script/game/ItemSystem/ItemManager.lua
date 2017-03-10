@@ -755,6 +755,12 @@ function ItemManager:openEquipAppraisal(player)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+--打开装备修理界面
+function ItemManager:openRepairEquipment(player)
+	local event = Event.getEvent(ItemEvents_SC_RepairEquipment)
+	g_eventMgr:fireRemoteEvent(event, player)
+end 
+
 --打开兑换物品界面
 function ItemManager:exchangeProps(player)
 	local event = Event.getEvent(ItemEvents_SC_OpenExchangeProps)

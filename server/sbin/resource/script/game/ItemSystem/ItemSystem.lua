@@ -795,7 +795,7 @@ function ItemSystem:onRepairEquipMent(event)
 	end
 	local salePrice = equipMent:getSalePrice()
 	local durability  = curDurability/maxDurability * 100
-	local perc = 0
+	local perc = 0 
 	if durability > 80 then
 		perc = 2
 	elseif durability >50 then
@@ -804,18 +804,23 @@ function ItemSystem:onRepairEquipMent(event)
 		perc = 4
 	else
 		perc = 6
-	end
+	end															
 	local repairMoney = math.ceil(perc*salePrice*(maxDurability - curDurability )/maxDurability)
 	local subMoney = player:getSubMoney()
 	local money = player:getMoney()
-	if subMoney + money < repairMoney then
+	if subMoney < repairMoney  and money < repairMoney then
 		return
 	end
 	if subMoney >= repairMoney then
-		player:setSubMoney(subMoney - repairMoney)
+		subMoney = subMoney - repairMoney
+		player:setSubMoney(subMoney)
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, 15, repairMoney)
+		g_eventMgr:fireRemoteEvent(event, player)
 	else
-		player:setSubMoney(0)
-		player:setMoney(money-repairMoney + subMoney)
+		money = money - repairMoney
+		player:setMoney(money)
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, 16, repairMoney)
+		g_eventMgr:fireRemoteEvent(event, player)
 	end
 	equipMent:setCurDurability(maxDurability)
 end
@@ -861,16 +866,21 @@ function ItemSystem:onRepairAllEquipMent(event)
 
 	local subMoney = player:getSubMoney()
 	local money = player:getMoney()
-	if subMoney + money < repairAllMoney then
+	if subMoney < repairAllMoney  and money < repairAllMoney then
 		return
 	end
 	if subMoney >= repairAllMoney then
-		player:setSubMoney(subMoney - repairAllMoney)
+		subMoney = subMoney - repairAllMoney
+		player:setSubMoney(subMoney)
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, 17, repairAllMoney)
+		g_eventMgr:fireRemoteEvent(event, player)
 	else
-		player:setSubMoney(0)
-		player:setMoney(money-repairAllMoney + subMoney)
+		money = money - repairAllMoney
+		player:setMoney(money)
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Trade, 18, repairAllMoney)
+		g_eventMgr:fireRemoteEvent(event, player)
 	end
-
+	
 	for gridIndex = 1, equipPack:getCapability() do
 		local equipMent = equipPack:getGridItem(gridIndex)
 		if equipMent then

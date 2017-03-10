@@ -18,6 +18,7 @@ local Subtract		= Array.subtract
 
 local Basic		= PetSkillCategory.Basic
 local Superior	= PetSkillCategory.Superior
+local Extend	= PetSkillCategory.Extend
 
 PetSkillHandler = class()
 
@@ -25,7 +26,7 @@ function PetSkillHandler:__init(owner)
 	self.owner		= owner
 	self.skills		= {}
 	self.maxSkill	= owner:getAttrValue(pet_skill_max)
-	self.categories	= {{},{}}
+	self.categories	= {{},{},{}}
 	self.ordinalMax = 0
 end
 
@@ -58,7 +59,7 @@ function PetSkillHandler:loadDB(recordSet)
 	table_sort(recordSet,__sd_comparator)
 	for _,data in ipairs(recordSet) do
 		self:addSkill(
-			PetSkill(data.skillID,data.category)
+			PetSkill(data.skillID,data.category,data.level)
 		)
 	end
 	return true
@@ -76,8 +77,17 @@ function PetSkillHandler:canAddSkill(skillID)
 	return true,skillID
 end
 
-function PetSkillHandler:isFull()
-	return self:getAmount(Superior) >= self:getMaxSkill()
+function PetSkillHandler:isFull(sc)
+	if not sc then sc = Superior end
+	if sc == Superior then
+		return self:getAmount(Superior) >= self:getMaxSkill()
+	elseif sc == Basic then
+		return self:getAmount(Basic) > 4
+	elseif sc == Extend then
+		return self:getAmount(Extend) > 4
+	else
+		return true
+	end
 end
 
 function PetSkillHandler:getAmount(ct)
@@ -153,6 +163,7 @@ function PetSkillHandler:addSkill(skill)
 	self:pushFresh({
 		skillID = id,
 		category = ca,
+		level = skill:getLevel(),
 		ordinal = skill:getOrdinal(),
 	})
 end
@@ -270,6 +281,7 @@ function PetSkillHandler:acquireTalent()
 		number = 1
 	end
 
+	local level = self.owner:getLevel()
 	local sup = data.Superior
 	print("该宠物创建时候,能获得%d个高级技能",nSurAcquired)
 	if sup then
@@ -278,7 +290,7 @@ function PetSkillHandler:acquireTalent()
 			local index = _next()
 			if index < 1 then break end
 			self:addSkill(
-				PetSkill(sup[index],Superior)
+				PetSkill(sup[index],Superior,level)
 			)
 			number = number - 1	
 		end
@@ -288,7 +300,7 @@ function PetSkillHandler:acquireTalent()
 	if god then
 		for _,id in ipairs(god) do
 			self:addSkill(
-				PetSkill(id,Superior)
+				PetSkill(id,Superior,level)
 			)
 		end
 	end
@@ -311,7 +323,7 @@ function PetSkillHandler:acquireBasic()
 			local id,lvl = unpack(config)
 			if lvl <= ownerLevel and not self:getSkill(id) then
 				self:addSkill(
-					PetSkill(id,Basic)
+					PetSkill(id,Basic,ownerLevel)
 				)
 			end
 		end
@@ -337,6 +349,7 @@ function PetSkillHandler:acquireRandom()
 	if not tLearn then
 		notice("宠物还童时候,宠物%s没有配置技能学习表",self.owner:getConfigID() or "没有配置ID")
 	end
+	local ownerLevel = self.owner:getLevel()
 	local tSuperior = tLearn.Superior
 	local _next = NonRepeatIndex(#tSuperior)
 	while number > 0 do
@@ -347,7 +360,7 @@ function PetSkillHandler:acquireRandom()
 		local prev = self:getSkill(id)
 		if not prev or prev:isRemoved() then
 			self:addSkill(
-				PetSkill(id,Superior)
+				PetSkill(id,Superior,ownerLevel)
 			)
 			number = number - 1
 		end
@@ -375,9 +388,15 @@ end
 -- 和在新技能等级下使技能生效
 function PetSkillHandler:handlePetLevelUP()
 	local owner = self.owner
-	local skills = self.skills
-	for _,skill in pairs(skills) do
-		skill:makeEffect(owner)
+	local ownerLevel = owner:getLevel()
+	for _,skill in pairs(self.skills) do
+		local cate = skill:getCategory()
+		if cate == Basic or cate == Superior then
+			if ownerLevel ~= skill:getLevel() then
+				skill:setLevel(ownerLevel)
+				skill:makeEffect(owner)
+			end
+		end
 	end
 
 	self:acquireBasic()
@@ -387,14 +406,15 @@ end
 -- 保存宠物技能
 function PetSkillHandler:onSave(param,tick)
 	param['spName']     = "sp_UpdatePetSkill"
-	param['sort']       = "pid,sid,cate,ord,rmd"
+	param['sort']       = "pid,sid,cate,lvl,ord,rmd"
 
 	param['pid']        = self.owner:getDBID()
 	for id,skill in pairs(self.skills) do
 		param['sid']    = id
 		param['cate']   = skill:getCategory()
+		param['lvl']	= skill:getLevel()
 		param['ord']    = skill:getOrdinal()
-		param['rmd']	= skill:isRemoved()
+		param['rmd']	= skill:isRemoved() and 1 or 0
 
 		tick()
 	end
@@ -410,6 +430,7 @@ function PetSkillHandler:getFull()
 			rawset(all,#all + 1,{
 			  skillID = skill:getID(),
 			  category = skill:getCategory(),
+			  level = skill:getLevel(),
 			  ordinal = skill:getOrdinal()
 		})
 		end
@@ -484,6 +505,25 @@ function PetSkillHandler:sendFreshs(player)
 	end
 end
 
+-- 发送所有等级改变了的技能
+function PetSkillHandler:sendChanges(player)
+	local skills = self.skills
+	local t = {}
+	for _,id in ipairs(self.categories[Extend]) do
+		local skill = skills[id]
+		if not skill:isRemoved() and skill:isUpped() then
+			t[ id ] = skill:getLevel()
+		end
+	end
+	if #t > 0 then
+		local owner = self.owner
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(PetEvent_SC_SkillChanged,owner:getID(),t),
+			player or g_entityMgr:getPlayerByID(owner:getOwnerID())
+		)
+	end
+end
+
 -- 发送所有遗忘技能信息到客户端
 function PetSkillHandler:sendPassed(player)
 	local passed = self:popPassed()
@@ -527,7 +567,7 @@ function PetSkillHandler:readBook(itemID)
 
 	local replacedID
 	-- 将会移除一个已经掌握的技能
-	if rate < math_random() or self:isFull() then
+	if rate < math_random() or self:isFull(Superior) then
 		if tGod then
 			all = Subtract(table_copy(all),tGod)
 		end
@@ -542,17 +582,16 @@ function PetSkillHandler:readBook(itemID)
 	if replacedID then
 		self:removeSkill(replacedID)
 	end
-	self:addSkill(PetSkill(skillID,Superior))
+	self:addSkill(PetSkill(skillID,Superior,self.owner:getLevel()))
 
 	return skillID,replacedID
 end
 
 function PetSkillHandler:get_skills()
-	local ownerLevel = self.owner:getLevel()
 	local ret = {}
 	for _,skill in pairs(self.skills) do
 		if not skill:isRemoved() and skill:isValid() then
-			ret[skill:getID()] = ownerLevel
+			ret[skill:getID()] = skill:getLevel()
 		end
 	end
 	return ret

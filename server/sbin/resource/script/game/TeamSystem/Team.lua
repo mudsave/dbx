@@ -43,6 +43,7 @@ function Team:__init(teamID,leaderID)
 	self:setLeader(leaderID)
 	self.dekaronProcess = 0
 	self.targetList = {}
+	self.activityTarget = nil
 end
 
 function Team:__release()
@@ -52,6 +53,7 @@ function Team:__release()
 	self.inviteList = nil
 	self.dekaronProcess = nil
 	self.targetList = nil
+	self.activityTarget = nil
 end
 
 --获得队长ID
@@ -263,10 +265,10 @@ function Team:removeMember(playerID)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	teamHandler:setTeamID(InvalidTeamID)
 	--被移除队伍设置速度
-	print("-----退出队伍-----------d----",player:getName(),player:getSelfSpeed())
 	player:setMoveSpeed(player:getSelfSpeed())
 	--modify npc pet show
 	setFollowVisible(playerID, true)
+	g_dekaronSchoolMgr:removeTeam(player)
 end
 
 --暂时离开
@@ -340,11 +342,11 @@ function Team:getProcess()
 end
 
 function Team:setDekaronActivityTarget(activityTarget)
+	self.activityTarget = activityTarget
 	local param = activityTarget:getParams()
 	for k,memberInfo in pairs(self.allMemberList) do
 		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 		local handler = player:getHandler(HandlerDef_Activity)
-		handler:setDekaronActivityTarget(activityTarget)
 		if activityTarget then
 			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,self.dekaronProcess,handler:getDekaronIntegral())
 			g_eventMgr:fireRemoteEvent(event, player)
@@ -363,4 +365,8 @@ end
 
 function Team:addDekaronTargetList(school)
 	table.insert(self.targetList,school)
+end
+
+function Team:getDekaronActivityTarget()
+	return self.activityTarget
 end

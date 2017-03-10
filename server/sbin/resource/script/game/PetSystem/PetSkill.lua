@@ -36,12 +36,14 @@ end
 
 PetSkill = class()
 
-function PetSkill:__init(id,category,ordinal)
+function PetSkill:__init(id,category,level,ordinal)
 	self.id				= id				-- 技能ID
 	self.category		= category			-- 技能分类
+	self.level			= level or 1		-- 技能等级
 	self.ordinal		= ordinal or false	-- 序列号
 	self.removed		= false				-- 技能否被删除
 	self.valid			= false				-- 技能是否是有效的
+	self.upped			= false				-- 等级是否提示
 end
 
 function PetSkill:getID()
@@ -60,6 +62,17 @@ function PetSkill:setOrdinal(ordinal)
 	self.ordinal = ordinal
 end
 
+function PetSkill:getLevel()
+	return self.level
+end
+
+function PetSkill:setLevel(lvl)
+	if self.level ~= lvl then
+		self.level = lvl
+		self.upped = true
+	end
+end
+
 -- 技能被删除与否
 
 function PetSkill:setRemoved(rm)
@@ -70,8 +83,7 @@ function PetSkill:isRemoved()
 	return self.removed
 end
 
--- 技能是否是有效的,主要处理高级和低级技能之前的关系
-
+-- 技能是否是有效的,主要处理高级和低级技能之间的关系
 function PetSkill:isValid()
 	return self.valid
 end
@@ -80,8 +92,14 @@ function PetSkill:setValid(b)
 	self.valid = b
 end
 
--- 技能的效果保存
+function PetSkill:isUpped()
+	if self.upped then
+		self.upped = false
+		return true
+	end
+end
 
+-- 技能的效果保存
 function PetSkill:setLastEffect(key,value)
 	rawset(self,1024 + key,value)
 end
@@ -102,15 +120,13 @@ function PetSkill:makeEffect(owner)
 	if detail.skill_type ~= PetSkillType.AttrPassive then
 		return
 	end
-	-- 技能等级和宠物等级一致
-	local lvl = owner:getLevel()
 	-- 属性被动技能会有多个效果
 	for index,effect in pairs(detail.skill) do
 		local formula = PetSkillDataDB[effect.num_id]
 		local addType = formula.type
 
 		-- 技能效果的数值
-		local value = formula[lvl]
+		local value = formula[self.level]
 		local prev	= self:getLastEffect(index)
 
 		self:setLastEffect(index,value)

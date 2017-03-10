@@ -522,6 +522,11 @@ function DialogAction:doOpenEquipAppraisal(player)
 	g_itemMgr:openEquipAppraisal(player)
 end
 
+--装备修理
+function DialogAction:doRepairEquipment(player)
+	g_itemMgr:openRepairEquipment(player)
+end 
+
 --物品兑换
 function DialogAction:doExchangeProps(player)
 	print("兑换道具。")
@@ -638,8 +643,8 @@ function DialogAction:doDekaronSchoolFight(player,param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler and teamHandler:isLeader() then
 		local teamID = teamHandler:getTeamID()
-		local handler = player:getHandler(HandlerDef_Activity)
-		local activityTarget = handler:getDekaronActivityTarget()
+		local team = g_teamMgr:getTeam(teamID)
+		local activityTarget = team:getDekaronActivityTarget()
 		if activityTarget and activityTarget:getActivityTargetId() == targetID then
 			local playerList = {}
 			playerList = teamHandler:getTeamPlayerList()
@@ -733,12 +738,19 @@ function DialogAction:doReceiveBabelTask(player, param)
 		local finishFlag = taskHandler:getBabelFinishFlag(param.taskID)
 		-- 今日也完成
 		if finishFlag == 1 then
-			print("今天已经完成，请明日再来")
+			local msg = 23
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, result)
+			g_eventMgr:fireRemoteEvent(event, player)
 			return
 		end
 		local layer = 1
 		local flyLayer = 1
-		g_taskDoer:doReceiveBabelTask(player, param.taskID, param.rewardType, layer, flyLayer)
+		local result = g_taskDoer:doReceiveBabelTask(player, param.taskID, param.rewardType, layer, flyLayer)
+		if result > 0 then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, result)
+			g_eventMgr:fireRemoteEvent(event, player)
+			return 
+		end
 		local mapID = BabelEachLayerDB[param.taskID][layer].mapID
 		print("mapID任务数据",mapID, param.taskID, layer)
 		if mapID then

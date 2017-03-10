@@ -63,4 +63,5 @@ DialogActionConfig =
 	[DialogActionType.FlyUp]					= DialogAction.doFlyUp,
 	[DialogActionType.ChangeRewardType]			= DialogAction.doChangeRewardType,
 	[DialogActionType.ChangeTarget]				= DialogAction.doChangeTarget,
+	[DialogActionType.OpenItemRepairWin]		= DialogAction.doRepairEquipment,
 }

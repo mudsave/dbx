@@ -25,12 +25,12 @@ function ActivityManager:__release()
 	self.lastTime = nil
 end
 
-function ActivityManager:openActivity(id, frameName,flag)
+function ActivityManager:openActivity(id, frameName)
 	print("-----------活动预开启-----------",frameName)
 	local clazz = _G[frameName]
 	if clazz and type(clazz) == "table" then
 		self.curActivityList[id] = clazz()
-		self.curActivityList[id]:open(flag)
+		self.curActivityList[id]:open()
 		-- 通知这个活动按钮开启
 		self:notifyAllActivityPageUpdateBtn(id,true)
 	else
@@ -96,6 +96,7 @@ end
 local isTrue = true
 
 function ActivityManager:minUpdate(currentTime)
+	print("-------222222222222222222222---------",frameName)
 	if self.lastTime > 0 and currentTime - self.lastTime < 600 then
 		--return
 	end
@@ -182,7 +183,7 @@ function ActivityManager:updateActivityByStart()
 			local endTime = activityInfo.endTime
 			if not self.curActivityList[id] then		
 				if data.hour >= startTime.hour and data.min >= startTime.min and data.hour <= endTime.hour and data.min <= endTime.min then
-					self:openActivity(id, activityInfo.name,true)
+					self:openActivity(id, activityInfo.name)
 				end
 			end
 		elseif activityInfo.startType == AtyStartType.fixedWeekHour then --每一周
@@ -197,7 +198,7 @@ function ActivityManager:updateActivityByStart()
 					print("-----2222222-------来这里不。。。。。。。。。。",toString(data),toString(startTime),toString(endTime))
 					if data.wday >= startTime.week + 1 and (data.hour > startTime.hour or (data.hour == startTime.hour or data.min >= startTime.min)) and data.wday <= endTime.week + 1 and (data.hour < endTime.hour or (data.hour == endTime.hour and data.min <= endTime.min )) then
 						print("-----111111-------来这里不。。。。。。。。。。")
-						self:openActivity(id, activityInfo.name,true)
+						self:openActivity(id, activityInfo.name)
 						return
 					end
 				end

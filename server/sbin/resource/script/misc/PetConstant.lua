@@ -38,8 +38,9 @@ PetStatus = {
 
 -- 宠物的技能的所属类型
 PetSkillCategory = {
-	Basic		= 1,	--基础技能
-	Superior	= 2,	--高级技能
+	Basic		= 1,	-- 基础技能
+	Superior	= 2,	-- 高级技能
+	Extend		= 3,	-- 研发技能
 }
 
 MaxPetLoyalty			= 10000		-- 宠物的最大忠诚度

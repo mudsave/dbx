@@ -14,15 +14,14 @@ end
 
 -- 管理添加buff
 function FightBuffManager:addBuff(srcEntity, desEntity, buffID, skillLevel)
-	Flog:log(srcEntity:getID().."给"..desEntity:getID().."添加buff:"..buffID.."\n")
-	print("shu"..srcEntity:getID().."给"..desEntity:getID().."添加buff:"..buffID.."\n")
+	print("添加buff:buffID, skillLevel", buffID, skillLevel)
 	local handler = desEntity:getHandler(FightEntityHandlerType.HandlerDef_FightBuff)
 	local buff = Buff(buffID, desEntity, srcEntity, skillLevel)
 	if handler:addBuff(buff) then
 		return true
 	end
 	Flog:log("添加buff失败,检查是否有限制的状态\n")
-	print("shuqingping:添加buff失败,检查是否有限制的状态")
+	print("添加buff失败,检查是否有限制的状态")
 	return false
 end
 

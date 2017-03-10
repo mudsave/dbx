@@ -806,10 +806,12 @@ function TaskHandler:getReceiveBabelTaskTime(taskID)
 end
 
 -- 保存通天塔任务
-function TaskHandler:saveBabelTask(taskID)
+function TaskHandler:saveBabelTask()
 	local playerID = self._entity:getID()
-	if self.babelTaskInfo[taskID] then
-		LuaDBAccess.saveBabelTask(playerID, taskID, self.babelTaskInfo[taskID])
+	for taskID, taskInfo in pairs(self.babelTaskInfo) do
+		if taskID then
+			LuaDBAccess.saveBabelTask(playerID, taskID, taskInfo)
+		end
 	end
 end
 

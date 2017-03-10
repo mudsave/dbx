@@ -428,13 +428,13 @@ function LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	clearParams()
 	params[1]["spName"] = "sp_UpdateLoopTaskRing"
 	params[1]["dataBase"] = 1
-	params[1]["sort"] = '_RoleID,_TaskID,_CountRing,_CurrentRing,_OfflineTime,_finishTimes'
+	params[1]["sort"] = '_RoleID,_TaskID,_CountRing,_CurrentRing,_ReceiveTaskTime,_finishTimes'
 
 	params[1]["_RoleID"] = playerDBID
 	params[1]["_TaskID"] = taskID
 	params[1]["_CountRing"] = taskInfo.countRing
 	params[1]["_CurrentRing"] = taskInfo.currentRing
-	params[1]["_OfflineTime"] = taskInfo.receiveTaskTime
+	params[1]["_ReceiveTaskTime"] = taskInfo.receiveTaskTime
 	params[1]["_finishTimes"] = taskInfo.finishTimes
 	LuaDBAccess.exeSP(params, true)
 

@@ -631,6 +631,7 @@ function FightSystem:_setPlayerInfo4Client(playerInfo,player)
 		playerInfo['maxMp'] 	= player:getMaxMp()
 		playerInfo['weaponID']	= player:getWeaponID()
 		playerInfo['remouldLevel'] = player:getRemouldLevel()
+		print("playerInfo=",toString(playerInfo) )
 end
 
 function FightSystem:setPetInfo4Client(petInfo,pet)

@@ -50,6 +50,31 @@ function GMSystem:set_pet_all(player,value)
     end
 end
 
+function GMSystem:add_pet_extends(player,...)
+	local pet = g_entityMgr:getPet( player:getFollowPetID() )
+	if not pet then
+		print("没有跟随宠物,不能添加研发技能")
+		return
+	end
+	local handler = pet:getHandler(HandlerDef_PetSkill)
+	if not handler:isFull(PetSkillCategory.Extend) then
+		local remain = 5 - handler:getAmount(PetSkillCategory.Extend)
+		for i = 1,math.min( select('#',...),remain ) do
+			local id = tonumber(select(i,...))
+			if handler:canAddSkill(id) then
+				handler:addSkill(PetSkill(id,3))
+			end
+		end
+		handler:sendFreshs(player)
+		handler:sendPassed(player)
+		pet:flushPropBatch(player)
+	else
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet,PetError.CantLearnMore),player
+		)
+	end
+end
+
 --为宠物添加技能
 function GMSystem:add_pet_skills(player,...)
 	local petID = player:getFollowPetID()
@@ -59,13 +84,12 @@ function GMSystem:add_pet_skills(player,...)
 		return
 	end
 	local handler = pet:getHandler(HandlerDef_PetSkill)
-	if handler:isFull() then
+	if handler:isFull(PetSkillCategory.Superior) then
 		g_eventMgr:fireRemoteEvent(
 			Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet,PetError.CantLearnMore),player
 		)
 		return
 	end
-	print "添加技能中"
 	for i = 1,select('#',...) do
 		local value = select(i,...)
 		local id = tonumber(value)
@@ -83,7 +107,6 @@ function GMSystem:add_pet_skills(player,...)
 	handler:sendFreshs(player)
 	handler:sendPassed(player)
 	pet:flushPropBatch(player)
-	print "添加宠物技能"
 end
 
 -- 重置副本数据指令
@@ -367,9 +390,6 @@ function GMSystem:deductGoldCoin(recordList, dbId)
 end
 
 function GMSystem:add_pet(player, configID)
-	print("创建宠物",toString(player))	
-	local roleDBID = player:getDBID()
-
 	if player:canAddPet() then
 		local pet = g_entityFct:createPet(tonumber(configID))
 		if not pet then

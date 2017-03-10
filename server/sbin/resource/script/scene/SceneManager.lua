@@ -156,6 +156,7 @@ end
 function SceneManager:createEctypeScene(mapID)
 	local mapConfig = mapDB[mapID]
 	if not mapConfig then
+		print( "沒有地图配置, ",mapID )
 		return -1
 	end
 	local scene = Scene()

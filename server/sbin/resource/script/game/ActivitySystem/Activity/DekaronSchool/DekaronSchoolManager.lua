@@ -131,19 +131,18 @@ end
 
 --队长领取活动
 function DekaronSchoolManager:joinActivity(player)
-	local handler = player:getHandler(HandlerDef_Activity)
-	local activityTarget = handler:getDekaronActivityTarget()
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	if not (teamHandler and teamHandler:isLeader()) then
+		return false
+	end
+	local teamID = teamHandler:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	local activityTarget = team:getDekaronActivityTarget()
 	if activityTarget then
 		return
 	end
 	local activity = g_activityMgr:getActivity(gSchoolActivityID)
 	if activity and activity:isOpening() then
-		local teamHandler = player:getHandler(HandlerDef_Team)
-		if not (teamHandler and teamHandler:isLeader()) then
-			return false
-		end
-		local teamID = teamHandler:getTeamID()
-		local team = g_teamMgr:getTeam(teamID)
 		--队伍归队玩家等级大于30级，4人组队，队伍中归队玩家等级差距不超过10级才可领取活动参赛资格以及进行NPC挑战。
 		local teamMemNum = team:getMemberCount()
 		if teamMemNum < 2 then
@@ -181,9 +180,9 @@ function DekaronSchoolManager:giveUpActivity(player)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler and teamHandler:isLeader() then
 		local handler = player:getHandler(HandlerDef_Activity)
-		if handler:getDekaronActivityTarget() then
-			local teamID = teamHandler:getTeamID()
-			local team = g_teamMgr:getTeam(teamID)
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		if team:getDekaronActivityTarget() then
 			team:setDekaronActivityTarget(nil)
 			team:setProcess(0)
 			for _,memberInfo in pairs(team:getMemberList()) do
@@ -197,7 +196,6 @@ function DekaronSchoolManager:giveUpActivity(player)
 	else
 		local activityHandler = player:getHandler(HandlerDef_Activity)
 		activityHandler:setDekaronIntegral(0)
-		activityHandler:setDekaronActivityTarget(nil)
 		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget,DekaronSchool_SC_GiveUpActvityTarget)
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
@@ -240,16 +238,29 @@ end
 --新玩家加入队伍
 function DekaronSchoolManager:joinTeam(player, teamID)
 	local team = g_teamMgr:getTeam(teamID)
-	local leader = g_entityMgr:getPlayerByID(team:getLeaderID())
-	local leaderHandler = leader:getHandler(HandlerDef_Activity)
-	local activityTarget = leaderHandler:getDekaronActivityTarget()
+	local activityTarget = team:getDekaronActivityTarget()
 	if activityTarget then
 		local param = activityTarget:getParams()
 		local handler = player:getHandler(HandlerDef_Activity)
-		handler:setDekaronActivityTarget(activityTarget)
 		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,0,handler:getDekaronIntegral())
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
+end
+
+--退出队伍
+function DekaronSchoolManager:removeTeam(player)
+	local handler = player:getHandler(HandlerDef_Activity)
+	local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget,0,0,handler:getDekaronIntegral())
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+--玩家上线加入到活动中
+function DekaronSchoolManager:loadDekaronSchool(player,recordList)
+	local integral = recordList[1].integral
+	local handler = player:getHandler(HandlerDef_Activity)
+	handler:setDekaronIntegral(integral)
+	local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, 0,0,integral)
+	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 function DekaronSchoolManager.getInstance()

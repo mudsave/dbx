@@ -193,7 +193,7 @@ function EctypeSystem:onFightEndAfter(event)
 	-- 根据
 	local ectypeID = ectype:getEctypeID()
 	local ectypeType = tEctypeDB[ectypeID].EctypeType
-	if ectypeType == EctypeType.Faction or ectypeType == EctypeType.HulaoPass then
+	if ectypeType == EctypeType.Faction then
 		-- 帮会副本的一些处理
 		ectype:onFightEnd(fightID, result)
 	else

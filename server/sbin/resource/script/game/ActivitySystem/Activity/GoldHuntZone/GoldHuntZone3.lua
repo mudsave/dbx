@@ -12,11 +12,11 @@ GoldHuntZoneActivityDB3 =
 		name = "GoldHuntZone3",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 15, min = 3},
-		min_maxPlayerLevel = {50,60},
+		startTime = {hour = 23, min = 3},
+		min_maxPlayerLevel = {50,150},
 		readyPeriod = 1,
 		
-		endTime = {hour = 15, min = 7},
+		endTime = {hour = 23, min = 7},
 		mapID = 101,
 		phaseInfo = {
 			[1] = {
@@ -113,8 +113,8 @@ function GoldHuntZone3:open()
 		--创建场景
 		self._scene = g_sceneMgr:createGoldHuntScene(self._config.mapID, self._id)
 		--创建npc
-		local npc = g_entityFct:createDynamicNpc(GoldHuntZone_scoreNpcID)
-		self._scene:attachEntity(npc, GoldHuntZone_scoreNpcPos.x , GoldHuntZone_scoreNpcPos.y)
+		--local npc = g_entityFct:createDynamicNpc(GoldHuntZone_scoreNpcID)
+		--self._scene:attachEntity(npc, GoldHuntZone_scoreNpcPos.x , GoldHuntZone_scoreNpcPos.y)
 end
 
 function GoldHuntZone3:close()

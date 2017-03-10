@@ -17,22 +17,23 @@ end
 function TaskDoer:doReceiveBabelTask(player, taskID, rewardType, layer, flyLayer)
 	if not BabelTaskDB[taskID] then
 		print("通天塔任务ID配置错误", taskID)
-		return 
+		return 24
 	end
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	local teamID = teamHandler:getTeamID()
 	if teamID > 0 then
 		print("此任务不能组队")
-		return
+		return 25
 	end
 	local level = player:getLevel()
 	if level < 50 then
 		print("玩家等级不够50级")
-		return 
+		return 26
 	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	babelTask = g_taskFty:createBabelTask(player, taskID, rewardType, layer, flyLayer)
 	taskHandler:addTask(babelTask)
+	return 0
 end
 
 -- 接任务
@@ -184,7 +185,6 @@ function TaskDoer:doDeleteTask(player, taskID, flag)
 		taskHandler:resetCurrentRing(taskID)
 	end
 	taskHandler:removeTaskByID(taskID)
-	taskHandler:setUpdateDB()
 end
 
 
@@ -331,11 +331,10 @@ function TaskDoer:updateRoleTask(player)
 		elseif task:getType() == TaskType.daily and task:getUpdateDB() then
 			LuaDBAccess.updateDailyTask(player:getDBID(), task)
 			LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
-		elseif task:getType() == TaskType.babel and task:getUpdateDB() then
-			taskHandler:saveBabelTask()
 		end
 	end
 	taskHandler:updateLoopTaskRingToDB(taskID)
+	taskHandler:saveBabelTask()
 	self:updateRolePrivateTask(player)
 end
 
