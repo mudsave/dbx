@@ -8,8 +8,4 @@ __pycache__
 *.o
 *.d
 
-World
-Gateway
-Session
-
 /client
