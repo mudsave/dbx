@@ -5,8 +5,6 @@ RescueHulaoPassEctype = class( Ectype, Timer )
 
 function RescueHulaoPassEctype:__init()
 	self.checkTimerID = -1
-	--  记录副本场景物件
-	self.ectypeObject = {}
 	--  记录副本巡逻怪
 	self.ectypePatrolNpc = {}
 	--  记录战斗NPC
@@ -19,8 +17,6 @@ end
 
 function RescueHulaoPassEctype:__release()
 	self.checkTimerID = nil
-	--  记录副本场景物件
-	self.ectypeObject = nil
 	--  记录副本巡逻怪
 	self.ectypePatrolNpc = nil
 	--  记录战斗NPC
@@ -43,39 +39,6 @@ function RescueHulaoPassEctype:update( timerID )
 	end
 end
 
--- 创建场景物件的时候， 要监测副本场景当中有多少个物件
-function RescueHulaoPassEctype:createObject(params)
-	local objectID = params.objectID
-	-- 判断场景物件的个数
-	local objectsNum = table.size(self.ectypeObject)
-	if objectsNum < params.objectNum then
-		local needCreateNum = params.objectNum - objectsNum
-		for i = 1, needCreateNum do 
-			-- 随机坐标：
-			local object = g_entityFct:createEctypeObject(objectID)
-			if not object then
-				return
-			end
-			local xPos, yPos = self:getEctypeValidEmptyPos()
-			if not self.ectypeObject[object:getID()] then
-				self.ectypeObject[object:getID()] = object
-				g_sceneMgr:enterEctypeScene(self.ectypeMapID, {object, xPos, yPos})
-			end
-		end
-	end
-end
-
--- 移除副本场景物件, 左键点击移除物品
-function RescueHulaoPassEctype:removeObject(objectID)
-	local object = self.ectypeObject[objectID]
-	if object then
-		local scene = object:getScene()
-		scene:detachEntity(object)
-		self.ectypeObject[objectID] = nil
-		g_entityMgr:removeGoodsNpc(objectID)
-	end
-end
-
 -- 驱动副本进度
 function RescueHulaoPassEctype:driveEctypeProcess()
 	-- 在驱动副本进度前要先打开副本机关
@@ -89,6 +52,7 @@ end
 function RescueHulaoPassEctype:exeLogicProcedure()
 	local curProcedure = self.ectypeConfig.LogicProcedure[self.curProgress]
 	if not curProcedure then
+		print("副本当前环节配置错误,",self.curProgress)
 		return
 	end
 	-- 执行本步骤的开始动作
@@ -163,13 +127,28 @@ function RescueHulaoPassEctype:attachPatrolNpc(fightID, patrolNpcID)
 	if not self.fightNpc[fightID] then
 		self.fightNpc[fightID] = patrolNpcID
 	end
-	-- 给玩家减积分
-	local msgID = 18
-	self:redIntegral(msgID, EctypeIntegral.Patrol)
+end
+
+-- 战斗结束。这个地方还要做下处理，战斗完看标志，
+function RescueHulaoPassEctype:onFightEndBefor(fightID, isWin)
+	local patrolNpcID = self.fightNpc[fightID]
+	if patrolNpcID then
+		local patrolNpc = g_entityMgr:getPatrolNpc(patrolNpcID)
+		if patrolNpc then
+			self.fightNpc[fightID] = nil
+			if isWin then
+				-- 战斗胜利移除NPC
+				self:removePatrolNpc(patrolNpcID)
+			else
+				patrolNpc:setOwnerID()
+				patrolNpc:moveNext()
+			end
+		end
+	end
 end
 
 -- 战斗结束后
-function RescueHulaoPassEctype:onFightEnd(player, fightID, fightResult)
+function RescueHulaoPassEctype:onFightEnd( player, scriptID, fightResult )
 	local curProcedure = self.ectypeConfig.LogicProcedure[self.curProgress]
 	if not curProcedure then
 		return
@@ -182,7 +161,7 @@ function RescueHulaoPassEctype:onFightEnd(player, fightID, fightResult)
 		local fightWin = curProcedure.Goto.FightWin
 		if fightWin then
 			for i = 1, table.getn(fightWin) do
-				if fightWin[i].fightID == fightID then
+				if fightWin[i].fightID == scriptID then
 					if self.curProgress == fightWin[i].gotoNext then
 						-- 已经触发过了
 						return
@@ -194,23 +173,25 @@ function RescueHulaoPassEctype:onFightEnd(player, fightID, fightResult)
 			end
 		end
 		-- 战斗胜利后清理场景
-		self:exeLogicFightClean(self.curProgress)
-		if self.ectypeConfig.FightWinID == fightID then
+		if self.ectypeConfig.FightWinID == scriptID then
+			print("abc")
 			self:exeLogicProcedureEnd(self.curProgress)
 			self:onEctypeEnd()
 			self:setEctypeLeftMin( self.ectypeConfig.EctypeExistTime/60 )
-			return
 		else
-			self.curProgress = 1
-			-- 执行跳转步骤的动作
-			self:exeLogicProcedure()
+			if self.curProgress ~= 1 then
+				self:exeLogicFightClean( self.curProgress )
+				self.curProgress = 1
+				-- 执行跳转步骤的动作
+				self:exeLogicProcedure()
+			end
 		end
 	else
 		-- 战斗失败
 		local fightLose = curProcedure.Goto.FightLose
 		if fightLose then
 			for i = 1, table.getn(fightLose) do
-				if fightLose[i].fightID == fightID then
+				if fightLose[i].fightID == scriptID then
 					if self.curProgress == fightLose[i].gotoNext then
 						-- 已经触发过了
 						return
@@ -227,31 +208,6 @@ function RescueHulaoPassEctype:onFightEnd(player, fightID, fightResult)
 		self.curProgress = self.curProgress - 1
 		-- 执行跳转步骤的动作
 		self:exeLogicProcedure()
-	end
-end
-
-
--- 收到机关撞击
-function RescueHulaoPassEctype:onAttackEffect()
-	if not self.finishFlag then
-		local msgID = 17
-		self:redIntegral(msgID, EctypeIntegral.Effect)
-	end
-end
-
--- 在这个副本当中没有记录撞击次数
-function RescueHulaoPassEctype:redIntegral(msgID, ectypeIntegral)
-	local ectypePlayers = self:getEctypePlayers()
-	for playerID, _ in pairs(ectypePlayers) do
-		local player = g_entityMgr:getPlayerByID(playerID)
-		if player then
-			local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-			-- 点击传送门后重设当前进度
-			local curRedIntegral = ectypeHandler:redIntegral(ectypeIntegral)
-			if curRedIntegral then	
-				self:sendEctypeMessageTip(player, msgID, curRedIntegral)
-			end
-		end
 	end
 end
 

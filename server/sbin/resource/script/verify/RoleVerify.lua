@@ -376,10 +376,11 @@ end
 function RoleVerify:checkActivityOpening(player, param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if not (teamHandler and teamHandler:isLeader()) then
-		return false,34
+		return false,4
 	end
-	local handler = player:getHandler(HandlerDef_Activity)
-	local activityTarget = handler:getDekaronActivityTarget()
+	local teamID = teamHandler:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	local activityTarget = team:getDekaronActivityTarget()
 	if activityTarget then
 		return false,34
 	end
@@ -394,32 +395,32 @@ end
 
 --检查是否领取了门派闯关活动
 function RoleVerify:haveActivityTarget(player)
-	local handler = player:getHandler(HandlerDef_Activity)
-	local activityTarget = handler:getDekaronActivityTarget()
 	local teamHandler = player:getHandler(HandlerDef_Team)
-	if not (teamHandler and teamHandler:isTeam()) then
-		if teamHandler:isLeader() and activityTarget  then
-			return true
-		else
-			return false,34
-		end
-	else
+	local teamID = teamHandler:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	if teamHandler and team then
+		local activityTarget = team:getDekaronActivityTarget()
 		if activityTarget then
 			return true
 		else
 			return false,34
 		end
 	end
+	return false,34
 end
 
+--检查现在的活动目标是否跟此NPC的活动目标一样。
 function RoleVerify:checkActivityTarget(player, param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if not (teamHandler and teamHandler:isLeader()) then
 		print("不是队长")
 		return false,33
 	end
-	local handler = player:getHandler(HandlerDef_Activity)
-	local activityTarget = handler:getDekaronActivityTarget()
+
+	local teamID = teamHandler:getTeamID()
+	local team = g_teamMgr:getTeam(teamID)
+	local activityTarget = team:getDekaronActivityTarget()
+	print(param.activityTargetID,activityTarget:getActivityTargetId())
 	if activityTarget and activityTarget:getActivityTargetId() == param.activityTargetID then
 		return true
 	else

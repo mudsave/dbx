@@ -1649,9 +1649,9 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions = 
 		{
-		{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},errorID=23,},},
-		{condition = DialogCondition.CheckTaskTeam, param = {tiredness = 10,errorID=27,},},
-		{condition = DialogCondition.HasTask, param = {taskID = 10008, statue = false,errorID = 28}},
+		--{condition = DialogCondition.CheckTaskTeam, param = {playerNum = 2,playerLvlRange =10,taskLvlRange = {minLvl = 30,maxLvl =150},errorID=23,},},
+		--{condition = DialogCondition.CheckTaskTeam, param = {tiredness = 10,errorID=27,},},
+		--{condition = DialogCondition.HasTask, param = {taskID = 10008, statue = false,errorID = 28}},
 		},
 		speakerID = 29008,
 		txt = "截教妖道，上古邪魔，均会为祸人间，还望道友能降妖伏魔，匡扶天道。",
@@ -7130,7 +7130,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		 {condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+		 {condition = DialogCondition.School, param = {school = SchoolType.PLG}},
 		},
 		speakerID = 26029,
 		soundID = nil,
@@ -16265,6 +16265,35 @@ DialogModelDB =
 				}, 
 		},
 	},
+	[20036] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions = {},
+		speakerID = 29083,
+		txt = "装备修理",
+		options =
+		{
+			[1] =
+			{
+				showConditions = {},
+				optionTxt = "修理装备",
+				actions =
+				{
+					{action = DialogActionType.OpenItemRepairWin, param = {},},
+				},
+			},
+			[2] =
+			{
+				showConditions = {},
+				optionTxt = "下次再来",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param = {},},
+				},
+			},
+		}
+	},
+
 	--------------------------------桃园镇对话ID规划：20151~20250------
 	[20151] =
 	{
@@ -20206,11 +20235,11 @@ DialogModelDB =
 		options =
 		{
 			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}}},
+				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 2}}},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 2}},
 				},
 			},
 		},
@@ -20225,11 +20254,11 @@ DialogModelDB =
 		options =
 		{
 			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}}},
+				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 3}}},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 3}},
 				},
 			},
 		},
@@ -20244,11 +20273,11 @@ DialogModelDB =
 		options =
 		{
 			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}}},
+				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 4}}},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 4}},
 				},
 			},
 		},
@@ -20263,11 +20292,11 @@ DialogModelDB =
 		options =
 		{
 			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}}},
+				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 5}}},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 5}},
 				},
 			},
 		},
@@ -20282,11 +20311,11 @@ DialogModelDB =
 		options =
 		{
 			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}}},
+				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 6}}},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 6}},
 				},
 			},
 		},
@@ -25412,7 +25441,7 @@ DialogModelDB =
 		conditions = 
 		{},
 		speakerID = 29040,	
-		txt = "讨你任务",
+		txt = "讨逆任务",
 		options = 
 		{
 			[1] =
@@ -25421,7 +25450,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-				    
+				    {action = DialogActionType.RecetiveSpecialTask, param = {taskID = 10010}}, 
 				},
 			},
 		},

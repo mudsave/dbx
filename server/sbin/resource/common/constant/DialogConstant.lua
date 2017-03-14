@@ -107,6 +107,7 @@ DialogActionType =
 	FlyUp				= 59,		-- 飞升
 	ChangeRewardType	= 60,		-- 跟换奖励类型
 	ChangeTarget		= 61,		-- 改变任务目标
+	OpenItemRepairWin = 62,			--装备修理
 }
 
 --对话框图标类型

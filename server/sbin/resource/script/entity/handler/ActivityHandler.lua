@@ -14,7 +14,6 @@ function ActivityHandler:__init(entity)
 	self.enterPos = {}
 	--门派闯关活动积分
 	self.dekaronIntegral = 0
-	self.activityTarget = nil
 end
 
 function ActivityHandler:__release()
@@ -24,7 +23,7 @@ function ActivityHandler:__release()
 	self.priData = nil
 	self._goldHuntData = nil
 	self.enterPos = nil
-	self.activityTarget = nil
+	self.dekaronIntegral = nil
 end
 
 function ActivityHandler:getGoldHuntData()
@@ -131,12 +130,4 @@ end
 
 function ActivityHandler:setDekaronIntegral(dekaronIntegral)
 	self.dekaronIntegral = dekaronIntegral
-end
-
-function ActivityHandler:getDekaronActivityTarget()
-	return self.activityTarget
-end
-
-function ActivityHandler:setDekaronActivityTarget(activityTarget)
-	self.activityTarget = activityTarget
 end

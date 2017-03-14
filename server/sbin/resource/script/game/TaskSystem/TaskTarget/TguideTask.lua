@@ -25,7 +25,7 @@ function TguideTask:onGuideTask(guideTaskID)
 			self:removeWatchers()
 			return
 		else
-			self._state = self._state + 1
+			self:setState(self._state + 1)
 		end	
 	end
 	local targetsState = self._task:getTargetState()

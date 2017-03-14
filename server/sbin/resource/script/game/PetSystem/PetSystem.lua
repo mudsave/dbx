@@ -862,7 +862,7 @@ local function MergeAttrs(survivor,victim)
 end
 
 -- 合并宠物的技能
-local function CombineSkills(survivor,victim)
+local function CombineSkills(survivor,victim,level)
 	local alpha = survivor:getHandler(HandlerDef_PetSkill)
 	local belta = victim:getHandler(HandlerDef_PetSkill)
 
@@ -897,7 +897,7 @@ local function CombineSkills(survivor,victim)
 	for i = 1,skillCount do
 		local skillID = all[next()]
 		notice(("获得技能:%s"):format(skillID))
-		alpha:addSkill(PetSkill(skillID,2))
+		alpha:addSkill(PetSkill(skillID,2,level))
 	end
 end
 
@@ -918,18 +918,21 @@ function PetSystem:onCombinePets(event)
 		return
 	end
 	
+	toDo "添加宠物合成失败处理:替换成另外一个低出战等级宠物"
+
 	local level = failure and 1 or math_ceil( ( victim:getLevel() + survivor:getLevel() ) * 40 / 100 )
 	survivor:resetAttrs()
 	survivor:setLevel(1)
 
 	MergeAttrs(survivor,victim)
-	CombineSkills(survivor,victim)
+	CombineSkills(survivor,victim,level)
 
 	local config = PetDB[survivor:getConfigID()]
 	survivor:setPetLife(PetCompoundRandom(config.petLife[1],survivor:getAttrValue(pet_life_max)))
 	survivor:setLoyalty(MaxPetLoyalty)
 	survivor:onLevelUP(level)
-	survivor:flushPropBatch()
+	survivor:flushPropBatch(player)
+	toDo "没有发送宠物的技能信息??"
 
 	if failure then
 		g_eventMgr:fireRemoteEvent(

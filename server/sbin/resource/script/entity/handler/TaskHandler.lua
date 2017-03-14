@@ -15,10 +15,12 @@ function TaskHandler:__init(entity)
 	self.count = 0					--任务数量
 	self.loopTaskInfo = {}			--循环任务信息
 	self.canRecetiveTaskID = {}
-	
+	self.updateDB = false
+
 	self.dailyTaskConfiguration = {}   --日常任务配置表
 	-- 通天塔任务初
-	self.babelTaskInfo = {}	
+	self.babelTaskInfo = {}
+
 
 end
 
@@ -34,6 +36,7 @@ function TaskHandler:__release()
 	self.loopTaskInfo = nil
 	self.babelTaskInfo = nil
 	self.dailyTaskConfiguration = nil   --日常任务配置表
+	self.updateDB = false
 end
 
 function TaskHandler:releaseCurTask()
@@ -44,6 +47,14 @@ function TaskHandler:releaseCurTask()
 		end
 	end
 	self.currentTask = nil
+end
+
+function TaskHandler:setUpdateDB()
+	self.updateDB = true
+end
+
+function TaskHandler:getUpdateDB()
+	return self.updateDB
 end
 
 function TaskHandler:addTask(task)
@@ -194,7 +205,7 @@ function TaskHandler:getNextID()
 	return self.nextTaskID
 end
 
--- 完成时跟新，当前函数+ 1 
+-- 接任务的时候，当前函数+ 1 
 function TaskHandler:updateLoopCount(taskID)
 	self:checkTaskData(taskID)
 	self.loopTaskInfo[taskID].currentRing = self.loopTaskInfo[taskID].currentRing + 1
@@ -236,12 +247,13 @@ function TaskHandler:updateMinTask(currentTime)
 	end
 end
 
+-- 跨天重置
 function TaskHandler:updateDayTask()
-	for taskID, task in pairs(self.currentTask) do
-		if task:getType() == TaskType.loop and task:getPeriod() == TaskPeriod.day then
-			-- 此时任务不能删除
-			self.loopTaskInfo[taskID].countRing = 0
-			self.loopTaskInfo[taskID].finishTimes = 0
+	for taskID, loopTaskInfo in pairs(self.loopTaskInfo) do
+		if LoopTaskDB[taskID].period == TaskPeriod.day then
+			loopTaskInfo.countRing = 0
+			loopTaskInfo.finishTimes = 0
+			loopTaskInfo.receiveTaskTime = os.time()
 		end
 	end
 	-- 跟新通天塔任务, 有任务和没有任务的情况
@@ -259,15 +271,21 @@ function TaskHandler:updateDayTask()
 		babelTaskInfo.faildTimes = 0
 		babelTaskInfo.finishFlag = 0
 	end
+	-- 需要跟新数据库
+	self.updateDB = true
 end
 
+-- 跨周
 function TaskHandler:updateWeekTask()
-	for taskID, task in pairs(self.currentTask) do
-		if task:getType() == TaskType.loop and task:getPeriod() == TaskPeriod.week then
-			self.loopTaskInfo[tasID].countRing = 0
-			self.loopTaskInfo[taskID].finishTimes = 0
+	for taskID, loopTaskInfo in pairs(self.loopTaskInfo) do
+		if LoopTaskDB[taskID].period == TaskPeriod.week then
+			loopTaskInfo.countRing = 0
+			loopTaskInfo.finishTimes = 0
+			loopTaskInfo.receiveTaskTime = os.time()
+
 		end
 	end
+	self.updateDB = true
 end
 
 -- 刚开始没有环数为配置的次数
@@ -291,6 +309,7 @@ function TaskHandler:checkTaskData(taskID)
 		taskData.countRing = 0
 		taskData.currentRing = 0
 		taskData.finishTimes = 0
+		taskData.receiveTaskTime = 0
 		-- print("taskData.finishTimes",taskData.finishTimes)
 		self.loopTaskInfo[taskID] = taskData
 	end
@@ -313,7 +332,13 @@ function TaskHandler:updateFinishTimes(taskID)
 	self.loopTaskInfo[taskID].finishTimes = self.loopTaskInfo[taskID].finishTimes + 1
 end
 
--- 刚开始没有环数为1设置呢 这个需要做下判断
+-- 设置一下接任务的时间
+function TaskHandler:setReceiveTaskTime(taskID)
+	self:checkTaskData(taskID)
+	self.loopTaskInfo[taskID].receiveTaskTime = os.time()
+end
+
+-- 刚开始没有环数为1设置呢 这个需要做下判断， 同步队员之间的环数
 function TaskHandler:getCurrentRing(taskID)
 	local taskConfig = LoopTaskDB[taskID]
 	local taskType2 = taskConfig.taskType2
@@ -409,6 +434,7 @@ function TaskHandler:removeTaskByID(taskID)
 		-- 此时也要跟新一下npc头顶状态
 		self:updateNpcHeader(taskID)
 		self:updateTaskList(taskID, true)
+		self.updateDB = true
 	end
 end
 
@@ -446,7 +472,6 @@ function TaskHandler:updateNpcHeader(taskID)
 			g_taskDoer:updateNpcHeader(player, endNpc)
 		end
 	end
-
 end
 
 function TaskHandler:doneTaskByID(taskID)
@@ -475,7 +500,7 @@ function TaskHandler:finishLoopTask(taskID)
 			-- 如果任务玩家是队长才能接
 			if team:getLeaderID() == player:getID() then
 				if not TaskCondition.isMaxRing(player, taskID) then
-					g_taskDoer:doRecetiveTeamTask(player, taskID)
+					g_taskDoer:doReceiveSpecialTask(player, taskID)
 				else
 					-- 次数到，重置
 					for _, entity in pairs(teamHandler:getTeamPlayerList()) do
@@ -486,7 +511,7 @@ function TaskHandler:finishLoopTask(taskID)
 			end	
 		else
 			if not TaskCondition.isMaxRing(player, taskID) then
-				g_taskDoer:doRecetiveTeamTask(player, taskID)
+				g_taskDoer:doReceiveSpecialTask(player, taskID)
 			else
 				-- 重置当前环数，不需要转盘奖励
 				self:resetCurrentRing(taskID)
@@ -514,6 +539,7 @@ end
 
 function TaskHandler:finishTaskByID(taskID)
 	if self.currentTask[taskID] then
+		self.updateDB = true
 		-- 清除taskPrivateHandler当中的绑定的npcID
 		local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
 		taskPrivateHandler:removeTraceInfo(taskID)
@@ -572,7 +598,6 @@ function TaskHandler:deleteTaskToDB(taskID)
 		-- 环数完成时不要清理数据库
 	elseif DailyTaskDB[taskID] then
 		LuaDBAccess.deleteDailyTask(self._entity:getDBID(), taskID)
-		print("将配置表置空>>>>>>>>>>>>>>>>>>>>>>>>>",self.dailyTaskConfiguration[taskID])
 		return true
 	else
 		LuaDBAccess.deleteNormalTask(self._entity:getDBID(), taskID)
@@ -648,24 +673,26 @@ end
 -- 设置循环任务的环数
 function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 	for _, loopTask in pairs(loopTaskRecord or {}) do
-		local offlineTime = loopTask.offlineTime
+		local receiveTaskTime = loopTask.receiveTaskTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数
 		local loopTaskConfig = LoopTaskDB[loopTask.taskID]
 		if loopTaskConfig then
 			-- 如果是每日的循环任务
 			if loopTaskConfig.period == TaskPeriod.day then
 				-- 判断记录日期跟现在是不是同一天 判断这次登陆和上次离线的时间做比较
-				if not time.isSameDay(offlineTime) then
+				if not time.isSameDay(receiveTaskTime) then
 					-- 不是同一天，重新设置当前可做的次数，
 					loopTask.countRing = 0
 					loopTask.finishTimes = 0
+					loopTask.receiveTaskTime = os.time()
 				end
 			else
 				-- 判断记录日期跟现在是不是同一周
-				if not time.isSameWeek(offlineTime) then
+				if not time.isSameWeek(receiveTaskTime) then
 					-- 不是同一周，算是新CD了，重置完成次数和副本进度
 					loopTask.countRing = 0
 					loopTask.finishTimes = 0
+					loopTask.receiveTaskTime = os.time()
 				end
 			end
 			if not self.loopTaskInfo[loopTask.taskID] then
@@ -675,6 +702,7 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 				self.loopTaskInfo[loopTask.taskID].finishTimes = loopTask.finishTimes
 				-- print("loopTask.finishTimes",loopTask.finishTimes)
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
+				self.loopTaskInfo[loopTask.taskID].receiveTaskTime = loopTask.receiveTaskTime
 				-- 把循环任务的消息给客户端
 				self:loadLoopTaskInfoToClient()
 			else
@@ -693,7 +721,7 @@ end
 -- 保存循环任务环数
 function TaskHandler:updateLoopTaskRingToDB()
 	local playerDBID = self._entity:getDBID()
-	for taskID, taskInfo in pairs(self.loopTaskInfo) do
+	for taskID ,taskInfo in pairs(self.loopTaskInfo) do
 		LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	end
 end
@@ -704,16 +732,12 @@ function TaskHandler:resetCurrentRing(taskID)
 	end
 end
 
-function TaskHandler:setDailyTaskConfiguration( taskConfiguration )
-	
+function TaskHandler:setDailyTaskConfiguration( taskConfiguration )	
 	self.dailyTaskConfiguration = taskConfiguration
-
 end
 
 function TaskHandler:getDailyTaskConfiguration( )
-
 	return self.dailyTaskConfiguration
-
 end
 
 function TaskHandler:getDailyTaskConfigurationByID( taskID )
@@ -739,6 +763,7 @@ end
 -- 完成通天塔任务接口, 通天塔任务相关记录
 function TaskHandler:finishBabelTask(taskID)
 	if self.currentTask[taskID] then
+		self.updateDB = true
 		-- 清除taskPrivateHandler当中的绑定的npcID
 		local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
 		taskPrivateHandler:removeTraceInfo(taskID)

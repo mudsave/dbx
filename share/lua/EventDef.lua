@@ -168,6 +168,7 @@ ItemEvents_CS_RequestExchangeProps      = Event_Group_Item + 17
 ItemEvents_SC_ExchangePropsResult       = Event_Group_Item + 18
 ItemEvents_CS_RepairEquipMent	        = Event_Group_Item + 19
 ItemEvents_CS_RepairAllEquipMent	    = Event_Group_Item + 20
+ItemEvents_SC_RepairEquipment			= Event_Group_Item + 21
 
 --战斗系统消息事件
 FightEvents_FC_StartFight				= Event_Group_Fight + 1
@@ -400,7 +401,7 @@ TradeEvents_CS_P2PTradePet				= Event_Group_Trade + 30
 TradeEvents_SC_P2PChangePetReturn		= Event_Group_Trade + 31
 
 TradeEvents_CS_BuyPet					= Event_Group_Trade + 32 --宠物商店购买宠物
-TradeEvents_CS_P2PMessageChoose = Event_Group_Trade +33 ----处理P2P发过来的消息
+TradeEvents_CS_P2PMessageChoose			= Event_Group_Trade +33	--处理P2P发过来的消息
 
 --邮件消息
 MailEvent_SC_MailsDelieved				= Event_Group_Mail + 1	--服务器给客户端推送邮件
@@ -587,14 +588,15 @@ PetEvent_SC_SkillsArrived				= Event_Group_Pet + 28	--宠物技能到达
 PetEvent_SC_SkillForgotten				= Event_Group_Pet + 29	--遗忘了的宠物技能
 PetEvent_SC_SkillBookRead				= Event_Group_Pet + 30	--技能书使用结果
 PetEvent_CS_ReadSkillBook				= Event_Group_Pet + 31	--宠物使用技能书
+PetEvent_SC_SkillChanged				= Event_Group_Pet + 32	--宠物技能等级改变
 
-PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 32	--请求拓展宠物栏
-PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 33	--宠物栏数量到达
+PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 33	--请求拓展宠物栏
+PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 34	--宠物栏数量到达
 
-PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 34	--交易宠物信息已经到达
+PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 35	--交易宠物信息已经到达
 
-PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 35	--宠物学习研发技能
-PetEvent_SC_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技能结果
+PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技能
+PetEvent_SC_LearnExtendSkill			= Event_Group_Pet + 37	--宠物学习研发技能结果
 --[[
 	¤╭⌒╮ ╭⌒╮	{ Keep Distance }	
 	╱◥██◣ ╭╭ ⌒╮

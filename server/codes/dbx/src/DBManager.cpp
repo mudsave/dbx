@@ -78,7 +78,7 @@ void DBManager::CallSP(handle p_linkIndex, AppMsg *p_appMsg)
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)p_appMsg;
     DbxMessageBuilder<CCSResultMsg>::locateContent(pQueryMsg);
 
-    if (pQueryMsg->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
+    if (pQueryMsg->getAttibuteByName("queueIndex", 0, type, pValue) && type == PARAMINT)
     {
         queryIndex = *(int *)pValue;
     }

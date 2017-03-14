@@ -83,3 +83,14 @@ CanRecetiveLoopTaskLvl =
 	[2] = 30,
 	[3] = 40,
 }
+
+-- 队伍条件
+TeamType =
+{
+	-- 单人
+	single = 1,
+	-- 组队
+	team = 2,
+	-- 单人，组队都可以
+	special = 3,
+}

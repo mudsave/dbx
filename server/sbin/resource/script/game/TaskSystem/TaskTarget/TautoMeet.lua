@@ -21,11 +21,11 @@ function TautoMeet:onPosChanged(mapID, x, y)
 		return
 	end
 	if mapID == self._param.mapID then
-		if (x >= self._param.x - 3) and (y >= self._param.y - 3) and (x <= self._param.x + 3) and (y <= self._param.y + 3) then
+		if (x >= self._param.x - 5) and (y >= self._param.y - 5) and (x <= self._param.x + 5) and (y <= self._param.y + 5) then
 			print("任务当前状态加 >>>>>>>>>>>>>>>>1")
 			self._entity:getHandler(HandlerDef_TaskPrData):setStartMine(self._task:getID())
 			CactionSystem.getInstance():doAutoMeet(self._entity)
-			self._state  = self._state + 1
+			self:setState(self._state + 1)
 		end
 	end
 end

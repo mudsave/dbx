@@ -974,12 +974,11 @@ LoopTaskDB =
 		startDialogID = nil,
 		taskType2 = TaskType2.Heaven,
 		level = {30, 150},
-		condition = {teamerCount = 2, levelDiff = 10, vitalityConsume = 100},
-		team = false,
+		teamType = TeamType.team,
+		condition = {teamerCount = 2, levelDiff = 10},
 		school = nil,
 		startNpcID = 29008,		
 		loop = 10,
-		periodLoop = 10,
 		period = TaskPeriod.day,
 		targetLevelSection =
 		{
@@ -1170,5 +1169,46 @@ LoopTaskDB =
 		},
 		itemRewards =
 		{}
+	},
+
+	[10010] =
+	{
+		name = "讨逆任务",
+		taskType2 = TaskType2.Heaven,
+		-- 等级限制，
+		level = {35, 150},
+		-- 可以单人，可以组队
+		teamType = TeamType.special,
+		-- 组队等级差
+		condition = {levelDiff = 10},
+		startNpcID = 29008,		
+		loop = 10,
+		period = TaskPeriod.day,
+		targetLevelSection =
+		{
+			[1] = {1, 150},
+		},
+		targets = 
+		{
+			[1] =
+			{
+				[LoopTaskTargetType.script] = 50,		            -- 明雷战斗
+			},
+		},
+
+		-- 物品奖励
+		itemRewards =
+		{
+			-- 等级区间
+			[1] =
+			{	
+				-- 环数
+				[10] = 
+				{
+					-- 支持多种物品,和个数
+					[1] = {itemID = 1012018, itemNum = 1},
+				},
+			},
+		},
 	},
 }

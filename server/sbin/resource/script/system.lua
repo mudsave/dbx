@@ -123,10 +123,11 @@ function System.OnPlayerLoaded(player, recordList)	-- 玩家上线加载坐骑�
 
 	--加载邮箱系统
 	g_mailMgr:loadPlayerMails(player,recordList[14])
+
 	--加载猎金场活动
 	g_goldHuntMgr:loadGoldHunt(player,recordList[30])
 	-- 活动上线
-	g_activityMgr:onPlayerOnline(player,recordList)
+	g_activityMgr:onPlayerOnline(player,recordList[32])
 	--加载兑换物品数据
 	g_exchangeItemMgr:playerOnLine(player,recordList[33])
 	-- 
@@ -174,6 +175,7 @@ function System.OnPlayerLogout(player, reason)
 	g_mailMgr:update2DB(player:getDBID())
 	g_mailMgr:removeMailBox(player:getDBID())
 
+	--玩家下线关闭交易
 	g_tradeMgr:releaseTrade(player:getID())
 
 	--玩家下线退出队伍

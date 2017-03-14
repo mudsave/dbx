@@ -17,11 +17,11 @@ GoldHuntZoneActivityDB1 =
 		name = "GoldHuntZone1",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 15, min = 53},				--开始时间
-		min_maxPlayerLevel = {1,40},					--等级范围
+		startTime = {hour = 20, min = 06},				--开始时间
+		min_maxPlayerLevel = {1,39},					--等级范围
 		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 16, min = 30},				--结束时间
+		endTime = {hour = 20, min = 30},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {

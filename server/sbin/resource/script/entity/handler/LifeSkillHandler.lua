@@ -16,6 +16,7 @@ function LifeSkillHandler:__init(entity)
 	self.lifeSkills[LifeSkillID.refineLev] = 0
 	self.lifeSkills[LifeSkillID.reconLev] = 0
 	self.lifeSkills[LifeSkillID.catchLev] = 0
+	self.skillChangedData = {}
 end
 
 function LifeSkillHandler:__release()
@@ -45,12 +46,15 @@ end
 -- 设置玩家对应技能ID对应的等级
 function LifeSkillHandler:setLifeSkillLev(LifeSkillID, level)
 	self.lifeSkills[LifeSkillID] = level
+	self.skillChangedData[LifeSkillID]  = true
 end
 
 -- 保存玩家生活技能数据
 function LifeSkillHandler:saveLifeSkills()
 	local playerDBID = self._entity:getDBID()
 	for LifeSkillID,skillLevel in pairs(self.lifeSkills) do
-		LuaDBAccess.updatePlayerLifeSkill(playerDBID, LifeSkillID, skillLevel)
+		if self.skillChangedData[LifeSkillID] then
+			LuaDBAccess.updatePlayerLifeSkill(playerDBID, LifeSkillID, skillLevel)
+		end 
 	end
 end

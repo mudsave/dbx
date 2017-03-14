@@ -260,7 +260,7 @@ LoopTaskTargetAssistDB =
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
-                                                [2] = {npcID = 26010, scriptID = 4120},
+						[2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
 
@@ -6324,6 +6324,24 @@ LoopTaskTargetAssistDB =
 					createPosition = 
 					{
 						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+					},
+				},
+			},
+		},
+	},
+
+	[10010] =
+	{
+		[1] =
+		{
+			-- 一道10环
+			[1] =
+			{
+				[LoopTaskTargetType.script] =
+				{
+					createRandomNpc =
+					{
+						[1] = {npcID = 40002, scriptID = 100, mapID = 10, x = 200, y = 200},
 					},
 				},
 			},

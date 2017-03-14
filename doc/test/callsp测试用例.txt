@@ -1,0 +1,17 @@
+创建一批用于测试的账号和角色。
+
+call sp_GetPlayerInfo(4175, );
+call sp_LoadRoleGroups(3987);
+
+call sp_Login('//', '//', 5);
+[17:13:08] DBInterfaceMysql::Query p_dbInterfaceID(call sp_Login('gch', '1', 5);).
+
+error(PROCEDURE dream.sp_LoadFactionExtendSkill does not exist).
+Query p_dbInterfaceID(call sp_LoadFactionExtendSkill(73);).
+
+[14:03:27] Invalid sort param _Level, spName sp_UpdateLoopTask
+[14:03:27] DBTask::ProgressIssue:progress issue error().
+[14:03:27] DBInterfaceMysql::Query p_dbInterfaceID(call sp_UpdateNormalTask(3987, 1008, 1, '{0}', 0);).
+
+[15:02:23] DBInterfaceMysql::Query p_dbInterfaceID(call sp_CreateUserTest('ww\0', '1\0');).
+

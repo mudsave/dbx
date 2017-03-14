@@ -1,21 +1,20 @@
---[[AutoPointHandler.lua
-	自动点数分配
-]]
+-- AutoPointHandler.lua
+-- 自动点数分配
 
 local math_floor		= math.floor
 local math_min			= math.min
 local table_concat		= table.concat
 local MaxPhasePoint		= 35	-- 在一个相性上最多分配的点数
-local defaultPoint		= 0		-- 添加一个默认的自动加点的id
+local DefaultPlanID		= 0		-- 添加一个默认的自动加点的id
 
--- 标记存数据库的数据
-local flag = {
+-- 实体类型能否分配属性点 
+local CanAlloc = {
 	[eClsTypePlayer] = true,
 	[eClsTypePet]	 = true,
 }
 
 -- 系统分配方案
-local PreDefineDistributions = {
+local PreDefinePlans = {
 	[eClsTypePlayer] ={
 		[SchoolType.QYD] = {
 			4,0,1,0,0,
@@ -44,7 +43,7 @@ local PreDefineDistributions = {
 			0,4,1,0,0,
 		},
 	},
-	[defaultPoint] = {
+	[DefaultPlanID] = {
 		0,0,0,0,0,
 	},
 }
@@ -53,14 +52,14 @@ AutoPointHandler = class()
 
 local EntityConfig = {
 	[eClsTypePlayer] = {
-		basePointAttr	= player_str_point,			--第一个属性加点属性名称
-		freeAttrPoint	= player_attr_point,		--可分配属性点属性名称
-		freePhasePoint	= player_phase_point,		--可分配相性点属性名称
-		phaseAttrStart	= player_win_phase_point,	--加值相性属性范围开始
-		phaseAttrEnd	= player_poi_phase_point,	--加值相性属性范围结尾
+		baseAttrStart	= player_str_point,			-- 第一个属性加点属性名称
+		freeAttrPoint	= player_attr_point,		-- 可分配属性点属性名称
+		freePhasePoint	= player_phase_point,		-- 可分配相性点属性名称
+		phaseAttrStart	= player_win_phase_point,	-- 加值相性属性范围开始
+		phaseAttrEnd	= player_poi_phase_point,	-- 加值相性属性范围结尾
 	},
 	[eClsTypePet] = {
-		basePointAttr	= pet_str_point,
+		baseAttrStart	= pet_str_point,
 		freeAttrPoint	= pet_attr_point,
 	}
 }
@@ -83,13 +82,17 @@ function AutoPointHandler:__init(entity)
 	self.auto_attr		= false							-- 是否自动分配属性
 	self.auto_phase		= false							-- 是否自动分配相性
 	self.order			= DefOrder						-- 相性属性分配顺序
-	self.planID			= self.entity:getEntityType()	-- 属性点分配方案
-	self.distribution	= nil							-- 每个属性的分配比例，总值不能超过五
+	self.planID			= entity:getEntityType()		-- 属性点分配方案
+	self.distribution	= false							-- 每个属性的分配比例，总值不能超过五
+	self.changed		= false
+end
+
+function AutoPointHandler:__release()
+	self.entity = nil
 end
 
 -- 从数据库中加载
 function AutoPointHandler:loadDB(attrRecord)
-
 	local setting = attrRecord and attrRecord[1]
 	if not setting then
 		return false
@@ -97,14 +100,14 @@ function AutoPointHandler:loadDB(attrRecord)
 
 	local planID = setting.planID
 	local distribution
-	if flag[planID] then
+	if CanAlloc[planID] then
 		self.planID = planID
 	else
 		distribution = {0,0,0,0,0}
 		for index,dbAttrName in ipairs(DBAttrNames) do
 			distribution[index] = setting[dbAttrName] or 0
 		end
-		planID = defaultPoint
+		planID = DefaultPlanID
 	end
 
 	if distribution then
@@ -124,6 +127,8 @@ end
 
 -- 保存到数据库
 function AutoPointHandler:onSave(param)
+	if not self.changed then return false end
+
 	local entity	= self.entity
 	local eType		= entity:getEntityType()
 	if eClsTypePlayer == eType then
@@ -167,17 +172,24 @@ function AutoPointHandler:isAutoAttr()
 	return self.auto_attr
 end
 
+function AutoPointHandler:setAuto(name,bValue)
+	if self[name] ~= bValue then
+		self[name] = bValue
+		self.changed = true
+	end
+end
+
 function AutoPointHandler:setAutoAttr(b)
-	self.auto_attr = not not b
+	return self:setAuto("auto_attr",not not b)
 end
 
 -- 是否自动分配相性
 function AutoPointHandler:isAutoPhase()
-	return self.auto_phase
+	return self["auto_phase"]
 end
 
 function AutoPointHandler:setAutoPhase(b)
-	self.auto_phase = not not b
+	return self:setAuto("auto_phase",not not b)
 end
 
 function AutoPointHandler:getPlanID()
@@ -190,7 +202,7 @@ function AutoPointHandler:distibuteAttrPoints()
 	local config = EntityConfig[entity:getEntityType()]
 	if not config then return end
 
-	local basePointAttr = config.basePointAttr	-- 第一个加点属性的属性名称<<属性名称是数字
+	local baseAttrStart = config.basePointAttr	-- 第一个加点属性的属性名称<<属性名称是数字
 	local freePointAttr = config.freeAttrPoint	-- 自由属性点的属性名称
 
 	local totalPoint = entity:getAttrValue(freePointAttr)
@@ -207,13 +219,13 @@ function AutoPointHandler:distibuteAttrPoints()
 
 		local point = math_floor(totalPoint * value / 5)
 		if point > 0 then
-			entity:addAttrValue(basePointAttr + index - 1,point)
+			entity:addAttrValue(baseAttrStart + index - 1,point)
 			freePoint = freePoint - point
 			allocted = true
 		end
 	end
 	if freePoint > 0 then	-- 将剩余的点数加到最多的属性上
-		entity:addAttrValue(basePointAttr + _index - 1,freePoint)
+		entity:addAttrValue(baseAttrStart + _index - 1,freePoint)
 		allocted = true
 	end
 
@@ -227,7 +239,6 @@ end
 
 -- 分配相性
 function AutoPointHandler:distibutePhasePoints()
-
 	local entity = self.entity
 	local config = EntityConfig[entity:getEntityType()]
 	local pntAttr = config and config.freePhasePoint
@@ -270,10 +281,10 @@ function AutoPointHandler:setDistribution(planID,data)
 	local distribution
 	if planID and planID ~= 0 then
 		if planID == eClsTypePlayer then
-			distribution = PreDefineDistributions[planID][self.entity:getSchool()]
+			distribution = PreDefinePlans[planID][self.entity:getSchool()]
 		elseif planID == eClsTypePet then
 			local attackType = self.entity:getAttackType()
-			distribution = PreDefineDistributions[planID][attackType]
+			distribution = PreDefinePlans[planID][attackType]
 		end
 	elseif type(data) == 'table' then
 		local total = 0
@@ -292,6 +303,7 @@ function AutoPointHandler:setDistribution(planID,data)
 	end
 	self.planID = planID
 	self.distribution = distribution
+	self.changed = true
 	return true
 end
 
@@ -317,6 +329,7 @@ function AutoPointHandler:setOrder(order)
 		end
 	end
 	self.order = t
+	self.changed = true
 	return true
 end
 
@@ -327,7 +340,7 @@ function AutoPointHandler:sendDistribution(player)
 	local planID = self.planID or eType
 	local event
 
-	if flag[planID] then
+	if CanAlloc[planID] then
 		event = Event.getEvent(
 			AutoPointEvent_SC_DistributionComfirmed,
 			entity:getID(),planID,self:isAutoAttr()
@@ -342,9 +355,9 @@ function AutoPointHandler:sendDistribution(player)
 
 	if not self.distribution then
 		if eType == eClsTypePlayer then
-			self.distribution = PreDefineDistributions[eClsTypePlayer][entity:getSchool()]
+			self.distribution = PreDefinePlans[eClsTypePlayer][entity:getSchool()]
 		elseif eType == eClsTypePet then
-			self.distribution = PreDefineDistributions[eClsTypePet][entity:getAttackType()]
+			self.distribution = PreDefinePlans[eClsTypePet][entity:getAttackType()]
 		end
 	end
 end

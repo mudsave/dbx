@@ -10,6 +10,8 @@ function BuffHandler:__init(entity)
 	self.owner = entity
 	-- buff的记录
 	self.buffList = {}
+	--上一次buff记录
+	self.oldBuffList = {}
 	-- 开启1分钟的定时器
 	self.checkBuffTimerID = g_timerMgr:regTimer(self, 1000*60, 1000*60, "计时buff")
 	--to-do 定时将用户的buff 存入数据库
@@ -18,6 +20,7 @@ end
 function BuffHandler:__release()
 	self.owner = nil
 	self.buffList = nil
+	self.oldBuffList = nil
 	-- 删除定时器
 	g_timerMgr:unRegTimer(self.checkBuffTimerID)
 end
@@ -425,6 +428,7 @@ end
 
 -- 从数据库中加载
 function BuffHandler:loadBuff(recordList)
+	self.oldBuffList = recordList
 	local event = Event.getEvent(BuffEvents_SC_LoadBuff, self.owner:getID(), {})
 	g_eventMgr:fireRemoteEvent(event, self.owner)
 	for _,iter in pairs(recordList) do
@@ -451,11 +455,14 @@ function BuffHandler:loadBuff(recordList)
 		end
 	end
 end
-
+	
 -- 存储到数据库
 function BuffHandler:saveBuff()
 	local dbid = self.owner:getDBID()
-	LuaDBAccess.deletePlayerBuff(dbid)
+	--判断原buff是否存在
+	if next(self.oldBuffList) ~= nil then 
+		LuaDBAccess.deletePlayerBuff(dbid)
+	end 	
 	for idx,iter in pairs(self.buffList) do
 		local isFreeze = iter.freeze and 1 or 0
 		LuaDBAccess.updatePlayerBuff(dbid, iter.buffID, iter.lastValue, isFreeze)

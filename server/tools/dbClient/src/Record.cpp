@@ -59,8 +59,8 @@ bool CRecord::newAttribute(int AttributeType,void* pAttribute,int* pIndex/*out*/
 	ENTER_CRITICAL_SECTION_MEMBER(AttrType);
 	m_mapAttriType.insert(std::make_pair(m_nCurAttri,AttributeType));
 	
-	pTemp=(void*)malloc(DbxMessage::getTypeSize(AttributeType));
-	memcpy(pTemp,pAttribute,DbxMessage::getTypeSize(AttributeType));
+	pTemp=(void*)malloc(ObjDoMsg::getTypeSize(AttributeType));
+	memcpy(pTemp,pAttribute,ObjDoMsg::getTypeSize(AttributeType));
 	LEAVE_CRITICAL_SECTION_MEMBER;
 
 	ENTER_CRITICAL_SECTION_MEMBER(AttrValue);
@@ -94,7 +94,7 @@ int CRecord::getRecordSize(void)
 
 void CRecord::getAttributeSize(MAPATTRIPAIR iter,int* pSize)
 {
-	*pSize=*pSize+DbxMessage::getTypeSize(iter.second);
+	*pSize=*pSize+ObjDoMsg::getTypeSize(iter.second);
 }
 
 int CRecord::getAttributeCount(void)

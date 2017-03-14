@@ -17,7 +17,7 @@ end
 function TjoinFaction:onjoinFaction(flag)
 	local taskHandler = self._entity:getHandler(HandlerDef_Task)
 	local taskID = self._task:getID()	
-	self._state = self._state + 1
+	self:setState(self._state + 1)
 	if self._param.taskID == guideTaskID and self:completed() then
 		taskHandler:finishTaskByID(taskID)	--  加入帮派之后就结束任务
 		self:removeWatchers()

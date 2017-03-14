@@ -11,10 +11,6 @@ function PacketHandler:__init(entity)
 	self.packet = Packet(self._entity)
 	-- 开启15秒的定时器，检测计时道具是否到期
 	self.checkGoodsTimerID = g_timerMgr:regTimer(self, 1000*15, 1000*15, "检测背包计时道具")
-	-- 做一个检测2分钟定时器
-	self.doubleTimer = 0
-	-- 杀气定时器
-	self.killAirTimer = 0
 end
 
 function PacketHandler:__release()
@@ -23,8 +19,6 @@ function PacketHandler:__release()
 	self.packet = nil
 	-- 删除定时器
 	g_timerMgr:unRegTimer(self.checkGoodsTimerID)
-	self.doubleTimer = nil
-	self.killAirTimer = nil
 end
 
 -- 获取背包
@@ -42,30 +36,6 @@ function PacketHandler:update(timerID)
 	if timerID == self.checkGoodsTimerID then
 		-- 检测背包道具
 		self.packet:checkItemExpire()
-		-- 如果是2分钟
-		self.doubleTimer = self.doubleTimer + 1
-		if self.doubleTimer == 2 then
-			-- 增加玩家的体力值
-			local vigor = self._entity:getVigor()
-			local maxVigor = self._entity:getMaxVigor()
-			if vigor < maxVigor then
-				vigor = vigor + 1
-				self._entity:setVigor(vigor)
-			end
-			self.doubleTimer = 0
-		end
-
-		-- 杀气定时
-		self.killAirTimer = self.killAirTimer + 1
-		if self.killAirTimer == 2 then
-			-- 减玩家杀气
-			local killAir = self._entity:getAttrValue(player_kill)
-			if killAir > 0 then
-				killAir = killAir - 1
-				self._entity:setAttrValue(player_kill, killAir)
-			end
-			self.killAirTimer = 0
-		end
 	end
 end
 

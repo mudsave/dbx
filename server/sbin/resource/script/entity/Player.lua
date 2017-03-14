@@ -3,7 +3,7 @@
 	玩家核心数据
 --]]
 
-Player = class(Entity)
+Player = class(Entity, Timer)
 
 function Player:__init(roleId, gatewayId, hClientLink, hGateLink)
 	self._accountID		= nil

@@ -13,77 +13,32 @@ function TaskDoer:__release()
 
 end
 
--- 创建天道任务，，根据任务创建成功和失败，来决定是否进入场景
+-- 创建通天塔，，根据任务创建成功和失败，来决定是否进入场景
 function TaskDoer:doReceiveBabelTask(player, taskID, rewardType, layer, flyLayer)
 	if not BabelTaskDB[taskID] then
 		print("通天塔任务ID配置错误", taskID)
-		return 
+		return 24
 	end
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	local teamID = teamHandler:getTeamID()
 	if teamID > 0 then
 		print("此任务不能组队")
-		return
+		return 25
 	end
 	local level = player:getLevel()
 	if level < 50 then
 		print("玩家等级不够50级")
-		return 
+		return 26
 	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	babelTask = g_taskFty:createBabelTask(player, taskID, rewardType, layer, flyLayer)
 	taskHandler:addTask(babelTask)
-end
-
---特殊类型组队任务--天道任务, 接任务之前要保证所有队员格子任务完成
-function TaskDoer:doRecetiveTeamTask(player, taskID)
-	if not LoopTaskDB[taskID] then
-		print("配置错误taskID在循环任务里没有配",taskID)
-		return
-	end
-	local teamHandler = player:getHandler(HandlerDef_Team)
-	local teamID = teamHandler:getTeamID()
-	local team = g_teamMgr:getTeam(teamID)
-	if not team then
-		print("没有组队接不了任务")
-		return 
-	end
-	if not teamHandler:isLeader() then
-		print("暂离队员不是对账》》》")
-		return
-	end
-
-	if not TaskCondition.SpecialTeamTask(team, taskID) then
-		print("您的队伍中有人不满足条件")
-		return
-	end
-	-- 先以队长来创建任务
-	local leaderTaskHandler = player:getHandler(HandlerDef_Task)
-	leaderTaskHandler:updateLoopCount(taskID)
-	local loopTask = g_taskFty:createLoopTask(player, taskID)
-	leaderTaskHandler:addTask(loopTask)
-	for _, entity in pairs(teamHandler:getTeamPlayerList()) do
-		local roleID = entity:getID()
-		local taskHandler = entity:getHandler(HandlerDef_Task)
-		if roleID ~= player:getID() then
-			-- 队员接任务是如果有任务在的话，要把当前任务给删除
-			local task = taskHandler:getTask(taskID)
-			if task then
-				-- 如果有任务，先删除当前任务
-				self:doDeleteTask(entity, taskID)
-			end
-			loopTask1 = g_taskFty:createLoopByTask(loopTask, roleID)
-			taskHandler:addTask(loopTask1)
-			loopTask1:updateNpcHeader()
-		end
-		--g_taskSystem:updateLoopTaskList(entity, taskHandler:getRecetiveTaskList())
-		taskHandler:updateTaskList(taskID, false)
-	end
+	return 0
 end
 
 -- 接任务
 function TaskDoer:doRecetiveTask(player, taskID, GM)
-	print("接受一个任务，任务的ID：",taskID)	
+	print("接受一个任务，任务的ID：",taskID)
 	local msgID = nil
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	--先判断有没有接过该任务
@@ -132,6 +87,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		-- 如果条件满足时当前环数和总的环数+1
 		local level = player:getLevel()
 		taskHandler:updateLoopCount(taskID)
+		taskHandler:setReceiveTaskTime(taskID)
 		local loopTask = g_taskFty:createLoopTask(player, taskID)
 		-- 设置玩家接任务时的等级
 		loopTask:setReceiveTaskLvl(level)
@@ -163,6 +119,7 @@ end
 -- 分为客户端的删除，和服务器的主动删除
 function TaskDoer:doDeleteTask(player, taskID, flag)
 	local taskHandler = player:getHandler(HandlerDef_Task)
+	taskHandler:setUpdateDB()
 	-- 在这之前还要移除私有NPC 和热区以及其他的任务物品
 	local privateHandler = player:getHandler(HandlerDef_TaskPrData)
 	local npcs = {}
@@ -227,13 +184,22 @@ function TaskDoer:doDeleteTask(player, taskID, flag)
 		end
 		taskHandler:resetCurrentRing(taskID)
 	end
-	taskHandler:removeTaskByID(taskID)		
+	taskHandler:removeTaskByID(taskID)
+end
 
+
+-- 客户端点击删除通天塔任务接口
+function TaskDoer:doDeleteBabelTask(player, taskID)
+	local taskHandler = player:getHandler(HandlerDef_Task)	
+	local task = taskHandler:getTask(taskID)
+	if task then
+		taskHandler:setUpdateDB()
+		taskHandler:endFinishBabelTask(taskID)
+	end
 end
 
 --加载任务相关
 function TaskDoer:loadNormalTask(player, recordList)
-
 	if recordList then
 		local taskHandler = player:getHandler(HandlerDef_Task)
 		for _, taskData in pairs(recordList) do
@@ -259,7 +225,6 @@ function TaskDoer:loadNormalTask(player, recordList)
 end
 
 function TaskDoer:loadLoopTask(player, recordList)
-
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	for _, taskData in pairs(recordList) do
 		
@@ -278,9 +243,7 @@ function TaskDoer:loadLoopTask(player, recordList)
 end
 
 function TaskDoer:loadDailyTask( player, recordList )
-
 	local taskHandler = player:getHandler(HandlerDef_Task)
-
 	for _, taskData in pairs(recordList) do
 		if type(taskData.targetState) then
 			local c,cc = pcall(loadstring("return "..taskData.targetState))
@@ -320,14 +283,11 @@ end
 
 
 function TaskDoer:loadLoopTaskRing(player, recordList)
-
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:loadLoopTaskInfo(recordList)
-
 end
 
 function TaskDoer:loadHistoryTask(player, recordList)
-
 	if recordList then
 		for _, taskData in pairs(recordList) do
 			if taskData.historyTasks then
@@ -360,17 +320,20 @@ end
 
 function TaskDoer:updateRoleTask(player)
 	local taskHandler = player:getHandler(HandlerDef_Task)
+	if not taskHandler:getUpdateDB() then
+		return
+	end
 	for taskID, task in pairs(taskHandler:getTasks()) do
-		if task:getType() == TaskType.normal then
+		if task:getType() == TaskType.normal and task:getUpdateDB() then
 			LuaDBAccess.updateNormalTask(player:getDBID(), task)
-		elseif task:getType() == TaskType.loop then
-			LuaDBAccess.updateLoopTask(player:getDBID(), task)
-		elseif task:getType() == TaskType.daily then
+		elseif task:getType() == TaskType.loop and task:getUpdateDB() then
+			LuaDBAccess.updateLoopTask(player:getDBID(), task)			
+		elseif task:getType() == TaskType.daily and task:getUpdateDB() then
 			LuaDBAccess.updateDailyTask(player:getDBID(), task)
 			LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
 		end
 	end
-	taskHandler:updateLoopTaskRingToDB()
+	taskHandler:updateLoopTaskRingToDB(taskID)
 	taskHandler:saveBabelTask()
 	self:updateRolePrivateTask(player)
 end
@@ -378,11 +341,13 @@ end
 function TaskDoer:updateRolePrivateTask(player)
 	local taskPriHandler = player:getHandler(HandlerDef_TaskPrData)
 	local privateTaskData = {}
-	privateTaskData.followData = player:getHandler(HandlerDef_Follow):getMembersID()
-	privateTaskData.transferData = taskPriHandler:getTransferData()
-	privateTaskData.npcData = taskPriHandler:getNormalNpcData()
-	privateTaskData.cageData = taskPriHandler:getCage()
-	LuaDBAccess.updateRoleTaskPrivate(player:getDBID(), privateTaskData)
+	if table.size(player:getHandler(HandlerDef_Follow):getMembersID()) > 0 or taskPriHandler:getPriUpdateDB() then
+		privateTaskData.followData = player:getHandler(HandlerDef_Follow):getMembersID()
+		privateTaskData.transferData = taskPriHandler:getTransferData()
+		privateTaskData.npcData = taskPriHandler:getNormalNpcData()
+		privateTaskData.cageData = taskPriHandler:getCage()
+		LuaDBAccess.updateRoleTaskPrivate(player:getDBID(), privateTaskData)
+	end
 end
 
 --等级任务主要是指引任务
@@ -601,12 +566,54 @@ function TaskDoer:checkFlyUpCondition(player, param)
 	end
 end
 
--- 客户端点击删除通天塔任务接口
-function TaskDoer:doDeleteBabelTask(player, taskID)
+-- 特殊任务，既能对组，又能单人
+function TaskDoer:doReceiveSpecialTask(player, taskID)
+	-- 分单人， 组队，还有单人和组队都可以
+	if not LoopTaskDB[taskID] then
+		print("没有配置相应的任务ID")
+		return
+	end
+	local playerList 
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	local teamID = teamHandler:getTeamID()
+	if teamID > 0 then
+		playerList = teamHandler:getTeamPlayerList()
+	else
+		playerList = {}
+		table.insert(playerList, player)
+	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	local task = taskHandler:getTask(taskID)
-	if task then
-		taskHandler:endFinishBabelTask(taskID)
+	if taskHandler:getTask(taskID) then
+		return 25
+	end
+
+	local result = TaskCondition.SpecialTask(playerList, taskID, teamID)
+	if result > 0 then
+		return result 
+	end
+	-- 先以队长来创建任务
+	taskHandler:updateLoopCount(taskID)
+	local loopTask = g_taskFty:createLoopTask(player, taskID)
+	taskHandler:addTask(loopTask)
+	taskHandler:setReceiveTaskTime(taskID)
+	if table.size(playerList) > 1 then
+		for _, entity in pairs(playerList) do
+			local roleID = entity:getID()
+			local curTaskHandler = entity:getHandler(HandlerDef_Task)
+			if roleID ~= player:getID() then
+				-- 队员接任务是如果有任务在的话，要把当前任务给删除
+				local task = curTaskHandler:getTask(taskID)
+				if task then
+					-- 如果有任务，先删除当前任务, 没有加
+					self:doDeleteTask(entity, taskID)
+				end
+				loopTask1 = g_taskFty:createLoopByTask(loopTask, roleID)
+				curTaskHandler:addTask(loopTask1)
+				curTaskHandler:setReceiveTaskTime(taskID)
+				loopTask1:updateNpcHeader()
+			end
+			curTaskHandler:updateTaskList(taskID, false)
+		end
 	end
 end
 

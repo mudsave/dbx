@@ -294,6 +294,21 @@ dream_fight : start_fight
 dream_social: START_PORT=41000
 dream_social : start_social
 
+# 前台运行程序 - 熊鸿义 41010
+xhy_start: START_PORT=41010
+xhy_start: start_server
+
+xhy_session: START_PORT=41010
+xhy_session : start_session
+xhy_gateway: START_PORT=41010
+xhy_gateway : start_gateway
+xhy_world: START_PORT=41010
+xhy_world : start_world
+xhy_fight: START_PORT=41010
+xhy_fight : start_fight
+xhy_social: START_PORT=41010
+xhy_social : start_social
+
 
 start_server:
 	@SCL_PORT=$(START_PORT); \

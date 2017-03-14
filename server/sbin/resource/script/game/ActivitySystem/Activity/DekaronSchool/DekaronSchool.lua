@@ -42,18 +42,15 @@ function DekaronSchool:__release()
 	self.state = nil
 end
 
-function DekaronSchool:open(flag)
+function DekaronSchool:open()
 	--播放广播
-	if not flag then
-		local BroadCastMsgID = BroadCastMsgGroupID.Group_DekaronSchool
-		local event = Event.getEvent(BroadCastSystem_SC_DekaronSchool,BroadCastMsgID.EventID,BroadCastMsgID.ActivityPreOpening)
-		RemoteEventProxy.broadcast(event)
-	end
-	
+	local BroadCastMsgID = BroadCastMsgGroupID.Group_DekaronSchool
+	local event = Event.getEvent(BroadCastSystem_SC_DekaronSchool,BroadCastMsgID.EventID,BroadCastMsgID.ActivityPreOpening)
+	RemoteEventProxy.broadcast(event)
 	--活动状态(预开启)
 	self.state = ActivityState.PreOpening
 	--定时器5分钟后活动开启
-	self.openActivityTimerID = g_timerMgr:regTimer(self, 1000*60*5, 1000*60*1, "门派闯关活动5分钟后开启")
+	self.openActivityTimerID = g_timerMgr:regTimer(self, 1000*60*1, 1000*60*1, "门派闯关活动5分钟后开启")
 end
 
 function DekaronSchool:close()
@@ -127,6 +124,6 @@ end
 
 --玩家上线加入到活动中
 function DekaronSchool:joinPlayer(player,recordList)
-	print("-----门派闯关活动玩家上线加入。。。。。。",toString(recordList))
+	--print("-----门派闯关活动玩家上线加入。。。。。。",toString(recordList))
 	local handler = player:getHandler(HandlerDef_Activity)
 end

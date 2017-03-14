@@ -2,7 +2,7 @@
 描述:用于测试系统性能
 ]]
 
-TestSystem = class(EventSetDoer, Singleton)
+TestSystem = class(EventSetDoer, Singleton, Timer)
 
 function TestSystem:__init()
 	self._doer = 
@@ -55,8 +55,22 @@ function TestSystem:onAddMoney(event)
 	player:flushPropBatch()
 end
 
+function TestSystem:update(timerID)
+       local date = os.date("*t")
+	   local hour = date.hour
+	   local min = date.min
+	   local rootName = "testDB".."_"..tostring(hour).."_"..tostring(min)
+	   local FileName = "..//resource//script//"..rootName..".lua"
+	   	  
+	   local file,err=io.open(FileName)
+	   if file then
+			require(rootName)
+	   end
+end
+
 function TestSystem.getInstance()
 	return TestSystem()
 end
 
 EventManager.getInstance():addEventListener(TestSystem.getInstance())
+g_timerMgr:regTimer(TestSystem.getInstance(),0,60*1000,"TestSystem.onCollectGarbage")

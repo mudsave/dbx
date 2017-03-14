@@ -131,6 +131,7 @@ NotifyKind = {
     FriendNotify            = 5,
     FactionNotify           = 6,
     GroupNotify             = 7,
+    FactionChatChannel      = 8,
 
 }
 
@@ -159,14 +160,17 @@ FriendMsgTextKeyTable = {
 
 FactionMsgTextKeyTable = {
 
-    AlreadyInBlackList = 1,
-    AlreadyHaveFaction = 2,
-    FactionMembersIsEnough = 3,
-    FactionNameExist    =4,
-    MsgSendSucceed      = 5,
-    LevelIsNotEnough    = 6,
-    MoneyIsNotEnough    = 7,
-
+    AlreadyInBlackList      = 1,
+    AlreadyHaveFaction      = 2,
+    FactionMembersIsEnough  = 3,
+    FactionNameExist        = 4,
+    MsgSendSucceed          = 5,
+    LevelIsNotEnough        = 6,
+    MoneyIsNotEnough        = 7,
+    FactionMemberJoin       = 9,
+    FireFactionMember       = 10,
+    BeFiredInFaction        = 11,
+    DismissFaction          = 12,
 }
 
 GroupMsgTextKeyTable = {

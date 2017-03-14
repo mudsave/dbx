@@ -50,8 +50,8 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 		CSCResultMsg* pTemp = (CSCResultMsg*)pClient->getAttributeSet(operId, j);
 		if (!pTemp)
 			break;
-		int row_count = pTemp->getAttributeRows();
-		int field_count = pTemp->getAttributeCols();
+		int row_count = pTemp->getResCount();
+		int field_count = pTemp->m_nAttriNameCount;
 		// printf("rs%d:rows: %d, colums: %d\n", j, row_count, field_count);
 		IRecordSet* set = record_mgr->newRecordSet(&record_set_index);
 		rd_indexs.push_back(record_set_index);
@@ -59,9 +59,8 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 		{
 			IRecord* record = set->newRecord(&record_index);
 			for(int field_idx = 0; field_idx < field_count; field_idx++){
-				pTemp->getAttribute(tmp_name, tmp_param_type, tmp_value, field_idx, row_idx);
+				tmp_value = pTemp->getAttribute(&tmp_name, &tmp_param_type, field_idx, row_idx);
 				record->newAttribute(tmp_param_type, tmp_value, &tmp_index, tmp_name);
-				free(tmp_name);
 			}
 		}
 	}
@@ -109,7 +108,7 @@ void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hL
 	if ( pAttri == NULL )
 		return;
 	accountId = *(int*)pAttri;
-	DBMsg_LoginResult* pRoleMsg = DBMsg_LoginResult::CreateLoginResult();
+	DBMsg_LoginResult *pRoleMsg = DBMsg_LoginResult::CreateLoginResult();
 	pRoleMsg->actionType = DB_MSG_LOGIN;
 	pRoleMsg->accountId = accountId;
 	if ( accountId == 0 )

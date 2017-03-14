@@ -14,7 +14,7 @@ end
 
 function Tarea:onPosChanged(mapID, x, y)
 	if mapID == self._param.mapID then
-		if (x >= self._param.x - 3) and (y >= self._param.y - 3) and (x <= self._param.x + 3) and (y <= self._param.y + 3) then
+		if (x >= self._param.x - 5) and (y >= self._param.y - 5) and (x <= self._param.x + 5) and (y <= self._param.y + 5) then
 			self:setState(self._state + 1)
 			if self:completed() then
 				self:removeWatcher("onPosChanged")

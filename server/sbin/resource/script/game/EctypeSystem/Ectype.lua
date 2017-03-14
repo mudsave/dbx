@@ -37,6 +37,7 @@ function Ectype:create(ectypeID)
 	-- 找到副本配置
 	self.ectypeConfig = tEctypeDB[self.ectypeID]
 	if not self.ectypeConfig then
+		print( "副本配置不存在，", ectypeID )
 		return false
 	end
 	-- 创建新的副本地图
@@ -44,6 +45,7 @@ function Ectype:create(ectypeID)
 	if self.ectypeMapID > 0 then
 		return true
 	else
+		print( "副本地图不存在，",ectypeID, self.ectypeConfig.StaticMapID )
 		return false
 	end
 end

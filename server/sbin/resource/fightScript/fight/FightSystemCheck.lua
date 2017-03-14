@@ -189,6 +189,7 @@ function FightSystemActionChecker.isLiveNum(fight,params,condition)
 		end
 		local isEnemy = condition.params.isEnemy
 		local num = condition.params.count
+		local relation = condition.params.relation or ">="
 		if condition and condition.type == ScriptFightConditionType.LiveNum then
 			local side 
 			if isEnemy then
@@ -198,9 +199,20 @@ function FightSystemActionChecker.isLiveNum(fight,params,condition)
 			end
 			local members = fight:getMembers()
 			local curCount =FightUtils.getLiveNum(members[side])
-			if curCount >= num then
-				return true
+			if relation == ">" then
+				return curCount > num
+			elseif relation == ">=" then
+			    return curCount >= num
+			elseif relation == "=" then
+			    return curCount == num
+			elseif relation == "<" then
+			    return curCount < num
+			elseif relation == "<=" then
+				return curCount <= num
+			else
+			    return false
 			end
+			
 		end
 		return false
 end
