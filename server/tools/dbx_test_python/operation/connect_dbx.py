@@ -10,10 +10,10 @@ from dbx_interface import dbx_build_msg
 @operation.resgisterOperation("connect_test")
 def connect_test(*args):
 	"""
-	Usage: connect_test [-h 127.0.0.1] [-p 3000] 
+	Usage: connect_test [-h 172.16.2.230] [-p 3010] 
 	"""
-	host = "127.0.0.1"
-	port = 3000
+	host = "172.16.2.230"
+	port = 3010
 	
 	connect_args = []
 	index = -1
@@ -48,6 +48,7 @@ def on_connect_test_recv(stream):
 	message.read(reader)
 	
 	print("message msgLen %i" % message.msgLen)
+	print("message msgSize %i" % message.size())
 	print("message msgFlags %i" % message.msgFlags)
 	print("message msgCls %i" % message.msgCls)
 	print("message msgId %i" % message.msgId)
@@ -59,11 +60,21 @@ def on_connect_test_recv(stream):
 	print("message m_bNeedCallback %i" % message.m_bNeedCallback)
 	print("message m_nLevel %i" % message.m_nLevel)
 	print("message paramCount %i" % message.paramCount)
+	print("message attribute_cols %i" % message.attribute_cols)
+	print("message attribute_count %i" % message.attribute_count)
+	print("message content_offset %i" % message.content_offset)
 	print("message typeList %s" % message.typeList)
-	print("message dataList %s" % message.dataList)
+	#print("message dataList %s" % message.dataList)
+	
 	f = open("connect_test_data.txt", "w", encoding="latin1")
 	#f.writelines(message.dataList)
+	print("message dataList [", end = '')
 	for d in message.dataList:
+		try:
+			print(d+", ", end = '')
+		except:
+			print("<??>, ", end = '')
+	
 		f.write(str(d) + "\n")
 		continue
 		
@@ -71,6 +82,7 @@ def on_connect_test_recv(stream):
 			f.write(d + "\n")
 		else:
 			f.write(str(d) + "\n")
+	print("]")
 
 	
 @operation.resgisterOperation("message_test")
@@ -155,10 +167,10 @@ def message_test(type, *args):
 @operation.resgisterOperation("exec_sql")
 def exec_sql(*args):
 	"""
-	Usage: exec_sql [-h 127.0.0.1] [-p 3000] sql_format arg1 arg2 arg3 ...
+	Usage: exec_sql [-h 172.16.2.230] [-p 3010] sql_format arg1 arg2 arg3 ...
 	"""
-	host = "127.0.0.1"
-	port = 3000
+	host = "172.16.2.230"
+	port = 3010
 	
 	sql_args = []
 	index = -1
@@ -214,11 +226,11 @@ def on_exec_sql_recv(stream):
 @operation.resgisterOperation("exec_sp")
 def exec_sp(*args):
 	"""
-	Usage: exec_sp [-h 127.0.0.1] [-p 3000] sp_name param1=value1 param2=value2 ...
+	Usage: exec_sp [-h 172.16.2.230] [-p 3010] sp_name param1=value1 param2=value2 ...
 			注意：param1=value1中间不要加空格，如果一定要空格，需要用双引号括起来。
 	"""
-	host = "127.0.0.1"
-	port = 3000
+	host = "172.16.2.230"
+	port = 3010
 	
 	sp_args = []
 	index = -1
@@ -275,11 +287,11 @@ def on_exec_sp_recv(stream):
 def parallel_connect_test(*args):
 	"""
 	并发连接测试
-	Usage: parallel_connect [-h 127.0.0.1] [-p 3000] [-n 50]
+	Usage: parallel_connect [-h 172.16.2.230] [-p 3010] [-n 50]
 			-n 表示并发连接的数量。
 	"""
-	host = "127.0.0.1"
-	port = 3000
+	host = "172.16.2.230"
+	port = 3010
 	count = 50
 	
 	cmd_args = []
@@ -312,12 +324,12 @@ def parallel_connect_test(*args):
 def parallel_connect_monitor(*args):
 	"""
 	并发连接，并持续监控连接中断情况
-	Usage: parallel_connect_monitor [-h 127.0.0.1] [-p 3000] [-n 50] [-d 0]
+	Usage: parallel_connect_monitor [-h 172.16.2.230] [-p 3010] [-n 50] [-d 0]
 			-n 表示并发连接的数量;
 			-d 表示监控持续时间（秒），小于等于0表示监控不会超时停止。
 	"""
-	host = "127.0.0.1"
-	port = 3000
+	host = "172.16.2.230"
+	port = 3010
 	count = 50
 	duration = 0
 	
@@ -354,11 +366,11 @@ def parallel_connect_monitor(*args):
 def parallel_io_test(*args):
 	"""
 	并发连接测试
-	Usage: parallel_io [-h 127.0.0.1] [-p 3000] [-n 50]
+	Usage: parallel_io [-h 172.16.2.230] [-p 3010] [-n 50]
 			-n 表示并发连接的数量。
 	"""
-	host = "127.0.0.1"
-	port = 3000
+	host = "172.16.2.230"
+	port = 3010
 	count = 50
 	
 	cmd_args = []
