@@ -37,7 +37,7 @@ public:
 
 	HRESULT Do(HANDLE hContext);
 private:
-	bool		m_bLink;
+    bool		m_connected;
 	ILinkCtrl*	m_pLinkCtrl;
 	std::string m_strServerAddr;
 	int		m_iPort;

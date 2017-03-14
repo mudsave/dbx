@@ -18,7 +18,10 @@ struct _LinkContext_DB
 
 IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 
-CClient::CClient():m_bLink(false),INIT_THREAD_SAFETY_MEMBER_FAST(sock),INIT_THREAD_SAFETY_MEMBER_FAST(Attr)
+CClient::CClient()
+    :m_connected(false),
+     INIT_THREAD_SAFETY_MEMBER_FAST(sock),
+     INIT_THREAD_SAFETY_MEMBER_FAST(Attr)
 {
         //sleep(30);
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
@@ -50,7 +53,7 @@ void CClient::doFunciton(void)
 {
 	while(true)
 	{
-		if(!m_bLink)
+		if(!m_connected)
 		{
 			if (m_pLinkCtrl) m_pLinkCtrl->Connect(m_strServerAddr.c_str(),m_iPort,this,0);//(IMsgLinksImpl<IID_IMsgLinksCS_L>*)
 		}
@@ -62,7 +65,7 @@ void CClient::OnClosed(HANDLE hLinkContext, HRESULT reason)
     if(!hLinkContext) return;
     _LinkContext_DB* pContext = (_LinkContext_DB*)hLinkContext;
      m_hLink = NULL;
-     m_bLink = false;
+     m_connected = false;
     delete pContext;
 }
 
@@ -80,7 +83,7 @@ HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 
 	if (result == S_OK)
 	{
-		m_bLink=true;
+		m_connected=true;
                 m_hLink = hLink;
 		//s_pLinkPort=pPort;
 		if (s_pNetEventHandle) s_pNetEventHandle->onConnected(true);
@@ -89,7 +92,7 @@ HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 	}
 	else
 	{
-		m_bLink=false;
+		m_connected=false;
                 m_hLink = NULL;
 		if (s_pNetEventHandle) s_pNetEventHandle->onConnected(false);
 		return NULL;
@@ -196,10 +199,10 @@ int CClient::generateOperationId() {
 
 bool CClient::closeLink(DWORD dwFlags) {
 
-	if (m_bLink ) {
+	if (m_connected ) {
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::CloseLink(m_hLink,CLOSE_UNGRACEFUL);
                 m_hLink = NULL;
-                m_bLink = false;
+                m_connected = false;
 		return true;
 	}else
 		return false;
