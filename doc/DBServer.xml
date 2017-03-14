@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<scheme>
+	<database databaseid = '1' type = "mysql" dbxport = "3002">
+		<baseinfo servername = '172.16.2.218' port = '3306' databasename = 'dream'></baseinfo>
+		<popedom username = 'root' password = 'linux3'></popedom>
+		<asynqueue num = '5'></asynqueue>
+	</database>
+</scheme>
