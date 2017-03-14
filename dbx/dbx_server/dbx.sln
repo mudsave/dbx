@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "db_interface", "..\lib\db_i
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xml", "..\lib\xml\xml.vcxproj", "{C7D71912-0172-4F68-B558-35F0AA68D98C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbClient", "..\dbClient\dbClient.vcxproj", "{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -29,6 +31,10 @@ Global
 		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Debug|Win32.Build.0 = Debug|Win32
 		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Release|Win32.ActiveCfg = Release|Win32
 		{C7D71912-0172-4F68-B558-35F0AA68D98C}.Release|Win32.Build.0 = Release|Win32
+		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Debug|Win32.Build.0 = Debug|Win32
+		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Release|Win32.ActiveCfg = Release|Win32
+		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
