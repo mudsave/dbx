@@ -45,7 +45,7 @@ DBACLIENT_API IInitClient* CreateClient(IDBANetEvent* pNetEvent,std::string serv
 	{
 		CClient* pClient=CClient::InstancePtr();
 		CClient::setDBNetEvent(pNetEvent);
-		pClient->setDBAServer(serverAddr,iPort);
+        pClient->ConnectDBX(serverAddr, iPort);
 		return dynamic_cast<IInitClient*>(pClient);
 	}
 	catch (CDBClientException e)

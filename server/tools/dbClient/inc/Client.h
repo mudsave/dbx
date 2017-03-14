@@ -11,13 +11,13 @@
 struct AppMsg;
 #define IID_IMsgLinksCD_L 0x01 //客户端到dbserver的链接
 
-class CClient : public CThread,public IInitClient ,public IMsgLinksImpl<IID_IMsgLinksCD_L>,public TSingleton<CClient>
+class CClient: public ITask, public IInitClient, public IMsgLinksImpl<IID_IMsgLinksCD_L>, public TSingleton<CClient>
 {
 public:
 	DECLARE_THREAD_SAFETY_MEMBER(sock);
 	CClient();
 	~CClient(void);
-	void setDBAServer(std::string serverAddr,int iPort);
+	void ConnectDBX(std::string serverAddr,int iPort);
 	int callDBProc(AppMsg *pMsg);
 	int callDBSQL(AppMsg *pMsg);
 	virtual int callSPFROMCPP(IDBCallback*);
@@ -37,6 +37,9 @@ public:
 
 	HRESULT Do(HANDLE hContext);
 private:
+    void StartConnectDBX();
+    void StopConnectDBX();
+
     bool		m_connected;
 	ILinkCtrl*	m_pLinkCtrl;
 	std::string m_strServerAddr;
@@ -55,6 +58,7 @@ private:
 	
 	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 
+    HANDLE m_connectDBXTimer;
 public:
 	virtual void buildQuery();
 	virtual int addParam(const char*, const char*);

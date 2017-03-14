@@ -8,6 +8,9 @@
 //#define		LOADPLAYER		2
 //#define		UPDATEPLAYER	3
 
+
+#define DB_CLIENT_RECONNECT_INTERVAL 5000
+
 struct _LinkContext_DB
 {
 	int linkType;
@@ -21,7 +24,8 @@ IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 CClient::CClient()
     :m_connected(false),
      INIT_THREAD_SAFETY_MEMBER_FAST(sock),
-     INIT_THREAD_SAFETY_MEMBER_FAST(Attr)
+     INIT_THREAD_SAFETY_MEMBER_FAST(Attr),
+     m_connectDBXTimer(NULL)
 {
         //sleep(30);
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
@@ -33,8 +37,8 @@ CClient::CClient()
 		e.m_strDescription = "load sock.dll failed!";
 		throw e;
 	}
-	createThread();
-        CCommandClient* pCmd =  CCommandClient::getCommandClient();//初始化CCommandClient
+	//createThread();
+    CCommandClient* pCmd =  CCommandClient::getCommandClient();//初始化CCommandClient
 }
 
 CClient::~CClient(void)
@@ -42,34 +46,46 @@ CClient::~CClient(void)
 	closeLink(CLOSE_UNGRACEFUL);
 }
 
-void CClient::setDBAServer(std::string serverAddr,int iPort)
+void CClient::StartConnectDBX()
+{
+    if (!m_connected && m_connectDBXTimer == NULL)
+    {
+        m_connectDBXTimer = m_pThreads->RegTimer(this, NULL, 0, 0, DB_CLIENT_RECONNECT_INTERVAL, "Connect_to_DBX");
+    }
+}
+
+void CClient::StopConnectDBX()
+{
+    if (m_connectDBXTimer != NULL)
+    {
+        m_pThreads->UnregTimer(m_connectDBXTimer);
+        m_connectDBXTimer = NULL;
+    }
+    else
+    {
+        TRACE0_ERROR("CClient::StopConnectDBX:m_connectDBXTimer is NULL.\n");
+    }
+}
+
+void CClient::ConnectDBX(std::string serverAddr, int iPort)
 {
 	m_strServerAddr=serverAddr;
 	m_iPort=iPort;
+
+    StartConnectDBX();
 }
 
-
-void CClient::doFunciton(void)
-{
-	while(true)
-	{
-		if(!m_connected)
-		{
-			if (m_pLinkCtrl) m_pLinkCtrl->Connect(m_strServerAddr.c_str(),m_iPort,this,0);//(IMsgLinksImpl<IID_IMsgLinksCS_L>*)
-		}
-		Sleep(5000);
-	}
-}
 void CClient::OnClosed(HANDLE hLinkContext, HRESULT reason)
 {
+    TRACE0_L0("CClient::OnClosed.\n");
     if(!hLinkContext) return;
     _LinkContext_DB* pContext = (_LinkContext_DB*)hLinkContext;
-     m_hLink = NULL;
-     m_connected = false;
+    m_hLink = NULL;
+    m_connected = false;
     delete pContext;
+
+    StartConnectDBX();
 }
-
-
 
 void CClient::DefaultMsgProc(AppMsg* pMsg, HANDLE hContext)
 {
@@ -83,18 +99,22 @@ HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 
 	if (result == S_OK)
 	{
-		m_connected=true;
-                m_hLink = hLink;
-		//s_pLinkPort=pPort;
-		if (s_pNetEventHandle) s_pNetEventHandle->onConnected(true);
-                _LinkContext_DB* pNew = new _LinkContext_DB(i_link_type, hLink);
-                return pNew;
+        StopConnectDBX();
+
+		m_connected = true;
+        m_hLink = hLink;
+
+        if (s_pNetEventHandle) 
+            s_pNetEventHandle->onConnected(true);
+
+        _LinkContext_DB* pNew = new _LinkContext_DB(i_link_type, hLink);
+        return pNew;
 	}
 	else
 	{
-		m_connected=false;
-                m_hLink = NULL;
-		if (s_pNetEventHandle) s_pNetEventHandle->onConnected(false);
+		if (s_pNetEventHandle) 
+            s_pNetEventHandle->onConnected(false);
+
 		return NULL;
 	}
 
@@ -199,31 +219,31 @@ int CClient::generateOperationId() {
 
 bool CClient::closeLink(DWORD dwFlags) {
 
-	if (m_connected ) {
+	if (m_connected) 
+    {
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::CloseLink(m_hLink,CLOSE_UNGRACEFUL);
-                m_hLink = NULL;
-                m_connected = false;
+        m_hLink = NULL;
+        m_connected = false;
 		return true;
-	}else
-		return false;
+	}
 
+    //StopConnectDBX();
+
+    return false;
 }
 
-HRESULT CClient::Do(HANDLE hContext) {
-	_doContext* pContext=(_doContext*) hContext;
-	if (!pContext) return E_FAIL;
-	HRESULT res=E_FAIL;
-	switch (pContext->flag) {
-	case eSend: {
+HRESULT CClient::Do(HANDLE hContext) 
+{
+    TRACE0_L0("CClient::Do....");
+    if (m_connected)
+    {
+        TRACE0_L0("CClient::Do:m_connected is true....");
+    }
 
-		}
-		break;
-	case eThread: {
-			res =CThread::Do(hContext);
-		}
-	}
-	delete pContext;
-	return res;
+    if (m_pLinkCtrl)
+        m_pLinkCtrl->Connect(m_strServerAddr.c_str(), m_iPort, this, 0);
+
+    return S_OK;
 }
 
 
