@@ -104,6 +104,9 @@ class DbxMessage(AppMsg):
 		return AppMsg.size(self) + struct.calcsize("=iii") + self.getParamSize()
 	
 	def getParamSize(self):
+		if len(self.typeList) == 0:
+			return 0
+		
 		typeSize = struct.calcsize("=i") * len(self.typeList)
 		dataSize = sum(self.getTypeSize(t) for t in self.typeList)
 		# 数据段前端存放参数数量
@@ -116,6 +119,9 @@ class DbxMessage(AppMsg):
 		self.content_offset = reader.readInt32()
 		
 	def readContent(self, reader):
+		if self.content_offset == 0:
+			return
+		
 		self.paramCount = reader.readInt32()
 		
 		for i in range(self.paramCount):
@@ -138,6 +144,9 @@ class DbxMessage(AppMsg):
 		writer.writeInt32(self.content_offset)
 	
 	def writeContent(self, writer):
+		if self.paramCount == 0:
+			return
+	
 		writer.writeInt32(self.paramCount)
 		
 		for i in range(self.paramCount):
