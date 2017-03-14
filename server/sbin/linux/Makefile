@@ -73,7 +73,7 @@ _server :
 
 _session :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Session -loginAddrL 172.16.2.218:20013 -gateAddrL 172.16.2.218:2300 -worldAddrL 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
+	( $(WORK_DIR)/Session -loginAddrL 172.16.2.218:20013 -gateAddrL 172.16.2.218:2300 -worldAddrL 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
 	echo "Session has been runned.."; sleep 2s
 
 _gateway :
@@ -88,21 +88,21 @@ _gateway_1 :
 
 _world :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
 	echo "World 0 has been runned.."; sleep 2s
 
 _world_1 :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
 	echo "World 1 has been runned.."; sleep 2s
 _fight :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 100 1>$(WORK_DIR)/logs/_world100.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 100 1>$(WORK_DIR)/logs/_world100.txt 2>&1 & ); \
 	echo "fight 100 has been runned.."; sleep 2s
 
 _fight_1 :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 101 1>$(WORK_DIR)/logs/_world_101.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 101 1>$(WORK_DIR)/logs/_world_101.txt 2>&1 & ); \
 	echo "fight 101 has been runned.."; sleep 2s
 
 _dbx :
@@ -112,7 +112,7 @@ _dbx :
 
 _social :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.4.72:3000 -worldId 200 1>$(WORK_DIR)/logs/_world200.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 200 1>$(WORK_DIR)/logs/_world200.txt 2>&1 & ); \
 	echo "social 200 has been runned.."; sleep 2s
 
 # 用valgrind运行程序

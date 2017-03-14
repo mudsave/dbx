@@ -198,7 +198,7 @@ function Packet:addItems(itemGuid, bUpdateClient)
 		local result = self.packs[PacketPackIndex.Task]:addItems(item, bUpdateClient)
 		if result == AddItemsResult.SucceedPile then
 			-- 销毁源道具，不可用了
-			g_itemMgr:destroyItem(itemGuid)
+			g_itemMgr:destroyItem(self.owner,itemGuid)
 		end
 		return result
 	else
@@ -217,7 +217,7 @@ function Packet:addItems(itemGuid, bUpdateClient)
 			-- 如果源道具分拆放入多个包裹或者同一个包裹叠加存放，就要销毁源道具
 			if #tAddPacks > 1 or result == AddItemsResult.SucceedPile then
 				-- 销毁源道具，不可用了
-				g_itemMgr:destroyItem(itemGuid)
+				g_itemMgr:destroyItem(self.owner,itemGuid)
 				return AddItemsResult.SucceedPile
 			else
 				return AddItemsResult.Succeed
@@ -280,7 +280,7 @@ function Packet:removeItem(itemGuid, removeNum, bUpdateClient)
 	local result = self.packs[packIndex]:removeItem(item, removeNum, bUpdateClient)
 	if result == RemoveItemsResult.SucceedClean then
 		-- 销毁源道具，不可用了
-		g_itemMgr:destroyItem(itemGuid)
+		g_itemMgr:destroyItem(self.owner,itemGuid)
 	end
 	local itemID = item:getItemID()
 	TaskCallBack.onRemoveItem(self.owner:getID(), itemID)
@@ -311,7 +311,7 @@ function Packet:addItemsToPack(srcItem, dstPackIndex)
 		local result = self.packs[dstPackIndex]:addItems(srcItem, true)
 		if result == AddItemsResult.SucceedPile then
 			-- 销毁源道具，不可用了
-			g_itemMgr:destroyItem(srcItem:getGuid())
+			g_itemMgr:destroyItem(self.owner,srcItem:getGuid())
 		end
 
 		return result
@@ -349,11 +349,9 @@ function Packet:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 			return false
 		end
 	end
-
 	if self.packs[packIndex] then
 		return self.packs[packIndex]:addItemsToGrid(item, gridIndex, bUpdateClient)
 	else
-		-- 包裹还未开启
 		return false
 	end
 end
@@ -609,8 +607,8 @@ function Packet:getBattlePack()
 			canUseHealItemFlag = false
 		end
 	end
-	local playerDBID = self.owner:getDBID()
 	local battlePack = {}
+	local packetHandler = self.owner:getHandler(HandlerDef_Packet)
 	for packIndex = PacketPackIndex.Default, PacketPackIndex.Horse do
 		-- 获得包裹
 		local pack = self.packs[packIndex]
@@ -624,7 +622,7 @@ function Packet:getBattlePack()
 					else
 						local itemID = item:getItemID()
 						battlePack[item:getGuid()] = {itemID = itemID, itemNum = item:getNumber(), packIndex = packIndex, gridIndex = gridIndex,
-						useTimes = g_itemMgr:getItemUseTimes(playerDBID, itemID),effect = item:getEffect()}
+						useTimes = packetHandler:getItemUseTimes(itemID),effect = item:getEffect()}
 					end
 				end
 			end
@@ -635,6 +633,7 @@ end
 
 -- 设置战斗包裹，战斗服返回的，这里要根据信息重设玩家道具数据
 function Packet:setBattlePack(battlePack)
+	local packetHandler = self.owner:getHandler(HandlerDef_Packet)
 	for itemGuid, itemInfo in pairs(battlePack or {}) do
 		if itemGuid then
 			-- 战斗中可用的道具，属于背包已有道具，重设道具数据
@@ -642,7 +641,7 @@ function Packet:setBattlePack(battlePack)
 			if item then
 				if itemInfo.useTimes > 0 then
 					-- 重设使用次数
-					g_itemMgr:resetItemUseTimes(self.owner:getDBID(), itemInfo.itemID, itemInfo.useTimes)
+					packetHandler:resetItemUseTimes(itemInfo.itemID, itemInfo.useTimes)
 				end
 				-- 如果使用完了，数目为0，则要销毁道具
 				if itemInfo.itemNum == 0 then

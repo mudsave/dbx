@@ -151,20 +151,6 @@ function LuaDBAccess.onPlayerAttrUpdate(player)
 	end
 end
 
--- 删除玩家道具
-function LuaDBAccess.itemRemove(playerDBID, RemoveFlag)
-
-	clearParams()
-
-	params[1]["spName"]		 = "sp_ItemRemove"
-	params[1]["dataBase"]	 = 1
-	params[1]["sort"]		 = "_RoleID,_RemoveFlag"
-
-	params[1]["_RoleID"]	 = playerDBID
-	params[1]["_RemoveFlag"] = RemoveFlag
-
-	LuaDBAccess.exeSP(params, true)
-end
 
 -- 存储玩家道具
 function LuaDBAccess.itemSave(playerDBID, itemsNum, itemsBuffer)
@@ -178,7 +164,6 @@ function LuaDBAccess.itemSave(playerDBID, itemsNum, itemsBuffer)
 	params[1]["_ItemsNum"]    = itemsNum
 	params[1]["_ItemsBuffer"] = itemsBuffer
 
-	--print("playerDBID, itemsNum, itemsBuffer", playerDBID, itemsNum, itemsBuffer)
 	LuaDBAccess.exeSP(params, true)
 end
 
@@ -193,9 +178,67 @@ function LuaDBAccess.equipSave(playerDBID, equipsNum, equipsBuffer)
 	params[1]["_RoleID"]	  = playerDBID
 	params[1]["_EquipsNum"]   = equipsNum
 	params[1]["_EquipsBuffer"] = equipsBuffer
-	--print("playerDBID, equipsNum, equipsBuffer", playerDBID, equipsNum, equipsBuffer)
 	LuaDBAccess.exeSP(params, true)
 end
+
+-- 更新玩家道具
+function LuaDBAccess.itemUpdate(playerDBID, itemsNum, itemsBuffer)
+	clearParams()
+
+	params[1]["spName"]		  = "sp_updateItem"
+	params[1]["dataBase"]	  = 1
+	params[1]["sort"]		  = "_RoleID,_ItemsNum,_ItemsBuffer"
+
+	params[1]["_RoleID"]	  = playerDBID
+	params[1]["_ItemsNum"]    = itemsNum
+	params[1]["_ItemsBuffer"] = itemsBuffer
+
+	LuaDBAccess.exeSP(params, true)
+end
+
+-- 更新玩家装备
+function LuaDBAccess.equipUpdate(playerDBID, equipsNum, equipsBuffer)
+	clearParams()
+
+	params[1]["spName"]		  = "sp_updateEquip"
+	params[1]["dataBase"]	  = 1
+	params[1]["sort"]		  = "_RoleID,_EquipsNum,_EquipsBuffer"
+
+	params[1]["_RoleID"]	  = playerDBID
+	params[1]["_EquipsNum"]   = equipsNum
+	params[1]["_EquipsBuffer"] = equipsBuffer
+	LuaDBAccess.exeSP(params, true)
+end
+
+-- 删除玩家道具
+function LuaDBAccess.itemDelete(playerDBID, itemsNum, itemsBuffer)
+	clearParams()
+
+	params[1]["spName"]		  = "sp_DeleteItem"
+	params[1]["dataBase"]	  = 1
+	params[1]["sort"]		  = "_RoleID,_ItemsNum,_ItemsBuffer"
+
+	params[1]["_RoleID"]	  = playerDBID
+	params[1]["_ItemsNum"]    = itemsNum
+	params[1]["_ItemsBuffer"] = itemsBuffer
+
+	LuaDBAccess.exeSP(params, true)
+end
+
+-- 删除玩家装备
+function LuaDBAccess.equipDelete(playerDBID, equipsNum, equipsBuffer)
+	clearParams()
+
+	params[1]["spName"]		  = "sp_DeleteEquip"
+	params[1]["dataBase"]	  = 1
+	params[1]["sort"]		  = "_RoleID,_EquipsNum,_EquipsBuffer"
+
+	params[1]["_RoleID"]	  = playerDBID
+	params[1]["_EquipsNum"]   = equipsNum
+	params[1]["_EquipsBuffer"] = equipsBuffer
+	LuaDBAccess.exeSP(params, true)
+end
+
 
 --存储玩家坐骑
 function LuaDBAccess.updatePlayerRide(roleID,rideGuid,rideID,vigor,completeness,isFollow,ridingTime)
@@ -857,28 +900,20 @@ function LuaDBAccess.updateBeastBless(player,activityId)
 end
 
 function LuaDBAccess.updateSchoolActivity(player,activityId)
-	print("门派闯关活动存数据库。。。")
 	local handler = player:getHandler(HandlerDef_Activity)
 	if handler then
 		clearParams()
 		local integral = handler:getDekaronIntegral()
-		local targetID = 0
-		local target = handler:setDekaronActivityTarget()
-		if terget then
-			targetID = target:getActivityTargetId()
-		end
 		params[1]["spName"]			= "sp_UpdateSchoolActivity"
 		params[1]["dataBase"]		= 1
-		params[1]["sort"]			= "_roleID,_integral,_targetID"
+		params[1]["sort"]			= "_roleID,_integral"
 		params[1]["_roleID"]		= player:getDBID()
 		params[1]["_integral"]		= integral
-		params[1]["_targetID"]		= targetID
 		LuaDBAccess.exeSP(params, true)
 	end
 end
 
 function LuaDBAccess.deleteSchoolActivity()
-	print("活动结束，删除门派闯关活动的数据。。。。")
 	clearParams()
 	params[1]["spName"]			= "sp_DeleteSchoolActivity"
 	params[1]["dataBase"]		= 1

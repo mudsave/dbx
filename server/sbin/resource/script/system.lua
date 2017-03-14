@@ -82,6 +82,9 @@ function System.OnPlayerLoaded(player, recordList)	-- 玩家上线加载坐骑�
 	local ringEctypeRecord = recordList[7]
 	g_ectypeMgr:setEctypeData(player, ectypeRecord, ringEctypeRecord)
 
+	-- 加载道具使用次数
+	g_itemMgr:loadItemUseTimes(player, recordList[8])
+
 	-- 加载任务系统
 	g_taskDoer:loadDailyTaskConfiguration(player,recordList[35])
 	g_taskDoer:loadHistoryTask(player, recordList[9])
@@ -140,6 +143,9 @@ function System.OnPlayerLogout(player, reason)
 
 	-- 下线保存道具数据
 	g_itemMgr:saveItemsData(player)
+
+	-- 下线保存道具的使用次数
+	g_itemMgr:updateItemUseTimes(player)
 
 	-- 玩家下线保存所有的宠物
 	player:kickAllPets()

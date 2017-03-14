@@ -1941,4 +1941,28 @@ MonsterDB = {
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
      },
+     [10804] = {
+	     name = "Ñ²ÂßÇ¹±ø",
+	     modelID = 116,
+	     level =35,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1006,1007},
+     },
+     [10805] = {
+	     name = "Ñ²ÂßÊØ½«",
+	     modelID = 140,
+	     level =35,
+	     attrID = 1,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1022,1023},
+     },
+     [10806] = {
+	     name = "Ñ²Âßµ¶±ø",
+	     modelID = 141,
+	     level =35,
+	     attrID = 1,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1004},
+     },
 }

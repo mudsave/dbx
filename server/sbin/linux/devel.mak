@@ -1,7 +1,7 @@
 
 SERVER_IP = 172.16.2.217
-DB_IP = 172.16.4.72
-DB_PORT = 3000
+DB_IP = 172.16.2.217
+DB_PORT = 3007
 
 # 后台和前台启动 - 赵国君 30000
 zgj_start: START_PORT=30000
@@ -30,8 +30,14 @@ lj_world: START_PORT=31000
 lj_world : start_world
 lj_fight: START_PORT=31000
 lj_fight : start_fight
+lj_fight1: START_PORT=31000
+lj_fight1 : start_fight1
 lj_social: START_PORT=31000
 lj_social : start_social
+
+lj_session_v:
+	@set -e; ulimit -c 0; \
+	valgrind --log-file=$(WORK_DIR)/vlogs/session_v.txt $(WORK_DIR)/Session -loginAddrL 172.16.2.217:31000 -gateAddrL 172.16.2.217:31001 -worldAddrL 172.16.2.217:31002 -dbAddrC 172.16.4.72:3000
 
 # 后台和前台启动 - 贾伦 32000
 jl_start: START_PORT=32000
@@ -351,13 +357,23 @@ start_world :
 	SWL_PORT=$$((SCL_PORT+2)); \
 	set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0
+
 start_fight :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
 	set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100
+start_fight1 :
+	@SCL_PORT=$(START_PORT); \
+	SWL_PORT=$$((SCL_PORT+2)); \
+	set -e; ulimit -c unlimited; \
+	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 101
+
 start_social :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
 	set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200
+	#valgrind --tool=memcheck --leak-check=yes $(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0
+
+

@@ -24452,9 +24452,9 @@ DialogModelDB =
 		conditions =
 		{
 		},
-		speakerID = 31332,
+		speakerID = 31480,
 		soundID =0 ,
-		txt = "小子，不管本帅在哪，你都阴魂不散！今日本帅定要将你千刀万剐，方可消心头之恨！",
+		txt = "小子，你杀我众多弟兄，实是可恨！今日本座定要将你挫骨扬灰！",
 		options =
 		{
 			{
@@ -24476,7 +24476,7 @@ DialogModelDB =
 		},
 		speakerID = 0,--
 		soundID =0 ,
-		txt = "张宝，我找你多时了，今日定要叫你魂飞魄散！",
+		txt = "悖逆狂徒，看我将你等杀个片甲不留！",
 		options =
 		{
 			{
@@ -24484,7 +24484,7 @@ DialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 3107 ,mapID =621},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 4065 ,mapID =500},},
 				},
 			}
 

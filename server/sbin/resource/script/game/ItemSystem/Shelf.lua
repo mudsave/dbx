@@ -85,7 +85,7 @@ function Shelf:removeItem(itemGuid, removeNum, bUpdateClient)
 	local result = self.packs[ShelfPackIndex.Default]:removeItem(item, removeNum, bUpdateClient)
 	if result == RemoveItemsResult.SucceedClean then
 		-- 销毁源道具，不可用了
-		g_itemMgr:destroyItem(itemGuid)
+		g_itemMgr:destroyItem(self.owner,itemGuid)
 	end
 end
 

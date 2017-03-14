@@ -449,7 +449,8 @@ function ItemSystem:canUseMedicament(player, item, targetEntityID)
 	-- 是否需要判断使用次数
 	if medicamentConfig.UseTimesOneDay > 0 then
 		-- 得到当前使用次数
-		local curUseTimes = g_itemMgr:getItemUseTimes(player:getDBID(), item:getItemID())
+		local packetHandler = player:getHandler(HandlerDef_Packet)
+		local curUseTimes = packetHandler:getItemUseTimes(item:getItemID())
 		if curUseTimes >= medicamentConfig.UseTimesOneDay then
 			-- 使用次数已用完
 			return false, 7
@@ -532,7 +533,7 @@ function ItemSystem:useMedicament(player, item, targetEntityID)
 			if result == RemoveItemsResult.Succeed or result == RemoveItemsResult.SucceedClean then
 				if medicamentConfig.UseTimesOneDay > 0 then
 					-- 增加使用次数
-					g_itemMgr:addItemUseTimes(player:getDBID(), itemID)
+					packetHandler:addItemUseTimes(itemID)
 					-- 使用的提示信息
 					local itemName = medicamentConfig.Name
 					self:sendItemMessageTip(player, 1, itemName)

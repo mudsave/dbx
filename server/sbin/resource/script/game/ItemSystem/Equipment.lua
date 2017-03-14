@@ -106,6 +106,7 @@ function Equipment:setCurDurability(curDurability)
 			end
 		end
 	end
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得当前耐久度
@@ -121,6 +122,7 @@ function Equipment:setBindFlag(bindFlag)
 			self.pack:setChange(self.gridIndex)
 		end
 	end
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得道具绑定标志
@@ -136,6 +138,7 @@ function Equipment:setRemouldAttr(remouldAttr)
 		local player = self.pack:getOwner()
 		setPropValue(player:getPeer(), PLAYER_EQUIP_WEAPON,data)
 	end
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得改造属性
@@ -160,6 +163,7 @@ end
 -- 设置鉴定标志
 function Equipment:setIdentityFlag(identityFlag)
 	self.identityFlag = identityFlag
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得鉴定标志,true为鉴定，false为未鉴定
@@ -181,11 +185,13 @@ function Equipment:setEffect(context)
 	if context.refiningEffect then
 		self.refiningEffect = context.refiningEffect
 	end
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获取套装属性
 function Equipment:setSuitAttr(suirAttr)
 	self.suitAttr = suirAttr
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获取套装属性
@@ -199,6 +205,7 @@ function Equipment:setEffectEx(context)
 	self.addEffect = context.addEffect
 	self.bindEffect = context.bindEffect
 	self.refiningEffect = context.refiningEffect
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得属性效果
@@ -209,19 +216,19 @@ end
 -- 根据数据库现场设置装备属性
 function Equipment:setPropertyContext(context)
 	-- 装备暂时没有到期时间，永久有效
-	self:setBindFlag(context.bindFlag and true or false)
+	self.bindFlag = context.bindFlag and true or false
 
 	if context.expireTime > 0 then
 		context.curDurability = context.expireTime
 	end
-	self:setCurDurability(context.curDurability)
+	self.curDurability = context.curDurability
 
 	if context.effect and type(context.effect) == "string" then
 		context.remouldAttr = unserialize(context.effect)
-		self:setRemouldAttr(context.remouldAttr)
+		self.remouldAttr = context.remouldAttr
 	end
 	if not context.identityFlag then
-		self:setIdentityFlag(context.identityFlag)
+		self.identityFlag = context.identityFlag
 	end
 
 	if context.baseEffect and type(context.baseEffect) == "string" then
@@ -237,8 +244,10 @@ function Equipment:setPropertyContext(context)
 		context.refiningEffect = unserialize(context.refiningEffect)
 	end
 	
-	self:setEffect(context)
-
+	self.baseEffect = context.baseEffect
+	self.addEffect = context.addEffect
+	self.bindEffect = context.bindEffect
+	self.refiningEffect = context.refiningEffect
 end
 
 -- 获得装备属性现场

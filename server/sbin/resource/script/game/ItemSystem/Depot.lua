@@ -135,7 +135,7 @@ function Depot:addItems(itemGuid, bUpdateClient)
 		-- 如果源道具分拆放入多个包裹或者同一个包裹叠加存放，就要销毁源道具
 		if #tAddPacks > 1 or result == AddItemsResult.SucceedPile then
 			-- 销毁源道具，不可用了
-			g_itemMgr:destroyItem(itemGuid)
+			g_itemMgr:destroyItem(self.owner,itemGuid)
 			return AddItemsResult.SucceedPile
 		else
 			return AddItemsResult.Succeed
@@ -212,7 +212,7 @@ function Depot:removeItem(itemGuid, removeNum, bUpdateClient)
 	local result = self.packs[packIndex]:removeItem(item, removeNum, bUpdateClient)
 	if result == RemoveItemsResult.SucceedClean then
 		-- 销毁源道具，不可用了
-		g_itemMgr:destroyItem(itemGuid)
+		g_itemMgr:destroyItem(self.owner,itemGuid)
 	end
 end
 
@@ -226,7 +226,7 @@ function Depot:addItemsToPack(srcItem, dstPackIndex)
 	local result = self.packs[dstPackIndex]:addItems(srcItem, true)
 	if result == AddItemsResult.SucceedPile then
 		-- 销毁源道具，不可用了
-		g_itemMgr:destroyItem(srcItem:getGuid())
+		g_itemMgr:destroyItem(self.owner,srcItem:getGuid())
 	end
 	return result
 end

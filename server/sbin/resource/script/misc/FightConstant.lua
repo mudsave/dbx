@@ -36,6 +36,7 @@ FightBussinessType =
 	EctypePatrol	= 8,--副本巡逻战斗
 	GoldHunt		= 9,--猎金场
 	ActivityPatrol	= 10,--捕宠活动战斗
+	DicussHero		= 11,--煮酒论英雄活动战斗
 
 }
 CallPetLevelNeed = 10

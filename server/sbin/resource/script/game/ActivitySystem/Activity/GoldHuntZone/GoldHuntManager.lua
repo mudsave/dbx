@@ -411,9 +411,9 @@ function GoldHuntManager:getPlayerActivityID(player)
 	local levelInfo2 = GoldHuntZoneActivityDB2[gGoldHuntID2].min_maxPlayerLevel
 	local levelInfo3 = GoldHuntZoneActivityDB3[gGoldHuntID3].min_maxPlayerLevel
 	local activityID
-	if level >= levelInfo1[1] and level < levelInfo1[2] then
+	if level >= levelInfo1[1] and level <= levelInfo1[2] then
 		activityID = gGoldHuntID1
-	elseif level >= levelInfo2[1] and level < levelInfo2[2] then
+	elseif level >= levelInfo2[1] and level <= levelInfo2[2] then
 		activityID = gGoldHuntID2
 	elseif level >= levelInfo3[1] and level <= levelInfo3[2] then
 		activityID = gGoldHuntID3

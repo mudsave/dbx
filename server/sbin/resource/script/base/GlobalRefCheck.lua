@@ -1,6 +1,6 @@
---[[
-	È«¾Ö±äÁ¿ÒıÓÃ¼ì²é
-	ÒıÓÃÒ»¸öÎªnilµÄÈ«¾ÖÁ¿Ê±,»á¸ø³ö¾¯¸æ
+--[[GlobalRefCheck.lua
+	å…¨å±€å˜é‡å¼•ç”¨æ£€æŸ¥
+	å¼•ç”¨ä¸€ä¸ªä¸ºnilçš„å…¨å±€é‡æ—¶,ä¼šç»™å‡ºè­¦å‘Š
 
 	demo:
 
@@ -10,25 +10,73 @@
 	}
 	StopGlobalRefCheck()
 
-	ÆäÖĞeLogicGodÃ»ÓĞ¶¨Òå,ÔòÔÚÒıÓÃÕâ¸öÁ¿Ê±,»á¸ø³öÌáÊ¾
+	å…¶ä¸­eLogicGodæ²¡æœ‰å®šä¹‰,åˆ™åœ¨å¼•ç”¨è¿™ä¸ªé‡æ—¶,ä¼šç»™å‡ºæç¤º
 
-	¶ÔÓÚ×÷Îª×´Ì¬ÓÃµÄÈ«¾ÖÁ¿,Îª¿ÕÔòÇ¿ÁÒ½¨ÒéÊ¹ÓÃfalse´úÌænil,Ô­ÒòÓĞ:
-	1,false ºÍ nil ×÷Âß¼­ÅĞ¶ÏÉÏÊÇµÈ¼ÛµÄ,if false ºÍ if nil »òÕß not false ºÍ not nil ÊÇÒ»ÑùµÄ
-	2,nil»áµ¼ÖÂ¼üÖµ¶ÔµÄÉ¾³ı,Ôì³ÉÔÙ¹şÏ£,falseÔò²»»á
+	å¯¹äºä½œä¸ºçŠ¶æ€ç”¨çš„å…¨å±€é‡,ä¸ºç©ºåˆ™å¼ºçƒˆå»ºè®®ä½¿ç”¨falseä»£æ›¿nil,åŸå› æœ‰:
+	1,false å’Œ nil ä½œé€»è¾‘åˆ¤æ–­ä¸Šæ˜¯ç­‰ä»·çš„,if false å’Œ if nil æˆ–è€… not false å’Œ not nil æ˜¯ä¸€æ ·çš„
+	2,nilä¼šå¯¼è‡´é”®å€¼å¯¹çš„åˆ é™¤,é€ æˆå†å“ˆå¸Œ,falseåˆ™ä¸ä¼š
+
+	ç°åœ¨æä¾›äº†ä¸€ä¸ªæŸ¥è¯¢å‡½æ•°ç”¨ä»¥è·å–å¯¹å…¨å±€å˜é‡å¤±è´¥çš„å¼•ç”¨
+	PrintLostRef:
+		ä¸å¸¦å‚æ•°æ—¶å€™,è¿”å›æ‰€æœ‰çš„å¤±è´¥å¼•ç”¨åç§°
+		å¸¦ä¸€ä¸ªå­—ç¬¦ä¸²å‚æ•°æ—¶å€™,æ‰“å°è¿™ä¸ªå¼•ç”¨åç§°å¤±è´¥æ—¶å€™æ‰€å¤„çš„è¿è¡Œç¯å¢ƒ
 ]]
 
-local __index = getmetatable(_G).__index
+local gmt = getmetatable(_G)
 
-function StartGlobalRefCheck()
-    getmetatable(_G).__index = function(t,key)
-        local value = __index(t,key)
-        if value == nil then
-            print("È«¾ÖÓòÖĞÃ»ÓĞ",key)
-        end
-        return value
-    end
+local LostGlobalRefH = {}
+local LostGloablRefA = {}
+local function Warnning(key)
+	if not LostGlobalRefH[key] then
+		LostGloablRefA[#LostGloablRefA + 1] = key
+		local info = debug.getinfo(3)
+		LostGlobalRefH[key] = ("å¼•ç”¨äº†ä¸€ä¸ªä¸å­˜åœ¨çš„å…¨å±€å˜é‡ %s: %s line %d"):format(tostring(key),info.short_src,info.currentline)
+		return true
+	end
+	return false
 end
 
-function StopGlobalRefCheck()
-    getmetatable(_G).__index = __index
+function PrintLostRef(refName)
+	if not refName then
+		print(("[\"%s\"]"):format(table.concat(LostGloablRefA,"\",\"")))
+		return LostGlobalRefH
+	else
+		print(LostGlobalRefH[refName])
+	end
+end
+
+if not gmt then
+	gmt = {
+		__index = function(self,key)
+			Warnning(key)
+		end,
+		__newindex = function(self,key,value)
+			Wanning(key)
+			rawset(self,key,value)
+		end
+	}
+	function StartGlobalRefCheck()
+		setmetatable(_G,gmt)
+	end
+
+	function StopGlobalRefCheck()
+		setmetatable(_G,nil)
+	end
+else
+	local index = gmt.__index
+	local function __index(self,key)
+		local value = index(self,key)
+		if nil == value then
+			Warnning(key)
+		end
+		return value
+	end
+
+	function StartGlobalRefCheck()
+		gmt.__index = __index
+	end
+
+	function StopGlobalRefCheck()
+		gmt.__index = index
+	end
 end

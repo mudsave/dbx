@@ -13,40 +13,40 @@ tFactionEctypeDB =
 			[1] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 			-- 第2个子副本
 			[2] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 			-- 第3个子副本
 			[3] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 			-- 第4个子副本
 			[4] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 			[5] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 			[6] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 			[7] =
 			{
 				-- 对应的副本ID
-				EctypeID = 3001,
+				EctypeID = 3000,
 			},
 		},
 	},

@@ -41,7 +41,7 @@ function CollectSystem:onRemoveGoods(event)
 		--猎金场活动条件判断
 		if g_sceneMgr:isInGoldHuntScene(player) then
 			if not g_goldHuntMgr:canCollectMine(player,packID) then
-				local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, 5)
+				local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, 8)
 				g_eventMgr:fireRemoteEvent(event_notice,player)
 				return
 			end

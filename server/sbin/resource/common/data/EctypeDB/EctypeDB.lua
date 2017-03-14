@@ -9321,7 +9321,7 @@ tEctypeDB =
 		-- 副本ID，策划配置ID
 		EctypeID = 3000,
 		-- 静态地图ID
-		StaticMapID = 608,
+		StaticMapID = 501,
 		-- 进入副本所需等级，分别为最小等级和最大等级，配置成0代表不限制玩家等级
 		EnterNeedLevel = {minLevel = 1, maxLevel = 150},
 		-- 进入副本最少人数，组队时有效
@@ -9336,15 +9336,15 @@ tEctypeDB =
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
 		EctypeCDFinishTimes = 1,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 2,
+		EctypeExistTime = 30,
 		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
 		EctypeDyingTime = 0,
 		-- 副本定时监测时间
 		EctypeCheckTime = 1,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
-		EnterInitLocs = {locX = 140, locY = 29},
+		EnterInitLocs = {locX = 213, locY = 111},
 		-- 副本完成条件, 采集物件的个数 
-		CollectObjectNum = 2,
+		CollectObjectNum = 10,
 		-- 副本结束后出现传送门的坐标
 		--[[
 		TransferDoorLocs =
@@ -9370,9 +9370,9 @@ tEctypeDB =
 				Start =
 				{
 					-- 创建热区
-					{Ectype_CreateObject, objectID = 1000, objectNum = 8},
+					{Ectype_CreateObject, objectID = 1000, objectNum = 16},
 					-- 创建动态NPC
-					{Ectype_CreatePatrolNpc, npcID = 60201, npcNum = 8, scriptID = 35401, radius = 5},
+					{Ectype_CreatePatrolNpc, npcID = 20033, npcNum = 16, scriptID = 4066, radius = 5},
 				},
 				Goto =
 				{

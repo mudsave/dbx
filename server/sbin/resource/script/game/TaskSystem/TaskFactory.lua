@@ -26,7 +26,11 @@ function TaskFactory:createNormalTask(player, taskID)
 	local hasTarget = self:buildTaskTarget(player, normalTask, normalTaskData.targets)
 	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
 	if hasTarget then
-		normalTask:stateChange(TaskStatus.Active)
+		if not normalTask:canEnd() then
+			normalTask:stateChange(TaskStatus.Active)
+		else 
+			normalTask:stateChange(TaskStatus.Done)
+		end
 	else
 		normalTask:stateChange(TaskStatus.Done)
 	end	

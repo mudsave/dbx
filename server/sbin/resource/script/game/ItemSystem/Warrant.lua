@@ -18,6 +18,7 @@ end
 -- 设置属性效果
 function Warrant:setAttr(itemAttr)
 	self.attr = itemAttr
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得属性效果
@@ -27,11 +28,11 @@ end
 
 -- 根据数据库现场设置属性
 function Warrant:setPropertyContext(context)
-	self:setExpireTime(context.expireTime)
+	self.expireTime = context.expireTime
 	if context.attr and type(context.attr) == "string" then
 		context.attr = unserialize(context.attr)
 	end
-	self:setAttr(context.attr)
+	self.attr = context.attr
 end
 
 -- 获得属性现场

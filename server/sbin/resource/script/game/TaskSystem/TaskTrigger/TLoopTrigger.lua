@@ -51,7 +51,8 @@ function Triggers.createBoss(roleID, param, task, isRandom)
 			{type = "type" , param = {type = MapType.Wild},}
 		}
 		local bossNpc = g_entityFct:createBoss(param.npcID, task:getEndTime())
-		bossNpc:setName(player:getName().."召唤的"..NpcDB[param.npcID].name)
+		local name = string.utf8ToGbk(player:getName().."召唤的"..NpcDB[param.npcID].name)
+		bossNpc:setName(name)
 		local mapId, x, y = g_sceneMgr:getValidEmptyPos(conditions)
 		print("创建boss",mapId, x, y)
 		local scene = g_sceneMgr:getSceneByID(mapId)

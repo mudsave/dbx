@@ -14,9 +14,11 @@ AtyStartType =
 
 ActivityState = 
 {
-	PreOpening = 1,
-	Opening = 2,
-	Close = 3,
+	PreOpening		= 1,
+	Opening			= 2,
+	OpeningFirst	= 3, -- 开启的第一阶段
+	OpeningSecond	= 4, -- 开启的第二阶段
+	Close			= 5,
 }
 
 -- 活动页面

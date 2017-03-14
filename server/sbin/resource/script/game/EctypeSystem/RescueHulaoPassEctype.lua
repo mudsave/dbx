@@ -144,6 +144,8 @@ function RescueHulaoPassEctype:onFightEndBefor(fightID, isWin)
 				patrolNpc:moveNext()
 			end
 		end
+	else
+		self:exeLogicProcedureBefor()
 	end
 end
 
@@ -156,93 +158,82 @@ function RescueHulaoPassEctype:onFightEnd( player, scriptID, fightResult )
 	if not curProcedure.Goto then
 		return
 	end
+	local bValid = false
 	if fightResult then
 		-- 战斗胜利
 		local fightWin = curProcedure.Goto.FightWin
 		if fightWin then
 			for i = 1, table.getn(fightWin) do
-				if fightWin[i].fightID == scriptID then
+				if fightWin[i].fightID == fightID then
 					if self.curProgress == fightWin[i].gotoNext then
 						-- 已经触发过了
 						return
 					end
 					self.curProgress = fightWin[i].gotoNext
 					print("执行到战斗胜利")
+					bValid = true
 					break
 				end
 			end
 		end
 		-- 战斗胜利后清理场景
 		if self.ectypeConfig.FightWinID == scriptID then
-			print("abc")
 			self:exeLogicProcedureEnd(self.curProgress)
 			self:onEctypeEnd()
-			self:setEctypeLeftMin( self.ectypeConfig.EctypeExistTime/60 )
+			self:removeAllNpc()
+			self:setEctypeLeftMin( self.ectypeConfig.EndExistTime/60 )
+			return
 		else
-			if self.curProgress ~= 1 then
-				self:exeLogicFightClean( self.curProgress )
-				self.curProgress = 1
-				-- 执行跳转步骤的动作
-				self:exeLogicProcedure()
-			end
+			self.curProgress = 1
 		end
 	else
 		-- 战斗失败
 		local fightLose = curProcedure.Goto.FightLose
 		if fightLose then
 			for i = 1, table.getn(fightLose) do
-				if fightLose[i].fightID == scriptID then
+				if fightLose[i].fightID == fightID then
 					if self.curProgress == fightLose[i].gotoNext then
 						-- 已经触发过了
 						return
 					end
 					self.curProgress = fightLose[i].gotoNext
 					print("执行到战斗失败")
+					bValid = true
 					break
 				end
 			end
 		end
 		-- 回到副本初始坐标
 		self:returnEctypeInitLocs()
-		-- 返回上一步骤，以便能重新打开对话框进入战斗
-		self.curProgress = self.curProgress - 1
-		-- 执行跳转步骤的动作
-		self:exeLogicProcedure()
-	end
-end
-
-function RescueHulaoPassEctype:getEctypeValidEmptyPos()
-	local scene = g_sceneMgr:getEctypeScene(self.ectypeMapID)
-	local x, y
-	local times = 0
-	local checkSuccess
-	while (1) do
-		if times > 50 then
-			print("检测50次依然没有发现可用坐标")
-			break
+		if not bValid then
+			-- 如果没有战斗失败动作，就返回上一步骤，以便能重新打开对话框进入战斗
+			self.curProgress = self.curProgress - 1
 		end
-		times = times + 1
-		checkSuccess = true 
-		x, y = g_sceneMgr:getEctypeRandomPosition(self.ectypeMapID, self.ectypeConfig.StaticMapID)
-		for entityId, entity in pairs(scene:getEntityList()) do
-			if entity:getEntityType() == eLogicEctypeObject or entity:getEntityType() == eLogicEctypePatrolNpc then
-				if entity:getPos()[2] == x and entity:getPos()[3] == y then
-					checkSuccess = false
-					break
+	end
+	if not bValid then
+		local fightEnd = curProcedure.Goto.FightEnd
+		if fightEnd then
+			-- 战斗结束
+			for i = 1, table.getn(fightEnd) do
+				if fightEnd[i].fightID == fightID then
+					if self.curProgress == fightEnd[i].gotoNext then
+						-- 已经触发过了
+						return
+					end
+					self.curProgress = fightEnd[i].gotoNext
+					print("执行到战斗结束")
+					bValid = true
 				end
 			end
 		end
-		if checkSuccess then
-			break
-		end
+	end
+	if not bValid then
+		-- 不合法
+		return
 	end
 
-	--随机失败,直接放到安全坐标
-	if checkSuccess == false then
-		return mapDB[self.ectypeConfig.StaticMapID].safeX, mapDB[self.ectypeConfig.StaticMapID].safeY
-	end
-	--print("随机坐标成功mapID, x, y", mapId, vect.x, vect.y)
-	return x, y
+	-- 执行跳转步骤的动作
+	self:exeLogicProcedure(false)
 end
 
 -- 时间到完成帮会副本

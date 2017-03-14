@@ -30,9 +30,15 @@ function Item:__init(itemID, itemNum)
 	self.lockFlag = false
 	-- 物品生成的等级
 	self.itemLvl = nil 
+
+	self.DBID = 0
+
+	self.DBstate = ItemDBstate.normal
 end
 
 function Item:__release()
+	self.DBstate = nil
+	self.DBID = nil
 end
 
 -- 获得道具大类
@@ -64,6 +70,7 @@ end
 -- 设置道具数目
 function Item:setNumber(number)
 	self.itemNum = number
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得道具数目
@@ -79,6 +86,7 @@ end
 -- 设置物品格索引
 function Item:setGridIndex(gridIndex)
 	self.gridIndex = gridIndex
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得物品格索引
@@ -88,6 +96,7 @@ end
 
 -- 设置所在容器ID
 function Item:setContainerID(containerID)
+	self:setDBState(ItemDBstate.update)
 	self.containerID = containerID
 end
 
@@ -98,6 +107,7 @@ end
 
 -- 设置所在包裹
 function Item:setPack(pack)
+	self:setDBState(ItemDBstate.update)
 	self.pack = pack
 end
 
@@ -108,6 +118,7 @@ end
 
 -- 设置道具到期时间
 function Item:setExpireTime(expireTime)
+	self:setDBState(ItemDBstate.update)
 	self.expireTime = expireTime
 end
 
@@ -325,4 +336,25 @@ function Item:isHealItem()
 		return true
 	end
 	return false
+end
+
+
+--获取一下物品操作数据库的状态
+function Item:setDBState(state)
+	if self.DBstate == ItemDBstate.save and state == ItemDBstate.update then
+	else
+		self.DBstate = state
+	end
+end
+
+function Item:getDBState()
+	return self.DBstate
+end
+
+function Item:setDBID(ID)
+	self.DBID = ID
+end
+
+function Item:getDBID()
+	return self.DBID
 end

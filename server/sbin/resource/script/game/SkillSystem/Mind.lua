@@ -18,6 +18,18 @@ function Mind:__init(handler, role, id, level)
 	self:apply_passive_skill()
 end
 
+-- 返回技能的等级用来根据技能ID 索引技能等级 而不是心法
+function Mind:getSkillLevel(SkillID)
+	local db = self.db
+	for i = 1,4 do
+		local skill_id = db['skill'..i]
+		if SkillID == skill_id then
+			return self.level
+		end
+	end
+	return nil
+end
+
 --心法升级
 function Mind:upgrade(level)
 	local rt = self:upgrade_verify(level)

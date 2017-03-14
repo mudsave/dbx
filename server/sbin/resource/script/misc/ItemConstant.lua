@@ -81,6 +81,7 @@ AdornSubClass =
 	Necklace = 14,
 }
 
+
 -- 装备类型跟装备栏物品格索引对应表
 EquipType_ItemGrid =
 {
@@ -249,6 +250,14 @@ EquipPackIndex =
 {
 	-- 默认包裹
 	Default = 1,
+}
+
+ItemDBstate = 
+{
+	normal = 1,
+	save = 2,
+	update = 3,
+	delete = 4,
 }
 
 Bind = 1

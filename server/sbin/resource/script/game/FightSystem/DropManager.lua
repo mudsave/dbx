@@ -477,7 +477,7 @@ function DropManager:monsterDropFactor(rewardNode,fightInfo)
 		local value = info.value
 		rewardNode.exp = self:_getChangedRewardValue(rewardNode.exp, mode, value)
 	end
-	if rewardNode.subMoney and fightInfo.common.money then
+	if rewardNode.subMoney and fightInfo.common.subMoney then
 		local info = fightInfo.common.money
 		local mode = info.mode
 		local value = info.value

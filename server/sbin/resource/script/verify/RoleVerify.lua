@@ -187,7 +187,7 @@ end
 function RoleVerify:hasFactionTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	if taskHandler:getTask(param.taskID) then
-		return
+		return true
 	else
 		return false,param.errorID and param.errorID or 2
 	end
@@ -196,7 +196,7 @@ end
 function RoleVerify:notHasFactionTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	if not taskHandler:getTask(param.taskID) then
-		return
+		return true
 	else
 		return false,param.errorID and param.errorID or 2
 	end

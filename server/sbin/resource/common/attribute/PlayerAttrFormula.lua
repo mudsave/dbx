@@ -552,7 +552,7 @@ g_AttributePlayerToProp =
 	[player_lvl]						= PLAYER_LEVEL,
 
 	[player_xp]							= PLAYER_XP,
-	[player_next_xp]					= PLATER_NEXT_XP,
+	[player_next_xp]					= PLAYER_NEXT_XP,
 
 	[player_hp]							= PLAYER_HP,
 	[player_mp]							= PLAYER_MP,

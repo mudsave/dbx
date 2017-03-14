@@ -629,7 +629,7 @@ function Fight:onChooseAction(params)
 
 		action.actionType = params[3]
 		local contextInfo = params[4]
-		print("action=",DBID, isPlayer, params[3], contextInfo)
+		print("action=",DBID, isPlayer, params[3], toString(contextInfo))
 		action.context = contextInfo
 		self._actionSet.curIndex = curIndex +1
 		self._curWaitActionNum = self._curWaitActionNum -1 

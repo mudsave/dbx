@@ -364,7 +364,7 @@ function Pack:pileItemsToGridEx(srcItem, dstGridIndex)
 				if spareNum >= srcItemNum then
 					-- 源道具全部叠加了，可以销毁了
 					self.grids[srcGridIndex] = nil
-					g_itemMgr:destroyItem(srcItem:getGuid())
+					g_itemMgr:destroyItem(self.owner,srcItem:getGuid())
 					-- 设置叠加后的道具数目
 					gridItem:setNumber(itemNum+srcItemNum)
 				else
@@ -606,7 +606,7 @@ function Pack:destroyItem(gridIndex, bUpdateClient)
 	local gridItem = self.grids[gridIndex]
 	if gridItem then
 		self.grids[gridIndex] = nil
-		g_itemMgr:destroyItem(gridItem:getGuid())
+		g_itemMgr:destroyItem(self.owner,gridItem:getGuid())
 	else
 		-- 此物品格没有道具
 		return false
@@ -661,7 +661,7 @@ function Pack:removeByItemId(itemId, itemNum)
 			end
 			if result == RemoveItemsResult.SucceedClean then
 				-- 销毁源道具，不可用了
-				g_itemMgr:destroyItem(gridItem:getGuid())
+				g_itemMgr:destroyItem(self.owner,gridItem:getGuid())
 			end
 			if needRemoveNum <= 0 or removeNum >= itemNum then
 				-- 已经移除够指定数目了
@@ -672,108 +672,6 @@ function Pack:removeByItemId(itemId, itemNum)
 
 	return removeNum
 end
-
---[[ 获得指定ID的绑定道具的个数
-function Pack:getBindItemNum(itemId)
-	local itemNum = 0
-
-	for i = 1, self:getCapability() do
-		local gridItem = self.grids[i]
-		if gridItem and gridItem:getItemID() == itemId and gridItem:getBindFlag() then
-			itemNum = itemNum + gridItem:getNumber()
-		end
-	end
-
-	return itemNum
-end
-
--- 获得指定ID的未绑定道具的个数
-function Pack:getNoBindItemNum(itemId)
-	local itemNum = 0
-
-	for i = 1, self:getCapability() do
-		local gridItem = self.grids[i]
-		if gridItem and gridItem:getItemID() == itemId and not gridItem:getBindFlag() then
-			itemNum = itemNum + gridItem:getNumber()
-		end
-	end
-
-	return itemNum
-end
-
--- 移除指定ID的绑定道具，返回移除的个数
-function Pack:removeBindItem(itemId, itemNum)
-	local removeNum = 0
-	local needRemoveNum = itemNum
-
-	for i = 1, self:getCapability() do
-		local gridItem = self.grids[i]
-		if gridItem and gridItem:getItemID() == itemId and gridItem:getBindFlag() then
-			local result = RemoveItemsResult.Failed
-			local gridItemNum = gridItem:getNumber()
-			if needRemoveNum > gridItemNum then
-				result = self:removeItem(gridItem, gridItemNum, true)
-				if result == RemoveItemsResult.Succeed or result == RemoveItemsResult.SucceedClean then
-					removeNum = removeNum + gridItemNum
-					needRemoveNum = needRemoveNum - gridItemNum
-				end
-			else
-				result = self:removeItem(gridItem, needRemoveNum, true)
-				if result == RemoveItemsResult.Succeed or result == RemoveItemsResult.SucceedClean then
-					removeNum = removeNum + needRemoveNum
-					needRemoveNum = 0
-				end
-			end
-			if result == RemoveItemsResult.SucceedClean then
-				-- 销毁源道具，不可用了
-				g_itemMgr:destroyItem(gridItem:getGuid())
-			end
-			if needRemoveNum <= 0 or removeNum >= itemNum then
-				-- 已经移除够指定数目了
-				return removeNum
-			end
-		end
-	end
-
-	return removeNum
-end
-
--- 移除指定ID的未绑定道具，返回移除的个数
-function Pack:removeNoBindItem(itemId, itemNum)
-	local removeNum = 0
-	local needRemoveNum = itemNum
-
-	for i = 1, self:getCapability() do
-		local gridItem = self.grids[i]
-		if gridItem and gridItem:getItemID() == itemId and not gridItem:getBindFlag() then
-			local result = RemoveItemsResult.Failed
-			local gridItemNum = gridItem:getNumber()
-			if needRemoveNum > gridItemNum then
-				result = self:removeItem(gridItem, gridItemNum, true)
-				if result == RemoveItemsResult.Succeed or result == RemoveItemsResult.SucceedClean then
-					removeNum = removeNum + gridItemNum
-					needRemoveNum = needRemoveNum - gridItemNum
-				end
-			else
-				result = self:removeItem(gridItem, needRemoveNum, true)
-				if result == RemoveItemsResult.Succeed or result == RemoveItemsResult.SucceedClean then
-					removeNum = removeNum + needRemoveNum
-					needRemoveNum = 0
-				end
-			end
-			if result == RemoveItemsResult.SucceedClean then
-				-- 销毁源道具，不可用了
-				g_itemMgr:destroyItem(gridItem:getGuid())
-			end
-			if needRemoveNum <= 0 or removeNum >= itemNum then
-				-- 已经移除够指定数目了
-				return removeNum
-			end
-		end
-	end
-
-	return removeNum
-end]]
 
 -- 更新指定位置的道具数据
 function Pack:updateItem(gridIndex, itemID, itemNum)
@@ -1003,7 +901,7 @@ function Pack:addItemsToShelf(item, addNum, bUpdateClient)
 			--这是获取之前的回购货架上的物品把他给销毁
 			local itemPrevious = self.grids[1]
 			local itemNum = itemPrevious:getNumber()
-			self:destroyItem(self.gridIndex, true)
+			self:destroyItem(self.owner,self.gridIndex, true)
 			--向前移动一个
 			self:packUpdate(bUpdateClient)
 			self:setGridItem(item, ShelfMaxCapacity)

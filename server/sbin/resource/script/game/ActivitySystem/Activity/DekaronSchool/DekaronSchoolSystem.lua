@@ -32,12 +32,16 @@ function DekaronSchoolSystem:onFightEnd(event)
 			break
 		end
 	end
-	local teamHandler = player:getHandler(HandlerDef_Team)
-	local teamID = teamHandler:getTeamID()
-	local team = g_teamMgr:getTeam(teamID)
-	local activityTarget = team:getDekaronActivityTarget()
-	if activityTarget then
-		activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs)
+	if player then
+		local teamHandler = player:getHandler(HandlerDef_Team)
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		if team then
+			local activityTarget = team:getDekaronActivityTarget()
+			if activityTarget then
+				activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs)
+			end
+		end
 	end
 end
 

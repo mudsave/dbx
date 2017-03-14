@@ -434,18 +434,6 @@ tRingEctypeDB =
 						MoneyPrize = 100,
 					},
 				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 50,--经验
-					MoneyPrize = 50,--金钱
-					TaoPrize = 1000,--道行
-					PotPrize = 1000,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
-					},
-				},
 			},
 			-- 第2环
 			[2] =
@@ -515,18 +503,6 @@ tRingEctypeDB =
 						ExpPrize = 100,
 						-- 金钱奖励
 						MoneyPrize = 100,
-					},
-				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 50,--经验
-					MoneyPrize = 50,--金钱
-					TaoPrize = 1500,--道行
-					PotPrize = 1500,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
 					},
 				},
 			},
@@ -600,18 +576,6 @@ tRingEctypeDB =
 						MoneyPrize = 100,
 					},
 				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 50,--经验
-					MoneyPrize = 50,--金钱
-					TaoPrize = 2000,--道行
-					PotPrize = 2000,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
-					},
-				},
 			},
 			-- 第4环
 			[4] =
@@ -679,18 +643,6 @@ tRingEctypeDB =
 						ExpPrize = 100,
 						-- 金钱奖励
 						MoneyPrize = 100,
-					},
-				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 50,--经验
-					MoneyPrize = 50,--金钱
-					TaoPrize = 2500,--道行
-					PotPrize = 2500,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
 					},
 				},
 	            	},
@@ -794,18 +746,6 @@ tRingEctypeDB =
 					{
 						{itemID = 10000, itemNum = 1},
 					},
-				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 1000,--经验
-					MoneyPrize = 1000,--金钱
-					TaoPrize = 10,--道行
-					PotPrize = 10,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
-					},
 					ExtraPrizes =
 					{
 						-- 经验奖励
@@ -813,7 +753,6 @@ tRingEctypeDB =
 						-- 金钱奖励
 						MoneyPrize = 100,
 					},
-				
 				},
 			},
 			-- 第2环
@@ -877,18 +816,6 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10000, itemNum = 1},
-					},
-				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 1500,
-					MoneyPrize = 1500,
-					TaoPrize = 10,--道行
-					PotPrize = 10,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
 					},
 					ExtraPrizes =
 					{
@@ -961,18 +888,6 @@ tRingEctypeDB =
 					{
 						{itemID = 10000, itemNum = 1},
 					},
-				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 2000,
-					MoneyPrize = 2000,
-					TaoPrize = 10,--道行
-					PotPrize = 10,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
-					},
 					ExtraPrizes =
 					{
 						-- 经验奖励
@@ -1043,18 +958,6 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10000, itemNum = 1},
-					},
-				},
-				-- 进度6
-				[12] =
-				{
-					ExpPrize = 2500,
-					MoneyPrize = 2500,
-					TaoPrize = 10,--道行
-					PotPrize = 10,--潜能
-					ItemPrize =
-					{
-						{itemID = 10001, itemNum = 1},
 					},
 					ExtraPrizes =
 					{

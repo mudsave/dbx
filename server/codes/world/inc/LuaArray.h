@@ -15,6 +15,7 @@ public:
 			{
 				m_pData=(CSCResultMsg*)malloc(pData->msgLen);
 				memcpy(m_pData,pData,pData->msgLen);
+				DbxMessageBuilder<CSCResultMsg>::locateContent(m_pData);
 				m_pData->getInit();
 			}
 		}
@@ -75,7 +76,7 @@ public:
 		int nSize=0;
 		for (int i=0;i<nCount;i++)
 		{
-			nSize=nSize+ObjDoMsg::getTypeSize(pTypeList[i]);
+			nSize=nSize+DbxMessage::getTypeSize(pTypeList[i]);
 		}
 		return nSize;
 	}
@@ -147,8 +148,8 @@ public:
 			return 1;
 		}
 		char* pTemp=(char*)self->m_pData; unused(pTemp);
-		int resCount=self->m_pData->getResCount();
-		int resAttriNameCount=self->m_pData->m_nAttriNameCount;
+		int resCount=self->m_pData->getAttributeRows();
+		int resAttriNameCount=self->m_pData->getAttributeCols();
 		char* pAttriName=NULL;
 		int valueType;
 		void* pValue=NULL;
@@ -162,7 +163,7 @@ public:
  			lua_newtable(pState);	
 			for (int j=0;j<resAttriNameCount;j++)
  			{
- 				pValue=self->m_pData->getAttribute(&pAttriName,&valueType,j,i);
+ 				self->m_pData->getAttribute(pAttriName,valueType,pValue,j,i);
 				lua_pushlstring(pState,(char*)pAttriName,strlen(pAttriName));
 				switch(valueType)
 				{
@@ -220,167 +221,79 @@ public:
 		#define LUA_TUSERDATA		7
 		#define LUA_TTHREAD		8
 		*/
-		int nResCount=0;
-		int nCount=0;
-		int AttrNameSize=0;
-		if(lua_istable(pState,-1))
+		/*
+		* LUA table:
+		* PARAMS[1]["id"] = 1
+		* PARAMS[1]["name"] = "XXX"
+		* PARAMS[2]["id"] = 2
+		* PARAMS[2]["name"] = "Hary"
+		*/
+		size_t size = 0; int key;
+		const char * attrName(NULL);
+		
+		self->m_builder.beginMessage();
+		
+		if(lua_istable(pState, -1))
 		{
 			lua_pushnil(pState);
-			while (lua_next(pState, -2))
+			while(lua_next(pState, -2))
 			{
-				int key = (int) lua_tonumber(pState, -2); unused(key);
-				if(lua_istable(pState,-1))
+				key = lua_tonumber(pState, -2);
+				if(lua_istable(pState, -1))
 				{
 					lua_pushnil(pState);
-					while (lua_next(pState, -2))
+					while(lua_next(pState, -2))
 					{
-						if (!nResCount) nCount++;
-						size_t nSize=0;
-						const char* value =lua_tolstring(pState, -2, &nSize); unused(value);
-						AttrNameSize = AttrNameSize + static_cast<int>(nSize);
-						lua_pop(pState, 1);
-					}
-				}
-				nResCount++;
-				lua_pop(pState, 1);
-			}
-		}
-		self->release();
-		self->create(nCount*nResCount, 0);
-		if(lua_istable(pState,-1))
-		{
-			int j=0;
-			lua_pushnil(pState);
-			while (lua_next(pState, -2))
-			{
-				int key = (int) lua_tonumber(pState, -2); unused(key);
-				if(lua_istable(pState,-1))
-				{
-					lua_pushnil(pState);
-					int i=0;
-					while (lua_next(pState, -2))
-					{	switch(lua_type(pState, -1))
+						//key
+						attrName = (key == 1) ? lua_tolstring(pState, -2, &size) : NULL;
+						
+						//value
+						switch(lua_type(pState, -1))
 						{
 						case LUA_TBOOLEAN:
-							self->m_pTypeList[j+i]=PARAMBOOL;
-							break;
+							{
+								bool value = (bool)lua_toboolean(pState, -1);
+								self->m_builder.addAttribute(attrName, &value, PARAMBOOL);
+								break;
+							}
+						
 						case LUA_TNUMBER:
 							{
 								float value = lua_tonumber(pState, -1);
-								float res=0;
-								if (!(res=(value-(int)value)))
-									self->m_pTypeList[j+i]=PARAMINT;
+								int value_int= (int)value;
+								if (!(value-value_int))
+									self->m_builder.addAttribute(attrName, &value_int, PARAMINT);
 								else
-									self->m_pTypeList[j+i]=PARAMFLOAT;
+									self->m_builder.addAttribute(attrName, &value, PARAMFLOAT);
 								break;
 							}
-						case LUA_TSTRING:{
-							size_t size_int_t = 0;
-							lua_tolstring(pState, -1, &size_int_t);
-							self->m_pTypeList[j+i] = static_cast<int>(size_int_t);
-							break;
-						}
+							
+						case LUA_TSTRING:
+							{
+								const char * value = lua_tolstring(pState, -1, &size);
+								self->m_builder.addAttribute(attrName, value, size);
+								break;
+							}
+						
 						default:
-							self->m_pTypeList[j+1]=0;
-							lua_pushnil(pState);
-							return 1;
+							{
+								lua_pushnil(pState);
+								self->m_builder.reset();
+								return 1;
+							}
 						}
 						lua_pop(pState, 1);
-						i++;
 					}
-					j=j+i;
 				}
 				lua_pop(pState, 1);
 			}
 		}
-		int dataSize=0;
-		for(int i=0;i<nResCount;i++)
-		{
-			dataSize=dataSize+getSize(self->m_pTypeList+(nCount*i),nCount);
-		}
-		int msgLen=sizeof(CSCResultMsg)+(nResCount+1)*nCount*sizeof(int)+dataSize+AttrNameSize;
-		if (msgLen<0)
-		{
-			lua_pushnil(pState);
-			return 1;
-		}
+		tolua_pushnumber(pState, 1);
+		
 		if(self->m_pData) free(self->m_pData);			//kirk
-		self->m_pData=(CSCResultMsg*) malloc(msgLen);
-		memset(self->m_pData,0,msgLen);
-		self->m_pData->msgLen=msgLen;
-		self->m_pData->init();
-		self->m_pData->initAttribute();
-		self->m_pData->m_spId=spId;
-		if(lua_istable(pState,-1))
-		{
-			int j=0;
-			lua_pushnil(pState);
-			while (lua_next(pState, -2))
-			{
-				int key = (int) lua_tonumber(pState, -2);
-				if(lua_istable(pState,-1))
-				{
-					lua_pushnil(pState);
-					int i=0;
-					while (lua_next(pState, -2))
-					{
-						char* pTemp=NULL;
-						size_t size_int_t = 0;
-						const char* value = lua_tolstring(pState, -2, &size_int_t);
-						int nSize = static_cast<int>(size_int_t);
-						nSize=ObjDoMsg::getTypeSize(self->m_pTypeList[j+i]);
-						if (nSize<0) continue;
-						pTemp=(char*)malloc(nSize);
-						memset(pTemp,0,nSize);
-
-						switch(self->m_pTypeList[j+i])
-						{
-						case PARAMINT:
-							{
-								int value = lua_tonumber(pState, -1);
-								*(int*)pTemp=value;
-							}
-							break;
-						case PARAMBOOL:
-							{
-								int value = lua_toboolean(pState, -1);
-								*(bool*)pTemp=(bool)value;
-							}
-							break;
-						case PARAMFLOAT:
-							{
-								float value = lua_tonumber(pState, -1);
-								*(float*)pTemp=(float)value;
-							}
-							break;
-						default :
-							if (self->m_pTypeList[j+i]>=0)
-							{
-								size_t size_int_t = 0;
-								const char* value = lua_tolstring(pState, -1, &size_int_t);
-								self->m_pTypeList[j+i] = static_cast<int>(size_int_t);
-								memcpy(pTemp, value, self->m_pTypeList[j+i]);
-							}
-							break;
-						}
-						lua_pop(pState, 1);
-						if(key==1) 
-							self->m_pData->setAttribute(const_cast<char*>(value),pTemp,self->m_pTypeList[j+i]);
-						else
-							self->m_pData->setAttribute(NULL,pTemp,self->m_pTypeList[j+i]);
-						if (pTemp) 
-						{
-							free(pTemp);
-							pTemp=NULL;
-						}
-						i++;
-					}
-					j=j+i;
-				}
-				lua_pop(pState, 1);
-			}
-		}
-		tolua_pushnumber(pState, 1);  
+		self->m_pData = self->m_builder.finishMessage();
+		self->m_pData->m_spId = spId;
+		
 		return 1;
 	}
 
@@ -443,7 +356,9 @@ private:
 	int m_nCount;
 	void* m_pValue;
 	int* m_pTypeList;
+	
 	CSCResultMsg* m_pData;
+	DbxMessageBuilder<CSCResultMsg> m_builder;
 
 
 	struct userValue

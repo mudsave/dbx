@@ -52,7 +52,7 @@ end
 ]]
 local skillAttackTargets = {}
 function FightAction.doSkilAction(role, context)
-	
+	print("技能开始--skillID, target",context.skillID, toString(context.target))
 	local result, dead_list,attackedTargets
 	if instanceof(role,FightPlayer) or instanceof(role,FightPet) then
 		 result, dead_list, attackedTargets = role:useSkill(context.skillID, context.target)

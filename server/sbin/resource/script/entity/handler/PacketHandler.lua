@@ -9,6 +9,10 @@ function PacketHandler:__init(entity)
 	self._entity = entity
 	-- 背包
 	self.packet = Packet(self._entity)
+	self.destroyItemList = {}
+	self.destroyEquipList = {}
+	-- 记录道具的使用次数
+	self.itemUseTimes = {}
 	-- 开启15秒的定时器，检测计时道具是否到期
 	self.checkGoodsTimerID = g_timerMgr:regTimer(self, 1000*15, 1000*15, "检测背包计时道具")
 end
@@ -17,6 +21,9 @@ function PacketHandler:__release()
 	self._entity = nil
 	release(self.packet)
 	self.packet = nil
+	self.destroyItemList = nil
+	self.destroyEquipList = nil
+	self.itemUseTimes = nil
 	-- 删除定时器
 	g_timerMgr:unRegTimer(self.checkGoodsTimerID)
 end
@@ -92,50 +99,6 @@ function PacketHandler:getNumByItemID(itemId)
 	return self.packet:getNumByItemID(itemId)
 end
 
---[[我们游戏设定物品绑定非绑定是由配置是否交易有关，不能更改，所以这代码用不着，但保留
--- 获得指定ID未绑定道具的个数
-function PacketHandler:getNoBindItemNum(itemId)
-	return self.packet:getNoBindItemNum(itemId)
-end
-
--- 获得指定ID绑定道具的个数
-function PacketHandler:getBindItemNum(itemId)
-	return self.packet:getBindItemNum(itemId)
-end
-
--- 扣除指定ID道具，优先扣除绑定的，绑定的不够再扣除未绑定的
-function PacketHandler:removeByItemIdEx(itemId, itemNum)
-	-- 获得绑定道具数目
-	local bindItemNum = self.packet:getBindItemNum(itemId)
-	-- 获得未绑定道具数目
-	local noBindItemNum = self.packet:getNoBindItemNum(itemId)
-	if bindItemNum + noBindItemNum < itemNum then
-		-- 数目不够，无法扣除
-		return 0
-	end
-	local needRemoveItemNum = itemNum
-	-- 先扣除绑定的
-	if bindItemNum > 0 then
-		if bindItemNum >= itemNum then
-			needRemoveItemNum = 0
-			self.packet:removeBindItem(itemId, itemNum)
-		else
-			needRemoveItemNum = itemNum - bindItemNum
-			self.packet:removeBindItem(itemId, bindItemNum)
-		end
-	end
-	-- 再扣除未绑定的
-	if needRemoveItemNum > 0 then
-		self.packet:removeNoBindItem(itemId, needRemoveItemNum)
-	end
-	return itemNum
-end
-
--- 移除未绑定的ID的道具
-function PacketHandler:removeNoBindItem(itemId, removeNum)
-	self.packet:removeNoBindItem(itemId, removeNum)
-end
-]]
 
 -- 添加道具到玩家背包, 这个接口在P2P交易当中，有可能这个itemGuid被销毁，先把配置ID存起来，在发送到任务系统
 function PacketHandler:addItems(itemGuid)
@@ -234,4 +197,72 @@ function PacketHandler:updateHorsePack(canUse)
 	-- 通知客户端刷新坐骑包裹
 	local event = Event.getEvent(ItemEvents_CS_UpdatePack, PackContainerID.Packet, PacketPackIndex.Horse, canUse)
 	g_eventMgr:fireRemoteEvent(event, self._entity)
+end
+
+function PacketHandler:addDestroyItemList(ID)
+	table.insert(self.destroyItemList,ID)
+end
+
+function PacketHandler:getDestroyItemlist(ID)
+	return self.destroyItemList
+end
+
+function PacketHandler:addDestroyEquipList(ID)
+	table.insert(self.destroyEquipList,ID)
+end
+
+function PacketHandler:getDestroyEquipList()
+	return self.destroyEquipList
+end
+
+
+function PacketHandler:loadItemUseTimes(itemUserTimes)
+	for _, record in pairs(itemUserTimes) do
+		-- 判断记录日期跟现在是不是同一天
+		if time.isSameDay(record.recordTime) then
+			local itemID = recorld.itemID
+			self.itemUseTimes[itemID] = {}
+			self.itemUseTimes[itemID].useTimes = record.useTimes
+			self.itemUseTimes[itemID].recordTime = record.recordTime
+		end
+	end
+end
+
+	-- 保存道具使用次数
+function PacketHandler:updateItemUseTimes()
+	for itemID, itemInfo in pairs(self.itemUseTimes) do
+		-- 更新数据库
+		LuaDBAccess.updateItemUseTimes(playerDBID, itemID, itemInfo.useTimes, itemInfo.recordTime)
+	end
+end
+
+-- 获得道具使用次数
+function PacketHandler:getItemUseTimes(itemID)
+	if self.itemUseTimes[itemID] then
+		if time.isSameDay(self.itemUseTimes[itemID].recordTime) then
+			return self.itemUseTimes[itemID].useTimes
+		end
+	end
+	return 0
+end
+
+-- 增加道具使用次数
+function PacketHandler:addItemUseTimes(itemID)
+	if not self.itemUseTimes[itemID] or not time.isSameDay(self.itemUseTimes[itemID].recordTime) then
+		self.itemUseTimes[itemID] = {}
+		self.itemUseTimes[itemID].useTimes = 1
+		self.itemUseTimes[itemID].recordTime = os.time()
+	else
+		self.itemUseTimes[itemID].useTimes = self.itemUseTimes[itemID].useTimes + 1
+		self.itemUseTimes[itemID].recordTime = os.time()
+	end
+end
+
+-- 重设道具使用次数，供战斗返回时调用
+function PacketHandler:resetItemUseTimes(itemID, useTimes)
+	if not self.itemUseTimes[itemID] then
+		self.itemUseTimes[itemID] = {}
+	end
+	self.itemUseTimes[itemID].useTimes = useTimes
+	self.itemUseTimes[itemID].recordTime = os.time()
 end

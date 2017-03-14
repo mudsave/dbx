@@ -86,7 +86,10 @@ end
 -- 根据指定的ID删除动态NPC
 function Ectype:removeNpc(npcID)
 	local npc = self.ectypeNpc[npcID]
-	if not npc then return end
+	if not npc then
+		print( "error:removeNpc is nil | ", npcID )
+		return
+	end
 	local scene = npc:getScene()
 	scene:detachEntity(npc)
 	g_entityMgr:removeNpc(npc:getID())
@@ -265,6 +268,7 @@ function Ectype:exeLogicFightClean(progress)
 		-- 先执行上一步骤的退出动作
 		for i = 1, table.getn(logicProcedure.End) do
 			local funs = logicProcedure.End[i][1]
+			print("**************** ",funs)
 			funs(self, logicProcedure.End[i])
 		end
 	end

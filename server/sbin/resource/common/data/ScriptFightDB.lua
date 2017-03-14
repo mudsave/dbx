@@ -351,6 +351,19 @@ ScriptFightDB[27] = {					---------------野怪
 	monsters = {type=ScriptMonsterCreateType.Random,{ID = 10044,weight= 50}, {ID = 10045,weight= 50}},
 }
 
+-----------------------------------------帮会休闲任务测试脚本---------------------------------------------------------
+ScriptFightDB[30] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31293,},}
+	}
+ScriptFightDB[31] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31294,},}
+	}
+ScriptFightDB[32] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31295,},}
+	}
+ScriptFightDB[33] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31296,},}
+	}
 
 -----------------------------------------------测试怪物属性脚本，请勿删除------------------------------------------------------
 ScriptFightDB[98] = {              --------------测试1
@@ -2587,12 +2600,78 @@ ScriptFightDB[3089] = {
 	}
 ScriptFightDB[3090] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31267, },{ID = 31268, },{ID = 31266, },{ID = 31269, },{ID = 31270, },{ID = 31271, },{ID = 31272, },{ID = 31273, },},
+	
+	begin  = {                                                               
+
+		[1] = {								
+
+			condition = {						 
+				
+				--{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+				
+
+			 },
+
+			actions = {							
+
+				{type = ScriptFightActionType.AddBuff,params={DBID ={31266},buffID = 48,49} },
+				
+			 },
+		 },
+							
+	},
 	}
 ScriptFightDB[3091] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31275, },{ID = 31276, },{ID = 31274, },{ID = 31277, },{ID = 31278, },{ID = 31279, },{ID = 31280, },{ID = 31281, },},
 	}
 ScriptFightDB[3092] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31282, },},
+	
+	begin  = {                                                               
+
+		[1] = {								
+
+			condition = {						 
+				
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+				
+                          count = 1,
+			 },
+
+			actions = {							
+
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
+			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 46} },
+				
+
+				isSameTime = true,
+			 },
+		 },
+                 [2] = {								
+
+			condition = {						 
+				
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 31282,type="hp",["<="] = 30},},
+				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+				
+                          count = 1,
+			 },
+
+			actions = {							
+
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
+			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 44} },
+				
+
+				isSameTime = true,
+			 },
+		 },
+
+		
+								
+	},
 	}
 
 -------------------------------------------天公山----跨年配副本----------------------------------
@@ -2737,25 +2816,56 @@ ScriptFightDB[4030] = {
 	}
 	---------------------------------------------------帮会休闲副本：驰援虎牢关--------------------------------------------------
 ScriptFightDB[4050] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31451, },{ID = 31452, },{ID = 31450, },{ID = 31453, },{ID = 31454, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31450, },{ID = 31451, },{ID = 31452, },{ID = 31453, },{ID = 31454, },},
 	}
 ScriptFightDB[4051] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31458, },{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31459, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31458, },{ID = 31459, },},
 	}
 ScriptFightDB[4052] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31461, },{ID = 31462, },{ID = 31460, },{ID = 31463, },{ID = 31464, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31460, },{ID = 31461, },{ID = 31462, },{ID = 31463, },{ID = 31464, },},
 	}
 ScriptFightDB[4053] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31466, },{ID = 31467, },{ID = 31465, },{ID = 31468, },{ID = 31469, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
 	}
 ScriptFightDB[4054] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31471, },{ID = 31472, },{ID = 31470, },{ID = 31473, },{ID = 31474, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31470, },{ID = 31471, },{ID = 31472, },{ID = 31473, },{ID = 31474, },},
 	}
 ScriptFightDB[4055] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31476, },{ID = 31477, },{ID = 31475, },{ID = 31478, },{ID = 31479, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31475, },{ID = 31476, },{ID = 31477, },{ID = 31478, },{ID = 31479, },},
 	}
 ScriptFightDB[4056] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31470, },{ID = 31471, },{ID = 31472, },{ID = 31473, },{ID = 31474, },},
+	}
+ScriptFightDB[4057] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
+	}
+ScriptFightDB[4058] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31458, },{ID = 31459, },},
+	}
+ScriptFightDB[4059] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31450, },{ID = 31451, },{ID = 31452, },{ID = 31453, },{ID = 31454, },},
+	}
+ScriptFightDB[4060] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31475, },{ID = 31476, },{ID = 31477, },{ID = 31478, },{ID = 31479, },},
+	}
+ScriptFightDB[4061] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31460, },{ID = 31461, },{ID = 31462, },{ID = 31463, },{ID = 31464, },},
+	}
+ScriptFightDB[4062] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
+	}
+ScriptFightDB[4063] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31458, },{ID = 31459, },},
+	}
+ScriptFightDB[4064] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31475, },{ID = 31476, },{ID = 31477, },{ID = 31478, },{ID = 31479, },},
+	}
+ScriptFightDB[4065] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31480, },},
+	}
+	---------------------------------------------------帮会休闲副本：火烧黄巾贼--------------------------------------------------
+ScriptFightDB[4066] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10805, },{ID = 10804, },{ID = 10804, },{ID = 10806, },{ID = 10806, },},
 	}
 --------------------------------------------师门任务的脚本战斗-------------------------------
 --------------------------------------------任务的脚本战斗-------------------------------
@@ -3743,4 +3853,94 @@ ScriptFightDB[45000] = {
 	-- 奖励信息
 	LuckyRewardID = 1,
 }
+
+----------------------------phases test 多阶段战斗脚本测试-------------------------------------------------------------------------------------
+
+ScriptFightDB[6] = {                                                                
+
+	subType = ScriptType.Random, 
+	count = 3,	
+	isRepeat = false ,   
+
+	phases = {		
+		[1] = {		
+			typeID = 0, sceneID = "zd_yw_jt07.xml" ,isSpecialAction =true,
+			
+			monsters={31250},        
+			
+		},
+		[2] = {
+			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			monsters={31254,31257},
+		
+	},
+                [3] = {
+			typeID = 0, sceneID = "zd_yw_jt05.xml" ,isSpecialAction =true,
+			monsters={30354,30357},
+		
+	},
+	      
+},
+rewards={			
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		
+		exp = 1,												
+		money = 1,											
+		subMoney = 1,										
+	},
+}
+
+--------------------------------------------jiaoben test 脚本测试-----------------------------------------------------
+
+ScriptFightDB[7] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31250, },},
+	}
+
+ScriptFightDB[8] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31250, },},
+	begin  = {                                                               
+
+		[1] = {								
+
+			condition = {						
+				
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+				
+                          count = 1,
+			 },
+
+			actions = {							
+
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
+			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 11} },
+				
+
+				isSameTime = true,
+			 },
+		 },
+                 [2] = {								
+
+			condition = {						
+				
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 31282,type="hp",["<="] = 30},},
+				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
+				
+                          count = 1,
+			 },
+
+			actions = {							
+
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
+			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 44} },
+				
+
+				isSameTime = true,
+			 },
+		 },
+
+		
+								
+	},
+	
+	}
 

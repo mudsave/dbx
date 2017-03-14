@@ -5,8 +5,8 @@ $(info --current work dir is : $(WORK_DIR))
 export LD_LIBRARY_PATH = $(WORK_DIR)
 
 SERVER_IP = 172.16.2.218
-DB_IP = 172.16.4.72
-DB_PORT = 3000
+DB_IP = 172.16.2.217
+DB_PORT = 3007
 
 .PHONY: clean start_server test
 .PHONY: longxiaoquan zhangyang xuwenkai liushuojing hejialiang penghaijun

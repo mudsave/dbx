@@ -19,6 +19,7 @@ end
 -- 设置属性效果
 function Medicament:setEffect(itemEffect)
 	self.effect = itemEffect
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得属性效果
@@ -29,6 +30,7 @@ end
 -- 设置效果表table
 function Medicament:setAttr(itemAttr)
 	self.attr = itemAttr
+	self:setDBState(ItemDBstate.update)
 end
 
 -- 获得效果表
@@ -38,12 +40,12 @@ end
 
 -- 根据数据库现场设置药品属性
 function Medicament:setPropertyContext(context)
-	self:setExpireTime(context.expireTime)
-	self:setEffect(tonumber(context.effect))
+	self.expireTime = context.expireTime
+	self.effect = tonumber(context.effect)
 	if context.attr and type(context.attr) == "string" then
 		context.attr = unserialize(context.attr)
 	end
-	self:setAttr(context.attr)
+	self.attr = context.attr
 end
 
 -- 获得药品属性现场

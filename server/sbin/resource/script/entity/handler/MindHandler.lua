@@ -17,6 +17,16 @@ function MindHandler:__release()
 	self.minds = nil
 end
 
+function MindHandler:getSkillLevel(skillID)
+	local minds = self.minds
+	for id,mind in pairs(minds) do
+		local skillLevel = mind:getSkillLevel(skillID)
+		if skillLevel then
+			return skillLevel
+		end
+	end
+end
+
 function MindHandler:gm_set_mind_level(id, level)
 	if self:get_mind(id) then
 		self:get_mind(id).level = level
@@ -61,7 +71,7 @@ end
 
 function MindHandler:deal()
 	local school = self._entity:getSchool()
-	if not school or shcool == 0 then
+	if not school or school == 0 then
 		return false
 	end
 	local dbid = self._entity:getDBID()

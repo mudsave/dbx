@@ -46,7 +46,7 @@ local function iterator(interface)
 		interface = superinterface(interface)
 	end
 
-	function iter()
+	return function()
 		local f, v
 		if index < #methods then
 			index = index + 1
@@ -54,8 +54,6 @@ local function iterator(interface)
 		end
 		return f, v
 	end
-
-	return iter
 end
 
 --@note：生成一个和object相关的实例

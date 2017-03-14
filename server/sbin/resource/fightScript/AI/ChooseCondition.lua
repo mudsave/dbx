@@ -191,7 +191,7 @@ function ChooseCondition.isBuffStatus(me,fight,params)
 
 end
 --[[
-params = {isEnemy = true,count = 1}
+params = {isEnemy = true,relation = ">=",count = 1}
 ]]
 function ChooseCondition.isLiveNum(me,fight,params)
 		local isEnemy = params.isEnemy
@@ -203,12 +203,23 @@ function ChooseCondition.isLiveNum(me,fight,params)
 		else
 			side = FightStand.B
 		end
+		local relation = params.relation or ">="
 		local members = fight:getMembers()
 		local curCount =FightUtils.getLiveNum(members[side])
-		if curCount >= num then
-			return true
+		if relation == ">" then
+			return curCount > num
+		elseif relation == ">=" then
+			return curCount >= num
+		elseif relation == "=" then
+			return curCount == num
+		elseif relation == "<" then
+			return curCount < num
+		elseif relation == "<=" then
+			return curCount <= num
+		else
+			return false
 		end
-		
+				
 		return false
 end
 

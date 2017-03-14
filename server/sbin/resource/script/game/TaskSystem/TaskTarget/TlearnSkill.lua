@@ -6,7 +6,12 @@
 TlearnSkill = class(TaskTarget)
 
 function TlearnSkill:__init(entity, task, param, state)
-	self._state = state or 0
+	if not state then
+		local handler = self._entity:getHandler(HandlerDef_Mind)
+		self._state = handler:getSkillLevel(self._param.skillID)
+	else
+		self._state = state
+	end
 	if not self:completed() then
 		self:addWatcher("onLearnDone")
 	end
@@ -29,6 +34,7 @@ function TlearnSkill:removeWatchers()
 end
 
 function TlearnSkill:completed()
+	-- 检查当前任务是否已经完成 再接任务时
 	return self._state >= self._param.tarLevel
 end
 

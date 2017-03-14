@@ -71,7 +71,7 @@ function Speed:setCurSpeed(value)
 	
 	--follow entity speed
 	if player:getEntityType() == eClsTypePlayer then
-		local followHadler = player:getHandler(HandlerDef_Follow)
+		local followHandler = player:getHandler(HandlerDef_Follow)
 		if followHandler then
 			local followList = followHandler:getMembers()
 			for _, member in pairs (followList) do

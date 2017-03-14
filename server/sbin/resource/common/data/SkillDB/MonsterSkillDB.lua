@@ -1029,4 +1029,204 @@ MonsterSkillDB = {
 	                 },
 	             },
 	         },
+     [1042] = {
+	          name = "ÆðËÀ»ØÉú",
+	          skill_type = Skill_Type.Heal,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.HpHeal,
+	                     num_id = 13,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1043] = {
+	          name = "ÆÕ¶ÉÖÚÉú",
+	          skill_type = Skill_Type.Heal,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.HpHeal,
+	                     num_id = 13,
+	                     target_type = TargetType.friend_g,
+	                     target_num_id = 3,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1044] = {
+	          name = "¹íº×Ö®¶¾",
+	          skill_type = Skill_Type.BuffDmg,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 63,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1045] = {
+	          name = "ÎåÎÁ×÷ÂÒ",
+	          skill_type = Skill_Type.BuffDmg,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 63,
+	                     target_type = TargetType.enemy_g,
+	                     target_num_id = 3,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1046] = {
+	          name = "¹Æ»óÈËÐÄ",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 16,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1047] = {
+	          name = "É¥ÐÄ²¡¿ñ",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 16,
+	                     target_type = TargetType.enemy_g,
+	                     target_num_id = 3,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1048] = {
+	          name = "ÑªÆø·ÐÌÚ",
+	          skill_type = Skill_Type.Heal,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.HpHeal,
+	                     num_id = 15,
+	                     target_type = TargetType.self,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1049] = {
+	          name = "Ä§Ñª³åÂö",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 46,
+	                     target_type = TargetType.self,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
  }

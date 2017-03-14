@@ -356,12 +356,12 @@ PetSkillEffect2AttrName = {
 	[PetPassiveEffect.Dodge]			= { pet_add_dodge, },
 	[PetPassiveEffect.AntiCrit]			= { pet_add_tenacity },
 	
-	[PetPassiveEffect.AntiTaunt]		= { pet_add_taunt_resist,pet_inc_taunt_resist },
-	[PetPassiveEffect.AntiChaos]		= { pet_add_chaos_resist,pet_inc_chaos_resist },
-	[PetPassiveEffect.AntiFreeze]		= { pet_add_freeze_resist,pet_inc_freeze_resist },
-	[PetPassiveEffect.AntiPoison]		= { pet_add_toxicosis_resist,pet_inc_toxicosis_resist },
-	[PetPassiveEffect.AntiSilence]		= { pet_add_silent_resist,pet_inc_silent_resist },
-	[PetPassiveEffect.Antisopor]		= { pet_add_sopor_resist,pet_inc_sopor_resist },
+	[PetPassiveEffect.AntiTaunt]		= { nil,pet_inc_taunt_resist },
+	[PetPassiveEffect.AntiChaos]		= { nil,pet_inc_chaos_resist },
+	[PetPassiveEffect.AntiFreeze]		= { nil,pet_inc_freeze_resist },
+	[PetPassiveEffect.AntiPoison]		= { nil,pet_inc_toxicosis_resist },
+	[PetPassiveEffect.AntiSilence]		= { nil,pet_inc_silent_resist },
+	[PetPassiveEffect.Antisopor]		= { nil,pet_inc_sopor_resist },
 }
 
 PetSkillFuncType = {
