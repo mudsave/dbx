@@ -5,10 +5,11 @@
 //#include "stdafx.h"
 #include <map>
 
-
 #define	 PARAMMAX 10
 
 struct AppMsg;
+class NetCtrl;
+
 #define IID_IMsgLinksCD_L 0x01 //客户端到dbserver的链接
 
 class CClient: public ITask, public IInitClient, public IMsgLinksImpl<IID_IMsgLinksCD_L>, public TSingleton<CClient>
@@ -23,10 +24,10 @@ public:
 	virtual int callSPFROMCPP(IDBCallback*);
 	
 	virtual HANDLE OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type);
-        virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
-        virtual void OnClosed(HANDLE hLinkContext, HRESULT reason);
-	void doFunciton(void);
-	static IDBANetEvent* getDBNetEvent();
+    virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
+    virtual void OnClosed(HANDLE hLinkContext, HRESULT reason);
+
+    static IDBANetEvent* getDBNetEvent();
 	static void setDBNetEvent(IDBANetEvent* pNetEventHandle);
 	static int generateOperationId();
 	bool closeLink(DWORD dwFlags);
@@ -36,6 +37,10 @@ public:
 	void  deleteAttributeSet(int index);
 
 	HRESULT Do(HANDLE hContext);
+
+    void ConnectResult(HRESULT p_result);
+    void Recv(AppMsg* p_appMsg);
+
 private:
     void StartConnectDBX();
     void StopConnectDBX();
@@ -59,6 +64,8 @@ private:
 	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 
     HANDLE m_connectDBXTimer;
+
+    NetCtrl *m_netCtrl;
 public:
 	virtual void buildQuery();
 	virtual int addParam(const char*, const char*);

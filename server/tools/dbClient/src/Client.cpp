@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "Client.h"
+
+#include "NetCtrl.h"
+
 #ifdef WIN32
 #include "winnt.h"
 #endif
@@ -25,11 +28,13 @@ CClient::CClient()
     :m_connected(false),
      INIT_THREAD_SAFETY_MEMBER_FAST(sock),
      INIT_THREAD_SAFETY_MEMBER_FAST(Attr),
+     m_netCtrl(NULL),
      m_connectDBXTimer(NULL)
 {
-        //sleep(30);
+    m_netCtrl = new NetCtrl();
+
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
-	m_pLinkCtrl=static_cast<ILinkCtrl*>(::CreateLinkCtrl());
+	m_pLinkCtrl = static_cast<ILinkCtrl*>(::CreateLinkCtrl());
 	if (m_pLinkCtrl==NULL)
 	{
 		CDBClientException e;
@@ -37,13 +42,16 @@ CClient::CClient()
 		e.m_strDescription = "load sock.dll failed!";
 		throw e;
 	}
-	//createThread();
+
     CCommandClient* pCmd =  CCommandClient::getCommandClient();//初始化CCommandClient
 }
 
 CClient::~CClient(void)
 {
 	closeLink(CLOSE_UNGRACEFUL);
+
+    delete m_netCtrl;
+    m_netCtrl = NULL;
 }
 
 void CClient::StartConnectDBX()
@@ -280,4 +288,18 @@ int CClient::callSPFROMCPP(IDBCallback* call_back) {
             TRACE0_L1("[CClient::callSPFROMCPP] connect with dbserver failed!\n");
         }
 	return pMsg->m_nTempObjId;
+}
+
+void CClient::ConnectResult(HRESULT p_result)
+{
+    if (s_pNetEventHandle)
+    {
+        bool result = (p_result == S_OK ? true : false);
+        s_pNetEventHandle->onConnected(result);
+    }
+}
+
+void CClient::Recv(AppMsg* p_appMsg)
+{
+    //CCommandClient::getCommandClient()->OnRecv(p_appMsg);
 }
