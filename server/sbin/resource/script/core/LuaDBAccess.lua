@@ -165,6 +165,7 @@ function LuaDBAccess.itemSave(playerDBID, itemsNum, itemsBuffer)
 	params[1]["_ItemsBuffer"] = itemsBuffer
 
 	LuaDBAccess.exeSP(params, true)
+	print("itemRemove")
 end
 
 -- 存储玩家装备
@@ -352,14 +353,21 @@ function LuaDBAccess.SavePetAttrs(pet)
 	local param = params[1]
 
 	param['dataBase'] = 1
-	param['spName'] = 'sp_UpdatePetAttribute'
-	param['sort'] = "id,attrName,attrValue"
+	param['spName'] = 'sp_UpdatePetAttributeBatch'
+	param['sort'] = "id,buff,num"
 	param['id'] = pet:getDBID()
-
+	local num = 0
+	local buff = ""
 	for attrName,attribute in pairs(pet:getAttributeSet()) do
 		if attribute:isSaveDB() then
-			SavePetAttr(param,attrName,attribute:getValue())
+			buff = buff..tostring(attrName)..","..tostring(attribute:getValue())..","
+			num = num + 1
 		end
+	end
+	if num > 0 then
+		param["buff"] = buff
+		param["num"] = num
+        LuaDBAccess.exeSP(params,true)
 	end
 
 	return true
@@ -792,6 +800,7 @@ function LuaDBAccess.SaveNewRewards(roleDBID,times,betweenTime,rewardFlag)
 	params[1]["_Times"]			= times
 	params[1]["_BetweenTime"]	= betweenTime
 	LuaDBAccess.exeSP(params, true)
+	print("SaveNewRewards")
 end
 
 -- 保存玩家功能设置
@@ -863,6 +872,7 @@ function LuaDBAccess.SavePointSetting(entity)
 		if handler:onSave(param) then
 			param["dataBase"] = 1
 			LuaDBAccess.exeSP(params, true)
+			print("SavePointSetting")
 		end
 	end
 end

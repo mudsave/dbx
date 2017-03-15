@@ -91,7 +91,7 @@ function FollowEntity:setVisible(visible, player)
 				return
 			end
 			if self:getEntityType() == eLogicFollow then
-				if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+				if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop or mapID == 9 then
 					if scene:attachEntity(self, pos.x , pos.y) then
 						self.visible = true
 					else

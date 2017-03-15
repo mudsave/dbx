@@ -96,7 +96,6 @@ end
 local isTrue = true
 
 function ActivityManager:minUpdate(currentTime)
-	print("-------222222222222222222222---------",frameName)
 	if self.lastTime > 0 and currentTime - self.lastTime < 600 then
 		--return
 	end
@@ -176,7 +175,7 @@ end
 
 --服务器启动时，更新活动
 function ActivityManager:updateActivityByStart()
-	local data = os.date("*t", currentTime)
+	local data = os.date("*t")
 	for id, activityInfo in pairs(ActivityDB) do
 		if activityInfo.startType == AtyStartType.fixedDayHour then --每一天
 			local startTime = activityInfo.startTime

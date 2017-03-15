@@ -339,3 +339,38 @@ FightAIDB[31] = {
 		},
 	},
 }
+
+
+---------------------------------------------迷雾林副本ai-----------------------------------------------
+
+FightAIDB[41] = {
+	name  = '每隔一回合施放一次技能（混乱/瘟疫',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 3},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1047}},		--使用技能
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 1,startRound = 2},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1013,1014}},		--使用技能
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}

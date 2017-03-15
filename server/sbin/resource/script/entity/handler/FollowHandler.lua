@@ -22,7 +22,7 @@ function FollowHandler:loadFollowEntity(mapID, x ,y)
 	for npcID, npc in pairs(self._memberList) do
 		--x = x - 1
 		--y = y - 1
-		if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or npc:getTaskType() == TaskType.loop then
+		if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or npc:getTaskType() == TaskType.loop or mapID == 9 then
 			--print("跟随进入场景",mapID,toString({npc, x, y}))
 			g_sceneMgr:enterPublicScene(mapID, npc, x, y)
 		end

@@ -9370,9 +9370,9 @@ tEctypeDB =
 				Start =
 				{
 					-- 创建热区
-					{Ectype_CreateObject, objectID = 1000, objectNum = 16},
+					{Ectype_CreateObject, objectID = 1000, objectNum = 8},
 					-- 创建动态NPC
-					{Ectype_CreatePatrolNpc, npcID = 20033, npcNum = 16, scriptID = 4066, radius = 5},
+					{Ectype_CreatePatrolNpc, npcID = 20033, npcNum = 8, scriptID = 4066, radius = 5},
 				},
 				Goto =
 				{

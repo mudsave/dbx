@@ -9,37 +9,37 @@ local schoolActivityTargetDB =
 	[1] = 
 	{ 
 		npcId = 50051,
-		scripts = {50001,50002},
+		scripts = {8001,8002},
 	},
 	--金霞山护法
 	[2] = 
 	{ 
 		npcId = 50052,
-		scripts = {50001,50002},
+		scripts = {8003,8004},
 	},
 	--紫阳门护法
 	[3] = 
 	{ 
 		npcId = 50053,
-		scripts = {50001,50002},
+		scripts = {8005,8006},
 	},
 	--云霄宫护法
 	[4] = 
 	{ 
 		npcId = 50054,
-		scripts = {50001,50002},
+		scripts = {8007,8008},
 	},
 	--桃源洞护法
 	[5] = 
 	{ 
 		npcId = 50055,
-		scripts = {50001,50002},
+		scripts = {8009,8010},
 	},
 	--蓬莱阁护法
 	[6] = 
 	{ 
 		npcId = 50056,
-		scripts = {50001,50002},
+		scripts = {8011,8012},
 	},
 }
 

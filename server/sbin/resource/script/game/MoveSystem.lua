@@ -76,7 +76,7 @@ function correctMovePath(roleID,x,y)
 	local followList = followHandler:getMembers()
 	for memberID, member in pairs(followList) do	
 		if member:isVisible() then
-			if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+			if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop or mapID == 9 then
 				curIdx = member:getPeer():correctFollowMovePath(curIdx, followedEntity:getPathLen())
 				followedEntity = member:getPeer()
 			end

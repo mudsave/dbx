@@ -144,7 +144,7 @@ function MoveHandler:moveFollowEntity(offset, pPosData, paths, bTeamLeader, foll
 		local followList = followHandler:getMembers()
 		for memberID, member in pairs(followList) do
 			if member:isVisible() then
-				if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+				if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop or mapID == 9 then
 					table.insert(follows, member:getID())
 				end
 			end

@@ -7,7 +7,7 @@ EctypeObjectDB =
 	-- Òø±¦Ïä
 	[1000] =
 	{
-		name = "Òø±¦Ïä",
-		modelID = 452,
+		name = "Á¸²Ý",
+		modelID = 2023,
 	},
 }

@@ -114,4 +114,7 @@ ArticlesDB =
 	[10030] = {
 		condition = {lowLevel = 150},
 	},
+	[10031] = {
+		condition = {lowLevel = 150},
+	},
 }

@@ -10,6 +10,7 @@ require "game.TaskSystem.TaskCallBack"
 
 CollectSystem = class(EventSetDoer, Singleton)
 function CollectSystem:__init()
+	local isGridsNumFull = false
 	self._doer = {
 		[GoodsEvents_CS_RemoveGoods] = CollectSystem.onRemoveGoods,
 	}
@@ -50,82 +51,86 @@ function CollectSystem:onRemoveGoods(event)
 			g_goldHuntMgr:onItemCollected(goodsNpcID,packID,playerID,isRemoved)
 			return
 		end
-
-		--条件为空，说明该物件为障碍物，同样可以采集移除
-		if table.size(condition) <=0 then
-			isSuccess = true
-		    collectionRefresher:collect(goodsNpcID)
-			CollectSystem:openGoodsPack(goodsNpcID,playerID)
-		else   
-			
-			-- 处理玩家等级是否满足开采条件
-			if condition.lowLevel then 
-				local playerLevel = player:getLevel()
-				--如果玩家等级小于该开采条件内
-				if  playerLevel < condition.lowLevel then
-					isSuccess = true
-					collectionRefresher:collect(goodsNpcID)
-					CollectSystem:openGoodsPack(goodsNpcID,playerID)
-				else
-					--处理玩家等级过高
-					local noticeID_1 =  1
-					local event_levelNotice_1 = Event.getEvent(GoodsEvents_SC_HighLevelMSG, noticeID_1)
-					g_eventMgr:fireRemoteEvent(event_levelNotice_1,player)
-				end 
-			-- 处理玩家任务是否满足开采条件
-			else		
-				if condition.taskID then
-					isSuccess = true
-				    --如果玩家持有该任务
-					if player:getHandler(HandlerDef_Task):getTask(condition.taskID) then
-					collectionRefresher:collect(goodsNpcID)
-					CollectSystem:openGoodsPack(goodsNpcID,playerID)
-					
-					--采集完成，通知任务系统
-					TaskCallBack.onContactSeal(playerID, packID)
-					else 
-						local noticeID_2 =  2
-						local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, noticeID_2)
-						g_eventMgr:fireRemoteEvent(event_notice,player)
-					end
-				-- 处理消耗物品
-				else
-					if condition.itemID then
-						local itemConfigID = config.condition.itemID
-						--消耗物品数量，策划要求写死
-						local num = 1
-						local packetHandler = player:getHandler(HandlerDef_Packet)
-						--判断玩家物品是否有打开包裹需要消耗的物品
-						if packetHandler:getNumByItemID(itemConfigID) >= num then
-							--消耗玩家物品		
-							isSuccess = true
-							packetHandler:removeByItemId(itemConfigID, num)
-							collectionRefresher:collect(goodsNpcID)
-							CollectSystem:openGoodsPack(goodsNpcID,playerID)
-						else
-							local noticeID_3 =  3
-							local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, noticeID_3)
+		if not isGridsNumFull then 
+			--条件为空，说明该物件为障碍物，同样可以采集移除
+			if table.size(condition) <=0 then
+				isSuccess = true
+				collectionRefresher:collect(goodsNpcID)
+				CollectSystem:openGoodsPack(goodsNpcID,playerID)
+			else   	
+				-- 处理玩家等级是否满足开采条件
+				if condition.lowLevel then 
+					local playerLevel = player:getLevel()
+					--如果玩家等级小于该开采条件内
+					if  playerLevel < condition.lowLevel then
+						isSuccess = true
+						collectionRefresher:collect(goodsNpcID)
+						CollectSystem:openGoodsPack(goodsNpcID,playerID)
+					else
+						--处理玩家等级过高
+						local noticeID_1 =  1
+						local event_levelNotice_1 = Event.getEvent(GoodsEvents_SC_HighLevelMSG, noticeID_1)
+						g_eventMgr:fireRemoteEvent(event_levelNotice_1,player)
+					end 
+				-- 处理玩家任务是否满足开采条件
+				else		
+					if condition.taskID then
+						isSuccess = true
+						--如果玩家持有该任务
+						if player:getHandler(HandlerDef_Task):getTask(condition.taskID) then
+						collectionRefresher:collect(goodsNpcID)
+						CollectSystem:openGoodsPack(goodsNpcID,playerID)
+						
+						--采集完成，通知任务系统
+						TaskCallBack.onContactSeal(playerID, packID)
+						else 
+							local noticeID_2 =  2
+							local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, noticeID_2)
 							g_eventMgr:fireRemoteEvent(event_notice,player)
 						end
+					-- 处理消耗物品
 					else
-						if condition.highLevel then  
-							local playerLevel = player:getLevel()
-							--如果玩家等级高于给配置条件
-							if  playerLevel > condition.highLevel then
+						if condition.itemID then
+							local itemConfigID = config.condition.itemID
+							--消耗物品数量，策划要求写死
+							local num = 1
+							local packetHandler = player:getHandler(HandlerDef_Packet)
+							--判断玩家物品是否有打开包裹需要消耗的物品
+							if packetHandler:getNumByItemID(itemConfigID) >= num then
+								--消耗玩家物品		
 								isSuccess = true
+								packetHandler:removeByItemId(itemConfigID, num)
 								collectionRefresher:collect(goodsNpcID)
 								CollectSystem:openGoodsPack(goodsNpcID,playerID)
 							else
-								--处理玩家等级过高
-								local noticeID_4 =  4
-								local event_levelNotice_4 = Event.getEvent(GoodsEvents_SC_LowLevelMSG, noticeID_4)
-								g_eventMgr:fireRemoteEvent(event_levelNotice_4,player)
+								local noticeID_3 =  3
+								local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, noticeID_3)
+								g_eventMgr:fireRemoteEvent(event_notice,player)
+							end
+						else
+							if condition.highLevel then  
+								local playerLevel = player:getLevel()
+								--如果玩家等级高于给配置条件
+								if  playerLevel > condition.highLevel then
+									isSuccess = true
+									collectionRefresher:collect(goodsNpcID)
+									CollectSystem:openGoodsPack(goodsNpcID,playerID)
+								else
+									--处理玩家等级过高
+									local noticeID_4 =  4
+									local event_levelNotice_4 = Event.getEvent(GoodsEvents_SC_LowLevelMSG, noticeID_4)
+									g_eventMgr:fireRemoteEvent(event_levelNotice_4,player)
+								end
 							end
 						end
 					end
 				end
 			end
-		end
+		else 
+			local noticeID_6 =  6
+			local event_lackGridsMSG = Event.getEvent(GoodsEvents_SC_LackGridsMSG, noticeID_6)
+			g_eventMgr:fireRemoteEvent(event_lackGridsMSG,player)
+        end 			
 		
 	--该包裹被采集后，其他玩家还在读条的处理
     else
@@ -162,6 +167,7 @@ function CollectSystem:openGoodsPack(goodsNpcID,playerID)
 			local noticeID_6 =  6
 			local event_lackGridsMSG = Event.getEvent(GoodsEvents_SC_LackGridsMSG, noticeID_6)
 			g_eventMgr:fireRemoteEvent(event_lackGridsMSG,player)
+			
 			return
 		end
 		

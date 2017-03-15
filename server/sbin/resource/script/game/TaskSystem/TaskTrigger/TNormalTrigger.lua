@@ -25,7 +25,7 @@ function Triggers.createFollow(roleID, param, task, fromDB)
 	end
 	g_taskSystem:addFollowEntity(player, npcsData)
 	for _, followEntity in pairs(followEntityList) do	
-		if sceneType == MapType.Task or sceneType == MapType.Wild or task:getType() == TaskType.loop then
+		if sceneType == MapType.Task or sceneType == MapType.Wild or task:getType() == TaskType.loop or scene:getMapID() == 9 then
 			scene:attachEntity(followEntity, pos[2] - 1 , pos[3] - 1)
 		end
 	end

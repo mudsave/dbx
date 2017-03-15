@@ -3564,13 +3564,420 @@ ScriptFightDB[7010] = {
 
 
 -- 8001 - 9000 门派闯关活动战斗
-ScriptFightDB[8001] = {
+ScriptFightDB[8001] = {--乾元岛
 	-- 战斗类型
 	subType = ScriptType.LuckyMonster,
 	-- 主怪信息
-	majorMonsterInfo = {{ID = 10013,pos = 21}},
+	majorMonsterInfo = {{ID = 50060,pos = 21}},
 	-- 要刷新怪的信息
-	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 10012,weight= 50},{ID = 10011,weight= 20}},
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50061,weight= 40},{ID = 50062,weight= 40},{ID = 50063,weight= 5},{ID = 50064,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8002] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50060,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50063,weight= 40},{ID = 50064,weight= 40},{ID = 50065,weight= 5},{ID = 50066,weight= 5},{ID = 50066,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8003] = {--金霞山
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50070,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50071,weight= 40},{ID = 50072,weight= 40},{ID = 50073,weight= 5},{ID = 50074,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8004] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50070,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50073,weight= 40},{ID = 50074,weight= 40},{ID = 50075,weight= 5},{ID = 50076,weight= 5},{ID = 50076,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8005] = {--紫阳门
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50080,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50081,weight= 40},{ID = 50082,weight= 40},{ID = 50083,weight= 5},{ID = 50084,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8006] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50080,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50083,weight= 40},{ID = 50084,weight= 40},{ID = 50085,weight= 5},{ID = 50086,weight= 5},{ID = 50086,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8007] = {--云霄宫
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50090,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50091,weight= 40},{ID = 50092,weight= 40},{ID = 50093,weight= 5},{ID = 50094,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8008] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50090,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50093,weight= 40},{ID = 50094,weight= 40},{ID = 50095,weight= 5},{ID = 50096,weight= 5},{ID = 50097,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8009] = {--桃源洞
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50100,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50101,weight= 40},{ID = 50102,weight= 40},{ID = 50103,weight= 5},{ID = 50104,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8010] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50100,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50103,weight= 40},{ID = 50104,weight= 40},{ID = 50105,weight= 5},{ID = 50106,weight= 5},{ID = 50107,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8011] = {--蓬莱阁
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50110,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50111,weight= 40},{ID = 50112,weight= 40},{ID = 50113,weight= 5},{ID = 50114,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	systemActions = {
+	      [1] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+		  {type = ScriptFightActionType.FightEnd,params={winner = "player" }},--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+		  },
+	      },
+	      [2] = 
+	      {
+		  condition = 
+		  {
+	          {type = ScriptFightConditionType.AttrValue, params={DBID = 10011,type="hp",["<="] = 0},},
+		   isAnd = true,
+		  },
+		  actions = 
+		  {
+                  {type = ScriptFightActionType.PlayBubble,params={DBID={10011},bubbleID = 1},},
+		  {type = ScriptFightActionType.ChangeHp,params={DBID =-1,percent = -50}},
+		  },
+	      },
+	},
+	-- 奖励信息
+	LuckyRewardID = 1,
+}
+ScriptFightDB[8012] = {
+	-- 战斗类型
+	subType = ScriptType.LuckyMonster,
+	-- 主怪信息
+	majorMonsterInfo = {{ID = 50110,pos = 21}},
+	-- 要刷新怪的信息
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50113,weight= 40},{ID = 50114,weight= 40},{ID = 50115,weight= 5},{ID = 50116,weight= 5},{ID = 50117,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
 	systemActions = {
 	      [1] = 
 	      {

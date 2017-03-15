@@ -284,7 +284,7 @@ function MineSystem:onFightEnd(event)
 					y = vect.y
 					local roleID = player:getID()
 					local moveHandler = player:getHandler(HandlerDef_Move)
-					moveHandler:doStopMove()
+					moveHandler:DoStopMove()
 					g_sceneMgr:doSwitchScence(roleID, toMapID ,x ,y)
 					return
 				end

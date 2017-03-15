@@ -1152,10 +1152,10 @@ function Fight:_canExcecuteAndDoSth(actionInfo)
 	
 
 	--目标是否是冰冻状态
-	local target = self:getRole(actionInfo.context.target)
-	if target and target:getLifeState() == RoleLifeState.Freeze then
+	--local target = self:getRole(actionInfo.context.target)
+	--[[if target and target:getLifeState() == RoleLifeState.Freeze then
 		return false
-	end
+	end]]
 	--状态审核
 	if role:getLifeState() == RoleLifeState.Dead then
 		return false

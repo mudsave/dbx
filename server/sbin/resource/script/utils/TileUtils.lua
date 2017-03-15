@@ -134,7 +134,7 @@ function TileUtils.getVaildTile(player, offset, bFollow, maxCount)
 					local followHandler = player:getHandler(HandlerDef_Follow)
 					local followList = followHandler:getMembers()
 					for memberID, member in pairs(followList) do	
-						if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop then
+						if mapDB[mapID].mapType == MapType.Task or mapDB[mapID].mapType == MapType.Wild or member:getTaskType() == TaskType.loop or mapID == 9 then
 							nCount = nCount + 1
 						end
 					end
