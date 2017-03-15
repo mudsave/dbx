@@ -42,12 +42,14 @@ void CClient::ConnectDBX(std::string serverAddr, int iPort)
 
 void CClient::setAttributeSet(int index,CSCResultMsg *pInfo)
 {
+    TRACE1_L0("CClient::setAttributeSet(int index(%i))\n", index);
 	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	m_MapAttrSet.insert(std::make_pair(index,pInfo));
        	LEAVE_CRITICAL_SECTION_MEMBER;
 }
 void* CClient::getAttributeSet(int attriIndex,int index)
 {
+    TRACE2_L0("CClient::getAttributeSet(int attriIndex(%i),int index(%i))\n", attriIndex, index);
 	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	MAPATTRSET::iterator iter=m_MapAttrSet.lower_bound(attriIndex);
 	for(int i=0;iter!=m_MapAttrSet.upper_bound(attriIndex);i++,iter++) {

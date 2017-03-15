@@ -2,7 +2,8 @@
 #include "IDBAClient.h"
 #include "CommandClient.h"
 #include "Singleton.h"
-//#include "stdafx.h"
+#include "dbx_msgdef.h"
+
 #include <map>
 
 #define	 PARAMMAX 10

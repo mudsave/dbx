@@ -4,56 +4,9 @@
 #include "Client.h"
 
 
-CCommandClient::CCommandClient(void):INIT_THREAD_SAFETY_MEMBER_FAST(MapMsg)
+void CCommandClient::OnRecv(AppMsg* pMsg) 
 {
-    #ifdef UseMutiThread
-        createThread();
-    #endif
-}
-
-CCommandClient::~CCommandClient(void)
-{
-	destroyThread();
-}
-void CCommandClient::doFunciton()
-{
-
-	while (this->getSemaphore()->Wait())
-	{
-		ENTER_CRITICAL_SECTION_MEMBER(MapMsg);
-		if(m_mapMsg.size()!=0)
-		{
-
-			MAPMSG::iterator iter = m_mapMsg.begin();
-			for(; iter != m_mapMsg.end(); iter++){
-				parseMsg(*iter);
-			}
-			m_mapMsg.clear();
-		}
-		LEAVE_CRITICAL_SECTION_MEMBER;
-	}
-
-}
-
-
-
-
-void CCommandClient::OnRecv(AppMsg* pMsg) {
-#ifdef UseMutiThread
-	CINT ci(0);
-	ENTER_CRITICAL_SECTION_MEMBER(MapMsg);
-	m_mapMsg.insert(std::make_pair(ci,pMsg));
-	LEAVE_CRITICAL_SECTION_MEMBER;
-	this->getSemaphore()->Post();
-#else
-        ParseMsg(pMsg);
-#endif
-	return;
-}
-
-void CCommandClient::parseMsg(MAPMSGPAIR iter)
-{
-	ParseMsg(iter.second);
+    ParseMsg(pMsg);
 }
 
 void CCommandClient::ParseMsg(AppMsg* pMsg)
