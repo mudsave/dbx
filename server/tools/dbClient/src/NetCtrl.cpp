@@ -80,10 +80,10 @@ void NetCtrl::Connect(std::string p_serverAddr, int p_port)
     m_serverAddr = p_serverAddr;
     m_port = p_port;
 
-    StartConnect();
+    StartConnectTimer();
 }
 
-void NetCtrl::StartConnect()
+void NetCtrl::StartConnectTimer()
 {
     if (!m_connected && m_connectDBXTimer == NULL)
     {
@@ -91,7 +91,7 @@ void NetCtrl::StartConnect()
     }
 }
 
-void NetCtrl::StopConnect()
+void NetCtrl::StopConnectTimer()
 {
     if (m_connectDBXTimer != NULL)
     {
@@ -100,18 +100,18 @@ void NetCtrl::StopConnect()
     }
     else
     {
-        TRACE0_ERROR("NetCtrl::StopConnectDBX:m_connectDBXTimer is NULL.\n");
+        TRACE0_ERROR("NetCtrl::StopConnectTimer:m_connectDBXTimer is NULL.\n");
     }
 }
 
 HANDLE NetCtrl::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type)
 {
-    TRACE1_L0("NetCtrl::OnConnects:result(%i)", result);
+    TRACE1_L0("NetCtrl::OnConnects:result(%i).\n", result);
     CClient::InstancePtr()->ConnectResult(result);
 
     if (result == S_OK)
     {
-        StopConnect();
+        StopConnectTimer();
 
         m_connected = true;
         m_linkIndex = hLink;
@@ -138,7 +138,7 @@ void NetCtrl::OnClosed(HANDLE hLinkContext, HRESULT reason)
     m_connected = false;
     m_linkIndex = 0;
 
-    StartConnect();
+    StartConnectTimer();
 }
 
 void NetCtrl::Send(AppMsg *p_appMsg)

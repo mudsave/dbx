@@ -37,8 +37,8 @@ public:
     void Send(AppMsg *p_appMsg);
 
 private:
-    void StartConnect();
-    void StopConnect();
+    void StartConnectTimer();
+    void StopConnectTimer();
 
     ILinkCtrl* m_linkCtrl;
 
