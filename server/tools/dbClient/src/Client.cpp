@@ -123,7 +123,7 @@ int CClient::generateOperationId()
 
 bool CClient::closeLink(DWORD dwFlags) 
 {
-    m_netCtrl->CloseLink(dwFlags);
+    m_netCtrl->Close(dwFlags);
     return true;
 }
 

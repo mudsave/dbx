@@ -10,8 +10,8 @@ RTX:6016.
 
 #include "lindef.h" // 包含lindef.h来使用trace.h
 #include "Sock.h"   // 使用Sock.h必先包含lindef.h，依赖其中的声明
-//#include "Client.h"
 
+#include "Client.h"
 #include "DBClientException.h"
 
 #define DB_CLIENT_RECONNECT_INTERVAL 5000
@@ -21,7 +21,9 @@ struct _LinkContext_DB
     int linkType;
     handle hLink;
 
-    _LinkContext_DB(int type, handle h) : linkType(type), hLink(h)
+    _LinkContext_DB(int type, handle h)
+        :linkType(type),
+         hLink(h)
     {}
 };
 
@@ -47,15 +49,15 @@ NetCtrl::NetCtrl()
 
 NetCtrl::~NetCtrl()
 {
-    CloseLink(CLOSE_UNGRACEFUL);
+    Close(CLOSE_UNGRACEFUL);
 }
 
-void NetCtrl::CloseLink(DWORD dwFlags)
+void NetCtrl::Close(DWORD dwFlags)
 {
     TRACE0_L0("NetCtrl::CloseLink.\n");
     if (m_connected)
     {
-        IMsgLinksImpl<IID_IMsgLinksCS_L>::CloseLink(m_linkIndex, CLOSE_UNGRACEFUL);
+        CloseLink(m_linkIndex, dwFlags);
         m_linkIndex = 0;
         m_connected = false;
     }
@@ -105,7 +107,7 @@ void NetCtrl::StopConnect()
 HANDLE NetCtrl::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type)
 {
     TRACE1_L0("NetCtrl::OnConnects:result(%i)", result);
-    //CClient::InstancePtr()->ConnectResult(result);
+    CClient::InstancePtr()->ConnectResult(result);
 
     if (result == S_OK)
     {
@@ -126,7 +128,7 @@ void NetCtrl::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
     AppMsg* newMsg = (AppMsg*)malloc(pMsg->msgLen);//TODO 优化用内存池
     memcpy(newMsg, pMsg, pMsg->msgLen);
 
-    //CClient::InstancePtr()->Recv(newMsg);
+    CClient::InstancePtr()->Recv(newMsg);
 }
 
 void NetCtrl::OnClosed(HANDLE hLinkContext, HRESULT reason)

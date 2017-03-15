@@ -18,7 +18,7 @@ RTX:6016.
 #include "MsgLinksImpl.h"
 
 
-class NetCtrl: public IMsgLinksImpl<1>, ITask // TODO(@wangshufeng):暂且用类型1，需定义正确的连接类型
+class NetCtrl : public IMsgLinksImpl<IID_IMsgLinksCD_C>, ITask
 {
 public:
     NetCtrl();
@@ -32,9 +32,10 @@ public:
     virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
     virtual void OnClosed(HANDLE hLinkContext, HRESULT reason);
 
-    void CloseLink(DWORD dwFlags);
+    void Close(DWORD dwFlags);
 
     void Send(AppMsg *p_appMsg);
+
 private:
     void StartConnect();
     void StopConnect();
