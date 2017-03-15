@@ -10,9 +10,8 @@
 struct AppMsg;
 class NetCtrl;
 
-#define IID_IMsgLinksCD_L 0x01 //客户端到dbserver的链接
 
-class CClient:public IInitClient, public IMsgLinksImpl<IID_IMsgLinksCD_L>, public TSingleton<CClient>
+class CClient:public IInitClient, public TSingleton<CClient>
 {
 public:
 	DECLARE_THREAD_SAFETY_MEMBER(sock);

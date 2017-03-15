@@ -3,14 +3,6 @@
 
 #include "NetCtrl.h"
 
-#ifdef WIN32
-#include "winnt.h"
-#endif
-
-//#define		CREATEPLAYER	1
-//#define		LOADPLAYER		2
-//#define		UPDATEPLAYER	3
-
 
 #define DB_CLIENT_RECONNECT_INTERVAL 5000
 
@@ -95,7 +87,8 @@ int CClient::callDBProc(AppMsg *pMsg) {
 	return nOperationId;
 }
 
-int CClient::callDBSQL(AppMsg *pMsg) {
+int CClient::callDBSQL(AppMsg *pMsg) 
+{
 	int nOperationId=0;
 	if (pMsg!=NULL)	{
 		nOperationId=CClient::generateOperationId();
@@ -111,18 +104,18 @@ int CClient::callDBSQL(AppMsg *pMsg) {
 	return nOperationId;
 }
 
-
-
-IDBANetEvent* CClient::getDBNetEvent() {
+IDBANetEvent* CClient::getDBNetEvent() 
+{
 	return s_pNetEventHandle;
 }
 
-
-void CClient::setDBNetEvent(IDBANetEvent* pNetEventHandle) {
+void CClient::setDBNetEvent(IDBANetEvent* pNetEventHandle) 
+{
 	s_pNetEventHandle=pNetEventHandle;
 }
 
-int CClient::generateOperationId() {
+int CClient::generateOperationId() 
+{
 	static int nOperationId=0;
 	nOperationId++;
 	return nOperationId;
@@ -134,11 +127,13 @@ bool CClient::closeLink(DWORD dwFlags)
     return true;
 }
 
-int CClient::addParam(const char* name, const char* value) {
+int CClient::addParam(const char* name, const char* value) 
+{
 	m_msgBuilder.addAttribute(name, value, strlen(value));
 }
 
-int CClient::addParam(const char* name, int value) {
+int CClient::addParam(const char* name, int value) 
+{
 	m_msgBuilder.addAttribute(name, &value, PARAMINT);
 }
 
@@ -146,7 +141,8 @@ void CClient::buildQuery(){
 	m_msgBuilder.beginMessage();
 }
 
-int CClient::callSPFROMCPP(IDBCallback* call_back) {
+int CClient::callSPFROMCPP(IDBCallback* call_back) 
+{
 	CCSResultMsg* pMsg = m_msgBuilder.finishMessage();
 	
 	pMsg->m_spId = 0;
