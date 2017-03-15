@@ -25,25 +25,14 @@ struct _LinkContext_DB
 IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 
 CClient::CClient()
-    :m_connected(false),
-     INIT_THREAD_SAFETY_MEMBER_FAST(sock),
+    :INIT_THREAD_SAFETY_MEMBER_FAST(sock),
      INIT_THREAD_SAFETY_MEMBER_FAST(Attr),
-     m_netCtrl(NULL),
-     m_connectDBXTimer(NULL)
+     m_netCtrl(NULL)
 {
+	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
     m_netCtrl = new NetCtrl();
 
-	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
-	m_pLinkCtrl = static_cast<ILinkCtrl*>(::CreateLinkCtrl());
-	if (m_pLinkCtrl==NULL)
-	{
-		CDBClientException e;
-		e.m_nExceptionType = C_LOADSOCK_EXCEPTION;
-		e.m_strDescription = "load sock.dll failed!";
-		throw e;
-	}
-
-    CCommandClient* pCmd =  CCommandClient::getCommandClient();//初始化CCommandClient
+    CCommandClient* pCmd = CCommandClient::getCommandClient();//初始化CCommandClient
 }
 
 CClient::~CClient(void)
@@ -54,79 +43,9 @@ CClient::~CClient(void)
     m_netCtrl = NULL;
 }
 
-void CClient::StartConnectDBX()
-{
-    if (!m_connected && m_connectDBXTimer == NULL)
-    {
-        m_connectDBXTimer = m_pThreads->RegTimer(this, NULL, 0, 0, DB_CLIENT_RECONNECT_INTERVAL, "Connect_to_DBX");
-    }
-}
-
-void CClient::StopConnectDBX()
-{
-    if (m_connectDBXTimer != NULL)
-    {
-        m_pThreads->UnregTimer(m_connectDBXTimer);
-        m_connectDBXTimer = NULL;
-    }
-    else
-    {
-        TRACE0_ERROR("CClient::StopConnectDBX:m_connectDBXTimer is NULL.\n");
-    }
-}
-
 void CClient::ConnectDBX(std::string serverAddr, int iPort)
 {
-	m_strServerAddr=serverAddr;
-	m_iPort=iPort;
-
-    StartConnectDBX();
-}
-
-void CClient::OnClosed(HANDLE hLinkContext, HRESULT reason)
-{
-    TRACE0_L0("CClient::OnClosed.\n");
-    if(!hLinkContext) return;
-    _LinkContext_DB* pContext = (_LinkContext_DB*)hLinkContext;
-    m_hLink = NULL;
-    m_connected = false;
-    delete pContext;
-
-    StartConnectDBX();
-}
-
-void CClient::DefaultMsgProc(AppMsg* pMsg, HANDLE hContext)
-{
-    AppMsg* pNewMsg = (AppMsg*)malloc(pMsg->msgLen);//TODO 优化用内存池
-    memcpy(pNewMsg, pMsg, pMsg->msgLen);
-    CCommandClient::getCommandClient()->OnRecv(pNewMsg);
-}
-
-HANDLE CClient::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type)
-{
-
-	if (result == S_OK)
-	{
-        StopConnectDBX();
-
-		m_connected = true;
-        m_hLink = hLink;
-
-        if (s_pNetEventHandle) 
-            s_pNetEventHandle->onConnected(true);
-
-        _LinkContext_DB* pNew = new _LinkContext_DB(i_link_type, hLink);
-        return pNew;
-	}
-	else
-	{
-		if (s_pNetEventHandle) 
-            s_pNetEventHandle->onConnected(false);
-
-		return NULL;
-	}
-
-	//return dynamic_cast<IPortSink*>(CCommandClient::getCommandClient());
+    m_netCtrl->Connect(serverAddr, iPort);
 }
 
 void CClient::setAttributeSet(int index,CSCResultMsg *pInfo)
@@ -171,16 +90,7 @@ int CClient::callDBProc(AppMsg *pMsg) {
 		else
 			nOperationId=pDataMsg->m_nTempObjId;
 
-		 if(m_hLink)
-                {
-                    //TRACE0_L0("begin callDBProc !\n");
-					IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
-					//TRACE0_L0("callDBProc ed!\n");
-                }
-                else
-                {
-                    TRACE0_L1("[CClient::callDBProc] connect with dbserver failed!\n");
-                }
+        m_netCtrl->Send(pMsg);
 	}
 	return nOperationId;
 }
@@ -196,14 +106,7 @@ int CClient::callDBSQL(AppMsg *pMsg) {
 		else
 			nOperationId=pDataMsg->m_nTempObjId;
 
-                if(m_hLink)
-                {
-                    IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
-                }
-                else
-                {
-                    TRACE0_L1("[CClient::callDBSQL] connect with dbserver failed!\n");
-                }
+        m_netCtrl->Send(pMsg);
 	}
 	return nOperationId;
 }
@@ -225,35 +128,11 @@ int CClient::generateOperationId() {
 	return nOperationId;
 }
 
-bool CClient::closeLink(DWORD dwFlags) {
-
-	if (m_connected) 
-    {
-		IMsgLinksImpl<IID_IMsgLinksCS_L>::CloseLink(m_hLink,CLOSE_UNGRACEFUL);
-        m_hLink = NULL;
-        m_connected = false;
-		return true;
-	}
-
-    //StopConnectDBX();
-
-    return false;
-}
-
-HRESULT CClient::Do(HANDLE hContext) 
+bool CClient::closeLink(DWORD dwFlags) 
 {
-    TRACE0_L0("CClient::Do....");
-    if (m_connected)
-    {
-        TRACE0_L0("CClient::Do:m_connected is true....");
-    }
-
-    if (m_pLinkCtrl)
-        m_pLinkCtrl->Connect(m_strServerAddr.c_str(), m_iPort, this, 0);
-
-    return S_OK;
+    m_netCtrl->CloseLink(dwFlags);
+    return true;
 }
-
 
 int CClient::addParam(const char* name, const char* value) {
 	m_msgBuilder.addAttribute(name, value, strlen(value));
@@ -279,14 +158,8 @@ int CClient::callSPFROMCPP(IDBCallback* call_back) {
 	
 	m_callbacks.insert(std::make_pair(pMsg->m_nTempObjId, call_back));
 	
-	if(m_hLink)
-        {
-            IMsgLinksImpl<IID_IMsgLinksCS_L>::SendData(m_hLink, (BYTE*)pMsg,pMsg->msgLen);
-        }
-        else
-        {
-            TRACE0_L1("[CClient::callSPFROMCPP] connect with dbserver failed!\n");
-        }
+    m_netCtrl->Send(pMsg);
+
 	return pMsg->m_nTempObjId;
 }
 
@@ -301,5 +174,5 @@ void CClient::ConnectResult(HRESULT p_result)
 
 void CClient::Recv(AppMsg* p_appMsg)
 {
-    //CCommandClient::getCommandClient()->OnRecv(p_appMsg);
+    CCommandClient::getCommandClient()->OnRecv(p_appMsg);
 }

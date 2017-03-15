@@ -12,6 +12,7 @@ RTX:6016.
 #include "Sock.h"   // 使用Sock.h必先包含lindef.h，依赖其中的声明
 //#include "Client.h"
 
+#include "DBClientException.h"
 
 #define DB_CLIENT_RECONNECT_INTERVAL 5000
 
@@ -34,6 +35,14 @@ NetCtrl::NetCtrl()
 {
     TRACE0_L0("NetCtrl::NetCtrl:construct...\n");
     m_linkCtrl = CreateLinkCtrl();
+
+    if (m_linkCtrl == NULL)
+    {
+        CDBClientException e;
+        e.m_nExceptionType = C_LOADSOCK_EXCEPTION;
+        e.m_strDescription = "load sock.dll failed!";
+        throw e;
+    }
 }
 
 NetCtrl::~NetCtrl()
@@ -128,4 +137,17 @@ void NetCtrl::OnClosed(HANDLE hLinkContext, HRESULT reason)
     m_linkIndex = 0;
 
     StartConnect();
+}
+
+void NetCtrl::Send(AppMsg *p_appMsg)
+{
+    TRACE0_L0("NetCtrl::Send...\n");
+    if (m_linkIndex != 0)
+    {
+        SendData(m_linkIndex, (BYTE*)p_appMsg, p_appMsg->msgLen);
+    }
+    else
+    {
+        TRACE0_L1("[NetCtrl::Send] connect with dbserver failed!\n");
+    }
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <list>
 #include "DBThread.h"
-#include "Client.h"
 #include "MsgParse.h"
 //#define UseMutiThread //从DB返回使用单独一个线程
 class CPlayer;

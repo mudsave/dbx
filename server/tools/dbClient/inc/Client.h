@@ -12,7 +12,7 @@ class NetCtrl;
 
 #define IID_IMsgLinksCD_L 0x01 //客户端到dbserver的链接
 
-class CClient: public ITask, public IInitClient, public IMsgLinksImpl<IID_IMsgLinksCD_L>, public TSingleton<CClient>
+class CClient:public IInitClient, public IMsgLinksImpl<IID_IMsgLinksCD_L>, public TSingleton<CClient>
 {
 public:
 	DECLARE_THREAD_SAFETY_MEMBER(sock);
@@ -22,10 +22,6 @@ public:
 	int callDBProc(AppMsg *pMsg);
 	int callDBSQL(AppMsg *pMsg);
 	virtual int callSPFROMCPP(IDBCallback*);
-	
-	virtual HANDLE OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type);
-    virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
-    virtual void OnClosed(HANDLE hLinkContext, HRESULT reason);
 
     static IDBANetEvent* getDBNetEvent();
 	static void setDBNetEvent(IDBANetEvent* pNetEventHandle);
@@ -36,8 +32,6 @@ public:
 	void  setAttributeSet(int index,CSCResultMsg *pInfo);
 	void  deleteAttributeSet(int index);
 
-	HRESULT Do(HANDLE hContext);
-
     void ConnectResult(HRESULT p_result);
     void Recv(AppMsg* p_appMsg);
 
@@ -45,12 +39,7 @@ private:
     void StartConnectDBX();
     void StopConnectDBX();
 
-    bool		m_connected;
-	ILinkCtrl*	m_pLinkCtrl;
-	std::string m_strServerAddr;
-	int		m_iPort;
 	IThreadsPool* m_pThreads;
-	handle          m_hLink;
 	static IDBANetEvent* s_pNetEventHandle;	
 
 	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
@@ -62,8 +51,6 @@ private:
 	IThreadsPool*	m_pThreadPool;
 	
 	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
-
-    HANDLE m_connectDBXTimer;
 
     NetCtrl *m_netCtrl;
 public:

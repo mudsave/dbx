@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MsgDefine.h"
+
 class CThread :public ITask
 {
 private:

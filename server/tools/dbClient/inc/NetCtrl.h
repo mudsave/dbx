@@ -31,11 +31,13 @@ public:
     virtual HANDLE OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type);
     virtual void DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext);
     virtual void OnClosed(HANDLE hLinkContext, HRESULT reason);
+
+    void CloseLink(DWORD dwFlags);
+
+    void Send(AppMsg *p_appMsg);
 private:
     void StartConnect();
     void StopConnect();
-
-    void CloseLink(DWORD dwFlags);
 
     ILinkCtrl* m_linkCtrl;
 
