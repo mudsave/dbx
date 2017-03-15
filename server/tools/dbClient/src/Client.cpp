@@ -42,7 +42,6 @@ void CClient::ConnectDBX(std::string serverAddr, int iPort)
 
 void CClient::setAttributeSet(int index,CSCResultMsg *pInfo)
 {
-
 	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	m_MapAttrSet.insert(std::make_pair(index,pInfo));
        	LEAVE_CRITICAL_SECTION_MEMBER;

@@ -125,7 +125,8 @@ HANDLE NetCtrl::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 
 void NetCtrl::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
 {
-    AppMsg* newMsg = (AppMsg*)malloc(pMsg->msgLen);//TODO 优化用内存池
+    TRACE0_L0("NetCtrl::DefaultMsgProc...\n");
+    AppMsg* newMsg = (AppMsg*)malloc(pMsg->msgLen);
     memcpy(newMsg, pMsg, pMsg->msgLen);
 
     CClient::InstancePtr()->Recv(newMsg);
@@ -143,7 +144,6 @@ void NetCtrl::OnClosed(HANDLE hLinkContext, HRESULT reason)
 
 void NetCtrl::Send(AppMsg *p_appMsg)
 {
-    TRACE0_L0("NetCtrl::Send...\n");
     if (m_linkIndex != 0)
     {
         SendData(m_linkIndex, (BYTE*)p_appMsg, p_appMsg->msgLen);

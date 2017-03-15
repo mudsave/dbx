@@ -17,16 +17,12 @@ public:
 	void OnRecv(AppMsg* pMsg);
 	
 	void ParseMsg(AppMsg* pMsg);
-	bool ValidateMsg(AppMsg* pMsg);
-	void RepeatMsg(AppMsg* pMsg);
-	void running();
 	DECLARE_THREAD_SAFETY_MEMBER(MapMsg);
 public:
 	~CCommandClient(void);
 private:
 	
 	void parseMsg(MAPMSGPAIR iter);
-	CPlayer* callLoad(int index,AppMsg* pMsg);
 	bool setResult(int index,AppMsg* pMsg);
 	MAPMSG m_mapMsg;
 	

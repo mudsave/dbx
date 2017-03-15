@@ -46,9 +46,7 @@ private:
 	DECLARE_THREAD_SAFETY_MEMBER(Attr);
 	
 	MAPATTRSET		m_MapAttrSet;
-       
-	IThreadsPool*	m_pThreadPool;
-	
+       	
 	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 
     NetCtrl *m_netCtrl;

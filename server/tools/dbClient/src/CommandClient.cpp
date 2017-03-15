@@ -58,26 +58,32 @@ void CCommandClient::parseMsg(MAPMSGPAIR iter)
 
 void CCommandClient::ParseMsg(AppMsg* pMsg)
 {
+    TRACE0_L0("CCommandClient::ParseMsg...\n");
 	if (!CClient::getDBNetEvent())
 	{
+        TRACE0_L0("CCommandClient::ParseMsg...0000\n");
             return;
 	}
 
 	CSCResultMsg* pDataMsg=(CSCResultMsg*)malloc(pMsg->msgLen);
         if (pDataMsg == NULL)
         {
+            TRACE0_L0("CCommandClient::ParseMsg...1111\n");
            return; 
         }
         memcpy(pDataMsg, pMsg, pMsg->msgLen);
-        
+        TRACE2_L0("CCommandClient::ParseMsg...pDataMsg->m_bEnd(%i),pMsg->msgId(%i)\n", pDataMsg->m_bEnd, pDataMsg->msgId);
 	switch(pMsg->msgId){
 	case S_DOACTION_RESULT:
 		{
 			//printf("S_DOACTION_RESULT %d\n",pDataMsg->m_nTempObjId);
 			if(setResult(pDataMsg->m_nTempObjId,pDataMsg))
 			{
-				if(pDataMsg->m_bEnd)
-					CClient::getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId,CClient::InstancePtr(),true);
+                if (pDataMsg->m_bEnd)
+                {
+                    TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc...\n");
+                    CClient::getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, CClient::InstancePtr(), true);
+                }
 			}
 		}
 		break;
@@ -88,6 +94,7 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 			{
 				if(pDataMsg->m_bEnd){
 					CClient::getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, CClient::InstancePtr(), true);
+                    TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc_tocpp...\n");
 					CClient::getDBNetEvent()->onExeDBProc_tocpp(pDataMsg->m_nTempObjId, CClient::InstancePtr(), true);
 				}
 			}
@@ -102,11 +109,6 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 
 }
 
-bool CCommandClient::ValidateMsg(AppMsg* pMsg) {
-	return true;
-}
-void CCommandClient::RepeatMsg(AppMsg* pMsg){}
-
 CCommandClient* CCommandClient::getCommandClient()
 {
 	static CCommandClient s_CommandClient;
@@ -115,8 +117,14 @@ CCommandClient* CCommandClient::getCommandClient()
 
 bool CCommandClient::setResult(int index,AppMsg* pMsg)
 {
+    TRACE1_L0("CCommandClient::setResult:index(%i).\n", index);
 	CSCResultMsg* pDataMsg=(CSCResultMsg*)pMsg;
-	if (!pDataMsg) return false;
+    if (!pDataMsg)
+    {
+        TRACE0_L0("CCommandClient::setResult:false....\n");
+        return false;
+    }
+        
 	pDataMsg->getInit();
 	CClient::InstancePtr()->setAttributeSet(index,pDataMsg);
 	//printf("CCommandClient::setResult:%d,%d\n",index,(int)(long)pDataMsg);
