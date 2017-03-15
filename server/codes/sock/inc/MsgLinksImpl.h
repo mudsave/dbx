@@ -22,6 +22,8 @@
 #define IID_IMsgLinksWS_C       0x0080    // world连接session
 #define IID_IMsgLinksCG_C       0x0100    // client连接gateway
 #define IID_IMsgLinksWG_C       0x0200    // world连接gateway
+#define IID_IMsgLinksCD_L       0x0400    // dbx监听dbx client
+#define IID_IMsgLinksCD_C       0x0800    // dbx client连接dbx
 
 /// IPortSink的通用实现
 template<int iLinkType, int msgLenMax> class IMsgLinksImpl;

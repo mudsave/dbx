@@ -19,7 +19,7 @@ class ILinkCtrl;
 class ILinkSink;
 
 
-class NetworkInterface : public IMsgLinksImpl<1>    // 暂且用类型1
+class NetworkInterface : public IMsgLinksImpl<IID_IMsgLinksCD_L>
 {
 public:
     NetworkInterface(int p_port = 3000);
