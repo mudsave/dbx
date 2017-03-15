@@ -68,6 +68,9 @@
     <ClInclude Include="..\..\server\tools\dbClient\inc\vsdeftemp.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\server\tools\dbClient\inc\NetCtrl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\server\tools\dbClient\src\Client.cpp">
@@ -95,6 +98,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\server\tools\dbClient\src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server\tools\dbClient\src\NetCtrl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
