@@ -14,9 +14,6 @@
     <ClInclude Include="..\..\server\tools\dbClient\inc\Client.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\server\tools\dbClient\inc\CommandClient.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\server\tools\dbClient\inc\DBClientException.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -74,9 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\server\tools\dbClient\src\Client.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\server\tools\dbClient\src\CommandClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\server\tools\dbClient\src\DBAClient.cpp">
