@@ -22,27 +22,26 @@ initRootPath()
 # 显示操作帮助：
 #	python main.py help operation
 import operation
+operations = operation.operation.operations
 
 def main():
 	if len(sys.argv) > 1:
 		opid = sys.argv[1]
 	else:
-		print("使用方式：\n\tpython main.py operation arg1 arg2 ...")
-		print("显示操作帮助：\n\tpython main.py help operation")
 		opid = "list"
 	
-	op = operation.operation.findOperation(opid)
+	op = operations.get(opid, None)
 	
 	if op is None or not callable(op):
 		print("Operation %s invalid!" % opid)
 		return
 	
-	print("\n[当前操作: %s]" % " ".join([opid] + sys.argv[2:]))
+	print("%s:" % opid)
 	try:
 		op(*sys.argv[2:])
 	except:
 		sys.excepthook( *sys.exc_info() )
-		operation.operation.findOperation("help")(opid)
+		operations["help"](opid)
 	
 
 if __name__ == '__main__':
