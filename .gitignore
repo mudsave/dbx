@@ -9,3 +9,6 @@ __pycache__
 *.d
 
 /client
+
+.DS_Store
+
