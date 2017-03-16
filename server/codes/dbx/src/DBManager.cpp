@@ -120,7 +120,7 @@ void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
     TRACE2_L0("message m_bNeedCallback %i, at %i", pQueryMsg->m_bNeedCallback, &pQueryMsg->m_bNeedCallback);
     TRACE2_L0("message m_nLevel %i, at %i", pQueryMsg->m_nLevel, &pQueryMsg->m_nLevel);
 
-    if (pQueryMsg->getAttibuteByName("queryIndex", 0, type, pValue) && type == PARAMINT)
+    if (pQueryMsg->getAttibuteByName("queueIndex", 0, type, pValue) && type == PARAMINT)
     {
         queryIndex = *(int *)pValue;
     }

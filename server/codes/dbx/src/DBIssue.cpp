@@ -78,35 +78,34 @@ DBIssueCallSP::DBIssueCallSP(AppMsg *p_appMsg, int p_queryID, handle p_linkIndex
     :DBIssueBase(p_appMsg, p_queryID, p_linkIndex)
 {
     m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
-    memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
-    DbxMessageBuilder<CCSResultMsg>::locateContent((CCSResultMsg *)m_pAppMsg);
+    if (m_pAppMsg != NULL)
+    {
+        memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
+    }
 }
 
 bool DBIssueCallSP::OnProgress()
 {
+    if (m_pAppMsg == NULL)
+        return false;
+
+    CCSResultMsg * pCSMsg = (CCSResultMsg *)(m_pAppMsg);
+    DbxMessageBuilder<CCSResultMsg>::locateContent(pCSMsg);
+
     DBInterfaceMysql * pdbInterface = static_cast<DBInterfaceMysql *>(m_dbInterface);
 
     char * pszQueryBuffer = pdbInterface->GetQueryBuffer();
     int nQueryBufferLen = QUERYBUFFER_MAX_LEN;
 
-    CCSResultMsg * pCSMsg = (CCSResultMsg *)(m_pAppMsg);
-    DbxMessageBuilder<CCSResultMsg>::locateContent(pCSMsg);
-    bool success = true;
+    //把旧数据先清除
+    m_outParams.clear();
 
-    for (int row = 0; row < pCSMsg->getAttributeRows(); row++)
+    if (!build_sp_query_buffer(pdbInterface->GetMysql(), pCSMsg, 0, pszQueryBuffer, nQueryBufferLen, m_outParams))
     {
-        //把旧数据先清除
-        m_outParams.clear();
-
-        if (!build_sp_query_buffer(pdbInterface->GetMysql(), pCSMsg, row, pszQueryBuffer, nQueryBufferLen, m_outParams))
-        {
-            return false;
-        }
-
-        success &= pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this);
+        return false;
     }
 
-    return success;
+    return pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this);
 
 }
 
@@ -125,7 +124,24 @@ void DBIssueCallSP::MainProgress()
             delete dropped;
         }
         m_pResultHead = NULL;
+    }
+
+    if (m_pAppMsg != NULL)
+    {
         free(m_pAppMsg);
+    }
+
+    if (m_pResultHead != NULL)
+    {
+        SAppMsgNode *dropped(NULL), *current(m_pResultHead);
+        while (current != NULL)
+        {
+            free(current->p_msg);
+            dropped = current;
+            current = current->next;
+            delete dropped;
+        }
+        m_pResultHead = NULL;
     }
 }
 
@@ -135,6 +151,12 @@ void DBIssueCallSP::OnQueryReturn(AppMsg * p_appMsg)
 
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
     CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
+
+    if (!pQueryMsg->m_bNeedCallback)
+    {
+        free(p_appMsg);
+        return;
+    }
 
     if (m_pAppMsg->msgId == C_SP_FROM_CPP)
     {
@@ -168,14 +190,43 @@ DBIssueCallSQL::DBIssueCallSQL(AppMsg *p_appMsg, int p_queryID, handle p_linkInd
     :DBIssueBase(p_appMsg, p_queryID, p_linkIndex)
 {
     m_pAppMsg = (AppMsg *)malloc(p_appMsg->msgLen);
-    memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
-    DbxMessageBuilder<CCSResultMsg>::locateContent((CCSResultMsg *)m_pAppMsg);
+    if (m_pAppMsg != NULL)
+    {
+        memcpy(m_pAppMsg, p_appMsg, p_appMsg->msgLen);
+    }
 }
 
 bool DBIssueCallSQL::OnProgress()
 {
-    const char *cmd = "select * from t1;insert into t1 (col) values(\"hahaha\");";
-    bool success = m_dbInterface->Query(cmd, strlen(cmd), this);
+    if (m_pAppMsg == NULL)
+        return false;
+
+    CCSResultMsg * pCSMsg = (CCSResultMsg *)(m_pAppMsg);
+    DbxMessageBuilder<CCSResultMsg>::locateContent(pCSMsg);
+
+    DBInterfaceMysql * pdbInterface = static_cast<DBInterfaceMysql *>(m_dbInterface);
+
+    const void * pValue = NULL;
+    PType nBufferLen = 0;
+
+    if (!pCSMsg->getAttibuteByName("sql", 0, nBufferLen, pValue) || nBufferLen <= 0)
+    {
+        TRACE2_ERROR("DBIssueCallSQL::OnProgress: get sql error, value addr %d, type %d\n", pValue, nBufferLen);
+        return false;
+    }
+
+    char * pszQueryBuffer = (char *)malloc(nBufferLen + 1);
+    if (pszQueryBuffer == NULL)
+    {
+        TRACE0_ERROR("DBIssueCallSQL::OnProgress: mem alloc fail!\n");
+        return false;
+    }
+    memcpy(pszQueryBuffer, pValue, nBufferLen);
+    pszQueryBuffer[nBufferLen] = '\0';
+
+    bool success = pdbInterface->Query(pszQueryBuffer, strlen(pszQueryBuffer), this);
+    free(pszQueryBuffer);
+
     return success;
 }
 
@@ -197,6 +248,24 @@ void DBIssueCallSQL::MainProgress()
         }
         m_pResultHead = NULL;
     }
+
+    if (m_pAppMsg != NULL)
+    {
+        free(m_pAppMsg);
+    }
+
+    if (m_pResultHead != NULL)
+    {
+        SAppMsgNode *dropped(NULL), *current(m_pResultHead);
+        while (current != NULL)
+        {
+            free(current->p_msg);
+            dropped = current;
+            current = current->next;
+            delete dropped;
+        }
+        m_pResultHead = NULL;
+    }
 }
 
 void DBIssueCallSQL::OnQueryReturn(AppMsg * p_appMsg)
@@ -205,6 +274,12 @@ void DBIssueCallSQL::OnQueryReturn(AppMsg * p_appMsg)
 
     CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
     CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
+
+    if (!pQueryMsg->m_bNeedCallback)
+    {
+        free(p_appMsg);
+        return;
+    }
 
     pResultMsg->msgId = S_DOSQL_RESULT;
     pResultMsg->m_spId = pQueryMsg->m_spId;
