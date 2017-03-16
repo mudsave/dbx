@@ -342,11 +342,11 @@ MonsterDropsDB = {
 	},
 	[10] = {
 		dropKindCount ={0,1},
-		[1051006] = {
-			dropItemID = 1051006,
-			dropItemName = "∆∆ÀÈÓ¯º◊",
+		[2020025] = {
+			dropItemID = 2020025,
+			dropItemName = "‘∆Ωı–¨",
 			dropItemCount = {1},
-			dropItemPercent = 10
+			dropItemPercent = 5
 		},
 		[1051008] = {
 			dropItemID = 1051008,
@@ -354,20 +354,14 @@ MonsterDropsDB = {
 			dropItemCount = {1},
 			dropItemPercent = 10
 		},
-		[2020025] = {
-			dropItemID = 2020025,
-			dropItemName = "‘∆Ωı–¨",
-			dropItemCount = {1},
-			dropItemPercent = 5
-		},
-		[2020039] = {
-			dropItemID = 2020039,
+		[2020052] = {
+			dropItemID = 2020052,
 			dropItemName = "‘∆Ωı–¨",
 			dropItemCount = {1},
 			dropItemPercent = 3
 		},
-		[2020052] = {
-			dropItemID = 2020052,
+		[2020039] = {
+			dropItemID = 2020039,
 			dropItemName = "‘∆Ωı–¨",
 			dropItemCount = {1},
 			dropItemPercent = 3
@@ -381,11 +375,11 @@ MonsterDropsDB = {
 	},
 	[11] = {
 		dropKindCount ={0,1},
-		[1051006] = {
-			dropItemID = 1051006,
-			dropItemName = "∆∆ÀÈÓ¯º◊",
+		[2020018] = {
+			dropItemID = 2020018,
+			dropItemName = "√ËΩ…»",
 			dropItemCount = {1},
-			dropItemPercent = 10
+			dropItemPercent = 5
 		},
 		[1051008] = {
 			dropItemID = 1051008,
@@ -393,9 +387,9 @@ MonsterDropsDB = {
 			dropItemCount = {1},
 			dropItemPercent = 10
 		},
-		[2020018] = {
-			dropItemID = 2020018,
-			dropItemName = "√ËΩ…»",
+		[2020045] = {
+			dropItemID = 2020045,
+			dropItemName = "ª¢—¿«π",
 			dropItemCount = {1},
 			dropItemPercent = 5
 		},
@@ -404,12 +398,6 @@ MonsterDropsDB = {
 			dropItemName = "∞◊∫ÁΩ£",
 			dropItemCount = {1},
 			dropItemPercent = 3
-		},
-		[2020045] = {
-			dropItemID = 2020045,
-			dropItemName = "ª¢—¿«π",
-			dropItemCount = {1},
-			dropItemPercent = 5
 		},
 		[1311053] = {
 			dropItemID = 1311053,
@@ -420,11 +408,11 @@ MonsterDropsDB = {
 	},
 	[12] = {
 		dropKindCount ={0,1},
-		[1051006] = {
-			dropItemID = 1051006,
-			dropItemName = "∆∆ÀÈÓ¯º◊",
+		[2020043] = {
+			dropItemID = 2020043,
+			dropItemName = "ª√ ı’Ã",
 			dropItemCount = {1},
-			dropItemPercent = 10
+			dropItemPercent = 5
 		},
 		[1051008] = {
 			dropItemID = 1051008,
@@ -432,9 +420,9 @@ MonsterDropsDB = {
 			dropItemCount = {1},
 			dropItemPercent = 10
 		},
-		[2020043] = {
-			dropItemID = 2020043,
-			dropItemName = "ª√ ı’Ã",
+		[2020030] = {
+			dropItemID = 2020030,
+			dropItemName = "‘¬—¿µ∂",
 			dropItemCount = {1},
 			dropItemPercent = 5
 		},
@@ -443,12 +431,6 @@ MonsterDropsDB = {
 			dropItemName = "ÀÈ”ÂÛ",
 			dropItemCount = {1},
 			dropItemPercent = 3
-		},
-		[2020030] = {
-			dropItemID = 2020030,
-			dropItemName = "‘¬—¿µ∂",
-			dropItemCount = {1},
-			dropItemPercent = 5
 		},
 		[1311053] = {
 			dropItemID = 1311053,

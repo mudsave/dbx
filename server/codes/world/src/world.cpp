@@ -15,6 +15,7 @@
 TOLUA_API int tolua_api4lua_open(lua_State* tolua_S);
 TOLUA_API int lua_PropertySet_open(lua_State* tolua_S);
 TOLUA_API int lua_iconv_open(lua_State* tolua_S);
+LUA_API int luaopen_profile(lua_State *L);
 
 CWorld::CWorld()
 {
@@ -72,6 +73,7 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 
 	lua_State* pLuaState = m_pLuaEngine->GetLuaState();
 	tolua_api4lua_open(pLuaState);
+	luaopen_profile(pLuaState);
 
 	if (IS_WORLD_SERVER(m_worldId))
 	{
@@ -104,11 +106,13 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	ScriptTimer::init(pLuaState);
 	CDBProxy::init(dbIP, dbPort, pLuaState);
 	RPCEngine::init(pLuaState);
+	luaStartProfile(pLuaState);
 	luaStart(pLuaState);
 }
 
 void CWorld::Close()
 {
+	luaStopProfile(m_pLuaEngine->GetLuaState());
 	int i = 0;
 	GateMap::iterator iter = m_gates.begin();
 	for( ; iter != m_gates.end(); i++, iter++ )
@@ -571,6 +575,13 @@ void CWorld::CleanUp()
 	closeFunc( TypeNull::nil(), m_worldId ); 
 	HANDLE hCleanupTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eCleanUpHandle, 0, eCleanUpInterval, 0, "world clean up timer!");
 	ASSERT_(hCleanupTimer);
+}
+
+void CWorld::Debug()
+{
+	lua_State *L = getLuaState();
+	luaStopProfile(L);
+	luaStartProfile(L);
 }
 
 CWorld g_world;

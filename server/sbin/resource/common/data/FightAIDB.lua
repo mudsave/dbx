@@ -344,7 +344,7 @@ FightAIDB[31] = {
 ---------------------------------------------迷雾林副本ai-----------------------------------------------
 
 FightAIDB[41] = {
-	name  = '每隔一回合施放一次技能（混乱/瘟疫',
+	name  = '每隔一回合施放一次技能 混乱/瘟疫',
 	type = AIType.Config,
 
 	[1] = {
@@ -353,7 +353,7 @@ FightAIDB[41] = {
 				type=AIConditionType.RoundInterval,params={period = 2,startRound = 3},
 		},		
 		action = { 
-			actionType = FightUIType.UseSkill,params ={skillID ={ 1047}},		--使用技能
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1045,1046}},		--使用技能
 			
 		},
 		chooseTarget = {
@@ -363,10 +363,46 @@ FightAIDB[41] = {
         [2] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 1,startRound = 2},
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 1},
 		},		
 		action = { 
 			actionType = FightUIType.UseSkill,params ={skillID ={ 1013,1014}},		--使用技能
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+
+FightAIDB[42] = {
+	name  = '每两回合施放一次治疗 ',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 3},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1001}},		--使用技能
+			
+		},
+		chooseTarget = {
+			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.2 ,count = 2},--目标
+			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.4 ,count = 2},
+			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.6 ,count = 2},
+			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.8 ,count = 2},
+			 type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.9 ,count = 2},
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 1,startRound = 2},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1025}},		--使用技能
 			
 		},
 		chooseTarget = {

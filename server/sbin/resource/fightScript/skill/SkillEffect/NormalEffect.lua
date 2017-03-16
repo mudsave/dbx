@@ -153,7 +153,7 @@ function NormalEffect:onSingleAt(target)
 		self:incAnger(self.role, AttackIncAnger)
 		self:resetRecordData()
 		-- 判断是否命中
-		if self:isHit(target) then
+		if self:isHit(target) and (target:getLifeState() ~= RoleLifeState.Freeze) then
 			local addType = self.numType
 			local numValue = self.numValue
 			local phaseType = self.skill:getPhaseType()
@@ -178,8 +178,8 @@ function NormalEffect:onSingleMt(target)
 		self:incAnger(target, BeAttackIncAnger)
 		self:incAnger(self.role, AttackIncAnger)
 		self:resetRecordData()
-		-- 判断是否命中
-		if self:isHit(target) then
+		-- 判断是否命中和是是否处于冰冻状态	
+		if self:isHit(target) and (target:getLifeState() ~= RoleLifeState.Freeze) then
 			local addType = self.numType
 			local numValue = self.numValue
 			local phaseType = self.skill:getPhaseType()

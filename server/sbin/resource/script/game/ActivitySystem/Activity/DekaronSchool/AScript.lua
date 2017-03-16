@@ -11,12 +11,13 @@ function AScript:__init(param)
 	self._activityTargetId = self._param.school
 end
 
-function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
+function AScript:onScriptDone(scriptID, isWin,monsterDBIDs,rewardID)
 	if scriptID == self._param.scriptId then 
 		if isWin then
 			--队伍加进度
 			local team = self._param.team
-			team:setProcess(team:getProcess() + 1)
+			local teamProcess = team:getProcess() + 1
+			team:setProcess(teamProcess)
 			--算队伍击怪积分
 			local monsterInteral = 0
 			for _,monsterID in pairs(monsterDBIDs) do
@@ -28,8 +29,36 @@ function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
 			for _,memberInfo in pairs(team:getMemberList()) do
 				if memberInfo.memberState ~= MemberState.StepOut then
 					local player = g_entityMgr:getPlayerByID( memberInfo.memberID )
+					local playerLevel = player:getLevel()
 					local handler = player:getHandler(HandlerDef_Activity)
 					handler:setDekaronIntegral(handler:getDekaronIntegral()+ monsterInteral)
+					local addexp = DekaronSchoolReward.getFightExpFormula(playerLevel,teamProcess)
+					local addtao = DekaronSchoolReward.getFightTaoFormula(playerLevel,teamProcess)
+					local addpot = DekaronSchoolReward.getFightPotFormula(playerLevel,teamProcess)
+					local itemID = DekaronSchoolReward.randItem(rewardID)
+					--经验
+					if addexp then
+						player:addXp(addexp)
+						g_dekaronSchoolMgr:sendRewardMessageTip(player, 2,addexp)
+					end
+					--道行
+					if addtao then
+						local tao = addtao + player:getAttrValue(player_tao)
+						player:setAttrValue(player_tao, tao)
+						g_dekaronSchoolMgr:sendRewardMessageTip(player, 5, addtao)
+					end
+					--潜能
+					if addpot then
+						local pot = addpot + player:getAttrValue(player_pot)
+						player:setAttrValue(player_pot, pot)
+						g_dekaronSchoolMgr:sendRewardMessageTip(player, 7, addpot)
+					end
+					--物品
+					if itemID then
+						local packetHandler = player:getHandler(HandlerDef_Packet)
+						-- 把物品给玩家
+						packetHandler:addItemsToPacket(itemID, 1)
+					end
 				end
 			end
 			--刷新排行

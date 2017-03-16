@@ -420,7 +420,6 @@ function RoleVerify:checkActivityTarget(player, param)
 	local teamID = teamHandler:getTeamID()
 	local team = g_teamMgr:getTeam(teamID)
 	local activityTarget = team:getDekaronActivityTarget()
-	print(param.activityTargetID,activityTarget:getActivityTargetId())
 	if activityTarget and activityTarget:getActivityTargetId() == param.activityTargetID then
 		return true
 	else

@@ -107,7 +107,6 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		taskHandler:addTask(dailyTask)
 		dailyTask:updateNpcHeader()
 		--g_taskSystem:updateDailyTaskList(player, taskHandler:getNextID())
-		print("创建任务成功>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 		return true
 	else
 		print("接受任务出错，任务找不到ID为",taskID)
@@ -182,6 +181,7 @@ function TaskDoer:doDeleteTask(player, taskID, flag)
 			local packetHandler = player:getHandler(HandlerDef_Packet)
 			packetHandler:removeByItemId(itemID, 1)
 		end
+		taskHandler:addCountRing(taskID)
 		taskHandler:resetCurrentRing(taskID)
 	end
 	taskHandler:removeTaskByID(taskID)

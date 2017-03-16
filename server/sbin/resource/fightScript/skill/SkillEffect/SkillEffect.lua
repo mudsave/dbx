@@ -471,7 +471,7 @@ end
 	设置目标受击状态
 ]]
 function SkillEffect:setResultStatusType(target)
-	local type = self:getResultStatusType(target:getID())
+	local type = self:getResultStatusType(target:getID(), target)
 	local targetStatus = self:getTargetStatus(target)
 	if targetStatus then
 		targetStatus.statusType = type
@@ -481,11 +481,11 @@ end
 --[[
 	获取目标受击状态(暂时这样实现)
 ]]
-function SkillEffect:getResultStatusType(targetID)
+function SkillEffect:getResultStatusType(targetID, target)
 	local status = self.targetList[targetID]
 	if status then
 		-- 闪避
-		if status.isDodge then
+		if status.isDodge or (target:getLifeState() == RoleLifeState.Freeze) then
 			return ResultStatusType.Miss
 		-- 爆击
 		elseif status.isCritical then

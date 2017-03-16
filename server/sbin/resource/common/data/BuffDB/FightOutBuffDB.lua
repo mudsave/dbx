@@ -91,10 +91,10 @@ FightOutBuffDB =
 		},		
 	[10009] = 
 	{
-		name = "杀人香",
+		name = "不死不休",
 		type = FightOutBuffType.enforced_pk,
-		icon = "set:Goods image:tb_qt_zw_038",
-		descr = "右键使用可以强制在野区pk其他玩家。请少侠慎用。",
+		icon = "set:Goods image:tb_qt_zw_068",
+		descr = "在野外时可以强制发动PK。",
 		last_type = BUFF_LAST_TYPE.time,
 		last_num = 1440,
 		can_cancel = false,
@@ -141,7 +141,7 @@ FightOutBuffDB =
 	{
 		name = "聚神丹",
 		type = FightOutBuffType.fight_count,
-		icon = "set:Goods image:tb_qt_bc_008",
+		icon = "set:Goods image:tb_qt_zw_232",
 		descr = "用党参与当归合成的聚神药，能大幅提升自动战斗回合数。",
 		last_type = BUFF_LAST_TYPE.time,
 		last_num = 120,

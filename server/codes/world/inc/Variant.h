@@ -242,13 +242,13 @@ public:
 	}
 	void Set(const void *pData,size_t len = 0){
 		ASSERT_(VAR_DATA == type && pData);
-		if(len > 0){					//如果长度为-1，则使用之前保存的长度
+		if(len > length) {	
 			Clear(false);
 			dataVal = new char[len];
 			length = len;
 		}
 		ASSERT_(dataVal && length>0);
-		memcpy(dataVal,pData,length);
+		memcpy(dataVal,pData,len>0?len:length);
 	}
 	int Get(void *pBuf,size_t len){
 		ASSERT_(VAR_DATA == type);

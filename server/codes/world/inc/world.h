@@ -52,6 +52,8 @@ public:
 
 	void CleanUp();
 
+	void Debug();
+
 public:
 	void OnSessionMsg(AppMsg* pMsg, HANDLE hLinkContext);
 
@@ -343,6 +345,7 @@ public:
 private:
 	bool luaStart(lua_State* pLuaState)
 	{
+		luaStartProfile(pLuaState);
 		LuaFunctor<TypeNull, int> startFunc(pLuaState, "ManagedApp.start");
 		if ( !startFunc( TypeNull::nil(), m_worldId ) )
 		{
@@ -350,6 +353,52 @@ private:
 		}
 
 		return true;
+	}
+
+	void luaStartProfile(lua_State *L) {
+		LuaFunctor<>::Call(L,"profile.start");
+	}
+
+	void luaStopProfile(lua_State *L) {
+		int panic = LuaHelper::getPanic(L);
+		do {
+			if(!LuaHelper::findMethod(L,"profile.stop")) {
+				lua_pop(L,1);
+				if(panic) lua_pushliteral(L,"profile.stop not found!");
+				break;
+			}
+			if(lua_pcall(L,0,1,panic)) {
+				lua_pop(L,1);
+				break;
+			}
+			if(lua_isnil(L,-1)) {
+				lua_pop(L,1);
+				if(panic) lua_pushliteral(L,"profile not started!");
+				break;
+			}
+			if(!LuaHelper::findMethod(L,"profile.dump")){
+				lua_pop(L,2);	// pop table and nil
+				if(panic) lua_pushliteral(L,"profile.dump not found!");
+				break;
+			}
+			lua_insert(L,-2);
+			lua_pushfstring(L,"logs/profile_results_%d.csv",m_worldId);
+			if(lua_pcall(L,2,0,panic)) {
+				lua_pop(L,1);
+				break;
+			}
+		} while(false);
+		
+		if(panic) {
+			int errors = lua_gettop(L) - panic;
+			if(errors) {
+				if(lua_pcall(L,errors,0,0)) {
+					lua_pop(L,1);
+				}
+			} else {
+				lua_remove(L,panic);
+			}
+		}
 	}
 
 	void setFightServerLoads(lua_State* pLuaState)

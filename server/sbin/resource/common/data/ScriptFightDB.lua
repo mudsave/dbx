@@ -2634,6 +2634,7 @@ ScriptFightDB[3092] = {
 
 			condition = {						 
 				
+				
 				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
 				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
 				
@@ -2642,7 +2643,8 @@ ScriptFightDB[3092] = {
 
 			actions = {							
 
-				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 505},},
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31283,count = 3},} },
 			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 46} },
 				
 
@@ -2653,6 +2655,7 @@ ScriptFightDB[3092] = {
 
 			condition = {						 
 				
+				
 				{type = ScriptFightConditionType.AttrValue, params={DBID = 31282,type="hp",["<="] = 30},},
 				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
 				
@@ -2661,6 +2664,7 @@ ScriptFightDB[3092] = {
 
 			actions = {							
 
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 505},},
 				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
 			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 44} },
 				

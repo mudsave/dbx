@@ -232,7 +232,7 @@ end
 function PacketHandler:updateItemUseTimes()
 	for itemID, itemInfo in pairs(self.itemUseTimes) do
 		-- 更新数据库
-		LuaDBAccess.updateItemUseTimes(playerDBID, itemID, itemInfo.useTimes, itemInfo.recordTime)
+		LuaDBAccess.updateItemUseTimes(self._entity:getDBID(), itemID, itemInfo.useTimes, itemInfo.recordTime)
 	end
 end
 

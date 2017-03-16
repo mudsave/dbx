@@ -119,7 +119,6 @@ end
 
 -- 删除所有的场景物件
 function Ectype:removeAllObject()
-	--print("self>>>>>>>>>>>>ectyoe ", toString(self.ectypeObject))
 	if self.ectypeObject then
 		for objectID, _ in pairs(self.ectypeObject) do
 			self:removeObject(objectID)
@@ -220,30 +219,29 @@ end
 -- 定时器回调
 function Ectype:update(timerID)
 	-- 副本生命定时器
-	--print("timerID>>>>>>>>>>>>>>>>", timerID, self.lifeTimerID)
 	if timerID == self.lifeTimerID then
 		-- 副本时间到了，如果副本还未完成，则消耗一次进入次数
-		print("self.finishFalga>>>>>>>>>>>>>>>>>>>>>>>>>", self.finishFlag)
-		if not self.finishFlag then
-			if self.ectypeConfig.EctypeType == EctypeType.Ring then
-			else
-				-- 处理相应的副本奖励，时间到，帮会副本要给予适当的奖励
-				if self.ectypeConfig.EctypeType == EctypeType.Faction then
-					-- 时间到结束帮会副本，同时也要给奖励
-					--print("zhixing dao zhel.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-					self:finishFactionEctype()
-				end
-				local ectypePlayers = self:getEctypePlayers()
-				for playerID, _ in pairs(ectypePlayers) do
-					local player = g_entityMgr:getPlayerByID(playerID)
-					if player then
-						-- 增加完成次数
-						local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-						ectypeHandler:addEctypeFinishTimes(self.ectypeID)
-						print("普通副本存在时间超时，增加次数，ectypeID = ", self.ectypeID)
+		if not self.finishFlag then	
+			-- 处理相应的副本奖励，时间到，帮会副本要给予适当的奖励
+			if self.ectypeConfig.EctypeType == EctypeType.Faction then
+				-- 时间到结束帮会副本，同时也要给奖励
+				self:finishFactionEctype()
+			end
+			local ectypePlayers = self:getEctypePlayers()
+			for playerID, _ in pairs(ectypePlayers) do
+				local player = g_entityMgr:getPlayerByID(playerID)
+				if player then
+					-- 增加完成次数
+					local ectypeHandler = player:getHandler(HandlerDef_Ectype)
+					ectypeHandler:addEctypeFinishTimes(self.ectypeID)
+					print("普通副本存在时间超时，增加次数，ectypeID = ", self.ectypeID)
+					-- 如果是连环副本，此时还要设置完成标志
+					if self.ectypeConfig.EctypeType == EctypeType.Ring then
+						ectypeHandler:setRingEctypeFinishFlag(self.ectypeConfig.ringEctypeID)
 					end
 				end
 			end
+			
 		end
 	-- 副本弥留定时器
 	elseif timerID == self.dyingTimerID then
@@ -470,7 +468,7 @@ function Ectype:returnEctypeInitLocs()
 	end
 end
 
--- 同步连环副本队员的当前环数
+-- 同步连环副本队员的当前环数, 
 function Ectype:syncRingEctypeCurRing()
 	local needSync = -1
 	local curMaxRing = -1
@@ -702,7 +700,6 @@ function Ectype:onTransferDoor(player)
 					local ectypeHandler = player:getHandler(HandlerDef_Ectype)
 					ectypeHandler:setCurChildEctypeID(self.ectypeConfig.ringEctypeID, childEctypeID)
 					ectypeHandler:addRingEctypeCurRing(self.ectypeConfig.ringEctypeID)
-					--self:syncRingEctypeCurRing()
 				end
 			end
 
@@ -968,11 +965,9 @@ function Ectype:driveEctypeProcess()
 	-- 在驱动副本进度前要先打开副本机关
 	self:openEctypeEffect()
 	-- 驱动副本进度
-	print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", self.curProgress)
 	if self.curProgress >= table.getn(self.ectypeConfig.LogicProcedure) then
 		-- 执行到这里应该是子副本掉线，没有点击传送门进行下一步，所以这里重走一下流程
 		local transferDoorsInfo = self:getTransferDoorsInfo()
-		print("tasstransferDoorsInfoFer捏皮囊", transferDoorsInfo)
 		if transferDoorsInfo then
 			local ectypePlayers = self:getEctypePlayers()
 			for playerID, _ in pairs(ectypePlayers) do
@@ -1005,9 +1000,11 @@ function Ectype:returnPublicScene(player)
 	ectypeHandler:setIntegral(0)
 	-- 记录副本剩余时间，如果副本已经完成，就设置成0，下次从头开始
 	if self.finishFlag then
+		-- 如果是连环本，不可能为common的情况
 		if self.ectypeConfig.ringEctypeID then
 			ectypeHandler:setRingEctypeLeftMin(self.ectypeConfig.ringEctypeID, 0)
 		else
+			-- 时间到也会执行到这里，这是之后
 			if self.ectypeConfig.EctypeType ~= EctypeType.Common then
 				ectypeHandler:setEctypeLeftMin(self.ectypeID, 0)
 			end
@@ -1137,8 +1134,6 @@ function Ectype:onEctypeEnd()
 			local player = g_entityMgr:getPlayerByID(playerID)
 			if player then
 				local ectypeHandler = player:getHandler(HandlerDef_Ectype)
-				-- 增加连环副本当前环数
-				--ectypeHandler:addRingEctypeCurRing(self.ectypeConfig.ringEctypeID)
 				-- 设置完成当前子副本
 				ectypeHandler:setRingEctypeChildEctypeFinish(self.ectypeConfig.ringEctypeID, self.ectypeID)
 				--print("设置完成当前子副本，ringEctypeID，ectypeID", self.ectypeConfig.ringEctypeID, self.ectypeID)
@@ -1165,7 +1160,6 @@ function Ectype:onEctypeEnd()
 			end
 		end
 	else
-		print("普通副本结束。。。")
 		-- 完成普通副本
 		for playerID, _ in pairs(ectypePlayers) do
 			local player = g_entityMgr:getPlayerByID(playerID)

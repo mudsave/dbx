@@ -12,6 +12,7 @@ end
 
 -- 打开新手礼包
 function NewPlayerLoginGift(player, item)
+	local removeFlag = false
 	local itemID = item:getItemID()
 	local tGiftItems = tLoginGiftItems[itemID]
 	if not tGiftItems then
@@ -37,14 +38,15 @@ function NewPlayerLoginGift(player, item)
 		SendMessage(player, eventGroup_Item, 8)
 	else
 		if packetHandler:removeByItemId(itemID, 1) == 1 then
+			removeFlag = true
 			for i = 1, table.getn(tGiftItems) do
 				local itemID = tGiftItems[i].itemID
 				local itemNum = tGiftItems[i].itemNum
-				print("--------itemID---itemID-----itemID---------",itemID)
 				packetHandler:addItemsToPacket(itemID, itemNum)
 			end
 		end
 	end
+	return removeFlag
 end
 
 --打开宝箱
@@ -69,6 +71,7 @@ local function GetGainInfo(config)
 end
 
 function PlayerOpenTreasureChest(player, item)
+	local removeFlag = false
 	local itemID = item:getItemID()
 	local treasureDB = tTreasureChestItems[itemID]
 	if not treasureDB then print("读取配置出错") return end
@@ -127,6 +130,7 @@ function PlayerOpenTreasureChest(player, item)
 		SendMessage(player, eventGroup_Item, 8)
 	else
 		if packetHandler:removeByItemId(itemID, 1) == 1 then
+			removeFlag = true
 			for i = 1, table.getn(itemList) do
 				local itemID = itemList[i].itemID
 				packetHandler:addItemsToPacket(itemID, itemNum)
@@ -136,4 +140,5 @@ function PlayerOpenTreasureChest(player, item)
 			end
 		end
 	end
+	return removeFlag
 end

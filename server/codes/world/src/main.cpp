@@ -11,6 +11,7 @@
 #include <string.h>
 
 void CleanUp();
+void Debug();
 
 /// 参数形式 : ./World -sessionAddr 172.16.2.220:2500 -worldId 0
 int main(int argc, char* argv[])
@@ -51,6 +52,8 @@ int main(int argc, char* argv[])
 
 	SetCleanup(CleanUp);
 
+	SetDebugFunc(Debug);
+
 	GenerateSignalThread();
 
 	g_world.Init( worldId, sessionIP, sessionPort, dbIP, dbPort );
@@ -78,4 +81,9 @@ int main(int argc, char* argv[])
 void CleanUp()
 {
 	g_world.CleanUp();
+}
+
+void Debug()
+{
+	g_world.Debug();
 }

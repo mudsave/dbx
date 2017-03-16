@@ -5328,6 +5328,8 @@ DialogModelDB =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10001}},		
 				},
+				icon = DialogIcon.Task4,
+
 			},
 			[2] =
 			{
@@ -5378,6 +5380,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10002}},		
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -5428,6 +5431,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10003}},		
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -5478,6 +5482,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10004}},	
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -5528,6 +5533,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10005}},		
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -5578,6 +5584,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.PaidPet, param = {taskID = 10006}},	
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -5627,6 +5634,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10001, itemsInfo = {count = 1},},},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = {},
@@ -5675,6 +5683,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10002, itemsInfo = {count = 1},},},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = {},
@@ -5723,6 +5732,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10003, itemsInfo = {count = 1},},},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = {},
@@ -5771,6 +5781,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10004, itemsInfo = {count = 1},},},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = {},
@@ -5819,6 +5830,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10005, itemsInfo = {count = 1},},},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = {},
@@ -5867,6 +5879,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10006, itemsInfo = {count = 1},},},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = {},
@@ -5905,22 +5918,30 @@ DialogModelDB =
 	},
 	[4702] =
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29079,
-		
-		txt = "千金散尽还复来，你有这种觉悟真是令人欣慰啊！",
+		speakerID = 29079,		
+		txt = "这位英雄，你来找我有事吗？",
 		options = 
 		{
-			{
+			[1] = {
 				showConditions = {},
-				optionTxt = "",
+				optionTxt = "我来捐款！",
 				actions =
 				{
-					{action = DialogActionType.openLookTaskWin,param = {taskID = 10001}},
+				{action = DialogActionType.openLookTaskWin,param = {taskID = 10001}},
 				},
-			}
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},			
 		},
 	},
 	[4703] =            ------------------金霞山掌门任务指引
@@ -5945,22 +5966,30 @@ DialogModelDB =
 	},
 	[4704] =
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29079,
-		
-		txt = "千金散尽还复来，你有这种觉悟真是令人欣慰啊！",
+		speakerID = 29079,		
+		txt = "这位英雄，你来找我有事吗？",
 		options = 
 		{
-			{
+			[1] = {
 				showConditions = {},
-				optionTxt = "",
+				optionTxt = "我来捐款！",
 				actions =
 				{
-					{action = DialogActionType.openLookTaskWin,param = {taskID = 10002}},
+				{action = DialogActionType.openLookTaskWin,param = {taskID = 10002}},
 				},
-			}
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},			
 		},
 	},
 	[4705] =            ------------------紫阳门掌门任务指引
@@ -5985,22 +6014,30 @@ DialogModelDB =
 	},
 	[4706] =
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29079,
-		
-		txt = "千金散尽还复来，你有这种觉悟真是令人欣慰啊！",
+		speakerID = 29079,		
+		txt = "这位英雄，你来找我有事吗？",
 		options = 
 		{
-			{
+			[1] = {
 				showConditions = {},
-				optionTxt = "",
+				optionTxt = "我来捐款！",
 				actions =
 				{
-					{action = DialogActionType.openLookTaskWin,param = {taskID = 10003}},
+				{action = DialogActionType.openLookTaskWin,param = {taskID = 10003}},
 				},
-			}
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},			
 		},
 	},
 	[4707] =            ------------------云霄宫掌门任务指引
@@ -6025,22 +6062,30 @@ DialogModelDB =
 	},
 	[4708] =
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29079,
-		
-		txt = "千金散尽还复来，你有这种觉悟真是令人欣慰啊！",
+		speakerID = 29079,		
+		txt = "这位英雄，你来找我有事吗？",
 		options = 
 		{
-			{
+			[1] = {
 				showConditions = {},
-				optionTxt = "",
+				optionTxt = "我来捐款！",
 				actions =
 				{
-					{action = DialogActionType.openLookTaskWin,param = {taskID = 10004}},
+				{action = DialogActionType.openLookTaskWin,param = {taskID = 10004}},
 				},
-			}
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},			
 		},
 	},
 	[4709] =            ------------------桃源洞掌门任务指引
@@ -6065,22 +6110,30 @@ DialogModelDB =
 	},
 	[4710] =
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29079,
-		
-		txt = "千金散尽还复来，你有这种觉悟真是令人欣慰啊！",
+		speakerID = 29079,		
+		txt = "这位英雄，你来找我有事吗？",
 		options = 
 		{
-			{
+			[1] = {
 				showConditions = {},
-				optionTxt = "",
+				optionTxt = "我来捐款！",
 				actions =
 				{
-					{action = DialogActionType.openLookTaskWin,param = {taskID = 10005}},
+				{action = DialogActionType.openLookTaskWin,param = {taskID = 10005}},
 				},
-			}
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},			
 		},
 	},
 	[4711] =            ------------------蓬莱阁掌门任务指引
@@ -6105,22 +6158,30 @@ DialogModelDB =
 	},
 	[4712] =
 	{
-		dialogType = DialogType.NotOption,
+		dialogType = DialogType.HasOption,
 		conditions = 
 		{},
-		speakerID = 29079,
-		
-		txt = "千金散尽还复来，你有这种觉悟真是令人欣慰啊！",
+		speakerID = 29079,		
+		txt = "这位英雄，你来找我有事吗？",
 		options = 
 		{
-			{
+			[1] = {
 				showConditions = {},
-				optionTxt = "",
+				optionTxt = "我来捐款！",
 				actions =
 				{
-					{action = DialogActionType.openLookTaskWin,param = {taskID = 10006}},
+				{action = DialogActionType.openLookTaskWin,param = {taskID = 10006}},
 				},
-			}
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},			
 		},
 	},
 ----------------------------巡逻触发事件------------------------------
@@ -6182,7 +6243,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10001},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -6192,7 +6253,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10001},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -6254,7 +6315,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10002},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -6264,7 +6325,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10002},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -6326,7 +6387,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10003},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -6336,7 +6397,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10003},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -6398,7 +6459,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10004},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -6408,7 +6469,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10004},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -6470,7 +6531,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10005},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -6480,7 +6541,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10005},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -6542,7 +6603,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10006},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -6552,7 +6613,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.MayTaskFight , param = {taskID = 10006},},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -7842,7 +7903,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4793}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -7865,7 +7926,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4794}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -7888,7 +7949,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4795}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -7911,7 +7972,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4796}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -7934,7 +7995,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4797}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -7957,7 +8018,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4798}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8026,7 +8087,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4801}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8049,7 +8110,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4802}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8118,7 +8179,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4805}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8141,7 +8202,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4806}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8164,7 +8225,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4807}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8187,7 +8248,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4808}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8210,7 +8271,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4809}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -8233,7 +8294,7 @@ DialogModelDB =
 				{
                                 {action = DialogActionType.Goto, param = {dialogID = 4810}},
 				},
-				icon = DialogIcon.Talk,
+				icon = DialogIcon.Task4,
 			},
 		},		
 	},
@@ -14468,66 +14529,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4453}},
 				},
+                                icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4462}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4471}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4480}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4489}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20017}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4498}},
 				},
+				icon = DialogIcon.Task4,
 			},			
 			[7] =
 			{
@@ -14793,66 +14860,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4457}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4466}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4475}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4484}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4493}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4502}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = 
@@ -14903,66 +14976,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4451}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4460}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4469}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4478}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4487}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4496}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[8] = {
 				showConditions = 
@@ -15003,66 +15082,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4354}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4362}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4370}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4378}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4386}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29001}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4394}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = {},
@@ -15199,66 +15284,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4351}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4359}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4367}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4375}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4383}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29005}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4391}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] =
 			{
@@ -15336,11 +15427,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -15348,11 +15440,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] =
 			{
@@ -15360,11 +15453,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] =
 			{
@@ -15372,11 +15466,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] =
 			{
@@ -15384,11 +15479,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] =
 			{
@@ -15396,11 +15492,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29007}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] =
 			{
@@ -15436,66 +15533,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4352}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4360}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4368}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4376}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4384}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29008}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4392}},
 				},
+				icon = DialogIcon.Task4,
 			},			
 			[7] = {
 				showConditions = 
@@ -15595,132 +15698,144 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4454}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4463}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4472}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4481}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4490}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 29079}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4499}},
 				},
+				icon = DialogIcon.Task4,
 			},	
 			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "扶贫济弱（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4702}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[8] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "扶贫济弱（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4704}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[9] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "扶贫济弱（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4706}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[10] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "扶贫济弱（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4708}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[11] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "扶贫济弱（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4710}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[12] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.donate}},
 				},
-				optionTxt = "扶贫济弱（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4712}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[13] =
 			{
@@ -15821,66 +15936,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001,taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4355}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002,taskType = LoopTaskTargetType.talk, npcID = 20928}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4363}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4371}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4379}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 20928}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4387}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006,taskType = LoopTaskTargetType.talk, npcID = 20928}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4395}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] =
 			{
@@ -16372,11 +16493,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -16384,11 +16506,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] =
 			{
@@ -16396,11 +16519,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] =
 			{
@@ -16408,11 +16532,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] =
 			{
@@ -16420,11 +16545,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] =
 			{
@@ -16432,11 +16558,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29010}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] =
 			{
@@ -16503,66 +16630,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4356}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,pcID = 29012}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4364}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4372}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4380}},
 				},
+                                icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4388}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 29012}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4396}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] =
 			{
@@ -16687,66 +16820,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4353}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4361}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4369}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4377}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4385}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.talk,npcID = 20027}},	
 				},
-				optionTxt = "拜访（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4393}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] =
 			{
@@ -17013,11 +17152,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -17025,11 +17165,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] =
 			{
@@ -17037,11 +17178,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] =
 			{
@@ -17049,11 +17191,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] =
 			{
@@ -17061,11 +17204,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] =
 			{
@@ -17073,11 +17217,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29023}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = {},
@@ -17354,11 +17499,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] =
 			{
@@ -17366,11 +17512,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] =
 			{
@@ -17378,11 +17525,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] =
 			{
@@ -17390,11 +17538,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] =
 			{
@@ -17402,11 +17551,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] =
 			{
@@ -17414,11 +17564,12 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.escort, npcID = 29031}},
 				},
-				optionTxt = "迷途少女（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4824}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = {},
@@ -17500,66 +17651,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4456}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4465}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4474}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4483}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4492}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 29034}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4501}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = {},
@@ -17614,66 +17771,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4455}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4464}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4473}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4482}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4491}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 29036}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4500}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = {},
@@ -17789,66 +17952,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4458}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4467}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4476}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4485}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4494}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4503}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			 [7] = {
 				showConditions = 
@@ -17887,66 +18056,72 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4452}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4461}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4470}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4479}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4488}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[6] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
 				},
-				optionTxt = "掌门的信（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4497}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[7] = {
 				showConditions = 
@@ -18233,46 +18408,51 @@ DialogModelDB =
 			[1] = {
 				showConditions = 
 				{	
-				 {condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				{condition = DialogCondition.HasTask, param = {taskID = 10001, statue = false}},
 				},
 				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4202}},
 				},
+				icon = DialogIcon.Task2,
 			},
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.catchPet, npcID = 20004}},
 				},
-				optionTxt = "上交宠物（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4551}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.buyItem, npcID = 20004}},
 				},
-				optionTxt = "上交道具（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4601}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.itemTalk, npcID = 20004}},
 				},
-				optionTxt = "下山之行（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4781}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = {},
@@ -18327,7 +18507,7 @@ DialogModelDB =
 				showConditions = {
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001,taskType = LoopTaskTargetType.brightMine,npcID = 20021}},	
 				},
-				optionTxt = "挑战大弟子（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4271}},
@@ -18371,7 +18551,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001,taskType = LoopTaskTargetType.brightMine,npcID = 29066}},
 				},
-				optionTxt = "挑战长老（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4272}},
@@ -18532,45 +18712,50 @@ DialogModelDB =
 				showConditions = 
 				{
 				 {condition = DialogCondition.School, param = {school = SchoolType.TYD}},
+				 {condition = DialogCondition.HasTask, param = {taskID = 10005, statue = false}},
 				},
 				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4210}},
 				},
+				icon = DialogIcon.Task2,
 			},			
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.catchPet, npcID = 20005}},
 				},
-				optionTxt = "上交宠物（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4559}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.buyItem, npcID = 20005}},
 				},
-				optionTxt = "上交道具（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4609}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.itemTalk, npcID = 20005}},
 				},
-				optionTxt = "下山之行（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4789}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = {},
@@ -18626,7 +18811,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005,taskType = LoopTaskTargetType.brightMine,npcID = 20025}},
 				},
-				optionTxt = "挑战大弟子（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4283}},
@@ -18669,7 +18854,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005,taskType = LoopTaskTargetType.brightMine,npcID = 29067}},
 				},
-				optionTxt = "挑战长老（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4284}},
@@ -18830,45 +19015,50 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
+				{condition = DialogCondition.HasTask, param = {taskID = 10002, statue = false}},
 				},
 				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4204}},
 				},
+				icon = DialogIcon.Task2,
 			},			
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.catchPet, npcID = 20006}},
 				},
-				optionTxt = "上交宠物（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4553}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.buyItem, npcID = 20006}},
 				},
-				optionTxt = "上交道具（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4603}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.itemTalk, npcID = 20006}},
 				},
-				optionTxt = "下山之行（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4783}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = {},
@@ -18925,7 +19115,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002,taskType = LoopTaskTargetType.brightMine,npcID = 20023}},	
 				},
-				optionTxt = "挑战大弟子（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4274}},
@@ -18968,7 +19158,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002,taskType = LoopTaskTargetType.brightMine,npcID = 29068}},
 				},
-				optionTxt = "挑战长老（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4275}},
@@ -19130,45 +19320,50 @@ DialogModelDB =
 				showConditions = 
 				{
 			        {condition = DialogCondition.School, param = {school = SchoolType.PLG}},
+				{condition = DialogCondition.HasTask, param = {taskID = 10006, statue = false}},
 				},
 				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4212}},
 				},
+				icon = DialogIcon.Task2,
 			},			
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.catchPet, npcID = 20007}},
 				},
-				optionTxt = "上交宠物（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4561}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.buyItem, npcID = 20007}},
 				},
-				optionTxt = "上交道具（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4611}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.itemTalk, npcID = 20007}},
 				},
-				optionTxt = "下山之行（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4791}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = {},
@@ -19225,7 +19420,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006,taskType = LoopTaskTargetType.brightMine,npcID = 20022}},
 				},
-				optionTxt = "挑战大弟子（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4286}},
@@ -19268,7 +19463,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006,taskType = LoopTaskTargetType.brightMine,npcID = 29069}},
 				},
-				optionTxt = "挑战长老（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4287}},
@@ -19429,45 +19624,50 @@ DialogModelDB =
 				showConditions = 
 				{
 				 {condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
+				 {condition = DialogCondition.HasTask, param = {taskID = 10003, statue = false}},
 				},
 				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4206}},
 				},
+				icon = DialogIcon.Task2,
 			},			
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.catchPet, npcID = 20008}},
 				},
-				optionTxt = "上交宠物（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4555}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.buyItem, npcID = 20008}},
 				},
-				optionTxt = "上交道具（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4605}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.itemTalk, npcID = 20008}},
 				},
-				optionTxt = "下山之行（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4785}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = {},
@@ -19523,7 +19723,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003,taskType = LoopTaskTargetType.brightMine,npcID = 20026}},
 				},
-				optionTxt = "挑战大弟子（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4277}},
@@ -19566,7 +19766,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003,taskType = LoopTaskTargetType.brightMine,npcID = 29070}},
 				},
-				optionTxt = "挑战长老（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4278}},
@@ -19727,45 +19927,50 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
+				{condition = DialogCondition.HasTask, param = {taskID = 10004, statue = false}},
 				},
 				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4208}},
 				},
+				icon = DialogIcon.Task2,
 			},			
 			[2] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.catchPet, npcID = 20009}},
 				},
-				optionTxt = "上交宠物（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4557}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[3] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.buyItem, npcID = 20009}},
 				},
-				optionTxt = "上交道具（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4607}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[4] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.itemTalk, npcID = 20009}},
 				},
-				optionTxt = "下山之行（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4787}},
 				},
+				icon = DialogIcon.Task4,
 			},
 			[5] = {
 				showConditions = {},
@@ -19783,7 +19988,7 @@ DialogModelDB =
 				optionTxt = "了解师门任务",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 35503}},
+				{action = DialogActionType.Goto, param = {dialogID = 35503}},
 				},
 				icon = DialogIcon.Help,
 			},
@@ -19822,7 +20027,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004,taskType = LoopTaskTargetType.brightMine,npcID = 20024}},
 				},
-				optionTxt = "挑战大弟子（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4280}},
@@ -19865,7 +20070,7 @@ DialogModelDB =
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004,taskType = LoopTaskTargetType.brightMine,npcID = 29071}},
 				},
-				optionTxt = "挑战长老（师门任务）",
+				optionTxt = "师门任务",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4281}},

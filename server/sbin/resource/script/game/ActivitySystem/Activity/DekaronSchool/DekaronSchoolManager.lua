@@ -156,19 +156,7 @@ function DekaronSchoolManager:joinActivity(player)
 			g_eventMgr:fireRemoteEvent(event, player)
 			return
 		end
-
-		local school = math.random(1,#schoolActivityTargetDB)
-		local config = schoolActivityTargetDB[school]
-		local scriptId = config.scripts[math.random(1,#config.scripts)]
-		local param =
-		{
-			school = school,
-			team = team,
-			npcID = config.npcId,
-			entity = player,
-			scriptId = scriptId,
-		}
-		team:setDekaronActivityTarget(AScript(param))
+		self:changeDekaronTarget(team)
 		return true
 	else
 		print("activityID活动还没开启",activityID)
@@ -223,7 +211,21 @@ function DekaronSchoolManager:changeDekaronTarget(team)
 		end
 	end
 	local config = schoolActivityTargetDB[school]
-	local scriptId = config.scripts[math.random(1,#config.scripts)]
+	local teamProcess = team:getProcess()
+	local scriptIndex = 0
+	if teamProcess <= 6 then
+		scriptIndex = 1
+	elseif teamProcess <= 12 then
+		scriptIndex = 2
+	elseif teamProcess <= 18 then
+		scriptIndex = 3
+	elseif teamProcess <= 24 then
+		scriptIndex = 4
+	else
+		scriptIndex = 5
+	end
+	local scriptId = config.scripts[scriptIndex]
+	print("---------1---------d--d--d--d--",scriptId,scriptIndex)
 	local param =
 	{
 		school = school,
@@ -234,6 +236,7 @@ function DekaronSchoolManager:changeDekaronTarget(team)
 	}
 	team:setDekaronActivityTarget(AScript(param))
 end
+
 
 --新玩家加入队伍
 function DekaronSchoolManager:joinTeam(player, teamID)

@@ -60,6 +60,7 @@ function EctypeHandler:checkEctypeData(ectypeID)
 		self.ectypeInfo[ectypeID].leftMin = 0
 		self.ectypeInfo[ectypeID].recordTime = os.time()
 		self.ectypeInfo[ectypeID].attackTime = 0
+		self.ectypeInfo[ectypeID].isSaveDB = false
 	end
 end
 
@@ -96,6 +97,7 @@ function EctypeHandler:setCurChildEctypeID(ringEctypeID, curChildEctypeID)
 	self:checkRingEctypeData(ringEctypeID)
 	self.ringEctypeInfo[ringEctypeID].curChildEctypeID = curChildEctypeID
 	self.ringEctypeInfo[ringEctypeID].recordTime = os.time()
+	self.ringEctypeInfo[ringEctypeID].isSaveDB = true
 end
 
 -- 获得指定连环副本当前子副本ID
@@ -107,13 +109,13 @@ end
 -- 完成指定连环副本的子副本
 function EctypeHandler:setRingEctypeChildEctypeFinish(ringEctypeID, childEctypeID)
 	self:checkRingEctypeData(ringEctypeID)	
-	--local ringEctypeGroupID = self.ringEctypeInfo[ringEctypeID]
 	local ringEctypeInfo = tRingEctypeDB[ringEctypeID]
 	if ringEctypeInfo then
 		for i = 1, table.getn(ringEctypeInfo.tAllEctypes) do
 			if ringEctypeInfo.tAllEctypes[i].EctypeID == childEctypeID then
 				self.ringEctypeInfo[ringEctypeID].childEctypeFlag[i] = 1
 				self.ringEctypeInfo[ringEctypeID].recordTime = os.time()
+				self.ringEctypeInfo[ringEctypeID].isSaveDB = true 
 				break
 			end
 		end
@@ -264,6 +266,7 @@ function EctypeHandler:setRingEctypeProcess(ringEctypeID, curProcess)
 	end
 	self.ringEctypeInfo[ringEctypeID].curProcess = curProcess
 	self.ringEctypeInfo[ringEctypeID].recordTime = os.time()
+	self.ringEctypeInfo[ringEctypeID].isSaveDB = true
 end
 
 -- 获得连环副本进度
@@ -276,6 +279,9 @@ end
 function EctypeHandler:setRingEctypeLeftMin(ringEctypeID, leftMin)
 	self:checkRingEctypeData(ringEctypeID)
 	self.ringEctypeInfo[ringEctypeID].leftMin = leftMin
+	if leftMin > 0 then
+		self.ringEctypeInfo[ringEctypeID].isSaveDB = true
+	end
 end
 
 -- 获得连环副本剩余分钟数
@@ -290,6 +296,7 @@ function EctypeHandler:setRingEctypeFinishFlag(ringEctypeID)
 	self.ringEctypeInfo[ringEctypeID].finishFlag = 1
 	self.ringEctypeInfo[ringEctypeID].recordTime = os.time()
 	self.ringEctypeInfo[ringEctypeID].attackTime = 0
+	self.ringEctypeInfo[ringEctypeID].isSaveDB = true
 end
 
 -- 获得连环副本完成标志
@@ -305,6 +312,8 @@ function EctypeHandler:addEctypeFinishTimes(ectypeID)
 	self.ectypeInfo[ectypeID].curProcess = 0
 	self.ectypeInfo[ectypeID].recordTime = os.time()
 	self.ectypeInfo[ectypeID].attackTime = 0
+	-- 完成当前副本记录需要存数据库
+	self.ectypeInfo[ectypeID].isSaveDB = true
 end
 
 -- 设置普通副本完成次数
@@ -433,6 +442,9 @@ function EctypeHandler:setEctypeProcess(ectypeID, curProcess)
 	end
 	self.ectypeInfo[ectypeID].curProcess = curProcess
 	self.ectypeInfo[ectypeID].recordTime = os.time()
+	if ectypeConfig.EctypeType ~= EctypeType.Common then
+		self.ectypeInfo[ectypeID].isSaveDB = true
+	end
 end
 
 -- 设置帮会副本奖励
@@ -475,8 +487,6 @@ function EctypeHandler:setFactionEctypeProcess(ectypeID, curProcess)
 						g_eventMgr:fireWorldsEvent(event, SocialWorldID)
 						self:sendEctypePrize(msgID, ectypePrizes.FactionFame)
 					end
-					--if ectypePrizes.
-					print("获得帮会副本进度奖励")
 				end
 			end
 		end
@@ -496,6 +506,9 @@ function EctypeHandler:setEctypeLeftMin(ectypeID, leftMin)
 	self:checkEctypeData(ectypeID)
 	self.ectypeInfo[ectypeID].leftMin = leftMin
 	self.ectypeInfo[ectypeID].recordTime = os.time()
+	if leftMin > 0 then
+		self.ectypeInfo[ectypeID].isSaveDB = true
+	end
 end
 
 -- 获得普通副本剩余分钟数
@@ -530,6 +543,7 @@ function EctypeHandler:setEctypeInfo(ectypeRecord)
 					ectype.attackTime = 0
 				end
 			end
+			-- 玩家首次上次，设置其保存数据库的字段为false
 			if not self.ectypeInfo[ectype.ectypeID] then
 				self.ectypeInfo[ectype.ectypeID] = {}
 				self.ectypeInfo[ectype.ectypeID].finishTimes = ectype.finishTimes
@@ -537,6 +551,7 @@ function EctypeHandler:setEctypeInfo(ectypeRecord)
 				self.ectypeInfo[ectype.ectypeID].leftMin = ectype.leftMin
 				self.ectypeInfo[ectype.ectypeID].recordTime = ectype.recordTime
 				self.ectypeInfo[ectype.ectypeID].attackTime = ectype.attackTime or 0
+				self.ectypeInfo[ectype.ectypeID].isSaveDB = false
 			else
 				-- 逻辑错误
 			end
@@ -568,6 +583,7 @@ function EctypeHandler:setRingEctypeInfo(ringEctypeRecord)
 					self.ringEctypeInfo[ringEctype.ringEctypeID].finishFlag = ringEctype.finishFlag
 					self.ringEctypeInfo[ringEctype.ringEctypeID].recordTime = ringEctype.recordTime
 					self.ringEctypeInfo[ringEctype.ringEctypeID].attackTime = ringEctype.attackTime or 0
+					self.ringEctypeInfo[ringEctype.ringEctypeID].isSaveDB = false
 				else
 					-- 逻辑错误
 				end
@@ -585,16 +601,18 @@ function EctypeHandler:saveEctypeData()
 	local playerDBID = self._entity:getDBID()
 	for ectypeID, ectype in pairs(self.ectypeInfo) do
 		local ectypeConfig = tEctypeDB[ectypeID]
-		-- 除普通副本之外，只保存有进入次数的副本
-		if ectypeConfig and ectypeConfig.EctypeType ~= EctypeType.Common and ectypeConfig.EctypeCDFinishTimes > 0 then
-			local ectypeInfo = ""
-			ectypeInfo = ectypeInfo..ectypeID.."-"
-			ectypeInfo = ectypeInfo..ectype.finishTimes.."-"
-			ectypeInfo = ectypeInfo..ectype.curProcess.."-"
-			ectypeInfo = ectypeInfo..ectype.leftMin.."-"
-			ectypeInfo = ectypeInfo..ectype.recordTime.."-"
-			ectypeInfo = ectypeInfo..ectype.attackTime.."-"
-			LuaDBAccess.saveEctypeInfo(playerDBID, ectypeInfo)
+		-- 除普通副本之外，只保存有进入次数的副本, 而且配置次数> 0 才需要保存数据库
+		if ectypeConfig then
+			if (ectypeConfig.EctypeType ~= EctypeType.Common and ectypeConfig.EctypeCDFinishTimes > 0 and ectype.isSaveDB) then		
+				local ectypeInfo = ""
+				ectypeInfo = ectypeInfo..ectypeID.."-"
+				ectypeInfo = ectypeInfo..ectype.finishTimes.."-"
+				ectypeInfo = ectypeInfo..ectype.curProcess.."-"
+				ectypeInfo = ectypeInfo..ectype.leftMin.."-"
+				ectypeInfo = ectypeInfo..ectype.recordTime.."-"
+				ectypeInfo = ectypeInfo..ectype.attackTime.."-"
+				LuaDBAccess.saveEctypeInfo(playerDBID, ectypeInfo)
+			end
 		end
 	end
 end
@@ -603,21 +621,23 @@ end
 function EctypeHandler:saveRingEctypeData()
 	local playerDBID = self._entity:getDBID()
 	for ringEctypeID, ringEctype in pairs(self.ringEctypeInfo) do
-		local ringEctypeInfo = ""
-		ringEctypeInfo = ringEctypeInfo..ringEctypeID.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.curRing.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.curGroupID.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.curChildEctypeID.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.curProcess.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.leftMin.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[1].."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[2].."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[3].."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[4].."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.finishFlag.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.recordTime.."-"
-		ringEctypeInfo = ringEctypeInfo..ringEctype.attackTime.."-"
-		LuaDBAccess.saveRingEctypeInfo(playerDBID, ringEctypeInfo)
+		if ringEctype.isSaveDB then
+			local ringEctypeInfo = ""
+			ringEctypeInfo = ringEctypeInfo..ringEctypeID.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.curRing.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.curGroupID.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.curChildEctypeID.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.curProcess.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.leftMin.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[1].."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[2].."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[3].."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.childEctypeFlag[4].."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.finishFlag.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.recordTime.."-"
+			ringEctypeInfo = ringEctypeInfo..ringEctype.attackTime.."-"
+			LuaDBAccess.saveRingEctypeInfo(playerDBID, ringEctypeInfo)
+		end
 	end
 end
 
@@ -676,12 +696,17 @@ end
 function EctypeHandler:addRingEctypeAttackTime(ringEctypeID)
 	self:checkRingEctypeData(ringEctypeID)
 	self.ringEctypeInfo[ringEctypeID].attackTime = self.ringEctypeInfo[ringEctypeID].attackTime + 1
+	self.ringEctypeInfo[ringEctypeID].isSaveDB = true
 end
 
 -- 普通副本撞击次数
 function EctypeHandler:addEctypeAttackTime(ectypeID)
 	self:checkEctypeData(ectypeID)
 	self.ectypeInfo[ectypeID].attackTime = self.ectypeInfo[ectypeID].attackTime + 1
+	local ectypeEnterType = tEctypeDB[ectypeID].EctypeType
+	if ectypeEnterType ~= EctypeType.Common and ectypeEnterType ~= EctypeType.Faction and ectypeEnterType ~= EctypeType.HulaoPass then
+		self.ectypeInfo[ectypeID].isSaveDB = true
+	end
 end
 
 -- 设置common副本的撞击次数

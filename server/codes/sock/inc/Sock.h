@@ -303,6 +303,7 @@ bool SetRecvBufLevel(int level);
 /// 设置清理函数的回调
 typedef void (*Fun_Cleanup)();
 void SetCleanup(Fun_Cleanup pf);
+void SetDebugFunc(Fun_Cleanup pf);
 
 __END_SYS_DECLS
 

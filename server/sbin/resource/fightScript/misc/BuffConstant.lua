@@ -224,10 +224,10 @@ disorderFreeze = {
 		can = 0,
 	},
 	[fromEnemy] = {
-		can = 0,
+		can = 1,
 	},
 	[fromFriend] = {
-		can = 0,
+		can = 1,
 	},
 }
 

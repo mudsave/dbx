@@ -37,10 +37,8 @@ function ItemEffect.exeLuaFun(targetEntity, medicament, medicamentConfig)
 	local removeFlag = true
 	local targetFunction = _G[medicamentConfig.ReactExtraParam1]
 	if type(targetFunction) == 'function' then
-		targetFunction(targetEntity, medicament)
+		removeFlag = targetFunction(targetEntity, medicament)
 	end
-	-- 是否删除道具在Lua函数里控制
-	removeFlag = false
 	return removeFlag
 end
 
@@ -1011,10 +1009,11 @@ end
 -- 添加一个任务
 function ItemEffect.addTask(targetEntity,item,itemConfig,targetEntityID)
 	-- 删除标识为不删除
-	local removeFlag = false
 	local taskID = itemConfig.ReactExtraParam1
-	if g_taskDoer:doRecetiveTask(targetEntity,taskID ) then
-		removeFlag = true
+	local removeFlag = g_taskDoer:doRecetiveTask(targetEntity,taskID )
+	if not removeFlag then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, 14)
+		g_eventMgr:fireRemoteEvent(event, targetEntity)
 	end
 	return removeFlag
 end

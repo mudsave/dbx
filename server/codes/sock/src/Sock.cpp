@@ -17,8 +17,10 @@ struct _Module
 	IThreadsPool* pThreadsPool;
 	CLongWorkers* pLongWorkers;
 	Fun_Cleanup cleanup_callback;
+	Fun_Cleanup debug_cb;
 
-	_Module() : clsid(0), pThreadsPool(NULL), pLongWorkers(NULL), cleanup_callback(NULL)
+	_Module() : clsid(0), pThreadsPool(NULL), pLongWorkers(NULL), cleanup_callback(NULL),
+	debug_cb(NULL)
 	{
 		TRACE0_L0("--libSock.so, version 30\n");
 	}
@@ -62,6 +64,22 @@ public:
 };
 
 static Shutdown_Task task;
+
+class DebugTask : public ITask
+{
+public:
+	virtual HRESULT Do(HANDLE hContext)
+	{
+		TRACE0_L0("--do debug task!\n");
+		if(g_module.debug_cb)
+		{
+			g_module.debug_cb();
+		}
+		return S_OK;
+	}
+};
+
+static DebugTask debug_task;
 
 extern "C" IThreadsPool* GlobalThreadsPool(int clsid)
 {
@@ -115,6 +133,11 @@ extern "C" void SetCleanup(Fun_Cleanup pf)
 	g_module.cleanup_callback = pf;
 }
 
+extern "C" void SetDebugFunc(Fun_Cleanup pf)
+{
+	g_module.debug_cb = pf;
+}
+
 static void* signal_proc(void* arg)
 {
 	pthread_detach(pthread_self());
@@ -148,7 +171,9 @@ static void* signal_proc(void* arg)
 			case SIGUSR1:
 				{
 					TRACE1_L0("--signal_proc() recv SIGUSR1, signo = %d\n", signo);
+					pThreads->QueueTask(&debug_task, pThreads, 0);
 				}
+				break;
 			case SIGUSR2:
 				{
 					TRACE1_L0("--signal_proc() recv SIGUSR2, signo = %d\n", signo);

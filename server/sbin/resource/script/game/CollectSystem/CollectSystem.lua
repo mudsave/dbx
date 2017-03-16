@@ -170,9 +170,8 @@ function CollectSystem:openGoodsPack(goodsNpcID,playerID)
 			
 			return
 		end
-		
 		--所获物品显示到客户端
-		for itemID, number in ipairs(rewards.item) do
+		for itemID, number in pairs(rewards.item) do
 			packetHandler:addItemsToPacket(itemID, number)
 		end
 		

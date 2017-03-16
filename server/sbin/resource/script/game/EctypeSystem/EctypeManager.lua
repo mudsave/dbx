@@ -27,8 +27,6 @@ end
 
 -- 设置玩家副本数据
 function EctypeManager:setEctypeData(player, ectypeRecord, ringEctypeRecord)
-	--print("ectypeRecord", toString(ectypeRecord))
-	--print("ringEctypeRecord", toString(ringEctypeRecord))
 	local ectypeHandler = player:getHandler(HandlerDef_Ectype)
 	-- 读取普通副本数据
 	ectypeHandler:setEctypeInfo(ectypeRecord)
@@ -176,12 +174,7 @@ function EctypeManager:enterEctype(player, ectypeID)
 		-- 执行进入副本需要的扣除条件
 		self:exeEnterEctypeDeductCondition(player, ectypeConfig)
 		-- 创建副本
-		local ectype = nil
-		if ectypeConfig.EctypeType == EctypeType.HulaoPass then
-			ectype = RescueHulaoPassEctype()
-		else
-			ectype = Ectype()
-		end
+		local ectype = Ectype()
 		if ectype:create(ectypeID) then
 			local ectypeMapID = ectype:getEctypeMapID()
 			-- 记录新副本
@@ -257,12 +250,7 @@ function EctypeManager:enterEctype(player, ectypeID)
 			self:exeEnterEctypeDeductCondition(teamMemberPlayer[i], ectypeConfig)
 		end
 		-- 创建副本
-		local ectype = nil
-		if ectypeConfig.EctypeType == EctypeType.HulaoPass then
-			ectype = RescueHulaoPassEctype()
-		else
-			ectype = Ectype()
-		end
+		local ectype = Ectype()
 		if ectype:create(ectypeID) then
 			local ectypeMapID = ectype:getEctypeMapID()
 			-- 记录新副本
@@ -412,6 +400,7 @@ function EctypeManager:randomRingEctypeChildEctypeID(ectypeHandler, ringEctypeID
 		return
 	end
 	local childEctypeIndex = childEctypeIndexs[math.random(1, childEctypeIndexNum)]
+	-- 随机出子副本ID时，这时候下限应该存数据库
 	return tAllEctypes[childEctypeIndex].EctypeID
 end
 
@@ -471,6 +460,7 @@ function EctypeManager:enterRingEctype(player, ringEctypeID)
 				end
 			end
 			print("1 随机出子副本ID = ", childEctypeID)
+
 		end
 		-- 进入子副本
 		self:enterEctype(player, childEctypeID)

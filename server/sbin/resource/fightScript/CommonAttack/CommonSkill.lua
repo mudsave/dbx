@@ -46,7 +46,7 @@ function CommonSkill:doHpDamage(role ,target,damage,result,isCounter,attackType,
 	local curHp
 	--是否闪避
 	local isHit = FightUtils.isHit(role,target)
-	if isHit == false then
+	if isHit == false or target:getLifeState() == RoleLifeState.Freeze then
 		result.ID = target:getID()
 		result.status = ResultStatusType.Miss
 		return
@@ -257,6 +257,7 @@ function CommonSkill:use(targets,result)
 	if finalDamage < 1 then
 		finalDamage = 1
 	end
+
 	--有保护
 	if protectorNum >= 1 then
 
@@ -270,6 +271,7 @@ function CommonSkill:use(targets,result)
 		self:doHpDamage(self._owner,target,finalDamage,targetInfo,true,attackType,DeadList,protectorNum )
 	--无保护
 	else
+
 		self:doHpDamage(self._owner,target,finalDamage,targetInfo,true,attackType,DeadList,0)
 	end
 

@@ -787,6 +787,15 @@ mapDB =
 			safeY 		= 0,
 		},
 
+	[800] = { 
+			map 		= "hd_ttt_03.mp",
+			level 		= 0,
+			mapType 	= MapType.Copy,
+			npcs 		= {},
+			safeX 		= 45,
+			safeY 		= 33,
+		},
+
 	[901] = { 
 			map 		= "ly03.mp",
 			level 		= 0,

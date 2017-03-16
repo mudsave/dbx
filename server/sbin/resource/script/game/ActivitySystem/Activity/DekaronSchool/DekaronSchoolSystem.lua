@@ -22,7 +22,8 @@ function DekaronSchoolSystem:onFightEnd(event)
 	local bWin = false
 	local player = nil
 	-- 如果没有这个配置
-	if not ScriptFightDB[scriptID] then
+	local ScriptFightInfo = ScriptFightDB[scriptID]
+	if not ScriptFightInfo then
 		return
 	end
 	for playerID,isWin in pairs(fightEndResults) do
@@ -39,7 +40,8 @@ function DekaronSchoolSystem:onFightEnd(event)
 		if team then
 			local activityTarget = team:getDekaronActivityTarget()
 			if activityTarget then
-				activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs)
+				local rewardID = ScriptFightInfo.LuckyRewardID
+				activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs,rewardID)
 			end
 		end
 	end
