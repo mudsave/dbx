@@ -9,9 +9,10 @@ public:
 
 	void OnRecv(AppMsg* pMsg);
 	
-	void ParseMsg(AppMsg* pMsg);
+	
 
 private:
 	bool setResult(int index,AppMsg* pMsg);
 	
+    void ParseMsg(AppMsg* pMsg);
 };

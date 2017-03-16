@@ -15,7 +15,6 @@ class NetCtrl;
 class CClient:public IInitClient, public TSingleton<CClient>
 {
 public:
-	DECLARE_THREAD_SAFETY_MEMBER(sock);
 	CClient();
 	~CClient(void);
 	void ConnectDBX(std::string serverAddr,int iPort);
@@ -44,7 +43,6 @@ private:
 
 	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
 	typedef std::pair<int,CSCResultMsg*> MAPATTRSETPAIR;
-	DECLARE_THREAD_SAFETY_MEMBER(Attr);
 	
 	MAPATTRSET		m_MapAttrSet;
        	

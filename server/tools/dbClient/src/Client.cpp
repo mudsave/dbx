@@ -2,7 +2,7 @@
 #include "Client.h"
 
 #include "NetCtrl.h"
-
+#include "lindef.h"
 
 #define DB_CLIENT_RECONNECT_INTERVAL 5000
 
@@ -16,10 +16,7 @@ struct _LinkContext_DB
 
 IDBANetEvent* CClient::s_pNetEventHandle=NULL;
 
-CClient::CClient()
-    :INIT_THREAD_SAFETY_MEMBER_FAST(sock),
-     INIT_THREAD_SAFETY_MEMBER_FAST(Attr),
-     m_netCtrl(NULL)
+CClient::CClient(): m_netCtrl(NULL)
 {
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
     m_netCtrl = new NetCtrl();
@@ -42,34 +39,26 @@ void CClient::ConnectDBX(std::string serverAddr, int iPort)
 
 void CClient::setAttributeSet(int index,CSCResultMsg *pInfo)
 {
-    TRACE1_L0("CClient::setAttributeSet(int index(%i))\n", index);
-	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	m_MapAttrSet.insert(std::make_pair(index,pInfo));
-       	LEAVE_CRITICAL_SECTION_MEMBER;
 }
 void* CClient::getAttributeSet(int attriIndex,int index)
 {
-    TRACE2_L0("CClient::getAttributeSet(int attriIndex(%i),int index(%i))\n", attriIndex, index);
-	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	MAPATTRSET::iterator iter=m_MapAttrSet.lower_bound(attriIndex);
 	for(int i=0;iter!=m_MapAttrSet.upper_bound(attriIndex);i++,iter++) {
 		if(i==index) {
 			return iter->second;
 		}
 	}
-
-	LEAVE_CRITICAL_SECTION_MEMBER;
+    return NULL;
 }
 
 void CClient::deleteAttributeSet(int index) {
-	ENTER_CRITICAL_SECTION_MEMBER(Attr);
 	MAPATTRSET::iterator iter=m_MapAttrSet.lower_bound(index);
 	for (;iter!=m_MapAttrSet.upper_bound(index);) {
 		//printf("deleteAttributeSet,p=%d\n",(int)(long)iter->second);
 		if (iter->second) free (iter->second);
 		m_MapAttrSet.erase(iter++);
 	}
-	LEAVE_CRITICAL_SECTION_MEMBER;
 }
 
 int CClient::callDBProc(AppMsg *pMsg) {
