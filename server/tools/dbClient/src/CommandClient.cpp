@@ -15,21 +15,14 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 	if (!CClient::getDBNetEvent())
 	{
         TRACE0_L0("CCommandClient::ParseMsg...0000\n");
-            return;
+        return;
 	}
 
-	CSCResultMsg* pDataMsg=(CSCResultMsg*)malloc(pMsg->msgLen);
-        if (pDataMsg == NULL)
-        {
-            TRACE0_L0("CCommandClient::ParseMsg...1111\n");
-           return; 
-        }
-        memcpy(pDataMsg, pMsg, pMsg->msgLen);
-        TRACE2_L0("CCommandClient::ParseMsg...pDataMsg->m_bEnd(%i),pMsg->msgId(%i)\n", pDataMsg->m_bEnd, pDataMsg->msgId);
-	switch(pMsg->msgId){
-	case S_DOACTION_RESULT:
+	CSCResultMsg* pDataMsg=(CSCResultMsg*)pMsg;
+    switch (pDataMsg->msgId)
+    {
+	    case S_DOACTION_RESULT:
 		{
-			//printf("S_DOACTION_RESULT %d\n",pDataMsg->m_nTempObjId);
 			if(setResult(pDataMsg->m_nTempObjId,pDataMsg))
 			{
                 if (pDataMsg->m_bEnd)
@@ -38,11 +31,10 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
                     CClient::getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, CClient::InstancePtr(), true);
                 }
 			}
+            break;
 		}
-		break;
-	case S_SP_CPP_RESULT:
+	    case S_SP_CPP_RESULT:
 		{
-			// printf("S_SP_CPP_RESULT %d\n",pDataMsg->m_nTempObjId);
 			if(setResult(pDataMsg->m_nTempObjId,pDataMsg))
 			{
 				if(pDataMsg->m_bEnd){
@@ -51,15 +43,13 @@ void CCommandClient::ParseMsg(AppMsg* pMsg)
 					CClient::getDBNetEvent()->onExeDBProc_tocpp(pDataMsg->m_nTempObjId, CClient::InstancePtr(), true);
 				}
 			}
+            break;
 		}
-		break;
+        default:
+        {
+            TRACE1_ERROR("CCommandClient::ParseMsg:undef msgID(%i)\n", pDataMsg->msgId);
+        }
 	}
-
-	if (pMsg!=NULL)
-	{
-		free(pMsg);
-	}
-
 }
 
 CCommandClient* CCommandClient::getCommandClient()
@@ -68,18 +58,15 @@ CCommandClient* CCommandClient::getCommandClient()
 	return &s_CommandClient;
 }
 
-bool CCommandClient::setResult(int index,AppMsg* pMsg)
+bool CCommandClient::setResult(int index, CSCResultMsg* pMsg)
 {
     TRACE1_L0("CCommandClient::setResult:index(%i).\n", index);
-	CSCResultMsg* pDataMsg=(CSCResultMsg*)pMsg;
-    if (!pDataMsg)
+    if (!pMsg)
     {
-        TRACE0_L0("CCommandClient::setResult:false....\n");
         return false;
     }
         
-	pDataMsg->getInit();
-	CClient::InstancePtr()->setAttributeSet(index,pDataMsg);
-	//printf("CCommandClient::setResult:%d,%d\n",index,(int)(long)pDataMsg);
-      	return true;
+    pMsg->getInit();
+    CClient::InstancePtr()->setAttributeSet(index, pMsg);
+   	return true;
 }

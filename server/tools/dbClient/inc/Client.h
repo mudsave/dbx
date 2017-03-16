@@ -35,20 +35,16 @@ public:
     void Recv(AppMsg* p_appMsg);
 
 private:
-    void StartConnectDBX();
-    void StopConnectDBX();
-
 	IThreadsPool* m_pThreads;
 	static IDBANetEvent* s_pNetEventHandle;	
 
 	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
-	typedef std::pair<int,CSCResultMsg*> MAPATTRSETPAIR;
-	
-	MAPATTRSET		m_MapAttrSet;
-       	
+	MAPATTRSET m_mapAttrSet;
+
 	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 
     NetCtrl *m_netCtrl;
+
 public:
 	virtual void buildQuery();
 	virtual int addParam(const char*, const char*);
