@@ -20,8 +20,6 @@ CClient::CClient(): m_netCtrl(NULL)
 {
 	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
     m_netCtrl = new NetCtrl();
-
-    CCommandClient* pCmd = CCommandClient::getCommandClient();//初始化CCommandClient
 }
 
 CClient::~CClient(void)
@@ -37,10 +35,6 @@ void CClient::ConnectDBX(std::string serverAddr, int iPort)
     m_netCtrl->Connect(serverAddr, iPort);
 }
 
-void CClient::setAttributeSet(int index, CSCResultMsg *pInfo)
-{
-	m_mapAttrSet.insert(std::make_pair(index, pInfo));
-}
 void* CClient::getAttributeSet(int attriIndex,int index)
 {
 	MAPATTRSET::iterator iter = m_mapAttrSet.lower_bound(attriIndex);
@@ -84,7 +78,8 @@ int CClient::callDBProc(AppMsg *pMsg)
 int CClient::callDBSQL(AppMsg *pMsg) 
 {
 	int nOperationId = 0;
-	if (pMsg != NULL)	{
+	if (pMsg != NULL)	
+    {
 		nOperationId = CClient::generateOperationId();
 		CCSResultMsg* pDataMsg = (CCSResultMsg*)pMsg;
 		pMsg->msgId = C_DOSQL;
@@ -165,5 +160,44 @@ void CClient::ConnectResult(HRESULT p_result)
 
 void CClient::Recv(AppMsg* p_appMsg)
 {
-    CCommandClient::getCommandClient()->OnRecv(p_appMsg);
+    ParseMsg(p_appMsg);
+}
+
+void CClient::AddQueryResult(CSCResultMsg* pMsg)
+{
+    pMsg->getInit();
+    m_mapAttrSet.insert(std::make_pair(pMsg->m_nTempObjId, pMsg));
+}
+
+void CClient::ParseMsg(AppMsg* p_appMsg)
+{
+    CSCResultMsg *pDataMsg = (CSCResultMsg *)p_appMsg;
+    switch (pDataMsg->msgId)
+    {
+        case S_DOACTION_RESULT:
+        {
+            AddQueryResult(pDataMsg);
+            if (pDataMsg->m_bEnd)
+            {
+                TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc...\n");
+                getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, this, true);
+            }
+            break;
+        }
+        case S_SP_CPP_RESULT:
+        {
+            AddQueryResult(pDataMsg);
+            if (pDataMsg->m_bEnd)
+            {
+                getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, this, true);
+                TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc_tocpp...\n");
+                getDBNetEvent()->onExeDBProc_tocpp(pDataMsg->m_nTempObjId, this, true);
+            }
+            break;
+        }
+        default:
+        {
+            TRACE1_ERROR("CClient::ParseMsg:undef msgID(%i)\n", pDataMsg->msgId);
+        }
+    }
 }

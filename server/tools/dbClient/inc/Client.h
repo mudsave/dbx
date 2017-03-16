@@ -1,6 +1,5 @@
 #pragma once
 #include "IDBAClient.h"
-#include "CommandClient.h"
 #include "Singleton.h"
 #include "dbx_msgdef.h"
 
@@ -28,13 +27,16 @@ public:
 	bool closeLink(DWORD dwFlags);
 
 	void* getAttributeSet(int attriIndex,int index=0);
-	void  setAttributeSet(int index,CSCResultMsg *pInfo);
 	void  deleteAttributeSet(int index);
 
     void ConnectResult(HRESULT p_result);
     void Recv(AppMsg* p_appMsg);
 
 private:
+    void AddQueryResult(CSCResultMsg* pMsg);
+
+    void ParseMsg(AppMsg* p_appMsg);
+
 	IThreadsPool* m_pThreads;
 	static IDBANetEvent* s_pNetEventHandle;	
 

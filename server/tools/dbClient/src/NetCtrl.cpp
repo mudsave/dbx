@@ -125,7 +125,6 @@ HANDLE NetCtrl::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPo
 
 void NetCtrl::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
 {
-    TRACE0_L0("NetCtrl::DefaultMsgProc...\n");
     AppMsg* newMsg = (AppMsg*)malloc(pMsg->msgLen);
     memcpy(newMsg, pMsg, pMsg->msgLen);
 
