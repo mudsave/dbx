@@ -14,7 +14,7 @@ struct _LinkContext_DB
 	_LinkContext_DB(int type, handle h): linkType(type), hLink(h), idx(-1){}
 };
 
-IDBANetEvent* CClient::s_pNetEventHandle=NULL;
+IDBANetEvent* CClient::m_queryResultHandle = NULL;
 
 CClient::CClient(): m_netCtrl(NULL)
 {
@@ -24,22 +24,22 @@ CClient::CClient(): m_netCtrl(NULL)
 
 CClient::~CClient(void)
 {
-	closeLink(CLOSE_UNGRACEFUL);
-
+    m_netCtrl->Close(CLOSE_UNGRACEFUL);
     delete m_netCtrl;
-    m_netCtrl = NULL;
 }
 
-void CClient::ConnectDBX(std::string serverAddr, int iPort)
+void CClient::ConnectDBX(std::string p_serverAddr, int p_port)
 {
-    m_netCtrl->Connect(serverAddr, iPort);
+    m_netCtrl->Connect(p_serverAddr, p_port);
 }
 
 void* CClient::getAttributeSet(int attriIndex,int index)
 {
-	MAPATTRSET::iterator iter = m_mapAttrSet.lower_bound(attriIndex);
-	for(int i = 0; iter != m_mapAttrSet.upper_bound(attriIndex); i++, iter++) {
-		if(i == index) {
+	MAPATTRSET::iterator iter = m_mapResultSet.lower_bound(attriIndex);
+	for(int i = 0; iter != m_mapResultSet.upper_bound(attriIndex); i++, iter++) 
+    {
+		if(i == index) 
+        {
 			return iter->second;
 		}
 	}
@@ -48,11 +48,13 @@ void* CClient::getAttributeSet(int attriIndex,int index)
 
 void CClient::deleteAttributeSet(int index) 
 {
-	MAPATTRSET::iterator iter=m_mapAttrSet.lower_bound(index);
-	for (;iter!=m_mapAttrSet.upper_bound(index);) {
+	MAPATTRSET::iterator iter=m_mapResultSet.lower_bound(index);
+	for (;iter!=m_mapResultSet.upper_bound(index);) 
+    {
 		if (iter->second) 
             free (iter->second);
-		m_mapAttrSet.erase(iter++);
+
+		m_mapResultSet.erase(iter++);
 	}
 }
 
@@ -62,7 +64,7 @@ int CClient::callDBProc(AppMsg *pMsg)
 	int nOperationId = 0;
 	if (pMsg != NULL)	
     {
-		nOperationId = CClient::generateOperationId();
+		nOperationId = CClient::GenerateOperationID();
 		pMsg->msgId = C_DOACTION;
 		pMsg->context = CCSRESMSG;
 		if(pDataMsg->m_nTempObjId == 0) 
@@ -80,7 +82,7 @@ int CClient::callDBSQL(AppMsg *pMsg)
 	int nOperationId = 0;
 	if (pMsg != NULL)	
     {
-		nOperationId = CClient::generateOperationId();
+		nOperationId = CClient::GenerateOperationID();
 		CCSResultMsg* pDataMsg = (CCSResultMsg*)pMsg;
 		pMsg->msgId = C_DOSQL;
 		pMsg->context = CCSRESMSG;
@@ -96,25 +98,19 @@ int CClient::callDBSQL(AppMsg *pMsg)
 
 IDBANetEvent* CClient::getDBNetEvent() 
 {
-	return s_pNetEventHandle;
+	return m_queryResultHandle;
 }
 
 void CClient::setDBNetEvent(IDBANetEvent* pNetEventHandle) 
 {
-	s_pNetEventHandle = pNetEventHandle;
+	m_queryResultHandle = pNetEventHandle;
 }
 
-int CClient::generateOperationId() 
+int CClient::GenerateOperationID() 
 {
 	static int nOperationId = 0;
 	nOperationId++;
 	return nOperationId;
-}
-
-bool CClient::closeLink(DWORD dwFlags) 
-{
-    m_netCtrl->Close(dwFlags);
-    return true;
 }
 
 int CClient::addParam(const char* name, const char* value) 
@@ -140,10 +136,8 @@ int CClient::callSPFROMCPP(IDBCallback* call_back)
 	pMsg->m_nLevel = 20;
 	pMsg->msgId = C_SP_FROM_CPP;
 	pMsg->context = CCSRESMSG;
-	pMsg->m_nTempObjId = CClient::generateOperationId();
-	
-	m_callbacks.insert(std::make_pair(pMsg->m_nTempObjId, call_back));
-	
+	pMsg->m_nTempObjId = CClient::GenerateOperationID();
+
     m_netCtrl->Send(pMsg);
 
 	return pMsg->m_nTempObjId;
@@ -151,25 +145,14 @@ int CClient::callSPFROMCPP(IDBCallback* call_back)
 
 void CClient::ConnectResult(HRESULT p_result)
 {
-    if (s_pNetEventHandle)
+    if (m_queryResultHandle)
     {
         bool result = (p_result == S_OK ? true : false);
-        s_pNetEventHandle->onConnected(result);
+        m_queryResultHandle->onConnected(result);
     }
 }
 
 void CClient::Recv(AppMsg* p_appMsg)
-{
-    ParseMsg(p_appMsg);
-}
-
-void CClient::AddQueryResult(CSCResultMsg* pMsg)
-{
-    pMsg->getInit();
-    m_mapAttrSet.insert(std::make_pair(pMsg->m_nTempObjId, pMsg));
-}
-
-void CClient::ParseMsg(AppMsg* p_appMsg)
 {
     CSCResultMsg *pDataMsg = (CSCResultMsg *)p_appMsg;
     switch (pDataMsg->msgId)
@@ -200,4 +183,10 @@ void CClient::ParseMsg(AppMsg* p_appMsg)
             TRACE1_ERROR("CClient::ParseMsg:undef msgID(%i)\n", pDataMsg->msgId);
         }
     }
+}
+
+void CClient::AddQueryResult(CSCResultMsg* pMsg)
+{
+    pMsg->getInit();
+    m_mapResultSet.insert(std::make_pair(pMsg->m_nTempObjId, pMsg));
 }
