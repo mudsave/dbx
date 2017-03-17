@@ -4,8 +4,8 @@ DB_IP = 172.16.2.230
 DB_PORT = 3002
 
 # 后台和前台启动 - 赵国君 30002
-zgj_start: START_PORT=30002
-zgj_start: start_server
+wsf: START_PORT=30002
+wsf: start_server
 
 zgj_session: START_PORT=30002
 zgj_session : start_session
@@ -30,8 +30,14 @@ lj_world: START_PORT=31000
 lj_world : start_world
 lj_fight: START_PORT=31000
 lj_fight : start_fight
+lj_fight1: START_PORT=31000
+lj_fight1 : start_fight1
 lj_social: START_PORT=31000
 lj_social : start_social
+
+lj_session_v:
+	@set -e; ulimit -c 0; \
+	valgrind --log-file=$(WORK_DIR)/vlogs/session_v.txt $(WORK_DIR)/Session -loginAddrL 172.16.2.217:31000 -gateAddrL 172.16.2.217:31001 -worldAddrL 172.16.2.217:31002 -dbAddrC 172.16.4.72:3000
 
 # 后台和前台启动 - 贾伦 32000
 jl_start: START_PORT=32000
@@ -317,6 +323,8 @@ start_server:
 	GCL_PORT=$$((SCL_PORT+3)); \
 	GWL_PORT=$$((SCL_PORT+4)); \
 	set -e; ulimit -c unlimited; \
+	($(WORK_DIR)/dbx 1>$(WORK_DIR)/logs/_dbx.txt 2>&1 & ); \
+	echo "dbx has been runned.."; sleep 2s;\
 	($(WORK_DIR)/Session -loginAddrL $(SERVER_IP):$$SCL_PORT -gateAddrL $(SERVER_IP):$$SGL_PORT -worldAddrL $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) \
 		1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
 	echo "Session has been runned.."; sleep 2s;\
@@ -351,13 +359,23 @@ start_world :
 	SWL_PORT=$$((SCL_PORT+2)); \
 	set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0
+
 start_fight :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
 	set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100
+start_fight1 :
+	@SCL_PORT=$(START_PORT); \
+	SWL_PORT=$$((SCL_PORT+2)); \
+	set -e; ulimit -c unlimited; \
+	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 101
+
 start_social :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
 	set -e; ulimit -c unlimited; \
 	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200
+	#valgrind --tool=memcheck --leak-check=yes $(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0
+
+
