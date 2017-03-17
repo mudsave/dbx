@@ -7,6 +7,7 @@ local function clearParams()
 	end
 end
 --------------------------------------------------------------------
+--[[
 	clearParams()
 	params[1]["spName"] = "sp_UpdatePlayer"
 	params[1]["dataBase"] = 1
@@ -37,3 +38,13 @@ end
 	params[1]["queueIndex"] = 2
 	LuaDBAccess.exeSP(params, true)
 	
+]]
+
+clearParams()
+params[1]["spName"] = "sp_Login"
+params[1]["dataBase"] = 1
+params[1]["sort"] = "account,name,dbid"
+params[1]["account"] = "zgj"
+params[1]["name"] = "1"
+params[1]["dbid"] = 1
+LuaDBAccess.exeSP(params, true)

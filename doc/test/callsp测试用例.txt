@@ -15,3 +15,12 @@ Query p_dbInterfaceID(call sp_LoadFactionExtendSkill(73);).
 
 [15:02:23] DBInterfaceMysql::Query p_dbInterfaceID(call sp_CreateUserTest('ww\0', '1\0');).
 
+脚本代码：
+	clearParams()
+	params[1]["spName"] = "sp_Login"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "account,name,dbid"
+	params[1]["account"] = "zgj"
+	params[1]["name"] = "1"
+	params[1]["dbid"] = 1
+	LuaDBAccess.exeSP(params, true)
