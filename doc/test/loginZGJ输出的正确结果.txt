@@ -1,0 +1,54 @@
+[Lua] function LoginZGJCB
+[Lua] ------------------------start--------------------------------
+[Lua] 11111111111111111111111111111	1
+[Lua] userID	3150
+[Lua] 11111111111111111111111111111	2
+[Lua] remouldAttr	
+[Lua] showDrama	0
+[Lua] modelID	4
+[Lua] now()	2017-03-17 14:58:12
+[Lua] itemID	0
+[Lua] name	j1
+[Lua] ID	3839
+[Lua] level	50
+[Lua] school	5
+[Lua] showParts	{1,1}
+[Lua] 11111111111111111111111111111	3
+[Lua] remouldAttr	
+[Lua] showDrama	0
+[Lua] modelID	10
+[Lua] now()	2017-03-17 14:58:12
+[Lua] itemID	0
+[Lua] name	ff2
+[Lua] ID	4391
+[Lua] level	30
+[Lua] school	4
+[Lua] showParts	{1,1}
+[Lua] 11111111111111111111111111111	4
+[Lua] remouldAttr	nil
+[Lua] showDrama	0
+[Lua] modelID	12
+[Lua] now()	2017-03-17 14:58:12
+[Lua] itemID	2001085
+[Lua] name	ff15
+[Lua] ID	4394
+[Lua] level	7
+[Lua] school	6
+[Lua] showParts	{1,1}
+[Lua] 11111111111111111111111111111	5
+[Lua] remouldAttr	
+[Lua] showDrama	1
+[Lua] modelID	6
+[Lua] now()	2017-03-17 14:58:12
+[Lua] itemID	0
+[Lua] name	gerewee
+[Lua] ID	5056
+[Lua] level	1
+[Lua] school	3
+[Lua] showParts	{1,1}
+[Lua] 22222222222222222222222 no table
+[Lua] _result	0
+[Lua] 22222222222222222222222 no table
+[Lua] _operationID	7
+[Lua] -------------------------------end------------------------------
+
