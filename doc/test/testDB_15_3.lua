@@ -36,7 +36,7 @@ end
 	params[1]["sort"] = "rID"
 	params[1]["rID"] = -1	
 	params[1]["queueIndex"] = 2
-	LuaDBAccess.exeSP(params, true)
+	LuaDBAccess.exeSP(params, true)	--第二个参数是noCallback的意思，true表示不需要回调
 	
 ]]
 
@@ -47,4 +47,4 @@ params[1]["sort"] = "account,name,dbid"
 params[1]["account"] = "zgj"
 params[1]["name"] = "1"
 params[1]["dbid"] = 1
-LuaDBAccess.exeSP(params, true)
+LuaDBAccess.exeSP(params, false)
