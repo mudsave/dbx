@@ -13,6 +13,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xml", "..\lib\xml\xml.vcxpr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbClient", "..\dbClient\dbClient.vcxproj", "{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Session", "..\Session\Session.vcxproj", "{672660E9-996A-47E5-9330-DA1EE210082B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World", "..\World\World.vcxproj", "{043EE18F-9BE9-4B74-92D6-AA9798229F43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -35,6 +39,14 @@ Global
 		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Debug|Win32.Build.0 = Debug|Win32
 		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Release|Win32.ActiveCfg = Release|Win32
 		{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}.Release|Win32.Build.0 = Release|Win32
+		{672660E9-996A-47E5-9330-DA1EE210082B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{672660E9-996A-47E5-9330-DA1EE210082B}.Debug|Win32.Build.0 = Debug|Win32
+		{672660E9-996A-47E5-9330-DA1EE210082B}.Release|Win32.ActiveCfg = Release|Win32
+		{672660E9-996A-47E5-9330-DA1EE210082B}.Release|Win32.Build.0 = Release|Win32
+		{043EE18F-9BE9-4B74-92D6-AA9798229F43}.Debug|Win32.ActiveCfg = Debug|Win32
+		{043EE18F-9BE9-4B74-92D6-AA9798229F43}.Debug|Win32.Build.0 = Debug|Win32
+		{043EE18F-9BE9-4B74-92D6-AA9798229F43}.Release|Win32.ActiveCfg = Release|Win32
+		{043EE18F-9BE9-4B74-92D6-AA9798229F43}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

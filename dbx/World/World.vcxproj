@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{043EE18F-9BE9-4B74-92D6-AA9798229F43}</ProjectGuid>
+    <RootNamespace>World</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/tools/dbClient/inc;../../server/codes/share;../../share;../../server/codes/world/inc;../../server\codes\lua\include;../../server\codes\tolua++\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\server\codes\world\inc\DataChunk.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\dbProxy.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\Entity.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\GridGraphics.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\GUID.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\LinkContext.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\LuaArray.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\LuaEngine.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\LuaFunctor.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\MapInfo.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\MapManager.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\MoveManager.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\PathFinder.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\PropertySet.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\PropertyUtils.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\RPCEngine.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\Scene.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\SceneCoord.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\ScriptTimer.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\UnitConfig.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\Variant.h" />
+    <ClInclude Include="..\..\server\codes\world\inc\world.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\server\codes\world\src\api4lua.pkg.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\DataChunk.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\dbProxy.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\Entity.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\EntityImpl_Move.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\GridGraphics.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\GUID.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\luaiconv.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\luaprofile.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\main.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\MapInfo.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\MapManager.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\MoveManager.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\PropertyUtils.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\RPCEngine.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\Scene.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\SceneCoord.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\ScriptTimer.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\UnitConfig.cpp" />
+    <ClCompile Include="..\..\server\codes\world\src\world.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
