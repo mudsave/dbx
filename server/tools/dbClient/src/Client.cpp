@@ -58,22 +58,6 @@ void CClient::deleteAttributeSet(int index)
 	}
 }
 
-int CClient::callSPFROMCPP()
-{
-    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
-
-    pMsg->m_spId = 0;
-    pMsg->m_bNeedCallback = true;
-    pMsg->m_nLevel = 20;
-    pMsg->msgId = C_DOACTION;
-    pMsg->context = CCSRESMSG;
-    pMsg->m_nTempObjId = CClient::GenerateOperationID();
-
-    m_netCtrl->Send(pMsg);
-
-    return pMsg->m_nTempObjId;
-}
-
 int CClient::callDBProc(CSCResultMsg *pMsg)
 {
 
@@ -120,22 +104,6 @@ int CClient::GenerateOperationID()
 	nOperationId++;
 	return nOperationId;
 }
-
-int CClient::addParam(const char* name, const char* value) 
-{
-	m_msgBuilder.addAttribute(name, value, strlen(value));
-}
-
-int CClient::addParam(const char* name, int value) 
-{
-	m_msgBuilder.addAttribute(name, &value, PARAMINT);
-}
-
-void CClient::buildQuery(){
-	m_msgBuilder.beginMessage();
-}
-
-
 
 void CClient::ConnectResult(HRESULT p_result)
 {

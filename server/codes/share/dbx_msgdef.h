@@ -441,6 +441,16 @@ public:
         }
     }
 
+    void addQueryParam(const char* name, const char* value)
+    {
+        addAttribute(name, value, strlen(value));
+    }
+
+    void addQueryParam(const char* name, int value)
+    {
+        addAttribute(name, &value, PARAMINT);
+    }
+
     int getParamLen()
     {
         int param_count = params.size();

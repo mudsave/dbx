@@ -19,7 +19,6 @@ public:
 
     int callDBProc(CSCResultMsg *pMsg);
 	int callDBSQL(AppMsg *pMsg);
-	virtual int callSPFROMCPP();
 
     static IDBANetEvent* getDBNetEvent();
 	static void setDBNetEvent(IDBANetEvent* pNetEventHandle);
@@ -29,10 +28,6 @@ public:
 
     void ConnectResult(HRESULT p_result);
     void Recv(AppMsg* p_appMsg);
-
-    virtual void buildQuery();
-    virtual int addParam(const char*, const char*);
-    virtual int addParam(const char*, int);
 
 private:
     static int GenerateOperationID();

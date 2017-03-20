@@ -43,20 +43,17 @@ void CDBProxy::onExeDBProc(int operId, IInitClient* pClient, bool result)
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 {
-	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 
     m_msgBuilder.beginMessage();
-    const char *strValue = "sp_Login";
-    m_msgBuilder.addAttribute("spName", strValue, strlen(strValue));
-    int value = 1;
-    m_msgBuilder.addAttribute("dataBase", &value, PARAMINT);
-    m_msgBuilder.addAttribute("usn", userName, strlen(userName));
-    m_msgBuilder.addAttribute("pwd", passWord, strlen(passWord));
-    value = 5;
-    m_msgBuilder.addAttribute("offTime", &value, PARAMINT);
-    strValue = "usn,pwd,offTime";
-    m_msgBuilder.addAttribute("sort", strValue, strlen(strValue));
+    m_msgBuilder.addQueryParam("spName", "sp_Login");
+    m_msgBuilder.addQueryParam("dataBase", 1);
+    m_msgBuilder.addQueryParam("usn", userName);
+    m_msgBuilder.addQueryParam("pwd", passWord);
+    m_msgBuilder.addQueryParam("offTime", 5);
+    m_msgBuilder.addQueryParam("sort", "usn,pwd,offTime");
     CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
@@ -216,20 +213,26 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
 
 void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
 {
-	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-	query_client->buildQuery();
-	query_client->addParam("spName", "sp_CreateUserTest");
-    query_client->addParam("dataBase", 1);
-	query_client->addParam("usn", userName);
-	query_client->addParam("pwd", passWord);
-	query_client->addParam("sort", "usn,pwd");
-	int operId = query_client->callSPFROMCPP();
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+
+    m_msgBuilder.beginMessage();
+    m_msgBuilder.addQueryParam("spName", "sp_CreateUserTest");
+    m_msgBuilder.addQueryParam("dataBase", 1);
+    m_msgBuilder.addQueryParam("usn", userName);
+    m_msgBuilder.addQueryParam("pwd", passWord);
+    m_msgBuilder.addQueryParam("sort", "usn,pwd");
+    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+
+    pMsg->m_spId = 0;
+    pMsg->m_bNeedCallback = true;
+    pMsg->m_nLevel = 20;
+    int operId = query_client->callDBProc(pMsg);
+
 	_DBStoreContext context;
 	context.storeType = eStoreCreateAccount;
 	context.hLink = hLink;
 	context.accountName = userName;
 	m_mapDBStore.insert(std::make_pair(operId, context));
-
 }
 
 void CDBProxy::doCreateAccountResult(int operId, handle hLink, std::string accountName)
@@ -254,18 +257,25 @@ void CDBProxy::doCreateAccountResult(int operId, handle hLink, std::string accou
 
 void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo* pRoleInfo)
 {
-	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-	query_client->buildQuery();
-	query_client->addParam("spName", "sp_CreatePlayerTest");
-	query_client->addParam("dataBase", 1);
-	query_client->addParam("playerName", pRoleInfo->roleName);
-	query_client->addParam("sex", (int)pRoleInfo->sex);
-	query_client->addParam("school", (int)pRoleInfo->school);
-	query_client->addParam("modleID", (int)pRoleInfo->modelId);
-	query_client->addParam("showParts", pRoleInfo->showParts);
-	query_client->addParam("userId",accountId);//
-	query_client->addParam("sort", "playerName,sex,userId,school,modleID,showParts");
-	int operId = query_client->callSPFROMCPP();
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+
+    m_msgBuilder.beginMessage();
+    m_msgBuilder.addQueryParam("spName", "sp_CreatePlayerTest");
+    m_msgBuilder.addQueryParam("dataBase", 1);
+    m_msgBuilder.addQueryParam("playerName", pRoleInfo->roleName);
+    m_msgBuilder.addQueryParam("sex", (int)pRoleInfo->sex);
+    m_msgBuilder.addQueryParam("school", (int)pRoleInfo->school);
+    m_msgBuilder.addQueryParam("modleID", (int)pRoleInfo->modelId);
+    m_msgBuilder.addQueryParam("showParts", pRoleInfo->showParts);
+    m_msgBuilder.addQueryParam("userId", accountId);
+    m_msgBuilder.addQueryParam("sort", "playerName,sex,userId,school,modleID,showParts");
+    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+
+    pMsg->m_spId = 0;
+    pMsg->m_bNeedCallback = true;
+    pMsg->m_nLevel = 20;
+    int operId = query_client->callDBProc(pMsg);
+
 	_DBStoreContext context;
 	context.storeType = eStoreCreateRole;
 	context.hLink = hLink;
@@ -294,14 +304,21 @@ void CDBProxy::doCreateRoleResult(int operId, handle hLink)
 
 void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
 {
-	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-	query_client->buildQuery();
-	query_client->addParam("spName", "sp_DeletePlayerTest");
-	query_client->addParam("dataBase", 1);
-	query_client->addParam("userID", accountId);
-	query_client->addParam("roleID", roleId);
-	query_client->addParam("sort", "userID,roleID");
-	int operId = query_client->callSPFROMCPP();
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+
+    m_msgBuilder.beginMessage();
+    m_msgBuilder.addQueryParam("spName", "sp_DeletePlayerTest");
+    m_msgBuilder.addQueryParam("dataBase", 1);
+    m_msgBuilder.addQueryParam("userID", accountId);
+    m_msgBuilder.addQueryParam("roleID", roleId);
+    m_msgBuilder.addQueryParam("sort", "userID,roleID");
+    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+
+    pMsg->m_spId = 0;
+    pMsg->m_bNeedCallback = true;
+    pMsg->m_nLevel = 20;
+    int operId = query_client->callDBProc(pMsg);
+
 	_DBStoreContext context;
 	context.storeType = eStoreDeleteRole;
 	context.hLink = hLink;
@@ -330,13 +347,20 @@ void CDBProxy::doDeleteRoleResult(int operId, handle hLink)
 
 void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
 {
-	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-	query_client->buildQuery();
-	query_client->addParam("spName", "sp_CheckPlayerTest");
-	query_client->addParam("dataBase", 1);
-	query_client->addParam("playerName", pRoleName);
-	query_client->addParam("sort", "playerName");
-	int operId = query_client->callSPFROMCPP();
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+
+    m_msgBuilder.beginMessage();
+    m_msgBuilder.addQueryParam("spName", "sp_CheckPlayerTest");
+    m_msgBuilder.addQueryParam("dataBase", 1);
+    m_msgBuilder.addQueryParam("playerName", pRoleName);
+    m_msgBuilder.addQueryParam("sort", "playerName");
+    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+
+    pMsg->m_spId = 0;
+    pMsg->m_bNeedCallback = true;
+    pMsg->m_nLevel = 20;
+    int operId = query_client->callDBProc(pMsg);
+
 	_DBStoreContext context;
 	context.storeType = eStoreCheckRole;
 	context.hLink = hLink;
