@@ -86,7 +86,7 @@ private:
 
     void PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const char *p_description);
 
-    DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
+    DbxMessageBuilder<CSCResultMsg> m_msgBuilder;
 };
 
 extern CDBProxy g_DBProxy;

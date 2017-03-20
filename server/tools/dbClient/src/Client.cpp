@@ -65,7 +65,7 @@ int CClient::callSPFROMCPP()
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
-    pMsg->msgId = C_SP_FROM_CPP;
+    pMsg->msgId = C_DOACTION;
     pMsg->context = CCSRESMSG;
     pMsg->m_nTempObjId = CClient::GenerateOperationID();
 
@@ -76,21 +76,13 @@ int CClient::callSPFROMCPP()
 
 int CClient::callDBProc(CSCResultMsg *pMsg)
 {
-	CCSResultMsg* pDataMsg = (CCSResultMsg*)pMsg;
-	int nOperationId = 0;
-	if (pMsg != NULL)	
-    {
-		nOperationId = CClient::GenerateOperationID();
-		pMsg->msgId = C_DOACTION;
-		pMsg->context = CCSRESMSG;
-		if(pDataMsg->m_nTempObjId == 0) 
-            pDataMsg->m_nTempObjId = nOperationId;
-		else
-			nOperationId = pDataMsg->m_nTempObjId;
 
-        m_netCtrl->Send(pMsg);
-	}
-	return nOperationId;
+	pMsg->msgId = C_DOACTION;
+	pMsg->context = CCSRESMSG;
+    pMsg->m_nTempObjId = CClient::GenerateOperationID();
+    m_netCtrl->Send(pMsg);
+
+    return pMsg->m_nTempObjId;
 }
 
 int CClient::callDBSQL(AppMsg *pMsg) 

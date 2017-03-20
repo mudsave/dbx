@@ -45,7 +45,6 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 {
 	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 
-    /*
     m_msgBuilder.beginMessage();
     const char *strValue = "sp_Login";
     m_msgBuilder.addAttribute("spName", strValue, strlen(strValue));
@@ -57,20 +56,11 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
     m_msgBuilder.addAttribute("offTime", &value, PARAMINT);
     strValue = "usn,pwd,offTime";
     m_msgBuilder.addAttribute("sort", strValue, strlen(strValue));
-    CCSResultMsg* pMsg = m_msgBuilder.finishMessage();
+    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+    pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
-    int operId = query_client->callDBProc((AppMsg *)pMsg);
-    */
-
-	query_client->buildQuery();
-	query_client->addParam("spName", "sp_Login");
-	query_client->addParam("dataBase", 1);
-	query_client->addParam("usn", userName);
-	query_client->addParam("pwd", passWord);
-	query_client->addParam("offTime", 5);
-	query_client->addParam("sort", "usn,pwd,offTime");
-
-	int operId = query_client->callSPFROMCPP();
+    pMsg->m_nLevel = 20;
+    int operId = query_client->callDBProc(pMsg);
 
 	_DBStoreContext storeContext;
 	storeContext.storeType = eStoreLogin;
