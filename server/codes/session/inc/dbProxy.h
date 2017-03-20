@@ -12,7 +12,6 @@
 #include "MsgDefine.h"
 #include "IDBAClient.h"
 #include "Client.h"
-#include "IDBARecordSet.h"
 #include "dbmsg.h"
 
 #define	 MAXRESNUM 100

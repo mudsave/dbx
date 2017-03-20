@@ -11,7 +11,6 @@
 #include "session.h"
 #include "dbProxy.h"
 
-IInitDBARecordSet* g_recordSet = NULL;
 IInitClient* g_pDBAClient = NULL;
 
 CDBProxy::CDBProxy(void)
@@ -27,7 +26,6 @@ CDBProxy::~CDBProxy(void)
 void CDBProxy::init(const char* dbIp, int dbPort)
 {
 	g_pDBAClient = CreateClient(this, dbIp, dbPort);
-	g_recordSet = CreateDBARecordSet();
 }
 
 void CDBProxy::onExeDBProc(int operId, IInitClient* pClient, bool result)

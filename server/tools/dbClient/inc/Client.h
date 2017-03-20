@@ -40,7 +40,5 @@ private:
 	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
 	MAPATTRSET m_mapResultSet;
 
-	DbxMessageBuilder<CSCResultMsg> m_msgBuilder;
-
     NetCtrl *m_netCtrl;
 };
