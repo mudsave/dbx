@@ -77,6 +77,9 @@ public:
 
 	typedef std::map<int, _DBStoreContext> DBSTOREMAP;
 	DBSTOREMAP m_mapDBStore;
+
+private:
+    void doLoginResult(int operId, handle hLink);
 };
 
 extern CDBProxy g_DBProxy;

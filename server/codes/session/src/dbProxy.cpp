@@ -68,7 +68,7 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 
 	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 	onDBReturn(operId, ErrorCode,rd_indexs);
-	query_client->deleteAttributeSet(operId);
+	//query_client->deleteAttributeSet(operId);
 }
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
@@ -87,6 +87,117 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 	storeContext.hLink = hLink;
 	printf("userName = %s, passWord = %s\n",userName, passWord);
 	m_mapDBStore.insert(std::make_pair(operId, storeContext));
+}
+
+void CDBProxy::doLoginResult(int operId, handle hLink)
+{
+    TRACE0_L0("CDBProxy::doLoginResult:wsf.....");
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+    CSCResultMsg* resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 0);
+
+    // 从第一个结果集取accountId
+    void *attr = NULL;
+    PType valueType;
+    char *attrName = NULL;
+    resultSet->getAttribute(attrName, valueType, attr, 0, 0);
+    safeDelete(attrName);
+
+    DBMsg_LoginResult* pRoleMsg = DBMsg_LoginResult::CreateLoginResult();
+    pRoleMsg->actionType = DB_MSG_LOGIN;
+    pRoleMsg->accountId = *((int *)attr);
+    if (pRoleMsg->accountId == 0)
+        pRoleMsg->ret = 1;
+    else
+        pRoleMsg->ret = 0;
+
+    // 从第二个结果集开始处理
+    for (int i = 1;; ++i)
+    {
+        resultSet = (CSCResultMsg*)query_client->getAttributeSet(i);
+        if (resultSet == NULL)
+        {
+            TRACE1_L0("CDBProxy::doLoginResult:result set %i is null for end.\n", i);
+            break;
+        }
+
+        int maxRows = resultSet->getAttributeRows();
+        int cols = resultSet->getAttributeCols();
+        for (int row = 0; row < maxRows; ++row)
+        {
+            for (int col = 0; col < cols; ++col)
+            {
+                resultSet->getAttribute(attrName, valueType, attr, 0, 0);
+                safeDelete(attrName);
+                if (attr == NULL)
+                    break;
+
+                switch (col)
+                {
+                    case 0:
+                    {
+                        int roleID = *(int*)attr;
+                        pRoleMsg->role[i].roleId = roleID;
+                        break;
+                    }
+                    case 1:
+                    {
+                        int len = valueType;
+                        strncpy(pRoleMsg->role[i].name, (char*)attr, len);
+                        pRoleMsg->role[i].name[len] = '\0';
+                        break;
+                    }
+                    case 2:
+                    {
+                        short level = (short)*(int*)attr;
+                        pRoleMsg->role[i].level = level;
+                        break;
+                    }
+                    case 3:
+                    {
+                        short school = (short)*(int*)attr;
+                        pRoleMsg->role[i].school = school;
+                        break;
+                    }
+                    case 4:
+                    {
+                        if (valueType == PARAMINT)
+                        {
+                            int modelID = (int)*(int*)attr;
+                            pRoleMsg->role[i].modelId = modelID;
+                        }
+                        else if (valueType == PARAMFLOAT)
+                        {
+                            int modelID = (int)*(float*)attr;
+                            pRoleMsg->role[i].modelId = modelID;
+                        }
+                        break;
+                    }
+                    case 5:
+                    {
+                        int len = valueType;
+                        strncpy(pRoleMsg->role[i].showPart, (char*)attr, len);
+                        pRoleMsg->role[i].showPart[len] = '\0';
+                        break;
+                    }
+                    case 6:
+                    {
+                        int weaponID = *(int*)attr;
+                        pRoleMsg->role[i].weaponID = weaponID;
+                        break;
+                    }
+                    case 7:
+                    {
+                        int len = valueType;
+                        strncpy(pRoleMsg->role[i].remouldAttr, (char*)attr, len);
+                        pRoleMsg->role[i].remouldAttr[len] = '\0';
+                        break;
+                    }
+                }   // end switch
+
+            }
+        }
+    }
+    g_session.OnDBReturn(pRoleMsg, hLink);
 }
 
 void CDBProxy::doLoginResult(int operId, std::list<int>&record_indexs, handle hLink)
@@ -406,7 +517,7 @@ void CDBProxy::onDBReturn(int operId,int errorCode, std::list<int>&record_indexs
 	switch(storeType)
 	{
 		case eStoreLogin:
-			doLoginResult(operId, record_indexs, it->second.hLink);
+			doLoginResult(operId, it->second.hLink);
 			break;
 		case eStoreCreateAccount:
 			doCreateAccountResult(operId, record_indexs, it->second.hLink, it->second.accountName);
@@ -424,6 +535,8 @@ void CDBProxy::onDBReturn(int operId,int errorCode, std::list<int>&record_indexs
 			TRACE1_L0("no this type,type = %d\n",storeType);
 			break;
 	}
+    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+    query_client->deleteAttributeSet(operId);
 }
 
 HRESULT CDBProxy::Do(HANDLE hContext)
