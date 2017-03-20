@@ -52,19 +52,14 @@ public:
 
 public:
 	void doLogin(char* userName, char* password, handle hLink);
-	void doLoginResult(int operId, std::list<int>&record_indexs, handle hLink);
 	
 	void doCreateAccount(char* userName, char* password, handle hLink);
-	void doCreateAccountResult(int operId, std::list<int>&record_indexs, handle hLink, std::string accountName);
 
 	void doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo* roleInfo);
-	void doCreateRoleResult(int operId, std::list<int>&record_indexs, handle hLink);
 
 	void doDeleteRole(int accountId, int roleId, handle hLink);
-	void doDeleteRoleResult(int operId, std::list<int>&record_indexs, handle hLink);
 
 	void doCheckRoleName(char* roleName, handle hLink);
-	void doCheckRoleNameResult(int operId, std::list<int>&record_indexs, handle hLink);
 public:
 	struct _DBStoreContext
 	{
@@ -80,6 +75,16 @@ public:
 
 private:
     void doLoginResult(int operId, handle hLink);
+
+    void doCreateAccountResult(int operId, handle hLink, std::string accountName);
+
+    void doCreateRoleResult(int operId, handle hLink);
+
+    void doDeleteRoleResult(int operId, handle hLink);
+
+    void doCheckRoleNameResult(int operId, handle hLink);
+
+    void PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const char *p_description);
 };
 
 extern CDBProxy g_DBProxy;
