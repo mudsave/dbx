@@ -34,41 +34,10 @@ void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
 {
 	if (!pClient)
 		return;
-	int ErrorCode = 0;
-	if (!result) ErrorCode = -1;
-	int record_index = 0;
-	int record_set_index = 0;
-	int tmp_index = 0;
-	char* tmp_name = NULL;
-	int tmp_param_type = 0;
-	void* tmp_value = NULL;
 
-	std::list<int> rd_indexs;
-	IRecordSetManager* record_mgr = g_recordSet->getIRecordSetManager();
-	for (int j=0; j < MAXRESNUM-1; j++)
-	{
-		CSCResultMsg* pTemp = (CSCResultMsg*)pClient->getAttributeSet(operId, j);
-		if (!pTemp)
-			break;
-		int row_count = pTemp->getAttributeRows();
-		int field_count = pTemp->getAttributeCols();
-		// printf("rs%d:rows: %d, colums: %d\n", j, row_count, field_count);
-		IRecordSet* set = record_mgr->newRecordSet(&record_set_index);
-		rd_indexs.push_back(record_set_index);
-		for(int row_idx = 0; row_idx < row_count; row_idx++)
-		{
-			IRecord* record = set->newRecord(&record_index);
-			for(int field_idx = 0; field_idx < field_count; field_idx++){
-				pTemp->getAttribute(tmp_name, tmp_param_type, tmp_value, field_idx, row_idx);
-				record->newAttribute(tmp_param_type, tmp_value, &tmp_index, tmp_name);
-				free(tmp_name);
-			}
-		}
-	}
+    int ErrorCode = result? 0 : -1;
 
-	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-	onDBReturn(operId, ErrorCode,rd_indexs);
-	//query_client->deleteAttributeSet(operId);
+	onDBReturn(operId, ErrorCode);
 }
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
@@ -81,7 +50,7 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 	query_client->addParam("pwd", passWord);
 	query_client->addParam("offTime", 5);
 	query_client->addParam("sort", "usn,pwd,offTime");
-	int operId = query_client->callSPFROMCPP((IDBCallback*)this);
+	int operId = query_client->callSPFROMCPP();
 	_DBStoreContext storeContext;
 	storeContext.storeType = eStoreLogin;
 	storeContext.hLink = hLink;
@@ -243,7 +212,7 @@ void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
 	query_client->addParam("usn", userName);
 	query_client->addParam("pwd", passWord);
 	query_client->addParam("sort", "usn,pwd");
-	int operId = query_client->callSPFROMCPP((IDBCallback*)this);
+	int operId = query_client->callSPFROMCPP();
 	_DBStoreContext context;
 	context.storeType = eStoreCreateAccount;
 	context.hLink = hLink;
@@ -285,7 +254,7 @@ void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo*
 	query_client->addParam("showParts", pRoleInfo->showParts);
 	query_client->addParam("userId",accountId);//
 	query_client->addParam("sort", "playerName,sex,userId,school,modleID,showParts");
-	int operId = query_client->callSPFROMCPP((IDBCallback*)this);
+	int operId = query_client->callSPFROMCPP();
 	_DBStoreContext context;
 	context.storeType = eStoreCreateRole;
 	context.hLink = hLink;
@@ -321,7 +290,7 @@ void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
 	query_client->addParam("userID", accountId);
 	query_client->addParam("roleID", roleId);
 	query_client->addParam("sort", "userID,roleID");
-	int operId = query_client->callSPFROMCPP((IDBCallback*)this);
+	int operId = query_client->callSPFROMCPP();
 	_DBStoreContext context;
 	context.storeType = eStoreDeleteRole;
 	context.hLink = hLink;
@@ -356,7 +325,7 @@ void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
 	query_client->addParam("dataBase", 1);
 	query_client->addParam("playerName", pRoleName);
 	query_client->addParam("sort", "playerName");
-	int operId = query_client->callSPFROMCPP((IDBCallback*)this);
+	int operId = query_client->callSPFROMCPP();
 	_DBStoreContext context;
 	context.storeType = eStoreCheckRole;
 	context.hLink = hLink;
@@ -389,7 +358,7 @@ void CDBProxy::onConnected(bool result)
 		TRACE0_L0("conncet DB fail\n");
 }
 
-void CDBProxy::onDBReturn(int operId,int errorCode, std::list<int>&record_indexs)
+void CDBProxy::onDBReturn(int operId,int errorCode)
 {
 	DBSTOREMAP::iterator it = m_mapDBStore.find(operId);
 	if( it == m_mapDBStore.end() )

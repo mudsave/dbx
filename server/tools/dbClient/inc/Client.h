@@ -19,7 +19,7 @@ public:
 
 	int callDBProc(AppMsg *pMsg);
 	int callDBSQL(AppMsg *pMsg);
-	virtual int callSPFROMCPP(IDBCallback*);
+	virtual int callSPFROMCPP();
 
     static IDBANetEvent* getDBNetEvent();
 	static void setDBNetEvent(IDBANetEvent* pNetEventHandle);

@@ -127,7 +127,7 @@ void CClient::buildQuery(){
 	m_msgBuilder.beginMessage();
 }
 
-int CClient::callSPFROMCPP(IDBCallback* call_back) 
+int CClient::callSPFROMCPP() 
 {
 	CCSResultMsg* pMsg = m_msgBuilder.finishMessage();
 	

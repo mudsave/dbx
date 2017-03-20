@@ -31,7 +31,6 @@ extern IInitClient* g_pDBAClient;
 
 class CDBProxy :
 	public IDBANetEvent,
-	public IDBCallback,
     public ITask
 {
 public:
@@ -46,7 +45,7 @@ public:
 public:
 	
 	void onExeDBProc_tocpp(int operId,IInitClient* pInitClient,bool result);
-	void onDBReturn(int operId,int errorCode, std::list<int>&record_indexs);
+	
 	void onConnected(bool result);
     virtual HRESULT Do(HANDLE hContext);
 
@@ -74,6 +73,8 @@ public:
 	DBSTOREMAP m_mapDBStore;
 
 private:
+    void onDBReturn(int operId, int errorCode);
+
     void doLoginResult(int operId, handle hLink);
 
     void doCreateAccountResult(int operId, handle hLink, std::string accountName);

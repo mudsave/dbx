@@ -5,11 +5,6 @@
 #include <list>
 
 
-class IDBCallback{
-public:
-	virtual void onDBReturn(int, int, std::list<int>&) = 0;
-};
-
 struct AppMsg;
 class IInitClient;
 class IDBANetEvent
