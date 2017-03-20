@@ -17,7 +17,7 @@ public:
 
 	void ConnectDBX(std::string p_serverAddr, int p_port);
 
-	int callDBProc(AppMsg *pMsg);
+    int callDBProc(CSCResultMsg *pMsg);
 	int callDBSQL(AppMsg *pMsg);
 	virtual int callSPFROMCPP();
 
@@ -45,7 +45,7 @@ private:
 	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
 	MAPATTRSET m_mapResultSet;
 
-	DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
+	DbxMessageBuilder<CSCResultMsg> m_msgBuilder;
 
     NetCtrl *m_netCtrl;
 };

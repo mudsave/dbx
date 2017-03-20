@@ -58,7 +58,23 @@ void CClient::deleteAttributeSet(int index)
 	}
 }
 
-int CClient::callDBProc(AppMsg *pMsg) 
+int CClient::callSPFROMCPP()
+{
+    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+
+    pMsg->m_spId = 0;
+    pMsg->m_bNeedCallback = true;
+    pMsg->m_nLevel = 20;
+    pMsg->msgId = C_SP_FROM_CPP;
+    pMsg->context = CCSRESMSG;
+    pMsg->m_nTempObjId = CClient::GenerateOperationID();
+
+    m_netCtrl->Send(pMsg);
+
+    return pMsg->m_nTempObjId;
+}
+
+int CClient::callDBProc(CSCResultMsg *pMsg)
 {
 	CCSResultMsg* pDataMsg = (CCSResultMsg*)pMsg;
 	int nOperationId = 0;
@@ -127,21 +143,7 @@ void CClient::buildQuery(){
 	m_msgBuilder.beginMessage();
 }
 
-int CClient::callSPFROMCPP() 
-{
-	CCSResultMsg* pMsg = m_msgBuilder.finishMessage();
-	
-	pMsg->m_spId = 0;
-	pMsg->m_bNeedCallback = true;
-	pMsg->m_nLevel = 20;
-	pMsg->msgId = C_SP_FROM_CPP;
-	pMsg->context = CCSRESMSG;
-	pMsg->m_nTempObjId = CClient::GenerateOperationID();
 
-    m_netCtrl->Send(pMsg);
-
-	return pMsg->m_nTempObjId;
-}
 
 void CClient::ConnectResult(HRESULT p_result)
 {
@@ -155,34 +157,9 @@ void CClient::ConnectResult(HRESULT p_result)
 void CClient::Recv(AppMsg* p_appMsg)
 {
     CSCResultMsg *pDataMsg = (CSCResultMsg *)p_appMsg;
-    switch (pDataMsg->msgId)
-    {
-        case S_DOACTION_RESULT:
-        {
-            AddQueryResult(pDataMsg);
-            if (pDataMsg->m_bEnd)
-            {
-                TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc...\n");
-                getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, this, true);
-            }
-            break;
-        }
-        case S_SP_CPP_RESULT:
-        {
-            AddQueryResult(pDataMsg);
-            if (pDataMsg->m_bEnd)
-            {
-                getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, this, true);
-                TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc_tocpp...\n");
-                getDBNetEvent()->onExeDBProc_tocpp(pDataMsg->m_nTempObjId, this, true);
-            }
-            break;
-        }
-        default:
-        {
-            TRACE1_ERROR("CClient::ParseMsg:undef msgID(%i)\n", pDataMsg->msgId);
-        }
-    }
+    AddQueryResult(pDataMsg);
+    if (pDataMsg->m_bEnd)
+        getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, this, true);
 }
 
 void CClient::AddQueryResult(CSCResultMsg* pMsg)

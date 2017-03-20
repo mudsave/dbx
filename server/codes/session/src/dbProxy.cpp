@@ -30,19 +30,38 @@ void CDBProxy::init(const char* dbIp, int dbPort)
 	g_recordSet = CreateDBARecordSet();
 }
 
-void CDBProxy::onExeDBProc_tocpp(int operId, IInitClient* pClient, bool result)
+void CDBProxy::onExeDBProc(int operId, IInitClient* pClient, bool result)
 {
-	if (!pClient)
-		return;
+    TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc_tocpp...\n");
+    if (!pClient)
+        return;
 
-    int ErrorCode = result? 0 : -1;
+    int ErrorCode = result ? 0 : -1;
 
-	onDBReturn(operId, ErrorCode);
+    onDBReturn(operId, ErrorCode);
 }
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 {
 	CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
+
+    /*
+    m_msgBuilder.beginMessage();
+    const char *strValue = "sp_Login";
+    m_msgBuilder.addAttribute("spName", strValue, strlen(strValue));
+    int value = 1;
+    m_msgBuilder.addAttribute("dataBase", &value, PARAMINT);
+    m_msgBuilder.addAttribute("usn", userName, strlen(userName));
+    m_msgBuilder.addAttribute("pwd", passWord, strlen(passWord));
+    value = 5;
+    m_msgBuilder.addAttribute("offTime", &value, PARAMINT);
+    strValue = "usn,pwd,offTime";
+    m_msgBuilder.addAttribute("sort", strValue, strlen(strValue));
+    CCSResultMsg* pMsg = m_msgBuilder.finishMessage();
+    pMsg->m_bNeedCallback = true;
+    int operId = query_client->callDBProc((AppMsg *)pMsg);
+    */
+
 	query_client->buildQuery();
 	query_client->addParam("spName", "sp_Login");
 	query_client->addParam("dataBase", 1);
@@ -50,7 +69,9 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 	query_client->addParam("pwd", passWord);
 	query_client->addParam("offTime", 5);
 	query_client->addParam("sort", "usn,pwd,offTime");
+
 	int operId = query_client->callSPFROMCPP();
+
 	_DBStoreContext storeContext;
 	storeContext.storeType = eStoreLogin;
 	storeContext.hLink = hLink;

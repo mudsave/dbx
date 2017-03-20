@@ -43,8 +43,7 @@ public:
 	void init(const char* dbIp, int dbPort);
 
 public:
-	
-	void onExeDBProc_tocpp(int operId,IInitClient* pInitClient,bool result);
+    void onExeDBProc(int id, IInitClient* pInitClient, bool result);
 	
 	void onConnected(bool result);
     virtual HRESULT Do(HANDLE hContext);
@@ -86,6 +85,8 @@ private:
     void doCheckRoleNameResult(int operId, handle hLink);
 
     void PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const char *p_description);
+
+    DbxMessageBuilder<CCSResultMsg> m_msgBuilder;
 };
 
 extern CDBProxy g_DBProxy;
