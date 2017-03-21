@@ -28,18 +28,9 @@ public:
 	virtual int callDBSQL(AppMsg *pMsg)=0;
 };
 
-#ifdef WIN32
-#ifdef DBACLIENT_EXPORTS
-#define DBACLIENT_API __declspec(dllexport)  
-#else
-#define DBACLIENT_API __declspec(dllimport) 
-#endif
-#else
+
 #define DBACLIENT_API extern "C"
-#endif
 
-
-//string请使用stlport库的
 
 DBACLIENT_API IInitClient* CreateClient(IDBANetEvent* pNetEvent,std::string serverAddr,int iPort);
 

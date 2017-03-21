@@ -6,7 +6,6 @@
 #include "MsgLinksImpl.h"
 #include "IDBAClient.h"
 #include "Client.h"
-#include "IDBARecordSet.h"
 #include "lua.hpp"
 #include "tolua++.h"
 #include "LuaEngine.h"

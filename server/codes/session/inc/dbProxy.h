@@ -9,12 +9,10 @@
 #include "lindef.h"
 #include "Sock.h"
 #include "MsgLinksImpl.h"
-#include "MsgDefine.h"
 #include "IDBAClient.h"
 #include "Client.h"
 #include "dbmsg.h"
 
-#define	 MAXRESNUM 100
 
 enum _StoreType
 {
