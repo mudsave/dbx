@@ -3,6 +3,9 @@
 #include "Singleton.h"
 #include "dbx_msgdef.h"
 
+#include "lindef.h"
+#include "Sock.h"
+
 #include <map>
 
 struct AppMsg;

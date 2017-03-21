@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Client.h"
 
 #include "NetCtrl.h"
@@ -18,7 +17,7 @@ IDBANetEvent* CClient::m_queryResultHandle = NULL;
 
 CClient::CClient(): m_netCtrl(NULL)
 {
-	m_pThreads = ::GlobalThreadsPool(CLS_THREADS_POLL);
+    m_pThreads = GlobalThreadsPool();
     m_netCtrl = new NetCtrl();
 }
 

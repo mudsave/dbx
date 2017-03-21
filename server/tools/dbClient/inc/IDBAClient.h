@@ -1,9 +1,6 @@
 #pragma once
-#define INVALIDLINK 0
 
 #include <string>
-#include <list>
-
 
 struct AppMsg;
 class CSCResultMsg;
@@ -16,9 +13,6 @@ public:
 	virtual void onExeDBProc(int id,IInitClient* pInitClient,bool result){};
 };
 
-
-
-
 class IInitClient
 {
 public:
@@ -28,16 +22,5 @@ public:
 	virtual int callDBSQL(AppMsg *pMsg)=0;
 };
 
+IInitClient* CreateClient(IDBANetEvent* pNetEvent,std::string serverAddr,int iPort);
 
-#define DBACLIENT_API extern "C"
-
-
-DBACLIENT_API IInitClient* CreateClient(IDBANetEvent* pNetEvent,std::string serverAddr,int iPort);
-
-#define USERDEFERROR 1
-#define STLLIBERROR  2
-#define SYSTEMERROR  3
-#define UNKNOWNERROR 4
-
-DBACLIENT_API int GetErrorCount();
-DBACLIENT_API int GetError(int index);

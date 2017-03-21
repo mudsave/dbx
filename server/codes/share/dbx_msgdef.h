@@ -1,6 +1,8 @@
 #ifndef __DBX_MSGDEF_
 #define __DBX_MSGDEF_
 
+#include <cstring>
+#include <cstdio>
 #include <stdlib.h>
 #include <string>
 #include <vector>
