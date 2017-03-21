@@ -1031,7 +1031,7 @@ MonsterSkillDB = {
 	         },
      [1042] = {
 	          name = "ÆðËÀ»ØÉú",
-	          skill_type = Skill_Type.Heal,
+	          skill_type = Skill_Type.Revival,
 	          phase_type = nil,
 	          skill = { 
 	                 [1] = { 
@@ -1061,9 +1061,9 @@ MonsterSkillDB = {
 	          skill = { 
 	                 [1] = { 
 	                     type = SkillEff.HpHeal,
-	                     num_id = 13,
+	                     num_id = 16,
 	                     target_type = TargetType.friend_g,
-	                     target_num_id = 3,
+	                     target_num_id = 2,
 	                 },
 	                 [2] = { 
 	                     type = nil,
@@ -1218,6 +1218,83 @@ MonsterSkillDB = {
 	                 [2] = { 
 	                     type = nil,
 	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1050] = {
+	          name = "×Ô±©×ÔÆú",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = PhaseType.Thunder,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 66,
+	                     target_type = TargetType.self,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1051] = {
+	          name = "µßµ¹Ç¬À¤",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = PhaseType.Thunder,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 16,
+	                     target_type = TargetType.enemy_g,
+	                     target_num_id = 3,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1052] = {
+	          name = "À×öªÍò¾û",
+	          skill_type = Skill_Type.BuffDmg,
+	          phase_type = PhaseType.Thunder,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 44,
+	                     target_type = TargetType.self,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = SkillEff.At,
+	                     num_id = 12,
+	                     target_type = TargetType.enemy_g,
+	                     target_num_id = 3,
 	                 },
 	                 [3] = { 
 	                     type = nil,

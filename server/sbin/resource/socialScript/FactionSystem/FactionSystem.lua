@@ -870,8 +870,8 @@ function FactionSystem.onExtendFactionSKill(event)
     local params = event:getParams()
     local playerDBID = params[1]
     local skillID = params[2]
-    local costMoney = params[3]
-
+    local cost = params[3]
+    --cost = {fund,fame}
     local player = g_playerMgr:getPlayerByDBID(playerDBID)
     local playerName = player:getName()
 
@@ -880,9 +880,9 @@ function FactionSystem.onExtendFactionSKill(event)
     local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
 
     --技能等级提升
-    local isUpdate = faction:skillLvlUp(skillID,costMoney,playerName)    
+    local isUpdate = faction:skillLvlUp(skillID,cost,playerName)    
     if not isUpdate then return end
-    --技能信息更新，执行操作
+    -----------技能信息更新，执行操作
     --更新数据库
     local extendSkill = faction:getExtendSkillList()
     local level = extendSkill[skillID]
@@ -896,8 +896,12 @@ function FactionSystem.onExtendFactionSKill(event)
             local event = Event.getEvent(FactionEvent_BC_UpdateExtendSkill,extendSkill)
             g_eventMgr:fireRemoteEvent(event,member)
             
-            --通知客户端帮派资金更改
-            factionInfo = {{name = factionMoney,value = faction:getFactionMoney()}}
+            --通知客户端帮派资金、名望更改
+            local factionInfo = {{name = factionMoney,value = faction:getFactionMoney()}}
+            event = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfo)
+            g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
+
+            factionInfo = {{name = factionFame,value = faction:getFactionFame()}}
             event = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfo)
             g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
 

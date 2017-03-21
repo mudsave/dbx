@@ -13,7 +13,7 @@
 void CleanUp();
 void Debug();
 
-/// 参数形式 : ./World -sessionAddr 172.16.2.220:2500 -worldId 0
+/// 参数形式 : ./World -sessionAddr 172.16.2.220:2500 -worldId 0 -adminAddrL 0.0.0.0:0
 int main(int argc, char* argv[])
 {
 	InitTraceServer();
@@ -23,6 +23,8 @@ int main(int argc, char* argv[])
 	int sessionPort = 2500;
 	char dbIP[64] = {0};
 	int dbPort = 2500;
+	char adminIP[64] = {0};
+	int adminPort = 0;
 	if ( argc < 7 )
 	{
 		TRACE0_L0("error args, the format is :\n");
@@ -46,6 +48,11 @@ int main(int argc, char* argv[])
 			i++; ASSERT_(i < argc);
 			worldId = atoi(argv[i]);
 		}
+		else if ( strcasecmp(argv[i], "-adminAddrL") == 0 )
+		{
+			i++; ASSERT_(i < argc);
+			ParseAddr(argv[i], adminIP, adminPort);
+		}
 	}
 
 	IThreadsPool* pThreadsPool	= GlobalThreadsPool();
@@ -56,7 +63,7 @@ int main(int argc, char* argv[])
 
 	GenerateSignalThread();
 
-	g_world.Init( worldId, sessionIP, sessionPort, dbIP, dbPort );
+	g_world.Init( worldId, sessionIP, sessionPort, dbIP, dbPort, adminIP, adminPort);
 
 	HRESULT hr = pThreadsPool->Running();
 	if ( hr == S_OK )

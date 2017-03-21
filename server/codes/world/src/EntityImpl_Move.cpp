@@ -61,6 +61,7 @@ bool CoEntity::move(const GridVct* pDest, int flags)
 	if (len >= MAX_PATH_LEN)
 	{
 		len = MAX_PATH_LEN;
+		TRACE0_ERROR("Entity move warning:the path len is too long\n");
 	}
 	GridVct *tPath = pPos->path;
 	for (int i = 0; i <= len; i++)
@@ -137,7 +138,7 @@ void CoEntity::moveByPath(_PropPosData* pPosData)
 
 	if (pPosData->len > MAX_PATH_LEN)
 	{
-		TRACE2_WARNING("[CoEntity:MoveByPath] WARNING: entity(%d) move path too long, len=%i\n", m_hand, pPosData->len);
+		TRACE2_ERROR("[CoEntity:MoveByPath] WARNING: entity(%d) move path too long, len=%i\n", m_hand, pPosData->len);
 	}
 	if (!m_Move)
 	{

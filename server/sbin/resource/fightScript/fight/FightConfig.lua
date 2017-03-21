@@ -49,7 +49,7 @@ RoleLifeState = {
 }
 
 MaxFightRoundActionsNum	 = 32
-MaxFightChooseActionTime = 25
+MaxFightChooseActionTime = 27
 MaxFightActionPlayTime   = 80--3*60
 MaxFightActionCaculateTime = 2
 MaxFightPhaseStartTime = 10

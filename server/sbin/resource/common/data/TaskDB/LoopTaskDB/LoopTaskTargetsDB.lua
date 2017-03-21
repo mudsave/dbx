@@ -1465,6 +1465,7 @@ LoopTaskTargetsDB =
 	{
 		[LoopTaskTargetType.script] = 
 		{
+		limitTime = 30*60,
 			--悬赏战斗NPCID是随机的，mpaID是随机的，x,y 是随机的。		
 			triggers = 
 			{
@@ -1485,6 +1486,7 @@ LoopTaskTargetsDB =
 		-- 和NPC 对话
 		[LoopTaskTargetType.talk] = 
 		{		
+		limitTime = 30*60,
 			triggers = 
 			{
 				-- 这是获取物品的指引发给客户端
@@ -1522,6 +1524,7 @@ LoopTaskTargetsDB =
 		--上交宠物
 		[LoopTaskTargetType.catchPet] = 
 		{		
+		limitTime = 30*60,
 			-- 无需配置任务目标
 			triggers = 
 			{
@@ -1543,6 +1546,7 @@ LoopTaskTargetsDB =
 		-- 暗雷战斗, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
+		limitTime = 30*60,
 			triggers = --任务触发器
 			{
 				[TaskStatus.Active]		=      ---接任务状态
@@ -1561,6 +1565,7 @@ LoopTaskTargetsDB =
 		--送信
 		[LoopTaskTargetType.deliverLetters] =
 		{
+		limitTime = 30*60,
 			triggers = --任务触发器
 			{
 				[TaskStatus.Active]		=      ---完成目标状态
@@ -1577,6 +1582,7 @@ LoopTaskTargetsDB =
 		--挑战明雷
 		[LoopTaskTargetType.brightMine] = 
 		{
+		limitTime = 30*60,
 			--挑战明雷NPCID是固定随机的		
 			triggers = 
 			{

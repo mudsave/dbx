@@ -23,6 +23,7 @@ CWorld::CWorld()
 
 	m_sessionSock				= -1;
 	m_pSession					= NULL;
+	m_pAdmin					= NULL;
 
 	m_hFastFrameTimer			= NULL;
 	m_hSlowFrameTimer			= NULL;
@@ -44,7 +45,7 @@ CWorld::~CWorld()
 	TRACE0_L0("CWorld destruct..\n");
 }
 
-void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort )
+void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort, char* adminIP, int adminPort)
 {
 	HRESULT hr;
 	m_pLinkCtrl = CreateLinkCtrl();
@@ -55,10 +56,17 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	m_dbPort		= dbPort;
 	m_sessionIP		= sessionIP;
 	m_sessionPort	= sessionPort;
+	m_adminIP		= adminIP;
+	m_adminPort		= adminPort;
 
 	ILinkSink* pSessionSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWS_C>* >(this);
-	hr = m_pLinkCtrl->Connect(sessionIP, sessionPort, pSessionSink,	0); ASSERT_( SUCCEEDED(hr) );
+	hr = m_pLinkCtrl->Connect(sessionIP, sessionPort, pSessionSink,	0);
+	ASSERT_( SUCCEEDED(hr) );
 	m_sessionSock	= hr;
+
+	ILinkSink* pAdminSink = static_cast<IMsgLinksImpl<IID_IMsgLinksAW_L>* >(this);
+	hr = m_pLinkCtrl->Listen(adminIP, &adminPort, pAdminSink, 0);
+	ASSERT_(SUCCEEDED(hr));
 
 	m_hFastFrameTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eFastFrameHandle, 0, eFastFrameInterval, eFastFrameInterval, "world fast frame timer");
 	ASSERT_(m_hFastFrameTimer);
@@ -74,11 +82,10 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	lua_State* pLuaState = m_pLuaEngine->GetLuaState();
 	tolua_api4lua_open(pLuaState);
 	luaopen_profile(pLuaState);
-
+	lua_iconv_open(pLuaState);
 	if (IS_WORLD_SERVER(m_worldId))
 	{
 		lua_PropertySet_open(pLuaState);
-		lua_iconv_open(pLuaState);
 		if ( !m_pLuaEngine->LoadLuaFile("../resource/script/appEntry.lua") )
 		{
 			TRACE1_L2("LoadLuaFile(\"*/appEntry.lua\") failed:%s\n",m_pLuaEngine->GetError());
@@ -106,7 +113,7 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	ScriptTimer::init(pLuaState);
 	CDBProxy::init(dbIP, dbPort, pLuaState);
 	RPCEngine::init(pLuaState);
-	luaStartProfile(pLuaState);
+	//luaStartProfile(pLuaState);
 	luaStart(pLuaState);
 }
 
@@ -130,12 +137,15 @@ void CWorld::Close()
 		m_pThreadsPool->UnregTimer(m_hReconnectSessionTimer);
 	TRACE0_L2("CWorld::Close(), m_pSession has been deleted\n");
 
+	delete m_pAdmin;
+
 	m_pThreadsPool->UnregTimer(m_hFastFrameTimer);
 	m_pThreadsPool->UnregTimer(m_hSlowFrameTimer);
 	m_pThreadsPool->UnregTimer(m_hUpdateWorldStateTimer);
 
 	IMsgLinksImpl<IID_IMsgLinksWS_C>::Clear();
 	IMsgLinksImpl<IID_IMsgLinksWG_C>::Clear();
+	IMsgLinksImpl<IID_IMsgLinksAW_L>::Clear();
 
 	m_pLinkCtrl->CloseCtrl();
 	CDBProxy::release();
@@ -308,6 +318,15 @@ void CWorld::OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext)
 	}
 }
 
+void CWorld::OnAdminMsg(AppMsg* pMsg, HANDLE hLinkContext)
+{
+	int msgCls          = pMsg->msgCls;
+	if(msgCls == MSG_CLS_ADMIN_RPC)
+	{
+		RPCEngine::onAdminReceive(pMsg);
+	}
+}
+
 void CWorld::OnSessionClosed(HANDLE hLinkContext, HRESULT reason)
 {
 	LinkContext_Session* pContext = (LinkContext_Session*)hLinkContext;
@@ -345,6 +364,13 @@ void CWorld::OnGatewayClosed(HANDLE hLinkContext, HRESULT reason)
 	}
 
 	delete pContext;
+}
+
+void CWorld::OnAdminClosed(HANDLE hLinkContext, HRESULT reason)
+{
+	LinkContext_Admin* pAdmin= (LinkContext_Admin*)hLinkContext;
+	delete pAdmin;
+	m_pAdmin = 0;
 }
 
 void CWorld::handleFastFrame()
@@ -489,6 +515,20 @@ HANDLE CWorld::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPor
 		return pSession;
 	}
 
+	if (iLinkType == IID_IMsgLinksAW_L)
+	{
+		if(NULL == m_pAdmin)
+		{
+			LinkContext_Admin* pAdmin = new LinkContext_Admin(iLinkType, hLink);
+			pAdmin->addr = strbuf;
+			pAdmin->port = iPort;
+			m_pAdmin = pAdmin;
+			return pAdmin;
+		}
+		TRACE0_L1("[WARNING]--CWorld::OnConnects(), Admin is already connected!\n");
+		return NULL;
+	}
+
 	TRACE1_L2("--CWorld::OnConnects(), error LinkType( %s )\n", translateLinkType(iLinkType));
 
 	return NULL;
@@ -519,6 +559,11 @@ void CWorld::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
 		return;
 	}
 
+	if ( linkType == IID_IMsgLinksAW_L )
+	{
+		OnAdminMsg(pMsg, hLinkContext);
+		return;
+	}
 	TRACE0_L2("--CWorld::DefaultMsgProc(), error\n");
 	TRACE1_L2("\tLinkType	= %s\n", translateLinkType(linkType));
 	TRACE2_L2("\taddr = %s:%i\n", addr, port);
@@ -553,6 +598,12 @@ void CWorld::OnClosed(HANDLE hLinkContext, HRESULT reason)
 	if ( linkType == IID_IMsgLinksWG_C )
 	{
 		OnGatewayClosed(hLinkContext, reason);
+		return;
+	}
+
+	if ( linkType == IID_IMsgLinksAW_L )
+	{
+		OnAdminClosed(hLinkContext, reason);
 		return;
 	}
 

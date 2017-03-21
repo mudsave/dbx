@@ -27,7 +27,7 @@ function P2PTrade:__init(player1, player2)
 	self.TradeInfo2.petInfo = {}
 	--记录玩家状态
 	self.TradeInfo1.state = TradeState.Status_Enter
-	self.TradeInfo1.state = TradeState.Status_Enter
+	self.TradeInfo2.state = TradeState.Status_Enter
 end
 
 --清理
@@ -269,6 +269,7 @@ function P2PTrade:doConfirmTrade(role, targetRole)
 		
 		--如果交易成功
 		g_tradeMgr:doFinishTrade(role:getID(), targetRole:getID())
+		return 
 	end
 	--有一方没点确认
 	local event = Event.getEvent(TradeEvents_SC_P2PTradeConfirmed, role:getID())

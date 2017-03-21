@@ -53,7 +53,7 @@ function FactionEctype:exeLogicProcedure()
 
 	if self.curProgress >= 1 then
 		-- 通知当前步骤
-		local event = Event.getEvent(EctypeEvents_SC_CurProcess, self.curProgress)
+		local event = Event.createEvent(EctypeEvents_SC_CurProcess, self.curProgress)
 		self:sendEctypeEvent(event)
 	end
 end

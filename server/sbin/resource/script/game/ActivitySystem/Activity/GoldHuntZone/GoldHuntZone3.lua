@@ -12,55 +12,52 @@ GoldHuntZoneActivityDB3 =
 		name = "GoldHuntZone3",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 23, min = 3},
+		startTime = {hour = 20, min = 06},
 		min_maxPlayerLevel = {50,150},
 		readyPeriod = 1,
 		
-		endTime = {hour = 23, min = 7},
-		mapID = 101,
+		endTime = {hour = 20, min = 30},				--结束时间
+		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
-					period = 1,--min
-					monsterInfo ={
-									{commonDBID = 10001,centerPos={x=223,y=78},radius = 5},updatePeriod = 1,totalMax= 2, curMax = 1,
-									eliteDBID = 10001,propability = 20,
-					},
+					period = 3,--min			--阶段持续时间
 					materialInfo = {
-									{itemID = 10012,centerPos={x=213,y=86},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 2, curMax = 1,
+									{itemID = 10026,centerPos={x=109,y=216},radius = 5,count = 2},					--场景物件,中心,范围,数量,可以多行并列
+									{itemID = 10027,centerPos={x=109,y=215},radius = 5,count = 2},	
+									updatePeriod = 1,totalMax= 6, curMax = 5,							--刷新间隔,总数量,保持数量
 					}
 			},
 			[2] = {
-					period = 1,--min
+					period = 3,--min
 					monsterInfo ={
-									{commonDBID = 70002,centerPos={x=223,y=78},radius = 5},updatePeriod = 1,totalMax= 2, curMax = 1,
-									eliteDBID = 70003,propability = 20,
+									{commonDBID = 39052,centerPos={x=109,y=216},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,	--怪物ID,中心,范围,刷新间隔,总数量,保持数量
+									eliteDBID = 39053,propability = 20,									--精英怪,概率
 					},
 					materialInfo = {
-									{itemID = 10011,centerPos={x=219,y=73},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 2, curMax = 1,
+									{itemID = 10028,centerPos={x=186,y=201},radius = 5,count = 1},
+									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			},
 			[3] = {
-					period = 1,--min
+					period = 3,--min
 					monsterInfo ={
-									{commonDBID = 70002,centerPos={x=213,y=62},radius = 5},updatePeriod = 1,totalMax= 2, curMax = 1,
-									eliteDBID = 70003,propability = 20,
+									{commonDBID = 39052,centerPos={x=186,y=201},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,
+									eliteDBID = 39053,propability = 40,
 					},
 					materialInfo = {
-									{itemID = 10013,centerPos={x=213,y=62},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 2, curMax = 1,
+									{itemID = 10029,centerPos={x=201,y=117},radius = 5,count = 1},
+									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			},
 			[4] = {
-					period = 1,--min
+					period = 3,--min
 					monsterInfo ={
-									{commonDBID = 70002,centerPos={x=200,y=42},radius = 5},updatePeriod = 1,totalMax= 2, curMax = 1,
-									eliteDBID = 70003,propability = 20,
+									{commonDBID = 39052,centerPos={x=201,y=117},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,
+									eliteDBID = 39053,propability = 60,
 					},
 					materialInfo = {
-									{itemID = 10011,centerPos={x=200,y=42},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 2, curMax = 1,
+									{itemID = 10030,centerPos={x=279,y=101},radius = 5,count = 1},
+									updatePeriod = 1,totalMax= 6, curMax = 4,
 					}
 			}
 		},

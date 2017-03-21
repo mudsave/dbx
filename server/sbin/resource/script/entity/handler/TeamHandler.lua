@@ -126,6 +126,19 @@ end
 -- 非暂离人员的人数
 function TeamHandler:getCurMemberNum()
 	local playerList = self:getTeamPlayerList()
-	print("dd",table.size(playerList))
 	return table.size(playerList)
+end
+
+function TeamHandler:isExistStepOut()
+	local team = g_teamMgr:getTeam(self.teamID)
+	if not team then
+		return
+	end
+	local memberList = team:getMemberList()
+	for _,memberInfo in pairs(memberList) do
+		if MemberState.StepOut == memberInfo.memberState then
+			return true
+		end
+	end
+	return false
 end

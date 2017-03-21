@@ -63,5 +63,7 @@ DialogActionConfig =
 	[DialogActionType.FlyUp]					= DialogAction.doFlyUp,
 	[DialogActionType.ChangeRewardType]			= DialogAction.doChangeRewardType,
 	[DialogActionType.ChangeTarget]				= DialogAction.doChangeTarget,
+	[DialogActionType.EnterDiscussHero]			= DialogAction.doEnterDiscussHero,
+	[DialogActionType.DiscussHeroFight]			= DialogAction.doDiscussHeroFight,
 	[DialogActionType.OpenItemRepairWin]		= DialogAction.doRepairEquipment,
 }

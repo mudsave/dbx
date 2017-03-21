@@ -353,19 +353,223 @@ ScriptFightDB[27] = {					---------------野怪
 
 -----------------------------------------帮会休闲任务测试脚本---------------------------------------------------------
 ScriptFightDB[30] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31293,},}
+                   
+	subType = ScriptType.Random  , --触发随机读取多组战斗的配置标记，如果多组战斗是按顺序执行则此项无需配置
+	count = 2	,	--随机读取次数，仅在配置了subType = ScriptType.Random时才能写入，表示脚本战斗场次
+	isRepeat = false ,   --已经出现的战斗是否会被重复触发 
+
+	phases = {		--多阶段战斗（注意一旦启用多阶段战斗，则其他所有的怪物出场、触发节点、条件、行为都要写在多阶段战斗内，外部的全部失效）
+		[1] = {		--阶段数(若脚本内已经配置了怪物等参数值时，第一阶段的所有怪物和背景图等均不读取这里面的配置)
+			typeID = 0, sceneID = "zd_fb_jt01.xml",isSpecialAction =true,
+			--typeID = 过场动画方式，默认0，sceneID = 背景图文件名，isSpecialAction = true（特殊动作，默认true）
+			monsters={40017,31301,31302},				--怪物配置
+		},
+
+		[2] = {
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml",isSpecialAction =true,
+			monsters={40018,31301,31302},
+		},
+		[3] = {
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml",isSpecialAction =true,
+			monsters={40019,31301,31302},
+		},
+	},
+
+
+
+	rewards={			--脚本胜利后奖励列表
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		--物品奖励，ID=物品ID，count = 掉落数
+		exp = 1,												--经验值（暂无接口）
+		money = 1,											--银两（暂无接口）
+		subMoney = 1,										--绑银（暂无接口）
+	},--奖励
 	}
 ScriptFightDB[31] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31294,},}
+                   
+	subType = ScriptType.Random  , --触发随机读取多组战斗的配置标记，如果多组战斗是按顺序执行则此项无需配置
+	count = 2	,	--随机读取次数，仅在配置了subType = ScriptType.Random时才能写入，表示脚本战斗场次
+	isRepeat = false ,   --已经出现的战斗是否会被重复触发 
+
+	phases = {		--多阶段战斗（注意一旦启用多阶段战斗，则其他所有的怪物出场、触发节点、条件、行为都要写在多阶段战斗内，外部的全部失效）
+		[1] = {		--阶段数(若脚本内已经配置了怪物等参数值时，第一阶段的所有怪物和背景图等均不读取这里面的配置)
+			typeID = 0, sceneID = "zd_fb_jt01.xml",isSpecialAction =true,
+			--typeID = 过场动画方式，默认0，sceneID = 背景图文件名，isSpecialAction = true（特殊动作，默认true）
+			monsters={40020,31301,31302},				--怪物配置
+		},
+
+		[2] = {
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml",isSpecialAction =true,
+			monsters={40021,31301,31302},
+		},
+		[3] = {
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml",isSpecialAction =true,
+			monsters={40022,31301,31302},
+		},
+	},
+
+
+
+	rewards={			--脚本胜利后奖励列表
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		--物品奖励，ID=物品ID，count = 掉落数
+		exp = 1,												--经验值（暂无接口）
+		money = 1,											--银两（暂无接口）
+		subMoney = 1,										--绑银（暂无接口）
+	},--奖励
 	}
 ScriptFightDB[32] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31295,},}
+                   
+	subType = ScriptType.Random  , --触发随机读取多组战斗的配置标记，如果多组战斗是按顺序执行则此项无需配置
+	count = 2	,	--随机读取次数，仅在配置了subType = ScriptType.Random时才能写入，表示脚本战斗场次
+	isRepeat = false ,   --已经出现的战斗是否会被重复触发 
+
+	phases = {		--多阶段战斗（注意一旦启用多阶段战斗，则其他所有的怪物出场、触发节点、条件、行为都要写在多阶段战斗内，外部的全部失效）
+		[1] = {		--阶段数(若脚本内已经配置了怪物等参数值时，第一阶段的所有怪物和背景图等均不读取这里面的配置)
+			typeID = 0, sceneID = "zd_fb_jt01.xml",isSpecialAction =true,
+			--typeID = 过场动画方式，默认0，sceneID = 背景图文件名，isSpecialAction = true（特殊动作，默认true）
+			monsters={40023,31301,31302},				--怪物配置
+		},
+
+		[2] = {
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml",isSpecialAction =true,
+			monsters={40024,31301,31302},
+		},
+		[3] = {
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml",isSpecialAction =true,
+			monsters={4005,31301,31302},
+		},
+	},
+
+
+
+	rewards={			--脚本胜利后奖励列表
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		--物品奖励，ID=物品ID，count = 掉落数
+		exp = 1,												--经验值（暂无接口）
+		money = 1,											--银两（暂无接口）
+		subMoney = 1,										--绑银（暂无接口）
+	},--奖励
 	}
 ScriptFightDB[33] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31296,},}
+                   
+	subType = ScriptType.Random  , --触发随机读取多组战斗的配置标记，如果多组战斗是按顺序执行则此项无需配置
+	count = 2	,	--随机读取次数，仅在配置了subType = ScriptType.Random时才能写入，表示脚本战斗场次
+	isRepeat = false ,   --已经出现的战斗是否会被重复触发 
+
+	phases = {		--多阶段战斗（注意一旦启用多阶段战斗，则其他所有的怪物出场、触发节点、条件、行为都要写在多阶段战斗内，外部的全部失效）
+		[1] = {		--阶段数(若脚本内已经配置了怪物等参数值时，第一阶段的所有怪物和背景图等均不读取这里面的配置)
+			typeID = 0, sceneID = "zd_fb_jt01.xml",isSpecialAction =true,
+			--typeID = 过场动画方式，默认0，sceneID = 背景图文件名，isSpecialAction = true（特殊动作，默认true）
+			monsters={40026,31301,31302},				--怪物配置
+		},
+
+		[2] = {
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml",isSpecialAction =true,
+			monsters={40027,31301,31302},
+		},
+		[3] = {
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml",isSpecialAction =true,
+			monsters={40028,31301,31302},
+		},
+	},
+
+
+
+	rewards={			--脚本胜利后奖励列表
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		--物品奖励，ID=物品ID，count = 掉落数
+		exp = 1,												--经验值（暂无接口）
+		money = 1,											--银两（暂无接口）
+		subMoney = 1,										--绑银（暂无接口）
+	},--奖励
+	}
+ScriptFightDB[34] = {
+                   
+	subType = ScriptType.Random  , --触发随机读取多组战斗的配置标记，如果多组战斗是按顺序执行则此项无需配置
+	count = 2	,	--随机读取次数，仅在配置了subType = ScriptType.Random时才能写入，表示脚本战斗场次
+	isRepeat = false ,   --已经出现的战斗是否会被重复触发 
+
+	phases = {		--多阶段战斗（注意一旦启用多阶段战斗，则其他所有的怪物出场、触发节点、条件、行为都要写在多阶段战斗内，外部的全部失效）
+		[1] = {		--阶段数(若脚本内已经配置了怪物等参数值时，第一阶段的所有怪物和背景图等均不读取这里面的配置)
+			typeID = 0, sceneID = "zd_fb_jt01.xml",isSpecialAction =true,
+			--typeID = 过场动画方式，默认0，sceneID = 背景图文件名，isSpecialAction = true（特殊动作，默认true）
+			monsters={40029,31301,31302},				--怪物配置
+		},
+
+		[2] = {
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml",isSpecialAction =true,
+			monsters={40030,31301,31302},
+		},
+		[3] = {
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml",isSpecialAction =true,
+			monsters={40031,31301,31302},
+		},
+	},
+
+
+
+	rewards={			--脚本胜利后奖励列表
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		--物品奖励，ID=物品ID，count = 掉落数
+		exp = 1,												--经验值（暂无接口）
+		money = 1,											--银两（暂无接口）
+		subMoney = 1,										--绑银（暂无接口）
+	},--奖励
 	}
 
 -----------------------------------------------测试怪物属性脚本，请勿删除------------------------------------------------------
+ScriptFightDB[94] = {              ----------------战斗结束时做哪些事
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20114}},
+	fightEnd = {
+	[1] = {
+		  condition = {
+		{type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20114},bubbleID = 101},},
+		  }
+	},
+	},
+}
+ScriptFightDB[95] = {              ----------------战斗开始时做那些事
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20114}},
+	fightBegin = {
+	[1] = {
+		  condition = {
+		 {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20114},bubbleID = 101},},
+		  }
+	},
+	},
+}
+ScriptFightDB[96] = {              ----------------回合结束做哪些事
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20114}},
+	fin = {
+	[1] = {
+		  condition = {
+		{type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20114},bubbleID = 101},},
+		  }
+	},
+	},
+}
+ScriptFightDB[97] = {              ----------------回合开始做哪些事
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20114}},
+	begin = {
+	[1] = {
+		  condition = {
+		  {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+		  isAnd = true,
+		  },
+		  actions = {
+		  {type = ScriptFightActionType.PlayBubble,params={DBID={20114},bubbleID = 101},},
+		  }
+	},
+	},
+}
 ScriptFightDB[98] = {              --------------测试1
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 20115},{ID = 20116},{ID = 20116},},
 }
@@ -2614,8 +2818,8 @@ ScriptFightDB[3090] = {
 			 },
 
 			actions = {							
-
-				{type = ScriptFightActionType.AddBuff,params={DBID ={31266},buffID = 48,49} },
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31266},bubbleID = 532},},
+				{type = ScriptFightActionType.AddBuff,params={DBID ={31266},buffID = 21} },
 				
 			 },
 		 },
@@ -2643,8 +2847,8 @@ ScriptFightDB[3092] = {
 
 			actions = {							
 
-                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 505},},
-				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31283,count = 3},} },
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 530},},
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
 			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 46} },
 				
 
@@ -2656,7 +2860,7 @@ ScriptFightDB[3092] = {
 			condition = {						 
 				
 				
-				{type = ScriptFightConditionType.AttrValue, params={DBID = 31282,type="hp",["<="] = 30},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 31282,type="hp",["<="] = 35},},
 				--{type = ScriptFightConditionType.RoundInterval, params={period = 2,startRound = 2},},
 				
                           count = 1,
@@ -2664,17 +2868,15 @@ ScriptFightDB[3092] = {
 
 			actions = {							
 
-                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 505},},
-				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
-			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 44} },
-				
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 531},},
+				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31266,count = 3},} },
+				{type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 67 } },
+				{type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 55 } },
+				{type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 42 } },
 
 				isSameTime = true,
 			 },
-		 },
-
-		
-								
+		 },							
 	},
 	}
 
@@ -4275,18 +4477,18 @@ ScriptFightDB[6] = {
 
 	phases = {		
 		[1] = {		
-			typeID = 0, sceneID = "zd_yw_jt07.xml" ,isSpecialAction =true,
 			
+			typeID = 0, sceneID = "zd_fb_jt01.xml" ,isSpecialAction =true,
 			monsters={31250},        
 			
 		},
 		[2] = {
-			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml" ,isSpecialAction =true,
 			monsters={31254,31257},
 		
 	},
                 [3] = {
-			typeID = 0, sceneID = "zd_yw_jt05.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml" ,isSpecialAction =true,
 			monsters={30354,30357},
 		
 	},
@@ -4354,4 +4556,470 @@ ScriptFightDB[8] = {
 	},
 	
 	}
+-----------------------帮会休闲任务-智擒真凶测试脚本----------------------
+
+ScriptFightDB[9] = {                                                                
+
+	subType = ScriptType.Random, 
+	count = 3,	
+	isRepeat = false ,   
+
+	phases = {		
+		[1] = {		
+			typeID = 0, sceneID = "zd_yw_zz01_01.xml" ,isSpecialAction =true,
+			
+			monsters = {40100, 40112, 40110, 40113, 40114, 40115, 40107, 40101 },        
+			
+                systemActions = {                                                               
+
+		[1] = {								--执行行为ID，ID越小越先执行
+
+			condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+
+				 {type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				 --指定回合生效：round =指定回合数
+
+				isAnd = true,
+				--多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				count = 1,
+				--条件执行次数：不写则视为无限次
+			 },
+
+
+			actions = {							--此处不可省略，可填入任意条动作使其生效
+
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40100},bubbleID = 533},},
+				--播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				isSameTime = true,
+				--添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			 },
+		 },--行为1
+
+                  [2]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				 --指定回合生效：round =指定回合数
+			},
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },
+
+		 [3]={
+			condition = {
+				--{type = ScriptFightConditionType.IDExist, params={DBID = {40101},},},
+				--目标单位是否存在：DBID=目标ID，支持填入多个，英文逗号隔开
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40101,type="hp",["<="] = 0},},
+				 --指定单位是否受击：DBID=目标ID，支持填入多个
+			},
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },								
+	},          
+	  },    
+	[2] = {
+			typeID = 0, sceneID = "zd_yw_tg01_01.xml" ,isSpecialAction =true,
+			monsters={31254,31257},
+		
+	},
+        [3] = {
+			typeID = 0, sceneID = "zd_yw_dk01_01.xml" ,isSpecialAction =true,
+			monsters={30354,30357},
+		
+	},
+},
+rewards={			
+		mats={{ID=10001,count = 1},{ID=10002,count = 1}},		
+		exp = 1,												
+		money = 1,											
+		subMoney = 1,										
+	},
+}
+
+ScriptFightDB[10] = {
+
+monsters = {type=ScriptMonsterCreateType.Assign,{ID = 40100,},{ID = 40112, },{ID = 40110, },{ID = 40113, },{ID = 40114, },{ID = 40115, },{ID = 40107, },{ID = 40101, },},
+
+systemActions = {                                                               
+
+		[1] = {								--执行行为ID，ID越小越先执行
+
+			condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+
+				 {type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				 --指定回合生效：round =指定回合数
+
+				isAnd = true,
+				--多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				count = 1,
+				--条件执行次数：不写则视为无限次
+			 },
+
+
+			actions = {							--此处不可省略，可填入任意条动作使其生效
+
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40100},bubbleID = 533},},
+				--播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				isSameTime = true,
+				--添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			 },
+		 },--行为1
+
+                  [2]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				 --指定回合生效：round =指定回合数
+			},
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },
+
+		 [3]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40101,type="hp",["<="] = 0},},
+				--{type = ScriptFightConditionType.IsAttacked, params={DBID = {40101},}, },
+				 --指定单位是否受击：DBID=目标ID，支持填入多个
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },								
+	}, 
+	}
+-----------------------帮会休闲任务-积分挑战测试脚本----------------------
+
+ScriptFightDB[11] = {
+
+monsters = {type=ScriptMonsterCreateType.Assign,{ID = 40121,},{ID = 40122, },{ID = 40123, },{ID = 40124, },{ID = 40125, },{ID = 40126, },{ID = 40127, },{ID = 40128, },},
+
+systemActions = {                                                               
+
+		[1] = {								--执行行为ID，ID越小越先执行
+
+			condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				 --指定回合生效：round =指定回合数
+
+				isAnd = true,
+				--多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				count = 1,
+				--条件执行次数：不写则视为无限次
+			 },
+
+
+			actions = {							--此处不可省略，可填入任意条动作使其生效
+
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40121},bubbleID = 539},},
+				--播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				isSameTime = true,
+				--添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			 },
+		 },--行为1
+
+                  [2]={
+			condition = {
+				{type = ScriptFightConditionType.ScoreNum, params={relation =">=", value = 5,},},
+				--判断玩家积分：relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=判断值
+
+				isAnd = true,
+				--多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				count = 1,
+				--条件执行次数：不写则视为无限次
+			},
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },
+
+		 [3]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+				 --指定回合生效：round =指定回合数
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },								
+                [4]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40122,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 1} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [5]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40123,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 2} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [6]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40124,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 3} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [7]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40125,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 4} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [8]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40126,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 5} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [9]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40127,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 6} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [10]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40128,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 7} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+	
+	}, 
+	}
+ScriptFightDB[12] = {                                                                
+
+	subType = ScriptType.Random, 
+	count = 3,	
+	isRepeat = false ,   
+
+	phases = {		
+		[1] = {		
+			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			
+			monsters = {40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128 }, 
+			systemActions = {                                                               
+
+		[1] = {								--执行行为ID，ID越小越先执行
+
+			condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				 --指定回合生效：round =指定回合数
+
+				isAnd = true,
+				--多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				count = 1,
+				--条件执行次数：不写则视为无限次
+			 },
+
+
+			actions = {							--此处不可省略，可填入任意条动作使其生效
+
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40121},bubbleID = 539},},
+				--播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				isSameTime = true,
+				--添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			 },
+		 },--行为1
+
+                  [2]={
+			condition = {
+				{type = ScriptFightConditionType.ScoreNum, params={relation =">=", value = 5,},},
+				--判断玩家积分：relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=判断值
+
+				isAnd = true,
+				--多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				count = 1,
+				--条件执行次数：不写则视为无限次
+			},
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },
+
+		 [3]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+				 --指定回合生效：round =指定回合数
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			},
+		 },								
+                [4]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40122,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 1} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [5]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40123,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 2} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [6]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40124,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 3} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [7]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40125,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 4} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [8]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40126,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 5} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [9]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40127,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 6} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+		 [10]={
+			condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40128,type="hp",["<="] = 0},},
+
+			},
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 7} },
+				--增加玩家积分：value =积分值
+			},
+		 },
+	
+	},
+	},
+	[2] = {
+			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			monsters={31254,31257},
+		
+	},
+        [3] = {
+			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			monsters={30354,30357},
+		
+	},
+},
+}
 

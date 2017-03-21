@@ -185,12 +185,12 @@ function TeamManager:inviteJoinTeam(playerID,targetID)
 	end
 	--判断玩家队伍是否满员
 	if team:isFull() then
-		--发送消息到客户��?
-		local event = Event.getEvent(TeamEvents_SC_TeamIsFullNotify)
-		g_eventMgr:fireRemoteEvent(event,player)
+		--发送消息到客户端
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 6)
+		g_eventMgr:fireRemoteEvent(event, player)
 		return
 	end
-	--判断玩家队伍是否收到过五条消息以��?
+	--判断玩家队伍是否收到过五条消息以上
 	if table.size(tTeamHandler:getTeaminviteList()) >= MaxInvalidCount then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 11)
 		g_eventMgr:fireRemoteEvent(event, targetPlayer)

@@ -14741,73 +14741,88 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29056,
-		txt = "阐教弟子，我可以送你到各大门派。",
+		txt = "阐教弟子，我可以送你回门派。",
 		options =
 		{
 			[1] =
 			{
-				showConditions = {},
-				optionTxt = "金霞山",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
+				},
+				optionTxt = "返回门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
 			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
+				},
+				optionTxt = "返回门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[3] =
 			{
-				showConditions = {},
-				optionTxt = "乾元岛",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				},
+				optionTxt = "返回门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[4] =
 			{
-				showConditions = {},
-				optionTxt = "桃源洞",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
+				},
+				optionTxt = "返回门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[5] =
 			{
-				showConditions = {},
-				optionTxt = "云霄宫",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
+				},
+				optionTxt = "返回门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[6] =
 			{
-				showConditions = {},
-				optionTxt = "紫阳门",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
+				},
+				optionTxt = "返回门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
-			[7] =
-			{
-				showConditions = {},
-				optionTxt = "玄都玉京",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
-				},
-			},
-			[8] = {
+			[7] = {
 				showConditions = {},
 				optionTxt = "我还不想走",
 				actions =
@@ -15379,7 +15394,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35510}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -15610,6 +15625,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4032}},
 				},
+				icon = DialogIcon.Task2,
 			},
 			[8] = {
 				showConditions = 
@@ -15643,7 +15659,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35507}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -15899,6 +15915,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 20027},},
 				},
+				icon = DialogIcon.Task2,
 			},
 			[2] = {
 				showConditions = {},
@@ -15918,7 +15935,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35506}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -18159,69 +18176,85 @@ DialogModelDB =
 		{
 			[1] =
 			{
-				showConditions = {},
-				optionTxt = "金霞山",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
+				},
+				optionTxt = "前往门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
 			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
+				},
+				optionTxt = "前往门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[3] =
 			{
-				showConditions = {},
-				optionTxt = "乾元岛",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
+				},
+				optionTxt = "前往门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[4] =
 			{
-				showConditions = {},
-				optionTxt = "桃源洞",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
+				},
+				optionTxt = "前往门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[5] =
 			{
-				showConditions = {},
-				optionTxt = "云霄宫",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
+				},
+				optionTxt = "前往门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[6] =
 			{
-				showConditions = {},
-				optionTxt = "紫阳门",
+				showConditions = 
+				{
+				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
+				},
+				optionTxt = "前往门派",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
-			[7] =
-			{
-				showConditions = {},
-				optionTxt = "洛阳",  --主城
-				actions =
+			[7] = {
+				showConditions = 
 				{
-				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 119}},
-				},
-			},
-			[8] = {
-				showConditions = {
 				{condition = DialogCondition.HasTask, param = {taskID = 1168, statue = true}},	
 				},
 				optionTxt = "灭魂珠（主线任务）",
@@ -18230,7 +18263,7 @@ DialogModelDB =
 				{action = DialogActionType.Goto, param = {dialogID = 1166}},
 				},
 			},
-			[9] = {
+			[8] = {
 				showConditions = {},
 				optionTxt = "我还要再走走",
 				actions =
@@ -18290,64 +18323,20 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29050,
-		txt = "乾元岛景致秀丽，你可四处游玩一番，若要离开我可以送你一程",
+		txt = "乾元岛景致秀丽，你可四处游玩一番，若要离开，我可以送你一程",
 		options =
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "洛阳",  --主城
+				optionTxt = "前往洛阳",  --主城
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
-			{
-				showConditions = {},
-				optionTxt = "金霞山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "桃源洞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "云霄宫",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "紫阳门",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
-				},
-			},
-			[7] =
 			{
 				showConditions = 
 				{
@@ -18360,7 +18349,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 107}},
 				},
 			},
-			[8] =
+			[3] =
 			{
 				showConditions = 
 				{
@@ -18373,7 +18362,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 113}},
 				},
 			},
-			[9] =
+			[4] =
 			{
 				showConditions = 
 				{
@@ -18386,7 +18375,17 @@ DialogModelDB =
 				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
 				},
 			},
-			[10] = {
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "前往玄都玉京",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "我再转转",
 				actions =
@@ -18472,7 +18471,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35500}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -18599,58 +18598,14 @@ DialogModelDB =
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "洛阳",  --主城
+				optionTxt = "前往洛阳",  --主城
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
-			{
-				showConditions = {},
-				optionTxt = "金霞山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "乾元岛",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "云霄宫",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "紫阳门",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
-				},
-			},
-			[7] =
 			{
 				showConditions = 
 				{
@@ -18663,7 +18618,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 108}},
 				},
 			},
-			[8] =
+			[3] =
 			{
 				showConditions = 
 				{
@@ -18676,7 +18631,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 114}},
 				},
 			},
-			[9] =
+			[4] =
 			{
 				showConditions = 
 				{
@@ -18689,7 +18644,17 @@ DialogModelDB =
 				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
 				},
 			},
-			[10] = {
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "前往玄都玉京",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -18775,7 +18740,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35504}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -18902,58 +18867,14 @@ DialogModelDB =
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "洛阳",  --主城
+				optionTxt = "前往洛阳",  --主城
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
-			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "乾元岛",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "桃源洞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "云霄宫",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "紫阳门",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
-				},
-			},
-			[7] =
 			{
 				showConditions = 
 				{
@@ -18966,7 +18887,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 109}},
 				},
 			},
-			[8] =
+			[3] =
 			{
 				showConditions = 
 				{
@@ -18979,7 +18900,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 115}},
 				},
 			},
-			[9] =
+			[4] =
 			{
 				showConditions = 
 				{
@@ -18992,7 +18913,17 @@ DialogModelDB =
 				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
 				},
 			},
-			[10] = {
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "前往玄都玉京",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19078,7 +19009,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35501}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -19206,59 +19137,14 @@ DialogModelDB =
 		        [1] =
 			{
 				showConditions = {},
-				optionTxt = "洛阳",  --主城
+				optionTxt = "前往洛阳",  --主城
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
-			{
-				showConditions = {},
-				optionTxt = "金霞山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
-				},
-			},
-
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "乾元岛",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "桃源洞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "云霄宫",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "紫阳门",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
-				},
-			},
-			[7] =
 			{
 				showConditions = 
 				{
@@ -19271,7 +19157,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 110}},
 				},
 			},
-			[8] =
+			[3] =
 			{
 				showConditions = 
 				{
@@ -19284,7 +19170,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 116}},
 				},
 			},
-			[9] =
+			[4] =
 			{
 				showConditions = 
 				{
@@ -19297,7 +19183,17 @@ DialogModelDB =
 				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
 				},
 			},
-			[10] = {
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "前往玄都玉京",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19383,7 +19279,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35505}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -19511,58 +19407,14 @@ DialogModelDB =
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "洛阳",  --主城
+				optionTxt = "前往洛阳",  --主城
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
-			{
-				showConditions = {},
-				optionTxt = "金霞山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "乾元岛",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "桃源洞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "云霄宫",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
-				},
-			},
-			[7] =
 			{
 				showConditions = 
 				{
@@ -19575,7 +19427,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 111}},
 				},
 			},
-			[8] =
+			[3] =
 			{
 				showConditions = 
 				{
@@ -19588,7 +19440,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 117}},
 				},
 			},
-			[9] =
+			[4] =
 			{
 				showConditions = 
 				{
@@ -19601,7 +19453,17 @@ DialogModelDB =
 				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
 				},
 			},
-			[10] = {
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "前往玄都玉京",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19687,7 +19549,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35502}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -19814,58 +19676,14 @@ DialogModelDB =
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "洛阳",  --主城
+				optionTxt = "前往洛阳",  --主城
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 10, tarX = 200, tarY = 200}},--切换场景
 				},
+				icon = DialogIcon.Function,
 			},
 			[2] =
-			{
-				showConditions = {},
-				optionTxt = "金霞山",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
-				},
-			},
-			[3] =
-			{
-				showConditions = {},
-				optionTxt = "蓬莱阁",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
-				},
-			},
-			[4] =
-			{
-				showConditions = {},
-				optionTxt = "乾元岛",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
-				},
-			},
-			[5] =
-			{
-				showConditions = {},
-				optionTxt = "桃源洞",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
-				},
-			},
-			[6] =
-			{
-				showConditions = {},
-				optionTxt = "紫阳门",
-				actions =
-				{
-					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
-				},
-			},
-			[7] =
 			{
 				showConditions = 
 				{
@@ -19878,7 +19696,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 112}},
 				},
 			},
-			[8] =
+			[3] =
 			{
 				showConditions = 
 				{
@@ -19891,7 +19709,7 @@ DialogModelDB =
 				{action = DialogActionType.FlyEffect,  param= {flyEffectID = 118}},
 				},
 			},
-			[9] =
+			[4] =
 			{
 				showConditions = 
 				{
@@ -19904,7 +19722,17 @@ DialogModelDB =
 				{action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
 				},
 			},
-			[10] = {
+			[5] =
+			{
+				showConditions = {},
+				optionTxt = "前往玄都玉京",
+				actions =
+				{
+					{action = DialogActionType.SwithScene ,param = {tarMapID  = 8, tarX = 101, tarY = 142}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19990,7 +19818,7 @@ DialogModelDB =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 35503}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -20142,7 +19970,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 15016}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 			[4] = {
 				showConditions = 
@@ -20154,7 +19982,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 15017}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			}
 		},
 	},
@@ -20203,7 +20031,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35508}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			}
 		},
 	},
@@ -23554,7 +23382,7 @@ DialogModelDB =
 		},
 		speakerID = 31118,
 		soundID =26325 ,
-		txt = "宵小之徒，胆敢闯入冥火原，既然来了，就别想走！死来！",
+		txt = "宵小之徒，胆敢闯入赤魂岭，既然来了，就别想走！死来！",
 		options =
 		{
 			{
@@ -24779,7 +24607,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35511}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		}
 	},
@@ -25091,7 +24919,7 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Goto, param = {dialogID = 35509}},
 				},
-				icon = DialogIcon.Help,
+				icon = DialogIcon.Task5,
 			},
 		},
 	},

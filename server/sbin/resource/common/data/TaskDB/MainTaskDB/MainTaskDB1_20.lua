@@ -110,7 +110,7 @@ MainTaskDB1_20 =
 		startNpcID = 20002,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
-		nextTaskID = 1005,	--任务后置任务没有填nil
+		nextTaskID = 1006,	--任务后置任务没有填nil
 		startDialogID =nil,--452	--接任务对话ID没有填nil
 		endDialogID = 109,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -136,7 +136,7 @@ MainTaskDB1_20 =
 			},
 		},
 	},
-	[1005] =	--乾元岛
+	--[[[1005] =	--乾元岛
 	{
 		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
@@ -171,13 +171,13 @@ MainTaskDB1_20 =
 			{type="openDialog", param={dialogID = 111},},--在任务结束时打开一个对话框
 			},
 		},
-	},
+	},]]
 	[1006] =	--乾元岛
 	{
-		name = "使用百宝袋",	--任务名字
+		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
-		preTaskData = {1005},	--任务前置任务没有填nil
+		preTaskData = {1004},	--任务前置任务没有填nil
 		nextTaskID = 1007,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 113,	--交任务对话ID没有填nil
@@ -204,6 +204,10 @@ MainTaskDB1_20 =
 		},
 		triggers = --任务触发器
 		{
+		    [TaskStatus.Active]		=
+			{
+			{type="getItem", param = {itemID = 1026006, count = 1,}},--获得物品
+			},
 			[TaskStatus.Done]		=
 			{
 			{type = "openDialog", param={dialogID = 113},}, --在任务结束时打开一个对话框
@@ -466,7 +470,7 @@ MainTaskDB1_20 =
 		startNpcID = 20002,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
-		nextTaskID = 1015,	--任务后置任务没有填nil
+		nextTaskID = 1016,	--任务后置任务没有填nil
 		startDialogID =	nil,	--453--接任务对话ID没有填nil
 		endDialogID = 131,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -492,7 +496,7 @@ MainTaskDB1_20 =
 			},
 		},
 	},
-	[1015] =	--桃源洞
+	--[[[1015] =	--桃源洞
 	{
 		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
@@ -527,13 +531,13 @@ MainTaskDB1_20 =
 			{type="openDialog", param={dialogID = 133},},--在任务结束时打开一个对话框
 			},
 		},
-	},
+	},]]
 	[1016] =	--桃源洞
 	{
-		name = "使用百宝袋",	--任务名字
+		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
-		preTaskData = {1015},	--任务前置任务没有填nil
+		preTaskData = {1014},	--任务前置任务没有填nil
 		nextTaskID = 1017,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 135,	--交任务对话ID没有填nil
@@ -560,6 +564,10 @@ MainTaskDB1_20 =
 		},
 		triggers = --任务触发器
 		{
+		    [TaskStatus.Active]		=
+			{
+				{type="getItem", param = {itemID = 1026013, count = 1,}},--获得物品
+			},
 			[TaskStatus.Done]		=
 			{
 			{type = "openDialog", param={dialogID = 135},}, --在任务结束时打开一个对话框
@@ -821,7 +829,7 @@ MainTaskDB1_20 =
 		startNpcID = 20002,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
-		nextTaskID = 1025,	--任务后置任务没有填nil
+		nextTaskID = 1026,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 153,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -847,7 +855,7 @@ MainTaskDB1_20 =
 			},
 		},
 	},
-	[1025] =	--金霞山
+	--[[[1025] =	--金霞山
 	{
 		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
@@ -882,13 +890,13 @@ MainTaskDB1_20 =
 			{type = "openDialog", param={dialogID = 155},}, --在任务结束时打开一个对话框
 			},
 		},
-	},
+	},]]
 	[1026] =	--金霞山
 	{
-		name = "使用百宝袋",	--任务名字
+		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
-		preTaskData = {1025},	--任务前置任务没有填nil
+		preTaskData = {1024},	--任务前置任务没有填nil
 		nextTaskID = 1027,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 157,	--交任务对话ID没有填nil
@@ -915,6 +923,10 @@ MainTaskDB1_20 =
 		},
 		triggers = --任务触发器
 		{
+		    [TaskStatus.Active]		=
+			{
+			{type="getItem", param = {itemID = 1026020, count = 1,}},--获得物品
+			},
 			[TaskStatus.Done]		=
 			{
 			{type = "openDialog", param={dialogID = 157},}, --在任务结束时打开一个对话框
@@ -1177,7 +1189,7 @@ MainTaskDB1_20 =
 		startNpcID = 20002,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
-		nextTaskID = 1035,	--任务后置任务没有填nil
+		nextTaskID = 1036,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 175,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -1203,7 +1215,7 @@ MainTaskDB1_20 =
 			},
 		},
 	},
-	[1035] =	--蓬莱阁
+	--[[[1035] =	--蓬莱阁
 	{
 		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
@@ -1234,13 +1246,13 @@ MainTaskDB1_20 =
 				{type="getItem", param = {itemID = 1026027, count = 1,}},--获得物品
 			},
 		},
-	},
+	},]]
 	[1036] =	--蓬莱阁
 	{
-		name = "使用百宝袋",	--任务名字
+		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
-		preTaskData = {1035},	--任务前置任务没有填nil
+		preTaskData = {1034},	--任务前置任务没有填nil
 		nextTaskID = 1037,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 179,	--交任务对话ID没有填nil
@@ -1267,6 +1279,10 @@ MainTaskDB1_20 =
 		},
 		triggers = --任务触发器
 		{
+		    [TaskStatus.Active]		=
+			{
+			{type="getItem", param = {itemID = 1026027, count = 1,}},--获得物品
+			},
 			[TaskStatus.Done]		=
 			{
 			{type = "openDialog", param={dialogID = 179},}, --在任务结束时打开一个对话框
@@ -1528,7 +1544,7 @@ MainTaskDB1_20 =
 		startNpcID = 20002,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
-		nextTaskID = 1045,	--任务后置任务没有填nil
+		nextTaskID = 1046,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 197,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -1554,7 +1570,7 @@ MainTaskDB1_20 =
 			},
 		},
 	},
-	[1045] =	--紫阳门
+	--[[[1045] =	--紫阳门
 	{
 		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
@@ -1585,13 +1601,13 @@ MainTaskDB1_20 =
 				{type="getItem", param = {itemID = 1026034, count = 1,}},--获得物品
 			},
 		},
-	},
+	},]]
 	[1046] =	--紫阳门
 	{
-		name = "使用百宝袋",	--任务名字
+		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
-		preTaskData = {1045},	--任务前置任务没有填nil
+		preTaskData = {1044},	--任务前置任务没有填nil
 		nextTaskID = 1047,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 201,	--交任务对话ID没有填nil
@@ -1618,6 +1634,10 @@ MainTaskDB1_20 =
 		},
 		triggers = --任务触发器
 		{
+		    [TaskStatus.Active]		=
+			{
+			{type="getItem", param = {itemID = 1026034, count = 1,}},--获得物品
+			},
 			[TaskStatus.Done]		=
 			{
 			{type = "openDialog", param={dialogID = 201},}, --在任务结束时打开一个对话框
@@ -1879,7 +1899,7 @@ MainTaskDB1_20 =
 		startNpcID = 20002,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
 		preTaskData = {1003},	--任务前置任务没有填nil
-		nextTaskID = 1055,	--任务后置任务没有填nil
+		nextTaskID = 1056,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 219,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -1905,7 +1925,7 @@ MainTaskDB1_20 =
 			},
 		},
 	},
-	[1055] =	--云霄宫
+	--[[[1055] =	--云霄宫
 	{
 		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
@@ -1936,13 +1956,13 @@ MainTaskDB1_20 =
 				{type="getItem", param = {itemID = 1026041, count = 1,}},--获得物品
 			},
 		},
-	},
+	},]]
 	[1056] =	--云霄宫
 	{
-		name = "使用百宝袋",	--任务名字
+		name = "获得百宝袋",	--任务名字
 		startNpcID = 20003,	--任务起始npc
 		endNpcID = 20003,		--任务结束npc
-		preTaskData = {1055},	--任务前置任务没有填nil
+		preTaskData = {1054},	--任务前置任务没有填nil
 		nextTaskID = 1057,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 223,	--交任务对话ID没有填nil
@@ -1969,6 +1989,10 @@ MainTaskDB1_20 =
 		},
 		triggers = --任务触发器
 		{
+		    [TaskStatus.Active]		=
+			{
+			{type="getItem", param = {itemID = 1026041, count = 1,}},--获得物品
+			},
 			[TaskStatus.Done]		=
 			{
 			{type = "openDialog", param={dialogID = 223},}, --在任务结束时打开一个对话框

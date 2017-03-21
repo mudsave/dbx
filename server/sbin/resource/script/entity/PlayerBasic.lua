@@ -12,12 +12,13 @@ function Player:__init_basic()
 	self._sex			= nil
 	self._school		= nil
 	self.level			= nil
-	self.temp_xp		= false --临时经验值
-	self.payMode		= false --玩家支付的方式
+	self.temp_xp		= false		--临时经验值
+	self.payMode		= false		--玩家支付的方式
 	self.tiredness		= 0
 	self.practise		= 0
 	self.practiseCount	= 0
-	self.storeXp		= 0 -- 存储经验
+	self.storeXp		= 0			-- 存储经验
+	self.allLoaded		= false
 	self.attrSet		= {}
 	self.actionState	= PlayerStates.Normal
 	self.lastActiveTime	= 0
@@ -281,6 +282,10 @@ function Player:setOldActionState(s)
 	else 
 		self._oldActionState = s
 	end 
+end
+
+function Player:markAllLoaded()
+	self.allLoaded = true
 end
 
 function Player:incHp(value)
@@ -566,6 +571,7 @@ function Player:loadAttrRecord(attrRecord)
 			print(("[Player:loadAttrRecord] 错误的玩家属性定义 %s"):format(attribute and attribute:getName() or "nil"))
 		end
 	end
+
 	--toDo:add default attribute value handle
 end
 
@@ -713,6 +719,8 @@ end
 
 -- 属性改变事件通知
 function Player:onAttrChanged(attrName,prev,value)
+	if not self.allLoaded then return end
+
 	if attrName == player_max_hp then
 		local hp = self:getHP() + value - prev
 		if hp > value then hp = value

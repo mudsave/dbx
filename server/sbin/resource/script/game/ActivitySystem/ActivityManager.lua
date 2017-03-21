@@ -6,12 +6,14 @@ ActivityDB = {}
 
 
 -- 把各自的ID 设置成全局确定的ID值 方便客户端ID处理 后标注到这里
-require "game.ActivitySystem.Activity.DekaronSchool.DekaronSchool"	-- gId = 1
-require "game.ActivitySystem.Activity.BeastBless.BeastBless"	  	-- gId = 2
-require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"	-- gId = 3
-require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone1"	-- gId = 4
-require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone2"	-- gId = 5
-require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone3"	-- gId = 6
+require "game.ActivitySystem.Activity.DekaronSchool.DekaronSchool"	        -- gId = 1
+require "game.ActivitySystem.Activity.BeastBless.BeastBless"	  	        -- gId = 2
+require "game.ActivitySystem.Activity.CatchPet.CatchPetActivity"	        -- gId = 3
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone1"	        -- gId = 4
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone2"	        -- gId = 5
+require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone3"	        -- gId = 6
+require "game.ActivitySystem.Activity.SkyFallBox.SkyFallBoxActivity"        -- gId = 7
+require "game.ActivitySystem.Activity.DiscussHero.DiscussHero"				-- gId = 8
 
 ActivityManager = class(nil, Singleton)
 
@@ -44,6 +46,7 @@ end
 
 function ActivityManager:closeActivity(id)
 	self.curActivityList[id]:close()
+	self.curActivityList[id] = nil
 	self:notifyAllActivityPageUpdateBtn(id,false)
 end
 
@@ -72,20 +75,17 @@ function ActivityManager:notityExitActivity(player)
 end
 
 -- 玩家上线加入活动 如果活动存在 具体的逻辑在自己每个活动中做
-function ActivityManager:onPlayerOnline(player, recordList)
+function ActivityManager:onPlayerOnline(player)
 	-- 加载所有开启的的活动数据
 	local curActivityList = self.curActivityList
-	if recordList then
-		for activityId, activity in pairs(curActivityList) do
-			if activity then
-				curActivityList[activityId]:joinPlayer(player,recordList)
-				g_activitySym:notifyActivityPageUpdateBtn(player,activityId,true)
-			else
-				print("活动已经关闭")
-			end
+	for activityId, activity in pairs(curActivityList) do
+		if activity then
+			curActivityList[activityId]:joinPlayer(player)
+			g_activitySym:notifyActivityPageUpdateBtn(player,activityId,true)
+		else
+			print("活动已经关闭")
 		end
 	end
-	
 end
 
 --玩家下线

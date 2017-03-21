@@ -1,0 +1,22 @@
+#!/bin/bash
+
+run_dir="`pwd`/logs"
+
+if [ $# -eq  0 ]; then
+	cd $run_dir;tail -f _world.txt
+else
+	if [[ "$1" == ga*  ]]; then
+		cd $run_dir;tail -f _gateway.txt
+	elif [[ "$1" == se* ]]; then
+		cd $run_dir;tail -f _session.txt
+	elif [[ "$1" == so* ]]; then
+		cd $run_dir;tail -f _social.txt
+	elif [[ "$1" == wo* ]]; then
+		cd $run_dir;tail -f _world.txt
+	elif [[ "$1" == f* ]]; then
+		cd $run_dir;tail -f _fight.txt
+	else
+		echo "watch:usage:watch [gateway|session|social|world|fight]"
+		exit 1;
+	fi
+fi

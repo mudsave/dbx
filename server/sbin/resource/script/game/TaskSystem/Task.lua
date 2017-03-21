@@ -237,9 +237,7 @@ function Task:refresh()
 		self:stateChange(TaskStatus.Failed)
 	else
 		-- 如果循环任务出现回退,
-		if self._status == TaskStatus.Done then
-			self:resetState()
-		end
+		self:resetState()
 		self:stateChange(TaskStatus.Active)	
 	end
 end
@@ -320,7 +318,6 @@ function Task:addMultiple(multiple)
 end
 
 function Task:canEnd()
-
 	local bEnd = true
 	for idx, target in pairs(self._targets) do
 		if target then
@@ -341,7 +338,6 @@ function Task:canEnd()
 	if bEnd then
 		return true
 	end
-	
 end
 
 function Task:isFaild()

@@ -83,6 +83,17 @@ function FightFactory:createPvpFight(playersA, playersB, mapID)
 	return fight
 end
 
+
+local function getRandomMonsterConfigPos(monsterConfigID,config)
+			for _,info in ipairs(config) do
+				if info.ID == monsterConfigID then
+					return info.pos
+				end
+			end
+			return nil
+end
+
+
 function FightFactory:createScriptFight(scriptID,players, monsters, mapID,monsterPositionsInfo,npcs,npcPositionsInfo)
 	local scriptConfig = ScriptFightDB[scriptID]
 	local fight
@@ -106,12 +117,24 @@ function FightFactory:createScriptFight(scriptID,players, monsters, mapID,monste
 		end
 	end
 
-	--按规则生成怪物
+	--按随机规则生成怪物
 	if not monsterPositionsInfo then
 		local monsterCount = #monsters 
 		for _,monster in ipairs(monsters) do
 			monster:setFightID(fightID)
-			local pos = fight:getRolePos(StandRoleType.Monster, FightStand.B, monsterCount)
+			pos = fight:getRolePos(StandRoleType.Monster, FightStand.B, monsterCount)
+			if pos then
+				fight:addRole(FightStand.B, pos, monster)
+			end
+		end
+	elseif monsterPositionsInfo.type == ScriptMonsterCreateType.Random then
+		local monsterCount = #monsters 
+		for _,monster in ipairs(monsters) do
+			monster:setFightID(fightID)
+			local pos = getRandomMonsterConfigPos(monster:getDBID(),monsterPositionsInfo)
+			if not pos then
+				pos = fight:getRolePos(StandRoleType.Monster, FightStand.B, monsterCount)
+			end
 			if pos then
 				fight:addRole(FightStand.B, pos, monster)
 			end

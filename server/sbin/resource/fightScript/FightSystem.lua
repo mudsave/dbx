@@ -229,20 +229,26 @@ function FightSystem:_getScriptMonsters(monstersInfo,playerCount,bFullMonster)
 	table.copy(monstersInfo,myMonsterConfig)
 	
 
-	local maxCount = count
-	for _,info in ipairs(myMonsterConfig) do
-		maxCount = maxCount + (info.max or 0xFF)
-	end
+	local maxCount = math.min(count,(myMonsterConfig.maxCount or 0xFF))
+
+	local minCount = myMonsterConfig.minCount or 0
 
 	local configCount = myMonsterConfig.count or 0xFF
 
+	
 	if configCount < count then
 		count = configCount
+	end
+
+	if minCount >  count then
+		count = minCount
 	end
 
 	if maxCount < count then
 		count = maxCount
 	end
+    
+	
 
 	local finalCount = count
 	for i = 1, count do
@@ -427,7 +433,7 @@ function FightSystem:_onStartLuckMonsterScriptFight(event)
 	local fight = nil
 	
 	if not bAssign then
-		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, nil,fightNpcs, bNpcAssign and npcIDs)
+		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, monsterConfig.monsters,fightNpcs, bNpcAssign and npcIDs)
 	else
 		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, monsterDBIDs, fightNpcs, bNpcAssign and npcIDs)
 	end
@@ -493,7 +499,7 @@ function FightSystem:onStartScriptFight(event)
 		end
 	end
 	--生成怪物ID
-	local monsterDBIDs,bAssign
+	local monsterDBIDs,bAssign,monsterConfig
 	local phaseInfo = ScriptFightDB[scriptFightID].phases
 	local phaseID
 	if  phaseInfo and table.size(phaseInfo) > 0 then
@@ -592,7 +598,7 @@ function FightSystem:onStartScriptFight(event)
 	local fight = nil
 	
 	if not bAssign then
-		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, nil,fightNpcs, bNpcAssign and npcIDs)
+		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, monsterConfig,fightNpcs, bNpcAssign and npcIDs)
 	else
 		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, monsterDBIDs, fightNpcs, bNpcAssign and npcIDs)
 	end

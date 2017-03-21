@@ -7,41 +7,91 @@ DekaronSchoolReward = {}
 
 local tDekaronSchoolRewardDB = 
 {	
-	[1] = 
+	[8001] = 
 	{
 		items = {
 			{itemID = 3031006, weight = 10},
 			{itemID = 3062101, weight = 10},
 		},
 	},
-	[2] = 
+	[8002] = 
 	{
 		items = {
 			{itemID = 3031006, weight = 10},
 			{itemID = 3062101, weight = 10},
 		},
 	},
-	[3] = 
+	[8003] = 
 	{
 		items = {
 			{itemID = 3031006, weight = 10},
 			{itemID = 3062101, weight = 10},
 		},
 	},
-	[4] = 
+	[8004] = 
 	{
 		items = {
 			{itemID = 3031006, weight = 10},
 			{itemID = 3062101, weight = 10},
 		},
 	},
-	[5] = 
+	[8005] = 
 	{
 		items = {
 			{itemID = 3031006, weight = 10},
 			{itemID = 3062101, weight = 10},
 		},
 	},
+	[8006] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+	[8007] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+	[8008] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+	[8009] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+	[8010] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+	[8011] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+	[8012] = 
+	{
+		items = {
+			{itemID = 3031006, weight = 10},
+			{itemID = 3062101, weight = 10},
+		},
+	},
+
 }
 
 
@@ -57,10 +107,10 @@ schoolActivityIntegralDB =
 
 ----------------------战斗结束的奖励---------------------------
 -- 随机奖励物品
-function DekaronSchoolReward.randItem(rewardID)
+function DekaronSchoolReward.randItem(fightID)
 	local maxWeight = 0
 	local weightCount = 0
-	local itemCofig = tDekaronSchoolRewardDB[rewardID].items
+	local itemCofig = tDekaronSchoolRewardDB[fightID].items
 	if itemCofig then
 		for _,items in pairs(itemCofig) do
 			maxWeight =	maxWeight + items.weight

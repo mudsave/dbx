@@ -213,7 +213,8 @@ print("FightRelaySystem:QuitFight")
 	local scriptID			= params[2]
 	local storedPetsInfo	= params[3]
 	local fightID			= params[4]
-	
+	local fightInfo         = params[5]
+
 	local resultMap		= {}
 	local petlist		= {}
 	local player		= nil
@@ -325,7 +326,7 @@ print("FightRelaySystem:QuitFight")
 	--先通知各系统做各自的善后
 	g_eventMgr:fireEvent(
 		Event.getEvent(
-			FightEvents_SS_FightEnd_beforeClient,FightEndResults,scriptID,nil,fightID
+			FightEvents_SS_FightEnd_beforeClient,FightEndResults,scriptID,nil,fightID,fightInfo
 		)
 	)
 	
@@ -338,7 +339,7 @@ print("FightRelaySystem:QuitFight")
 	end
 	self:_sendAndResetAutoStatus(FightEndResults)
 	--这个有特殊次序要求(踩雷系统)的插在这
-	local event = Event.getEvent(FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,nil,fightID)
+	local event = Event.getEvent(FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,nil,fightID,fightInfo)
 	MineSystem.getInstance():onFightEnd(event)
 
 	--统一奖励和惩罚

@@ -25,6 +25,9 @@
 #define IID_IMsgLinksCD_L       0x0400    // dbx监听dbx client
 #define IID_IMsgLinksCD_C       0x0800    // dbx client连接dbx
 
+#define IID_IMsgLinksAW_L		0x1000    // world监听admin
+#define IID_IMsgLinksAW_C		0x2000    // admin连接world
+
 /// IPortSink的通用实现
 template<int iLinkType, int msgLenMax> class IMsgLinksImpl;
 template<int iLinkType, int msgLenMax>
@@ -46,9 +49,12 @@ public:
 
 	HRESULT SendData(BYTE* pData, int len)
 	{
-		ASSERT_(len <= msgLenMax);
+		ASSERT_(len <= msgLenMax - 1);
 
 		ASSERT_(m_pPort);
+
+		if((len >= msgLenMax) || (m_pPort == 0))
+			return E_FAIL;
 
 		if(m_bHasClose == true) return S_FALSE;
 

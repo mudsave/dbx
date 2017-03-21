@@ -60,3 +60,19 @@ function RemoteEventProxy.debug(msg)
 	print (debug.traceback())
     return 0
 end
+
+-- 发送给运维工具后端
+function RemoteEventProxy.sendToAdmin(event)
+	if not event then return end
+	local eventID	= event:getID()
+	local params	= event:getParams()
+	if not eventID then return end
+	RPCEngine:sendToAdmin(eventID, 0, unpack(params))
+end
+
+-- 接收运维工具后端的消息
+function RemoteEventProxy.areceive(eventID, srcID, ...)
+	-- print ("Admin rpc:", eventID, srcID, ...)
+	local event = Event(eventID, ...)
+	g_eventMgr:fireEvent(event)
+end

@@ -635,9 +635,11 @@ function TradeManager:doFinishTrade(roleID, targetID)
 		self.tradeList[targetID] = nil
 	end
 	--再个各自玩家发完成的消息
-	local event = Event.getEvent(TradeEvents_SC_P2PTradeFinish)
-	g_eventMgr:fireRemoteEvent(event, player)
-	g_eventMgr:fireRemoteEvent(event, target)
+	local event1 = Event.getEvent(TradeEvents_SC_P2PTradeFinish, targetID, roleID)
+	g_eventMgr:fireRemoteEvent(event1, player)	
+	local event2 = Event.getEvent(TradeEvents_SC_P2PTradeFinish, roleID, targetID)
+	g_eventMgr:fireRemoteEvent(event2, target)	
+	
 end
 
 --宠物商店购买宠物

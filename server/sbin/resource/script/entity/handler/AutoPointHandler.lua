@@ -202,7 +202,7 @@ function AutoPointHandler:distibuteAttrPoints()
 	local config = EntityConfig[entity:getEntityType()]
 	if not config then return end
 
-	local baseAttrStart = config.basePointAttr	-- 第一个加点属性的属性名称<<属性名称是数字
+	local baseAttrStart = config.baseAttrStart	-- 第一个加点属性的属性名称<<属性名称是数字
 	local freePointAttr = config.freeAttrPoint	-- 自由属性点的属性名称
 
 	local totalPoint = entity:getAttrValue(freePointAttr)

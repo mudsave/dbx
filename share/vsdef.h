@@ -32,6 +32,7 @@ enum EntityType
 	eLogicEctypePatrolNpc,
 	eLogicEctypeObject,
 	eLogicActivityPatrolNpc,
+	eLogicStallModelNpc,
 	MAX_LOGIC_TYPE
 };
 

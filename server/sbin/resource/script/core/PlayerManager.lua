@@ -205,6 +205,7 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 	g_entityMgr:setPlayerName(player:getName(),dbId)
 	-- 设置可接任务列表, 在帮派设置完毕之后
 	g_taskDoer:loadCanRecetiveTask(player)
+	player:markAllLoaded()
 	print(dbId, "end load!", player._hGateLink)
 end
 
@@ -241,8 +242,6 @@ function PlayerManager:doPlayerLogout(playerDBID, reason, isAll)
 	--销毁玩家
 	self._players[playerDBID] = nil
 	g_entityMgr:removePlayer(player:getID())
-
-	print(playerDBID,"end logout!")
 end
 
 function PlayerManager.getInstance()

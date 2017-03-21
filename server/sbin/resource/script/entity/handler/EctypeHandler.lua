@@ -438,12 +438,12 @@ function EctypeHandler:setEctypeProcess(ectypeID, curProcess)
 					end
 				end
 			end
+			self.ectypeInfo[ectypeID].curProcess = curProcess
+			self.ectypeInfo[ectypeID].recordTime = os.time()
+			if ectypeConfig.EctypeType ~= EctypeType.Common then
+				self.ectypeInfo[ectypeID].isSaveDB = true
+			end
 		end
-	end
-	self.ectypeInfo[ectypeID].curProcess = curProcess
-	self.ectypeInfo[ectypeID].recordTime = os.time()
-	if ectypeConfig.EctypeType ~= EctypeType.Common then
-		self.ectypeInfo[ectypeID].isSaveDB = true
 	end
 end
 

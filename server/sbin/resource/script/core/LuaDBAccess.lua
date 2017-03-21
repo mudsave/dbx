@@ -909,6 +909,24 @@ function LuaDBAccess.updateBeastBless(player,activityId)
 	end
 end
 
+function LuaDBAccess.updateDiscussHero(player,activityId)
+	local handler = player:getHandler(HandlerDef_Activity)
+	if handler then
+		clearParams()
+		local isCanIn = handler:getPriData(activityId)
+		if isCanIn then
+			params[1]["spName"]			= "sp_updateDiscussHero"
+			params[1]["dataBase"]		= 1
+			params[1]["sort"]			= "_roleID,_isCanIn,_recordTime"
+			params[1]["_roleID"]		= player:getDBID()
+			params[1]["_isCanIn"]		= isCanIn
+			params[1]["_recordTime"]	= os.time()
+			LuaDBAccess.exeSP(params, true)
+			print("params",toString(params))
+		end
+	end
+end
+
 function LuaDBAccess.updateSchoolActivity(player,activityId)
 	local handler = player:getHandler(HandlerDef_Activity)
 	if handler then
@@ -926,6 +944,30 @@ end
 function LuaDBAccess.deleteSchoolActivity()
 	clearParams()
 	params[1]["spName"]			= "sp_DeleteSchoolActivity"
+	params[1]["dataBase"]		= 1
+	LuaDBAccess.exeSP(params, true)
+end
+
+--天降宝盒活动数据保存
+function LuaDBAccess.updateSkyFallBox(player,activityId)
+	print("天降宝盒活动存数据库。。。")
+	local handler = player:getHandler(HandlerDef_Activity)
+	if handler then
+		clearParams()
+		local boxNum = handler:getSkyFallBoxNum()
+		params[1]["spName"]			= "sp_UpdateSkyFallBoxActivity"
+		params[1]["dataBase"]		= 1
+		params[1]["sort"]			= "_roleID,_boxAmount"
+		params[1]["_roleID"]		= player:getDBID()
+		params[1]["_boxAmount"]		= boxNum
+		LuaDBAccess.exeSP(params, true)
+	end
+end
+
+function LuaDBAccess.deleteSkyFallBox()
+	print("活动结束，删除天降宝盒活动的数据。。。。")
+	clearParams()
+	params[1]["spName"]			= "sp_DeleteSkyFallBoxActivity"
 	params[1]["dataBase"]		= 1
 	LuaDBAccess.exeSP(params, true)
 end

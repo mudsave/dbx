@@ -107,6 +107,9 @@ function ManagedApp.onWReceive(...)
 	return RemoteEventProxy.wreceive(...)
 end
 
+function ManagedApp.onAReceive(...)
+	return RemoteEventProxy.areceive(...)
+end
 
 -- lua出错处理接口
 -- 可提供的功能

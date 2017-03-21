@@ -25,3 +25,6 @@ require "base.serialize"
 require "base.util"
 require "base.ListenerSet"
 require "base.RandomTool"
+require "base.GlobalRefCheck"
+
+StartGlobalRefCheck()

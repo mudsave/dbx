@@ -333,17 +333,26 @@ function Faction:getExtendSkillList()
 end
 
 --研发技能升级
-function Faction:skillLvlUp(skillID,costMoney,playerName)
+function Faction:skillLvlUp(skillID,cost,playerName)
     if playerName ~= self._factionOwnerName then 
         print("not factionOwner")
         return false
     end
+    local costMoney = cost.fund
+    local costFame = cost.fame  
     if self._factionMoney < costMoney then 
-        print("factionMoney not enogh")
+        print("factionMoney not enough")
         return false 
     end
+
+    if self._factionFame < costFame then
+        print("factionFame not enough")
+        return false
+    end
+
     local curSkillLvl = self._extendSkillList[skillID]
     self._extendSkillList[skillID] = curSkillLvl + 1
     self:addFactionMoney(-costMoney)
+    self:addFactionFame(-costFame)
     return true
 end

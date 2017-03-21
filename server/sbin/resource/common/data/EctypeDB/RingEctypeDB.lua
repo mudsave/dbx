@@ -970,7 +970,7 @@ tRingEctypeDB =
 	            	},
          	},
            },
------------------------------------------------- 45级连环潜能副本 ---------------------------------
+------------------------------------------------ 45级连环潜能副本【这里的副本由于是两张图，进度和其他的不一样】 ---------------------------------
 	[4] =
 	{
 		EnterNeedLevel = {minLevel = 45, maxLevel = 60},
@@ -1046,7 +1046,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度4
-				[8] =
+				[9] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1058,7 +1058,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度5
-				[10] =
+				[11] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1070,7 +1070,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度6
-				[12] =
+				[13] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1079,6 +1079,13 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10001, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
 					},
 				},
 			},
@@ -1122,7 +1129,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度4
-				[8] =
+				[9] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1134,7 +1141,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度5
-				[10] =
+				[11] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1146,7 +1153,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度6
-				[12] =
+				[13] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1155,6 +1162,13 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10001, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
 					},
 				},
 			},
@@ -1198,7 +1212,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度4
-				[8] =
+				[9] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1210,7 +1224,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度5
-				[10] =
+				[11] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1222,7 +1236,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度6
-				[12] =
+				[13] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1231,6 +1245,13 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10001, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
 					},
 				},
 			},
@@ -1272,7 +1293,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度4
-				[8] =
+				[9] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1284,7 +1305,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度5
-				[10] =
+				[11] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1296,7 +1317,7 @@ tRingEctypeDB =
 					},
 				},
 				-- 进度6
-				[12] =
+				[13] =
 				{
 					ExpPrize = 50,--经验
 					MoneyPrize = 50,--金钱
@@ -1305,6 +1326,13 @@ tRingEctypeDB =
 					ItemPrize =
 					{
 						{itemID = 10001, itemNum = 1},
+					},
+					ExtraPrizes =
+					{
+						-- 经验奖励
+						ExpPrize = 100,
+						-- 金钱奖励
+						MoneyPrize = 100,
 					},
 				},
 	            	},

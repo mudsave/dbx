@@ -18,8 +18,6 @@ function TgetItem:__init(entity, task, param, state)
 		taskID = task:getID(),
 	}
 	if self:completed() then
-		-- 如果完成，那么此时购买物品经停已经删除
-		self._task:refresh()
 		-- 移除货架高亮记录
 		g_taskSystem:removeTaskItem(entity, task:getID())
 	else
