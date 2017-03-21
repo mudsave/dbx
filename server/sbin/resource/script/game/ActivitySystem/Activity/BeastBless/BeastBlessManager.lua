@@ -58,31 +58,34 @@ function BeastBlessManager:initOnLinePlayerData()
 end
 
 -- 上线的玩家加入到活动表中
-function BeastBlessManager:joinPlayer(player,recordList)
-	local activityHandler = player:getHandler(HandlerDef_Activity)
-	local activityId = g_beastBless:getID()
-	if activityHandler then
-		if recordList and table.size(recordList) > 0 then
-			for _,data in pairs(recordList) do
-				if not time.isSameDay(data.recordTime) then
-					-- 重置数据
-					activityHandler:setPriDataById(activityId,0)
-					self:notifyToClient(player,0)
-				else
-					local fightCount = 0
-					if data.fightCount then
-						fightCount = data.fightCount 
+function BeastBlessManager:onPlayerOnline(player,recordList)
+	local activity = g_activityMgr:getActivity(gSchoolActivityID)
+	if activity and activity:isOpening() then
+		local activityHandler = player:getHandler(HandlerDef_Activity)
+		local activityId = g_beastBless:getID()
+		if activityHandler then
+			if recordList and table.size(recordList) > 0 then
+				for _,data in pairs(recordList) do
+					if not time.isSameDay(data.recordTime) then
+						-- 重置数据
+						activityHandler:setPriDataById(activityId,0)
+						self:notifyToClient(player,0)
+					else
+						local fightCount = 0
+						if data.fightCount then
+							fightCount = data.fightCount 
+						end
+						-- print("设置私有数据fightCount")
+						activityHandler:setPriDataById(activityId,fightCount)
+						self:notifyToClient(player,fightCount)
 					end
-					-- print("设置私有数据fightCount")
-					activityHandler:setPriDataById(activityId,fightCount)
-					self:notifyToClient(player,fightCount)
 				end
+			else
+				-- print("设置私有数据")
+				-- print("activityId",activityId)
+				self:notifyToClient(player,0)
+				activityHandler:setPriDataById(activityId,0)
 			end
-		else
-			-- print("设置私有数据")
-			-- print("activityId",activityId)
-			self:notifyToClient(player,0)
-			activityHandler:setPriDataById(activityId,0)
 		end
 	end
 end

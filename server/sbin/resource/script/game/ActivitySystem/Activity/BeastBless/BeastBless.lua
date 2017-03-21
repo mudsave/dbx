@@ -15,8 +15,8 @@ local BeastBlessActivityDB =
 		activityTime = {
 			[1] = {startTime = {week = 1,hour = 15, min = 54},endTime = {week = 1,hour = 21, min = 0},},
 		},
-		readyPeriod = 0.1,
-		preEndPeriod= 0.1,
+		readyPeriod = 0.1,	-- 开启时间
+		preEndPeriod= 0.1,	-- 结束
 		mapInfo = {
 			-- 瑞兽降福的地图
 			inMapID = {9,10},
@@ -125,9 +125,7 @@ end
 
 -- 上线加入活动
 function BeastBless:joinPlayer(player,recordList)
-	local beastBlessRecord = recordList[31]
-	--print("上线加入活动2", toString(beastBlessRecord))
-	g_beastBlessMgr:joinPlayer(player,beastBlessRecord)
+	
 end
 
 function BeastBless:getInstance()

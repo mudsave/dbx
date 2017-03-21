@@ -9,6 +9,7 @@
 
 int RPCEngine::_rpc_ref;
 int RPCEngine::_wrpc_ref;
+int RPCEngine::_arpc_ref;
 int RPCEngine::_debug_ref;
 ByteBuffer RPCEngine::_s_buffer;
 lua_State* RPCEngine::m_pLuaState;
@@ -18,11 +19,14 @@ void RPCEngine::init(lua_State* L)
     m_pLuaState = L;
     _rpc_ref = 0;
     _wrpc_ref = 0;
+    _arpc_ref = 0;
     _debug_ref = 0;
     ASSERT_(pushluafunction(L, "ManagedApp.onReceive"));
     _rpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
     ASSERT_(pushluafunction(L, "ManagedApp.onWReceive"));
     _wrpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
+    ASSERT_(pushluafunction(L, "ManagedApp.onAReceive"));
+    _arpc_ref = luaL_ref(L, LUA_REGISTRYINDEX);
     ASSERT_(pushluafunction(L, "ManagedApp.onLuaError"));
     _debug_ref = luaL_ref(L, LUA_REGISTRYINDEX);
     toluaRPCOpen(L);
@@ -71,6 +75,14 @@ int RPCEngine::sendToAround(lua_State* L)
     return 0;
 }
 
+int RPCEngine::sendToAdmin(lua_State* L)
+{
+    AppMsg* msg = genRPC(L, 2);
+    msg->msgCls = MSG_CLS_ADMIN_RPC;
+    g_world.sendMsgToAdmin(msg);
+    return 0;
+}
+
 void RPCEngine::onReceive(AppMsg* pMsg)
 {
     lua_State* L = m_pLuaState;
@@ -90,6 +102,15 @@ void RPCEngine::onWorldReceive(AppMsg* pMsg)
 
 }
 
+void RPCEngine::onAdminReceive(AppMsg* pMsg)
+{
+    lua_State* L = m_pLuaState;
+    int _head_size = sizeof(AppMsg);
+    _s_buffer.clear();
+    _s_buffer.append((char*)pMsg + _head_size, pMsg->msgLen - _head_size);
+    parseRPC(L, _s_buffer, _arpc_ref);
+}
+
 int RPCEngine::toluaRPCOpen(lua_State* pState)
 {
     tolua_open(pState);
@@ -102,6 +123,7 @@ int RPCEngine::toluaRPCOpen(lua_State* pState)
 	tolua_function(pState, "sendToWorld", sendToWorld);
 	tolua_function(pState, "bcToWorldPeers", bcToWorldPeers);
 	tolua_function(pState, "sendToAround", sendToAround);
+	tolua_function(pState, "sendToAdmin", sendToAdmin);
 	tolua_endmodule(pState);
 	tolua_endmodule(pState);
 	return 1;

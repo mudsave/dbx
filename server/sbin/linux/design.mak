@@ -76,6 +76,9 @@ start_server:
 	SWL_PORT=$$((SCL_PORT+2)); \
 	GCL_PORT=$$((SCL_PORT+3)); \
 	GWL_PORT=$$((SCL_PORT+4)); \
+	WAL_PORT=$$((SCL_PORT+5)); \
+	FAL_PORT=$$((SCL_PORT+6)); \
+	SAL_PORT=$$((SCL_PORT+7)); \
 	set -e; ulimit -c unlimited; \
 	($(WORK_DIR)/Session -loginAddrL $(SERVER_IP):$$SCL_PORT -gateAddrL $(SERVER_IP):$$SGL_PORT -worldAddrL $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) \
 		1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
@@ -83,12 +86,12 @@ start_server:
 	($(WORK_DIR)/Gateway -loginAddrL $(SERVER_IP):$$GCL_PORT -worldAddrL $(SERVER_IP):$$GWL_PORT -sessionAddrC $(SERVER_IP):$$SGL_PORT -gatewayId 0 \
 		1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
 	echo "gateway has been runned.."; sleep 2s;\
-	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0 \
+	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0 -adminAddrL $(SERVER_IP):$$WAL_PORT \
 		1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
 	echo "world has been runned.."; sleep 2s;\
-	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100 \
+	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100 -adminAddrL $(SERVER_IP):$$FAL_PORT \
 		1>$(WORK_DIR)/logs/_fight.txt 2>&1 & ); \
 	echo "fight has been runned.."; sleep 2s;\
-	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200 \
+	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200 -adminAddrL $(SERVER_IP):$$SAL_PORT \
 		1>$(WORK_DIR)/logs/_social.txt 2>&1 & ); \
 	echo "social has been runned.."; sleep 2s;\

@@ -98,7 +98,7 @@ AIAttrType = {
 AIConditionType=
 {
 	AttrPercent   = 1,--属性比例{type=AIConditionType.AttrPercent,params={isEnemy = true ,type = AIAttrType.Hp,relation ="<=", value = 0.1 ,count = 2},}, 或{type=AIConditionType.AttrPercent,params={ ID = DBID,type = AIAttrType.Hp,relation ="<=",value = 0.2},},
-	IDExist		  = 2,--id是否存在{type=AIConditionType.IDExist,params={ID = 3},}, 或--id不存在{type=AIConditionType.IDExist,params={ID = 3,isNot = true},}, 
+	IDExist		  = 2,--id是否存在{type=AIConditionType.IDExist,params={ID = 3,relation=">",value = 1 },}, 或--id不存在{type=AIConditionType.IDExist,params={ID = 3,isNot = true},}, 
 	RoundCount    = 3,--第几回合{type=AIConditionType.RoundCount,params={round = 2,},}
 	RoundInterval = 4,--回合间隔{type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},}
 	BuffStatus	  = 5,--带有指定的buff(ID,或类型){type=AIConditionType.BuffStatus,params={isEnemy = true,buffID = 1( or type = BuffKind.Dot)},}或 {type=AIConditionType.BuffStatus,params={ID = DBID,buffID = 1( or type = BuffKind.Dot)},}
@@ -340,20 +340,74 @@ FightAIDB[31] = {
 	},
 }
 
+FightAIDB[100] = 
+{
+	name  = '返生雪莲AI--不攻击，只防御',
+	type = AIType.Config,
+	[1] = {
+	
+		condition = 
+		{
+		           {type = AIConditionType.AttrPercent,params={ ID = 25509, type = AIAttrType.Hp,relation =">",value = 0},},
+		},		
+		action = 
+		{ 			
+			   actionType = FightUIType.Defense,
+		},
+		chooseTarget = 
+		{
+			   type = AITargetType.Me,
+		},
+	},
+}
 
+FightAIDB[101] = 
+{
+	name  = '瑞兽AI',
+	type = AIType.Config,
+	[1] = {                                         
+	
+		condition = 
+		{
+		           type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},----每回合释放雷相性法攻技能
+		},		
+		action = 
+		{ 			
+			   actionType = FightUIType.UseSkill,params ={skillID ={1051}},
+		},
+		chooseTarget = 
+		{
+			   type = AITargetType.AllOfEnemy,
+		},
+	},
+	[2] = {	
+		condition = 
+		{
+		           type=AIConditionType.AttrPercent,params={ ID = 25501,type = AIAttrType.Hp,relation ="<=",value = 1},  --------第二回合开始，指定回合间隔对任意玩家角色施加混乱buff技能                                                      
+		},		
+		action = 
+		{ 			
+			   actionType = FightUIType.UseSkill,params ={skillID ={1052}},
+		},
+		chooseTarget = 
+		{
+			   type = AITargetType.AllOfEnemy,
+		},
+	},
+}
 ---------------------------------------------迷雾林副本ai-----------------------------------------------
 
-FightAIDB[41] = {
+FightAIDB[150] = {
 	name  = '每隔一回合施放一次技能 混乱/瘟疫',
 	type = AIType.Config,
 
 	[1] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 2,startRound = 3},
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
 		},		
 		action = { 
-			actionType = FightUIType.UseSkill,params ={skillID ={ 1045,1046}},		--使用技能
+			actionType = FightUIType.UseSkill,params ={skillID ={1047}},		--使用技能
 			
 		},
 		chooseTarget = {
@@ -363,7 +417,7 @@ FightAIDB[41] = {
         [2] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 2,startRound = 1},
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},
 		},		
 		action = { 
 			actionType = FightUIType.UseSkill,params ={skillID ={ 1013,1014}},		--使用技能
@@ -375,31 +429,28 @@ FightAIDB[41] = {
 	},
 }
 
-FightAIDB[42] = {
+FightAIDB[151] = {
 	name  = '每两回合施放一次治疗 ',
 	type = AIType.Config,
+
 
 	[1] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 2,startRound = 3},
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
 		},		
 		action = { 
 			actionType = FightUIType.UseSkill,params ={skillID ={ 1001}},		--使用技能
 			
 		},
 		chooseTarget = {
-			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.2 ,count = 2},--目标
-			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.4 ,count = 2},
-			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.6 ,count = 2},
-			 --type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.8 ,count = 2},
-			 type = AITargetType.AttrPercent, params ={isEnemy = false ,type = AIAttrType.Hp,relation ="<=", value = 0.9 ,count = 2},
+			 type = AnyOfFriend,
 		},
 	},
         [2] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 1,startRound = 2},
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},
 		},		
 		action = { 
 			actionType = FightUIType.UseSkill,params ={skillID ={ 1025}},		--使用技能
@@ -409,4 +460,24 @@ FightAIDB[42] = {
 			type = AITargetType.AnyOfEnemy,						--目标
 		},
 	},
-}
+	}
+FightAIDB[152] = {
+	name  = '每两回合施放一次治疗 ',
+	type = AIType.Config,
+
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 1,startRound = 1},
+		},		
+		action = { 
+			actionType = FightUIType.Defense,
+			
+		},
+		chooseTarget = {
+			 type = AITargetType.Me,
+		},
+	},
+        
+	}

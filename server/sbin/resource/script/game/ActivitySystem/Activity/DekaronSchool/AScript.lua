@@ -11,7 +11,7 @@ function AScript:__init(param)
 	self._activityTargetId = self._param.school
 end
 
-function AScript:onScriptDone(scriptID, isWin,monsterDBIDs,rewardID)
+function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
 	if scriptID == self._param.scriptId then 
 		if isWin then
 			--队伍加进度
@@ -35,7 +35,7 @@ function AScript:onScriptDone(scriptID, isWin,monsterDBIDs,rewardID)
 					local addexp = DekaronSchoolReward.getFightExpFormula(playerLevel,teamProcess)
 					local addtao = DekaronSchoolReward.getFightTaoFormula(playerLevel,teamProcess)
 					local addpot = DekaronSchoolReward.getFightPotFormula(playerLevel,teamProcess)
-					local itemID = DekaronSchoolReward.randItem(rewardID)
+					local itemID = DekaronSchoolReward.randItem(scriptID)
 					--经验
 					if addexp then
 						player:addXp(addexp)

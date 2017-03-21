@@ -268,7 +268,9 @@ function Team:removeMember(playerID)
 	player:setMoveSpeed(player:getSelfSpeed())
 	--modify npc pet show
 	setFollowVisible(playerID, true)
-	g_dekaronSchoolMgr:removeTeam(player)
+	if self:getDekaronActivityTarget() then
+		g_dekaronSchoolMgr:removeTeam(player)
+	end
 end
 
 --暂时离开
@@ -302,12 +304,16 @@ function Team:comeBack(playerID)
 end
 
 function Team:dissolve()
+	local activityTarget = self:getDekaronActivityTarget()
 	for _, memberInfo in pairs(self.allMemberList) do
 		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 		if self.leaderID ~= memberInfo.memberID then
 			if memberInfo.memberState == MemberState.Follow then
 				setFollowVisible(memberInfo.memberID, true)
 			end
+		end
+		if activityTarget then
+			g_dekaronSchoolMgr:removeTeam(player)
 		end
 	end
 	self:release()
@@ -343,16 +349,17 @@ end
 
 function Team:setDekaronActivityTarget(activityTarget)
 	self.activityTarget = activityTarget
-	local param = activityTarget:getParams()
 	for k,memberInfo in pairs(self.allMemberList) do
 		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 		local handler = player:getHandler(HandlerDef_Activity)
 		if activityTarget then
+			local param = activityTarget:getParams()
 			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,self.dekaronProcess,handler:getDekaronIntegral())
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
 	if activityTarget then
+		local param = activityTarget:getParams()
 		self:addDekaronTargetList(param.school)
 	else
 		table.clear(self.targetList)

@@ -27,7 +27,6 @@ function DialogFactory:createDialogObject(player, dialogID, check, npcID)
 			if errorID and errorID > 0 then
 				g_dialogFty:createErrorDialogObject(player, errorID)
 				g_dialogDoer:openErrorDialog(player, errorID)
-				print("对话不满足条件",dialogID)
 			end
 			return 
 		end

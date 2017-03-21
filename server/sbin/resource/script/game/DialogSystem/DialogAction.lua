@@ -855,6 +855,15 @@ function DialogAction:doChangeTarget(player, param)
 	end
 end
 
+function DialogAction:doEnterDiscussHero(player, param)
+	g_discussHeroMgr:enterDiscussHero(player, param)
+end
+
+function DialogAction:doDiscussHeroFight(player, param, npcID)
+	g_discussHeroMgr:doDiscussHeroPVEFight(player, param, npcID)
+end
+
+
 function DialogAction.getInstance()
 	return DialogAction()
 end

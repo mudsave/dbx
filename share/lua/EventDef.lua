@@ -201,6 +201,7 @@ FightEvents_SS_FightEnd_afterClient		= Event_Group_Fight + 30
 FightEvents_CS_SwitchMineState			= Event_Group_Fight + 31
 FightEvents_SS_FightEnd_ResetState		= Event_Group_Fight + 32
 FightEvents_SC_StartAutoMeet			= Event_Group_Fight + 33
+FightEvents_CF_PlayBubbleEnd			= Event_Group_Fight + 34
 
 --定义组队系统消息时间
 TeamEvents_CS_CreateTeam				= Event_Group_Team + 1
@@ -737,6 +738,14 @@ ActivityEvent_SC_ActivityPageActivity			= Event_Group_Activity + 21
 ActivityEvent_SC_ActivityPageDaliy				= Event_Group_Activity + 22
 ActivityEvent_SC_ActivityPageOther				= Event_Group_Activity + 23
 ActivityEvent_SC_notifyActivityPageUpdateBtn	= Event_Group_Activity + 24
+
+ActivityEvent_SC_EnterDiscussHero				= Event_Group_Activity + 25
+ActivityEvent_SC_UpdateDiscussHero				= Event_Group_Activity + 26
+ActivityEvent_CS_ExitDiscussHero				= Event_Group_Activity + 27
+ActivityEvent_CS_EnterDiscussHeroPVP			= Event_Group_Activity + 28
+ActivityEvent_SC_EnterDiscussHeroPVP			= Event_Group_Activity + 29
+ActivityEvent_SC_ExitDicussHero					= Event_Group_Activity + 30
+
 --宠物仓库消息
 PetDepotEvent_CS_ExpandPetDepot					= Event_Group_PetDepot + 1
 PetDepotEvent_SC_ExpandPetDepotReturn			= Event_Group_PetDepot + 2

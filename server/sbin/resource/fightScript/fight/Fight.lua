@@ -89,6 +89,7 @@ function Fight:__init()
 	self._deadList = {}--存放死亡的怪物
 	self._world_fightID = nil --在世界服唯一
 	self._timerContext = {}--[timerID] = context
+	self._deadMonsterNum={}--[dbID]= num--怪物的死亡次数返回给世界服
 end
 
 function Fight:getFightID()
@@ -262,8 +263,16 @@ function Fight:removeRole(role,isKeep)
 	
 	if instanceof(role,FightMonster) and role:getIsGBH() then
 		return false
+	elseif instanceof(role,FightMonster) then
+		local configID = role:getDBID()
+		local num = self._deadMonsterNum[configID] 
+		if not num then
+			self._deadMonsterNum[configID] = 1
+		else
+			self._deadMonsterNum[configID] = num + 1
+		end
 	end
-
+    
 	local side = role:getPos()[2]
 	local pos = role:getPos()[3]
 
@@ -748,7 +757,12 @@ function Fight:_doInformEscape(role)
 			j = j + 1
 		end
 		--通知服务器退出战斗
-		local event1 = Event.getEvent(FightEvents_FS_QuitFight, roleInfo, self._scriptID, quitPetAttrs, self._world_fightID)
+		local fightInfo
+		if instanceof(self, FightScript) then
+			fightInfo = {}
+			fightInfo.deadMonsterNum = self._deadMonsterNum
+		end
+		local event1 = Event.getEvent(FightEvents_FS_QuitFight, roleInfo, self._scriptID, quitPetAttrs, self._world_fightID, fightInfo)
 		RemoteEventProxy.sendToWorld(event1,self._srcWorldID)
 		print("%%%%%%%%%%%FightEvents_FS_QuitFight")
 	
@@ -1546,6 +1560,7 @@ function Fight:onEnterFightEnd()
 	if instanceof(self, FightScript) then
 		fightInfo = {}
 		fightInfo.common = self:getRewardFactorInfo()
+		fightInfo.deadMonsterNum = self._deadMonsterNum
 	end
 	if instanceof(self, FightScript_LuckyMonster) then
 		fightInfo.LuckMonster = self:getDeadMonsterInfo()

@@ -41,4 +41,9 @@ struct LinkContext_Gate : public _LinkContext
 	}
 };
 
+struct LinkContext_Admin: public _LinkContext
+{
+	LinkContext_Admin(int type, handle h) : _LinkContext(type, h){}
+};
+
 #endif

@@ -50,6 +50,7 @@ function loadSystem()
 	require "game.MailSystem.MailSystem"
 	require "game.TestSystem.TestSystem"
 	require "game.ExchangeItemSystem.ExchangeItemSystem"
+	require "game.AdminSystem.AdminSystem"
 
 	g_itemFct			= ItemFactory.getInstance()
 	g_itemMgr			= ItemManager.getInstance()
@@ -92,11 +93,13 @@ function loadSystem()
 	g_beastBlessMgr		= BeastBlessManager.getInstance()
 	g_goldHuntMgr		= GoldHuntManager.getInstance()
 
+	g_skyFallBoxMgr		= SkyFallBoxManager.getInstance()
 	g_activityMgr		= ActivityManager.getInstance()
 	g_activitySym		= ActivitySystem.getInstance()
 	g_dekaronSchoolMgr	= DekaronSchoolManager.getInstance()
 	g_catchPetMgr		= CatchPetManager.getInstance()
 
 	g_exchangeItemMgr = ExchangeItemManager.getInstance()
+	g_discussHeroMgr	= DiscussHeroManager.getInstance() 
 	
 end

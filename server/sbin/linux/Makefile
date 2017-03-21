@@ -88,7 +88,7 @@ _gateway_1 :
 
 _world :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 0 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 0 -adminAddrL 172.16.2.218:2501 1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
 	echo "World 0 has been runned.."; sleep 2s
 
 _world_1 :
@@ -97,7 +97,7 @@ _world_1 :
 	echo "World 1 has been runned.."; sleep 2s
 _fight :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 100 1>$(WORK_DIR)/logs/_world100.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 100 -adminAddrL 172.16.2.218:2502 1>$(WORK_DIR)/logs/_world100.txt 2>&1 & ); \
 	echo "fight 100 has been runned.."; sleep 2s
 
 _fight_1 :
@@ -112,7 +112,7 @@ _dbx :
 
 _social :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 200 1>$(WORK_DIR)/logs/_world200.txt 2>&1 & ); \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -worldId 200 -adminAddrL 172.16.2.218:2503 1>$(WORK_DIR)/logs/_world200.txt 2>&1 & ); \
 	echo "social 200 has been runned.."; sleep 2s
 
 # 用valgrind运行程序

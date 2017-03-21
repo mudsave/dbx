@@ -173,6 +173,7 @@ function Triggers.createBuyItemData(roleID, curParam, task, isRandom)
 		y = curParam.y,
 	}
 	g_taskSystem:onSetDirect(player, config)
+	task:refresh()
 end
 
 -- 上缴物品指引
@@ -233,6 +234,7 @@ function Triggers.createCatchPetData(roleID, curParam, task, isRandom)
 			local targetParam2 =
 			{
 				petID = config.petID,
+				scriptID = config.scriptID,
 				count  =1,
 				bor = true
 			}
@@ -250,7 +252,6 @@ function Triggers.createCatchPetData(roleID, curParam, task, isRandom)
 			targets[2].param = targetParam2
 			-- 配置拷贝
 			task:setTargetsConfig(targets)
-
 			local config = GetRandData(task, "createPaidPetTrace")
 			curParam.npcID = config.npcID
 		end
@@ -267,6 +268,7 @@ function Triggers.createCatchPetData(roleID, curParam, task, isRandom)
 		y = curParam.y,
 	}
 	g_taskSystem:onSetDirect(player, config)
+	task:refresh()
 end
 
 -- 强行停止自动遇敌

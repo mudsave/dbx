@@ -220,7 +220,7 @@ function PacketHandler:loadItemUseTimes(itemUserTimes)
 	for _, record in pairs(itemUserTimes) do
 		-- 判断记录日期跟现在是不是同一天
 		if time.isSameDay(record.recordTime) then
-			local itemID = recorld.itemID
+			local itemID = record.itemID
 			self.itemUseTimes[itemID] = {}
 			self.itemUseTimes[itemID].useTimes = record.useTimes
 			self.itemUseTimes[itemID].recordTime = record.recordTime

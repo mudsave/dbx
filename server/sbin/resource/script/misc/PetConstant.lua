@@ -111,10 +111,12 @@ PetEnchanceProbability = {
 }
 
 --研发技能学习消耗类型
-PetSkillCostType = {
-	money 	= 1,	--银两
-	contrib = 2,	--帮贡
-
+PetSkillCostType = 
+{
+	potential 	= 1,	--潜能
+	money		= 2,	--银两
+	contrib		= 3,	--帮贡
+	exp			= 4,	--心法经验 
 }
  
 

@@ -149,6 +149,7 @@ function Triggers.createMine(roleID, param, task, fromDB)
 	for _, mineData in pairs(param) do
 		player:getHandler(HandlerDef_TaskPrData):addTaskMine(task:getID(),mineData)
 	end
+	task:refresh()
 end
 
 function Triggers.removeMine(roleID, param, task, fromDB)

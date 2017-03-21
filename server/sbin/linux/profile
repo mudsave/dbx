@@ -1,0 +1,22 @@
+#!/bin/bash
+
+notice()
+{
+	pids=`ps -ef | grep "worldId $1" | grep $USER | grep -v 'grep' | awk '{print $2}'`
+	if [ -n "$pids" ]; then
+		for pid in $pids
+		do
+			kill -10 $pid
+		done
+	fi
+}
+if [[ "$1" == wo* ]]; then
+	notice 0
+elif [[ "$1" == fi* ]]; then
+	notice 100
+elif [[ "$1" == so* ]]; then
+	notice 200
+else
+	echo "profile:usage:profile [world|fight|social]"
+fi
+

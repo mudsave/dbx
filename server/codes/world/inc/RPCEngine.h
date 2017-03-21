@@ -18,10 +18,12 @@ public:
     static int sendToWorld(lua_State* pState);
     static int bcToWorldPeers(lua_State* pState);
     static int sendToAround(lua_State* pState);
+	static int sendToAdmin(lua_State* L);
 
 public:
     static void onReceive(AppMsg* msg);
     static void onWorldReceive(AppMsg* msg);
+	static void onAdminReceive(AppMsg* pMsg);
 
 private:
     static int toluaRPCOpen(lua_State* pState);
@@ -34,6 +36,7 @@ private:
 private:
     static int _rpc_ref;
     static int _wrpc_ref;
+    static int _arpc_ref;
     static int _debug_ref;
     static ByteBuffer _s_buffer;
     static lua_State* m_pLuaState;

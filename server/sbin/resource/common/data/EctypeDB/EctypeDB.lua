@@ -1023,19 +1023,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 1},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			--[[[3] =
 			{
@@ -1181,19 +1168,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 3},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			[5] =
 			{
@@ -1258,19 +1232,6 @@ tEctypeDB =
 					{Ectype_RemoveNpc, npcID = 30451},
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 4},
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
 				},
 			},
 			[7] =
@@ -1338,19 +1299,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 5},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			[9] =
 			{
@@ -1402,19 +1350,6 @@ tEctypeDB =
 					{Ectype_RemoveNpc, npcID = 30460},
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 6},
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
 				},
 			},
 			[11]=
@@ -1564,19 +1499,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 1},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			[3] =
 			{
@@ -1639,19 +1561,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 2},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			[5] =
 			{
@@ -1713,19 +1622,6 @@ tEctypeDB =
 					
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 3},
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
 				},
 			},
 			--[[[7] =
@@ -1864,19 +1760,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 5},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			[9] =
 			{
@@ -1928,19 +1811,6 @@ tEctypeDB =
 					{Ectype_RemoveNpc, npcID = 30550},
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 6},
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
 				},
 			},
 			[11]=
@@ -3146,19 +3016,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 1},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 
 			[3] =
@@ -3220,19 +3077,6 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 2},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
 			[5] =
 			{
@@ -3292,66 +3136,9 @@ tEctypeDB =
 					{Ectype_RemoveNpc, npcID = 30015},
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 3},
-					-- 传送到第二个场景
-					--{Ectype_TransferToSecondScene},
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
 				},
 			},
 			--[[[7] =
-			{
-				-- 步骤开始
-				Start =
-				{
-					{Ectype_CreateHotArea, hotAreaID = 8, xPos = 92, yPos = 266},
-					--开启场景光效
-					{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 92, yPos = 266},
-				},
-				-- 步骤跳转
-				Goto =
-				{
-					-- 跳转到第八步
-					-- 进入热区触发
-					EnterArea =
-					{
-						-- 跳转到第8步骤
-						{hotAreaID = 8, gotoNext = 8},
-					},
-				},
-				-- 步骤结束
-				End =
-				{
-					-- 传送到第二个场景
-					--{Ectype_TransferToSecondScene},
-
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
-			},]]--
-
-			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -3427,8 +3214,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[9] =
+			},]]--
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -3449,7 +3236,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第11步骤
-						{hotAreaID = 6, gotoNext = 10},
+						{hotAreaID = 6, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -3457,7 +3244,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -3472,7 +3259,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第12步骤
-						{fightID = 3005, gotoNext = 11},
+						{fightID = 3005, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -3487,21 +3274,8 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 6},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -3518,7 +3292,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第11步骤
-						{hotAreaID = 7, gotoNext = 12},
+						{hotAreaID = 7, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -3526,7 +3300,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -3540,7 +3314,7 @@ tEctypeDB =
 					-- 战斗结束触发
 					FightWin =
 					{
-							{fightID = 3006, gotoNext = 13},
+							{fightID = 3006, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -3551,21 +3325,8 @@ tEctypeDB =
 					-- 删除热区
 					{Ectype_DestroyHotArea, hotAreaID = 7},
 				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
-				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -3797,7 +3558,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[5] =
+			--[[[5] =
 			{
 				-- 步骤开始
 				Start =
@@ -3871,20 +3632,20 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[7] =
+			},]]--
+			[5] =
 			{
 				-- 步骤开始
 				Start =
 				{
 					-- 创建热区
-					{Ectype_CreateHotArea, hotAreaID = 4, xPos = 126, yPos = 129},
+					{Ectype_CreateHotArea, hotAreaID = 4, xPos = 104, yPos = 128},
 					-- 创建动态NPC
-					{Ectype_CreateNpc, npcID = 30085, xPos = 126, yPos = 129, dir = 1},
-					{Ectype_CreateNpc, npcID = 30086, xPos = 126, yPos = 126, dir = 1},
-					{Ectype_CreateNpc, npcID = 30087, xPos = 126, yPos = 132, dir = 1},
-					{Ectype_CreateNpc, npcID = 30088, xPos = 123, yPos = 129, dir = 1},
-					{Ectype_CreateNpc, npcID = 30089, xPos = 129, yPos = 129, dir = 1},
+					{Ectype_CreateNpc, npcID = 30085, xPos = 102, yPos = 130, dir = 7},
+					{Ectype_CreateNpc, npcID = 30086, xPos = 102, yPos = 134, dir = 7},
+					{Ectype_CreateNpc, npcID = 30087, xPos = 98, yPos = 130, dir = 7},
+					{Ectype_CreateNpc, npcID = 30088, xPos = 105, yPos = 135, dir = 7},
+					{Ectype_CreateNpc, npcID = 30089, xPos = 97, yPos = 127, dir = 7},
 					
 				},
 				-- 步骤跳转
@@ -3894,7 +3655,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 4, gotoNext = 8},
+						{hotAreaID = 4, gotoNext = 6},
 					},
 				},
 				-- 步骤结束
@@ -3902,7 +3663,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[8] =
+			[6] =
 			{
 				-- 步骤开始
 				Start =
@@ -3917,7 +3678,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3010, gotoNext = 9},
+						{fightID = 3010, gotoNext = 7},
 					},
 				},
 				-- 步骤结束
@@ -3947,7 +3708,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[9] =
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -3969,7 +3730,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -3977,7 +3738,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -3992,7 +3753,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3011, gotoNext = 11},
+						{fightID = 3011, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -4022,7 +3783,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -4039,7 +3800,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -4047,7 +3808,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -4062,7 +3823,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3012, gotoNext = 13},
+						{fightID = 3012, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -4087,7 +3848,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -4405,7 +4166,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			--[[[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -4483,8 +4244,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[9] =
+			},]]--
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -4508,7 +4269,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -4516,7 +4277,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -4531,7 +4292,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3021, gotoNext = 11},
+						{fightID = 3021, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -4563,7 +4324,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -4580,7 +4341,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -4588,7 +4349,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -4603,7 +4364,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3022, gotoNext = 13},
+						{fightID = 3022, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -4628,7 +4389,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -4948,7 +4709,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			--[[[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -5026,8 +4787,8 @@ tEctypeDB =
 
 					},
 				},
-			},
-			[9] =
+			},]]--
+			[7] =
 			{
 				-- 步骤开始
 				Start =
@@ -5051,7 +4812,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -5059,7 +4820,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -5074,7 +4835,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3029, gotoNext = 11},
+						{fightID = 3029, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -5106,7 +4867,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -5123,7 +4884,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -5131,7 +4892,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -5146,7 +4907,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3030, gotoNext = 13},
+						{fightID = 3030, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -5171,7 +4932,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[11]=
 			{
 			-- 步骤开始
 				Start =
@@ -5454,7 +5215,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3063, gotoNext = 7},
+						{fightID = 3063, gotoNext = 8},
 					},
 				},
 				-- 步骤结束
@@ -5484,7 +5245,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[7] =
+			[8] =
 			{
 				-- 步骤开始
 				Start =
@@ -5506,7 +5267,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 4, gotoNext = 8},
+						{hotAreaID = 4, gotoNext = 9},
 					},
 				},
 				-- 步骤结束
@@ -5514,7 +5275,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[8] =
+			[9] =
 			{
 				-- 步骤开始
 				Start =
@@ -5529,7 +5290,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3064, gotoNext = 9},
+						{fightID = 3064, gotoNext = 10},
 					},
 				},
 				-- 步骤结束
@@ -5559,7 +5320,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[9] =
+			[10] =
 			{
 				-- 步骤开始
 				Start =
@@ -5582,7 +5343,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 5, gotoNext = 10},
+						{hotAreaID = 5, gotoNext = 11},
 					},
 				},
 				-- 步骤结束
@@ -5590,7 +5351,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[10] =
+			[11] =
 			{
 				-- 步骤开始
 				Start =
@@ -5605,7 +5366,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3065, gotoNext = 11},
+						{fightID = 3065, gotoNext = 12},
 					},
 				},
 				-- 步骤结束
@@ -5636,7 +5397,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[11] =
+			[12] =
 			{
 				-- 步骤开始
 				Start =
@@ -5653,7 +5414,7 @@ tEctypeDB =
 					EnterArea =
 					{
 						-- 跳转到第4步骤
-						{hotAreaID = 6, gotoNext = 12},
+						{hotAreaID = 6, gotoNext = 13},
 					},
 				},
 				-- 步骤结束
@@ -5661,7 +5422,7 @@ tEctypeDB =
 				{
 				},
 			},
-			[12] =
+			[13] =
 			{
 				-- 步骤开始
 				Start =
@@ -5676,7 +5437,7 @@ tEctypeDB =
 					FightWin =
 					{
 						-- 跳转到第5步骤
-						{fightID = 3066, gotoNext = 13},
+						{fightID = 3066, gotoNext = 14},
 					},
 				},
 				-- 步骤结束
@@ -5701,7 +5462,7 @@ tEctypeDB =
 					},
 				},
 			},
-			[13]=
+			[14]=
 			{
 			-- 步骤开始
 				Start =
@@ -6015,9 +5776,9 @@ tEctypeDB =
 				-- 步骤开始
 				Start =
 				{
-					{Ectype_CreateHotArea, hotAreaID = 8, xPos = 43, yPos = 146},
+					{Ectype_CreateHotArea, hotAreaID = 8, xPos = 48, yPos = 156},
 					--开启场景光效
-					{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 43, yPos = 146},
+					{Ectype_StartSceneMagic, index = 1, magicID = 1109, xPos = 48, yPos = 456},
 				},
 				-- 步骤跳转
 				Goto =
@@ -6036,19 +5797,6 @@ tEctypeDB =
 					-- 传送到第二个场景
 					{Ectype_TransferToSecondScene},
 
-				},
-				-- 进度奖励
-				Prizes =
-				{
-					-- 经验奖励
-					ExpPrize = 20,
-					-- 金钱奖励
-					MoneyPrize = 20,
-					-- 道具奖励
-					ItemPrize =
-					{
-
-					},
 				},
 			},
 			[8] =

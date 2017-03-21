@@ -247,7 +247,6 @@ function RoleVerify:checkTaskTeam(player, param)
 end
 
 function RoleVerify:checkBeastBless(player, param, npcID)
-	print("checkBeastBless$$$$$$")
 	local minLvl		= BeastBlessMinLvl			-- 等级限制
 	local playerNum		= BeastBlessPlayerNum		-- 队伍人数限制
 	local fightCount	= BeastBlessFightCount		-- 战斗次数
@@ -263,12 +262,10 @@ function RoleVerify:checkBeastBless(player, param, npcID)
 	local activityHandler = player:getHandler(HandlerDef_Activity)
 	local activityId = g_beastBless:getID()
 	local teamFightCount = activityHandler:getPriData(activityId)
-	print("teamFightCount:",teamFightCount)
 	if teamHandler and teamHandler:isTeam() then 
 		-- 队伍中人数的判断
 		if playerNum then
 			if teamHandler:getCurMemberNum() < playerNum then
-				--print("队伍中人数的判断")
 				return false, param.errorID and param.errorID or 33
 			end
 		end
@@ -292,7 +289,6 @@ function RoleVerify:checkBeastBless(player, param, npcID)
 				local activityHandler = player:getHandler(HandlerDef_Activity)
 				if activityHandler then
 					local teamFightCount = activityHandler:getPriData(activityId)
-					print("teamFightCount>>>",teamFightCount,fightCount)
 					if teamFightCount > fightCount then
 						return false ,param.errorID and param.errorID or 36
 					end
@@ -468,6 +464,58 @@ function RoleVerify:checkDailyTaskTimes(  player,param  )
 		return false,1
 	end
 
+end
+
+function RoleVerify:checkDiscussHero(player,param)
+	print("检查------------------------------------->")
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	-- 组队
+	if teamHandler and teamHandler:isTeam() then
+		local playerList = teamHandler:getTeamPlayerList()
+		local activityHandler = player:getHandler(HandlerDef_Activity)
+		local activityId = g_beastBless:getID()
+		for _,player in pairs(playerList) do
+				local activityHandler = player:getHandler(HandlerDef_Activity)
+				if activityHandler then
+					local isCanIn = activityHandler:getPriData(activityId)
+					if isCanIn > 0 then
+						return false , 49
+					end
+				end
+			end
+		local isExistStepOut = teamHandler:isExistStepOut()
+		if isExistStepOut then
+			return false, 47
+		end
+		local teamMaxLvl,teamMinLvl = teamHandler:getCurMaxAndMinLvl()
+		if (teamMaxLvl - teamMinLvl) > 10 then
+			return false, 46
+		end
+		if teamMinLvl > 30 then
+			return false, 45
+		end
+	else
+		local curLevel = player:getLevel()
+		if curLevel < 30 then
+			return false , 50
+		end
+		local discussHero =  g_activityMgr:getActivity(gDiscussHeroActivityID)
+		if discussHero then
+			activityState = discussHero:getDiscussHeroState()
+			print("activityState",activityState)
+			if activityState and activityState == ActivityState.OpeningFirst then
+				return false,51
+			end
+		end
+		local activityHandler = player:getHandler(HandlerDef_Activity)
+		if activityHandler then
+			local isCanIn = activityHandler:getPriData(activityId)
+			if isCanIn and isCanIn > 0 then
+				return false , 48
+			end
+		end
+	end
+	return true
 end
 
 function RoleVerify.getInstance()

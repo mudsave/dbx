@@ -13,6 +13,7 @@ function SceneManager:__init()
 	self.ectypeScene = {}
 	self.factionScene = {}
 	self._GoldHuntZone = {}
+	self._DiscussHero = {} 
 end
 
 function SceneManager:__release()
@@ -290,6 +291,7 @@ function SceneManager:releaseGoldHuntScene(activityID)
 	self._GoldHuntZone[activityID] = nil
 end
 
+
 --检验玩家要进入的猎金场当前玩家数
 function SceneManager:checkPlayerCountInGoldHuntMap(player)
 	local	activityID = g_goldHuntMgr:getPlayerActivityID(player)
@@ -300,6 +302,90 @@ function SceneManager:checkPlayerCountInGoldHuntMap(player)
 			if playerCount < GoldHuntZone_MapPlayerLimit then
 				return true
 			end
+		end
+	end
+	return false
+end
+
+-- 创建煮酒论英雄场景
+function SceneManager:createDiscussHeroScene(mapID,activityMapID)
+	local mapConfig = mapDB[mapID]
+	if not mapConfig then
+		return -1
+	end
+	local scene = Scene()
+	local peer = CoScene:Create(mapConfig.sceneType, mapID, mapConfig.map)
+	scene:setPeer(peer)
+	scene:setMapID(mapID)
+	self._DiscussHero[activityMapID] = scene
+	return scene
+end
+
+function SceneManager:enterDiscussHeroScene(activityMapID, role, x, y)
+	local toScene = self._DiscussHero[activityMapID]
+	if not toScene then
+		return false
+	end
+	if role and x and y then
+		local prevPos = role:getPrevPos()
+		local pos = role:getPos()
+		prevPos[1],prevPos[2],prevPos[3] = pos[1],pos[2],pos[3]
+
+		toScene:attachEntity(role, x, y)
+		if role:getEntityType() == eClsTypePlayer then
+			
+			local petID = role:getFollowPetID()
+			local pet = petID and g_entityMgr:getPet(petID)
+			if pet and pet:isVisible() then
+				pet:setVisible(false)
+				pet:setVisible(true) 
+				toScene:attachEntity(pet, x -1 , y - 1 )
+			end
+			return true
+		end
+	end
+	return false
+end
+
+function SceneManager:releaseDiscussHero(activityMapID)
+	local scene = self._DiscussHero[activityMapID]
+	if not scene then
+		return
+	end
+	-- 遣返还在的玩家
+	local entityList = scene:getEntityList()
+	for ID, role in pairs(entityList) do
+		if instanceof(role, Player) and role:getStatus() ~= ePlayerFight then
+			local prevPos = role:getPrevPos()
+			self:doSwitchScence(role:getID(),prevPos[1],prevPos[2],prevPos[3])
+		end
+	end
+	-- 释放场景
+	local peer = scene:getPeer()
+	if peer then
+		--peer:close()
+	end
+	release(scene)
+	self._DiscussHero[activityMapID] = nil
+end
+
+function SceneManager:getDiscussHeroScene(activityMapID)
+	local scene = self._DiscussHero[activityMapID]
+	return scene
+end
+
+function SceneManager:getPlayerCountInDiscussHeroMap(activityMapID)
+	local scene = self._DiscussHero[activityMapID]
+	if  scene then
+		return scene:getPlayerCount()
+	end
+end
+
+function SceneManager:isInDiscussHeroScene(player)
+	local curScene = player:getScene()
+	for _ ,scene in pairs(self._DiscussHero) do
+		if curScene == scene then
+			return true
 		end
 	end
 	return false

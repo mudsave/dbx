@@ -34,6 +34,7 @@ eventGroup_DekaronSchool	= eventGroup_Item + 25
 eventGroup_BeastBless		= eventGroup_Item + 26
 eventGroup_CatchPet			= eventGroup_Item + 27
 eventGroup_Practise			= eventGroup_Item + 28
+eventGroup_DicussHero		= eventGroup_Item + 29
 
 --------------------每个业务系统的消息ID常量----------------
 --物品

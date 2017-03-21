@@ -36,6 +36,7 @@ DialogConditionDoer =
 	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.checkActivityTarget,
 	[DialogCondition.TkillMonster]= RoleVerify.checkKillMonster,
 	[DialogCondition.DailyTaskTimes] = RoleVerify.checkDailyTaskTimes,
+	[DialogCondition.CheckDiscussHero]	= RoleVerify.checkDiscussHero,
 }
 
 --对话条件对应的实例
@@ -70,5 +71,5 @@ DialogConditionInstance =
 	[DialogCondition.HaveActivityTarget] = RoleVerify.getInstance(),
 	[DialogCondition.TkillMonster] = RoleVerify.getInstance(),
 	[DialogCondition.DailyTaskTimes] = RoleVerify.getInstance(),
-	
+	[DialogCondition.CheckDiscussHero]	= RoleVerify.getInstance(),
 }

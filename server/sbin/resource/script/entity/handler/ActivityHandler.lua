@@ -11,9 +11,12 @@ function ActivityHandler:__init(entity)
 	self.finishTargets = {}
 	self.priData = {}
 	self._goldHuntData={ID=0,totalScore=0,isPrized = 0,rank = -1}
+	self.discussHero = {wineCount = 0,totalScore = 0}
 	self.enterPos = {}
 	--门派闯关活动积分
 	self.dekaronIntegral = 0
+	--天降宝盒活动所获宝盒数
+	self.skyFallBoxNum = 0
 end
 
 function ActivityHandler:__release()
@@ -24,6 +27,7 @@ function ActivityHandler:__release()
 	self._goldHuntData = nil
 	self.enterPos = nil
 	self.dekaronIntegral = nil
+	self.skyFallBoxNum = nil
 end
 
 function ActivityHandler:getGoldHuntData()
@@ -130,4 +134,31 @@ end
 
 function ActivityHandler:setDekaronIntegral(dekaronIntegral)
 	self.dekaronIntegral = dekaronIntegral
+end
+
+function ActivityHandler:getDekaronActivityTarget()
+	return self.activityTarget
+end
+
+function ActivityHandler:setDekaronActivityTarget(activityTarget)
+	self.activityTarget = activityTarget
+end
+
+function ActivityHandler:getDicussHero()
+	return self.discussHero.wineCount,self.discussHero.totalScore
+end
+
+-- 特殊的改变方式
+function ActivityHandler:setDicussHero(wineCount,totalScore)
+	self.discussHero.wineCount = wineCount
+	self.discussHero.totalScore = totalScore
+end
+
+--天降宝盒活动相关（设置活动所获宝盒数、获取所获宝盒数）
+function ActivityHandler:setSkyFallBoxNum(boxNum)
+	self.skyFallBoxNum = boxNum
+end
+
+function ActivityHandler:getSkyFallBoxNum()
+	return self.skyFallBoxNum
 end

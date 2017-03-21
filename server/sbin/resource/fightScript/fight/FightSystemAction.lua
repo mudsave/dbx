@@ -57,6 +57,24 @@ local function SystemActionFindOnePlayer(fight)
 			return player
 end
 
+local function SystemActionFindOneRandomPlayer(fight)
+			local membersA = fight:getMembers()[FightStand.A]
+			local player
+			local count = table.size(membersA)
+			local rand = math.random(count)
+			local i = 0
+			for _ ,role in pairs(membersA) do
+				i = i + 1
+				if instanceof(role,FightPlayer) and role:getLifeState() ~= RoleLifeState.Dead then
+					player = role
+					if i == rand then
+						break
+					end
+				end
+			end
+			return player
+end
+
 --[[
 	params={DBID={11},bubbleID = XXX}
 ]]
@@ -176,6 +194,18 @@ function FightSystemAction.PlayEffect(fight,params,result,bInserted)
 				end
 			elseif DBID == 0 then
 				local player = SystemActionFindOnePlayer(fight)
+				if player then
+					if not bHas then
+						bHas = true
+						EffectResult = {actionType = FightActionType.System,type =ScriptFightActionType.PlayEffect ,params={}}
+						EffectResult.params.IDs = {}
+						EffectResult.params.magicID = params.magicID
+						EffectResult.params.type = params.type
+					end
+					table.insert(EffectResult.params.IDs,player:getID())
+				end
+			elseif DBID == -1 then
+				local player = SystemActionFindOneRandomPlayer(fight)
 				if player then
 					if not bHas then
 						bHas = true

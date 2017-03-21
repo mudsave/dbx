@@ -13,7 +13,7 @@ function Ectype_CreateHotArea(ectype, params)
 	hotArea.bCreate = true
 
 	-- 通知客户端创建热区
-	local event = Event.getEvent(EctypeEvents_SC_EctypeHotArea, hotArea)
+	local event = Event.createEvent(EctypeEvents_SC_EctypeHotArea, hotArea)
 	ectype:sendEctypeEvent(event)
 end
 
@@ -25,7 +25,7 @@ function Ectype_DestroyHotArea(ectype, params)
 
 	ectype:setPreProcedureFlag(false)
 	-- 通知客户端删除热区
-	local event = Event.getEvent(EctypeEvents_SC_EctypeHotArea, hotArea)
+	local event = Event.createEvent(EctypeEvents_SC_EctypeHotArea, hotArea)
 	ectype:sendEctypeEvent(event)
 end
 
@@ -100,7 +100,7 @@ function Ectype_StartSceneMagic(ectype, params)
 	magicData.startMagic = true
 
 	-- 通知客户端
-	local event = Event.getEvent(EctypeEvents_SC_SceneMagic, magicData)
+	local event = Event.createEvent(EctypeEvents_SC_SceneMagic, magicData)
 	ectype:sendEctypeEvent(event)
 end
 
@@ -111,7 +111,7 @@ function Ectype_StopSceneMagic(ectype, params)
 	magicData.stopMagic = true
 
 	-- 通知客户端
-	local event = Event.getEvent(EctypeEvents_SC_SceneMagic, magicData)
+	local event = Event.createEvent(EctypeEvents_SC_SceneMagic, magicData)
 	ectype:sendEctypeEvent(event)
 end
 

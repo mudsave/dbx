@@ -49,6 +49,82 @@ function NewPlayerLoginGift(player, item)
 	return removeFlag
 end
 
+--根据权重随机出天降宝盒的奖励类型
+local function getRandValueFromBox(config)
+	local maxWeight = 0
+	-- 计算总权重
+	for _, item in pairs(config) do
+		maxWeight = maxWeight + item.weight
+	end
+	-- 得到随机物
+	local rand = math.random(maxWeight)
+	local curWeight  = 0
+	for _,item in pairs(config) do
+		if rand >= curWeight and rand < curWeight +  item.weight then
+			return item
+		end
+		curWeight = curWeight +  item.weight
+	end	
+end
+
+--打开天降宝盒
+function OpenSkyFallBox(player, item)
+	--获得宝盒等级
+	local itemLv = item:getItemLvl()
+	local removeFlag = false
+
+	local skyFallBoxRewardDB = skyFallBoxRewardClass
+	if not skyFallBoxRewardDB then
+		return
+	end
+	local getItem = getRandValueFromBox(skyFallBoxRewardDB)
+	if not getItem then
+		return
+	end
+	local getValueFun = getItem.Name
+	local valueName = getItem.valueName
+	local getMSGID = getItem.msgID
+
+	--如果奖励是经验奖励
+	if valueName == "player_xp" then
+		local curPoint = player:getAttrValue(valueName)
+		local addPoint = getValueFun(itemLv)
+		curPoint = curPoint + addPoint
+		player:addXp(curPoint)
+		player:flushPropBatch()
+		--发送消息
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, getMSGID, addPoint)
+		g_eventMgr:fireRemoteEvent(event, player)
+		removeFlag = true
+		return removeFlag
+	end
+	
+	--如果奖励是金钱奖励
+	if valueName == 'Money' then
+		local playerMoney = player:getMoney()
+		local addMoney = getValueFun(itemLv)
+		playerMoney = playerMoney + addMoney
+		player:setMoney(playerMoney)
+		--发送消息
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, getMSGID, addMoney)
+		g_eventMgr:fireRemoteEvent(event, player)
+		removeFlag = true
+		return removeFlag
+	end
+
+	--将奖励给玩家(除金钱、经验外的属性奖励)
+	local curPoint = player:getAttrValue(valueName)
+	local addValue = getValueFun(itemLv)
+	curPoint = curPoint + addValue
+	player:setAttrValue(valueName, curPoint)
+	player:flushPropBatch()
+	--发送消息
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_FightReward, getMSGID, addValue)
+	g_eventMgr:fireRemoteEvent(event, player)
+	removeFlag = true
+	return removeFlag
+end
+
 --打开宝箱
 
 --宝箱物品权重处理

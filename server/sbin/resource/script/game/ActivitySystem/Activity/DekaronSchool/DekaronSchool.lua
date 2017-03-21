@@ -124,10 +124,11 @@ end
 
 --玩家上线加入到活动中
 function DekaronSchool:joinPlayer(player,recordList)
-	local recordList = recordList[32]
-	local integral = recordList[1].integral
-	local handler = player:getHandler(HandlerDef_Activity)
-	handler:setDekaronIntegral(integral)
-	local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, 0,0,integral)
-	g_eventMgr:fireRemoteEvent(event, player)
+	if recordList and recordList[1] then
+		local integral = recordList[1].integral
+		local handler = player:getHandler(HandlerDef_Activity)
+		handler:setDekaronIntegral(integral)
+		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, 0,0,integral)
+		g_eventMgr:fireRemoteEvent(event, player)
+	end
 end

@@ -243,10 +243,10 @@ profile_dump(lua_State *L) {
 			const char *source = (lua_rawgeti(L,value,2),lua_tostring(L,-1));
 			int linedefined = (lua_rawgeti(L,value,3),lua_tointeger(L,-1));
 			int calltimes = (lua_rawgeti(L,value,4),lua_tointeger(L,-1));
-			long total = (lua_rawgeti(L,value,5),lua_tointeger(L,-1));
-			long min = (lua_rawgeti(L,value,6),lua_tointeger(L,-1));
-			long max = (lua_rawgeti(L,value,7),lua_tointeger(L,-1));
-			long avg = (total) / calltimes;
+			int total = (lua_rawgeti(L,value,5),lua_tointeger(L,-1));
+			int min = (lua_rawgeti(L,value,6),lua_tointeger(L,-1));
+			int max = (lua_rawgeti(L,value,7),lua_tointeger(L,-1));
+			int avg = (total) / calltimes;
 
 			fprintf(file,"%s,\"%s\",%d,%d,%d,%d,%d,%d\n",funcName,source,linedefined,calltimes,total,avg,min,max);
 

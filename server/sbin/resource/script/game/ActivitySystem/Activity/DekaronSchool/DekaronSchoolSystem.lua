@@ -40,8 +40,7 @@ function DekaronSchoolSystem:onFightEnd(event)
 		if team then
 			local activityTarget = team:getDekaronActivityTarget()
 			if activityTarget then
-				local rewardID = ScriptFightInfo.LuckyRewardID
-				activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs,rewardID)
+				activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs)
 			end
 		end
 	end

@@ -6,11 +6,12 @@ local function notice(str,...)
 	print( ("PetSystem:%s"):format( str and str:format(...) or "" ) )
 end
 
-local math_random = math.random
-local math_min = math.min
-local math_ceil = math.ceil
-local CombineArray = Array.combine
-local SubtractArray = Array.subtract
+local math_random	= math.random
+local math_min		= math.min
+local math_ceil		= math.ceil
+local math_floor	= math.floor
+local CombineArray	= Array.combine
+local SubtractArray	= Array.subtract
 
 PetSystem = class(EventSetDoer,Singleton)
 
@@ -36,11 +37,7 @@ function PetSystem:__init()
 		[PetEvent_CS_CombinePets]			= PetSystem.onCombinePets,		-- 宠物合成
 		[PetEvent_CS_ReadSkillBook]			= PetSystem.onPetLearn,			-- 宠物学习技能
 		[PetEvent_CS_LearnExtendSkill]		= PetSystem.onPetExtendSkill,	-- 宠物学习研发技能
-	
 	}
-end
-
-function PetSystem:__release()
 end
 
 local function PetNormalCheck(player,pet)
@@ -68,9 +65,6 @@ local function SetFightPetCheck(player,pet,fight)
 	if level < pet:getTakeLevel() then
 		return PetError.TakeLevelHigh
 	end
-	--[[if pet:getPetLife() < 1 then
-		return PetError.PetLifeLow
-	end]]
 	return 0
 end
 
@@ -397,7 +391,7 @@ local function RepairFightPetCheck(player)
 	end
 	if player:getLevel() > 20 then
 		local sub = player:getSubMoney()
-		local money = plyer:getMoney()
+		local money = player:getMoney()
 		if money < PetRepairCostMoney and sub + money < PetRepairCostMoney then
 			return PetError.NoEnoughMoney
 		end
@@ -585,67 +579,40 @@ function PetSystem:onEnchancePet(event)
 		return
 	end
 	packet:removeByItemId(pill,need)
-	local upLvl = pet:getUpLevel()
-	--宠物强化概率
-	local rate = math.random(0,10000)
-	local successRate = PetEnchanceProbability[upLvl]
-	--完成度增加公式 完成度+成功率*（20%~50%）
-	local comp = pet:getAttrValue(pet_up_comp)
-	local c_rate = math.random(20,50)/100
-	comp = comp + successRate*c_rate
-	print("rate--successRate",rate,successRate)
+	
+	local growthAttrName		-- 成长属性名称
+	local maxGrowthAtttName		-- 成长上限属性名称
 	if pet:getAttackType() == PetAttackType.Physics then
-		local curGrowth = pet:getAttrValue(pet_at_grow)
-		local orgGrowth = curGrowth/(1 + 0.08*upLvl + math.ceil(comp/2000) * 0.01)	
-		local curMaxGrowth = pet:getAttrValue(pet_at_grow_max)
-		local orgMaxGrowth = curMaxGrowth/(1 + 0.08*upLvl + math.ceil(comp/2000) * 0.01)
-		
-		if rate <= successRate or comp > 10000 then
-			pet:setUpLevel(pet:getUpLevel() + 1)
-			pet:setAttrValue(pet_up_comp,0)
-			--成长值计算（初始成长值*8%*强化等级）
-			local changeGrowth = orgGrowth + orgGrowth*0.08*upLvl
-			pet:setAttrValue(pet_at_grow,math.floor(changeGrowth))
-			
-			local changeMaxGrowth = orgMaxGrowth + orgMaxGrowth*0.08*upLvl
-			pet:setAttrValue(pet_at_grow_max,math.floor(changeMaxGrowth))
-		else			
-			--完成度每累计达到20%，给予初始值1%的成长属性
-			local changeGrowth = orgGrowth + orgGrowth*(0.08*upLvl + math.ceil(comp/2000)*0.01)	
-			pet:setAttrValue(pet_at_grow,math.floor(changeGrowth))
-
-			local changeMaxGrowth = orgMaxGrowth + orgMaxGrowth*(0.08*upLvl + math.ceil(comp/2000)*0.01)
-			pet:setAttrValue(pet_at_grow_max,math.floor(changeMaxGrowth))
-			
-			pet:setAttrValue(pet_up_comp,comp)
-		end
+		growthAttrName = pet_at_grow
+		maxGrowthAtttName = pet_at_grow_max
 	else
-		local curGrowth = pet:getAttrValue(pet_mt_grow)
-		local orgGrowth = curGrowth/(1+0.08*upLvl+math.ceil(comp/2000)*0.01)
-		local curMaxGrowth = pet:getAttrValue(pet_mt_grow_max)
-		local orgMaxGrowth = curMaxGrowth/(1+0.08*upLvl+math.ceil(comp/2000)*0.01)
-		
-		if rate <= successRate or comp > 10000 then
-			pet:setUpLevel(pet:getUpLevel() + 1)
-			pet:setAttrValue(pet_up_comp,0)
-			--成长值计算（初始成长值*8%*强化等级）
-			local changeGrowth = orgGrowth + orgGrowth*0.08*upLvl
-			pet:setAttrValue(pet_mt_grow,math.floor(changeGrowth))
-			
-			local changeMaxGrowth = orgMaxGrowth + orgMaxGrowth*0.08*upLvl
-			pet:setAttrValue(pet_mt_grow_max,math.floor(changeMaxGrowth))
-
-		else
-			--完成度每累计达到20%，给予初始值1%的成长属性			
-			local changeGrowth = orgGrowth + orgGrowth*(0.08*upLvl + math.ceil(comp/2000)*0.01)	
-			pet:setAttrValue(pet_mt_grow,math.floor(changeGrowth))
-
-			local changeMaxGrowth = orgMaxGrowth + orgMaxGrowth*(0.08*upLvl + math.ceil(comp/2000)*0.01)
-			pet:setAttrValue(pet_mt_grow_max,math.floor(changeMaxGrowth))
-			
-			pet:setAttrValue(pet_up_comp,comp)
-		end
+		growthAttrName = pet_mt_grow
+		maxGrowthAtttName = pet_mt_grow_max
 	end
+
+	local upLevel = pet:getUpLevel()
+	local rate = PetEnchanceProbability[upLevel]	-- 配置的概率
+	local process = pet:getAttrValue(pet_up_comp)	--  rate*math_random(20,50)/100	--完成度增加公式 完成度+成功率*（20%~50%）
+
+	local inc = 1 + 0.08 * upLevel + math_ceil(process / 2000) * 0.01	-- 成长属性的加成
+	local basicGrowth = pet:getAttrValue(pet_at_grow)/inc				-- 原先成长属性值
+	local basicMaxGrowth = pet:getAttrValue(pet_at_grow_max)/inc		-- 原先最大成长属性值
+
+	local process_plus = math_ceil(math_random(20,50)/100 * rate)
+	if math_random(0,10000) < rate or process + process_plus > 10000 then
+		upLevel = upLevel + 1
+		inc = 1 + 0.08*upLevel
+		pet:setUpLevel(upLevel)
+		pet:setAttrValue(pet_up_comp,0)
+	else
+		process = process + 100
+		inc = 1 + 0.08*upLevel + math_ceil(process/2000)*0.01
+		pet:addAttrValue(pet_up_comp,process_plus)
+	end
+
+	pet:setAttrValue(growthAttrName,math_floor(inc * basicGrowth))
+	pet:setAttrValue(maxGrowthAtttName,math_floor(inc * basicMaxGrowth))
+
 	pet:flushPropBatch(player)
 end
 
@@ -995,31 +962,41 @@ function PetSystem:onPetLearn(event)
 	)
 end
 
---宠物学习研发技能消耗
-local function GetExtendSkillConsume(skillID,skillLvl)
-	local contrCostIndex = PetExtendSkillUPDB[skillID][PetSkillCostType.money] 
-	local contrCost = PetSkillDataDB[contrCostIndex][skillLvl] 
-	local moneyCostIndex = PetExtendSkillUPDB[skillID][PetSkillCostType.contrib]
-	local moneyCost = PetSkillDataDB[moneyCostIndex]
-	return contrCost,moneyCost
-end
 
---消耗帮贡银两
+------------------------------宠物学习研发技能
+local CostType = {
+	[PetSkillCostType.potential] 	= function(player) return player:getAttrValue(player_pot) end,
+	[PetSkillCostType.money] 		= function(player) return player:getMoney() end,
+	[PetSkillCostType.contrib]		= function(player) return player:getFactionMoney() end,
+	[PetSkillCostType.exp] 			= function(player) return player:getAttrValue(player_xp) end,
+}
+
+local CostValue = {
+	[PetSkillCostType.potential] 	= function(player,value) player:setAttrValue(player_pot,value) end,
+	[PetSkillCostType.money] 		= function(player,value) player:setMoney(value) end,
+	[PetSkillCostType.contrib]		= function(player,value) player:setFactionMoney(value) end,
+	[PetSkillCostType.exp] 			= function(player,value) player:setAttrValue(player_xp,value) end,
+}
+
+--消耗
 local function PetExtendConsume(player,skillID,skillLevel)
-	local curContr = player:getFactionMoney()--当前帮贡
-	local curMoney = player:getMoney()
-	local contrCost,moneyCost = GetExtendSkillConsume(skillID,skillLvl)
-	if (curContr < contrCost) or (curMoney < moneyCost) then
-		print("Money or contribute not enough")
-		return false
-	else
-		player:setMoney(curMoney - moneyCost)
-		player:setFactionMoney(curContr - contrCost)
-		return true
+	local skillData = PetSkillLevelUpDB[skillID]
+	local cost = skillData.cost
+	for index,value in pairs(cost) do
+		local needCost = PetSkillDataDB[value][skillLevel]
+		local curCost = CostType[index](player)
+		if curCost < needCost then
+			print("cost not enough")
+			return false 
+		else
+			CostValue[index](player,curCost - need)
+			player:flushPropBatch()
+			return true
+		end
 	end
 end
 
---宠物学习研发技能
+--研发技能
 function PetSystem.onPetExtendSkill(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
@@ -1028,13 +1005,32 @@ function PetSystem.onPetExtendSkill(event)
 	local skillID = params[2]
 	local skillLevel = params[3]
 
-	--消耗帮贡银两
-	--if not PetExtendConsume(player,skillID,skillLvl) then return end
+	local pet = player:getHandler(HandlerDef_Pet):getPet(petID)
+	if not pet then print("the pet is empty") return end
+	local skillhandler = pet:getHandler(HandlerDef_PetSkill) 
+	--当前技能等级是否高于要学习的等级
+	local skill = skillhandler:getSkill(skillID)
+	if skill then
+		local lvl = skill:getLevel()
+		if lvl >= skillLevel then
+			print("current skilllevel is higher")
+			return 
+		end
+	end
 
+	--消耗
+	if not PetExtendConsume(player,skillID,skillLevel) then return end
+	
+	--添加技能
+	
 
 	--返回信息给客户端
-	--返回客户端[PetEvent_SC_LearnExtendSkill]
+	local param  
+	local event = Event.getEvent(PetEvent_SC_LearnExtendSkill,param)
+	g_eventMgr.fireRemoteEvent(event,player)
 end
+
+
 
 function PetSystem.getInstance()
 	return PetSystem()

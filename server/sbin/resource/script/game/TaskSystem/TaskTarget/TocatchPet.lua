@@ -11,6 +11,7 @@ function TocatchPet:__init(entity, task, param, state)
 	self:addWatcher("onCatchPet")
 	self:addWatcher("onRemovePet")
 	self:addWatcher("onPaidPet")
+	self:addWatcher("onScriptDone")
 	local needPetCount = 0
 	for petID, pet in pairs(petList) do
 		if pet and pet:getConfigID() == param.petID then
@@ -21,11 +22,16 @@ function TocatchPet:__init(entity, task, param, state)
 	if self._state == 0 then
 		self._state = needPetCount
 	end
-	if self:completed() then
-		self._task:refresh()
-	end
 	-- 上缴宠物界面, 不同颜色显示
 	g_taskSystem:addTaskPet(entity, task:getID(), param.petID)
+end
+
+function TocatchPet:onScriptDone(scriptID)
+	if scriptID == self._param.scriptID then
+		if not self:completed() then
+			self._task:refresh()
+		end
+	end
 end
 
 -- 捕捉宠物
@@ -109,4 +115,5 @@ function TocatchPet:removeAllWatchers()
 	self:removeWatcher("onCatchPet")
 	self:removeWatcher("onRemovePet")
 	self:removeWatcher("onPaidPet")
+	self:removeWatcher("onScriptDone")
 end

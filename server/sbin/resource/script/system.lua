@@ -129,12 +129,22 @@ function System.OnPlayerLoaded(player, recordList)	-- 玩家上线加载坐骑�
 
 	--加载猎金场活动
 	g_goldHuntMgr:loadGoldHunt(player,recordList[30])
+	
+	g_beastBlessMgr:onPlayerOnline(player,recordList[31])
 	-- 活动上线
-	g_activityMgr:onPlayerOnline(player,recordList)
+	g_dekaronSchoolMgr:onPlayerOnline(player,recordList[32])
+
 	--加载兑换物品数据
 	g_exchangeItemMgr:playerOnLine(player,recordList[33])
 	-- 
 	g_taskDoer:loadBabelTask(player, recordList[36])
+	--加载天降宝盒活动
+	g_skyFallBoxMgr:loadSkyFallBoxDB(player,recordList[37])
+	
+	g_discussHeroMgr:onPlayerOnline(player,recordList[38])
+	
+	-- 通知玩家上线
+	g_activityMgr:onPlayerOnline(player)
 end
 
 function System.OnPlayerLogout(player, reason)

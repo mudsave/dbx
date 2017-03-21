@@ -345,7 +345,7 @@ function Ectype:exeLogicProcedure(bNewEctype)
 
 	if self.curProgress >= 1 then
 		-- 通知当前步骤
-		local event = Event.getEvent(EctypeEvents_SC_CurProcess, self.curProgress)
+		local event = Event.createEvent(EctypeEvents_SC_CurProcess, self.curProgress)
 		self:sendEctypeEvent(event)
 	end
 
@@ -367,6 +367,7 @@ function Ectype:sendEctypeEvent(event)
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
+	event:release()
 end
 
 -- 热区触发
@@ -1404,7 +1405,7 @@ function Ectype:exePreReloginLogicProcedure(curProgress)
 
 	if curProgress >= 1 then
 		-- 通知当前步骤
-		local event = Event.getEvent(EctypeEvents_SC_CurProcess, curProgress)
+		local event = Event.createEvent(EctypeEvents_SC_CurProcess, curProgress)
 		self:sendEctypeEvent(event)
 	end
 end

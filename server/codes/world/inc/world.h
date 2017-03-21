@@ -38,7 +38,8 @@ enum TaskIntervals
 class CWorld :
 	public ITask,
 	public IMsgLinksImpl<IID_IMsgLinksWS_C>,
-	public IMsgLinksImpl<IID_IMsgLinksWG_C>
+	public IMsgLinksImpl<IID_IMsgLinksWG_C>,
+	public IMsgLinksImpl<IID_IMsgLinksAW_L>
 {
 public:
 	CWorld();
@@ -46,7 +47,7 @@ public:
 	~CWorld();
 
 public:
-	void Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort );
+	void Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort, char* adminIP, int adminPort);
 
 	void Close();
 
@@ -59,10 +60,14 @@ public:
 
 	void OnGatewayMsg(AppMsg* pMsg, HANDLE hLinkContext);
 
+	void OnAdminMsg(AppMsg* pMsg, HANDLE hLinkContext);
+
 public:
 	void OnSessionClosed(HANDLE hLinkContext, HRESULT reason);
 
 	void OnGatewayClosed(HANDLE hLinkContext, HRESULT reason);
+
+	void OnAdminClosed(HANDLE hLinkContext, HRESULT reason);
 
 public:
 	void handleFastFrame();
@@ -309,8 +314,10 @@ public:
 		msg.worldId		= worldId;
 
 		HRESULT hr = S_OK;
-		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)&msg, sizeof(msg)); ASSERT_( SUCCEEDED(hr) );
-		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)pMsg, pMsg->msgLen); ASSERT_( SUCCEEDED(hr) );
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)&msg, sizeof(msg));
+		ASSERT_( SUCCEEDED(hr) );
+		hr = IMsgLinksImpl<IID_IMsgLinksWG_C>::SendData( (handle)INVALID_HANDLE, (BYTE*)pMsg, pMsg->msgLen);
+		ASSERT_( SUCCEEDED(hr) );
 	}
 
 	void sendMsgToWorld(short worldId, AppMsg* pMsg)
@@ -337,6 +344,14 @@ public:
 	}
 
 public:
+	void sendMsgToAdmin(AppMsg* pMsg)
+	{
+		HRESULT hr = S_OK;
+		hr = IMsgLinksImpl<IID_IMsgLinksAW_L>::SendData((handle)INVALID_HANDLE, (BYTE*)pMsg, pMsg->msgLen);
+		ASSERT_( SUCCEEDED(hr) );
+	}
+
+public:
 	void setPlayerCount(int count)
 	{
 		m_playerCount = count;	
@@ -345,7 +360,6 @@ public:
 private:
 	bool luaStart(lua_State* pLuaState)
 	{
-		luaStartProfile(pLuaState);
 		LuaFunctor<TypeNull, int> startFunc(pLuaState, "ManagedApp.start");
 		if ( !startFunc( TypeNull::nil(), m_worldId ) )
 		{
@@ -453,6 +467,9 @@ private:
 		if ( linkType == IID_IMsgLinksWG_C )
 			return "World->Gateway";
 
+		if ( linkType == IID_IMsgLinksAW_L )
+			return "Admin->World";
+
 		return "Gateway->error";
 	}
 
@@ -514,10 +531,13 @@ private:
 	short					m_sessionPort;
 	std::string				m_dbIP;
 	short					m_dbPort;
+	std::string				m_adminIP;
+	short					m_adminPort;
 
 private:
 	HRESULT					m_sessionSock;
 	LinkContext_Session*	m_pSession;
+	LinkContext_Admin*		m_pAdmin;
 
 private:
 	HANDLE					m_hFastFrameTimer;

@@ -30,7 +30,7 @@ DialogCondition =
 	MatchTaskNpc = 25,
 	NoMatchTaskNpc = 26,
 	MatchTaskState = 27,
-
+	CheckDiscussHero = 28,
 }
 
 --对话类型
@@ -107,7 +107,10 @@ DialogActionType =
 	FlyUp				= 59,		-- 飞升
 	ChangeRewardType	= 60,		-- 跟换奖励类型
 	ChangeTarget		= 61,		-- 改变任务目标
-	OpenItemRepairWin = 62,			--装备修理
+	OpenItemRepairWin	= 62,		--装备修理
+	EnterDiscussHero	= 63,		-- 进入煮酒论英雄
+	DiscussHeroFight	= 64,		-- 进入战斗
+
 }
 
 --对话框图标类型
