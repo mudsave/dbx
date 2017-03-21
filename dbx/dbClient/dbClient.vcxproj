@@ -65,36 +65,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\server\tools\dbClient\inc\Client.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\DBClientException.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\dbexception.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\DBThread.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\IDBAClient.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\IDBARecordSet.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\IDBEngine.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\MsgDefine.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\MsgParse.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\MsgSDefine.h" />
+    <ClInclude Include="..\..\server\tools\dbClient\inc\DBClient.h" />
     <ClInclude Include="..\..\server\tools\dbClient\inc\NetCtrl.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\Record.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\RecordSet.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\RecordSetManager.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\Singleton.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\stdafx.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\Translate.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\VirSpace.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\vsdeftemp.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\server\tools\dbClient\src\Client.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\DBAClient.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\DBARecordSet.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\DBClientException.cpp" />
+    <ClCompile Include="..\..\server\tools\dbClient\src\DBClient.cpp" />
     <ClCompile Include="..\..\server\tools\dbClient\src\NetCtrl.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\Record.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\RecordSet.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\RecordSetManager.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
