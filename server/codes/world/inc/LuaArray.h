@@ -2,6 +2,8 @@
 #define __LUAARRAY_H_
 
 #include "dbx_msgdef.h"
+#include "macros.h"
+
 #include <map>
 
 class CLuaArray

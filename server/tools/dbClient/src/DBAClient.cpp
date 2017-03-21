@@ -41,24 +41,12 @@ static int ErrorCount=0;
 // This is an example of an exported function.
 DBACLIENT_API IInitClient* CreateClient(IDBANetEvent* pNetEvent,std::string serverAddr,int iPort)
 {
-	try
-	{
-		CClient* pClient=CClient::InstancePtr();
-		CClient::setDBNetEvent(pNetEvent);
-        pClient->ConnectDBX(serverAddr, iPort);
-		return dynamic_cast<IInitClient*>(pClient);
-	}
-	catch (CDBClientException e)
-	{
-		errorMap.insert(std::make_pair(USERDEFERROR,e.m_nExceptionType));
-		return NULL;
-	}
-	catch (...) 
-	{
-		errorMap.insert(std::make_pair(SYSTEMERROR,0));
-		return NULL;
-	}
-	
+
+	CClient* pClient=CClient::InstancePtr();
+	CClient::setDBNetEvent(pNetEvent);
+    pClient->ConnectDBX(serverAddr, iPort);
+	return dynamic_cast<IInitClient*>(pClient);
+
 }
 class IsError
 {

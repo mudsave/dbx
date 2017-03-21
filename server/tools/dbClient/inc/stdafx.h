@@ -13,13 +13,10 @@
 
 #include "ArrayEx.h"
 #include "MsgLinksImpl.h"
-#include "VirSpace.h"
-#include "vsdeftemp.h"
 
 typedef const char *LPCSTR;
 typedef char *LPSTR;
-#include "DBClientException.h"
-//#include "MsgDefine.h"
-//#include "MsgSDefine.h"
+
+
 
 
