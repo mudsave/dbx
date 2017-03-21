@@ -13,9 +13,11 @@ struct _LinkContext_DB
 	_LinkContext_DB(int type, handle h): linkType(type), hLink(h), idx(-1){}
 };
 
-DBClientCB* DBClient::m_queryResultHandle = NULL;
 
-DBClient::DBClient(): m_netCtrl(NULL)
+DBClient::DBClient()
+    :m_netCtrl(NULL),
+     m_queryResultHandle(NULL)
+
 {
     m_pThreads = GlobalThreadsPool();
     m_netCtrl = new NetCtrl();
@@ -23,13 +25,18 @@ DBClient::DBClient(): m_netCtrl(NULL)
 
 DBClient::~DBClient()
 {
-    m_netCtrl->Close(CLOSE_UNGRACEFUL);
-    delete m_netCtrl;
+    disconnectDBX();
 }
 
 void DBClient::connectDBX(std::string p_serverAddr, int p_port)
 {
     m_netCtrl->Connect(p_serverAddr, p_port);
+}
+
+void DBClient::disconnectDBX()
+{
+    m_netCtrl->Close(CLOSE_UNGRACEFUL);
+    delete m_netCtrl;
 }
 
 void* DBClient::getAttributeSet(int attriIndex,int index)
@@ -130,7 +137,7 @@ void DBClient::addQueryResult(CSCResultMsg* pMsg)
 DBClient* CreateClient(DBClientCB* p_dbClientCB, std::string serverAddr, int port)
 {
     DBClient* pClient = DBClient::InstancePtr();
-    DBClient::setDBClientCB(p_dbClientCB);
+    pClient->setDBClientCB(p_dbClientCB);
     pClient->connectDBX(serverAddr, port);
     return pClient;
 }

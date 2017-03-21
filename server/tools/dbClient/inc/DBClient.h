@@ -29,12 +29,13 @@ public:
 	~DBClient(void);
 
 	void connectDBX(std::string p_serverAddr, int p_port);
+    void disconnectDBX();
 
     int callDBProc(CSCResultMsg *pMsg);
 	int callDBSQL(AppMsg *pMsg);
 
-    static DBClientCB* getDBClientCB();
-	static void setDBClientCB(DBClientCB* p_dbClientCB);
+    DBClientCB* getDBClientCB();
+	void setDBClientCB(DBClientCB* p_dbClientCB);
 
 	void* getAttributeSet(int attriIndex,int index=0);
 	void  deleteAttributeSet(int index);
@@ -48,7 +49,7 @@ private:
     void addQueryResult(CSCResultMsg* pMsg);
 
 	IThreadsPool* m_pThreads;
-	static DBClientCB* m_queryResultHandle;	
+	DBClientCB* m_queryResultHandle;	
 
 	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
 	MAPATTRSET m_mapResultSet;
