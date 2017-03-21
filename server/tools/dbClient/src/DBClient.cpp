@@ -1,4 +1,4 @@
-#include "Client.h"
+#include "DBClient.h"
 
 #include "NetCtrl.h"
 #include "lindef.h"
@@ -13,26 +13,26 @@ struct _LinkContext_DB
 	_LinkContext_DB(int type, handle h): linkType(type), hLink(h), idx(-1){}
 };
 
-IDBANetEvent* CClient::m_queryResultHandle = NULL;
+DBClientCB* DBClient::m_queryResultHandle = NULL;
 
-CClient::CClient(): m_netCtrl(NULL)
+DBClient::DBClient(): m_netCtrl(NULL)
 {
     m_pThreads = GlobalThreadsPool();
     m_netCtrl = new NetCtrl();
 }
 
-CClient::~CClient(void)
+DBClient::~DBClient()
 {
     m_netCtrl->Close(CLOSE_UNGRACEFUL);
     delete m_netCtrl;
 }
 
-void CClient::ConnectDBX(std::string p_serverAddr, int p_port)
+void DBClient::connectDBX(std::string p_serverAddr, int p_port)
 {
     m_netCtrl->Connect(p_serverAddr, p_port);
 }
 
-void* CClient::getAttributeSet(int attriIndex,int index)
+void* DBClient::getAttributeSet(int attriIndex,int index)
 {
 	MAPATTRSET::iterator iter = m_mapResultSet.lower_bound(attriIndex);
 	for(int i = 0; iter != m_mapResultSet.upper_bound(attriIndex); i++, iter++) 
@@ -45,7 +45,7 @@ void* CClient::getAttributeSet(int attriIndex,int index)
     return NULL;
 }
 
-void CClient::deleteAttributeSet(int index) 
+void DBClient::deleteAttributeSet(int index) 
 {
 	MAPATTRSET::iterator iter=m_mapResultSet.lower_bound(index);
 	for (;iter!=m_mapResultSet.upper_bound(index);) 
@@ -57,23 +57,23 @@ void CClient::deleteAttributeSet(int index)
 	}
 }
 
-int CClient::callDBProc(CSCResultMsg *pMsg)
+int DBClient::callDBProc(CSCResultMsg *pMsg)
 {
 
 	pMsg->msgId = C_DOACTION;
 	pMsg->context = CCSRESMSG;
-    pMsg->m_nTempObjId = CClient::GenerateOperationID();
+    pMsg->m_nTempObjId = DBClient::generateOperationID();
     m_netCtrl->Send(pMsg);
 
     return pMsg->m_nTempObjId;
 }
 
-int CClient::callDBSQL(AppMsg *pMsg) 
+int DBClient::callDBSQL(AppMsg *pMsg) 
 {
 	int nOperationId = 0;
 	if (pMsg != NULL)	
     {
-		nOperationId = CClient::GenerateOperationID();
+		nOperationId = DBClient::generateOperationID();
 		CCSResultMsg* pDataMsg = (CCSResultMsg*)pMsg;
 		pMsg->msgId = C_DOSQL;
 		pMsg->context = CCSRESMSG;
@@ -87,24 +87,24 @@ int CClient::callDBSQL(AppMsg *pMsg)
 	return nOperationId;
 }
 
-IDBANetEvent* CClient::getDBNetEvent() 
+DBClientCB* DBClient::getDBClientCB() 
 {
 	return m_queryResultHandle;
 }
 
-void CClient::setDBNetEvent(IDBANetEvent* pNetEventHandle) 
+void DBClient::setDBClientCB(DBClientCB* pNetEventHandle) 
 {
 	m_queryResultHandle = pNetEventHandle;
 }
 
-int CClient::GenerateOperationID() 
+int DBClient::generateOperationID() 
 {
 	static int nOperationId = 0;
 	nOperationId++;
 	return nOperationId;
 }
 
-void CClient::ConnectResult(HRESULT p_result)
+void DBClient::connectResult(HRESULT p_result)
 {
     if (m_queryResultHandle)
     {
@@ -113,16 +113,24 @@ void CClient::ConnectResult(HRESULT p_result)
     }
 }
 
-void CClient::Recv(AppMsg* p_appMsg)
+void DBClient::onRecv(AppMsg* p_appMsg)
 {
     CSCResultMsg *pDataMsg = (CSCResultMsg *)p_appMsg;
-    AddQueryResult(pDataMsg);
+    addQueryResult(pDataMsg);
     if (pDataMsg->m_bEnd)
-        getDBNetEvent()->onExeDBProc(pDataMsg->m_nTempObjId, this, true);
+        getDBClientCB()->onExeDBProc(pDataMsg->m_nTempObjId, true);
 }
 
-void CClient::AddQueryResult(CSCResultMsg* pMsg)
+void DBClient::addQueryResult(CSCResultMsg* pMsg)
 {
     pMsg->getInit();
     m_mapResultSet.insert(std::make_pair(pMsg->m_nTempObjId, pMsg));
+}
+
+DBClient* CreateClient(DBClientCB* p_dbClientCB, std::string serverAddr, int port)
+{
+    DBClient* pClient = DBClient::InstancePtr();
+    DBClient::setDBClientCB(p_dbClientCB);
+    pClient->connectDBX(serverAddr, port);
+    return pClient;
 }

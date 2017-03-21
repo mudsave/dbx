@@ -1,4 +1,7 @@
-#pragma once
+#ifndef __SINGLETON_H_
+#define __SINGLETON_H_
+
+#include <stdio.h>
 
 template <typename T> class TSingleton
 {
@@ -28,3 +31,4 @@ template<typename T>
 T* TSingleton<T>::s_Singleton = NULL;
 
 
+#endif  // __SINGLETON_H_

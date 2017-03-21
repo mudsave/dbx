@@ -9,8 +9,7 @@
 #include "lindef.h"
 #include "Sock.h"
 #include "MsgLinksImpl.h"
-#include "IDBAClient.h"
-#include "Client.h"
+#include "DBClient.h"
 #include "dbmsg.h"
 
 
@@ -24,23 +23,17 @@ enum _StoreType
 	eStoreCheckRole,
 };
 
-extern IInitClient* g_pDBAClient;
+extern DBClient* g_pDBAClient;
 
 class CDBProxy :
-	public IDBANetEvent,
+	public DBClientCB,
     public ITask
 {
-public:
-	CDBProxy(void);
-
-public:
-	~CDBProxy(void);
-
 public:
 	void init(const char* dbIp, int dbPort);
 
 public:
-    void onExeDBProc(int id, IInitClient* pInitClient, bool result);
+    void onExeDBProc(int id, bool result);
 	
 	void onConnected(bool result);
     virtual HRESULT Do(HANDLE hContext);

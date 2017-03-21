@@ -4,8 +4,7 @@
 #include "lindef.h"
 #include "Sock.h"
 #include "MsgLinksImpl.h"
-#include "IDBAClient.h"
-#include "Client.h"
+#include "DBClient.h"
 #include "lua.hpp"
 #include "tolua++.h"
 #include "LuaEngine.h"
@@ -14,7 +13,7 @@
 
 #define	 MAXRESNUM 100
 
-class CDBProxy :public IDBANetEvent
+class CDBProxy :public DBClientCB
 {
 public:
 	static int init(const char* dbIp, int dbPort, lua_State* pState);
@@ -22,9 +21,9 @@ public:
 	static int callSP(lua_State* pState);
 	static int toluaCDBProxyOpen(lua_State* pState);
 public:
-	void onExeDBProc(int id,IInitClient* pInitClient,bool result);
+    void onExeDBProc(int id, bool result);
 private:
-	static IInitClient* s_pDBAClient;
+    static DBClient* s_pDBAClient;
 	static CDBProxy* s_pDBProxy;
 	static lua_State* s_pLuaState;
 	CDBProxy(){};

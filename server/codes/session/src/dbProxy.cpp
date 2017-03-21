@@ -11,38 +11,22 @@
 #include "session.h"
 #include "dbProxy.h"
 
-IInitClient* g_pDBAClient = NULL;
+DBClient* g_pDBAClient = NULL;
 
-CDBProxy::CDBProxy(void)
-{
-
-}
-
-CDBProxy::~CDBProxy(void)
-{
-
-}
 
 void CDBProxy::init(const char* dbIp, int dbPort)
 {
 	g_pDBAClient = CreateClient(this, dbIp, dbPort);
 }
 
-void CDBProxy::onExeDBProc(int operId, IInitClient* pClient, bool result)
+void CDBProxy::onExeDBProc(int operId, bool result)
 {
-    TRACE0_L0("CClient::getDBNetEvent()->onExeDBProc_tocpp...\n");
-    if (!pClient)
-        return;
-
     int ErrorCode = result ? 0 : -1;
-
     onDBReturn(operId, ErrorCode);
 }
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 {
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
     m_msgBuilder.beginMessage();
     m_msgBuilder.addQueryParam("spName", "sp_Login");
     m_msgBuilder.addQueryParam("dataBase", 1);
@@ -55,7 +39,7 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
-    int operId = query_client->callDBProc(pMsg);
+    int operId = g_pDBAClient->callDBProc(pMsg);
 
 	_DBStoreContext storeContext;
 	storeContext.storeType = eStoreLogin;
@@ -86,8 +70,7 @@ void CDBProxy::PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const ch
 void CDBProxy::doLoginResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doLoginResult:wsf.....");
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-    CSCResultMsg* resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 0);
+    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
 
     // 从第一个结果集取accountId
     void *attr = NULL;
@@ -111,7 +94,7 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
         pRoleMsg->ret = 0;
 
     // 处理第二个结果集的角色数据
-    resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 1);
+    resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 1);
     if (resultSet == NULL)
     {
         TRACE1_ERROR("CDBProxy::doLoginResult:account(%i)'s result set for role is null.\n", pRoleMsg->accountId);
@@ -211,8 +194,6 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
 
 void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
 {
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
     m_msgBuilder.beginMessage();
     m_msgBuilder.addQueryParam("spName", "sp_CreateUserTest");
     m_msgBuilder.addQueryParam("dataBase", 1);
@@ -224,7 +205,7 @@ void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
-    int operId = query_client->callDBProc(pMsg);
+    int operId = g_pDBAClient->callDBProc(pMsg);
 
 	_DBStoreContext context;
 	context.storeType = eStoreCreateAccount;
@@ -235,10 +216,7 @@ void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
 
 void CDBProxy::doCreateAccountResult(int operId, handle hLink, std::string accountName)
 {
-    TRACE0_L0("CDBProxy::doCreateAccountResult:wsf.....\n");
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
-    CSCResultMsg* resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 0);
+    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -255,8 +233,6 @@ void CDBProxy::doCreateAccountResult(int operId, handle hLink, std::string accou
 
 void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo* pRoleInfo)
 {
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
     m_msgBuilder.beginMessage();
     m_msgBuilder.addQueryParam("spName", "sp_CreatePlayerTest");
     m_msgBuilder.addQueryParam("dataBase", 1);
@@ -272,7 +248,7 @@ void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo*
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
-    int operId = query_client->callDBProc(pMsg);
+    int operId = g_pDBAClient->callDBProc(pMsg);
 
 	_DBStoreContext context;
 	context.storeType = eStoreCreateRole;
@@ -283,10 +259,7 @@ void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo*
 
 void CDBProxy::doCreateRoleResult(int operId, handle hLink)
 {
-    TRACE0_L0("CDBProxy::doCreateRoleResult:wsf.....\n");
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
-    CSCResultMsg* resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 0);
+    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -302,8 +275,6 @@ void CDBProxy::doCreateRoleResult(int operId, handle hLink)
 
 void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
 {
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
     m_msgBuilder.beginMessage();
     m_msgBuilder.addQueryParam("spName", "sp_DeletePlayerTest");
     m_msgBuilder.addQueryParam("dataBase", 1);
@@ -315,7 +286,7 @@ void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
-    int operId = query_client->callDBProc(pMsg);
+    int operId = g_pDBAClient->callDBProc(pMsg);
 
 	_DBStoreContext context;
 	context.storeType = eStoreDeleteRole;
@@ -326,9 +297,8 @@ void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
 void CDBProxy::doDeleteRoleResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doDeleteRoleResult:wsf.....\n");
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 
-    CSCResultMsg* resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 0);
+    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -345,8 +315,6 @@ void CDBProxy::doDeleteRoleResult(int operId, handle hLink)
 
 void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
 {
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-
     m_msgBuilder.beginMessage();
     m_msgBuilder.addQueryParam("spName", "sp_CheckPlayerTest");
     m_msgBuilder.addQueryParam("dataBase", 1);
@@ -357,7 +325,7 @@ void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
     pMsg->m_nLevel = 20;
-    int operId = query_client->callDBProc(pMsg);
+    int operId = g_pDBAClient->callDBProc(pMsg);
 
 	_DBStoreContext context;
 	context.storeType = eStoreCheckRole;
@@ -368,9 +336,8 @@ void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
 void CDBProxy::doCheckRoleNameResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doCheckRoleNameResult:wsf.....\n");
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
 
-    CSCResultMsg* resultSet = (CSCResultMsg*)query_client->getAttributeSet(operId, 0);
+    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -421,8 +388,7 @@ void CDBProxy::onDBReturn(int operId,int errorCode)
 			TRACE1_L0("no this type,type = %d\n",storeType);
 			break;
 	}
-    CClient* query_client = dynamic_cast<CClient*>(g_pDBAClient);
-    query_client->deleteAttributeSet(operId);
+    g_pDBAClient->deleteAttributeSet(operId);
 }
 
 HRESULT CDBProxy::Do(HANDLE hContext)

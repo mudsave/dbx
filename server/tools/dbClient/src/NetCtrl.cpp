@@ -11,7 +11,7 @@ RTX:6016.
 #include "lindef.h" // 包含lindef.h来使用trace.h
 #include "Sock.h"   // 使用Sock.h必先包含lindef.h，依赖其中的声明
 
-#include "Client.h"
+#include "DBClient.h"
 
 #define DB_CLIENT_RECONNECT_INTERVAL 5000
 
@@ -59,10 +59,9 @@ void NetCtrl::Close(DWORD dwFlags)
 
 HRESULT NetCtrl::Do(HANDLE hContext)
 {
-    TRACE0_L0("CClient::Do....\n");
     if (m_connected)
     {
-        TRACE0_L0("CClient::Do:m_connected is true....\n");
+        TRACE0_WARNING("NetCtrl::Do:it is already been connected....\n");
     }
     m_linkCtrl->Connect(m_serverAddr.c_str(), m_port, this, 0);
 
@@ -71,6 +70,12 @@ HRESULT NetCtrl::Do(HANDLE hContext)
 
 void NetCtrl::Connect(std::string p_serverAddr, int p_port)
 {
+    if (m_connected)
+    {
+        TRACE2_ERROR("NetCtrl::Connect:it is already connect to %s:%i....\n", m_serverAddr.c_str(), m_port);
+        return;
+    }
+
     m_serverAddr = p_serverAddr;
     m_port = p_port;
 
@@ -101,8 +106,7 @@ void NetCtrl::StopConnectTimer()
 HANDLE NetCtrl::OnConnects(int operaterId, handle hLink, HRESULT result, ILinkPort* pPort, int i_link_type)
 {
     TRACE1_L0("NetCtrl::OnConnects:result(%i).\n", result);
-    CClient::InstancePtr()->ConnectResult(result);
-
+    DBClient::InstancePtr()->connectResult(result);
     if (result == S_OK)
     {
         StopConnectTimer();
@@ -122,7 +126,7 @@ void NetCtrl::DefaultMsgProc(AppMsg* pMsg, HANDLE hLinkContext)
     AppMsg* newMsg = (AppMsg*)malloc(pMsg->msgLen);
     memcpy(newMsg, pMsg, pMsg->msgLen);
 
-    CClient::InstancePtr()->Recv(newMsg);
+    DBClient::InstancePtr()->onRecv(newMsg);
 }
 
 void NetCtrl::OnClosed(HANDLE hLinkContext, HRESULT reason)

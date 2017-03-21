@@ -7,7 +7,7 @@
 
 
 lua_State* CDBProxy::s_pLuaState = NULL;
-IInitClient* CDBProxy::s_pDBAClient = NULL;
+DBClient* CDBProxy::s_pDBAClient = NULL;
 CDBProxy* CDBProxy::s_pDBProxy = NULL;
 
 int CDBProxy::init(const char* dbIp, int dbPort, lua_State* pState)
@@ -61,21 +61,15 @@ int CDBProxy::toluaCDBProxyOpen(lua_State* pState)
 	return 1;
 }
 
-void CDBProxy::onExeDBProc(int id, IInitClient* pInitClient, bool result)
+void CDBProxy::onExeDBProc(int id, bool result)
 {
-	if (!pInitClient)
-	{
-		TRACE0_L0("ERROR: onExeDBProc!");
-		ASSERT_(pInitClient);
-		return;
-	}
 	int ErrorCode = 0;
 	if (!result) ErrorCode = -1;
 	CLuaArray* LuaArray[MAXRESNUM] = {};
 	memset(LuaArray, 0, MAXRESNUM * sizeof(CLuaArray*));
 	for (int j=0; j<MAXRESNUM-1; j++)
 	{
-		CSCResultMsg* pTemp = static_cast<CSCResultMsg*> (pInitClient->getAttributeSet(id, j));
+        CSCResultMsg* pTemp = static_cast<CSCResultMsg*> (CDBProxy::s_pDBAClient->getAttributeSet(id, j));
 		if (!pTemp) break;
 		CLuaArray* pData = new CLuaArray(pTemp);
 		LuaArray[j] = pData;
@@ -85,7 +79,7 @@ void CDBProxy::onExeDBProc(int id, IInitClient* pInitClient, bool result)
 	bool rt = DBReturnToLua(TypeNull::nil(), id, TypeUser(LuaArray, "CLuaArray"), ErrorCode);
 	(void)rt;
 
-	pInitClient->deleteAttributeSet(id);
+    CDBProxy::s_pDBAClient->deleteAttributeSet(id);
 	for (int i=0; i<MAXRESNUM; i++)
 	{
 		if (LuaArray[i])
