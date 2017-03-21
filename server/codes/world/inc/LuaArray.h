@@ -1,7 +1,7 @@
 #ifndef __LUAARRAY_H_
 #define __LUAARRAY_H_
 
-#include "MsgDefine.h"
+#include "dbx_msgdef.h"
 #include <map>
 
 class CLuaArray

@@ -30,6 +30,14 @@ enum DataType
     DATATYPEEND = -4
 };
 
+enum MsgType
+{
+    APPMSG = 0,
+    CSSRESMSG,
+    CSCRESMSG,
+    CCSRESMSG
+};
+
 // 最大参数名称长度
 #define MAX_PARAMNAME_LEN           32
 

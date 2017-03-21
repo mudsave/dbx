@@ -15,7 +15,6 @@
 #include "MsgLinksImpl.h"
 #include "VirSpace.h"
 #include "vsdeftemp.h"
-#include "MsgDefine.h"
 
 typedef const char *LPCSTR;
 typedef char *LPSTR;
