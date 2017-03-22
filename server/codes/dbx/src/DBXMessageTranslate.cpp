@@ -307,13 +307,13 @@ bool build_sp_query_buffer(MYSQL * pMysql, DbxMessage * pMessage, const int & ro
     return ok;
 }
 
-bool translate_sql_result_mysql(const char * pData, CSCResultMsg & message)
+bool translate_sql_result_mysql(const char * pData, DbxMessage & message)
 {
     return true;
 }
 
 
-bool translate_sp_result_mysql(const char * pData, CSCResultMsg & message)
+bool translate_sp_result_mysql(const char * pData, DbxMessage & message)
 {
     return true;
 }

@@ -102,8 +102,8 @@ bool build_sql_query_buffer(DbxMessage & message, const int & row, char * pBuffe
 bool build_sp_query_buffer(MYSQL * pMysql, DbxMessage * pMessage, const int & row,
     char * pBuffer/*out*/, int & nBufferLen/*in-out*/, TListOutput & outParams/*out*/);
 
-bool translate_sql_result_mysql(const char * pData, CSCResultMsg & message);
+bool translate_sql_result_mysql(const char * pData, DbxMessage & message);
 
-bool translate_sp_result_mysql(const char * pData, CSCResultMsg & message);
+bool translate_sp_result_mysql(const char * pData, DbxMessage & message);
 
 #endif //__DBX_MESSAGE_TRANSLATE_

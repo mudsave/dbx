@@ -51,7 +51,7 @@ private:
     char m_szQueryBuffer[QUERYBUFFER_MAX_LEN];
 
     //用来创建回调消息
-    DbxMessageBuilder<CSCResultMsg> m_SCMsgBuilder;
+    DbxMessageBuilder<DbxMessage> m_SCMsgBuilder;
 
 protected:
     MYSQL *m_mysql;
