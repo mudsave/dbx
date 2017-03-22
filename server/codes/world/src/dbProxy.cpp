@@ -69,7 +69,7 @@ void CDBProxy::onExeDBProc(int id, bool result)
 	memset(LuaArray, 0, MAXRESNUM * sizeof(CLuaArray*));
 	for (int j=0; j<MAXRESNUM-1; j++)
 	{
-        CSCResultMsg* pTemp = static_cast<CSCResultMsg*> (CDBProxy::s_pDBAClient->getAttributeSet(id, j));
+        DbxMessage* pTemp = static_cast<DbxMessage*> (CDBProxy::s_pDBAClient->getAttributeSet(id, j));
 		if (!pTemp) break;
 		CLuaArray* pData = new CLuaArray(pTemp);
 		LuaArray[j] = pData;

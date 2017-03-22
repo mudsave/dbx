@@ -9,15 +9,15 @@
 class CLuaArray
 {
 public:
-	CLuaArray(CSCResultMsg* pData = NULL)
+	CLuaArray(DbxMessage* pData = NULL)
 	{
 		if (pData)
 		{
 			if (pData->msgLen>0)
 			{
-				m_pData=(CSCResultMsg*)malloc(pData->msgLen);
+				m_pData=(DbxMessage*)malloc(pData->msgLen);
 				memcpy(m_pData,pData,pData->msgLen);
-				DbxMessageBuilder<CSCResultMsg>::locateContent(m_pData);
+				DbxMessageBuilder<DbxMessage>::locateContent(m_pData);
 				m_pData->getInit();
 			}
 		}
@@ -42,7 +42,7 @@ public:
 		}
 		release();
 	}
-	CSCResultMsg* getResMsg()
+	DbxMessage* getResMsg()
 	{
 		return m_pData;
 	}
@@ -358,8 +358,8 @@ private:
 	void* m_pValue;
 	int* m_pTypeList;
 	
-	CSCResultMsg* m_pData;
-	DbxMessageBuilder<CSCResultMsg> m_builder;
+	DbxMessage* m_pData;
+	DbxMessageBuilder<DbxMessage> m_builder;
 
 
 	struct userValue
