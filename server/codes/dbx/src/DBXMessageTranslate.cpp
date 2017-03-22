@@ -21,13 +21,13 @@ void lower_first_char(char * buffer)
             *buffer += 'a' - 'A';
 }
 
-bool build_sql_query_buffer(CCSResultMsg & message, const int & row, char * pBuffer/*out*/)
+bool build_sql_query_buffer(DbxMessage & message, const int & row, char * pBuffer/*out*/)
 {
     return true;
 }
 
 
-bool build_sp_query_buffer(MYSQL * pMysql, CCSResultMsg * pMessage, const int & row,
+bool build_sp_query_buffer(MYSQL * pMysql, DbxMessage * pMessage, const int & row,
     char * pBuffer/*out*/, int & nBufferLen/*in-out*/, TListOutput & outParams/*out*/)
 {
     char spName[MAX_PARAMNAME_LEN] = { 0 };

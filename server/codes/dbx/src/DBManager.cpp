@@ -75,8 +75,8 @@ void DBManager::CallSP(handle p_linkIndex, AppMsg *p_appMsg)
 
     //获取queryIndex
     PType type; const void * pValue; int queryIndex = -1;
-    CCSResultMsg * pQueryMsg = (CCSResultMsg *)p_appMsg;
-    DbxMessageBuilder<CCSResultMsg>::locateContent(pQueryMsg);
+    DbxMessage * pQueryMsg = (DbxMessage *)p_appMsg;
+    DbxMessageBuilder<DbxMessage>::locateContent(pQueryMsg);
 
     if (pQueryMsg->getAttibuteByName("queueIndex", 0, type, pValue) && type == PARAMINT)
     {
@@ -99,10 +99,10 @@ void DBManager::CallSQL(handle p_linkIndex, AppMsg *p_appMsg)
 
     //获取queryIndex
     PType type; const void * pValue; int queryIndex = -1;
-    CCSResultMsg * pQueryMsg = (CCSResultMsg *)p_appMsg;
-    DbxMessageBuilder<CCSResultMsg>::locateContent(pQueryMsg);
+    DbxMessage * pQueryMsg = (DbxMessage *)p_appMsg;
+    DbxMessageBuilder<DbxMessage>::locateContent(pQueryMsg);
 
-    TRACE1_L0("size of CCSResultMsg %i", sizeof(CCSResultMsg));
+    TRACE1_L0("size of DbxMessage %i", sizeof(DbxMessage));
     TRACE1_L0("query message start at %i", pQueryMsg);
     TRACE2_L0("message msgLen %i, at %i", pQueryMsg->msgLen, &pQueryMsg->msgLen);
     TRACE2_L0("message msgFlags %i, at %i", pQueryMsg->msgFlags, &pQueryMsg->msgFlags);

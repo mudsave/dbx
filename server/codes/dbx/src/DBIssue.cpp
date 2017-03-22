@@ -89,8 +89,8 @@ bool DBIssueCallSP::OnProgress()
     if (m_pAppMsg == NULL)
         return false;
 
-    CCSResultMsg * pCSMsg = (CCSResultMsg *)(m_pAppMsg);
-    DbxMessageBuilder<CCSResultMsg>::locateContent(pCSMsg);
+    DbxMessage * pCSMsg = (DbxMessage *)(m_pAppMsg);
+    DbxMessageBuilder<DbxMessage>::locateContent(pCSMsg);
 
     DBInterfaceMysql * pdbInterface = static_cast<DBInterfaceMysql *>(m_dbInterface);
 
@@ -116,7 +116,7 @@ void DBIssueCallSP::MainProgress()
         SAppMsgNode *dropped(NULL), *current(m_pResultHead);
         while (current != NULL)
         {
-            //TRACE1_L0("DBIssueCallSP::MainProgress. send result to client, end: %i\n", ((CCSResultMsg *)current->p_msg)->m_bEnd);
+            //TRACE1_L0("DBIssueCallSP::MainProgress. send result to client, end: %i\n", ((DbxMessage *)current->p_msg)->m_bEnd);
             DBManager::InstancePtr()->SendResult(m_linkIndex, current->p_msg);
             free(current->p_msg);
             dropped = current;
@@ -149,8 +149,8 @@ void DBIssueCallSP::OnQueryReturn(AppMsg * p_appMsg)
 {
     //TRACE1_L0("DBIssueCallSP::OnQueryReturn. message length %i\n", p_appMsg->msgLen);
 
-    CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
-    CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
+    DbxMessage * pQueryMsg = (DbxMessage *)(m_pAppMsg);
+    DbxMessage * pResultMsg = (DbxMessage *)(p_appMsg);
 
     if (!pQueryMsg->m_bNeedCallback)
     {
@@ -179,7 +179,7 @@ void DBIssueCallSP::OnQueryReturn(AppMsg * p_appMsg)
     else
     {
         SAppMsgNode * tail = m_pResultHead->tail();
-        ((CCSResultMsg *)tail->p_msg)->m_bEnd = false;
+        ((DbxMessage *)tail->p_msg)->m_bEnd = false;
         tail->next = new SAppMsgNode(p_appMsg);
     }
 }
@@ -201,8 +201,8 @@ bool DBIssueCallSQL::OnProgress()
     if (m_pAppMsg == NULL)
         return false;
 
-    CCSResultMsg * pCSMsg = (CCSResultMsg *)(m_pAppMsg);
-    DbxMessageBuilder<CCSResultMsg>::locateContent(pCSMsg);
+    DbxMessage * pCSMsg = (DbxMessage *)(m_pAppMsg);
+    DbxMessageBuilder<DbxMessage>::locateContent(pCSMsg);
 
     DBInterfaceMysql * pdbInterface = static_cast<DBInterfaceMysql *>(m_dbInterface);
 
@@ -239,7 +239,7 @@ void DBIssueCallSQL::MainProgress()
         SAppMsgNode *dropped(NULL), *current(m_pResultHead);
         while (current != NULL)
         {
-            TRACE1_L0("DBIssueCallSQL::MainProgress. send result to client, end: %i\n", ((CCSResultMsg *)current->p_msg)->m_bEnd);
+            TRACE1_L0("DBIssueCallSQL::MainProgress. send result to client, end: %i\n", ((DbxMessage *)current->p_msg)->m_bEnd);
             DBManager::InstancePtr()->SendResult(m_linkIndex, current->p_msg);
             free(current->p_msg);
             dropped = current;
@@ -272,8 +272,8 @@ void DBIssueCallSQL::OnQueryReturn(AppMsg * p_appMsg)
 {
     //TRACE1_L0("DBIssueCallSQL::OnQueryReturn. message length %i\n", p_appMsg->msgLen);
 
-    CCSResultMsg * pQueryMsg = (CCSResultMsg *)(m_pAppMsg);
-    CCSResultMsg * pResultMsg = (CCSResultMsg *)(p_appMsg);
+    DbxMessage * pQueryMsg = (DbxMessage *)(m_pAppMsg);
+    DbxMessage * pResultMsg = (DbxMessage *)(p_appMsg);
 
     if (!pQueryMsg->m_bNeedCallback)
     {
@@ -294,7 +294,7 @@ void DBIssueCallSQL::OnQueryReturn(AppMsg * p_appMsg)
     else
     {
         SAppMsgNode * tail = m_pResultHead->tail();
-        ((CCSResultMsg *)tail->p_msg)->m_bEnd = false;
+        ((DbxMessage *)tail->p_msg)->m_bEnd = false;
         tail->next = new SAppMsgNode(p_appMsg);
     }
 }
