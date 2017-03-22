@@ -48,25 +48,6 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 	m_mapDBStore.insert(std::make_pair(operId, storeContext));
 }
 
-void CDBProxy::PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const char *p_description)
-{
-    switch (p_ptype)
-    {
-    case PARAMINT:
-    case PARAMBOOL:
-        TRACE4_L0("CDBProxy::PrintAttrInfo:%s->attrName(%s), type(%i), value(%i)\n", p_description, p_name, p_ptype, *(int *)p_attr);
-        break;
-    
-    case PARAMFLOAT:
-        TRACE4_L0("CDBProxy::PrintAttrInfo:%s->attrName(%s), type(%i), value(%f)\n", p_description, p_name, p_ptype, *(float *)p_attr);
-        break;
-
-    default:
-        TRACE3_L0("CDBProxy::PrintAttrInfo:%s->attrName(%s), type(str:%i)\n", p_description, p_name, p_ptype);
-        break;
-    }
-}
-
 void CDBProxy::doLoginResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doLoginResult:wsf.....");
@@ -82,7 +63,6 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
         safeDelete(attrName);
         return;
     }
-    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:accountID");
     safeDelete(attrName);
 
     DBMsg_LoginResult* pRoleMsg = DBMsg_LoginResult::CreateLoginResult();
@@ -121,7 +101,6 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                 {
                     int roleID = *(int*)attr;
                     pRoleMsg->role[row].roleId = roleID;
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:roleId");
                     break;
                 }
                 case 1:
@@ -129,21 +108,18 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                     int len = valueType;
                     strncpy(pRoleMsg->role[row].name, (char*)attr, len);
                     pRoleMsg->role[row].name[len] = '\0';
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:name");
                     break;
                 }
                 case 2:
                 {
                     short level = (short)*(int*)attr;
                     pRoleMsg->role[row].level = level;
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:level");
                     break;
                 }
                 case 3:
                 {
                     short school = (short)*(int*)attr;
                     pRoleMsg->role[row].school = school;
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:school");
                     break;
                 }
                 case 4:
@@ -158,7 +134,6 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                         int modelID = (int)*(float*)attr;
                         pRoleMsg->role[row].modelId = modelID;
                     }
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:modelId");
                     break;
                 }
                 case 5:
@@ -166,14 +141,12 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                     int len = valueType;
                     strncpy(pRoleMsg->role[row].showPart, (char*)attr, len);
                     pRoleMsg->role[row].showPart[len] = '\0';
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:showPart");
                     break;
                 }
                 case 6:
                 {
                     int weaponID = *(int*)attr;
                     pRoleMsg->role[row].weaponID = weaponID;
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:weaponID");
                     break;
                 }
                 case 7:
@@ -181,7 +154,6 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                     int len = valueType;
                     strncpy(pRoleMsg->role[row].remouldAttr, (char*)attr, len);
                     pRoleMsg->role[row].remouldAttr[len] = '\0';
-                    PrintAttrInfo(valueType, attrName, attr, "CDBProxy::doLoginResult:remouldAttr");
                     break;
                 }
             }   // end switch

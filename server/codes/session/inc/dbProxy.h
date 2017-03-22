@@ -74,8 +74,6 @@ private:
 
     void doCheckRoleNameResult(int operId, handle hLink);
 
-    void PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const char *p_description);
-
     DbxMessageBuilder<DbxMessage> m_msgBuilder;
 };
 
