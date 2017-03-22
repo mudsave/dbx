@@ -322,6 +322,9 @@ start_server:
 	SWL_PORT=$$((SCL_PORT+2)); \
 	GCL_PORT=$$((SCL_PORT+3)); \
 	GWL_PORT=$$((SCL_PORT+4)); \
+	WAL_PORT=$$((SCL_PORT+5)); \
+	FAL_PORT=$$((SCL_PORT+6)); \
+	SAL_PORT=$$((SCL_PORT+7)); \
 	set -e; ulimit -c unlimited; \
 	($(WORK_DIR)/dbx 1>$(WORK_DIR)/logs/_dbx.txt 2>&1 & ); \
 	echo "dbx has been runned.."; sleep 2s;\
@@ -331,13 +334,13 @@ start_server:
 	($(WORK_DIR)/Gateway -loginAddrL $(SERVER_IP):$$GCL_PORT -worldAddrL $(SERVER_IP):$$GWL_PORT -sessionAddrC $(SERVER_IP):$$SGL_PORT -gatewayId 0 \
 		1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
 	echo "gateway has been runned.."; sleep 2s;\
-	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0 \
+	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0 -adminAddrL $(SERVER_IP):$$WAL_PORT \
 		1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
 	echo "world has been runned.."; sleep 2s;\
-	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100 \
+	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100 -adminAddrL $(SERVER_IP):$$FAL_PORT \
 		1>$(WORK_DIR)/logs/_fight.txt 2>&1 & ); \
 	echo "fight has been runned.."; sleep 2s;\
-	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200 \
+	($(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200 -adminAddrL $(SERVER_IP):$$SAL_PORT \
 		1>$(WORK_DIR)/logs/_social.txt 2>&1 & ); \
 	echo "social has been runned.."; sleep 2s;\
 
@@ -357,14 +360,16 @@ start_gateway :
 start_world :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
+	WAL_PORT=$$((SCL_PORT+5)); \
 	set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0
+	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0 -adminAddrL $(SERVER_IP):$$WAL_PORT
 
 start_fight :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
+	FAL_PORT=$$((SCL_PORT+6)); \
 	set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100
+	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 100 -adminAddrL $(SERVER_IP):$$FAL_PORT
 start_fight1 :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
@@ -374,8 +379,9 @@ start_fight1 :
 start_social :
 	@SCL_PORT=$(START_PORT); \
 	SWL_PORT=$$((SCL_PORT+2)); \
+	SAL_PORT=$$((SCL_PORT+7)); \
 	set -e; ulimit -c unlimited; \
-	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200
+	$(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 200 -adminAddrL $(SERVER_IP):$$SAL_PORT
 	#valgrind --tool=memcheck --leak-check=yes $(WORK_DIR)/World -sessionAddrC $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -worldId 0
 
 
