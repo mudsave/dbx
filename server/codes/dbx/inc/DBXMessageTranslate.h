@@ -32,7 +32,7 @@ struct SOutParam
     char szVariableName[MAX_PARAMNAME_LEN]; // 输出变量名
     PType nDataType;                        // 数据类型
 
-    int size() { return DbxMessage::getTypeSize(nDataType); }
+    int size() { return getDBMessageTypeSize(nDataType); }
 
     SOutParam(void)
     {
@@ -58,7 +58,7 @@ struct SParam
     PType nDataType;                        // 数据类型
     const void * pvData;                    // 数据
 
-    int size() { return DbxMessage::getTypeSize(nDataType); }
+    int size() { return getDBMessageTypeSize(nDataType); }
 
     SParam(void)
     {

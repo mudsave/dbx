@@ -78,11 +78,10 @@ public:
 		int nSize=0;
 		for (int i=0;i<nCount;i++)
 		{
-			nSize=nSize+DbxMessage::getTypeSize(pTypeList[i]);
+            nSize = nSize + getDBMessageTypeSize(pTypeList[i]);
 		}
 		return nSize;
 	}
-
 
 	static int getResultofArray(lua_State* pState)
 	{

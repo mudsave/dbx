@@ -47,6 +47,21 @@ typedef int PType;
 typedef unsigned char BYTE;
 
 
+static int getDBMessageTypeSize(const PType & paramType)
+{
+    if (paramType >= 0) return paramType;
+    switch (paramType)
+    {
+    case PARAMINT:
+        return sizeof(int);
+    case PARAMBOOL:
+        return sizeof(bool);
+    case PARAMFLOAT:
+        return sizeof(float);
+    }
+    return 0;
+}
+
 struct SAppMsgNode
 {
     AppMsg * p_msg;
@@ -64,6 +79,181 @@ struct SAppMsgNode
         return current;
     }
 };
+
+
+template<class MessageType>
+class DbxMessageBuilder
+{
+private:
+    struct Param
+    {
+        Param(const PType & t, const void * v)
+        {
+            type = t;
+
+            int size = getDBMessageTypeSize(t);
+            p_value = malloc(size);
+            if (p_value)
+            {
+                memcpy(p_value, v, size);
+            }
+        }
+
+        ~Param()
+        {
+            if (p_value)
+            {
+                free(p_value);
+                p_value = NULL;
+            }
+        }
+
+        PType type;
+        void * p_value;
+    };
+
+public:
+    ~DbxMessageBuilder()
+    {
+        reset();
+    }
+
+    void reset()
+    {
+        attribute_cols = 0;
+        attribute_count = 0;
+
+        if (params.size() > 0)
+        {
+            for (size_t i = 0; i < params.size(); i++)
+            {
+                delete params[i];
+            }
+            params.clear();
+            //保证vector的内存可以释放掉
+            std::vector<Param *>(params).swap(params);
+        }
+    }
+
+    void beginMessage()
+    {
+        reset();
+    }
+
+    /*
+    * 消息填充完成，将所有数据放入新内存
+    */
+    MessageType * finishMessage()
+    {
+        int size = sizeof(MessageType) + getParamLen();
+        MessageType * p_msg = (MessageType *)malloc(size);
+        if (p_msg == NULL) return NULL;
+        memset(p_msg, 0, size);
+
+        //设置消息长度
+        p_msg->msgLen = (unsigned short)size;
+        p_msg->attribute_cols = attribute_cols;
+        p_msg->attribute_count = attribute_count;
+
+        int param_count = params.size();
+        if (param_count <= 0) return p_msg;
+
+        /*设置内容偏移量，指向结构末尾*/
+        p_msg->content_offset = sizeof(MessageType);
+        BYTE * wpos = p_msg->getContent();
+
+        //写参数数量
+        memcpy(wpos, &param_count, sizeof(int));
+        wpos += sizeof(int);
+
+        for (int i = 0; i < param_count; i++)
+        {
+            //写类型
+            memcpy(wpos, &params[i]->type, sizeof(PType));
+            wpos += sizeof(PType);
+
+            //写数据
+            size = getDBMessageTypeSize(params[i]->type);
+            memcpy(wpos, params[i]->p_value, size);
+            wpos += size;
+        }
+
+        //消息写完，把临时数据清理掉
+        reset();
+
+        return p_msg;
+    }
+
+    void addParam(const PType & ParamType, const void* pParam)
+    {
+        params.push_back(new Param(ParamType, pParam));
+    }
+
+    void addAttribute(const char* name, const void* value, const PType &  valueType)
+    {
+        int pos;
+
+        /*属性会按顺序放入到前面，存放的顺序是：
+        |属性名1长度|属性名1|属性名2长度|属性名2|...|属性1类型|属性1|属性2类型|属性2|...|其他参数|
+        */
+        if (name != NULL)
+        {
+            pos = attribute_cols++;
+            params.insert(params.begin() + pos, new Param((PType)strlen(name), name));
+        }
+        if (value != NULL)
+        {
+            pos = attribute_cols + attribute_count;
+            params.insert(params.begin() + pos, new Param(valueType, value));
+            attribute_count++;
+        }
+    }
+
+    void addQueryParam(const char* name, const char* value)
+    {
+        addAttribute(name, value, strlen(value));
+    }
+
+    void addQueryParam(const char* name, int value)
+    {
+        addAttribute(name, &value, PARAMINT);
+    }
+
+    int getParamLen()
+    {
+        int param_count = params.size();
+        if (param_count == 0)
+            return 0;
+
+        //放数量的字节 + 放类型长度的字节
+        int len = sizeof(int) + param_count * sizeof(PType);
+
+        for (int i = 0; i < param_count; i++)
+        {
+            len += getDBMessageTypeSize(params[i]->type);
+        }
+        return len;
+    }
+
+    static void locateContent(MessageType * p_msg)
+    {
+        if (p_msg->msgLen <= sizeof(MessageType))
+        {
+            p_msg->content_offset = 0;
+        }
+        else
+        {
+            /*设置内容存放位置的偏移值，指向结构末尾*/
+            p_msg->content_offset = sizeof(MessageType);
+        }
+    }
+
+private:
+    int attribute_cols;
+    int attribute_count;
+    std::vector<Param *> params;
+};
+
 
 
 class DbxMessage : public AppMsg
@@ -95,7 +285,7 @@ public:
         for (int i = 0; i < getParamCount(); i++)
         {
             temp = (PType *)rpos;
-            type_size = getTypeSize(*temp);
+            type_size = getDBMessageTypeSize(*temp);
             len += type_size;
 
             //跳过类型和数据字节
@@ -129,7 +319,7 @@ public:
             {
                 temp = (PType *)rpos;
                 //跳过类型和数据字节
-                rpos += sizeof(PType) + getTypeSize(*temp);
+                rpos += sizeof(PType) + getDBMessageTypeSize(*temp);
             }
         }
         return false;
@@ -269,19 +459,9 @@ public:
         return content_offset != 0 ? ((BYTE *)this) + content_offset : NULL;
     }
 
-    static int getTypeSize(const PType & paramType)
+    void getInit()
     {
-        if (paramType >= 0) return paramType;
-        switch (paramType)
-        {
-        case PARAMINT:
-            return sizeof(int);
-        case PARAMBOOL:
-            return sizeof(bool);
-        case PARAMFLOAT:
-            return sizeof(float);
-        }
-        return 0;
+        DbxMessageBuilder<DbxMessage>::locateContent(this);
     }
 
     static int getCharacterSize(const char* pValue)
@@ -318,182 +498,15 @@ public:
     int attribute_cols;     //属性的列数
     int attribute_count;    //属性总数
 
+    int     m_nTempObjId;  //响应的流水号
+    int     m_nSessionId;   //session号
+    int     m_spId;         //存储过程ID号
+    bool    m_bEnd;
+    bool    m_bNeedCallback;
+    short   m_nLevel;
+
     //数据结构：|变量数量|变量1类型|变量1的数据|变量2类型|变量2的数据|...|
     int content_offset;     //数据存放位置的偏移量（从当前对象的首地址开始）
-};
-
-
-template<class MessageType>
-class DbxMessageBuilder
-{
-private:
-    struct Param
-    {
-        Param(const PType & t, const void * v)
-        {
-            type = t;
-
-            int size = DbxMessage::getTypeSize(t);
-            p_value = malloc(size);
-            if (p_value)
-            {
-                memcpy(p_value, v, size);
-            }
-        }
-
-        ~Param()
-        {
-            if (p_value)
-            {
-                free(p_value);
-                p_value = NULL;
-            }
-        }
-
-        PType type;
-        void * p_value;
-    };
-
-public:
-    ~DbxMessageBuilder()
-    {
-        reset();
-    }
-
-    void reset()
-    {
-        attribute_cols = 0;
-        attribute_count = 0;
-
-        if (params.size() > 0)
-        {
-            for (size_t i = 0; i < params.size(); i++)
-            {
-                delete params[i];
-            }
-            params.clear();
-            //保证vector的内存可以释放掉
-            std::vector<Param *>(params).swap(params);
-        }
-    }
-
-    void beginMessage()
-    {
-        reset();
-    }
-
-    /*
-    * 消息填充完成，将所有数据放入新内存
-    */
-    MessageType * finishMessage()
-    {
-        int size = sizeof(MessageType) + getParamLen();
-        MessageType * p_msg = (MessageType *)malloc(size);
-        if (p_msg == NULL) return NULL;
-        memset(p_msg, 0, size);
-
-        //设置消息长度
-        p_msg->msgLen = (unsigned short)size;
-        p_msg->attribute_cols = attribute_cols;
-        p_msg->attribute_count = attribute_count;
-
-        int param_count = params.size();
-        if (param_count <= 0) return p_msg;
-
-        /*设置内容偏移量，指向结构末尾*/
-        p_msg->content_offset = sizeof(MessageType);
-        BYTE * wpos = p_msg->getContent();
-
-        //写参数数量
-        memcpy(wpos, &param_count, sizeof(int));
-        wpos += sizeof(int);
-
-        for (int i = 0; i < param_count; i++)
-        {
-            //写类型
-            memcpy(wpos, &params[i]->type, sizeof(PType));
-            wpos += sizeof(PType);
-
-            //写数据
-            size = DbxMessage::getTypeSize(params[i]->type);
-            memcpy(wpos, params[i]->p_value, size);
-            wpos += size;
-        }
-
-        //消息写完，把临时数据清理掉
-        reset();
-
-        return p_msg;
-    }
-
-    void addParam(const PType & ParamType, const void* pParam)
-    {
-        params.push_back(new Param(ParamType, pParam));
-    }
-
-    void addAttribute(const char* name, const void* value, const PType &  valueType)
-    {
-        int pos;
-
-        /*属性会按顺序放入到前面，存放的顺序是：
-        |属性名1长度|属性名1|属性名2长度|属性名2|...|属性1类型|属性1|属性2类型|属性2|...|其他参数|
-        */
-        if (name != NULL)
-        {
-            pos = attribute_cols++;
-            params.insert(params.begin() + pos, new Param((PType)strlen(name), name));
-        }
-        if (value != NULL)
-        {
-            pos = attribute_cols + attribute_count;
-            params.insert(params.begin() + pos, new Param(valueType, value));
-            attribute_count++;
-        }
-    }
-
-    void addQueryParam(const char* name, const char* value)
-    {
-        addAttribute(name, value, strlen(value));
-    }
-
-    void addQueryParam(const char* name, int value)
-    {
-        addAttribute(name, &value, PARAMINT);
-    }
-
-    int getParamLen()
-    {
-        int param_count = params.size();
-        if (param_count == 0)
-            return 0;
-
-        //放数量的字节 + 放类型长度的字节
-        int len = sizeof(int) + param_count * sizeof(PType);
-
-        for (int i = 0; i < param_count; i++)
-        {
-            len += DbxMessage::getTypeSize(params[i]->type);
-        }
-        return len;
-    }
-
-    static void locateContent(MessageType * p_msg)
-    {
-        if (p_msg->msgLen <= sizeof(MessageType))
-        {
-            p_msg->content_offset = 0;
-        }
-        else
-        {
-            /*设置内容存放位置的偏移值，指向结构末尾*/
-            p_msg->content_offset = sizeof(MessageType);
-        }
-    }
-
-private:
-    int attribute_cols;
-    int attribute_count;
-    std::vector<Param *> params;
 };
 
 
@@ -512,7 +525,7 @@ public:
         {
             std::string name; PType type; const void * pValue;
             getAttribute(name, type, pValue, index);
-            int typesize = getTypeSize(type);
+            int typesize = getDBMessageTypeSize(type);
 
             //字符串需要加上结束符
             if (type > 0)
@@ -566,12 +579,14 @@ public:
     //  int     m_nAttriIndex;  //从第几个参数开始是属性参数
     //  int     m_nAttriNameCount;
     //  int     m_nAttriCount;
+    /*
     int     m_nTempObjId;  //响应的流水号
     int     m_nSessionId;   //session号
     int     m_spId;         //存储过程ID号
     bool    m_bEnd;
     bool    m_bNeedCallback;
     short   m_nLevel;
+    */
 };
 
 

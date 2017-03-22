@@ -1,15 +1,8 @@
-/*
-Written by wangshufeng.
-RTX:6016.
-描述：
-
-*/
-
-
 #include "NetCtrl.h"
 
-#include "lindef.h" // 包含lindef.h来使用trace.h
-#include "Sock.h"   // 使用Sock.h必先包含lindef.h，依赖其中的声明
+// note(@wangshufeng):使用Sock.h必先包含lindef.h，依赖其中的声明
+#include "lindef.h"
+#include "Sock.h"
 
 #include "DBClient.h"
 
