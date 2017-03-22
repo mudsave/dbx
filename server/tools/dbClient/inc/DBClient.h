@@ -31,7 +31,7 @@ public:
 	void connectDBX(std::string p_serverAddr, int p_port);
     void disconnectDBX();
 
-    int callDBProc(CSCResultMsg *pMsg);
+    int callDBProc(DbxMessage *pMsg);
 	int callDBSQL(AppMsg *pMsg);
 
     DBClientCB* getDBClientCB();
@@ -46,12 +46,12 @@ public:
 private:
     static int generateOperationID();
 
-    void addQueryResult(CSCResultMsg* pMsg);
+    void addQueryResult(DbxMessage* pMsg);
 
 	IThreadsPool* m_pThreads;
 	DBClientCB* m_queryResultHandle;	
 
-	typedef std::multimap<int,CSCResultMsg*> MAPATTRSET;
+    typedef std::multimap<int, DbxMessage*> MAPATTRSET;
 	MAPATTRSET m_mapResultSet;
 
     NetCtrl *m_netCtrl;

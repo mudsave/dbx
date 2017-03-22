@@ -34,7 +34,7 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
     m_msgBuilder.addQueryParam("pwd", passWord);
     m_msgBuilder.addQueryParam("offTime", 5);
     m_msgBuilder.addQueryParam("sort", "usn,pwd,offTime");
-    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+    DbxMessage* pMsg = m_msgBuilder.finishMessage();
 
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
@@ -70,7 +70,7 @@ void CDBProxy::PrintAttrInfo(PType p_ptype, char *p_name, void *p_attr, const ch
 void CDBProxy::doLoginResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doLoginResult:wsf.....");
-    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
+    DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
 
     // 从第一个结果集取accountId
     void *attr = NULL;
@@ -94,7 +94,7 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
         pRoleMsg->ret = 0;
 
     // 处理第二个结果集的角色数据
-    resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 1);
+    resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 1);
     if (resultSet == NULL)
     {
         TRACE1_ERROR("CDBProxy::doLoginResult:account(%i)'s result set for role is null.\n", pRoleMsg->accountId);
@@ -200,7 +200,7 @@ void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
     m_msgBuilder.addQueryParam("usn", userName);
     m_msgBuilder.addQueryParam("pwd", passWord);
     m_msgBuilder.addQueryParam("sort", "usn,pwd");
-    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+    DbxMessage* pMsg = m_msgBuilder.finishMessage();
 
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
@@ -216,7 +216,7 @@ void CDBProxy::doCreateAccount(char* userName, char* passWord, handle hLink)
 
 void CDBProxy::doCreateAccountResult(int operId, handle hLink, std::string accountName)
 {
-    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
+    DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -243,7 +243,7 @@ void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo*
     m_msgBuilder.addQueryParam("showParts", pRoleInfo->showParts);
     m_msgBuilder.addQueryParam("userId", accountId);
     m_msgBuilder.addQueryParam("sort", "playerName,sex,userId,school,modleID,showParts");
-    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+    DbxMessage* pMsg = m_msgBuilder.finishMessage();
 
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
@@ -259,7 +259,7 @@ void CDBProxy::doCreateRole( handle hLink, int accountId, _MsgCS_CreateRoleInfo*
 
 void CDBProxy::doCreateRoleResult(int operId, handle hLink)
 {
-    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
+    DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -281,7 +281,7 @@ void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
     m_msgBuilder.addQueryParam("userID", accountId);
     m_msgBuilder.addQueryParam("roleID", roleId);
     m_msgBuilder.addQueryParam("sort", "userID,roleID");
-    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+    DbxMessage* pMsg = m_msgBuilder.finishMessage();
 
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
@@ -298,7 +298,7 @@ void CDBProxy::doDeleteRoleResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doDeleteRoleResult:wsf.....\n");
 
-    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
+    DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
@@ -320,7 +320,7 @@ void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
     m_msgBuilder.addQueryParam("dataBase", 1);
     m_msgBuilder.addQueryParam("playerName", pRoleName);
     m_msgBuilder.addQueryParam("sort", "playerName");
-    CSCResultMsg* pMsg = m_msgBuilder.finishMessage();
+    DbxMessage* pMsg = m_msgBuilder.finishMessage();
 
     pMsg->m_spId = 0;
     pMsg->m_bNeedCallback = true;
@@ -337,7 +337,7 @@ void CDBProxy::doCheckRoleNameResult(int operId, handle hLink)
 {
     TRACE0_L0("CDBProxy::doCheckRoleNameResult:wsf.....\n");
 
-    CSCResultMsg* resultSet = (CSCResultMsg*)g_pDBAClient->getAttributeSet(operId, 0);
+    DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
     char *attrName = NULL;
