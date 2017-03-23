@@ -94,12 +94,12 @@ int DBClient::callDBSQL(AppMsg *pMsg)
 	return nOperationId;
 }
 
-DBClientCB* DBClient::getDBClientCB() 
+DBClientProxy* DBClient::getDBProxy()
 {
 	return m_queryResultHandle;
 }
 
-void DBClient::setDBClientCB(DBClientCB* pNetEventHandle) 
+void DBClient::setDBProxy(DBClientProxy* pNetEventHandle)
 {
 	m_queryResultHandle = pNetEventHandle;
 }
@@ -125,7 +125,7 @@ void DBClient::onRecv(AppMsg* p_appMsg)
     DbxMessage *pDataMsg = (DbxMessage *)p_appMsg;
     addQueryResult(pDataMsg);
     if (pDataMsg->m_bEnd)
-        getDBClientCB()->onExeDBProc(pDataMsg->m_nTempObjId, true);
+        getDBProxy()->onExeDBProc(pDataMsg->m_nTempObjId, true);
 }
 
 void DBClient::addQueryResult(DbxMessage* pMsg)
@@ -134,10 +134,10 @@ void DBClient::addQueryResult(DbxMessage* pMsg)
     m_mapResultSet.insert(std::make_pair(pMsg->m_nTempObjId, pMsg));
 }
 
-DBClient* CreateClient(DBClientCB* p_dbClientCB, std::string serverAddr, int port)
+DBClient* CreateClient(DBClientProxy* p_dbClientProxy, std::string serverAddr, int port)
 {
     DBClient* pClient = DBClient::InstancePtr();
-    pClient->setDBClientCB(p_dbClientCB);
+    pClient->setDBProxy(p_dbClientProxy);
     pClient->connectDBX(serverAddr, port);
     return pClient;
 }

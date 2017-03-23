@@ -26,7 +26,7 @@ enum _StoreType
 extern DBClient* g_pDBAClient;
 
 class CDBProxy :
-	public DBClientCB,
+    public DBClientProxy,
     public ITask
 {
 public:
@@ -48,6 +48,7 @@ public:
 	void doDeleteRole(int accountId, int roleId, handle hLink);
 
 	void doCheckRoleName(char* roleName, handle hLink);
+
 public:
 	struct _DBStoreContext
 	{
@@ -62,8 +63,6 @@ public:
 	DBSTOREMAP m_mapDBStore;
 
 private:
-    void onDBReturn(int operId, int errorCode);
-
     void doLoginResult(int operId, handle hLink);
 
     void doCreateAccountResult(int operId, handle hLink, std::string accountName);

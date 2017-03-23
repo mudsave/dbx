@@ -13,7 +13,7 @@ struct AppMsg;
 class NetCtrl;
 
 
-class DBClientCB
+class DBClientProxy
 {
 public:
     virtual void onConnected(bool result){};
@@ -34,8 +34,8 @@ public:
     int callDBProc(DbxMessage *pMsg);
 	int callDBSQL(AppMsg *pMsg);
 
-    DBClientCB* getDBClientCB();
-	void setDBClientCB(DBClientCB* p_dbClientCB);
+    DBClientProxy* getDBProxy();
+    void setDBProxy(DBClientProxy* p_dbClientCB);
 
 	void* getAttributeSet(int attriIndex,int index=0);
 	void  deleteAttributeSet(int index);
@@ -49,7 +49,7 @@ private:
     void addQueryResult(DbxMessage* pMsg);
 
 	IThreadsPool* m_pThreads;
-	DBClientCB* m_queryResultHandle;	
+    DBClientProxy* m_queryResultHandle;
 
     typedef std::multimap<int, DbxMessage*> MAPATTRSET;
 	MAPATTRSET m_mapResultSet;
@@ -57,6 +57,6 @@ private:
     NetCtrl *m_netCtrl;
 };
 
-DBClient* CreateClient(DBClientCB* p_dbClientCB, std::string serverAddr, int port);
+DBClient* CreateClient(DBClientProxy* p_dbClientProxy, std::string serverAddr, int port);
 
 #endif // __DB_CLIENT_H_

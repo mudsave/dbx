@@ -13,7 +13,7 @@
 
 #define	 MAXRESNUM 100
 
-class CDBProxy :public DBClientCB
+class CDBProxy :public DBClientProxy
 {
 public:
 	static int init(const char* dbIp, int dbPort, lua_State* pState);

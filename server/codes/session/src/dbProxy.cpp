@@ -21,8 +21,37 @@ void CDBProxy::init(const char* dbIp, int dbPort)
 
 void CDBProxy::onExeDBProc(int operId, bool result)
 {
-    int ErrorCode = result ? 0 : -1;
-    onDBReturn(operId, ErrorCode);
+    DBSTOREMAP::iterator it = m_mapDBStore.find(operId);
+    if (it == m_mapDBStore.end())
+    {
+        TRACE1_ERROR("CDBProxy::onExeDBProc:store call error operId =%d\n", operId);
+        g_pDBAClient->deleteAttributeSet(operId);
+        return;
+    }
+
+    int storeType = it->second.storeType;
+    switch (storeType)
+    {
+    case eStoreLogin:
+        doLoginResult(operId, it->second.hLink);
+        break;
+    case eStoreCreateAccount:
+        doCreateAccountResult(operId, it->second.hLink, it->second.accountName);
+        break;
+    case eStoreCreateRole:
+        doCreateRoleResult(operId, it->second.hLink);
+        break;
+    case eStoreDeleteRole:
+        doDeleteRoleResult(operId, it->second.hLink);
+        break;
+    case eStoreCheckRole:
+        doCheckRoleNameResult(operId, it->second.hLink);
+        break;
+    default:
+        TRACE1_ERROR("CDBProxy::onExeDBProc:no this type,type = %d\n", storeType);
+        break;
+    }
+    g_pDBAClient->deleteAttributeSet(operId);
 }
 
 void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
@@ -50,7 +79,6 @@ void CDBProxy::doLogin(char* userName, char* passWord, handle hLink)
 
 void CDBProxy::doLoginResult(int operId, handle hLink)
 {
-    TRACE0_L0("CDBProxy::doLoginResult:wsf.....");
     DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
 
     // 从第一个结果集取accountId
@@ -268,8 +296,6 @@ void CDBProxy::doDeleteRole(int accountId, int roleId, handle hLink)
 
 void CDBProxy::doDeleteRoleResult(int operId, handle hLink)
 {
-    TRACE0_L0("CDBProxy::doDeleteRoleResult:wsf.....\n");
-
     DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
@@ -307,8 +333,6 @@ void CDBProxy::doCheckRoleName(char* pRoleName, handle hLink)
 
 void CDBProxy::doCheckRoleNameResult(int operId, handle hLink)
 {
-    TRACE0_L0("CDBProxy::doCheckRoleNameResult:wsf.....\n");
-
     DbxMessage* resultSet = (DbxMessage*)g_pDBAClient->getAttributeSet(operId, 0);
     void *attr = NULL;
     PType valueType;
@@ -328,39 +352,6 @@ void CDBProxy::onConnected(bool result)
 		TRACE0_L0("conncet DB success\n");
 	else
 		TRACE0_L0("conncet DB fail\n");
-}
-
-void CDBProxy::onDBReturn(int operId,int errorCode)
-{
-	DBSTOREMAP::iterator it = m_mapDBStore.find(operId);
-	if( it == m_mapDBStore.end() )
-	{
-		TRACE1_L0("store call error operId =%d\n", operId);
-		ASSERT_(0);
-	}
-	int storeType = it->second.storeType;
-	switch(storeType)
-	{
-		case eStoreLogin:
-            doLoginResult(operId, it->second.hLink);
-			break;
-		case eStoreCreateAccount:
-            doCreateAccountResult(operId, it->second.hLink, it->second.accountName);
-			break;
-		case eStoreCreateRole:
-            doCreateRoleResult(operId, it->second.hLink);
-			break;
-		case eStoreDeleteRole:
-            doDeleteRoleResult(operId, it->second.hLink);
-			break;
-		case eStoreCheckRole:
-			doCheckRoleNameResult(operId, it->second.hLink);
-			break;
-		default:
-			TRACE1_L0("no this type,type = %d\n",storeType);
-			break;
-	}
-    g_pDBAClient->deleteAttributeSet(operId);
 }
 
 HRESULT CDBProxy::Do(HANDLE hContext)
