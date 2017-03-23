@@ -53,10 +53,11 @@ def call_sp_message(params, noCallback, level, spId = 0):
 #params[1]["cmdID"] = 1
 #params[1]["queueIndex"] = 1
 #params[1]["level"] = 1
-def call_sql_message(params, spId = 0):
+def call_sql_message(params, spId = 0, noCallback = False):
 	message = dbx_msg_define.CCSResultMsg()
 	if writeMessage(message, params):
 		message.m_spId = spId
+		message.m_bNeedCallback = not noCallback
 		message.msgId = dbx_msg_define.MSG_ID.C_DO_SQL
 		message.context = dbx_msg_define.MSG_TYPE.CCSRESMSG
 		message.m_nTempObjId = 1
@@ -65,21 +66,21 @@ def call_sql_message(params, spId = 0):
 		return None
 	
 
-def default_sp_message(spName, database = 1, sort = "", others = {}):
+def default_sp_message(spName, database = 1, sort = "", others = {}, noCallback = False):
 	params = {1:{}}
 	params[1]["spName"] = spName
 	params[1]["dataBase"] = database
 	params[1]["sort"] = sort
 	params[1].update(others)
-	return call_sp_message(params, False, 20)
+	return call_sp_message(params, noCallback, 20)
 	
 	
-def default_sql_message(sql, database = 1, cmdID = 0, queueIndex = 0, level = 20):
+def default_sql_message(sql, database = 1, cmdID = 0, queueIndex = -1, level = 20, noCallback = False):
 	params = {1:{}}
 	params[1]["sql"] = sql
 	params[1]["dataBase"] = database
 	params[1]["cmdID"] = cmdID
 	params[1]["queueIndex"] = queueIndex
 	params[1]["level"] = level
-	return call_sql_message(params)
+	return call_sql_message(params, 0, noCallback)
 	

@@ -38,7 +38,7 @@ class Analyst:
 			end_event.set()
 		
 		connect_thread = threading.Thread(target=_connect, args = (end_event, ip, port, total))
-		connect_thread.setDaemon(True)
+		#connect_thread.setDaemon(True)
 		connect_thread.setName("Connect thread")
 		connect_thread.start()
 		
@@ -52,7 +52,7 @@ class Analyst:
 			end_event.set()
 		
 		input_thread = threading.Thread(target=_input_to_stop, args = (end_event,))
-		input_thread.setDaemon(True)
+		#input_thread.setDaemon(True)
 		input_thread.setName("Input thread")
 		input_thread.start()
 		
@@ -117,7 +117,7 @@ class Analyst:
 			monitor_stop.set()
 		
 		monitor_thread = threading.Thread(target=_connect_monitor, args = (monitor_stop, duration))
-		monitor_thread.setDaemon(True)
+		#monitor_thread.setDaemon(True)
 		monitor_thread.setName("Monitor thread")
 		monitor_thread.start()
 		
@@ -131,7 +131,7 @@ class Analyst:
 			monitor_stop.set()
 		
 		input_thread = threading.Thread(target=_input_to_stop, args = (monitor_stop,))
-		input_thread.setDaemon(True)
+		#input_thread.setDaemon(True)
 		input_thread.setName("Input thread")
 		input_thread.start()
 		
@@ -202,7 +202,7 @@ class Analyst:
 			io_stop.set()
 		
 		io_thread = threading.Thread(target=_io_loop, args = (io_stop, message))
-		io_thread.setDaemon(True)
+		#io_thread.setDaemon(True)
 		io_thread.setName("IO thread")
 		io_thread.start()
 		
@@ -216,7 +216,7 @@ class Analyst:
 			io_stop.set()
 		
 		input_thread = threading.Thread(target=_input_to_stop, args = (io_stop,))
-		input_thread.setDaemon(True)
+		#input_thread.setDaemon(True)
 		input_thread.setName("Input thread")
 		input_thread.start()
 		
