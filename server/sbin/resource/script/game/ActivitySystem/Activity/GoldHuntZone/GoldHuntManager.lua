@@ -115,7 +115,8 @@ function GoldHuntManager:_orderScoreAndSend(player)
 	--通知客户端
 	if bChanged then
 		local event = Event.getEvent(ActivityEvent_SC_GoldHunt_CurRank, CurRankList)
-		RemoteEventProxy.broadcast(event,g_serverId)
+		-- RemoteEventProxy.broadcast(event,g_serverId)
+		g_eventMgr:broadcastEvent(event,g_serverId)
 	end
 end
 
@@ -567,7 +568,8 @@ function  GoldHuntManager:onGetRankResults(event)
 	table.clear(CurRankList)
 	--发布前3广播
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,8,unpack(rank3Names))
-	RemoteEventProxy.broadcast(event, g_serverId)
+	-- RemoteEventProxy.broadcast(event, g_serverId)
+	g_eventMgr:broadcastEvent(event,g_serverId)
 	--给在线玩家发排名奖
 	for _,rs in ipairs(rankResults) do
 		local dbID = rs.roleID

@@ -40,6 +40,7 @@ private:
     static int _debug_ref;
     static ByteBuffer _s_buffer;
     static lua_State* m_pLuaState;
+	static bool error;
 };
 
 #endif

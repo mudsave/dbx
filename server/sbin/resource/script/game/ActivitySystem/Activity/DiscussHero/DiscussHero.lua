@@ -161,7 +161,8 @@ end
 function DiscussHero:preFirstBroadcast()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,1,30)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 end
 
@@ -169,7 +170,8 @@ end
 function DiscussHero:preScondBroadcast()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,1,10)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 end
 
@@ -177,7 +179,8 @@ end
 function DiscussHero:openBroadcast()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,2)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 end
 
@@ -185,7 +188,8 @@ end
 function DiscussHero:ScondBroadcast()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,3)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 end
 
@@ -193,7 +197,8 @@ end
 function DiscussHero:ScondEndBroadcast()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,4)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 end
 
@@ -201,7 +206,8 @@ end
 function DiscussHero:RewordBroadcast()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,5)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 end
 

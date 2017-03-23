@@ -1,24 +1,24 @@
 --[[LoopTaskDB.lua
-	å¾ªç¯ä»»åŠ¡é…ç½®(ä»»åŠ¡ç³»ç»Ÿ)
+	Ñ­»·ÈÎÎñÅäÖÃ(ÈÎÎñÏµÍ³)
 ]]
 
---å¾ªç¯ä»»åŠ¡
+--Ñ­»·ÈÎÎñ
 LoopTaskDB = 
 {
-	-- å¸ˆé—¨ä»»åŠ¡
+	-- Ê¦ÃÅÈÎÎñ
 	[10001] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.QYD,
 		startNpcID = 20004,
 		loop =10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -29,10 +29,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 30çº§
+			-- 1- 30¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 0,
 				[LoopTaskTargetType.talk] = 60,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -44,10 +44,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 0,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			-- 31 - 40 çº§
+			-- 31 - 40 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -59,10 +59,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--41- 50çº§
+			--41- 50¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -74,10 +74,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 40,
 				[LoopTaskTargetType.donate] = 40,
 			},
-			--51- 150çº§
+			--51- 150¼¶
 			[4] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 60,
 				[LoopTaskTargetType.talk] = 30,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -90,55 +90,55 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 40,
 			},
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = MasterRewardFormula.addXp,
-			--ä»»åŠ¡é“è¡Œ
+			--ÈÎÎñµÀĞĞ
 			[TaskRewardList.player_tao] = MasterRewardFormula.addTao,
-			--ä»»åŠ¡æ½œèƒ½
+			--ÈÎÎñÇ±ÄÜ
 			[TaskRewardList.player_pot] = MasterRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = MasterRewardFormula.addSubMoney,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[2] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[3] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[4] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
@@ -146,17 +146,17 @@ LoopTaskDB =
 	},
 	[10002] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.JXS,
 		startNpcID = 20006,
 		loop = 10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -167,10 +167,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 30çº§
+			-- 1- 30¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 0,
 				[LoopTaskTargetType.talk] = 60,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -182,10 +182,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 0,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			-- 31 - 40 çº§
+			-- 31 - 40 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -197,10 +197,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--41- 50çº§
+			--41- 50¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -212,10 +212,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 40,
 				[LoopTaskTargetType.donate] = 40,
 			},
-			--51- 150çº§
+			--51- 150¼¶
 			[4] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 60,
 				[LoopTaskTargetType.talk] = 30,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -228,55 +228,55 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 40,
 			},
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = MasterRewardFormula.addXp,
-			--ä»»åŠ¡é“è¡Œ
+			--ÈÎÎñµÀĞĞ
 			[TaskRewardList.player_tao] = MasterRewardFormula.addTao,
-			--ä»»åŠ¡æ½œèƒ½
+			--ÈÎÎñÇ±ÄÜ
 			[TaskRewardList.player_pot] = MasterRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = MasterRewardFormula.addSubMoney,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[2] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[3] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[4] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
@@ -284,17 +284,17 @@ LoopTaskDB =
 	},
 	[10003] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.ZYM,
 		startNpcID = 20008,
 		loop = 10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -305,10 +305,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 30çº§
+			-- 1- 30¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 0,
 				[LoopTaskTargetType.talk] = 60,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -320,10 +320,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 0,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			-- 31 - 40 çº§
+			-- 31 - 40 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -335,10 +335,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--41- 50çº§
+			--41- 50¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -350,10 +350,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 40,
 				[LoopTaskTargetType.donate] = 40,
 			},
-			--51- 150çº§
+			--51- 150¼¶
 			[4] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 60,
 				[LoopTaskTargetType.talk] = 30,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -366,55 +366,55 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 40,
 			},
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = MasterRewardFormula.addXp,
-			--ä»»åŠ¡é“è¡Œ
+			--ÈÎÎñµÀĞĞ
 			[TaskRewardList.player_tao] = MasterRewardFormula.addTao,
-			--ä»»åŠ¡æ½œèƒ½
+			--ÈÎÎñÇ±ÄÜ
 			[TaskRewardList.player_pot] = MasterRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = MasterRewardFormula.addSubMoney,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[2] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[3] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[4] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
@@ -422,17 +422,17 @@ LoopTaskDB =
 	},
 	[10004] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.YXG,
 		startNpcID = 20009,
 		loop = 10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -443,10 +443,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 30çº§
+			-- 1- 30¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 0,
 				[LoopTaskTargetType.talk] = 60,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -458,10 +458,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 0,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			-- 31 - 40 çº§
+			-- 31 - 40 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -473,10 +473,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--41- 50çº§
+			--41- 50¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -488,10 +488,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 40,
 				[LoopTaskTargetType.donate] = 40,
 			},
-			--51- 150çº§
+			--51- 150¼¶
 			[4] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 60,
 				[LoopTaskTargetType.talk] = 30,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -504,55 +504,55 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 40,
 			},
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = MasterRewardFormula.addXp,
-			--ä»»åŠ¡é“è¡Œ
+			--ÈÎÎñµÀĞĞ
 			[TaskRewardList.player_tao] = MasterRewardFormula.addTao,
-			--ä»»åŠ¡æ½œèƒ½
+			--ÈÎÎñÇ±ÄÜ
 			[TaskRewardList.player_pot] = MasterRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = MasterRewardFormula.addSubMoney,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[2] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[3] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[4] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
@@ -560,17 +560,17 @@ LoopTaskDB =
 	},
 	[10005] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.TYD,
 		startNpcID = 20005,
 		loop = 10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -581,10 +581,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 30çº§
+			-- 1- 30¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 0,
 				[LoopTaskTargetType.talk] = 60,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -596,10 +596,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 0,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			-- 31 - 40 çº§
+			-- 31 - 40 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -611,10 +611,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--41- 50çº§
+			--41- 50¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -626,10 +626,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 40,
 				[LoopTaskTargetType.donate] = 40,
 			},
-			--51- 150çº§
+			--51- 150¼¶
 			[4] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 60,
 				[LoopTaskTargetType.talk] = 30,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -642,55 +642,55 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 40,
 			},
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = MasterRewardFormula.addXp,
-			--ä»»åŠ¡é“è¡Œ
+			--ÈÎÎñµÀĞĞ
 			[TaskRewardList.player_tao] = MasterRewardFormula.addTao,
-			--ä»»åŠ¡æ½œèƒ½
+			--ÈÎÎñÇ±ÄÜ
 			[TaskRewardList.player_pot] = MasterRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = MasterRewardFormula.addSubMoney,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[2] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[3] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[4] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
@@ -698,17 +698,17 @@ LoopTaskDB =
 	},
 	[10006] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.PLG,
 		startNpcID = 20007,
 		loop = 10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -719,10 +719,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 30çº§
+			-- 1- 30¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 0,
 				[LoopTaskTargetType.talk] = 60,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -734,10 +734,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 0,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			-- 31 - 40 çº§
+			-- 31 - 40 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -749,10 +749,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--41- 50çº§
+			--41- 50¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 40,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -764,10 +764,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 40,
 				[LoopTaskTargetType.donate] = 40,
 			},
-			--51- 150çº§
+			--51- 150¼¶
 			[4] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 60,
 				[LoopTaskTargetType.talk] = 30,
 				[LoopTaskTargetType.buyItem] = 40,
@@ -780,197 +780,197 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 40,
 			},
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = MasterRewardFormula.addXp,
-			--ä»»åŠ¡é“è¡Œ
+			--ÈÎÎñµÀĞĞ
 			[TaskRewardList.player_tao] = MasterRewardFormula.addTao,
-			--ä»»åŠ¡æ½œèƒ½
+			--ÈÎÎñÇ±ÄÜ
 			[TaskRewardList.player_pot] = MasterRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = MasterRewardFormula.addSubMoney,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[2] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[3] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 			[4] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
 			},
 		},
 	},
-	-- è¯•ç‚¼ä»»åŠ¡
+	-- ÊÔÁ¶ÈÎÎñ
 	[10007] = 
 	{
-		name = "è¯•ç‚¼ä»»åŠ¡",
+		name = "ÊÔÁ¶ÈÎÎñ",
 		startDialogID = nil,
 		taskType2 = TaskType2.Trial,
 		level = {40, 150},
 		school = nil,
 		startNpcID = 27150,
 		loop = 200,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.week,
 		targets = 
 		{
 			[1] =
 			{
-			    -- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
-				[LoopTaskTargetType.script] = 60,		            -- æ‚¬èµæˆ˜æ–—
-				[LoopTaskTargetType.talk] = 40, 		            -- å’ŒNPCå¯¹è¯
-				[LoopTaskTargetType.buyItem] = 50,		            -- ä¸Šäº¤ç‰©å“
-				[LoopTaskTargetType.catchPet] = 50,		            -- æ•æ‰å® ç‰©
-				[LoopTaskTargetType.partrolScript] = 60,	        -- æš—é›·æˆ˜æ–—
-				[LoopTaskTargetType.deliverLetters] = 40,		    -- é€ä¿¡
-				[LoopTaskTargetType.brightMine] = 60,		        -- æŒ‘æˆ˜æ˜é›·
+			    -- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
+				[LoopTaskTargetType.script] = 60,		            -- ĞüÉÍÕ½¶·
+				[LoopTaskTargetType.talk] = 40, 		            -- ºÍNPC¶Ô»°
+				[LoopTaskTargetType.buyItem] = 50,		            -- ÉÏ½»ÎïÆ·
+				[LoopTaskTargetType.catchPet] = 50,		            -- ²¶×½³èÎï
+				[LoopTaskTargetType.partrolScript] = 60,	        -- °µÀ×Õ½¶·
+				[LoopTaskTargetType.deliverLetters] = 40,		    -- ËÍĞÅ
+				[LoopTaskTargetType.brightMine] = 60,		        -- ÌôÕ½Ã÷À×
 			}
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
-                        --è§’è‰²ç»éªŒ
+                        --½ÇÉ«¾­Ñé
 			[TaskRewardList.player_xp] = TrialRewardFormula.addXp,
-			--è§’è‰²é“è¡Œ
+			--½ÇÉ«µÀĞĞ
 			[TaskRewardList.player_tao] = TrialRewardFormula.addTao,
-			--è§’è‰²æ½œèƒ½
+			--½ÇÉ«Ç±ÄÜ
 			[TaskRewardList.player_pot] = TrialRewardFormula.addPot,
-			--ç»‘é“¶
+			--°óÒø
 			[TaskRewardList.subMoney] = TrialRewardFormula.addSubMoney,
-			--å® ç‰©ç»éªŒ
+			--³èÎï¾­Ñé
 			[TaskRewardList.pet_xp] = TrialRewardFormula.addPetXp,
-			--å® ç‰©é“è¡Œ
+			--³èÎïµÀĞĞ
 			[TaskRewardList.pet_tao] = TrialRewardFormula.addPetTao
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[20] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[30] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[40] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[50] = 
 				{
-					[1] = {itemID = 1031011, itemNum = 1},----é“¶å®ç®±
+					[1] = {itemID = 1031011, itemNum = 1},----Òø±¦Ïä
 				},
 				[60] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[70] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[80] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[90] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[100] = 
 				{
-					[1] = {itemID = 1031011, itemNum = 1},----é“¶å®ç®±
+					[1] = {itemID = 1031011, itemNum = 1},----Òø±¦Ïä
 				},
 				[110] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[120] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[130] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[140] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[150] = 
 				{
-					[1] = {itemID = 1031011, itemNum = 1},----é“¶å®ç®±
+					[1] = {itemID = 1031011, itemNum = 1},----Òø±¦Ïä
 				},
 				[160] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[170] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[180] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[190] = 
 				{
-					[1] = {itemID = 1031010, itemNum = 1},----é“œå®ç®±
+					[1] = {itemID = 1031010, itemNum = 1},----Í­±¦Ïä
 				},
 				[200] = 
 				{
-					[1] = {itemID = 1031012, itemNum = 1},----é‡‘å®ç®±
+					[1] = {itemID = 1031012, itemNum = 1},----½ğ±¦Ïä
 				},
 			},
 		},
 	},
-	-- å¤©é“ä»»åŠ¡
+	-- ÌìµÀÈÎÎñ
 	[10008] = 
 	{
-		name = "å¤©é“ä»»åŠ¡",
+		name = "ÌìµÀÈÎÎñ",
 		startDialogID = nil,
 		taskType2 = TaskType2.Heaven,
 		level = {30, 150},
@@ -988,27 +988,27 @@ LoopTaskDB =
 		{
 			[1] =
 			{
-				[LoopTaskTargetType.script] = 50,		            -- æ˜é›·æˆ˜æ–—
+				[LoopTaskTargetType.script] = 50,		            -- Ã÷À×Õ½¶·
 			},
 		},
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1031013, itemNum = 1},
 				},
 			},
 		}
 	},
-	-- å¸®ä¼šä»»åŠ¡
+	-- °ï»áÈÎÎñ
 	[10009] = 
 	{
-		name = "å¸®ä¼šä»»åŠ¡",
+		name = "°ï»áÈÎÎñ",
 		startDialogID = nil,
 		taskType2 = TaskType2.Faction,
 		level = {20, 60},
@@ -1030,36 +1030,36 @@ LoopTaskDB =
 		},
 		normalRewards =
 		{
-			-- å¸®è´¡å¥–åŠ±
+			-- °ï¹±½±Àø
 			[TaskRewardList.faction_cont] = 50,
-			-- å¸®ä¼šèµ„é‡‘
+			-- °ï»á×Ê½ğ
 			[TaskRewardList.faction_money] = 50,
-			-- å¸®ä¼šå£°æœ›
+			-- °ï»áÉùÍû
 			[TaskRewardList.faction_Fame] = 50
 		},
 		formulaRewards =
-		{	-- é“è¡Œ å…¬å¼
+		{	-- µÀĞĞ ¹«Ê½
 			[TaskRewardList.player_tao] = FactionRewardFormula.addTao,
-			-- æ½œèƒ½ å…¬å¼
+			-- Ç±ÄÜ ¹«Ê½
 			[TaskRewardList.player_pot] = FactionRewardFormula.addPot,
-			-- å® ç‰©
+			-- ³èÎï
 			[TaskRewardList.pet_tao] = FactionRewardFormula.addTao,
 		},
 	},
 
 	[10020] = 
 	{
-		name = "å¸ˆé—¨ä»»åŠ¡",
+		name = "Ê¦ÃÅÈÎÎñ",
 		startDialogID = nil,
-		-- ç±»å‹æ˜¯å¸ˆé—¨ä»»åŠ¡
+		-- ÀàĞÍÊÇÊ¦ÃÅÈÎÎñ
 		taskType2 = TaskType2.Master,
 		level = {20, 150},
 		school = SchoolType.QYD,
 		startNpcID = 29040,
 		loop = 10,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -1069,10 +1069,10 @@ LoopTaskDB =
 		},
 		targets = 
 		{
-			-- 1- 50çº§
+			-- 1- 50¼¶
 			[1] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				--[LoopTaskTargetType.script] = 50,
 				--[LoopTaskTargetType.talk] = 50,
 				--[LoopTaskTargetType.buyItem] = 50,
@@ -1085,10 +1085,10 @@ LoopTaskDB =
 				--[LoopTaskTargetType.donate] = 50,
 
 			},
-			-- 50 - 100 çº§
+			-- 50 - 100 ¼¶
 			[2] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 50,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -1100,10 +1100,10 @@ LoopTaskDB =
 				[LoopTaskTargetType.mysteryBus] = 50,
 				[LoopTaskTargetType.donate] = 50,
 			},
-			--100- 160çº§
+			--100- 160¼¶
 			[3] =
 			{
-				-- é¦–å…ˆæ¥æµ‹è¯•ç­‰çº§åˆ†æ®µçš„æƒé‡
+				-- Ê×ÏÈÀ´²âÊÔµÈ¼¶·Ö¶ÎµÄÈ¨ÖØ
 				[LoopTaskTargetType.script] = 50,
 				[LoopTaskTargetType.talk] = 50,
 				[LoopTaskTargetType.buyItem] = 50,
@@ -1116,45 +1116,45 @@ LoopTaskDB =
 				[LoopTaskTargetType.donate] = 50,
 			}
 		},
-		-- å…¬å¼å¥–åŠ±
+		-- ¹«Ê½½±Àø
 		formulaRewards =
 		{
 			[TaskRewardList.player_xp] = RewardFormula.addXp,
 		},
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1012018, itemNum = 1},
 				},
 			},
 		},
-		--å›ºå®šå¥–åŠ±
+		--¹Ì¶¨½±Àø
 		normalRewards =
 		{
 			[TaskRewardList.player_tao] = 1000,
 		},
 	},
 
-	-- å‹æµ‹æµ‹è¯•ä¸“ç”¨
+	-- Ñ¹²â²âÊÔ×¨ÓÃ
 	[1] = 
 	{
-		name = "å‹æµ‹ä»»åŠ¡",
+		name = "Ñ¹²âÈÎÎñ",
 		startDialogID = nil,
 		taskType2 = TaskType2.Master,
 		level = {1, 150},
 		school = nil,
 		startNpcID = 1,
 		loop =1000,
-		-- è¿™ä¸ªæ¥ç¡®å®šæ˜¯æ¯æ—¥ï¼Œè¿˜æ˜¯æ¯å‘¨çš„ã€‚
+		-- Õâ¸öÀ´È·¶¨ÊÇÃ¿ÈÕ£¬»¹ÊÇÃ¿ÖÜµÄ¡£
 		period = TaskPeriod.day,
-		-- è¿™ä¸ªè¡¨ç¤ºä»£è¡¨
+		-- Õâ¸ö±íÊ¾´ú±í
 		levelFlag = true,
 		targetLevelSection =
 		{
@@ -1164,7 +1164,7 @@ LoopTaskDB =
 		{
 			[1] =
 			{
-				[LoopTaskTargetType.brightMine] = 100,		            -- æ˜é›·æˆ˜æ–—
+				[LoopTaskTargetType.brightMine] = 100,		            -- Ã÷À×Õ½¶·
 			},
 		},
 		itemRewards =
@@ -1173,13 +1173,13 @@ LoopTaskDB =
 
 	[10010] =
 	{
-		name = "è®¨é€†ä»»åŠ¡",
+		name = "ÌÖÄæÈÎÎñ",
 		taskType2 = TaskType2.Heaven,
-		-- ç­‰çº§é™åˆ¶ï¼Œ
+		-- µÈ¼¶ÏŞÖÆ£¬
 		level = {35, 150},
-		-- å¯ä»¥å•äººï¼Œå¯ä»¥ç»„é˜Ÿ
+		-- ¿ÉÒÔµ¥ÈË£¬¿ÉÒÔ×é¶Ó
 		teamType = TeamType.special,
-		-- ç»„é˜Ÿç­‰çº§å·®
+		-- ×é¶ÓµÈ¼¶²î
 		condition = {levelDiff = 10},
 		startNpcID = 29008,		
 		loop = 10,
@@ -1192,20 +1192,20 @@ LoopTaskDB =
 		{
 			[1] =
 			{
-				[LoopTaskTargetType.script] = 50,		            -- æ˜é›·æˆ˜æ–—
+				[LoopTaskTargetType.script] = 50,		            -- Ã÷À×Õ½¶·
 			},
 		},
 
-		-- ç‰©å“å¥–åŠ±
+		-- ÎïÆ·½±Àø
 		itemRewards =
 		{
-			-- ç­‰çº§åŒºé—´
+			-- µÈ¼¶Çø¼ä
 			[1] =
 			{	
-				-- ç¯æ•°
+				-- »·Êı
 				[10] = 
 				{
-					-- æ”¯æŒå¤šç§ç‰©å“,å’Œä¸ªæ•°
+					-- Ö§³Ö¶àÖÖÎïÆ·,ºÍ¸öÊı
 					[1] = {itemID = 1012018, itemNum = 1},
 				},
 			},

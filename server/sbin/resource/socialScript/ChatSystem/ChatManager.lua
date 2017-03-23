@@ -69,14 +69,16 @@ function ChatManager:sendMessage(role, channelType, message, sign, context)
 			g_eventMgr:fireWorldsEvent(event,CurWorldID)
 		end
 		local event = Event.getEvent(ChatEvents_SC_SendChatMsg, -1, 0, ChatChannelType.World, message, roleInfo, sign )
-		RemoteEventProxy.broadcast(event,0)
+		-- RemoteEventProxy.broadcast(event,0)
+		g_eventMgr:broadcastEvent(event,0)
 	end
 
 end
 
 function ChatManager:sendHornMessage(message,player,sign)
 	local event = Event.getEvent(ChatEvents_SC_SendChatMsg, -1, 0, ChatChannelType.Horn, message ,{ID = player:getID(), worldID = g_serverId, name = player:getName()},sign)
-	RemoteEventProxy.broadcast(event)
+	-- RemoteEventProxy.broadcast(event)
+	g_eventMgr:broadcastEvent(event)
 end
 
 

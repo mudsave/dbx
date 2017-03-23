@@ -153,7 +153,6 @@ function Triggers.createMine(roleID, param, task, fromDB)
 end
 
 function Triggers.removeMine(roleID, param, task, fromDB)
-	--print("移除宠物>>>>>>>>>>>>>执行到到这列没有")
 	local player = g_entityMgr:getPlayerByID(roleID)
 	player:getHandler(HandlerDef_TaskPrData):removeTaskMine(task:getID())
 end

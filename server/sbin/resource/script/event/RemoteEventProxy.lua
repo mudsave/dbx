@@ -5,12 +5,6 @@
 
 RemoteEventProxy = {}
 
-local function ReleaseEvent(event)
-	if event:isAutoRelease() then
-		event:release()
-	end
-end
-
 -- 发送到对端
 function RemoteEventProxy.send(event, player)
 	if not event then return end
@@ -21,8 +15,7 @@ function RemoteEventProxy.send(event, player)
 		print ("[Warning!]RPC Target player not exists!")
 		return
 	end
-	RPCEngine:sendToPeer(player:getGatewayID(), player:getClientLink(), eventID, g_serverId, unpack(params))
-	ReleaseEvent(event)
+	RPCEngine:sendToPeer(player:getGatewayID(), player:getClientLink(), eventID, g_serverId, unpack(params,1,params.n))
 end
 
 -- 发世界消息
@@ -32,8 +25,7 @@ function RemoteEventProxy.sendToWorld(event, worldID)
 	local params	= event:getParams()
 	if not eventID then return end
 	worldID = worldID or -1
-	RPCEngine:sendToWorld(worldID, eventID, g_serverId, unpack(params))
-	ReleaseEvent(event)
+	RPCEngine:sendToWorld(worldID, eventID, g_serverId, unpack(params,1,params.n))
 end
 
 -- 在当前world广播
@@ -44,8 +36,7 @@ function RemoteEventProxy.broadcast(event, worldID)
 	local params	= event:getParams()
 	if not eventID then return end
 	worldID = worldID or -1
-	RPCEngine:bcToWorldPeers(worldID, eventID, g_serverId, unpack(params))
-	ReleaseEvent(event)
+	RPCEngine:bcToWorldPeers(worldID, eventID, g_serverId, unpack(params,1,params.n))
 end
 
 
@@ -58,8 +49,7 @@ function RemoteEventProxy.sendToAround(event, player)
 	if not player:getID() then
 		return
 	end
-	RPCEngine:sendToAround(player:getID(), eventID, player:getID(), unpack(params))
-	ReleaseEvent(event)
+	RPCEngine:sendToAround(player:getID(), eventID, player:getID(), unpack(params,1,params.n))
 end
 
 
@@ -69,8 +59,7 @@ function RemoteEventProxy.sendToAdmin(event)
 	local eventID	= event:getID()
 	local params	= event:getParams()
 	if not eventID then return end
-	RPCEngine:sendToAdmin(eventID, 0, unpack(params))
-	ReleaseEvent(event)
+	RPCEngine:sendToAdmin(eventID, 0, unpack(params,1,params.n))
 end
 
 -- 接收消息
@@ -81,7 +70,6 @@ function RemoteEventProxy.receive(eventID, playerID, ...)
 	local event = Event.getEvent(eventID, ... )
 	event.playerID = playerID
 	g_eventMgr:fireEvent(event)
-	ReleaseEvent(event)
 end
 
 -- 接收世界消息
@@ -92,7 +80,6 @@ function RemoteEventProxy.wreceive(eventID, srcWorldID, ...)
 	local event = Event.getEvent(eventID, ... )
 	event.srcWorldID = srcWorldID
 	g_eventMgr:fireEvent(event)
-	ReleaseEvent(event)
 end
 
 -- 接收运维工具后端的消息
@@ -100,7 +87,6 @@ function RemoteEventProxy.areceive(eventID, srcID, ...)
 	-- print ("Admin rpc:", eventID, srcID, ...)
 	local event = Event.getEvent(eventID, ...)
 	g_eventMgr:fireEvent(event)
-	ReleaseEvent(event)
 end
 
 -- 调试用

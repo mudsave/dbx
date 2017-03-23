@@ -60,14 +60,14 @@ public:
 	}
 	bool IsEqual(const char *pStr,int len=-1) const{
 		ASSERT_( VAR_STRING == type );
-		return strcmp((const char *)dataVal,pStr)==0;
+		return VAR_STRING == type && strcmp((const char *)dataVal,pStr)==0;
 	}
 	bool IsEqual(const void *pData,size_t len) const{
 		ASSERT_( VAR_DATA == type && len>0 );
 		if( len != length ){
 			return false;
 		}
-		return memcpy(dataVal,pData,len)==0;
+		return VAR_DATA== type && memcpy(dataVal,pData,len)==0;
 	}
 	void Clear(bool bClearType){
 		switch(type){

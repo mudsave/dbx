@@ -17,6 +17,7 @@ function FightEntityManager:__init()
 end
 --添加Player对象
 function FightEntityManager:addPlayer(player)
+
 	local playerID = player:getID()
 	if self._playerList[playerID] then
 		print("player重复添加，ID为",playerID)

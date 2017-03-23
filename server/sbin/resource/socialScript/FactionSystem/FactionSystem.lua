@@ -136,7 +136,7 @@ function FactionSystem:onInvitePlayerToFaction( event )
 						msg = FactionMsgTextKeyTable.MsgSendSucceed
 						local roleName = role:getName()
 						local factionName = faction:getFactionName()
-						local event_Inform = Event.getEvent(FriendEvent_BC_ShowInform,MsgboxParams.MsgType.OnlineMsg,MsgboxParams.MsgKind.MsgKind_FactionInvite,roleName,g_encodeSysMgr.encodeDBID(factionDBID),factionName)
+						local event_Inform = Event.getEvent(c,MsgboxParams.MsgType.OnlineMsg,MsgboxParams.MsgKind.MsgKind_FactionInvite,roleName,g_encodeSysMgr.encodeDBID(factionDBID),factionName)
 						g_eventMgr:fireRemoteEvent(event_Inform,player)
 			end
 			local notifyParams = {msg = msg}

@@ -1139,11 +1139,10 @@ MainTaskDB36_40 =
 			[TaskRewardList.subMoney] = 36000,    --绑银
 			[TaskRewardList.player_pot] = 10800,  	--人物潜能
 		},
-		consume	=--任务消耗没有填{}
-		{
-		},
+		consume	= {},--任务消耗没有填{}
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
+		[1] = {type='Tarea',param = {mapID = 129 , x = 80, y = 91, bor =	false},},-------到达指定坐标
 		},
 		triggers = --任务触发器
 		{
@@ -1491,6 +1490,7 @@ MainTaskDB36_40 =
 		},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
+		[1] = {type='Tarea',param = {mapID = 129 , x = 80, y = 91, bor =	false},},-------到达指定坐标
 		},
 		triggers = --任务触发器
 		{
@@ -1938,6 +1938,7 @@ MainTaskDB36_40 =
 		},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
+		[1] = {type='Tarea',param = {mapID = 10 , x = 46, y = 216, bor =	false},},-------到达指定坐标
 		},
 		triggers = --任务触发器
 		{

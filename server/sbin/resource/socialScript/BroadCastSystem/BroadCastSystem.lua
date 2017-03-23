@@ -24,7 +24,8 @@ function BroadCastSystem:onDigTreasure( event )
 
     local params = event:getParams()
     local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4],params[5])
-    RemoteEventProxy.broadcast(event_DigTreasure)
+    -- RemoteEventProxy.broadcast(event_DigTreasure)
+	g_eventMgr:broadcastEvent(event_DigTreasure)
 
 
 
@@ -34,7 +35,8 @@ function BroadCastSystem:onRemakeEquip( event )
 
     local params = event:getParams()
     local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4])
-    RemoteEventProxy.broadcast(event_DigTreasure)
+    -- RemoteEventProxy.broadcast(event_DigTreasure)
+	g_eventMgr:broadcastEvent(event_DigTreasure)
 
 end
 
@@ -42,7 +44,8 @@ function BroadCastSystem:onUpgradeMounts( event )
 
     local params = event:getParams()
     local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4])
-    RemoteEventProxy.broadcast(event_DigTreasure)
+    -- RemoteEventProxy.broadcast(event_DigTreasure)
+	g_eventMgr:broadcastEvent(event_DigTreasure)
 
 end
 
@@ -50,7 +53,8 @@ function BroadCastSystem:onSummonMounts( event )
 
     local params = event:getParams()
     local event_DigTreasure = Event.getEvent(ClientEvents_SC_PromptMsg,params[1],params[2],params[3],params[4])
-    RemoteEventProxy.broadcast(event_DigTreasure)
+    -- RemoteEventProxy.broadcast(event_DigTreasure)
+	g_eventMgr:broadcastEvent(event_DigTreasure)
 
 end
 

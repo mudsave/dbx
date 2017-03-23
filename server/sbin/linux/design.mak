@@ -69,6 +69,9 @@ huangxiaokun: start_server
 zhouying: START_PORT=50160
 zhouying: start_server
 
+wangkai: START_PORT=50170
+wangkai: start_server
+
 
 start_server:
 	@SCL_PORT=$(START_PORT); \

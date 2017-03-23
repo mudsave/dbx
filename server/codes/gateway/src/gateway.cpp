@@ -388,7 +388,7 @@ void CGateway::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					PlayerInfo* player = g_playerMgr.getPlayerInfo(pInfo->roleId);
 					if ( player->status != PLAYER_STATUS_UNLOADING && player->status != PLAYER_STATUS_LOADED )
 					{
-						TRACE0_L2("CGateway::OnWorldMsg(), player logout error\t");
+						TRACE0_L2("CGateway::OnWorldMsg(), player logout error\n");
 						TRACE1_L2("\troleId = %i\n", pInfo->roleId);
 						TRACE1_L2("\tclient = %u\n", player->hLink);
 						TRACE1_L2("\tresult = %u\n", pInfo->result);

@@ -118,7 +118,8 @@ function GoldHuntZone1:open()
 		--广播
 		if g_serverId == 0 then
 			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,6)
-			RemoteEventProxy.broadcast(event, -1)
+			-- RemoteEventProxy.broadcast(event, -1)
+			g_eventMgr:broadcastEvent(event,-1)
 		end
 		--创建npc
 		local npc = g_entityFct:createDynamicNpc(GoldHuntZone_scoreNpcID)
@@ -130,7 +131,8 @@ print("GoldHuntZone1:close()")
 	--播放广播
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,7)
-		RemoteEventProxy.broadcast(event, -1)
+		-- RemoteEventProxy.broadcast(event, -1)
+		g_eventMgr:broadcastEvent(event,-1)
 		print("print ending info!")
 	end
 	--启动结束定时器
@@ -163,7 +165,8 @@ print("GoldHuntZone1:closeActivity()",self._id)
 
 	if g_serverId == 0 then
 		local event = Event.getEvent(ActivityEvent_SC_GoldHunt_end, -1)
-		RemoteEventProxy.broadcast(event, -1)
+		-- RemoteEventProxy.broadcast(event, -1)
+		g_eventMgr:broadcastEvent(event,-1)
 		print("print ending info!")
 	end
 	g_activityMgr:removeActivity(self._id)

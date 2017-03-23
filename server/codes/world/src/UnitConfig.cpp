@@ -106,7 +106,15 @@ int CUnitConfig::addProperty(int cls,const char *szType,const char *szDef,int bP
 			static char defPosData[PosDataLen];
 			static bool inited = false;
 			if(!inited){
-				_PropPosData _def;
+				_PropPosData _def = 
+				{
+					false,  //bMove
+					1,      //len
+					0,      //idx
+					0,      //delay
+					0,      //step
+					true,   //endPath
+				};
 				memcpy(&defPosData,&_def,sizeof(_PropPosData));
 				inited = true;
 			}

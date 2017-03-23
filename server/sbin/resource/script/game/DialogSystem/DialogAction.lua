@@ -86,6 +86,21 @@ end
 function DialogAction:doEnterScriptFight(player, param)
 	local playerList = {}
 	local fightType = param.type
+	local scriptID = -1
+	local mapID =  -1
+	if fightType == "random" then
+		print("进入随机脚本战斗>>>>>>>>>>>>")
+		--根据权重得到脚本ID
+		scriptID = 30
+		mapID =  nil
+
+
+
+	else
+		scriptID = param.scriptID
+		mapID =  param.mapID
+	end
+
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler:isTeam() then
 		if teamHandler:isLeader() then
@@ -107,7 +122,7 @@ function DialogAction:doEnterScriptFight(player, param)
 		end
 	end
 	-- print("进入脚本战斗战斗")
-	local bPass = g_fightMgr:checkStartScriptFight(finalList, param.scriptID,  param.mapID)
+	local bPass = g_fightMgr:checkStartScriptFight(finalList, scriptID,mapID)
 	if bPass then
 		-- 天道任务消耗活力值
 		if fightType == "heaven" then
@@ -118,7 +133,7 @@ function DialogAction:doEnterScriptFight(player, param)
 				role:flushPropBatch()
 			end
 		end
-		g_fightMgr:startScriptFight(finalList, param.scriptID,  param.mapID)
+		g_fightMgr:startScriptFight(finalList,scriptID, mapID)
 	end
 end
 
@@ -174,9 +189,15 @@ end
 --接受一个任务
 function DialogAction:doRecetiveTask(player, param)
 	local isTrue,result = g_taskDoer:doRecetiveTask(player, param.taskID)
+	--如果接受任务失败，则提示，如果成功，则可以执行扩展的代码
 	if result and result > 0 then
 		g_dialogFty:createErrorDialogObject(player, result)
 		g_dialogDoer:openErrorDialog(player, result)
+	else
+		if param.matchNPC then
+			local roleVerify = RoleVerify.getInstance()
+			table.insert( roleVerify._npcTable.pool,roleVerify._npcTable.selectNPCID)
+		end 
 	end
 end
 

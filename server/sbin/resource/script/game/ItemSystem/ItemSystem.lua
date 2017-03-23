@@ -512,7 +512,7 @@ local tMedicamentReactEffect =
 	[MedicamentReactType.ChangeLoyaltyAndAddBuff]	= ItemEffect.changeLoyaltyAndAddBuff,
 	[MedicamentReactType.ChangeHpAndAddBuff]		= ItemEffect.changeHpAndAddBuff,
 	[MedicamentReactType.ChangeMpAndAddBuff]		= ItemEffect.changeMpAndAddBuff,
-
+	[MedicamentReactType.AddPetExtend]				= ItemEffect.addPetExtend,
 }
 
 -- 使用药品
@@ -890,7 +890,6 @@ function ItemSystem:onRepairAllEquipMent(event)
 		end
 	end
 end
-
 
 function ItemSystem.getInstance()
 	return ItemSystem()

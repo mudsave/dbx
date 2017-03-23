@@ -122,7 +122,7 @@ function PlayerManager:onPlayerReLogin(hGateLink, pLoginInfo, player)
 		System.onPlayerReloginBeforeFight(player)
 
 		local fightServerID = player:getFightServerID()
-		local event = Event(FrameEvents_SS_playerOnLine, player:getDBID(),OnlineReason.Relogin,gatewayId,hClientLink)
+		local event = Event.getEvent(FrameEvents_SS_playerOnLine, player:getDBID(),OnlineReason.Relogin,gatewayId,hClientLink)
 		g_eventMgr:fireWorldsEvent(event,fightServerID)
 	else
 		player:setStatus(ePlayerNormal)
@@ -148,7 +148,7 @@ function PlayerManager:onPlayerLogout(roleId,reason)
 		--g_eventMgr:fireEvent(event)
 		System.onPlayerLogOutByForce(player)
 		local fightServerID = player:getFightServerID()
-		local event = Event(FrameEvents_SS_playerDropLine, player:getDBID(), ePlayerInactiveFight)
+		local event = Event.getEvent(FrameEvents_SS_playerDropLine, player:getDBID(), ePlayerInactiveFight)
 		g_eventMgr:fireWorldsEvent(event,fightServerID)
 
 		g_world:send_MsgWG_PlayerLogout_ResultInfo(gateLink, roleId, player:getVersion(), 0, reason)

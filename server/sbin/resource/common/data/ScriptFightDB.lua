@@ -4483,7 +4483,7 @@ ScriptFightDB[6] = {
 			
 		},
 		[2] = {
-			typeID = 0, sceneID = "zd_yw_tg01_01.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_yw_yl01.xml" ,isSpecialAction =true,
 			monsters={31254,31257},
 		
 	},
@@ -4566,7 +4566,7 @@ ScriptFightDB[9] = {
 
 	phases = {		
 		[1] = {		
-			typeID = 0, sceneID = "zd_yw_zz01_01.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
 			
 			monsters = {40100, 40112, 40110, 40113, 40114, 40115, 40107, 40101 },        
 			
@@ -4862,12 +4862,12 @@ ScriptFightDB[12] = {
 
 	phases = {		
 		[1] = {		
-			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_bingchuan2.xml" ,isSpecialAction =true,
 			
 			monsters = {40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128 }, 
 			systemActions = {                                                               
 
-		[1] = {								--执行行为ID，ID越小越先执行
+		              [1] = {								--执行行为ID，ID越小越先执行
 
 			condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
 
@@ -4906,8 +4906,9 @@ ScriptFightDB[12] = {
 			},
 
 			actions = {
-				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
 				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128,},} },
 			},
 		 },
 
@@ -4921,6 +4922,7 @@ ScriptFightDB[12] = {
 				
 				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
 				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				--{type = ScriptFightActionType.EntityQuit,params={DBID ={40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128,},} },
 			},
 		 },								
                 [4]={
@@ -5011,12 +5013,12 @@ ScriptFightDB[12] = {
 	},
 	},
 	[2] = {
-			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_yw_jt01.xml" ,isSpecialAction =true,
 			monsters={31254,31257},
 		
 	},
         [3] = {
-			typeID = 0, sceneID = "zd_yougu2.xml" ,isSpecialAction =true,
+			typeID = 0, sceneID = "zd_yw_yl01.xml" ,isSpecialAction =true,
 			monsters={30354,30357},
 		
 	},

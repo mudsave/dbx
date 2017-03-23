@@ -216,15 +216,16 @@ function TaskHandler:updateMinTask(currentTime)
 		if LoopTaskDB[taskID] then
 			if task:getEndTime() then
 				if task:getEndTime() > 0 and task:getEndTime() < currentTime then
-					-- 删除任务
-					g_taskDoer:doDeleteTask(self._entity, taskID)
+					-- 删除任务,设置任务状态为失败。
+					--g_taskDoer:doDeleteTask(self._entity, taskID)
+					task:stateChange(TaskStatus.Failed)
+					task:setUpdateDB()
 				end
 			end
 		else
 			if task:getStatus() == TaskStatus.Active then 
 				if task:getEndTime() then
 					if task:getEndTime() > 0 and task:getEndTime() < currentTime then
-						--print("updateMinTask",taskID)
 						task:stateChange(TaskStatus.Failed)
 					end
 				end
@@ -592,6 +593,7 @@ function TaskHandler:updateHisTaskToDB()
 	LuaDBAccess.updateHisTask(self._entity:getDBID(), self.hisTasks)
 end
 
+--检测玩家是否满足任务条件，如果是的话，则显示任务对话
 function TaskHandler:checkTaskProvider(npcID)
 	local taskList = g_taskProvideNpcs[npcID]
 	if taskList then

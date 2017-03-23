@@ -38,7 +38,7 @@ end
 
 -- 接任务
 function TaskDoer:doRecetiveTask(player, taskID, GM)
-	print("接受一个任务，任务的ID：",taskID)
+
 	local msgID = nil
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	--先判断有没有接过该任务
@@ -64,6 +64,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		end
 	elseif DailyTaskDB[taskID] then
 		if taskHandler:getTask(taskID) then
+			print("你已经有这个任务了")
 			return false, 2
 		end
 	end
@@ -98,11 +99,11 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		taskHandler:updateTaskList(taskID, false)
 		return true
 	elseif DailyTaskDB[taskID] then
+
 		if not TaskCondition.dailyTask(player, taskID, true, GM) then
 			print("任务条件不满足")
 			return false, 2
 		end
-
 		local dailyTask = g_taskFty:createDailyTask(player, taskID)
 		taskHandler:addTask(dailyTask)
 		dailyTask:updateNpcHeader()
@@ -112,6 +113,8 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		print("接受任务出错，任务找不到ID为",taskID)
 		return false, 21
 	end
+
+
 end
 
 -- 任务目标的切换移除当前循环任务，接其他任务的任务目标, 
@@ -297,7 +300,6 @@ function TaskDoer:loadHistoryTask(player, recordList)
 			player:getHandler(HandlerDef_Task):loadHistoryTask(taskData.historyTasks)
 		end
 	end
-
 end
 
 function TaskDoer:loadTaskTrace(player, recordList)
@@ -320,15 +322,15 @@ end
 
 function TaskDoer:updateRoleTask(player)
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	if not taskHandler:getUpdateDB() then
-		return
-	end
+	
+	
 	for taskID, task in pairs(taskHandler:getTasks()) do
 		if task:getType() == TaskType.normal and task:getUpdateDB() then
 			LuaDBAccess.updateNormalTask(player:getDBID(), task)
 		elseif task:getType() == TaskType.loop and task:getUpdateDB() then
 			LuaDBAccess.updateLoopTask(player:getDBID(), task)			
 		elseif task:getType() == TaskType.daily and task:getUpdateDB() then
+			
 			LuaDBAccess.updateDailyTask(player:getDBID(), task)
 			LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
 		end
@@ -357,9 +359,9 @@ function TaskDoer:updatePlayerLevelTasks(player)
 			if taskData.level[1] <= player:getLevel() then	-- 指引任务不能重复接
 				if not player:getHandler(HandlerDef_Task):isHisTask(taskID) then
 					self:doRecetiveTask(player, taskID)	-- 升级自动接指引任务
+				end
 			end
 		end
-	end
 	end
 end
 
@@ -367,6 +369,7 @@ end
 function TaskDoer:updateNpcHeader(player, npc)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local npcStatue = nil
+
 	for _, taskID in ipairs(g_taskProvideNpcs[npc:getID()] or {}) do
 		local task = taskHandler:getTask(taskID)
 		if not task then		
@@ -409,13 +412,13 @@ function TaskDoer:updateNpcHeader(player, npc)
 		end
 	end
 	g_taskSystem:onUpdateNpcStatue(player, npc:getID(), npcStatue)
+
 end
 
 --天数刷新
 function TaskDoer:update(period)
 	if period == "day" then
 		for playerID, player in pairs(g_entityMgr:getPlayers()) do
-			print("进入跨天调用没有啊")
 			player:getHandler(HandlerDef_Task):updateDayTask()
 		end
 	elseif period == "week" then

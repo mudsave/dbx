@@ -17,7 +17,7 @@ DialogCondition =
 	NotHasFactionTask = 12,
 	CheckTaskTeam = 13,
 	CheckLoopTask = 14,
-	HasTask_1 = 15,
+	HasStatueTask = 15,
 	CheckLoopTasks = 16,
 	CheckBeastBless = 17,
 	Time	= 18,
@@ -31,6 +31,7 @@ DialogCondition =
 	NoMatchTaskNpc = 26,
 	MatchTaskState = 27,
 	CheckDiscussHero = 28,
+	ChooseNPCByRandom = 29,
 }
 
 --对话类型

@@ -770,7 +770,8 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 								-- 广播
 								if g_serverId == 0 then
 									local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,5,role:getName(),{{itemID = itemID ,itemNum = itemNum}})
-									RemoteEventProxy.broadcast(event)
+									-- RemoteEventProxy.broadcast(event)
+									g_eventMgr:broadcastEvent(event)
 								end
 							end
 						else

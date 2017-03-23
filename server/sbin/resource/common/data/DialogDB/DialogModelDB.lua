@@ -17755,7 +17755,7 @@ DialogModelDB =
 		txt = "在长安，就属我这里的种类最多，一定有客官喜欢的商品",
 		options =
 		{
-			[2] ={
+			[1] ={
 				showConditions = {},
 				optionTxt = "看看有什么卖的",
 				actions =
@@ -25552,6 +25552,379 @@ DialogModelDB =
 			},
 		},
 	},
+--------帮会休闲任务-------------------------------------------------------------------------------------------------------------
+	[30102] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			--{condition = DialogCondition.DailyTaskTimes, param = {taskID = 40002}},
+		},
+		speakerID = 30817,
+		txt = "来来来，测测你的勇力值",
+		options = 
+		{
+			[1] = {
+				showConditions = {
+				},
+				optionTxt = "好，就让我浪里小白龙来试试",
+				actions =
+				{
+					
+					{action = DialogActionType.Gotos, param = {dialogIDs = {30104,30105,30103}}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "我只是路过的",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30103] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			{condition = DialogCondition.ChooseNPCByRandom, param = {taskID = 40002}},
+		},
+		speakerID = 30817,
+		matchSpecialFlag = true,
+		matchTaskID = 40002,
+		txt = "前去<font color = '#FFFF00FF'>%s</font>处接受任务", --接受任务，这里配个%s是为了后面跟随机的NPC名称对应
+		options = 
+		{
+			[1] = {
+				showConditions = {
+				},
+				optionTxt = "我这就去",
+				actions =
+				{
+					
+					{action = DialogActionType.RecetiveTask, param = {taskID = 40002,matchNPC = true}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "我只是路过的",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30104] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		{condition = DialogCondition.Level, param = {level=0,maxLevel =25,errorID =1 }},
+		},
+		speakerID = 29081,
+		soundID =26159,
+		txt = "以你现在的能力，还不足以对抗那些可怕的妖怪，请回去修炼到25级再回来找我吧！",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+	[30105] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		{condition = DialogCondition.DailyTaskTimes, param = {taskID = 40001,errorID = 1}},
+		},
+		speakerID = 29081,
+		soundID =26159,
+		txt = "你今天已经挑战的次数已经够多了，明天再来吧",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+	[30106] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			{condition = DialogCondition.HasFactionTask, param = {taskID = 40002,taskNPCID = 40011}},
+		},
+		speakerID = 30817,
+		txt = "啊哈，我是杨文辉,敢来挑战，我很欣赏你",
+		options = 
+		{
+			[1] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = false}}
+				},
+				optionTxt = "进入挑战",
+				actions =
+				{
+					
+					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = true}}
+				},
+				optionTxt = "你必须得一个人去挑战，请先离队再试",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+			[3] = {
+				showConditions = {},
+				optionTxt = "等等，我还有点事",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30107] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			{condition = DialogCondition.HasFactionTask, param = {taskID = 40002,taskNPCID = 40012}},
+		},
+		speakerID = 30817,
+		txt = "本人蔡心，敢来挑战，我很欣赏你，",
+		options = 
+		{
+			[1] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = false}}
+				},
+				optionTxt = "进入挑战",
+				actions =
+				{
+					
+					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = true}}
+				},
+				optionTxt = "你必须得一个人去挑战，请先离队再试",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+			[3] = {
+				showConditions = {},
+				optionTxt = "等等，我还有点事",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30108] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			{condition = DialogCondition.HasFactionTask, param = {taskID = 40002,taskNPCID = 40013}},
+		},
+		speakerID = 30817,
+		txt = "点点点点点......你是要来挑战的吗？",
+		options = 
+		{
+			[1] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = false}}
+				},
+				optionTxt = "是的，赶紧开始吧",
+				actions =
+				{
+					
+					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = true}}
+				},
+				optionTxt = "你必须得一个人去挑战，请先离队再试",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+			[3] = {
+				showConditions = {},
+				optionTxt = "等等，我还有点事",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30109] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			{condition = DialogCondition.HasFactionTask, param = {taskID = 40002,taskNPCID = 40014}},
+		},
+		speakerID = 30817,
+		txt = "我可以上天全靠飘，人称陆小云（他不识字）是也，你要什么需求？",
+		options = 
+		{
+			[1] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = false}}
+				},
+				optionTxt = "我要进入挑战",
+				actions =
+				{
+					
+					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = true}}
+				},
+				optionTxt = "你必须得一个人去挑战，请先离队再试",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+			[3] = {
+				showConditions = {},
+				optionTxt = "等等，我还有点事",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30110] = 
+	{
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+			{condition = DialogCondition.HasFactionTask, param = {taskID = 40002,taskNPCID = 40015}},
+		},
+		speakerID = 30817,
+		txt = "招财进宝啦，你要什么需求？",
+		options = 
+		{
+			[1] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = false}}
+				},
+				optionTxt = "我要进入挑战",
+				actions =
+				{
+					
+					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					
+				},
+			},
+			[2] = {
+				showConditions = {
+					{condition = DialogCondition.Team, param = {statue = true}}
+				},
+				optionTxt = "你必须得一个人去挑战，请先离队再试",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+			[3] = {
+				showConditions = {},
+				optionTxt = "等等，我还有点事",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+		},
+	},
+	[30111] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+			{condition = DialogCondition.NotHasFactionTask, param = {taskID = 10009}},
+		},
+		speakerID = 30817,
+		txt = "挑战还没成功，继续加油",
+		options = 
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+	[30112] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+			
+		},
+		speakerID = 30817,
+		txt = "咋啦？",
+		options = 
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+		},
+	},
+
 ----------------------抓宠玩法（35001——36000）
 	[35001] =        --------抓宠玩法
 	{
@@ -27804,7 +28177,8 @@ DialogModelDB =
 		speakerID = 60501,
 		soundID =26159,
 		txt = "本层有<font color = '#FFFF00FF'>%s</font>把守",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {
@@ -27878,7 +28252,8 @@ DialogModelDB =
 		speakerID = 60502,
 		soundID =26159,
 		txt = "本层由<font color = '#FFFF00FF'>%s</font>把手",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {
@@ -27952,7 +28327,8 @@ DialogModelDB =
 		speakerID = 60503,
 		soundID =26159,
 		txt = "本层由<font color = '#FFFF00FF'>%s</font>把手",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {
@@ -28026,7 +28402,8 @@ DialogModelDB =
 		speakerID = 60504,
 		soundID =26159,
 		txt = "本层由<font color = '#FFFF00FF'>%s</font>把手",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {
@@ -28100,7 +28477,8 @@ DialogModelDB =
 		speakerID = 60505,
 		soundID =26159,
 		txt = "本层由<font color = '#FFFF00FF'>%s</font>把手",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {
@@ -28174,7 +28552,8 @@ DialogModelDB =
 		speakerID = 60506,
 		soundID =26159,
 		txt = "本层由<font color = '#FFFF00FF'>%s</font>把手",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {
@@ -28248,7 +28627,8 @@ DialogModelDB =
 		speakerID = 60507,
 		soundID =26159,
 		txt = "本层由<font color = '#FFFF00FF'>%s</font>把手",
-		babelSpecialFlag = true,
+		matchSpecialFlag = true,
+		matchTaskID = 20001,
 		options =
 		{
 			[1] = {

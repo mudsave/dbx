@@ -7,6 +7,12 @@ local tonumber,type = tonumber,type
 
 local GMSystem = ShellSystem:getInstance()
 
+function GMSystem:yooo()
+	local f = io.open("test","w")
+	f:write("创建了多少个事件",tostring(Event.events))
+	f:close()
+end
+
 function GMSystem:addXP(player,xpValue)
 	print "玩家设置经验"
 	player:addAttrValue(player_xp,tonumber(xpValue))

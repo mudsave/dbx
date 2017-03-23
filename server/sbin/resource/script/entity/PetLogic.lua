@@ -107,24 +107,12 @@ function Pet:loadAttrs(attrRecord)
 	self:setLevel(self._level)
 end
 
--- 宠物等级提升固定加点属性
-local PetFixAttrPnts = {
-	pet_str_point,
-	pet_int_point,
-	pet_sta_point,
-	pet_spi_point,
-	pet_dex_point,
-}
-
 -- 等级提升处理
 function Pet:onLevelUP(level)
 	local curLevel = self:getLevel()
 	local addLevel = level - curLevel
 
 	if addLevel > 0 then
-		for _,attrName in ipairs(PetFixAttrPnts) do
-			self:addAttrValue(attrName,addLevel)
-		end
 		self:addAttrPoint(5 * addLevel)
 	end
 

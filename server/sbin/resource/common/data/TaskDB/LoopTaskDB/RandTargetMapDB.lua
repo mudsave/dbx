@@ -1,5 +1,5 @@
 --[[RandTargetMapDB.lua
-	鐩爣闅忔満鍦板浘閰嶇疆(浠诲姟绯荤粺)
+	目标随机地图配置(任务系统)
 --]]
 
 RandTargetMapDB = 
@@ -156,19 +156,19 @@ RandTargetMapDB =
 	},
 	[10007] =
 	{
-		--鎮祻鎴樻枟
+		--悬赏战斗
 		[LoopTaskTargetType.script] =
 		{110,115,116,118,119,120,122,124,126,127,128},
-		-- 涓婁氦瀹犵墿
+		-- 上交宠物
 		[LoopTaskTargetType.catchPet] =
 		{110,115,116,118,119,120,122,124,126,127,128},
-		-- 鏆楅浄鎴樻枟
+		-- 暗雷战斗
 		[LoopTaskTargetType.partrolScript] =
 		{110,115,116,118,119,120,122,124,126,127,128},
 	},
 	[10008] =
 	{
-		--鏄庨浄鎴樻枟
+		--明雷战斗
 		[LoopTaskTargetType.script] =
 		{
 			101, 102, 104, 106, 107, 109, 110, 119, 116, 118, 126, 122, 120, 128, 127, 124,

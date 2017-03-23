@@ -234,8 +234,10 @@ function TaskCondition.dailyTask( player, taskID, GM )
 		local school = DailyTaskData.school
 		local level = player:getLevel()
 		local taskHandler = player:getHandler(HandlerDef_Task)
+		--判断等级
 		if level < levelLimit[1] or level > levelLimit[2] then
 			return false
+		--判断当日是否还可接
 		elseif taskHandler:getDailyTaskConfigurationByID(taskID) == nil then
 				return true
 		elseif not taskHandler:getDailyTaskConfigurationByID(taskID) then

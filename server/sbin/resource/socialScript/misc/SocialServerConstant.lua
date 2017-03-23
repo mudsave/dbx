@@ -211,4 +211,9 @@ BroadCastMsgGroupID = {
         ActivityOpening					= 2,
 		ActivityClose					= 3,
     },
+    Group_SkyFallBox                    = {
+        EventID = 31,
+        ActivityOpening                 = 1,
+        ActivityClose                   = 2,
+    },
 }

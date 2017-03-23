@@ -239,57 +239,69 @@ function TaskSystem:onFightEnd(event)
 	local params = event:getParams()
 	local fightEndResults = params[1]
 	local fightID = params[2]
-	local monsterIDs = params[3]
-	
-	print("此次战斗碰到了以下怪物：",toString(monsterIDs))
-	for playerID, fightResult in pairs(fightEndResults) do
-		local player = g_entityMgr:getPlayerByID(playerID)
-		if player then
-			--如果是遇雷杀怪，而且在任务中，执行相关方法
-			local taskHandler = player:getHandler(HandlerDef_Task)
-			for taskID ,taskData in pairs(taskHandler:getTasks()) do
-				if taskData.getTargetType and taskData:getTargetType() == "TkillMonster"  then
-					local killTaskMonster = false
-					--判断是否满足任务需求
-					local targetParams = taskData:getTargetParam()
-					if type(targetParams.monsterID) == "table" then
-						--判断怪物列表中是否有符合条件的怪物
-						for index,monsterID in pairs(monsterIDs) do
-							if MonsterDB[monsterID] then
-								print("该怪ID为%d,等级为%d",monsterID,MonsterDB[monsterID].level)
-								if MonsterDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
-									MonsterDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
-									killTaskMonster = true
-									print("准备开始计数>>>>>>>>>>>>>>>>")
-									TaskCallBack.onKillMonster(player:getID())
+	local fightInfo = params[5]
+	print("tostring(v)>>>>>>>>>>>>>>>>>>>",toString(params))
+	if fightInfo then
+		print("fightInfo>>>>>>>>>>>>>",toString(fightInfo.deadMonsterNum))
+		local deadMonsters = fightInfo.deadMonsterNum
+		if fightID then
+			for playerID, fightResult in pairs(fightEndResults) do
+				local player = g_entityMgr:getPlayerByID(playerID)
+				if player then
+					--如果是遇雷杀怪，而且在任务中，执行相关方法
+					local taskHandler = player:getHandler(HandlerDef_Task)
+					for taskID ,taskData in pairs(taskHandler:getTasks()) do
+						if taskData.getTargetType and taskData:getTargetType() == "TkillMonster"  then
+							local killTaskMonster = false
+							--判断是否满足任务需求
+							local targetParams = taskData:getTargetParam()
+							if type(targetParams.monsterID) == "table" then--判断怪物列表中是否有符合条件的怪物
+								for monsterID,monsterNum in pairs(deadMonsters) do
+									if MonsterDB[monsterID] then
+										if MonsterDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
+											MonsterDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
+											killTaskMonster = true
+											for var = 1,monsterNum do 
+												print("计数>>>>>>>>>>>>")
+												TaskCallBack.onKillMonster(player:getID())
+											end
+										end
+									elseif NpcDB[monsterID] then
+										if NpcDB[monsterID].level == -1 then
+											killTaskMonster = true
+											for var = 1,monsterNum do 
+												print("计数>>>>>>>>>>>>")
+												TaskCallBack.onKillMonster(player:getID())
+											end
+										elseif NpcDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
+											NpcDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
+											killTaskMonster = true
+											for var = 1,monsterNum do 
+												print("计数>>>>>>>>>>>>")
+												TaskCallBack.onKillMonster(player:getID())
+											end
+										end
+									end
 								end
-							elseif NpcDB[monsterID] then
-								print("该怪ID为%d,等级为%d",monsterID,NpcDB[monsterID].level)
-								if NpcDB[monsterID].level == -1 then
-									killTaskMonster = true
-									print("准备开始计数>>>>>>>>>>>>>>>>")
-									TaskCallBack.onKillMonster(player:getID())
-								elseif NpcDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
-									NpcDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
-									killTaskMonster = true
-									print("准备开始计数>>>>>>>>>>>>>>>>")
-									TaskCallBack.onKillMonster(player:getID())
+							elseif type(targetParams.monsterID) == "number" then
+								--判断怪物列表中是否有符合条件的怪物
+								for monsterID,monsterNum in pairs(deadMonsters) do
+									if monsterID == targetParams.monsterID  then
+										killTaskMonster = true
+										for var = 1,monsterNum do 
+											print("计数>>>>>>>>>>>>")
+											TaskCallBack.onKillMonster(player:getID())
+										end
+									end
 								end
 							end
+						elseif taskData.getTargetType and taskData:getTargetType() == "TrandomFightScript"  then
+							print("scriptID>>>>>>>>>>>>>>>>",fightID,toString(fightResult))
+							TaskCallBack.script(player,fightID,fightResult)
 						end
-					elseif type(targetParams.monsterID) == "number" then
-						--判断怪物列表中是否有符合条件的怪物
-						for index,monsterID in pairs(monsterIDs) do
-							if monsterID == targetParams.monsterID  then
-								killTaskMonster = true
-								print("准备开始计数>>>>>>>>>>>>>>>>")
-								TaskCallBack.onKillMonster(player:getID())
-							end
-						end
-					end
-					
+					end 
 				end
-			end 
+			end
 		end
 	end
 
@@ -609,8 +621,8 @@ function TaskSystem:onEnterNextLayer(event)
 	
 end
 
-function TaskSystem:addMatchNpc(player, npcID)
-	local event = Event.getEvent(TaskEvent_SC_AddMatchNpc, player:getID(), npcID)
+function TaskSystem:addMatchNpc(player,taskID,npcID)
+	local event = Event.getEvent(TaskEvent_SC_AddMatchNpc, player:getID(),taskID,npcID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

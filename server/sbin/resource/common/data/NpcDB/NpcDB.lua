@@ -1944,7 +1944,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
-	     dialogIDs = {20364},
+	     dialogIDs = {30102},
      },
      [20702] = {
 	     name = "貂蝉",
@@ -6383,7 +6383,7 @@ NpcDB = {
 	     attrID = 1,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
-	     dialogIDs = {20365},
+	     dialogIDs = {30107},
      },
      [27076] = {
 	     name = "郑伦",
@@ -7563,7 +7563,7 @@ NpcDB = {
 	     title = "鱼店老板",
 	     modelID =504,
 	     desc = "长安",
-	     dialogIDs = {20353},
+	     dialogIDs = {30112},
      },
      [29030] = {
 	     name = "管辂",
@@ -7578,7 +7578,7 @@ NpcDB = {
 	     modelID =128,
 	     desc = "长安",
 	     funcFlag = 14,
-	     dialogIDs = {20355},
+	     dialogIDs = {30108},
      },
      [29032] = {
 	     name = "悦客来",
@@ -7600,7 +7600,7 @@ NpcDB = {
 	     modelID =179,
 	     desc = "长安",
 	     funcFlag = 2,
-	     dialogIDs = {20358},
+	     dialogIDs = {30110},
      },
      [29035] = {
 	     name = "查普生",
@@ -7615,7 +7615,7 @@ NpcDB = {
 	     title = "馒头铺老板",
 	     modelID =504,
 	     desc = "长安",
-	     dialogIDs = {20360},
+	     dialogIDs = {30109},
      },
      [29037] = {
 	     name = "铁柱",
@@ -16717,31 +16717,37 @@ NpcDB = {
 	     name = "休闲任务1",
 	     title = "休闲任务测试1",
 	     modelID =117,
+		 dialogIDs = {30106,30112}
      },
      [40012] = {
 	     name = "休闲任务2",
 	     title = "休闲任务测试2",
 	     modelID =139,
+		 dialogIDs = {30107,30112}
      },
      [40013] = {
 	     name = "休闲任务3",
 	     title = "休闲任务测试3",
 	     modelID =140,
+		 dialogIDs = {30108,30112}
      },
      [40014] = {
 	     name = "休闲任务4",
 	     title = "休闲任务测试4",
 	     modelID =575,
+		 dialogIDs = {30109,30112}
      },
      [40015] = {
 	     name = "休闲任务5",
 	     title = "休闲任务测试5",
 	     modelID =135,
+		 dialogIDs = {30110,30112}
      },
      [40016] = {
 	     name = "休闲任务6",
 	     title = "休闲任务测试6",
 	     modelID =115,
+		 dialogIDs = {30102}
      },
      [40017] = {
 	     name = "战斗测试1",

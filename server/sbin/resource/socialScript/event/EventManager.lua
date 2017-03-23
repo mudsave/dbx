@@ -27,22 +27,46 @@ function EventManager:removeEventListener(listener)
 	end
 end
 
-function EventManager.getInstance()
-	return EventManager()
-end
-
+-- 发送服务器内部事件
 function EventManager:fireEvent(event)
 	local id = event:getID()
 	local list = self._eventListeners[id]
 	for _, v in pairs(list or table.empty) do
 		v:action(event)
 	end
+	FreeEvent(event)
 end
 
+-- 发送事件到远程客户端
 function EventManager:fireRemoteEvent(event, player)
 	RemoteEventProxy.send(event, player)
+	FreeEvent(event)
 end
 
+-- 发送事件到另一个服务器
 function EventManager:fireWorldsEvent(event, worldID)
 	RemoteEventProxy.sendToWorld(event, worldID)
+	FreeEvent(event)
+end
+
+-- 发送事件到管理服
+function EventManager:fireAdminEvent(event)
+	RemoteEventProxy.sendToAdmin(event)
+	FreeEvent(event)
+end
+
+-- 全服广播
+function EventManager:broadcastEvent(event,worldID)
+	RemoteEventProxy.broadcast(event,worldID)
+	FreeEvent(event)
+end
+
+-- 发送事件给周围玩家
+function EventManager:fireAroundEvent(event,player)
+	RemoteEventProxy.sendToAround(event,player)
+	FreeEvent(event)
+end
+
+function EventManager.getInstance()
+	return EventManager()
 end

@@ -14,7 +14,7 @@ function TaskFactory:createNormalTask(player, taskID)
 	local normalTask = NormalTask()
 	normalTask:setID(taskID)
 	normalTask:setType(TaskType.normal)
-	normalTask:setRewards(normalTaskData.rewards)
+	normalTask:setRewards(normalTaskData.rewards)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 	normalTask:setTriggers(normalTaskData.triggers)
 	normalTask:setSubType(normalTaskData.taskType2)
 	normalTask:setRoleID(player:getID())
@@ -151,14 +151,6 @@ end
 -- 从数据库读取, 超时不用创建，直接从数据库删除
 function TaskFactory:createLoopTaskFromDB(player, taskData)
 	local taskID = taskData.loopTaskID
-	if taskData.endTime and taskData.endTime > 0 then
-		if os.time() >= taskData.endTime then
-			-- 如果是计时任务，时间到，直接从数据库删除
-			local taskHandler = player:getHandler(HandlerDef_Task)
-			taskHandler:deleteTaskToDB(taskID)
-			return
-		end
-	end
 	local loopTaskData = LoopTaskDB[taskID]
 	-- 当前循环任务targets
 	local datas = LoopTaskTargetsDB[taskID][taskData.targetType]
@@ -179,23 +171,33 @@ function TaskFactory:createLoopTaskFromDB(player, taskData)
 	loopTask:setReceiveTaskLvl(taskData.level)
 
 	-- 如果结束时间大于0
+	local curTime = os.time()
 	if taskData.endTime > 0 then
 		loopTask:setEndTime(taskData.endTime, true)
-		g_taskSystem:onStartTimer(player, taskID, taskData.endTime - os.time())
+		if curTime < taskData.endTime then
+			g_taskSystem:onStartTimer(player, taskID, taskData.endTime - os.time())
+		end
 	end
 	local c,targets = pcall(loadstring("return "..taskData.targets))
 	loopTask:setTargetsConfig(targets)
 	local c ,triggers = pcall(loadstring("return "..taskData.triggers))
 	loopTask:setTriggers(triggers)
 	local hasTarget = self:buildTaskTarget(player, loopTask, loopTask:getTargetsConfig(), taskData.targetState)
-	if hasTarget then
-		if not loopTask:canEnd() then
-			loopTask:stateChange(TaskStatus.Active, true)
+	if curTime < taskData.endTime then
+		if hasTarget then
+			if not loopTask:canEnd() then
+				loopTask:stateChange(TaskStatus.Active, true)
+			else
+				loopTask:stateChange(TaskStatus.Done, true)
+			end
 		else
 			loopTask:stateChange(TaskStatus.Done, true)
 		end
 	else
-		loopTask:stateChange(TaskStatus.Done, true)
+		if taskData.targetState ~= TaskStatus.Failed then
+			loopTask:setUpdateDB()
+		end
+		loopTask:stateChange(TaskStatus.Failed, true)
 	end
 	-- 这个地方还有做一下处理
 	return loopTask
@@ -242,6 +244,8 @@ function TaskFactory:buildTaskTarget(player, task, targetsData, taskData)
 end
 
 function TaskFactory:createDailyTask( player,taskID )	
+	
+	print("准备创建任务，任务ID为>>>>>>>>>",taskID)
 	local dailyTaskData = DailyTaskDB[taskID]
 	local dailyTask = DailyTask()
 	dailyTask:setID(taskID)
@@ -273,6 +277,7 @@ function TaskFactory:createDailyTask( player,taskID )
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:setUpdateDB()
 	return dailyTask
+
 end
 
 function TaskFactory:createDailyTaskFromDB(player, taskData)

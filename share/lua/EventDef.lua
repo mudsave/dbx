@@ -597,7 +597,6 @@ PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 34	--宠物栏数量到达
 PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 35	--交易宠物信息已经到达
 
 PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技能
-PetEvent_SC_LearnExtendSkill			= Event_Group_Pet + 37	--宠物学习研发技能结果
 --[[
 	¤╭⌒╮ ╭⌒╮	{ Keep Distance }	
 	╱◥██◣ ╭╭ ⌒╮

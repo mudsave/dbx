@@ -17,7 +17,7 @@ function Triggers.challengeNpcTrace(roleID, param, task, isRandom)
 	privateHandler:addTraceInfo(task:getID(), param.npcID)
 	g_taskSystem:onSetDirect(player, config)
 	-- 添加客户端匹配NPCID
-	g_taskSystem:addMatchNpc(player, param.npcID)
+	g_taskSystem:addMatchNpc(player,task:getID(),param.npcID)
 end
 
 --[[

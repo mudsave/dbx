@@ -55,8 +55,8 @@ function ServerDataCommunitySystem:onSendToAround(event)
 	local playerID = player:getID()
 	local roleInfo = {ID = playerID,name = params[5].name}
 	local event_SendToAround = Event.getEvent(ChatEvents_SC_SendChatMsg,playerID, params[2],params[3],params[4],roleInfo,params[6])
-	RemoteEventProxy.sendToAround(event_SendToAround,player)
-
+	-- RemoteEventProxy.sendToAround(event_SendToAround,player)
+	g_eventMgr:fireAroundEvent(event_SendToAround,player)
 end
 
 function ServerDataCommunitySystem:onSendToTeam(event)

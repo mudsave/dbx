@@ -34,6 +34,7 @@ struct _Property{
 	template<typename T>
 	inline bool setValue(T value){
 		int t = type();
+		ASSERT_( t >= VAR_BYTE && t <= VAR_FLOAT );
 		if( t < VAR_BYTE || t > VAR_FLOAT ){
 			return false;
 		}
@@ -57,6 +58,7 @@ struct _Property{
 		return true;
 	}
 	inline bool setValue(const char *str,size_t len = 0){
+		ASSERT_( type() == VAR_STRING );
 		if( type() != VAR_STRING ){
 			return false;
 		}
@@ -64,6 +66,7 @@ struct _Property{
 		return true;
 	}
 	inline bool setValue(const void *ptr,size_t len = 0){
+		ASSERT_( type() == VAR_DATA);
 		if( type() != VAR_DATA ){
 			return false;
 		}
@@ -97,7 +100,7 @@ public:
 	}
 	bool SetPropData(int propID,const void *ptr,size_t len = 0){
 		_Property *p = getProperty(propID);
-		if( p && p->setValue(ptr) ){
+		if( p && p->setValue(ptr,len) ){
 			PropValChanged(propID);
 			return true;
 		}

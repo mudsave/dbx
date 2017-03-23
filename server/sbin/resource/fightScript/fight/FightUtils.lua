@@ -422,7 +422,9 @@ function FightUtils.ForcePlayerLeave(player)
 		scriptID = fight:getScriptID()
 	end
 	local event = Event.getEvent(FightEvents_FS_FightEnd,AttrsPool4transfer,scriptID,fight._allMonsterDBIDs,storedPets4transfer,fight:getFightID())
-	RemoteEventProxy.sendToWorld(event,fight._srcWorldID)
+	print("另一种战斗结束",AttrsPool4transfer,scriptID,fight._allMonsterDBIDs,storedPets4transfer,fight:getFightID())
+	-- RemoteEventProxy.sendToWorld(event,fight._srcWorldID)
+	g_eventMgr:fireWorldsEvent(event,fight._srcWorldID)
 	event = Event.getEvent(FightEvents_FC_QuitFight)
 	g_eventMgr:fireRemoteEvent(event,player)
 	--销毁玩家和宠物

@@ -372,21 +372,21 @@ end
 
 function DiscussHeroManager:onPlayerOnline(player,recordList)
 	-- 加载所有开启的的活动数据
-	local activity = g_activityMgr:getActivity(gSchoolActivityID)
-	if activity and activity:isOpening() then
-		print("不存在",toString(recordList))
+	local schoolID = gSchoolActivityID
+	local activity = g_activityMgr:getActivity(schoolID)
+	if activity then
 		local activityHandler = player:getHandler(HandlerDef_Activity)
 		if activityHandler then
 			if recordList and table.size(recordList) > 0 then
 				for _,data in pairs(recordList) do
 					if not time.isSameDay(data.recordTime) then
-						activityHandler:setPriDataById(activityId, 0)
+						activityHandler:setPriDataById(schoolID, 0)
 					else
-						activityHandler:setPriDataById(activityId, data.isCanIn)
+						activityHandler:setPriDataById(schoolID, data.isCanIn)
 					end
 				end
 			else
-				activityHandler:setPriDataById(activityId, 0)
+				activityHandler:setPriDataById(schoolID, 0)
 			end
 		end
 	end

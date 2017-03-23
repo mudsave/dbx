@@ -22,8 +22,9 @@ function AdminSystem:onTest(event)
 
 	local result = 1
 	local data = {name="zgj", job="IT", info=str}
-	local e = Event(AdminEvents_WA_Test, id, result, data)
-	RemoteEventProxy.sendToAdmin(e)
+	local e = Event.getEvent(AdminEvents_WA_Test, id, result, data)
+	-- RemoteEventProxy.sendToAdmin(e)
+	g_eventMgr:fireAdminEvent(e)
 end
 
 function AdminSystem.getInstance()

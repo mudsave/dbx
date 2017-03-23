@@ -63,7 +63,7 @@ function MindHandler.on_minds_load(recordList, role_dbid)
 		table.insert(handler.minds, mind.id, mind)
 	end
 	local tmp_minds = MindHandler.deal(handler)
-	local event = Event(SkillEvents_SC_LoadMindsExt, handler:get_minds())
+	local event = Event.getEvent(SkillEvents_SC_LoadMindsExt, handler:get_minds())
 	g_eventMgr:fireRemoteEvent(event, player)
 	handler:show()
 	player:flushPropBatch()

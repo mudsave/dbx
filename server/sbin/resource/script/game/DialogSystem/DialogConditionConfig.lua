@@ -20,7 +20,7 @@ DialogConditionDoer =
 	[DialogCondition.NotHasFactionTask]			= RoleVerify.notHasFactionTask,
 	[DialogCondition.CheckTaskTeam]				= RoleVerify.checkTaskTeam,
 	[DialogCondition.CheckLoopTask]				= RoleVerify.checkLoopTask,
-	[DialogCondition.HasTask_1]					= RoleVerify.hasTask_1,
+	[DialogCondition.HasStatueTask]				= RoleVerify.hasStatueTask,
 	[DialogCondition.CheckLoopTasks]			= RoleVerify.checkLoopTasks,
 	[DialogCondition.CheckBeastBless]			= RoleVerify.checkBeastBless,
 	[DialogCondition.Time]						= RoleVerify.checkTime,
@@ -36,6 +36,7 @@ DialogConditionDoer =
 	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.checkActivityTarget,
 	[DialogCondition.TkillMonster]= RoleVerify.checkKillMonster,
 	[DialogCondition.DailyTaskTimes] = RoleVerify.checkDailyTaskTimes,
+	[DialogCondition.ChooseNPCByRandom] = RoleVerify.ChooseNPCByRandom,
 	[DialogCondition.CheckDiscussHero]	= RoleVerify.checkDiscussHero,
 }
 
@@ -57,7 +58,7 @@ DialogConditionInstance =
 	[DialogCondition.CheckTaskTeam] = RoleVerify.getInstance(),
 	[DialogCondition.CheckBeastBless] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTask] = RoleVerify.getInstance(),
-	[DialogCondition.HasTask_1] = RoleVerify.getInstance(),
+	[DialogCondition.HasStatueTask] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTasks] = RoleVerify.getInstance(),
 	[DialogCondition.Time] = RoleVerify.getInstance(),
 	[DialogCondition.PlayerCountInGoldHuntMap] = SceneManager.getInstance(),
@@ -72,4 +73,5 @@ DialogConditionInstance =
 	[DialogCondition.TkillMonster] = RoleVerify.getInstance(),
 	[DialogCondition.DailyTaskTimes] = RoleVerify.getInstance(),
 	[DialogCondition.CheckDiscussHero]	= RoleVerify.getInstance(),
+	[DialogCondition.ChooseNPCByRandom] = RoleVerify.getInstance(),
 }

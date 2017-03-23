@@ -5,7 +5,9 @@
 RoleVerify = class(nil, Singleton)
 
 function RoleVerify:__init()
-	
+
+	self._npcTable = {selectNPCID = nil,pool ={}}
+
 end
 
 function RoleVerify:checkLevel(player, param)
@@ -56,18 +58,13 @@ function RoleVerify:hasTasks(player, param)
 	end
 end
 
-function RoleVerify:hasTask_1(player, param)
-	local flag = true
+function RoleVerify:hasStatueTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	for _,taskID in pairs(param.taskIDs) do
-		if taskID then
-			if taskHandler:getTask(taskID) then
-				flag = false
-				return flag,1
-			end
-		end
+	local task = taskHandler:getTask(param.taskID)
+	if task and param.taskState == task:getStatus() then
+		return true
 	end
-	return flag
+	return false, param.errorID and param.errorID or 2
 end
 
 function RoleVerify:checkSchool(player, param)
@@ -187,7 +184,15 @@ end
 function RoleVerify:hasFactionTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	if taskHandler:getTask(param.taskID) then
-		return true
+		if param.taskNPCID then
+			if param.taskNPCID == self._npcTable.selectNPCID then
+				return true
+			else
+				return false
+			end
+		else
+			return true
+		end
 	else
 		return false,param.errorID and param.errorID or 2
 	end
@@ -446,7 +451,8 @@ function RoleVerify:checkKillMonster( player,param )
 
 end
 
-function RoleVerify:checkDailyTaskTimes(  player,param  )	
+function RoleVerify:checkDailyTaskTimes(  player,param  )
+
 	local taskID = param.taskID
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local exist = false
@@ -467,7 +473,6 @@ function RoleVerify:checkDailyTaskTimes(  player,param  )
 end
 
 function RoleVerify:checkDiscussHero(player,param)
-	print("检查------------------------------------->")
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	-- 组队
 	if teamHandler and teamHandler:isTeam() then
@@ -517,6 +522,49 @@ function RoleVerify:checkDiscussHero(player,param)
 	end
 	return true
 end
+function RoleVerify:ChooseNPCByRandom( player,param )
+
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local taskID = param.taskID
+	local taskData = DailyTaskDB[taskID]
+	local npcTable = taskData.endNpcID
+	local tempNpcTable = {}
+	local exist = false
+
+	if npcTable and type(npcTable) == "table" then
+		--将数据表中的NPC池备份到临时NPC池中，筛选出已经显示过的NPC
+		for index,value in pairs(npcTable) do
+
+			for _,npcID in pairs(self._npcTable.pool) do
+				if value == npcID then
+					exist = true
+					break
+				end
+			end
+
+			if exist == false then
+				table.insert( tempNpcTable,value )
+			end
+			exist = false
+
+		end
+		print("临时池的元素为>>>",toString(tempNpcTable))
+		--在临时NPC池中，进行随机取下标
+		local num = #tempNpcTable
+		local randomIndex = math.random(num)
+		--table.insert( self._npcTable.pool,tempNpcTable[randomIndex])
+		self._npcTable.selectNPCID = tempNpcTable[randomIndex]
+		print("临时NPC池中存在%d个NPC，得到NPC下标为%d,得到的NPCID为%d",num,randomIndex,tempNpcTable[randomIndex])
+		g_taskSystem:addMatchNpc(player,param.taskID,self._npcTable.selectNPCID)
+		print("准备添加任务NPCID",self._npcTable.selectNPCID)
+	
+	else
+		print("帮派休闲任务配置表NPC池出错")
+	end
+	return true
+
+end
+
 
 function RoleVerify.getInstance()
 	return RoleVerify()
