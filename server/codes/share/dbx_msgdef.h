@@ -13,8 +13,7 @@
 enum msg_id
 {
     C_DOACTION = 1,
-    C_DOSQL,
-    C_SP_FROM_CPP
+    C_DOSQL
 };
 
 enum action_res
