@@ -154,7 +154,7 @@ bool DBTaskPool::TaskIssue(DBIssueBase *p_issue)
     m_freeBusyListMutex.Lock();
     if (m_freeTaskList.size() > 0)
     {
-        TRACE0_L0("DBTaskPool::ExcuteIssue:I have free task.\n");
+        //TRACE0_L0("DBTaskPool::ExcuteIssue:I have free task.\n");
         std::list<DBTask *>::iterator iter = m_freeTaskList.begin();
         DBTask *task = *iter;
         m_freeTaskList.remove(task);
@@ -171,7 +171,7 @@ bool DBTaskPool::TaskIssue(DBIssueBase *p_issue)
 
 void DBTaskPool::BufferIssue(DBIssueBase *p_issue)
 {
-    TRACE0_L0("DBTaskPool::AddIssue:add to Buffer.\n");
+    //TRACE0_L0("DBTaskPool::AddIssue:add to Buffer.\n");
     m_bufferListMutex.Lock();
     m_issueBufferList.push(p_issue);
     if (m_issueBufferList.size() > DBX_TASK_BUSY_SIZE)
@@ -240,8 +240,8 @@ DBIssueBase *DBTaskPool::PopBufferIssue()
     {
         dbIssue = m_issueBufferList.front();
         m_issueBufferList.pop();
-        if (m_issueBufferList.size() > DBX_TASK_BUSY_SIZE)
-            TRACE1_WARNING("DBTaskPool::PopBufferIssue:There are too much(%i) DBIssues in buffer.\n", m_issueBufferList.size());
+        //if (m_issueBufferList.size() > DBX_TASK_BUSY_SIZE)
+        //    TRACE1_WARNING("DBTaskPool::PopBufferIssue:There are too much(%i) DBIssues in buffer.\n", m_issueBufferList.size());
     }
     m_bufferListMutex.Unlock();
 

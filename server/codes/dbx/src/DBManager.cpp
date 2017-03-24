@@ -57,7 +57,7 @@ void DBManager::Shutdown()
 
 bool DBManager::InitDB()
 {
-    TRACE0_L0("DBManager::InitDB...\n");
+    //TRACE0_L0("DBManager::InitDB...\n");
 
     return DBFactory::InstancePtr()->Initialize();
 }

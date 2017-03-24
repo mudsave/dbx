@@ -58,7 +58,7 @@ void NetworkInterface::DefaultMsgProc(AppMsg *pMsg, HANDLE hLinkContext)
     char addr[1024] = {0};
     int port = 0;
     context->m_linkPort->GetRemoteAddr(addr, 1024, &port);
-    TRACE4_L0("NetworkInterface::DefaultMsgProc m_linkIndex(%i), pMsg->msgLen(%i) from:%s:%d\n", context->m_linkIndex, pMsg->msgLen, addr, port);
+    //TRACE4_L0("NetworkInterface::DefaultMsgProc m_linkIndex(%i), pMsg->msgLen(%i) from:%s:%d\n", context->m_linkIndex, pMsg->msgLen, addr, port);
 
     char* contents = (char*)pMsg + sizeof(AppMsg);
 
