@@ -13,6 +13,10 @@
 
 DBClient* g_pDBAClient = NULL;
 
+#ifndef safeFree
+#define safeFree(ptr)	if ((ptr)) {free (ptr); (ptr) = 0;}
+#endif
+
 
 void CDBProxy::init(const char* dbIp, int dbPort)
 {
@@ -88,10 +92,10 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
     if (!resultSet->getAttribute(attrName, valueType, attr, 0, 0))
     {
         TRACE1_ERROR("CDBProxy::doLoginResult: get accountID faild for operId(%i).\n", operId);
-        safeDelete(attrName);
+        safeFree(attrName);
         return;
     }
-    safeDelete(attrName);
+    safeFree(attrName);
 
     DBMsg_LoginResult* pRoleMsg = DBMsg_LoginResult::CreateLoginResult();
     pRoleMsg->actionType = DB_MSG_LOGIN;
@@ -118,7 +122,7 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
         {
             if (!resultSet->getAttribute(attrName, valueType, attr, col, row))
             {
-                safeDelete(attrName);
+                safeFree(attrName);
                 TRACE1_ERROR("CDBProxy::doLoginResult::cannot get data for account(%i).\n", pRoleMsg->accountId);
                 return;
             }
@@ -185,7 +189,7 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                     break;
                 }
             }   // end switch
-            safeDelete(attrName);
+            safeFree(attrName);
         }
     }
 
@@ -221,7 +225,7 @@ void CDBProxy::doCreateAccountResult(int operId, handle hLink, std::string accou
     PType valueType;
     char *attrName = NULL;
     resultSet->getAttribute(attrName, valueType, attr, 0, 0);
-    safeDelete(attrName);
+    safeFree(attrName);
 
     DBMsg_CreateAccountResult ret;
     ret.actionType = DB_MSG_CREATEUSER;
@@ -264,7 +268,7 @@ void CDBProxy::doCreateRoleResult(int operId, handle hLink)
     PType valueType;
     char *attrName = NULL;
     resultSet->getAttribute(attrName, valueType, attr, 1, 0);   // 取第2个字段
-    safeDelete(attrName);
+    safeFree(attrName);
 
     DBMsg_CreateRoleResult ret;
     ret.actionType = DB_MSG_CREATEROLE;
@@ -301,7 +305,7 @@ void CDBProxy::doDeleteRoleResult(int operId, handle hLink)
     PType valueType;
     char *attrName = NULL;
     resultSet->getAttribute(attrName, valueType, attr, 0, 0);   // 取第1个字段
-    safeDelete(attrName);
+    safeFree(attrName);
 
     // 返回客户端
     DBMsg_DeleteRoleResult ret;
@@ -338,7 +342,7 @@ void CDBProxy::doCheckRoleNameResult(int operId, handle hLink)
     PType valueType;
     char *attrName = NULL;
     resultSet->getAttribute(attrName, valueType, attr, 0, 0);   // 取第1个字段
-    safeDelete(attrName);
+    safeFree(attrName);
 
     DBMsg_CheckNameResult ret;
     ret.actionType = DB_MSG_CHECKNAME;
