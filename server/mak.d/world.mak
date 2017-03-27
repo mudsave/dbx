@@ -20,7 +20,7 @@ CMPL_EX = -Wno-multichar -Wno-deprecated -DTOLUA_RELEASE
 LINK_EX =
 
 # default.mak已包含了一些公用的目录，这里加上其他头文件目录
-INCLUDE_DIR = -I../codes/world/inc -I../codes/lua/include -I../codes/tolua++/include -I../tools/dbClient/inc
+INCLUDE_DIR = -I../codes/world/inc -I../codes/lua/include -I../codes/tolua++/include -I../codes/dbClient/inc
 
 # default.mak已包含了一些公用的库，这里加上其他所需的库及所在目录（exe工程才需要设置）
 LIB_DIR = -L../codes/lua/lib -L../codes/tolua++/lib

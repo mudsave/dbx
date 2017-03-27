@@ -15,9 +15,8 @@ struct _LinkContext_DB
 
 
 DBClient::DBClient()
-    :m_netCtrl(NULL),
-     m_queryResultHandle(NULL)
-
+    :m_queryResultHandle(NULL),
+     m_netCtrl(NULL)
 {
     m_pThreads = GlobalThreadsPool();
     m_netCtrl = new NetCtrl();
