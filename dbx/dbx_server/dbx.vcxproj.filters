@@ -9,17 +9,8 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="tinyxml">
-      <UniqueIdentifier>{4ebbf02b-ef7b-49c6-acf4-07e5f31c9ee6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\server\tools\tinyxml\tinystr.h">
-      <Filter>tinyxml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\server\tools\tinyxml\tinyxml.h">
-      <Filter>tinyxml</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\server\codes\dbx\inc\DBFactory.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -67,21 +58,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\server\tools\tinyxml\tinystr.cpp">
-      <Filter>tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\server\tools\tinyxml\tinyxml.cpp">
-      <Filter>tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlerror.cpp">
-      <Filter>tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlparser.cpp">
-      <Filter>tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\server\tools\tinyxml\xmltest.cpp">
-      <Filter>tinyxml</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\server\codes\dbx\src\DBFactory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
