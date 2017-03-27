@@ -58,10 +58,10 @@ function RoleVerify:hasTasks(player, param)
 	end
 end
 
-function RoleVerify:hasStatueTask(player, param)
+function RoleVerify:hasStatusTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local task = taskHandler:getTask(param.taskID)
-	if task and param.taskState == task:getStatus() then
+	if task and param.taskStatus == task:getStatus() then
 		return true
 	end
 	return false, param.errorID and param.errorID or 2

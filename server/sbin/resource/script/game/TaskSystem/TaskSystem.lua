@@ -69,7 +69,6 @@ end
 
 --客户端主动发起接任务，比如点击ui
 function TaskSystem:doRecetiveTask(event)
-	print("服务端接收到任务>>>>>>>>>>>>>>>>")
 	local params = event:getParams()
 	local taskID = params[1]
 	local playerID = event.playerID
@@ -240,7 +239,6 @@ function TaskSystem:onFightEnd(event)
 	local fightEndResults = params[1]
 	local fightID = params[2]
 	local fightInfo = params[5]
-	print("tostring(v)>>>>>>>>>>>>>>>>>>>",toString(params))
 	if fightInfo then
 		print("fightInfo>>>>>>>>>>>>>",toString(fightInfo.deadMonsterNum))
 		local deadMonsters = fightInfo.deadMonsterNum
@@ -262,7 +260,7 @@ function TaskSystem:onFightEnd(event)
 											MonsterDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
 											killTaskMonster = true
 											for var = 1,monsterNum do 
-												print("计数>>>>>>>>>>>>")
+												print("指定等级计数>>>>>>>>>>>>")
 												TaskCallBack.onKillMonster(player:getID())
 											end
 										end
@@ -270,14 +268,14 @@ function TaskSystem:onFightEnd(event)
 										if NpcDB[monsterID].level == -1 then
 											killTaskMonster = true
 											for var = 1,monsterNum do 
-												print("计数>>>>>>>>>>>>")
+												print("-1等级计数>>>>>>>>>>>>")
 												TaskCallBack.onKillMonster(player:getID())
 											end
 										elseif NpcDB[monsterID].level >= (player:getLevel()+targetParams.monsterID[1]) and
 											NpcDB[monsterID].level <= (player:getLevel()+targetParams.monsterID[2]) then
 											killTaskMonster = true
 											for var = 1,monsterNum do 
-												print("计数>>>>>>>>>>>>")
+												print("NPCDB计数>>>>>>>>>>>>")
 												TaskCallBack.onKillMonster(player:getID())
 											end
 										end
@@ -289,14 +287,13 @@ function TaskSystem:onFightEnd(event)
 									if monsterID == targetParams.monsterID  then
 										killTaskMonster = true
 										for var = 1,monsterNum do 
-											print("计数>>>>>>>>>>>>")
+											print("指定ID计数>>>>>>>>>>>>")
 											TaskCallBack.onKillMonster(player:getID())
 										end
 									end
 								end
 							end
 						elseif taskData.getTargetType and taskData:getTargetType() == "TrandomFightScript"  then
-							print("scriptID>>>>>>>>>>>>>>>>",fightID,toString(fightResult))
 							TaskCallBack.script(player,fightID,fightResult)
 						end
 					end 
@@ -567,6 +564,7 @@ function TaskSystem:onStartTimer(player, taskID, leftTime)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+-- 添加上缴物品栏高亮
 function TaskSystem:addTaskPet(player, taskID, petID)
 	local event = Event.getEvent(TaskEvent_SC_AddTaskPet, taskID, petID)
 	g_eventMgr:fireRemoteEvent(event, player)
@@ -577,6 +575,7 @@ function TaskSystem:removeTaskPet(player, taskID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+-- 
 function TaskSystem:setTargetsState(player, taskID, targetsState)
 	local event = Event.getEvent(TaskEvent_SC_SetTargetsState, taskID, targetsState)
 	g_eventMgr:fireRemoteEvent(event, player)
@@ -621,13 +620,23 @@ function TaskSystem:onEnterNextLayer(event)
 	
 end
 
-function TaskSystem:addMatchNpc(player,taskID,npcID)
+function TaskSystem:addMatchNpc(player, taskID, npcID)
 	local event = Event.getEvent(TaskEvent_SC_AddMatchNpc, player:getID(),taskID,npcID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 function TaskSystem:loadLoopTaskToClient(player, loopTaskData)
 	local event = Event.getEvent(TaskEvent_SC_LoadLoopTaskInfoToClient, loopTaskData)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function TaskSystem:addShelfPet(player, taskID, petID)
+	local event = Event.getEvent(TaskEvent_SC_AddShelfPet, taskID, petID)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function TaskSystem:removeShelfPet(player, taskID)
+	local event = Event.getEvent(TaskEvent_SC_RemoveShelfPet, taskID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

@@ -33,7 +33,7 @@ DailyTaskDB =
 		},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
-			[1] = {type= "TkillMonster",param = {monsterID	= {-5,5},targetCount = 2,currentCount = 0 },tip = "击杀200只与你等级相差为5的怪物"},
+			[1] = {type= "TkillMonster",param = {monsterID	= {-5,5},targetCount = 20,currentCount = 0 },tip = "击杀200只与你等级相差为5的怪物"},
 		},
 		triggers = --任务触发器
 		{
@@ -68,7 +68,7 @@ DailyTaskDB =
 		{
 			[1] = 
 			{
-				type= "TrandomFightScript",param = {},
+				type= "TrandomFightScript",param = {count = 0},
 			}
 		},
 		triggers = --任务触发器
@@ -104,7 +104,7 @@ DailyTaskDB =
 		{
 			[1] = 
 			{
-				type= "TrandomFightScript",param = {monsterID	= {-5,5},targetCount = 2,currentCount = 0 },tip = "击杀200只与你等级相差为5的怪物",
+				type= "TrandomFightScript",param = {count = 0},tip = "击杀200只与你等级相差为5的怪物",
 			}
 		},
 		triggers = --任务触发器

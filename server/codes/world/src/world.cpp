@@ -11,6 +11,7 @@
 #include "LinkContext.h"
 #include "world.h"
 #include "RPCEngine.h"
+#include "Profile.h"
 
 TOLUA_API int tolua_api4lua_open(lua_State* tolua_S);
 TOLUA_API int lua_PropertySet_open(lua_State* tolua_S);
@@ -47,6 +48,8 @@ CWorld::~CWorld()
 
 void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* dbIP, int dbPort, char* adminIP, int adminPort)
 {
+	PP_CALL();
+
 	HRESULT hr;
 	m_pLinkCtrl = CreateLinkCtrl();
 	m_pThreadsPool = GlobalThreadsPool();
@@ -77,6 +80,7 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 	m_hUpdateWorldStateTimer = m_pThreadsPool->RegTimer(this, (HANDLE)eUpdateWorldStateHandle, 0, eUpdateWorldStateInterval, eUpdateWorldStateInterval, "world update state timer");
 	ASSERT_(m_hUpdateWorldStateTimer);
 
+	PP_ENTER_CALL("lua environment init");
 	m_pLuaEngine = CLuaEngine::CreateLuaEngineProc();
 
 	lua_State* pLuaState = m_pLuaEngine->GetLuaState();
@@ -109,12 +113,18 @@ void CWorld::Init( short worldId, const char* sessionIP, int sessionPort, char* 
 			exit(-1);
 		}
 	}
+	PP_EXIT();
+
+	PP_ENTER_CALL("server init");
+
 	//notice: the order is fixed!
 	ScriptTimer::init(pLuaState);
 	CDBProxy::init(dbIP, dbPort, pLuaState);
 	RPCEngine::init(pLuaState);
 	//luaStartProfile(pLuaState);
 	luaStart(pLuaState);
+
+	PP_EXIT();
 }
 
 void CWorld::Close()
@@ -630,9 +640,14 @@ void CWorld::CleanUp()
 
 void CWorld::Debug()
 {
+	/*
 	lua_State *L = getLuaState();
 	luaStopProfile(L);
 	luaStartProfile(L);
+	*/
+	char buffer[64];
+	sprintf(buffer,"world_%d.csv",m_worldId);
+	IProfile::Instance().dump(buffer);
 }
 
 CWorld g_world;

@@ -1686,8 +1686,7 @@ DialogModelDB =
 		conditions = 
 		{
 		{condition = DialogCondition.Level, param = {level = 20, errorID = 29}},
-		{condition = DialogCondition.HasTask, param = {taskID = 10001, statue = false, errorID = 30}},
-		{condition = DialogCondition.CheckLoopTask, param = {taskID = 10001, errorID = 31}},
+		{condition = DialogCondition.CheckLoopTask, param = {taskID = 10001, errorID = 31}},	
 		},
 		speakerID = 20004,
 		soundID = nil,
@@ -1723,7 +1722,6 @@ DialogModelDB =
 		conditions = 
 		{
 		{condition = DialogCondition.Level, param = {level = 20, errorID = 29}},
-		{condition = DialogCondition.HasTask, param = {taskID = 10002, statue = false, errorID = 30}},
 		{condition = DialogCondition.CheckLoopTask, param = {taskID = 10002, errorID = 31}},
 		},
 		speakerID = 20006,
@@ -1760,7 +1758,6 @@ DialogModelDB =
 		conditions = 
 		{
 		{condition = DialogCondition.Level, param = {level = 20, errorID = 29}},
-		{condition = DialogCondition.HasTask, param = {taskID = 10003, statue = false, errorID = 30}},
 		{condition = DialogCondition.CheckLoopTask, param = {taskID = 10003, errorID = 31}},	
 		},
 		speakerID = 20008,
@@ -1795,7 +1792,6 @@ DialogModelDB =
 		conditions = 
 		{
 		{condition = DialogCondition.Level, param = {level = 20, errorID = 29}},
-		{condition = DialogCondition.HasTask, param = {taskID = 10004, statue = false, errorID = 30}},
 		{condition = DialogCondition.CheckLoopTask, param = {taskID = 10004, errorID = 31}},	
 		},
 		speakerID = 20009,
@@ -1830,7 +1826,6 @@ DialogModelDB =
 		conditions = 
 		{
 		{condition = DialogCondition.Level, param = {level = 20, errorID = 29}},
-		{condition = DialogCondition.HasTask, param = {taskID = 10005, statue = false, errorID = 30}},
 		{condition = DialogCondition.CheckLoopTask, param = {taskID = 10005, errorID = 31}},	
 		},
 		speakerID = 20005,
@@ -1865,7 +1860,6 @@ DialogModelDB =
 		conditions = 
 		{
 		{condition = DialogCondition.Level, param = {level = 20, errorID = 29}},
-		{condition = DialogCondition.HasTask, param = {taskID = 10001, statue = false, errorID = 30}},
 	        {condition = DialogCondition.CheckLoopTask, param = {taskID = 10006, errorID = 31}},
 		},
 		speakerID = 20007,
@@ -2491,13 +2485,13 @@ DialogModelDB =
 		{},
 		speakerID = 26014,
 		soundID = nil,
-		txt = "这位英雄，行行好！给我2000绑银吃饭吧！",
+		txt = "这位英雄，行行好！给我50000绑银吃饭吧！",
 		options = 
 		{
 			[1] =
 			{
 				showConditions = {},
-				optionTxt = "救人一命胜造七级浮屠（支付绑银2000）",
+				optionTxt = "救人一命胜造七级浮屠（支付绑银50000）",
 				actions =
 				{
 				{action = DialogActionType.Goto, param = {dialogID = 4261}},		
@@ -2509,7 +2503,7 @@ DialogModelDB =
 				optionTxt = "哼！你这是在敲诈！（进入战斗）",
 				actions =
 				{
-				{action = DialogActionType.Goto, param = {dialogID = 4262}},
+				{action = DialogActionType.Fight, param = {scriptID = 4141}},
 				},
 			}
 		},
@@ -2519,11 +2513,11 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
-		{condition = DialogCondition.Currency, param = {type = "submoney",value =2000, errorID = 32}},
+		{condition = DialogCondition.Currency, param = {type = "submoney",value =50000, errorID = 32}},
 		},
 		speakerID = 26014,
 		soundID = nil,
-		txt = "英雄真是好心人，感激不尽啊！",
+		txt = "你真是个好心人，多谢了！",
 		options =
 		{
 			{
@@ -2531,7 +2525,7 @@ DialogModelDB =
 			 optionTxt = "",
 		         actions =
 		                 {
-		                 {action = DialogActionType.CostMoney, param = {money = 2000, scriptID = 4141}},
+		                 {action = DialogActionType.CostMoney, param = {money = 50000, scriptID = 4141}},
 			         },	
 		    },
 		},		
@@ -8298,6 +8292,126 @@ DialogModelDB =
 			},
 		},		
 	},
+	[4900] =            ------------------乾元丹掌门任务未完成指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20004,
+		soundID = nil,
+		txt = "为师交给你的任务，你完成了吗？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                 {
+		                 {action = DialogActionType.CloseDialog, param ={}},	
+		                 },
+			},
+		},		
+	},
+	[4901] =            ------------------金霞山掌门任务未完成指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20006,
+		soundID = nil,
+		txt = "为师交给你的任务，你完成了吗？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                 {
+		                 {action = DialogActionType.CloseDialog, param ={}},	
+		                 },
+			},
+		},		
+	},
+	[4902] =            ------------------紫阳门掌门任务未完成指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20008,
+		soundID = nil,
+		txt = "为师交给你的任务，你完成了吗？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                 {
+		                 {action = DialogActionType.CloseDialog, param ={}},	
+		                 },
+			},
+		},		
+	},
+	[4903] =            ------------------云霄宫掌门任务未完成指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20009,
+		soundID = nil,
+		txt = "为师交给你的任务，你完成了吗？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                 {
+		                 {action = DialogActionType.CloseDialog, param ={}},	
+		                 },
+			},
+		},		
+	},
+	[4904] =            ------------------桃源洞掌门任务未完成指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20005,
+		soundID = nil,
+		txt = "为师交给你的任务，你完成了吗？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                 {
+		                 {action = DialogActionType.CloseDialog, param ={}},	
+		                 },
+			},
+		},		
+	},
+	[4905] =            ------------------蓬莱阁掌门任务未完成指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20007,
+		soundID = nil,
+		txt = "为师交给你的任务，你完成了吗？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                 {
+		                 {action = DialogActionType.CloseDialog, param ={}},	
+		                 },
+			},
+		},		
+	},
 ------------------------此地乃试炼任务之地，请不要随意乱闯----------------------------------
 ---------------------------------暗雷战斗---40-44级----------------------------------
 ------------------------------------1-50环----------------------------------
@@ -12640,6 +12754,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20049}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20049,
 		soundID = nil,
@@ -12661,6 +12776,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 30320}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 30320,
 		soundID = nil,
@@ -12682,6 +12798,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20059}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20059,
 		soundID = nil,
@@ -12703,6 +12820,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 29008}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 29008,
 		soundID = nil,
@@ -12724,6 +12842,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 27073}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27073,
 		soundID = nil,
@@ -12745,6 +12864,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 27074}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27074,
 		soundID = nil,
@@ -12766,6 +12886,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20701}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20701,
 		soundID = nil,
@@ -12787,6 +12908,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 27075}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27075,
 		soundID = nil,
@@ -12808,6 +12930,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 27076}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27076,
 		soundID = nil,
@@ -12829,6 +12952,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 27077}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27077,
 		soundID = nil,
@@ -12850,6 +12974,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20021}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20021,
 		soundID = nil,
@@ -12871,6 +12996,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20022}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20022,
 		soundID = nil,
@@ -12892,6 +13018,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20023}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20023,
 		soundID = nil,
@@ -12913,6 +13040,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20025}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20025,
 		soundID = nil,
@@ -12934,6 +13062,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20024}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20024,
 		soundID = nil,
@@ -12955,6 +13084,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.talk, npcID = 20026}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20026,
 		soundID = nil,
@@ -12977,6 +13107,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20049,
 		soundID = nil,
@@ -12998,6 +13129,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 30320}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 30320,
 		soundID = nil,
@@ -13019,6 +13151,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20059,
 		soundID = nil,
@@ -13040,6 +13173,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 29008}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 29008,
 		soundID = nil,
@@ -13061,6 +13195,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27073}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27073,
 		soundID = nil,
@@ -13082,6 +13217,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27074}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27074,
 		soundID = nil,
@@ -13103,6 +13239,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20701,
 		soundID = nil,
@@ -13124,6 +13261,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27075,
 		soundID = nil,
@@ -13145,6 +13283,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27076}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27076,
 		soundID = nil,
@@ -13166,6 +13305,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27077}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27077,
 		soundID = nil,
@@ -13187,6 +13327,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20021}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20021,
 		soundID = nil,
@@ -13208,6 +13349,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20022}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20022,
 		soundID = nil,
@@ -13229,6 +13371,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20023}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20023,
 		soundID = nil,
@@ -13250,6 +13393,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20025}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20025,
 		soundID = nil,
@@ -13271,6 +13415,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20024}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20024,
 		soundID = nil,
@@ -13292,6 +13437,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20026}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20026,
 		soundID = nil,
@@ -13315,6 +13461,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20049}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20049,
 		soundID = nil,
@@ -13346,6 +13493,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 30320}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 30320,
 		soundID = nil,
@@ -13376,6 +13524,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20059}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20059,
 		soundID = nil,
@@ -13406,6 +13555,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 29008}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 29008,
 		soundID = nil,
@@ -13436,6 +13586,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 27073}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27073,
 		soundID = nil,
@@ -13466,6 +13617,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 27074}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27074,
 		soundID = nil,
@@ -13496,6 +13648,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20701}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20701,
 		soundID = nil,
@@ -13526,6 +13679,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 27075}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27075,
 		soundID = nil,
@@ -13556,6 +13710,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 27076}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27076,
 		soundID = nil,
@@ -13586,6 +13741,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 27077}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27077,
 		soundID = nil,
@@ -13616,6 +13772,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20021}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20021,
 		soundID = nil,
@@ -13646,6 +13803,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20022}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20022,
 		soundID = nil,
@@ -13676,6 +13834,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20023}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20023,
 		soundID = nil,
@@ -13706,6 +13865,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20025}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20025,
 		soundID = nil,
@@ -13736,6 +13896,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20024}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20024,
 		soundID = nil,
@@ -13766,6 +13927,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.buyItem,npcID = 20026}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20026,
 		soundID = nil,
@@ -13797,6 +13959,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20049}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20049,
 		soundID = nil,
@@ -13827,6 +13990,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 30320}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 30320,
 		soundID = nil,
@@ -13857,6 +14021,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20059}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20059,
 		soundID = nil,
@@ -13887,6 +14052,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 29008}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 29008,
 		soundID = nil,
@@ -13917,6 +14083,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 27073}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27073,
 		soundID = nil,
@@ -13947,6 +14114,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 27074}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27074,
 		soundID = nil,
@@ -13977,6 +14145,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20701}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20701,
 		soundID = nil,
@@ -14007,6 +14176,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 27075}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27075,
 		soundID = nil,
@@ -14037,6 +14207,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 27076}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27076,
 		soundID = nil,
@@ -14067,6 +14238,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 27077}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 27077,
 		soundID = nil,
@@ -14097,6 +14269,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20021}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20021,
 		soundID = nil,
@@ -14127,6 +14300,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20022}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20022,
 		soundID = nil,
@@ -14157,6 +14331,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20023}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20023,
 		soundID = nil,
@@ -14187,6 +14362,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20025}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20025,
 		soundID = nil,
@@ -14217,6 +14393,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20024}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20024,
 		soundID = nil,
@@ -14247,6 +14424,7 @@ DialogModelDB =
 		conditions = 
 		{
 			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.catchPet,npcID = 20026}},
+			{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
 		},
 		speakerID = 20026,
 		soundID = nil,
@@ -14741,16 +14919,14 @@ DialogModelDB =
 		{
 		},
 		speakerID = 29056,
-		txt = "阐教弟子，我可以送你回门派。",
+		txt = "阐教弟子，我可以送你到各大门派。",
 		options =
 		{
 			[1] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
-				},
-				optionTxt = "返回门派",
+				{},
+				optionTxt = "金霞山",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
@@ -14760,10 +14936,8 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
-				},
-				optionTxt = "返回门派",
+				{},
+				optionTxt = "蓬莱阁",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
@@ -14773,10 +14947,8 @@ DialogModelDB =
 			[3] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
-				},
-				optionTxt = "返回门派",
+				{},
+				optionTxt = "乾元岛",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
@@ -14786,10 +14958,8 @@ DialogModelDB =
 			[4] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
-				},
-				optionTxt = "返回门派",
+				{},
+				optionTxt = "桃源洞",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
@@ -14799,10 +14969,8 @@ DialogModelDB =
 			[5] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
-				},
-				optionTxt = "返回门派",
+				{},
+				optionTxt = "云霄宫",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
@@ -14812,10 +14980,8 @@ DialogModelDB =
 			[6] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
-				},
-				optionTxt = "返回门派",
+				{},
+				optionTxt = "紫阳门",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
@@ -18177,10 +18343,8 @@ DialogModelDB =
 			[1] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.JXS}},
-				},
-				optionTxt = "前往门派",
+				{},
+				optionTxt = "金霞山",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 3, tarX = 132, tarY = 70}},--切换场景
@@ -18190,10 +18354,8 @@ DialogModelDB =
 			[2] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.PLG}},
-				},
-				optionTxt = "前往门派",
+				{},
+				optionTxt = "蓬莱阁",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 2, tarX = 84, tarY = 31}},--切换场景
@@ -18203,10 +18365,8 @@ DialogModelDB =
 			[3] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.QYD}},
-				},
-				optionTxt = "前往门派",
+				{},
+				optionTxt = "乾元岛",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 1, tarX = 85, tarY = 64}},--切换场景
@@ -18216,10 +18376,8 @@ DialogModelDB =
 			[4] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.TYD}},
-				},
-				optionTxt = "前往门派",
+				{},
+				optionTxt = "桃源洞",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 4, tarX = 108, tarY = 62}},--切换场景
@@ -18229,10 +18387,8 @@ DialogModelDB =
 			[5] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.YXG}},
-				},
-				optionTxt = "前往门派",
+				{},
+				optionTxt = "云霄宫",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 5, tarX = 51, tarY = 58}},--切换场景
@@ -18242,10 +18398,8 @@ DialogModelDB =
 			[6] =
 			{
 				showConditions = 
-				{
-				{condition = DialogCondition.School, param = {school = SchoolType.ZYM}},
-				},
-				optionTxt = "前往门派",
+				{},
+				optionTxt = "紫阳门",
 				actions =
 				{
 					{action = DialogActionType.SwithScene ,param = {tarMapID  = 6, tarX = 103, tarY = 61}},--切换场景
@@ -18385,7 +18539,17 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Function,
 			},
-			[6] = {
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "前往桃园镇",
+				actions =
+				{
+	                         {action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[7] = {
 				showConditions = {},
 				optionTxt = "我再转转",
 				actions =
@@ -18421,6 +18585,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.catchPet, npcID = 20004}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10001, taskStatus =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18433,6 +18598,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10001, taskType = LoopTaskTargetType.buyItem, npcID = 20004}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10001, taskStatus =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18454,6 +18620,18 @@ DialogModelDB =
 				icon = DialogIcon.Task4,
 			},
 			[5] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10001, taskStatus =  TaskStatus.Active}},
+				},
+				optionTxt = "师门任务",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 4900}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "弟子先退下",
 				actions =
@@ -18461,7 +18639,7 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-			[6] = {
+			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15001, statue = true}},
@@ -18654,7 +18832,17 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Function,
 			},
-			[6] = {
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "前往桃园镇",
+				actions =
+				{
+	                         {action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[7] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -18690,6 +18878,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.catchPet, npcID = 20005}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10005, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18702,6 +18891,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.buyItem, npcID = 20005}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10005, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18714,6 +18904,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10005, taskType = LoopTaskTargetType.itemTalk, npcID = 20005}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10005, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18723,6 +18914,18 @@ DialogModelDB =
 				icon = DialogIcon.Task4,
 			},
 			[5] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10005, taskStatue =  TaskStatus.Active}},
+				},
+				optionTxt = "师门任务",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 4904}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "弟子先告退",
 				actions =
@@ -18730,7 +18933,7 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-			[6] = {
+			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15009, statue = true}},
@@ -18923,7 +19126,17 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Function,
 			},
-			[6] = {
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "前往桃园镇",
+				actions =
+				{
+	                         {action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[7] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -18959,6 +19172,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.catchPet, npcID = 20006}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10002, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18971,6 +19185,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.buyItem, npcID = 20006}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10002, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18983,6 +19198,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10002, taskType = LoopTaskTargetType.itemTalk, npcID = 20006}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10002, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -18992,6 +19208,18 @@ DialogModelDB =
 				icon = DialogIcon.Task4,
 			},
 			[5] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10002, taskStatue =  TaskStatus.Active}},
+				},
+				optionTxt = "师门任务",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 4901}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "告辞",
 				actions =
@@ -18999,7 +19227,7 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-			[6] = {
+			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15003, statue = true}},
@@ -19193,7 +19421,17 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Function,
 			},
-			[6] = {
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "前往桃园镇",
+				actions =
+				{
+	                         {action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[7] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19229,6 +19467,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.catchPet, npcID = 20007}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10006, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19241,6 +19480,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.buyItem, npcID = 20007}},
+                                {condition = DialogCondition.HasStatusTask, param = {taskID = 10006, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19253,6 +19493,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10006, taskType = LoopTaskTargetType.itemTalk, npcID = 20007}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10006, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19262,6 +19503,18 @@ DialogModelDB =
 				icon = DialogIcon.Task4,
 			},
 			[5] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10006, taskStatue =  TaskStatus.Active}},
+				},
+				optionTxt = "师门任务",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 4905}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "告辞",
 				actions =
@@ -19269,7 +19522,7 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-			[6] = {
+			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15011, statue = true}},
@@ -19463,7 +19716,17 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Function,
 			},
-			[6] = {
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "前往桃园镇",
+				actions =
+				{
+	                         {action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[7] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19499,6 +19762,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.catchPet, npcID = 20008}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10003, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19511,6 +19775,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.buyItem, npcID = 20008}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10003, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19523,6 +19788,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10003, taskType = LoopTaskTargetType.itemTalk, npcID = 20008}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10003, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19532,6 +19798,18 @@ DialogModelDB =
 				icon = DialogIcon.Task4,
 			},
 			[5] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10003, taskStatue =  TaskStatus.Active}},
+				},
+				optionTxt = "师门任务",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 4902}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "弟子告退",
 				actions =
@@ -19539,7 +19817,7 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-			[6] = {
+			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15005, statue = true}},
@@ -19732,7 +20010,17 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Function,
 			},
-			[6] = {
+			[6] =
+			{
+				showConditions = {},
+				optionTxt = "前往桃园镇",
+				actions =
+				{
+	                         {action = DialogActionType.SwithScene ,param = {tarMapID  = 9, tarX = 92, tarY = 32}},--切换场景
+				},
+				icon = DialogIcon.Function,
+			},
+			[7] = {
 				showConditions = {},
 				optionTxt = "我要再转转",
 				actions =
@@ -19768,6 +20056,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.catchPet, npcID = 20009}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10004, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19780,6 +20069,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.buyItem, npcID = 20009}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10004, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19792,6 +20082,7 @@ DialogModelDB =
 				showConditions = 
 				{
 				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10004, taskType = LoopTaskTargetType.itemTalk, npcID = 20009}},
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10004, taskStatue =  TaskStatus.Done}},
 				},
 				optionTxt = "师门任务",
 				actions =
@@ -19801,6 +20092,18 @@ DialogModelDB =
 				icon = DialogIcon.Task4,
 			},
 			[5] = {
+				showConditions = 
+				{
+				{condition = DialogCondition.HasStatusTask, param = {taskID = 10004, taskStatue =  TaskStatus.Active}},
+				},
+				optionTxt = "师门任务",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 4903}},
+				},
+				icon = DialogIcon.Task3,
+			},
+			[6] = {
 				showConditions = {},
 				optionTxt = "弟子告退",
 				actions =
@@ -19808,7 +20111,7 @@ DialogModelDB =
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
-			[6] = {
+			[7] = {
 				showConditions = 
 				{
 				{condition = DialogCondition.HasTask, param = {taskID = 15007, statue = true}},
@@ -25030,13 +25333,13 @@ DialogModelDB =
 		},
 		speakerID = 39052,
 		soundID =0,
-		txt = "此处有我驻守，任何人休想通过",
+		txt = "此处上古金矿乃是我魔家宝藏，由我守护，任何人休想盗取",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "谁抢到了就是谁的",
+				optionTxt = "那就要看你有多大本事能阻止我",
 				actions =
 				{
 					{action = DialogActionType.GoldHuntFight , param = {scriptID = 6001 ,mapID =909},},
@@ -25061,13 +25364,13 @@ DialogModelDB =
 		},
 		speakerID = 39053,
 		soundID =0,
-		txt = "此处有我驻守，任何人休想通过",
+		txt = "此处上古金矿乃是我魔家宝藏，由我守护，任何人休想盗取",
 		options =
 		{
 			[1] = 
 			{
 				showConditions = {},
-				optionTxt = "谁抢到了就是谁的",
+				optionTxt = "来了个更厉害的？让我瞧瞧你有多厉害",
 				actions =
 				{
 					{action = DialogActionType.GoldHuntFight , param = {scriptID = 6002 ,mapID =909},},
@@ -25605,7 +25908,7 @@ DialogModelDB =
 				actions =
 				{
 					
-					{action = DialogActionType.RecetiveTask, param = {taskID = 40002,matchNPC = true}},
+					{action = DialogActionType.RecetiveTask, param = {taskID = 40002,matchNPC = true}},--matchNPC一律设置为True
 					
 				},
 			},
@@ -25684,7 +25987,7 @@ DialogModelDB =
 				actions =
 				{
 					
-					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					{action = DialogActionType.EnterScriptFight, param = {type = "random",taskID = 40002}},--type一律设置为random
 					
 				},
 			},
@@ -25727,7 +26030,7 @@ DialogModelDB =
 				actions =
 				{
 					
-					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					{action = DialogActionType.EnterScriptFight, param = {type = "random",taskID = 40002}},--type一律设置为random
 					
 				},
 			},
@@ -25770,7 +26073,7 @@ DialogModelDB =
 				actions =
 				{
 					
-					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					{action = DialogActionType.EnterScriptFight, param = {type = "random",taskID = 40002}},--type一律设置为random
 					
 				},
 			},
@@ -25813,7 +26116,7 @@ DialogModelDB =
 				actions =
 				{
 					
-					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					{action = DialogActionType.EnterScriptFight, param = {type = "random",taskID = 40002}},--type一律设置为random
 					
 				},
 			},
@@ -25856,7 +26159,7 @@ DialogModelDB =
 				actions =
 				{
 					
-					{action = DialogActionType.EnterScriptFight, param = {type = "random"}},
+					{action = DialogActionType.EnterScriptFight, param = {type = "random",taskID = 40002}},--type一律设置为random
 					
 				},
 			},
@@ -27173,20 +27476,30 @@ DialogModelDB =
 		conditions =
 		{},
 		speakerID = 25501,
-		txt = "想要天降福泽，就得接受我的挑战！获得我的赏识，奖励自然也少不了你，请务必把握机会！",
+		txt = "想要天降福泽，就得通过我的考验！获得我的赏识，奖励自然也少不了你，请务必把握机会！",
 		options =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "请指点一二！",
+					optionTxt = "请指定一二！",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35105}},
 					},
+					icon = DialogIcon.Function,
 				},
-			[2] =	{
+			[2] =   {
 					showConditions = {},
-					optionTxt = "准备好再来",
+					optionTxt = "通过考验有什么好处？",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35113}},
+					},
+					icon = DialogIcon.Help,
+				},
+			[3] =	{
+					showConditions = {},
+					optionTxt = "准备好再来。",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -27205,15 +27518,25 @@ DialogModelDB =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "请指点一二！",
+					optionTxt = "请指定一二！",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35106}},
 					},
+					icon = DialogIcon.Function,
 				},
-			[2] =	{
+			[2] =   {
 					showConditions = {},
-					optionTxt = "准备好再来",
+					optionTxt = "通过考验有什么好处？",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35114}},
+					},
+					icon = DialogIcon.Help,
+				},
+			[3] =	{
+					showConditions = {},
+					optionTxt = "准备好再来。",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -27232,15 +27555,25 @@ DialogModelDB =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "请指点一二！",
+					optionTxt = "请指定一二！",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35107}},
 					},
+					icon = DialogIcon.Function,
 				},
-			[2] =	{
+			[2] =   {
 					showConditions = {},
-					optionTxt = "准备好再来",
+					optionTxt = "通过考验有什么好处？",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35115}},
+					},
+					icon = DialogIcon.Help,
+				},
+			[3] =	{
+					showConditions = {},
+					optionTxt = "准备好再来。",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -27259,15 +27592,25 @@ DialogModelDB =
 		{
 			[1] =   {
 					showConditions = {},
-					optionTxt = "请指点一二！",
+					optionTxt = "请指定一二！",
 					actions =
 					{
 						{action = DialogActionType.Goto, param = {dialogID=35108}},
 					},
+					icon = DialogIcon.Function,
 				},
-			[2] =	{
+			[2] =   {
 					showConditions = {},
-					optionTxt = "准备好再来",
+					optionTxt = "通过考验有什么好处？",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35116}},
+					},
+					icon = DialogIcon.Help,
+				},
+			[3] =	{
+					showConditions = {},
+					optionTxt = "准备好再来。",
 					actions =
 					{
 						{action = DialogActionType.CloseDialog , param ={}},
@@ -27282,7 +27625,7 @@ DialogModelDB =
 		{},
 		speakerID = 25501,
 		soundID =nil,
-		txt = "那就开始吧！",
+		txt = "那就开始吧，祝你们好运！",
 		options =
 		{
 			{
@@ -27302,7 +27645,7 @@ DialogModelDB =
 		{},
 		speakerID = 25502,
 		soundID =nil ,
-		txt = "那就开始吧！",
+		txt = "那就开始吧，祝你们好运！",
 		options =
 		{
 			{
@@ -27322,7 +27665,7 @@ DialogModelDB =
 		{},
 		speakerID = 25503,
 		soundID =nil,
-		txt = "那就开始吧！",
+		txt = "那就开始吧，祝你们好运！",
 		options =
 		{
 			{
@@ -27342,7 +27685,7 @@ DialogModelDB =
 		{},
 		speakerID = 25504,
 		soundID =nil,
-		txt = "那就开始吧！",
+		txt = "那就开始吧，祝你们好运！",
 		options =
 		{
 			{
@@ -27355,7 +27698,166 @@ DialogModelDB =
 			}
 		},
 	},
-
+	[35109] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25501,
+		soundID =nil,
+		txt = "你们已经成功通过我的考验，这是给你们的奖励！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			}
+		},
+	},
+	[35110] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25502,
+		soundID =nil,
+		txt = "你们已经成功通过我的考验，这是给你们的奖励！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			}
+		},
+	},
+	[35111] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25503,
+		soundID =nil,
+		txt = "你们已经成功通过我的考验，这是给你们的奖励！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			}
+		},
+	},
+	[35112] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 25504,
+		soundID =nil,
+		txt = "你们已经成功通过我的考验，这是给你们的奖励！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			}
+		},
+	},
+	[35113] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 25501,
+		soundID =nil,
+		txt = "战斗每回合有几率出现不同种类的小仙，但是他们很害羞，每一回合结束都会溜走。只要你们能在同一回合内击败多个相同小仙，则能形成“对对碰”，触发更高的奖励加成。还有一点，注意留意“送福童子”的出没，他可以提高你们获得稀有道具奖励的概率！",
+		options =
+		{
+			[1] =   {
+					showConditions = {},
+					optionTxt = "我听明白了！",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35101}},
+					},
+				},
+		},
+	},
+	[35114] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 25502,
+		soundID =nil,
+		txt = "战斗每回合有几率出现不同种类的小仙，但是他们很害羞，每一回合结束都会溜走。只要你们能在同一回合内击败多个相同小仙，则能形成“对对碰”，触发更高的奖励加成。还有一点，注意留意“送福童子”的出没，他可以提高你们获得稀有道具奖励的概率！",
+		options =
+		{
+			[1] =   {
+					showConditions = {},
+					optionTxt = "我听明白了！",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35102}},
+					},
+				},
+		},
+	},
+	[35115] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 25503,
+		soundID =nil,
+		txt = "战斗每回合有几率出现不同种类的小仙，但是他们很害羞，每一回合结束都会溜走。只要你们能在同一回合内击败多个相同小仙，则能形成“对对碰”，触发更高的奖励加成。还有一点，注意留意“送福童子”的出没，他可以提高你们获得稀有道具奖励的概率！",
+		options =
+		{
+			[1] =   {
+					showConditions = {},
+					optionTxt = "我听明白了！",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35103}},
+					},
+				},
+		},
+	},
+	[35116] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 25504,
+		soundID =nil,
+		txt = "战斗每回合有几率出现不同种类的小仙，但是他们很害羞，每一回合结束都会溜走。只要你们能在同一回合内击败多个相同小仙，则能形成“对对碰”，触发更高的奖励加成。还有一点，注意留意“送福童子”的出没，他可以提高你们获得稀有道具奖励的概率！",
+		options =
+		{
+			[1] =   {
+					showConditions = {},
+					optionTxt = "我听明白了！",
+					actions =
+					{
+						{action = DialogActionType.Goto, param = {dialogID=35104}},
+					},
+				},
+		},
+	},
  -------挖宝放妖
 	[39996] =
 	{

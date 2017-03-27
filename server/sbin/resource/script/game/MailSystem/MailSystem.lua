@@ -131,12 +131,8 @@ function MailSystem:addPlayerItem(player,items)
 	return true
 end
 
-local instance
 function MailSystem.getInstance()
-	if not instance then
-		instance = MailSystem()
-	end
-	return instance
+	return MailSystem()
 end
 
 EventManager.getInstance():addEventListener(MailSystem.getInstance())

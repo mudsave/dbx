@@ -7,19 +7,22 @@ DailyTask = class(Task)
 
 function DailyTask:__init()
 
-	self._targetType = nil
-	self._targetParam = nil
-	self._dailyTargets = nil
-	self.remainCount = 2
+	self._targetType = {}
+	self._targetParam = {}
+	self._dailyTargets = {}
 
 end
 
 function DailyTask:__release()
 
-end
+	self._targetType = nil
+	self._targetParam = nil
+	self._dailyTargets = nil
+
+end	
 
 function DailyTask:setRewards(rewards)
-	self._rewards = rewards
+	table.deepCopy(rewards, self._rewards)
 end
 
 function DailyTask:getRewards()
@@ -27,7 +30,7 @@ function DailyTask:getRewards()
 end
 
 function DailyTask:setTriggers(triggers)
-	self._triggers = triggers
+	table.deepCopy(triggers, self._triggers)
 end
 
 function DailyTask:getTriggers()
@@ -58,7 +61,8 @@ end
 
 function DailyTask:setDailyTargets( targets )
 	
-	self._dailyTargets = targets
+	table.deepCopy(targets,self._dailyTargets)
+	print("_dailyTargets",toString(self._dailyTargets))
 
 end
 

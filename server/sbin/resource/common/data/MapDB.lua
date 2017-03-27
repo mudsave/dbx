@@ -437,6 +437,26 @@ mapDB =
 			safeY 		= 16,
 		},
 
+	[132] = { 
+			map 		= "yw_hd02.mp",
+			level 		= 0,
+			mapType 	= MapType.Wild,
+			npcs 		= {},
+			safeX 		= 255,
+			safeY 		= 116,
+			revivePoint 	= {y = 32, mapID = 9, x = 93, r = 5},
+		},
+
+	[133] = { 
+			map 		= "xc04.mp",
+			level 		= 0,
+			mapType 	= MapType.City,
+			npcs 		= {},
+			safeX 		= 0,
+			safeY 		= 0,
+			revivePoint 	= {y = 32, mapID = 9, x = 93, r = 5},
+		},
+
 	[400] = { 
 			map 		= "xsc01.mp",
 			level 		= 0,
@@ -588,6 +608,24 @@ mapDB =
 			npcs 		= {},
 			safeX 		= 0,
 			safeY 		= 0,
+		},
+
+	[417] = { 
+			map 		= "yw_ys01.mp",
+			level 		= 0,
+			mapType 	= MapType.Task,
+			npcs 		= {},
+			safeX 		= 185,
+			safeY 		= 67,
+		},
+
+	[418] = { 
+			map 		= "fb_zc01.mp",
+			level 		= 0,
+			mapType 	= MapType.Task,
+			npcs 		= {},
+			safeX 		= 68,
+			safeY 		= 225,
 		},
 
 	[500] = { 
@@ -802,8 +840,8 @@ mapDB =
 			level 		= 0,
 			mapType 	= MapType.City,
 			npcs 		= {60001, },
-			safeX 		= 0,
-			safeY 		= 0,
+			safeX 		= 75,
+			safeY 		= 118,
 		},
 
 	[902] = { 
@@ -811,8 +849,8 @@ mapDB =
 			level 		= 0,
 			mapType 	= MapType.City,
 			npcs 		= {60002, },
-			safeX 		= 0,
-			safeY 		= 0,
+			safeX 		= 75,
+			safeY 		= 118,
 		},
 
 	[903] = { 
@@ -820,8 +858,8 @@ mapDB =
 			level 		= 0,
 			mapType 	= MapType.City,
 			npcs 		= {60003, },
-			safeX 		= 0,
-			safeY 		= 0,
+			safeX 		= 75,
+			safeY 		= 118,
 		},
 
 	[904] = { 
@@ -829,8 +867,8 @@ mapDB =
 			level 		= 0,
 			mapType 	= MapType.City,
 			npcs 		= {60004, },
-			safeX 		= 0,
-			safeY 		= 0,
+			safeX 		= 75,
+			safeY 		= 118,
 		},
 
 	[905] = { 

@@ -199,7 +199,7 @@ function GoldHuntManager:onPk(event)
 	local curScore = data.curScore
 	
 	local limit = GoldHuntZoneIconValue[1][1]
-	if curScore < limit then
+	if curScore <= limit then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 3)
 		g_eventMgr:fireRemoteEvent(event, player)
 		return
@@ -257,6 +257,9 @@ function GoldHuntManager:doGoldHuntPVEFight(player, param, npcID)
 			curNpc:setStatus(ePlayerFight)
 			local fightID = g_fightMgr:startScriptFight(finalList, param.scriptID,  param.mapID)
 			FightIDs[fightID] = npcID
+		else
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 12)
+			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
 end
@@ -336,6 +339,7 @@ function GoldHuntManager:onFightEnd(event)
 				return
 			else
 				--满血满蓝
+				print("满血满蓝",player:getLevel())
 				if player:getLevel() <= FullMaxHpMpLevel then
 					local maxHP = player:getAttrValue(player_max_hp)
 					player:setHP(maxHP)
@@ -440,7 +444,7 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 		return
 	end
 	FinalPos[player:getDBID()] = nil
-	self:setIconValue(player,0,true)--初始化值
+	
 	--发送进入事件(倒计时和总积分和階段)
 	local activity = g_activityMgr:getActivity(activityID) 
 	local phaseID = activity:getPhaseID()
@@ -457,7 +461,7 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	local leftTime = endTimeTick - now
 	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList,phaseID)
 	g_eventMgr:fireRemoteEvent(event, player)
-	
+	self:setIconValue(player,1,true)--初始化值
 	--初始化
 	
 	goldHuntData.ID = activityID
@@ -501,6 +505,7 @@ function GoldHuntManager:setIconValue(player ,score, isSet)
 	local cur = getPropValue(peer, PLAYER_GOLD_HUNT_MINE)
 	local iconValue = self:getIconValue(score)
 	if iconValue ~= cur or isSet then
+		print("iconValue",iconValue)
 		setPropValue(peer, PLAYER_GOLD_HUNT_MINE, iconValue)
 		player:flushPropBatch()
 	end
@@ -623,10 +628,10 @@ function GoldHuntManager:onLeaveScene(event)
 	if not g_sceneMgr:isGoldHuntScene(scene) then
 		return
 	end
-
+	self:setIconValue(role,0,true)--初始化值
+	print("function GoldHuntManager:onLeaveScene(event)")
 	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_leave, -1)
 	g_eventMgr:fireRemoteEvent(event, role)
-
 end
 
 function GoldHuntManager:onGetLeaveCmd(event)

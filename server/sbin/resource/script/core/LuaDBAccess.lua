@@ -929,9 +929,9 @@ end
 
 function LuaDBAccess.updateSchoolActivity(player,activityId)
 	local handler = player:getHandler(HandlerDef_Activity)
-	if handler then
+	local integral = handler:getDekaronIntegral()
+	if integral then
 		clearParams()
-		local integral = handler:getDekaronIntegral()
 		params[1]["spName"]			= "sp_UpdateSchoolActivity"
 		params[1]["dataBase"]		= 1
 		params[1]["sort"]			= "_roleID,_integral"

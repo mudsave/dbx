@@ -5082,7 +5082,7 @@ tWarrantDB =
 	},
  [1110058] = {
 		ID = 1110058 ,
-		Name = "50º∂µ∂Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*µ∂" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5100,7 +5100,7 @@ tWarrantDB =
 	},
  [1110059] = {
 		ID = 1110059 ,
-		Name = "50º∂Ω£Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*Ω£" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5118,7 +5118,7 @@ tWarrantDB =
 	},
  [1110060] = {
 		ID = 1110060 ,
-		Name = "50º∂’»Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*’»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5136,7 +5136,7 @@ tWarrantDB =
 	},
  [1110061] = {
 		ID = 1110061 ,
-		Name = "50º∂ÂÛÕº÷Ω" ,
+		Name = "50º∂Õº÷Ω*ÂÛ" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5154,7 +5154,7 @@ tWarrantDB =
 	},
  [1110062] = {
 		ID = 1110062 ,
-		Name = "50º∂«πÕº÷Ω" ,
+		Name = "50º∂Õº÷Ω*«π" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5172,7 +5172,7 @@ tWarrantDB =
 	},
  [1110063] = {
 		ID = 1110063 ,
-		Name = "50º∂…»Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*…»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5190,7 +5190,7 @@ tWarrantDB =
 	},
  [1110064] = {
 		ID = 1110064 ,
-		Name = "60º∂µ∂Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*µ∂" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5208,7 +5208,7 @@ tWarrantDB =
 	},
  [1110065] = {
 		ID = 1110065 ,
-		Name = "60º∂Ω£Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*Ω£" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5226,7 +5226,7 @@ tWarrantDB =
 	},
  [1110066] = {
 		ID = 1110066 ,
-		Name = "60º∂’»Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*’»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5244,7 +5244,7 @@ tWarrantDB =
 	},
  [1110067] = {
 		ID = 1110067 ,
-		Name = "60º∂ÂÛÕº÷Ω" ,
+		Name = "60º∂Õº÷Ω*ÂÛ" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5262,7 +5262,7 @@ tWarrantDB =
 	},
  [1110068] = {
 		ID = 1110068 ,
-		Name = "60º∂«πÕº÷Ω" ,
+		Name = "60º∂Õº÷Ω*«π" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -5280,7 +5280,7 @@ tWarrantDB =
 	},
  [1110069] = {
 		ID = 1110069 ,
-		Name = "60º∂…»Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*…»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6072,7 +6072,7 @@ tWarrantDB =
 	},
  [1110126] = {
 		ID = 1110126 ,
-		Name = "50º∂µ∂Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*µ∂" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6090,7 +6090,7 @@ tWarrantDB =
 	},
  [1110127] = {
 		ID = 1110127 ,
-		Name = "50º∂Ω£Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*Ω£" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6108,7 +6108,7 @@ tWarrantDB =
 	},
  [1110128] = {
 		ID = 1110128 ,
-		Name = "50º∂’»Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*’»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6126,7 +6126,7 @@ tWarrantDB =
 	},
  [1110129] = {
 		ID = 1110129 ,
-		Name = "50º∂ÂÛÕº÷Ω" ,
+		Name = "50º∂Õº÷Ω*ÂÛ" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6144,7 +6144,7 @@ tWarrantDB =
 	},
  [1110130] = {
 		ID = 1110130 ,
-		Name = "50º∂«πÕº÷Ω" ,
+		Name = "50º∂Õº÷Ω*«π" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6162,7 +6162,7 @@ tWarrantDB =
 	},
  [1110131] = {
 		ID = 1110131 ,
-		Name = "50º∂…»Õº÷Ω" ,
+		Name = "50º∂Õº÷Ω*…»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6180,7 +6180,7 @@ tWarrantDB =
 	},
  [1110132] = {
 		ID = 1110132 ,
-		Name = "60º∂µ∂Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*µ∂" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6198,7 +6198,7 @@ tWarrantDB =
 	},
  [1110133] = {
 		ID = 1110133 ,
-		Name = "60º∂Ω£Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*Ω£" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6216,7 +6216,7 @@ tWarrantDB =
 	},
  [1110134] = {
 		ID = 1110134 ,
-		Name = "60º∂’»Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*’»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6234,7 +6234,7 @@ tWarrantDB =
 	},
  [1110135] = {
 		ID = 1110135 ,
-		Name = "60º∂ÂÛÕº÷Ω" ,
+		Name = "60º∂Õº÷Ω*ÂÛ" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6252,7 +6252,7 @@ tWarrantDB =
 	},
  [1110136] = {
 		ID = 1110136 ,
-		Name = "60º∂«πÕº÷Ω" ,
+		Name = "60º∂Õº÷Ω*«π" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,
@@ -6270,7 +6270,7 @@ tWarrantDB =
 	},
  [1110137] = {
 		ID = 1110137 ,
-		Name = "60º∂…»Õº÷Ω" ,
+		Name = "60º∂Õº÷Ω*…»" ,
 		Class = ItemClass.Warrant ,
 		SubClass = ItemSubClass.Drawing ,
 		MaxPileNum = 1 ,

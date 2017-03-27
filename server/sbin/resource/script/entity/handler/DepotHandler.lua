@@ -1,40 +1,40 @@
 --[[DepotHandler.lua
-ÃèÊö£º
-	ÊµÌåµÄ²Ö¿âhandler
+æè¿°ï¼š
+	å®ä½“çš„ä»“åº“handler
 --]]
 
 DepotHandler = class(nil, Timer)
 
 function DepotHandler:__init(entity)
 	self._entity = entity
-	-- ²Ö¿â
+	-- ä»“åº“
 	self.depot = Depot(self._entity)
-	-- ¿ªÆô15ÃëµÄ¶¨Ê±Æ÷£¬¼ì²â¼ÆÊ±µÀ¾ßÊÇ·ñµ½ÆÚ
-	self.checkGoodsTimerID = g_timerMgr:regTimer(self, 1000*15, 1000*15, "¼ì²â²Ö¿â¼ÆÊ±µÀ¾ß")
+	-- å¼€å¯15ç§’çš„å®šæ—¶å™¨ï¼Œæ£€æµ‹è®¡æ—¶é“å…·æ˜¯å¦åˆ°æœŸ
+	self.checkGoodsTimerID = g_timerMgr:regTimer(self, 1000*15, 1000*15, "æ£€æµ‹ä»“åº“è®¡æ—¶é“å…·")
 end
 
 function DepotHandler:__release()
 	self._entity = nil
 	release(self.depot)
 	self.depot = nil
-	-- É¾³ı¶¨Ê±Æ÷
+	-- åˆ é™¤å®šæ—¶å™¨
 	g_timerMgr:unRegTimer(self.checkGoodsTimerID)
 end
 
--- »ñÈ¡²Ö¿â
+-- è·å–ä»“åº“
 function DepotHandler:getDepot()
 	return self.depot
 end
 
--- ¶¨Ê±Æ÷»Øµ÷
+-- å®šæ—¶å™¨å›è°ƒ
 function DepotHandler:update(timerID)
 	if timerID == self.checkGoodsTimerID then
-		-- ¼ì²â²Ö¿âµÀ¾ß
+		-- æ£€æµ‹ä»“åº“é“å…·
 		self.depot:checkItemExpire()
 	end
 end
 
--- »ñµÃ²Ö¿âÈİÁ¿
+-- è·å¾—ä»“åº“å®¹é‡
 function DepotHandler:getDepotCapability()
 	local depotCapability = 0
 	for packindex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
@@ -46,7 +46,7 @@ function DepotHandler:getDepotCapability()
 	return depotCapability
 end
 
--- ÉèÖÃ²Ö¿âÈİÁ¿
+-- è®¾ç½®ä»“åº“å®¹é‡
 function DepotHandler:setDepotCapability(curCapability)
 	local firstPack = self.depot:getPack(DepotPackIndex.First)
 	local secondPack = self.depot:getPack(DepotPackIndex.Second)

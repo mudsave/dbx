@@ -255,7 +255,7 @@ end
 local function HandleBattleFail(entity,reason)
 	repeat
 		if reason == BattleFail_Duplicate then
-			print(("%s已经在战斗了"):format(entity:getName()))
+			print(("%s已经在战斗了"):format(string.gbkToUtf8(entity:getName())))
 			break
 		end
 		if entity:getEntityType() ~= eClsTypePet then

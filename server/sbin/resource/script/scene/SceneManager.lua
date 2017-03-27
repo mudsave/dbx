@@ -309,6 +309,10 @@ end
 
 -- 创建煮酒论英雄场景
 function SceneManager:createDiscussHeroScene(mapID,activityMapID)
+	local toScene = self._DiscussHero[activityMapID]
+	if toScene then
+		return toScene
+	end
 	local mapConfig = mapDB[mapID]
 	if not mapConfig then
 		return -1

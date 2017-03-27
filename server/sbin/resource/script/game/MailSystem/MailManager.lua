@@ -3,7 +3,7 @@
 require 'game.MailSystem.Mail'
 require "game.MailSystem.MailBox"
 
-MailManager = class()
+MailManager = class(Singleton)
 
 function MailManager:__init()
 	self.mailBoxs	= {}	--所有玩家的邮箱
@@ -129,21 +129,18 @@ end
 function MailManager:addPlayerItems(player,items)
 	local packetEvent = Event.getEvent(MailEvent_SS_NewMail,player:getID(),player:getDBID(),
 		{
-			type = "系统邮件",
-			theme = "包裹容量不足",
+			type = string.utf8ToGbk "系统邮件",
+			theme = string.utf8ToGbk "包裹容量不足",
 			extra = items,
-			content = "包裹容量不足啊，赶紧买点券补充下吧"
+			expires = 24,
+			content = {"html",string.utf8ToGbk "包裹容量不足啊，赶紧买点券补充下吧"}
 		}
 	)
 	g_eventMgr:fireEvent(packetEvent)
 end
 
-local instance
 function MailManager.getInstance()
-	if not instance then
-		instance = MailManager()
-	end
-	return instance
+	return MailManager()
 end
 
 return MailManager

@@ -80,7 +80,8 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		normalTask:updateNpcHeader()
 		-- g_taskSystem:updateNormalTaskList(player, taskHandler:getNextID())
 		return true
-	elseif LoopTaskDB[taskID] then	
+	elseif LoopTaskDB[taskID] then
+
 		if not TaskCondition.loopTask(player, taskID, true, GM) then
 			print("任务条件不满足")
 			return false, 2
@@ -98,6 +99,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		-- g_taskSystem:updateLoopTaskList(player, taskHandler:getRecetiveTaskList())
 		taskHandler:updateTaskList(taskID, false)
 		return true
+		
 	elseif DailyTaskDB[taskID] then
 
 		if not TaskCondition.dailyTask(player, taskID, true, GM) then
@@ -122,6 +124,7 @@ end
 function TaskDoer:doDeleteTask(player, taskID, flag)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:setUpdateDB()
+	taskHandler:setLoopTaskSaveDB(taskID)
 	-- 在这之前还要移除私有NPC 和热区以及其他的任务物品
 	local privateHandler = player:getHandler(HandlerDef_TaskPrData)
 	local npcs = {}
@@ -222,7 +225,7 @@ function TaskDoer:loadNormalTask(player, recordList)
 			end
 			
 		end
-		g_taskSystem:onLoadPlayerTasksData(player, recordList)
+		--g_taskSystem:onLoadPlayerTasksData(player, recordList)
 	end
 
 end
@@ -335,9 +338,17 @@ function TaskDoer:updateRoleTask(player)
 			LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
 		end
 	end
-	taskHandler:updateLoopTaskRingToDB(taskID)
-	taskHandler:saveBabelTask()
+	self:updateLoopAndBabel(player)
 	self:updateRolePrivateTask(player)
+end
+
+-- 保存循环任务和天道任务
+function TaskDoer:updateLoopAndBabel(player)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	if taskHandler:getUpdateDB() then
+		taskHandler:updateLoopTaskRingToDB(taskID)
+		taskHandler:saveBabelTask()
+	end
 end
 
 function TaskDoer:updateRolePrivateTask(player)

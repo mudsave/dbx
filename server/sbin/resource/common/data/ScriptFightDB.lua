@@ -3736,6 +3736,16 @@ ScriptFightDB[5177] = {             -----------------上交宠物-50-54-魔兵
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10043},},
 }
 -------------------试炼任务完毕，请接下去-------------------------------------
+
+---------------------------------------天子猎金场活动，扛着锄头来打劫------------------------
+ScriptFightDB[6001] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39052,},{ID = 39052, },{ID = 39052, },{ID = 39052, },},
+	}
+ScriptFightDB[6002] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39052,},{ID = 39053, },{ID = 39053, },{ID = 39052, },},
+	}
+
+
 -------------------打赢了就给骑----坐骑战斗分割线----------------------------
 ScriptFightDB[7001] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39001,pos = 27 },},
@@ -3770,7 +3780,7 @@ ScriptFightDB[7010] = {
 
 
 -- 8001 - 9000 门派闯关活动战斗
-ScriptFightDB[8001] = {--乾元岛
+--[[ScriptFightDB[8001] = {--乾元岛
 	-- 战斗类型
 	subType = ScriptType.LuckyMonster,
 	-- 主怪信息
@@ -3813,7 +3823,7 @@ ScriptFightDB[8002] = {
 	-- 主怪信息
 	majorMonsterInfo = {{ID = 50060,pos = 21}},
 	-- 要刷新怪的信息
-	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50063,weight= 40},{ID = 50064,weight= 40},{ID = 50065,weight= 5},{ID = 50066,weight= 5},{ID = 50066,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 1,maxCount = 2,{ID = 50063,weight= 40},{ID = 50064,weight= 40},{ID = 50065,weight= 5},{ID = 50066,weight= 5},{ID = 50067,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
 	systemActions = {
 	      [1] = 
 	      {
@@ -4213,8 +4223,129 @@ ScriptFightDB[8012] = {
 	},
 	-- 奖励信息
 	LuckyRewardID = 1,
-}
+}--]]
 
+ScriptFightDB[8021] = {--乾元岛
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50060,pos = 21,max = 1,weight = -1},{ID = 50061,weight= 40},{ID = 50062,weight= 40},{ID = 50063,weight= 5},{ID = 50064,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8022] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50060,pos = 21,max = 1,weight = -1},{ID = 50061,weight= 30},{ID = 50062,weight= 30},{ID = 50063,weight= 15},{ID = 50064,weight= 15},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8023] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50060,pos = 21,max = 1,weight = -1},{ID = 50063,weight= 35},{ID = 50064,weight= 35},{ID = 50065,weight= 10},{ID = 50066,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8024] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50060,pos = 21,max = 1,weight = -1},{ID = 50063,weight= 25},{ID = 50064,weight= 25},{ID = 50065,weight= 20},{ID = 50066,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8025] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50060,pos = 21,max = 1,weight = -1},{ID = 50065,weight= 35},{ID = 50066,weight= 35},{ID = 50067,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8026] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50060,pos = 21,max = 1,weight = -1},{ID = 50065,weight= 10},{ID = 50066,weight= 10},{ID = 50067,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+
+
+
+
+ScriptFightDB[8031] = {--金霞山
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50070,pos = 21,max = 1,weight = -1},{ID = 50071,weight= 40},{ID = 50072,weight= 40},{ID = 50073,weight= 5},{ID = 50074,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8032] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50070,pos = 21,max = 1,weight = -1},{ID = 50071,weight= 30},{ID = 50072,weight= 30},{ID = 50073,weight= 15},{ID = 50074,weight= 15},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8033] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50070,pos = 21,max = 1,weight = -1},{ID = 50073,weight= 35},{ID = 50074,weight= 35},{ID = 50075,weight= 10},{ID = 50076,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8034] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50070,pos = 21,max = 1,weight = -1},{ID = 50073,weight= 25},{ID = 50074,weight= 25},{ID = 50075,weight= 20},{ID = 50076,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8035] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50070,pos = 21,max = 1,weight = -1},{ID = 50075,weight= 35},{ID = 50076,weight= 35},{ID = 50077,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8036] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50070,pos = 21,max = 1,weight = -1},{ID = 50075,weight= 10},{ID = 50076,weight= 10},{ID = 50077,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+
+
+
+ScriptFightDB[8041] = {--紫阳门
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50080,pos = 21,max = 1,weight = -1},{ID = 50081,weight= 40},{ID = 50082,weight= 40},{ID = 50083,weight= 5},{ID = 50084,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8042] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50080,pos = 21,max = 1,weight = -1},{ID = 50081,weight= 30},{ID = 50082,weight= 30},{ID = 50083,weight= 15},{ID = 50084,weight= 15},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8043] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50080,pos = 21,max = 1,weight = -1},{ID = 50083,weight= 35},{ID = 50084,weight= 35},{ID = 50085,weight= 10},{ID = 50086,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8044] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50080,pos = 21,max = 1,weight = -1},{ID = 50083,weight= 25},{ID = 50084,weight= 25},{ID = 50085,weight= 20},{ID = 50086,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8045] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50080,pos = 21,max = 1,weight = -1},{ID = 50085,weight= 35},{ID = 50086,weight= 35},{ID = 50087,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8046] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50080,pos = 21,max = 1,weight = -1},{ID = 50085,weight= 10},{ID = 50086,weight= 10},{ID = 50087,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+
+
+ScriptFightDB[8051] = {--云霄宫
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50090,pos = 21,max = 1,weight = -1},{ID = 50091,weight= 40},{ID = 50092,weight= 40},{ID = 50093,weight= 5},{ID = 50094,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8052] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50090,pos = 21,max = 1,weight = -1},{ID = 50091,weight= 30},{ID = 50092,weight= 30},{ID = 50093,weight= 15},{ID = 50094,weight= 15},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8053] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50090,pos = 21,max = 1,weight = -1},{ID = 50093,weight= 35},{ID = 50094,weight= 35},{ID = 50095,weight= 10},{ID = 50096,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8054] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50090,pos = 21,max = 1,weight = -1},{ID = 50093,weight= 25},{ID = 50094,weight= 25},{ID = 50095,weight= 20},{ID = 50096,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8055] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50090,pos = 21,max = 1,weight = -1},{ID = 50095,weight= 35},{ID = 50096,weight= 35},{ID = 50097,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8056] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50090,pos = 21,max = 1,weight = -1},{ID = 50095,weight= 10},{ID = 50096,weight= 10},{ID = 50097,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+
+
+ScriptFightDB[8061] = {--桃源洞
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50100,pos = 21,max = 1,weight = -1},{ID = 50101,weight= 40},{ID = 50102,weight= 40},{ID = 50103,weight= 5},{ID = 50104,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8062] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50100,pos = 21,max = 1,weight = -1},{ID = 50101,weight= 30},{ID = 50102,weight= 30},{ID = 50103,weight= 15},{ID = 50104,weight= 15},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8063] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50100,pos = 21,max = 1,weight = -1},{ID = 50103,weight= 35},{ID = 50104,weight= 35},{ID = 50105,weight= 10},{ID = 50106,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8064] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50100,pos = 21,max = 1,weight = -1},{ID = 50103,weight= 25},{ID = 50104,weight= 25},{ID = 50105,weight= 20},{ID = 50106,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8065] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50100,pos = 21,max = 1,weight = -1},{ID = 50105,weight= 35},{ID = 50106,weight= 35},{ID = 50107,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8066] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50100,pos = 21,max = 1,weight = -1},{ID = 50105,weight= 10},{ID = 50106,weight= 10},{ID = 50107,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+
+
+ScriptFightDB[8071] = {--蓬莱阁
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50110,pos = 21,max = 1,weight = -1},{ID = 50111,weight= 40},{ID = 50112,weight= 40},{ID = 50113,weight= 5},{ID = 50114,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8072] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50110,pos = 21,max = 1,weight = -1},{ID = 50111,weight= 30},{ID = 50112,weight= 30},{ID = 50113,weight= 15},{ID = 50114,weight= 15},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8073] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50110,pos = 21,max = 1,weight = -1},{ID = 50113,weight= 35},{ID = 50114,weight= 35},{ID = 50115,weight= 10},{ID = 50116,weight= 10},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8074] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50110,pos = 21,max = 1,weight = -1},{ID = 50113,weight= 25},{ID = 50114,weight= 25},{ID = 50115,weight= 20},{ID = 50116,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},	
+	}
+ScriptFightDB[8075] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50110,pos = 21,max = 1,weight = -1},{ID = 50115,weight= 35},{ID = 50116,weight= 35},{ID = 50117,weight= 20},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
+ScriptFightDB[8076] = {
+	monsters = {type=ScriptMonsterCreateType.Random,minCount = 8,maxCount = 8,{ID = 50110,pos = 21,max = 1,weight = -1},{ID = 50115,weight= 10},{ID = 50116,weight= 10},{ID = 50117,weight= 5},{ID = 50057,weight= 3},{ID = 50058,weight= 3},{ID = 50059,weight= 4}},
+	}
 
 
 
@@ -4466,6 +4597,442 @@ ScriptFightDB[45000] = {
 	-- 奖励信息
 	LuckyRewardID = 1,
 }
+-----------------------------------------7101~7999帮会环任务脚本------------------------------------------------------------------------------
+
+-----------------------帮会休闲任务-智擒真凶测试脚本----------------------
+
+ScriptFightDB[7101] = {                                                                
+
+	subType = ScriptType.Random, 
+	count = 1,	
+	isRepeat = false ,   
+
+	phases = {		
+		[1] = {	 --第一组 商人-小偷	
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			
+			monsters = {40100, 40112, 40129, 40113, 40114, 40115, 40116, 40101 },        
+			
+                        systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          --指定回合生效：round =指定回合数
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40100},bubbleID = 1000},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+							 {type = ScriptFightConditionType.IsAttacked, params={DBID = {40100, 40112, 40129, 40113, 40114, 40115, 40116,},}, },
+						       isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+
+		                  [3] = {
+
+			                  condition = {
+				                          {type = ScriptFightConditionType.AttrValue, params={DBID = 40101,type="hp",["<="] = 0},},
+				 
+			                              },
+
+			                  actions = {
+				                           {type = ScriptFightActionType.FightEnd,params={winner = "player" }},
+				                            --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                        },								
+	                                },          
+	              }, --第一组 商人-小偷
+		[2] = {	 --第二组 仙翁-童子	
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			
+			monsters = {40104, 40117, 40119, 40133, 40120, 40113, 40130, 40105 },        
+			
+                        systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          --指定回合生效：round =指定回合数
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40104},bubbleID = 1001},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+							 {type = ScriptFightConditionType.IsAttacked, params={DBID = {40104, 40117, 40119, 40133, 40120, 40113, 40130,},}, },
+						       isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+
+		                  [3] = {
+
+			                  condition = {
+				                          {type = ScriptFightConditionType.AttrValue, params={DBID = 40105,type="hp",["<="] = 0},},
+				 
+			                              },
+
+			                  actions = {
+				                           {type = ScriptFightActionType.FightEnd,params={winner = "player" }},
+				                            --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                        },								
+	                                },          
+	              }, --第二组 仙翁-童子
+		[3] = {	 --第三组 道长-蝙蝠	
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			
+			monsters = {40108, 40113, 40117, 40112, 40132, 40130, 40115, 40109 },        
+			
+                        systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          --指定回合生效：round =指定回合数
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40108},bubbleID = 1003},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+							 {type = ScriptFightConditionType.IsAttacked, params={DBID = {40108, 40113, 40117, 40112, 40132, 40130, 40115,},}, },
+						       isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+
+		                  [3] = {
+
+			                  condition = {
+				                          {type = ScriptFightConditionType.AttrValue, params={DBID = 40109,type="hp",["<="] = 0},},
+				 
+			                              },
+
+			                  actions = {
+				                           {type = ScriptFightActionType.FightEnd,params={winner = "player" }},
+				                            --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                        },								
+	                                },          
+	              }, --第三组 道长-蝙蝠
+		[4] = {	 --第四组 书吏-赵云	
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			
+			monsters = {40110, 40116, 40131, 40112, 40114, 40120, 40129, 40111 },        
+			
+                        systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40110},bubbleID = 1004},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+			                               {type = ScriptFightConditionType.IsAttacked, params={DBID = {40110, 40116, 40131, 40112, 40114, 40120, 40129,},}, },
+						       isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+						       },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+
+		                  [3] = {
+
+			                  condition = {
+				                          {type = ScriptFightConditionType.AttrValue, params={DBID = 40111,type="hp",["<="] = 0},},
+				 
+			                              },
+
+			                  actions = {
+				                           {type = ScriptFightActionType.FightEnd,params={winner = "player" }},
+				                            --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                        },								
+	                                },          
+	              }, --第四组 书吏-赵云
+
+        
+                 },
+
+                        rewards={			
+		                          mats={{ID=10001,count = 1},{ID=10002,count = 1}},		
+		                          exp = 1,												
+		                          money = 1,											
+		                          subMoney = 1,										
+	                        },
+                    }
+
+------------------挑战帮会守卫脚本-------------------------------------------
+
+ScriptFightDB[7102] = {        ----挑战帮会守卫                                                        
+
+	subType = ScriptType.Random, 
+	count = 1,	
+	isRepeat = false ,   
+
+	phases = {		
+		[1] = {	 --第一组
+			
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,			
+			monsters = {40136, 40137, 40138, 40139, 40140, 40141, 40142, 40143 },        			                                 
+	                systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40136},bubbleID = 1005},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+				       },
+		      }, --第一组 
+
+		[2] = {	 --第二组 	
+			
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			monsters = {40144, 40145, 40146, 40147, 40148, 40149, 40150, 40151 },                  
+	                systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40144},bubbleID = 1005},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+				       },
+		      }, --第二组 
+
+		[3] = {	 --第三组 
+		
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			monsters = {40152, 40153, 40154, 40155, 40156, 40157, 40158, 40159 },        
+			systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40152},bubbleID = 1005},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+				       },            
+	              }, --第三组 
+
+		[4] = {	 --第四组 
+		
+			typeID = 0, sceneID = "zd_huangye2.xml" ,isSpecialAction =true,
+			monsters = {40160, 40161, 40162, 40163, 40164, 40165, 40166, 40167 },        
+			systemActions = {                                                               
+
+		                  [1] = {								--执行行为ID，ID越小越先执行
+			                  condition = {						--此项不可省略，最少需要保留一行isAnd配置项，而不写入任何type项（即无条件触发触发）,count和isAnd仅能填入一条，其他的不限制条数
+
+				                        {type = ScriptFightConditionType.RoundInterval, params={period = 1,startRound = 1},},
+				                          
+
+				                         isAnd = true,
+				                         --多条件整合判断：true（需要满足全部条件才能触发），false（满足任意条件触发），此项不可省略
+
+				                         --count = 1,
+				                         --条件执行次数：不写则视为无限次
+			                              },
+			                  actions = {							--此处不可省略，可填入任意条动作使其生效
+				                        {type = ScriptFightActionType.PlayBubble,params={DBID={40160},bubbleID = 1005},},
+				                         --播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
+				
+				                         isSameTime = true,
+				                         --添加此项时表示action中的各项行为同时进行，否则可以不填入此项
+			                            },
+		                       },
+
+                                  [2] = {
+			                  condition = {
+				                         {type = ScriptFightConditionType.RoundCount, params={ round = 4 },},
+				                          --指定回合生效：round =指定回合数
+			                               },
+
+			                  actions = {
+				                         {type = ScriptFightActionType.FightEnd,params={winner = "monster" },},
+				                          --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                            },
+		                         },
+				       },          
+	              }, --第四组 
+
+        
+                 },
+
+                        rewards={			
+		                          mats={{ID=10001,count = 1},{ID=10002,count = 1}},		
+		                          exp = 1,												
+		                          money = 1,											
+		                          subMoney = 1,										
+	                        },
+                      }
+
 
 ----------------------------phases test 多阶段战斗脚本测试-------------------------------------------------------------------------------------
 
@@ -5024,4 +5591,3 @@ ScriptFightDB[12] = {
 	},
 },
 }
-

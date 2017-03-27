@@ -323,7 +323,7 @@ function Pet:setVisible(visible)
 
 	if visible then
 		if not player then
-			notice("宠物 %s 没有绑定玩家",self:getName())
+			notice("宠物 %s 没有绑定玩家",string.gbkToUtf8(self:getName()))
 			return
 		end
 

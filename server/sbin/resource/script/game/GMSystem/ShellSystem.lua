@@ -81,9 +81,11 @@ function ShellSystem:onAssign(player,text,value,targetID,entityType)
 		if fightServerID then
 			local attrName = detail[2]
 			g_eventMgr:fireWorldsEvent(
-				FightEvents_SF_SetAttr,
-				targetID,attrName,
-				tonumber(value)
+				Event.getEvent(
+					FightEvents_SF_SetAttr,
+					targetID,attrName,
+					tonumber(value)
+				),fightServerID
 			)
 		else
 			print("设置实体属性失败:战斗状态下的玩家没有战斗服ID")

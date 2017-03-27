@@ -404,7 +404,7 @@ local function RepairPet(pet)
 	pet:fill()
 	pet:setLoyalty(MaxPetLoyalty)
 
-	notice("宠物%s修复完毕",pet:getName())
+	notice("宠物%s修复完毕",string.gbkToUtf8(pet:getName()))
 end
 
 -- 修复所有宠物

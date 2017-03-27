@@ -949,8 +949,11 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 		
 		local packetHandler = targetEntity:getHandler(HandlerDef_Packet)
 		local packet = packetHandler:getPacket()
-		
-		local item = g_itemMgr:createItem(medicamentConfig.ReactExtraParam1, 1)
+		local itemLevel = medicamentConfig.UseNeedLvl
+		if itemLevel == -1 then
+			itemLevel = targetEntity:getLevel()
+		end
+		local item = g_itemMgr:createItem(medicamentConfig.ReactExtraParam1, 1,itemLevel)
 		packet:removeItemsFromGrid(packIndex, gridIndex, false)
 		packet:addItemsToGrid(item, packIndex, gridIndex, true)
 		treasureID = tItemDB[medicamentConfig.ReactExtraParam1].ReactExtraParam1

@@ -276,6 +276,9 @@ function DiscussHeroManager:doDiscussHeroPVEFight(player, param, npcID)
 			print("fightID",fightID)
 			self.fightRoleIDList[fightID] = npcID
 			print("self.fightRoleIDList",toString(self.fightRoleIDList))
+		else
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,12)
+			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
 end

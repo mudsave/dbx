@@ -28,30 +28,36 @@ end
 function Triggers.createBoss(roleID, param, task, isRandom)
 	local tarPosConfig = {}
 	local player = g_entityMgr:getPlayerByID(roleID)
+	local playerLevel = player:getLevel()
+	local conditions =
+	{
+		{type = "level" , param = {level = playerLevel, state = false}},
+		{type = "type" , param = {type = MapType.Wild}}
+	}
 	if isRandom then
 		local bossNpc = g_entityMgr:getBossTaskEntityByID(player:getDBID(), task:getID())
 		if not bossNpc then
-			task:stateChange(TaskStatus.Failed, true)
-			return
+			-- 重新随机位置，还是要创建， 不能把任务设置成失败
+			bossNpc = g_entityFct:createBoss(param.npcID, task:getEndTime())
+			local name = ("%s %s %s"):format( player:getName(), string.utf8ToGbk("召唤的"), NpcDB[param.npcID].name ) 
+			bossNpc:setName(name)
+			local mapId, x, y = g_sceneMgr:getValidEmptyPos(conditions)
+			print("创建boss",mapId, x, y)
+			local scene = g_sceneMgr:getSceneByID(mapId)
+			scene:attachEntity(bossNpc, x, y)
+			g_entityMgr:addUpdateEntity(bossNpc)
+			g_entityMgr:addBossTaskEntity(player:getDBID(), task:getID(), bossNpc)
 		end
-		tarPosConfig = 
-		{
-			taskID = task:getID(),
-			index = 1,
-			npcID = bossNpc:getDBID(),
-			mapID = bossNpc:getScene():getMapID(),
-			x = bossNpc:getPos()[2],
-			y = bossNpc:getPos()[3],
-		}
+		tarPosConfig.taskID = task:getID()
+		tarPosConfig.index = 1
+		tarPosConfig.npcID = bossNpc:getDBID()
+		tarPosConfig.mapID = bossNpc:getScene():getMapID()
+		tarPosConfig.x = bossNpc:getPos()[2]
+		tarPosConfig.y = bossNpc:getPos()[3]
 	else
-		local playerLevel = player:getLevel()
-		local conditions =
-		{
-			{type = "level" , param = {level = playerLevel, state = false}, },
-			{type = "type" , param = {type = MapType.Wild},}
-		}
 		local bossNpc = g_entityFct:createBoss(param.npcID, task:getEndTime())
-		local name = string.utf8ToGbk(player:getName().."召唤的"..NpcDB[param.npcID].name)
+		-- wrong use -_-:string.utf8ToGbk(player:getName().."召唤的"..NpcDB[param.npcID].name)
+		local name = ("%s %s %s"):format( player:getName(), string.utf8ToGbk("召唤的"), NpcDB[param.npcID].name ) 
 		bossNpc:setName(name)
 		local mapId, x, y = g_sceneMgr:getValidEmptyPos(conditions)
 		print("创建boss",mapId, x, y)
@@ -59,15 +65,12 @@ function Triggers.createBoss(roleID, param, task, isRandom)
 		scene:attachEntity(bossNpc, x, y)
 		g_entityMgr:addUpdateEntity(bossNpc)
 		g_entityMgr:addBossTaskEntity(player:getDBID(), task:getID(), bossNpc)
-		tarPosConfig = 
-		{
-			taskID = task:getID(),
-			index = 1,
-			npcID = param.npcID,
-			mapID = mapId,
-			x = x,
-			y = y,
-		}
+		tarPosConfig.taskID = task:getID()
+		tarPosConfig.index = 1
+		tarPosConfig.npcID = param.npcID
+		tarPosConfig.mapID = mapId
+		tarPosConfig.x = x
+		tarPosConfig.y = y
 	end
 	g_taskSystem:onSetDirect(player, tarPosConfig)
 end
@@ -906,7 +909,6 @@ function Triggers.brightMine(roleID, curParam, task, isRandom)
 	g_taskSystem:onSetDirect(player, config)
 end
 
-
 function Triggers.collectTrace(roleID, curParam, task, isRandom)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	if not isRandom then
@@ -946,4 +948,50 @@ function Triggers.collectTrace(roleID, curParam, task, isRandom)
 	g_taskSystem:notifyClient(player, TaskNotifyClientType.item, itemInfo)
 	g_taskSystem:onSetDirect(player, config)
 	
+end
+
+-- 上缴宠物，这个宠物是要去固定地方去买的
+function Triggers.createBuyPetTrace(roleID, curParam, task, isRandom)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	if not isRandom then
+		if table.size(curParam) == 0 then
+			local config = GetRandData(task, "createBuyPetTrace")
+			--local config_NPC = GetRandData(task, "createPaidItemTrace")
+			-- 传递参数
+			curParam.petID = config.petID
+			curParam.count = config.count
+			curParam.mapID = config.buyPosition.mapID
+			curParam.x = config.buyPosition.x
+			curParam.y = config.buyPosition.y
+			curParam.npcID = config.buyPosition.npcID
+			-- 如果有配置任务目标字段，则动态创建任务目标, 不去执行
+			local targetParam1 =
+			{
+				petID = curParam.petID,
+				count = curParam.count,
+				bor = true,
+			}
+			local target = createDynamicTarget(player, task, "TpaidPet", targetParam1)
+			-- 添加任务目标
+			task:addTarget(1, target)
+			local targets = {}
+			targets[1] = {}
+			targets[1].type = "TpaidPet"
+			targets[1].param = targetParam1
+			-- 配置拷贝
+			task:setTargetsConfig(targets)
+		end
+	end
+	-- 发送指引给客户端
+	local config =
+	{	
+		taskID = task:getID(),
+		petID = curParam.petID,
+		mapID = curParam.mapID,
+		npcID = curParam.npcID,
+		x = curParam.x,
+		y = curParam.y,
+	}
+	g_taskSystem:onSetDirect(player, config)
+	task:refresh()
 end

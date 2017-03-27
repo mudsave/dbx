@@ -163,13 +163,15 @@ function ItemManager:generateEquipBindAttr(propertyContext, itemConfig)
 end
 
 -- 生成道具属性现场
-function ItemManager:generatePropertyContext(item, itemConfig)
+function ItemManager:generatePropertyContext(item, itemConfig,level)
 	-- 设置道具属性现场
 	local propertyContext = {}
 	propertyContext.expireTime = 0
 	propertyContext.effect = 0
 	propertyContext.identityFlag = true
 	propertyContext.bindFlag = false
+	-- 初次创建时设置道具等级
+	propertyContext.level = level
 
 	-- 设置到期时间
 	if itemConfig.TimeLimitHours and itemConfig.TimeLimitHours > 0 then
@@ -211,7 +213,7 @@ function ItemManager:generatePropertyContext(item, itemConfig)
 end
 
 -- 创建道具
-function ItemManager:createItem(itemId, itemNum)
+function ItemManager:createItem(itemId, itemNum,level)
 	local itemConfig = tItemDB[itemId]
 	if not itemConfig then
 		-- 找不到道具配置
@@ -234,7 +236,7 @@ function ItemManager:createItem(itemId, itemNum)
 
 	if item then
 		-- 生成道具属性现场
-		self:generatePropertyContext(item, itemConfig)
+		self:generatePropertyContext(item, itemConfig,level)
 
 		-- 记录一下
 		self.items[item:getGuid()] = item
@@ -428,13 +430,177 @@ function ItemManager:saveItemsData(player)
 			-- 获得包裹道具
 			for gridIndex = 1, pack:getCapability() do
 				local item = pack:getGridItem(gridIndex)
-				if item and item:getDBState() == ItemDBstate.save then
+				if item then
 					-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
 					local propertyContext = item:getPropertyContext()
+					if item:getDBState() == ItemDBstate.save then
+						if item:getItemClass() ~= ItemClass.Equipment then
+							itemStringData = itemStringData..propertyContext.itemID.."-"
+							itemStringData = itemStringData..propertyContext.number.."-"
+							itemStringData = itemStringData..propertyContext.level.."-"
+							itemStringData = itemStringData..packet:getContainerID().."-"
+							itemStringData = itemStringData..packindex.."-"
+							itemStringData = itemStringData..gridIndex.."-"
+							itemStringData = itemStringData..(propertyContext.bindFlag and 1 or 0).."-"
+							itemStringData = itemStringData..propertyContext.expireTime.."-"
+							itemStringData = itemStringData..(propertyContext.effect or 0).."-"
+							if propertyContext.attr then
+								itemStringData = itemStringData..toString(propertyContext.attr).."-"
+							else
+								itemStringData = itemStringData.."nil".."-"
+							end
+							itemSaveNumber = itemSaveNumber + 1
+							if itemSaveNumber >= maxItemSaveNumber then
+								print("itemSaveNumber................................"..itemSaveNumber)
+								-- 请求数据库保存道具数据
+								LuaDBAccess.itemSave(playerDBID, itemSaveNumber, itemStringData)
+								-- 清空要保存的道具字符串
+								itemStringData = ""
+								-- 清零要保存的道具数目
+								itemSaveNumber = 0
+							end
+						else
+							equipStringData = equipStringData..propertyContext.itemID.."-"
+							equipStringData = equipStringData..propertyContext.number.."-"
+							equipStringData = equipStringData..propertyContext.level.."-"
+							equipStringData = equipStringData..packet:getContainerID().."-"
+							equipStringData = equipStringData..packindex.."-"
+							equipStringData = equipStringData..gridIndex.."-"
+							equipStringData = equipStringData..(propertyContext.bindFlag and 1 or 0).."-"
+							equipStringData = equipStringData..propertyContext.curDurability.."-"
+							if propertyContext.remouldAttr then
+								equipStringData = equipStringData..toString(propertyContext.remouldAttr).."-"
+							else
+								equipStringData = equipStringData.."nil".."-"
+							end
+							if propertyContext.baseEffect then
+								equipStringData = equipStringData..toString(propertyContext.baseEffect).."-"
+							else
+								equipStringData = equipStringData.."nil".."-"
+							end
+							if propertyContext.addEffect then
+								equipStringData = equipStringData..toString(propertyContext.addEffect).."-"
+							else
+								equipStringData = equipStringData.."nil".."-"
+							end
+							if propertyContext.bindEffect then
+								equipStringData = equipStringData..toString(propertyContext.bindEffect).."-"
+							else
+								equipStringData = equipStringData.."nil".."-"
+							end
+							if propertyContext.refiningEffect then
+								equipStringData = equipStringData..toString(propertyContext.refiningEffect).."-"
+							else
+								equipStringData = equipStringData.."nil".."-"
+							end
+							equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
+
+							equipSaveNumber = equipSaveNumber + 1
+							if equipSaveNumber >= maxEquipSaveNumber then
+								-- 请求数据库保存装备数据
+								LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
+								-- 清空要保存的装备字符串
+								equipStringData = ""
+								-- 清零要保存的装备数目
+								equipSaveNumber = 0
+							end
+						end
+					elseif item:getDBState() == ItemDBstate.update then
+						local ID = item:getDBID()
+						if item:getItemClass() ~= ItemClass.Equipment then
+							itemUpdateString = itemUpdateString..ID.."-"
+							itemUpdateString = itemUpdateString..propertyContext.number.."-"
+							itemUpdateString = itemUpdateString..propertyContext.level.."-"
+							itemUpdateString = itemUpdateString..packet:getContainerID().."-"
+							itemUpdateString = itemUpdateString..packindex.."-"
+							itemUpdateString = itemUpdateString..gridIndex.."-"
+							itemUpdateString = itemUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
+							itemUpdateString = itemUpdateString..propertyContext.expireTime.."-"
+							itemUpdateString = itemUpdateString..(propertyContext.effect or 0).."-"
+							if propertyContext.attr then
+								itemUpdateString = itemUpdateString..toString(propertyContext.attr).."-"
+							else
+								itemUpdateString = itemUpdateString.."nil".."-"
+							end
+							itemUpdateNumber = itemUpdateNumber + 1
+							if itemUpdateNumber >= maxItemSaveNumber then
+								print("itemUpdateNumber................................"..itemUpdateNumber)
+								-- 请求数据库更新道具数据
+								LuaDBAccess.itemUpdate(playerDBID, itemUpdateNumber, itemUpdateString)
+								-- 清空要更新的道具字符串
+								itemUpdateString = ""
+								-- 清零要更新的道具数目
+								itemUpdateNumber = 0
+							end
+						else
+							equipUpdateString = equipUpdateString..ID.."-"
+							equipUpdateString = equipUpdateString..propertyContext.number.."-"
+							equipUpdateString = equipUpdateString..propertyContext.level.."-"
+							equipUpdateString = equipUpdateString..packet:getContainerID().."-"
+							equipUpdateString = equipUpdateString..packindex.."-"
+							equipUpdateString = equipUpdateString..gridIndex.."-"
+							equipUpdateString = equipUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
+							equipUpdateString = equipUpdateString..propertyContext.curDurability.."-"
+							if propertyContext.remouldAttr then
+								equipUpdateString = equipUpdateString..toString(propertyContext.remouldAttr).."-"
+							else
+								equipUpdateString = equipUpdateString.."nil".."-"
+							end
+							if propertyContext.baseEffect then
+								equipUpdateString = equipUpdateString..toString(propertyContext.baseEffect).."-"
+							else
+								equipUpdateString = equipUpdateString.."nil".."-"
+							end
+							if propertyContext.addEffect then
+								equipUpdateString = equipUpdateString..toString(propertyContext.addEffect).."-"
+							else
+								equipUpdateString = equipUpdateString.."nil".."-"
+							end
+							if propertyContext.bindEffect then
+								equipUpdateString = equipUpdateString..toString(propertyContext.bindEffect).."-"
+							else
+								equipUpdateString = equipUpdateString.."nil".."-"
+							end
+							if propertyContext.refiningEffect then
+								equipUpdateString = equipUpdateString..toString(propertyContext.refiningEffect).."-"
+							else
+								equipUpdateString = equipUpdateString.."nil".."-"
+							end
+							equipUpdateString = equipUpdateString..(propertyContext.identityFlag and 1 or 0).."-"
+
+							equipUpdateNumber = equipUpdateNumber + 1
+							if equipUpdateNumber >= maxEquipSaveNumber then
+								-- 请求数据库更新装备数据
+								LuaDBAccess.equipUpdate(playerDBID, equipUpdateNumber, equipUpdateString)
+								-- 清空要更新的装备字符串
+								equipUpdateString = ""
+								-- 清零要保更新的装备数目
+								equipUpdateNumber = 0
+							end
+						end
+					end
+					self.items[item:getGuid()] = nil
+				end
+			end
+		end
+	end
+
+	-- 处理玩家仓库栏道具
+	local depotHandler = player:getHandler(HandlerDef_Depot)
+	local depot = depotHandler:getDepot()
+	for packindex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
+		local depotPack = depot:getPack(packindex)
+		for gridIndex = 1, depotPack:getCapability() do
+			local item = depotPack:getGridItem(gridIndex)
+			if item then
+				-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
+				local propertyContext = item:getPropertyContext()
+				if item:getDBState() == ItemDBstate.save then
 					if item:getItemClass() ~= ItemClass.Equipment then
 						itemStringData = itemStringData..propertyContext.itemID.."-"
 						itemStringData = itemStringData..propertyContext.number.."-"
-						itemStringData = itemStringData..packet:getContainerID().."-"
+						itemStringData = itemStringData..propertyContext.level.."-"
+						itemStringData = itemStringData..depot:getContainerID().."-"
 						itemStringData = itemStringData..packindex.."-"
 						itemStringData = itemStringData..gridIndex.."-"
 						itemStringData = itemStringData..(propertyContext.bindFlag and 1 or 0).."-"
@@ -447,7 +613,6 @@ function ItemManager:saveItemsData(player)
 						end
 						itemSaveNumber = itemSaveNumber + 1
 						if itemSaveNumber >= maxItemSaveNumber then
-							print("itemSaveNumber................................"..itemSaveNumber)
 							-- 请求数据库保存道具数据
 							LuaDBAccess.itemSave(playerDBID, itemSaveNumber, itemStringData)
 							-- 清空要保存的道具字符串
@@ -458,7 +623,8 @@ function ItemManager:saveItemsData(player)
 					else
 						equipStringData = equipStringData..propertyContext.itemID.."-"
 						equipStringData = equipStringData..propertyContext.number.."-"
-						equipStringData = equipStringData..packet:getContainerID().."-"
+						equipStringData = equipStringData..propertyContext.level.."-"
+						equipStringData = equipStringData..depot:getContainerID().."-"
 						equipStringData = equipStringData..packindex.."-"
 						equipStringData = equipStringData..gridIndex.."-"
 						equipStringData = equipStringData..(propertyContext.bindFlag and 1 or 0).."-"
@@ -500,14 +666,13 @@ function ItemManager:saveItemsData(player)
 							equipSaveNumber = 0
 						end
 					end
-				elseif item and item:getDBState() == ItemDBstate.update then
-					-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
-					local propertyContext = item:getPropertyContext()
+				elseif item:getDBState() == ItemDBstate.update then
 					local ID = item:getDBID()
-					if item:getItemClass() ~= ItemClass.Equipment then
+					if	item:getItemClass() ~= ItemClass.Equipment then
 						itemUpdateString = itemUpdateString..ID.."-"
 						itemUpdateString = itemUpdateString..propertyContext.number.."-"
-						itemUpdateString = itemUpdateString..packet:getContainerID().."-"
+						itemUpdateString = itemUpdateString..propertyContext.level.."-"
+						itemUpdateString = itemUpdateString..depot:getContainerID().."-"
 						itemUpdateString = itemUpdateString..packindex.."-"
 						itemUpdateString = itemUpdateString..gridIndex.."-"
 						itemUpdateString = itemUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
@@ -520,18 +685,18 @@ function ItemManager:saveItemsData(player)
 						end
 						itemUpdateNumber = itemUpdateNumber + 1
 						if itemUpdateNumber >= maxItemSaveNumber then
-							print("itemUpdateNumber................................"..itemUpdateNumber)
-							-- 请求数据库更新道具数据
+							-- 请求数据库保存道具数据
 							LuaDBAccess.itemUpdate(playerDBID, itemUpdateNumber, itemUpdateString)
-							-- 清空要更新的道具字符串
+							-- 清空要保存的道具字符串
 							itemUpdateString = ""
-							-- 清零要更新的道具数目
+							-- 清零要保存的道具数目
 							itemUpdateNumber = 0
 						end
 					else
 						equipUpdateString = equipUpdateString..ID.."-"
 						equipUpdateString = equipUpdateString..propertyContext.number.."-"
-						equipUpdateString = equipUpdateString..packet:getContainerID().."-"
+						equipUpdateString = equipUpdateString..propertyContext.level.."-"
+						equipUpdateString = equipUpdateString..depot:getContainerID().."-"
 						equipUpdateString = equipUpdateString..packindex.."-"
 						equipUpdateString = equipUpdateString..gridIndex.."-"
 						equipUpdateString = equipUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
@@ -565,169 +730,16 @@ function ItemManager:saveItemsData(player)
 
 						equipUpdateNumber = equipUpdateNumber + 1
 						if equipUpdateNumber >= maxEquipSaveNumber then
-							-- 请求数据库更新装备数据
+							-- 请求数据库保存装备数据
 							LuaDBAccess.equipUpdate(playerDBID, equipUpdateNumber, equipUpdateString)
-							-- 清空要更新的装备字符串
+							-- 清空要保存的装备字符串
 							equipUpdateString = ""
-							-- 清零要保更新的装备数目
+							-- 清零要保存的装备数目
 							equipUpdateNumber = 0
 						end
 					end
 				end
-			end
-		end
-	end
-
-	-- 处理玩家仓库栏道具
-	local depotHandler = player:getHandler(HandlerDef_Depot)
-	local depot = depotHandler:getDepot()
-	for packindex = DepotPackIndex.First, DepotPackIndex.MaxNum-1 do
-		local depotPack = depot:getPack(packindex)
-		for gridIndex = 1, depotPack:getCapability() do
-			local item = depotPack:getGridItem(gridIndex)
-			if item and item:getDBState() == ItemDBstate.save then
-				-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
-				local propertyContext = item:getPropertyContext()
-				if item:getItemClass() ~= ItemClass.Equipment then
-					itemStringData = itemStringData..propertyContext.itemID.."-"
-					itemStringData = itemStringData..propertyContext.number.."-"
-					itemStringData = itemStringData..depot:getContainerID().."-"
-					itemStringData = itemStringData..packindex.."-"
-					itemStringData = itemStringData..gridIndex.."-"
-					itemStringData = itemStringData..(propertyContext.bindFlag and 1 or 0).."-"
-					itemStringData = itemStringData..propertyContext.expireTime.."-"
-					itemStringData = itemStringData..(propertyContext.effect or 0).."-"
-					if propertyContext.attr then
-						itemStringData = itemStringData..toString(propertyContext.attr).."-"
-					else
-						itemStringData = itemStringData.."nil".."-"
-					end
-					itemSaveNumber = itemSaveNumber + 1
-					if itemSaveNumber >= maxItemSaveNumber then
-						-- 请求数据库保存道具数据
-						LuaDBAccess.itemSave(playerDBID, itemSaveNumber, itemStringData)
-						-- 清空要保存的道具字符串
-						itemStringData = ""
-						-- 清零要保存的道具数目
-						itemSaveNumber = 0
-					end
-				else
-					equipStringData = equipStringData..propertyContext.itemID.."-"
-					equipStringData = equipStringData..propertyContext.number.."-"
-					equipStringData = equipStringData..depot:getContainerID().."-"
-					equipStringData = equipStringData..packindex.."-"
-					equipStringData = equipStringData..gridIndex.."-"
-					equipStringData = equipStringData..(propertyContext.bindFlag and 1 or 0).."-"
-					equipStringData = equipStringData..propertyContext.curDurability.."-"
-					if propertyContext.remouldAttr then
-						equipStringData = equipStringData..toString(propertyContext.remouldAttr).."-"
-					else
-						equipStringData = equipStringData.."nil".."-"
-					end
-					if propertyContext.baseEffect then
-						equipStringData = equipStringData..toString(propertyContext.baseEffect).."-"
-					else
-						equipStringData = equipStringData.."nil".."-"
-					end
-					if propertyContext.addEffect then
-						equipStringData = equipStringData..toString(propertyContext.addEffect).."-"
-					else
-						equipStringData = equipStringData.."nil".."-"
-					end
-					if propertyContext.bindEffect then
-						equipStringData = equipStringData..toString(propertyContext.bindEffect).."-"
-					else
-						equipStringData = equipStringData.."nil".."-"
-					end
-					if propertyContext.refiningEffect then
-						equipStringData = equipStringData..toString(propertyContext.refiningEffect).."-"
-					else
-						equipStringData = equipStringData.."nil".."-"
-					end
-					equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
-
-					equipSaveNumber = equipSaveNumber + 1
-					if equipSaveNumber >= maxEquipSaveNumber then
-						-- 请求数据库保存装备数据
-						LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
-						-- 清空要保存的装备字符串
-						equipStringData = ""
-						-- 清零要保存的装备数目
-						equipSaveNumber = 0
-					end
-				end
-			elseif item and item:getDBState() == ItemDBstate.update then
-				-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
-				local propertyContext = item:getPropertyContext()
-				local ID = item:getDBID()
-				if	item:getItemClass() ~= ItemClass.Equipment then
-					itemUpdateString = itemUpdateString..ID.."-"
-					itemUpdateString = itemUpdateString..propertyContext.number.."-"
-					itemUpdateString = itemUpdateString..depot:getContainerID().."-"
-					itemUpdateString = itemUpdateString..packindex.."-"
-					itemUpdateString = itemUpdateString..gridIndex.."-"
-					itemUpdateString = itemUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
-					itemUpdateString = itemUpdateString..propertyContext.expireTime.."-"
-					itemUpdateString = itemUpdateString..(propertyContext.effect or 0).."-"
-					if propertyContext.attr then
-						itemUpdateString = itemUpdateString..toString(propertyContext.attr).."-"
-					else
-						itemUpdateString = itemUpdateString.."nil".."-"
-					end
-					itemUpdateNumber = itemUpdateNumber + 1
-					if itemUpdateNumber >= maxItemSaveNumber then
-						-- 请求数据库保存道具数据
-						LuaDBAccess.itemUpdate(playerDBID, itemUpdateNumber, itemUpdateString)
-						-- 清空要保存的道具字符串
-						itemUpdateString = ""
-						-- 清零要保存的道具数目
-						itemUpdateNumber = 0
-					end
-				else
-					equipUpdateString = equipUpdateString..ID.."-"
-					equipUpdateString = equipUpdateString..propertyContext.number.."-"
-					equipUpdateString = equipUpdateString..depot:getContainerID().."-"
-					equipUpdateString = equipUpdateString..packindex.."-"
-					equipUpdateString = equipUpdateString..gridIndex.."-"
-					equipUpdateString = equipUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
-					equipUpdateString = equipUpdateString..propertyContext.curDurability.."-"
-					if propertyContext.remouldAttr then
-						equipUpdateString = equipUpdateString..toString(propertyContext.remouldAttr).."-"
-					else
-						equipUpdateString = equipUpdateString.."nil".."-"
-					end
-					if propertyContext.baseEffect then
-						equipUpdateString = equipUpdateString..toString(propertyContext.baseEffect).."-"
-					else
-						equipUpdateString = equipUpdateString.."nil".."-"
-					end
-					if propertyContext.addEffect then
-						equipUpdateString = equipUpdateString..toString(propertyContext.addEffect).."-"
-					else
-						equipUpdateString = equipUpdateString.."nil".."-"
-					end
-					if propertyContext.bindEffect then
-						equipUpdateString = equipUpdateString..toString(propertyContext.bindEffect).."-"
-					else
-						equipUpdateString = equipUpdateString.."nil".."-"
-					end
-					if propertyContext.refiningEffect then
-						equipUpdateString = equipUpdateString..toString(propertyContext.refiningEffect).."-"
-					else
-						equipUpdateString = equipUpdateString.."nil".."-"
-					end
-					equipUpdateString = equipUpdateString..(propertyContext.identityFlag and 1 or 0).."-"
-
-					equipUpdateNumber = equipUpdateNumber + 1
-					if equipUpdateNumber >= maxEquipSaveNumber then
-						-- 请求数据库保存装备数据
-						LuaDBAccess.equipUpdate(playerDBID, equipUpdateNumber, equipUpdateString)
-						-- 清空要保存的装备字符串
-						equipUpdateString = ""
-						-- 清零要保存的装备数目
-						equipUpdateNumber = 0
-					end
-				end
+				self.items[item:getGuid()] = nil
 			end
 		end
 	end
@@ -738,99 +750,102 @@ function ItemManager:saveItemsData(player)
 	local equipPack = equip:getPack()
 	for gridIndex = 1, equipPack:getCapability() do
 		local item = equipPack:getGridItem(gridIndex)
-		if item and item:getDBState() == ItemDBstate.save then
-			equipSaveNumber = equipSaveNumber + 1
+		if item then 
 			-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
 			local propertyContext = item:getPropertyContext()
-			equipStringData = equipStringData..propertyContext.itemID.."-"
-			equipStringData = equipStringData..propertyContext.number.."-"
-			equipStringData = equipStringData..equip:getContainerID().."-"
-			equipStringData = equipStringData..EquipPackIndex.Default.."-"
-			equipStringData = equipStringData..gridIndex.."-"
-			equipStringData = equipStringData..(propertyContext.bindFlag and 1 or 0).."-"
-			equipStringData = equipStringData..propertyContext.curDurability.."-"
-			if propertyContext.remouldAttr then
-				equipStringData = equipStringData..toString(propertyContext.remouldAttr).."-"
-			else
-				equipStringData = equipStringData.."nil".."-"
-			end
-			if propertyContext.baseEffect then
-				equipStringData = equipStringData..toString(propertyContext.baseEffect).."-"
-			else
-				equipStringData = equipStringData.."nil".."-"
-			end
-			if propertyContext.addEffect then
-				equipStringData = equipStringData..toString(propertyContext.addEffect).."-"
-			else
-				equipStringData = equipStringData.."nil".."-"
-			end
-			if propertyContext.bindEffect then
-				equipStringData = equipStringData..toString(propertyContext.bindEffect).."-"
-			else
-				equipStringData = equipStringData.."nil".."-"
-			end
-			if propertyContext.refiningEffect then
-				equipStringData = equipStringData..toString(propertyContext.refiningEffect).."-"
-			else
-				equipStringData = equipStringData.."nil".."-"
-			end
-			equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
+			if item:getDBState() == ItemDBstate.save then
+				equipSaveNumber = equipSaveNumber + 1
+				equipStringData = equipStringData..propertyContext.itemID.."-"
+				equipStringData = equipStringData..propertyContext.number.."-"
+				equipStringData = equipStringData..propertyContext.level.."-"
+				equipStringData = equipStringData..equip:getContainerID().."-"
+				equipStringData = equipStringData..EquipPackIndex.Default.."-"
+				equipStringData = equipStringData..gridIndex.."-"
+				equipStringData = equipStringData..(propertyContext.bindFlag and 1 or 0).."-"
+				equipStringData = equipStringData..propertyContext.curDurability.."-"
+				if propertyContext.remouldAttr then
+					equipStringData = equipStringData..toString(propertyContext.remouldAttr).."-"
+				else
+					equipStringData = equipStringData.."nil".."-"
+				end
+				if propertyContext.baseEffect then
+					equipStringData = equipStringData..toString(propertyContext.baseEffect).."-"
+				else
+					equipStringData = equipStringData.."nil".."-"
+				end
+				if propertyContext.addEffect then
+					equipStringData = equipStringData..toString(propertyContext.addEffect).."-"
+				else
+					equipStringData = equipStringData.."nil".."-"
+				end
+				if propertyContext.bindEffect then
+					equipStringData = equipStringData..toString(propertyContext.bindEffect).."-"
+				else
+					equipStringData = equipStringData.."nil".."-"
+				end
+				if propertyContext.refiningEffect then
+					equipStringData = equipStringData..toString(propertyContext.refiningEffect).."-"
+				else
+					equipStringData = equipStringData.."nil".."-"
+				end
+				equipStringData = equipStringData..(propertyContext.identityFlag and 1 or 0).."-"
 
-			if equipSaveNumber >= maxEquipSaveNumber then
-				-- 请求数据库保存装备数据
-				LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
-				-- 清空要保存的装备字符串
-				equipStringData = ""
-				-- 清零要保存的装备数目
-				equipSaveNumber = 0
-			end
-		elseif item and item:getDBState() == ItemDBstate.update then
-			equipUpdateNumber = equipUpdateNumber + 1
-			-- 获得要保存的属性现场，各个属性之间用"-"符号来分割
-			local propertyContext = item:getPropertyContext()
-			local ID = item:getDBID()
-			equipUpdateString = equipUpdateString..ID.."-"
-			equipUpdateString = equipUpdateString..propertyContext.number.."-"
-			equipUpdateString = equipUpdateString..equip:getContainerID().."-"
-			equipUpdateString = equipUpdateString..EquipPackIndex.Default.."-"
-			equipUpdateString = equipUpdateString..gridIndex.."-"
-			equipUpdateString = equipUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
-			equipUpdateString = equipUpdateString..propertyContext.curDurability.."-"
-			if propertyContext.remouldAttr then
-				equipUpdateString = equipUpdateString..toString(propertyContext.remouldAttr).."-"
-			else
-				equipUpdateString = equipUpdateString.."nil".."-"
-			end
-			if propertyContext.baseEffect then
-				equipUpdateString = equipUpdateString..toString(propertyContext.baseEffect).."-"
-			else
-				equipUpdateString = equipUpdateString.."nil".."-"
-			end
-			if propertyContext.addEffect then
-				equipUpdateString = equipUpdateString..toString(propertyContext.addEffect).."-"
-			else
-				equipUpdateString = equipUpdateString.."nil".."-"
-			end
-			if propertyContext.bindEffect then
-				equipUpdateString = equipUpdateString..toString(propertyContext.bindEffect).."-"
-			else
-				equipUpdateString = equipUpdateString.."nil".."-"
-			end
-			if propertyContext.refiningEffect then
-				equipUpdateString = equipUpdateString..toString(propertyContext.refiningEffect).."-"
-			else
-				equipUpdateString = equipUpdateString.."nil".."-"
-			end
-			equipUpdateString = equipUpdateString..(propertyContext.identityFlag and 1 or 0).."-"
+				if equipSaveNumber >= maxEquipSaveNumber then
+					-- 请求数据库保存装备数据
+					LuaDBAccess.equipSave(playerDBID, equipSaveNumber, equipStringData)
+					-- 清空要保存的装备字符串
+					equipStringData = ""
+					-- 清零要保存的装备数目
+					equipSaveNumber = 0
+				end
+			elseif item:getDBState() == ItemDBstate.update then
+				equipUpdateNumber = equipUpdateNumber + 1
+				local ID = item:getDBID()
+				equipUpdateString = equipUpdateString..ID.."-"
+				equipUpdateString = equipUpdateString..propertyContext.number.."-"
+				equipUpdateString = equipUpdateString..propertyContext.level.."-"
+				equipUpdateString = equipUpdateString..equip:getContainerID().."-"
+				equipUpdateString = equipUpdateString..EquipPackIndex.Default.."-"
+				equipUpdateString = equipUpdateString..gridIndex.."-"
+				equipUpdateString = equipUpdateString..(propertyContext.bindFlag and 1 or 0).."-"
+				equipUpdateString = equipUpdateString..propertyContext.curDurability.."-"
+				if propertyContext.remouldAttr then
+					equipUpdateString = equipUpdateString..toString(propertyContext.remouldAttr).."-"
+				else
+					equipUpdateString = equipUpdateString.."nil".."-"
+				end
+				if propertyContext.baseEffect then
+					equipUpdateString = equipUpdateString..toString(propertyContext.baseEffect).."-"
+				else
+					equipUpdateString = equipUpdateString.."nil".."-"
+				end
+				if propertyContext.addEffect then
+					equipUpdateString = equipUpdateString..toString(propertyContext.addEffect).."-"
+				else
+					equipUpdateString = equipUpdateString.."nil".."-"
+				end
+				if propertyContext.bindEffect then
+					equipUpdateString = equipUpdateString..toString(propertyContext.bindEffect).."-"
+				else
+					equipUpdateString = equipUpdateString.."nil".."-"
+				end
+				if propertyContext.refiningEffect then
+					equipUpdateString = equipUpdateString..toString(propertyContext.refiningEffect).."-"
+				else
+					equipUpdateString = equipUpdateString.."nil".."-"
+				end
+				equipUpdateString = equipUpdateString..(propertyContext.identityFlag and 1 or 0).."-"
 
-			if equipUpdateNumber >= maxEquipSaveNumber then
-				-- 请求数据库保存装备数据
-				LuaDBAccess.equipUpdate(playerDBID, equipUpdateNumber, equipUpdateString)
-				-- 清空要保存的装备字符串
-				equipUpdateString = ""
-				-- 清零要保存的装备数目
-				equipUpdateNumber = 0
+				if equipUpdateNumber >= maxEquipSaveNumber then
+					-- 请求数据库保存装备数据
+					LuaDBAccess.equipUpdate(playerDBID, equipUpdateNumber, equipUpdateString)
+					-- 清空要保存的装备字符串
+					equipUpdateString = ""
+					-- 清零要保存的装备数目
+					equipUpdateNumber = 0
+				end
 			end
+			self.items[item:getGuid()] = nil
 		end
 	end
 

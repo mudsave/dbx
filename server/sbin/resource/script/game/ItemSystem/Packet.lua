@@ -661,7 +661,11 @@ function Packet:setBattlePack(battlePack)
 			end
 		else
 			-- 战斗奖励获得的道具，添加进背包
-			local item = g_itemMgr:createItem(itemInfo.itemID, itemInfo.itemNum)
+			local itemLevel = itemConfig.UseNeedLvl
+			if itemLevel == -1 then
+				itemLevel = self.owner:getLevel()
+			end
+			local item = g_itemMgr:createItem(itemInfo.itemID, itemInfo.itemNum,itemLevel)
 			if item then
 				self:addItems(item:getGuid(), false)
 			end

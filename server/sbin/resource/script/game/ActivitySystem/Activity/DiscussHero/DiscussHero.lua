@@ -21,7 +21,7 @@ DiscussHeroDB = {
 		readyPeriod			= 0.5,	-- 开始
 		ScondPeriod			= 0.5,	-- 第二阶段
 		ThirdPeriod			= 0.5,
-		preEndPeriod		= 0.5,
+		preEndPeriod		= 0.1,
 		-- 创建入口NPC位置
 		enterNpc = {npcDBID = 100000, mapID = 10, posX = 200,posY = 200},
 		-- 地图信息
@@ -78,6 +78,7 @@ function DiscussHero:open()
 		local scence = g_sceneMgr:getSceneByID(enterNpcInfo.mapID)
 		if scence and self.enterNpc then
 			scence:attachEntity(self.enterNpc,enterNpcInfo.posX,enterNpcInfo.posY)
+			self.scence = scence
 		end
 		-- 创建活动场景
 		local mapInfo = self.config.mapInfo
@@ -140,7 +141,12 @@ function DiscussHero:openSecondPeriod()
 end
 
 function DiscussHero:close()
-	-- 把玩家送回原来的地图
+	-- 关闭所有的定时器
+	if table.size(timerList) then
+		for timeState,rTimeID in pairs(timerList) do
+			g_timerMgr:unRegTimer(rTimeID)
+		end
+	end
 	-- 清空NPC
 	-- 发放奖励
 	-- 自动匹配PVP
@@ -154,6 +160,18 @@ function DiscussHero:closeActivity()
 	-- 关闭活动
 	g_discussHeroMgr:allExitDiscussHero()
 	-- 
+	g_discussHeroMgr:removeAllNpcFromeMap()
+	--
+	if self.enterNpc and self.scence then
+		self.scence:detachEntity(self.enterNpc)
+		g_entityMgr:removeNpc(self.enterNpc:getID())
+	end
+	local mapInfo = self.config.mapInfo
+	if mapInfo then
+		for mapInfoID, data in pairs(mapInfo) do
+			g_sceneMgr:releaseDiscussHero(data.mapID,mapInfoID)
+		end
+	end
 	g_activityMgr:removeActivity(gDiscussHeroActivityID)
 end
 

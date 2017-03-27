@@ -75,6 +75,7 @@ LoopTaskTargetType =
 	itemTalk			= 15,		-- 物品战斗
 
 	collectMaterials	= 16,		-- 收集材料
+	puzzle				= 17,		-- 拼图玩法
 }
 
 CanRecetiveLoopTaskLvl = 

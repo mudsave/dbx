@@ -84,8 +84,10 @@ function TransportationSystem:onCheckCanTransport( event )
 				local memberList = extraInfo.memberList
 				--将队员全部传送到指定地点
 				if memberList then
+					print("要飞的队员有哪些>>>>>>>",toString(memberList))
 					for index,memberInfo in pairs(memberList) do
 						if memberInfo ~= playerID then
+							print("这个时候，队员应该要起飞>>>>>>>>>>>>>>>>>")
 							g_sceneMgr:doSwitchScence(memberInfo.memberID,mapID,x,y)
 						end
 					end

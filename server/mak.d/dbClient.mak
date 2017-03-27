@@ -42,5 +42,5 @@ pre_build :
 post_build :
 
 check :
-	@echo "check dbClient2"
+	@echo "check dbClient"
 	@export LD_LIBRARY_PATH=../sbin/linux; ldd -u -r ../sbin/linux/dbClient.so; echo "ret = $$?"

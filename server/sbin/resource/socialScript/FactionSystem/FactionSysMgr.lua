@@ -122,7 +122,7 @@ function FactionSysMgr.onGetRoleInfo( dataList,roleDBID )
         DealMemberCount = DealMemberCount -1
     else
         DealMemberCount = DealMemberCount -1
-        print("从帮派中读取玩家信息失败，请检查玩家是否存在")
+        print("1.从帮派中读取玩家信息失败，请检查玩家是否存在")
     end
     if DealMemberCount == 0 then
         AlreadyLoadData.FactionData = true
@@ -161,7 +161,7 @@ function FactionSysMgr.onGetMemberInfo( dataList,roleDBID )
         DealMemberCount = DealMemberCount -1
     else
         DealMemberCount = DealMemberCount -1
-        print("从帮派中读取玩家信息失败，请检查玩家是否存在")
+        print("2.从帮派中读取玩家信息失败，请检查玩家是否存在")
     end
     if DealMemberCount == 0 then
         AlreadyLoadData.FactionData =  true

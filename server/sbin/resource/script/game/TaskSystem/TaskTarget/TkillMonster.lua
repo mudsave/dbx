@@ -51,8 +51,6 @@ function TkillMonster:getState()
 	return self._monsterCounts
 end
 
-
--- 当中卖物品的监听不有删除，还要持续监听
 function TkillMonster:removeWatchers()
 	
 end

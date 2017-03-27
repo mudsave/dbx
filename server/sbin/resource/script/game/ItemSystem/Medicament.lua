@@ -42,6 +42,7 @@ end
 function Medicament:setPropertyContext(context)
 	self.expireTime = context.expireTime
 	self.effect = tonumber(context.effect)
+	self.itemLvl = tonumber(context.level)
 	if context.attr and type(context.attr) == "string" then
 		context.attr = unserialize(context.attr)
 	end
@@ -53,7 +54,7 @@ function Medicament:getPropertyContext()
 	local context = {}
 	context.itemID = self:getItemID()
 	context.number = self:getNumber()
-	context.bindFlag = self:getBindFlag()
+	context.level = self:getItemLvl()
 	context.expireTime = self:getExpireTime()
 	context.effect = self:getEffect()
 	context.attr = self:getAttr()

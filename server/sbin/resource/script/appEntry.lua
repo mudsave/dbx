@@ -102,6 +102,7 @@ end
 function ManagedApp.onAReceive(...)
 	return RemoteEventProxy.areceive(...)
 end
+
 -- lua出错处理接口
 -- 可提供的功能
 -- 1,直接返回错误信息,供C++层打印

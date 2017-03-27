@@ -29,6 +29,7 @@ end
 -- 根据数据库现场设置属性
 function Warrant:setPropertyContext(context)
 	self.expireTime = context.expireTime
+	self.itemLvl = tonumber(context.level)
 	if context.attr and type(context.attr) == "string" then
 		context.attr = unserialize(context.attr)
 	end
@@ -40,6 +41,7 @@ function Warrant:getPropertyContext()
 	local context = {}
 	context.itemID = self:getItemID()
 	context.number = self:getNumber()
+	context.level = self:getItemLvl()
 	context.expireTime = self:getExpireTime()
 	context.lockFlag = self:getLockFlag()
 	context.attr = self:getAttr()

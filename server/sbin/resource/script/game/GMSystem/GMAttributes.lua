@@ -400,7 +400,7 @@ local function MakeGM(AttrDefine,AttrConfig,CMDPools,entityType)
 			if done then
 				entity:flushPropBatch()
 			else
-				print(("Entity %s set attribute %s failed!"):format(entity:getName(),config.alias))
+				print(("Entity %s set attribute %s failed!"):format(string.gbk2Utf8(entity:getName()),config.alias))
 			end
 		end
 

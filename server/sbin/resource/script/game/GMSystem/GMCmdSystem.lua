@@ -13,6 +13,21 @@ function GMSystem:yooo()
 	f:close()
 end
 
+ function GMSystem:send_mail_pack(player,...)
+	local kinds = select('#',...)
+	if kinds > 0 then
+		local items = {}
+		for index = 1,kinds do
+			local id = select(index,...)
+			items[#items + 1] = {
+				ID = tonumber(id),
+				Amount = 1,
+			}
+		end
+		g_mailMgr:addPlayerItems(player,items)
+	end
+end
+
 function GMSystem:addXP(player,xpValue)
 	print "玩家设置经验"
 	player:addAttrValue(player_xp,tonumber(xpValue))
@@ -71,7 +86,6 @@ function GMSystem:add_pet_extends(player,...)
 				handler:addSkill(PetSkill(id,3))
 			end
 		end
-		handler:sendFreshs(player)
 		handler:sendPassed(player)
 		pet:flushPropBatch(player)
 	else

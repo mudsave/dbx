@@ -136,7 +136,7 @@ function FactionSystem:onInvitePlayerToFaction( event )
 						msg = FactionMsgTextKeyTable.MsgSendSucceed
 						local roleName = role:getName()
 						local factionName = faction:getFactionName()
-						local event_Inform = Event.getEvent(c,MsgboxParams.MsgType.OnlineMsg,MsgboxParams.MsgKind.MsgKind_FactionInvite,roleName,g_encodeSysMgr.encodeDBID(factionDBID),factionName)
+						local event_Inform = Event.getEvent(FriendEvent_BC_ShowInform,MsgboxParams.MsgType.OnlineMsg,MsgboxParams.MsgKind.MsgKind_FactionInvite,roleName,g_encodeSysMgr.encodeDBID(factionDBID),factionName)
 						g_eventMgr:fireRemoteEvent(event_Inform,player)
 			end
 			local notifyParams = {msg = msg}
@@ -522,36 +522,39 @@ function FactionSystem:onShowFactionList( event )
     
     local params = event:getParams()
     local playerDBID = params[1]
-
     local allFactionList = g_socialEntityManager:getFactionList()
     local player = g_playerMgr:getPlayerByDBID(playerDBID)
-    local factionHandler = player:getHandler(HandlerDef_Faction)
-    local factionListShowInfos = {}
-    for _,faction in pairs(allFactionList) do
+    if player then
+        local factionHandler = player:getHandler(HandlerDef_Faction)
+        local factionListShowInfos = {}
+        for _,faction in pairs(allFactionList) do
 
-        local factionDBID = faction:getFactionDBID() 
-        local factionName = faction:getFactionName()
-        local factionOwnerName = faction:getFactionOwnerName()
-        local factionInform = faction:getFactionInform()
-        local factionMemberCount = table.size(faction:getMemberList())
-        local factionMemberMaxCount = FactionMaxMemberCount[faction:getFactionLevel()]
+            local factionDBID = faction:getFactionDBID() 
+            local factionName = faction:getFactionName()
+            local factionOwnerName = faction:getFactionOwnerName()
+            local factionInform = faction:getFactionInform()
+            local factionMemberCount = table.size(faction:getMemberList())
+            local factionMemberMaxCount = FactionMaxMemberCount[faction:getFactionLevel()]
 
-        local tempFactionListShowInfos = 
-        {
-            factionDBID = factionDBID,
-            factionName = factionName,
-            factionOwnerName = factionOwnerName,
-            factionState = "",
-            factionInform = factionInform,
-            factionMemberCount = factionMemberCount,
-            factionMemberMaxCount = factionMemberMaxCount,
-        }
-        table.insert( factionListShowInfos,tempFactionListShowInfos )
+            local tempFactionListShowInfos = 
+            {
+                factionDBID = factionDBID,
+                factionName = factionName,
+                factionOwnerName = factionOwnerName,
+                factionState = "",
+                factionInform = factionInform,
+                factionMemberCount = factionMemberCount,
+                factionMemberMaxCount = factionMemberMaxCount,
+            }
+            table.insert( factionListShowInfos,tempFactionListShowInfos )
 
+        end
+
+        local event_ShowFactionList = Event.getEvent(FactionEvent_BC_ShowFactionList,factionListShowInfos)
+        g_eventMgr:fireRemoteEvent(event_ShowFactionList,player)
+    else
+        print("玩家不存在>>>>>>>>>>>>>")
     end
-
-    local event_ShowFactionList = Event.getEvent(FactionEvent_BC_ShowFactionList,factionListShowInfos)
-    g_eventMgr:fireRemoteEvent(event_ShowFactionList,player)
 
 end
 

@@ -858,6 +858,7 @@ LoopTaskDB =
 				[LoopTaskTargetType.partrolScript] = 60,	        -- 暗雷战斗
 				[LoopTaskTargetType.deliverLetters] = 40,		    -- 送信
 				[LoopTaskTargetType.brightMine] = 60,		        -- 挑战明雷
+				--[LoopTaskTargetType.puzzle]		=100,
 			}
 		},
 		-- 公式奖励

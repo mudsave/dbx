@@ -316,6 +316,46 @@ function P2PTrade:dealTrade(role, targetRole, tradeInfo1, tradeInfo2)
 	if targPetSpace < (table.size(tradeInfo1.petInfo) - table.size(tradeInfo2.petInfo)) then
 		return 11
 	end
+	
+	--处理金钱接口
+	local money1 = tradeInfo1.money
+	local money2 = tradeInfo2.money
+	local roleMoney = role:getMoney()
+	local targetMoney = targetRole:getMoney()
+	if money1 and money1 > 0 then
+		if roleMoney < money1 then
+			return 12
+		end
+	end
+	if money2 and money2 > 0 then
+		if targetMoney < money2 then
+			return 13
+		end
+	end
+	
+	if money1 > 0 or money2 > 0 then 
+		if (roleMoney - money1 + money2 ) >= 999999999 then 
+			return 17
+		end 		
+		if (targetMoney - money2 + money1) >= 999999999 then 
+			return 18
+		end 
+		role:setMoney(roleMoney - money1 + money2)
+		targetRole:setMoney(targetMoney - money2 + money1)
+	end 
+	--发送金钱数据到客服端提示消息
+	if money2 > 0 then 
+		local event1 = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, 15, money2)
+		g_eventMgr:fireRemoteEvent(event1, role)	
+	end 
+	if money1 > 0 then 	
+		local event2 = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, 15, money1)
+		g_eventMgr:fireRemoteEvent(event2, targetRole)	
+	end 
+	
+	--设置2个传到客服端消息提示的表
+	local allItem1 = {}
+	local allItem2 = {}
 	--先从玩家1包裹移除物品
 	for _, itemInfo1 in pairs(tradeItemInfo1:getTradeItem() or {}) do
 		if itemInfo1 then
@@ -355,44 +395,52 @@ function P2PTrade:dealTrade(role, targetRole, tradeInfo1, tradeInfo2)
 	--玩家1包裹添加物品
 	for _, itemInfo2 in pairs(tradeItemInfo2:getTradeItem() or {}) do
 		if itemInfo2 then
+			local itemMessage1 = {}
 			local itemNum = itemInfo2.itemNum
 			local property = itemInfo2.property
 			local newItem = g_itemMgr:createItemFromContext(property, itemNum)
 			local newItemGuid = newItem:getGuid()
+			local newItemID = newItem:getItemID()
 			packetHandler1:addItems(newItemGuid)
+			--插到新表中
+			itemMessage1.itemID = newItemID
+			itemMessage1.itemNum = itemNum
+			table.insert(allItem1,itemMessage1)
 		end
 	end
-
+	--不是空表的话发送消息提示
+	if next(allItem1) then 
+		local event1 = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, 14, allItem1)
+		g_eventMgr:fireRemoteEvent(event1, role)	
+	end 
+	
+	--玩家2包裹添加物品
 	for _, itemInfo1 in pairs(tradeItemInfo1:getTradeItem() or {}) do
 		if itemInfo1 then
+			local itemMessage2 = {}
 			local itemNum = itemInfo1.itemNum
 			local property = itemInfo1.property
 			local newItem = g_itemMgr:createItemFromContext(property, itemNum)
 			local newItemGuid = newItem:getGuid()
+			local newItemID = newItem:getItemID()
 			packetHandler2:addItems(newItemGuid)
+			--插到新表中
+			itemMessage2.itemID = newItemID
+			itemMessage2.itemNum = itemNum
+			table.insert(allItem2,itemMessage2)
 		end
 	end
-
-	--处理金钱接口
-	local money1 = tradeInfo1.money
-	local money2 = tradeInfo2.money
-	local roleMoney = role:getMoney()
-	local targetMoney = targetRole:getMoney()
-	if money1 and money1 > 0 then
-		if roleMoney < money1 then
-			return 12
-		end
-	end
-	if money2 and money2 > 0 then
-		if targetMoney < money2 then
-			return 13
-		end
-	end
-	role:setMoney(roleMoney - money1 + money2)
-	targetRole:setMoney(targetMoney - money2 + money1)
+	--不是空表的话发送消息提示
+	if next(allItem2) then 
+		local event2 = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, 14, allItem2)
+		g_eventMgr:fireRemoteEvent(event2, targetRole)	
+	end 
+	
 	-- 处理宠物接口 --后期还要加上一些判断
 	local petInfo1 = tradeInfo1.petInfo
 	local petInfo2 = tradeInfo2.petInfo
+	local petName1 = {}	 	--传给自己客服端的宠物名字提示
+	local petName2 = {} 		--传给交易对象客服端的宠物名字提示
 	-- 先删除 
 	if table.size(petInfo1) > 0 then
 		for petID1, _ in pairs(petInfo1) do
@@ -414,10 +462,16 @@ function P2PTrade:dealTrade(role, targetRole, tradeInfo1, tradeInfo2)
 		local petConfigID = pet:getConfigID()
 		local petName = PetDB[petConfigID].petName
 		pet:setName(petName)
+		table.insert(petName2,petName)
 		-- 宠物不在场景当中
 		targetRole:addPet(pet)
 	end
-
+	--不是空表的话发送消息提示
+	if next(petName2) then 
+		local event2 = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, 16, petName2)
+		g_eventMgr:fireRemoteEvent(event2, targetRole)	
+	end 
+	
 	for petID2, pet in pairs(petInfo2) do
 		pet:setOwner(role)
 		pet:setPetStatus(PetStatus.Rest)
@@ -425,8 +479,14 @@ function P2PTrade:dealTrade(role, targetRole, tradeInfo1, tradeInfo2)
 		local petConfigID = pet:getConfigID()
 		local petName = PetDB[petConfigID].petName
 		pet:setName(petName)
+		table.insert(petName1,petName)
 		role:addPet(pet)
 	end
+	--不是空表的话发送消息提示
+	if next(petName1) then 
+		local event1 = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, 16, petName1)
+		g_eventMgr:fireRemoteEvent(event1, role)	
+	end 
 	return 0
 end
 

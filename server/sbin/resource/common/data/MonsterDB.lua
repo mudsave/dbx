@@ -219,7 +219,7 @@ MonsterDB = {
      },
      [10020] = {
 	     name = "Á÷¿Ü",
-	     modelID = 151,
+	     modelID = 137,
 	     level =25,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
@@ -392,8 +392,8 @@ MonsterDB = {
 	     bindMoneyPrize =65,
      },
      [10035] = {
-	     name = "ÇÙÄ§Å®",
-	     modelID = 118,
+	     name = "ºü¼§",
+	     modelID = 681,
 	     level =43,
 	     attrID = 1,
 	     phaseType = PhaseType.None,
@@ -609,7 +609,7 @@ MonsterDB = {
      },
      [10209] = {
 	     name = "Á÷¿Ü",
-	     modelID = 151,
+	     modelID = 137,
 	     level =30,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
@@ -797,8 +797,8 @@ MonsterDB = {
 	     bindMoneyPrize =65,
      },
      [10226] = {
-	     name = "ÇÙÄ§Å®",
-	     modelID = 118,
+	     name = "ºü¼§",
+	     modelID = 681,
 	     level =43,
 	     attrID = 1,
 	     phaseType = PhaseType.None,
@@ -986,7 +986,7 @@ MonsterDB = {
      },
      [10309] = {
 	     name = "Á÷¿Ü±¦±¦",
-	     modelID = 151,
+	     modelID = 137,
 	     level =30,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
@@ -1163,8 +1163,8 @@ MonsterDB = {
 	     bindMoneyPrize =130,
      },
      [10325] = {
-	     name = "ÇÙÄ§Å®±¦±¦",
-	     modelID = 118,
+	     name = "ºü¼§±¦±¦",
+	     modelID = 681,
 	     level =42,
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,
@@ -1363,7 +1363,7 @@ MonsterDB = {
      },
      [10409] = {
 	     name = "Á÷¿Ü±äÒì",
-	     modelID = 151,
+	     modelID = 137,
 	     level =30,
 	     attrID = 1,
 	     phaseType = PhaseType.Fire,
@@ -1540,8 +1540,8 @@ MonsterDB = {
 	     bindMoneyPrize =280,
      },
      [10425] = {
-	     name = "ÇÙÄ§Å®±äÒì",
-	     modelID = 118,
+	     name = "ºü¼§±äÒì",
+	     modelID = 681,
 	     level =42,
 	     attrID = 1,
 	     phaseType = PhaseType.Wind,

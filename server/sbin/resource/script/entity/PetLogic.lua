@@ -138,7 +138,7 @@ function Pet:onAdded(player)
 		player = g_entityMgr:getPlayerByID(self:getOwnerID())
 	end
 	if not player then
-		notice("宠物%s没有绑定所有者",self:getName())
+		notice("宠物%s没有绑定所有者",string.gbkToUtf8(self:getName()))
 		return
 	end
 	self:setOwner(player)

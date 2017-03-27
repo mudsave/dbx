@@ -93,9 +93,15 @@ function DialogAction:doEnterScriptFight(player, param)
 		--根据权重得到脚本ID
 		scriptID = 30
 		mapID =  nil
-
-
-
+		local taskID = param.taskID
+		if taskID then
+			local task = player:getHandler(HandlerDef_Task):getTask(taskID)
+			local targets = task:getTargets()
+			for idx,target in pairs(targets) do
+				print("添加scriptID>>>>>>>>>>>>>>>>>>>")
+				target:addScriptID(scriptID)
+			end
+		end
 	else
 		scriptID = param.scriptID
 		mapID =  param.mapID
@@ -308,6 +314,7 @@ function DialogAction:doMayTaskFight(player, param)
 		-- 再接指定的类型的任务
 		local loopTask = g_taskFty:createLoopTask(player, taskID, LoopTaskTargetType.talkScript)
 		loopTask:setReceiveTaskLvl(player:getLevel())
+		taskHandler:addTask(loopTask)
 		taskHandler:updateTaskList(taskID, false)
 	end
 end
@@ -581,7 +588,7 @@ function DialogAction:doConsumeRecetiveTask(player, param, npcID)
 		end
 	end
 	if result == 11 then
-		print("taskID",taskID)
+		print("接受了消耗型任务，任务ID为taskID",taskID)
 		g_taskDoer:doRecetiveTask(player, taskID)
 	else 
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, result)

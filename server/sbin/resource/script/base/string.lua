@@ -147,37 +147,24 @@ end
 ---------------gbk2utf8 ------and-----utf82gbk--------------------
 local gbk2utf8cd = iconv.new("utf-8","gb2312")
 local utf82gbkcd = iconv.new("gbk" ,"utf-8")
-
+local iconv_errors = {
+	[ iconv.ERROR_INCOMPLETE ]	= "Incomplete input",
+	[ iconv.ERROR_NO_MEMORY ]	= "Failed to allocate memory",
+	[ iconv.ERROR_INVALID ]		= "Invalid input",
+	[ iconv.ERROR_UNKNOWN ]		= "There was an unknown error"
+}
 function string.gbkToUtf8(str)
 	local utf8string, err = gbk2utf8cd:iconv(str)
-	if err == iconv.ERROR_INCOMPLETE then
-		print("ERROR: Incomplete input.")
-		return
-	elseif err == iconv.ERROR_INVALID then
-		print("ERROR: Invalid input.")
-		return
-	elseif err == iconv.ERROR_NO_MEMORY then
-		print("ERROR: Failed to allocate memory.")
-		return
-	elseif err == iconv.ERROR_UNKNOWN then
-		print("ERROR: There was an unknown error.")
-		return
+	if err then
+		error(iconv_errors[err] or "unknown error")
 	end
-	print("utf8string",utf8string)
 	return utf8string
 end
 
 function string.utf8ToGbk(str)
 	local gbkstring, err = utf82gbkcd:iconv(str)
-	if err == iconv.ERROR_INCOMPLETE then
-		print("ERROR: Incomplete input.")
-	elseif err == iconv.ERROR_INVALID then
-		print("ERROR: Invalid input.")
-	elseif err == iconv.ERROR_NO_MEMORY then
-		print("ERROR: Failed to allocate memory.")
-	elseif err == iconv.ERROR_UNKNOWN then
-		print("ERROR: There was an unknown error.")
+	if err then
+		error(iconv_errors[err] or "unknown error")
 	end
-	print("gbkstring",gbkstring)
 	return gbkstring
 end

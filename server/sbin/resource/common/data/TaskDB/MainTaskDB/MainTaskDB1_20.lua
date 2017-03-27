@@ -460,6 +460,10 @@ MainTaskDB1_20 =
 					},
 			    },
 			},
+			[TaskStatus.Done]		=
+			{
+			{type="openDialog", param={dialogID = 129},},--在任务结束时打开一个对话框
+			},
 		},
 	},
 -------------------------------乾元岛结束--------------------------------------
@@ -818,6 +822,10 @@ MainTaskDB1_20 =
 						},
 					},
 			    },
+			},
+			[TaskStatus.Done]		=
+			{
+			{type="openDialog", param={dialogID = 151},},--在任务结束时打开一个对话框
 			},
 		},
 	},
@@ -1179,6 +1187,10 @@ MainTaskDB1_20 =
 					},
 			    },
 			},
+			[TaskStatus.Done]		=
+			{
+			{type="openDialog", param={dialogID = 173},},--在任务结束时打开一个对话框
+			},
 		},
 	},
 -------------------------------金霞山结束--------------------------------------
@@ -1533,6 +1545,10 @@ MainTaskDB1_20 =
 						},
 					},
 			    },
+			},
+			[TaskStatus.Done]		=
+			{
+			{type="openDialog", param={dialogID = 195},},--在任务结束时打开一个对话框
 			},
 		},
 	},
@@ -1889,6 +1905,10 @@ MainTaskDB1_20 =
 					},
 			    },
 			},
+			[TaskStatus.Done]		=
+			{
+			{type="openDialog", param={dialogID = 217},},--在任务结束时打开一个对话框
+			},
 		},
 	},
 -------------------------------紫阳门结束--------------------------------------
@@ -2243,6 +2263,10 @@ MainTaskDB1_20 =
 						},
 					},
 			    },
+			},
+			[TaskStatus.Done]		=
+			{
+			{type="openDialog", param={dialogID = 239},},--在任务结束时打开一个对话框
 			},
 		},
 	},

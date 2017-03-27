@@ -22,6 +22,7 @@ function TaskFactory:createNormalTask(player, taskID)
 	if normalTaskData.limitTime then
 		normalTask:setStartTime(os.time())
 		normalTask:setEndTime(normalTaskData.limitTime)
+		g_taskSystem:onStartTimer(player, taskID, math.floor(normalTaskData.limitTime/60))
 	end
 	local hasTarget = self:buildTaskTarget(player, normalTask, normalTaskData.targets)
 	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
@@ -55,8 +56,6 @@ function TaskFactory:createLoopTask(player, taskID, tarType)
 	loopTask:setItemRewards(loopTaskData.itemRewards)
 	
 	-- 设置开始时间
-	--loopTask:setStartTime(os.time())
-	-- 这个也是拷贝进去的
 	loopTask:setTargetsConfig(datas.targets)
 	-- 动态拷贝进去
 	loopTask:setTriggers(datas.triggers)
@@ -65,11 +64,11 @@ function TaskFactory:createLoopTask(player, taskID, tarType)
 	loopTask:setRingIdx(ringIdx)
 	loopTask:setUpdateDB()
 	-- 如果有时间限制
-	--print("da>>>>>>>>>>>>>>", datas.limitTime)
+	--设置时间并开启计时器
 	if datas.limitTime then
 		loopTask:setStartTime(os.time())
 		loopTask:setEndTime(datas.limitTime)
-		g_taskSystem:onStartTimer(player, taskID, datas.limitTime)
+		g_taskSystem:onStartTimer(player, taskID, math.floor(datas.limitTime/60))
 	end
 	if datas.triggers[TaskStatus.Active] then
 		loopTask:stateChange(TaskStatus.Active)
@@ -80,6 +79,7 @@ function TaskFactory:createLoopTask(player, taskID, tarType)
 	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:setUpdateDB()
+	taskHandler:setLoopTaskSaveDB(taskID)
 	return loopTask
 end
 
@@ -118,6 +118,7 @@ function TaskFactory:createLoopByTask(task, roleID)
 	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:setUpdateDB()
+	taskHandler:setLoopTaskSaveDB(task:getID())
 	return loopTask
 end
 
@@ -130,11 +131,28 @@ function TaskFactory:createNormalTaskFromDB(player, taskData)
 	normalTask:setRewards(normalTaskData.rewards)
 	normalTask:setTriggers(normalTaskData.triggers)
 	normalTask:setSubType(normalTaskData.taskType2)
-	if taskData.endTime and taskData.endTime > 0 and os.time() > taskData.endTime then
-		normalTask:stateChange(TaskStatus.Failed, true)
-		return normalTask
+	local curTime = os.time()
+	if taskData.endTime > 0 then
+		normalTask:setEndTime(taskData.endTime, true)
+		if curTime < taskData.endTime then
+			local leftTime = math.floor((taskData.endTime - curTime)/60)
+			if leftTime > 0 then
+				g_taskSystem:onStartTimer(player,taskData.taskID, leftTime)
+			else
+				if taskData.targetState ~= TaskStatus.Failed then
+					normalTask:setUpdateDB()
+				end
+				normalTask:stateChange(TaskStatus.Failed, true)
+				return normalTask
+			end
+		else
+			if taskData.targetState ~= TaskStatus.Failed then
+				normalTask:setUpdateDB()
+			end
+			normalTask:stateChange(TaskStatus.Failed, true)
+			return normalTask
+		end
 	end
-	normalTask:setEndTime(taskData.endTime, true)
 	local hasTarget = self:buildTaskTarget(player, normalTask, normalTaskData.targets, taskData.targetState)
 	if hasTarget then
 		if not normalTask:canEnd() then
@@ -164,7 +182,6 @@ function TaskFactory:createLoopTaskFromDB(player, taskData)
 	loopTask:setNormalRewards(loopTaskData.normalRewards)
 	loopTask:setItemRewards(loopTaskData.itemRewards)
 	-- 直接设置结束时间
-	--loopTask:setEndTime(taskData.endTime, true)
 	loopTask:setTargetType(taskData.targetType)
 	loopTask:setGradeIdx(taskData.gradeIdx)
 	loopTask:setRingIdx(taskData.ringIdx)
@@ -175,7 +192,22 @@ function TaskFactory:createLoopTaskFromDB(player, taskData)
 	if taskData.endTime > 0 then
 		loopTask:setEndTime(taskData.endTime, true)
 		if curTime < taskData.endTime then
-			g_taskSystem:onStartTimer(player, taskID, taskData.endTime - os.time())
+			local leftTime = math.floor((taskData.endTime - curTime)/60)
+			if leftTime > 0 then
+				g_taskSystem:onStartTimer(player, taskID, leftTime)
+			else
+				if taskData.targetState ~= TaskStatus.Failed then
+					loopTask:setUpdateDB()
+				end
+				loopTask:stateChange(TaskStatus.Failed, true)
+				return loopTask
+			end
+		else
+			if taskData.targetState ~= TaskStatus.Failed then
+				loopTask:setUpdateDB()
+			end
+			loopTask:stateChange(TaskStatus.Failed, true)
+			return loopTask
 		end
 	end
 	local c,targets = pcall(loadstring("return "..taskData.targets))
@@ -183,23 +215,15 @@ function TaskFactory:createLoopTaskFromDB(player, taskData)
 	local c ,triggers = pcall(loadstring("return "..taskData.triggers))
 	loopTask:setTriggers(triggers)
 	local hasTarget = self:buildTaskTarget(player, loopTask, loopTask:getTargetsConfig(), taskData.targetState)
-	if curTime < taskData.endTime then
-		if hasTarget then
-			if not loopTask:canEnd() then
-				loopTask:stateChange(TaskStatus.Active, true)
-			else
-				loopTask:stateChange(TaskStatus.Done, true)
-			end
+	if hasTarget then
+		if not loopTask:canEnd() then
+			loopTask:stateChange(TaskStatus.Active, true)
 		else
 			loopTask:stateChange(TaskStatus.Done, true)
 		end
 	else
-		if taskData.targetState ~= TaskStatus.Failed then
-			loopTask:setUpdateDB()
-		end
-		loopTask:stateChange(TaskStatus.Failed, true)
+		loopTask:stateChange(TaskStatus.Done, true)
 	end
-	-- 这个地方还有做一下处理
 	return loopTask
 end
 
@@ -227,6 +251,7 @@ function TaskFactory:createLoopTaskData(player, taskID, tarType)
 	-- 再根据等级随那个等级段
 	local levelIdx = GetLevelIndex(player, RandDataSectionDB[taskID])
 	local ringIdx =  GetRingIndex(player, TaskRingSectionDB[taskID], taskID)
+	print("随机到的任务数据为>>>>>>>>>>>>>>>>",toString(LoopTaskTargetsDB[taskID][targetType]))
 	return LoopTaskTargetsDB[taskID][targetType], targetType, levelIdx, ringIdx
 
 end
@@ -281,6 +306,8 @@ function TaskFactory:createDailyTask( player,taskID )
 end
 
 function TaskFactory:createDailyTaskFromDB(player, taskData)
+
+	print("准备从数据库接受数据创建任务>>>>>>>>>>>>>>>>>")
 	local dailyTaskData = DailyTaskDB[taskData.taskID]
 	local taskTarget = unserialize(taskData.targets)
 	local dailyTask = DailyTask()
@@ -297,6 +324,7 @@ function TaskFactory:createDailyTaskFromDB(player, taskData)
 		dailyTask:setStartTime(os.time())
 		dailyTask:setEndTime(dailyTaskData.limitTime)
 	end
+	dailyTask:setUpdateDB()
 	local hasTarget = self:buildTaskTarget(player, dailyTask,taskTarget)
 	-- 如果有任务目标状态设置为Active，没有任务目标的任务为Done
 	if hasTarget then
@@ -308,7 +336,10 @@ function TaskFactory:createDailyTaskFromDB(player, taskData)
 	else
 		dailyTask:stateChange(TaskStatus.Done,true)
 	end
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	taskHandler:setUpdateDB()
 	return dailyTask
+
 end
 
 -- 创建通天塔任务, rewardType 奖励类型， layer玩家任务对对应的层数, 数据库和普通的, 最后飞升层数

@@ -71,6 +71,8 @@ require "data.ActivityDB.ActivityPageDB.ActivityPageDaliyDB"
 require "data.ActivityDB.BeastBlessDB.BeastBlessInMapDB"
 require "data.ActivityDB.BeastBlessDB.BeastBlessRewardDB"
 require "data.ActivityDB.CatchPetDB.CatchPetDB"
+
+require "data.PizzleDB"
 -- require "data.PetStudyDB"
 -- require "data.SkillDB.PetSkillDB"
 -- require "data.SkillDB.PetSkillDataDB"
