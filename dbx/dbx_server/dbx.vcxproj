@@ -26,8 +26,6 @@
     <ClInclude Include="..\..\server\codes\dbx\inc\NetworkInterface.h" />
     <ClInclude Include="..\..\server\codes\dbx\inc\Singleton.h" />
     <ClInclude Include="..\..\server\codes\dbx\inc\SwapList.h" />
-    <ClInclude Include="..\..\server\tools\tinyxml\tinystr.h" />
-    <ClInclude Include="..\..\server\tools\tinyxml\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\server\codes\dbx\src\DBFactory.cpp" />
@@ -41,11 +39,6 @@
     <ClCompile Include="..\..\server\codes\dbx\src\DBXMessageTranslate.cpp" />
     <ClCompile Include="..\..\server\codes\dbx\src\main.cpp" />
     <ClCompile Include="..\..\server\codes\dbx\src\NetworkInterface.cpp" />
-    <ClCompile Include="..\..\server\tools\tinyxml\tinystr.cpp" />
-    <ClCompile Include="..\..\server\tools\tinyxml\tinyxml.cpp" />
-    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\server\tools\tinyxml\tinyxmlparser.cpp" />
-    <ClCompile Include="..\..\server\tools\tinyxml\xmltest.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B9CCAAEA-AA31-447B-9584-D9AA70B9EB01}</ProjectGuid>
