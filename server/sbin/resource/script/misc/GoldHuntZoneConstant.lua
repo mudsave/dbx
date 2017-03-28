@@ -34,11 +34,11 @@ GoldHuntZone_ReadyPeriodBeforeEnd = 3--min
 GoldHuntZone_RankLimit	= 100
 GoldHuntZone_ClientRankLimit	= 5
 GoldHuntZone_Reward = {				--排名奖励分段
-	{rank=3,exp = 10,money = 10,tao = 10},
-	{rank=10,exp = 8,money = 8,tao = 8},
-	{rank=50,exp = 6,money = 6,tao = 6},
-	{rank=100,exp = 4,money = 4,tao = 4},
-	{exp = 2,money = 2,tao = 2},
+	{rank=3,exp = 10000,money = 5000,tao = 3000},
+	{rank=10,exp = 5000,money = 3000,tao = 2000},
+	{rank=50,exp = 3000,money = 2000,tao = 1000},
+	{rank=100,exp = 1000,money = 1000,tao = 500},
+	{exp = 2,money = 500,tao = 200},
 }
 --GoldHuntZone_scoreNpcID = 39053
 

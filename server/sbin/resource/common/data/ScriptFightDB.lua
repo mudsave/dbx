@@ -3023,48 +3023,198 @@ ScriptFightDB[4030] = {
 	---------------------------------------------------∞Ôª·–›œ–∏±±æ£∫≥€‘Æª¢¿Œπÿ--------------------------------------------------
 ScriptFightDB[4050] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31450, },{ID = 31451, },{ID = 31452, },{ID = 31453, },{ID = 31454, },},
+		begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31450},bubbleID = 10000},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4051] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31458, },{ID = 31459, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31455},bubbleID = 10001},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4052] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31460, },{ID = 31461, },{ID = 31462, },{ID = 31463, },{ID = 31464, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31460},bubbleID = 10002},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4053] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31465},bubbleID = 10003},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4054] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31470, },{ID = 31471, },{ID = 31472, },{ID = 31473, },{ID = 31474, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31470},bubbleID = 10004},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4055] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31475, },{ID = 31476, },{ID = 31477, },{ID = 31478, },{ID = 31479, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31475},bubbleID = 10005},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4056] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31470, },{ID = 31471, },{ID = 31472, },{ID = 31473, },{ID = 31474, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31470},bubbleID = 10004},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4057] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31465},bubbleID = 10003},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4058] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31458, },{ID = 31459, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31455},bubbleID = 10001},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4059] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31450, },{ID = 31451, },{ID = 31452, },{ID = 31453, },{ID = 31454, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31450},bubbleID = 10000},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4060] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31475, },{ID = 31476, },{ID = 31477, },{ID = 31478, },{ID = 31479, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31475},bubbleID = 10005},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4061] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31460, },{ID = 31461, },{ID = 31462, },{ID = 31463, },{ID = 31464, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31460},bubbleID = 10002},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4062] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31465},bubbleID = 10003},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4063] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31455, },{ID = 31456, },{ID = 31457, },{ID = 31458, },{ID = 31459, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31455},bubbleID = 10001},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4064] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31475, },{ID = 31476, },{ID = 31477, },{ID = 31478, },{ID = 31479, },},
+	        begin = {
+			[1] = {
+				condition = {
+					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
+				 },
+				 actions = {
+					 {type = ScriptFightActionType.PlayBubble,params={DBID={31475},bubbleID = 10005},},
+				 }
+			      },
+	                },
 	}
 ScriptFightDB[4065] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31480, },},

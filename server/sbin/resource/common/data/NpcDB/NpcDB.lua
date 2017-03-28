@@ -8029,6 +8029,10 @@ NpcDB = {
 	     modelID =505,
 	     dialogIDs = {20036},
      },
+     [29084] = {
+	     name = "帮派总管",
+	     modelID =512,
+     },
      [30001] = {
 	     name = "秋风原巡逻护卫",
 	     modelID =125,

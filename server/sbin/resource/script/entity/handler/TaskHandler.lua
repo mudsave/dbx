@@ -526,6 +526,7 @@ function TaskHandler:addCountRing(taskID)
 	self.loopTaskInfo[taskID].countRing = self.loopTaskInfo[taskID].countRing + 1
 end
 
+--完成任务
 function TaskHandler:finishTaskByID(taskID)
 	if self.currentTask[taskID] then
 		self.updateDB = true
@@ -736,6 +737,10 @@ end
 function TaskHandler:addDailyTaskConfiguration( taskID )
 	self.dailyTaskConfiguration[taskID] = true
 end
+
+function TaskHandler:changeDailyTaskConfigurationByID( taskID,value )
+	self.dailyTaskConfiguration[taskID] = value
+end	
 
 -- 通天塔任务初始化
 function TaskHandler:checkBabelTask(taskID)

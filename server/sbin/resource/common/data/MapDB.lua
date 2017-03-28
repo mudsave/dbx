@@ -79,7 +79,7 @@ mapDB =
 			map 		= "bh01.mp",
 			level 		= 0,
 			mapType 	= MapType.City,
-			npcs 		= {29080,29078,30817,29049, },
+			npcs 		= {29080,29084,29078,30817,29049, },
 			safeX 		= 0,
 			safeY 		= 0,
 		},
@@ -608,24 +608,6 @@ mapDB =
 			npcs 		= {},
 			safeX 		= 0,
 			safeY 		= 0,
-		},
-
-	[417] = { 
-			map 		= "yw_ys01.mp",
-			level 		= 0,
-			mapType 	= MapType.Task,
-			npcs 		= {},
-			safeX 		= 185,
-			safeY 		= 67,
-		},
-
-	[418] = { 
-			map 		= "fb_zc01.mp",
-			level 		= 0,
-			mapType 	= MapType.Task,
-			npcs 		= {},
-			safeX 		= 68,
-			safeY 		= 225,
 		},
 
 	[500] = { 

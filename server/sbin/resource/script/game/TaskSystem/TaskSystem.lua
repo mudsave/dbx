@@ -38,6 +38,7 @@ function TaskSystem:__init()
 		[TaskEvent_CS_RemoveTaskPet]			= TaskSystem.onRemoveTaskPet,
 		[TaskEvent_CS_EnterNextLayer]			= TaskSystem.onEnterNextLayer,
 		[TaskEvent_BS_GuideJoinFaction]			= TaskSystem.onJoinFaction,
+		[TaskEvent_CS_PuzzleFinish]				= TaskSystem.onPuzzleFinish,
 	}
 end
 
@@ -216,6 +217,16 @@ function TaskSystem:doDonate(event)
 		g_eventMgr:fireRemoteEvent(event, player)
 		return
 	end
+end
+
+function TaskSystem:onPuzzleFinish(event)
+	local params = event:getParams()
+	local puzzleID = params[1]
+	local playerID = event.playerID
+	if not playerID then
+		return 
+	end
+	TaskCallBack.onPuzzleFinish(playerID, puzzleID)
 end
 
 -- 退出游戏，发送任务追踪所有ID
@@ -616,8 +627,7 @@ function TaskSystem:onEnterNextLayer(event)
 			-- 切换玩家到场景
 			g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
 		end
-	end
-	
+	end	
 end
 
 function TaskSystem:addMatchNpc(player, taskID, npcID)

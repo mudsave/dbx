@@ -50,7 +50,7 @@ end
 -- 增加buff
 function FightBuffHandler:addBuff(buff)
 	local buffKind = buff:getKind()
-	-- 障碍buff
+	-- 有障碍buff,就先上障碍buff
 	if DisorderBuffMap[buffKind] then
 		return self:addDisorderBuff(buff)
 	end
@@ -58,11 +58,13 @@ function FightBuffHandler:addBuff(buff)
 	if FightBuffMap[buffKind] then
 		local curBuff = self.buffList[buffKind]
 		local funcName = FightBuffMap[buffKind]
+		--有同种buff的时候先清除,在从新创建
 		if curBuff then
 			curBuff[funcName[3]](curBuff,true)
 			release(curBuff)
 			self.buffList[buffKind] = nil
 		end
+		--添加到buff表中
 		self.buffList[buffKind] = buff
 		return buff[funcName[1]](buff)
 	end
@@ -100,14 +102,14 @@ end
 function FightBuffHandler:isAddDisorderSucess(buff)
 	local target = buff:getOwner()
 	local src = buff:getSrcEntity()
-	local type = buff:getKind()
-	local funcName = DisorderResistMapping[type]
+	local buffType = buff:getKind()
+	local funcName = DisorderResistMapping[buffType]
 	local effect = SkillUtils.getBarrierEffect(src, target)
 	local targetResist = target[funcName](target)
 	local targetAllResist = target:get_add_obstacle_resist()
 
 	-- xx障碍命中加成
-	local obstacleIncHit = src:getObstacleIncHitByType(type)
+	local obstacleIncHit = src:getObstacleIncHitByType(buffType)
 	local hitRate = (0.5 + effect) * (src:get_add_obstacle_resist() + obstacleIncHit - targetAllResist - targetResist + 1)
 	hitRate = math.floor(hitRate * 100)
 	local tmpStr = nil
@@ -209,6 +211,10 @@ function FightBuffHandler:getShieldEffect()
 			stayValue = shieldBuff:getFirstEffectValue()
 		elseif effectType == EffectType.MtShield then
 			stayValue = self.owner:getMp()
+			--roleMp = self.owner:getMp()
+			--roleMaxMp = self.owner:getMaxMp()
+			--stayValue = shieldBuff:getFirstEffectValue()
+			--stayValue = math.ceil(roleMaxMp*stayValue / 100)
 		end
 		if stayValue ~= 0 then
 			return true ,effectType, stayValue
@@ -231,6 +237,8 @@ function FightBuffHandler:setShieldEffect(stayValue)
 		elseif effectType == EffectType.MtShield then
 			Flog:log("以法替蓝--剩余",stayValue)
 			self.owner:setMp(stayValue)
+			--roleMp = self.owner:getMp()
+			--self.owner:setMp(roleMp - shield_value)
 		end
 	end
 end
@@ -305,7 +313,7 @@ end
 function FightBuffHandler:getHpDot()
 	local hpDot = self.buffList[BuffKind.Dot]
 	if hpDot then
-		return true, hpDot:getFirstEffectValue(),hpDot:getFirstEffectAddType()
+		return true, hpDot:getFirstEffects()
 	end
 	return false
 end
@@ -406,16 +414,20 @@ end
 function FightBuffHandler:doHpDot()
 	local changeHp = 0
 	local tempChange = 0
-	local isHpDot,dChangeHp,dchangeType = self:getHpDot()
+	local isHpDot, effect = self:getHpDot()
 	local isPoison,pChangeHp,pChangType = self:getPoisonHpdot()
 	local lifeState = nil
 	if isHpDot or isPoison then
-		if isHpDot then 
+		if isHpDot then
 			-- 百分比
-			if changeType == EffectAddType.Percent then
-				changeHp = self.owner:getHp() * dChangeHp/100
+			if effect.addType == EffectAddType.Percent then
+				if effect.effectType == EffectType.MaxHpDot then 
+					changeHp = self.owner:getMaxHp() * effect.effectValue/100
+				elseif effect.effectType == EffectType.Dot then 
+					changeHp = self.owner:getHp() * effect.effectValue/100
+				end 
 			else
-				changeHp = dChangeHp
+				changeHp = effect.effectValue
 			end
 		end
 		if isPoison then 

@@ -109,7 +109,11 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		local dailyTask = g_taskFty:createDailyTask(player, taskID)
 		taskHandler:addTask(dailyTask)
 		dailyTask:updateNpcHeader()
-		--g_taskSystem:updateDailyTaskList(player, taskHandler:getNextID())
+		taskHandler:changeDailyTaskConfigurationByID(taskID,false)
+
+		LuaDBAccess.updateDailyTask(player:getDBID(), task)
+		LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
+		
 		return true
 	else
 		print("接受任务出错，任务找不到ID为",taskID)
@@ -249,6 +253,7 @@ function TaskDoer:loadLoopTask(player, recordList)
 end
 
 function TaskDoer:loadDailyTask( player, recordList )
+
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	for _, taskData in pairs(recordList) do
 		if type(taskData.targetState) then
@@ -333,7 +338,6 @@ function TaskDoer:updateRoleTask(player)
 		elseif task:getType() == TaskType.loop and task:getUpdateDB() then
 			LuaDBAccess.updateLoopTask(player:getDBID(), task)			
 		elseif task:getType() == TaskType.daily and task:getUpdateDB() then
-			
 			LuaDBAccess.updateDailyTask(player:getDBID(), task)
 			LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
 		end

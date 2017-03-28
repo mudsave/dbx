@@ -10,6 +10,7 @@ function DailyTask:__init()
 	self._targetType = {}
 	self._targetParam = {}
 	self._dailyTargets = {}
+	self._rewards = {}
 
 end
 
@@ -62,7 +63,6 @@ end
 function DailyTask:setDailyTargets( targets )
 	
 	table.deepCopy(targets,self._dailyTargets)
-	print("_dailyTargets",toString(self._dailyTargets))
 
 end
 

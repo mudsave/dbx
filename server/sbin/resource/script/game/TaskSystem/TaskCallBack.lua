@@ -194,3 +194,12 @@ function TaskCallBack.onKillMonster(roleID)
 		eventHandler:notifyWatchers("onKillMonster")
 	end
 end
+
+--野外杀怪
+function TaskCallBack.onPuzzleFinish(roleID, puzzleID)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	local eventHandler = player:getHandler(HandlerDef_Event)
+	if eventHandler then
+		eventHandler:notifyWatchers("onPuzzleFinish", puzzleID)
+	end
+end

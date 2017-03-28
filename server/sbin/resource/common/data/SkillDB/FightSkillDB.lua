@@ -586,16 +586,16 @@ FightSkillDB = {
 	          cool_round = 3,
 	          skill = { 
 	             [1] = { 
-	                     type = SkillEff.AddCrit,
-	                     num_id = 29,
-	                     target_type = TargetType.self,
-	                     target_num_id = 1,
-	              }, 
-	             [2] = { 
 	                     type = SkillEff.At,
 	                     num_id = 30,
 	                     target_type = TargetType.enemy_g,
 	                     target_num_id = 3,
+	              }, 
+	             [2] = { 
+	                     type = SkillEff.AddCrit,
+	                     num_id = 29,
+	                     target_type = TargetType.self,
+	                     target_num_id = 1,
 	              }, 
 	         }, 
      },
@@ -726,16 +726,16 @@ FightSkillDB = {
 	          phase_type = PhaseType.Wind,
 	          skill = { 
 	             [1] = { 
-	                     type = SkillEff.AddCrit,
-	                     num_id = 31,
-	                     target_type = TargetType.enemy_g,
-	                     target_num_id = 1,
-	              }, 
-	             [2] = { 
 	                     type = SkillEff.At,
 	                     num_id = 32,
 	                     target_type = TargetType.enemy_g,
 	                     target_num_id = 4,
+	              }, 
+	             [2] = { 
+	                     type = SkillEff.AddCrit,
+	                     num_id = 31,
+	                     target_type = TargetType.self,
+	                     target_num_id = 1,
 	              }, 
 	         }, 
      },

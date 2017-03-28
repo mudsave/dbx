@@ -28266,14 +28266,32 @@ DialogModelDB =
 			},
 			[2] = 
 			{
-				showConditions = {{condition = DialogCondition.HasTask, param = { taskID = 40001 , statue = true }}},
-				optionTxt = "平邦卫境（完成任务）",
+				showConditions = {
+				{condition = DialogCondition.HasTask, param = { taskID = 40001 , statue = true,},},
+				{condition = DialogCondition.TkillMonster, param = { taskID = 40001 ,statue = false,},},
+				},
+				optionTxt = "平邦卫境",
 				actions =
 				{
-					{action = DialogActionType.Gotos , param = {dialogIDs = {50105,50106}}},
+				{action = DialogActionType.Goto , param = {dialogID = 50106}},
 				},
+				icon = DialogIcon.Task3,
 			},
 			[3] = 
+			{
+				showConditions = {
+				{condition = DialogCondition.HasTask, param = { taskID = 40001 , statue = true,},},
+				{condition = DialogCondition.TkillMonster, param = { taskID = 40001 ,statue = true,},},
+				},
+
+				optionTxt = "平邦卫境",
+				actions =
+				{
+				{action = DialogActionType.Goto , param = {dialogID = 50105}},
+				},
+				icon = DialogIcon.Task4,
+			},
+			[4] = 
 			{
 				showConditions = {},
 				optionTxt = "我还有事，告辞",
@@ -28375,10 +28393,8 @@ DialogModelDB =
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
-		{
-			{condition = DialogCondition.TkillMonster, param = { taskID = 40001 ,statue = true}},
-		},
-		speakerID = 20001,
+		{},
+		speakerID = 29081,
 		soundID =26159,
 		txt = "看来你的本领还不错嘛，这么快就回来了！这是给你的报酬，别客气收下吧！",
 		options =
@@ -28398,9 +28414,7 @@ DialogModelDB =
 	{
 		dialogType = DialogType.NotOption,
 		conditions =
-		{
-			{condition = DialogCondition.TkillMonster, param = { taskID = 40001 ,statue = false}},
-		},
+		{},
 		speakerID = 29081,
 		soundID =26159,
 		txt = "你完成我交给你的任务了？",

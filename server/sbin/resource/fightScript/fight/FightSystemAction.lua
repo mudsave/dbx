@@ -656,6 +656,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 			if instanceof(target, FightPlayer) then
 				local curHp = target:getHp()
 				local changedHp = math.floor(curHp*(params.percent/100))
+				local maxHp = target:getMaxHp()
 				local finalHp
 				if changedHp > 0 then
 					finalHp = curHp + changedHp
@@ -668,6 +669,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 						finalHp = 0
 					end
 				end
+				changedHp = finalHp - curHp
 
 				target:setHp(finalHp)
 				local targetID = target:getID()
@@ -687,7 +689,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 				for _, targetID in ipairs(targets)  do
 					local target = g_fightEntityMgr:getRole(targetID)
 					local maxHp = target:getMaxHp()
-					local changedHp = maxHp*(params.percent/100)
+					local changedHp = math.floor(maxHp*(params.percent/100))
 					local curHp = target:getHp()
 					local finalHp
 					if changedHp > 0 then
@@ -701,6 +703,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 							finalHp = 0
 						end
 					end
+					changedHp = finalHp - curHp
 
 					target:setHp(finalHp)
 					local lifeState

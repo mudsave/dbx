@@ -63,26 +63,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-					{type="openDialog", param={dialogID =4550},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -307,28 +306,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4552},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-					--{type = "stopAutoMeet", param = {}},---Í£Ö¹×Ô¶¯ÓöµĞ
-					--{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -550,28 +546,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4554},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-					--{type = "stopAutoMeet", param = {}},---Í£Ö¹×Ô¶¯ÓöµĞ
-					--{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -793,28 +786,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4556},},				
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-					--{type = "stopAutoMeet", param = {}},---Í£Ö¹×Ô¶¯ÓöµĞ
-					--{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1036,28 +1026,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4558},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-					--{type = "stopAutoMeet", param = {}},---Í£Ö¹×Ô¶¯ÓöµĞ
-					--{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1279,26 +1266,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4560},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1521,27 +1507,25 @@ LoopTaskTargetsDB =
 			},
 		},
 		--ÉÏ½»³èÎï
-		[LoopTaskTargetType.catchPet] = 
-		{		
-		limitTime = 30*60,
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
-			triggers = 
-			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
-				[TaskStatus.Active] = 
-				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
-					{ type = "createCatchPetData", param = {}},
-				    {type = "openDialog", param={dialogID = 5167},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	                triggers = 
+	                {
+		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- ÉÏ½É³èÎïÖ¸Òı
+			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+		                 },	
+	                },
+              },
+
 		-- °µÀ×Õ½¶·, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1938,6 +1922,32 @@ LoopTaskTargetsDB =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
 					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+				},
+			},
+		},
+	},
+	-- æ‹¼å›¾ä»»åŠ¡
+	[50000] =
+	{
+		--æ‹¼å›¾ï¼Œ
+		[LoopTaskTargetType.puzzle] = 
+		{
+			limitTime = 5*60,
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					--éšæœºæ‹¼å›¾
+					{type = "createRandomPuzzle", param = {}},
+					
+				},
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
+				[TaskStatus.Done] =
+				{
+
 				},
 			},
 		},

@@ -12,8 +12,6 @@ RandTargetMapDB =
 		{9,10},
 		[LoopTaskTargetType.buyItem] = 
 		{10},
-		[LoopTaskTargetType.catchPet] =
-		{1},
 		[LoopTaskTargetType.partrolScript] =
 		{1},
 		[LoopTaskTargetType.deliverLetters] = 
@@ -37,8 +35,6 @@ RandTargetMapDB =
 		{9,10},
 		[LoopTaskTargetType.buyItem] = 
 		{10},
-		[LoopTaskTargetType.catchPet] =
-		{3},
 		[LoopTaskTargetType.partrolScript] =
 		{3},
 		[LoopTaskTargetType.deliverLetters] = 
@@ -62,8 +58,6 @@ RandTargetMapDB =
 		{9,10},
 		[LoopTaskTargetType.buyItem] = 
 		{10},
-		[LoopTaskTargetType.catchPet] =
-		{6},
 		[LoopTaskTargetType.partrolScript] =
 		{6},
 		[LoopTaskTargetType.deliverLetters] = 
@@ -87,8 +81,6 @@ RandTargetMapDB =
 		{9,10},
 		[LoopTaskTargetType.buyItem] = 
 		{10},
-		[LoopTaskTargetType.catchPet] =
-		{5},
 		[LoopTaskTargetType.partrolScript] =
 		{5},
 		[LoopTaskTargetType.deliverLetters] = 
@@ -112,8 +104,6 @@ RandTargetMapDB =
 		{9,10},
 		[LoopTaskTargetType.buyItem] = 
 		{10},
-		[LoopTaskTargetType.catchPet] =
-		{4},
 		[LoopTaskTargetType.partrolScript] =
 		{4},
 		[LoopTaskTargetType.deliverLetters] = 
@@ -137,8 +127,6 @@ RandTargetMapDB =
 		{9,10},
 		[LoopTaskTargetType.buyItem] = 
 		{10},
-		[LoopTaskTargetType.catchPet] =
-		{2},
 		[LoopTaskTargetType.partrolScript] =
 		{2},
 		[LoopTaskTargetType.deliverLetters] = 
@@ -158,9 +146,6 @@ RandTargetMapDB =
 	{
 		--悬赏战斗
 		[LoopTaskTargetType.script] =
-		{110,115,116,118,119,120,122,124,126,127,128},
-		-- 上交宠物
-		[LoopTaskTargetType.catchPet] =
 		{110,115,116,118,119,120,122,124,126,127,128},
 		-- 暗雷战斗
 		[LoopTaskTargetType.partrolScript] =

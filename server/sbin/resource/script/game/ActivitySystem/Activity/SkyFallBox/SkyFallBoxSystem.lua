@@ -51,8 +51,8 @@ function SkyFallBoxSystem:onFightEnd(event)
 				local packetHandler = player:getHandler(HandlerDef_Packet)
 				local itemInfo = {}
 				local allItem = {}
-				packetHandler:addItemsToPacket(1032021 ,1)
-				itemInfo.itemID = 1032021
+				packetHandler:addItemsToPacket(1031021 ,1)
+				itemInfo.itemID = 1031021
 				itemInfo.itemNum = 1
 
 				if table.size(itemInfo) > 0 then

@@ -121,10 +121,10 @@ local PlayerProps = {
 	{"PLAYER_TAO",					"INT",		0,		Private,	Postpone},	-- 道行
 	{"PLAYER_POT",					"INT",		0,		Private,	Postpone},	-- 潜能
 	{"PLAYER_EXPOINT",				"INT",		0,		Private,	Postpone},	-- 历练值
-	{"PLAYER_VIGOR",				"INT",		0,		Private,	Sync},	-- 体力值
+	{"PLAYER_VIGOR",				"INT",		0,		Private,	Sync},		-- 体力值
 	{"PLAYER_ANGER",				"INT",		0,		Private,	Postpone},	-- 怒气值
 	{"PLAYER_COMBAT",				"INT",		0,		Private,	Postpone},	-- 战绩
-	{"PLAYER_KILL",					"INT",		0,		Private,	Sync},	-- 杀气
+	{"PLAYER_KILL",					"INT",		0,		Private,	Sync},		-- 杀气
 	{"PLAYER_MAX_PET",				"INT",		3,		Private,	Postpone},	-- 最大宠物数
 
 	{"PLAYER_MAX_VIGOR",			"INT",		0,		Private,	Postpone},	-- 最大怒气值
@@ -148,6 +148,8 @@ local PlayerProps = {
 	{"PLAYER_PRACTISECOUNT",		"INT",		0,		Private,	Postpone},	-- 修行总值
 	{"PLAYER_STOREXP",				"INT",		0,		Private,	Postpone},	-- 存储经验
 	{"PLAYER_GOLD_HUNT_MINE",		"SHORT",	1,		Public,		Sync},		-- 在猎金场所得矿量
+	{"PLAYER_SERVERLEVEL",			"INT",		0,		Private,	Sync},		-- 当前服务器等级
+	{"PLAYER_XP_RATIO",				"SHORT",	100,	Private,	Sync},		-- 玩家经验比例
 }
 
 InitPropSet(eClsTypePlayer,PlayerProps)

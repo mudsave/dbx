@@ -946,8 +946,26 @@ function Triggers.collectTrace(roleID, curParam, task, isRandom)
 		taskID = task:getID(),
 	}
 	g_taskSystem:notifyClient(player, TaskNotifyClientType.item, itemInfo)
-	g_taskSystem:onSetDirect(player, config)
-	
+	g_taskSystem:onSetDirect(player, config)	
+end
+
+function Triggers.createRandomPuzzle(roleID, curParam, task, isRandom)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	if not isRandom then
+		local tPuzzleID = math.random(1, table.size(PizzleDB))
+		curParam = {puzzleID = tPuzzleID}
+		local target = createDynamicTarget(player, task, "Tpuzzle", curParam)
+		task:addTarget(1, target)
+		local targets = {}
+		targets[1] = {}
+		targets[1].type = "Tpuzzle"
+		targets[1].param = curParam
+		task:setTargetsConfig(targets)
+	end
+	print("createRandomPuzzle",toString(curParam),task:getID())
+	--通知客户端
+	local event = Event.getEvent(TaskEvent_SC_BeginPuzzle, task:getID(), curParam.puzzleID)
+	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 -- 上缴宠物，这个宠物是要去固定地方去买的

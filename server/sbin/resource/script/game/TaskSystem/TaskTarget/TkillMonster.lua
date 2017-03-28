@@ -26,7 +26,6 @@ function TkillMonster:onKillMonster()
 	self._monsterCounts.currentCount = self._monsterCounts.currentCount + 1
 
 	if self._monsterCounts.currentCount <= self._monsterCounts.targetCount then
-		print("对执行次数进行统计",self._monsterCounts.currentCount)
 		for _,target in ipairs(self._task:getDailyTargets()) do 
 			if target.type == "TkillMonster" then
 				target.param.currentCount = self._monsterCounts.currentCount

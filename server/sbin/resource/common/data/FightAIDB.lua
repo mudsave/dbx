@@ -339,6 +339,69 @@ FightAIDB[31] = {
 		},
 	},
 }
+FightAIDB[50] = {  
+	name =  '召唤',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.LiveNum,params={isEnemy = true,relation = "<=",count = 4},                  --存活单位数：isEnemy = 敌友判断（true = 敌方，false = 友方），count = 存活数量
+				     },
+			 action = {actionType = FightUIType.Call,params ={{ID =31461,count = 1},},},	                                         --召唤（ID = 召唤单位ID，count = 单位数量）
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                 --自己
+					},
+	      },
+}
+
+FightAIDB[51] = {  
+	name =  '治疗',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.RoundInterval,params={period = 1,startRound = 1},                           --回合间隔生效：period = 回合间隔，starRound = 起始循环回合数
+				     },
+			 action = {actionType = FightUIType.UseSkill,params ={skillID =1043},},		                                         --使用技能（skillID = 技能ID）
+			 chooseTarget = {
+					 type = AITargetType.AllOfFriend,                                                                        --友方全体
+					},	
+              },
+}
+
+FightAIDB[52] = {  
+	name =  '结束',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.IDExist,params={ID = 31475,{isNot = true}},                               --指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
+				     },
+			 action = {actionType = FightUIType.Escape,},							                         --逃跑
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                 --自己
+					},	
+              },
+}
+
+FightAIDB[53] = {  
+	name =  '逃跑',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.AttrPercent,params={ ID = 31475,type = AIAttrType.Hp,relation ="<=",value = 0.8},      --type = 属性类型（"AIAttrType.Hp"=生命值，"AIAttrType.Mp"=法力值，"AIAttrType.Kill"=杀气值），relation = 关系类型（比较类型有："<"、">"、"="、"<="、">="），value = 比例关系
+				     },
+			 action = {actionType = FightUIType.Escape,},							                                    --逃跑
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                            --自己
+					},	
+              },
+}
 
 FightAIDB[100] = 
 {

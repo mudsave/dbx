@@ -370,6 +370,11 @@ TaskEvent_SC_LoadLoopTaskInfoToClient	= Event_Group_Task + 61
 TaskEvent_BS_GuideJoinFaction			= Event_Group_Task + 62
 TaskEvent_SC_AddMatchNpc				= Event_Group_Task + 63
 TaskEvent_CS_EnterNextLayer				= Event_Group_Task + 64
+TaskEvent_SC_AddShelfPet				= Event_Group_Task + 65
+TaskEvent_SC_RemoveShelfPet				= Event_Group_Task + 66
+TaskEvent_CS_PuzzleFinish				= Event_Group_Task + 67
+TaskEvent_SC_BeginPuzzle				= Event_Group_Task + 68
+
 
 --定义交易系统事件
 --p2N交易消息
