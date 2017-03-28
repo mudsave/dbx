@@ -108,6 +108,9 @@ bool DBInterfaceMysql::Initialize()
         return false;
     }
 
+    bool value = true;
+    mysql_options(m_mysql, MYSQL_OPT_RECONNECT, (char *)&value);
+
     return true;
 }
 
@@ -219,7 +222,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
         {
             if (mysql_field_count(m_mysql) == 0)
             {
-                TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:mysql_field_count(m_mysql) == 0,affected rows:%i.\n", m_mysql->affected_rows);
+                //TRACE1_L0("DBInterfaceMysql::ProcessQueryResult:mysql_field_count(m_mysql) == 0,affected rows:%i.\n", m_mysql->affected_rows);
             }
             else
             {
