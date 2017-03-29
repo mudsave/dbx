@@ -10,6 +10,14 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\server\codes\dbClient\inc\DBClient.h" />
+    <ClInclude Include="..\..\server\codes\dbClient\inc\NetCtrl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\server\codes\dbClient\src\DBClient.cpp" />
+    <ClCompile Include="..\..\server\codes\dbClient\src\NetCtrl.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5E6C6F99-59C0-4D74-A650-2E19E2BB45EF}</ProjectGuid>
     <RootNamespace>dbClient</RootNamespace>
@@ -44,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/tools/dbClient/inc;../../server/codes/share;../../share</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../server/codes/sock/inc;../../server/codes/dbClient/inc;../../server/codes/share;../../share</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -64,14 +72,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\server\tools\dbClient\inc\DBClient.h" />
-    <ClInclude Include="..\..\server\tools\dbClient\inc\NetCtrl.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\server\tools\dbClient\src\DBClient.cpp" />
-    <ClCompile Include="..\..\server\tools\dbClient\src\NetCtrl.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
