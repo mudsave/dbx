@@ -11,18 +11,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\server\tools\dbClient\inc\NetCtrl.h">
+    <ClInclude Include="..\..\server\codes\dbClient\inc\DBClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\server\tools\dbClient\inc\DBClient.h">
+    <ClInclude Include="..\..\server\codes\dbClient\inc\NetCtrl.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\server\tools\dbClient\src\NetCtrl.cpp">
+    <ClCompile Include="..\..\server\codes\dbClient\src\DBClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\server\tools\dbClient\src\DBClient.cpp">
+    <ClCompile Include="..\..\server\codes\dbClient\src\NetCtrl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
