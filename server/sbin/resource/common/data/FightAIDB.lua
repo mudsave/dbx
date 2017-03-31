@@ -339,21 +339,6 @@ FightAIDB[31] = {
 		},
 	},
 }
-FightAIDB[50] = {  
-	name =  '召唤',
-	type = AIType.Config, 
-	
-	[1] = {
-
-			 condition = {
-						type=AIConditionType.LiveNum,params={isEnemy = true,relation = "<=",count = 4},                  --存活单位数：isEnemy = 敌友判断（true = 敌方，false = 友方），count = 存活数量
-				     },
-			 action = {actionType = FightUIType.Call,params ={{ID =31461,count = 1},},},	                                         --召唤（ID = 召唤单位ID，count = 单位数量）
-			 chooseTarget = {
-					 type = AITargetType.Me,                                                                                 --自己
-					},
-	      },
-}
 
 FightAIDB[51] = {  
 	name =  '治疗',
@@ -364,21 +349,21 @@ FightAIDB[51] = {
 			 condition = {
 						type=AIConditionType.RoundInterval,params={period = 1,startRound = 1},                           --回合间隔生效：period = 回合间隔，starRound = 起始循环回合数
 				     },
-			 action = {actionType = FightUIType.UseSkill,params ={skillID =1043},},		                                         --使用技能（skillID = 技能ID）
+			 action = {actionType = FightUIType.UseSkill,params ={skillID =1001},},		                                         --使用技能（skillID = 技能ID）
 			 chooseTarget = {
-					 type = AITargetType.AllOfFriend,                                                                        --友方全体
+					 type = AITargetType.AnyOfFriend,                                                                        --友方随机
 					},	
               },
 }
 
 FightAIDB[52] = {  
-	name =  '结束',
+	name =  '结束1',
 	type = AIType.Config, 
 	
 	[1] = {
 
 			 condition = {
-						type=AIConditionType.IDExist,params={ID = 31475,{isNot = true}},                               --指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
+						type=AIConditionType.IDExist,params={ID = 31475,{isNot = true}},                                 --指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
 				     },
 			 action = {actionType = FightUIType.Escape,},							                         --逃跑
 			 chooseTarget = {
@@ -399,6 +384,22 @@ FightAIDB[53] = {
 			 action = {actionType = FightUIType.Escape,},							                                    --逃跑
 			 chooseTarget = {
 					 type = AITargetType.Me,                                                                                            --自己
+					},	
+              },
+}
+
+FightAIDB[54] = {  
+	name =  '结束2',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.IDExist,params={ID = 31455,{isNot = true}},                                 --指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
+				     },
+			 action = {actionType = FightUIType.Escape,},							                         --逃跑
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                 --自己
 					},	
               },
 }
@@ -432,7 +433,8 @@ FightAIDB[101] =
 	
 		condition = 
 		{
-		           type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},----每回合释放雷相性法攻技能
+		           {type=AIConditionType.RoundInterval,params={period = 3,startRound = 3},},----每回合释放雷相性法攻技能
+			   {type=AIConditionType.BuffStatus,params={isEnemy = true,buffID = 67},},
 		},		
 		action = 
 		{ 			
@@ -446,8 +448,8 @@ FightAIDB[101] =
 	[2] = {	
 		condition = 
 		{
-		           type=AIConditionType.AttrPercent,params={ ID = 25501,type = AIAttrType.Hp,relation ="<=",value = 1},  --------第二回合开始，指定回合间隔对任意玩家角色施加混乱buff技能                                                      
-		},		
+		           {type=AIConditionType.RoundInterval,params={period = 1,startRound = 1},},----每回合释放雷相性法攻技能		
+	        },		
 		action = 
 		{ 			
 			   actionType = FightUIType.UseSkill,params ={skillID ={1052}},
@@ -458,6 +460,7 @@ FightAIDB[101] =
 		},
 	},
 }
+
 ---------------------------------------------迷雾林副本ai-----------------------------------------------
 
 FightAIDB[150] = {

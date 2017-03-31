@@ -111,7 +111,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		dailyTask:updateNpcHeader()
 		taskHandler:changeDailyTaskConfigurationByID(taskID,false)
 
-		LuaDBAccess.updateDailyTask(player:getDBID(), task)
+		LuaDBAccess.updateDailyTask(player:getDBID(), dailyTask)
 		LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
 		
 		return true
@@ -330,7 +330,6 @@ end
 
 function TaskDoer:updateRoleTask(player)
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	
 	
 	for taskID, task in pairs(taskHandler:getTasks()) do
 		if task:getType() == TaskType.normal and task:getUpdateDB() then
@@ -612,6 +611,7 @@ function TaskDoer:doReceiveSpecialTask(player, taskID)
 	-- 先以队长来创建任务
 	taskHandler:updateLoopCount(taskID)
 	local loopTask = g_taskFty:createLoopTask(player, taskID)
+	loopTask:setReceiveTaskLvl(player:getLevel())
 	taskHandler:addTask(loopTask)
 	taskHandler:setReceiveTaskTime(taskID)
 	if table.size(playerList) > 1 then
@@ -626,6 +626,7 @@ function TaskDoer:doReceiveSpecialTask(player, taskID)
 					self:doDeleteTask(entity, taskID)
 				end
 				loopTask1 = g_taskFty:createLoopByTask(loopTask, roleID)
+				loopTask1:setReceiveTaskLvl(entity:getLevel())
 				curTaskHandler:addTask(loopTask1)
 				curTaskHandler:setReceiveTaskTime(taskID)
 				loopTask1:updateNpcHeader()

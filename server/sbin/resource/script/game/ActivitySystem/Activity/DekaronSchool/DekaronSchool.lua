@@ -75,8 +75,10 @@ function DekaronSchool:close()
 				local exp = DekaronSchoolReward.getExpFormula(playerLevel,integral)
 				local tao = DekaronSchoolReward.getTaoFormula(playerLevel,integral)
 				if exp then
-					member:addXp(exp)
-					g_dekaronSchoolMgr:sendRewardMessageTip(member, 2,exp)
+					local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+					local tempExp = math.floor(exp * temp_xp_ratio / 100)
+					member:addXp(tempExp)
+					g_dekaronSchoolMgr:sendRewardMessageTip(member, 2, tempExp)
 				end
 				--道行
 				if tao then

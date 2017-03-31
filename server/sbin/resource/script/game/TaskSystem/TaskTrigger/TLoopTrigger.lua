@@ -952,8 +952,8 @@ end
 function Triggers.createRandomPuzzle(roleID, curParam, task, isRandom)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	if not isRandom then
-		local tPuzzleID = math.random(1, table.size(PizzleDB))
-		curParam = {puzzleID = tPuzzleID}
+		local tPuzzleID = math.random(1, table.size(PuzzleDB))
+		curParam.puzzleID = tPuzzleID
 		local target = createDynamicTarget(player, task, "Tpuzzle", curParam)
 		task:addTarget(1, target)
 		local targets = {}
@@ -966,6 +966,20 @@ function Triggers.createRandomPuzzle(roleID, curParam, task, isRandom)
 	--通知客户端
 	local event = Event.getEvent(TaskEvent_SC_BeginPuzzle, task:getID(), curParam.puzzleID)
 	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function Triggers.finishPuzzle(roleID, curParam, task, isRandom)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	-- 发送指引给客户端
+	local config =
+	{		
+		taskID = task:getID(),
+		npcID = curParam.npcID,
+		mapID = curParam.mapID,
+		x = curParam.x,
+		y = curParam.y,
+	}
+	g_taskSystem:onSetDirect(player, config)
 end
 
 -- 上缴宠物，这个宠物是要去固定地方去买的

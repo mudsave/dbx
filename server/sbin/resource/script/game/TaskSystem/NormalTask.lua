@@ -22,7 +22,7 @@ function NormalTask:getRewards()
 end
 
 function NormalTask:setTriggers(triggers)
-	self._triggers = triggers
+	table.deepCopy(triggers, self._triggers)
 end
 
 function NormalTask:getTriggers()
@@ -33,7 +33,10 @@ function NormalTask:addReward()
 	local player = g_entityMgr:getPlayerByID(self._roleID)
 	for rewardType, value in pairs(self._rewards) do
 		if rewardType == TaskRewardList.player_xp then
-			player:addXp(value)
+			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+			local addXp = math.floor(value * temp_xp_ratio / 100)
+			player:addXp(addXp)
+			self._rewards[rewardType] = addXp
 		elseif rewardType == TaskRewardList.money then
 			player:setMoney(player:getMoney() + value)
 		elseif rewardType == TaskRewardList.subMoney then

@@ -40,17 +40,37 @@ function DiscussUtils.addNpcInRandMap(scene,npc,curMapNpcList)
 	return false
 end
 
-function DiscussUtils.getRandMapPos(activityID)
+function DiscussUtils.randItem(itemConfig)
+	-- 计算最大权重
+	local maxWeight = 0
+	print(toString(itemConfig))
+	for _,item in pairs(itemConfig) do
+		maxWeight =	maxWeight + item.weight
+	end
+	local eventWeight = math.random(maxWeight)
+	-- 触发的事件选择  
+	local weightCount = 0
+	for _,item in pairs(itemConfig) do
+		weightCount = weightCount +  item.weight
+		if  eventWeight <= weightCount then
+			return item.ID
+		end
+	end
+end
+
+function DiscussUtils.getRandMapPos(activityMapID)
 	local scene = g_sceneMgr:getDiscussHeroScene(activityMapID)
 	if not scene then
 		print("这个活动场景")
 		return
 	end
+	local mapID = scene:getMapID()
 	local peer = scene:getPeer()
 	local vect = peer:FindRandomTile(mapID)
 	-- 返回一个x,y`
 	if vect.x == 0 and vect.y == 0 then
 		print("$$ error getRandomPosition()")
 	end
+	print("vect.x",vect.x, vect.y)
 	return vect.x, vect.y
 end

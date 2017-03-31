@@ -148,7 +148,7 @@ local PlayerProps = {
 	{"PLAYER_PRACTISECOUNT",		"INT",		0,		Private,	Postpone},	-- 修行总值
 	{"PLAYER_STOREXP",				"INT",		0,		Private,	Postpone},	-- 存储经验
 	{"PLAYER_GOLD_HUNT_MINE",		"SHORT",	1,		Public,		Sync},		-- 在猎金场所得矿量
-	{"PLAYER_SERVERLEVEL",			"INT",		0,		Private,	Sync},		-- 当前服务器等级
+	{"PLAYER_SERVER_LEVEL",			"INT",		0,		Private,	Sync},		-- 当前服务器等级
 	{"PLAYER_XP_RATIO",				"SHORT",	100,	Private,	Sync},		-- 玩家经验比例
 }
 

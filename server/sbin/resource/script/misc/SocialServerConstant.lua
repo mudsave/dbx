@@ -48,6 +48,7 @@ UpdateWorldServerDataCode = {
     JoinFaction         = 2,
     CreateFaction       = 3,
     ContributeFaction   = 4,
+    GetSalary           = 5,
 }
 
 --帮派地位

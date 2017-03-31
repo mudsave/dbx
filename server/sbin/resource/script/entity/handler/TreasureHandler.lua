@@ -150,7 +150,7 @@ function TreasureHandler:doTriggerEvent(config)
 	-- 从配置表中取出 事件
 	local eventCofig = tTreasureEventDB[tEvent.TEventID]
 	-- 事件的类型
-	print("触发的事件是:",tEvent.TEventID)
+	-- print("触发的事件是:",tEvent.TEventID)
 	messageInfo = {}
 	-- 事件的影响
 	self:doTriggerEventEffect(eventCofig.EventEffects,messageInfo)
@@ -202,12 +202,14 @@ function TreasureHandler:saveTreasureDate()
 	local treasureData = ""
 	local treasureMaxNum = 10
 	-- 检查道具是否存在 把不存在藏宝图的对象丢弃 -- 防止用过一次的丢弃
+	-- print("getAllItem()",toString(g_itemMgr:getAllItem()))
 	for _,treasure in pairs(self.treasureList) do
 		local guid = treasure:getGuid()
 		if not g_itemMgr:getItem(guid) then
 			self:removeTreasure(guid)
 		end
 	end
+	-- print("self.treasureList2",toString(self.treasureList))
 	-- 用字符串存储，存储过程解析字符串获得宝藏数据
 	for _,treasure in pairs(self.treasureList) do
 		treasureData = treasureData..treasure:getID().."-"
@@ -222,7 +224,6 @@ function TreasureHandler:saveTreasureDate()
 		treasureData = treasureData..treasureMap:getPackIndex().."-"
 		treasureData = treasureData..treasureMap:getGridIndex().."-"
 		treasureData = treasureData..treasure:getTipState().."-"
-		--treasureData = treasureData..treasure:getClikState().."-"
 		-- 数量加
 		treasureNum = treasureNum + 1
 		if treasureNum > treasureMaxNum then

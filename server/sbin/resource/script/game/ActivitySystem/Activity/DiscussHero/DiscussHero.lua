@@ -17,19 +17,71 @@ DiscussHeroDB = {
 		activityTime = {
 			[1] = {startTime = {week = 1,hour = 15, min = 54},endTime = {week = 1,hour = 21, min = 0},},
 		},
-		preScondBroadcast	= 0.3,	-- 第二次广播
+		preScondBroadcast	= 0.1,	-- 第二次广播
 		readyPeriod			= 0.5,	-- 开始
-		ScondPeriod			= 0.5,	-- 第二阶段
-		ThirdPeriod			= 0.5,
+		ScondPeriod			= 1,	-- 第二阶段
+		ThirdPeriod			= 2,
 		preEndPeriod		= 0.1,
 		-- 创建入口NPC位置
 		enterNpc = {npcDBID = 100000, mapID = 10, posX = 200,posY = 200},
 		-- 地图信息
 		mapInfo = {
-			[1] = { npcDBID = 100001, mapID = 102,minLevel = 30,maxLevel = 40,},
-			[2] = { npcDBID = 100001, mapID = 102,minLevel = 40,maxLevel = 50,},
-			[3] = { npcDBID = 100001, mapID = 102,minLevel = 50,maxLevel = 60,},
-			[4] = { npcDBID = 100001, mapID = 102,minLevel = 60,maxLevel = 70,},
+			[1] = { npcDBID = 100001, mapID = 131,minLevel = 30,maxLevel = 40,},
+			[2] = { npcDBID = 100001, mapID = 131,minLevel = 40,maxLevel = 50,},
+			[3] = { npcDBID = 100001, mapID = 131,minLevel = 50,maxLevel = 60,},
+			[4] = { npcDBID = 100001, mapID = 131,minLevel = 60,maxLevel = 70,},
+		},
+		-- {exp,subMoney,tao},
+		rewardInfo = {
+			[1]	= {
+					exp = 100,subMoney = 100,tao = 100, 
+					items = 
+					{
+						{itemID = 1011001,weight = 20},{itemID = 1011002,weight = 80},
+					},
+					-- 这个只有3个 奖励前3的名额
+					rankingItem = {
+						[1] = {itemID = 1011009},
+						[2] = {itemID = 1011010},
+						[3] = {itemID = 1011011},
+					},
+				},
+			[2]	= {
+					exp = 100,subMoney = 100,tao = 100, 
+					items = 
+					{
+						{itemID = 1011003,weight = 20},{itemID = 1011004,weight = 80},
+					},
+					rankingItem = {
+						[1] = {itemID = 1011009},
+						[2] = {itemID = 1011010},
+						[3] = {itemID = 1011011},
+					},
+				},
+			[3]	= {
+					exp = 100,subMoney = 100,tao = 100, 
+					items = 
+					{
+						{itemID = 1011005,weight = 20},{itemID = 1011006,weight = 80},
+					},
+					rankingItem = {
+						[1] = {itemID = 1011009},
+						[2] = {itemID = 1011010},
+						[3] = {itemID = 1011011},
+					},
+				},
+			[4]	= {
+					exp = 100,subMoney = 100,tao = 100, 
+					items = 
+					{
+						{itemID = 1011007,weight = 20},{itemID = 1011008,weight = 80},
+					},
+					rankingItem = {
+						[1] = {itemID = 1011009},
+						[2] = {itemID = 1011010},
+						[3] = {itemID = 1011011},
+					},
+				},
 		},
 	},
 }
@@ -46,6 +98,7 @@ local TimerState =
 	Four	= 4, 	-- 第二阶段
 	Five	= 5,	-- 广播
 	Six		= 6,	-- 结束
+	Seven	= 7,
 }
 
 function DiscussHero:__init()
@@ -138,6 +191,8 @@ function DiscussHero:openSecondPeriod()
 	local preBroadcast = ThirdPeriod - 1 
 	
 	timerList[TimerState.Five] = g_timerMgr:regTimer(self, preBroadcast*60*1000, preBroadcast*60*1000, "DiscussHero.ScondEndBroadcast")
+	
+	timerList[TimerState.Six] = g_timerMgr:regTimer(self, ThirdPeriod*60*1000, ThirdPeriod*60*1000, "DiscussHero.ScondEndBroadcast")
 end
 
 function DiscussHero:close()
@@ -150,16 +205,16 @@ function DiscussHero:close()
 	-- 清空NPC
 	-- 发放奖励
 	-- 自动匹配PVP
-	local preEndPeriod =  self.config.preEndPeriod
-	
-	timerList[TimerState.Six] = g_timerMgr:regTimer(self, preEndPeriod*60*1000, preEndPeriod*60*1000, "DiscussHero.preEndPeriod")
+	-- local preEndPeriod =  self.config.preEndPeriod
+	self:closeActivity()
+	-- timerList[TimerState.Seven] = g_timerMgr:regTimer(self, preEndPeriod*60*1000, preEndPeriod*60*1000, "DiscussHero.preEndPeriod")
 end
 
 function DiscussHero:closeActivity()
-	-- 结算奖励
+	
 	-- 关闭活动
 	g_discussHeroMgr:allExitDiscussHero()
-	-- 
+	-- 结算奖励
 	g_discussHeroMgr:removeAllNpcFromeMap()
 	--
 	if self.enterNpc and self.scence then
@@ -237,7 +292,8 @@ local DiscussHeroStep =
 	[TimerState.Third]	= DiscussHero.ScondBroadcast,
 	[TimerState.Four]	= DiscussHero.openSecondPeriod,
 	[TimerState.Five]	= DiscussHero.RewordBroadcast,
-	[TimerState.Six]	= DiscussHero.closeActivity,
+	[TimerState.Six]	= DiscussHero.close,
+	-- [TimerState.Seven]	= DiscussHero.closeActivity,
 }
 function DiscussHero:update(timerID)
 	-- 关闭自己

@@ -23,7 +23,6 @@ function ManagedApp.start(serverID)
 	require "config.ConfCore"
 	require "config.ConfDB"
 	require "config.ConfSystem"
-
 	loadCore(serverID)
 	loadSystem()
 	g_sceneMgr:loadPublicScenes()
@@ -113,6 +112,7 @@ end
 
 function ManagedApp.close()
 	print("World Server is closing!")
+	g_serverMgr:saveServerData()
 	g_playerMgr:kickAllPlayer()
 	ManagedApp.State = ServerState.stop
 end

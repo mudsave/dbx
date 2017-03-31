@@ -722,8 +722,10 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 			local roleReward = rewardList[roleID]
 			if roleReward then
 				if roleReward.playerExp then
-					role:addXp(roleReward.playerExp)
-					self:sendRewardMessageTip(role, 2, roleReward.playerExp)
+					local temp_xp_ratio = role:getAttrValue(player_xp_ratio)
+					local tempExp = math.floor(roleReward.playerExp * temp_xp_ratio / 100)
+					role:addXp(tempExp)
+					self:sendRewardMessageTip(role, 2, tempExp)
 				end
 				if roleReward.money then
 					local money = roleReward.money + role:getMoney()

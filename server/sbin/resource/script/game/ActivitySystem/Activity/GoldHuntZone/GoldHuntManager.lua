@@ -536,8 +536,10 @@ function GoldHuntManager:_giveReward(player, reward)
 	local dropMgr = DropManager.getInstance()
 	local isChanged = false
 	if reward.exp and reward.exp > 0 then
-		player:addXp(reward.exp)
-		dropMgr:sendRewardMessageTip(player, 2, reward.exp)
+		local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+		local tempExp = math.floor(reward.exp * temp_xp_ratio / 100)
+		player:addXp(tempExp)
+		dropMgr:sendRewardMessageTip(player, 2, tempExp)
 		isChanged = true
 	end
 

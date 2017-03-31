@@ -66,4 +66,7 @@ DialogActionConfig =
 	[DialogActionType.EnterDiscussHero]			= DialogAction.doEnterDiscussHero,
 	[DialogActionType.DiscussHeroFight]			= DialogAction.doDiscussHeroFight,
 	[DialogActionType.OpenItemRepairWin]		= DialogAction.doRepairEquipment,
+	[DialogActionType.OpenPuzzle]				= DialogAction.doOpenPuzzle,
+	[DialogActionType.ChangePlayerMoney]		= DialogAction.doChangePlayerMoney,
+	
 }

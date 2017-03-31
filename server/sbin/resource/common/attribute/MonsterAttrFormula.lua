@@ -207,7 +207,7 @@ end
 function MonsterAttrbuteFormula.monster_max_hp(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_sta = monster:getAttrValue(monster_sta)
-	local monster_inc_max_hp = monster:getAttrValue(monster_inc_max_hp)
+	local monster_inc_max_hp = monster:getAttrValue(monster_inc_max_hp) / 1000
 	local monster_add_max_hp = monster:getAttrValue(monster_add_max_hp)
 	--return math_floor((monster_sta*30+math_pow(level,2)/5)*(1+monster_inc_max_hp)+monster_add_max_hp)
 	return math_floor(monster_add_max_hp*(1+monster_inc_max_hp))
@@ -218,7 +218,7 @@ end
 function MonsterAttrbuteFormula.monster_at(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_str = monster:getAttrValue(monster_str)
-	local monster_inc_at = monster:getAttrValue(monster_inc_at)
+	local monster_inc_at = monster:getAttrValue(monster_inc_at) / 1000
 	local monster_add_at = monster:getAttrValue(monster_add_at)
 	--return math_floor((math_pow(level,2)/5+monster_str*12-50)*(1+monster_inc_at)+monster_add_at)
 	return math_floor(monster_add_at*(1+monster_inc_at))
@@ -229,7 +229,7 @@ end
 function MonsterAttrbuteFormula.monster_mt(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_int = monster:getAttrValue(monster_int)
-	local monster_inc_mt = monster:getAttrValue(monster_inc_mt)
+	local monster_inc_mt = monster:getAttrValue(monster_inc_mt) / 1000
 	local monster_add_mt = monster:getAttrValue(monster_add_mt)
 	--return math_floor((math_pow(level,2)/5+monster_int*12-50)*(1+monster_inc_mt)+monster_add_mt)
 	return math_floor(monster_add_mt*(1+monster_inc_mt))
@@ -240,7 +240,7 @@ end
 function MonsterAttrbuteFormula.monster_af(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_sta = monster:getAttrValue(monster_sta)
-	local monster_inc_af = monster:getAttrValue(monster_inc_af)
+	local monster_inc_af = monster:getAttrValue(monster_inc_af) / 1000
 	local monster_add_af = monster:getAttrValue(monster_add_af)
 	--return math_floor((math_pow(level,2)/5+monster_sta*8-40)*(1+monster_inc_af)+monster_add_af)
 	return math_floor(monster_add_af*(1+monster_inc_af))
@@ -251,7 +251,7 @@ end
 function MonsterAttrbuteFormula.monster_mf(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_sta = monster:getAttrValue(monster_sta)
-	local monster_inc_mf = monster:getAttrValue(monster_inc_mf)
+	local monster_inc_mf = monster:getAttrValue(monster_inc_mf) / 1000
 	local monster_add_mf = monster:getAttrValue(monster_add_mf)
 	--return math_floor((math_pow(level,2)/5+monster_sta*8-40)*(1+monster_inc_mf)+monster_add_mf)
 	return math_floor(monster_add_mf*(1+monster_inc_mf))
@@ -275,7 +275,7 @@ end
 function MonsterAttrbuteFormula.monster_dodge(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_dex = monster:getAttrValue(monster_dex)
-	local monster_inc_dodge = monster:getAttrValue(monster_inc_dodge)
+	local monster_inc_dodge = monster:getAttrValue(monster_inc_dodge) / 1000
 	local monster_add_dodge = monster:getAttrValue(monster_add_dodge)
 	--return math_floor((monster_dex*1.2+level*0.5)*(1+monster_inc_dodge)+monster_add_dodge)
 	return math_floor(monster_add_dodge*(1+monster_inc_dodge))
@@ -286,7 +286,7 @@ end
 function MonsterAttrbuteFormula.monster_critical(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_spi = monster:getAttrValue(monster_spi)
-	local monster_inc_critical = monster:getAttrValue(monster_inc_critical)
+	local monster_inc_critical = monster:getAttrValue(monster_inc_critical) / 1000
 	local monster_add_critical = monster:getAttrValue(monster_add_critical)
 	--return math_floor((monster_spi*1.5+level/2)*(1+monster_inc_critical)+monster_add_critical)
 	return math_floor(monster_add_critical*(1+monster_inc_critical))
@@ -297,7 +297,7 @@ end
 function MonsterAttrbuteFormula.monster_tenacity(monster)
 	--local level = monster:getAttrValue(monster_lvl)
 	--local monster_spi = monster:getAttrValue(monster_spi)
-	local monster_inc_tenacity = monster:getAttrValue(monster_inc_tenacity)
+	local monster_inc_tenacity = monster:getAttrValue(monster_inc_tenacity) / 1000
 	local monster_add_tenacity = monster:getAttrValue(monster_add_tenacity)
 	--return math_floor((level/2+monster_spi*0.8)*(1+monster_inc_tenacity)+monster_add_tenacity)
 	return math_floor(monster_add_tenacity*(1+monster_inc_tenacity))
@@ -307,7 +307,7 @@ end
 --修改后：速度加值*（1+速度加成）
 function MonsterAttrbuteFormula.monster_speed(monster)
 	--local level = monster:getAttrValue(monster_lvl)
-	local monster_inc_speed = monster:getAttrValue(monster_inc_speed)
+	local monster_inc_speed = monster:getAttrValue(monster_inc_speed) / 1000
 	local monster_add_speed = monster:getAttrValue(monster_add_speed)
 	--local monster_dex = monster:getAttrValue(monster_dex)
 	--return math_floor((monster_dex*1.2+level*0.5)*(1+monster_inc_speed)+monster_add_speed)
@@ -537,7 +537,14 @@ g_AttrMonsterAttrBefinitTable =
 		[MonAttrAddType.Value] = monster_add_dodge,
 		[MonAttrAddType.Coffi] = monster_inc_dodge
 	},
-	[monster_tao] =
+	[monster_tenacity] =
 	{
+		[MonAttrAddType.Value] = monster_add_tenacity,
+		[MonAttrAddType.Coffi] = monster_inc_tenacity
 	},
+--	[monster_hit] =
+--	{
+--		[MonAttrAddType.Value] = monster_add_hit,
+--		[MonAttrAddType.Coffi] = monster_inc_hit
+--	},
 }

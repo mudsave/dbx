@@ -32,6 +32,9 @@ DialogCondition =
 	MatchTaskState = 27,
 	CheckDiscussHero = 28,
 	ChooseNPCByRandom = 29,
+	CheckNum   			= 30,
+	CheckDate 			= 31,
+	CheckFactionConfiguration	= 32,
 }
 
 --对话类型
@@ -111,7 +114,9 @@ DialogActionType =
 	OpenItemRepairWin	= 62,		--装备修理
 	EnterDiscussHero	= 63,		-- 进入煮酒论英雄
 	DiscussHeroFight	= 64,		-- 进入战斗
-
+	OpenPuzzle			= 65,		-- 打开拼图
+	ChangePlayerMoney   = 66,		--金钱管理
+	
 }
 
 --对话框图标类型

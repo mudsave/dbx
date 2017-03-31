@@ -2472,7 +2472,203 @@ ScriptFightDB[539] = {
 	},
 },
 }
-
+-------------------------------------------45-46级主线-----------------------------------------------------
+ScriptFightDB[601] = {              --------------河北——河北守将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21302},{ID = 21301,},{ID = 21301,},{ID = 21301,},{ID = 21301,},},
+}
+ScriptFightDB[602] = {              --------------河北——河北副将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21303},{ID = 21301,},{ID = 21301,},{ID = 21301,},{ID = 21301,},},
+}
+ScriptFightDB[603] = {              --------------河北——审配
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21304},{ID = 21301,},{ID = 21301,},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21304,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21304,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21304},bubbleID = 530},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21304},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[604] = {              --------------邺城——吕旷
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21306},{ID = 21305,},{ID = 21305,},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21306,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21306,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21306},bubbleID = 531},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21306},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[605] = {              --------------辽东——袁军守将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21308},{ID = 21307,},{ID = 21307,},{ID = 21307,},{ID = 21307,},},
+}
+ScriptFightDB[606] = {              --------------辽东——袁军副将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21309},{ID = 21307,},{ID = 21307,},{ID = 21307,},{ID = 21307,},},
+}
+ScriptFightDB[607] = {              --------------辽东——高翔
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21310},{ID = 21307,},{ID = 21307,},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21310,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21310,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21310},bubbleID = 532},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21310},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[608] = {              --------------辽东——冯礼
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21315},{ID = 21311,},{ID = 21312,},{ID = 21313,},{ID = 21314,},},
+}
+ScriptFightDB[609] = {              --------------辽东——袁军偏将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21318},{ID = 21317,},{ID = 21317,},{ID = 21317,},{ID = 21317,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[610] = {              --------------辽东——袁军统领
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21319},{ID = 21317,},{ID = 21317,},{ID = 21317,},{ID = 21317,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[611] = {              --------------辽东——郭援
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21320},{ID = 21317,},{ID = 21317,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[612] = {              --------------易京城——袁军攻城将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21322},{ID = 21321,},{ID = 21321,},{ID = 21321,},{ID = 21321,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[613] = {              --------------易京城——袁军铁甲将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21323},{ID = 21321,},{ID = 21321,},{ID = 21321,},{ID = 21321,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[614] = {              --------------易京城——吕威璜
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21324},{ID = 21321,},{ID = 21321,},},
+	npcs = {{ID = 21316},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21324,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21324,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21324},bubbleID = 533},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21324},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[615] = {              --------------易京城——易京守将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21326},{ID = 21325,},{ID = 21325,},{ID = 21325,},{ID = 21325,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[616] = {              --------------易京城——易京偏将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21327},{ID = 21325,},{ID = 21325,},{ID = 21325,},{ID = 21325,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[617] = {              --------------易京城——牵招
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21328},{ID = 21325,},{ID = 21325,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[620] = {              --------------易京城——文丑
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21332},{ID = 21329,},{ID = 21329,},},
+	npcs = {{ID = 21316},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21332,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21332,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21332},bubbleID = 534},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21332},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[621] = {              --------------河北——河北偏将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21334},{ID = 21333,},{ID = 21333,},{ID = 21333,},{ID = 21333,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[622] = {              --------------河北——河北都尉
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21335},{ID = 21333,},{ID = 21333,},{ID = 21333,},{ID = 21333,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[623] = {              --------------河北——焦触
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21336},{ID = 21333,},{ID = 21333,},},
+	npcs = {{ID = 21316},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21336,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21336,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21336},bubbleID = 535},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21336},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[624] = {              --------------邺城——邺城守将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21341},{ID = 21337,},{ID = 21338,},{ID = 21339,},{ID = 21340,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[625] = {              --------------邺城——邺城参将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21342},{ID = 21337,},{ID = 21338,},{ID = 21339,},{ID = 21340,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[626] = {              --------------邺城——邓升
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21343},{ID = 21337,},{ID = 21338,},{ID = 21339,},{ID = 21340,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[629] = {              --------------邺城——赤云童子
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21348},},
+	npcs = {{ID = 21316},},
+	systemActions = {
+			[1] = {
+				condition = {
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21348,type="hp",["<="]=20},},
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 21348,type="hp",[">"] = 0},},
+				isAnd = true,
+		         },
+				actions = {
+				{type = ScriptFightActionType.PlayBubble,params={DBID={21348},bubbleID = 536},},
+				{type = ScriptFightActionType.EntityQuit,params={DBID ={21348},}, }
+			    },
+	       },
+     },
+}
+ScriptFightDB[630] = {              --------------濮阳——袁军前锋大将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21350},{ID = 21349,},{ID = 21349,},{ID = 21349,},{ID = 21349,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[631] = {              --------------濮阳——袁军金甲大将
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21351},{ID = 21349,},{ID = 21349,},{ID = 21349,},{ID = 21349,},},
+	npcs = {{ID = 21316},},
+}
+ScriptFightDB[632] = {              --------------濮阳——陶升
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 21352},{ID = 21349,},{ID = 21349,},},
+	npcs = {{ID = 21316},},
+}
+----------------------------------45-46任务完成---------------------------------
 ------------------------------------------------副本分割线  -_- 大家好,我是分割线 --------------------------------------------------------------------------
 ScriptFightDB[3001] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 30001,},{ID = 30002,},{ID = 30003,},{ID = 30004,},{ID = 30005,},},
@@ -2818,7 +3014,7 @@ ScriptFightDB[3090] = {
 			 },
 
 			actions = {							
-                                {type = ScriptFightActionType.PlayBubble,params={DBID={31266},bubbleID = 532},},
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31266},bubbleID = 10008},},
 				{type = ScriptFightActionType.AddBuff,params={DBID ={31266},buffID = 21} },
 				
 			 },
@@ -2847,7 +3043,7 @@ ScriptFightDB[3092] = {
 
 			actions = {							
 
-                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 530},},
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 1006},},
 				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31258,count = 3},} },
 			        {type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 46} },
 				
@@ -2868,7 +3064,7 @@ ScriptFightDB[3092] = {
 
 			actions = {							
 
-                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 531},},
+                                {type = ScriptFightActionType.PlayBubble,params={DBID={31282},bubbleID = 10007},},
 				{type = ScriptFightActionType.EntityEnter,params={{DBID = 31266,count = 3},} },
 				{type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 67 } },
 				{type = ScriptFightActionType.AddBuff,params={DBID ={31282},buffID = 55 } },
@@ -3045,7 +3241,15 @@ ScriptFightDB[4051] = {
 					 {type = ScriptFightActionType.PlayBubble,params={DBID={31455},bubbleID = 10001},},
 				 }
 			      },
-	                },
+		       [2]= {
+			      condition = {
+			                {type = ScriptFightConditionType.IDExist, params={DBID = 31455,relation="<",value = 1},},          --目标单位是否存在：DBID=目标ID，relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=比较值；支持填入多组进行判断
+	                                  },
+			        actions = {
+				        {type = ScriptFightActionType.FightEnd,params={winner = "player" }},                               --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                  },
+	                   },
+	},
 	}
 ScriptFightDB[4052] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31460, },{ID = 31461, },{ID = 31462, },{ID = 31463, },{ID = 31464, },},
@@ -3058,8 +3262,24 @@ ScriptFightDB[4052] = {
 					 {type = ScriptFightActionType.PlayBubble,params={DBID={31460},bubbleID = 10002},},
 				 }
 			      },
+			[2]={
+                                condition = {
+				         {type = ScriptFightConditionType.LiveNum, params={isEnemy = false ,relation="<=",count = 4},},                  --存活单位数：isEnemy = true（敌方）/false（友方），count=存活单位数（比较类型有："<"、">"、"="、"<="、">="）
+	                                    },
+			          actions = {
+				  {type = ScriptFightActionType.EntityEnter,params={{DBID = 31461,count = 1},} },                                        --单位进场：DBID = 单位ID， count = 进场单位数量
+	                                    },
+	                    },
+                       [3]= {
+			      condition = {
+			                {type = ScriptFightConditionType.IDExist, params={DBID = 31460,relation="<",value = 1},},                        --目标单位是否存在：DBID=目标ID，relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=比较值；支持填入多组进行判断
+	                                  },
+			        actions = {
+				        {type = ScriptFightActionType.FightEnd,params={winner = "player" }},                                             --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                  },
+	                    },
 	                },
-	}
+			}
 ScriptFightDB[4053] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31465, },{ID = 31466, },{ID = 31467, },{ID = 31468, },{ID = 31469, },},
 	        begin = {
@@ -3092,12 +3312,20 @@ ScriptFightDB[4055] = {
 			[1] = {
 				condition = {
 					 {type = ScriptFightConditionType.RoundCount, params={ round = 1},},
-				 },
+				            },
 				 actions = {
 					 {type = ScriptFightActionType.PlayBubble,params={DBID={31475},bubbleID = 10005},},
-				 }
+				           }
 			      },
-	                },
+			[2]= {
+			      condition = {
+			                {type = ScriptFightConditionType.IDExist, params={DBID = 31475,relation="<",value = 1},},          --目标单位是否存在：DBID=目标ID，relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=比较值；支持填入多组进行判断
+	                                  },
+			        actions = {
+				        {type = ScriptFightActionType.FightEnd,params={winner = "player" }},                               --战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			                  },
+	},
+	},
 	}
 ScriptFightDB[4056] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 31470, },{ID = 31471, },{ID = 31472, },{ID = 31473, },{ID = 31474, },},
@@ -3886,10 +4114,72 @@ ScriptFightDB[5177] = {             -----------------上交宠物-50-54-魔兵
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10043},},
 }
 -------------------试炼任务完毕，请接下去-------------------------------------
+-------------------讨逆任务，Three.Two.One.Go！--------------------------------
+ScriptFightDB[5201] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28001},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5202] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28002},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5203] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28003},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5204] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28004},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5205] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28005},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5206] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28006},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5207] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28007},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5208] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28008},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5209] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28009},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5210] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28010},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5211] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28011},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5212] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28012},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5213] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28013},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5214] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28014},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5215] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28015},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5216] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28016},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5217] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28017},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5218] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28018},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5219] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28019},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+ScriptFightDB[5220] = {
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 28020},{ID = 28021},{ID = 28021},{ID = 28021},{ID = 28021},},
+	}
+--------------------------------------讨逆任务，Over！--------------------------------------------
 
 ---------------------------------------天子猎金场活动，扛着锄头来打劫------------------------
 ScriptFightDB[6001] = {
-	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39052,},{ID = 39052, },{ID = 39052, },{ID = 39052, },},
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39052,},{ID = 39053, },{ID = 39052, },{ID = 39052, },},
 	}
 ScriptFightDB[6002] = {
 	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 39052,},{ID = 39053, },{ID = 39053, },{ID = 39052, },},
@@ -4555,47 +4845,90 @@ systemActions = {
 
 -- 抓宠玩法（35001——35500）-------------------------------
 ScriptFightDB[35001] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10201,weight= 30}, {ID = 10301,weight= 40}, {ID = 10401,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10201,weight= 65}, {ID = 10301,weight= 30}, {ID = 10401,weight= 5}},
 }
 ScriptFightDB[35002] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10202,weight= 30}, {ID = 10302,weight= 40}, {ID = 10402,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10202,weight= 65}, {ID = 10302,weight= 30}, {ID = 10402,weight= 5}},
 }
 ScriptFightDB[35003] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10203,weight= 30}, {ID = 10303,weight= 40}, {ID = 10403,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10203,weight= 65}, {ID = 10303,weight= 30}, {ID = 10403,weight= 5}},
 }
 ScriptFightDB[35004] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10204,weight= 30}, {ID = 10304,weight= 40}, {ID = 10404,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10204,weight= 65}, {ID = 10304,weight= 30}, {ID = 10404,weight= 5}},
 }
 ScriptFightDB[35005] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10205,weight= 30}, {ID = 10305,weight= 40}, {ID = 10405,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10205,weight= 65}, {ID = 10305,weight= 30}, {ID = 10405,weight= 5}},
 }
 ScriptFightDB[35006] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10206,weight= 30}, {ID = 10306,weight= 40}, {ID = 10406,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10206,weight= 65}, {ID = 10306,weight= 30}, {ID = 10406,weight= 5}},
 }
 ScriptFightDB[35007] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10207,weight= 30}, {ID = 10307,weight= 40}, {ID = 10407,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10207,weight= 65}, {ID = 10307,weight= 30}, {ID = 10407,weight= 5}},
 }
 ScriptFightDB[35008] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10208,weight= 30}, {ID = 10308,weight= 40}, {ID = 10408,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10208,weight= 65}, {ID = 10308,weight= 30}, {ID = 10408,weight= 5}},
 }
 ScriptFightDB[35009] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10209,weight= 30}, {ID = 10309,weight= 40}, {ID = 10409,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10209,weight= 65}, {ID = 10309,weight= 30}, {ID = 10409,weight= 5}},
 }
 ScriptFightDB[35010] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10210,weight= 30}, {ID = 10310,weight= 40}, {ID = 10410,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10210,weight= 65}, {ID = 10310,weight= 30}, {ID = 10410,weight= 5}},
 }
 ScriptFightDB[35011] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10211,weight= 30}, {ID = 10311,weight= 40}, {ID = 10411,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10211,weight= 65}, {ID = 10311,weight= 30}, {ID = 10411,weight= 5}},
 }
 ScriptFightDB[35012] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10212,weight= 30}, {ID = 10312,weight= 40}, {ID = 10412,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10212,weight= 65}, {ID = 10312,weight= 30}, {ID = 10412,weight= 5}},
 }
 ScriptFightDB[35013] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10213,weight= 30}, {ID = 10313,weight= 40}, {ID = 10413,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10213,weight= 65}, {ID = 10313,weight= 30}, {ID = 10413,weight= 5}},
 }
 ScriptFightDB[35014] = {					
-	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10214,weight= 30}, {ID = 10314,weight= 40}, {ID = 10414,weight= 30}},
+	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10214,weight= 65}, {ID = 10314,weight= 30}, {ID = 10414,weight= 5}},
 }
+ScriptFightDB[35015] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10401},},
+}
+ScriptFightDB[35016] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10402},},
+}
+ScriptFightDB[35017] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10403},},
+}
+ScriptFightDB[35018] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10404},},
+}
+ScriptFightDB[35019] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10405},},
+}
+ScriptFightDB[35020] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10406},},
+}
+ScriptFightDB[35021] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10407},},
+}
+ScriptFightDB[35022] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10408},},
+}
+ScriptFightDB[35023] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10409},},
+}
+ScriptFightDB[35024] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10410},},
+}
+ScriptFightDB[35025] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10411},},
+}
+ScriptFightDB[35026] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10412},},
+}
+ScriptFightDB[35027] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10413},},
+}
+ScriptFightDB[35028] = {					---------------30地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10414},},
+}
+
 ScriptFightDB[35050] = {					---------------30地图抓宠巡逻怪
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10501,weight= 50}, {ID = 10601,weight= 50}},
 }
@@ -4640,6 +4973,33 @@ ScriptFightDB[35108] = {
 }
 ScriptFightDB[35109] = {					
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10223,weight= 60}, {ID = 10323,weight= 35}, {ID = 10423,weight= 5}},
+}
+ScriptFightDB[35110] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10415},},
+}
+ScriptFightDB[35111] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10416},},
+}
+ScriptFightDB[35112] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10417},},
+}
+ScriptFightDB[35113] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10418},},
+}
+ScriptFightDB[35114] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10419},},
+}
+ScriptFightDB[35115] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10420},},
+}
+ScriptFightDB[35116] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10421},},
+}
+ScriptFightDB[35117] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10422},},
+}
+ScriptFightDB[35118] = {					---------------40地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10423},},
 }
 ScriptFightDB[35150] = {					---------------40地图抓宠巡逻怪
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10505,weight= 99}, {ID = 10603,weight= 1}},
@@ -4692,6 +5052,40 @@ ScriptFightDB[35210] = {
 ScriptFightDB[35211] = {	
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10234,weight= 60}, {ID = 10334,weight= 35}, {ID = 10434,weight= 5}},
 }
+ScriptFightDB[35212] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10424},},
+}
+ScriptFightDB[35213] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10425},},
+}
+ScriptFightDB[35214] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10426},},
+}
+ScriptFightDB[35215] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10427},},
+}
+ScriptFightDB[35216] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10428},},
+}
+ScriptFightDB[35217] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10429},},
+}
+ScriptFightDB[35218] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10430},},
+}
+ScriptFightDB[35219] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10431},},
+}
+ScriptFightDB[35220] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10432},},
+}
+ScriptFightDB[35221] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10433},},
+}
+ScriptFightDB[35222] = {					---------------50地图变异宠
+	monsters = {type=ScriptMonsterCreateType.Assign,{ID = 10434},},
+}
+
 ScriptFightDB[35250] = {					---------------50地图抓宠巡逻怪
 	monsters = {type=ScriptMonsterCreateType.Random,count = 1,{ID = 10509,weight= 99}, {ID = 10605,weight= 1}},
 }
@@ -5183,6 +5577,569 @@ ScriptFightDB[7102] = {        ----挑战帮会守卫
 	                        },
                       }
 
+ -------------------------------------帮会环任务积分挑战脚本-----------------------------------------------------------------------------------
+ScriptFightDB[7103] = {                                                                
+
+	subType = ScriptType.Random, 
+	count = 1,	
+	isRepeat = false ,   
+
+	phases = {		
+		  [1] = {	--第一组，苹果佬	哎呀~你撞倒我了，要给我5个苹果才起来
+			typeID = 0, sceneID = "zd_bingchuan2.xml" ,isSpecialAction =true,
+			
+			monsters = {40180, 40181, 40182, 40183, 40184, 40185, 40186, 40187 }, 
+			systemActions = {                                                               
+
+		              [1]={								
+
+			condition = {						
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				isAnd = true,
+				count = 1,
+				
+			            },
+
+
+			actions = {							
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40180},bubbleID = 1006},},
+				isSameTime = true,
+			           },
+		                   },
+
+                              [2]={
+			condition = {
+				{type = ScriptFightConditionType.ScoreNum, params={relation ="=", value = 5,},},
+				--判断玩家积分：relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=判断值
+				isAnd = true,
+				count = 1,
+			            },
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				
+		                  },
+
+		              [3]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+				 --指定回合生效：round =指定回合数
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				--{type = ScriptFightActionType.EntityQuit,params={DBID ={40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128,},} },
+			             },
+		                   },								
+                              [4]={
+			condition = {         --一个榴莲
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40181,type="hp",["<="] = 0},},
+
+			            },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [5]={
+			condition = {         --两个苹果
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40182,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 2} },
+				--增加玩家积分：value =积分值
+			          },
+		                  },
+		              [6]={
+			condition = {        --三个苹果
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40183,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 3} },
+				--增加玩家积分：value =积分值
+			           },
+		                   },
+		              [7]={
+			condition = {         --4个橘子
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40184,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [8]={
+			condition = {           --五个凤梨
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40185,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			           },
+		                   },
+		              [9]={
+			condition = {          --6个苹果
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40186,type="hp",["<="] = 0},},
+
+			          },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [10]={
+			condition = {          --7个橙子
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40187,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			            },
+		                    },
+	
+	                                },
+	                },
+			},
+                  [2] = {	--第二组，卖鱼商人，买7条鱼以上给优惠	
+			typeID = 0, sceneID = "zd_bingchuan2.xml" ,isSpecialAction =true,
+			
+			monsters = {40188, 40189, 40190, 40191, 40192, 40193, 40194, 40195 }, 
+			systemActions = {                                                               
+
+		              [1]={								
+
+			condition = {						
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				isAnd = true,
+				count = 1,
+				
+			            },
+
+
+			actions = {							
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40188},bubbleID = 1007},},
+				isSameTime = true,
+			           },
+		                   },
+
+                              [2]={
+			condition = {
+				{type = ScriptFightConditionType.ScoreNum, params={relation =">=", value = 7,},},
+				--判断玩家积分：relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=判断值
+				isAnd = true,
+				count = 1,
+			            },
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				
+		                  },
+
+		              [3]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+				 --指定回合生效：round =指定回合数
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				--{type = ScriptFightActionType.EntityQuit,params={DBID ={40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128,},} },
+			             },
+		                   },								
+                              [4]={
+			condition = {         --鲤鱼
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40189,type="hp",["<="] = 0},},
+
+			            },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [5]={
+			condition = {   --一条鱼
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40190,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [6]={
+			condition = {       --草鱼
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40191,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			           },
+		                   },
+		              [7]={
+			condition = {       --五条鱼
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40192,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 5} },
+				--增加玩家积分：value =积分值
+			          },
+		                  },
+		              [8]={
+			condition = {     ----鱼竿
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40193,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			           },
+		                   },
+		              [9]={
+			condition = {      --2个玩具鱼
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40194,type="hp",["<="] = 0},},
+
+			          },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [10]={
+			condition = {       --3条鱼
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40195,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 3} },
+				--增加玩家积分：value =积分值
+			            },
+		                    },
+	
+	                                },
+	                },
+
+
+
+                  [3] = {	  --第三组，李先生，同学们知道5千克棉花加上4千克铁，到底有多重？	
+			typeID = 0, sceneID = "zd_bingchuan2.xml" ,isSpecialAction =true,
+			
+			monsters = {40196, 40197, 40198, 40199, 40200, 40201, 40202, 40203 }, 
+			systemActions = {                                                               
+
+		              [1]={								
+
+			condition = {						
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				isAnd = true,
+				count = 1,
+				
+			            },
+
+
+			actions = {							
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40196},bubbleID = 1008},},
+				isSameTime = true,
+			           },
+		                   },
+
+                              [2]={
+			condition = {
+				{type = ScriptFightConditionType.ScoreNum, params={relation =">=", value = 9,},},
+				--判断玩家积分：relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=判断值
+				isAnd = true,
+				count = 1,
+			            },
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				
+			          },
+		                  },
+
+		              [3]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+				 --指定回合生效：round =指定回合数
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				--{type = ScriptFightActionType.EntityQuit,params={DBID ={40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128,},} },
+			             },
+		                   },								
+                              [4]={
+			condition = {                 --5千克荔枝
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40197,type="hp",["<="] = 0},},
+
+			            },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 5} },
+				--增加玩家积分：value =积分值
+			          },
+		                  },
+		              [5]={
+			condition = {                 --3千克米
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40123,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [6]={
+			condition = {                   --4千克铁
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40124,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 4} },
+				--增加玩家积分：value =积分值
+			           },
+		                   },
+		              [7]={
+			condition = {                   --2斤花生
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40125,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [8]={
+			condition = {                   --2颗鸡蛋
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40126,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			           },
+		                   },
+		              [9]={
+			condition = {                    --1克拉钻石
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40127,type="hp",["<="] = 0},},
+
+			          },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [10]={
+			condition = {                    --半斤面粉
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40128,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			            },
+		                    },
+	
+	                                },
+	                },
+		  [4] = {		
+			typeID = 0, sceneID = "zd_bingchuan2.xml" ,isSpecialAction =true,
+			
+			monsters = {40204, 40205, 40206, 40207, 40208, 40209, 40210, 40211 }, 
+			systemActions = {                                                               
+
+		              [1]={								
+
+			condition = {						
+				{type = ScriptFightConditionType.RoundCount, params={ round = 1 },},
+				isAnd = true,
+				count = 1,
+				
+			            },
+
+
+			actions = {							
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40204},bubbleID = 1009},},
+				isSameTime = true,
+			           },
+		                   },
+
+                              [2]={
+			condition = {
+				{type = ScriptFightConditionType.ScoreNum, params={relation =">=", value = 7,},},
+				--判断玩家积分：relation=比较类型（比较类型有："<"、">"、"="、"<="、">="），value=判断值
+				isAnd = true,
+				count = 1,
+			            },
+
+			actions = {
+				{type = ScriptFightActionType.FightEnd,params={winner = "player" },},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				
+			          },
+		                  },
+
+		              [3]={
+			condition = {
+				{type = ScriptFightConditionType.RoundCount, params={ round = 2 },},
+				 --指定回合生效：round =指定回合数
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+				--{type = ScriptFightActionType.EntityQuit,params={DBID ={40121, 40122, 40123, 40124, 40125, 40126, 40127, 40128,},} },
+			             },
+		                   },								
+                              [4]={
+			condition = {                 --7个流氓
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40205,type="hp",["<="] = 0},},
+
+			            },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [5]={
+			condition = {                --3个刺客
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40206,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [6]={
+			condition = {                 --3名士兵
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40207,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 3} },
+				--增加玩家积分：value =积分值
+			           },
+		                   },
+		              [7]={
+			condition = {                 --1名将军
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40208,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			          },
+		                  },
+		              [8]={
+			condition = {                --好多小姐姐
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40209,type="hp",["<="] = 0},},
+
+			           },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			           },
+		                   },
+		              [9]={
+			condition = {                 --5名士兵
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40210,type="hp",["<="] = 0},},
+
+			          },
+
+			actions = {
+				
+				{type = ScriptFightActionType.AddScore,params={value = 5} },
+				--增加玩家积分：value =积分值
+			          },
+		                  },
+		              [10]={
+			condition = {                 --一位老爷爷
+				{type = ScriptFightConditionType.AttrValue, params={DBID = 40211,type="hp",["<="] = 0},},
+
+			             },
+
+			actions = {
+				
+				{type = ScriptFightActionType.FightEnd,params={winner = "monster" }},
+				--战斗结束：winner = 胜利方 （“monster”= 怪物方、“player” = 玩家方）
+			            },
+		                    },
+	
+	                                },
+	                },	
+	
+},
+},
+}
+
 
 ----------------------------phases test 多阶段战斗脚本测试-------------------------------------------------------------------------------------
 
@@ -5446,7 +6403,7 @@ systemActions = {
 
 			actions = {							--此处不可省略，可填入任意条动作使其生效
 
-				{type = ScriptFightActionType.PlayBubble,params={DBID={40121},bubbleID = 539},},
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40121},bubbleID = 1006},},
 				--播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
 				
 				isSameTime = true,
@@ -5574,7 +6531,7 @@ systemActions = {
 ScriptFightDB[12] = {                                                                
 
 	subType = ScriptType.Random, 
-	count = 3,	
+	count = 1,	
 	isRepeat = false ,   
 
 	phases = {		
@@ -5602,7 +6559,7 @@ ScriptFightDB[12] = {
 
 			actions = {							--此处不可省略，可填入任意条动作使其生效
 
-				{type = ScriptFightActionType.PlayBubble,params={DBID={40121},bubbleID = 539},},
+				{type = ScriptFightActionType.PlayBubble,params={DBID={40121},bubbleID = 1006},},
 				--播放气泡：DBID = 说话对象ID ，支持填入多个， DBID=0时表示玩家说话（组队时为队长），bubbleID =气泡ID
 				
 				isSameTime = true,
@@ -5729,15 +6686,6 @@ ScriptFightDB[12] = {
 	
 	},
 	},
-	[2] = {
-			typeID = 0, sceneID = "zd_yw_jt01.xml" ,isSpecialAction =true,
-			monsters={31254,31257},
-		
-	},
-        [3] = {
-			typeID = 0, sceneID = "zd_yw_yl01.xml" ,isSpecialAction =true,
-			monsters={30354,30357},
-		
-	},
+	
 },
 }

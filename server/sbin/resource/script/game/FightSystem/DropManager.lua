@@ -542,8 +542,10 @@ function DropManager:dealRewardsTip(FightEndResults, fightID)
 			local roleReward = rewardList[roleID]
 			if roleReward then
 				if roleReward.exp then--玩家时双倍经验丹状态，则玩家和宠物战斗后所得经验都为双倍
-					role:addXp(roleReward.exp)
-					self:sendRewardMessageTip(role, 2, roleReward.exp)
+					local temp_xp_ratio = role:getAttrValue(player_xp_ratio)
+					local tempExp = math.floor(roleReward.exp * temp_xp_ratio / 100)
+					role:addXp(tempExp)
+					self:sendRewardMessageTip(role, 2, tempExp)
 				end
 				if roleReward.money then
 					local money = roleReward.money + role:getMoney()

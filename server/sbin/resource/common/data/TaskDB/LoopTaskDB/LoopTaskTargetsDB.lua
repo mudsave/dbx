@@ -1,12 +1,12 @@
 --[[LoopTaskTargetsDB.lua
-	Ñ­»·ÈÎÎñÄ¿±ê(ÈÎÎñÏµÍ³)
+	å¾ªç¯ä»»åŠ¡ç›®æ ‡(ä»»åŠ¡ç³»ç»Ÿ)
 ]]--
 
---Ñ­»·ÈÎÎñÄ¿±ê
+--å¾ªç¯ä»»åŠ¡ç›®æ ‡
 LoopTaskTargetsDB = 
 {
-	-- ¶ÁÈ¡Ê¦ÃÅÈÎÎñ
-	[10001] =                        -------------Ç¬Ôªµº
+	-- è¯»å–å¸ˆé—¨ä»»åŠ¡
+	[10001] =                        -------------ä¹¾å…ƒå²›
 	{
 		[LoopTaskTargetType.script] = 
 		{		
@@ -20,19 +20,19 @@ LoopTaskTargetsDB =
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4350},},
 					
@@ -40,22 +40,22 @@ LoopTaskTargetsDB =
 			},
 
 		},
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
                                         {type="openDialog", param={dialogID =4600},},
 
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -65,35 +65,35 @@ LoopTaskTargetsDB =
 
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID = 4230},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -101,22 +101,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4751},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4751},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
                     {type="openDialog", param={dialogID = 4823},},
 				},
@@ -127,14 +127,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4751},},
 				},
@@ -146,44 +146,44 @@ LoopTaskTargetsDB =
 		},
 
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4773},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
 
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type="openDialog", param={dialogID = 4701},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4450},},
@@ -195,26 +195,26 @@ LoopTaskTargetsDB =
 		
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 4270},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 4270},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ÒÔÏÂÁ½¸öÈÎÎñÀàĞÍ²»»á±»Ëæ»úµ½¡£²»ÓÃÔÚLooptaskDBÅäÖÃÈ¨ÖØ
+		-- ä»¥ä¸‹ä¸¤ä¸ªä»»åŠ¡ç±»å‹ä¸ä¼šè¢«éšæœºåˆ°ã€‚ä¸ç”¨åœ¨LooptaskDBé…ç½®æƒé‡
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -222,12 +222,12 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 4769},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4769},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -238,44 +238,44 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
                                         {type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
 	},
-	[10002] =                           -------------½ğÏ¼É½
+	[10002] =                           -------------é‡‘éœå±±
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£		
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					{type="openDialog", param={dialogID = 4302},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4358},},
 					
@@ -284,21 +284,21 @@ LoopTaskTargetsDB =
 
 		},
 
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
                                      {type="openDialog", param={dialogID =4602},},
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -308,35 +308,35 @@ LoopTaskTargetsDB =
 
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID = 4235},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -344,22 +344,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4754},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4754},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
                     {type="openDialog", param={dialogID = 4823},},
 				},
@@ -370,14 +370,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4754},},
 				},
@@ -388,43 +388,43 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4774},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type="openDialog", param={dialogID = 4703},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4459},},
@@ -436,26 +436,26 @@ LoopTaskTargetsDB =
 		
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 4273},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 4273},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ÒÔÏÂÁ½¸öÈÎÎñÀàĞÍ²»»á±»Ëæ»úµ½¡£²»ÓÃÔÚLooptaskDBÅäÖÃÈ¨ÖØ
+		-- ä»¥ä¸‹ä¸¤ä¸ªä»»åŠ¡ç±»å‹ä¸ä¼šè¢«éšæœºåˆ°ã€‚ä¸ç”¨åœ¨LooptaskDBé…ç½®æƒé‡
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -463,12 +463,12 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 4769},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4769},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -479,44 +479,44 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
 	},
-	[10003] =                          -------------×ÏÑôÃÅ
+	[10003] =                          -------------ç´«é˜³é—¨
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£		
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					{type="openDialog", param={dialogID = 4303},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4366},},	
 				},
@@ -524,21 +524,21 @@ LoopTaskTargetsDB =
 
 		},
 
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
                                         {type="openDialog", param={dialogID =4604},},
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -548,35 +548,35 @@ LoopTaskTargetsDB =
 
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID = 4240},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -584,22 +584,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4757},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4757},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
                     {type="openDialog", param={dialogID = 4823},},
 				},
@@ -610,14 +610,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4757},},
 				},
@@ -628,43 +628,43 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4775},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type="openDialog", param={dialogID = 4705},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4468},},
@@ -676,26 +676,26 @@ LoopTaskTargetsDB =
 		
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 4276},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 4276},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ÒÔÏÂÁ½¸öÈÎÎñÀàĞÍ²»»á±»Ëæ»úµ½¡£²»ÓÃÔÚLooptaskDBÅäÖÃÈ¨ÖØ
+		-- ä»¥ä¸‹ä¸¤ä¸ªä»»åŠ¡ç±»å‹ä¸ä¼šè¢«éšæœºåˆ°ã€‚ä¸ç”¨åœ¨LooptaskDBé…ç½®æƒé‡
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -703,12 +703,12 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 4769},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4769},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -719,44 +719,44 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
 	},
-	[10004] =                          -------------ÔÆÏö¹¬
+	[10004] =                          -------------äº‘éœ„å®«
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£		
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					{type="openDialog", param={dialogID = 4304},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4374},},
 				},
@@ -764,21 +764,21 @@ LoopTaskTargetsDB =
 
 		},
 
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
                     {type="openDialog", param={dialogID =4606},},
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -788,35 +788,35 @@ LoopTaskTargetsDB =
 
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID = 4245},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -824,22 +824,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4760},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4760},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
                     {type="openDialog", param={dialogID = 4823},},
 				},
@@ -850,14 +850,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4760},},
 				},
@@ -868,43 +868,43 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4776},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type="openDialog", param={dialogID = 4707},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4477},},
@@ -916,26 +916,26 @@ LoopTaskTargetsDB =
 		
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 4279},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 4279},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ÒÔÏÂÁ½¸öÈÎÎñÀàĞÍ²»»á±»Ëæ»úµ½¡£²»ÓÃÔÚLooptaskDBÅäÖÃÈ¨ÖØ
+		-- ä»¥ä¸‹ä¸¤ä¸ªä»»åŠ¡ç±»å‹ä¸ä¼šè¢«éšæœºåˆ°ã€‚ä¸ç”¨åœ¨LooptaskDBé…ç½®æƒé‡
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -943,12 +943,12 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 4769},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4769},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -959,44 +959,44 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 	                                {type="openDialog", param={dialogID = 4780},},				
 				},
 			},
 		},
 	},
-	[10005] =                          -------------ÌÒÔ´¶´
+	[10005] =                          -------------æ¡ƒæºæ´
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£		
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					{type="openDialog", param={dialogID = 4305},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4382},},	
 				},
@@ -1004,21 +1004,21 @@ LoopTaskTargetsDB =
 
 		},
 
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
                                         {type="openDialog", param={dialogID =4608},},
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -1028,35 +1028,35 @@ LoopTaskTargetsDB =
 
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID = 4250},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -1064,22 +1064,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4763},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4763},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
                     {type="openDialog", param={dialogID = 4823},},
 				},
@@ -1090,14 +1090,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4763},},
 				},
@@ -1108,43 +1108,43 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4777},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type="openDialog", param={dialogID = 4709},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4486},},
@@ -1156,26 +1156,26 @@ LoopTaskTargetsDB =
 		
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 4282},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 4282},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ÒÔÏÂÁ½¸öÈÎÎñÀàĞÍ²»»á±»Ëæ»úµ½¡£²»ÓÃÔÚLooptaskDBÅäÖÃÈ¨ÖØ
+		-- ä»¥ä¸‹ä¸¤ä¸ªä»»åŠ¡ç±»å‹ä¸ä¼šè¢«éšæœºåˆ°ã€‚ä¸ç”¨åœ¨LooptaskDBé…ç½®æƒé‡
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -1183,12 +1183,12 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 4769},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4769},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -1199,44 +1199,44 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
 	},
-	[10006] =                          -------------ÅîÀ³¸ó
+	[10006] =                          -------------è“¬è±é˜
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£		
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					{type="openDialog", param={dialogID = 4306},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4390},},
 				},
@@ -1244,21 +1244,21 @@ LoopTaskTargetsDB =
 
 		},
 
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
                                         {type="openDialog", param={dialogID =4610},},
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -1268,35 +1268,35 @@ LoopTaskTargetsDB =
 
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID =4255},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -1304,22 +1304,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4766},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4766},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
                     {type="openDialog", param={dialogID = 4823},},
 				},
@@ -1330,14 +1330,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4766},},
 				},
@@ -1348,43 +1348,43 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4778},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type="openDialog", param={dialogID = 4711},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID =4495},},
@@ -1396,26 +1396,26 @@ LoopTaskTargetsDB =
 		
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 4285},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 4285},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ÒÔÏÂÁ½¸öÈÎÎñÀàĞÍ²»»á±»Ëæ»úµ½¡£²»ÓÃÔÚLooptaskDBÅäÖÃÈ¨ÖØ
+		-- ä»¥ä¸‹ä¸¤ä¸ªä»»åŠ¡ç±»å‹ä¸ä¼šè¢«éšæœºåˆ°ã€‚ä¸ç”¨åœ¨LooptaskDBé…ç½®æƒé‡
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -1423,12 +1423,12 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 4769},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4769},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -1439,121 +1439,121 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
 	},
-     -- ¶ÁÈ¡ÊÔÁ¶ÈÎÎñ
+     -- è¯»å–è¯•ç‚¼ä»»åŠ¡
 	[10007] =
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			--ĞüÉÍÕ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£		
+			--æ‚¬èµæˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
-					{type = "openDialog", param={dialogID = 5163},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 5163},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 		limitTime = 30*60,
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
-					{type = "openDialog", param={dialogID = 5164},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 5164},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 			},
 		},
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			limitTime = 30*60,
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
-				    {type = "openDialog", param={dialogID = 5166},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+				    {type = "openDialog", param={dialogID = 5166},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
-					{type = "openDialog", param={dialogID = 5232},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 5232},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 			},
 		},
-		--ÉÏ½»³èÎï
+		--ä¸Šäº¤å® ç‰©
               [LoopTaskTargetType.catchPet] = 
               {		
-	       -- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+	       -- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 	                triggers = 
 	                {
-		             -- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+		             -- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 		                 [TaskStatus.Active] = 
 		                 {
-			                    -- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë, Âò³èÎïÖ¸Òı
+			                    -- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯, ä¹°å® ç‰©æŒ‡å¼•
 			                    {type = "createBuyPetTrace", param = {}},
 		                 },
 		                 [TaskStatus.Done] =
 		                 {
-			     -- ÉÏ½É³èÎïÖ¸Òı
-			                    {type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
+			     -- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+			                    {type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
 		                 },	
 	                },
               },
 
-		-- °µÀ×Õ½¶·, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æš—é›·æˆ˜æ–—, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
-					 {type = "openDialog", param={dialogID = 5161},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 5161},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
 				},
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
 		limitTime = 30*60,
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
-				    {type = "openDialog", param={dialogID = 5165},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+				    {type = "openDialog", param={dialogID = 5165},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
 				[TaskStatus.Done] = 
 				{
@@ -1561,26 +1561,26 @@ LoopTaskTargetsDB =
 				},
 			},
 		},
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
-					 {type = "openDialog", param={dialogID = 5162},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					 {type = "openDialog", param={dialogID = 5162},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		--Æ´Í¼ÈÎÎñ
+		--æ‹¼å›¾ä»»åŠ¡
 		--[[[LoopTaskTargetType.puzzle] = 
 		{
 		limitTime = 5*60,
@@ -1590,10 +1590,10 @@ LoopTaskTargetsDB =
 				{
 					
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},]]
@@ -1602,7 +1602,7 @@ LoopTaskTargetsDB =
 	{
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬mpaIDÊÇËæ»úµÄ£¬x,y ÊÇËæ»úµÄ¡£
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼ŒmpaIDæ˜¯éšæœºçš„ï¼Œx,y æ˜¯éšæœºçš„ã€‚
 			targets = 
 			{	
 			},
@@ -1610,27 +1610,27 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					{type="openDialog", param={dialogID = 4031},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 	},
 	[10009] =
 	{
-		--ÉÏ½»×°±¸
+		--ä¸Šäº¤è£…å¤‡
 		[LoopTaskTargetType.paidEquip] = 
 		{
 			triggers = 
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "randomEquip", param = {}},
 				},
@@ -1642,7 +1642,35 @@ LoopTaskTargetsDB =
 		},
 	},
 
-	[10020] =                        -------------Ç¬Ôªµº
+		-- è®¨é€†ä»»åŠ¡
+	[10010] =
+	{
+		--åˆ›å»ºç§æœ‰NPCï¼Œ
+		[LoopTaskTargetType.script] = 
+		{
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼Œåæ ‡æ˜¯ä»å›ºå®šå½“ä¸­éšæœºã€‚
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
+					{type = "createRandomNpc", param = {index = 1}},
+					--{type="openDialog", param={dialogID = 4031},},
+				},
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
+				[TaskStatus.Done] =
+				{
+					{type = "removeRandomNpc", param = {index = 1}},
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
+				},
+			},
+		},
+	},
+
+	[10020] =                        -------------ä¹¾å…ƒå²›
 	{
 		[LoopTaskTargetType.script] = 
 		{		
@@ -1656,19 +1684,19 @@ LoopTaskTargetsDB =
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
-		-- ºÍNPC ¶Ô»°
+		-- å’ŒNPC å¯¹è¯
 		[LoopTaskTargetType.talk] = 
 		{		
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					{type="openDialog", param={dialogID = 4350},},
 					
@@ -1676,22 +1704,22 @@ LoopTaskTargetsDB =
 			},
 
 		},
-		-- ÉÏ½»µÀ¾ß,Ê×ÏÈÒªÕÒNPC ÂòÎïÆ·£¬zÉÏ½ÉÎïÆ·
+		-- ä¸Šäº¤é“å…·,é¦–å…ˆè¦æ‰¾NPC ä¹°ç‰©å“ï¼Œzä¸Šç¼´ç‰©å“
 		[LoopTaskTargetType.buyItem] = 
 		{
-			-- ÔÚ±¾ÅäÖÃµ±ÖĞÀ´µÈ¼¶Çø·Ö
+			-- åœ¨æœ¬é…ç½®å½“ä¸­æ¥ç­‰çº§åŒºåˆ†
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createBuyItemData", param = {}},
 					{type="openDialog", param={dialogID =4600},},
 
 				},
-				-- ÔÚÉÏ½ÉÎïÆ·µÄÊ±ºò¸Ä±äÈÎÎñ×´Ì¬ÎªDone
-				-- ÈÎÎñÍê³ÉÊ±ºò·¢¸öÖ¸Òı¸ø¿Í»§¶Ë
+				-- åœ¨ä¸Šç¼´ç‰©å“çš„æ—¶å€™æ”¹å˜ä»»åŠ¡çŠ¶æ€ä¸ºDone
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™å‘ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Done] =
 				{
 					{type = "createPaidItemTrace", param = {}},
@@ -1701,36 +1729,36 @@ LoopTaskTargetsDB =
 
 		[LoopTaskTargetType.catchPet] = 
 		{		
-			-- ÎŞĞèÅäÖÃÈÎÎñÄ¿±ê
+			-- æ— éœ€é…ç½®ä»»åŠ¡ç›®æ ‡
 			triggers = 
 			{
-				-- ÕâÊÇ»ñÈ¡ÎïÆ·µÄÖ¸Òı·¢¸ø¿Í»§¶Ë
+				-- è¿™æ˜¯è·å–ç‰©å“çš„æŒ‡å¼•å‘ç»™å®¢æˆ·ç«¯
 				[TaskStatus.Active] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{ type = "createCatchPetData", param = {}},
 					{type="openDialog", param={dialogID =4550},},
 				},
 				[TaskStatus.Done] =
 				{
-					{type = "forceStopAutoMeet", param = {}},---Ç¿ĞĞÍ£Ö¹×Ô¶¯ÓöµĞ
-					{type = "createPaidPetTrace", param = {}}, -- ·¢ËÍÉÏ½É³èÎïÖ¸Òı
-					{type = "removeMine", param = {}}, -- ÒÆ³ıÈÎÎñÀà
+					{type = "forceStopAutoMeet", param = {}},---å¼ºè¡Œåœæ­¢è‡ªåŠ¨é‡æ•Œ
+					{type = "createPaidPetTrace", param = {}}, -- å‘é€ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					{type = "removeMine", param = {}}, -- ç§»é™¤ä»»åŠ¡ç±»
 				},	
 			},
 		},
-		-- ÌôÕ½°µÀ×, ²»ĞèÒª´´½¨NPC£¬ µ½´óÖ¸¶¨×ø±ê£¬½øÈëÕ½¶·
+		-- æŒ‘æˆ˜æš—é›·, ä¸éœ€è¦åˆ›å»ºNPCï¼Œ åˆ°å¤§æŒ‡å®šåæ ‡ï¼Œè¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.partrolScript] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "addSpecialArea", param = {}},
 					{type="openDialog", param={dialogID = 4230},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeSpecialArea", param = {}},
 					{type = "finishLoopTask", param = {}},
@@ -1738,22 +1766,22 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- »¤ËÍÈÎÎñ
+		-- æŠ¤é€ä»»åŠ¡
 		[LoopTaskTargetType.escort] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ÆäÊµ¶Ô»°¾ÍÊÇÒ»¸ö¸Ä±ä×´Ì¬µÄ×÷ÓÃ
+					-- å…¶å®å¯¹è¯å°±æ˜¯ä¸€ä¸ªæ”¹å˜çŠ¶æ€çš„ä½œç”¨
 					{type = "escortTalkTrace", param = {}},
-					{type = "openDialog", param={dialogID = 4751},}, --ÔÚÈÎÎñÊ±´ò¿ªÒ»¸ö¶Ô»°
+					{type = "openDialog", param={dialogID = 4751},}, --åœ¨ä»»åŠ¡æ—¶æ‰“å¼€ä¸€ä¸ªå¯¹è¯
 
 				},
 				[TaskStatus.Done] =
 				{
 					{type = "removePartrolTalkTace", param = {}},
-					-- Ö¸ÒıºÍÎ²ËæNPCµÄÌí¼Ó
+					-- æŒ‡å¼•å’Œå°¾éšNPCçš„æ·»åŠ 
 					{type = "escortNpcTrace", param = {}},
 					{type="openDialog", param={dialogID = 4823},},
 				},
@@ -1764,14 +1792,14 @@ LoopTaskTargetsDB =
 			},
 		},
 		
-		-- Ñ²Âß¶Ô»°
+		-- å·¡é€»å¯¹è¯
 		[LoopTaskTargetType.partrolTalk] =
 		{
 			triggers = 
 			{
-				[TaskStatus.Done]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Done]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "partrolTalkTrace", param = {}},
 					{type="openDialog", param={dialogID = 4751},},
 				},
@@ -1782,43 +1810,43 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ÉñÃØÉÌÈË
+		-- ç¥ç§˜å•†äºº
 		[LoopTaskTargetType.mysteryBus] = 
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---½ÓÈÎÎñ×´Ì¬
+				[TaskStatus.Active]		=      ---æ¥ä»»åŠ¡çŠ¶æ€
 				{
-					-- ·¢ËÍÒ»¸öËæ»ú×ø±ê½Å±¾Õ½¶·Ö¸Òı£¬ÔÚ¶¯Ì¬Ìí¼ÓÈÎÎñÄ¿±ê
+					-- å‘é€ä¸€ä¸ªéšæœºåæ ‡è„šæœ¬æˆ˜æ–—æŒ‡å¼•ï¼Œåœ¨åŠ¨æ€æ·»åŠ ä»»åŠ¡ç›®æ ‡
 					{type = "mysteryTrace", param = {}},
 					{type="openDialog", param={dialogID = 4751},},
 				},
-				[TaskStatus.Done]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Done]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "removeMysteryTrace", param = {}},
 				},
 			},
 		},
-		-- ¾èÔù
+		-- æèµ 
 		[LoopTaskTargetType.donate] = 
 		{
 			triggers = 
 			{
 				[TaskStatus.Done] =
 				{
-					-- ¾èÔùÖ¸Òı
+					-- æèµ æŒ‡å¼•
 					{type = "donateTrace", param = {}},
 					{type= "openDialog", param={dialogID = 4701},},
 				},
 				
 			},
 		},
-		--ËÍĞÅ
+		--é€ä¿¡
 		[LoopTaskTargetType.deliverLetters] =
 		{
-			triggers = --ÈÎÎñ´¥·¢Æ÷
+			triggers = --ä»»åŠ¡è§¦å‘å™¨
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4450},},
@@ -1831,12 +1859,12 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		--ÉÏ½»×°±¸
+		--ä¸Šäº¤è£…å¤‡
 		[LoopTaskTargetType.paidEquip] = 
 		{
 			triggers = 
 			{
-				[TaskStatus.Active]		=      ---Íê³ÉÄ¿±ê×´Ì¬
+				[TaskStatus.Active]		=      ---å®Œæˆç›®æ ‡çŠ¶æ€
 				{
 					{type = "randomEquip", param = {}},
 				},
@@ -1847,7 +1875,7 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		-- ¶Ô»°Ö±½Ó½øÈëÕ½¶·
+		-- å¯¹è¯ç›´æ¥è¿›å…¥æˆ˜æ–—
 		[LoopTaskTargetType.talkScript] =
 		{
 			triggers = 
@@ -1859,7 +1887,7 @@ LoopTaskTargetsDB =
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
@@ -1870,42 +1898,42 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Done] = 
 				{
-					-- ¸øÒ»¸öÖ¸Òı¸ø¿Í»§¶Ë
+					-- ç»™ä¸€ä¸ªæŒ‡å¼•ç»™å®¢æˆ·ç«¯
 					{type = "createPosition", param = {}},
 					
 				},
 			},
 		},
 	},
------------Ñ¹²âÈÎÎñ----------------------
+-----------å‹æµ‹ä»»åŠ¡----------------------
 	[1] =
 	{
-		--ÌôÕ½Ã÷À×
+		--æŒ‘æˆ˜æ˜é›·
 		[LoopTaskTargetType.brightMine] = 
 		{
-			--ÌôÕ½Ã÷À×NPCIDÊÇ¹Ì¶¨Ëæ»úµÄ		
+			--æŒ‘æˆ˜æ˜é›·NPCIDæ˜¯å›ºå®šéšæœºçš„		
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "brightMine", param = {}},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 	},
-	-- ÌÖÄæÈÎÎñ
+	-- è®¨é€†ä»»åŠ¡
 	[10010] =
 	{
-		--´´½¨Ë½ÓĞNPC£¬
+		--åˆ›å»ºç§æœ‰NPCï¼Œ
 		[LoopTaskTargetType.script] = 
 		{
-			-- Ã÷À×Õ½¶·NPCIDÊÇËæ»úµÄ£¬×ø±êÊÇ´Ó¹Ì¶¨µ±ÖĞËæ»ú¡£
+			-- æ˜é›·æˆ˜æ–—NPCIDæ˜¯éšæœºçš„ï¼Œåæ ‡æ˜¯ä»å›ºå®šå½“ä¸­éšæœºã€‚
 			targets = 
 			{	
 			},
@@ -1913,23 +1941,21 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Active] = 
 				{
-					-- Ëæ»úNPC  Ò»ÖÖÖ¸¶¨NPC£¬²»Ö¸¶¨×ø±ê¡£Ò»ÖÖ²»Ö¸¶¨NPC£¬²»Ö¸¶¨×ø±ê
+					-- éšæœºNPC  ä¸€ç§æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡ã€‚ä¸€ç§ä¸æŒ‡å®šNPCï¼Œä¸æŒ‡å®šåæ ‡
 					{type = "createRandomNpc", param = {index = 1}},
 					--{type="openDialog", param={dialogID = 4031},},
 				},
-				-- ÈÎÎñÍê³ÉÊ±ºò
+				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
-					{type = "finishLoopTask", param = {}},-- Õâ¸öÊÇÍê³Éµ±Ç°ÈÎÎñÄ¿±ê£¬½ÓÏÂ¸öÈÎÎñÄ¿±ê
+					{type = "finishLoopTask", param = {}},-- è¿™ä¸ªæ˜¯å®Œæˆå½“å‰ä»»åŠ¡ç›®æ ‡ï¼Œæ¥ä¸‹ä¸ªä»»åŠ¡ç›®æ ‡
 				},
 			},
 		},
 	},
-	-- æ‹¼å›¾ä»»åŠ¡
 	[50000] =
 	{
-		--æ‹¼å›¾ï¼Œ
 		[LoopTaskTargetType.puzzle] = 
 		{
 			limitTime = 5*60,
@@ -1940,14 +1966,14 @@ LoopTaskTargetsDB =
 			{
 				[TaskStatus.Active] = 
 				{
-					--éšæœºæ‹¼å›¾
+					
 					{type = "createRandomPuzzle", param = {}},
 					
 				},
-				-- ä»»åŠ¡å®Œæˆæ—¶å€™
 				[TaskStatus.Done] =
 				{
-
+					--éšæœºæ‹¼å›¾
+					{type = "finishPuzzle", param = {npcID = 1, x = 98, y = 76, mapID = 9}},
 				},
 			},
 		},

@@ -77,7 +77,7 @@ function TreasureManager:createTreasureFromDB(player,treasuresRecord)
 	end
 	for _,context in pairs(treasuresRecord) do
 		-- 找到对应宝藏图
-		print("数据条",toString(context))
+		-- print("数据条-----",toString(context))
 		item = g_itemMgr:getItemByPosition(player,context.containerID,context.packIndex,context.gridIndex)
 		if item then
 			local treasure= Treasure(player,context.treasureID)
@@ -88,7 +88,7 @@ function TreasureManager:createTreasureFromDB(player,treasuresRecord)
 			local treasureHandler = player:getHandler(HandlerDef_Treasure)
 			treasureHandler:addTreasure(treasure)
 			-- 把tip的状态给客户端
-			-- treasure:toNotifyUpdateClientInfo()
+			treasure:toNotifyUpdateClientInfo()
 		end
 	end
 end

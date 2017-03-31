@@ -90,6 +90,7 @@ function Fight:__init()
 	self._world_fightID = nil --在世界服唯一
 	self._timerContext = {}--[timerID] = context
 	self._deadMonsterNum={}--[dbID]= num--怪物的死亡次数返回给世界服
+	self._playerLevel = nil --和怪物打斗的玩家代表等級
 end
 
 function Fight:getFightID()
@@ -211,6 +212,10 @@ end
 
 function Fight:getRoundCount()
 	return self._roundCount
+end
+
+function Fight:setPlayerLevel(level)
+	self._playerLevel = level
 end
 function Fight:getRole(pos)
 	for side,poses in pairs(self._members) do

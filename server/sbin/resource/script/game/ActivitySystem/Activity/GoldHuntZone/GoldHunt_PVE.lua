@@ -43,6 +43,8 @@ function GoldHunt_PVE:onMonsterKilled(DBIDs)
 	data.curScore = curScore
 	g_goldHuntMgr:setIconValue(player, curScore)
 	g_goldHuntMgr:informClientScore(player)
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 13,  score)
+	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 function GoldHunt_PVE:removeWatchers()

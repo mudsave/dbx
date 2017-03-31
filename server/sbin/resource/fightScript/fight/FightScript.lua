@@ -461,7 +461,7 @@ function FightScript:onPlayOver(params)
 				local fightMonsters = {}
 				local monsterDBIDs = phaseInfo[nextPhase].monsters
 				for _, DBID in pairs(monsterDBIDs) do
-					local monster = g_fightEntityFactory:createMonster(DBID)
+					local monster = g_fightEntityFactory:createMonster(DBID,nil,self._playerLevel)
 					table.insert(fightMonsters, monster)
 				end
 				g_fightFactory:initFightByMonsters(self,fightMonsters)
@@ -650,7 +650,7 @@ function FightScript:replaceEntity(newDBID,oldID)
 		local side = target:getPos()[2]
 		local pos = target:getPos()[3]
 		self:removeRole(target)
-		local monster = g_fightEntityFactory:createMonster(newDBID)
+		local monster = g_fightEntityFactory:createMonster(newDBID,nil ,self._playerLevel)
 		monster:setFightID(self._id)
 		self._members[side][pos] = monster
 		local finalPos = monster:getPos()

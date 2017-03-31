@@ -1,22 +1,22 @@
 --[[Tpuzzle.lua
-ÃèÊö£º
-	Æ´Í¼ÈÎÎñÄ¿±ê
+æè¿°ï¼š
+	æ‹¼å›¾ä»»åŠ¡ç›®æ ‡
 --]]
 
 Tpuzzle = class(TaskTarget)
 
 function Tpuzzle:__init(entity, task, param, state)	
-	--»ñµÃÒÑ¾­ÉÏ×°µÄ×°±¸ÀïÓĞÃ»ÓĞparam.equipID
+	--è·å¾—å·²ç»ä¸Šè£…çš„è£…å¤‡é‡Œæœ‰æ²¡æœ‰param.equipID
 	self._state = state and state or 0
 	self:addWatcher("onPuzzleFinish")
 end
 
--- ¼àÌıÉÏ×°
+-- ç›‘å¬ä¸Šè£…
 function Tpuzzle:onPuzzleFinish(puzzleID)
 	if puzzleID == self._param.puzzleID then 
 		self:setState(self._state + 1)
 		if self:completed() then
-			-- Èç¹ûÍê³É£¬ÄÇÃ´´ËÊ±¹ºÂòÎïÆ·¾­Í£ÒÑ¾­É¾³ı
+			-- å¦‚æœå®Œæˆï¼Œé‚£ä¹ˆæ­¤æ—¶è´­ä¹°ç‰©å“ç»åœå·²ç»åˆ é™¤
 			self._task:refresh()
 			self:removeWatcher("onPuzzleFinish")
 		end
@@ -31,7 +31,7 @@ function Tpuzzle:getState()
 	return self._state
 end
 
--- µ±ÖĞÂôÎïÆ·µÄ¼àÌı²»ÓĞÉ¾³ı£¬»¹Òª³ÖĞø¼àÌı
+-- å½“ä¸­å–ç‰©å“çš„ç›‘å¬ä¸æœ‰åˆ é™¤ï¼Œè¿˜è¦æŒç»­ç›‘å¬
 function Tpuzzle:removeWatchers()
 	self:removeWatcher("onPuzzleFinish")
 end

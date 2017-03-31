@@ -38,9 +38,16 @@ function ServerDataCommunitySystem:onUpdateWorldServerData( event )
 			player:setFactionDBID(factionDBID)
 			player:setMoney(player:getMoney() - 300000)
 			SceneManager:getInstance():createFactionScene(factionDBID)
+			player:flushPropBatch()
 		elseif updateCode == UpdateWorldServerDataCode.ContributeFaction then
 			local moneyCount = params[3] or 0
 			player:setMoney(player:getMoney() - moneyCount)
+			player:flushPropBatch()
+		elseif updateCode == UpdateWorldServerDataCode.GetSalary then
+			local factionConfiguration = player:getFactionConfiguration()
+			factionConfiguration.getSalary = 1
+			local moneyCount = params[3] or 0
+			player:setMoney(player:getMoney() + moneyCount)
 			player:flushPropBatch()
 		end
 		

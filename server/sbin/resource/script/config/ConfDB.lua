@@ -65,6 +65,7 @@ require "data.MonsterDB"
 require "data.MonsterDropsDB"
 require "data.ScriptFightDB"
 require "data.WorldDropsDB"
+require "data.ServerLevelDB"
 -- 活动
 require "data.ActivityDB.ActivityPageDB.ActivityPageDaliyDB"
 require "data.ActivityDB.ActivityPageDB.ActivityPageDaliyDB"
@@ -76,4 +77,5 @@ require "data.PuzzleDB"
 -- require "data.PetStudyDB"
 -- require "data.SkillDB.PetSkillDB"
 -- require "data.SkillDB.PetSkillDataDB"
+
 

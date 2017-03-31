@@ -186,6 +186,7 @@ function FightSystem:onStartFight(event)
 	end
 	FightUtils.printFightInfo(fight)
 	fight:setSrcWorldID(srcWorldID)
+	fight:setPlayerLevel(playerLvl)
 	g_fightMgr:addFight(fight)
 	--回合开始，等待客户端选动作
 	fight:gotoState(FightState.RoundStart)
@@ -443,7 +444,7 @@ function FightSystem:_onStartLuckMonsterScriptFight(event)
 
 	fight:setSrcWorldID(srcWorldID)
 	g_fightMgr:addFight(fight)
-
+	fight:setPlayerLevel(playerLvl)
 	fight:gotoState(FightState.RoundStart)
 	FightUtils.printFightInfo(fight)--TODO del
 	table.clear(fightRolesA)
@@ -603,6 +604,7 @@ function FightSystem:onStartScriptFight(event)
 		fight = g_fightFactory:createScriptFight(scriptFightID, fightRolesA, fightMonsters, mapID, monsterDBIDs, fightNpcs, bNpcAssign and npcIDs)
 	end
 	fight:setFightID(fightID)
+	fight:setPlayerLevel(playerLvl)
 	if phaseID then
 		fight:setPhaseID(phaseID)
 	end

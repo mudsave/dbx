@@ -9,6 +9,8 @@ local setPropValue = setPropValue
 
 --心跳定时器1分钟
 local ePlayerOfflineInterval = 60
+-- 起始玩家登录状态为false
+local loadState = false
 
 --掉线时间2分钟没收到心跳就设置为离线状态，离线超过3分钟，就下线
 local ePlayerInactiveTimeout = 60*2
@@ -94,6 +96,13 @@ function PlayerManager:onPlayerLogin(hGateLink, pLoginInfo)
 	g_entityMgr:addPlayer(player)
 	player:setStatus(ePlayerLoading)
 	LuaDBAccess.loadPlayer(roleId, PlayerManager.onPlayerLoaded, roleId)
+	-- 在加载服务器等级
+	if loadState then
+		local serverLevel = g_serverMgr:getServerLevel()
+		player:setAttrValue(player_server_level, serverLevel)
+		return 
+	end
+	self:loadServerRecord()
 end
 
 function PlayerManager:onPlayerReLogin(hGateLink, pLoginInfo, player)
@@ -173,7 +182,6 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 		print("[ERROR]PlayerManager.onPlayerLoaded(), error(no player), dbId = ", dbId)
 		return
 	end
-
 	player:setStatus(ePlayerNormal)
 	player:setLastActive(os.time())
 	player:setMaxPet(DefPetNum)
@@ -199,7 +207,7 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 	end
 	g_sceneMgr:enterPublicScene(mapID, player, x, y)
 	System._LoadWorldServerData(player,recordList[24][1])
-	System._LoadSocialServerData(player,recordList[26][1])
+	System._LoadSocialServerData(player,recordList[26][1],recordList[39][1])
 	System.OnPlayerLoaded(player, recordList)
 
 	g_entityMgr:setPlayerName(player:getName(),dbId)
@@ -242,6 +250,14 @@ function PlayerManager:doPlayerLogout(playerDBID, reason, isAll)
 	--销毁玩家
 	self._players[playerDBID] = nil
 	g_entityMgr:removePlayer(player:getID())
+end
+
+-- 首个玩家登录
+function PlayerManager:loadServerRecord()
+	if not loadState then
+		loadState = true
+		LuaDBAccess.loadServer(dataBaseServerID, ServerManager.onServerStart, g_serverMgr)
+	end
 end
 
 function PlayerManager.getInstance()

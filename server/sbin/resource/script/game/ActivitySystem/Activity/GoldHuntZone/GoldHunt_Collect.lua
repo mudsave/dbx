@@ -31,6 +31,8 @@ function GoldHunt_Collect:onCollectDone(mineConfigID)
 	data.curScore = curScore + addedScore
 	g_goldHuntMgr:setIconValue(player, data.curScore)
 	g_goldHuntMgr:informClientScore(player)
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 14, mineConfigID ,addedScore)
+	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 function GoldHunt_Collect:removeWatchers()

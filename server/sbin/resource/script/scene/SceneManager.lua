@@ -325,6 +325,31 @@ function SceneManager:createDiscussHeroScene(mapID,activityMapID)
 	return scene
 end
 
+function SceneManager:changeDiscussHeroPos(activityMapID, role, x, y)
+	local toScene = self._DiscussHero[activityMapID]
+	if not toScene then
+		print("mei------")
+		return false
+	end
+	
+	if role and x and y then
+	print("改变位置-------",x,y)
+		toScene:attachEntity(role, x, y)
+		if role:getEntityType() == eClsTypePlayer then
+			
+			local petID = role:getFollowPetID()
+			local pet = petID and g_entityMgr:getPet(petID)
+			if pet and pet:isVisible() then
+				pet:setVisible(false)
+				pet:setVisible(true) 
+				toScene:attachEntity(pet, x -1 , y - 1 )
+			end
+			return true
+		end
+	end
+	return false
+end
+
 function SceneManager:enterDiscussHeroScene(activityMapID, role, x, y)
 	local toScene = self._DiscussHero[activityMapID]
 	if not toScene then

@@ -14,11 +14,13 @@ function Player:__init_logic()
 	self._factionDBID    		= 0
 	self._factionMoney			= 0
 	self._factionHistoryMoney	= 0
+	self._factionJoinDate 		= 0
 
 	self._thisWeekFactionContribute = 0
 	self._lastWeekFactionContribute = 0
-
 	self._intradayFactionContribute = 0
+	self._factionConfiguration		= {}
+
 	self._taskMineConfig = nil --任务雷配置
 	-- 开启60秒的定时器，体力值和杀气
 	self.timerID = g_timerMgr:regTimer(self, 1000 * RegularTime.Second, 1000 * RegularTime.Second, "PlayerLogic:Kill")
@@ -30,6 +32,18 @@ function Player:__release_logic()
 	self._offlineDate = nil
 	self._pkInfo	  = nil
 	self._bMustCatch  = nil
+	
+	self._autoHideChatWin		= nil
+	self._factionDBID    		= nil
+	self._factionMoney			= nil
+	self._factionHistoryMoney	= nil
+	self._factionJoinDate 		= nil
+
+	self._thisWeekFactionContribute = nil
+	self._lastWeekFactionContribute = nil
+	self._intradayFactionContribute = nil
+	self._factionConfiguration		= nil
+
 	if self.timerID then
 		g_timerMgr:unRegTimer(self.timerID)
 		self.tiemrID = nil
@@ -81,6 +95,15 @@ function Player:getFactionHistoryMoney(  )
 	return self._factionHistoryMoney
 end
 
+function Player:setFactionJoinDate( factionJoinDate )
+	local factionJoinDate = factionJoinDate or 0
+	self._factionJoinDate = factionJoinDate
+end
+
+function Player:getFactionJoinDate(  )
+	return self._factionJoinDate
+end
+
 function Player:getThisWeekFactionContribute(  )
 	return self._thisWeekFactionContribute
 end
@@ -103,6 +126,14 @@ end
 
 function Player:setIntradayFactionContribute( money )
 	self._intradayFactionContribute = money
+end
+
+function Player:getFactionConfiguration(  )
+	return self._factionConfiguration
+end
+
+function Player:setFactionConfiguration( factionConfiguration )
+	self._factionConfiguration = factionConfiguration
 end
 
 -- 设置玩家副本动态ID

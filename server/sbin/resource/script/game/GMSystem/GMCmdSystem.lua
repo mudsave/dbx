@@ -45,6 +45,11 @@ function GMSystem:goto( player, mapID, x, y, targetID, npc)
 	g_sceneMgr:doSwitchScence(player:getID(), mapID ,x ,y)
 end
 
+--测试猎金场
+function GMSystem:openGoldHunt( player)
+	ActivityManager.getInstance():openActivity(4, "GoldHuntZone1")
+end
+
 -- 增加道具指令
 function GMSystem:additem( player, itemID, itemNum)
 	local itemID, itemNum = tonumber(itemID), tonumber(itemNum) or 1

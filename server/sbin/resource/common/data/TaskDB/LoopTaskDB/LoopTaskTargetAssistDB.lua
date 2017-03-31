@@ -8228,6 +8228,44 @@ LoopTaskTargetAssistDB =
 		}
 	},
 
+	[10010] =         -------------------讨逆任务	
+	{
+		[1] =
+		{
+			-- 一道10环
+			[1] =
+			{
+				[LoopTaskTargetType.script] =
+				{
+					createRandomNpc =
+					{
+						[1] = {npcID = 28001, scriptID = 5201, mapID = 127, x = 49, y = 176},
+						[2] = {npcID = 28002, scriptID = 5202, mapID = 106, x = 83, y = 147},
+						[3] = {npcID = 28003, scriptID = 5203, mapID = 126, x = 49, y = 223},
+						[4] = {npcID = 28004, scriptID = 5204, mapID = 119, x = 160, y = 166},
+						[5] = {npcID = 28005, scriptID = 5205, mapID = 116, x = 116, y = 235},
+						[6] = {npcID = 28006, scriptID = 5206, mapID = 119, x = 94, y = 101},
+						[7] = {npcID = 28007, scriptID = 5207, mapID = 120, x = 144, y = 145},
+						[8] = {npcID = 28008, scriptID = 5208, mapID = 122, x = 223, y = 102},
+						[9] = {npcID = 28009, scriptID = 5209, mapID = 10, x = 278, y = 269},
+						[10] = {npcID = 28010, scriptID = 5210, mapID = 119, x = 56, y = 163},
+						[11] = {npcID = 28011, scriptID = 5211, mapID = 101, x = 203, y = 101},
+						[12] = {npcID = 28012, scriptID = 5212, mapID = 101, x = 82, y = 197},
+						[13] = {npcID = 28013, scriptID = 5213, mapID = 10, x = 253, y = 91},
+						[14] = {npcID = 28014, scriptID = 5214, mapID = 128, x = 143, y = 202},
+						[15] = {npcID = 28015, scriptID = 5215, mapID = 118, x = 108, y = 216},
+						[16] = {npcID = 28016, scriptID = 5216, mapID = 13, x = 162, y = 99},
+						[17] = {npcID = 28017, scriptID = 5217, mapID = 102, x = 189, y = 102},
+						[18] = {npcID = 28018, scriptID = 5218, mapID = 122, x = 171, y = 81},
+						[19] = {npcID = 28019, scriptID = 5219, mapID = 120, x = 206, y = 104},
+						[20] = {npcID = 28020, scriptID = 5220, mapID = 126, x = 150, y = 129},
+
+					},
+				},
+			},
+		},
+	},
+
 	[10020] =
 	{
 		-- 1 - 150 级
@@ -8389,23 +8427,6 @@ LoopTaskTargetAssistDB =
 		},
 	},
 
-	[10010] =
-	{
-		[1] =
-		{
-			-- 一道10环
-			[1] =
-			{
-				[LoopTaskTargetType.script] =
-				{
-					createRandomNpc =
-					{
-						[1] = {npcID = 40002, scriptID = 100, mapID = 10, x = 200, y = 200},
-					},
-				},
-			},
-		},
-	},
 	[50000] =
 	{
 		[1] =

@@ -553,7 +553,12 @@ end
 --装备修理
 function DialogAction:doRepairEquipment(player)
 	g_itemMgr:openRepairEquipment(player)
-end 
+end
+
+--打开拼图
+function DialogAction:doOpenPuzzle(player)
+	CactionSystem.getInstance():doOpenPuzzle(player)
+end
 
 --物品兑换
 function DialogAction:doExchangeProps(player)
@@ -891,6 +896,19 @@ function DialogAction:doDiscussHeroFight(player, param, npcID)
 	g_discussHeroMgr:doDiscussHeroPVEFight(player, param, npcID)
 end
 
+function DialogAction:doChangePlayerMoney(player, param)
+	
+	local type = param.type
+	local flag = param.flag
+
+	if flag == "factionSalary" then
+		local event = Event.getEvent(FactionEvent_CB_GetSalaryFromFaction,player:getDBID())
+		g_eventMgr:fireWorldsEvent(event,SocialWorldID)
+	end
+
+
+
+end
 
 function DialogAction.getInstance()
 	return DialogAction()

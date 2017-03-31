@@ -164,9 +164,10 @@ function EctypeHandler:setRingEctypeProcess(ringEctypeID, curProcess)
 					-- 经验奖励
 					if ectypePrizes.ExpPrize then
 						local msgID = 11
-						local experience = ectypePrizes.ExpPrize + self._entity:getAttrValue(player_xp)
-						self._entity:setAttrValue(player_xp, experience)
-						self:sendEctypePrize(msgID, ectypePrizes.ExpPrize)
+						local tem_xp_ratio = self._entity:getAttrValue(player_xp_ratio)
+						local addXp = math.floor(ectypePrizes.ExpPrize * tem_xp_ratio / 100)
+						self._entity:addXp(player_xp, addXp)
+						self:sendEctypePrize(msgID, addXp)
 					end
 					-- 金钱奖励
 					if ectypePrizes.MoneyPrize then
@@ -225,9 +226,10 @@ function EctypeHandler:setRingEctypeProcess(ringEctypeID, curProcess)
 							if ringEctypeExtraPrizes.ExpPrize then
 								local msgID = 26
 								local expPrize = math.floor(ringEctypeExtraPrizes.ExpPrize * percent / 100)
-								local experience = expPrize + self._entity:getAttrValue(player_xp)
-								self._entity:setAttrValue(player_xp, experience)
-								self:sendEctypePrize(msgID, expPrize)
+								local tem_xp_ratio = self._entity:getAttrValue(player_xp_ratio)
+								local addXp = math.floor(expPrize * tem_xp_ratio / 100)
+								self._entity:addXp(player_xp, addXp)
+								self:sendEctypePrize(msgID, addXp)
 							end
 							-- 金钱奖励
 							if ringEctypeExtraPrizes.MoneyPrize then
@@ -342,9 +344,11 @@ function EctypeHandler:setEctypeProcess(ectypeID, curProcess)
 					-- 经验奖励
 					if ectypePrizes.ExpPrize then
 						local msgID = 11
-						local experience = ectypePrizes.ExpPrize + self._entity:getAttrValue(player_xp)
-						self._entity:setAttrValue(player_xp, experience)
-						self:sendEctypePrize(msgID, ectypePrizes.ExpPrize)
+						local tem_xp_ratio = self._entity:getAttrValue(player_xp_ratio)
+						local addXp = math.floor(ectypePrizes.ExpPrize * tem_xp_ratio / 100)
+						self._entity:addXp(player_xp, addXp)
+						self:sendEctypePrize(msgID, addXp)
+						
 					end
 					-- 金钱奖励
 					if ectypePrizes.MoneyPrize then
@@ -404,9 +408,10 @@ function EctypeHandler:setEctypeProcess(ectypeID, curProcess)
 					if ectypeExtraPrizes.ExpPrize then
 						local msgID = 26
 						local expPrize = math.floor(ectypeExtraPrizes.ExpPrize * percent / 100)
-						local experience = expPrize + self._entity:getAttrValue(player_xp)
-						self._entity:setAttrValue(player_xp, experience)
-						self:sendEctypePrize(msgID, expPrize)
+						local tem_xp_ratio = self._entity:getAttrValue(player_xp_ratio)
+						local addXp = math.floor(expPrize * tem_xp_ratio / 100)
+						self._entity:addXp(player_xp, addXp)
+						self:sendEctypePrize(msgID, addXp)
 					end
 					-- 金钱奖励
 					if ectypeExtraPrizes.MoneyPrize then
@@ -462,9 +467,10 @@ function EctypeHandler:setFactionEctypeProcess(ectypeID, curProcess)
 					-- 经验奖励
 					if ectypePrizes.ExpPrize then
 						local msgID = 11
-						local experience = ectypePrizes.ExpPrize + self._entity:getAttrValue(player_xp)
-						self._entity:setAttrValue(player_xp, experience)
-						self:sendEctypePrize(msgID, ectypePrizes.ExpPrize)
+						local tem_xp_ratio = self._entity:getAttrValue(player_xp_ratio)
+						local addXp = math.floor(ectypePrizes.ExpPrize * tem_xp_ratio / 100)
+						self._entity:addXp(player_xp, addXp)
+						self:sendEctypePrize(msgID, addXp)
 					end
 					-- 帮贡
 					if ectypePrizes.FactionCont then

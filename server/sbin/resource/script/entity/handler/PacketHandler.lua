@@ -84,6 +84,7 @@ function PacketHandler:addItemsToPacket(itemID, itemNum)
 				-- 发个监听消息给循环任务系统
 			else
 				-- 添加失败，发送邮件，要么就销毁道具
+				g_itemMgr:destroyItem(self._entity,item:getGuid())
 				return false
 			end
 		end

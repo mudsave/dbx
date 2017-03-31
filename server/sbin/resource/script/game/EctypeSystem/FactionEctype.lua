@@ -139,7 +139,7 @@ function FactionEctype:dealObjectNum()
 	if self.collectObjectNum == self.ectypeConfig.CollectObjectNum then
 		-- 此时当前副本完成，
 		if self.checkTimerID > 0 then
-			-- 注销定时器
+			-- 注销定时器, 不再刷新物品
 			g_timerMgr:unRegTimer(self.checkTimerID)
 		end
 		-- 执行当前进度的结束动作,奖励
@@ -148,6 +148,11 @@ function FactionEctype:dealObjectNum()
 		self:onEctypeEnd()
 		self:removeAllObject()
 		self:removeAllNpc()
+		-- 发送一个客户端指引给所有玩家，让其回到传送点
+		self.curProgress = self.curProgress + 1
+		-- 通知当前步骤
+		local event = Event.createEvent(EctypeEvents_SC_CurProcess, self.curProgress)
+		self:sendEctypeEvent(event)
 	end
 end
 

@@ -401,6 +401,34 @@ function PlayerAttrbuteFormula.player_stand_tao(player)
 	return math_floor(math_pow(level,3)*0.29 + 73)
 end
 
+-- 玩家经验获得比例
+function PlayerAttrbuteFormula.player_xp_ratio(player)
+	local startDays = g_serverMgr:getStartDays()
+	if expStartDay >= startDays then
+		return 100
+	else
+		local server_lvl = player:getAttrValue(player_server_level)
+		local player_lvl = player:getAttrValue(player_lvl)
+		if player_lvl < server_lvl then
+			local lvlDiff = server_lvl - player_lvl
+			if lvlDiff >=1 and lvlDiff <= 30 then
+				return math.floor(100 + lvlDiff * 10)
+			else
+				return 400
+			end
+		elseif player_lvl == server_lvl then
+			return 100 
+		elseif player_lvl > server_lvl then
+			local lvlDiff = player_lvl - server_lvl
+			if lvlDiff >= 1 and lvlDiff <= 18 then
+				return math.floor(100 - lvlDiff * 5)
+			else
+				return 10
+			end
+		end
+	end
+end
+
 g_AttrPlayerInfluenceTable =
 {
 	-- 一级属性
@@ -486,9 +514,10 @@ g_AttrPlayerInfluenceTable =
 
 	-- 三级属性
 	[player_add_mobile_speed]           = {player_mobile_speed},
-	[player_lvl]						= {player_next_xp, player_in_str,player_in_int,player_in_sta,player_in_spi,player_in_dex,player_max_vigor,player_stand_tao},
+	[player_lvl]						= {player_next_xp, player_in_str,player_in_int,player_in_sta,player_in_spi,player_in_dex,player_max_vigor,player_stand_tao,player_xp_ratio},
 	[player_inc_counter]				= {player_counter},
 	[player_inc_escape]					= {player_escape},
+	[player_server_level]				= {player_xp_ratio},
 }
 
 --属性公式对照表
@@ -541,6 +570,7 @@ g_AttributePlayerFormat =
 	[player_max_anger]					= PlayerAttrbuteFormula.player_max_anger,
 	[player_max_vigor]					= PlayerAttrbuteFormula.player_max_vigor,
 	[player_stand_tao]					= PlayerAttrbuteFormula.player_stand_tao,
+	[player_xp_ratio]					= PlayerAttrbuteFormula.player_xp_ratio,
 }
 
 -----------------------------------------------------------------------
@@ -660,6 +690,8 @@ g_AttributePlayerToProp =
 	[player_kill]						= PLAYER_KILL,
 	[player_max_vigor]					= PLAYER_MAX_VIGOR,
 	[player_max_pet]					= PLAYER_MAX_PET,
+	[player_server_level]				= PLAYER_SERVER_LEVEL,
+	[player_xp_ratio]					= PLAYER_XP_RATIO,
 	
 	[player_inc_taunt_hit]				= PLAYER_INC_TAUNT_HIT,
 	[player_inc_soper_hit]				= PLAYER_INC_SOPER_HIT,
@@ -711,5 +743,6 @@ g_AttrPlayerSyncTable =
 	[player_critical] = true,
 	[player_tenacity] = true,
 	[player_speed] = true,
+	[player_xp_ratio] = true,
 }
 

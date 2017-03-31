@@ -17,18 +17,18 @@ GoldHuntZoneActivityDB1 =
 		name = "GoldHuntZone1",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 17, min = 12},				--开始时间
-		min_maxPlayerLevel = {1,39},					--等级范围
+		startTime = {hour = 18, min = 43},				--开始时间
+		min_maxPlayerLevel = {15,25},					--等级范围
 		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 17, min = 30},				--结束时间
+		endTime = {hour = 20, min = 1},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
 					period = 2,--min			--阶段持续时间
 					materialInfo = {
-									{itemID = 10026,centerPos={x=108,y=214},radius = 20,count = 6},					--场景物件,中心,范围,数量,可以多行并列
-									{itemID = 10027,centerPos={x=111,y=217},radius = 20,count = 6},
+									{itemID = 10026,centerPos={x=108,y=214},radius = 25,count = 8},					--场景物件,中心,范围,数量,可以多行并列
+									{itemID = 10027,centerPos={x=111,y=217},radius = 25,count = 8},
 									{itemID = 10026,centerPos={x=119,y=232},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=121,y=234},radius = 15,count = 3},
 									{itemID = 10026,centerPos={x=128,y=210},radius = 15,count = 3},
@@ -37,53 +37,93 @@ GoldHuntZoneActivityDB1 =
 									{itemID = 10027,centerPos={x=106,y=192},radius = 15,count = 3},
 									{itemID = 10026,centerPos={x=88,y=202},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=88,y=205},radius = 15,count = 3},
-									updatePeriod = 1,totalMax= 100, curMax = 30,							--刷新间隔,总数量,保持数量
+									{itemID = 10026,centerPos={x=98,y=230},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=97,y=229},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=101,y=216},radius = 5,count = 1},
+									{itemID = 10028,centerPos={x=121,y=209},radius = 5,count = 2},
+									{itemID = 10028,centerPos={x=116,y=221},radius = 5,count = 1},
+									updatePeriod = 1,totalMax= 150, curMax = 40,							--刷新间隔,总数量,保持数量
 					}
 			},
 			[2] = {
 					period = 2,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=109,y=216},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,	--怪物ID,中心,范围,刷新间隔,总数量,保持数量
+									{commonDBID = 39052,centerPos={x=143,y=210},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,	--怪物ID,中心,范围,刷新间隔,总数量,保持数量
 									eliteDBID = 39053,propability = 30,									--精英怪,概率
 					},
 					materialInfo = {
-									{itemID = 10027,centerPos={x=186,y=198},radius = 20,count = 6},
-									{itemID = 10028,centerPos={x=189,y=200},radius = 20,count = 6},
+									{itemID = 10027,centerPos={x=186,y=198},radius = 20,count = 8},
+									{itemID = 10028,centerPos={x=189,y=200},radius = 20,count = 8},
 									{itemID = 10027,centerPos={x=174,y=229},radius = 15,count = 3},
 									{itemID = 10028,centerPos={x=172,y=229},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=206,y=200},radius = 15,count = 3},
 									{itemID = 10028,centerPos={x=206,y=197},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=197,y=175},radius = 15,count = 3},
 									{itemID = 10028,centerPos={x=193,y=174},radius = 15,count = 3},
-									{itemID = 10027,centerPos={x=174,y=184},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=174,y=184},radius = 15,count = 3},	
 									{itemID = 10028,centerPos={x=174,y=180},radius = 15,count = 3},
-									updatePeriod = 1,totalMax= 100, curMax = 35,
+									{itemID = 10027,centerPos={x=181,y=214},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=182,y=214},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=169,y=205},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=171,y=206},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=190,y=190},radius = 15,count = 1},
+									{itemID = 10029,centerPos={x=186,y=209},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=177,y=205},radius = 15,count = 1},
+									updatePeriod = 1,totalMax= 150, curMax = 40,
 					}
 			},
 			[3] = {
 					period = 2,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=186,y=201},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,
+									{commonDBID = 39052,centerPos={x=191,y=154},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,
 									eliteDBID = 39053,propability = 40,
 					},
 					materialInfo = {
-									{itemID = 10029,centerPos={x=202,y=113},radius = 25,count = 25},
-									{itemID = 10028,centerPos={x=203,y=116},radius = 25,count = 20},
-									updatePeriod = 1,totalMax= 100, curMax = 40,
+									{itemID = 10029,centerPos={x=202,y=113},radius = 25,count = 8},
+									{itemID = 10028,centerPos={x=203,y=116},radius = 25,count = 8},
+									{itemID = 10028,centerPos={x=172,y=122},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=173,y=124},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=185,y=90},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=186,y=91},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=218,y=89},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=220,y=89},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=224,y=123},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=223,y=123},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=229,y=107},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=228,y=106},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=190,y=129},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=190,y=130},radius = 15,count = 3},
+									{itemID = 10030,centerPos={x=195,y=114},radius = 15,count = 1},
+									{itemID = 10030,centerPos={x=209,y=114},radius = 15,count = 2},
+									{itemID = 10030,centerPos={x=217,y=100},radius = 15,count = 1},
+									updatePeriod = 1,totalMax= 150, curMax = 40,
 					}
 			},
 			[4] = {
 					period = 2,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=201,y=117},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,
+									{commonDBID = 39052,centerPos={x=238,y=108},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,
 									eliteDBID = 39053,propability = 60,
 					},
 					materialInfo = {
-									{itemID = 10029,centerPos={x=278,y=100},radius = 20,count = 30},
-									{itemID = 10030,centerPos={x=279,y=101},radius = 20,count = 30},
-									{itemID = 10029,centerPos={x=262,y=50},radius = 10,count = 3},
-									{itemID = 10030,centerPos={x=261,y=47},radius = 10,count = 3},
-									updatePeriod = 1,totalMax= 100, curMax = 45,
+									{itemID = 10029,centerPos={x=278,y=100},radius = 25,count = 8},
+									{itemID = 10030,centerPos={x=279,y=101},radius = 25,count = 8},
+									{itemID = 10029,centerPos={x=260,y=114},radius = 25,count = 4},
+									{itemID = 10030,centerPos={x=260,y=115},radius = 25,count = 4},
+									{itemID = 10029,centerPos={x=279,y=119},radius = 25,count = 4},
+									{itemID = 10030,centerPos={x=280,y=119},radius = 25,count = 4},
+									{itemID = 10029,centerPos={x=302,y=103},radius = 25,count = 4},
+									{itemID = 10030,centerPos={x=301,y=103},radius = 25,count = 4},
+									{itemID = 10029,centerPos={x=298,y=83},radius = 25,count = 4},
+									{itemID = 10030,centerPos={x=298,y=84},radius = 25,count = 4},
+									{itemID = 10029,centerPos={x=282,y=75},radius = 15,count = 4},
+									{itemID = 10030,centerPos={x=283,y=75},radius = 15,count = 4},
+									{itemID = 10029,centerPos={x=260,y=96},radius = 25,count = 8},
+									{itemID = 10030,centerPos={x=260,y=97},radius = 25,count = 8},
+									{itemID = 10029,centerPos={x=262,y=50},radius = 15,count = 4},
+									{itemID = 10030,centerPos={x=261,y=47},radius = 15,count = 4},
+									{itemID = 10030,centerPos={x=269,y=65},radius = 15,count = 4},
+									updatePeriod = 1,totalMax= 150, curMax = 45,
 					}
 			}
 		},

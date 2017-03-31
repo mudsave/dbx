@@ -303,7 +303,7 @@ function RoleVerify:checkBeastBless(player, param, npcID)
 		-- 排除所有的条件
 		return true
 	end
-	return false, param.errorID and param.errorID or 4
+	return false, param.errorID and param.errorID or 30
 end
 function RoleVerify:checkTime(player, param)
 	local hour = param.hour
@@ -562,6 +562,56 @@ function RoleVerify:ChooseNPCByRandom( player,param )
 		print("帮派休闲任务配置表NPC池出错")
 	end
 	return true
+
+end
+
+function RoleVerify:CheckNum( player,param )
+
+	local type = param.type
+	local num  = param.num
+	if type == "CheckFactionContribute" then
+		local lastWeekFactionContribute = player:getLastWeekFactionContribute()
+		if lastWeekFactionContribute >= num then
+			return false
+		else
+			return true
+		end
+	else
+		return false
+	end
+end
+
+function RoleVerify:CheckDate( player,param )
+
+	local type = param.type
+	if type == "CheckJoinFactionDate" then
+		if time.difftimeByType("day",player:getFactionJoinDate()) > 7 then
+			return false
+		else
+			return true
+		end
+	else
+		return false
+	end
+
+end
+
+function RoleVerify:CheckFactionConfiguration( player,param )
+
+	local type = param.type
+	if type == "CheckGetSalary" then
+		if player:getFactionConfiguration().getSalary then
+			if player:getFactionConfiguration().getSalary > 0 then
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	else
+		return false
+	end
 
 end
 

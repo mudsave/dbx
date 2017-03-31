@@ -16,6 +16,7 @@ function FactionHandler:__init(entity)
     self._lastWeekContribute        = 0
     self._thisWeekContribute        = 0
     self._intradayFactionContribute = 0
+    self._factionConfiguration      = {}
 
 end
 
@@ -167,6 +168,21 @@ function FactionHandler:setFactionContributeIntraday( money )
     LuaDBAccess.updatePlayer(self._entity:getDBID(),"IntradayFactionContribute",self._intradayFactionContribute)
 
 end
+
+function FactionHandler:setFactionConfiguration( factionConfiguration )
+    
+    self._factionConfiguration = factionConfiguration
+
+end
+
+function FactionHandler:getFactionConfiguration(  )
+    
+    return self._factionConfiguration
+
+end
+
+
+
 
 
 

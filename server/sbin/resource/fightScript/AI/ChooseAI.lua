@@ -21,16 +21,15 @@ end
 ]]
 
 function ChooseAIManager:choose(chooseID,role,oldTargets)
-
 	local records = FightAIDB[chooseID]
 	
 	if records.type == AIType.Config then
 		for _,actionInfo in ipairs(records) do
 			local chooseTarget = actionInfo.chooseTarget
 			local isEnemy 
-			if chooseTarget.type == AITargetType.AnyOfEnemy or chooseTarget.type == AITargetType.AllOfEnemy or chooseTarget.type == AITargetType.AllRoleOfEnemy or chooseTarget.type == AITargetType.AllPetOfEnemy or chooseTarget.type == AITargetType.AnyRoleOfEnemy  or chooseTarget.type == AITargetType.AnyPetOfEnemy then                                                                                                                                         
+			if (chooseTarget.type == AITargetType.AnyOfEnemy) or (chooseTarget.type == AITargetType.AllOfEnemy) or (chooseTarget.type == AITargetType.AllRoleOfEnemy) or (chooseTarget.type == AITargetType.AllPetOfEnemy) or (chooseTarget.type == AITargetType.AnyRoleOfEnemy)  or (chooseTarget.type == AITargetType.AnyPetOfEnemy) then                                                                                                                                         
 				isEnemy = true
-			elseif chooseTarget.type == AITargetType.AnyOfFriendButMe  or chooseTarget.type == AITargetType.AllOfFriend  or chooseTarget.type == AITargetType.AnyOfFriend or chooseTarget.type == AITargetType.Me or chooseTarget.type == AITargetType.DeadFriend then
+			elseif (chooseTarget.type == AITargetType.AnyOfFriendButMe)  or (chooseTarget.type == AITargetType.AllOfFriend)  or (chooseTarget.type == AITargetType.AnyOfFriend) or (chooseTarget.type == AITargetType.Me) or (chooseTarget.type == AITargetType.DeadFriend) then
 				isEnemy = false
 			else
 				isEnemy = chooseTarget.params.isEnemy
@@ -52,9 +51,8 @@ function ChooseAIManager:choose(chooseID,role,oldTargets)
 
 			--随机一个技能,以及是否冷却
 			if bPass and action.actionType == FightUIType.UseSkill then
-				local skillIDs = action.params.skillID
 				local canSkillIDs = {}
-				for _,ID in ipairs(skillIDs) do
+				for _,ID in pairs(action.params) do
 					if role:canUseSkill(ID) then
 						table.insert(canSkillIDs,ID)
 					end

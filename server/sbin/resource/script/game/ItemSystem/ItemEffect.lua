@@ -972,6 +972,7 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 			return removeFlag
 		end
 	end
+	return removeFlag
 end
 
 -- 为宠物添加技能
