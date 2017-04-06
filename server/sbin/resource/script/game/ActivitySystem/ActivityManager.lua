@@ -28,7 +28,6 @@ function ActivityManager:__release()
 end
 
 function ActivityManager:openActivity(id, frameName)
-	print("-----------活动预开启-----------",frameName)
 	local clazz = _G[frameName]
 	if clazz and type(clazz) == "table" then
 		self.curActivityList[id] = clazz()
@@ -46,7 +45,7 @@ end
 
 function ActivityManager:closeActivity(id)
 	self.curActivityList[id]:close()
-	self.curActivityList[id] = nil
+	--self.curActivityList[id] = nil
 	self:notifyAllActivityPageUpdateBtn(id,false)
 end
 
@@ -122,7 +121,6 @@ function ActivityManager:minUpdate(currentTime)
 			end
 
 		elseif activityInfo.startType == AtyStartType.fixedWeekHour then --每一周
-			--print("----------分钟更新-----",toString(data))
 			local activityTime = activityInfo.activityTime
 			for _,time in pairs(activityTime) do
 				local startTime = time.startTime
@@ -194,9 +192,7 @@ function ActivityManager:updateActivityByStart()
 					--	日	一	二	三	四	五	六
 					--	1	2	3	4	5	6	7	都加一对应的数值
 					--	0	1	2	3	4	5	6	可以使用这个
-					print("-----2222222-------来这里不。。。。。。。。。。",toString(data),toString(startTime),toString(endTime))
 					if data.wday >= startTime.week + 1 and (data.hour > startTime.hour or (data.hour == startTime.hour or data.min >= startTime.min)) and data.wday <= endTime.week + 1 and (data.hour < endTime.hour or (data.hour == endTime.hour and data.min <= endTime.min )) then
-						print("-----111111-------来这里不。。。。。。。。。。")
 						self:openActivity(id, activityInfo.name)
 						return
 					end

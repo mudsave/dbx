@@ -141,6 +141,8 @@ function BabelTask:addBabelReward()
 			local value
 			if rewardType == TaskRewardList.player_xp then
 				value = rewardFunc(level, curLayer)
+				local tem_xp_ratio = player:getAttrValue(player_xp_ratio)
+				value = math.floor(value * tem_xp_ratio / 100)
 			elseif rewardType == TaskRewardList.pet_xp then
 				if followPet then
 					value = rewardFunc(petLevel, curLayer)

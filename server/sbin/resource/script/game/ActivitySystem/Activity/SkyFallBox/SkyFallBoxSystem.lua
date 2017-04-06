@@ -2,6 +2,8 @@
 	天降宝盒系统
 --]]
 
+require "game.ActivitySystem.Activity.SkyFallBox.SkyFallBoxUtils"
+
 SkyFallBoxSystem = class(EventSetDoer, Singleton)
 
 function SkyFallBoxSystem:__init()
@@ -49,8 +51,8 @@ function SkyFallBoxSystem:onFightEnd(event)
 				local packetHandler = player:getHandler(HandlerDef_Packet)
 				local itemInfo = {}
 				local allItem = {}
-				packetHandler:addItemsToPacket(1032021 ,1)
-				itemInfo.itemID = 1032021
+				packetHandler:addItemsToPacket(1031021 ,1)
+				itemInfo.itemID = 1031021
 				itemInfo.itemNum = 1
 
 				if table.size(itemInfo) > 0 then
@@ -61,6 +63,9 @@ function SkyFallBoxSystem:onFightEnd(event)
 				--更新活动期间所获宝盒总数				
 				local newBoxNum = handler:getSkyFallBoxNum() + 1
 				handler:setSkyFallBoxNum(newBoxNum)
+
+				--通知客户端
+				g_skyFallBoxMgr:notifyToClient(player,newBoxNum)
 
 			end
 			

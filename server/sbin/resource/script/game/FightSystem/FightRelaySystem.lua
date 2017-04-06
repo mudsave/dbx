@@ -215,6 +215,8 @@ print("FightRelaySystem:QuitFight")
 	local fightID			= params[4]
 	local fightInfo         = params[5]
 
+	print("退出战斗参数",toString(params))
+
 	local resultMap		= {}
 	local petlist		= {}
 	local player		= nil
@@ -386,7 +388,7 @@ function FightRelaySystem:onCreatePet(event)
 		g_fightMgr.setPetAttrInfo(pet,info)
 		
 		g_eventMgr:fireWorldsEvent(
-			Event(
+			Event.getEvent(
 				FightEvents_SF_CreatePet, playerDBID, info, g_serverId
 			),sourceServerID
 		)

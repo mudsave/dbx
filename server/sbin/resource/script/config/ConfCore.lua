@@ -21,6 +21,7 @@ require "core.FightServerLoad"
 require "core.LuaDBAccess"
 require "core.PlayerManager"
 require "core.PeriodChecker"
+require "core.ServerManager"
 
 require "scene.Scene"
 require "scene.SceneManager"
@@ -70,8 +71,8 @@ require "entity.handler.ActivityHandler"
 
 --add utils relation script
 require "utils.TileUtils"
-
 function loadCore(serverID)
+	dataBaseServerID = 1000
 	g_serverId = serverID
 
 	g_fightServerLoad = FightServerLoad.getInstance()

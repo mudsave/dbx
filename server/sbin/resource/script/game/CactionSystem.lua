@@ -44,6 +44,11 @@ function CactionSystem:doPlayAnimation(player, param)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
+function CactionSystem:doOpenPuzzle(player)
+	local event = Event.getEvent(CactionEvent_SC_OpenPuzzle)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
 function CactionSystem.getInstance()
 	return CactionSystem()
 end

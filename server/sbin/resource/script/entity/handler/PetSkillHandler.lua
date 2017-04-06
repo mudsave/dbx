@@ -587,6 +587,43 @@ function PetSkillHandler:readBook(itemID)
 	return skillID,replacedID
 end
 
+-- 宠物能否掌握某个研发技能(将这个功能写在这里是为了将耦合从其他系统中移除)
+function PetSkillHandler:canLearnExtend(skillID)
+	local tPetLearn = PetStudyDB[self.owner:getConfigID()]
+	local tExtend = tPetLearn.Extend
+	if tExtend then
+		for _,id in ipairs(tExtend) do
+			if id == skillID then
+				return true
+			end
+		end
+	else
+		print("宠物",string.gbkToUtf8(self.owner:getName()),"没有研发技能配置")
+	end
+	return false
+end
+
+-- 升级宠物的某个研发技能
+function PetSkillHandler:addPetExtendLevel(skillID,level)
+	local skill = self:getSkill(skillID)
+	if not skill or skill:isRemoved() then
+		-- 没有这个技能
+		return false
+	end
+	if skill:getCategory() ~= Extend then
+		-- 不是研发技能
+		return false
+	end
+	local owner  = self.owner
+	if skill:getLevel() + level > owner:getLevel() then
+		-- 研发技能等级超过宠物等级
+		return false
+	end
+	skill:setLevel(skill:getLevel() + level)
+	skill:makeEffect(owner)
+	return true
+end
+
 function PetSkillHandler:get_skills()
 	local ret = {}
 	for _,skill in pairs(self.skills) do

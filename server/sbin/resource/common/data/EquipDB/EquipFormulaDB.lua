@@ -52,7 +52,7 @@ EquipFormulaDB =
 			},
 			equipID =2030079,
 		},
-		[1110095] =
+		[1110096] =
 		{
 			needItem =
 			{

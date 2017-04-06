@@ -677,7 +677,13 @@ function Player:onPlayerLogout(reason)
 		xPos = enterPos.xPos
 		yPos = enterPos.yPos
 	end
-
+	-- 如果在煮酒论英雄活动场景中
+	if g_sceneMgr:isInDiscussHeroScene(self) then
+		local prevPos = self:getPrevPos()
+		mapID = prevPos[1]
+		xPos = prevPos[2]
+		yPos = prevPos[3]
+	end
     local props = {}
 	props["MapID"] = mapID
 	props["PosX"] = xPos

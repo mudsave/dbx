@@ -15,33 +15,33 @@ ItemChangeType  =
     Change_Expoint      = 6,        --¸Ä±äÀúÁ·
 }
 
-function ItemChangeAttrDef.Change_BindMoney(entity)
-    local level = entity:getLevel()
+function ItemChangeAttrDef.Change_BindMoney(Item)
+    local level = Item:getItemLvl()
     return math.floor(level*1 + 10)
 end
 
-function ItemChangeAttrDef.Change_Money(entity)
-    local level = entity:getLevel()
+function ItemChangeAttrDef.Change_Money(Item)
+    local level = Item:getItemLvl()
     return math.floor(level*2 + 15)
 end
 
-function ItemChangeAttrDef.Change_ExpValue(entity)
-    local level = entity:getLevel()
+function ItemChangeAttrDef.Change_ExpValue(Item)
+    local level = Item:getItemLvl()
     return math.floor(level*1 + 12)
 end
 
-function ItemChangeAttrDef.Change_TaoValue(entity)
-    local level = entity:getLevel()
+function ItemChangeAttrDef.Change_TaoValue(Item)
+    local level = Item:getItemLvl()
     return math.floor(level*2 + 123)
 end
 
-function ItemChangeAttrDef.Change_Potential(entity)
-    local level = entity:getLevel()
+function ItemChangeAttrDef.Change_Potential(Item)
+    local level = Item:getItemLvl()
     return math.floor(level*2 + 123)
 end
 
-function ItemChangeAttrDef.Change_Expoint(entity)
-    local level = entity:getLevel()
+function ItemChangeAttrDef.Change_Expoint(Item)
+    local level = Item:getItemLvl()
     return math.floor(level*10 + 123)
 end
 

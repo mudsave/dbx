@@ -1,12 +1,66 @@
-if not debug then
-	error("debug not enabled!")
-end
+if not debug then error("debug not enabled!") end
+
+require "base.StringBuilder"
 
 local setmetatable = setmetatable
 local getmetatable = getmetatable
 local tostring = tostring
 local rawget = rawget
 local type = type
+
+local max_level = 4
+local max_items = 5
+function table_tostring(t,builder,level)
+	local count = 0
+	builder:append("{ ")
+	for key,value in pairs(t) do
+		local tk = type(key)
+		if tk == "string" then
+			builder:append(key)
+		elseif tk == "number" then
+			builder:append("[",key,"]")
+		elseif tk == "boolean" then
+			builder:append("[",key and "true" or "false","]")
+		elseif tk == "table" then
+			if level < max_level then
+				builder:append(table_tostring(key,StringBuilder(),level+1))
+			else
+				builder:append "{...}"
+			end
+		else
+			builder:append(tk)
+		end
+		builder:append " = "
+
+		local tv = type(value)
+		if tv == "table" then
+			if level < max_level then
+				builder:append(table_tostring(value,StringBuilder(),level+1))
+			else
+				builder:append "{...}"
+			end
+		elseif tv == "string" then
+			builder:append('"',value,'"')
+		elseif tv == "number" then
+			builder:append(value)
+		elseif tv == "boolean" then
+			builder:append(value and "true" or "false")
+		else
+			builder:append(tv)
+		end
+
+		builder:append(",")
+		count = count + 1
+		if count > max_items then break end
+	end
+	if count > 0 then
+		builder:popend()
+	end
+	builder:append " }"
+	local str = tostring(builder)
+	builder:release()
+	return str
+end
 
 -- clazz.lua
 -- 根据某个模式创建一个新表
@@ -164,6 +218,8 @@ function report_mt:get_detail(index)
 	local t = type(gco)
 	if t == "function" then
 		return "function:"..self.sources[gco]
+	elseif type(gco) == "table" then
+		return table_tostring(gco,StringBuilder(),1) 
 	else
 		return tostring(gco)
 	end
@@ -346,6 +402,10 @@ function snapshot()
 				return
 			end
 			marktable(mt,me,"[metatable]")
+		end
+
+		if mt == snapshot_mt then
+			return
 		end
 	
 		for key,value in pairs(me) do

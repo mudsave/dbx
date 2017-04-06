@@ -85,7 +85,7 @@ function Buff:getLevel()
 	end
 	return self.skillLevel
 end
-
+--[[
 function Buff:__tostring()
 	print ("$$buff$$")
 	for idx,iter in pairs(self.effects) do
@@ -93,7 +93,7 @@ function Buff:__tostring()
 	end
 	print ("$$buff$$")
 end
-
+--]]
 --获取buffID
 function Buff:getID()
 	return self.buffID
@@ -167,9 +167,9 @@ end
 function Buff:addEffect()
 	for _,iter in pairs( self.db.effects or {} ) do
 		effect = {
-			effectType = iter[1],
-			effectValue = math.floor( tBuffEffectValueDB[iter[2]][self:getLevel()] or 0),
-			addType = tBuffEffectValueDB[iter[2]].addType
+			effectType = iter[1],  --buff的效果类型
+			effectValue = math.ceil(tBuffEffectValueDB[iter[2]][self:getLevel()] or 0), --buff的数值
+			addType = tBuffEffectValueDB[iter[2]].addType --buff是固定值还是百分比
 		}
 		table.insert(self.effects, effect)
 	end

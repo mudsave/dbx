@@ -20,7 +20,7 @@ DialogConditionDoer =
 	[DialogCondition.NotHasFactionTask]			= RoleVerify.notHasFactionTask,
 	[DialogCondition.CheckTaskTeam]				= RoleVerify.checkTaskTeam,
 	[DialogCondition.CheckLoopTask]				= RoleVerify.checkLoopTask,
-	[DialogCondition.HasTask_1]					= RoleVerify.hasTask_1,
+	[DialogCondition.HasStatusTask]				= RoleVerify.hasStatusTask,
 	[DialogCondition.CheckLoopTasks]			= RoleVerify.checkLoopTasks,
 	[DialogCondition.CheckBeastBless]			= RoleVerify.checkBeastBless,
 	[DialogCondition.Time]						= RoleVerify.checkTime,
@@ -34,9 +34,12 @@ DialogConditionDoer =
 	[DialogCondition.DekaronSchoolActivity]		= RoleVerify.checkActivityOpening,
 	[DialogCondition.HaveActivityTarget]		= RoleVerify.haveActivityTarget,
 	[DialogCondition.DekaronSchoolActivityTarget] = RoleVerify.checkActivityTarget,
-	[DialogCondition.TkillMonster]= RoleVerify.checkKillMonster,
 	[DialogCondition.DailyTaskTimes] = RoleVerify.checkDailyTaskTimes,
+	[DialogCondition.ChooseNPCByRandom] = RoleVerify.ChooseNPCByRandom,
 	[DialogCondition.CheckDiscussHero]	= RoleVerify.checkDiscussHero,
+	[DialogCondition.CheckNum]	= RoleVerify.CheckNum,
+	[DialogCondition.CheckDate] = RoleVerify.CheckDate,
+	[DialogCondition.CheckFactionConfiguration] = RoleVerify.CheckFactionConfiguration
 }
 
 --对话条件对应的实例
@@ -57,7 +60,7 @@ DialogConditionInstance =
 	[DialogCondition.CheckTaskTeam] = RoleVerify.getInstance(),
 	[DialogCondition.CheckBeastBless] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTask] = RoleVerify.getInstance(),
-	[DialogCondition.HasTask_1] = RoleVerify.getInstance(),
+	[DialogCondition.HasStatusTask] = RoleVerify.getInstance(),
 	[DialogCondition.CheckLoopTasks] = RoleVerify.getInstance(),
 	[DialogCondition.Time] = RoleVerify.getInstance(),
 	[DialogCondition.PlayerCountInGoldHuntMap] = SceneManager.getInstance(),
@@ -72,4 +75,5 @@ DialogConditionInstance =
 	[DialogCondition.TkillMonster] = RoleVerify.getInstance(),
 	[DialogCondition.DailyTaskTimes] = RoleVerify.getInstance(),
 	[DialogCondition.CheckDiscussHero]	= RoleVerify.getInstance(),
+	[DialogCondition.ChooseNPCByRandom] = RoleVerify.getInstance(),
 }

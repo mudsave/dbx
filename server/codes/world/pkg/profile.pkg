@@ -1,0 +1,9 @@
+$#include "Profile.h"
+
+void PP_ENTER_CALL(const char *szCallName);
+void PP_EXIT_CALL(const char *szCallName);
+void PP_EXIT();
+void PP_START();
+void PP_STOP();
+void PP_CLEAR();
+void PP_DUMP(const char *szFileName);

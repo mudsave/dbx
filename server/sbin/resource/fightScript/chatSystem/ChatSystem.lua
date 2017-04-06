@@ -45,8 +45,7 @@ function ChatSystem:onGetChatMessage(event)
 	end
 
 	playerCoolInfo[DBID] = os.time() + ChatCoolTime
-
-	local roleInfo = {ID = player:getID(), name = player:getName()}
+	local roleInfo = {ID = player:getID(), name = player:getName()}--发送消息给战斗中的成员
 	for _,roles in pairs(fight:getMembers()) do
 		for _, role in pairs(roles) do
 			if instanceof(role,FightPlayer) then

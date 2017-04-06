@@ -23,7 +23,6 @@ function ManagedApp.start(serverID)
 	require "config.ConfCore"
 	require "config.ConfDB"
 	require "config.ConfSystem"
-
 	loadCore(serverID)
 	loadSystem()
 	g_sceneMgr:loadPublicScenes()
@@ -102,6 +101,7 @@ end
 function ManagedApp.onAReceive(...)
 	return RemoteEventProxy.areceive(...)
 end
+
 -- lua出错处理接口
 -- 可提供的功能
 -- 1,直接返回错误信息,供C++层打印
@@ -112,6 +112,7 @@ end
 
 function ManagedApp.close()
 	print("World Server is closing!")
+	g_serverMgr:saveServerData()
 	g_playerMgr:kickAllPlayer()
 	ManagedApp.State = ServerState.stop
 end

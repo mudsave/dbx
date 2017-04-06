@@ -26,8 +26,12 @@ end
 
 function Pack:__release()
 	for i = 1, self:getCapability() do
-		release(self.grids[i])
-		self.grids[i] = nil
+		local item = self.grids[i]
+	    if item then
+			g_itemMgr:destroyItem(self.owner,item:getGuid())
+			self.grids[i] = nil
+		end
+		
 	end
 end
 
@@ -598,7 +602,7 @@ function Pack:removeItem(item, removeNum, bUpdateClient)
 end
 
 --销毁指定格的道具
-function Pack:destroyItem(gridIndex, bUpdateClient)
+function Pack:destroyItem(owner,gridIndex, bUpdateClient)
 	if gridIndex < 1 or gridIndex > self:getCapability() then
 		return false
 	end

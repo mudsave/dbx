@@ -444,7 +444,7 @@ function TradeManager:doTradeVerifyState(roleID, targetID)
 		self.requestList[roleID] = {}
 		self.requestList[roleID][targetID] = os.time()
 		--发交易请求到客户端
-		local name = player:getName()
+		-- -- for print use -- local name = string.gbkToUtf8(player:getName())
 		local event = Event.getEvent(TradeEvents_SC_P2PSendRequest, roleID)
 		g_eventMgr:fireRemoteEvent(event, targetPlayer)
 

@@ -67,7 +67,8 @@ function CatchPetActivity:update(timerID)
 				if g_serverId == 0 then
 					print("广播还剩多少分钟开始", self._config.beforActivity[index])
 					local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 4, self._config.beforActivity[index])
-					RemoteEventProxy.broadcast(event)
+					-- RemoteEventProxy.broadcast(event)
+					g_eventMgr:broadcastEvent(event)
 				end
 				return
 			end
@@ -90,7 +91,8 @@ function CatchPetActivity:update(timerID)
 				if g_serverId == 0 then
 					print("广播还剩多少分钟结束", self._config.endActivity[index])
 					local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 6, self._config.endActivity[index])
-					RemoteEventProxy.broadcast(event)
+					-- RemoteEventProxy.broadcast(event)
+					g_eventMgr:broadcastEvent(event)
 				end
 				return
 			end
@@ -101,7 +103,8 @@ end
 function CatchPetActivity:endActivity()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 7)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	for index, beforTimerID in pairs(self.beforActivityTimerIDs) do
 		if beforTimerID > 0 then
@@ -124,7 +127,8 @@ function CatchPetActivity:open()
 	-- 活动开始前广播，还有15分钟正式开启
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 4, beforActivity[1])
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	for index, minute in ipairs(beforActivity) do
 		-- 活动开始前的三个定时器
@@ -143,7 +147,8 @@ function CatchPetActivity:close()
 	if g_serverId == 0 then
 		-- 活动还有几分钟关闭
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 6, endActivity[1])
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	for index, minute in ipairs(endActivity) do
 		-- 活动开始前的三个定时器
@@ -163,7 +168,8 @@ end
 function CatchPetActivity:startActivity()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 5)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	g_catchPetMgr:startOpen()
 end

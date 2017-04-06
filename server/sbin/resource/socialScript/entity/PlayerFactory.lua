@@ -43,6 +43,8 @@ function PlayerFactory:createPlayer(info)
 	player:getHandler(HandlerDef_Faction):setFactionHistoryMoney(info.factionHistoryMoney)
     player:getHandler(HandlerDef_Faction):initializeFactionDBID(info.factionDBID)
 	player:getHandler(HandlerDef_Faction):initializeWeekContribute(info.lastWeekFactionContribute,info.thisWeekFactionContribute,info.offlineDate)
+	player:getHandler(HandlerDef_Faction):setFactionConfiguration(info.factionConfiguration)
+
 	if time.isSameDay(player:getOfflineDate()) then
 		player:getHandler(HandlerDef_Faction):setFactionContributeIntraday(info.intradayFactionContribute)
 	else

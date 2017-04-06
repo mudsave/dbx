@@ -325,4 +325,15 @@ DropDB = {
 				{weight = 5,item ={id = 2040046, number = {1},},},
 			},
 	},
+	[18] = { 
+		dropNumData = {1,2} ,
+		dropType =	{
+				{weight = 80,xp = 500},
+				{weight = 20,money = 100},
+				{weight = 80,subMoney = 1000},
+				{weight = 20,expoint = 50},
+				{weight = 80,item ={id = 1051005, number = {1},},},
+				{weight = 80,item ={id = 1051006, number = {1},},},
+			},
+	},
 }

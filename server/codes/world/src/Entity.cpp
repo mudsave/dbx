@@ -775,7 +775,8 @@ bool CoEntity::isInView(handle hand) const
 
 PeerHandle* CoEntity::getAroundMe(int& peer_count)
 {
-	static PeerHandle pPeers[500];
+	const int MaxPeersPerSearch = 500;
+	static PeerHandle pPeers[MaxPeersPerSearch];
 	peer_count = 0;
 	pPeers[peer_count].hGate		= m_gatewayLink;
 	pPeers[peer_count].hClient		= m_clientLink;
@@ -789,7 +790,12 @@ PeerHandle* CoEntity::getAroundMe(int& peer_count)
 		pPeers[peer_count].hClient		= pEntity->m_clientLink;
 		pPeers[peer_count].gatewayId	= pEntity->m_gatewayId;
 		peer_count++;
-		// ASSERT_(peer_count < 500);
+
+		if(peer_count > MaxPeersPerSearch - 1)
+		{
+			TRACE2_L0("CoEntity::getAroundMe(int &) Warning:Entities around me(%ld) more than %d\n",m_hand,MaxPeersPerSearch);
+			break;
+		}
 		h = m_aroundMe.next();
 	}
 	return pPeers;

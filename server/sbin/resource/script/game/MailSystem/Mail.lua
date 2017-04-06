@@ -108,7 +108,7 @@ function Mail:isNew()
 end
 
 function Mail:setContent(scontent)
-	self.content = scontent or "<html><center><font color='red'>一封空的邮件</font></center></html>"
+	self.content = scontent or string.utf8ToGbk("<html><center><font color='red'>一封空的邮件</font></center></html>")
 end
 
 function Mail:setStringExtra(str_extra,expires)

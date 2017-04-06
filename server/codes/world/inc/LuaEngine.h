@@ -15,7 +15,7 @@ class CLuaEngine{
 			m_pState = lua_open();
 			if(m_pState){
 				luaL_openlibs(m_pState);
-				lua_checkstack(m_pState,1024);
+				lua_checkstack(m_pState,2048);
 				registerUtilsFunction();
 				return true;
 			}

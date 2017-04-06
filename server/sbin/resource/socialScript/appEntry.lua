@@ -58,12 +58,14 @@ ServerState =
 ManagedApp = {}
 
 function ManagedApp.start(serverId)
+
 	g_serverId	= serverId
 	math.randomseed(os.time())
 	math.random()
 	loadCore()
 	loadSystem()
 	ManagedApp.State = ServerState.run
+	
 end
 
 function ManagedApp.onExeSP(operationID, recordList, errorCode)

@@ -11,9 +11,7 @@ end
 
 --检测多个对话ID哪个满足条件
 function DialogCondition:choseDialogID(player, dialogIDs, npcID)
-
 	for _, dialogID in pairs(dialogIDs) do
-
 		local choseFinish = true
 		local conditions = DialogModelDB[dialogID].conditions 
 		for _, data in pairs(conditions) do
@@ -56,7 +54,6 @@ end
 
 --检测对话ID是否满足条件
 function DialogCondition:checkDialogID(player, dialogID, npcID)
-
 	local conditions = DialogModelDB[dialogID].conditions
 	for _, data in pairs(conditions) do
 		local method = DialogConditionDoer[data.condition]

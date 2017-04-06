@@ -1,5 +1,5 @@
 --[[EventDef.lua
-描述：
+描述�?
 	定义game事件
 ]]
 
@@ -274,7 +274,7 @@ EctypeEvents_SC_RemoveFollowEntity      = Event_Group_Ectype + 15
 EctypeEvents_CS_RemoveObject			= Event_Group_Ectype + 16
 EctypeEvents_CS_EnterPatrolFight		= Event_Group_Ectype + 17
 
---定义快捷栏事件
+--定义快捷栏事�?
 ShortCutKeyEvents_CS_UpdateKeyData			= Event_Group_ShortCutKey + 1
 ShortCutKeyEvents_SC_UpdateDataToClient		= Event_Group_ShortCutKey + 2
 ShortCutKeyEvents_CS_UpdateKeyDataForUseUp	= Event_Group_ShortCutKey + 3
@@ -290,7 +290,7 @@ BuffEvents_SC_FreezeBuff				= Event_Group_Buff + 7
 BuffEvents_SC_CancalFreezeBuff			= Event_Group_Buff + 8
 SkillEvents_CS_UseSkill					= Event_Group_Skill + 8
 
---定义技能系统事件
+--定义技能系统事�?
 SkillEvents_CS_LearnSkill				= Event_Group_Skill + 1
 SkillEvents_SC_LearnSkill				= Event_Group_Skill + 2
 SkillEvents_CS_GetMindLevel				= Event_Group_Skill + 3
@@ -351,7 +351,7 @@ TaskEvent_SC_NotifyClientData			= Event_Group_Task + 44
 TaskEvent_SC_LoadLoopTaskList			= Event_Group_Task + 45
 TaskEvent_SS_AddActivityPractise		= Event_Group_Task + 46
 
---循环任务（送信任务上交物品）
+--循环任务（送信任务上交物品�?
 TaskEvent_SC_CommitItemResult			= Event_Group_Task + 47
 TaskEvent_SC_CommitEquipResult			= Event_Group_Task + 48
 TaskEvent_SC_ForceStopAutoMeet			= Event_Group_Task + 49
@@ -370,6 +370,11 @@ TaskEvent_SC_LoadLoopTaskInfoToClient	= Event_Group_Task + 61
 TaskEvent_BS_GuideJoinFaction			= Event_Group_Task + 62
 TaskEvent_SC_AddMatchNpc				= Event_Group_Task + 63
 TaskEvent_CS_EnterNextLayer				= Event_Group_Task + 64
+TaskEvent_SC_AddShelfPet				= Event_Group_Task + 65
+TaskEvent_SC_RemoveShelfPet				= Event_Group_Task + 66
+TaskEvent_CS_PuzzleFinish				= Event_Group_Task + 67
+TaskEvent_SC_BeginPuzzle				= Event_Group_Task + 68
+
 
 --定义交易系统事件
 --p2N交易消息
@@ -405,21 +410,21 @@ TradeEvents_CS_BuyPet					= Event_Group_Trade + 32 --宠物商店购买宠物
 TradeEvents_CS_P2PMessageChoose			= Event_Group_Trade +33	--处理P2P发过来的消息
 
 --邮件消息
-MailEvent_SC_MailsDelieved				= Event_Group_Mail + 1	--服务器给客户端推送邮件
-MailEvent_SC_MailsRemoved				= Event_Group_Mail + 2	--服务器发送给客户端的事件，已经删除了的邮件
-MailEvent_SC_MailItemPicked				= Event_Group_Mail + 3	--物品已经领取了的邮件 [2016年3月30日 更改了名字]
+MailEvent_SC_MailsDelieved				= Event_Group_Mail + 1	--服务器给客户端推送邮�?
+MailEvent_SC_MailsRemoved				= Event_Group_Mail + 2	--服务器发送给客户端的事件，已经删除了的邮�?
+MailEvent_SC_MailItemPicked				= Event_Group_Mail + 3	--物品已经领取了的邮件 [2016�?3�?30�? 更改了名字]
 
-MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--客户端请求读某一个邮件，在服务器将这个邮件设为已读
-MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--客户端请求删除一批邮件
-MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--客户端请求领取邮件物品
-MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--客户端请求读某一个邮件，在服务器将这个邮件设为已读
-MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--客户端请求删除一批邮件
-MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--客户端请求领取邮件物品
+MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--客户端请求读某一个邮件，在服务器将这个邮件设为已�?
+MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--客户端请求删除一批邮�?
+MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--客户端请求领取邮件物�?
+MailEvent_CS_ReadMail					= Event_Group_Mail + 4	--客户端请求读某一个邮件，在服务器将这个邮件设为已�?
+MailEvent_CS_RemoveMails				= Event_Group_Mail + 5	--客户端请求删除一批邮�?
+MailEvent_CS_PickMailItem				= Event_Group_Mail + 6	--客户端请求领取邮件物�?
 MailEvent_CS_RequireMoreMails			= Event_Group_Mail + 7	--客户端请求获得更多的邮件
 
-MailEvent_SS_NewMail					= Event_Group_Mail + 8	--服务器发送新邮件给玩家
+MailEvent_SS_NewMail					= Event_Group_Mail + 8	--服务器发送新邮件给玩�?
 
-QuitEvent_C_SystemQuit					= Event_Group_Quit + 1	--系统退出监听消息
+QuitEvent_C_SystemQuit					= Event_Group_Quit + 1	--系统退出监听消�?
 
 
 CactionEvent_SC_OpenUI					= Event_Group_Caction + 1
@@ -429,11 +434,12 @@ CactionEvent_SC_OpenUITip				= Event_Group_Caction + 4
 CactionEvent_SC_AutoMeet				= Event_Group_Caction + 5
 CactionEvent_SC_StopAutoMeet			= Event_Group_Caction + 6
 CactionEvent_SC_PlayAnimation			= Event_Group_Caction + 7
+CactionEvent_SC_OpenPuzzle				= Event_Group_Caction + 8
 
 TaskTargetEvent_SC_LearnSkill			= Event_Group_TaskTarget + 1
 TaskTargetEvent_SC_UpdateEquipTrace		= Event_Group_TaskTarget + 2
 
---社会服系统
+--社会服系�?
 SocialEvent_BB_ExitWorld						= Event_Group_Social + 1 
 SocialEvent_SB_Enter							= Event_Group_Social + 2
 SocialEvent_SB_SaveData							= Event_Group_Social + 3
@@ -521,10 +527,11 @@ FactionEvent_CB_FireFactionMember				= Event_Group_SocialServer_Faction + 25
 FactionEvent_BB_ContributeFaction				= Event_Group_SocialServer_Faction + 26
 FactionEvent_BC_ContributeFaction				= Event_Group_SocialServer_Faction + 27
 FactionEvent_CB_ContributeFaction				= Event_Group_SocialServer_Faction + 28
---帮派技能相关
+--帮派技能相�?
 FactionEvent_BC_UpdateExtendSkill				= Event_Group_SocialServer_Faction + 29
---研发帮派技能
+--研发帮派技�?
 FactionEvent_CB_ExtendFactionSkill				= Event_Group_SocialServer_Faction + 30
+FactionEvent_CB_GetSalaryFromFaction			= Event_Group_SocialServer_Faction + 31
 
 -- 指引加入帮派
 
@@ -541,7 +548,7 @@ BroadCastSystem_SC_DekaronSchool				= Event_Group_SocialServer_BroadCast + 9
 SysStemSet_SB_UpdateSystemSetData				= Event_Group_SystemSet + 1
 
 
---传送系统
+--传送系�?
 TransportEvent_SC_SendFlyFlagPositionListToClient	= Event_Group_Transportion + 1
 TransportEvent_CS_UpdateFlyFlagPositionList			= Event_Group_Transportion + 2
 TransportEvent_CS_UpdateFlyFlagNum					= Event_Group_Transportion + 3
@@ -561,16 +568,16 @@ PetEvent_SC_TestAddFollow				= Event_Group_Pet + 1
 PetEvent_CS_SetFightPet					= Event_Group_Pet + 2
 PetEvent_CS_ShowPet						= Event_Group_Pet + 3
 PetEvent_SC_PetJoined					= Event_Group_Pet + 4	--宠物加入
-PetEvent_CS_RequireFullBatch			= Event_Group_Pet + 5	--客户端请求完整的Prop批更新
-PetEvent_SC_FullBatchPushed				= Event_Group_Pet + 6	--服务器反馈完整的Prop批已经发送
-PetEvent_CS_SetStatus					= Event_Group_Pet + 7	--客户端请求改变宠物的状态
+PetEvent_CS_RequireFullBatch			= Event_Group_Pet + 5	--客户端请求完整的Prop批更�?
+PetEvent_SC_FullBatchPushed				= Event_Group_Pet + 6	--服务器反馈完整的Prop批已经发�?
+PetEvent_CS_SetStatus					= Event_Group_Pet + 7	--客户端请求改变宠物的状�?
 PetEvent_SC_StatusChanged				= Event_Group_Pet + 8	--服务反馈宠物状态已经被改变
 PetEvent_CS_SetAttrDistribution			= Event_Group_Pet + 9	--客户端请求设置宠物属性点
 PetEvent_SC_AttrConfirmed				= Event_Group_Pet + 10	--服务器反馈宠物属性分配已经被确认
-PetEvent_CS_SetName						= Event_Group_Pet + 11	--客户端请求设置宠物名称
+PetEvent_CS_SetName						= Event_Group_Pet + 11	--客户端请求设置宠物名�?
 PetEvent_SC_NameConfirmed				= Event_Group_Pet + 12	--服务器反馈宠物名称已经被确认
-PetEvent_CS_DeletePet					= Event_Group_Pet + 13	--客户端请求遣散宠物
-PetEvent_SC_PetLeaved					= Event_Group_Pet + 14	--服务器反馈宠物已经遣散
+PetEvent_CS_DeletePet					= Event_Group_Pet + 13	--客户端请求遣散宠�?
+PetEvent_SC_PetLeaved					= Event_Group_Pet + 14	--服务器反馈宠物已经遣�?
 PetEvent_CS_PromotePet                  = Event_Group_Pet + 15  --宠物进阶
 PetEvent_SC_PetPromoted		            = Event_Group_Pet + 16	--宠物进阶反馈
 PetEvent_CS_RepairPet					= Event_Group_Pet + 17	--宠物修复
@@ -582,27 +589,26 @@ PetEvent_SC_PetRebirthed				= Event_Group_Pet + 22  --宠物还童返回
 PetEvent_CS_SetPhaseDistribution		= Event_Group_Pet + 23	--客户端请求设置宠物相性点
 PetEvent_SC_PhaseConfirmed				= Event_Group_Pet + 24	--相性点已经确认
 PetEvent_SC_PetDeadPunish				= Event_Group_Pet + 25	--宠物死亡惩罚
-PetEvent_CS_CombinePets					= Event_Group_Pet + 26	--客户端请求合成宠物
-PetEvent_SC_PetsCombined				= Event_Group_Pet + 27	--服务器反馈宠物已经合成
+PetEvent_CS_CombinePets					= Event_Group_Pet + 26	--客户端请求合成宠�?
+PetEvent_SC_PetsCombined				= Event_Group_Pet + 27	--服务器反馈宠物已经合�?
 
-PetEvent_SC_SkillsArrived				= Event_Group_Pet + 28	--宠物技能到达
-PetEvent_SC_SkillForgotten				= Event_Group_Pet + 29	--遗忘了的宠物技能
+PetEvent_SC_SkillsArrived				= Event_Group_Pet + 28	--宠物技能到�?
+PetEvent_SC_SkillForgotten				= Event_Group_Pet + 29	--遗忘了的宠物技�?
 PetEvent_SC_SkillBookRead				= Event_Group_Pet + 30	--技能书使用结果
 PetEvent_CS_ReadSkillBook				= Event_Group_Pet + 31	--宠物使用技能书
-PetEvent_SC_SkillChanged				= Event_Group_Pet + 32	--宠物技能等级改变
+PetEvent_SC_SkillChanged				= Event_Group_Pet + 32	--宠物技能等级改�?
 
-PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 33	--请求拓展宠物栏
-PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 34	--宠物栏数量到达
+PetEvent_CS_ExpandPetBar				= Event_Group_Pet + 33	--请求拓展宠物�?
+PetEvent_SC_PetBarConfirmed				= Event_Group_Pet + 34	--宠物栏数量到�?
 
 PetEvent_SC_OnSaleArrived				= Event_Group_Pet + 35	--交易宠物信息已经到达
 
-PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技能
-PetEvent_SC_LearnExtendSkill			= Event_Group_Pet + 37	--宠物学习研发技能结果
+PetEvent_CS_LearnExtendSkill			= Event_Group_Pet + 36	--宠物学习研发技�?
 --[[
-	¤╭⌒╮ ╭⌒╮	{ Keep Distance }	
-	╱◥██◣ ╭╭ ⌒╮
-	|田︱田田| ╰--------------
-	╬╬╬╬╬ ╬╬╬╬╬╬╬╬
+	¤╭⌒�? ╭⌒�?	{ Keep Distance }	
+	╱◥██�? ╭╭ ⌒╮
+	|田︱田田| �?--------------
+	╬╬╬╬�? ╬╬╬╬╬╬╬╬
 ]]
 
 
@@ -613,16 +619,16 @@ Experience_SC_Learn						= Event_Group_Experience + 3
 
 
 --坐骑系统
-RideEvent_SC_LoadRide					= Event_Group_Ride + 1 --玩家上线，加载坐骑
+RideEvent_SC_LoadRide					= Event_Group_Ride + 1 --玩家上线，加载坐�?
 RideEvent_SC_AddRide					= Event_Group_Ride + 2
-RideEvent_CS_UpOrDownRide				= Event_Group_Ride + 3	--上坐骑
+RideEvent_CS_UpOrDownRide				= Event_Group_Ride + 3	--上坐�?
 RideEvent_CS_GrowUp						= Event_Group_Ride + 4	--骑宠进阶
 RideEvent_SC_GrowUp						= Event_Group_Ride + 5
 RideEvent_CS_RideToItem					= Event_Group_Ride + 6	--坐骑回笼
 RideEvent_SC_RideToItem					= Event_Group_Ride + 7
-RideEvent_CS_ExpandRideBar				= Event_Group_Ride + 8	--扩充坐骑栏
+RideEvent_CS_ExpandRideBar				= Event_Group_Ride + 8	--扩充坐骑�?
 RideEvent_SC_ExpandRideBar				= Event_Group_Ride + 9
-RideEvent_SC_AddRideVigor				= Event_Group_Ride + 10 --增加坐骑体力值
+RideEvent_SC_AddRideVigor				= Event_Group_Ride + 10 --增加坐骑体力�?
 
 --在线奖励系统事件集合
 OnlineRewardEvent_CS_RequestRandom      = Event_Group_OnlineReward + 1
@@ -689,11 +695,11 @@ NewcomerGifsEvent_SC_doGetGiftsData			= event_Group_NewcomerGifts + 2
 
 --自动加点事件
 AutoPointEvent_SC_DistributionComfirmed			= Event_Group_AutoPoint + 1	--加点方案已经确认
-AutoPointEvent_SC_OrderComfirmed				= Event_Group_AutoPoint + 2	--相性分配顺序已经确认
+AutoPointEvent_SC_OrderComfirmed				= Event_Group_AutoPoint + 2	--相性分配顺序已经确�?
 AutoPointEvent_CS_ModifyDistribution			= Event_Group_AutoPoint + 3	--请求更改加点方案
-AutoPointEvent_CS_ModifyOrder					= Event_Group_AutoPoint + 4	--请求更改相性分配顺序
+AutoPointEvent_CS_ModifyOrder					= Event_Group_AutoPoint + 4	--请求更改相性分配顺�?
 
---生活技能系统
+--生活技能系�?
 LifeSkillEvent_CS_product                       = Event_Group_LifeSkill + 1
 LifeSkillEvent_SC_productFailInfo               = Event_Group_LifeSkill + 2
 LifeSkillEvent_SC_updateInfo                    = Event_Group_LifeSkill + 3
@@ -743,7 +749,7 @@ ActivityEvent_SC_EnterDiscussHero				= Event_Group_Activity + 25
 ActivityEvent_SC_UpdateDiscussHero				= Event_Group_Activity + 26
 ActivityEvent_CS_ExitDiscussHero				= Event_Group_Activity + 27
 ActivityEvent_CS_EnterDiscussHeroPVP			= Event_Group_Activity + 28
-ActivityEvent_SC_EnterDiscussHeroPVP			= Event_Group_Activity + 29
+ActivityEvent_SC_EnterDiscussHeroFight			= Event_Group_Activity + 29
 ActivityEvent_SC_ExitDicussHero					= Event_Group_Activity + 30
 
 --宠物仓库消息
@@ -755,7 +761,7 @@ PetDepotEvent_SC_PutInPetReturn					= Event_Group_PetDepot + 5
 PetDepotEvent_CS_TakeOutPet						= Event_Group_PetDepot + 6
 PetDepotEvent_SC_TakeOutPetReturn				= Event_Group_PetDepot + 7
 
--- 宝藏客户端消息
+-- 宝藏客户端消�?
 TreasureEvent_SC_GotoTreasure	     			= Event_Group_Treasure + 1
 TreasureEvent_SC_MapIDInfo						= Event_Group_Treasure + 2
 TreasureEvent_CS_SendPositionInfo               = Event_Group_Treasure + 3

@@ -167,4 +167,6 @@ EffectType = {
 	RestoreMp			= 48,--恢复mp
 	HealIncrease		= 49,--治疗效果增加
 	AllAttrIncrease		= 50,--所有属性增加
+	MaxHpDot			= 51, --最大百分比掉血
+	Dot					= 52, --当前血量掉血
 }

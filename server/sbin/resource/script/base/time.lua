@@ -112,14 +112,14 @@ function time.toedition(period,lua_time)
 		edition= t["year"]*100+t["month"]
 	elseif period=="wday" then				--100013(6)
 		local t=os.date("*t",lua_time)
-		local past=os.difftime(lua_time, __EditionBasetime)
+		local past=os.difftime(lua_time, __EditionBaseTime)
 		local week=math.ceil(past/__WeekSeconds)
 		edition=week+10000+t["wday"]
 	elseif period=="year" then				--2011(4)
 		local t=os.date("*t",lua_time)
 		edition=t["year"]
 	elseif period=="week" then				--10001(5)
-		local past=os.difftime(lua_time,__EditionBasetime)
+		local past=os.difftime(lua_time,__EditionBaseTime)
 		edition=10000+math.ceil(past/__WeekSeconds)
 	end
 	return edition
@@ -144,7 +144,7 @@ function time.todate(dtype, day, quarter)
 	elseif dtype=="wday" then				--10100(5)
 		day = day or 1
 		local t=os.date("*t",lua_time)
-		local past=os.difftime(lua_time,__EditionBasetime)
+		local past=os.difftime(lua_time,__EditionBaseTime)
 		local week=math.ceil(past/__WeekSeconds)
 		datevalue=(week+10000+day)*100+quarter
 	elseif dtype=="date" then
@@ -245,3 +245,15 @@ function time.isMonthEnd()
 	end
 end
 
+function time.difftimeByType( type,time )
+
+	local lua_time=os.time()
+	if type == "day" then
+		local pastNow = os.difftime(lua_time, __EditionBaseTime)
+		local pastTime = os.difftime(time,__EditionBaseTime)
+		local diffValue = (pastNow - pastTime)/(60*60*24)
+		return diffValue
+	end
+
+
+end

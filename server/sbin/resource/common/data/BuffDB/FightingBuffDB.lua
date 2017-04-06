@@ -453,7 +453,7 @@ tFightingBuffDB =
 		levelType = BuffJudgeLevel.mentalLevel,
 		stayType = BuffStayType.Bout,
 		stayID = 9,
-		effects = {{DOT,23}},
+		effects = {{EffectType.Dot,23}},
 		},
 	[31] = 
 	{
@@ -518,91 +518,91 @@ tFightingBuffDB =
 	[35] = 
 	{
 		ID = 35,
-		name = "天赋技能-掉血",
-		kind = BuffKind.Dot,
+		name = "研发技能-掉血",
+		kind = BuffKind.PoisonObstacle,
 		desc = "持续掉血",
 		deathCleanup = true,
 		isDisperse = true,
 		lightingEffect = 1441,
 		bindBoneName = "m_overhead",
-		stayType = BuffStayType.Bout,
+		stayType = BuffStayType.Tao,
 		stayID = 25,
-		effects = {{DOT,23}},
+		effects = {{EffectType.PoiDamage,23}},
 		},
 	[36] = 
 	{
 		ID = 36,
-		name = "天赋技能-耗蓝",
+		name = "研发技能-耗蓝",
 		kind = BuffKind.MpDot,
 		desc = "持续耗蓝",
 		deathCleanup = true,
 		isDisperse = true,
 		lightingEffect = 1263,
 		bindBoneName = "m_overhead",
-		stayType = BuffStayType.Bout,
+		stayType = BuffStayType.Tao,
 		stayID = 25,
 		effects = {{EffectType.MpDot,23}},
 		},
 	[37] = 
 	{
 		ID = 37,
-		name = "天赋技能-驱散增益",
+		name = "研发技能-驱散增益",
 		kind = BuffKind.Dispel,
 		desc = "驱散增益",
 		deathCleanup = true,
 		isDisperse = true,
 		lightingEffect = 1263,
 		bindBoneName = "m_overhead",
-		stayType = BuffStayType.Bout,
+		stayType = BuffStayType.Tao,
 		stayID = 25,
 		effects = {},
 		},
 	[38] = 
 	{
 		ID = 38,
-		name = "天赋技能-相性克制",
+		name = "研发技能-相性克制",
 		kind = BuffKind.PhaseRestrain,
 		desc = "相性克制",
 		deathCleanup = true,
 		isDisperse = true,
 		lightingEffect = 1263,
 		bindBoneName = "m_overhead",
-		stayType = BuffStayType.Bout,
+		stayType = BuffStayType.Tao,
 		stayID = 25,
 		effects = {{EffectType.PhaseRestrain,26},{EffectType.PhaseBeRestrain,27},},
 		},
 	[39] = 
 	{
 		ID = 39,
-		name = "天赋技能-治疗效果",
+		name = "研发技能-治疗效果",
 		kind = BuffKind.HealReduce,
 		desc = "治疗效果下降",
 		deathCleanup = true,
 		isDisperse = true,
 		lightingEffect = 1263,
 		bindBoneName = "m_chest",
-		stayType = BuffStayType.Bout,
+		stayType = BuffStayType.Tao,
 		stayID = 25,
 		effects = {{EffectType.HealReduce,28}},
 		},
 	[40] = 
 	{
 		ID = 40,
-		name = "天赋技能-属性下降",
+		name = "研发技能-属性下降",
 		kind = BuffKind.AllAttrReduce,
 		desc = "所有属性下降",
 		deathCleanup = true,
 		isDisperse = true,
 		lightingEffect = 1263,
 		bindBoneName = "m_chest",
-		stayType = BuffStayType.Bout,
+		stayType = BuffStayType.Tao,
 		stayID = 25,
 		effects = {{EffectType.AllAttrReduce,29},{EffectType.PetLoyaltyReduceProb,30},{EffectType.PetLoyaltyReduceRatio,31},{EffectType.PetExistRatio,32},},
 		},
 	[41] = 
 	{
 		ID = 41,
-		name = "天赋技能-反弹伤害",
+		name = "研发技能-反弹伤害",
 		kind = BuffKind.CouterDmg,
 		desc = "反弹伤害",
 		deathCleanup = true,
@@ -616,7 +616,7 @@ tFightingBuffDB =
 	[42] = 
 	{
 		ID = 42,
-		name = "天赋技能-暴击",
+		name = "研发技能-暴击",
 		kind = BuffKind.ZYMXuLi,
 		desc = "暴击",
 		deathCleanup = true,
@@ -630,7 +630,7 @@ tFightingBuffDB =
 	[43] = 
 	{
 		ID = 43,
-		name = "天赋技能-恢复法力",
+		name = "研发技能-恢复法力",
 		kind = BuffKind.RestoreMp,
 		desc = "恢复法力",
 		deathCleanup = true,
@@ -644,7 +644,7 @@ tFightingBuffDB =
 	[44] = 
 	{
 		ID = 44,
-		name = "天赋技能-恢复生命",
+		name = "研发技能-恢复生命",
 		kind = BuffKind.RestoreHp,
 		desc = "恢复生命",
 		deathCleanup = true,
@@ -658,7 +658,7 @@ tFightingBuffDB =
 	[45] = 
 	{
 		ID = 45,
-		name = "天赋技能-增加全部防御",
+		name = "研发技能-增加全部防御",
 		kind = BuffKind.AddAttr,
 		desc = "增加全部防御",
 		deathCleanup = true,
@@ -672,7 +672,7 @@ tFightingBuffDB =
 	[46] = 
 	{
 		ID = 46,
-		name = "天赋技能-增加全部攻击",
+		name = "研发技能-增加全部攻击",
 		kind = BuffKind.AddAttr,
 		desc = "增加全部攻击",
 		deathCleanup = true,
@@ -686,7 +686,7 @@ tFightingBuffDB =
 	[47] = 
 	{
 		ID = 47,
-		name = "天赋技能-速度",
+		name = "研发技能-速度",
 		kind = BuffKind.AddAttr,
 		desc = "速度",
 		deathCleanup = true,
@@ -700,7 +700,7 @@ tFightingBuffDB =
 	[48] = 
 	{
 		ID = 48,
-		name = "天赋技能-物理盾",
+		name = "研发技能-物理盾",
 		kind = BuffKind.Shield,
 		desc = "物理盾",
 		deathCleanup = true,
@@ -714,7 +714,7 @@ tFightingBuffDB =
 	[49] = 
 	{
 		ID = 49,
-		name = "天赋技能-法术盾",
+		name = "研发技能-法术盾",
 		kind = BuffKind.Shield,
 		desc = "法术盾",
 		deathCleanup = true,
@@ -728,7 +728,7 @@ tFightingBuffDB =
 	[50] = 
 	{
 		ID = 50,
-		name = "天赋技能-以发替伤",
+		name = "研发技能-以发替伤",
 		kind = BuffKind.Shield,
 		desc = "以发替伤",
 		deathCleanup = true,
@@ -742,7 +742,7 @@ tFightingBuffDB =
 	[51] = 
 	{
 		ID = 51,
-		name = "天赋技能-增加风攻",
+		name = "研发技能-增加风攻",
 		kind = BuffKind.AddPhase,
 		desc = "增加风攻",
 		deathCleanup = true,
@@ -756,7 +756,7 @@ tFightingBuffDB =
 	[52] = 
 	{
 		ID = 52,
-		name = "天赋技能-增加雷攻",
+		name = "研发技能-增加雷攻",
 		kind = BuffKind.AddPhase,
 		desc = "增加雷攻",
 		deathCleanup = true,
@@ -770,7 +770,7 @@ tFightingBuffDB =
 	[53] = 
 	{
 		ID = 53,
-		name = "天赋技能-增加冰攻",
+		name = "研发技能-增加冰攻",
 		kind = BuffKind.AddPhase,
 		desc = "增加冰攻",
 		deathCleanup = true,
@@ -784,7 +784,7 @@ tFightingBuffDB =
 	[54] = 
 	{
 		ID = 54,
-		name = "天赋技能-增加土攻",
+		name = "研发技能-增加土攻",
 		kind = BuffKind.AddPhase,
 		desc = "增加土攻",
 		deathCleanup = true,
@@ -798,7 +798,7 @@ tFightingBuffDB =
 	[55] = 
 	{
 		ID = 55,
-		name = "天赋技能-增加火攻",
+		name = "研发技能-增加火攻",
 		kind = BuffKind.AddPhase,
 		desc = "增加火攻",
 		deathCleanup = true,
@@ -812,7 +812,7 @@ tFightingBuffDB =
 	[56] = 
 	{
 		ID = 56,
-		name = "天赋技能-增加毒攻",
+		name = "研发技能-增加毒攻",
 		kind = BuffKind.AddPhase,
 		desc = "增加毒攻",
 		deathCleanup = true,
@@ -826,7 +826,7 @@ tFightingBuffDB =
 	[57] = 
 	{
 		ID = 57,
-		name = "天赋技能-增加风防",
+		name = "研发技能-增加风防",
 		kind = BuffKind.AddPhase,
 		desc = "增加风防",
 		deathCleanup = true,
@@ -840,7 +840,7 @@ tFightingBuffDB =
 	[58] = 
 	{
 		ID = 58,
-		name = "天赋技能-增加雷防",
+		name = "研发技能-增加雷防",
 		kind = BuffKind.AddPhase,
 		desc = "增加雷防",
 		deathCleanup = true,
@@ -854,7 +854,7 @@ tFightingBuffDB =
 	[59] = 
 	{
 		ID = 59,
-		name = "天赋技能-增加冰防",
+		name = "研发技能-增加冰防",
 		kind = BuffKind.AddPhase,
 		desc = "增加冰防",
 		deathCleanup = true,
@@ -868,7 +868,7 @@ tFightingBuffDB =
 	[60] = 
 	{
 		ID = 60,
-		name = "天赋技能-增加土防",
+		name = "研发技能-增加土防",
 		kind = BuffKind.AddPhase,
 		desc = "增加土防",
 		deathCleanup = true,
@@ -882,7 +882,7 @@ tFightingBuffDB =
 	[61] = 
 	{
 		ID = 61,
-		name = "天赋技能-增加火防",
+		name = "研发技能-增加火防",
 		kind = BuffKind.AddPhase,
 		desc = "增加火防",
 		deathCleanup = true,
@@ -896,7 +896,7 @@ tFightingBuffDB =
 	[62] = 
 	{
 		ID = 62,
-		name = "天赋技能-增加毒防",
+		name = "研发技能-增加毒防",
 		kind = BuffKind.AddPhase,
 		desc = "增加毒防",
 		deathCleanup = true,
@@ -910,7 +910,7 @@ tFightingBuffDB =
 	[63] = 
 	{
 		ID = 63,
-		name = "天赋技能-掉血",
+		name = "研发技能-掉血",
 		kind = BuffKind.Dot,
 		desc = "持续掉血",
 		deathCleanup = true,
@@ -919,12 +919,12 @@ tFightingBuffDB =
 		bindBoneName = "m_overhead",
 		stayType = BuffStayType.Bout,
 		stayID = 55,
-		effects = {{DOT,56}},
+		effects = {{EffectType.Dot,56}},
 		},
 	[64] = 
 	{
 		ID = 64,
-		name = "天赋技能-破防",
+		name = "研发技能-破防",
 		kind = BuffKind.Sub,
 		desc = "破防",
 		deathCleanup = true,
@@ -938,7 +938,7 @@ tFightingBuffDB =
 	[65] = 
 	{
 		ID = 65,
-		name = "天赋技能-重伤",
+		name = "研发技能-重伤",
 		kind = BuffKind.Sub,
 		desc = "重伤",
 		deathCleanup = true,
@@ -952,13 +952,27 @@ tFightingBuffDB =
 	[66] = 
 	{
 		ID = 66,
-		name = "瑞兽技能-掉血",
+		name = "天谴",
 		kind = BuffKind.Dot,
-		desc = "",
-		lightingEffect = "",
+		desc = "瑞兽每回合扣血",
+		deathCleanup = true,
+		isDisperse = false,
+		lightingEffect = 1441,
 		bindBoneName = "m_overhead",
 		stayType = BuffStayType.Bout,
-		stayID = 55,
-		effects = {{DOT,61}},
+		stayID = 10,
+		effects = {{EffectType.MaxHpDot,61}},
+		},
+	[67] = 
+	{
+		ID = 67,
+		name = "BOSS回血",
+		kind = BuffKind.RestoreHp,
+		desc = "",
+		lightingEffect = "",
+		bindBoneName = "m_chest",
+		stayType = BuffStayType.Bout,
+		stayID = 25,
+		effects = {{EffectType.RestoreHp,62}},
 		},
 }

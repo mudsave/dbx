@@ -929,9 +929,9 @@ end
 
 function LuaDBAccess.updateSchoolActivity(player,activityId)
 	local handler = player:getHandler(HandlerDef_Activity)
-	if handler then
+	local integral = handler:getDekaronIntegral()
+	if integral then
 		clearParams()
-		local integral = handler:getDekaronIntegral()
 		params[1]["spName"]			= "sp_UpdateSchoolActivity"
 		params[1]["dataBase"]		= 1
 		params[1]["sort"]			= "_roleID,_integral"
@@ -1039,5 +1039,35 @@ function LuaDBAccess.changeShowDrama(playerDBID)
 	params[1]["dataBase"] = 1
 	params[1]["sort"] = "rId"
 	params[1]["rId"] = playerDBID
+	LuaDBAccess.exeSP(params, true)
+end
+
+-- 服务器开启的时候加载服务器相关等级数据
+function LuaDBAccess.loadServer(dataBaserServerID, callbackFunction, callbackArgs)
+	clearParams()
+	params[1]["spName"] = "sp_LoadServer"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "_serverID"
+	params[1]["_serverID"] = dataBaserServerID 
+	
+	local operationID = LuaDBAccess.exeSP(params, false)
+
+	local callback = {
+		func = callbackFunction,
+		args = callbackArgs
+	}
+	DB_CallbackContext[operationID] = callback
+end
+
+-- 服务器关闭的时候跟新服务器相关数据
+function LuaDBAccess.saveServer(dataBaserServerID, startDays, serverLevel)
+	clearParams()
+	params[1]["spName"] = "sp_SaveServer"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "_serverID,_startDays,_serverLevel,_closeTime"
+	params[1]["_serverID"] = dataBaserServerID
+	params[1]["_startDays"] = startDays
+	params[1]["_serverLevel"] = serverLevel
+	params[1]["_closeTime"] = os.time()
 	LuaDBAccess.exeSP(params, true)
 end

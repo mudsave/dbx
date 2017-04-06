@@ -166,13 +166,13 @@ function CatchPet:FunTaskWeight(config)
 end
 
 function CatchPet:createTimer()
-	self.patrolTimerID = g_timerMgr:regTimer(self, 1000, 1000, "巡逻NPC定时移动")
+	self.patrolTimerID = g_timerMgr:regTimer(self, 2*1000, 2*1000, "巡逻NPC定时移动")
 end
 
 -- 这个主要是定时让巡逻NPC行走
 function CatchPet:update(timerID)
 	
-	self.times = self.times + 1
+	self.times = self.times + 2
 	-- 此时重新刷新场景NPC
 	if self.times % (self.monsterDB.refreshTime1 * 60) == 0 then
 		self:createMonster()

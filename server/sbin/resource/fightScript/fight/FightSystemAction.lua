@@ -342,7 +342,7 @@ function FightSystemAction.EntityEnter(fight,params,result,bInserted,fightResult
 	for _,info in ipairs(params) do
 		local monsterDBID = info.DBID or info.ID
 		for i = 1 , info.count or 1 do
-			local monster = g_fightEntityFactory:createMonster(monsterDBID)
+			local monster = g_fightEntityFactory:createMonster(monsterDBID,nil,fight._playerLevel)
 			monster:setFightID(fightID)
 			if info.actionID then
 				monster:setEnterActionID(info.actionID)
@@ -655,7 +655,9 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 		for _,target in pairs(players) do
 			if instanceof(target, FightPlayer) then
 				local curHp = target:getHp()
+				local maxHp = target:getMaxHp()
 				local changedHp = math.floor(curHp*(params.percent/100))
+				local maxHp = target:getMaxHp()
 				local finalHp
 				if changedHp > 0 then
 					finalHp = curHp + changedHp
@@ -668,6 +670,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 						finalHp = 0
 					end
 				end
+				changedHp = finalHp - curHp
 
 				target:setHp(finalHp)
 				local targetID = target:getID()
@@ -687,7 +690,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 				for _, targetID in ipairs(targets)  do
 					local target = g_fightEntityMgr:getRole(targetID)
 					local maxHp = target:getMaxHp()
-					local changedHp = maxHp*(params.percent/100)
+					local changedHp = math.floor(maxHp*(params.percent/100))
 					local curHp = target:getHp()
 					local finalHp
 					if changedHp > 0 then
@@ -701,6 +704,7 @@ function FightSystemAction.ChangeHp(fight,params,result,bInserted)
 							finalHp = 0
 						end
 					end
+					changedHp = finalHp - curHp
 
 					target:setHp(finalHp)
 					local lifeState

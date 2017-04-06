@@ -186,51 +186,33 @@ function LoopTask:addReward()
 	local factionID = player:getFactionDBID()
 	for rewardType, value in pairs(self._normalRewards or {}) do
 		local curValue = value * (self._multipleReward or 1)
-		if rewardType == TaskRewardList.player_xp then			
-			player:addXp(curValue)
-			if reward[rewardType] then
-				reward[rewardType] = reward[rewardType] + curValue
-			else
-				reward[rewardType] = curValue
-			end
+		if rewardType == TaskRewardList.player_xp then	
+			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+			local addXp = math.floor(value * temp_xp_ratio / 100)
+			player:addXp(addXp)
+			reward[rewardType] = addXp
 		elseif rewardType == TaskRewardList.player_pot then
 			local playerPot = player:getAttrValue(player_pot)
 			player:setAttrValue(player_pot, playerPot + curValue)			
-			if reward[rewardType] then
-				reward[rewardType] = reward[rewardType] + curValue
-			else
-				reward[rewardType] = curValue
-			end
+			reward[rewardType] = curValue
 		elseif rewardType == TaskRewardList.player_tao then
 			-- 道行奖励
 			local playerTao = player:getAttrValue(player_tao)
 			player:setAttrValue(player_tao, playerTao + curValue)			
-			if reward[rewardType] then
-				reward[rewardType] = reward[rewardType] + curValue
-			else
-				reward[rewardType] = curValue
-			end
+			reward[rewardType] = curValue
 		elseif rewardType == TaskRewardList.pet_tao then
 			local followPetID	= player:getFightPetID()
 			local followPet		= followPetID and g_entityMgr:getPet(followPetID)
 			if followPet then
 				local petTao = followPet:getAttrValue(pet_tao)
 				followPet:setAttrValue(pet_tao, petTao + curValue)
-				if reward[rewardType] then
-					reward[rewardType] = reward[rewardType] + curValue
-				else
-					reward[rewardType] = curValue
-				end
+				reward[rewardType] = curValue
 			end
 		-- 帮贡
 		elseif rewardType == TaskRewardList.faction_cont then
 			local factionMoney = player:getFactionMoney()
 			player:setFactionMoney(factionMoney + curValue)
-			if reward[rewardType] then
-				reward[rewardType] = reward[rewardType] + curValue
-			else
-				reward[rewardType] = curValue
-			end
+			reward[rewardType] = curValue
 			local memberInfoList = {{name = "memberMoney",value = player:getFactionMoney()}}
             local event_UpdateFactionInfo = Event.getEvent(FactionEvent_BC_UpdateFactionMemberInfo,player:getDBID(),memberInfoList)
             g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,player)
@@ -240,11 +222,7 @@ function LoopTask:addReward()
 				local playerDBID = player:getDBID()
 				local event = Event.getEvent(FactionEvent_BB_UpdateFactionInfo, "addFactionFame", playerDBID, curValue)
 				g_eventMgr:fireWorldsEvent(event, SocialWorldID)
-				if reward[rewardType] then
-					reward[rewardType] = reward[rewardType] + curValue
-				else
-					reward[rewardType] = curValue
-				end
+				reward[rewardType] = curValue
 			end
 		-- 帮会资金
 		elseif rewardType == TaskRewardList.faction_money then
@@ -252,11 +230,7 @@ function LoopTask:addReward()
 				local playerDBID = player:getDBID()
 				local event = Event.getEvent(FactionEvent_BB_UpdateFactionInfo, "addFactionMoney", playerDBID, curValue)
 				g_eventMgr:fireWorldsEvent(event, SocialWorldID)
-				if reward[rewardType] then
-					reward[rewardType] = reward[rewardType] + curValue
-				else
-					reward[rewardType] = curValue
-				end
+				reward[rewardType] = curValue
 			end
 		end
 	end
@@ -294,8 +268,11 @@ function LoopTask:dealFormulaReward()
 		end
 		local curValue = value * (self._multipleReward or 1)
 		if rewardType == TaskRewardList.player_xp then
-			player:addXp(curValue)
-			reward[rewardType] = curValue
+			print("value>>>>>>>>>>", value)
+			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+			local addXp = math.floor(curValue * temp_xp_ratio / 100)
+			player:addXp(addXp)
+			reward[rewardType] = addXp
 		elseif rewardType == TaskRewardList.player_pot then
 			local playerPot = player:getAttrValue(player_pot)
 			player:setAttrValue(player_pot, playerPot + curValue)		
@@ -343,8 +320,10 @@ function LoopTask:dealFactionFormulaReward()
 			local value = rewardFunc(equipNeedLevel, equipQuality)
 			local curValue = value * (self._multipleReward or 1)
 			if rewardType == TaskRewardList.player_xp then
-				player:addXp(curValue)
-				reward[rewardType] = curValue
+				local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+				local addXp = math.floor(curValue * temp_xp_ratio / 100)
+				player:addXp(addXp)
+				reward[rewardType] = addXp
 			elseif rewardType == TaskRewardList.player_pot then
 				local playerPot = player:getAttrValue(player_pot)
 				player:setAttrValue(player_pot, playerPot + curValue)	

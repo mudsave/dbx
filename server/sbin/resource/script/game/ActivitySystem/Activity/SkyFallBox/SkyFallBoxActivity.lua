@@ -4,7 +4,6 @@
 
 require "game.ActivitySystem.Activity.SkyFallBox.SkyFallBoxManager"
 require "game.ActivitySystem.Activity.SkyFallBox.SkyFallBoxSystem"
-require "game.ActivitySystem.Activity.SkyFallBox.SkyFallBoxUtils"
 
 gSkyFallBoxActivityID = 7
 local skyFallBoxActivityDB = 
@@ -26,19 +25,13 @@ SkyFallBoxActivity = class(Activity, Singleton,Timer)
 
 function SkyFallBoxActivity:__init()
 	self._id = gSkyFallBoxActivityID
-	self.boxNum = nil
 end
 
 function SkyFallBoxActivity:__release()
 	self._id = nil
-	self.boxNum = nil
 end
 
-function SkyFallBoxActivity:open()
-	--播放广播
-	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SkyFallBox, 1)
-	RemoteEventProxy.broadcast(event)
-	
+function SkyFallBoxActivity:open()	
 	--活动状态(预开启)
 	self.state = ActivityState.PreOpening
 	--定时器5分钟后活动开启
@@ -47,9 +40,11 @@ end
 
 function SkyFallBoxActivity:close()
 	--播放广播
-	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SkyFallBox, 3)
-	RemoteEventProxy.broadcast(event)
+	local BroadCastMsgID = BroadCastMsgGroupID.Group_SkyFallBox
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, BroadCastMsgID.EventID, 2)
+    g_eventMgr:broadcastEvent(event)
 	print("天降宝盒活动结束")
+
 	for playerID, player in pairs(g_entityMgr:getPlayers()) do
 		player:getHandler(HandlerDef_Activity):setSkyFallBoxNum(0)
 		
@@ -66,8 +61,9 @@ function SkyFallBoxActivity:openActivity()
 		self.state = ActivityState.Opening
 		g_skyFallBoxMgr:setActivityFlag(true)
 		--播放广播
-		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_SkyFallBox, 2)
-		RemoteEventProxy.broadcast(event)
+		local BroadCastMsgID = BroadCastMsgGroupID.Group_SkyFallBox
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, BroadCastMsgID.EventID, 1)
+		g_eventMgr:broadcastEvent(event)
 		print("天降宝盒活动开始!!")
 
 		for playerID, player in pairs(g_entityMgr:getPlayers()) do
@@ -95,4 +91,7 @@ end
 function SkyFallBoxActivity:joinPlayer(player,recordList)
 	print("-----天降宝盒活动玩家上线加入。。。。。。",toString(recordList))
 	local handler = player:getHandler(HandlerDef_Activity)
+	if handler:getSkyFallBoxNum() ==nil then
+		handler:setSkyFallBoxNum(0)
+	end
 end

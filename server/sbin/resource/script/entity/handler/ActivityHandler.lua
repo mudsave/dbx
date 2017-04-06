@@ -11,7 +11,7 @@ function ActivityHandler:__init(entity)
 	self.finishTargets = {}
 	self.priData = {}
 	self._goldHuntData={ID=0,totalScore=0,isPrized = 0,rank = -1}
-	self.discussHero = {wineCount = 0,totalScore = 0}
+	self.discussHero = {wineCount = 0,totalScore = 0,teamScore = 0}
 	self.enterPos = {}
 	--门派闯关活动积分
 	self.dekaronIntegral = 0
@@ -145,13 +145,17 @@ function ActivityHandler:setDekaronActivityTarget(activityTarget)
 end
 
 function ActivityHandler:getDicussHero()
-	return self.discussHero.wineCount,self.discussHero.totalScore
+	return self.discussHero.wineCount,self.discussHero.totalScore,self.discussHero.teamScore
 end
 
 -- 特殊的改变方式
 function ActivityHandler:setDicussHero(wineCount,totalScore)
 	self.discussHero.wineCount = wineCount
 	self.discussHero.totalScore = totalScore
+end
+
+function ActivityHandler:setDicussHeroTeamScore(teamScore)
+	self.discussHero.teamScore = teamScore
 end
 
 --天降宝盒活动相关（设置活动所获宝盒数、获取所获宝盒数）

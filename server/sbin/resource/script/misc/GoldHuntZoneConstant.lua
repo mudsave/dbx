@@ -28,17 +28,17 @@ GoldHuntZone_PK_punish ={			--资源损失数量范围40%-60%
 GoldHuntZone_PKed_limit = 3			--pk上限后进入保护
 GoldHuntZone_Protected_iconValue = 0
 GoldHuntZone_mine_protect_limit = 30		--少于30%资源不能被pk
-GoldHuntZone_MineCollectLimit = {3,4}		--物件可采集次数
+GoldHuntZone_MineCollectLimit = {1,2}		--物件可采集次数
 GoldHuntZone_MapPlayerLimit	= 300		--地图最大人数
 GoldHuntZone_ReadyPeriodBeforeEnd = 3--min
 GoldHuntZone_RankLimit	= 100
 GoldHuntZone_ClientRankLimit	= 5
 GoldHuntZone_Reward = {				--排名奖励分段
-	{rank=3,exp = 10,money = 10,tao = 10},
-	{rank=10,exp = 8,money = 8,tao = 8},
-	{rank=50,exp = 6,money = 6,tao = 6},
-	{rank=100,exp = 4,money = 4,tao = 4},
-	{exp = 2,money = 2,tao = 2},
+	{rank=3,exp = 10000,money = 5000,tao = 3000},
+	{rank=10,exp = 5000,money = 3000,tao = 2000},
+	{rank=50,exp = 3000,money = 2000,tao = 1000},
+	{rank=100,exp = 1000,money = 1000,tao = 500},
+	{exp = 2,money = 500,tao = 200},
 }
 --GoldHuntZone_scoreNpcID = 39053
 

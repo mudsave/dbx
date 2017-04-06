@@ -14,6 +14,8 @@ require "skill.SkillEffect.RevivalEffect"
 require "skill.SkillEffect.DispelEffect"
 require "skill.SkillEffect.PassiveSkillEffect"
 
+local addCritical = 0
+
 function SkillEffect:__init(skill, effect)
 	self.role				= skill:getSkillRole()			-- 所属角色
 	self.skill				= skill							-- 所属技能
@@ -335,10 +337,19 @@ end
 	增加暴击率效果
 ]]
 function SkillEffect:doAddCrit(target)
-	local critical = target:ft_get_critical()
-	local addNum = SkillUtils.getProperValue(critical, self.numValue, self.numType)
-	return true
+	addCritical =  self.numValue
+	return addCritical
 end
+
+--获取技能提升的暴击率
+function SkillEffect:getCritical()
+	return addCritical
+end  
+
+--重置技能提升的暴击率
+function SkillEffect:setCritical()
+	addCritical = 0
+end 
 
 --[[
 	复活效果(子类已重写)

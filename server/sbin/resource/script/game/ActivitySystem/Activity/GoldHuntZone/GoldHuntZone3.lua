@@ -175,6 +175,7 @@ function GoldHuntZone3:_refreshMonsters(phaseID)
 	local timerID = g_timerMgr:regTimer(self, updatePeriod*60*1000, updatePeriod*60*1000, "GoldHuntZone3.update")
 	updateTimerContext[timerID] = GoldHuntZone3.updateMonsters
 	updateMonsterTimerPhase[timerID] = phaseID
+	self:sceneBroadcast()
 end
 
 function GoldHuntZone3:_refreshMines(phaseID)
@@ -209,7 +210,9 @@ function GoldHuntZone3:_refreshMines(phaseID)
 	local timerID = g_timerMgr:regTimer(self, updatePeriod*60*1000, updatePeriod*60*1000, "GoldHuntZone3.update")
 	updateTimerContext[timerID] = GoldHuntZone3.updateMines
 	updateMineTimerPhase[timerID] = phaseID
-	
+	if phaseID == 1 then
+		self:sceneBroadcast2()
+	end
 end
 
 function GoldHuntZone3:updateMines(timerID)
@@ -268,10 +271,14 @@ function GoldHuntZone3:removeMine(mineID)
 	mineIDPhase[mineID] = nil
 	local info = self._mines[phaseID]
 	info[mineID] = nil
+	local total = self._mines.total[phaseID]
+	self._mines.total[phaseID] = total - 1
 end
+
 function GoldHuntZone3:getPhaseID()
 	return self._curPhaseID
 end
+
 function GoldHuntZone3:removeMonster(monsterID)
 	local phaseID = monsterIDPhase[monsterID]
 	monsterIDPhase[monsterID] = nil
@@ -279,6 +286,7 @@ function GoldHuntZone3:removeMonster(monsterID)
 	if info[monsterID] then
 		info[monsterID] = nil
 	end
+	self:sceneBroadcast1()
 	local curTotal = self._monsters.total[phaseID]
 	local totalMax = self._config.phaseInfo[phaseID].monsterInfo.totalMax
 	if (table.size(info) == 0) and (curTotal == totalMax) then
@@ -400,6 +408,38 @@ function GoldHuntZone3:update(timerID)
 	end
 end
 
+--由于挖矿的动静太大，惊醒了这里的上古守卫，成功挑战守卫可以获得大量的金晶矿
+function GoldHuntZone3:sceneBroadcast()
+	for entityID , entity in pairs(self._scene:getEntityList()) do
+		--发送消息
+		if entity:getEntityType() == eLogicPlayer then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,9)
+			g_eventMgr:fireRemoteEvent(event, entity)
+		end
+	end
+end
+
+--本层的守卫已经被全部消灭，一声响动过后，前往下一层矿洞的通道已经被打开。
+function GoldHuntZone3:sceneBroadcast1()
+	for entityID , entity in pairs(self._scene:getEntityList()) do
+		--发送消息
+		if entity:getEntityType() == eLogicPlayer then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,10)
+			g_eventMgr:fireRemoteEvent(event, entity)
+		end
+	end
+end
+
+--本层的守卫已经被全部消灭，一声响动过后，前往下一层矿洞的通道已经被打开。
+function GoldHuntZone3:sceneBroadcast2()
+	for entityID , entity in pairs(self._scene:getEntityList()) do
+		--发送消息
+		if entity:getEntityType() == eLogicPlayer then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,11)
+			g_eventMgr:fireRemoteEvent(event, entity)
+		end
+	end
+end
 
 --奖励公式
 function GoldHuntZone3:rewardFormat(player)

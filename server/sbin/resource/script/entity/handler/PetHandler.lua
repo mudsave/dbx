@@ -25,7 +25,7 @@ end
 -- 加载宠物记录
 function PetHandler:loadDB(recordSet)
 	if not recordSet then
-		notice( "玩家 %s 没有宠物记录",self.owner:getName() )
+		notice( "玩家 %s 没有宠物记录",string.gbkToUtf8(self.owner:getName()) )
 		return false
 	end
 

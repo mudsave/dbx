@@ -24,9 +24,10 @@ function GoldHuntRankManager.rankCallBack(recordList)
 	for _,rs in ipairs(recordList[1]) do
 		table.insert(results,rs)
 	end
-	local event = Event.getEvent(ActivityEvent_BS_GoldHunt_RankResults,results)
+	print("收到排名",#recordList[1])
 	
 	for worldID , _ in pairs(worldIDs) do
+		local event = Event.getEvent(ActivityEvent_BS_GoldHunt_RankResults,results)
 		g_eventMgr:fireWorldsEvent(event, worldID)
 		print("fireWorldsEvent",worldID)
 		worldIDs[worldID] = nil
@@ -37,6 +38,8 @@ function GoldHuntRankManager:onGetRankCmd(event)
 	local worldID = params[1]
 	local orderCount = params[2]
 	worldIDs[worldID] = true
+
+	print("请求多少个?",orderCount)
 
 	if not bExecuted then
 		bExecuted = true

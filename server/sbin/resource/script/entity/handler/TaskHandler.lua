@@ -216,16 +216,18 @@ function TaskHandler:updateMinTask(currentTime)
 		if LoopTaskDB[taskID] then
 			if task:getEndTime() then
 				if task:getEndTime() > 0 and task:getEndTime() < currentTime then
-					-- 删除任务
-					g_taskDoer:doDeleteTask(self._entity, taskID)
+					-- 删除任务,设置任务状态为失败。
+					--g_taskDoer:doDeleteTask(self._entity, taskID)
+					task:stateChange(TaskStatus.Failed)
+					task:setUpdateDB()
 				end
 			end
 		else
 			if task:getStatus() == TaskStatus.Active then 
 				if task:getEndTime() then
 					if task:getEndTime() > 0 and task:getEndTime() < currentTime then
-						--print("updateMinTask",taskID)
 						task:stateChange(TaskStatus.Failed)
+						task:setUpdateDB()
 					end
 				end
 			end
@@ -408,7 +410,7 @@ function TaskHandler:removeTaskByID(taskID)
 		self:updateTaskList(taskID, true)
 		self.updateDB = true
 		if self.loopTaskInfo[taskID] then
-			self.loopTaskInfo[taskID].receiveTaskTime = os.time()
+			self.loopTaskInfo[taskID].isSaveDB = true
 		end
 	end
 end
@@ -455,11 +457,18 @@ function TaskHandler:doneTaskByID(taskID)
 	end
 end
 
+function TaskHandler:setLoopTaskSaveDB(taskID)
+	local loopTaskInfo = self.loopTaskInfo[taskID]
+	if loopTaskInfo then
+		loopTaskInfo.isSaveDB = true 
+	end
+end
 
 -- 完成循环任务的接口,如果是天道任务。都完成之后才能接任务, 帮会任务不用这个接口
 function TaskHandler:finishLoopTask(taskID)
 	-- 完成当前任务，
 	self:finishTaskByID(taskID)
+	self.loopTaskInfo[taskID].isSaveDB = true
 	local player = self._entity
 	-- 完成循环任务的时候向活动界面发一个接口
 	self:updateFinishTimes(taskID)
@@ -517,6 +526,7 @@ function TaskHandler:addCountRing(taskID)
 	self.loopTaskInfo[taskID].countRing = self.loopTaskInfo[taskID].countRing + 1
 end
 
+--完成任务
 function TaskHandler:finishTaskByID(taskID)
 	if self.currentTask[taskID] then
 		self.updateDB = true
@@ -592,6 +602,7 @@ function TaskHandler:updateHisTaskToDB()
 	LuaDBAccess.updateHisTask(self._entity:getDBID(), self.hisTasks)
 end
 
+--检测玩家是否满足任务条件，如果是的话，则显示任务对话
 function TaskHandler:checkTaskProvider(npcID)
 	local taskList = g_taskProvideNpcs[npcID]
 	if taskList then
@@ -679,6 +690,7 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 				self.loopTaskInfo[loopTask.taskID].finishTimes = loopTask.finishTimes
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
 				self.loopTaskInfo[loopTask.taskID].receiveTaskTime = loopTask.receiveTaskTime
+				self.loopTaskInfo[loopTask.taskID].isSaveDB = false
 				-- 把循环任务的消息给客户端
 				self:loadLoopTaskInfoToClient()
 			else
@@ -698,7 +710,9 @@ end
 function TaskHandler:updateLoopTaskRingToDB()
 	local playerDBID = self._entity:getDBID()
 	for taskID ,taskInfo in pairs(self.loopTaskInfo) do
-		LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
+		if taskInfo.isSaveDB then
+			LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
+		end
 	end
 end
 
@@ -723,6 +737,10 @@ end
 function TaskHandler:addDailyTaskConfiguration( taskID )
 	self.dailyTaskConfiguration[taskID] = true
 end
+
+function TaskHandler:changeDailyTaskConfigurationByID( taskID,value )
+	self.dailyTaskConfiguration[taskID] = value
+end	
 
 -- 通天塔任务初始化
 function TaskHandler:checkBabelTask(taskID)

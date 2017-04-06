@@ -20,7 +20,7 @@ CMPL_EX =
 LINK_EX =
 
 # default.mak已包含了一些公用的目录，这里加上其他头文件目录
-INCLUDE_DIR = -I../codes/session/inc -I../tools/dbClient/inc
+INCLUDE_DIR = -I../codes/session/inc -I../codes/dbClient/inc
 
 # default.mak已包含了一些公用的库，这里加上其他所需的库及所在目录（exe工程才需要设置）
 LIB_DIR =

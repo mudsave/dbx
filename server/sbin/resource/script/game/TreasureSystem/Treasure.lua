@@ -109,7 +109,7 @@ end
 function Treasure:doClickChangeTipState()
 	if self.tipState == TreasureTipsState.Original then
 		self.tipState = TreasureTipsState.ShowPosition	
-		print("显示状态",self.tipState)
+		-- print("显示状态",self.tipState)
 	elseif self.tipState == TreasureTipsState.ShowPosition then
 	end
 	-- 通知客户端
@@ -126,7 +126,7 @@ end
 function Treasure:setMapData(context)
 	self.mapID = context.mapID
 	self.posX = context.posX
-	self.posX = context.posY
+	self.posY = context.posY
 	self.nearPosX = context.nearPosX
 	self.nearPosY = context.nearPosY
 	self.tipState = context.tipState
@@ -169,7 +169,7 @@ function Treasure:toNotifyUpdateClientInfo()
 	desc.mapID = self.mapID
 	desc.nearPosX = self.nearPosX
 	desc.nearPosY = self.nearPosY
-	print("desc.nearPosX",desc.nearPosX,desc.nearPosY)
+	-- print("desc.nearPosX",desc.nearPosX,desc.nearPosY,self.tipState)
 	desc.tipState = self.tipState
 	local msg = {}
 	msg.guid = self.guid

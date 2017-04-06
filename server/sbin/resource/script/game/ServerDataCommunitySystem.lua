@@ -38,9 +38,16 @@ function ServerDataCommunitySystem:onUpdateWorldServerData( event )
 			player:setFactionDBID(factionDBID)
 			player:setMoney(player:getMoney() - 300000)
 			SceneManager:getInstance():createFactionScene(factionDBID)
+			player:flushPropBatch()
 		elseif updateCode == UpdateWorldServerDataCode.ContributeFaction then
 			local moneyCount = params[3] or 0
 			player:setMoney(player:getMoney() - moneyCount)
+			player:flushPropBatch()
+		elseif updateCode == UpdateWorldServerDataCode.GetSalary then
+			local factionConfiguration = player:getFactionConfiguration()
+			factionConfiguration.getSalary = 1
+			local moneyCount = params[3] or 0
+			player:setMoney(player:getMoney() + moneyCount)
 			player:flushPropBatch()
 		end
 		
@@ -55,8 +62,8 @@ function ServerDataCommunitySystem:onSendToAround(event)
 	local playerID = player:getID()
 	local roleInfo = {ID = playerID,name = params[5].name}
 	local event_SendToAround = Event.getEvent(ChatEvents_SC_SendChatMsg,playerID, params[2],params[3],params[4],roleInfo,params[6])
-	RemoteEventProxy.sendToAround(event_SendToAround,player)
-
+	-- RemoteEventProxy.sendToAround(event_SendToAround,player)
+	g_eventMgr:fireAroundEvent(event_SendToAround,player)
 end
 
 function ServerDataCommunitySystem:onSendToTeam(event)

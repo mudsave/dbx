@@ -45,6 +45,7 @@ TaskType2 = {
 	Trial			= 0x800,	--试炼任务
 	Heaven			= 0x1000,	--天道任务
 	Babel			= 0x2000,	--通天塔任务
+	Puzzle			= 0x4000,	--拼图任务
 
 }
 
@@ -75,6 +76,7 @@ LoopTaskTargetType =
 	itemTalk			= 15,		-- 物品战斗
 
 	collectMaterials	= 16,		-- 收集材料
+	puzzle				= 17,		-- 拼图玩法
 }
 
 CanRecetiveLoopTaskLvl = 

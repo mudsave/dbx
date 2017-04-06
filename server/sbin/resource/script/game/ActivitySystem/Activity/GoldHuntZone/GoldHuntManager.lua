@@ -9,6 +9,7 @@ local pkTargetIndex = 3
 GoldHuntManager = class(EventSetDoer, Singleton)
 
 local FightIDs ={}--[ID]=monsterID or pked ID
+local loserIDs = {}
 local rankResults 
 local CurRankList = {}--{name="",score = 0}
 local FinalPos = {}--[DBID]={ID=activityID,x=0,y=0}
@@ -115,7 +116,8 @@ function GoldHuntManager:_orderScoreAndSend(player)
 	--通知客户端
 	if bChanged then
 		local event = Event.getEvent(ActivityEvent_SC_GoldHunt_CurRank, CurRankList)
-		RemoteEventProxy.broadcast(event,g_serverId)
+		-- RemoteEventProxy.broadcast(event,g_serverId)
+		g_eventMgr:broadcastEvent(event,g_serverId)
 	end
 end
 
@@ -159,26 +161,21 @@ function GoldHuntManager:onPk(event)
 	if not player then
 		return
 	end
-
 	if not g_sceneMgr:isInGoldHuntScene(player) then
 		return
 	end
-
 	if player:getStatus() == ePlayerFight then
 		return
 	end
-
 	local params = event:getParams()
 	local targetID = params[1]
 	local tgPlayer = g_entityMgr:getPlayerByID(targetID)
 	if not tgPlayer then
 		return
 	end
-
 	if not g_sceneMgr:isInGoldHuntScene(tgPlayer) then
 		return
 	end
-
 	if tgPlayer:getStatus() == ePlayerFight then
 		return
 	end
@@ -198,7 +195,7 @@ function GoldHuntManager:onPk(event)
 	local curScore = data.curScore
 	
 	local limit = GoldHuntZoneIconValue[1][1]
-	if curScore < limit then
+	if curScore <= limit then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 3)
 		g_eventMgr:fireRemoteEvent(event, player)
 		return
@@ -256,6 +253,9 @@ function GoldHuntManager:doGoldHuntPVEFight(player, param, npcID)
 			curNpc:setStatus(ePlayerFight)
 			local fightID = g_fightMgr:startScriptFight(finalList, param.scriptID,  param.mapID)
 			FightIDs[fightID] = npcID
+		else
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 12)
+			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
 end
@@ -335,6 +335,7 @@ function GoldHuntManager:onFightEnd(event)
 				return
 			else
 				--满血满蓝
+				print("满血满蓝",player:getLevel())
 				if player:getLevel() <= FullMaxHpMpLevel then
 					local maxHP = player:getAttrValue(player_max_hp)
 					player:setHP(maxHP)
@@ -366,7 +367,10 @@ function GoldHuntManager:onFightEnd(event)
 			end
 		end
 	end
-
+	if not winner then
+		loserIDs[fightID] = loser:getID()
+		return
+	end
 	local handler = winner:getHandler(HandlerDef_Activity)
 	local activityID = handler:getGoldHuntData().ID
 	if not activityID then
@@ -396,6 +400,10 @@ function GoldHuntManager:onFightEnd(event)
 
 	--pk
 	else
+		if not loser then
+			loser = g_entityMgr:getPlayerByID(loserIDs[fightID])
+			loserIDs[fightID] = nil
+		end
 		local targetID = FightIDs[fightID]
 		local target = targets[pkTargetIndex]
 		target:onPKDone(winner ,loser, targetID)
@@ -439,7 +447,7 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 		return
 	end
 	FinalPos[player:getDBID()] = nil
-	self:setIconValue(player,0,true)--初始化值
+	
 	--发送进入事件(倒计时和总积分和階段)
 	local activity = g_activityMgr:getActivity(activityID) 
 	local phaseID = activity:getPhaseID()
@@ -456,7 +464,7 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	local leftTime = endTimeTick - now
 	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_enter, leftTime , goldHuntData.totalScore, CurRankList,phaseID)
 	g_eventMgr:fireRemoteEvent(event, player)
-	
+	self:setIconValue(player,1,true)--初始化值
 	--初始化
 	
 	goldHuntData.ID = activityID
@@ -528,8 +536,10 @@ function GoldHuntManager:_giveReward(player, reward)
 	local dropMgr = DropManager.getInstance()
 	local isChanged = false
 	if reward.exp and reward.exp > 0 then
-		player:addXp(reward.exp)
-		dropMgr:sendRewardMessageTip(player, 2, reward.exp)
+		local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+		local tempExp = math.floor(reward.exp * temp_xp_ratio / 100)
+		player:addXp(tempExp)
+		dropMgr:sendRewardMessageTip(player, 2, tempExp)
 		isChanged = true
 	end
 
@@ -567,7 +577,8 @@ function  GoldHuntManager:onGetRankResults(event)
 	table.clear(CurRankList)
 	--发布前3广播
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,8,unpack(rank3Names))
-	RemoteEventProxy.broadcast(event, g_serverId)
+	-- RemoteEventProxy.broadcast(event, g_serverId)
+	g_eventMgr:broadcastEvent(event,g_serverId)
 	--给在线玩家发排名奖
 	for _,rs in ipairs(rankResults) do
 		local dbID = rs.roleID
@@ -621,10 +632,9 @@ function GoldHuntManager:onLeaveScene(event)
 	if not g_sceneMgr:isGoldHuntScene(scene) then
 		return
 	end
-
+	self:setIconValue(role,0,true)--初始化值
 	local event = Event.getEvent(ActivityEvent_SC_GoldHunt_leave, -1)
 	g_eventMgr:fireRemoteEvent(event, role)
-
 end
 
 function GoldHuntManager:onGetLeaveCmd(event)

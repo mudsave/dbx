@@ -92,16 +92,16 @@ function MindSystem:getMindLevel(event)
 	if not mind then
 		print ('ERROR: mind', mindID, 'not exist!')
 	end
-	local event = Event(SkillEvents_SC_GetMindLevel, mindID, mind.level)
+	local event = Event.getEvent(SkillEvents_SC_GetMindLevel, mindID, mind.level)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 function MindSystem:loadMinds(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local handler = player:getHandler(HandlerDef_Mind)
-	local event = Event(SkillEvents_SC_LoadMinds, handler:get_minds())
+	local event = Event.getEvent(SkillEvents_SC_LoadMinds, handler:get_minds())
 	g_eventMgr:fireRemoteEvent(event, player)
-	event = Event(SkillEvents_SC_LoadMindsExt, handler:get_minds())
+	event = Event.getEvent(SkillEvents_SC_LoadMindsExt, handler:get_minds())
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 
@@ -114,7 +114,7 @@ end
 
 function MindSystem.answerUpgrade(player, result)
 	player:flushPropBatch()
-	local event = Event(SkillEvents_SC_LearnSkill, result.mindID, result.up_level, result.ec)
+	local event = Event.getEvent(SkillEvents_SC_LearnSkill, result.mindID, result.up_level, result.ec)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

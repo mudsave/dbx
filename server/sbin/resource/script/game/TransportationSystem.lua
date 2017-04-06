@@ -61,7 +61,7 @@ function TransportationSystem:onUpdateFlyFlagNum( event )
 
 end
 
---���齫Ҫ�ƶ��ĵص������Ƿ��Ϸ�
+
 function TransportationSystem:onCheckCanTransport( event )
 
 	local params = event:getParams()
@@ -76,23 +76,27 @@ function TransportationSystem:onCheckCanTransport( event )
 	if player then
 		if CoScene:PosValidate(mapID,x,y) then
 
-			--local event_ServerStopMove = Event.getEvent(MoveEvent_SS_ServerStopMove,playerID,eLogicPlayer)
-			--g_eventMgr:fireWorldsEvent(event_ServerStopMove,)
 			g_sceneMgr:doSwitchScence(player:getID(),mapID,x,y)
 
 			if transportionKind == TransportionKind.FlyFlag then
 
 				local itemGuid = extraInfo.itemGuid
 				local memberList = extraInfo.memberList
+				--将队员全部传送到指定地点
 				if memberList then
+					print("要飞的队员有哪些>>>>>>>",toString(memberList))
 					for index,memberInfo in pairs(memberList) do
 						if memberInfo ~= playerID then
+							print("这个时候，队员应该要起飞>>>>>>>>>>>>>>>>>")
 							g_sceneMgr:doSwitchScence(memberInfo.memberID,mapID,x,y)
 						end
 					end
 				end
+
 				local item = g_itemMgr:getItem(itemGuid)
 				local num = item:getEffect()
+
+				--更新物品数量
 				if num <= 1 then
 					item:setEffect(num - 1)
 					local packetHandler = player:getHandler(HandlerDef_Packet)
@@ -107,6 +111,8 @@ function TransportationSystem:onCheckCanTransport( event )
 				local itemGuid = extraInfo.itemGuid
 				local item = g_itemMgr:getItem(itemGuid)
 				local num = item:getEffect()
+
+				--更新物品数量
 				if num <= 1 then
 					item:setEffect(num - 1)
 					local packetHandler = player:getHandler(HandlerDef_Packet)
@@ -115,13 +121,25 @@ function TransportationSystem:onCheckCanTransport( event )
 					item:setEffect(num - 1)
 					item:getPack():updateItemsToClient(item)
 				end
+				
+				local memberList = extraInfo.memberList
+				--将队员全部传送到指定地点
+				if memberList then
+					for index,memberInfo in pairs(memberList) do
+						if memberInfo ~= playerID then
+							g_sceneMgr:doSwitchScence(memberInfo.memberID,mapID,x,y)
+						end
+					end
+				end
+
+
 			end
 			
 			local event_Succeed = Event.getEvent(TransportEvent_SC_TransportSucceed,transportionKind,extraInfo)
 			g_eventMgr:fireRemoteEvent(event_Succeed,player)
 
 		else
-			local msg ="�ص㲻�Ϸ����ƶ�ʧ��"
+			local msg =""
 			local notifyParams = {msg = msg}
 			local event_Failed = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.NormalNotify,notifyParams)
 			g_eventMgr:fireRemoteEvent(event_Failed,player)

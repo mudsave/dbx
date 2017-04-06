@@ -23,12 +23,12 @@ end
 function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	local handler1 = winner:getHandler(HandlerDef_Activity)
 	local activityID1 = handler1:getGoldHuntData().ID
-	local data1 = handler:getPriData(activityID1)
+	local data1 = handler1:getPriData(activityID1)
 	local curScore1 = data1.curScore
 
 	local handler2 = loser:getHandler(HandlerDef_Activity)
 	local activityID2 = handler2:getGoldHuntData().ID
-	local data2 = handler:getPriData(activityID2)
+	local data2 = handler2:getPriData(activityID2)
 	local curScore2 = data2.curScore
 
 	local rand = math.random(GoldHuntZone_PK_punish.percent[1], GoldHuntZone_PK_punish.percent[2])
@@ -46,6 +46,7 @@ function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	end
 	data1.curScore = curScore1
 	g_goldHuntMgr:setIconValue(winner, curScore1)
+	print("胜方结算",toString(winner),curScore1)
 	--输方结算
 	curScore2 = curScore2 - reward
 	if curScore2 < 0 then
@@ -53,6 +54,7 @@ function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	end
 	data2.curScore = curScore2
 	g_goldHuntMgr:setIconValue(loser, curScore2)
+	print("输方结算",toString(loser),curScore2)
 	g_goldHuntMgr:informClientScore(winner)
 	g_goldHuntMgr:informClientScore(loser)
 

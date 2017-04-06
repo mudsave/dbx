@@ -25,7 +25,9 @@ require "game.TaskSystem.TaskTarget.TbabelScript"
 require "game.TaskSystem.TaskTarget.TkillMonster"
 require "game.TaskSystem.TaskTarget.TguideTask"
 require "game.TaskSystem.TaskTarget.TjoinFaction"
-
+require "game.TaskSystem.TaskTarget.TrandomFightScript"
+require "game.TaskSystem.TaskTarget.Tpuzzle"
+require "game.TaskSystem.TaskTarget.TpaidPet"
 
 local targetList =
 {
@@ -52,11 +54,13 @@ local targetList =
 	["TkillMonster"]		= TkillMonster, -- 击杀怪物
 	["TguideTask"]			= TguideTask,	-- 指引任务
 	["TjoinFaction"]		= TjoinFaction,	-- 加入帮派
+	["TrandomFightScript"]  = TrandomFightScript, --随机脚本战斗	
+	["TpaidPet"]			= TpaidPet,
+	["Tpuzzle"]				= Tpuzzle,		--拼图
 }
 
 -- 构造任务目标的函数
 function createTarget(player, task, targetType, param, state)
-	
 	if targetList[targetType] then
 		return targetList[targetType](player, task, param, state)
 	end

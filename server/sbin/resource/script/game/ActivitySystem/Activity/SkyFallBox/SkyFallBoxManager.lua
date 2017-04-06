@@ -30,6 +30,15 @@ function SkyFallBoxManager:getActivityFlag()
 	return self.activityFlag
 end
 
+function SkyFallBoxManager:notifyToClient(player,boxNum)
+	local data = {}
+	local activityId = gSkyFallBoxActivityID
+	data.count = boxNum
+	data.finishTimes = boxNum
+	local event = Event.getEvent(ActivityEvent_SC_ActivityPageActivity,activityId,data)
+	g_eventMgr:fireRemoteEvent(event, player)
+end
+
 -- 玩家上线加入活动 如果活动存在 具体的逻辑在自己每个活动中做
 function SkyFallBoxManager:onPlayerOnline(player, recordList)
 	-- 加载所有开启的的活动数据

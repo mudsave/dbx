@@ -178,6 +178,11 @@ function Task:updateNpcHeader()
 			g_taskDoer:updateNpcHeader(player,startNpc)
 		end
 		local endNpcID = DailyTaskDB[self._taskID].endNpcID
+		if type(endNpcID) == "table" then
+			local roleVerify = RoleVerify.getInstance()
+			endNpcID = roleVerify._npcTable.selectNPCID
+			print("结束NPC为",endNpcID)
+		end
 		local endNpc = g_entityMgr:getNpc(endNpcID)
 		if endNpc then
 			g_taskDoer:updateNpcHeader(player, endNpc)

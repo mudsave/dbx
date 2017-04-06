@@ -21,8 +21,8 @@ function PacketHandler:__release()
 	self._entity = nil
 	release(self.packet)
 	self.packet = nil
-	self.destroyItemList = nil
-	self.destroyEquipList = nil
+	--self.destroyItemList = nil
+	--self.destroyEquipList = nil
 	self.itemUseTimes = nil
 	-- 删除定时器
 	g_timerMgr:unRegTimer(self.checkGoodsTimerID)
@@ -66,6 +66,7 @@ function PacketHandler:addItemsToPacket(itemID, itemNum)
 	end
 
 	local itemCreateNum = 0
+	local itemLevel = itemConfig.UseNeedLvl
 	for i = 1, needCreateNum do
 		if itemNum >= itemConfig.MaxPileNum then
 			itemNum = itemNum - itemConfig.MaxPileNum
@@ -73,18 +74,17 @@ function PacketHandler:addItemsToPacket(itemID, itemNum)
 		else
 			itemCreateNum = itemNum
 		end
-		local item = g_itemMgr:createItem(itemID, itemCreateNum)
+		if itemLevel == -1 then
+			itemLevel = self._entity:getLevel()
+		end
+		local item = g_itemMgr:createItem(itemID, itemCreateNum,itemLevel)
 		if item then
 			local result = self.packet:addItems(item:getGuid(), true)
 			if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
-				if itemConfig.UseNeedLvl == -1 then
-					item:setItemLvl(self._entity:getLevel())
-				else 
-					item:setItemLvl(itemConfig.UseNeedLvl)
-				end
 				-- 发个监听消息给循环任务系统
 			else
 				-- 添加失败，发送邮件，要么就销毁道具
+				g_itemMgr:destroyItem(self._entity,item:getGuid())
 				return false
 			end
 		end

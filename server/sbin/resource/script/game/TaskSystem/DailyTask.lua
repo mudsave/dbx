@@ -7,19 +7,23 @@ DailyTask = class(Task)
 
 function DailyTask:__init()
 
-	self._targetType = nil
-	self._targetParam = nil
-	self._dailyTargets = nil
-	self.remainCount = 2
+	self._targetType = {}
+	self._targetParam = {}
+	self._dailyTargets = {}
+	self._rewards = {}
 
 end
 
 function DailyTask:__release()
 
-end
+	self._targetType = nil
+	self._targetParam = nil
+	self._dailyTargets = nil
+
+end	
 
 function DailyTask:setRewards(rewards)
-	self._rewards = rewards
+	table.deepCopy(rewards, self._rewards)
 end
 
 function DailyTask:getRewards()
@@ -27,7 +31,7 @@ function DailyTask:getRewards()
 end
 
 function DailyTask:setTriggers(triggers)
-	self._triggers = triggers
+	table.deepCopy(triggers, self._triggers)
 end
 
 function DailyTask:getTriggers()
@@ -58,7 +62,7 @@ end
 
 function DailyTask:setDailyTargets( targets )
 	
-	self._dailyTargets = targets
+	table.deepCopy(targets,self._dailyTargets)
 
 end
 
@@ -74,7 +78,10 @@ function DailyTask:addReward()
 	for rewardType, value in pairs(self._rewards) do
 		
 		if rewardType == TaskRewardList.player_xp then
-			player:addXp(value)
+			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+			local addXp = math.floor(value * temp_xp_ratio / 100)
+			player:addXp(addXp)
+			self._rewards[rewardType] = addXp
 		elseif rewardType == TaskRewardList.money then
 			player:setMoney(player:getMoney() + value)
 		elseif rewardType == TaskRewardList.subMoney then

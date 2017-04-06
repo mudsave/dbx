@@ -38,8 +38,10 @@ function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
 					local itemID = DekaronSchoolReward.randItem(scriptID)
 					--经验
 					if addexp then
-						player:addXp(addexp)
-						g_dekaronSchoolMgr:sendRewardMessageTip(player, 2,addexp)
+						local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+						local tempExp = math.floor(reward.exp * temp_xp_ratio / 100)
+						player:addXp(tempExp)
+						g_dekaronSchoolMgr:sendRewardMessageTip(player, 2, tempExp)
 					end
 					--道行
 					if addtao then

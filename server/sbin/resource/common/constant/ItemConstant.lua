@@ -204,6 +204,8 @@ ItemSubClass =
 	reservePool = 18,
 	-- 装备制作的材料
 	manufacMat = 19,
+	-- 研发技能书
+	ExtendBook = 20,
 }
 
 
@@ -297,6 +299,8 @@ MedicamentReactType =
 	ChangeHpAndAddBuff   = 36,
 	--改变法力并添加buff
 	ChangeMpAndAddBuff   = 37,
+	-- 给宠物添加研发技能
+	AddPetExtend		= 38,
 }
 
 -- 药品作用对象类型

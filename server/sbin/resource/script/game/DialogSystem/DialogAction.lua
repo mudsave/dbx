@@ -86,6 +86,27 @@ end
 function DialogAction:doEnterScriptFight(player, param)
 	local playerList = {}
 	local fightType = param.type
+	local scriptID = -1
+	local mapID =  -1
+	if fightType == "random" then
+		print("进入随机脚本战斗>>>>>>>>>>>>")
+		--根据权重得到脚本ID
+		scriptID = 30
+		mapID =  nil
+		local taskID = param.taskID
+		if taskID then
+			local task = player:getHandler(HandlerDef_Task):getTask(taskID)
+			local targets = task:getTargets()
+			for idx,target in pairs(targets) do
+				print("添加scriptID>>>>>>>>>>>>>>>>>>>")
+				target:addScriptID(scriptID)
+			end
+		end
+	else
+		scriptID = param.scriptID
+		mapID =  param.mapID
+	end
+
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler:isTeam() then
 		if teamHandler:isLeader() then
@@ -107,7 +128,7 @@ function DialogAction:doEnterScriptFight(player, param)
 		end
 	end
 	-- print("进入脚本战斗战斗")
-	local bPass = g_fightMgr:checkStartScriptFight(finalList, param.scriptID,  param.mapID)
+	local bPass = g_fightMgr:checkStartScriptFight(finalList, scriptID,mapID)
 	if bPass then
 		-- 天道任务消耗活力值
 		if fightType == "heaven" then
@@ -118,7 +139,7 @@ function DialogAction:doEnterScriptFight(player, param)
 				role:flushPropBatch()
 			end
 		end
-		g_fightMgr:startScriptFight(finalList, param.scriptID,  param.mapID)
+		g_fightMgr:startScriptFight(finalList,scriptID, mapID)
 	end
 end
 
@@ -174,9 +195,15 @@ end
 --接受一个任务
 function DialogAction:doRecetiveTask(player, param)
 	local isTrue,result = g_taskDoer:doRecetiveTask(player, param.taskID)
+	--如果接受任务失败，则提示，如果成功，则可以执行扩展的代码
 	if result and result > 0 then
 		g_dialogFty:createErrorDialogObject(player, result)
 		g_dialogDoer:openErrorDialog(player, result)
+	else
+		if param.matchNPC then
+			local roleVerify = RoleVerify.getInstance()
+			table.insert( roleVerify._npcTable.pool,roleVerify._npcTable.selectNPCID)
+		end 
 	end
 end
 
@@ -287,6 +314,7 @@ function DialogAction:doMayTaskFight(player, param)
 		-- 再接指定的类型的任务
 		local loopTask = g_taskFty:createLoopTask(player, taskID, LoopTaskTargetType.talkScript)
 		loopTask:setReceiveTaskLvl(player:getLevel())
+		taskHandler:addTask(loopTask)
 		taskHandler:updateTaskList(taskID, false)
 	end
 end
@@ -525,7 +553,12 @@ end
 --装备修理
 function DialogAction:doRepairEquipment(player)
 	g_itemMgr:openRepairEquipment(player)
-end 
+end
+
+--打开拼图
+function DialogAction:doOpenPuzzle(player)
+	CactionSystem.getInstance():doOpenPuzzle(player)
+end
 
 --物品兑换
 function DialogAction:doExchangeProps(player)
@@ -560,7 +593,7 @@ function DialogAction:doConsumeRecetiveTask(player, param, npcID)
 		end
 	end
 	if result == 11 then
-		print("taskID",taskID)
+		print("接受了消耗型任务，任务ID为taskID",taskID)
 		g_taskDoer:doRecetiveTask(player, taskID)
 	else 
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, result)
@@ -863,6 +896,19 @@ function DialogAction:doDiscussHeroFight(player, param, npcID)
 	g_discussHeroMgr:doDiscussHeroPVEFight(player, param, npcID)
 end
 
+function DialogAction:doChangePlayerMoney(player, param)
+	
+	local type = param.type
+	local flag = param.flag
+
+	if flag == "factionSalary" then
+		local event = Event.getEvent(FactionEvent_CB_GetSalaryFromFaction,player:getDBID())
+		g_eventMgr:fireWorldsEvent(event,SocialWorldID)
+	end
+
+
+
+end
 
 function DialogAction.getInstance()
 	return DialogAction()

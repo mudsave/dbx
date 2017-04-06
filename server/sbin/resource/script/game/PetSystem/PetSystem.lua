@@ -36,7 +36,7 @@ function PetSystem:__init()
 		[PetEvent_CS_ExpandPetBar]			= PetSystem.onExpandPetBar,		-- 拓展宠物栏
 		[PetEvent_CS_CombinePets]			= PetSystem.onCombinePets,		-- 宠物合成
 		[PetEvent_CS_ReadSkillBook]			= PetSystem.onPetLearn,			-- 宠物学习技能
-		[PetEvent_CS_LearnExtendSkill]		= PetSystem.onPetExtendSkill,	-- 宠物学习研发技能
+		[PetEvent_CS_LearnExtendSkill]		= PetSystem.onLearnExtendSkill,	-- 宠物学习研发技能
 	}
 end
 
@@ -404,7 +404,7 @@ local function RepairPet(pet)
 	pet:fill()
 	pet:setLoyalty(MaxPetLoyalty)
 
-	notice("宠物%s修复完毕",pet:getName())
+	notice("宠物%s修复完毕",string.gbkToUtf8(pet:getName()))
 end
 
 -- 修复所有宠物
@@ -997,7 +997,7 @@ local function PetExtendConsume(player,skillID,skillLevel)
 end
 
 --研发技能
-function PetSystem.onPetExtendSkill(event)
+function PetSystem.onLearnExtendSkill(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
 
@@ -1007,27 +1007,18 @@ function PetSystem.onPetExtendSkill(event)
 
 	local pet = player:getHandler(HandlerDef_Pet):getPet(petID)
 	if not pet then print("the pet is empty") return end
-	local skillhandler = pet:getHandler(HandlerDef_PetSkill) 
-	--当前技能等级是否高于要学习的等级
-	local skill = skillhandler:getSkill(skillID)
-	if skill then
-		local lvl = skill:getLevel()
-		if lvl >= skillLevel then
-			print("current skilllevel is higher")
-			return 
-		end
-	end
-
+	local skillhandler = pet:getHandler(HandlerDef_PetSkill)
+	
+	--是否能操作判定
+	if skillhandler:canLearnExtend(skillID,skillLevel) then return end
 	--消耗
 	if not PetExtendConsume(player,skillID,skillLevel) then return end
+	--研发技能
+	skillhandler:learnExtendSkill(skillID,skillLevel)
 	
-	--添加技能
-	
-
-	--返回信息给客户端
-	local param  
-	local event = Event.getEvent(PetEvent_SC_LearnExtendSkill,param)
-	g_eventMgr.fireRemoteEvent(event,player)
+	handler:sendFreshs(player)
+	handler:sendChanges(player)
+	pet:flushPropBatch(player)
 end
 
 

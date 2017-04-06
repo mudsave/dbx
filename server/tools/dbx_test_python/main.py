@@ -43,7 +43,16 @@ def main():
 	except:
 		sys.excepthook( *sys.exc_info() )
 		operation.operation.findOperation("help")(opid)
-	
+
+def _setSysArgv(*argv):
+	sys.argv = sys.argv[0:1]
+	sys.argv.extend(argv)
+
+def idleMain(*argv):
+	print("idleMain::argv:",*(argv))
+	print()
+	_setSysArgv(*argv)
+	main()
 
 if __name__ == '__main__':
 	main()

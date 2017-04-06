@@ -38,7 +38,7 @@ end
 
 -- 接任务
 function TaskDoer:doRecetiveTask(player, taskID, GM)
-	print("接受一个任务，任务的ID：",taskID)
+
 	local msgID = nil
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	--先判断有没有接过该任务
@@ -64,6 +64,7 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		end
 	elseif DailyTaskDB[taskID] then
 		if taskHandler:getTask(taskID) then
+			print("你已经有这个任务了")
 			return false, 2
 		end
 	end
@@ -79,7 +80,8 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		normalTask:updateNpcHeader()
 		-- g_taskSystem:updateNormalTaskList(player, taskHandler:getNextID())
 		return true
-	elseif LoopTaskDB[taskID] then	
+	elseif LoopTaskDB[taskID] then
+
 		if not TaskCondition.loopTask(player, taskID, true, GM) then
 			print("任务条件不满足")
 			return false, 2
@@ -97,21 +99,28 @@ function TaskDoer:doRecetiveTask(player, taskID, GM)
 		-- g_taskSystem:updateLoopTaskList(player, taskHandler:getRecetiveTaskList())
 		taskHandler:updateTaskList(taskID, false)
 		return true
+		
 	elseif DailyTaskDB[taskID] then
+
 		if not TaskCondition.dailyTask(player, taskID, true, GM) then
 			print("任务条件不满足")
 			return false, 2
 		end
-
 		local dailyTask = g_taskFty:createDailyTask(player, taskID)
 		taskHandler:addTask(dailyTask)
 		dailyTask:updateNpcHeader()
-		--g_taskSystem:updateDailyTaskList(player, taskHandler:getNextID())
+		taskHandler:changeDailyTaskConfigurationByID(taskID,false)
+
+		LuaDBAccess.updateDailyTask(player:getDBID(), dailyTask)
+		LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
+		
 		return true
 	else
 		print("接受任务出错，任务找不到ID为",taskID)
 		return false, 21
 	end
+
+
 end
 
 -- 任务目标的切换移除当前循环任务，接其他任务的任务目标, 
@@ -119,6 +128,7 @@ end
 function TaskDoer:doDeleteTask(player, taskID, flag)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:setUpdateDB()
+	taskHandler:setLoopTaskSaveDB(taskID)
 	-- 在这之前还要移除私有NPC 和热区以及其他的任务物品
 	local privateHandler = player:getHandler(HandlerDef_TaskPrData)
 	local npcs = {}
@@ -219,7 +229,7 @@ function TaskDoer:loadNormalTask(player, recordList)
 			end
 			
 		end
-		g_taskSystem:onLoadPlayerTasksData(player, recordList)
+		--g_taskSystem:onLoadPlayerTasksData(player, recordList)
 	end
 
 end
@@ -243,6 +253,7 @@ function TaskDoer:loadLoopTask(player, recordList)
 end
 
 function TaskDoer:loadDailyTask( player, recordList )
+
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	for _, taskData in pairs(recordList) do
 		if type(taskData.targetState) then
@@ -297,7 +308,6 @@ function TaskDoer:loadHistoryTask(player, recordList)
 			player:getHandler(HandlerDef_Task):loadHistoryTask(taskData.historyTasks)
 		end
 	end
-
 end
 
 function TaskDoer:loadTaskTrace(player, recordList)
@@ -320,9 +330,7 @@ end
 
 function TaskDoer:updateRoleTask(player)
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	if not taskHandler:getUpdateDB() then
-		return
-	end
+	
 	for taskID, task in pairs(taskHandler:getTasks()) do
 		if task:getType() == TaskType.normal and task:getUpdateDB() then
 			LuaDBAccess.updateNormalTask(player:getDBID(), task)
@@ -333,9 +341,17 @@ function TaskDoer:updateRoleTask(player)
 			LuaDBAccess.updateDailyTaskConfiguration(player:getDBID(),taskHandler:getDailyTaskConfiguration())
 		end
 	end
-	taskHandler:updateLoopTaskRingToDB(taskID)
-	taskHandler:saveBabelTask()
+	self:updateLoopAndBabel(player)
 	self:updateRolePrivateTask(player)
+end
+
+-- 保存循环任务和天道任务
+function TaskDoer:updateLoopAndBabel(player)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	if taskHandler:getUpdateDB() then
+		taskHandler:updateLoopTaskRingToDB(taskID)
+		taskHandler:saveBabelTask()
+	end
 end
 
 function TaskDoer:updateRolePrivateTask(player)
@@ -357,9 +373,9 @@ function TaskDoer:updatePlayerLevelTasks(player)
 			if taskData.level[1] <= player:getLevel() then	-- 指引任务不能重复接
 				if not player:getHandler(HandlerDef_Task):isHisTask(taskID) then
 					self:doRecetiveTask(player, taskID)	-- 升级自动接指引任务
+				end
 			end
 		end
-	end
 	end
 end
 
@@ -367,6 +383,7 @@ end
 function TaskDoer:updateNpcHeader(player, npc)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local npcStatue = nil
+
 	for _, taskID in ipairs(g_taskProvideNpcs[npc:getID()] or {}) do
 		local task = taskHandler:getTask(taskID)
 		if not task then		
@@ -409,13 +426,13 @@ function TaskDoer:updateNpcHeader(player, npc)
 		end
 	end
 	g_taskSystem:onUpdateNpcStatue(player, npc:getID(), npcStatue)
+
 end
 
 --天数刷新
 function TaskDoer:update(period)
 	if period == "day" then
 		for playerID, player in pairs(g_entityMgr:getPlayers()) do
-			print("进入跨天调用没有啊")
 			player:getHandler(HandlerDef_Task):updateDayTask()
 		end
 	elseif period == "week" then
@@ -594,6 +611,7 @@ function TaskDoer:doReceiveSpecialTask(player, taskID)
 	-- 先以队长来创建任务
 	taskHandler:updateLoopCount(taskID)
 	local loopTask = g_taskFty:createLoopTask(player, taskID)
+	loopTask:setReceiveTaskLvl(player:getLevel())
 	taskHandler:addTask(loopTask)
 	taskHandler:setReceiveTaskTime(taskID)
 	if table.size(playerList) > 1 then
@@ -608,6 +626,7 @@ function TaskDoer:doReceiveSpecialTask(player, taskID)
 					self:doDeleteTask(entity, taskID)
 				end
 				loopTask1 = g_taskFty:createLoopByTask(loopTask, roleID)
+				loopTask1:setReceiveTaskLvl(entity:getLevel())
 				curTaskHandler:addTask(loopTask1)
 				curTaskHandler:setReceiveTaskTime(taskID)
 				loopTask1:updateNpcHeader()

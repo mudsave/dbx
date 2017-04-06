@@ -59,7 +59,8 @@ function BeastBless:open()
 	--广播
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,1,readyPeriod,mapInfo)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	-- 定时器
 	openTimeID = g_timerMgr:regTimer(self, readyPeriod*60*1000, readyPeriod*60*1000, "BeastBless.openActivity")
@@ -79,7 +80,8 @@ function BeastBless:close()
 	--广播
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,3)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	-- 定时器
 	endTimeID = g_timerMgr:regTimer(self, preEndPeriod*60*1000, preEndPeriod*60*1000, "BeastBless.closeActivity")
@@ -91,7 +93,8 @@ function BeastBless:openActivity()
 	local mapInfo = self._config.mapInfo.inMapID
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,2,mapInfo)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	-- 记录这个活动开始的时间
 	self._openTime = os.time()
@@ -104,7 +107,8 @@ end
 function BeastBless:closeActivity()
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,4)
-		RemoteEventProxy.broadcast(event)
+		-- RemoteEventProxy.broadcast(event)
+		g_eventMgr:broadcastEvent(event)
 	end
 	-- 清除场景中的瑞兽
 	g_beastBlessMgr:destroyAllBeast()

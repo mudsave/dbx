@@ -1,21 +1,21 @@
 --[[LoopTaskTargetAssistDB.lua
-	å¾ªç¯ä»»åŠ¡ç›®æ ‡è¾…åŠ©é…ç½®(ä»»åŠ¡ç³»ç»Ÿ)
+	Ñ­»·ÈÎÎñÄ¿±ê¸¨ÖúÅäÖÃ(ÈÎÎñÏµÍ³)
 --]]
 
 LoopTaskTargetAssistDB = 
 {	
 	[10001] =
 	{
-		-- 1 - 30 çº§
+		-- 1 - 30 ¼¶
 		[1] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -26,10 +26,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -45,7 +45,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
@@ -54,22 +54,107 @@ LoopTaskTargetAssistDB =
 				},
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1001, scriptID = 4121},
-						[2] = {petID = 1004, scriptID = 4122},
-						[3] = {petID = 1005, scriptID = 4123},
-						[4] = {petID = 1006, scriptID = 4124},
-						[5] = {petID = 1008, scriptID = 4125},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
                                           [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -84,7 +169,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -97,15 +182,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 31 - 40 çº§
+		-- 31 - 40 ¼¶
 		[2] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26009, scriptID = 4117},
@@ -113,10 +198,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -128,10 +213,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -147,7 +232,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
@@ -157,22 +242,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1012, scriptID = 4126},
-						[2] = {petID = 1013, scriptID = 4127},
-						[3] = {petID = 1014, scriptID = 4128},
-						[4] = {petID = 1016, scriptID = 4129},
-						[5] = {petID = 1017, scriptID = 4130},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
                                           [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -195,7 +365,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -210,17 +380,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
 
-						[1] = {npcID = 20021,scriptID = 4105,  mapID = 1, x = 32, y = 76},--æ®µå²³
+						[1] = {npcID = 20021,scriptID = 4105,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -230,7 +400,7 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4862, itemID = 1062225, npcID = 26029},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -248,15 +418,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 41 - 50 çº§
+		-- 41 - 50 ¼¶
 		[3] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
@@ -264,10 +434,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -279,10 +449,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -298,7 +468,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
@@ -308,23 +478,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
 
-						[1] = {petID = 1019, scriptID = 4131},
-						[2] = {petID = 1020, scriptID = 4132},
-						[3] = {petID = 1021, scriptID = 4133},
-						[4] = {petID = 1027, scriptID = 4134},
-						[5] = {petID = 1026, scriptID = 4135},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
                                           [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -347,7 +602,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -362,17 +617,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20021,scriptID = 4105,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[2] = {npcID = 29066,scriptID = 4111,  mapID = 1, x = 35, y = 99},--ä¹¾å…ƒå²›æ‰§æ³•é•¿è€
+						[1] = {npcID = 20021,scriptID = 4105,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[2] = {npcID = 29066,scriptID = 4111,  mapID = 1, x = 35, y = 99},--Ç¬ÔªµºÖ´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -382,26 +637,26 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4862, itemID = 1062225, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯æŒ‡å¼•
+					-- Ñ²Âß³ö¶Ô»°Ö¸Òı
 					escortTalkTrace =
 					{
-						-- å¯¹è¯IDè·å–çš„npcID è¦å’Œåé¢çš„followNpcID åŒ¹é…
+						-- ¶Ô»°ID»ñÈ¡µÄnpcID ÒªºÍºóÃæµÄfollowNpcID Æ¥Åä
 						[1] = {dialogID = 4811, followNpcID = 26021},
 					},
-					-- æŠ¤é€NPcæŒ‡å¼•
+					-- »¤ËÍNPcÖ¸Òı
 					escortNpcTrace =
 					{
-						-- followNpcIDåœ¨ä¹‹å‰éƒ½å·²ç»å­˜èµ·æ¥å‘¢
+						-- followNpcIDÔÚÖ®Ç°¶¼ÒÑ¾­´æÆğÀ´ÄØ
 						[1] = { npcID = 29010, mapID = 9, x = 45, y = 76},
 						[2] = { npcID = 29007, mapID = 10, x = 319, y = 132},
 						[3] = { npcID = 29031, mapID = 13, x = 174, y = 74},
 						[4] = { npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -418,25 +673,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 51 - 150 çº§
+		-- 51 - 150 ¼¶
 		[4] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -447,10 +702,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -466,7 +721,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
@@ -476,22 +731,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1028, scriptID = 4136},
-						[2] = {petID = 1030, scriptID = 4137},
-						[3] = {petID = 1031, scriptID = 4138},
-						[4] = {petID = 1032, scriptID = 4139},
-						[5] = {petID = 1033, scriptID = 4140},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -514,7 +855,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -529,16 +870,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 29066,scriptID = 4111,  mapID = 1, x = 35, y = 99},--ä¹¾å…ƒå²›æ‰§æ³•é•¿è€
+						[1] = {npcID = 29066,scriptID = 4111,  mapID = 1, x = 35, y = 99},--Ç¬ÔªµºÖ´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -548,16 +889,16 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4862, itemID = 1062225, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					escortTrace =
 					{
-						-- dialogID ç»‘å®šçš„npcIDå’ŒfollowNpcIDè¦å¯¹åº”
+						-- dialogID °ó¶¨µÄnpcIDºÍfollowNpcIDÒª¶ÔÓ¦
 						[1] = {dialogID = 4811, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -566,7 +907,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -586,16 +927,16 @@ LoopTaskTargetAssistDB =
 	},
 	[10002] =
 	{
-		-- 1 - 30 çº§
+		-- 1 - 30 ¼¶
 		[1] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -606,10 +947,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -625,7 +966,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
@@ -634,22 +975,108 @@ LoopTaskTargetAssistDB =
 				},
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1001, scriptID = 4121},
-						[2] = {petID = 1004, scriptID = 4122},
-						[3] = {petID = 1005, scriptID = 4123},
-						[4] = {petID = 1006, scriptID = 4124},
-						[5] = {petID = 1008, scriptID = 4125},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -664,7 +1091,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -677,15 +1104,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 31 - 40 çº§
+		-- 31 - 40 ¼¶
 		[2] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26009, scriptID = 4117},
@@ -693,10 +1120,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -708,10 +1135,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -727,7 +1154,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
@@ -737,22 +1164,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1012, scriptID = 4126},
-						[2] = {petID = 1013, scriptID = 4127},
-						[3] = {petID = 1014, scriptID = 4128},
-						[4] = {petID = 1016, scriptID = 4129},
-						[5] = {petID = 1017, scriptID = 4130},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -775,7 +1288,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -790,16 +1303,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20023,scriptID = 4107,  mapID = 3, x = 33, y = 111},--æé•¿é£
+						[1] = {npcID = 20023,scriptID = 4107,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
 					}
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -809,7 +1322,7 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4863, itemID = 1062226, npcID = 26029},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -826,15 +1339,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 41 - 50 çº§
+		-- 41 - 50 ¼¶
 		[3] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
@@ -842,10 +1355,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -857,10 +1370,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -876,7 +1389,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
@@ -886,23 +1399,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-
-						[1] = {petID = 1019, scriptID = 4131},
-						[2] = {petID = 1020, scriptID = 4132},
-						[3] = {petID = 1021, scriptID = 4133},
-						[4] = {petID = 1027, scriptID = 4134},
-						[5] = {petID = 1026, scriptID = 4135},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -925,7 +1522,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -940,17 +1537,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20023,scriptID = 4107,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[2] = {npcID = 29068,scriptID = 4113,  mapID = 3, x = 77, y = 44},--é‡‘éœå±±æ‰§æ³•é•¿è€
+						[1] = {npcID = 20023,scriptID = 4107,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[2] = {npcID = 29068,scriptID = 4113,  mapID = 3, x = 77, y = 44},--½ğÏ¼É½Ö´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -960,15 +1557,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4863, itemID = 1062226, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4813, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -977,7 +1574,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -994,25 +1591,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 51 - 150 çº§
+		-- 51 - 150 ¼¶
 		[4] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1023,10 +1620,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1042,7 +1639,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
@@ -1052,22 +1649,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1028, scriptID = 4136},
-						[2] = {petID = 1030, scriptID = 4137},
-						[3] = {petID = 1031, scriptID = 4138},
-						[4] = {petID = 1032, scriptID = 4139},
-						[5] = {petID = 1033, scriptID = 4140},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1090,7 +1772,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1105,16 +1787,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 29068,scriptID = 4113,  mapID = 3, x = 77, y = 44},--é‡‘éœå±±æ‰§æ³•é•¿è€
+						[1] = {npcID = 29068,scriptID = 4113,  mapID = 3, x = 77, y = 44},--½ğÏ¼É½Ö´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -1124,15 +1806,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4863, itemID = 1062226, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4813, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -1141,7 +1823,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -1161,16 +1843,16 @@ LoopTaskTargetAssistDB =
 	},
 	[10003] =
 	{
-		-- 1 - 30 çº§
+		-- 1 - 30 ¼¶
 		[1] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1181,10 +1863,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1200,7 +1882,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
@@ -1209,22 +1891,107 @@ LoopTaskTargetAssistDB =
 				},
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1001, scriptID = 4121},
-						[2] = {petID = 1004, scriptID = 4122},
-						[3] = {petID = 1005, scriptID = 4123},
-						[4] = {petID = 1006, scriptID = 4124},
-						[5] = {petID = 1008, scriptID = 4125},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1239,7 +2006,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1252,15 +2019,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 31 - 40 çº§
+		-- 31 - 40 ¼¶
 		[2] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26009, scriptID = 4117},
@@ -1268,10 +2035,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1283,10 +2050,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1302,7 +2069,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
@@ -1312,22 +2079,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1012, scriptID = 4126},
-						[2] = {petID = 1013, scriptID = 4127},
-						[3] = {petID = 1014, scriptID = 4128},
-						[4] = {petID = 1016, scriptID = 4129},
-						[5] = {petID = 1017, scriptID = 4130},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1350,7 +2203,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1365,16 +2218,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20026,scriptID = 4109,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20026,scriptID = 4109,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -1384,7 +2237,7 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4864, itemID = 1062227, npcID = 26029},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -1401,15 +2254,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 41 - 50 çº§
+		-- 41 - 50 ¼¶
 		[3] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
@@ -1417,10 +2270,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1432,10 +2285,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1451,7 +2304,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
@@ -1461,22 +2314,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1019, scriptID = 4131},
-						[2] = {petID = 1020, scriptID = 4132},
-						[3] = {petID = 1021, scriptID = 4133},
-						[4] = {petID = 1027, scriptID = 4134},
-						[5] = {petID = 1026, scriptID = 4135},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1499,7 +2438,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1514,17 +2453,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20026,scriptID = 4109,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
-                                                [2] = {npcID = 29070,scriptID = 4115,  mapID = 6, x = 105, y = 105},--ç´«é˜³é—¨æ‰§æ³•é•¿è€
+						[1] = {npcID = 20026,scriptID = 4109,  mapID = 6, x = 43, y = 112},--µî·É°×
+                                                [2] = {npcID = 29070,scriptID = 4115,  mapID = 6, x = 105, y = 105},--×ÏÑôÃÅÖ´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -1534,15 +2473,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4864, itemID = 1062227, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4815, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -1551,7 +2490,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -1568,25 +2507,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 51 - 150 çº§
+		-- 51 - 150 ¼¶
 		[4] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1597,10 +2536,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1616,7 +2555,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
@@ -1626,22 +2565,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1028, scriptID = 4136},
-						[2] = {petID = 1030, scriptID = 4137},
-						[3] = {petID = 1031, scriptID = 4138},
-						[4] = {petID = 1032, scriptID = 4139},
-						[5] = {petID = 1033, scriptID = 4140},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1664,7 +2688,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1679,16 +2703,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-                                                [1] = {npcID = 29070,scriptID = 4115,  mapID = 6, x = 105, y = 105},--ç´«é˜³é—¨æ‰§æ³•é•¿è€
+                                                [1] = {npcID = 29070,scriptID = 4115,  mapID = 6, x = 105, y = 105},--×ÏÑôÃÅÖ´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -1698,15 +2722,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4864, itemID = 1062227, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4815, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -1715,7 +2739,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -1735,16 +2759,16 @@ LoopTaskTargetAssistDB =
 	},
 	[10004] =
 	{
-		-- 1 - 30 çº§
+		-- 1 - 30 ¼¶
 		[1] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1755,10 +2779,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1774,7 +2798,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
@@ -1783,22 +2807,107 @@ LoopTaskTargetAssistDB =
 				},
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1001, scriptID = 4121},
-						[2] = {petID = 1004, scriptID = 4122},
-						[3] = {petID = 1005, scriptID = 4123},
-						[4] = {petID = 1006, scriptID = 4124},
-						[5] = {petID = 1008, scriptID = 4125},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1813,7 +2922,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1826,15 +2935,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 31 - 40 çº§
+		-- 31 - 40 ¼¶
 		[2] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26009, scriptID = 4117},
@@ -1842,10 +2951,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -1857,10 +2966,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -1876,7 +2985,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
@@ -1886,22 +2995,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1012, scriptID = 4126},
-						[2] = {petID = 1013, scriptID = 4127},
-						[3] = {petID = 1014, scriptID = 4128},
-						[4] = {petID = 1016, scriptID = 4129},
-						[5] = {petID = 1017, scriptID = 4130},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -1924,7 +3119,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -1939,16 +3134,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20024,scriptID = 4110,  mapID = 5, x = 33, y = 77},--ç„ç´ 
+						[1] = {npcID = 20024,scriptID = 4110,  mapID = 5, x = 33, y = 77},--ĞşËØ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -1958,7 +3153,7 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4865, itemID = 1062228, npcID = 26029},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -1975,15 +3170,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 41 - 50 çº§
+		-- 41 - 50 ¼¶
 		[3] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
@@ -1991,10 +3186,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2006,10 +3201,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2025,7 +3220,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
@@ -2035,23 +3230,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-
-						[1] = {petID = 1019, scriptID = 4131},
-						[2] = {petID = 1020, scriptID = 4132},
-						[3] = {petID = 1021, scriptID = 4133},
-						[4] = {petID = 1027, scriptID = 4134},
-						[5] = {petID = 1026, scriptID = 4135},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2074,7 +3353,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2089,17 +3368,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20024,scriptID = 4110,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[2] = {npcID = 29071,scriptID = 4116,  mapID = 5, x = 88, y = 27},--äº‘éœ„å®«æ‰§æ³•é•¿è€
+						[1] = {npcID = 20024,scriptID = 4110,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[2] = {npcID = 29071,scriptID = 4116,  mapID = 5, x = 88, y = 27},--ÔÆÏö¹¬Ö´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -2109,15 +3388,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4865, itemID = 1062228, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4817, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -2126,7 +3405,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -2143,25 +3422,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 51 - 150 çº§
+		-- 51 - 150 ¼¶
 		[4] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2172,10 +3451,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2191,7 +3470,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
@@ -2201,22 +3480,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1028, scriptID = 4136},
-						[2] = {petID = 1030, scriptID = 4137},
-						[3] = {petID = 1031, scriptID = 4138},
-						[4] = {petID = 1032, scriptID = 4139},
-						[5] = {petID = 1033, scriptID = 4140},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2239,7 +3603,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2254,16 +3618,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 29071,scriptID = 4116,  mapID = 5, x = 88, y = 27},--äº‘éœ„å®«æ‰§æ³•é•¿è€
+						[1] = {npcID = 29071,scriptID = 4116,  mapID = 5, x = 88, y = 27},--ÔÆÏö¹¬Ö´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -2273,15 +3637,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4865, itemID = 1062228, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4817, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -2290,7 +3654,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -2310,16 +3674,16 @@ LoopTaskTargetAssistDB =
 	},
 	[10005] =
 	{
-		-- 1 - 30 çº§
+		-- 1 - 30 ¼¶
 		[1] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2330,10 +3694,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2349,7 +3713,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
@@ -2358,22 +3722,108 @@ LoopTaskTargetAssistDB =
 				},
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1001, scriptID = 4121},
-						[2] = {petID = 1004, scriptID = 4122},
-						[3] = {petID = 1005, scriptID = 4123},
-						[4] = {petID = 1006, scriptID = 4124},
-						[5] = {petID = 1008, scriptID = 4125},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2388,7 +3838,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2401,15 +3851,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 31 - 40 çº§
+		-- 31 - 40 ¼¶
 		[2] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26009, scriptID = 4117},
@@ -2417,10 +3867,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2432,10 +3882,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2451,7 +3901,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
@@ -2461,22 +3911,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1012, scriptID = 4126},
-						[2] = {petID = 1013, scriptID = 4127},
-						[3] = {petID = 1014, scriptID = 4128},
-						[4] = {petID = 1016, scriptID = 4129},
-						[5] = {petID = 1017, scriptID = 4130},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2499,7 +4035,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2514,16 +4050,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20025,scriptID = 4106,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
+						[1] = {npcID = 20025,scriptID = 4106,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
 					}
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -2533,7 +4069,7 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4866, itemID = 1062229, npcID = 26029},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -2550,15 +4086,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 41 - 50 çº§
+		-- 41 - 50 ¼¶
 		[3] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
@@ -2566,10 +4102,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2581,10 +4117,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2600,7 +4136,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
@@ -2610,23 +4146,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-
-						[1] = {petID = 1019, scriptID = 4131},
-						[2] = {petID = 1020, scriptID = 4132},
-						[3] = {petID = 1021, scriptID = 4133},
-						[4] = {petID = 1027, scriptID = 4134},
-						[5] = {petID = 1026, scriptID = 4135},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2649,7 +4269,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2664,17 +4284,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20025,scriptID = 4106,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-                                                [2] = {npcID = 29067,scriptID = 4112,  mapID = 4, x = 82, y = 112},--æ¡ƒæºæ´æ‰§æ³•é•¿è€
+						[1] = {npcID = 20025,scriptID = 4106,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+                                                [2] = {npcID = 29067,scriptID = 4112,  mapID = 4, x = 82, y = 112},--ÌÒÔ´¶´Ö´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -2684,15 +4304,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4866, itemID = 1062229, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4819, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -2701,7 +4321,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -2718,25 +4338,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 51 - 150 çº§
+		-- 51 - 150 ¼¶
 		[4] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2747,10 +4367,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2766,7 +4386,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
@@ -2776,22 +4396,107 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1028, scriptID = 4136},
-						[2] = {petID = 1030, scriptID = 4137},
-						[3] = {petID = 1031, scriptID = 4138},
-						[4] = {petID = 1032, scriptID = 4139},
-						[5] = {petID = 1033, scriptID = 4140},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2814,7 +4519,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2829,16 +4534,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-                                                [1] = {npcID = 29067,scriptID = 4112,  mapID = 4, x = 82, y = 112},--æ¡ƒæºæ´æ‰§æ³•é•¿è€
+                                                [1] = {npcID = 29067,scriptID = 4112,  mapID = 4, x = 82, y = 112},--ÌÒÔ´¶´Ö´·¨³¤ÀÏ
 					},
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -2848,15 +4553,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4866, itemID = 1062229, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4819, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -2865,7 +4570,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -2885,16 +4590,16 @@ LoopTaskTargetAssistDB =
 	},
 	[10006] =
 	{
-		-- 1 - 30 çº§
+		-- 1 - 30 ¼¶
 		[1] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -2905,10 +4610,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -2924,7 +4629,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
@@ -2933,22 +4638,108 @@ LoopTaskTargetAssistDB =
 				},
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1001, scriptID = 4121},
-						[2] = {petID = 1004, scriptID = 4122},
-						[3] = {petID = 1005, scriptID = 4123},
-						[4] = {petID = 1006, scriptID = 4124},
-						[5] = {petID = 1008, scriptID = 4125},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -2963,7 +4754,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -2976,15 +4767,15 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 31 - 40 çº§
+		-- 31 - 40 ¼¶
 		[2] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26009, scriptID = 4117},
@@ -2992,10 +4783,10 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -3007,10 +4798,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -3026,7 +4817,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
@@ -3036,22 +4827,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1012, scriptID = 4126},
-						[2] = {petID = 1013, scriptID = 4127},
-						[3] = {petID = 1014, scriptID = 4128},
-						[4] = {petID = 1016, scriptID = 4129},
-						[5] = {petID = 1017, scriptID = 4130},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -3074,7 +4951,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -3089,16 +4966,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20022,scriptID = 4108,  mapID = 2, x = 61, y = 127},--å…®é¢œ
+						[1] = {npcID = 20022,scriptID = 4108,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
 					}
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -3108,7 +4985,7 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4867, itemID = 1062230, npcID = 26029},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -3125,25 +5002,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 41 - 50 çº§
+		-- 41 - 50 ¼¶
 		[3] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -3155,10 +5032,10 @@ LoopTaskTargetAssistDB =
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -3174,7 +5051,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
@@ -3184,23 +5061,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
 
-						[1] = {petID = 1019, scriptID = 4131},
-						[2] = {petID = 1020, scriptID = 4132},
-						[3] = {petID = 1021, scriptID = 4133},
-						[4] = {petID = 1027, scriptID = 4134},
-						[5] = {petID = 1026, scriptID = 4135},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -3223,7 +5185,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -3238,17 +5200,17 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20022,scriptID = 4108,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[2] = {npcID = 29069,scriptID = 4114,  mapID = 2, x = 38, y = 124},--è“¬è±é˜æ‰§æ³•é•¿è€
+						[1] = {npcID = 20022,scriptID = 4108,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[2] = {npcID = 29069,scriptID = 4114,  mapID = 2, x = 38, y = 124},--ÅîÀ³¸óÖ´·¨³¤ÀÏ
 					}
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -3258,15 +5220,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4867, itemID = 1062230, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4821, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -3275,7 +5237,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -3292,25 +5254,25 @@ LoopTaskTargetAssistDB =
 				},
 			},
 		},
-		-- 51 - 150 çº§
+		-- 51 - 150 ¼¶
 		[4] =
 		{
-			-- 1 - 10 ç¯
+			-- 1 - 10 »·
 			[1] =
 			{
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
                                                 [2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 29005, mapID = 10, x = 308, y = 218},
@@ -3321,10 +5283,10 @@ LoopTaskTargetAssistDB =
 						[6] = {npcID = 29012, mapID = 9, x = 77, y = 93},
 					}
 				},
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -3340,7 +5302,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
@@ -3350,22 +5312,108 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1028, scriptID = 4136},
-						[2] = {petID = 1030, scriptID = 4137},
-						[3] = {petID = 1031, scriptID = 4138},
-						[4] = {petID = 1032, scriptID = 4139},
-						[5] = {petID = 1033, scriptID = 4140},
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+
+                                        },
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
+                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -3388,7 +5436,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -3403,16 +5451,16 @@ LoopTaskTargetAssistDB =
 						[8] = {itemID = 1041016, npcID = 20701, mapID = 13, x = 54, y = 145} ,
 					},
 				},
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 29069,scriptID = 4114,  mapID = 2, x = 38, y = 124},--è“¬è±é˜æ‰§æ³•é•¿è€
+						[1] = {npcID = 29069,scriptID = 4114,  mapID = 2, x = 38, y = 124},--ÅîÀ³¸óÖ´·¨³¤ÀÏ
 					}
 				},
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -3422,15 +5470,15 @@ LoopTaskTargetAssistDB =
 						[3] = {dialogID = 4867, itemID = 1062230, npcID = 26029},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 4821, followNpcID = 26021},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29010, mapID = 9, x = 45, y = 76},
@@ -3439,7 +5487,7 @@ LoopTaskTargetAssistDB =
 						[4] = {npcID = 29023, mapID = 14, x = 63, y = 146},
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -3459,2639 +5507,2650 @@ LoopTaskTargetAssistDB =
 	},
 	[10007] =
 	{
--- 40 - 44 çº§
+-- 40 - 44 ¼¶
 		[1] =
 		{
-			-- 1 - 50 ç¯
+			-- 1 - 50 »·
 			[1] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27078, scriptID = 5089},--é»‘é£å°å¦–
-						[2] = {npcID = 27079, scriptID = 5090},--å…¥é­”åŒåˆ€å®¢
-						[3] = {npcID = 27080, scriptID = 5091},--é­”åŒ–å¥³åˆºå®¢
-						[4] = {npcID = 27081, scriptID = 5092},--é­”åŒ–å‰‘å¥´
-						[5] = {npcID = 27082, scriptID = 5093},--é»‘è¡£äºº
-						[6] = {npcID = 27083, scriptID = 5094},--é‚ªæ¶ç¥­ç¥€
+						[1] = {npcID = 27078, scriptID = 5089},--ºÚ·çĞ¡Ñı
+						[2] = {npcID = 27079, scriptID = 5090},--ÈëÄ§Ë«µ¶¿Í
+						[3] = {npcID = 27080, scriptID = 5091},--Ä§»¯Å®´Ì¿Í
+						[4] = {npcID = 27081, scriptID = 5092},--Ä§»¯½£Å«
+						[5] = {npcID = 27082, scriptID = 5093},--ºÚÒÂÈË
+						[6] = {npcID = 27083, scriptID = 5094},--Ğ°¶ñ¼Àìë
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
-					createCatchPetData =
+					-- ¹ºÂò³èÎïÖ¸Òı
+                                        createBuyPetTrace =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--æ²³å†…å®ˆå«
-						[2] = {petID = 1013, scriptID = 5162},--åˆ€ç›¾æ‰‹
-						[3] = {petID = 1017, scriptID = 5163},--å†°å¦–
-						[4] = {petID = 1021, scriptID = 5164},--é²›å¦–
-						[5] = {petID = 1023, scriptID = 5165},--æ¸¸æ–¹å¦–å¸ˆ
-					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+					
+                                        },
+					-- ²¶×½³èÎïÖ¸Òı
+					--[[createCatchPetData =
+					{
+						[1] = {petID = 1009, scriptID = 5161},--ºÓÄÚÊØÎÀ
+						[2] = {petID = 1013, scriptID = 5162},--µ¶¶ÜÊÖ
+						[3] = {petID = 1017, scriptID = 5163},--±ùÑı
+						[4] = {petID = 1021, scriptID = 5164},--öŞÑı
+						[5] = {petID = 1023, scriptID = 5165},--ÓÎ·½ÑıÊ¦
+					},]]
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰]]
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô]]
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
 						
-						[1] = {npcID = 27001,dialogID = 5001, scriptID = 5001},--è‘£å†›ä½™å…š
-						[2] = {npcID = 27002,dialogID = 5002, scriptID = 5002},--é»„å·¾ä½™å…š
-						[3] = {npcID = 27003,dialogID = 5003, scriptID = 5003},--æ‚åŒª
-						[4] = {npcID = 27004,dialogID = 5004, scriptID = 5004},--å¼ºç›—
-						[5] = {npcID = 27005,dialogID = 5005, scriptID = 5005},--æµæ°“
-						[6] = {npcID = 27006,dialogID = 5006, scriptID = 5006},--è´¼å¯‡
+						[1] = {npcID = 27001,dialogID = 5001, scriptID = 5001},--¶­¾üÓàµ³
+						[2] = {npcID = 27002,dialogID = 5002, scriptID = 5002},--»Æ½íÓàµ³
+						[3] = {npcID = 27003,dialogID = 5003, scriptID = 5003},--º··Ë
+						[4] = {npcID = 27004,dialogID = 5004, scriptID = 5004},--Ç¿µÁ
+						[5] = {npcID = 27005,dialogID = 5005, scriptID = 5005},--Á÷Ã¥
+						[6] = {npcID = 27006,dialogID = 5006, scriptID = 5006},--Ôô¿Ü
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-    -- 51 - 100 ç¯
+    -- 51 - 100 »·
     [2] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27084, scriptID = 5095},--è›‡å¦–å¸¸æ—­
-						[2] = {npcID = 27085, scriptID = 5096},--é­”ä»™é»„é¾™
-						[3] = {npcID = 27086, scriptID = 5097},--ç”²èƒ„ç¿°èµ¤
-						[4] = {npcID = 27087, scriptID = 5098},--ç¬¦å’’ç¿°èµ¤
-						[5] = {npcID = 27088, scriptID = 5099},--ç¿ å²©å¦–
-						[6] = {npcID = 27089, scriptID = 5100},--èŠ±é­”
+						[1] = {npcID = 27084, scriptID = 5095},--ÉßÑı³£Ğñ
+						[2] = {npcID = 27085, scriptID = 5096},--Ä§ÏÉ»ÆÁú
+						[3] = {npcID = 27086, scriptID = 5097},--¼×ëĞº²³à
+						[4] = {npcID = 27087, scriptID = 5098},--·ûÖäº²³à
+						[5] = {npcID = 27088, scriptID = 5099},--´äÑÒÑı
+						[6] = {npcID = 27089, scriptID = 5100},--»¨Ä§
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--æ²³å†…å®ˆå«
-						[2] = {petID = 1013, scriptID = 5162},--åˆ€ç›¾æ‰‹
-						[3] = {petID = 1017, scriptID = 5163},--å†°å¦–
-						[4] = {petID = 1021, scriptID = 5164},--é²›å¦–
-						[5] = {petID = 1023, scriptID = 5165},--æ¸¸æ–¹å¦–å¸ˆ
+						[1] = {petID = 1009, scriptID = 5161},--ºÓÄÚÊØÎÀ
+						[2] = {petID = 1013, scriptID = 5162},--µ¶¶ÜÊÖ
+						[3] = {petID = 1017, scriptID = 5163},--±ùÑı
+						[4] = {petID = 1021, scriptID = 5164},--öŞÑı
+						[5] = {petID = 1023, scriptID = 5165},--ÓÎ·½ÑıÊ¦
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27007, dialogID = 5007, scriptID = 5007},--é©¬åŒª
-						[2] = {npcID = 27008, dialogID = 5008, scriptID = 5008},--ç‰æ³‰è¡Œè€…
-						[3] = {npcID = 27009, dialogID = 5009, scriptID = 5009},--é£è´¼
-						[4] = {npcID = 27010, dialogID = 5010, scriptID = 5010},--è‘£å†›ä¼é•¿
-						[5] = {npcID = 27011, dialogID = 5011, scriptID = 5011},--é»„å·¾æŠ¤å«é•¿
-						[6] = {npcID = 27012, dialogID = 5012, scriptID = 5012},--è’æ¼ ç›—åŒª
+						[1] = {npcID = 27007, dialogID = 5007, scriptID = 5007},--Âí·Ë
+						[2] = {npcID = 27008, dialogID = 5008, scriptID = 5008},--ÓñÈªĞĞÕß
+						[3] = {npcID = 27009, dialogID = 5009, scriptID = 5009},--·ÉÔô
+						[4] = {npcID = 27010, dialogID = 5010, scriptID = 5010},--¶­¾üÎé³¤
+						[5] = {npcID = 27011, dialogID = 5011, scriptID = 5011},--»Æ½í»¤ÎÀ³¤
+						[6] = {npcID = 27012, dialogID = 5012, scriptID = 5012},--»ÄÄ®µÁ·Ë
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-    -- 101 - 150 ç¯
+    -- 101 - 150 »·
     [3] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27090, scriptID = 5101},--æœ¯å¦–
-						[2] = {npcID = 27091, scriptID = 5102},--é¬¼å§¬
-						[3] = {npcID = 27092, scriptID = 5103},--è™å¤´æ€ª
-						[4] = {npcID = 27093, scriptID = 5104},--å·«çµ
-						[5] = {npcID = 27094, scriptID = 5105},--å¿§è‰å§¬
-						[6] = {npcID = 27095, scriptID = 5106},--é»‘ç¿°èµ¤
+						[1] = {npcID = 27090, scriptID = 5101},--ÊõÑı
+						[2] = {npcID = 27091, scriptID = 5102},--¹í¼§
+						[3] = {npcID = 27092, scriptID = 5103},--»¢Í·¹Ö
+						[4] = {npcID = 27093, scriptID = 5104},--Î×Áé
+						[5] = {npcID = 27094, scriptID = 5105},--ÓÇ²İ¼§
+						[6] = {npcID = 27095, scriptID = 5106},--ºÚº²³à
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--æ²³å†…å®ˆå«
-						[2] = {petID = 1013, scriptID = 5162},--åˆ€ç›¾æ‰‹
-						[3] = {petID = 1017, scriptID = 5163},--å†°å¦–
-						[4] = {petID = 1021, scriptID = 5164},--é²›å¦–
-						[5] = {petID = 1023, scriptID = 5165},--æ¸¸æ–¹å¦–å¸ˆ
+						[1] = {petID = 1009, scriptID = 5161},--ºÓÄÚÊØÎÀ
+						[2] = {petID = 1013, scriptID = 5162},--µ¶¶ÜÊÖ
+						[3] = {petID = 1017, scriptID = 5163},--±ùÑı
+						[4] = {petID = 1021, scriptID = 5164},--öŞÑı
+						[5] = {petID = 1023, scriptID = 5165},--ÓÎ·½ÑıÊ¦
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27013, dialogID = 5013, scriptID = 5013},--å€­å¯‡
-						[2] = {npcID = 27014, dialogID = 5014, scriptID = 5014},--å±±è´¼
-						[3] = {npcID = 27015, dialogID = 5015, scriptID = 5015},--æ°´è´¼
-						[4] = {npcID = 27016, dialogID = 5016, scriptID = 5016},--è‘£å†›å†›é˜€
-						[5] = {npcID = 27017, dialogID = 5017, scriptID = 5017},--é»„å·¾å†›é˜€
-						[6] = {npcID = 27018, dialogID = 5018, scriptID = 5018},--é»‘å±±å†›
+						[1] = {npcID = 27013, dialogID = 5013, scriptID = 5013},--ÙÁ¿Ü
+						[2] = {npcID = 27014, dialogID = 5014, scriptID = 5014},--É½Ôô
+						[3] = {npcID = 27015, dialogID = 5015, scriptID = 5015},--Ë®Ôô
+						[4] = {npcID = 27016, dialogID = 5016, scriptID = 5016},--¶­¾ü¾ü·§
+						[5] = {npcID = 27017, dialogID = 5017, scriptID = 5017},--»Æ½í¾ü·§
+						[6] = {npcID = 27018, dialogID = 5018, scriptID = 5018},--ºÚÉ½¾ü
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-		-- 151 - 200 ç¯
+		-- 151 - 200 »·
     [4] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27096, scriptID = 5107},--ç™½ç¿°èµ¤
-						[2] = {npcID = 27097, scriptID = 5108},--å¹»å§¬
-						[3] = {npcID = 27098, scriptID = 5109},--çƒ½éª‘
-						[4] = {npcID = 27099, scriptID = 5110},--å¹»å¦–å§¬
-						[5] = {npcID = 27100, scriptID = 5111},--å¹»çµå§¬
-						[6] = {npcID = 27101, scriptID = 5112},--æ— åŒèµ¤é¬¼
+						[1] = {npcID = 27096, scriptID = 5107},--°×º²³à
+						[2] = {npcID = 27097, scriptID = 5108},--»Ã¼§
+						[3] = {npcID = 27098, scriptID = 5109},--·éÆï
+						[4] = {npcID = 27099, scriptID = 5110},--»ÃÑı¼§
+						[5] = {npcID = 27100, scriptID = 5111},--»ÃÁé¼§
+						[6] = {npcID = 27101, scriptID = 5112},--ÎŞË«³à¹í
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--æ²³å†…å®ˆå«
-						[2] = {petID = 1013, scriptID = 5162},--åˆ€ç›¾æ‰‹
-						[3] = {petID = 1017, scriptID = 5163},--å†°å¦–
-						[4] = {petID = 1021, scriptID = 5164},--é²›å¦–
-						[5] = {petID = 1023, scriptID = 5165},--æ¸¸æ–¹å¦–å¸ˆ
+						[1] = {petID = 1009, scriptID = 5161},--ºÓÄÚÊØÎÀ
+						[2] = {petID = 1013, scriptID = 5162},--µ¶¶ÜÊÖ
+						[3] = {petID = 1017, scriptID = 5163},--±ùÑı
+						[4] = {petID = 1021, scriptID = 5164},--öŞÑı
+						[5] = {petID = 1023, scriptID = 5165},--ÓÎ·½ÑıÊ¦
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27019, dialogID = 5019, scriptID = 5019},--é‚ªæ•™ä½™å…š
-						[2] = {npcID = 27020, dialogID = 5020, scriptID = 5020},--ç›Ÿå†›å›å…š
-						[3] = {npcID = 27021, dialogID = 5021, scriptID = 5021},--é‚ªç¥æ•™å¾’
-						[4] = {npcID = 27022, dialogID = 5022, scriptID = 5022},--é‚ªæ¶ç¥­ç¥€
-						[5] = {npcID = 27023, dialogID = 5023, scriptID = 5023},--é€†é“å¤©å¸ˆ
-						[6] = {npcID = 27024, dialogID = 5024, scriptID = 5024},--æˆªæ•™å›å¾’
+						[1] = {npcID = 27019, dialogID = 5019, scriptID = 5019},--Ğ°½ÌÓàµ³
+						[2] = {npcID = 27020, dialogID = 5020, scriptID = 5020},--ÃË¾üÅÑµ³
+						[3] = {npcID = 27021, dialogID = 5021, scriptID = 5021},--Ğ°Éñ½ÌÍ½
+						[4] = {npcID = 27022, dialogID = 5022, scriptID = 5022},--Ğ°¶ñ¼Àìë
+						[5] = {npcID = 27023, dialogID = 5023, scriptID = 5023},--ÄæµÀÌìÊ¦
+						[6] = {npcID = 27024, dialogID = 5024, scriptID = 5024},--½Ø½ÌÅÑÍ½
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
 		},
--- 45 - 49 çº§
+-- 45 - 49 ¼¶
 [2] =
 {
-			-- 1 - 50 ç¯
+			-- 1 - 50 »·
 	    [1] =
 	    {
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27102, scriptID = 5113},--é­”æ•™å¤§æŠ¤æ³•
-						[2] = {npcID = 27103, scriptID = 5114},--é‚ªæ¶å¥³å¦–
-						[3] = {npcID = 27104, scriptID = 5115},--é­”åŒ–å¦–é“
-						[4] = {npcID = 27105, scriptID = 5116},--é»„å·¾é­”å°†
-						[5] = {npcID = 27106, scriptID = 5117},--å†°çŸ³å‚€
-						[6] = {npcID = 27107, scriptID = 5118},--é£ç†Š
+						[1] = {npcID = 27102, scriptID = 5113},--Ä§½Ì´ó»¤·¨
+						[2] = {npcID = 27103, scriptID = 5114},--Ğ°¶ñÅ®Ñı
+						[3] = {npcID = 27104, scriptID = 5115},--Ä§»¯ÑıµÀ
+						[4] = {npcID = 27105, scriptID = 5116},--»Æ½íÄ§½«
+						[5] = {npcID = 27106, scriptID = 5117},--±ùÊ¯¿ş
+						[6] = {npcID = 27107, scriptID = 5118},--·ÉĞÜ
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--å¥³è´¼
-						[2] = {petID = 1024, scriptID = 5167},--æ²³ç›—
-						[3] = {petID = 1026, scriptID = 5168},--ç´é­”å¥³
-						[4] = {petID = 1027, scriptID = 5169},--å¦–çµ
-						[5] = {petID = 1028, scriptID = 5170},--æ­»å£«
-						[6] = {petID = 1029, scriptID = 5171},--è›®æ—
+						[1] = {petID = 1025, scriptID = 5166},--Å®Ôô
+						[2] = {petID = 1024, scriptID = 5167},--ºÓµÁ
+						[3] = {petID = 1026, scriptID = 5168},--ÇÙÄ§Å®
+						[4] = {petID = 1027, scriptID = 5169},--ÑıÁé
+						[5] = {petID = 1028, scriptID = 5170},--ËÀÊ¿
+						[6] = {petID = 1029, scriptID = 5171},--Âù×å
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27025, dialogID = 5025, scriptID = 5025},--èƒ¡åŠ›
-						[2] = {npcID = 27026, dialogID = 5026, scriptID = 5026},--å¼ é¾™
-						[3] = {npcID = 27027, dialogID = 5027, scriptID = 5027},--ä¹é¾™
-						[4] = {npcID = 27028, dialogID = 5028, scriptID = 5028},--ç‹çŸ³
-						[5] = {npcID = 27029, dialogID = 5029, scriptID = 5029},--é£é‚ª
-						[6] = {npcID = 27030, dialogID = 5030, scriptID = 5030},--çµå§¬
+						[1] = {npcID = 27025, dialogID = 5025, scriptID = 5025},--ºúÁ¦
+						[2] = {npcID = 27026, dialogID = 5026, scriptID = 5026},--ÕÅÁú
+						[3] = {npcID = 27027, dialogID = 5027, scriptID = 5027},--¾ÅÁú
+						[4] = {npcID = 27028, dialogID = 5028, scriptID = 5028},--ÍõÊ¯
+						[5] = {npcID = 27029, dialogID = 5029, scriptID = 5029},--·çĞ°
+						[6] = {npcID = 27030, dialogID = 5030, scriptID = 5030},--Áé¼§
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-    -- 51 - 100 ç¯
+    -- 51 - 100 »·
     [2] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27108, scriptID = 5119},--è¡€é­”å›
-						[2] = {npcID = 27109, scriptID = 5120},--è¡€ç‹‚
-						[3] = {npcID = 27110, scriptID = 5121},--è²é­‚å½±
-						[4] = {npcID = 27111, scriptID = 5122},--èŠ±æ€€é£
-						[5] = {npcID = 27112, scriptID = 5123},--é¾™é­‚
-						[6] = {npcID = 27113, scriptID = 5124},--é‡‘ç¿…è¿¦æ¥¼æ´›
+						[1] = {npcID = 27108, scriptID = 5119},--ÑªÄ§¾ı
+						[2] = {npcID = 27109, scriptID = 5120},--Ñª¿ñ
+						[3] = {npcID = 27110, scriptID = 5121},--Á«»êÓ°
+						[4] = {npcID = 27111, scriptID = 5122},--»¨»³·ç
+						[5] = {npcID = 27112, scriptID = 5123},--Áú»ê
+						[6] = {npcID = 27113, scriptID = 5124},--½ğ³áåÈÂ¥Âå
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--å¥³è´¼
-						[2] = {petID = 1024, scriptID = 5167},--æ²³ç›—
-						[3] = {petID = 1026, scriptID = 5168},--ç´é­”å¥³
-						[4] = {petID = 1027, scriptID = 5169},--å¦–çµ
-						[5] = {petID = 1028, scriptID = 5170},--æ­»å£«
-						[6] = {petID = 1029, scriptID = 5171},--è›®æ—
+						[1] = {petID = 1025, scriptID = 5166},--Å®Ôô
+						[2] = {petID = 1024, scriptID = 5167},--ºÓµÁ
+						[3] = {petID = 1026, scriptID = 5168},--ÇÙÄ§Å®
+						[4] = {petID = 1027, scriptID = 5169},--ÑıÁé
+						[5] = {petID = 1028, scriptID = 5170},--ËÀÊ¿
+						[6] = {petID = 1029, scriptID = 5171},--Âù×å
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27031, dialogID = 5031, scriptID = 5031},--èµµè
-						[2] = {npcID = 27032, dialogID = 5032, scriptID = 5032},--å†¯èŠ³
-						[3] = {npcID = 27033, dialogID = 5033, scriptID = 5033},--ç¨‹æ™®
-						[4] = {npcID = 27034, dialogID = 5034, scriptID = 5034},--ç”˜å®
-						[5] = {npcID = 27035, dialogID = 5035, scriptID = 5035},--è¢é—
-						[6] = {npcID = 27036, dialogID = 5036, scriptID = 5036},--æ¨å¥‰
+						[1] = {npcID = 27031, dialogID = 5031, scriptID = 5031},--ÕÔÈÚ
+						[2] = {npcID = 27032, dialogID = 5032, scriptID = 5032},--·ë·¼
+						[3] = {npcID = 27033, dialogID = 5033, scriptID = 5033},--³ÌÆÕ
+						[4] = {npcID = 27034, dialogID = 5034, scriptID = 5034},--¸ÊÄş
+						[5] = {npcID = 27035, dialogID = 5035, scriptID = 5035},--Ô¬ÒÅ
+						[6] = {npcID = 27036, dialogID = 5036, scriptID = 5036},--Ñî·î
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-    -- 101 - 150 ç¯
+    -- 101 - 150 »·
     [3] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27114, scriptID = 5125},--é›ªé£
-						[2] = {npcID = 27115, scriptID = 5126},--é­”é“ç¾½çµ
-						[3] = {npcID = 27116, scriptID = 5127},--é¬¼é“ç¾½çµ
-						[4] = {npcID = 27117, scriptID = 5128},--å¤æ ¼
-						[5] = {npcID = 27118, scriptID = 5129},--å¤œé­”
-						[6] = {npcID = 27119, scriptID = 5130},--ç„é£
+						[1] = {npcID = 27114, scriptID = 5125},--Ñ©·ç
+						[2] = {npcID = 27115, scriptID = 5126},--Ä§µÀÓğÁé
+						[3] = {npcID = 27116, scriptID = 5127},--¹íµÀÓğÁé
+						[4] = {npcID = 27117, scriptID = 5128},--¹Å¸ñ
+						[5] = {npcID = 27118, scriptID = 5129},--Ò¹Ä§
+						[6] = {npcID = 27119, scriptID = 5130},--Ğş·ç
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--å¥³è´¼
-						[2] = {petID = 1024, scriptID = 5167},--æ²³ç›—
-						[3] = {petID = 1026, scriptID = 5168},--ç´é­”å¥³
-						[4] = {petID = 1027, scriptID = 5169},--å¦–çµ
-						[5] = {petID = 1028, scriptID = 5170},--æ­»å£«
-						[6] = {petID = 1029, scriptID = 5171},--è›®æ—
+						[1] = {petID = 1025, scriptID = 5166},--Å®Ôô
+						[2] = {petID = 1024, scriptID = 5167},--ºÓµÁ
+						[3] = {petID = 1026, scriptID = 5168},--ÇÙÄ§Å®
+						[4] = {petID = 1027, scriptID = 5169},--ÑıÁé
+						[5] = {petID = 1028, scriptID = 5170},--ËÀÊ¿
+						[6] = {petID = 1029, scriptID = 5171},--Âù×å
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27037, dialogID = 5037, scriptID = 5037},--é»„æ‰¿ä¹™
-						[2] = {npcID = 27038, dialogID = 5038, scriptID = 5038},--æå¥‡
-						[3] = {npcID = 27039, dialogID = 5039, scriptID = 5039},--æ™é›·
-						[4] = {npcID = 27040, dialogID = 5040, scriptID = 5040},--æ™å¤©
-						[5] = {npcID = 27041, dialogID = 5041, scriptID = 5041},--æä¸™
-						[6] = {npcID = 27042, dialogID = 5042, scriptID = 5042},--å¸¸æ˜Š
+						[1] = {npcID = 27037, dialogID = 5037, scriptID = 5037},--»Æ³ĞÒÒ
+						[2] = {npcID = 27038, dialogID = 5038, scriptID = 5038},--ÀîÆæ
+						[3] = {npcID = 27039, dialogID = 5039, scriptID = 5039},--êËÀ×
+						[4] = {npcID = 27040, dialogID = 5040, scriptID = 5040},--êËÌì
+						[5] = {npcID = 27041, dialogID = 5041, scriptID = 5041},--Àî±û
+						[6] = {npcID = 27042, dialogID = 5042, scriptID = 5042},--³£ê»
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-		-- 151 - 200 ç¯
+		-- 151 - 200 »·
         [4] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27120, scriptID = 5131},--è¡€çµé­‘é­…
-						[2] = {npcID = 27121, scriptID = 5132},--åœ°è—å¦–
-						[3] = {npcID = 27122, scriptID = 5133},--é›ªå¦–
-						[4] = {npcID = 27123, scriptID = 5134},--å‰‘é­‚
-						[5] = {npcID = 27124, scriptID = 5135},--é«˜æ¸Š
-						[6] = {npcID = 27125, scriptID = 5136},--é­…æƒ‘å¦–å§¬
+						[1] = {npcID = 27120, scriptID = 5131},--ÑªÁé÷Î÷È
+						[2] = {npcID = 27121, scriptID = 5132},--µØ²ØÑı
+						[3] = {npcID = 27122, scriptID = 5133},--Ñ©Ñı
+						[4] = {npcID = 27123, scriptID = 5134},--½£»ê
+						[5] = {npcID = 27124, scriptID = 5135},--¸ßÔ¨
+						[6] = {npcID = 27125, scriptID = 5136},--÷È»óÑı¼§
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--å¥³è´¼
-						[2] = {petID = 1024, scriptID = 5167},--æ²³ç›—
-						[3] = {petID = 1026, scriptID = 5168},--ç´é­”å¥³
-						[4] = {petID = 1027, scriptID = 5169},--å¦–çµ
-						[5] = {petID = 1028, scriptID = 5170},--æ­»å£«
-						[6] = {petID = 1029, scriptID = 5171},--è›®æ—
+						[1] = {petID = 1025, scriptID = 5166},--Å®Ôô
+						[2] = {petID = 1024, scriptID = 5167},--ºÓµÁ
+						[3] = {petID = 1026, scriptID = 5168},--ÇÙÄ§Å®
+						[4] = {petID = 1027, scriptID = 5169},--ÑıÁé
+						[5] = {petID = 1028, scriptID = 5170},--ËÀÊ¿
+						[6] = {petID = 1029, scriptID = 5171},--Âù×å
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27043, dialogID = 5043, scriptID = 5043},--æ¨æ˜¾
-						[2] = {npcID = 27044, dialogID = 5044, scriptID = 5044},--æå…´éœ¸
-						[3] = {npcID = 27045, dialogID = 5045, scriptID = 5045},--æ¨ä¿®
-						[4] = {npcID = 27046, dialogID = 5046, scriptID = 5046},--é©¬æ–¹
-						[5] = {npcID = 27047, dialogID = 5047, scriptID = 5047},--å´é¾™
-						[6] = {npcID = 27048, dialogID = 5048, scriptID = 5048},--å‘¨ä¿¡
+						[1] = {npcID = 27043, dialogID = 5043, scriptID = 5043},--ÑîÏÔ
+						[2] = {npcID = 27044, dialogID = 5044, scriptID = 5044},--ÀîĞË°Ô
+						[3] = {npcID = 27045, dialogID = 5045, scriptID = 5045},--ÑîĞŞ
+						[4] = {npcID = 27046, dialogID = 5046, scriptID = 5046},--Âí·½
+						[5] = {npcID = 27047, dialogID = 5047, scriptID = 5047},--ÎâÁú
+						[6] = {npcID = 27048, dialogID = 5048, scriptID = 5048},--ÖÜĞÅ
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
 		},
-	-- 50 - 54 çº§
+	-- 50 - 54 ¼¶
 [3] =
 {
-			-- 1 - 50 ç¯
+			-- 1 - 50 »·
 	    [1] =
 	    {
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27126, scriptID = 5137},--é­”åŒ–å™¨çµ
-						[2] = {npcID = 27127, scriptID = 5138},--ç‰›é­”
-						[3] = {npcID = 27128, scriptID = 5139},--é‡‘ç¿…å¤§é¹ç‹
-						[4] = {npcID = 27129, scriptID = 5140},--é‚ªçµåˆ†èº«
-						[5] = {npcID = 27130, scriptID = 5141},--è¡€æ³•ç¥­ç¥€
-						[6] = {npcID = 27131, scriptID = 5142},--é­”çµå‚€å„¡
+						[1] = {npcID = 27126, scriptID = 5137},--Ä§»¯Æ÷Áé
+						[2] = {npcID = 27127, scriptID = 5138},--Å£Ä§
+						[3] = {npcID = 27128, scriptID = 5139},--½ğ³á´óÅôÍõ
+						[4] = {npcID = 27129, scriptID = 5140},--Ğ°Áé·ÖÉí
+						[5] = {npcID = 27130, scriptID = 5141},--Ñª·¨¼Àìë
+						[6] = {npcID = 27131, scriptID = 5142},--Ä§Áé¿şÀÜ
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--è™å°†
-						[2] = {petID = 1031, scriptID = 5173},--è°‹å£«
-						[3] = {petID = 1032, scriptID = 5174},--ç‰›å¤´
-						[4] = {petID = 1033, scriptID = 5175},--é©¬é¢
-						[5] = {petID = 1034, scriptID = 5176},--éª·é«…å°†
-						[6] = {petID = 1035, scriptID = 5177},--é­”å…µ
+						[1] = {petID = 1030, scriptID = 5172},--»¢½«
+						[2] = {petID = 1031, scriptID = 5173},--Ä±Ê¿
+						[3] = {petID = 1032, scriptID = 5174},--Å£Í·
+						[4] = {petID = 1033, scriptID = 5175},--ÂíÃæ
+						[5] = {petID = 1034, scriptID = 5176},--÷¼÷Ã½«
+						[6] = {petID = 1035, scriptID = 5177},--Ä§±ø
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27049, dialogID = 5049, scriptID = 5049},--è¯¡å¼‚æœ¯å£«ç¬¦è¡€
-						[2] = {npcID = 27050, dialogID = 5050, scriptID = 5050},--é‚ªæ•™é­”åŒ–æŠ¤æ³•
-						[3] = {npcID = 27051, dialogID = 5051, scriptID = 5051},--é­”å›ç™½ä¹…
-						[4] = {npcID = 27052, dialogID = 5052, scriptID = 5052},--é­”å°†é™ˆåƒå†›
-						[5] = {npcID = 27053, dialogID = 5053, scriptID = 5053},--å¦–å°†ç«ç
-						[6] = {npcID = 27054, dialogID = 5054, scriptID = 5054},--é•‡ç‹±æ˜ç‹
+						[1] = {npcID = 27049, dialogID = 5049, scriptID = 5049},--¹îÒìÊõÊ¿·ûÑª
+						[2] = {npcID = 27050, dialogID = 5050, scriptID = 5050},--Ğ°½ÌÄ§»¯»¤·¨
+						[3] = {npcID = 27051, dialogID = 5051, scriptID = 5051},--Ä§¾ı°×¾Ã
+						[4] = {npcID = 27052, dialogID = 5052, scriptID = 5052},--Ä§½«³ÂÇ§¾ü
+						[5] = {npcID = 27053, dialogID = 5053, scriptID = 5053},--Ñı½«»ğâ¯
+						[6] = {npcID = 27054, dialogID = 5054, scriptID = 5054},--ÕòÓüÃ÷Íõ
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-    -- 51 - 100 ç¯
+    -- 51 - 100 »·
     [2] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27132, scriptID = 5143},--å†°é­”
-						[2] = {npcID = 27133, scriptID = 5144},--ç½—åˆ¹æ¶é¬¼
-						[3] = {npcID = 27134, scriptID = 5145},--è›Ÿé­”
-						[4] = {npcID = 27135, scriptID = 5146},--åŒå¤´é­”ç‹¼
-						[5] = {npcID = 27136, scriptID = 5147},--å—œè¡€é­”å°†
-						[6] = {npcID = 27137, scriptID = 5148},--å—œè¡€è›®å°†
+						[1] = {npcID = 27132, scriptID = 5143},--±ùÄ§
+						[2] = {npcID = 27133, scriptID = 5144},--ÂŞÉ²¶ñ¹í
+						[3] = {npcID = 27134, scriptID = 5145},--òÔÄ§
+						[4] = {npcID = 27135, scriptID = 5146},--Ë«Í·Ä§ÀÇ
+						[5] = {npcID = 27136, scriptID = 5147},--ÊÈÑªÄ§½«
+						[6] = {npcID = 27137, scriptID = 5148},--ÊÈÑªÂù½«
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--è™å°†
-						[2] = {petID = 1031, scriptID = 5173},--è°‹å£«
-						[3] = {petID = 1032, scriptID = 5174},--ç‰›å¤´
-						[4] = {petID = 1033, scriptID = 5175},--é©¬é¢
-						[5] = {petID = 1034, scriptID = 5176},--éª·é«…å°†
-						[6] = {petID = 1035, scriptID = 5177},--é­”å…µ
+						[1] = {petID = 1030, scriptID = 5172},--»¢½«
+						[2] = {petID = 1031, scriptID = 5173},--Ä±Ê¿
+						[3] = {petID = 1032, scriptID = 5174},--Å£Í·
+						[4] = {petID = 1033, scriptID = 5175},--ÂíÃæ
+						[5] = {petID = 1034, scriptID = 5176},--÷¼÷Ã½«
+						[6] = {petID = 1035, scriptID = 5177},--Ä§±ø
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27055, dialogID = 5055, scriptID = 5055},--é­”å›ç„éœ“
-						[2] = {npcID = 27056, dialogID = 5056, scriptID = 5056},--é­”å°†è§æ€€é’
-						[3] = {npcID = 27057, dialogID = 5057, scriptID = 5057},--åƒå¹´è—¤å¦–
-						[4] = {npcID = 27058, dialogID = 5058, scriptID = 5058},--å¦–å°†é™†é­
-						[5] = {npcID = 27059, dialogID = 5059, scriptID = 5059},--é‚ªé“åˆ˜é‚‘
-						[6] = {npcID = 27060, dialogID = 5060, scriptID = 5060},--æœ¯å£«æ–¹ç›¸
+						[1] = {npcID = 27055, dialogID = 5055, scriptID = 5055},--Ä§¾ıĞşÄŞ
+						[2] = {npcID = 27056, dialogID = 5056, scriptID = 5056},--Ä§½«Ïô»³Çà
+						[3] = {npcID = 27057, dialogID = 5057, scriptID = 5057},--Ç§ÄêÌÙÑı
+						[4] = {npcID = 27058, dialogID = 5058, scriptID = 5058},--Ñı½«Â½¿ı
+						[5] = {npcID = 27059, dialogID = 5059, scriptID = 5059},--Ğ°µÀÁõÒØ
+						[6] = {npcID = 27060, dialogID = 5060, scriptID = 5060},--ÊõÊ¿·½Ïà
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-    -- 101 - 150 ç¯
+    -- 101 - 150 »·
     [3] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27138, scriptID = 5149},--ç½—åˆ¹å¥³å¦–
-						[2] = {npcID = 27139, scriptID = 5150},--å¹½çµé¬¼å¸ˆ
-						[3] = {npcID = 27140, scriptID = 5151},--è¡€ç‚¼çŒªé­”
-						[4] = {npcID = 27141, scriptID = 5152},--é­”çµçŠ¬
-						[5] = {npcID = 27142, scriptID = 5153},--é­”å¥´
-						[6] = {npcID = 27143, scriptID = 5154},--é­”å°†ç«¯æ— 
+						[1] = {npcID = 27138, scriptID = 5149},--ÂŞÉ²Å®Ñı
+						[2] = {npcID = 27139, scriptID = 5150},--ÓÄÁé¹íÊ¦
+						[3] = {npcID = 27140, scriptID = 5151},--ÑªÁ¶ÖíÄ§
+						[4] = {npcID = 27141, scriptID = 5152},--Ä§ÁéÈ®
+						[5] = {npcID = 27142, scriptID = 5153},--Ä§Å«
+						[6] = {npcID = 27143, scriptID = 5154},--Ä§½«¶ËÎŞ
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--è™å°†
-						[2] = {petID = 1031, scriptID = 5173},--è°‹å£«
-						[3] = {petID = 1032, scriptID = 5174},--ç‰›å¤´
-						[4] = {petID = 1033, scriptID = 5175},--é©¬é¢
-						[5] = {petID = 1034, scriptID = 5176},--éª·é«…å°†
-						[6] = {petID = 1035, scriptID = 5177},--é­”å…µ
+						[1] = {petID = 1030, scriptID = 5172},--»¢½«
+						[2] = {petID = 1031, scriptID = 5173},--Ä±Ê¿
+						[3] = {petID = 1032, scriptID = 5174},--Å£Í·
+						[4] = {petID = 1033, scriptID = 5175},--ÂíÃæ
+						[5] = {petID = 1034, scriptID = 5176},--÷¼÷Ã½«
+						[6] = {petID = 1035, scriptID = 5177},--Ä§±ø
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27061, dialogID = 5061, scriptID = 5061},--é­”å›å§¬å‘
-						[2] = {npcID = 27062, dialogID = 5062, scriptID = 5062},--é­”å°†ä¹”å¤
-						[3] = {npcID = 27063, dialogID = 5063, scriptID = 5063},--å¦–å°†æ›¹å®
-						[4] = {npcID = 27064, dialogID = 5064, scriptID = 5064},--é‚ªé“è§è‡»
-						[5] = {npcID = 27065, dialogID = 5065, scriptID = 5065},--æœ¯å£«æ–¹å¼¼
-						[6] = {npcID = 27066, dialogID = 5066, scriptID = 5066},--è–›æ¶è™
+						[1] = {npcID = 27061, dialogID = 5061, scriptID = 5061},--Ä§¾ı¼§·¢
+						[2] = {npcID = 27062, dialogID = 5062, scriptID = 5062},--Ä§½«ÇÇÀ¤
+						[3] = {npcID = 27063, dialogID = 5063, scriptID = 5063},--Ñı½«²Ü±¦
+						[4] = {npcID = 27064, dialogID = 5064, scriptID = 5064},--Ğ°µÀÏôÕé
+						[5] = {npcID = 27065, dialogID = 5065, scriptID = 5065},--ÊõÊ¿·½åö
+						[6] = {npcID = 27066, dialogID = 5066, scriptID = 5066},--Ñ¦¶ñ»¢
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
-		-- 151 - 200 ç¯
+		-- 151 - 200 »·
         [4] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
-				--æš—é›·æˆ˜æ–—
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
+				--°µÀ×Õ½¶·
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
-						[1] = {npcID = 27144, scriptID = 5155},--æ¶çµç«¥å­
-						[2] = {npcID = 27145, scriptID = 5156},--æªé­”
-						[3] = {npcID = 27146, scriptID = 5157},--èµ¤é­‚ç‹
-						[4] = {npcID = 27147, scriptID = 5158},--é‡‘èŸ¾é¬¼æ¯
-						[5] = {npcID = 27148, scriptID = 5159},--æ¯’å¨˜å­
-						[6] = {npcID = 27149, scriptID = 5160},--å¦–é¬¼çš‡
+						[1] = {npcID = 27144, scriptID = 5155},--¶ñÁéÍ¯×Ó
+						[2] = {npcID = 27145, scriptID = 5156},--Ç¹Ä§
+						[3] = {npcID = 27146, scriptID = 5157},--³à»êÍõ
+						[4] = {npcID = 27147, scriptID = 5158},--½ğó¸¹íÄ¸
+						[5] = {npcID = 27148, scriptID = 5159},--¶¾Äï×Ó
+						[6] = {npcID = 27149, scriptID = 5160},--Ñı¹í»Ê
 					},
 				},
 
-				-- å¯¹è¯
+				-- ¶Ô»°
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- æŒ‘æˆ˜æ˜é›·
+				-- ÌôÕ½Ã÷À×
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
-						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049,scriptID = 5073, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320,scriptID = 5074,  mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059,scriptID = 5075,  mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008,scriptID = 5076,  mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073,scriptID = 5077,  mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074,scriptID = 5078,  mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701,scriptID = 5079,  mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075,scriptID = 5080,  mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076,scriptID = 5081,  mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077,scriptID = 5082,  mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021,scriptID = 5083,  mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022,scriptID = 5084,  mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023,scriptID = 5085,  mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025,scriptID = 5086,  mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024,scriptID = 5087,  mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026,scriptID = 5088,  mapID = 6, x = 43, y = 112},--µî·É°×
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
-						[1] = --------------è¥¿å‡‰å†›æœ
+						[1] = --------------Î÷Á¹¾ü·ş
 						{
 							itemID = 1051001, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[2] = --------------è’™é¢å¸ƒå·¾
+						[2] = --------------ÃÉÃæ²¼½í
 						{
 							itemID = 1051002, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[3] = --------------ç ´ç¢é“ ç”²
+						[3] = --------------ÆÆËéîø¼×
 						{
 							itemID = 1051006, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[4] = --------------è¥¿å‡‰å†›é‹
+						[4] = --------------Î÷Á¹¾üĞ¬
 						{
 							itemID = 1051007, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[5] = --------------å¼ºç›—å¾½ç« 
+						[5] = --------------Ç¿µÁ»ÕÕÂ
 						{
 							itemID = 1051008, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[6] = --------------å¤œè¡Œè¡£
+						[6] = --------------Ò¹ĞĞÒÂ
 						{
 							itemID = 1051009, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[7] = --------------å®¶ä¹¦
+						[7] = --------------¼ÒÊé
 						{
 							itemID = 1051010, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
-						[8] = --------------èŠ±ç“£
+						[8] = --------------»¨°ê
 						{
 							itemID = 1051011, 
 							count = 1,
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},			
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
-						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] ={npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 					
 				},
-				-- ä¸Šäº¤å® ç‰©
+				-- ÉÏ½»³èÎï
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--è™å°†
-						[2] = {petID = 1031, scriptID = 5173},--è°‹å£«
-						[3] = {petID = 1032, scriptID = 5174},--ç‰›å¤´
-						[4] = {petID = 1033, scriptID = 5175},--é©¬é¢
-						[5] = {petID = 1034, scriptID = 5176},--éª·é«…å°†
-						[6] = {petID = 1035, scriptID = 5177},--é­”å…µ
+						[1] = {petID = 1030, scriptID = 5172},--»¢½«
+						[2] = {petID = 1031, scriptID = 5173},--Ä±Ê¿
+						[3] = {petID = 1032, scriptID = 5174},--Å£Í·
+						[4] = {petID = 1033, scriptID = 5175},--ÂíÃæ
+						[5] = {petID = 1034, scriptID = 5176},--÷¼÷Ã½«
+						[6] = {petID = 1035, scriptID = 5177},--Ä§±ø
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
-						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--å¢æ¤
-						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {npcID = 20049, mapID = 10, x = 46, y = 216},--Â¬Ö²
+						[2] = {npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 
-				-- æš—é›·æˆ˜æ–—
+				-- °µÀ×Õ½¶·
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
 					{
-						[1] = {npcID = 27067, dialogID = 5067, scriptID = 5067},--éŸ©æ¯’é¾™
-						[2] = {npcID = 27068, dialogID = 5068, scriptID = 5068},--èµ¤ç²¾å­
-						[3] = {npcID = 27069, dialogID = 5069, scriptID = 5069},--é›ªå³°è€å¦–
-						[4] = {npcID = 27070, dialogID = 5070, scriptID = 5070},--æ°´ç«ç«¥å­
-						[5] = {npcID = 27071, dialogID = 5071, scriptID = 5071},--é­”å°†é©¬å–„
-						[6] = {npcID = 27072, dialogID = 5072, scriptID = 5072},--å¦–å°†ç‹è™
+						[1] = {npcID = 27067, dialogID = 5067, scriptID = 5067},--º«¶¾Áú
+						[2] = {npcID = 27068, dialogID = 5068, scriptID = 5068},--³à¾«×Ó
+						[3] = {npcID = 27069, dialogID = 5069, scriptID = 5069},--Ñ©·åÀÏÑı
+						[4] = {npcID = 27070, dialogID = 5070, scriptID = 5070},--Ë®»ğÍ¯×Ó
+						[5] = {npcID = 27071, dialogID = 5071, scriptID = 5071},--Ä§½«ÂíÉÆ
+						[6] = {npcID = 27072, dialogID = 5072, scriptID = 5072},--Ñı½«Íõ»¢
 					},
 				},
 
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
 					{
-						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--å¢æ¤
-						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--ç‹å­å¸ˆ
-						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--çš‡ç”«åµ©
-						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--å¼ ç»´ä¹‰
-						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--æ¨æ£®
-						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--é«˜å‹ä¹¾
-						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ç‹å…
-						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--æ¨æ–‡è¾‰
-						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--éƒ‘ä¼¦
-						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--é™ˆå¥‡
-						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--æ®µå²³
-						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--å…®é¢œ
-						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--æé•¿é£
-						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--åº„æ¢¦è¶
-						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ç„ç´ 
-						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--æ®¿é£ç™½
+						[1] = {itemID = 1041017, npcID = 20049, mapID = 10, x = 46, y = 216} ,--Â¬Ö²
+						[2] = {itemID = 1041017, npcID = 30320, mapID = 10, x = 45, y = 209},--Íõ×ÓÊ¦
+						[3] = {itemID = 1041017, npcID = 20059, mapID = 10, x = 45, y = 188},--»Ê¸¦áÔ
+						[4] = {itemID = 1041017, npcID = 29008, mapID = 10, x = 133, y = 104},--ÕÅÎ¬Òå
+						[5] = {itemID = 1041017, npcID = 27073, mapID = 9, x = 97, y = 137},--ÑîÉ­
+						[6] = {itemID = 1041017, npcID = 27074, mapID = 9, x = 125, y = 87},--¸ßÓÑÇ¬
+						[7] = {itemID = 1041017, npcID = 20701, mapID = 13, x = 54, y = 145},--ÍõÔÊ
+						[8] = {itemID = 1041017, npcID = 27075, mapID = 13, x = 144, y = 116},--ÑîÎÄ»Ô
+						[9] = {itemID = 1041017, npcID = 27076, mapID = 14, x = 73, y = 58},--Ö£Â×
+						[10] = {itemID = 1041017, npcID = 27077, mapID = 14, x = 36, y = 65},--³ÂÆæ
+						[11] = {itemID = 1041017, npcID = 20021, mapID = 1, x = 32, y = 76},--¶ÎÔÀ
+						[12] = {itemID = 1041017, npcID = 20022, mapID = 2, x = 61, y = 127},--ÙâÑÕ
+						[13] = {itemID = 1041017, npcID = 20023, mapID = 3, x = 33, y = 111},--Àî³¤·ç
+						[14] = {itemID = 1041017, npcID = 20025, mapID = 4, x = 61, y = 93},--×¯ÃÎµû
+						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--ĞşËØ
+						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--µî·É°×
 					},
 				},
 			},
@@ -6099,16 +8158,16 @@ LoopTaskTargetAssistDB =
 	},
 	[10008] =
 	{
-		-- 1 - 151 çº§
+		-- 1 - 151 ¼¶
 		[1] =
 		{
-			-- 1 - 40 ç¯
+			-- 1 - 40 »·
 			[1] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
 				[LoopTaskTargetType.script] =
 				{	
-					-- è¿™ä¸ªå¯¹è¯IDå’Œè„šæœ¬æˆ˜æ–—IDè¦æ ¹æ®ä»€ä¹ˆä»€ä¹ˆé…ç½®
+					-- Õâ¸ö¶Ô»°IDºÍ½Å±¾Õ½¶·IDÒª¸ù¾İÊ²Ã´Ê²Ã´ÅäÖÃ
 					createRandomNpc =
 					{
 						[1] = {npcID = 25001, scriptID = 4001},
@@ -6152,7 +8211,7 @@ LoopTaskTargetAssistDB =
 		{
 			[1] =
 			{
-				-- ä¸Šäº¤è£…å¤‡
+				-- ÉÏ½»×°±¸
 				[LoopTaskTargetType.paidEquip] = 
 				{
 					randomEquip = 
@@ -6169,38 +8228,76 @@ LoopTaskTargetAssistDB =
 		}
 	},
 
-	[10020] =
+	[10010] =         -------------------ÌÖÄæÈÎÎñ	
 	{
-		-- 1 - 150 çº§
 		[1] =
 		{
-			-- 1 - 200 ç¯
+			-- Ò»µÀ10»·
 			[1] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
+				[LoopTaskTargetType.script] =
+				{
+					createRandomNpc =
+					{
+						[1] = {npcID = 28001, scriptID = 5201, mapID = 127, x = 49, y = 176},
+						[2] = {npcID = 28002, scriptID = 5202, mapID = 106, x = 83, y = 147},
+						[3] = {npcID = 28003, scriptID = 5203, mapID = 126, x = 49, y = 223},
+						[4] = {npcID = 28004, scriptID = 5204, mapID = 119, x = 160, y = 166},
+						[5] = {npcID = 28005, scriptID = 5205, mapID = 116, x = 116, y = 235},
+						[6] = {npcID = 28006, scriptID = 5206, mapID = 119, x = 94, y = 101},
+						[7] = {npcID = 28007, scriptID = 5207, mapID = 120, x = 144, y = 145},
+						[8] = {npcID = 28008, scriptID = 5208, mapID = 122, x = 223, y = 102},
+						[9] = {npcID = 28009, scriptID = 5209, mapID = 10, x = 278, y = 269},
+						[10] = {npcID = 28010, scriptID = 5210, mapID = 119, x = 56, y = 163},
+						[11] = {npcID = 28011, scriptID = 5211, mapID = 101, x = 203, y = 101},
+						[12] = {npcID = 28012, scriptID = 5212, mapID = 101, x = 82, y = 197},
+						[13] = {npcID = 28013, scriptID = 5213, mapID = 10, x = 253, y = 91},
+						[14] = {npcID = 28014, scriptID = 5214, mapID = 128, x = 143, y = 202},
+						[15] = {npcID = 28015, scriptID = 5215, mapID = 118, x = 108, y = 216},
+						[16] = {npcID = 28016, scriptID = 5216, mapID = 13, x = 162, y = 99},
+						[17] = {npcID = 28017, scriptID = 5217, mapID = 102, x = 189, y = 102},
+						[18] = {npcID = 28018, scriptID = 5218, mapID = 122, x = 171, y = 81},
+						[19] = {npcID = 28019, scriptID = 5219, mapID = 120, x = 206, y = 104},
+						[20] = {npcID = 28020, scriptID = 5220, mapID = 126, x = 150, y = 129},
+
+					},
+				},
+			},
+		},
+	},
+
+	[10020] =
+	{
+		-- 1 - 150 ¼¶
+		[1] =
+		{
+			-- 1 - 200 »·
+			[1] =
+			{
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
 				[LoopTaskTargetType.script] =
 				{	
-					--åˆ›å»ºnpcåœ¨æ­¤éšæœº
+					--´´½¨npcÔÚ´ËËæ»ú
 					createRandomNpc =
 					{
 						[1] = {npcID = 40002, scriptID = 100},
 					},
 				},
 
-				-- äº¤è°ˆåªæœ‰å¯¹è¯IDæ— æˆ˜æ–—
+				-- ½»Ì¸Ö»ÓĞ¶Ô»°IDÎŞÕ½¶·
 				[LoopTaskTargetType.talk] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					createPosition =
 					{
 						[1] = {npcID = 40004, mapID = 10, x = 187, y = 240},
 					}
 				},
 
-				-- ä¸Šç¼´ç‰©å“
+				-- ÉÏ½ÉÎïÆ·
 				[LoopTaskTargetType.buyItem] =
 				{
-					-- ä¹°ç‰©å“æŒ‡å¼•
+					-- ÂòÎïÆ·Ö¸Òı
 					createBuyItemData = 
 					{
 						[1] = 
@@ -6216,7 +8313,7 @@ LoopTaskTargetAssistDB =
 							buyPosition = {npcID = 20012, mapID = 10, x = 190, y = 190},
 						},
 					},
-					-- äº¤ç‰©å“æŒ‡å¼•
+					-- ½»ÎïÆ·Ö¸Òı
 					createPaidItemTrace = 
 					{
 						[1] ={npcID = 40003, mapID = 10, x = 178, y = 243},
@@ -6226,20 +8323,20 @@ LoopTaskTargetAssistDB =
 
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- æ•æ‰å® ç‰©æŒ‡å¼•
+					-- ²¶×½³èÎïÖ¸Òı
 					createCatchPetData =
 					{
 						[1] = {petID = 1001, scriptID = 101},
 						[2] = {petID = 1001, scriptID = 101},
 					},
-					-- ä¸Šç¼´å® ç‰©æŒ‡å¼•
+					-- ÉÏ½É³èÎïÖ¸Òı
 					createPaidPetTrace = 
 					{
 						[1] = {npcID = 40005, mapID = 10, x = 185, y = 174},
 					},
 				},
 
-				-- æŒ‘æˆ˜æš—é›·
+				-- ÌôÕ½°µÀ×
 				[LoopTaskTargetType.partrolScript] =
 				{
 					addSpecialArea =
@@ -6248,15 +8345,15 @@ LoopTaskTargetAssistDB =
 						[2] = {dialogID = 30009, scriptID = 100},
 					},
 				},
-				-- æŠ¤é€NPC,
+				-- »¤ËÍNPC,
 				[LoopTaskTargetType.escort] =
 				{
-					-- å·¡é€»å‡ºå¯¹è¯
+					-- Ñ²Âß³ö¶Ô»°
 					partrolTalkTrace =
 					{
 						[1] = {dialogID = 30016, followNpcID = 20702},
 					},
-					-- æ·»åŠ å°¾éšNpc
+					-- Ìí¼ÓÎ²ËæNpc
 					escortNpcTrace =
 					{
 						[1] = {npcID = 29040, mapID = 1, x = 58, y = 124},
@@ -6271,7 +8368,7 @@ LoopTaskTargetAssistDB =
 					},
 				},
 				
-				-- ç¥ç§˜å•†äºº
+				-- ÉñÃØÉÌÈË
 				[LoopTaskTargetType.mysteryBus] =
 				{
 					mysteryTrace =
@@ -6288,7 +8385,7 @@ LoopTaskTargetAssistDB =
 						[1] = {npcID = 29079, mapID = 10, x = 184, y = 234},
 					},
 				},
-				--é€ä¿¡
+				--ËÍĞÅ
 				[LoopTaskTargetType.deliverLetters] = 
 				{
 					deliverTrace =
@@ -6297,7 +8394,7 @@ LoopTaskTargetAssistDB =
 					},
 				},
 
-				-- ä¸Šäº¤è£…å¤‡
+				-- ÉÏ½»×°±¸
 				[LoopTaskTargetType.paidEquip] = 
 				{
 					randomEquip = 
@@ -6310,7 +8407,7 @@ LoopTaskTargetAssistDB =
 						}
 					},
 				},
-				-- ç‚¹å‡»å¯¹è¯è§¦å‘çš„è§¦å‘ä¸‹ä¸€ä¸ªè„šæœ¬æˆ˜æ–—ä»»åŠ¡
+				-- µã»÷¶Ô»°´¥·¢µÄ´¥·¢ÏÂÒ»¸ö½Å±¾Õ½¶·ÈÎÎñ
 				[LoopTaskTargetType.talkScript] =
 				{
 					createRandomNpc = 
@@ -6330,36 +8427,33 @@ LoopTaskTargetAssistDB =
 		},
 	},
 
-	[10010] =
+	[50000] =
 	{
 		[1] =
 		{
-			-- ä¸€é“10ç¯
+			-- Ò»µÀ10»·
 			[1] =
 			{
-				[LoopTaskTargetType.script] =
+				[LoopTaskTargetType.puzzle] =
 				{
-					createRandomNpc =
-					{
-						[1] = {npcID = 40002, scriptID = 100, mapID = 10, x = 200, y = 200},
-					},
+					
 				},
 			},
 		},
 	},
--------å‹æµ‹ä»»åŠ¡-------------------------
+-------Ñ¹²âÈÎÎñ-------------------------
 	[1] =
 	{
-		-- 1 - 151 çº§
+		-- 1 - 151 ¼¶
 		[1] =
 		{
-			-- 1 - 1000 ç¯
+			-- 1 - 1000 »·
 			[1] =
 			{
-				-- åœ¨æ ¹æ®ç¯æ•°æ¥åˆ†é…ä¸åŒçš„æ€ªç‰© 
+				-- ÔÚ¸ù¾İ»·ÊıÀ´·ÖÅä²»Í¬µÄ¹ÖÎï 
 				[LoopTaskTargetType.brightMine] =
 				{	
-					-- æŒ‡å®šNPCï¼Œå›ºå®šåæ ‡ ,æ— éœ€åˆ›å»ºï¼Œä½†æ˜¯è¿™ä¸ªåæ ‡è¦å‘ç»™å®¢æˆ·ç«¯
+					-- Ö¸¶¨NPC£¬¹Ì¶¨×ø±ê ,ÎŞĞè´´½¨£¬µ«ÊÇÕâ¸ö×ø±êÒª·¢¸ø¿Í»§¶Ë
 					brightMine =
 					{
 						[1] = {npcID = 2,scriptID = 100, mapID = 101, x = 100, y = 200},

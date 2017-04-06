@@ -100,7 +100,7 @@ function DiscussHeroSystem:onFightEnd(event)
 end 
 
 function DiscussHeroSystem:changeDiscussData(playerLists,wineCountDelta,totalScoreDelta,isWin)
-	
+	print("---------------------isWin",isWin)
 	local discussHero =  g_activityMgr:getActivity(gDiscussHeroActivityID)
 	if not discussHero then
 		return
@@ -108,29 +108,31 @@ function DiscussHeroSystem:changeDiscussData(playerLists,wineCountDelta,totalSco
 	-- 计算出队伍积分
 	local teamScoreDelta = 0
 	local activityMapID = nil
-	local mapPos = nil
 	local activityState = discussHero:getDiscussHeroState()
 	if table.size(playerLists) > 0 then
+		-- 找出所在地图
+		for _,player in pairs(playerLists) do
+			activityMapID = g_discussHeroMgr:getActivityMapID(player)
+			break
+		end
+		local posX,posY =  DiscussUtils.getRandMapPos(activityMapID)
 		for _,player in pairs(playerLists) do
 			local activityHandler =  player:getHandler(HandlerDef_Activity)
 			if activityHandler then
 				local wineCount,totalScore = activityHandler:getDicussHero()
-				print("设置wineCount1111,totalScore",wineCount,totalScore)
+				-- print("设置wineCount1111,totalScore",wineCount,totalScore)
 				wineCount = wineCount + wineCountDelta
 				totalScore = totalScore + totalScoreDelta
-				activityMapID = g_discussHeroMgr:getActivityMapID(player)
 				if wineCount <= 0 and activityState == ActivityState.OpeningFirst then
 					self:exitDiscussHero(player)
 					-- 通知所有玩家？？
 				else
-					print("设置wineCount222,totalScore",wineCount,totalScore)
+					-- print("设置wineCount222,totalScore",wineCount,totalScore)
 					activityHandler:setDicussHero(wineCount,totalScore)
 					teamScoreDelta = teamScoreDelta + totalScore
 					if not isWin then
-						if not mapPos then
-							mapPos =  DiscussUtils.getRandMapPos(activityMapID)
-							g_sceneMgr:enterDiscussHeroScene(activityMapID,mapPos.x,mapPos.y)
-						end
+						print("activityMapID,player,posX,posY",activityMapID,player,posX,posY)
+						g_sceneMgr:changeDiscussHeroPos(activityMapID,player,posX,posY)
 					end
 				end
 			end
@@ -142,6 +144,7 @@ function DiscussHeroSystem:changeDiscussData(playerLists,wineCountDelta,totalSco
 			local activityHandler =  player:getHandler(HandlerDef_Activity)
 			if activityHandler then
 				local wineCount,totalScore = activityHandler:getDicussHero()
+				activityHandler:setDicussHeroTeamScore(teamScoreDelta)
 				local info = {}
 				info.wineCount = wineCount
 				info.totalScore = totalScore
@@ -204,17 +207,23 @@ function DiscussHeroSystem:onExitDiscussHero(event)
 	if not player then
 		return
 	end
+	local activityMapID = g_discussHeroMgr:getActivityMapID(player)
+	if not activityMapID then
+		print("没有这个活动",activityMapID)
+		return false
+	end
 	print("退出场景",playerID)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	if teamHandler and teamHandler:isTeam() then
 		local playerList = teamHandler:getTeamPlayerList()
 		for _,player in pairs(playerList) do
-			local prevPos = player:getPrevPos()
-			g_sceneMgr:doSwitchScence(player:getID(),prevPos[1],prevPos[2],prevPos[3])
+			self:exitDiscussHero(player)
+			-- 奖励
+			g_discussHeroMgr:exitReward(player,activityMapID)
 		end
 	else
-		local prevPos = player:getPrevPos()
-		g_sceneMgr:doSwitchScence(player:getID(),prevPos[1],prevPos[2],prevPos[3])
+		self:exitDiscussHero(player)
+		g_discussHeroMgr:exitReward(player,activityMapID)
 	end
 end
 
@@ -306,6 +315,16 @@ function DiscussHeroSystem:exitDiscussHero(player)
 	local prevPos = player:getPrevPos()
 	g_sceneMgr:doSwitchScence(player:getID(),prevPos[1],prevPos[2],prevPos[3])
 	self:notifyClientExitDiscussHero(player)
+end
+
+function DiscussHeroSystem:broadcastReward(minLevel,maxLevel,stringName)
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DicussHero,5,minLevel,maxLevel,stringName)
+	g_eventMgr:broadcastEvent(event)
+end
+
+function DiscussHeroSystem:notifyClientFight(player)
+	local event = Event.getEvent(ActivityEvent_SC_EnterDiscussHeroFight)
+	g_eventMgr:fireRemoteEvent(event, player)
 end
 
 function DiscussHeroSystem.getInstance()

@@ -217,6 +217,7 @@ end
 function Equipment:setPropertyContext(context)
 	-- 装备暂时没有到期时间，永久有效
 	self.bindFlag = context.bindFlag and true or false
+	self.itemLvl = tonumber(context.level)
 
 	if context.expireTime > 0 then
 		context.curDurability = context.expireTime
@@ -255,6 +256,7 @@ function Equipment:getPropertyContext()
 	local context = {}
 	context.itemID = self:getItemID()
 	context.number = self:getNumber()
+	context.level = self:getItemLvl()
 	context.bindFlag = self:getBindFlag()
 	context.expireTime = self:getExpireTime()
 	context.curDurability = self:getCurDurability()

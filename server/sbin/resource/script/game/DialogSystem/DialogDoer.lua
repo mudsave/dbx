@@ -16,8 +16,10 @@ function DialogDoer:createNpcDialog(player, npc)
 	if not handler then 
 		return 
 	end
-	local npcID = npc:getID()
-	local dialogID = self:checkTaskDialog(player, npcID) --先检测任务ID，是不是任务对话
+	local npcID = npc:getID()--根据点击的NPC得到ID
+--先检测任务ID，是不是任务对话
+	local dialogID = self:checkTaskDialog(player, npcID) 
+--如果不是任务ID，则取得普通对话
 	if not dialogID then
 		local dialogIDs = handler:getDialogIDs()							--获取npc身上的对话
 		dialogID = g_dialogCondtion:choseDialogID(player, dialogIDs, npcID)	--检测条件选出对话id
@@ -26,6 +28,7 @@ function DialogDoer:createNpcDialog(player, npc)
 			return
 		end
 	end
+--根据对话ID创建对话
 	g_dialogDoer:createDialogByID(player, dialogID, true, npcID) --创建对话
 
 end
@@ -37,6 +40,7 @@ function DialogDoer:checkTaskDialog(player, npcID)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local providerTaskID, taskTypeA = taskHandler:checkTaskProvider(npcID)
 	local RecetiveTaskID, taskTypeB = taskHandler:checkTaskRecetiver(npcID)
+--判断当前NPC是完成任务NPC还是接受任务NPC
 	if RecetiveTaskID then
 		if taskTypeB == TaskType.normal then
 			dialogID = NormalTaskDB[RecetiveTaskID].endDialogID
@@ -61,15 +65,12 @@ function DialogDoer:checkTaskDialog(player, npcID)
 		elseif taskTypeA == TaskType.loop then
 			dialogID = LoopTaskDB[providerTaskID].startDialogID
 		elseif taskTypeA == TaskType.daily then
-
 			dialogID = DailyTaskDB[providerTaskID].startDialogID
 			if type(dialogID) == "table" then
 				dialogID = g_dialogCondtion:choseDialogID(player, dialogID)
 			end
-			
 		end
 	end
-
 	return dialogID
 end
 
@@ -141,6 +142,7 @@ function DialogDoer:openDialog(player, dialog ,npcID)
 	else
 		data.dialogID = dialog:getID()
 		data.optionIDs = {}	
+		--对对话的选项进行判断
 		if dialogType == DialogType.HasOption then
 			for optionID, optionInfo in ipairs(dialog:getOptions()) do
 				if g_dialogCondtion:choseOption(player, optionInfo.showConditions) then

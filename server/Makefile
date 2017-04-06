@@ -57,7 +57,7 @@ test :
 
 
 # 编译
-all : sock session gateway world
+all : sock dbc session gateway world 
 
 clean :
 	rm -rf ./sbin/temp
@@ -86,17 +86,17 @@ dbx :
 	#echo ""
 	cd mak.d; make -f dbx.mak
 
+dbc :
+	cd mak.d; make -f dbClient.mak
+
 # 安装环境
-config : lua tolua db tinyxml
+config : lua tolua tinyxml
 
 lua :
 	cd ./tools/lua-5.1.5; make clean; make linux; make install
 
 tolua :
 	cd ./tools/toluapp-1.0.93; scons -c; scons; scons install
-
-db :
-	cd ./tools/dbClient; make
 
 tinyxml :
 	cd ./tools/tinyxml; make target; make install

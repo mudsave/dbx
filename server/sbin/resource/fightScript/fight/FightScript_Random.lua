@@ -72,7 +72,7 @@ function FightScript_Random:onPlayOver(params)
 				local fightMonsters = {}
 				local monsterDBIDs = phaseInfo[nextPhase].monsters
 				for _, DBID in pairs(monsterDBIDs) do
-					local monster = g_fightEntityFactory:createMonster(DBID)
+					local monster = g_fightEntityFactory:createMonster(DBID,nil,self._playerLevel)
 					table.insert(fightMonsters, monster)
 				end
 				g_fightFactory:initFightByMonsters(self,fightMonsters)

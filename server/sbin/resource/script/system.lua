@@ -24,7 +24,7 @@ function System._LoadWorldServerData(player, worldServerData)
 
 end
 
-function System._LoadSocialServerData(player, socialServerData)
+function System._LoadSocialServerData(player, socialServerData,factionData)
 	if not socialServerData then
 		return
 	end
@@ -37,6 +37,7 @@ function System._LoadSocialServerData(player, socialServerData)
 	local thisWeekFactionContribute = socialServerData.thisWeekFactionContribute
 	local lastWeekFactionContribute = socialServerData.lastWeekFactionContribute
 	local intradayFactionContribute = socialServerData.intradayFactionContribute
+	local factionConfiguration		= unserialize(socialServerData.factionConfiguration)
 
 	player:setOfflineDate(time.totime(offlineDate))
 	player:setFactionDBID(factionDBID)
@@ -46,8 +47,13 @@ function System._LoadSocialServerData(player, socialServerData)
 	player:setThisWeekFactionContribute(thisWeekFactionContribute)
 	player:setLastWeekFactionContribute(lastWeekFactionContribute)
 	player:setIntradayFactionContribute(intradayFactionContribute)
+	player:setFactionConfiguration(factionConfiguration)
+
 	if factionDBID > 0 then
 		SceneManager:getInstance():createFactionScene(factionDBID)
+	end
+	if factionData then
+		player:setFactionJoinDate(time.totime(factionData.joinDate))
 	end
 
 	local basicInfo = {
@@ -55,12 +61,12 @@ function System._LoadSocialServerData(player, socialServerData)
 		modelID = player:getModelID(),curHeadTex = player:getCurHeadTex(),curBodyTex=player:getCurBodyTex(),
 		factionDBID = player:getFactionDBID(),autoHideChatWin = player:getAutoHideChatWin(),offlineDate = player:getOfflineDate(),
 		factionMoney = player:getFactionMoney(),factionHistoryMoney = player:getFactionHistoryMoney(),
-		thisWeekFactionContribute = player:getThisWeekFactionContribute() ,
+		thisWeekFactionContribute = player:getThisWeekFactionContribute(),
 		lastWeekFactionContribute = player:getLastWeekFactionContribute(),
 		intradayFactionContribute = player:getIntradayFactionContribute(),
+		factionConfiguration = player:getFactionConfiguration(),
 		roleID = player:getID(),
 	}
-	print("准备发送数据到社会服")
 	local event = Event.getEvent(SocialEvent_SB_Enter, basicInfo)
 	g_eventMgr:fireWorldsEvent(event, SocialWorldID)
 
@@ -150,7 +156,8 @@ end
 function System.OnPlayerLogout(player, reason)
 	-- 玩家下线保存坐骑数据
 	g_rideMgr:onPlayerCheckOut(player)
-
+	-- 这个必须在物品保存之前
+	g_treasureMgr:saveTreasureDate(player)
 	-- 下线保存道具数据
 	g_itemMgr:saveItemsData(player)
 
@@ -229,7 +236,7 @@ function System.onPlayerReAttached(player)
 		local accountID = player:getAccountID()
 		g_world:send_MsgWS_ClearOffFightInfo(accountID, player:getVersion())
 		local fightServerID = player:getFightServerID()
-		local event = Event(FrameEvents_SS_playerOnLine, player:getDBID(),OnlineReason.Reattach)
+		local event = Event.getEvent(FrameEvents_SS_playerOnLine, player:getDBID(),OnlineReason.Reattach)
 		g_eventMgr:fireWorldsEvent(event,fightServerID)
 	else
 		player:setStatus(ePlayerNormal)
@@ -249,7 +256,7 @@ function System.onPlayerDettached(player)
 		player:setStatus(ePlayerInactiveFight)
 		player:setIsFightClose(false)
 		local fightServerID = player:getFightServerID()
-		local event = Event(FrameEvents_SS_playerDropLine, DBID, ePlayerInactiveFight)
+		local event = Event.getEvent(FrameEvents_SS_playerDropLine, DBID, ePlayerInactiveFight)
 		g_eventMgr:fireWorldsEvent(event,fightServerID)
 	else
 		player:setStatus(ePlayerInactive)

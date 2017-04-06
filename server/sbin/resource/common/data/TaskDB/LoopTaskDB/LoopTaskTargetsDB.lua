@@ -63,26 +63,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-					{type="openDialog", param={dialogID =4550},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 挑战暗雷, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -307,28 +306,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4552},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-					--{type = "stopAutoMeet", param = {}},---停止自动遇敌
-					--{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 挑战暗雷, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -550,28 +546,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4554},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-					--{type = "stopAutoMeet", param = {}},---停止自动遇敌
-					--{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 挑战暗雷, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -793,28 +786,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4556},},				
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-					--{type = "stopAutoMeet", param = {}},---停止自动遇敌
-					--{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 挑战暗雷, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1036,28 +1026,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4558},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-					--{type = "stopAutoMeet", param = {}},---停止自动遇敌
-					--{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 挑战暗雷, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1279,26 +1266,25 @@ LoopTaskTargetsDB =
 			},
 		},
 
-		[LoopTaskTargetType.catchPet] = 
-		{		
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-                                        {type="openDialog", param={dialogID =4560},},
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 挑战暗雷, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
@@ -1465,7 +1451,6 @@ LoopTaskTargetsDB =
 	{
 		[LoopTaskTargetType.script] = 
 		{
-		limitTime = 30*60,
 			--悬赏战斗NPCID是随机的，mpaID是随机的，x,y 是随机的。		
 			triggers = 
 			{
@@ -1522,31 +1507,28 @@ LoopTaskTargetsDB =
 			},
 		},
 		--上交宠物
-		[LoopTaskTargetType.catchPet] = 
-		{		
-		limitTime = 30*60,
-			-- 无需配置任务目标
-			triggers = 
-			{
-				-- 这是获取物品的指引发给客户端
-				[TaskStatus.Active] = 
-				{
-					-- 给一个指引给客户端
-					{ type = "createCatchPetData", param = {}},
-				    {type = "openDialog", param={dialogID = 5167},}, --在任务时打开一个对话
-				},
-				[TaskStatus.Done] =
-				{
-					{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
-					{type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
-					{type = "removeMine", param = {}}, -- 移除任务类
-				},	
-			},
-		},
+              [LoopTaskTargetType.catchPet] = 
+              {		
+	       -- 无需配置任务目标
+	                triggers = 
+	                {
+		             -- 这是获取物品的指引发给客户端
+		                 [TaskStatus.Active] = 
+		                 {
+			                    -- 给一个指引给客户端, 买宠物指引
+			                    {type = "createBuyPetTrace", param = {}},
+		                 },
+		                 [TaskStatus.Done] =
+		                 {
+			     -- 上缴宠物指引
+			                    {type = "createPaidPetTrace", param = {}}, -- 发送上缴宠物指引
+		                 },	
+	                },
+              },
+
 		-- 暗雷战斗, 不需要创建NPC， 到大指定坐标，进入战斗
 		[LoopTaskTargetType.partrolScript] =
 		{
-		limitTime = 30*60,
 			triggers = --任务触发器
 			{
 				[TaskStatus.Active]		=      ---接任务状态
@@ -1582,7 +1564,6 @@ LoopTaskTargetsDB =
 		--挑战明雷
 		[LoopTaskTargetType.brightMine] = 
 		{
-		limitTime = 30*60,
 			--挑战明雷NPCID是固定随机的		
 			triggers = 
 			{
@@ -1599,6 +1580,23 @@ LoopTaskTargetsDB =
 				},
 			},
 		},
+		--拼图任务
+		--[[[LoopTaskTargetType.puzzle] = 
+		{
+		limitTime = 5*60,
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					
+				},
+				-- 任务完成时候
+				[TaskStatus.Done] =
+				{
+					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
+				},
+			},
+		},]]
 	},
 	[10008] =
 	{
@@ -1639,6 +1637,34 @@ LoopTaskTargetsDB =
 				[TaskStatus.Done] = 
 				{
 					--{type = "finishLoopTask", param = {}},
+				},
+			},
+		},
+	},
+
+		-- 讨逆任务
+	[10010] =
+	{
+		--创建私有NPC，
+		[LoopTaskTargetType.script] = 
+		{
+			-- 明雷战斗NPCID是随机的，坐标是从固定当中随机。
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					-- 随机NPC  一种指定NPC，不指定坐标。一种不指定NPC，不指定坐标
+					{type = "createRandomNpc", param = {index = 1}},
+					--{type="openDialog", param={dialogID = 4031},},
+				},
+				-- 任务完成时候
+				[TaskStatus.Done] =
+				{
+					{type = "removeRandomNpc", param = {index = 1}},
+					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
 				},
 			},
 		},
@@ -1924,6 +1950,30 @@ LoopTaskTargetsDB =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
 					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
+				},
+			},
+		},
+	},
+	[50000] =
+	{
+		[LoopTaskTargetType.puzzle] = 
+		{
+			limitTime = 5*60,
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					
+					{type = "createRandomPuzzle", param = {}},
+					
+				},
+				[TaskStatus.Done] =
+				{
+					--随机拼图
+					{type = "finishPuzzle", param = {npcID = 1, x = 98, y = 76, mapID = 9}},
 				},
 			},
 		},

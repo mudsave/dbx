@@ -90,6 +90,7 @@ function Fight:__init()
 	self._world_fightID = nil --在世界服唯一
 	self._timerContext = {}--[timerID] = context
 	self._deadMonsterNum={}--[dbID]= num--怪物的死亡次数返回给世界服
+	self._playerLevel = nil --和怪物打斗的玩家代表等級
 end
 
 function Fight:getFightID()
@@ -211,6 +212,10 @@ end
 
 function Fight:getRoundCount()
 	return self._roundCount
+end
+
+function Fight:setPlayerLevel(level)
+	self._playerLevel = level
 end
 function Fight:getRole(pos)
 	for side,poses in pairs(self._members) do
@@ -763,7 +768,9 @@ function Fight:_doInformEscape(role)
 			fightInfo.deadMonsterNum = self._deadMonsterNum
 		end
 		local event1 = Event.getEvent(FightEvents_FS_QuitFight, roleInfo, self._scriptID, quitPetAttrs, self._world_fightID, fightInfo)
-		RemoteEventProxy.sendToWorld(event1,self._srcWorldID)
+		print("QuitFight 参数",toString(event1:getParams()))
+		-- RemoteEventProxy.sendToWorld(event1,self._srcWorldID)
+		g_eventMgr:fireWorldsEvent(event1,self._srcWorldID)
 		print("%%%%%%%%%%%FightEvents_FS_QuitFight")
 	
 
@@ -945,7 +952,7 @@ function Fight:_checkFightResults(results)
 	for k, result in pairs(results) do
 		local actionType = result.actionType
 		local type = result.type
-		if actionType == FightActionType.System and type ~= ScriptFightActionType.PlayBubble then
+		if actionType == FightActionType.System and type ~= ScriptFightActionType.PlayBubble and type ~= ScriptFightActionType.ReplaceEntity then
 			if result.params then
 				if result.params.IDs then
 					local IDs = result.params.IDs
@@ -1550,12 +1557,12 @@ function Fight:onEnterFightEnd()
 				
 				i = i + 1
 			else
+			
 			end
 			--战斗结束清理buff
 			g_fightBuffMgr:onFightEnd(role)
 		end
 	end
-
 	local fightInfo 
 	if instanceof(self, FightScript) then
 		fightInfo = {}
@@ -1567,7 +1574,9 @@ function Fight:onEnterFightEnd()
 	end
 
 	local event = Event.getEvent(FightEvents_FS_FightEnd,AttrsPool4transfer,scriptID,self._allMonsterDBIDs,storedPets4transfer,self._world_fightID, fightInfo)
-	RemoteEventProxy.sendToWorld(event,self._srcWorldID)
+	print("战斗结束",AttrsPool4transfer,scriptID,self._allMonsterDBIDs,storedPets4transfer,self._world_fightID, fightInfo)
+	-- RemoteEventProxy.sendToWorld(event,self._srcWorldID)
+	g_eventMgr:fireWorldsEvent(event,self._srcWorldID)
 	--通知客户端
 	--local event = Event.getEvent(FightEvents_FC_QuitFight)
 	--self:informClient(event)

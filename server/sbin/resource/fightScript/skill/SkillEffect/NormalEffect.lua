@@ -46,8 +46,8 @@ end
 --[[
 	设置攻击伤害类型
 ]]
-function NormalEffect:setAtType(type)
-	self.atType = type
+function NormalEffect:setAtType(damageType)
+	self.atType = damageType
 end
 
 --[[
@@ -76,7 +76,9 @@ end
 ]]
 function NormalEffect:doAt(target)
 	self:setAtType(AtType.At)
+	--判断宠物是否连击
 	self:petAtPursuit(target)
+	
 	local addNum = self:getAddAttackTargetNum()
 	if addNum == 0 and self.targetType == TargetType.enemy then
 		self:onSingleAt(target)
@@ -147,12 +149,14 @@ function NormalEffect:onSingleAt(target)
 	if target then
 		-- 添加目标到技能目标列表
 		self:addTarget(target)
-		Flog:log("ID:"..self.role:getID().." 物攻".." ID:"..target:getID().." ")
-		print("ID:"..self.role:getID().." 物攻".." ID:"..target:getID().." ")
+		Flog:log("攻击者ID:"..self.role:getID().." 受击者ID:"..target:getID().." 物伤")
+		print("攻击者ID:"..self.role:getID().." 受击者ID:"..target:getID().." 物伤")
+		--攻击和受击都增加10点怒气值(只有玩家才会有)
 		self:incAnger(target, BeAttackIncAnger)
 		self:incAnger(self.role, AttackIncAnger)
+		
 		self:resetRecordData()
-		-- 判断是否命中
+		-- 判断是否命中和是是否处于冰冻状态
 		if self:isHit(target) and (target:getLifeState() ~= RoleLifeState.Freeze) then
 			local addType = self.numType
 			local numValue = self.numValue
@@ -174,7 +178,8 @@ function NormalEffect:onSingleMt(target)
 	if target then
 		-- 添加目标到技能目标列表
 		self:addTarget(target)
-		Flog:log("ID:"..self.role:getID().." 法攻".." ID:"..target:getID().." ")
+		Flog:log("攻击者ID:"..self.role:getID().." 受击者ID:"..target:getID().." 法伤")
+		print("攻击者ID:"..self.role:getID().." 受击者ID:"..target:getID().." 法伤")
 		self:incAnger(target, BeAttackIncAnger)
 		self:incAnger(self.role, AttackIncAnger)
 		self:resetRecordData()
@@ -236,9 +241,6 @@ function NormalEffect:calcAtDmg(target, value, addType, phaseType)
 	end
 	damage = damage > 0 and damage or 0
 	
-	-- 测试
-	-- damage = 50
-	-- if instanceof(target, FightPet) then end
 	print("计算防御力后：", damage)
 	self:addToRecordDmg(damage)
 end
@@ -288,8 +290,6 @@ function NormalEffect:calcMtDmg(target, value, addType, phaseType)
 	end
 	damage = damage > 0 and damage or 0
 	
-	-- 测试
-	-- damage = 100
 	print("计算防御力后：", damage)
 	self:addToRecordDmg(damage)
 end
@@ -348,10 +348,6 @@ function NormalEffect:getAttrPhaseDmg(target)
 	local damage = 0
 	damage = phaseATK - phaseDEF + 1
 	damage = damage > 0 and damage or 0.1
-	
-	-- Flog:log("  攻击相性:"..PhaseName[phaseType].."值："..phaseATK..
-		-- " 对方相性:"..PhaseName[target:get_phase_type()].."值："..phaseDEF.." 相性伤害:"..damage.."  ")
-	-- self:addToRecordDmg(damage)
 	return damage
 end
 
@@ -529,6 +525,7 @@ function NormalEffect:calcDmg(target, phaseType)
 	print("最终伤害：", damage)
 	-- 更新目标血量并获取改变量
 	local hpChange = SkillUtils.getHpChange(target, 0 - damage)
+	--检测角色是否存活--加到deadList中
 	self:checkAlive(target)
 	-- 设置目标HP改变量(用于构造协议)
 	self:setTargetHpChange(target, hpChange)
@@ -568,9 +565,15 @@ function NormalEffect:calcCriticalProb(target)
 	local role = self.role
 	-- 获取暴击率
 	local critical = role:ft_get_critical()
+	--是否有提升暴击率的技能
+	local addCritical = self:getCritical()
+	if addCritical ~= 0 then 
+		critical = critical + math.floor(critical * (addCritical / 100 / 10)) -- 改成千分制
+	--重置技能提升的暴击率
+		self:setCritical()
+	end 
 	-- 获取目标抗暴率
 	local tenacity = target:ft_get_tenacity()
-
 	local critProb = math.floor(100*FinalCritRateConst*critical/(FinalCritRateConst*critical + tenacity))
 	-- 判断自己是否必暴、目标是否必定抗暴
 	local r_handler = role:getHandler(FightEntityHandlerType.HandlerDef_FightBuff)
@@ -707,7 +710,7 @@ function NormalEffect:calcCounterDmgChange(target, damage, prob)
 	if isTrue then
 		rtValue = SkillUtils.getProperValue(damage, value, addType)
 		prob = 100
-		-- return damage, prob
+		return damage, prob
 	end
 	
 	local addDmg = target:get_counter_dmg_add()

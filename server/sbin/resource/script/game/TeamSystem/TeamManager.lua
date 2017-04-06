@@ -277,6 +277,8 @@ function TeamManager:answerInvite(targetID,leaderID,isAccept)
 		
 		event = Event.getEvent(TeamEvents_SS_MemberJoinTeam,targetID)
 		g_eventMgr:fireEvent(event)
+		-- 组队成功 通知其他系统
+		self:doJoinTeamNotifyOtherSystem(leaderID)
 	else
 		tTeamHandler:removeTeaminviteList(leaderID)
 		--print("XXX已拒绝了您的组队邀请")
@@ -373,6 +375,9 @@ function TeamManager:answerRequest(leaderID,targetID,isAccept)
 
 		event = Event.getEvent(TeamEvents_SS_MemberJoinTeam,targetID)
 		g_eventMgr:fireEvent(event)
+		
+		-- 组队成功 通知其他系统
+		self:doJoinTeamNotifyOtherSystem(leaderID)
 	else
 		local event = Event.getEvent(TeamEvents_SC_RefuseRequestTeam,targetID)
 		g_eventMgr:fireRemoteEvent(event,player)
@@ -393,6 +398,12 @@ function TeamManager:stepOutTeam(playerID)
 				print("副本当中不能暂离")
 				return
 			end
+			-- 其他系统的限制
+			if not self:isCanStepOut(player) then
+				return
+			end
+			-- 有其他不能暂离
+			
 			team:stepOut(playerID)
 			for _,memberInfo in pairs(team:getMemberList()) do
 				local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
@@ -505,7 +516,25 @@ function TeamManager:quitTeam(playerID)
 		end
 		localEvent = Event.getEvent(TeamEvents_SS_QuitTeam, playerID)
 		g_eventMgr:fireEvent(localEvent)
+		-- 退出队伍 通知其他系统
+		self:doQuitTeamNotifyOtherSystem(playerID,teamID)
 	end
+end
+
+function TeamManager:doJoinTeamNotifyOtherSystem(leaderID)
+	g_discussHeroMgr:joinTeamNotify(leaderID)
+end
+
+function TeamManager:doQuitTeamNotifyOtherSystem(playerID,teamID)
+	g_discussHeroMgr:QuitTeamNotify(playerID,teamID)
+end
+
+function TeamManager:isCanStepOut(player)
+	local isCanStepOut = true
+	if g_sceneMgr:isInDiscussHeroScene(player) then
+		isCanStepOut = false
+	end
+	return isCanStepOut
 end
 
 --更换队长
@@ -590,6 +619,9 @@ function TeamManager:moveOutMember(leaderID,playerID)
 			-- 副本当中移除队员
 			local ectypeEvent = Event.getEvent(TeamEvents_SS_MoveOutMember, playerID)
 			g_eventMgr:fireEvent(ectypeEvent)
+			
+			-- 通知其他系统
+			self:doQuitTeamNotifyOtherSystem(playerID,teamID)
 		else
 			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 10)
 			g_eventMgr:fireRemoteEvent(event, targetPlayer)

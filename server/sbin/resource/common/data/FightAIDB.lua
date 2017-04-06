@@ -340,6 +340,70 @@ FightAIDB[31] = {
 	},
 }
 
+FightAIDB[51] = {  
+	name =  '治疗',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.RoundInterval,params={period = 1,startRound = 1},                           --回合间隔生效：period = 回合间隔，starRound = 起始循环回合数
+				     },
+			 action = {actionType = FightUIType.UseSkill,params ={skillID =1001},},		                                         --使用技能（skillID = 技能ID）
+			 chooseTarget = {
+					 type = AITargetType.AnyOfFriend,                                                                        --友方随机
+					},	
+              },
+}
+
+FightAIDB[52] = {  
+	name =  '结束1',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.IDExist,params={ID = 31475,{isNot = true}},                                 --指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
+				     },
+			 action = {actionType = FightUIType.Escape,},							                         --逃跑
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                 --自己
+					},	
+              },
+}
+
+FightAIDB[53] = {  
+	name =  '逃跑',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.AttrPercent,params={ ID = 31475,type = AIAttrType.Hp,relation ="<=",value = 0.8},      --type = 属性类型（"AIAttrType.Hp"=生命值，"AIAttrType.Mp"=法力值，"AIAttrType.Kill"=杀气值），relation = 关系类型（比较类型有："<"、">"、"="、"<="、">="），value = 比例关系
+				     },
+			 action = {actionType = FightUIType.Escape,},							                                    --逃跑
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                            --自己
+					},	
+              },
+}
+
+FightAIDB[54] = {  
+	name =  '结束2',
+	type = AIType.Config, 
+	
+	[1] = {
+
+			 condition = {
+						type=AIConditionType.IDExist,params={ID = 31455,{isNot = true}},                                 --指定单位存活：ID = 单位ID，isNot = 存活判断（true = 单位不存在时条件满足， false = 单位存在时条件满足（当isNot = false时，isNot可以不配置））
+				     },
+			 action = {actionType = FightUIType.Escape,},							                         --逃跑
+			 chooseTarget = {
+					 type = AITargetType.Me,                                                                                 --自己
+					},	
+              },
+}
+
 FightAIDB[100] = 
 {
 	name  = '返生雪莲AI--不攻击，只防御',
@@ -369,7 +433,8 @@ FightAIDB[101] =
 	
 		condition = 
 		{
-		           type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},----每回合释放雷相性法攻技能
+		           {type=AIConditionType.RoundInterval,params={period = 3,startRound = 3},},----每回合释放雷相性法攻技能
+			   {type=AIConditionType.BuffStatus,params={isEnemy = true,buffID = 67},},
 		},		
 		action = 
 		{ 			
@@ -383,8 +448,8 @@ FightAIDB[101] =
 	[2] = {	
 		condition = 
 		{
-		           type=AIConditionType.AttrPercent,params={ ID = 25501,type = AIAttrType.Hp,relation ="<=",value = 1},  --------第二回合开始，指定回合间隔对任意玩家角色施加混乱buff技能                                                      
-		},		
+		           {type=AIConditionType.RoundInterval,params={period = 1,startRound = 1},},----每回合释放雷相性法攻技能		
+	        },		
 		action = 
 		{ 			
 			   actionType = FightUIType.UseSkill,params ={skillID ={1052}},
@@ -395,6 +460,7 @@ FightAIDB[101] =
 		},
 	},
 }
+
 ---------------------------------------------迷雾林副本ai-----------------------------------------------
 
 FightAIDB[150] = {

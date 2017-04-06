@@ -13,6 +13,7 @@ int RPCEngine::_arpc_ref;
 int RPCEngine::_debug_ref;
 ByteBuffer RPCEngine::_s_buffer;
 lua_State* RPCEngine::m_pLuaState;
+bool RPCEngine::error = false;
 
 void RPCEngine::init(lua_State* L)
 {
@@ -178,6 +179,11 @@ AppMsg* RPCEngine::genRPC(lua_State *L, int offset)
     pMsg->msgFlags = 0;
     pMsg->msgId = 0;
     pMsg->context = g_world.getWorldId();
+	ASSERT_(buffer.size() < _MaxMsgLength);
+	if(buffer.size() > _MaxMsgLength) {
+		TRACE3_L0("RPC length execeed!eventID:%x,sourceID:%d,length:%ld\n",nEventID,nSrcID,buffer.size());
+		return NULL;
+	}
 	pMsg->msgLen = buffer.size();
     return pMsg;
 }
@@ -359,6 +365,8 @@ void RPCEngine::resumemap(lua_State *L, ByteBuffer &buffer)
 		int nStrStart;
 		long long nKey;
 		long long nValue;
+		const char *strKey = 0;
+		const char *strVal = 0;
 		buffer >> nType;
 		switch(nType){
 			case LUA_TNUMBER:
@@ -368,6 +376,7 @@ void RPCEngine::resumemap(lua_State *L, ByteBuffer &buffer)
 			case LUA_TSTRING:
 				buffer >> nStrLen;
 				nStrStart = buffer.rpos();
+				strKey = buffer.contents() + nStrStart;
 				buffer.rpos(nStrStart + nStrLen);
 				lua_pushlstring(L, (const char *)(buffer.contents() + nStrStart), nStrLen);
 				break;
@@ -387,6 +396,7 @@ void RPCEngine::resumemap(lua_State *L, ByteBuffer &buffer)
 			case LUA_TSTRING:
 				buffer >> nStrLen;
 				nStrStart = buffer.rpos();
+				strVal = buffer.contents() + nStrStart;
 				buffer.rpos(nStrStart + nStrLen);
 				lua_pushlstring(L, (const char *)(buffer.contents() + nStrStart), nStrLen);
 				break;

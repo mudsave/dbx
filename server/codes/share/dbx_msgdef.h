@@ -13,15 +13,13 @@
 enum msg_id
 {
     C_DOACTION = 1,
-    C_DOSQL,
-    C_SP_FROM_CPP
+    C_DOSQL
 };
 
 enum action_res
 {
     S_DOACTION_RESULT = 1001,
-    S_DOSQL_RESULT,
-    S_SP_CPP_RESULT
+    S_DOSQL_RESULT
 };
 
 enum DataType

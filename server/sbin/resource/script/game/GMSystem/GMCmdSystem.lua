@@ -7,6 +7,27 @@ local tonumber,type = tonumber,type
 
 local GMSystem = ShellSystem:getInstance()
 
+function GMSystem:yooo()
+	local f = io.open("test","w")
+	f:write("创建了多少个事件",tostring(Event.events))
+	f:close()
+end
+
+ function GMSystem:send_mail_pack(player,...)
+	local kinds = select('#',...)
+	if kinds > 0 then
+		local items = {}
+		for index = 1,kinds do
+			local id = select(index,...)
+			items[#items + 1] = {
+				ID = tonumber(id),
+				Amount = 1,
+			}
+		end
+		g_mailMgr:addPlayerItems(player,items)
+	end
+end
+
 function GMSystem:addXP(player,xpValue)
 	print "玩家设置经验"
 	player:addAttrValue(player_xp,tonumber(xpValue))
@@ -22,6 +43,11 @@ function GMSystem:goto( player, mapID, x, y, targetID, npc)
 		return
 	end
 	g_sceneMgr:doSwitchScence(player:getID(), mapID ,x ,y)
+end
+
+--测试猎金场
+function GMSystem:openGoldHunt( player)
+	ActivityManager.getInstance():openActivity(4, "GoldHuntZone1")
 end
 
 -- 增加道具指令
@@ -65,7 +91,6 @@ function GMSystem:add_pet_extends(player,...)
 				handler:addSkill(PetSkill(id,3))
 			end
 		end
-		handler:sendFreshs(player)
 		handler:sendPassed(player)
 		pet:flushPropBatch(player)
 	else

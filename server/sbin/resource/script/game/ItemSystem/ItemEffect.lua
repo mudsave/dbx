@@ -187,7 +187,7 @@ function ItemEffect.changeBindMoney(targetEntity, medicament, medicamentConfig)
 	local changeBindMoney = medicamentConfig.ReactExtraParam1
 	local fun_Change = ItemEffectFuncs[changeBindMoney]
 	if fun_Change then
-		changeBindMoney = fun_Change(targetEntity)
+		changeBindMoney = fun_Change(medicament)
 	end
 	curBindMoney = curBindMoney + changeBindMoney
 	if curBindMoney < 0 then
@@ -207,7 +207,7 @@ function ItemEffect.changeMoney(targetEntity, medicament, medicamentConfig)
 	local changeMoney = medicamentConfig.ReactExtraParam1
 	local fun_Change = ItemEffectFuncs[changeMoney]
 	if fun_Change then
-		changeMoney = fun_Change(targetEntity)
+		changeMoney = fun_Change(medicament)
 	end
 	curMoney = curMoney + changeMoney
 	if curMoney < 0 then
@@ -228,7 +228,7 @@ function ItemEffect.changeExpValue(targetEntity, medicament, medicamentConfig, t
 	local changeExpValue = medicamentConfig.ReactExtraParam1
 	local fun_Change = ItemEffectFuncs[changeExpValue]
 	if fun_Change then
-		changeExpValue = fun_Change(curEntity)
+		changeExpValue = fun_Change(medicament)
 	end
 
 	if instanceof(curEntity,Player)then
@@ -287,7 +287,7 @@ function ItemEffect.changeTaoValue(targetEntity, medicament, medicamentConfig, t
 	local changeTaoValue = medicamentConfig.ReactExtraParam1
 	local fun_Change = ItemEffectFuncs[changeTaoValue]
 	if fun_Change then
-		changeTaoValue = fun_Change(curEntity)
+		changeTaoValue = fun_Change(medicament)
 	end
 	if instanceof(curEntity,Player)then
 		curEntity:addAttrValue(player_tao,changeTaoValue)
@@ -317,7 +317,7 @@ function ItemEffect.changePotential(targetEntity, medicament, medicamentConfig)
 	local changePotential = medicamentConfig.ReactExtraParam1
 	local fun_Change = ItemEffectFuncs[changePotential]
 	if fun_Change then
-		changePotential = fun_Change(targetEntity)
+		changePotential = fun_Change(medicament)
 	end
 	curPotential = curPotential + changePotential
 	targetEntity:setAttrValue(player_pot, curPotential)
@@ -333,7 +333,7 @@ function ItemEffect.changeExpoint(targetEntity, medicament, medicamentConfig)
 	local changExpoint = medicamentConfig.ReactExtraParam1
 	local func_Change = ItemEffectFuncs[changeExpoint]
 	if func_Change then
-		changeExpoint = func_Change(targetEntity)
+		changeExpoint = func_Change(medicament)
 	end
 	curExpoint = curExpoint + changExpoint
 	targetEntity:setAttrValue(player_expoint, curExpoint)
@@ -949,8 +949,11 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 		
 		local packetHandler = targetEntity:getHandler(HandlerDef_Packet)
 		local packet = packetHandler:getPacket()
-		
-		local item = g_itemMgr:createItem(medicamentConfig.ReactExtraParam1, 1)
+		local itemLevel = medicamentConfig.UseNeedLvl
+		if itemLevel == -1 then
+			itemLevel = targetEntity:getLevel()
+		end
+		local item = g_itemMgr:createItem(medicamentConfig.ReactExtraParam1, 1,itemLevel)
 		packet:removeItemsFromGrid(packIndex, gridIndex, false)
 		packet:addItemsToGrid(item, packIndex, gridIndex, true)
 		treasureID = tItemDB[medicamentConfig.ReactExtraParam1].ReactExtraParam1
@@ -969,6 +972,7 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 			return removeFlag
 		end
 	end
+	return removeFlag
 end
 
 -- 为宠物添加技能
@@ -998,6 +1002,8 @@ function ItemEffect.addPetSkill(targetEntity,item,itemConfig,targetEntityID)
 	local errCode = skillHandler:canRead(item:getItemID())
 	if errCode == 0 then
 		skillHandler:readBook(item:getItemID())
+		skillHandler:sendFreshs(targetEntity)
+		skillHandler:sendPassed(targetEntity)
 		return true
 	end
 	g_eventMgr:fireRemoteEvent(
@@ -1192,3 +1198,23 @@ function ItemEffect.changeMpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 	return removeFlag
 end
 
+-- 添加宠物研发技能
+function ItemEffect.addPetExtend(targetEntity,item,itemConfig,targetEntityID)
+	local handler = targetEntity:getHandler(HandlerDef_Pet)
+	local pet = handler:getPet(targetEntityID) or handler:getPet(handler:getFollowPetID())
+	if not pet then
+		return false,6
+	end
+	local skillID = itemConfig.ReactExtraParam1
+	local skillHandler = pet:getHandler(HandlerDef_PetSkill)
+	local skill = skillHandler:getSkill(skillID) 
+	if skill and not skill:isRemoved() then
+		return false,22
+	end
+	if not skillHandler:canLearnExtend(skillID) then
+		return false,21
+	end
+	skillHandler:addSkill(PetSkill(skillID,PetSkillCategory.Extend,1))
+	skillHandler:sendFreshs(targetEntity)
+	return true
+end
