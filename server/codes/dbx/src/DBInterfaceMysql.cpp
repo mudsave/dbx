@@ -93,6 +93,7 @@ public:
 
 DBInterfaceMysql::DBInterfaceMysql(int p_dbInterfaceID)
     :DBInterface(p_dbInterfaceID),
+    m_lastQueryStatement(""),
     m_mysql(NULL)
 {
 }
@@ -116,6 +117,7 @@ bool DBInterfaceMysql::Initialize()
 
 bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue)
 {
+    m_lastQueryStatement = p_cmd;
     TRACE1_L0("DBInterfaceMysql::Query p_dbInterfaceID(%s).\n", p_cmd);
     if (m_mysql == NULL)
     {
@@ -126,7 +128,7 @@ bool DBInterfaceMysql::Query(const char *p_cmd, int p_size, DBIssueBase *p_issue
 
     if (mysql_real_query(m_mysql, p_cmd, p_size) != 0)
     {
-        TRACE0_ERROR("DBInterfaceMysql::SetIssueError1:mysql_real_query.\n");
+        //TRACE0_ERROR("DBInterfaceMysql::SetIssueError1:mysql_real_query.\n");
         SetIssueError(p_issue);
         return false;
     }
@@ -226,7 +228,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
             }
             else
             {
-                TRACE0_ERROR("DBInterfaceMysql::SetIssueError2:mysql_field_count(m_mysql) != 0.\n");
+                //TRACE0_ERROR("DBInterfaceMysql::SetIssueError2:mysql_field_count(m_mysql) != 0.\n");
                 SetIssueError(p_issue);
                 return false;
             }
@@ -234,7 +236,7 @@ bool DBInterfaceMysql::ProcessQueryResult(DBIssueBase *p_issue)
 
         if ((status = mysql_next_result(m_mysql)) > 0)
         {
-            TRACE0_ERROR("DBInterfaceMysql::SetIssueError3:mysql_next_result(m_mysql)) > 0.\n");
+            //TRACE0_ERROR("DBInterfaceMysql::SetIssueError3:mysql_next_result(m_mysql)) > 0.\n");
             SetIssueError(p_issue);
             return false;
         }
@@ -296,6 +298,6 @@ void DBInterfaceMysql::Disconnect()
 
 void DBInterfaceMysql::SetIssueError(DBIssueBase *p_issue)
 {
-    TRACE2_ERROR("DBInterfaceMysql::SetIssueError:mysql_errno(%i),mysql_error(%s).\n", mysql_errno(m_mysql), mysql_error(m_mysql));
+    TRACE3_ERROR("DBInterfaceMysql::SetIssueError for statement(%s):mysql_errno(%i),mysql_error(%s).\n", m_lastQueryStatement.c_str(), mysql_errno(m_mysql), mysql_error(m_mysql));
     p_issue->SetError(mysql_errno(m_mysql), mysql_error(m_mysql));
 }

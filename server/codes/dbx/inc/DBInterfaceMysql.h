@@ -53,6 +53,8 @@ private:
     //用来创建回调消息
     DbxMessageBuilder<DbxMessage> m_SCMsgBuilder;
 
+    std::string m_lastQueryStatement;
+
 protected:
     MYSQL *m_mysql;
 };
