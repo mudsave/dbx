@@ -1,0 +1,8 @@
+call sp_Login('testfight', '1', 5);
+
+
+# 使用exec_sp调用某个存储过程：call sp_Login('xxt', '1', 1); 
+python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py exec_sp -h 172.16.2.230 -p 3002 -m sp_Login sort="usn,pwd,offTime" usn='xxt' pwd=1 offTime=1
+
+# 测试stress_test
+python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py stress_test -h 172.16.2.230 -p 3002
