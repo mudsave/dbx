@@ -98,10 +98,18 @@ class DbxMessage(AppMsg):
 		# 以下是协议的数据
 		self.attribute_cols = 0		# int
 		self.attribute_count = 0	# int
+
+		self.m_nTempObjId = 0		# int	流水号
+		self.m_nSessionId = 0		# int	sessionID
+		self.m_spId = 0				# int	存储过程ID
+		self.m_bEnd = True			# bool	
+		self.m_bNeedCallback = True	# bool	
+		self.m_nLevel = 0			# short	
+
 		self.content_offset = 0		# int
 	
 	def size(self):
-		return AppMsg.size(self) + struct.calcsize("=iii") + self.getParamSize()
+		return AppMsg.size(self) + struct.calcsize("=iiiiibbhi") + self.getParamSize()
 	
 	def getParamSize(self):
 		if len(self.typeList) == 0:
@@ -116,6 +124,14 @@ class DbxMessage(AppMsg):
 		AppMsg.read(self, reader)
 		self.attribute_cols = reader.readInt32()
 		self.attribute_count = reader.readInt32()
+
+		self.m_nTempObjId = reader.readInt32()
+		self.m_nSessionId = reader.readInt32()
+		self.m_spId = reader.readInt32()
+		self.m_bEnd = reader.readBool()
+		self.m_bNeedCallback = reader.readBool()
+		self.m_nLevel = reader.readInt16()
+
 		self.content_offset = reader.readInt32()
 		
 	def readContent(self, reader):
@@ -141,6 +157,14 @@ class DbxMessage(AppMsg):
 		AppMsg.write(self, writer)
 		writer.writeInt32(self.attribute_cols)
 		writer.writeInt32(self.attribute_count)
+
+		writer.writeInt32(self.m_nTempObjId)
+		writer.writeInt32(self.m_nSessionId)
+		writer.writeInt32(self.m_spId)
+		writer.writeBool(self.m_bEnd)
+		writer.writeBool(self.m_bNeedCallback)
+		writer.writeInt16(self.m_nLevel)
+
 		writer.writeInt32(self.content_offset)
 	
 	def writeContent(self, writer):
@@ -242,36 +266,36 @@ class DbxResultMessage(DbxMessage):
 		writer.writeInt16(self.m_nLevel)
 		
 		
-class CCSResultMsg(DbxResultMessage):
+class CCSResultMsg(DbxMessage):
 	
 	def __init__(self):
-		DbxResultMessage.__init__(self)
+		DbxMessage.__init__(self)
 		
 	def size(self):
-		return DbxResultMessage.size(self)
+		return DbxMessage.size(self)
 	
 	def read(self, reader):
-		DbxResultMessage.read(self, reader)
+		DbxMessage.read(self, reader)
 		self.readContent(reader)
 	
 	def write(self, writer):
-		DbxResultMessage.write(self, writer)
+		DbxMessage.write(self, writer)
 		self.writeContent(writer)
 
 
-class CSCResultMsg(DbxResultMessage):
+class CSCResultMsg(DbxMessage):
 	
 	def __init__(self):
-		DbxResultMessage.__init__(self)
+		DbxMessage.__init__(self)
 		
 	def size(self):
-		return DbxResultMessage.size(self)
+		return DbxMessage.size(self)
 	
 	def read(self, reader):
-		DbxResultMessage.read(self, reader)
+		DbxMessage.read(self, reader)
 		self.readContent(reader)
 	
 	def write(self, writer):
-		DbxResultMessage.write(self, writer)
+		DbxMessage.write(self, writer)
 		self.writeContent(writer)
 
