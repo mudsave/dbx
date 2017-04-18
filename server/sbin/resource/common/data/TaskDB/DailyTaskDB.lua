@@ -23,7 +23,7 @@ DailyTaskDB =
 		taskType2 = TaskType2.Daily,		-- 任务类型
 		content = "<font color ='#FFFFFFFF'>通过</font><font color = '#FFFFFF00'>任务、日常活动、野外自动遇怪</font><font color ='#FFFFFFFF'>，消灭与你等级相近的妖物。</font><font color = '#FFFFFF00'>（当前：已消灭妖物%d只）</font><font color = '#F89CFF0'>（目标：总共消灭%d只妖物）</font>",		-- 任务日志中显示的，任务内容
 		recdesc ="<font color ='#FFFFFFFF'>大批妖物正在洛阳周边兴妖作乱，威胁百姓性命安全，伏完将军目前忙得抽不开身，你需要替他前往守卫边境，击杀200只等级相近</font><font color = '#F89CFF0'>（等级差5级以内）</font><font color ='#FFFFFFFF'>的妖物。完成任务可获得经验与绑银。</font>",
-		rewards ={	
+	rewards ={	
 			[TaskRewardList.player_xp] 	= 80000,	
 			[TaskRewardList.subMoney]	= 100000,	
 		},

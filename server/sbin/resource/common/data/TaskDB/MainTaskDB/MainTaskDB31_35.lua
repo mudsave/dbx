@@ -19,10 +19,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 30000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 30000,    --绑银
-			[TaskRewardList.player_pot] = 9000,  	--人物潜能
+			[TaskRewardList.player_xp] = 8000,   --玩家经验
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4000,      --宠物经验
+			[TaskRewardList.subMoney] = 83000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -77,10 +77,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		    	[TaskRewardList.player_xp] = 30000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+		    	[TaskRewardList.player_xp] = 8000,   --玩家经验
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4000,      --宠物经验 
+			[TaskRewardList.subMoney] = 84000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -155,10 +155,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6000,   --玩家经验
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3000,      --宠物经验
+			[TaskRewardList.subMoney] = 85000,    --绑银
 		},
 		consume =
 		{
@@ -209,9 +209,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 		    	[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4000,      --宠物经验
+			[TaskRewardList.subMoney] = 86000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -283,9 +283,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4000,      --宠物经验
+			[TaskRewardList.subMoney] = 87000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -362,10 +362,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 88000,    --绑银
 		},
 		consume =
 		{
@@ -399,10 +399,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 89000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -479,10 +479,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 89000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -576,10 +576,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 90000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -631,10 +631,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 91000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -719,10 +719,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 4600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 92000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -810,10 +810,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 93000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -855,10 +855,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 31000,    --绑银
-			[TaskRewardList.player_pot] = 9300,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 94000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -891,10 +891,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.pet_xp] = 5600,      --宠物经验
+			[TaskRewardList.subMoney] = 3100,    --绑银
+			[TaskRewardList.player_pot] = 95000,  	--人物潜能
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -943,10 +943,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 6200,   --玩家经验
+			[TaskRewardList.player_pot] = 5600,  	--人物潜能
+			[TaskRewardList.pet_xp] = 3100,      --宠物经验
+			[TaskRewardList.subMoney] = 96000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -991,10 +991,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 9600,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4800,      --宠物经验
+			[TaskRewardList.subMoney] = 97000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1043,10 +1043,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 9600,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4800,      --宠物经验
+			[TaskRewardList.subMoney] = 98000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1094,10 +1094,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 100000,    --绑银
 		},
 		consume =
 		{
@@ -1136,10 +1136,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 101000,    --绑银
 		},
 		consume =
 		{
@@ -1183,10 +1183,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 9600,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4800,      --宠物经验
+			[TaskRewardList.subMoney] = 102000,    --绑银
 		},
 		consume =
 		{
@@ -1263,10 +1263,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 103000,    --绑银
 		},
 		consume =
 		{
@@ -1318,10 +1318,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 9600,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 4800,      --宠物经验
+			[TaskRewardList.subMoney] = 104000,    --绑银
 		},
 		consume =
 		{
@@ -1393,10 +1393,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 99000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1438,10 +1438,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 5000,      --宠物经验
-			[TaskRewardList.subMoney] = 32000,    --绑银
-			[TaskRewardList.player_pot] = 9600,  	--人物潜能
+			[TaskRewardList.player_xp] = 5000,   --玩家经验
+			[TaskRewardList.player_pot] = 5700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 2500,      --宠物经验
+			[TaskRewardList.subMoney] = 105000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1690,7 +1690,7 @@ MainTaskDB31_35 =
 		{
 		[TaskRewardList.player_xp] = 8000,   --玩家经验
                 [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
+                [TaskRewardList.subMoney] = 33000,    --绑银 
                 [TaskRewardList.player_pot] = 9900,  	--人物潜能
 	 
 		},
@@ -1863,7 +1863,7 @@ MainTaskDB31_35 =
 						},
 					        },
 				                },
-				                {type="openDialog", param={dialogID = 12018},},
+				                {type="openDialog", param={dialogID = 1218},},
 						
 			},
 	},
@@ -1877,7 +1877,7 @@ MainTaskDB31_35 =
 		preTaskData = {1206},	--任务前置任务没有填nil
 		nextTaskID = 1208,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1238,	--交任务对话ID没有填nil
+		endDialogID =1222,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -1898,10 +1898,10 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 204,         --
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1236,        --动作结束打开的对话框
+			dialogID = 1220,        --动作结束打开的对话框
 			npcsData =			--刷出npc数据
 			{
-			                {npcID = 20729, x = 132, y = 119,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
+			                {npcID = 20708, x = 132, y = 119,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
 					{npcID = 20745, x = 130, y = 118,  noDelete = true},
 					{npcID = 20747, x = 135, y = 118,  noDelete = true},
 					{npcID = 20744, x = 131, y = 116,  noDelete = true},
@@ -1927,7 +1927,7 @@ MainTaskDB31_35 =
 						},
 					},
 			},
-		        {type="openDialog", param={dialogID = 1238},},
+		        {type="openDialog", param={dialogID = 1222},},
 			},
 		},
 	},
@@ -1941,7 +1941,7 @@ MainTaskDB31_35 =
 		preTaskData = {1207},	--任务前置任务没有填nil
 		nextTaskID = 1209,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1241,	--交任务对话ID没有填nil
+		endDialogID =1225,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -1962,7 +1962,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 205,         --
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1239,        --动作结束打开的对话框
+			dialogID = 1223,        --动作结束打开的对话框
 			npcsData =			--刷出npc数据
 			{
 		
@@ -2012,7 +2012,7 @@ MainTaskDB31_35 =
 						},
 					},
 			},
-		    {type="openDialog", param={dialogID = 1241},},
+		    {type="openDialog", param={dialogID = 1225},},
 			},
 		},
 	},
@@ -2021,12 +2021,12 @@ MainTaskDB31_35 =
          {                  --[[降服孙胜--]]
 
 		name = "降服孙胜",	--任务名字
-		startNpcID = 20710,	--任务起始npc
-		endNpcID = 20709,		--任务结束npc
+		startNpcID = 20731,	--任务起始npc
+		endNpcID = 20730,		--任务结束npc
 		preTaskData = {1208},	--任务前置任务没有填nil
 		nextTaskID = {1210,1211,1212,1213,1214,1215},	--任务后置任务没有填nil
-		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1245,	--交任务对话ID没有填nil
+		startDialogID = 1225,	--接任务对话ID没有填nil
+		endDialogID =nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -2047,7 +2047,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 206,         --
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1242,        --动作结束打开的对话框
+			dialogID = 1226,        --动作结束打开的对话框
 			npcsData =			--刷出npc数据
 			{
 			                {npcID = 20709, x = 98, y = 135,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
@@ -2076,7 +2076,7 @@ MainTaskDB31_35 =
 						},
 					},
 			},
-		        {type="openDialog", param={dialogID = 1245},},
+		        {type="openDialog", param={dialogID = 1229},},
 			
 			},
 		},
@@ -2085,12 +2085,12 @@ MainTaskDB31_35 =
 [1210] =
 	{
 		name = "门派求援",	--任务名字
-		startNpcID = 0,	--任务起始npc
+		startNpcID = nil,	--任务起始npc
 		endNpcID = 20004,	--任务结束npc
 		preTaskData ={1209}, --前置任务ID 
 		nextTaskID = 1216,	--任务后置任务没有填nil
 		startDialogID =	nil,	--
-		endDialogID = 1246,	--
+		endDialogID = 1230,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.QYD,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2124,19 +2124,19 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-				{type="openDialog", param={dialogID = 1246},},
+				{type="openDialog", param={dialogID = 1230},},
 			        },
 		},
 	},
 [1211] =
 	{
 		name = "门派求援",	--任务名字
-		startNpcID = 0,	--任务起始npc
+		startNpcID = nil,	--任务起始npc
 		endNpcID = 20005,	--任务结束npc
 		preTaskData ={1209}, --前置任务ID 
 		nextTaskID = 1226,	--任务后置任务没有填nil
 		startDialogID =	nil,	--
-		endDialogID = 1247,	--
+		endDialogID = 1231,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.TYD,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2170,7 +2170,7 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-				{type="openDialog", param={dialogID = 1247},},
+				{type="openDialog", param={dialogID = 1231},},
 			        },
 		},
 	},
@@ -2178,12 +2178,12 @@ MainTaskDB31_35 =
 [1212] =
 	{
 		name = "门派求援",	--任务名字
-		startNpcID =0,	--任务起始npc
+		startNpcID =nil,	--任务起始npc
 		endNpcID = 20006,	--任务结束npc
 		preTaskData ={1209}, --前置任务ID 
 		nextTaskID = 1227,	--任务后置任务没有填nil
 		startDialogID =	nil,	--
-		endDialogID = 1248,	--
+		endDialogID = 1232,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.JXS,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2217,19 +2217,19 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-				{type="openDialog", param={dialogID = 1248},},
+				{type="openDialog", param={dialogID = 1232},},
 			        },
 	},
 	},
 [1213] =
 	{
 		name = "门派求援",	--任务名字
-		startNpcID = 0,	--任务起始npc
+		startNpcID = nil,	--任务起始npc
 		endNpcID = 20007,	--任务结束npc
 		preTaskData ={1209}, --前置任务ID 
 		nextTaskID = 1228,	--任务后置任务没有填nil
 		startDialogID =	nil,	--
-		endDialogID = 1249,	--
+		endDialogID = 1233,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.PLG,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2263,19 +2263,19 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-		                {type="openDialog", param={dialogID = 1249},},
+		                {type="openDialog", param={dialogID = 1233},},
 		      	        },
 	                  },
 	},
 [1214] =
 	{
 		name = "门派求援",	--任务名字
-		startNpcID = 0,	--任务起始npc
+		startNpcID = nil,	--任务起始npc
 		endNpcID = 20008,	--任务结束npc
 		preTaskData ={1209}, --前置任务ID 
 		nextTaskID = 1229,	--任务后置任务没有填nil
 		startDialogID =	nil,	--
-		endDialogID = 1250,	--
+		endDialogID = 1234,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.ZYM,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2309,19 +2309,19 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-				{type="openDialog", param={dialogID = 1250},},
+				{type="openDialog", param={dialogID = 1234},},
 			        },
 	                  },
 	},
 [1215] =
 	{
 		name = "门派求援",	--任务名字
-		startNpcID = 0,	--任务起始npc
+		startNpcID = nil,	--任务起始npc
 		endNpcID = 20009,	--任务结束npc
 		preTaskData ={1209}, --前置任务ID 
 		nextTaskID = 1230,	--任务后置任务没有填nil
 		startDialogID =	nil,	--
-		endDialogID = 1251,	--
+		endDialogID = 1235,	--
 		taskType2 = TaskType2.Main, --任务类型
 		school = SchoolType.YXG,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2355,7 +2355,7 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-				{type="openDialog", param={dialogID = 1251},},
+				{type="openDialog", param={dialogID = 1235},},
 			        },
 	                  },
 	},
@@ -2367,7 +2367,7 @@ MainTaskDB31_35 =
 		preTaskData = {1210},--前置任务ID 
 		nextTaskID = 1217,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1258,	--
+		endDialogID = 1242,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school =SchoolType.QYD,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2403,7 +2403,7 @@ MainTaskDB31_35 =
 							},
 						},
 				},
-				{type="openDialog", param={dialogID = 1258},},	
+				{type="openDialog", param={dialogID = 1242},},	
 			},
 	},
 	},
@@ -2415,7 +2415,7 @@ MainTaskDB31_35 =
 		preTaskData = {1211}, --前置任务ID 
 		nextTaskID = 1217,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1293,	--
+		endDialogID = 1243,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.TYD,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2451,7 +2451,7 @@ MainTaskDB31_35 =
 							},
 						},
 				},
-				{type="openDialog", param={dialogID = 1293},},	
+				{type="openDialog", param={dialogID = 1243},},	
 			},
 	},
 	},
@@ -2463,7 +2463,7 @@ MainTaskDB31_35 =
 		preTaskData = {1212},--前置任务ID 
 		nextTaskID = 1217,	--任务后置任务没有填nil
 		startDialogID =nil, 	--
-		endDialogID = 1294,	--
+		endDialogID = 1244,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.JXS,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2499,7 +2499,7 @@ MainTaskDB31_35 =
 							},
 						},
 				},
-				{type="openDialog", param={dialogID = 1294},},	
+				{type="openDialog", param={dialogID = 1244},},	
 			},
 	},
 	},
@@ -2511,7 +2511,7 @@ MainTaskDB31_35 =
 		preTaskData = {1213}, --前置任务ID 
 		nextTaskID = 1217,	--任务后置任务没有填nil
 		startDialogID =nil, 	--
-		endDialogID = 1295,	--
+		endDialogID = 1245,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.PLG,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2547,7 +2547,7 @@ MainTaskDB31_35 =
 							},
 						},
 				},
-				{type="openDialog", param={dialogID = 1295},},	
+				{type="openDialog", param={dialogID = 1245},},	
 			},
 	},
 	},
@@ -2559,7 +2559,7 @@ MainTaskDB31_35 =
 		preTaskData = {1214}, --前置任务ID 
 		nextTaskID = 1217,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1296,	--
+		endDialogID = 1246,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.ZYM,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2595,7 +2595,7 @@ MainTaskDB31_35 =
 							},
 						},
 				},
-				{type="openDialog", param={dialogID = 1296},},	
+				{type="openDialog", param={dialogID = 1246},},	
 			},
 	},
 	},
@@ -2607,7 +2607,7 @@ MainTaskDB31_35 =
 		preTaskData = {1215},--前置任务ID 
 		nextTaskID = 1217,	--任务后置任务没有填nil
 		startDialogID =nil, 	--
-		endDialogID = 1297,	--
+		endDialogID = 1247,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = SchoolType.YXG,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2643,7 +2643,7 @@ MainTaskDB31_35 =
 							},
 						},
 				},
-				{type="openDialog", param={dialogID = 1297},},	
+				{type="openDialog", param={dialogID = 1247},},	
 			},
 	},
 	},
@@ -2656,7 +2656,7 @@ MainTaskDB31_35 =
 		preTaskData =  {condition = "or",{1216,1226,1227,1228,1229,1230}},      --前置任务ID 
 		nextTaskID = 1218,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1293,	--
+		endDialogID = 1254,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2700,7 +2700,7 @@ MainTaskDB31_35 =
 				},
 				[TaskStatus.Done] =
 					{
-					{type="openDialog", param={dialogID = 1293},},		
+					{type="openDialog", param={dialogID = 1254},},		
 			},
 	},
 	},
@@ -2713,7 +2713,7 @@ MainTaskDB31_35 =
 		preTaskData = {1217},	--任务前置任务没有填nil
 		nextTaskID = 1219,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1262,	--交任务对话ID没有填nil
+		endDialogID =1257,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -2734,7 +2734,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 207,         --脚本战斗
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1260,        --动作结束打开的对话框
+			dialogID = 1255,        --动作结束打开的对话框
 			npcsData =
 			{
 			},                       --刷出npc数据
@@ -2758,7 +2758,7 @@ MainTaskDB31_35 =
 						},
 					 },
                           },
-		        {type="openDialog", param={dialogID = 1262},},
+		        {type="openDialog", param={dialogID = 1257},},
 			},
 		},
 	},
@@ -2772,7 +2772,7 @@ MainTaskDB31_35 =
 		preTaskData = {1217},       --前置任务ID 
 		nextTaskID = 1219,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1267,	--
+		endDialogID = 1262,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2794,7 +2794,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 208,         --脚本战斗
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1265,        --动作结束打开的对话框
+			dialogID = 1260,        --动作结束打开的对话框
 			npcsData =     
 			{
 			                {npcID = 20713, x = 118, y = 148,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
@@ -2822,7 +2822,7 @@ MainTaskDB31_35 =
 						},
 					},
 		           	},
-					{type="openDialog", param={dialogID = 1267},},	
+					{type="openDialog", param={dialogID = 1262},},	
 			},
 	},
 	},
@@ -2835,7 +2835,7 @@ MainTaskDB31_35 =
 		preTaskData = {1219},       --前置任务ID 
 		nextTaskID = 1221,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1270,	--
+		endDialogID = 1265,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2857,7 +2857,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 209,         --脚本战斗
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1268,        --动作结束打开的对话框
+			dialogID = 1263,        --动作结束打开的对话框
 			npcsData =     
 			{
 			                {npcID = 20715, x = 207, y = 80,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
@@ -2887,7 +2887,7 @@ MainTaskDB31_35 =
 						},
 					},
 		           	},
-					{type="openDialog", param={dialogID = 1270},},	
+					{type="openDialog", param={dialogID = 1265},},	
 			},
 	},
 	},
@@ -2901,7 +2901,7 @@ MainTaskDB31_35 =
 		preTaskData = {1220},       --前置任务ID 
 		nextTaskID = 1222,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1274,	--
+		endDialogID = 1269,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -2923,7 +2923,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 210,         --脚本战斗
 			lastMine = false,	--是否为最后一个雷
-			dialogID = 1271,        --动作结束打开的对话框
+			dialogID = 1266,        --动作结束打开的对话框
 			npcsData =     
 			{
 			{npcID = 20716, x = 90, y = 96, actionID = 5, magicID = 115, noDelete = true},
@@ -2939,7 +2939,7 @@ MainTaskDB31_35 =
 			mineIndex = 2,		--第二个雷
 			scriptID = 211,         --脚本战斗
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1273,        --动作结束打开的对话框
+			dialogID = 1268,        --动作结束打开的对话框
 			npcsData =     
 			{
 			{npcID = 20717, x = 79, y = 105, actionID = 5, magicID = 115, noDelete = true},
@@ -2972,10 +2972,11 @@ MainTaskDB31_35 =
 						npcs =
 						{
 						[1] ={npcID = 20733, taskID = {1220}, index = 1}, --删除俄何烧戈
+						[2] ={npcID = 20714, taskID = {1217}, index = 1}, --删除雪莲小妖
 						},
 					        },
 				                },
-					{type="openDialog", param={dialogID = 1274},},		
+					{type="openDialog", param={dialogID = 1269},},		
 			},
 	},
 	},
@@ -2989,7 +2990,7 @@ MainTaskDB31_35 =
 		preTaskData = {1221},       --前置任务ID 
 		nextTaskID = 1223,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1278,	--
+		endDialogID = 1273,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -3011,7 +3012,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 212,         --脚本战斗
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1275,        --动作结束打开的对话框
+			dialogID = 1270,        --动作结束打开的对话框
 			npcsData =     
 			{
 			                {npcID = 20718, x = 48, y = 137,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
@@ -3042,7 +3043,7 @@ MainTaskDB31_35 =
 					},
 		           	},
 				        {type="getItem", param = {itemID = 1041014, count = 1,}},			--获得指定数量的物品(参数物品ID，数量)
-					{type="openDialog", param={dialogID = 1278},},	
+					{type="openDialog", param={dialogID = 1273},},	
 			},
 	},
 	},
@@ -3055,7 +3056,7 @@ MainTaskDB31_35 =
 		preTaskData = {1222},	--任务前置任务没有填nil
 		nextTaskID = 1224,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1279,	--交任务对话ID没有填nil
+		endDialogID =1275,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -3071,14 +3072,13 @@ MainTaskDB31_35 =
 		{},
 		targets = --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{ 
-		--[1] = {type='Tarea',param = {mapID = 114, x = 18, y = 125, bor = true},},-------到达指定坐标
-		[1] = {type = "TcommitItem", param = {taskID = 1223,itemsInfo = {{itemID = 1041014, count = 1}},bor = true},},
+		[1] = {type = "TcommitItem", param = {taskID = 1223,itemsInfo = {{itemID = 1041014, count = 1}},bor = true},}
 		},
 		triggers = --任务触发器
 		{
 			[TaskStatus.Active] =
-				{
-                               {type="CreateIntemDirect",param = {taskID = 1223,itemsInfo = {{itemID = 1041014, count = 1}}},},
+			{
+                               {type="CreateIntemDirect",param = {taskID = 1223,itemsInfo = {{itemID = 1041014, count = 1}}}},
 			       {type="createPrivateTransfer",
 					param={
 							transfers =
@@ -3087,7 +3087,7 @@ MainTaskDB31_35 =
 							},
 			 			},
 			             },
-				},
+			},
 			[TaskStatus.Done]		=
 			{		
 			{type="deletePrivateNpc",
@@ -3096,10 +3096,10 @@ MainTaskDB31_35 =
 						{
 						[1] ={npcID = 20735, taskID = {1222}, index = 1}, --删除暗影魔姣
 						},
-					        },
-				                },
+					},
+			},
 			{type="getItem", param = {itemID = 1041015, count = 1,}},			--获得指定数量的物品(参数物品ID，数量)
-		        {type="openDialog", param={dialogID = 1279},}, 
+		        {type="openDialog", param={dialogID = 1275},}, 
 			},
 		},
 	},
@@ -3112,7 +3112,7 @@ MainTaskDB31_35 =
 		preTaskData = {1223},	--任务前置任务没有填nil
 		nextTaskID = 1225,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1281,	--交任务对话ID没有填nil
+		endDialogID =1277,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -3145,7 +3145,7 @@ MainTaskDB31_35 =
 			},
 			[TaskStatus.Done]=
 			{
-			{type="openDialog", param={dialogID = 1281},},
+			{type="openDialog", param={dialogID = 1276},},
 			},
 		},
 	},
@@ -3158,7 +3158,7 @@ MainTaskDB31_35 =
 		preTaskData = {1224},       --前置任务ID 
 		nextTaskID = 1301,	--任务后置任务没有填nil
 		startDialogID =nil,	--
-		endDialogID = 1286,	--
+		endDialogID = 1281,	--
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level =	{1,150},--等级限制
@@ -3180,7 +3180,7 @@ MainTaskDB31_35 =
 			mineIndex = 1,		--第一个雷
 			scriptID = 213,         --
 			lastMine = true,	--是否为最后一个雷
-			dialogID = 1283,        --动作结束打开的对话框
+			dialogID = 1278,        --动作结束打开的对话框
 			npcsData =			--刷出npc数据
 			{
 			},
@@ -3229,7 +3229,7 @@ MainTaskDB31_35 =
 					},
 				},
 		     },
-			{type="openDialog", param={dialogID = 1285},},
+			{type="openDialog", param={dialogID = 1280},},
 			},
 	},
 	},

@@ -593,7 +593,8 @@ function Ectype:onFightEnd(player, fightID, fightResult)
 		if not bValid then
 			-- 如果没有战斗失败动作，就返回上一步骤，以便能重新打开对话框进入战斗
 			self.curProgress = self.curProgress - 1
-		end
+		end	
+		self:sendEctypeMessageTip(31)
 	end
 	if not bValid then
 		local fightEnd = curProcedure.Goto.FightEnd
@@ -619,6 +620,18 @@ function Ectype:onFightEnd(player, fightID, fightResult)
 
 	-- 执行跳转步骤的动作
 	self:exeLogicProcedure(false)
+end
+
+-- 发送副本消息提示
+function Ectype:sendEctypeMessageTip(msgID)
+	local ectypePlayers = self:getEctypePlayers()
+	for playerID, _ in pairs(ectypePlayers) do
+		local player = g_entityMgr:getPlayerByID(playerID)
+		if player then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Ectype, msgID)
+			g_eventMgr:fireRemoteEvent(event, player)
+		end
+	end
 end
 
 -- 连环副本传送门
@@ -808,6 +821,9 @@ function Ectype:enterEctypeScene(player)
 	-- 拉玩家进入副本
 	if not self.ectypeMapID2 then
 		g_sceneMgr:enterEctypeScene(self.ectypeMapID, {player, self.ectypeConfig.EnterInitLocs.locX, self.ectypeConfig.EnterInitLocs.locY})
+		local msgID = 30
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, 2, msgID, string.utf8ToGbk(tEctypeDB[self.ectypeID].Name))
+		g_eventMgr:fireRemoteEvent(event, player)
 	else
 		g_sceneMgr:enterEctypeScene(self.ectypeMapID2,{player, self.ectypeConfig.EnterInitLocs2.locX, self.ectypeConfig.EnterInitLocs2.locY})
 	end
@@ -1023,7 +1039,17 @@ function Ectype:returnPublicScene(player)
 
 	-- 返回公共场景
 	local enterPos = ectypeHandler:getEnterPos()
-	g_sceneMgr:enterPublicScene(enterPos.mapID, player, enterPos.xPos, enterPos.yPos)
+	local mapID = enterPos.mapID
+	if mapID == 7 then
+		-- 如果是帮会场景地图
+		local factionID = player:getFactionDBID()
+		if factionID > 0 then
+			g_sceneMgr:enterFactionSceneAtBegin(factionID, {player, enterPos.xPos, enterPos.yPos})
+		end
+
+	else
+		g_sceneMgr:enterPublicScene(mapID, player, enterPos.xPos, enterPos.yPos)
+	end
 
 	-- 退出当前副本
 	self:removePlayer(player)

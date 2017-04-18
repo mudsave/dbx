@@ -240,7 +240,7 @@ function PlayerAttrbuteFormula.player_poi_resist(player)
 	return player_poi_phase*0.01+player_inc_poi_resist+player_inc_phase_resist
 end
 
---生命上限=（根骨*7.2+冰相性*6.4+（等级+4）^2/5-等级+196+生命上限加值+红蓝上限加值）*（1+生命值上限加成+红蓝上限加成）
+--生命上限=（根骨*7.2+冰相性*6.4+（等级+4）^2/5-等级+196+300+生命上限加值+红蓝上限加值）*（1+生命值上限加成+红蓝上限加成）
 function PlayerAttrbuteFormula.player_max_hp(player)
 	local player_sta = player:getAttrValue(player_sta)
 	local player_str = player:getAttrValue(player_str)
@@ -250,7 +250,7 @@ function PlayerAttrbuteFormula.player_max_hp(player)
 	local player_inc_max_hp = player:getAttrValue(player_inc_max_hp)/1000
 	local player_add_max_hm = player:getAttrValue(player_add_max_hm)
 	local player_inc_max_hm = player:getAttrValue(player_inc_max_hm)/1000
-	return math_floor((player_sta*7.2+player_str*2.4+player_ice_phase*6.4+math_pow(level+4,2)/5-level+196+player_add_max_hp+player_add_max_hm)*(1+player_inc_max_hp+player_inc_max_hm))
+	return math_floor((player_sta*7.2+player_str*2.4+player_ice_phase*6.4+math_pow(level+4,2)/5-level+196+300+player_add_max_hp+player_add_max_hm)*(1+player_inc_max_hp+player_inc_max_hm))
 end
 
 --法力上限=（身法*1.2+智力*4.8+冰相性*4+（等级+4）^2/5-等级+146+法力上限加值+红蓝上限加值）*（1+法力值上限加成+红蓝上限加成）
@@ -290,7 +290,7 @@ function PlayerAttrbuteFormula.player_mt(player)
 	return math_floor((player_int*4+player_thu_phase*10+math_pow(level+9,2)/10-level-9+player_add_mt+player_add_at_mt)*(1+player_inc_mt+player_inc_at_mt))
 end
 
---物理防御力=（根骨*2.4+武力*0.8+敏锐*0.8+土相性*5+（等级+9）^2/10-等级-9+物理防御力加值+全部防御力加值）*（1+物理防御力加成+全部防御力加成）
+--物理防御力=（根骨*2.4+武力*0.8+敏锐*0.8+土相性*5+（等级+9）^2/10-等级-9+30+物理防御力加值+全部防御力加值）*（1+物理防御力加成+全部防御力加成）
 function PlayerAttrbuteFormula.player_af(player)
 	local player_sta = player:getAttrValue(player_sta)
 	local player_str = player:getAttrValue(player_str)	
@@ -301,10 +301,10 @@ function PlayerAttrbuteFormula.player_af(player)
 	local player_inc_af = player:getAttrValue(player_inc_af)/1000
 	local player_add_af_mf = player:getAttrValue(player_add_af_mf)
 	local player_inc_af_mf = player:getAttrValue(player_inc_af_mf)/1000
-	return math_floor((player_sta*2.4+player_str*0.8+player_spi*0.8+player_soi_phase*5+math_pow(level+9,2)/10-level-9+player_add_af+player_add_af_mf)*(1+player_inc_af+player_inc_af_mf))
+	return math_floor((player_sta*2.4+player_str*0.8+player_spi*0.8+player_soi_phase*5+math_pow(level+9,2)/10-level-9+30+player_add_af+player_add_af_mf)*(1+player_inc_af+player_inc_af_mf))
 end
 
---法术防御力=（根骨*2.4+智力*0.8+敏锐*0.8+土相性*5+（等级+9）^2/10-等级-9+法术防御力加值+全部防御力加值）*（1+法术防御力加成+全部防御力加成）
+--法术防御力=（根骨*2.4+智力*0.8+敏锐*0.8+土相性*5+（等级+9）^2/10-等级-9+30+法术防御力加值+全部防御力加值）*（1+法术防御力加成+全部防御力加成）
 function PlayerAttrbuteFormula.player_mf(player)
 	local player_sta = player:getAttrValue(player_sta)
 	local player_int = player:getAttrValue(player_int)
@@ -315,7 +315,7 @@ function PlayerAttrbuteFormula.player_mf(player)
 	local player_inc_mf = player:getAttrValue(player_inc_mf)/1000
 	local player_add_af_mf = player:getAttrValue(player_add_af_mf)
 	local player_inc_af_mf = player:getAttrValue(player_inc_af_mf)/1000
-	return math_floor((player_sta*2.4+player_int*0.8+player_spi*0.8+player_soi_phase*5+math_pow(level+9,2)/10-level-9+player_add_mf+player_add_af_mf)*(1+player_inc_mf+player_inc_af_mf))
+	return math_floor((player_sta*2.4+player_int*0.8+player_spi*0.8+player_soi_phase*5+math_pow(level+9,2)/10-level-9+30+player_add_mf+player_add_af_mf)*(1+player_inc_mf+player_inc_af_mf))
 end
 
 --命中=（武力*0.2+智力*0.1+敏锐*0.7+（等级-1）*0.5+20+命中加值）*（1+命中加成）

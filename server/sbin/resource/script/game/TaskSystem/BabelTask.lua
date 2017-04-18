@@ -155,7 +155,7 @@ function BabelTask:addBabelReward()
 				end
 			end
 			if value then
-				reward[rewardType] = reward[rewardType] or 0 + value
+				reward[rewardType] = (reward[rewardType] or 0)+ value
 			end
 		end
 		curLayer = curLayer - 1

@@ -10,6 +10,8 @@ function TradeManager:__init()
 	self.requestList = {}
 	--记录p2p交易相关
 	self.tradeList = {}
+	--回购界面信息
+	self.buyBackInfo = {}
 end
 
 function TradeManager:__release()
@@ -81,6 +83,9 @@ function TradeManager:ptoNBuyBack(player, itemGuid, itemNum, moveItemInfo)
 				self:sendTradeMessage(player, 4)
 				return  
 			end
+			--回购界面物品信息删除
+			self:setBuyBackInfoNIL(itemGuid)
+			
 			player:setSubMoney(playerSubMoney-costSubMoney)
 			player:setMoney(playerMoney-costMoney)
 			player:flushPropBatch()
@@ -155,7 +160,6 @@ function TradeManager:onMoveItem(player, itemGuid, itemNum, moveItemInfo)
 		end
 		return result
 	else
-		
 		-- 如果是回购货架到包裹为-1不指定固定的包裹，
 		--	一部分
 		if itemNum < srcItem:getNumber() then
@@ -199,6 +203,9 @@ function TradeManager:ptoNSellGoods(player, itemGuid, itemNum, moveItemInfo)
 		if item then
 			local result = self:onMoveItem(player, itemGuid, itemNum, moveItemInfo)
 			if result == AddItemsResult.Succeed or result == AddItemsResult.SucceedPile then
+				--回购界面物品信息保存
+				self:setBuyBackInfo(itemGuid)
+				
 				local saleMoneyType = itemConfig.SaleMoneyType
 				local saleMoneyNum = itemConfig.SaleMoneyNum
 				local money = 0
@@ -216,7 +223,7 @@ function TradeManager:ptoNSellGoods(player, itemGuid, itemNum, moveItemInfo)
 					local money = saleMoneyNum * itemNum
 					self:sendTradeMessage(player, 12, money,itemNum,itemID)
 					player:flushPropBatch()
-				end
+				end			
 			else
 				self:sendTradeMessage(player, result)
 			end
@@ -715,6 +722,27 @@ function TradeManager:sendP2PTradeMessage(player, msgID)
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_P2PTrade, msgID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
+
+--回购界面物品信息保存
+function TradeManager:setBuyBackInfo(itemGuid)
+	local item = g_itemMgr:getItem(itemGuid)
+	self.buyBackInfo[itemGuid] = item
+end 
+
+--回购界面物品信息删除
+function TradeManager:setBuyBackInfoNIL(itemGuid)
+	self.buyBackInfo[itemGuid] = nil
+end 
+
+--得到回购界面信息用于在数据库删除
+function TradeManager:getBuybackInfo()
+	return self.buyBackInfo
+end 
+
+--设回默认值
+function TradeManager:initBuyBackInfo()
+	self.buyBackInfo = {}
+end 
 
 function TradeManager.getInstance()
 	return TradeManager()

@@ -743,10 +743,10 @@ end
 function FightBuffHandler:getMustCritical()
 	if self.mustCritical then
 		-- 移除该buff 暴击一次 这个是紫阳门的蓄力攻击效果
-		local criticalBuff = self.buffList[BuffKind.ZYMXuLi]
-		if criticalBuff then
-			self:doRemoveBuffByID(criticalBuff:getID())
-		end
+		--local criticalBuff = self.buffList[BuffKind.ZYMXuLi]
+		--if criticalBuff then
+		--	self:doRemoveBuffByID(criticalBuff:getID())
+		--end
 		return true
 	end
 	return false

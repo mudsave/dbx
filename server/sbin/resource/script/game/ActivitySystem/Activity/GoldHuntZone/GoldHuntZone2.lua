@@ -243,14 +243,16 @@ function GoldHuntZone2:updateMines(timerID)
 	local areaCount = #(self._config.phaseInfo[phaseID].materialInfo)
 	if count > 0 then
 	--print(4)
-		local rand = math.random(1,areaCount)
-		local info = self._config.phaseInfo[phaseID].materialInfo[rand]
-		local centerPos = info.centerPos
-		local mineID = info.itemID
-		local radius = info.radius
+		
 		local i =0
 		while(i < count)do
 			--print(5)
+			local rand = math.random(1,areaCount)
+			local info = self._config.phaseInfo[phaseID].materialInfo[rand]
+			local centerPos = info.centerPos
+			local mineID = info.itemID
+			local radius = info.radius
+
 			local peer = self._scene:getPeer()
 			local vect = peer:getRandomPos(centerPos.x,centerPos.y,radius,0)
 			local x = vect.x
@@ -395,6 +397,7 @@ function GoldHuntZone2:update(timerID)
 		timerContext[timerID] = context
 		if timePhaseID == 1 then
 			self:_refreshMines(timePhaseID)
+			self:openActivity()
 			
 		else
 			if timePhaseID == 2 then

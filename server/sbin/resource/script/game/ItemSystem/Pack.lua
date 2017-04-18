@@ -610,6 +610,9 @@ function Pack:destroyItem(owner,gridIndex, bUpdateClient)
 	local gridItem = self.grids[gridIndex]
 	if gridItem then
 		self.grids[gridIndex] = nil
+		--从购回界面删除销毁的物品信息
+		g_tradeMgr:setBuyBackInfoNIL(gridItem:getGuid())
+		--加到销毁列表中
 		g_itemMgr:destroyItem(self.owner,gridItem:getGuid())
 	else
 		-- 此物品格没有道具

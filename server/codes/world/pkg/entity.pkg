@@ -84,7 +84,7 @@ public:
 
 	void setClientLink(handle hClient);
 
-	GridVct getPosition();
+	const GridVct &getPosition();
 
 	void setIsFirstCast(bool bOk);
 

@@ -121,7 +121,7 @@ function AutoPointHandler:loadDB(attrRecord)
 	end
 	self.order = order
 
-	self.auto_attr	= (setting["autoAttr"] == 1)
+	self.auto_attr	= (setting["autoApply"] == 1)
 	self.auto_phase	= (setting["autoPhase"] == 1)
 end
 
@@ -205,7 +205,8 @@ function AutoPointHandler:distibuteAttrPoints()
 	local baseAttrStart = config.baseAttrStart	-- 第一个加点属性的属性名称<<属性名称是数字
 	local freePointAttr = config.freeAttrPoint	-- 自由属性点的属性名称
 
-	local totalPoint = entity:getAttrValue(freePointAttr)
+	local attrSet = entity:getAttributeSet()
+	local totalPoint = attrSet:getAttrValue(freePointAttr)
 	local freePoint = totalPoint	-- 剩余属性点
 	local _index,_value = 1,0		-- 最大值的索引和最大值
 	local allocted = false			-- 属性点是否已经分配
@@ -219,18 +220,18 @@ function AutoPointHandler:distibuteAttrPoints()
 
 		local point = math_floor(totalPoint * value / 5)
 		if point > 0 then
-			entity:addAttrValue(baseAttrStart + index - 1,point)
+			attrSet:addAttrValue(baseAttrStart + index - 1,point)
 			freePoint = freePoint - point
 			allocted = true
 		end
 	end
 	if freePoint > 0 then	-- 将剩余的点数加到最多的属性上
-		entity:addAttrValue(baseAttrStart + _index - 1,freePoint)
+		attrSet:addAttrValue(baseAttrStart + _index - 1,freePoint)
 		allocted = true
 	end
 
 	if allocted then		-- 没有剩余属性点了
-		entity:setAttrValue(freePointAttr,0)
+		attrSet:setAttrValue(freePointAttr,0)
 		self:onAttrAllocated()
 	end
 
@@ -244,7 +245,8 @@ function AutoPointHandler:distibutePhasePoints()
 	local pntAttr = config and config.freePhasePoint
 	if not pntAttr then return end
 
-	local freePoint = entity:getAttrValue(pntAttr)
+	local attrSet = entity:getAttributeSet()
+	local freePoint = attrSet:getAttrValue(pntAttr)
 	if freePoint < 1 then
 		print "自动分配相性点:没有多余点数"
 		return
@@ -259,7 +261,7 @@ function AutoPointHandler:distibutePhasePoints()
 				freePoint,MaxPhasePoint - entity:getAttrValue(attrName)
 			)
 			if point2add > 0 then
-				entity:addAttrValue(attrName,point2add)
+				attrSet:addAttrValue(attrName,point2add)
 				freePoint = freePoint - point2add
 				allocted = true
 			end
@@ -269,7 +271,7 @@ function AutoPointHandler:distibutePhasePoints()
 		end
 	end
 	if allocted then
-		entity:setAttrValue(pntAttr,freePoint)
+		attrSet:setAttrValue(pntAttr,freePoint)
 		self:onPhaseAllocated()
 	end
 	return allocted

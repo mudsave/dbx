@@ -68,6 +68,7 @@ require "entity.handler.MineHandler"
 require "entity.handler.PetSkillHandler"
 require "entity.handler.AutoPointHandler"
 require "entity.handler.ActivityHandler"
+require "entity.handler.FactionHandler"
 
 --add utils relation script
 require "utils.TileUtils"

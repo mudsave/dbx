@@ -40,8 +40,11 @@ function TbabelScript:onScriptDone(scriptID, isWin)
 			if level < layer then
 				taskHandler:addBabelFaildTimes(self._task:getID())
 				-- 如果失败次数为3的话，，记录完成标记，回到公共场景， 最后删除任务
-				if taskHandler:getBabelFaildTimes() >= 3 then
+				if taskHandler:getBabelFaildTimes(self._task:getID()) >= 3 then
 					-- 设置任务外完成标记
+					local msgID = 33
+					local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, msgID)
+					g_eventMgr:fireRemoteEvent(event, self._entity)
 					taskHandler:endFinishBabelTask(self._task:getID())
 				end
 			end

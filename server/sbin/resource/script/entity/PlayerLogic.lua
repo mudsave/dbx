@@ -46,7 +46,8 @@ function Player:__release_logic()
 
 	if self.timerID then
 		g_timerMgr:unRegTimer(self.timerID)
-		self.tiemrID = nil
+		self.timerID = nil
+
 	end
 end
 
@@ -243,172 +244,200 @@ function Player:getIsMustCatch()
 end
 
 function Player:inc_allf_add(value)
-	value = self:getAttrValue(player_add_af_mf) + value
-	self:setAttrValue(player_add_af_mf, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_add_af_mf) + value
+	attrSet:setAttrValue(player_add_af_mf, value)
 end
 
 function Player:inc_max_mp_add(value)
-	value = self:getAttrValue(player_add_max_mp) + value
-	self:setAttrValue(player_add_max_mp, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_add_max_mp) + value
+	attrSet:setAttrValue(player_add_max_mp, value)
 end
 
 function Player:inc_disorder_hit_add(value)
-	value = self:getAttrValue(player_inc_obstacle_hit) + value
-	self:setAttrValue(player_inc_obstacle_hit, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_obstacle_hit) + value
+	attrSet:setAttrValue(player_inc_obstacle_hit, value)
 end
 
 function Player:inc_anger_add_ration(value)
-	value = self:getAttrValue(player_inc_anger) + value
-	self:setAttrValue(player_inc_anger, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_anger) + value
+	attrSet:setAttrValue(player_inc_anger, value)
 end
 
 function Player:inc_all_phase_resist_add(value)
-	value = self:getAttrValue(player_inc_phase_resist) + value
-	self:setAttrValue(player_inc_phase_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_phase_resist) + value
+	attrSet:setAttrValue(player_inc_phase_resist, value)
 end
 
 function Player:inc_fire_at_add(value, percent)
-	value = self:getAttrValue(player_inc_fir_at) + value
-	self:setAttrValue(player_inc_fir_at, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_fir_at) + value
+	attrSet:setAttrValue(player_inc_fir_at, value)
 end
 
 function Player:inc_wind_at_add(value, percent)
-	value = self:getAttrValue(player_inc_win_at) + value
-	self:setAttrValue(player_inc_win_at, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_win_at) + value
+	attrSet:setAttrValue(player_inc_win_at, value)
 end
 
 function Player:inc_thunder_at_add(value, percent)
-	value = self:getAttrValue(player_inc_thu_at) + value
-	self:setAttrValue(player_inc_thu_at, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_thu_at) + value
+	attrSet:setAttrValue(player_inc_thu_at, value)
 end
 
 function Player:inc_soil_at_add(value, percent)
-	value = self:getAttrValue(player_inc_soi_at) + value
-	self:setAttrValue(player_inc_soi_at, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_soi_at) + value
+	attrSet:setAttrValue(player_inc_soi_at, value)
 end
 
 function Player:inc_ice_at_add(value, percent)
-	value = self:getAttrValue(player_inc_ice_at) + value
-	self:setAttrValue(player_inc_ice_at, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_ice_at) + value
+	attrSet:setAttrValue(player_inc_ice_at, value)
 end
 
 function Player:inc_poison_at_add(value, percent)
-	value = self:getAttrValue(player_inc_poi_resist) + value
-	self:setAttrValue(player_inc_poi_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_poi_resist) + value
+	attrSet:setAttrValue(player_inc_poi_resist, value)
 end
 
 function Player:inc_fire_resist_add(value, percent)
-	value = self:getAttrValue(player_inc_fir_resist) + value
-	self:setAttrValue(player_inc_fir_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_fir_resist) + value
+	attrSet:setAttrValue(player_inc_fir_resist, value)
 end
 
 function Player:inc_wind_resist_add(value, percent)
-	value = self:getAttrValue(player_inc_win_resist) + value
-	self:setAttrValue(player_inc_win_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_win_resist) + value
+	attrSet:setAttrValue(player_inc_win_resist, value)
 end
 
 function Player:inc_thunder_resist_add(value, percent)
-	value = self:getAttrValue(player_inc_thu_resist) + value
-	self:setAttrValue(player_inc_thu_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_thu_resist) + value
+	attrSet:setAttrValue(player_inc_thu_resist, value)
 end
 
 function Player:inc_soil_resist_add(value, percent)
-	value = self:getAttrValue(player_inc_soi_resist) + value
-	self:setAttrValue(player_inc_soi_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_soi_resist) + value
+	attrSet:setAttrValue(player_inc_soi_resist, value)
 end
 
 function Player:inc_ice_resist_add(value, percent)
-	value = self:getAttrValue(player_inc_ice_resist) + value
-	self:setAttrValue(player_inc_ice_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_ice_resist) + value
+	attrSet:setAttrValue(player_inc_ice_resist, value)
 end
 
 function Player:inc_poison_resist_add(value, percent)
-	value = self:getAttrValue(player_inc_poi_resist) + value
-	self:setAttrValue(player_inc_poi_resist, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_poi_resist) + value
+	attrSet:setAttrValue(player_inc_poi_resist, value)
 end
 
 function Player:inc_at_add(value, percent)
+	local attrSet = self.attrSet
 	if percent then
-		value = self:getAttrValue(player_inc_at) + value
-		self:setAttrValue(player_inc_at, value)
+		value = attrSet:getAttrValue(player_inc_at) + value
+		attrSet:setAttrValue(player_inc_at, value)
 	else
-		value = self:getAttrValue(player_add_at) + value
-		self:setAttrValue(player_add_at, value)
+		value = attrSet:getAttrValue(player_add_at) + value
+		attrSet:setAttrValue(player_add_at, value)
 	end
 end
 
 function Player:inc_mt_add(value, percent)
+	local attrSet = self.attrSet
 	if percent then
-		value = self:getAttrValue(player_inc_mt) + value
-		self:setAttrValue(player_inc_mt, value)
+		value = attrSet:getAttrValue(player_inc_mt) + value
+		attrSet:setAttrValue(player_inc_mt, value)
 	else
-		value = self:getAttrValue(player_add_mt) + value
-		self:setAttrValue(player_add_mt, value)
+		value = attrSet:getAttrValue(player_add_mt) + value
+		attrSet:setAttrValue(player_add_mt, value)
 	end
 end
 
 function Player:inc_af_add(value, percent)
-	value = self:getAttrValue(player_add_af) + value
-	self:setAttrValue(player_add_af, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_add_af) + value
+	attrSet:setAttrValue(player_add_af, value)
 end
 
 function Player:inc_mf_add(value, percent)
-	value = self:getAttrValue(player_add_mf) + value
-	self:setAttrValue(player_add_mf, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_add_mf) + value
+	attrSet:setAttrValue(player_add_mf, value)
 end
 
 function Player:inc_hit_add(value, percent)
+	local attrSet = self.attrSet
 	if percent then
-		value = self:getAttrValue(player_inc_hit) + value
-		self:setAttrValue(player_inc_hit, value)
+		value = attrSet:getAttrValue(player_inc_hit) + value
+		attrSet:setAttrValue(player_inc_hit, value)
 	else
-		value = self:getAttrValue(player_add_hit) + value
-		self:setAttrValue(player_add_hit, value)
+		value = attrSet:getAttrValue(player_add_hit) + value
+		attrSet:setAttrValue(player_add_hit, value)
 	end
 end
 
 function Player:inc_dodge_add(value, percent)
+	local attrSet = self.attrSet
 	if percent then
-		value = self:getAttrValue(player_inc_dodge) + value
-		self:setAttrValue(player_inc_dodge, value)
+		value = attrSet:getAttrValue(player_inc_dodge) + value
+		attrSet:setAttrValue(player_inc_dodge, value)
 	else
-		value = self:getAttrValue(player_add_dodge) + value
-		self:setAttrValue(player_add_dodge, value)
+		value = attrSet:getAttrValue(player_add_dodge) + value
+		attrSet:setAttrValue(player_add_dodge, value)
 	end
 end
 
 function Player:inc_critical_add(value, percent)
-	value = self:getAttrValue(player_inc_critical) + value
-	self:setAttrValue(player_inc_critical, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_critical) + value
+	attrSet:setAttrValue(player_inc_critical, value)
 end
 
 function Player:inc_tenacity_add(value, percent)
-	value = self:getAttrValue(player_inc_tenacity) + value
-	self:setAttrValue(player_inc_tenacity, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_tenacity) + value
+	attrSet:setAttrValue(player_inc_tenacity, value)
 end
 
 function Player:inc_speed_add(value, percent)
-	value = self:getAttrValue(player_inc_speed) + value
-	self:setAttrValue(player_inc_speed, value)
+	local attrSet = self.attrSet
+	value = attrSet:getAttrValue(player_inc_speed) + value
+	attrSet:setAttrValue(player_inc_speed, value)
 end
 
 function Player:inc_all_at_mt(value, percent)
+	local attrSet = self.attrSet
 	if percent then
-		value = value + self:getAttrValue(player_inc_at_mt)
-		self:setAttrValue(player_inc_at_mt, value)
+		value = value + attrSet:getAttrValue(player_inc_at_mt)
+		attrSet:setAttrValue(player_inc_at_mt, value)
 	else
-		value = value + self:getAttrValue(player_add_at_mt)
-		self:setAttrValue(player_add_at_mt, value)
+		value = value + attrSet:getAttrValue(player_add_at_mt)
+		attrSet:setAttrValue(player_add_at_mt, value)
 	end
 end
 
 function Player:inc_all_af_mf(value, percent)
+	local attrSet = self.attrSet
 	if percent then
-		value = value + self:getAttrValue(player_inc_af_mf)
-		self:setAttrValue(player_inc_af_mf, value)
+		value = value + attrSet:getAttrValue(player_inc_af_mf)
+		attrSet:setAttrValue(player_inc_af_mf, value)
 	else
-		value = value + self:getAttrValue(player_add_af_mf)
-		self:setAttrValue(player_add_af_mf, value)
+		value = value + attrSet:getAttrValue(player_add_af_mf)
+		attrSet:setAttrValue(player_add_af_mf, value)
 	end
 end
 
@@ -420,10 +449,11 @@ function Player:getTaskMineConfig()
 	return self._taskMineConfig
 end
 
-function Player:onWarEnded(attrs)
+function Player:onWarEnded(attrs, notSyn)
+	local attrSet = self.attrSet
 	for attrType, attrValue in pairs(attrs) do
 		if type(attrType) == "number" then
-			self:setAttrValue(attrType,attrValue)
+			attrSet:setAttrValue(attrType,attrValue)
 		end
 	end
 	
@@ -433,8 +463,9 @@ function Player:onWarEnded(attrs)
 	local packetHandler = self:getHandler(HandlerDef_Packet)
 	local packet = packetHandler:getPacket()
 	packet:setBattlePack(newBattlePack)
-
-	self:flushPropBatch()
+	if not notSyn then
+		self:flushPropBatch()
+	end
 end
 
 -- 定时器回调
@@ -448,10 +479,21 @@ function Player:update(timerID)
 			self:setVigor(vigor)
 		end
 		-- 减玩家杀气
-		local killAir = self:getAttrValue(player_kill)
+		local attrSet = self.attrSet
+		local killAir = attrSet:getAttrValue(player_kill)
 		if killAir > 0 then
 			killAir = killAir - 1
-			self:setAttrValue(player_kill, killAir)
+			attrSet:setAttrValue(player_kill, killAir)
 		end
 	end
+end
+
+-- 同时设定玩家的5项基础属性,供GM系统使用,暂时没有提供战斗服支持
+function Player:setAll(value)
+	local attrSet = self.attrSet
+	attrSet:setAttrValue(player_add_str, value)
+	attrSet:setAttrValue(player_add_int, value)
+	attrSet:setAttrValue(player_add_sta, value)
+	attrSet:setAttrValue(player_add_spi, value)
+	attrSet:setAttrValue(player_add_dex, value)
 end

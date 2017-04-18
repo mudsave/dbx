@@ -1657,5 +1657,14 @@ MonsterDropsDB = {
 			dropItemPercent = .5
 		},
 	},
+	[41] = {
+		dropKindCount ={0,1},
+		[1031020] = {
+			dropItemID = 1031020,
+			dropItemName = "»½Éñ·û",
+			dropItemCount = {1},
+			dropItemPercent = 50
+		},
+	},
 
 }

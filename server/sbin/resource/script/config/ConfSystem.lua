@@ -10,6 +10,7 @@ function loadSystem()
 	require "game.TeamSystem.TeamSystem"
 	require "game.TradeSystem.TradeSystem"
 	require "game.TaskSystem.TaskSystem"
+
 	require "game.TaskSystem.LoopTaskReward"
 	require "game.PKSystem.PKSystem"
 	require "game.DialogSystem.DialogSystem"
@@ -27,7 +28,7 @@ function loadSystem()
 	require "game.CommonSystem.CommonSystem"
 	require "game.CollectSystem.CollectSystem"
 	--require "game.PetDepotSystem.PetDepotSystem"
-	require "game.ServerDataCommunitySystem"
+	require "game.SocialSystem.ServerDataCommunitySystem"
 	require "game.TransportationSystem"
 	require "game.ShortCutKeySystem.ShortCutKeySystem"
 
@@ -51,6 +52,7 @@ function loadSystem()
 	require "game.TestSystem.TestSystem"
 	require "game.ExchangeItemSystem.ExchangeItemSystem"
 	require "game.AdminSystem.AdminSystem"
+	require "game.AdminSystem.AdminManager"
 
 	g_itemFct			= ItemFactory.getInstance()
 	g_itemMgr			= ItemManager.getInstance()
@@ -88,6 +90,7 @@ function loadSystem()
 	g_RoleConfigMgr		= RoleConfigManager.getInstance()
 	g_dropMgr			= DropManager.getInstance()
 	g_mailMgr			= MailManager.getInstance()
+	--g_oldTowerSym		= OldTowerEliminateSystem.getInstance()
 	
 	-- 瑞兽降临活动
 	g_beastBlessMgr		= BeastBlessManager.getInstance()

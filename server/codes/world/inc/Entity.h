@@ -55,7 +55,7 @@ public:
 	int getDBID(){ return m_dbid; }
 	EntityType getType(){ return m_logicType; }
 	EntityPropType getPropType(){ return m_propType; }
-	GridVct getPosition(){ return m_position; }
+	const GridVct &getPosition(){ return m_position; }
 	char getDirection(){ return m_direction; }
 	bool getAutoCast(){ return m_autoCast; }
 

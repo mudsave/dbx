@@ -159,7 +159,14 @@ RandTargetMapDB =
 			101, 102, 104, 106, 107, 109, 110, 119, 116, 118, 126, 122, 120, 128, 127, 124,
 		},
 	},
-
+	[10011] =
+	{
+		-- Ñ²ÂßÕ½¶·
+		[LoopTaskTargetType.partrolScript] = 
+		{
+			7
+		},
+	},
 	[10020] =
 	{
 		[LoopTaskTargetType.script] =

@@ -2,7 +2,8 @@
 描述：
 	玩家基础数据
 --]]
-require "attribute.Attribute"
+require "entity.Attribute"
+require "game.SocialSystem.SocialProperties"
 
 local setPropValue		= setPropValue		-- 设置peer中属性值,不会导致发送
 local getPropValue		= getPropValue		-- 获得peer中属性值
@@ -19,11 +20,11 @@ function Player:__init_basic()
 	self.practiseCount	= 0
 	self.storeXp		= 0			-- 存储经验
 	self.allLoaded		= false
-	self.attrSet		= {}
 	self.actionState	= PlayerStates.Normal
 	self.lastActiveTime	= 0
-	self._loginPos		= {}--[1]=mapID,[2]=x,[3]=y
-	self:createAttributeSet()
+	self._loginPos		= { false,false,false }		--[1]=mapID,[2]=x,[3]=y
+	self.attrSet		= PlayerAttributeSet(self)
+	self.properties		= false -- 社会服感兴趣的属性
 end
 
 function Player:__release_basic()
@@ -33,11 +34,39 @@ function Player:__release_basic()
 	self._school		= nil
 	self.level			= nil
 	self.lastActiveTime	= nil
+	self.attrSet:release()
+	self.attrSet		= nil
+	self.properties		= nil
+end
+
+function Player:createSocialProperties()
+	if not self.properties then
+		self.properties = SocialProperties()
+	end
+end
+
+function Player:updateSocialProperty(propertyName,value)
+	local properties = self.properties
+	if properties then
+		return properties:onPropertyUpdated(propertyName,value)
+	end
+end
+
+-- 设置模型ID
+function Player:setModelID(modelID)
+	Entity.setModelID(self,modelID)
+	self:updateSocialProperty("ModelID",modelID)
+end
+
+function Player:setName(name)
+	Entity.setName(self,name)
+	self:updateSocialProperty("Name",name)
 end
 
 -- 性别
 function Player:setSex(sex)
 	self.sex = sex
+	self:updateSocialProperty("Sex",sex)
 end
 
 function Player:getSex()
@@ -47,6 +76,7 @@ end
 -- 头部纹理
 function Player:setCurHeadTex(texIndex)
 	self.curHeadTex = texIndex
+	self:updateSocialProperty("CurHeadTex",texIndex)
 end
 
 function Player:getCurHeadTex()
@@ -56,6 +86,7 @@ end
 -- 身体纹理
 function Player:setCurBodyTex(texIndex)
 	self.curBodyTex = texIndex
+	self:updateSocialProperty("CurBodyTex",texIndex)
 end
 
 function Player:getCurBodyTex()
@@ -75,8 +106,8 @@ function Player:initShowParts(showParts)
 	if not i then
 		return
 	end
-	self.curHeadTex = tonumber(string.sub(showParts, i-1, i-1))
-	self.curBodyTex = tonumber(string.sub(showParts, i+1, -2))
+	self:setCurHeadTex(tonumber(string.sub(showParts, i-1, i-1)))
+	self:setCurBodyTex(tonumber(string.sub(showParts, i+1, -2)))
 end
 
 -- 上一次的心跳时间
@@ -217,6 +248,7 @@ function Player:addPractise(v)
 	local priactiseCount = self.practiseCount + v
 	self:setPractiseCount(priactiseCount)
 end
+
 function Player:getPractise()
 	return self.practise
 end
@@ -253,7 +285,7 @@ function Player:addTao( tao )
 end
 
 -- 设置玩家状态，摆摊，组队等
-function Player:setActionState(playerState)
+function Player:setActionState(playerState,notSyn)
 	local teamHandler = self:getHandler(HandlerDef_Team)
 	if teamHandler:isLeader() and playerState == PlayerStates.P2PTrade then
 		playerState = PlayerStates.P2PTradeAndTeam
@@ -264,7 +296,9 @@ function Player:setActionState(playerState)
 	self.actionState = playerState
 	local peer = self:getPeer()
 	setPropValue(peer,PLAYER_ACTION_STATE,playerState)
-	self:flushPropBatch()
+	if not notSyn then
+		self:flushPropBatch()
+	end
 end
 
 -- 获取玩家状态，摆摊，组队等
@@ -332,6 +366,7 @@ end
 
 function Player:setVigor(value)
 	self:setAttrValue(player_vigor, value)
+	self:updateSocialProperty("Vigor",value)
 end
 
 function Player:getMaxVigor()
@@ -354,20 +389,22 @@ end
 --[[
 	处理玩家经验升级
 ]]
-function Player:handleLevelUP()
+function Player:handleLevelUP( mdelta )
 	local level = self.level
 	local currentXp = self:getXp()
-	local nextLevelXP = PlayerLevelUpDB[level]
+	local nextXP = PlayerLevelUpDB[level]
+	local mlevel = mdelta and (level + mdelta) or UserAutoUPMaxLevel
 
-	while level < UserAutoUPMaxLevel and currentXp >= nextLevelXP do
-		currentXp = currentXp - nextLevelXP
+	while currentXp >= nextXP and (level < mlevel )  do
+		currentXp = currentXp - nextXP
 		level = level + 1
-		nextLevelXP = PlayerLevelUpDB[level]
+		nextXP = PlayerLevelUpDB[level]
 	end
 
 	if self.level ~= level then
-		self:onLevelUp(level)
 		self:setXp(currentXp)
+		self:onLevelUp(level)
+
 		return true
 	end
 
@@ -392,7 +429,6 @@ function Player:onLevelUp(level)
 	self:setHP(self:getMaxHP()) 
 	self:setMP(self:getMaxMP())
 	self:setVigor(self:getMaxVigor())
-	self:flushPropBatch()
 
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(PlayerSysEvent_SC_RoleUpgrade), self
@@ -460,13 +496,13 @@ local function initFirstLoginAttr(self)
 	if self:getHP() == 0 then
 		self:setHP(self:getMaxHP())
 	end
-	if self:getHP() > self:getMaxHP() then
+	if self:getHP() > self:getMaxHP() and self.allLoaded then
 		self:setHP(self:getMaxHP())
 	end
 	if self:getMP() == 0 then
 		self:setMP(self:getMaxMP())
 	end
-	if self:getMP() > self:getMaxMP() then
+	if self:getMP() > self:getMaxMP() and self.allLoaded then
 		self:setMP(self:getMaxMP())
 	end
 	-- 获取最大属性值
@@ -476,10 +512,9 @@ local function initFirstLoginAttr(self)
 end
 
 function Player:setLevel(level, fromDB)
-
-
 	self.level = level
 	self:setAttrValue(player_lvl,level)
+	self:updateSocialProperty("Level",level)
 	initFirstLoginAttr(self)
 	if level >= PacketLevelPackNeedLevel then
 		-- 获取最大属性值
@@ -497,6 +532,7 @@ end
 function Player:setSchool(school)
 	self.school = school
 	setPropValue(self._peer,PLAYER_SCHOOL,school)
+	self:updateSocialProperty("School",school)
 end
 
 function Player:getSchool()
@@ -521,7 +557,7 @@ function Player:updatePropSet()
 	setPropValue(peer, PLAYER_PRACTISECOUNT,self:getPractiseCount())
 	setPropValue(peer, PLAYER_STOREXP,		self:getStoreXp())
 	
-	self:freshProps()
+	self.attrSet:updateAll( true )
 end
 
 function Player:loadBasicDataFromDB(recordList)
@@ -543,10 +579,9 @@ function Player:loadBasicDataFromDB(recordList)
 	self:setPos({rs.mapID, rs.posX, rs.posY})
 	self:setLoginPos({rs.mapID, rs.posX, rs.posY})
 	self:getHandler(HandlerDef_Ride):setRideCapacity(rs.rideBar)
+
 	-- 加载玩家属性集合
-	local attributeRecord = recordList[2]
-	self:createAttributeSet()
-	self:loadAttrRecord(attributeRecord)
+	self.attrSet:loadAttrRecord(recordList[2])
 
 	-- 等级特殊处理
 	self:setLevel(rs.level, true)
@@ -555,105 +590,38 @@ function Player:loadBasicDataFromDB(recordList)
 	self:updatePropSet()
 end
 
--- 加载玩家属性集合
-function Player:loadAttrRecord(attrRecord)
-	if not attrRecord then
-		print("[Player:loadAttrRecord] 属性集合记录为空")
-		return
-	end
-
-	local attrSet = self.attrSet
-	for index,detail in pairs(attrRecord) do
-		local attribute = attrSet[detail.attrType]
-		if attribute and not attribute:isExpr() then
-			attribute:loadValue(detail.attrValue)
-		else
-			print(("[Player:loadAttrRecord] 错误的玩家属性定义 %s"):format(attribute and attribute:getName() or "nil"))
-		end
-	end
-
-	--toDo:add default attribute value handle
-end
-
--- 创建玩家属性集合
-function Player:createAttributeSet()
-	local attrSet = self.attrSet
-	for attrName,detail in pairs(PlayerAttrDefine) do
-		if not attrSet[attrName] then
-			attrSet[attrName] = PlayerAttribute(self,attrName,detail.expr,0)
-		end
-	end
-end
-
 function Player:getAttributeSet()
 	return self.attrSet
 end
 
 -- 获取某一项属性
 function Player:getAttribute(attrName)
-	return attrName and self.attrSet[attrName]
-end
-
--- 获得属性集合
-function Player:getAttrSet()
-	return self.attrSet
+	return rawget(self.attrSet,attrName)
 end
 
 -- 设置属性值
 function Player:setAttrValue(attrName,value)
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		print(("[Player:setAttrValue] 没有属性e %s!"):format(attrName or "nil"))
-		return
-	end
-	if attribute:isExpr() then
-		print(("[Player:setAttrValue] 不能设置给公式属性 %s!"):format(attribute:getName()))
-		return
-	end
-	attribute:setValue(value)
+	self.attrSet:setAttrValue(attrName,value)
 end
 
 -- 获得某项属性的值
 function Player:getAttrValue(attrName)
-	local attribute = attrName and self.attrSet[attrName]
-	if attribute then
-		return attribute:getValue()
-	else
-		print(("[Player:getAttrValue()] 没有属性 %s!"):format(attrName or "nil"))
-		return nil
-	end
+	return self.attrSet:getAttrValue(attrName)
 end
 
 -- 给某项属性加值
 function Player:addAttrValue(attrName,value)
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		print(("[Player:addAttrValue] 没有%s这项属性!"):format(attrName or "nil"))
-	end
-	attribute:addValue(value)
-end
-
---属性减值
-function Player:subAttrValue(attrName,value)
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		print(("[Player:subAttrValue] 没有%s这项属性!"):format(attrName or "nil"))
-	end
-	attribute:addValue(0 - value)
-end
-
--- 确保所有需要同步的属性都是最新的
-function Player:freshProps()
-	local attrSet = self.attrSet
-	for attrName,_ in pairs(g_AttributePlayerToProp) do
-		attrSet[attrName]:getValue()
-	end
+	self.attrSet:addAttrValue(attrName,value)
 end
 
 -- 发送所有的属性变化
 function Player:flushPropBatch()
-	self:freshProps()
+	self.attrSet:updateAll()
 	flushPropBatch(self:getPeer())
+	local properties = self.properties
+	if properties then
+		return properties:bcUpdates(self)
+	end
 end
 
 function Player:onPlayerLogout(reason)
@@ -665,8 +633,14 @@ function Player:onPlayerLogout(reason)
 		local ectypeHandler = self:getHandler(HandlerDef_Ectype)
 		local enterPos = ectypeHandler:getEnterPos()
 		mapID = enterPos.mapID
-		xPos = enterPos.xPos
-		yPos = enterPos.yPos
+		if mpaID == 7 then
+			mapID = 10
+			xPos = 200
+			yPos = 200
+		else
+			xPos = enterPos.xPos
+			yPos = enterPos.yPos
+		end
 	end
 	
 	-- 如果在捕宠活动场景当中
@@ -677,6 +651,15 @@ function Player:onPlayerLogout(reason)
 		xPos = enterPos.xPos
 		yPos = enterPos.yPos
 	end
+
+	if g_sceneMgr:isInGoldHuntScene(self) then	
+		local activityHandler = self:getHandler(HandlerDef_Activity)
+		local enterPos = activityHandler:getEnterPos()
+		mapID = enterPos.mapID
+		xPos = enterPos.xPos
+		yPos = enterPos.yPos
+	end
+
 	-- 如果在煮酒论英雄活动场景中
 	if g_sceneMgr:isInDiscussHeroScene(self) then
 		local prevPos = self:getPrevPos()
@@ -684,6 +667,14 @@ function Player:onPlayerLogout(reason)
 		xPos = prevPos[2]
 		yPos = prevPos[3]
 	end
+
+	-- 如果玩家在通天塔场景当中
+	if mapID >= 1001 and mapID <= 1200 then
+		mapID = 10
+		xPos = 123
+		yPos = 265
+	end
+
     local props = {}
 	props["MapID"] = mapID
 	props["PosX"] = xPos

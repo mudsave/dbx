@@ -103,9 +103,9 @@ function FactionSysMgr.onGetExtendSkillInfo( dataList,factionDBID)
    if not faction then print("不存在帮派") return end
    if dataList and table.size(dataList[1]) > 0 then
         for _, skillInfo in pairs(dataList[1]) do
-            local skillID = skillInfo["ExtendID"]
-            local skillLevel = skillInfo["skillLevel"]
-            faction:setExtendSKillList(skillID,skillLevel)
+            local skillID = skillInfo.extendID
+            local skillLevel = skillInfo.skillLevel
+            faction:setExtendSkillList(skillID,skillLevel)
         end
    end 
 end
@@ -172,7 +172,6 @@ end
 
 
 function FactionSysMgr.onLoadData( dataList,roleDBID )
-    
 
     local role = g_playerMgr:getPlayerByDBID(roleDBID)
     local factionHandler = role:getHandler(HandlerDef_Faction)

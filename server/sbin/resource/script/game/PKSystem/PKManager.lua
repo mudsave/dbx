@@ -102,6 +102,12 @@ function PKManager:setPK(player, tgPlayer, flag)
 			local pet = g_entityMgr:getPet(petID)
 			if pet then
 				table.insert(roleList1, pet)
+				local pkInfo = pet:getPkInfo()
+				pkInfo.isPK = flag
+				local hp = pet:getHP()
+				local mp = pet:getMP()
+				pkInfo.hp = hp
+				pkInfo.mp = mp 
 			end
 		end
 	end
@@ -113,14 +119,20 @@ function PKManager:setPK(player, tgPlayer, flag)
 			local pet = g_entityMgr:getPet(petID)
 			if pet then
 				table.insert(roleList2, pet)
+				local pkInfo = pet:getPkInfo()
+				pkInfo.isPK = flag
+				local hp = pet:getHP()
+				local mp = pet:getMP()
+				pkInfo.hp = hp
+				pkInfo.mp = mp 
 			end
 		end
 	end
 	-- 拉玩家进入PK
-	local fightID = g_fightMgr:startPvpFight(roleList1, roleList2, 2, fightType)
-	if flag then
-		fightIDs[fightID] = true
-	end
+	local fightID = g_fightMgr:startPvpFight(roleList1, roleList2, nil, fightType)
+	--if flag then
+		fightIDs[fightID] = flag
+	--end
 end
 
 -- 判断玩家的条件
@@ -570,7 +582,7 @@ function PKManager:onFightEnd(event)
 	local params = event:getParams()
 	local results = params[1]
 	local fightID = params[4]
-	if not fightIDs[fightID] then
+	if not fightIDs[fightID]  then
 		return
 	end
 
@@ -609,22 +621,37 @@ function PKManager:onFightEndReset(event)
 	local params = event:getParams()
 	local results = params[1]
 	local fightID = params[4]
-	if not fightIDs[fightID] then
+	if  fightIDs[fightID] == nil then
 		return
 	end
 
 	fightIDs[fightID] = nil
 	
-	for playerID, isWin in pairs(results) do
-		local player = g_entityMgr:getPlayerByID(playerID)
+	for roleID, isWin in pairs(results) do
+		local player = g_entityMgr:getPlayerByID(roleID)
 		if instanceof(player,Player) then
 			local pkInfo = player:getPkInfo()
-			if not pkInfo.isPK then
+			print("$$$$$$$$$$$$$$$$$$",1)
+			if  pkInfo.isPK == false then
+			print("$$$$$$$$$$$$$$$$$$",2)
 				player:setHP(pkInfo.hp)
 				player:setMP(pkInfo.mp)
 				player:flushPropBatch()
 			end
 			pkInfo.isPK = nil
+		else
+			local pet = g_entityMgr:getPet(roleID)
+			local pkInfo = pet:getPkInfo()
+			print("$$$$$$$$$$$$$$$$$$",3)
+			if pet and pkInfo.isPK == false then
+			print("$$$$$$$$$$$$$$$$$$",4)
+				pet:setHP(pkInfo.hp)
+				pet:setMP(pkInfo.mp)
+				pet:flushPropBatch()
+				pkInfo.hp = nil
+				pkInfo.mp = nil
+				pkInfo.isPK = nil
+			end
 		end
 	end
 

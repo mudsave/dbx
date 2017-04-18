@@ -68,5 +68,6 @@ DialogActionConfig =
 	[DialogActionType.OpenItemRepairWin]		= DialogAction.doRepairEquipment,
 	[DialogActionType.OpenPuzzle]				= DialogAction.doOpenPuzzle,
 	[DialogActionType.ChangePlayerMoney]		= DialogAction.doChangePlayerMoney,
+	[DialogActionType.FactionEctype]				= DialogAction.doFactionEctype,
 	
 }

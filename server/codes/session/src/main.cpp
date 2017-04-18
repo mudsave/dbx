@@ -12,7 +12,7 @@
 #include "session.h"
 #include <string.h>
 
-// 参数形式 : ./Session -loginAddr 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000
+// 参数形式 : ./Session -loginAddr 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000 -extranetIP 0
 int main(int argc, char* argv[])
 {
 	InitTraceServer();
@@ -21,10 +21,11 @@ int main(int argc, char* argv[])
 	char gateIP_Listen[64]	= {0};	int gatePort	= 2300;
 	char worldIP_Listen[64]	= {0};	int worldPort	= 2500;
 	char dbIP_Connect[64]	= {0};	int dbPort		= 3000;
-	if ( argc != 9 )
+	char* extranetIP = 0;
+	if ( argc != 11 )
 	{
 		TRACE0_L0("error args for Session, the format is :\n");
-		TRACE0_L0("\t./Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000\n");
+		TRACE0_L0("\t./Session -loginAddrL 172.16.2.220:20013 -gateAddrL 172.16.2.220:2300 -worldAddrL 172.16.2.220:2500 -dbAddrC 172.16.2.220:3000 -extranetIP 0\n");
 		return 1;
 	}
 	for( int i = 1; i < argc; i++ )
@@ -49,13 +50,29 @@ int main(int argc, char* argv[])
 			i++; ASSERT_(i < argc);
 			ParseAddr(argv[i], dbIP_Connect, dbPort);
 		}
+		else if ( strcasecmp(argv[i], "-extranetIP" ) == 0 )
+		{
+			i++; ASSERT_(i < argc);
+			int _len = strlen(argv[i]) + 1;
+			if (_len > 2)
+			{
+				extranetIP = new char[_len];
+				memcpy(extranetIP, argv[i], (_len - 1));
+				extranetIP[_len - 1] = 0;
+			}
+		}
 	}
 
 	IThreadsPool* pThreadsPool	= GlobalThreadsPool();
 
 	GenerateSignalThread();
 
-	g_session.Init(	loginIP, loginPort, gateIP_Listen, gatePort, worldIP_Listen, worldPort, dbIP_Connect, dbPort );
+	g_session.Init(loginIP, loginPort, gateIP_Listen, gatePort, worldIP_Listen, worldPort, dbIP_Connect, dbPort, extranetIP);
+	if(extranetIP)
+	{
+		delete[] extranetIP;
+		extranetIP = 0;
+	}
 
 	HRESULT hr = pThreadsPool->Running();
 	if ( hr == S_OK )

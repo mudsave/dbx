@@ -241,7 +241,7 @@ struct _Role_Element
 	char			name[_PLAYER_NAME_LEN];
 	char			remouldAttr[_REMOULDATTR_LEN];
 	int				showDrama;
-
+	bool			sex;
 };
 
 struct _MsgSC_Login_ResultInfo : public AppMsg

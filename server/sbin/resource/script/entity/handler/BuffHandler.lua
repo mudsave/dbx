@@ -367,9 +367,11 @@ function BuffHandler:useHpPool(role)
 		local lastValue = buff:getLastValue()
 		if lastValue > gap then
 			role:setHP(role:getMaxHP())
+			role:flushPropBatch()
 			buff:setLastValue(lastValue - gap)
 		else
 			role:setHP(role:getHP() + lastValue)
+			role:flushPropBatch()
 			buff:setLastValue(0)
 		end
 		buff:calcPeriod()
@@ -392,9 +394,11 @@ function BuffHandler:useMpPool(role)
 		if lastValue > gap then
 			role:setMP(role:getMaxMP())
 			buff:setLastValue(lastValue - gap)
+			role:flushPropBatch()
 		else
 			role:setMP(role:getMP() + lastValue)
 			buff:setLastValue(0)
+			role:flushPropBatch()
 		end
 		buff:calcPeriod()
 		return true
@@ -416,9 +420,11 @@ function BuffHandler:useLoyaltyPool(role)
 		if lastValue > gap then
 			role:setLoyalty(MaxPetLoyalty)
 			buff:setLastValue(lastValue - gap)
+			role:flushPropBatch()
 		else
 			role:setLoyalty(role:getLoyalty() + lastValue)
 			buff:setLastValue(0)
+			role:flushPropBatch()
 		end
 		buff:calcPeriod()
 	end

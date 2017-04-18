@@ -39,6 +39,7 @@ function TaskSystem:__init()
 		[TaskEvent_CS_EnterNextLayer]			= TaskSystem.onEnterNextLayer,
 		[TaskEvent_BS_GuideJoinFaction]			= TaskSystem.onJoinFaction,
 		[TaskEvent_CS_PuzzleFinish]				= TaskSystem.onPuzzleFinish,
+		[TaskEvent_CS_OpenTaskTip]				= TaskSystem.onOpenTaskTip,
 	}
 end
 
@@ -612,12 +613,14 @@ function TaskSystem:onEnterNextLayer(event)
 	end
 	-- 完成任务
 	-- 先获取任务当前层数，
-	local layer = task:getLayer() + 1
+	local flyLayer = 1
+	local layer = task:getLayer() + flyLayer
+
 	local reWardType = task:getRewardType()
 	taskHandler:finishBabelTask(taskID)
 	-- 进入下一层
 	-- 在这可能还要判断一下层数， 之后再添加
-	g_taskDoer:doReceiveBabelTask(player, taskID, reWardType, layer)
+	g_taskDoer:doReceiveBabelTask(player, taskID, reWardType, layer, flyLayer)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local task = taskHandler:getTask(taskID)
 	if task then
@@ -648,6 +651,24 @@ end
 function TaskSystem:removeShelfPet(player, taskID)
 	local event = Event.getEvent(TaskEvent_SC_RemoveShelfPet, taskID)
 	g_eventMgr:fireRemoteEvent(event, player)
+end
+
+function TaskSystem:onOpenTaskTip(event)
+	local params = event:getParams()
+	local roleID = event.playerID
+	if not roleID then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	if not player then
+		return
+	end
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(INIT_TASKID)
+	if task then
+		local param = {v = 30}
+		CactionSystem.getInstance():doOpenUITip(player, param)
+	end
 end
 
 function TaskSystem.getInstance()

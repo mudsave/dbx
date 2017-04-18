@@ -26,8 +26,8 @@ NewRewardsDB = {
 			{materialID = 3024001 ,number = 10},
 		},
 	[2] = {
-			{materialID = 1011002 ,number = 20},
-			{materialID = 1012002 ,number = 20},
+			{materialID = 3011005 ,number = 20},
+			{materialID = 3012005 ,number = 20},
 			{materialID = 3025003 ,number = 2},
 		},
 	[3] = {
@@ -52,7 +52,7 @@ NewRewardsDB = {
 		},
 	[7] = {
 			{materialID = 3024006 ,number = 1},
-			{materialID = 3024008 ,number = 1},
+			{materialID = 3024001 ,number = 1},
 			{materialID = 3024013 ,number = 1},
 		},
 	[8] = {

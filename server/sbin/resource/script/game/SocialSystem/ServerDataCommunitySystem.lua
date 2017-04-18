@@ -5,6 +5,8 @@
 
 ]]
 
+require "game.SocialSystem.SocialProperties"
+
 ServerDataCommunitySystem = class(EventSetDoer, Singleton)
 
 function ServerDataCommunitySystem:__init()
@@ -18,6 +20,15 @@ function ServerDataCommunitySystem:__init()
 		[ChatEvents_CB_SendToHorn]				= ServerDataCommunitySystem.onSendToHorn,
 	}
 end
+
+UpdateFactionInfoFuncTable = {
+
+	["factionLevel"] = function (player,value) player:getHandler(HandlerDef_Faction):setFactionLevel(value) end
+
+}
+
+
+
 
 
 function ServerDataCommunitySystem:onUpdateWorldServerData( event )
@@ -42,6 +53,7 @@ function ServerDataCommunitySystem:onUpdateWorldServerData( event )
 		elseif updateCode == UpdateWorldServerDataCode.ContributeFaction then
 			local moneyCount = params[3] or 0
 			player:setMoney(player:getMoney() - moneyCount)
+			player:setFactionMoney((moneyCount/10000)*10)
 			player:flushPropBatch()
 		elseif updateCode == UpdateWorldServerDataCode.GetSalary then
 			local factionConfiguration = player:getFactionConfiguration()
@@ -49,6 +61,9 @@ function ServerDataCommunitySystem:onUpdateWorldServerData( event )
 			local moneyCount = params[3] or 0
 			player:setMoney(player:getMoney() + moneyCount)
 			player:flushPropBatch()
+		elseif updateCode == UpdateWorldServerDataCode.UpdateFactionInfo then
+			local infoTable = params[3] or {}
+			UpdateFactionInfoFuncTable[infoTable.name](player,infoTable.value)
 		end
 		
 	end
@@ -104,8 +119,6 @@ function ServerDataCommunitySystem:onSendToHorn( event )
 	local player = g_entityMgr:getPlayerByDBID(DBID)
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local num = packetHandler:getNumByItemID(iHornGuid)
-	print("iHornGuid>>>>>>>>>",iHornGuid,toString(packetHandler:getNumByItemID(iHornGuid)))
-	print("num>>>>>>>>>>",num)
 	if num < 0 then
 		local msgID = 9
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Chat, msgID)

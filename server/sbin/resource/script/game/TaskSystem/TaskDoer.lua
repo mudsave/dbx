@@ -265,6 +265,24 @@ function TaskDoer:loadDailyTask( player, recordList )
 			return
 		end
 		taskHandler:addTask(dailyTask)
+
+		--判断是否是每日活动面板上的任务
+		if taskData.taskID == 40001 then
+			local resoureData = {}
+			local dailyTaskID = taskData.taskID
+			local taskTarget = unserialize(taskData.targets)
+			resoureData.count = taskTarget[1].param.currentCount
+
+			if taskTarget[1].param.currentCount == taskTarget[1].param.targetCount then
+				resoureData.finishTimes = 1
+			else
+				resoureData.finishTimes = 0
+			end
+			local event_NotifyClient = Event.getEvent(ActivityEvent_SC_ActivityPageDaliy,dailyTaskID,resoureData)
+			g_eventMgr:fireRemoteEvent(event_NotifyClient,player)
+
+		end
+
 	end
 	
 end
@@ -541,6 +559,14 @@ function TaskDoer:doFlyUp(player, param)
 				if mapID then
 					-- 切换玩家到场景
 					g_sceneMgr:doSwitchScence(player:getID(), mapID, 34, 25)
+					local msgID = nil
+					if param.costType == CostType.money then
+						msgID = 34
+					else
+						msgID = 35
+					end
+					local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, msgID, param.money, layer)
+					g_eventMgr:fireRemoteEvent(event, player)
 				end
 			end
 		end
@@ -562,6 +588,9 @@ function TaskDoer:checkFlyUpCondition(player, param)
 		end
 		if (curTaskLayer + param.addLayer) > BabelTaskDB[param.taskID].maxLayer then
 			return 19
+		end
+		if task:getStatus() == TaskStatus.Active then
+			return 32
 		end
 		local costType = param.costType
 		if costType == CostType.money then
@@ -614,6 +643,8 @@ function TaskDoer:doReceiveSpecialTask(player, taskID)
 	loopTask:setReceiveTaskLvl(player:getLevel())
 	taskHandler:addTask(loopTask)
 	taskHandler:setReceiveTaskTime(taskID)
+	loopTask:updateNpcHeader()
+	taskHandler:updateTaskList(taskID, false)
 	if table.size(playerList) > 1 then
 		for _, entity in pairs(playerList) do
 			local roleID = entity:getID()
@@ -630,8 +661,8 @@ function TaskDoer:doReceiveSpecialTask(player, taskID)
 				curTaskHandler:addTask(loopTask1)
 				curTaskHandler:setReceiveTaskTime(taskID)
 				loopTask1:updateNpcHeader()
+				curTaskHandler:updateTaskList(taskID, false)
 			end
-			curTaskHandler:updateTaskList(taskID, false)
 		end
 	end
 end

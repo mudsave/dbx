@@ -35,6 +35,7 @@ end
 -- 物理攻击力改变
 function PetSkillHandler:physicalATKChange(value, addType)
 	if value then
+		value = value / 10 --百分比加成
 		print("宠物物理攻击加成:", value, addType)
 		self.role:ft_add_at(value, addType == AddType.percent)
 	end
@@ -43,6 +44,7 @@ end
 -- 法术攻击力改变
 function PetSkillHandler:magicalATKChange(value, addType)
 	if value then
+		value = value / 10 --百分比加成
 		print("宠物法术攻击加成:", value, addType)
 		self.role:ft_add_mt(value, addType == AddType.percent)
 	end
@@ -51,6 +53,7 @@ end
 -- 法术防御力改变
 function PetSkillHandler:magicalDEFChange(value, addType)
 	if value then
+		value = value / 10 --百分比加成
 		print("宠物法术防御力加成:", value, addType)
 		self.role:ft_add_mf(value, addType == AddType.percent)
 	end

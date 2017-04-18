@@ -176,15 +176,15 @@ function DekaronSchoolManager:giveUpActivity(player)
 			for _,memberInfo in pairs(team:getMemberList()) do
 				local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
 				local activityHandler = member:getHandler(HandlerDef_Activity)
-				activityHandler:setDekaronIntegral(0)
-				local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget,DekaronSchool_SC_GiveUpActvityTarget)
+				activityHandler:setDekaronIntegral(nil)
+				local event = Event.getEvent(DekaronSchool_SC_GiveUpActvityTarget)
 				g_eventMgr:fireRemoteEvent(event, member)
 			end
 		end
 	else
 		local activityHandler = player:getHandler(HandlerDef_Activity)
-		activityHandler:setDekaronIntegral(0)
-		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget,DekaronSchool_SC_GiveUpActvityTarget)
+		activityHandler:setDekaronIntegral(nil)
+		local event = Event.getEvent(DekaronSchool_SC_GiveUpActvityTarget)
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
 end
@@ -210,7 +210,6 @@ function DekaronSchoolManager:changeDekaronTarget(team)
 			break
 		end
 	end
-	local config = schoolActivityTargetDB[school]
 	local teamProcess = team:getProcess()
 	local scriptIndex = 0
 	if teamProcess <= 6 then
@@ -224,8 +223,8 @@ function DekaronSchoolManager:changeDekaronTarget(team)
 	else
 		scriptIndex = 5
 	end
+	local config = schoolActivityTargetDB[school]
 	local scriptId = config.scripts[scriptIndex]
-	print("---------1---------d--d--d--d--",scriptId,scriptIndex)
 	local param =
 	{
 		school = school,
@@ -245,7 +244,7 @@ function DekaronSchoolManager:joinTeam(player, teamID)
 	if activityTarget then
 		local param = activityTarget:getParams()
 		local handler = player:getHandler(HandlerDef_Activity)
-		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,0,handler:getDekaronIntegral())
+		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,0,handler:getDekaronIntegral() or 0)
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
 end
@@ -253,7 +252,7 @@ end
 --退出队伍
 function DekaronSchoolManager:removeTeam(player)
 	local handler = player:getHandler(HandlerDef_Activity)
-	local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget,0,0,handler:getDekaronIntegral())
+	local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget,0,0,handler:getDekaronIntegral() or 0)
 	g_eventMgr:fireRemoteEvent(event, player)
 end
 

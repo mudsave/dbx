@@ -98,23 +98,11 @@ end
 
 function PlayerMiscSystem:doRoleUpgrade(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
-	local params = event:getParams()
-	local xp = player:getXp()
-	local next_xp = player:getNextXp()
 
-	if xp < next_xp then
-		print("经验不足，无法升级。")
-		return
-	else
-		player:setXp(player_xp,xp-next_xp)
-		player:onLevelUp(player:getLevel()+1)
+	if not player:handleLevelUP( 1 ) then
+		print("玩家经验不够")
 	end
 
-	g_eventMgr:fireRemoteEvent(
-		Event.getEvent(
-			PlayerSysEvent_SC_RoleUpgrade
-		),player
-	)
 end
 
 --[[

@@ -30,7 +30,8 @@ function BuffManager:onFightEnd(desEntity)
 		local handler = desEntity:getHandler(HandlerDef_Buff)
 		print ("  $$  onFightEnd", desEntity:getHP(), desEntity:getMP())
 		handler:useHpPool(desEntity)
-		handler:useMpPool(desEntity)	
+		handler:useMpPool(desEntity)
+		desEntity:flushPropBatch()	
 	end
 	if instanceof(desEntity, Pet) then
 		print ("  $$  onFightEnd Pet", desEntity:getHP(), desEntity:getMP())
@@ -40,6 +41,7 @@ function BuffManager:onFightEnd(desEntity)
 		handler:useHpPool(desEntity)
 		handler:useMpPool(desEntity)
 		handler:useLoyaltyPool(desEntity)
+		desEntity:flushPropBatch()
 	end
 end
 

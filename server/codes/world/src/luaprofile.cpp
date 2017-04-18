@@ -227,33 +227,34 @@ profile_stop(lua_State *L) {
 
 static int
 profile_dump(lua_State *L) {
+	char filePath[256];
+	FILE *file;
 	if(!lua_istable(L,1)) {
 		luaL_error(L,"#1 exepected a table,got an %s",lua_typename(L,lua_type(L,1)));
 	}
-	if(lua_isstring(L,2)) {
-		FILE *file = fopen(lua_tostring(L,2),"w");
-		if(!file) {
-			luaL_error(L,"could not open file %s",lua_tostring(L,2));
-		}
-		fprintf(file,"%s,%s,%s,%s,%s,%s,%s,%s\n","Function","Source","LineDefine","Calls","Total","AVG","MIN","MAX");
-		lua_pushnil(L);
-		while(lua_next(L,1)) {
-			int value = lua_gettop(L);
-			const char *funcName = (lua_rawgeti(L,value,1),lua_tostring(L,-1));
-			const char *source = (lua_rawgeti(L,value,2),lua_tostring(L,-1));
-			int linedefined = (lua_rawgeti(L,value,3),lua_tointeger(L,-1));
-			int calltimes = (lua_rawgeti(L,value,4),lua_tointeger(L,-1));
-			int total = (lua_rawgeti(L,value,5),lua_tointeger(L,-1));
-			int min = (lua_rawgeti(L,value,6),lua_tointeger(L,-1));
-			int max = (lua_rawgeti(L,value,7),lua_tointeger(L,-1));
-			int avg = (total) / calltimes;
-
-			fprintf(file,"%s,\"%s\",%d,%d,%d,%d,%d,%d\n",funcName,source,linedefined,calltimes,total,avg,min,max);
-
-			lua_settop(L,value - 1);
-		}
-		fclose(file);
+	sprintf(filePath,"bin/profile/%s",luaL_optstring(L,2,"world.csv"));
+	file = fopen(filePath,"w");
+	if(!file) {
+		luaL_error(L,"could not open file %s",filePath);
 	}
+	fprintf(file,"%s,%s,%s,%s,%s,%s,%s,%s\n","Function","Source","LineDefine","Calls","Total","AVG","MIN","MAX");
+	lua_pushnil(L);
+	while(lua_next(L,1)) {
+		int value = lua_gettop(L);
+		const char *funcName = (lua_rawgeti(L,value,1),lua_tostring(L,-1));
+		const char *source = (lua_rawgeti(L,value,2),lua_tostring(L,-1));
+		int linedefined = (lua_rawgeti(L,value,3),lua_tointeger(L,-1));
+		int calltimes = (lua_rawgeti(L,value,4),lua_tointeger(L,-1));
+		int total = (lua_rawgeti(L,value,5),lua_tointeger(L,-1));
+		int min = (lua_rawgeti(L,value,6),lua_tointeger(L,-1));
+		int max = (lua_rawgeti(L,value,7),lua_tointeger(L,-1));
+		int avg = (total) / calltimes;
+
+		fprintf(file,"%s,\"%s\",%d,%d,%d,%d,%d,%d\n",funcName,source,linedefined,calltimes,total,avg,min,max);
+
+		lua_settop(L,value - 1);
+	}
+	fclose(file);
 	return 0;
 }
 

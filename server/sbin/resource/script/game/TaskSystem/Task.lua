@@ -289,13 +289,14 @@ function Task:createDataForClient(taskStatus)
 		taskData.ring = taskHandler:getCurrentRing(self._taskID)
 		taskData.countRing = taskHandler:getCountRing(self._taskID)
 		taskData.finishTimes =  taskHandler:getFinishTimes(self._taskID)
+		taskData.receiveTimes	= taskHandler:getReceiveTimes(self._taskID)
 		taskData.targetType = self:getTargetType()
 		--taskData.targetIdx	= self:getTargetIdx()
 		--taskData.gradeIdx = self:getGradeIdx()
 		-- 任务状态
 		taskData.targets = self:getTargetState()
 	elseif self._type == TaskType.babel then
-
+		taskData.layer = self:getLayer()
 	elseif self._type == TaskType.daily then
 		taskData.targetType = self:getTargetType()
 		taskData.targetParam = self:getTargetParam()

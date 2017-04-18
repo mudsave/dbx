@@ -50,18 +50,20 @@ end
 function FightScript:onEnterFightStart()
 	
 	--战斗开始，等待初始化
+	--[[
 	local beginInfo = self._scriptPrototype.fightBegin
 	if beginInfo then
 		--做战斗准备
 		--启动定时器
 		self._fightStartTimerID = g_timerMgr:regTimer(self,MaxFightChooseActionTime*1000,MaxFightChooseActionTime*1000,"FightStart")
 		self._timerContext[self._fightStartTimerID] = {fightID = self._id}
-		--通知客户端回合开始
-		local event = Event.getEvent(FightEvents_FC_EnterFightState,1)--1是占位符
-		self:informClient(event)
+		
 	else
 		self:gotoState(FightState.RoundStart)
 	end
+	]]
+		self._fightStartTimerID = g_timerMgr:regTimer(self,MaxFightChooseActionTime*1000,MaxFightChooseActionTime*1000,"FightStart")
+		self._timerContext[self._fightStartTimerID] = {fightID = self._id}
 
 end
 
@@ -406,7 +408,7 @@ function FightScript:onEnterPhaseStart()
 	end
 	FightUtils.setMonsterInfo4Client(self._members[FightStand.B],monstersInfo,phaseInfo[self._curPhase])
 	--通知客户端战斗开始
-	local event = Event.getEvent(FightEvents_FC_SwitchFightScene,monstersInfo)
+	local event = Event.createEvent(FightEvents_FC_SwitchFightScene,monstersInfo)
 	self:informClient(event)
 	print("FightScript:onEnterPhaseStart()")
 end

@@ -925,7 +925,7 @@ tEctypeDB =
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
 		EctypeExistTime = 0,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
-		EnterInitLocs = {locX = 140, locY = 29},
+		EnterInitLocs = {locX = 140, locY = 20},
 		--EnterInitLocs = {locX = 40, locY = 192},
 		-- 进入副本第二个场景的初始坐标，分别为X坐标和Y坐标
 		--EnterInitLocs2 = {locX = 35, locY = 190},
@@ -1177,13 +1177,11 @@ tEctypeDB =
 					-- 创建热区
 					{Ectype_CreateHotArea, hotAreaID = 4, xPos = 102, yPos = 143},
 					-- 创建动态NPC
-					{Ectype_CreateNpc, npcID = 30445, xPos = 102, yPos = 143, dir = 8},
-					{Ectype_CreateNpc, npcID = 30446, xPos = 104, yPos = 140, dir = 8},
-					{Ectype_CreateNpc, npcID = 30447, xPos = 98, yPos = 143, dir = 8},
-					{Ectype_CreateNpc, npcID = 30448, xPos = 95, yPos = 145, dir = 8},
-					{Ectype_CreateNpc, npcID = 30449, xPos = 95, yPos = 147, dir = 8},
-					{Ectype_CreateNpc, npcID = 30450, xPos = 97, yPos = 148, dir = 8},
-					{Ectype_CreateNpc, npcID = 30451, xPos = 97, yPos = 146, dir = 8},
+					{Ectype_CreateNpc, npcID = 30444, xPos = 102, yPos = 143, dir = 8},
+					{Ectype_CreateNpc, npcID = 30446, xPos = 102, yPos = 140, dir = 8},
+					{Ectype_CreateNpc, npcID = 30447, xPos = 99, yPos = 143, dir = 8},
+					{Ectype_CreateNpc, npcID = 30448, xPos = 101, yPos = 138, dir = 8},
+					{Ectype_CreateNpc, npcID = 30451, xPos = 97, yPos = 142, dir = 8},
 				},
 				-- 步骤跳转
 				Goto =
@@ -9190,7 +9188,7 @@ tEctypeDB =
 		-- 副本ID，策划配置ID
 		EctypeID = 3001,
 		-- 静态地图ID
-		StaticMapID = 608,
+		StaticMapID = 500,
 		-- 进入副本所需等级，分别为最小等级和最大等级
 		EnterNeedLevel = {minLevel = 0, maxLevel = 999},
 		-- 进入副本最少人数，组队时有效
@@ -9200,28 +9198,22 @@ tEctypeDB =
 		-- 副本CD内可完成次数，除了周常副本，其他类型副本的CD类型都是天
 		EctypeCDFinishTimes = 0,
 		-- 副本存在时间，超过这个时间，副本就会销毁，以分钟为单位，如果配置成0则代表不限制时间
-		EctypeExistTime = 20,
-		-- 副本弥留时间，当副本里不存在玩家时开始计时，超过这个时间，副本就会销毁，配置成0的话，当玩家掉线离开副本就立即销毁，以分钟为单位
-		EctypeDyingTime = 0,
+		EctypeExistTime = 10,
 		-- 副本定时监测时间
 		EctypeCheckTime = 1,
 		-- 进入副本初始坐标，分别为X坐标和Y坐标
-		EnterInitLocs = {locX = 140, locY = 29},
+		EnterInitLocs = {locX = 202, locY = 50},
 		-- 副本完成条件, 特定战斗胜利
-		FightWinID = 3007,
+		FightWinID = 4065,
 		-- 副本结束后可逗留最大时间
 		EndExistTime = 20,
 		-- 副本结束后出现传送门的坐标
 		TransferDoorLocs =
 		{
-			{locX = 120, locY = 39},
+			{locX = 103, locY = 261},
 		},
 		-- 消耗道具可以额外次数进入，分别为道具ID和道具数目
 		EnterNeedItems = {},
-		-- 是否可以使用治疗类道具，默认不用配置此字段，代表可以使用
-		CanUseHealItems = true,
-		-- 是否可以在副本里进行交易，默认不用配置此字段，代表可以交易
-		CanTradeInEctype = false,
 		-- 副本机关
 		EctypeEffect = {Ectype_LoadOrganEffect},
 		-- 副本逻辑流程
@@ -9233,10 +9225,40 @@ tEctypeDB =
 				-- 步骤开始
 				Start =
 				{
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31450, xPos=65,yPos=203, scriptID = 4050, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31455, xPos=73,yPos=169, scriptID = 4051, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31460, xPos=93,yPos=168, scriptID = 4052, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31465, xPos=138,yPos=120, scriptID = 4053, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31470, xPos=190,yPos=86, scriptID = 4054, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31475, xPos=149,yPos=103, scriptID = 4055, radius = 4},
+                                        -- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31470, xPos=220,yPos=67, scriptID = 4056, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31465, xPos=262,yPos=78, scriptID = 4057, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31455, xPos=246,yPos=116, scriptID = 4058, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31450, xPos=213,yPos=101, scriptID = 4059, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31475, xPos=201,yPos=136, scriptID = 4060, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31460, xPos=219,yPos=144, scriptID = 4061, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31465, xPos=195,yPos=171, scriptID = 4062, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31455, xPos=145,yPos=195, scriptID = 4063, radius = 4},
+					-- 创建动态NPC
+					{Ectype_CreatePatrolNpc, npcID = 31475, xPos=143,yPos=217, scriptID = 4064, radius = 4},
 					-- 创建热区
-					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 114, yPos = 54},
+					{Ectype_CreateHotArea, hotAreaID = 1, xPos = 104, yPos = 251},
 					-- 创建NPC
-					{Ectype_CreateNpc, npcID = 31222, xPos = 114, yPos = 54, dir = 8},				
+					{Ectype_CreateNpc, npcID = 31480, xPos = 104, yPos = 252, dir = 6},				
 				},
 				-- 步骤跳转
 				Goto =
@@ -9258,7 +9280,7 @@ tEctypeDB =
 			{
 				Start =
 				{
-					{Ectype_OpenDialog, dialogID = 3013},
+					{Ectype_OpenDialog, dialogID = 10145},
 				},
 				--跳转
 				Goto =
@@ -9272,7 +9294,7 @@ tEctypeDB =
 				-- 步骤结束
 				End =
 				{
-					{Ectype_RemoveNpc, npcID = 31222},
+					{Ectype_RemoveNpc, npcID = 31480},
 					{Ectype_DestroyHotArea, hotAreaID = 1},
 				},
 				-- 进度奖励

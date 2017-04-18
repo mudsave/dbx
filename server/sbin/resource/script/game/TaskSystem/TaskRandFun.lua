@@ -10,7 +10,7 @@ function GetRandData(task, type)
 	-- 根据等级段来返回index
 	local ringIdx = task:getRingIdx()
 	-- 获取当前等级NPC配置
-
+	--print("taskID>>>>>>>>>>>>>>>>>>>>", taskID, gradeIdx, ringIdx)
 	local curGradeNpcConfig = LoopTaskTargetAssistDB[taskID][gradeIdx][ringIdx]
 	local taskNpcConfig = curGradeNpcConfig[task:getTargetType()][type]
 	local index = math.random(1, #taskNpcConfig)
@@ -18,11 +18,19 @@ function GetRandData(task, type)
 end
 
 -- 随机坐标获取函数
-function GetRandTitle(task)
+function GetRandTitle(task, roleID)
 	local taskMapConfig = RandTargetMapDB[task:getID()][task:getTargetType()]
 	local index = math.random(1, #taskMapConfig)
 	local mapID = taskMapConfig[index]
-	local x,y = g_sceneMgr:getRandomPosition(mapID)
+	-- 此场景是帮会私有场景
+	local x, y
+	if mapID == 7 then
+		local player = g_entityMgr:getPlayerByID(roleID)
+		local factionID = player:getFactionDBID()
+		x, y = g_sceneMgr:getFactionRandomPosition(factionID, mapID)
+	else
+		x, y = g_sceneMgr:getRandomPosition(mapID)
+	end
 	return mapID, x, y
 end
 

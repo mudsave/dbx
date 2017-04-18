@@ -192,7 +192,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.WindAt,
-	                     num_id = 5,
+	                     num_id = 23,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -206,7 +206,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.WindResist,
-	                     num_id = 5,
+	                     num_id = 24,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -310,7 +310,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.ThunderAt,
-	                     num_id = 5,
+	                     num_id = 31,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -324,7 +324,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.ThunderResist,
-	                     num_id = 5,
+	                     num_id = 32,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -428,7 +428,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.IceAt,
-	                     num_id = 5,
+	                     num_id = 39,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -442,7 +442,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.IceResist,
-	                     num_id = 5,
+	                     num_id = 40,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -546,7 +546,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.SoilAt,
-	                     num_id = 5,
+	                     num_id = 47,
 	                     target_type = TargetType.enemy,
 	                     target_num_id = 1,
 	              }, 
@@ -560,7 +560,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.SoilResist,
-	                     num_id = 5,
+	                     num_id = 48,
 	                     target_type = TargetType.enemy,
 	                     target_num_id = 1,
 	              }, 
@@ -664,7 +664,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.FireAt,
-	                     num_id = 5,
+	                     num_id = 55,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -678,7 +678,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.FireResist,
-	                     num_id = 5,
+	                     num_id = 56,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -782,7 +782,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.PoisonAt,
-	                     num_id = 5,
+	                     num_id = 63,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 
@@ -796,7 +796,7 @@ PetSkillDB = {
 	          skill = { 
 	             [1] = { 
 	                     type = PetPassiveEffect.PoisonResist,
-	                     num_id = 5,
+	                     num_id = 64,
 	                     target_type = TargetType.self,
 	                     target_num_id = 1,
 	              }, 

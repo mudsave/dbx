@@ -220,6 +220,7 @@ void CoEntity::onMove()
 			if (m_Move)
 			{
 				resetMove();
+				setPosition(pPosData->path[pPosData->idx - 1]);
 				g_MoveManager.RemoveMoveEntity(m_hand);
 			}
 		}

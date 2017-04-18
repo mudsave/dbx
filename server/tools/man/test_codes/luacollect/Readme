@@ -1,0 +1,19 @@
+date:2017/4/5 11:52
+summary:luacollect 总结
+diff:
+	1,添加源文件lcollect.c,提供一个添加gc对象记录函数,luac_addrecord,以及针对luacollect的一些管理函数,其中luac_addrecord在lua的C源码中被调用,管理函数提供给lua脚本使用
+	2,修改Makefile,添加lcollect.c编译支持
+	3,修改lapi.c,在lua_newuserdata中添加userdata记录保存
+	4,修改lvm.c,在462行解析lua创建表指令处添加新table记录
+	5,修改linit.c,添加luacollect初始化函数调用
+usage:
+	监听lua原生的创建gc对象事件,暂存这些gc对象,以方便查询内存泄漏
+	在lua代码中,可以访问到全局表luacollect,这个表中包含了所有的luacollect管理函数:
+	time_t luacollect.start(void):开启监听,返回一个当前时间戳,可以根据这个时间戳缩小查询范围
+	time_t luacollect.pause(void):暂停监听,返回一个时间戳,其之后的gc对象创建不会被记录
+	time_t luacollect.resume(void):恢复监听,返回一个时间戳,其后gc对象创建将被记录
+	table<gco,what>,table<gco,timeslot> luacollect.getresult(void):返回监听结果,两个返回值,第一个返回值是一个gc对象映射创建位置字符串表,第二个返回值是gc对象映射时间戳的表
+	void luacollect.stop(void):停止监听,同时清除之前的监听记录
+notice:
+	查内存泄漏,要先调用collectgarbage "collect"
+	

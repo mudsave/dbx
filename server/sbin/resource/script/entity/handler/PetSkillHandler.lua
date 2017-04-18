@@ -283,7 +283,7 @@ function PetSkillHandler:acquireTalent()
 
 	local level = self.owner:getLevel()
 	local sup = data.Superior
-	print("该宠物创建时候,能获得%d个高级技能",nSurAcquired)
+	print("该宠物创建时候,能获得高级技能数量",number)
 	if sup then
 		local _next = NonRepeatIndex(#sup)
 		while number > 0 do
@@ -511,11 +511,13 @@ function PetSkillHandler:sendChanges(player)
 	local t = {}
 	for _,id in ipairs(self.categories[Extend]) do
 		local skill = skills[id]
-		if not skill:isRemoved() and skill:isUpped() then
-			t[ id ] = skill:getLevel()
+		if not skill:isRemoved() then
+			if skill:isUpped() then
+				t[ id ] = skill:getLevel()
+			end
 		end
 	end
-	if #t > 0 then
+	if table.size(t) > 0 then
 		local owner = self.owner
 		g_eventMgr:fireRemoteEvent(
 			Event.getEvent(PetEvent_SC_SkillChanged,owner:getID(),t),
@@ -608,18 +610,21 @@ function PetSkillHandler:addPetExtendLevel(skillID,level)
 	local skill = self:getSkill(skillID)
 	if not skill or skill:isRemoved() then
 		-- 没有这个技能
+		print("noskill")
 		return false
 	end
 	if skill:getCategory() ~= Extend then
 		-- 不是研发技能
+		print("notectendddddd")
 		return false
 	end
 	local owner  = self.owner
-	if skill:getLevel() + level > owner:getLevel() then
+	if level > owner:getLevel() then
 		-- 研发技能等级超过宠物等级
+		print("erroe lvl")
 		return false
 	end
-	skill:setLevel(skill:getLevel() + level)
+	skill:setLevel(level)
 	skill:makeEffect(owner)
 	return true
 end

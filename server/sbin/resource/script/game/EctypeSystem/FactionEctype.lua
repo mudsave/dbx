@@ -254,6 +254,7 @@ function FactionEctype:onFightEnd(fightID, isWin)
 	-- 战斗失败
 	if not isWin then
 		self:returnEctypeInitLocs()
+		self:sendEctypeMessageTip(31)
 	end
 end
 

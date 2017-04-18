@@ -218,6 +218,14 @@ MainTaskDB41_45 =
 						},
 				},
 			},
+			{type="deletePrivateTransfer",
+					param={
+							transfers =
+							{
+								{taskID = 1601, index = 1},--删除私有传送阵江夏—陈留
+							},
+						},
+			},
 			},
 			[TaskStatus.Done]		=      ---完成目标状态 
 			{
@@ -230,19 +238,11 @@ MainTaskDB41_45 =
 						},
 					},
 			},
-			{type="deletePrivateTransfer",
-					param={
-							transfers =
-							{
-								{taskID = 1601, index = 1},--删除私有传送阵江夏—陈留
-							},
-						},
-			},
                         {type="createPrivateTransfer",
 					param={
 							transfers =
 							{
-								[1] = {mapID = 409, x = 101, y = 199, tarMapID = 120, tarX = 168, tarY = 82},--创建私有传送阵陈留-江夏
+								[1] = {mapID = 409, x = 101, y = 199, tarMapID = 120, tarX = 143, tarY = 80},--创建私有传送阵陈留-江夏
 							},
 					      },
 			},
@@ -293,8 +293,8 @@ MainTaskDB41_45 =
 							{
 								{taskID = 1602, index = 1},--删除私有传送阵陈留-江夏
 							},
-					    },
-				     },
+					     },
+		            },
 				},
 	     },
 	},
@@ -408,8 +408,8 @@ MainTaskDB41_45 =
 			        posData = {mapID = 109, x = 149, y = 124}, --踩雷坐标
 			        bor = true,	--如果为true则完成此目标任务直接完成
 			}, 
-			},
-			},		
+			     },
+		},		
 		triggers = --任务触发器
 		{
 		    [TaskStatus.Active] =
@@ -949,10 +949,10 @@ MainTaskDB41_45 =
 					param={
 							transfers =
 							{
-								[1] = {mapID = 410, x = 158, y = 20, tarMapID = 109, tarX = 129, tarY = 243},--创建私有传送阵汝南-虎牢关
+								[1] = {mapID = 410, x = 158, y = 20, tarMapID = 109, tarX = 146, tarY = 223},--创建私有传送阵汝南-虎牢关
 							},
 					      },
-			    },    
+			        },    
 				},
 				[TaskStatus.Done] =
 					{
@@ -1713,7 +1713,7 @@ MainTaskDB41_45 =
 		startNpcID = nil,	--任务起始npc
 		endNpcID = 21133,	--任务结束npc
 		preTaskData = {1618}, --前置任务ID 
-		nextTaskID = nil,	--任务后置任务没有填nil
+		nextTaskID = 1701,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 1584,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -1934,7 +1934,7 @@ MainTaskDB41_45 =
 		preTaskData = {1702},	--任务前置任务没有填nil
 		nextTaskID = 1704,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =nil,	--交任务对话ID没有填nil
+		endDialogID =1718,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
@@ -2047,10 +2047,10 @@ MainTaskDB41_45 =
 
 		name = "孙策去向",	--任务名字
 		startNpcID = 21216,	--任务起始npc
-		endNpcID = nil,		--任务结束npc
+		endNpcID = 21279,		--任务结束npc
 		preTaskData = {1703},	--任务前置任务没有填nil
 		nextTaskID = 1705,	--任务后置任务没有填nil
-		startDialogID = nil,	--接任务对话ID没有填nil
+		startDialogID = 1718,	--接任务对话ID没有填nil
 		endDialogID =1725,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
@@ -2111,13 +2111,13 @@ MainTaskDB41_45 =
 			dialogID = 1723,        --动作结束打开的对话框
 			npcsData =			--刷出npc数据
 			{
-			                {npcID = 21224, x = 146, y = 129,  noDelete = true},
-					{npcID = 21219, x = 149, y = 124,  noDelete = true},
-					{npcID = 21220, x = 149, y = 129,  noDelete = true},
-					{npcID = 21221, x = 151, y = 128,  noDelete = true},
-					{npcID = 21222, x = 151, y = 125,  noDelete = true},
+			                {npcID = 21224, x = 144, y = 129,  noDelete = true},
+					{npcID = 21219, x = 145, y = 126,  noDelete = true},
+					{npcID = 21220, x = 145, y = 131,  noDelete = true},
+					{npcID = 21221, x = 148, y = 126,  noDelete = true},
+					{npcID = 21222, x = 148, y = 131,  noDelete = true},
 			},
-			posData = {mapID = 124, x = 146, y = 129}, --踩雷坐标
+			posData = {mapID = 124, x = 144, y = 129}, --踩雷坐标
 			bor = true,	--如果为true则完成此目标任务直接完成
 			},
 			},
@@ -2141,7 +2141,7 @@ MainTaskDB41_45 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 21279, mapID = 124, x = 148, y = 126, dir = Direction. WestNouth,}, --阎象
+							[1] = {npcID = 21279, mapID = 124, x = 144, y = 129, dir = Direction. WestNouth,}, --阎象
 						},
 					},
 			},
@@ -2757,7 +2757,7 @@ MainTaskDB41_45 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 21239, mapID = 120, x = 178, y = 56, dir = Direction. WestSouth,}, --周瑜
+							[1] = {npcID = 21239, mapID = 120, x = 178, y = 56, dir = Direction. EastSouth,}, --周瑜
 						},
 					},
 			},
@@ -3427,7 +3427,6 @@ MainTaskDB41_45 =
 			},
 		},
 	},
-
 }
 
 table.copy(MainTaskDB41_45, NormalTaskDB)

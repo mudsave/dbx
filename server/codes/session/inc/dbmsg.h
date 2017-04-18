@@ -36,6 +36,7 @@ struct DBRoleInfo
 	char name[MaxNameSize];
 	char remouldAttr[MaxNameSize];
 	int showDrama;
+	bool sex;
 };
 
 struct DBMsg_LoginResult : public _DBMsg

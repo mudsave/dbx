@@ -197,7 +197,10 @@ end
 function TaskCondition.factionCheck(player, taskID)
 	local taskData = LoopTaskDB[taskID]
 	if taskData.taskType2 == TaskType2.Faction then
-
+		local factionID = player:getFactionDBID()
+		if factionID == 0 then
+			return false
+		end
 	else
 		return true
 	end

@@ -29,7 +29,16 @@ function TkillMonster:onKillMonster()
 		for _,target in ipairs(self._task:getDailyTargets()) do 
 			if target.type == "TkillMonster" then
 				target.param.currentCount = self._monsterCounts.currentCount
+				--更新杀怪进度
 				g_taskSystem:setTargetsState(self._entity,self._task:getID(),self._task:getTargetState())
+				--通知客户端更新杀怪活动
+				local resoureData = {}
+				local dailyTaskID = self._task:getID()
+				resoureData.count = self._monsterCounts.currentCount
+				resoureData.finishTimes = 1
+				local event_NotifyClient = Event.getEvent(ActivityEvent_SC_ActivityPageDaliy,dailyTaskID,resoureData)
+				g_eventMgr:fireRemoteEvent(event_NotifyClient,self._entity)
+
 			end
 		end
 		if self:completed() then

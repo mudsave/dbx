@@ -145,20 +145,39 @@ BabelRewardFormula = {}
 
 -- 经验公式
 function BabelRewardFormula.addXp(level, layer)
-	return (level + layer) * 10
+	return math.pow(layer,2)+80
 end
 
 -- 道行公式
 function BabelRewardFormula.addTao(level, layer)
-	return (level + layer) * 5
+	return math.floor (math.pow(layer,2)/80+10)
 end
 
 -- 宠物经验
 function BabelRewardFormula.addPetXp(level, layer)
-	return (level + layer) * 10
+	return math.pow(layer,2)+80
 end
 
 -- 宠物道行
 function BabelRewardFormula.addPetTao(level, layer)
-	return (level + layer) * 5
+	return math.floor (math.pow(layer,2)/80+10)
+end
+
+-- 帮会任务2，有他的奖励公式
+CommonFactionRewardFormula = { }
+
+function CommonFactionRewardFormula.addXp(curRing, level)
+	return 10
+end
+
+function CommonFactionRewardFormula.addTao(curRing, level)
+	return 10
+end
+
+function CommonFactionRewardFormula.addPetXp(curRing, level, petLevel)
+	return 10
+end
+
+function CommonFactionRewardFormula.addPetTao(curRing, level, petLevel)
+	return 10
 end

@@ -14,7 +14,7 @@ function NormalTask:__release()
 end
 
 function NormalTask:setRewards(rewards)
-	self._rewards = rewards
+	self._rewards = table.deepCopy(rewards, self._rewards)
 end
 
 function NormalTask:getRewards()
@@ -22,7 +22,7 @@ function NormalTask:getRewards()
 end
 
 function NormalTask:setTriggers(triggers)
-	table.deepCopy(triggers, self._triggers)
+	self._triggers = triggers
 end
 
 function NormalTask:getTriggers()
@@ -35,6 +35,7 @@ function NormalTask:addReward()
 		if rewardType == TaskRewardList.player_xp then
 			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
 			local addXp = math.floor(value * temp_xp_ratio / 100)
+			--print("当前任务ID和奖励", self._taskID, addXp)
 			player:addXp(addXp)
 			self._rewards[rewardType] = addXp
 		elseif rewardType == TaskRewardList.money then

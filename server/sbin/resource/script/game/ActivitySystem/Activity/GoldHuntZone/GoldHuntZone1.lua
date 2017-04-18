@@ -17,22 +17,24 @@ GoldHuntZoneActivityDB1 =
 		name = "GoldHuntZone1",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 18, min = 43},				--开始时间
-		min_maxPlayerLevel = {15,25},					--等级范围
+		startTime = {hour = 11, min = 50},				--开始时间
+		min_maxPlayerLevel = {30,39},					--等级范围
 		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 20, min = 1},				--结束时间
+		endTime = {hour = 20, min = 55},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
 					period = 2,--min			--阶段持续时间
 					materialInfo = {
-									{itemID = 10026,centerPos={x=108,y=214},radius = 25,count = 8},					--场景物件,中心,范围,数量,可以多行并列
-									{itemID = 10027,centerPos={x=111,y=217},radius = 25,count = 8},
+									{itemID = 10026,centerPos={x=105,y=211},radius = 15,count = 2},					--场景物件,中心,范围,数量,可以多行并列
+									{itemID = 10026,centerPos={x=114,y=218},radius = 15,count = 2},
+									{itemID = 10027,centerPos={x=106,y=211},radius = 15,count = 2},
+									{itemID = 10027,centerPos={x=115,y=218},radius = 15,count = 2},
 									{itemID = 10026,centerPos={x=119,y=232},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=121,y=234},radius = 15,count = 3},
-									{itemID = 10026,centerPos={x=128,y=210},radius = 15,count = 3},
-									{itemID = 10027,centerPos={x=128,y=213},radius = 15,count = 3},
+									{itemID = 10026,centerPos={x=128,y=210},radius = 15,count = 2},
+									{itemID = 10027,centerPos={x=128,y=213},radius = 15,count = 2},
 									{itemID = 10026,centerPos={x=103,y=192},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=106,y=192},radius = 15,count = 3},
 									{itemID = 10026,centerPos={x=88,y=202},radius = 15,count = 3},
@@ -48,12 +50,15 @@ GoldHuntZoneActivityDB1 =
 			[2] = {
 					period = 2,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=143,y=210},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,	--怪物ID,中心,范围,刷新间隔,总数量,保持数量
+									{commonDBID = 39052,centerPos={x=138,y=212},radius = 25},					--怪物ID,中心,范围,
+									updatePeriod = 1,totalMax= 6, curMax = 5,							--刷新间隔,总数量,保持数量
 									eliteDBID = 39053,propability = 30,									--精英怪,概率
 					},
 					materialInfo = {
-									{itemID = 10027,centerPos={x=186,y=198},radius = 20,count = 8},
-									{itemID = 10028,centerPos={x=189,y=200},radius = 20,count = 8},
+									{itemID = 10027,centerPos={x=181,y=196},radius = 20,count = 2},
+									{itemID = 10028,centerPos={x=180,y=196},radius = 20,count = 2},
+									{itemID = 10027,centerPos={x=191,y=204},radius = 20,count = 2},
+									{itemID = 10028,centerPos={x=191,y=204},radius = 20,count = 2},
 									{itemID = 10027,centerPos={x=174,y=229},radius = 15,count = 3},
 									{itemID = 10028,centerPos={x=172,y=229},radius = 15,count = 3},
 									{itemID = 10027,centerPos={x=206,y=200},radius = 15,count = 3},
@@ -75,12 +80,15 @@ GoldHuntZoneActivityDB1 =
 			[3] = {
 					period = 2,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=191,y=154},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,
+									{commonDBID = 39052,centerPos={x=191,y=154},radius = 25},
+									updatePeriod = 1,totalMax= 6, curMax = 5,
 									eliteDBID = 39053,propability = 40,
 					},
 					materialInfo = {
-									{itemID = 10029,centerPos={x=202,y=113},radius = 25,count = 8},
-									{itemID = 10028,centerPos={x=203,y=116},radius = 25,count = 8},
+									{itemID = 10028,centerPos={x=197,y=111},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=198,y=111},radius = 15,count = 2},
+									{itemID = 10028,centerPos={x=206,y=119},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=207,y=119},radius = 15,count = 2},
 									{itemID = 10028,centerPos={x=172,y=122},radius = 15,count = 3},
 									{itemID = 10029,centerPos={x=173,y=124},radius = 15,count = 3},
 									{itemID = 10028,centerPos={x=185,y=90},radius = 15,count = 3},
@@ -102,25 +110,28 @@ GoldHuntZoneActivityDB1 =
 			[4] = {
 					period = 2,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=238,y=108},radius = 12},updatePeriod = 1,totalMax= 3, curMax = 2,
+									{commonDBID = 39052,centerPos={x=239,y=105},radius = 25},
+									updatePeriod = 1,totalMax= 6, curMax = 5,
 									eliteDBID = 39053,propability = 60,
 					},
 					materialInfo = {
-									{itemID = 10029,centerPos={x=278,y=100},radius = 25,count = 8},
-									{itemID = 10030,centerPos={x=279,y=101},radius = 25,count = 8},
-									{itemID = 10029,centerPos={x=260,y=114},radius = 25,count = 4},
-									{itemID = 10030,centerPos={x=260,y=115},radius = 25,count = 4},
-									{itemID = 10029,centerPos={x=279,y=119},radius = 25,count = 4},
-									{itemID = 10030,centerPos={x=280,y=119},radius = 25,count = 4},
-									{itemID = 10029,centerPos={x=302,y=103},radius = 25,count = 4},
-									{itemID = 10030,centerPos={x=301,y=103},radius = 25,count = 4},
-									{itemID = 10029,centerPos={x=298,y=83},radius = 25,count = 4},
-									{itemID = 10030,centerPos={x=298,y=84},radius = 25,count = 4},
-									{itemID = 10029,centerPos={x=282,y=75},radius = 15,count = 4},
-									{itemID = 10030,centerPos={x=283,y=75},radius = 15,count = 4},
-									{itemID = 10029,centerPos={x=260,y=96},radius = 25,count = 8},
-									{itemID = 10030,centerPos={x=260,y=97},radius = 25,count = 8},
-									{itemID = 10029,centerPos={x=262,y=50},radius = 15,count = 4},
+									{itemID = 10029,centerPos={x=275,y=96},radius = 15,count = 2},
+									{itemID = 10030,centerPos={x=248,y=103},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=280,y=100},radius = 10,count = 2},
+									{itemID = 10030,centerPos={x=280,y=99},radius = 10,count = 2},
+									{itemID = 10029,centerPos={x=260,y=114},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=260,y=115},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=279,y=119},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=280,y=119},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=302,y=103},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=301,y=103},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=298,y=83},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=298,y=84},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=282,y=75},radius = 15,count = 3},
+									{itemID = 10030,centerPos={x=283,y=75},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=260,y=96},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=260,y=97},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=262,y=50},radius = 15,count = 3},
 									{itemID = 10030,centerPos={x=261,y=47},radius = 15,count = 4},
 									{itemID = 10030,centerPos={x=269,y=65},radius = 15,count = 4},
 									updatePeriod = 1,totalMax= 150, curMax = 45,
@@ -182,6 +193,7 @@ function GoldHuntZone1:open()
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,6)
 		-- RemoteEventProxy.broadcast(event, -1)
 		g_eventMgr:broadcastEvent(event,-1)
+		LuaDBAccess.clearGoldHuntActivity()
 	end
 	--创建npc
 	--local npc = g_entityFct:createDynamicNpc(GoldHuntZone_scoreNpcID)
@@ -205,7 +217,7 @@ end
 --定时器执行，真正开启活动
 function GoldHuntZone1:openActivity()
 	--活动状态(开启)
-	
+	g_goldHuntMgr:openActivity()
 end
 
 --定时器执行，真正关闭活动
@@ -337,13 +349,15 @@ function GoldHuntZone1:updateMines(timerID)
 	end
 	local areaCount = #(self._config.phaseInfo[phaseID].materialInfo)
 	if count > 0 then
-		local rand = math.random(1,areaCount)
-		local info = self._config.phaseInfo[phaseID].materialInfo[rand]
-		local centerPos = info.centerPos
-		local mineID = info.itemID
-		local radius = info.radius
+		
 		local i =0
 		while(i < count)do
+			local rand = math.random(1,areaCount)
+			local info = self._config.phaseInfo[phaseID].materialInfo[rand]
+			local centerPos = info.centerPos
+			local mineID = info.itemID
+			local radius = info.radius
+
 			local peer = self._scene:getPeer()
 			local vect = peer:getRandomPos(centerPos.x,centerPos.y,radius,0)
 			local x = vect.x
@@ -486,7 +500,7 @@ function GoldHuntZone1:update(timerID)
 		timerContext[timerID] = context
 		if timePhaseID == 1 then
 			self:_refreshMines(timePhaseID)
-			
+			self:openActivity()
 		else
 			if timePhaseID == 2 then
 				self._phaseID = 2

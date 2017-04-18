@@ -75,7 +75,6 @@ function ServerManager:setServerLevel()
 		end
 	end
 	-- 跨天和第一次登录时，才会去设置在线玩家的服务器等级变化，没变化的就不需要设置
-	print("temPServerLvl>>>>>>>>>>>", tempServerLvl)
 	if self.serverLevel ~= tempServerLvl then
 		self.serverLevel = tempServerLvl
 		-- 通知所有在当前服务器的玩家

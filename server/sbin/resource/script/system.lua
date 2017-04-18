@@ -24,11 +24,11 @@ function System._LoadWorldServerData(player, worldServerData)
 
 end
 
-function System._LoadSocialServerData(player, socialServerData,factionData)
+function System._LoadSocialServerData(player, socialServerData,roleFactionData,factionData)
 	if not socialServerData then
 		return
 	end
-
+	
 	local factionDBID = socialServerData.factionDBID
 	local factionMoney = socialServerData.factionMoney
 	local factionHistoryMoney = socialServerData.factionHistoryMoney
@@ -52,15 +52,31 @@ function System._LoadSocialServerData(player, socialServerData,factionData)
 	if factionDBID > 0 then
 		SceneManager:getInstance():createFactionScene(factionDBID)
 	end
+	if roleFactionData then
+		player:setFactionJoinDate(time.totime(roleFactionData.joinDate))
+	end
 	if factionData then
-		player:setFactionJoinDate(time.totime(factionData.joinDate))
+		local factionHandler = player:getHandler(HandlerDef_Faction)
+		factionHandler:setFactionLevel(factionData.factionLevel)
 	end
 
 	local basicInfo = {
-		gateId = player:getGatewayID(),clientLink = player:getClientLink(),DBID = player:getDBID(),name = player:getName(),sex = player:getSex(),school = player:getSchool(), level = player:getLevel(),vigor = player:getVigor(),
-		modelID = player:getModelID(),curHeadTex = player:getCurHeadTex(),curBodyTex=player:getCurBodyTex(),
-		factionDBID = player:getFactionDBID(),autoHideChatWin = player:getAutoHideChatWin(),offlineDate = player:getOfflineDate(),
-		factionMoney = player:getFactionMoney(),factionHistoryMoney = player:getFactionHistoryMoney(),
+		gateId = player:getGatewayID(),
+		clientLink = player:getClientLink(),
+		DBID = player:getDBID(),
+		name = player:getName(),
+		sex = player:getSex(),
+		school = player:getSchool(), 
+		level = player:getLevel(),
+		vigor = player:getVigor(),
+		modelID = player:getModelID(),
+		curHeadTex = player:getCurHeadTex(),
+		curBodyTex=player:getCurBodyTex(),
+		factionDBID = player:getFactionDBID(),
+		autoHideChatWin = player:getAutoHideChatWin(),
+		offlineDate = player:getOfflineDate(),
+		factionMoney = player:getFactionMoney(),
+		factionHistoryMoney = player:getFactionHistoryMoney(),
 		thisWeekFactionContribute = player:getThisWeekFactionContribute(),
 		lastWeekFactionContribute = player:getLastWeekFactionContribute(),
 		intradayFactionContribute = player:getIntradayFactionContribute(),
@@ -70,84 +86,172 @@ function System._LoadSocialServerData(player, socialServerData,factionData)
 	local event = Event.getEvent(SocialEvent_SB_Enter, basicInfo)
 	g_eventMgr:fireWorldsEvent(event, SocialWorldID)
 
+	-- 开启玩家社会服属性监听
+	player:createSocialProperties()
 end
 
-function System.OnPlayerLoaded(player, recordList)	-- 玩家上线加载坐骑数据
-	g_rideMgr:loadRides(player,recordList[20])
+local function LoadSystem(name,func)
+	-- 你可以把下面的false设置为true
+	if false then
+		return func()
+	end
 
-	-- 加载所有道具，因为有坐骑坐骑包裹才会开启，没有坐骑，坐骑包裹时关闭的，所以得在加载坐骑后面
-	local itemsRecord = recordList[3]
-	g_itemMgr:createItemFromDB(player, itemsRecord)
+	local b,errMsg = pcall(func)
+	if not b then
+		local builder = StringBuilder()
+		builder:append( "加载",name,"系统出错:" )
+		builder:append( '\n\t',errMsg )
+		for i = 3,3 do -- 打印堆栈信息
+			local info = debug.getinfo(2,"nSl")
+			builder:append( '\n\t',info.short_src,":",info.currentline,' function:',info.name )
+		end
+		print(tostring(builder))
+	end
+end
 
-	-- 加载战斗外buff
-	g_buffMgr:loadPlayerBuffFromDB(player, recordList[5])
-	player:getHandler(HandlerDef_Mind):loadMinds()
+function System.OnPlayerLoaded(player, recordList)	
+	-- 看到这里了吗?
+	-- 为了避免在测试过程中一个系统的出错影响另外一个系统的加载
+	-- 我用了pcall函数屏蔽了函数执行过程中的可能出错
+	-- 这样后续的函数执行能持续执行下去
 
-	-- 加载副本系统
-	local ectypeRecord = recordList[6]
-	local ringEctypeRecord = recordList[7]
-	g_ectypeMgr:setEctypeData(player, ectypeRecord, ringEctypeRecord)
+	LoadSystem("坐骑",function()
+		-- 玩家上线加载坐骑数据
+		g_rideMgr:loadRides(player,recordList[20])
+	end)
 
-	-- 加载道具使用次数
-	g_itemMgr:loadItemUseTimes(player, recordList[8])
+	LoadSystem("物品",function()
+		-- 加载所有道具，因为有坐骑坐骑包裹才会开启，没有坐骑，坐骑包裹时关闭的，所以得在加载坐骑后面
+		local itemsRecord = recordList[3]
+		g_itemMgr:createItemFromDB(player, itemsRecord)
+	end)
 
-	-- 加载任务系统
-	g_taskDoer:loadDailyTaskConfiguration(player,recordList[35])
-	g_taskDoer:loadHistoryTask(player, recordList[9])
-	g_taskDoer:loadNormalTask(player, recordList[10])
-	g_taskDoer:loadLoopTaskRing(player, recordList[22])
-	g_taskDoer:loadDailyTask(player,recordList[34])
-	g_taskDoer:loadLoopTask(player, recordList[11])
-	g_taskDoer:loadTaskTrace(player, recordList[12])
-	g_taskDoer:loadTaskPrivateData(player, recordList[13])
-	-- 新手奖励系统
-	g_newRewardsMgr:loadDataFromDB(player,recordList[15])	-- 加载玩家宠物
-	player:loadAllPets(recordList[16])
-	-- 加载玩家历练数据
-	g_experienceMgr:loadExperience(player, recordList[17])
+	LoadSystem("Buff",function()
+		-- 加载战斗外buff
+		g_buffMgr:loadPlayerBuffFromDB(player, recordList[5])
+		player:getHandler(HandlerDef_Mind):loadMinds()
+	end)
 
-	-- 玩家上线加载在线奖励数据
-	g_onlineRewardSessMgr:createDBSession(player,recordList[18],recordList[19])	
+	LoadSystem("副本",function()
+		-- 加载副本系统
+		local ectypeRecord = recordList[6]
+		local ringEctypeRecord = recordList[7]
+		g_ectypeMgr:setEctypeData(player, ectypeRecord, ringEctypeRecord)
+	end)
+
+	LoadSystem("道具使用",function()
+		-- 加载道具使用次数
+		g_itemMgr:loadItemUseTimes(player, recordList[8])
+	end)
+
+	LoadSystem("任务",function()
+		-- 加载任务系统
+		g_taskDoer:loadDailyTaskConfiguration(player,recordList[35])
+		g_taskDoer:loadHistoryTask(player, recordList[9])
+		g_taskDoer:loadNormalTask(player, recordList[10])
+		g_taskDoer:loadLoopTaskRing(player, recordList[22])
+		g_taskDoer:loadDailyTask(player,recordList[34])
+		g_taskDoer:loadLoopTask(player, recordList[11])
+		g_taskDoer:loadTaskTrace(player, recordList[12])
+		g_taskDoer:loadTaskPrivateData(player, recordList[13])
+	end)
+
+	LoadSystem("新手奖励",function()
+		-- 新手奖励系统
+		g_newRewardsMgr:loadDataFromDB(player,recordList[15])	-- 加载玩家宠物
+	end)
+
+	LoadSystem("宠物",function()
+		player:loadAllPets(recordList[16])
+	end)
+
+	LoadSystem("历练",function()
+		-- 加载玩家历练数据
+		g_experienceMgr:loadExperience(player, recordList[17])
+	end)
+
+	LoadSystem("在线奖励",function()
+		-- 玩家上线加载在线奖励数据
+		g_onlineRewardSessMgr:createDBSession(player,recordList[18],recordList[19])	
+	end)
 	
-	-- 加载自动加点数据
-	player:loadAutoPoint(recordList[21])
+	LoadSystem("自动加点",function()
+		-- 加载自动加点数据
+		player:loadAutoPoint(recordList[21])
+	end)
 
-	-- 加载宝藏的数据
-	g_treasureMgr:createTreasureFromDB(player,recordList[23])
+	LoadSystem("宝藏",function()
+		-- 加载宝藏的数据
+		g_treasureMgr:createTreasureFromDB(player,recordList[23])
+	end)
 	
-	-- 加载系统功能设置
-	g_RoleConfigMgr:loadDataFromDB(player,recordList[25])
+	LoadSystem("系统功能设置",function()
+		-- 加载系统功能设置
+		g_RoleConfigMgr:loadDataFromDB(player,recordList[25])
+	end)
 
-	--加载生活技能数据
-	g_LifeSkillMgr:loadLifeSkill(player, recordList[27])
+	LoadSystem("生活技能",function()
+		--加载生活技能数据
+		g_LifeSkillMgr:loadLifeSkill(player, recordList[27])
+	end)
 
-	g_tirednessdMgr:loadTirednessFromDB(player,recordList[28])
-	--加载快捷键数据
-	local keyRecord = recordList[4]
-	g_ShortCutKeyMgr:updateDataToClient(player,keyRecord)
-	-- 修改
-	g_practiseMgr:loadPractiseFromDB(player,recordList[29])
-	--加载玩家宠物仓库数据
-	g_PetDepotMgr:playerCheckIn(player,recordList[1][1])
+	LoadSystem("疲劳",function()
+		g_tirednessdMgr:loadTirednessFromDB(player,recordList[28])
+	end)
 
-	--加载邮箱系统
-	g_mailMgr:loadPlayerMails(player,recordList[14])
+	LoadSystem("快捷键",function()
+		--加载快捷键数据
+		local keyRecord = recordList[4]
+		g_ShortCutKeyMgr:updateDataToClient(player,keyRecord)
+	end)
 
-	--加载猎金场活动
-	g_goldHuntMgr:loadGoldHunt(player,recordList[30])
+	LoadSystem("历练",function()
+		-- 修改
+		g_practiseMgr:loadPractiseFromDB(player,recordList[29])
+	end)
+
+	LoadSystem("宠物仓库",function()
+		--加载玩家宠物仓库数据
+		g_PetDepotMgr:playerCheckIn(player,recordList[1][1])
+	end)
+
+	LoadSystem("邮件",function()
+		--加载邮箱系统
+		g_mailMgr:loadPlayerMails(player,recordList[14])
+	end)
+
+	LoadSystem("猎金场",function()
+		--加载猎金场活动
+		g_goldHuntMgr:loadGoldHunt(player,recordList[30])
+	end)
 	
-	g_beastBlessMgr:onPlayerOnline(player,recordList[31])
-	-- 活动上线
-	g_dekaronSchoolMgr:onPlayerOnline(player,recordList[32])
+	LoadSystem("瑞兽降临",function()
+		g_beastBlessMgr:onPlayerOnline(player,recordList[31])
+	end)
 
-	--加载兑换物品数据
-	g_exchangeItemMgr:playerOnLine(player,recordList[33])
-	-- 
-	g_taskDoer:loadBabelTask(player, recordList[36])
-	--加载天降宝盒活动
-	g_skyFallBoxMgr:loadSkyFallBoxDB(player,recordList[37])
+	LoadSystem("门派闯关活动",function()
+		-- 活动上线
+		g_dekaronSchoolMgr:onPlayerOnline(player,recordList[32])
+	end)
+
+	LoadSystem("物品兑换",function()
+		--加载兑换物品数据
+		g_exchangeItemMgr:playerOnLine(player,recordList[33])
+	end)
+
+	LoadSystem("通天塔任务",function()
+		-- 
+		g_taskDoer:loadBabelTask(player, recordList[36])
+	end)
+
+	LoadSystem("天降宝盒",function()
+		--加载天降宝盒活动
+		g_skyFallBoxMgr:loadSkyFallBoxDB(player,recordList[37])
+	end)
 	
-	g_discussHeroMgr:onPlayerOnline(player,recordList[38])
+	LoadSystem("煮酒论英雄",function()
+		g_discussHeroMgr:onPlayerOnline(player,recordList[38])
+	end)
 	
 	-- 通知玩家上线
 	g_activityMgr:onPlayerOnline(player)
@@ -211,7 +315,8 @@ function System.OnPlayerLogout(player, reason)
 
 	--玩家下线保存兑换物品信息
 	--g_exchangeItemMgr:palyerOffLine(player)
-
+	-- 释放对话
+	g_dialogMgr:onPlayerOffline(player)
 end
 
 --玩家掉线后再登陆上线的统一入口，由个业务系统实现初始化(在进战斗前)

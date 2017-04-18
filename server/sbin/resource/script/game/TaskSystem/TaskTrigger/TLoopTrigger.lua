@@ -316,7 +316,7 @@ function Triggers.addSpecialArea(roleID, curParam, task, isRandom)
 	if not isRandom then
 		local config = GetRandData(task, "addSpecialArea")
 		-- 有一个对话ID和脚本ID
-		local mapID, x, y = GetRandTitle(task)
+		local mapID, x, y = GetRandTitle(task ,roleID)
 		-- 传递参数
 		curParam.dialogID = config.dialogID
 		curParam.mapID = mapID
@@ -952,7 +952,8 @@ end
 function Triggers.createRandomPuzzle(roleID, curParam, task, isRandom)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	if not isRandom then
-		local tPuzzleID = math.random(1, table.size(PuzzleDB))
+		local puzzleCount = 1
+		local tPuzzleID = math.random(1, puzzleCount)
 		curParam.puzzleID = tPuzzleID
 		local target = createDynamicTarget(player, task, "Tpuzzle", curParam)
 		task:addTarget(1, target)

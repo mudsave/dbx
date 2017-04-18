@@ -18,7 +18,7 @@ local schoolActivityDB =
 		dbName = "updateSchoolActivity",
 		startType = AtyStartType.fixedWeekHour,
 		activityTime = {
-			[1] = {startTime = {week = 2,hour = 8, min = 47},endTime = {week = 6,hour = 22, min = 0}},
+			[1] = {startTime = {week = 3,hour = 20, min = 0},endTime = {week = 3,hour = 21, min = 0}},
 			[2] = {startTime = {week =6,hour = 20, min = 0},endTime = {week = 6,hour = 21, min = 0}},
 		}
 	}
@@ -46,12 +46,11 @@ function DekaronSchool:open()
 	--播放广播
 	local BroadCastMsgID = BroadCastMsgGroupID.Group_DekaronSchool
 	local event = Event.getEvent(BroadCastSystem_SC_DekaronSchool,BroadCastMsgID.EventID,BroadCastMsgID.ActivityPreOpening)
-	-- RemoteEventProxy.broadcast(event)
 	g_eventMgr:broadcastEvent(event)
 	--活动状态(预开启)
 	self.state = ActivityState.PreOpening
 	--定时器5分钟后活动开启
-	self.openActivityTimerID = g_timerMgr:regTimer(self, 1000*60*1, 1000*60*1, "门派闯关活动5分钟后开启")
+	self.openActivityTimerID = g_timerMgr:regTimer(self, 1000*60*1, 1000*60*1, "门派闯关活动将在5分钟后开启")
 end
 
 function DekaronSchool:close()
@@ -71,11 +70,11 @@ function DekaronSchool:close()
 				local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
 				local playerLevel = member:getLevel()
 				local activityHandler = member:getHandler(HandlerDef_Activity)
-				local integral = activityHandler:getDekaronIntegral()
+				local integral = activityHandler:getDekaronIntegral() or 0
 				local exp = DekaronSchoolReward.getExpFormula(playerLevel,integral)
 				local tao = DekaronSchoolReward.getTaoFormula(playerLevel,integral)
 				if exp then
-					local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
+					local temp_xp_ratio = member:getAttrValue(player_xp_ratio)
 					local tempExp = math.floor(exp * temp_xp_ratio / 100)
 					member:addXp(tempExp)
 					g_dekaronSchoolMgr:sendRewardMessageTip(member, 2, tempExp)
@@ -93,11 +92,12 @@ function DekaronSchool:close()
 	end
 	--清除所有信息
 	for playerID, player in pairs(g_entityMgr:getPlayers()) do
-		player:getHandler(HandlerDef_Activity):setDekaronIntegral(0)
+		player:getHandler(HandlerDef_Activity):setDekaronIntegral(nil)
 		--关闭UI
 	end
 	self.state = ActivityState.Close
 	LuaDBAccess.deleteSchoolActivity()
+	g_activityMgr:removeActivity(self._id)
 end
 
 -- 活动开启
@@ -115,7 +115,6 @@ function DekaronSchool:openActivity()
 		--播放广播
 		local BroadCastMsgID = BroadCastMsgGroupID.Group_DekaronSchool
 		local event = Event.getEvent(BroadCastSystem_SC_DekaronSchool,BroadCastMsgID.EventID,BroadCastMsgID.ActivityOpening)
-		--  RemoteEventProxy.broadcast(event)
 		g_eventMgr:broadcastEvent(event)
 		-- 删除定时器
 		g_timerMgr:unRegTimer(self.openActivityTimerID)

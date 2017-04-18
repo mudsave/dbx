@@ -194,3 +194,12 @@ function Triggers.stopAutoMeet(roleID, param, task, fromDB)
 	local player = g_entityMgr:getPlayerByID(roleID)
 	CactionSystem.getInstance():doStopAutoMeet(player)
 end
+
+-- 打开UI指引
+function Triggers.openUITip(roleID, param, task, fromDB)
+	if fromDB then
+		return
+	end
+	local player = g_entityMgr:getPlayerByID(roleID)
+	CactionSystem.getInstance():doOpenUITip(player, param)
+end

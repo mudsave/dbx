@@ -123,9 +123,11 @@ public:
 	} 
 	virtual void
 	dump(const char *szFileName) {
-		FILE *file = fopen(szFileName,"w");
+		char filePath[256];
+		sprintf(filePath,"bin/profile/%s",szFileName);
+		FILE *file = fopen(filePath,"w");
 		if(!file) {
-			TRACE1_L0("Can not open %s for writing profile log\n",szFileName);
+			TRACE1_L0("Can not open %s for writing profile log\n",filePath);
 			return;
 		}
 		fprintf(file,"Name,Times,Total,Average,Max,Min\n");

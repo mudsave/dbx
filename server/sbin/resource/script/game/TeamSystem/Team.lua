@@ -354,7 +354,7 @@ function Team:setDekaronActivityTarget(activityTarget)
 		local handler = player:getHandler(HandlerDef_Activity)
 		if activityTarget then
 			local param = activityTarget:getParams()
-			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,self.dekaronProcess,handler:getDekaronIntegral())
+			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,self.dekaronProcess,handler:getDekaronIntegral() or 0)
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end

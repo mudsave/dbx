@@ -666,9 +666,16 @@ function EctypeHandler:getEctypeIntegral()
 	return self.integral
 end
 
+-- 玩家当前积分改变的时候发送到客户端
+function EctypeHandler:sendScoreChange()
+	local event = Event.getEvent(EctypeEvents_SC_ScoreChange, self.integral)
+	g_eventMgr:fireRemoteEvent(event, self._entity)
+end
+
 -- 增加积分
 function EctypeHandler:incIntegral(integral)
 	self.integral = self.integral + integral
+	self:sendScoreChange()
 end
 
 -- 减少积分
@@ -676,6 +683,7 @@ function EctypeHandler:redIntegral(integral)
 	if self.integral > 0 then
 		if self.integral >= integral then
 			self.integral = self.integral - integral
+			self:sendScoreChange()
 			return integral
 		else
 			local curIntegral = self.integral

@@ -1261,7 +1261,7 @@ MonsterSkillDB = {
 	          skill = { 
 	                 [1] = { 
 	                     type = SkillEff.Buff,
-	                     num_id = 67,
+	                     num_id = 16,
 	                     target_type = TargetType.enemy_g,
 	                     target_num_id = 3,
 	                 },
@@ -2826,8 +2826,8 @@ MonsterSkillDB = {
 	          phase_type = PhaseType.UnionHit,
 	          skill = { 
 	                 [1] = { 
-	                     type = SkillEff.At,
-	                     num_id = 14,
+	                     type = SkillEff.Mt,
+	                     num_id = 60,
 	                     target_type = TargetType.enemy,
 	                     target_num_id = 1,
 	                 },
@@ -2879,6 +2879,183 @@ MonsterSkillDB = {
 	                     type = SkillEff.Mt,
 	                     num_id = 22,
 	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1116] = {
+	          name = "阴风怒号",
+	          skill_type = Skill_Type.Normal,
+	          phase_type = PhaseType.Wind,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.At,
+	                     num_id = 28,
+	                     target_type = TargetType.enemy_g,
+	                     target_num_id = 2,
+	                 },
+	                 [2] = { 
+	                     type = SkillEff.Pursue,
+	                     num_id = 16,
+	                     target_type = TargetType.enemy_g,
+	                     target_num_id = 2,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1117] = {
+	          name = "回风剑",
+	          skill_type = Skill_Type.Normal,
+	          phase_type = PhaseType.Wind,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Mt,
+	                     num_id = 60,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1118] = {
+	          name = "寒冰刺骨",
+	          skill_type = Skill_Type.Normal,
+	          phase_type = PhaseType.Ice,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Mt,
+	                     num_id = 60,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1119] = {
+	          name = "凌风刺",
+	          skill_type = Skill_Type.Normal,
+	          phase_type = PhaseType.Wind,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Mt,
+	                     num_id = 60,
+	                     target_type = TargetType.enemy,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1201] = {
+	          name = "坚壁清野",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 48,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1202] = {
+	          name = "护体天罡",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 49,
+	                     target_type = TargetType.friend,
+	                     target_num_id = 1,
+	                 },
+	                 [2] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [3] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	                 [4] = { 
+	                     type = nil,
+	                     target_type = nil,
+	                 },
+	             },
+	         },
+     [1203] = {
+	          name = "天降神威",
+	          skill_type = Skill_Type.Buff,
+	          phase_type = nil,
+	          skill = { 
+	                 [1] = { 
+	                     type = SkillEff.Buff,
+	                     num_id = 41,
+	                     target_type = TargetType.friend,
 	                     target_num_id = 1,
 	                 },
 	                 [2] = { 

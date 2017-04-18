@@ -164,9 +164,23 @@ function RoleVerify:checkLoopTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local taskID = param.taskID
 	local loopTaskDB = LoopTaskDB[taskID]
+	-- print("继续做",taskHandler:getCountRing(taskID),loopTaskDB.loop)
 	if taskHandler:getCountRing(taskID) >= loopTaskDB.loop then
-		return false, param.errorID and param.errorID or 31
-	end
+			if loopTaskDB.taskType2 == TaskType2.Master then
+				return false, 31
+			elseif loopTaskDB.taskType2 == TaskType2.Trial then
+				return false, 31
+			elseif loopTaskDB.taskType2 == TaskType2.Faction then
+				return false, 32
+			end
+			return false, 31
+		else
+			-- 没有完成，当前不能再接
+			if taskHandler:getTask(taskID) then
+				print("你已经有这个任务了")
+				return false, 30
+			end
+		end
 	return true
 end
 
@@ -215,7 +229,7 @@ function RoleVerify:checkTaskTeam(player, param)
 		if  param.playerNum then
 			if teamHandler:getCurMemberNum() < param.playerNum then
 				--print("队伍中人数的判断")
-				return false, param.errorID and param.errorID or 18
+				return false, param.errorID and param.errorID or 21
 			end
 		end
 		-- 判断暂离的状态
@@ -246,6 +260,10 @@ function RoleVerify:checkTaskTeam(player, param)
 				end
 			end
 		end
+		return true
+	end
+	-- 判断单人状态
+	if param.single then
 		return true
 	end
 	return false, param.errorID and param.errorID or 4
@@ -608,6 +626,15 @@ function RoleVerify:CheckFactionConfiguration( player,param )
 			end
 		else
 			return false
+		end
+	elseif type == "CheckFactionLevel" then
+		local level = param.level
+		local factionHandler = player:getHandler(HandlerDef_Faction)
+		local factionLevel = factionHandler:getFactionLevel()
+		if factionLevel >= level then
+			return false
+		else
+			return true
 		end
 	else
 		return false

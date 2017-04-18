@@ -334,7 +334,7 @@ function DiscussHeroManager:doDiscussHeroPVPFight(playerID,targetID)
 		end
 	end
 	-- 拉玩家进入PK
-	local fightID = g_fightMgr:startPvpFight(roleList1, roleList2, 2, FightBussinessType.DicussHero)
+	local fightID = g_fightMgr:startPvpFight(roleList1, roleList2, nil, FightBussinessType.DicussHero)
 	self.fightRoleIDList[fightID] = targetID
 end
 

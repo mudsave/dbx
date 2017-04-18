@@ -1,7 +1,7 @@
 #include "lindef.h"
 #include "MapManager.h"
 
-#define MAX_MAP_COUNT			1024
+#define MAX_MAP_COUNT			9999
 
 CMapManager g_MapManager;
 

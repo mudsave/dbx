@@ -22,7 +22,9 @@ static void init_guid_data()
 	t.tm_hour	= 23;
 	t.tm_min	= 59;
 	t.tm_sec	= 59;
-
+	t.tm_wday   = 1;
+	t.tm_yday   = 1;
+	t.tm_isdst  = -1;
 	s_tStart = mktime(&t);
 	memset(&s_uvSerials,0,sizeof(DWORD) * MAX_ENTITY_TYPE);
 }

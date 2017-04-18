@@ -81,6 +81,7 @@ function PlayerManager:onPlayerMessage(hLink, msg)
 		local pLogoutInfo = tolua.cast(msg, "_MsgGW_PlayerLogoutInfo")
 		print(pLogoutInfo.roleId,"begin Offline")
 		self:onPlayerLogout(pLogoutInfo.roleId,pLogoutInfo.reason)
+
 	else
 		print("PlayerManager:onPeerMessage(), error msgId = ", msgId)
 	end
@@ -207,7 +208,7 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 	end
 	g_sceneMgr:enterPublicScene(mapID, player, x, y)
 	System._LoadWorldServerData(player,recordList[24][1])
-	System._LoadSocialServerData(player,recordList[26][1],recordList[39][1])
+	System._LoadSocialServerData(player,recordList[26][1],recordList[39][1],recordList[40][1])
 	System.OnPlayerLoaded(player, recordList)
 
 	g_entityMgr:setPlayerName(player:getName(),dbId)

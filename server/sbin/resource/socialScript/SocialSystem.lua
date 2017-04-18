@@ -15,6 +15,21 @@ require "ChatSystem.ChatSystem"
 
 SocialSystem = class(EventSetDoer, Singleton)
 
+UpdatePlayerAttrList = {
+
+	["Level"] = function(infoValue) player:setLevel(infoValue) end,
+	["ModelID"] = function(infoValue) player:setModelID(infoValue) end,
+	["Vigor"] = function(infoValue) player:setVigor(infoValue) end,
+	["OfflineDate"] = function(infoValue) player:setOfflineDate(infoValue) end,
+	["CurHeadTex"] = function(infoValue) player:setCurHeadTex(infoValue) end,
+	["CurBodyTex"] = function(infoValue) player:setCurBodyTex(infoValue) end,
+	["School"] = function(infoValue) player:setSchool(infoValue) end,
+	["Name"] = function(infoValue) player:setName(infoValue) end,
+	["Sex"] = function(infoValue) player:setSex(infoValue) end,
+
+}
+
+
 
 function SocialSystem:__init()
 	self._doer = {
@@ -116,9 +131,12 @@ function SocialSystem:onUpdatePlayerAttr( event )
 	local params = event:getParams()
 	local attributeList = params[1]
 	local playerDBID = params[2]
-	local vigor = attributeList["vigor"]
 	local player = g_playerMgr:getPlayerByDBID(playerDBID)
-	player:setVigor(vigor)
+	if player then
+		for infoName,infoValue in pairs(attributeList) do
+			UpdatePlayerAttrList[infoName](infoValue)
+		end
+	end
 
 end
 

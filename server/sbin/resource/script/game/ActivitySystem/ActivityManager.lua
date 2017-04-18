@@ -4,7 +4,6 @@
 
 ActivityDB = {}
 
-
 -- 把各自的ID 设置成全局确定的ID值 方便客户端ID处理 后标注到这里
 require "game.ActivitySystem.Activity.DekaronSchool.DekaronSchool"	        -- gId = 1
 require "game.ActivitySystem.Activity.BeastBless.BeastBless"	  	        -- gId = 2
@@ -14,6 +13,7 @@ require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone2"	        -- gId
 require "game.ActivitySystem.Activity.GoldHuntZone.GoldHuntZone3"	        -- gId = 6
 require "game.ActivitySystem.Activity.SkyFallBox.SkyFallBoxActivity"        -- gId = 7
 require "game.ActivitySystem.Activity.DiscussHero.DiscussHero"				-- gId = 8
+require "game.ActivitySystem.Activity.DoubleReward.DoubleReward"			-- gId = 9
 
 ActivityManager = class(nil, Singleton)
 
@@ -30,10 +30,15 @@ end
 function ActivityManager:openActivity(id, frameName)
 	local clazz = _G[frameName]
 	if clazz and type(clazz) == "table" then
-		self.curActivityList[id] = clazz()
-		self.curActivityList[id]:open()
-		-- 通知这个活动按钮开启
-		self:notifyAllActivityPageUpdateBtn(id,true)
+		if not self.curActivityList[id] then
+			-- print("openActivity----------")
+			self.curActivityList[id] = clazz()
+			self.curActivityList[id]:open()
+			-- 通知这个活动按钮开启
+			self:notifyAllActivityPageUpdateBtn(id,true)
+		else
+			print("活动已经开启")
+		end
 	else
 		print("活动编码有误")
 	end
@@ -44,8 +49,9 @@ function ActivityManager:getActivityList()
 end
 
 function ActivityManager:closeActivity(id)
+	print("closeActivity----------")
 	self.curActivityList[id]:close()
-	--self.curActivityList[id] = nil
+	self.curActivityList[id] = nil
 	self:notifyAllActivityPageUpdateBtn(id,false)
 end
 
@@ -167,8 +173,10 @@ function ActivityManager:minUpdate(currentTime)
 end
 
 function ActivityManager:removeActivity(activityID)
-	release(self.curActivityList[activityID])
-	self.curActivityList[activityID] = nil
+	if self.curActivityList[activityID] then
+		release(self.curActivityList[activityID])
+		self.curActivityList[activityID] = nil
+	end
 end
 
 --服务器启动时，更新活动
@@ -199,6 +207,89 @@ function ActivityManager:updateActivityByStart()
 				end
 			end
 		end
+	end
+end
+
+function ActivityManager:changeInfo()
+end
+
+-- 活动所有信息组合
+--{{id = "",name = "",state = "",startType = "",activityTime = {startTime = "",endTime	= "",}}}
+function ActivityManager:getActivityInfo()
+	if ActivityDB then
+		local allActivity = {}
+		local curActivityList = self.curActivityList
+		for activityId,data in pairs(ActivityDB) do
+			local activity = {}
+			activity.id = activityId
+			activity.name = data.name
+			activity.state = "未开启"
+			activity.activityTime = {}
+			if data.startType == AtyStartType.fixedDayHour then --每一天
+				local activityTime = {}
+				activity.startType = "每天固定时间"
+				activityTime.startTime = self:timeToString(data.startTime)
+				activityTime.endTime = self:timeToString(data.endTime)
+				table.insert(activity.activityTime,activityTime)
+			elseif data.startType == AtyStartType.fixedWeekHour then --每一周
+				activity.startType = "每周固定时间"
+				local activityTimeTemp = data.activityTime
+				if activityTimeTemp then
+					for _,time in pairs(activityTimeTemp) do
+						local activityTime = {}
+						print("time",toString(time))
+						activityTime.startTime = self:timeToString(time.startTime)
+						activityTime.endTime = self:timeToString(time.endTime)
+						table.insert(activity.activityTime,activityTime)
+						-- activity.startTime = time.startTime
+						-- activity.endTime = time.endTime	
+					end
+					
+				end
+			end
+			table.insert(allActivity,activity)		
+		end
+		
+		if table.size(curActivityList) > 0 then
+			for id,activity in pairs(curActivityList) do
+				for _,data in pairs(allActivity) do
+					if id == data.id then
+						data.state = "开启"
+					end
+				end
+			end
+		end
+		return allActivity
+	end
+	return false
+end
+
+local weekToString = 
+{
+	[0] = "星期天",
+	[1] = "星期一",
+	[2] = "星期二",
+	[3] = "星期三",
+	[4] = "星期四",
+	[5] = "星期五",
+	[6] = "星期六",
+	[7] = "星期天",
+}
+
+function ActivityManager:timeToString(timeData)
+	local timeString = ""
+	if timeData then
+		if timeData.week then 
+			print("timeData.week",timeData.week)
+			timeString = timeString..weekToString[timeData.week]
+		end
+		if timeData.hour then 
+			timeString = timeString..toString(timeData.hour).."时"
+		end
+		if timeData.min then
+			timeString = timeString..toString(timeData.min).."分"
+		end
+		return timeString
 	end
 end
 

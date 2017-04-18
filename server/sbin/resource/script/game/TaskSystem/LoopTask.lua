@@ -186,6 +186,9 @@ function LoopTask:addReward()
 	local factionID = player:getFactionDBID()
 	for rewardType, value in pairs(self._normalRewards or {}) do
 		local curValue = value * (self._multipleReward or 1)
+		if self._type == TaskType2.Heaven then
+			curValue = not gDoubleRewardFlag and curValue or curValue*2
+		end
 		if rewardType == TaskRewardList.player_xp then	
 			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
 			local addXp = math.floor(value * temp_xp_ratio / 100)
@@ -238,7 +241,11 @@ function LoopTask:addReward()
 	-- 处理循环任务公式奖励
 	local taskType2 = self:getSubType()
 	if taskType2 == TaskType2.Faction then
-		self:dealFactionFormulaReward()
+		if LoopTaskDB[self._taskID].taskTypeCommon then
+			self:dealFormulaReward()
+		else
+			self:dealFactionFormulaReward()
+		end
 	else
 		self:dealFormulaReward()
 	end
@@ -268,7 +275,6 @@ function LoopTask:dealFormulaReward()
 		end
 		local curValue = value * (self._multipleReward or 1)
 		if rewardType == TaskRewardList.player_xp then
-			print("value>>>>>>>>>>", value)
 			local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
 			local addXp = math.floor(curValue * temp_xp_ratio / 100)
 			player:addXp(addXp)
@@ -347,7 +353,6 @@ function LoopTask:dealFactionFormulaReward()
 		taskPrivateHandler:removeEquipData(self._taskID)
 	end
 end
-
 
 -- 获取当前任务目标配置
 function LoopTask:getTargetsConfig()

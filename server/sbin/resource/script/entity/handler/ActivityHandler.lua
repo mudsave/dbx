@@ -14,7 +14,7 @@ function ActivityHandler:__init(entity)
 	self.discussHero = {wineCount = 0,totalScore = 0,teamScore = 0}
 	self.enterPos = {}
 	--门派闯关活动积分
-	self.dekaronIntegral = 0
+	self.dekaronIntegral = nil
 	--天降宝盒活动所获宝盒数
 	self.skyFallBoxNum = 0
 end
@@ -134,14 +134,6 @@ end
 
 function ActivityHandler:setDekaronIntegral(dekaronIntegral)
 	self.dekaronIntegral = dekaronIntegral
-end
-
-function ActivityHandler:getDekaronActivityTarget()
-	return self.activityTarget
-end
-
-function ActivityHandler:setDekaronActivityTarget(activityTarget)
-	self.activityTarget = activityTarget
 end
 
 function ActivityHandler:getDicussHero()

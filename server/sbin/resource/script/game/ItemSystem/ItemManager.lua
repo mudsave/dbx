@@ -871,6 +871,15 @@ function ItemManager:saveItemsData(player)
 		LuaDBAccess.equipUpdate(playerDBID, equipUpdateNumber, equipUpdateString)
 	end
 	
+	--判断回购界面是否有物品
+	if next(g_tradeMgr:getBuybackInfo()) ~= nil then 
+		for itemGuid,v in pairs(g_tradeMgr:getBuybackInfo()) do
+			self:disBuybackinfo(player,itemGuid)
+		end 
+		--设回默认值
+		g_tradeMgr:initBuyBackInfo()
+	end 
+	
 	for _,ID in pairs(packetHandler:getDestroyItemlist()) do
 		itemDeleteString = itemDeleteString..ID.."-"
 		itemDeleteNumber = itemDeleteNumber + 1
@@ -899,6 +908,21 @@ function ItemManager:destroyItem(player,itemGuid)
 	local item = self.items[itemGuid]
 	if item then
 		local ID = item:getDBID()
+		if	item:getItemClass() ~= ItemClass.Equipment then
+			player:getHandler(HandlerDef_Packet):addDestroyItemList(ID)
+		else
+			player:getHandler(HandlerDef_Packet):addDestroyEquipList(ID)
+		end
+		release(item)
+	end
+	self.items[itemGuid] = nil
+end
+
+--回购界面道具销毁
+function ItemManager:disBuybackinfo(player,itemGuid)
+	local item = self.items[itemGuid]
+	if item then
+		local ID = item:getDBID()  print("ID", ID)
 		if	item:getItemClass() ~= ItemClass.Equipment then
 			player:getHandler(HandlerDef_Packet):addDestroyItemList(ID)
 		else

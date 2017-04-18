@@ -35,6 +35,7 @@ MainTaskDB1_20 =
 		{
 			[TaskStatus.Done]		=
 			{
+			{type = "openUITip", param = {v = 30},},
 			},
 		},
 	},
@@ -92,7 +93,7 @@ MainTaskDB1_20 =
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
 		{
-			[1] = {type='Tscript',param = {scriptID	= 100 ,	count =1, ignoreResult = true,bor = true},}, --打一个脚本战斗(脚本战斗ID 100 次数)
+			[1] = {type='Tscript',param = {scriptID	= 100 ,	count =1, ignoreResult = false, bor = true},}, --打一个脚本战斗(脚本战斗ID 100 次数)
 		},
 		triggers = --任务触发器
 		{
@@ -331,7 +332,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 400,   --玩家经验
 			[TaskRewardList.pet_xp] = 400,      --宠物经验
 			[TaskRewardList.subMoney] = 9000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -355,6 +356,7 @@ MainTaskDB1_20 =
 			{
 				{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    {type = "removeMine", param = {}}, -- 移除任务类
+				{type = "openUITip", param = {v = 18},},
 			},
 		},
     },
@@ -375,7 +377,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 220,   --玩家经验
 			[TaskRewardList.pet_xp] = 220,      --宠物经验
 			[TaskRewardList.subMoney] = 10000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -408,7 +410,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 11000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -440,7 +442,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 12000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -695,7 +697,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 400,   --玩家经验
 			[TaskRewardList.pet_xp] = 400,      --宠物经验
 			[TaskRewardList.subMoney] = 9000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -719,6 +721,7 @@ MainTaskDB1_20 =
 			{
 				{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    {type = "removeMine", param = {}}, -- 移除任务类
+				{type = "openUITip", param = {v = 18},},
 			},
 		},
     },
@@ -739,7 +742,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 220,   --玩家经验
 			[TaskRewardList.pet_xp] = 220,      --宠物经验
 			[TaskRewardList.subMoney] = 10000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -771,7 +774,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 11000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -803,7 +806,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 12000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1058,7 +1061,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 400,   --玩家经验
 			[TaskRewardList.pet_xp] = 400,      --宠物经验
 			[TaskRewardList.subMoney] = 9000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1082,6 +1085,7 @@ MainTaskDB1_20 =
 			{
 				{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    {type = "removeMine", param = {}}, -- 移除任务类
+				{type = "openUITip", param = {v = 18},},
 			},
 	    },
     },
@@ -1103,7 +1107,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 220,   --玩家经验
 			[TaskRewardList.pet_xp] = 220,      --宠物经验
 			[TaskRewardList.subMoney] = 10000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1135,7 +1139,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 11000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1167,7 +1171,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 12000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1418,7 +1422,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 400,   --玩家经验
 			[TaskRewardList.pet_xp] = 400,      --宠物经验
 			[TaskRewardList.subMoney] = 9000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1442,6 +1446,7 @@ MainTaskDB1_20 =
 			{
 				{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    {type = "removeMine", param = {}}, -- 移除任务类
+				{type = "openUITip", param = {v = 18},},
 			},
 		},
     },
@@ -1462,7 +1467,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 220,   --玩家经验
 			[TaskRewardList.pet_xp] = 220,      --宠物经验
 			[TaskRewardList.subMoney] = 10000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1494,7 +1499,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 11000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1526,7 +1531,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 12000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1777,7 +1782,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 400,   --玩家经验
 			[TaskRewardList.pet_xp] = 400,      --宠物经验
 			[TaskRewardList.subMoney] = 9000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1801,6 +1806,7 @@ MainTaskDB1_20 =
 			{
 				{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    {type = "removeMine", param = {}}, -- 移除任务类
+				{type = "openUITip", param = {v = 18},},
 			},
 		},
     },
@@ -1821,7 +1827,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 220,   --玩家经验
 			[TaskRewardList.pet_xp] = 220,      --宠物经验
 			[TaskRewardList.subMoney] = 10000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1853,7 +1859,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 11000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -1885,7 +1891,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 12000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -2136,7 +2142,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 400,   --玩家经验
 			[TaskRewardList.pet_xp] = 400,      --宠物经验
 			[TaskRewardList.subMoney] = 9000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -2160,6 +2166,7 @@ MainTaskDB1_20 =
 			{
 				{type = "forceStopAutoMeet", param = {}},---强行停止自动遇敌
 			    {type = "removeMine", param = {}}, -- 移除任务类
+				{type = "openUITip", param = {v = 18},},
 			},
 		},
     },
@@ -2180,7 +2187,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 220,   --玩家经验
 			[TaskRewardList.pet_xp] = 220,      --宠物经验
 			[TaskRewardList.subMoney] = 10000,    --绑银
-			[TaskRewardList.player_pot] = 3100,  	--人物潜能
+			[TaskRewardList.player_pot] = 3500,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -2212,7 +2219,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 11000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -2244,7 +2251,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 300,   --玩家经验
 			[TaskRewardList.pet_xp] = 300,      --宠物经验
 			[TaskRewardList.subMoney] = 12000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets	= --任务目标没有填{}(必须前面填上索引[1][2][3])
@@ -2290,7 +2297,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 320,   --玩家经验
 			[TaskRewardList.pet_xp] = 320,      --宠物经验
 			[TaskRewardList.subMoney] = 13000,    --绑银
-			[TaskRewardList.player_pot] = 3200,  	--人物潜能
+			[TaskRewardList.player_pot] = 4000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2341,7 +2348,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 640,   --玩家经验
 			[TaskRewardList.pet_xp] = 320,      --宠物经验
 			[TaskRewardList.subMoney] = 14000,    --绑银
-			[TaskRewardList.player_pot] = 3300,  	--人物潜能
+			[TaskRewardList.player_pot] = 4500,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2392,7 +2399,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 660,   --玩家经验
 			[TaskRewardList.pet_xp] = 330,      --宠物经验
 			[TaskRewardList.subMoney] = 15000,    --绑银
-			[TaskRewardList.player_pot] = 3300,  	--人物潜能
+			[TaskRewardList.player_pot] = 4500,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2443,7 +2450,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 900,   --玩家经验
 			[TaskRewardList.pet_xp] = 450,      --宠物经验
 			[TaskRewardList.subMoney] = 16000,    --绑银
-			[TaskRewardList.player_pot] = 3400,  	--人物潜能
+			[TaskRewardList.player_pot] = 5000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2505,7 +2512,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 900,   --玩家经验
 			[TaskRewardList.pet_xp] = 450,      --宠物经验
 			[TaskRewardList.subMoney] = 17000,    --绑银
-			[TaskRewardList.player_pot] = 3400,  	--人物潜能
+			[TaskRewardList.player_pot] = 5000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2567,7 +2574,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 1200,   --玩家经验
 			[TaskRewardList.pet_xp] = 600,      --宠物经验
 			[TaskRewardList.subMoney] = 18000,    --绑银
-			[TaskRewardList.player_pot] = 3500,  	--人物潜能
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2618,7 +2625,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 1200,   --玩家经验
 			[TaskRewardList.pet_xp] = 600,      --宠物经验
 			[TaskRewardList.subMoney] = 19000,    --绑银
-			[TaskRewardList.player_pot] = 3500,  	--人物潜能
+			[TaskRewardList.player_pot] = 5500,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2669,7 +2676,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 1200,   --玩家经验
 			[TaskRewardList.pet_xp] = 600,      --宠物经验
 			[TaskRewardList.subMoney] = 20000,    --绑银
-			[TaskRewardList.player_pot] = 3600,  	--人物潜能
+			[TaskRewardList.player_pot] = 6000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2720,7 +2727,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 1200,   --玩家经验
 			[TaskRewardList.pet_xp] = 600,      --宠物经验
 			[TaskRewardList.subMoney] = 21000,    --绑银
-			[TaskRewardList.player_pot] = 3600,  	--人物潜能
+			[TaskRewardList.player_pot] = 6000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2771,7 +2778,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 1200,   --玩家经验
 			[TaskRewardList.pet_xp] = 600,      --宠物经验
 			[TaskRewardList.subMoney] = 22000,    --绑银
-			[TaskRewardList.player_pot] = 3600,  	--人物潜能
+			[TaskRewardList.player_pot] = 6000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2840,7 +2847,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 2000,   --玩家经验
 			[TaskRewardList.pet_xp] = 1000,      --宠物经验
 			[TaskRewardList.subMoney] = 23000,    --绑银
-			[TaskRewardList.player_pot] = 3700,  	--人物潜能
+			[TaskRewardList.player_pot] = 8000,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -2933,7 +2940,7 @@ MainTaskDB1_20 =
 			[TaskRewardList.player_xp] = 2000,   --玩家经验
 			[TaskRewardList.pet_xp] = 1000,      --宠物经验
 			[TaskRewardList.subMoney] = 24000,    --绑银
-			[TaskRewardList.player_pot] = 3700,  	--人物潜能
+			[TaskRewardList.player_pot] = 6500,  	--人物潜能
 		},
 		consume	={},
 		targets =
@@ -4361,7 +4368,7 @@ MainTaskDB1_20 =
 		name = "人间大劫",	--任务名字
 		startNpcID = 20004,	--任务起始npc
 		endNpcID = 20002,		--任务结束npc
-		preTaskData = {1096},------{1005},	--任务前置任务没有填nil
+		preTaskData = {1098},------{1005},	--任务前置任务没有填nil
 		nextTaskID = 1100,	--任务后置任务没有填nil
 		startDialogID =	nil,	--接任务对话ID没有填nil
 		endDialogID = 438,	--交任务对话ID没有填nil

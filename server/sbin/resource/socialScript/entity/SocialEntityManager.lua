@@ -11,7 +11,6 @@ function SocialEntityManager:__init(  )
 
     self._factionList = {}  -- factionDBID = faction
     
-    
 end
 
 function SocialEntityManager:getFactionList(  )

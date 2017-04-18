@@ -50,10 +50,10 @@ function TreasureManager:createTreasure(player,treasureID,guid)
 	local treasureHandler = player:getHandler(HandlerDef_Treasure)
 	local isTrue,treasure = treasureHandler:findTreasure(guid)
 	if isTrue then
-		print("已经有了宝藏")
+		-- print("已经有了宝藏")
 		return false
 	end
-	print("$ $"..player:getID().."有了一个"..treasureID.."宝藏,唯一值:"..guid)
+	-- print("$ $"..player:getID().."有了一个"..treasureID.."宝藏,唯一值:"..guid)
 	local treasure= Treasure(player,treasureID)
 	
 	-- 创建成功

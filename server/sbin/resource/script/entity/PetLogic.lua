@@ -10,9 +10,11 @@ local math_random = math.random
 function Pet:__logic_init()
 	self._level			= 1
 	self._status		= PetStatus.Rest
+	self._pkInfo ={}
 end
 
 function Pet:__logic_release()
+	self._pkInfo = nil
 end
 
 -- 由配置ID初始化
@@ -31,16 +33,17 @@ function Pet:initByConfig(configID)
 	self:setModelID(detail.modelID)
 	self:setName(detail.petName)
 	
+	local attrSet = self.attrSet
 	-- 先天属性
 	for attrName,configName in pairs(PetInbornAttrMap) do
-		self:setAttrValue(attrName,detail[configName])
+		attrSet:setAttrValue(attrName,detail[configName])
 	end
 
 	-- 先天加值
 	local initAttrs = detail.initAttrs
 	if initAttrs then
 		for attrName,value in pairs(initAttrs) do
-			self:getAttribute(attrName):setValue(value)
+			attrSet:setAttrValue(attrName,value)	
 		end
 	end
 
@@ -54,7 +57,6 @@ function Pet:onLoad(attrRecord)
 		return false
 	end
 	self.isnew = false
-	self:createAttributeSet()
 
 	self:setDBID(attrRecord.petID)
 	self:setConfigID(attrRecord.configID)
@@ -71,12 +73,12 @@ function Pet:onLoad(attrRecord)
 		attrRecord.status = PetStatus.Rest
 	end
 	self._status = attrRecord.status
+	self.attrSet:updateAll( true )
 end
 
 -- 被创建
 function Pet:onCreate(configID)
 	self.isnew = true
-	self:createAttributeSet()
 	self:setConfigID(configID)
 	self:setDBID(createGUID(Pet))
 	self:setBirth(os_time())
@@ -89,22 +91,14 @@ function Pet:onCreate(configID)
 	self:resetGrowth(PetNormalRandom)
 
 	self:setLevel(1)
+	self.attrSet:updateAll( true )
 	self:fill()
 end
 
 -- 加载属性集合
 function Pet:loadAttrs(attrRecord)
-	if not attrRecord then
-		return
-	end
-	local attrSet = self.attrSet
-	for _,data in pairs(attrRecord) do
-		local attribute = attrSet[data.attrType]
-		if attribute then
-			attribute:loadValue(data.attrValue)
-		end
-	end
 	self:setLevel(self._level)
+	self.attrSet:loadAttrRecord(attrRecord)
 end
 
 -- 等级提升处理
@@ -223,19 +217,20 @@ end
 
 -- 重置生长属性
 function Pet:resetGrowth(random)
+	local attrSet = self.attrSet
 	local detail = PetDB[self:getConfigID()]
 	for _,data in ipairs(PetGrowthAttrs) do
 		local from,to	= unpack(detail[data[3]])
 		local maxValue	= random(from,to)
 		local curValue	= random(from,maxValue)
 
-		self:setAttrValue(data[1],curValue)
-		self:setAttrValue(data[2],maxValue)
+		attrSet:setAttrValue(data[1],curValue)
+		attrSet:setAttrValue(data[2],maxValue)
 	end
 
 	local maxLife = random(unpack(detail["petLife"]))
-	self:setAttrValue(pet_life_max,maxLife)
-	self:setAttrValue(pet_life,maxLife)
+	attrSet:setAttrValue(pet_life_max,maxLife)
+	attrSet:setAttrValue(pet_life,maxLife)
 end
 
 -- 需要置零的宠物属性
@@ -257,8 +252,9 @@ local ResetZeroAttrs = {
 
 -- 重置宠物的属性
 function Pet:resetAttrs()
+	local attrSet = self.attrSet
 	for index,attrName in ipairs(ResetZeroAttrs) do
-		self:setAttrValue(attrName,0)
+		attrSet:setAttrValue(attrName,0)
 	end
 	self:setUpLevel(0)
 end
@@ -325,16 +321,18 @@ function Pet:onAttrChanged(attrName,prev,value)
 end
 
 -- 战斗结束
-function Pet:onWarEnded(attrs)
+function Pet:onWarEnded(attrs,notSyn)
+	local attrSet = self.attrSet
 	for attrType, attrValue in pairs(attrs) do
 		if type(attrType) == "number" then
-			self:setAttrValue(attrType,attrValue)
+			attrSet:setAttrValue(attrType,attrValue)
 		end
 	end
 	self:setPetLife(attrs.life)
 	self:setLoyalty(attrs.loyalty)
-
-	self:flushPropBatch()
+	if not notSyn then
+		self:flushPropBatch()
+	end
 end
 
 -- 添加属性点
@@ -439,5 +437,19 @@ function Pet:handlePetLevelUP()
 		self.tempAllXP = false
 	end
 end
+
+function Pet:getPkInfo()
+	return self._pkInfo
+end
+
+-- 同时设定宠物的5项基础属性,供GM系统使用,暂时没有提供战斗服支持
+function Pet:setAll(value)
+	local attrSet = self.attrSet
+	attrSet:setAttrValue(pet_add_str, value)
+	attrSet:setAttrValue(pet_add_int, value)
+	attrSet:setAttrValue(pet_add_sta, value)
+	attrSet:setAttrValue(pet_add_spi, value)
+	attrSet:setAttrValue(pet_add_dex, value)
+end 
 
 -- 固执的人总是很孤单

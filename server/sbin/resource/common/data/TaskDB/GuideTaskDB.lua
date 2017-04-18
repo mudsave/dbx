@@ -33,7 +33,7 @@ GuideTaskDB = {
 	[15002] = {
 		name = "完成十次师门任务",	-- 任务名称
 		startNpcID		= 20004,	-- 起始NPC
-		endNpcID		= nil,		-- 结束NPC
+		endNpcID		= 20004,		-- 结束NPC
 		preTaskData		= {15001},		-- 前置任务
 		nextTaskID		= nil,		-- 后置任务
 		startDialogID	= nil,		-- 开始对话的ID
@@ -538,6 +538,60 @@ GuideTaskDB = {
 		},
 		triggers =								-- 任务的触发
 		{
+		},
+	},
+
+	[15021] = {
+		name = "讨逆指引",			-- 任务名称
+		startNpcID		= 28022,	-- 起始NPC
+		endNpcID		= 28022,	-- 结束NPC
+		preTaskData		= nil,		-- 前置任务
+		nextTaskID		= 15022,	-- 后置任务
+		startDialogID	= nil,		-- 开始对话的ID
+		endDialogID		= nil,		-- 结束对话的ID
+		taskType2		= TaskType2.NewBie,	-- 任务的类型
+		school			= nil,		-- 任务的门派
+		level			= {35,150},				-- 接受任务的等级
+		rewards	=								-- 任务的奖励
+		{
+			[TaskRewardList.player_xp]	= 10,		-- 玩家经验
+			[TaskRewardList.subMoney]	= 100,		-- 绑银
+			[TaskRewardList.player_pot] = 30,  	-- 人物潜能
+		},
+		consume			= {},					-- 任务的消耗		
+		targets	=								-- 任务的目标
+		{
+		},
+		triggers =								-- 任务的触发
+		{
+		},
+	},
+	[15022] = {
+		name = "完成十次天道任务",	-- 任务名称
+		startNpcID		= 29008,	-- 起始NPC
+		endNpcID		= nil,		-- 结束NPC
+		preTaskData		= {15021},		-- 前置任务
+		nextTaskID		= nil,		-- 后置任务
+		startDialogID	= nil,		-- 开始对话的ID
+		endDialogID		= nil,		-- 结束对话的ID
+		taskType2		= TaskType2.NewBie,	-- 任务的类型
+		school			= nil,		-- 任务的门派
+		level			=	{35,150},			-- 接受任务的等级
+		rewards	=								-- 任务的奖励
+		{
+			[TaskRewardList.player_xp]	= 100,		-- 玩家经验
+			[TaskRewardList.subMoney]	= 1000,		-- 绑银
+			[TaskRewardList.player_pot] = 300,  	-- 人物潜能
+		},
+		consume	=									-- 任务的消耗
+		{
+		},
+		targets	=									-- 任务的目标
+		{	
+			[1] = {type = 'TguideTask', param = {taskID = 10010, count = 10, bor = false}}, -- 指引相应的任务
+		},
+		triggers =									-- 任务的触发
+		{			
 		},
 	},
 }

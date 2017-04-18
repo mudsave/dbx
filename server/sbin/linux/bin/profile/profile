@@ -1,0 +1,27 @@
+#!/bin/bash
+# 作用:向<世界服|战斗服|社会服>发送kill信号10,来调用profile功能
+# 用法:
+# ./profile [ world | fight | social ]
+
+# 通知某个ID指定的世界服
+notice()
+{
+	pids=`ps -ef | grep "worldId $1" | grep $USER | grep -v 'grep' | awk '{print $2}'`
+	if [ -n "$pids" ]; then
+		for pid in $pids
+		do
+			kill -10 $pid
+		done
+	fi
+}
+# 根据参数确定世界服ID
+if [[ "$1" == wo* ]]; then
+	notice 0
+elif [[ "$1" == fi* ]]; then
+	notice 100
+elif [[ "$1" == so* ]]; then
+	notice 200
+else
+	printf "./profile:\n\tusage:./profile [world|fight|social]\n"
+fi
+

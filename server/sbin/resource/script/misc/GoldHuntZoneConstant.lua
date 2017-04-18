@@ -3,11 +3,11 @@
 ]]
 
 GoldHuntZone_MineReward = {			--场景物件积分
-	[10026] = 10,
-	[10027] = 20,
-	[10028] = 30,
-	[10029] = 40,
-	[10030] = 50,
+	[10026] = 20,
+	[10027] = 40,
+	[10028] = 60,
+	[10029] = 80,
+	[10030] = 100,
 }
 
 GoldHuntZone_MonsterReward = {			--守卫怪物积分
@@ -40,6 +40,6 @@ GoldHuntZone_Reward = {				--排名奖励分段
 	{rank=100,exp = 1000,money = 1000,tao = 500},
 	{exp = 2,money = 500,tao = 200},
 }
---GoldHuntZone_scoreNpcID = 39053
+GoldHuntZone_scoreNpcID = 39053
 
 

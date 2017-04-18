@@ -168,29 +168,29 @@ function FightUtils.getLiveNum(members)
 	return count
 end
 
+--混乱障碍动作
 function FightUtils.doChaosThing(fight,actionInfo)
 	local role = actionInfo.role
-	local rand = math.random(100)
+	--获取随机数
+	local rand = math.random(1, 100)
 	--一半的概率混乱
-	if rand >= 1 and rand <= 50 then
+	if rand <= 50 then
 		actionInfo.actionType = FightUIType.CommonAttack
-		local rand1 = math.random(100)
+		local rand1 = math.random(1, 100)
 		--一半的概率攻击友方
-		if rand1 >= 1 and rand1 <= 50 then
+		if rand1 <= 50 then
+			--获取所有位置信息
 			local members = fight:getMembers()
 			local targets = members[role:getPos()[2]]
-			local target = FightUtils.findRandomTarget(targets,role)
+			local target = FightUtils.findRandomTarget(targets,role) 
 			if target then
 				local pos = target:getPos()[3]
 				actionInfo.context.target = pos
-				
 			else
-				
 				actionInfo.context.target = (-1)*0xFFFFFFFF
 			end
 		else
-				actionInfo.context.target = (-1)*0xFFFFFFFF
-				
+			actionInfo.context.target = (-1)*0xFFFFFFFF
 		end
 		return true
 	end
@@ -915,8 +915,8 @@ function FightUtils.printFightInfo(fight)
 		sideBInfo = sideBInfo .. Flog:role_info(role)
 		sideBInfo = sideBInfo .. Flog:buff_info(role)
 	end
-	Flog:log(sideAInfo)
-	Flog:log(sideBInfo)
+	Flog:log(sideAInfo) print(sideAInfo)
+	Flog:log(sideBInfo) print(sideBInfo)
 end
 
 local validProtectors = {}

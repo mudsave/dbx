@@ -130,4 +130,58 @@ function StringBuilder(joiner)
 	return builder
 end
 
+local max_level = 4
+local max_items = 5
+function table_tostring(t,builder,level)
+	local count = 0
+	builder:append("{ ")
+	for key,value in pairs(t) do
+		local tk = type(key)
+		if tk == "string" then
+			builder:append(key)
+		elseif tk == "number" then
+			builder:append("[",key,"]")
+		elseif tk == "boolean" then
+			builder:append("[",key and "true" or "false","]")
+		elseif tk == "table" then
+			if level < max_level then
+				builder:append(table_tostring(key,StringBuilder(),level+1))
+			else
+				builder:append "{...}"
+			end
+		else
+			builder:append(tk)
+		end
+		builder:append " = "
+
+		local tv = type(value)
+		if tv == "table" then
+			if level < max_level then
+				builder:append(table_tostring(value,StringBuilder(),level+1))
+			else
+				builder:append "{...}"
+			end
+		elseif tv == "string" then
+			builder:append('"',value,'"')
+		elseif tv == "number" then
+			builder:append(value)
+		elseif tv == "boolean" then
+			builder:append(value and "true" or "false")
+		else
+			builder:append(tv)
+		end
+
+		builder:append(",")
+		count = count + 1
+		if count > max_items then break end
+	end
+	if count > 0 then
+		builder:popend()
+	end
+	builder:append " }"
+	local str = tostring(builder)
+	builder:release()
+	return str
+end
+
 return StringBuilder

@@ -101,18 +101,23 @@ ArticlesDB =
 	},
 	[10026] = {
 		condition = {lowLevel = 150},
+				dropID = 18,
 	},
 	[10027] = {
 		condition = {lowLevel = 150},
+				dropID = 18,
 	},
 	[10028] = {
 		condition = {lowLevel = 150},
+				dropID = 18,
 	},
 	[10029] = {
 		condition = {lowLevel = 150},
+				dropID = 18,
 	},
 	[10030] = {
 		condition = {lowLevel = 150},
+				dropID = 18,
 	},
 	[10031] = {
 		condition = {lowLevel = 150},

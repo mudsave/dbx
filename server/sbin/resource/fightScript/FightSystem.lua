@@ -230,7 +230,7 @@ function FightSystem:_getScriptMonsters(monstersInfo,playerCount,bFullMonster)
 	table.copy(monstersInfo,myMonsterConfig)
 	
 
-	local maxCount = math.min(count,(myMonsterConfig.maxCount or 0xFF))
+	local maxCount = myMonsterConfig.maxCount or 0xFF
 
 	local minCount = myMonsterConfig.minCount or 0
 
@@ -249,7 +249,7 @@ function FightSystem:_getScriptMonsters(monstersInfo,playerCount,bFullMonster)
 		count = maxCount
 	end
     
-	
+	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$count",minCount,maxCount,count)
 
 	local finalCount = count
 	for i = 1, count do
@@ -445,7 +445,7 @@ function FightSystem:_onStartLuckMonsterScriptFight(event)
 	fight:setSrcWorldID(srcWorldID)
 	g_fightMgr:addFight(fight)
 	fight:setPlayerLevel(playerLvl)
-	fight:gotoState(FightState.RoundStart)
+	fight:gotoState(FightState.Start)
 	FightUtils.printFightInfo(fight)--TODO del
 	table.clear(fightRolesA)
 	table.clear(fightMonsters)
@@ -614,7 +614,7 @@ function FightSystem:onStartScriptFight(event)
 	fight:setSrcWorldID(srcWorldID)
 	g_fightMgr:addFight(fight)
 
-	fight:gotoState(FightState.RoundStart)
+	fight:gotoState(FightState.Start)
 	FightUtils.printFightInfo(fight)--TODO del
 	table.clear(fightRolesA)
 	table.clear(fightMonsters)

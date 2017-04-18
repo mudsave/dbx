@@ -36,11 +36,17 @@ function SkyFallBoxSystem:onFightEnd(event)
 		if not bWin then
 			return
 		end
+
 		player = g_entityMgr:getPlayerByID(playerID)
 		if instanceof(player,Player) then
 			local handler = player:getHandler(HandlerDef_Activity)
 			if not handler then
 				print("Error of getHandler in SkyFallBoxSystem.lua")
+			end
+
+			--玩家等级低于活动等级限制，则不能掉落宝盒
+			if player:getLevel() < roleLevelLimit then
+				return
 			end
 
 			local point = math.random(100)
@@ -50,15 +56,15 @@ function SkyFallBoxSystem:onFightEnd(event)
 				--给予玩家宝盒
 				local packetHandler = player:getHandler(HandlerDef_Packet)
 				local itemInfo = {}
-				local allItem = {}
 				packetHandler:addItemsToPacket(1031021 ,1)
 				itemInfo.itemID = 1031021
 				itemInfo.itemNum = 1
+				local medicamentConfig = tMedicamentDB[itemInfo.itemID]
+				local itemName = medicamentConfig.Name
 
-				if table.size(itemInfo) > 0 then
-					table.insert(allItem,itemInfo)
-					g_dropMgr:sendRewardMessageTip(player, 11, allItem)
-				end
+				local BroadCastMsgID = BroadCastMsgGroupID.Group_SkyFallBox
+				local event = Event.getEvent(ClientEvents_SC_PromptMsg, BroadCastMsgID.EventID, 3, itemName)
+				g_eventMgr:broadcastEvent(event)
 
 				--更新活动期间所获宝盒总数				
 				local newBoxNum = handler:getSkyFallBoxNum() + 1

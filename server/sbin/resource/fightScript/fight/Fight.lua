@@ -484,7 +484,7 @@ function Fight:onEnterFightStart()
 		self._fightStartTimerID = g_timerMgr:regTimer(self,MaxFightChooseActionTime*1000,MaxFightChooseActionTime*1000,"FightStart")
 		self._timerContext[self._fightStartTimerID] = {fightID = self._id}
 		--通知客户端战斗开始
-		local event = Event.getEvent(FightEvents_FC_EnterFightState,1)--1是占位符
+		local event = Event.createEvent(FightEvents_FC_EnterFightState,1)--1是占位符
 		self:informClient(event)
 	end
 end
@@ -1012,7 +1012,7 @@ function Fight:onEnterCalculate()
 	print(toString(FightResults))
 	print("---------------------------------------------")
 	--通知客户端这一回合战斗结果
-	local event = Event.getEvent(FightEvents_FC_FightResults,FightResults,self._id,self._roundCount)
+	local event = Event.createEvent(FightEvents_FC_FightResults,FightResults,self._id,self._roundCount)
 	for k,role in pairs(self._escapedRoles) do
 		if instanceof(role,FightPlayer) then
 			g_eventMgr:fireRemoteEvent(event,role)

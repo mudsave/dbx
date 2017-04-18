@@ -51,6 +51,7 @@ UpdateWorldServerDataCode = {
     CreateFaction       = 3,
     ContributeFaction   = 4,
     GetSalary           = 5,
+    UpdateFactionInfo   = 6,
 }
 
 --帮派地位
@@ -172,6 +173,8 @@ FactionMsgTextKeyTable = {
     FireFactionMember       = 10,
     BeFiredInFaction        = 11,
     DismissFaction          = 12,
+    GetSalary               = 13,
+    PositionManager         = 14,
 }
 
 GroupMsgTextKeyTable = {

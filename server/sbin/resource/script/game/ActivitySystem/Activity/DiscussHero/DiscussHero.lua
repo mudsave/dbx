@@ -17,19 +17,19 @@ DiscussHeroDB = {
 		activityTime = {
 			[1] = {startTime = {week = 1,hour = 15, min = 54},endTime = {week = 1,hour = 21, min = 0},},
 		},
-		preScondBroadcast	= 0.1,	-- 第二次广播
+		preScondBroadcast	= 0.5,	-- 第二次广播
 		readyPeriod			= 0.5,	-- 开始
-		ScondPeriod			= 1,	-- 第二阶段
-		ThirdPeriod			= 2,
-		preEndPeriod		= 0.1,
+		ScondPeriod			= 0.5,	-- 第二阶段
+		ThirdPeriod			= 0.5,
+		preEndPeriod		= 0.5,
 		-- 创建入口NPC位置
-		enterNpc = {npcDBID = 100000, mapID = 10, posX = 200,posY = 200},
+		-- enterNpc = {npcDBID = 100000, mapID = 10, posX = 200,posY = 200},
 		-- 地图信息
 		mapInfo = {
-			[1] = { npcDBID = 100001, mapID = 131,minLevel = 30,maxLevel = 40,},
-			[2] = { npcDBID = 100001, mapID = 131,minLevel = 40,maxLevel = 50,},
-			[3] = { npcDBID = 100001, mapID = 131,minLevel = 50,maxLevel = 60,},
-			[4] = { npcDBID = 100001, mapID = 131,minLevel = 60,maxLevel = 70,},
+			[1] = { npcDBID = 70001, mapID = 910,minLevel = 30,maxLevel = 39,},
+			[2] = { npcDBID = 70001, mapID = 910,minLevel = 40,maxLevel = 49,},
+			[3] = { npcDBID = 70001, mapID = 910,minLevel = 50,maxLevel = 59,},
+			[4] = { npcDBID = 70001, mapID = 910,minLevel = 60,maxLevel = 69,},
 		},
 		-- {exp,subMoney,tao},
 		rewardInfo = {
@@ -37,49 +37,77 @@ DiscussHeroDB = {
 					exp = 100,subMoney = 100,tao = 100, 
 					items = 
 					{
-						{itemID = 1011001,weight = 20},{itemID = 1011002,weight = 80},
+						{itemID = 1031006,weight = 10},
+						{itemID = 1031007,weight = 40},
+						{itemID = 1311076,weight = 80},
+						{itemID = 1311077,weight = 80},
+						{itemID = 1311078,weight = 80},
+						{itemID = 1311079,weight = 80},
+						{itemID = 1311080,weight = 80},
+						{itemID = 1311081,weight = 80},
 					},
 					-- 这个只有3个 奖励前3的名额
 					rankingItem = {
-						[1] = {itemID = 1011009},
-						[2] = {itemID = 1011010},
-						[3] = {itemID = 1011011},
+						[1] = {itemID = 3120003},
+						[2] = {itemID = 3120007},
+						[3] = {itemID = 3025003},
 					},
 				},
 			[2]	= {
-					exp = 100,subMoney = 100,tao = 100, 
+					exp = 200,subMoney = 200,tao = 200, 
 					items = 
 					{
-						{itemID = 1011003,weight = 20},{itemID = 1011004,weight = 80},
+						{itemID = 1031006,weight = 10},
+						{itemID = 1031007,weight = 40},
+						{itemID = 1311076,weight = 80},
+						{itemID = 1311077,weight = 80},
+						{itemID = 1311078,weight = 80},
+						{itemID = 1311079,weight = 80},
+						{itemID = 1311080,weight = 80},
+						{itemID = 1311081,weight = 80},
 					},
 					rankingItem = {
-						[1] = {itemID = 1011009},
-						[2] = {itemID = 1011010},
-						[3] = {itemID = 1011011},
+						[1] = {itemID = 3120003},
+						[2] = {itemID = 3120007},
+						[3] = {itemID = 3025003},
 					},
 				},
 			[3]	= {
-					exp = 100,subMoney = 100,tao = 100, 
+					exp = 300,subMoney = 300,tao = 300, 
 					items = 
 					{
-						{itemID = 1011005,weight = 20},{itemID = 1011006,weight = 80},
+						{itemID = 1031006,weight = 10},
+						{itemID = 1031007,weight = 40},
+						{itemID = 1311076,weight = 80},
+						{itemID = 1311077,weight = 80},
+						{itemID = 1311078,weight = 80},
+						{itemID = 1311079,weight = 80},
+						{itemID = 1311080,weight = 80},
+						{itemID = 1311081,weight = 80},
 					},
 					rankingItem = {
-						[1] = {itemID = 1011009},
-						[2] = {itemID = 1011010},
-						[3] = {itemID = 1011011},
+						[1] = {itemID = 3120003},
+						[2] = {itemID = 3120007},
+						[3] = {itemID = 3025003},
 					},
 				},
 			[4]	= {
-					exp = 100,subMoney = 100,tao = 100, 
+					exp = 400,subMoney = 400,tao = 400, 
 					items = 
 					{
-						{itemID = 1011007,weight = 20},{itemID = 1011008,weight = 80},
+						{itemID = 1031006,weight = 10},
+						{itemID = 1031007,weight = 40},
+						{itemID = 1311076,weight = 80},
+						{itemID = 1311077,weight = 80},
+						{itemID = 1311078,weight = 80},
+						{itemID = 1311079,weight = 80},
+						{itemID = 1311080,weight = 80},
+						{itemID = 1311081,weight = 80},
 					},
 					rankingItem = {
-						[1] = {itemID = 1011009},
-						[2] = {itemID = 1011010},
-						[3] = {itemID = 1011011},
+						[1] = {itemID = 3120003},
+						[2] = {itemID = 3120007},
+						[3] = {itemID = 3025003},
 					},
 				},
 		},
@@ -120,27 +148,29 @@ function DiscussHero:open()
 	self.config = DiscussHeroDB[gDiscussHeroActivityID]
 	local readyPeriod = self.config.readyPeriod
 	local preScondBroadcast =  self.config.preScondBroadcast
-	local enterNpcInfo = self.config.enterNpc
+	-- local enterNpcInfo = self.config.enterNpc
 	self.discussHeroState = ActivityState.PreOpening
 	-- 设置这个阶段结束时间
 	self:setEndTime(readyPeriod)
 	
-	if enterNpcInfo then
-		self.enterNpc = g_entityFct:createDynamicNpc(enterNpcInfo.npcDBID)
+	-- if enterNpcInfo then
+		-- self.enterNpc = g_entityFct:createDynamicNpc(enterNpcInfo.npcDBID)
 		-- 加入到场景中
-		local scence = g_sceneMgr:getSceneByID(enterNpcInfo.mapID)
-		if scence and self.enterNpc then
-			scence:attachEntity(self.enterNpc,enterNpcInfo.posX,enterNpcInfo.posY)
-			self.scence = scence
-		end
+		-- local scence = g_sceneMgr:getSceneByID(enterNpcInfo.mapID)
+		-- if scence and self.enterNpc then
+			-- scence:attachEntity(self.enterNpc,enterNpcInfo.posX,enterNpcInfo.posY)
+			-- self.scence = scence
+		-- end
 		-- 创建活动场景
-		local mapInfo = self.config.mapInfo
-		if mapInfo then
-			for mapInfoID, data in pairs(mapInfo) do
-				g_sceneMgr:createDiscussHeroScene(data.mapID,mapInfoID)
+		if self.config then
+			local mapInfo = self.config.mapInfo
+			if mapInfo then
+				for mapInfoID, data in pairs(mapInfo) do
+					g_sceneMgr:createDiscussHeroScene(data.mapID,mapInfoID)
+				end
 			end
 		end
-	end
+	-- end
 	-- 广播
 	self:preFirstBroadcast()
 	
@@ -217,10 +247,10 @@ function DiscussHero:closeActivity()
 	-- 结算奖励
 	g_discussHeroMgr:removeAllNpcFromeMap()
 	--
-	if self.enterNpc and self.scence then
-		self.scence:detachEntity(self.enterNpc)
-		g_entityMgr:removeNpc(self.enterNpc:getID())
-	end
+	-- if self.enterNpc and self.scence then
+		-- self.scence:detachEntity(self.enterNpc)
+		-- g_entityMgr:removeNpc(self.enterNpc:getID())
+	-- end
 	local mapInfo = self.config.mapInfo
 	if mapInfo then
 		for mapInfoID, data in pairs(mapInfo) do

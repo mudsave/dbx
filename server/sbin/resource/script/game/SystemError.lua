@@ -50,4 +50,6 @@ PetError = {
 	PhaseOver35			= 43,	-- 相性点超过35
 	RequireNone			= 45,	-- 请求一个不在线的宠物
 	RequireMine			= 46,	-- 请求自己的宠物数据
+	DuplicateExtend		= 47,	-- 已经掌握了研发技能
+	CantLearnExtend		= 48,	-- 无法学习该研发技能
 }

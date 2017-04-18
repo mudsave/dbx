@@ -688,19 +688,33 @@ function LuaDBAccess.orderGoldHuntActivity(orderCount, callbackFunction, callbac
 	
 end
 
---帮派研发技能数据存储
-function LuaDBAccess.updateFactionExtendSkillInfo(factionDBID,skillID,skillLevel)
-	if factionDBID then
+--添加帮派研发技能记录
+function LuaDBAccess.createFactionExtendSkillInfo(factionDBID,skillID,skillLevel)
+	if not factionDBID then
 		return
 	end
 	clearParams()
-	params[1]["spName"] = "sp_UPdateFactionExtendSkill"
+	params[1]["spName"] = "sp_CreateFactionExtendSkill"
 	params[1]["dataBase"] = 1
 	params[1]["sort"] = "fID,sID,skillLevel,"
 	params[1]["fID"] = factionDBID
 	params[1]["sID"] = skillID
 	params[1]["skillLevel"] = skillLevel
+	LuaDBAccess.exeSP(params,false) 
+end
 
+--帮派研发技能数据存储
+function LuaDBAccess.updateFactionExtendSkillInfo(factionDBID,skillID,skillLevel)
+	if not factionDBID then
+		return
+	end
+	clearParams()
+	params[1]["spName"] = "sp_UpdateFactionExtendSkill"
+	params[1]["dataBase"] = 1
+	params[1]["sort"] = "fID,sID,skillLevel,"
+	params[1]["fID"] = factionDBID
+	params[1]["sID"] = skillID
+	params[1]["skillLevel"] = skillLevel
 	LuaDBAccess.exeSP(params,false) 
 end
 

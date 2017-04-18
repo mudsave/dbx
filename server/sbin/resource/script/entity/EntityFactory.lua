@@ -51,6 +51,8 @@ function EntityFactory:createPlayer(roleId, gatewayId, hClientLink, hGateLink)
 	player:addHandler(HandlerDef_AutoPoint,AutoPointHandler(player))	
 	player:addHandler(HandlerDef_Mine,MineHandler(player))
 	player:addHandler(HandlerDef_Activity, ActivityHandler(player))
+	player:addHandler(HandlerDef_Faction, FactionHandler(player))
+
 	return player
 end
 

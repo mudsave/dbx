@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "statistic is starting.."
+
+workdir=`pwd`
+
+$workdir/topstat &
+
+echo "statistic is ok.."

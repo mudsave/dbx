@@ -14,8 +14,9 @@ local skyFallBoxActivityDB =
 		dbName = "updateSkyFallBox",
 		startType = AtyStartType.fixedWeekHour,
 		activityTime = {
-			[1] = {startTime = {week = 2,hour = 15, min = 54},endTime = {week = 2,hour = 21, min = 0},},
-			[2] = {startTime = {week = 4,hour = 15, min = 54},endTime = {week = 4,hour = 21, min = 0},},
+			[1] = {startTime = {week = 3,hour = 9, min = 0},endTime = {week = 3,hour = 24, min = 0},},
+			[2] = {startTime = {week = 6,hour = 9, min = 0},endTime = {week = 6,hour = 24, min = 0},},
+			[3] = {startTime = {week = 7,hour = 9, min = 0},endTime = {week = 7,hour = 24, min = 0},},
 		}
 	}
 }

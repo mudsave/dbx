@@ -17,6 +17,7 @@ function LifeSkillSystem:__init()
 	self.randRecipeID = nil
 end
 
+--提炼原材料
 function LifeSkillSystem:onRefineItem(event)
 	local params = event:getParams()
 	local playerID = event.playerID
@@ -33,14 +34,24 @@ function LifeSkillSystem:onRefineItem(event)
 	for _,refineInfo in pairs(RefineDB or {})do
 		if refineItemID == refineInfo.refineItemID then
 			local packetHandler = player:getHandler(HandlerDef_Packet)
-			--生产所获得的配方
-			local num = self:getRefineItemNum(player,skillIndex)
-			packetHandler:addItemsToPacket(refineInfo.itemID, num)
-			--发消息给客户端
-			local refineItemName = refineInfo.refineItemName
-			local itemName = refineInfo.itemName
-			local event = Event.getEvent(LifeSkillEvent_SC_refineSuccessNotice,refineItemName,itemName,num)
-			g_eventMgr:fireRemoteEvent(event, player)
+			--获取玩家要消耗的材料1
+			local itemNum = packetHandler:getNumByItemID(refineItemID)
+			if itemNum >0 then
+				--生产所获得的配方
+				local num = self:getRefineItemNum(player,skillIndex)
+				--生成产物到包裹
+				packetHandler:addItemsToPacket(refineInfo.itemID, num)
+				--移除原材料相应数量的原材料
+				packetHandler:removeByItemId(refineItemID,1)
+				--发消息给客户端
+				local refineItemName = refineInfo.refineItemName
+				local itemName = refineInfo.itemName
+				local event = Event.getEvent(LifeSkillEvent_SC_refineSuccessNotice,refineItemName,itemName,num)
+				g_eventMgr:fireRemoteEvent(event, player)
+			else 
+				local event = Event.getEvent(LifeSkillEvent_SC_refineFailedNotice,4)
+				g_eventMgr:fireRemoteEvent(event, player)
+			end 		
 		end
 	end
 end
@@ -122,7 +133,7 @@ function LifeSkillSystem:costMoneyLearnSkill(event)
 				local playerCatchRate = player:getAttrValue(player_add_catchpet_rate)
 				local addCatchRate = playerCatchRate+catchRate
 				player:setAttrValue(player_add_catchpet_rate,addCatchRate)
-				---- 发消息给客户端
+				--发消息给客户端
 				local event = Event.getEvent(LifeSkillEvent_SC_updateCatchInfo,skillIndex,catchRate)
 				g_eventMgr:fireRemoteEvent(event, player)
 		    end	
@@ -140,21 +151,20 @@ function LifeSkillSystem:costMoneyLearnSkill(event)
 			--消耗银两
 			local costMoney =player:getMoney() - costs[CostEnum.Bind][level+1]
 			player:setMoney(costMoney)
-			
 			--消耗帮贡
 			local factionDBID = player:getFactionDBID()
 			local bang = 0
 			if factionDBID > 0 then
 				bang = player:getFactionMoney()
 				local bangValue = bang - costs[CostEnum.Bang][level+1]
-				
+				player:setFactionMoney(bangValue)
 				--等级加1
 				level = level+1	
 				lifeSkillHandler:setLifeSkillLev(skillIndex, level)
 				local newCostMoney = costs[CostEnum.Bind][level+1]
 			    local newCostBang = costs[CostEnum.Bang][level+1]
 				--发消息给客户端
-	            local event = Event.getEvent(LifeSkillEvent_SC_upLevelAndFreshInfo,skillIndex, level,newCostMoney,newCostBang)
+				local event = Event.getEvent(LifeSkillEvent_SC_upLevelAndFreshInfo,skillIndex, level,newCostMoney,newCostBang,bangValue)
 			    g_eventMgr:fireRemoteEvent(event, player)
 			else
 		        return
@@ -301,7 +311,7 @@ function LifeSkillSystem:onLearnSkill(event)
 					bang = player:getFactionMoney()
 					local bangValue = bang - costs[CostEnum.Bang][level+1]
 					player:setFactionMoney(bangValue)
-					player:flushPropBatch()
+					--player:flushPropBatch()
 					local event = Event.getEvent(FactionEvent_BB_UpdateFactionMemberInfo,"memberMoney",playerDBID,toNumber(bangValue))
 					g_eventMgr:fireWorldsEvent(event,SocialWorldID)
 
@@ -312,13 +322,13 @@ function LifeSkillSystem:onLearnSkill(event)
 					local newCostBang = costs[CostEnum.Bang][newLevel+1]
 
 					--发消息给客户端
-					local event = Event.getEvent(LifeSkillEvent_SC_upLevelAndFreshInfo,skillIndex, newLevel,newCostMoney,newCostBang)
+					local event = Event.getEvent(LifeSkillEvent_SC_upLevelAndFreshInfo,skillIndex, newLevel,newCostMoney,newCostBang,bangValue)
 					g_eventMgr:fireRemoteEvent(event, player)
 				else
 					return
 				end
 			end 
-			
+		
 			if skillIndex ==7 then
 				--提高逃跑成功率
 				local escapRate =level + 1 

@@ -10,26 +10,16 @@ PosEnum = {
 
 CollectionDB ={ 
 
-	[1] = {
+	[101] = {
 		{
 		    itemID = 10013,
-		    posType = 1,
-			posData =     { {67,96},{69,87},{72,91},{66,79},
-		
-		    },		   
-			repeatable  = true,
+		    posType = 4,
+		posData =     {
+			-1
+		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-			
-		    -- itemID = 10013,
-		    -- posType = 4,
-			-- posData =     {
-				-- -1
-		    -- },		    
-			-- repeatable  = true,
-		    -- interval = 10,
-		    -- number = 20,
-		    -- amount = 100,
+		    number = 6,
+		    amount = 50,
 		},
 	},
 	[102] = {
@@ -533,17 +523,6 @@ CollectionDB ={
 		    interval = 10,
 		    number = 6,
 		    amount = 50,
-		},
-	},
-	[129] = {
-		{
-		    itemID = 10005,
-		    posType = 1,
-		    posData = {
-			{46,126},
-		    },
-		    repeatable  = true,
-		    interval = 10,
 		},
 	},
 }

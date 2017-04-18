@@ -7,7 +7,6 @@ TguideTask = class(TaskTarget)
 function TguideTask:__init(entity, task, param, state)
 	self._task	= task
 	self._state = state or 0
-	self._entity = entity
 	self._param = param
 	if not self:completed() then
 		self:addWatcher("onGuideTask")	-- 没有完成继续指引
@@ -18,16 +17,15 @@ end
 function TguideTask:onGuideTask(guideTaskID)
 	-- 说明已经创建的改类型的任务目标
 	local taskHandler = self._entity:getHandler(HandlerDef_Task)
-	local taskID = self._task:getID()	
+	local taskID = self._task:getID()
 	if self._param.taskID == guideTaskID  then
+		self:setState(self._state + 1)
 		if self:completed() then
 			taskHandler:finishTaskByID(taskID)
-			self:removeWatchers()
 			return
-		else
-			self:setState(self._state + 1)
 		end	
 	end
+
 	local targetsState = self._task:getTargetState()
 	g_taskSystem:setTargetsState(self._entity,taskID,targetsState)
 end

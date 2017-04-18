@@ -11,7 +11,7 @@ GuideDialogModelDB = {
 		},
 		speakerID = 20004,
 		soundID = nil,
-		txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+		txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 		options = 
 		{
 			[1] = {
@@ -34,7 +34,7 @@ GuideDialogModelDB = {
 			},
 			speakerID = 20006,
 			soundID = nil,
-			txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+			txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 			options = 
 			{
 				[1] = {
@@ -57,7 +57,7 @@ GuideDialogModelDB = {
 			},
 			speakerID = 20008,
 			soundID = nil,
-			txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+			txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 			options = 
 			{
 				[1] = {
@@ -80,7 +80,7 @@ GuideDialogModelDB = {
 			},
 			speakerID = 20009,
 			soundID = nil,
-			txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+			txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 			options = 
 			{
 				[1] = {
@@ -103,7 +103,7 @@ GuideDialogModelDB = {
 			},
 			speakerID = 20005,
 			soundID = nil,
-			txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+			txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 			options = 
 			{
 				[1] = {
@@ -126,7 +126,7 @@ GuideDialogModelDB = {
 			},
 			speakerID = 20007,
 			soundID = nil,
-			txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+			txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 			options = 
 			{
 				[1] = {
@@ -171,7 +171,7 @@ GuideDialogModelDB = {
 			},
 			speakerID = 29008,
 			soundID = nil,
-			txt = "原来是<myName>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
+			txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你入门有一段时间了，是时候为门派出一份力，当然门派也不会亏待你，完成师门任务后你将会得到丰厚的奖励。",
 			options = 
 			{
 				[1] = {
@@ -261,7 +261,7 @@ GuideDialogModelDB = {
 		},
 		speakerID = 39000,
 		soundID = nil,
-		txt = "原来是<myName>啊，你现在也小有所成，可以驾驭坐骑了。当你集齐青龙卷、朱雀卷、白虎卷、玄武卷与对应的坐骑灵符时，便可以在我这兑换坐骑任务。",
+		txt = "原来是<font color = '#FFFFFF00'><myName></font>啊，你现在也小有所成，可以驾驭坐骑了。当你集齐青龙卷、朱雀卷、白虎卷、玄武卷与对应的坐骑灵符时，便可以在我这兑换坐骑任务。",
 		options = 
 		{
 			[1] = {
@@ -315,6 +315,29 @@ GuideDialogModelDB = {
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 15020}},
 					{action = DialogActionType.Goto, param = {dialogID = 20000}},
+				},
+			}
+		},	
+	},
+
+	[35512] = {
+		dialogType = DialogType.HasOption,
+		conditions = 
+		{
+		},
+		speakerID = 28022,
+		soundID = nil,
+		txt = "讨逆任务为日常任务，每天不限次数，可单人可组队完成，组队完成可获得额外奖励。",
+		options = 
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "我明白了",
+				actions =
+				{
+					{action = DialogActionType.FinishTask, param = {taskID = 15021}},	
+					{action = DialogActionType.RecetiveTask,param = {taskID = 15022}},	
+					{action = DialogActionType.Goto, param = {dialogID = 30060}},		
 				},
 			}
 		},	

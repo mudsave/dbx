@@ -126,7 +126,6 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 	local isBind = params[3]
 	local item = g_itemMgr:getItem(itemGuid)
 	if not isBind and item:getBindFlag() then
-		print("-------------勾选了非绑定，而使用了绑定材料。。")
 		return
 	end
 	if item and item:getSubClass() == ItemSubClass.Drawing then
@@ -183,6 +182,7 @@ function EquipPlayingSystem:onEquipMakeRequest(event)
 		propertyContext.expireTime = 0
 		propertyContext.effect = 0
 		propertyContext.identityFlag = true
+		propertyContext.level = level
 		if itemConfig.Class == ItemClass.Equipment then
 			propertyContext.curDurability = itemConfig.MaxDurability*ConsumeDurabilityNeedFightTimes
 			-- 基础属性
@@ -990,7 +990,6 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 			num = packetHandler:getNumByItemID(itemID)
 		end
 		if num < itemNum then
-			print("----------------材料不足。。。",itemID,itemNum)
 			return
 		end
 	end
@@ -1021,6 +1020,7 @@ function EquipPlayingSystem:onAdornMakeRequest(event)
 	propertyContext.expireTime = 0
 	propertyContext.effect = 0
 	propertyContext.identityFlag = true
+	propertyContext.level = level
 	if itemConfig.Class == ItemClass.Equipment then
 		propertyContext.curDurability = itemConfig.MaxDurability*ConsumeDurabilityNeedFightTimes
 		-- 基础属性
@@ -1139,6 +1139,7 @@ function EquipPlayingSystem:onAdornSyntheticRequest(event)
 	propertyContext.expireTime = 0
 	propertyContext.effect = 0
 	propertyContext.identityFlag = true
+	propertyContext.level = level
 	propertyContext.bindFlag = isBind
 	propertyContext.curDurability = adornData.MaxDurability*ConsumeDurabilityNeedFightTimes
 	propertyContext.addEffect = {}

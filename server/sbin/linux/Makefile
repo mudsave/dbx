@@ -22,6 +22,8 @@ test : _server _client
 all : _session _gateway _world _fight _social
 	@echo "--servers are running in background.."
 
+public: _session1 _gateway1 _world1 _fight1 _social1
+	@echo "--public servers are running in background.."
 clean :
 	@set -e; ./kill_server
 	@echo "--server is clean.."
@@ -73,7 +75,7 @@ _server :
 
 _session :
 	@set -e; ulimit -c unlimited; \
-	( $(WORK_DIR)/Session -loginAddrL 172.16.2.218:20013 -gateAddrL 172.16.2.218:2300 -worldAddrL 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
+	( $(WORK_DIR)/Session -loginAddrL 172.16.2.218:20013 -gateAddrL 172.16.2.218:2300 -worldAddrL 172.16.2.218:2500 -dbAddrC 172.16.2.217:3007 -extranetIP 0 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
 	echo "Session has been runned.."; sleep 2s
 
 _gateway :
@@ -139,5 +141,52 @@ world_v :
 dbx_v :
 	@set -e; ulimit -c 0; \
 	valgrind --log-file=$(WORK_DIR)/vlogs/dbx_v.txt $(WORK_DIR)/dbx
+
+#外网的后台程序
+
+
+_session1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/Session -loginAddrL 172.16.2.243:30013 -gateAddrL 172.16.2.243:2300 -worldAddrL 172.16.2.243:2500 -dbAddrC 172.16.2.217:3007 -extranetIP 121.15.143.42 1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
+	echo "Session has been runned.."; sleep 2s
+
+_gateway1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.243:30017  -worldAddrL 172.16.2.243:2700 -sessionAddrC 172.16.2.243:2300 -gatewayId 0 1>$(WORK_DIR)/logs/_gateway.txt 2>&1 & ); \
+	echo "Gateway 0 has been runned.."; sleep 2s
+
+_gateway_11 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/Gateway -loginAddrL 172.16.2.243:20017 -worldAddrL 172.16.2.243:2900 -sessionAddrC 172.16.2.243:2300 -gatewayId 1 1>$(WORK_DIR)/logs/_gateway_1.txt 2>&1 & ); \
+	echo "Gateway 1 has been runned.."; sleep 2s
+
+_world1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.243:2500 -dbAddrC 172.16.2.217:3007 -worldId 0  1>$(WORK_DIR)/logs/_world.txt 2>&1 & ); \
+	echo "World 0 has been runned.."; sleep 2s
+
+_world_11 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.243:2500 -dbAddrC 172.16.2.217:3007 -worldId 1 1>$(WORK_DIR)/logs/_world_1.txt 2>&1 & ); \
+	echo "World 1 has been runned.."; sleep 2s
+_fight1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.243:2500 -dbAddrC 172.16.2.217:3007 -worldId 100  1>$(WORK_DIR)/logs/_world100.txt 2>&1 & ); \
+	echo "fight 100 has been runned.."; sleep 2s
+
+_fight_11 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.243:2500 -dbAddrC 172.16.2.217:3007 -worldId 101 1>$(WORK_DIR)/logs/_world_101.txt 2>&1 & ); \
+	echo "fight 101 has been runned.."; sleep 2s
+
+_dbx1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/dbx >$(WORK_DIR)/logs/_dbx.txt 2>&1 & ); \
+	echo "dbx has been runned.."; sleep 2s
+
+_social1 :
+	@set -e; ulimit -c unlimited; \
+	( $(WORK_DIR)/World -sessionAddrC 172.16.2.243:2500 -dbAddrC 172.16.2.217:3007 -worldId 200  1>$(WORK_DIR)/logs/_world200.txt 2>&1 & ); \
+	echo "social 200 has been runned.."; sleep 2s
 
 include ./devel.mak

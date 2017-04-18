@@ -55,7 +55,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.catchPet] =
 				{
 					-- 购买宠物指引
-                                        createBuyPetTrace =
+					createBuyPetTrace =
 					{
 						[1] = 
 						{
@@ -147,11 +147,11 @@ LoopTaskTargetAssistDB =
 							count = 1,
 							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
 						},						
-                                        },
+					},
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+						[1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
 					},
 				},
 				-- 挑战暗雷
@@ -1073,7 +1073,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
 					},
 				},
 				-- 挑战暗雷
@@ -1262,7 +1262,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
 					},
 				},
 				-- 挑战暗雷
@@ -1496,7 +1496,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
 					},
 				},
 				-- 挑战暗雷
@@ -1561,7 +1561,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4813, followNpcID = 26021},
 					},
@@ -1746,7 +1746,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20006, mapID = 3, x = 26, y = 92},
 					},
 				},
 				-- 挑战暗雷
@@ -1810,7 +1810,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4813, followNpcID = 26021},
 					},
@@ -1988,7 +1988,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
 					},
 				},
 				-- 挑战暗雷
@@ -2177,7 +2177,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
 					},
 				},
 				-- 挑战暗雷
@@ -2412,7 +2412,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
 					},
 				},
 				-- 挑战暗雷
@@ -2477,7 +2477,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4815, followNpcID = 26021},
 					},
@@ -2662,7 +2662,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20008, mapID = 6, x = 67, y = 135},
 					},
 				},
 				-- 挑战暗雷
@@ -2726,7 +2726,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4815, followNpcID = 26021},
 					},
@@ -2904,7 +2904,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
 					},
 				},
 				-- 挑战暗雷
@@ -3093,7 +3093,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
 					},
 				},
 				-- 挑战暗雷
@@ -3327,7 +3327,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
 					},
 				},
 				-- 挑战暗雷
@@ -3392,7 +3392,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4817, followNpcID = 26021},
 					},
@@ -3577,7 +3577,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20009, mapID = 5, x = 43, y = 112},
 					},
 				},
 				-- 挑战暗雷
@@ -3641,7 +3641,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4817, followNpcID = 26021},
 					},
@@ -3820,7 +3820,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
 					},
 				},
 				-- 挑战暗雷
@@ -4009,7 +4009,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
 					},
 				},
 				-- 挑战暗雷
@@ -4098,7 +4098,7 @@ LoopTaskTargetAssistDB =
 					createRandomNpc =
 					{
 						[1] = {npcID = 26011, scriptID = 4119},
-                                                [2] = {npcID = 26010, scriptID = 4120},
+						[2] = {npcID = 26010, scriptID = 4120},
 					},
 				},
 
@@ -4243,7 +4243,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
 					},
 				},
 				-- 挑战暗雷
@@ -4308,7 +4308,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4819, followNpcID = 26021},
 					},
@@ -4493,7 +4493,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20005, mapID = 4, x = 59, y = 72},
 					},
 				},
 				-- 挑战暗雷
@@ -4557,7 +4557,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4819, followNpcID = 26021},
 					},
@@ -4736,7 +4736,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
 					},
 				},
 				-- 挑战暗雷
@@ -4925,7 +4925,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
 					},
 				},
 				-- 挑战暗雷
@@ -5159,7 +5159,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
 					},
 				},
 				-- 挑战暗雷
@@ -5224,7 +5224,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4821, followNpcID = 26021},
 					},
@@ -5410,7 +5410,7 @@ LoopTaskTargetAssistDB =
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
-                                          [1] ={npcID = 20004, mapID = 1, x = 26, y = 84},
+                                          [1] ={npcID = 20007, mapID = 2, x = 83, y = 125},
 					},
 				},
 				-- 挑战暗雷
@@ -5474,7 +5474,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					partrolTalkTrace =
+					escortTalkTrace =
 					{
 						[1] = {dialogID = 4821, followNpcID = 26021},
 					},
@@ -8261,6 +8261,77 @@ LoopTaskTargetAssistDB =
 						[20] = {npcID = 28020, scriptID = 5220, mapID = 126, x = 150, y = 129},
 
 					},
+				},
+			},
+		},
+	},
+
+	[10011] = 
+	{
+		-- 暗雷战斗
+		[1] =
+		{
+			[1] =
+			{
+				[LoopTaskTargetType.partrolScript] =
+				{
+					addSpecialArea =
+					{
+						[1] = {npcID = 27061, dialogID = 5061, scriptID = 5061},--魔君姬发
+						[2] = {npcID = 27062, dialogID = 5062, scriptID = 5062},--魔将乔坤
+						[3] = {npcID = 27063, dialogID = 5063, scriptID = 5063},--妖将曹宝
+						[4] = {npcID = 27064, dialogID = 5064, scriptID = 5064},--邪道萧臻
+						[5] = {npcID = 27065, dialogID = 5065, scriptID = 5065},--术士方弼
+						[6] = {npcID = 27066, dialogID = 5066, scriptID = 5066},--薛恶虎
+					},
+				},
+				[LoopTaskTargetType.brightMine] = 
+				{
+					-- 指定NPC，固定坐标 ,无需创建，但是这个坐标要发给客户端
+					brightMine =
+					{
+						[1] = {npcID = 40211, scriptID = 200, mapID = 10, x = 173, y = 231},--段岳
+						[2] = {npcID = 40032, scriptID = 200, mapID = 7, x = 86, y = 27},
+						[3] = {npcID = 40033, scriptID = 200, mapID =7, x= 54, y =108},
+						[4] = {npcID = 40034, scriptID = 200, mapID = 7, x= 31, y = 79},
+					},
+				},
+				[LoopTaskTargetType.talk] =
+				{	
+					-- 指定NPC，固定坐标 ,无需创建，但是这个坐标要发给客户端
+					createPosition =
+					{
+						[1] = {npcID = 40211, mapID = 10, x = 173, y = 231},--卢植
+					}
+				},
+				--送信
+				[LoopTaskTargetType.deliverLetters] = 
+				{
+					deliverTrace =
+					{
+						[1] = {itemID = 1041017, npcID = 40211, mapID = 10, x = 173, y = 231} ,--卢植
+					},
+				},
+
+				-- 上缴物品
+				[LoopTaskTargetType.buyItem] =
+				{
+					-- 买物品指引
+					createBuyItemData = 
+					{
+						[1] = 
+						{
+							itemID = 1011001, 
+							count = 1,
+							buyPosition = {npcID = 20106, mapID = 10, x = 224, y = 166},			
+						},
+					},
+					-- 交物品指引
+					createPaidItemTrace = 
+					{
+						[1] ={npcID = 40034, mapID = 7, x = 31, y = 79},
+					},
+					
 				},
 			},
 		},

@@ -12,7 +12,7 @@ extern CWorld g_world;
 extern CMapManager g_MapManager;
 handle CoScene::s_entitiesBuf[_MaxEnumCount];
 #define X_FIELD_LEN 50
-#define Radius_limit 5
+#define Radius_limit 50
 
 CoScene::CoScene(short sWordId, short mapId, SceneType type, CMapInfo* pMapInfo):
 	m_SceneInfo(sWordId, mapId, type), m_pMapInfo(pMapInfo), m_unitCount(0),

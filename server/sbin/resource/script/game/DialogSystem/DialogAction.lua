@@ -274,7 +274,7 @@ function DialogAction:doCloseDialog(player, param)
 	--自己清除服务器的记录
 	g_dialogMgr:removeDialog(player:getID())
 	-- 通知客户端关闭
-	g_dialogSym:closeDialog(player)
+	-- g_dialogSym:closeDialog(player)
 end
 
 -- 打开UI
@@ -450,11 +450,17 @@ function DialogAction:doEnterTreasureFight(player, param, npcID)
 		return
 	end
 	if bPass then
-		if not curNpc:isFighting() then
-			placeMoster:setFightPlayer(player)
-			curNpc:setFighting(true)
-			g_fightMgr:startScriptFight(finalList, param.scriptID,  param.mapID ,FightBussinessType.Treasure)
-		end
+		local playerLevel = player:getLevel()
+		local curNpcLevel = curNpc:getLevel()
+		if playerLevel>= curNpcLevel then
+			if not curNpc:isFighting() then
+				placeMoster:setFightPlayer(player)
+				curNpc:setFighting(true)
+				g_fightMgr:startScriptFight(finalList, param.scriptID,  param.mapID ,FightBussinessType.Treasure)
+			end
+		else 
+			print("等级过低不能战斗")
+		end 
 	end
 end
 
@@ -685,7 +691,7 @@ function DialogAction:doDekaronSchoolFight(player,param)
 			local finalList = {}
 			for k,player in ipairs(playerList) do
 				table.insert(finalList,player)
-				local petID = player:getFollowPetID()
+				local petID = player:getFightPetID()
 				if petID then
 					local pet = g_entityMgr:getPet(petID)
 					table.insert(finalList,pet)
@@ -772,11 +778,12 @@ function DialogAction:doReceiveBabelTask(player, param)
 		-- 今日也完成
 		if finishFlag == 1 then
 			local msg = 23
-			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, result)
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, msg)
 			g_eventMgr:fireRemoteEvent(event, player)
 			return
 		end
-		local layer = 1
+		local level = player:getLevel()
+		local layer = level - 10
 		local flyLayer = 1
 		local result = g_taskDoer:doReceiveBabelTask(player, param.taskID, param.rewardType, layer, flyLayer)
 		if result > 0 then
@@ -852,13 +859,24 @@ function DialogAction:doChangeRewardType(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local task = taskHandler:getTask(param.taskID)
 	if task then
-		local rewardType = task:getRewardType()
-		if rewardType == RewardType.expe then
-			rewardType = RewardType.tao
+		local level = player:getLevel()
+		local layer = task:getLayer()
+		local msgID
+		if level < layer then
+			msgID = 31
 		else
-			rewardType = RewardType.expe
+			local rewardType = task:getRewardType()
+			if rewardType == RewardType.expe then
+				rewardType = RewardType.tao
+				msgID = 30
+			else
+				rewardType = RewardType.expe
+				msgID = 29
+			end
+			task:setRewardType(rewardType)
 		end
-		task:setRewardType(rewardType)
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, msgID)
+		g_eventMgr:fireRemoteEvent(event, player)
 	end
 end
 
@@ -908,6 +926,11 @@ function DialogAction:doChangePlayerMoney(player, param)
 
 
 
+end
+
+function DialogAction:doFactionEctype(player, param)
+	--print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", param.factionEctypeID)
+	g_ectypeMgr:enterFactionEctype(player, param.factionEctypeID)
 end
 
 function DialogAction.getInstance()

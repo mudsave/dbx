@@ -26,7 +26,6 @@ function CatchPet:__release()
 	-- 存储静态NPC实体
 	self.patrolMonster1 = nil
 	self.patrolMonster2 = nil
-	self.patrolMonster3 = nil
 	self.mapID = nil
 	-- 把当前配置传递进来
 	self.monsterDB = nil
@@ -34,6 +33,11 @@ function CatchPet:__release()
 	self.patrolMonster2Num = nil
 	self.playerList = nil
 	self.times = nil
+end
+
+function CatchPet:createAllMonster()
+	self:createMonster()
+	self:createSpecialMonster()
 end
 
 -- 这个创建monster在场景场景之后再
@@ -45,8 +49,11 @@ function CatchPet:createMonster()
 	-- 所需要创建的静态NPC的数量
 	local needCreatePatrolMonster1Num = patrolMonster1Num - self.patrolMonster1Num
 	local patrolMonster1 = monsterDB.patrolMonster1
+	local number = 0
+	local tempTime = os.time()
 	for monsterNum1 = 1, needCreatePatrolMonster1Num do
 		-- 根据权重函数来创建静态NPC
+		number = number + 1
 		local index = self:FunTaskWeight(patrolMonster1)
 		local monsterConfig = patrolMonster1[index]
 		local monsterID = monsterConfig.monsterID
@@ -60,93 +67,52 @@ function CatchPet:createMonster()
 		scene:attachEntity(monster, x , y)
 		self.patrolMonster1[monster:getID()] = monster
 		self.patrolMonster1Num = self.patrolMonster1Num + 1
-
+		if number <= 20 then
+			monster:setStartMoveTime(tempTime + 2)
+		elseif number > 20 and number <= 40 then
+			monster:setStartMoveTime(tempTime + 4)
+		elseif number > 40 and number <= 60 then
+			monster:setStartMoveTime(tempTime + 6)
+		else
+			monster:setStartMoveTime(tempTime + 8)
+		end
 	end
+	print("第一类怪物的个数", self.patrolMonster1Num)
+end
 
+
+-- 半小时之后刷新特殊NPC， 不需要记录个数，每隔半小时刷新一个
+function CatchPet:createSpecialMonster()
+	local scene = g_sceneMgr:getSceneByID(self.mapID)
+	local monsterDB = self.monsterDB
 	local patrolMonster2Num = monsterDB.patrolMonster2Num
 	local needCreatePatrolMonster2Num = patrolMonster2Num - self.patrolMonster2Num
 	local patrolMonster2 = monsterDB.patrolMonster2
+	local number = 0
+	local tempTime = os.time()
 	for monsterNum2 = 1, needCreatePatrolMonster2Num do
 		-- 根据权重函数来创建静态NPC
+		number = number + 1
 		local index = self:FunTaskWeight(patrolMonster2)
 		local monsterConfig = patrolMonster2[index]
 		local monsterID = monsterConfig.monsterID
 		-- 在当前场景随机位置
 		local x, y = self:getEctypeValidEmptyPos()
+		--local x = 99
+		--local y = 94
 		-- 创建一个实体
 		local monster = g_entityFct:createActivityPatrolNpc(monsterID)
 		monster:setScriptID(monsterConfig.scriptID)
 		monster:setRadius(monsterConfig.radius)
 		monster:setCatchPet(self)
+		-- 设置绑定的宠物ID
+		monster:setBindPetID(monsterConfig.petID)
 		scene:attachEntity(monster, x , y)
 		self.patrolMonster2[monster:getID()] = monster
 		self.patrolMonster2Num = self.patrolMonster2Num + 1
+		monster:setStartMoveTime(tempTime + 10)
 	end
-	print("当前怪物的个数", self.patrolMonster1Num, self.patrolMonster2Num)
-	-- 创建一个
-	self:setStartMoveTime()
-end
-
--- 半小时之后刷新特殊NPC， 不需要记录个数，每隔半小时刷新一个
-function CatchPet:createSpecialMonster()
-	local nowTime = os.time()
-	local scene = g_sceneMgr:getSceneByID(self.mapID)
-	local monsterDB = self.monsterDB
-	local patrolMonster3 = monsterDB.patrolMonster3
-	-- 根据权重函数来创建静态NPC
-	local index = self:FunTaskWeight(patrolMonster3)
-	local monsterConfig = patrolMonster3[index]
-	local monsterID = monsterConfig.monsterID
-	-- 在当前场景随机位置
-	local x, y = self:getEctypeValidEmptyPos()
-	local monster = g_entityFct:createActivityPatrolNpc(monsterID)
-	monster:setScriptID(monsterConfig.scriptID)
-	monster:setRadius(monsterConfig.radius)
-	monster:setCatchPet(self)
-	-- 设置绑定的宠物ID
-	monster:setBindPetID(monsterConfig.petID)
-	-- 关联到场景中
-	scene:attachEntity(monster, 36 , 156)
-	self.patrolMonster3[monster:getID()] = monster
-	monster:setStartMoveTime(nowTime + 1)
-end
-
-function CatchPet:setStartMoveTime()
-	local index1 = 1
-	local nowTime = os.time()
-	for _, patrolNpc1 in pairs(self.patrolMonster1) do
-		if index1 >= 1 and index1 <= 40 then
-			if not patrolNpc1:getStartMoveTime() then
-				patrolNpc1:setStartMoveTime(nowTime + 1)
-			end
-		elseif index1 >= 41 and index1 <= 80 then
-			if not patrolNpc1:getStartMoveTime() then
-				patrolNpc1:setStartMoveTime(nowTime + 2)
-			end
-		elseif index1 >= 81 and index1 <= 120 then
-			if not patrolNpc1:getStartMoveTime() then
-				patrolNpc1:setStartMoveTime(nowTime + 3)
-			end
-		elseif index1 >= 121 and index1 <= 160 then
-			if not patrolNpc1:getStartMoveTime() then
-				patrolNpc1:setStartMoveTime(nowTime + 4)
-			end
-		end
-		index1 = index1 + 1
-	end
-
-	for _, patrolNpc2 in pairs(self.patrolMonster2) do
-		if not patrolNpc2:getStartMoveTime() then
-			patrolNpc2:setStartMoveTime(nowTime + 5)
-		end
-	end
-
-	for _, patrolNpc3 in pairs(self.patrolMonster3) do
-		if not patrolNpc3:getStartMoveTime() then
-			patrolNpc2:setStartMoveTime(nowTime + 5)
-		end
-	end
-
+	print("第二类怪物的个数", self.patrolMonster2Num)
 end
 
 -- 里面的小的再进行权重随机
@@ -177,7 +143,7 @@ function CatchPet:update(timerID)
 	if self.times % (self.monsterDB.refreshTime1 * 60) == 0 then
 		self:createMonster()
 	end
-	-- 半小时之后刷新一个元林类的怪物
+	
 	if self.times % (self.monsterDB.refreshTime2 * 60) == 0 then
 		self:createSpecialMonster()
 	end
@@ -186,20 +152,13 @@ function CatchPet:update(timerID)
 		for _, patrolNpc1 in pairs(self.patrolMonster1) do
 			if not patrolNpc1:getMoveState() and nowTime >= patrolNpc1:getStartMoveTime() and not patrolNpc1:getOwnerID() then
 				-- 不是战斗状态的才能够开始移动
-				patrolNpc1:beginScopeMove()
+				patrolNpc1:startMove()
 			end
 		end
 
 		for _, patrolNpc2 in pairs(self.patrolMonster2) do
 			if not patrolNpc2:getMoveState() and nowTime >= patrolNpc2:getStartMoveTime() and not patrolNpc2:getOwnerID() then
-				-- 不是战斗状态的才能够开始移动
-				patrolNpc2:beginScopeMove()
-			end
-		end
-
-		for _, patrolNpc3 in pairs(self.patrolMonster3) do
-			if not patrolNpc3:getMoveState() and nowTime >= patrolNpc3:getStartMoveTime() and not patrolNpc3:getOwnerID() then
-				patrolNpc3:beginScopeMove()
+				patrolNpc2:startMove()
 			end
 		end
 	end
@@ -230,8 +189,6 @@ function CatchPet:onFightEndBefor(fightID, isWin, fightEndResults)
 				elseif self.patrolMonster2[patrolNpcID] then
 					self.patrolMonster2[patrolNpcID] = nil
 					self.patrolMonster2Num = self.patrolMonster2Num - 1
-				elseif self.patrolMonster3[patrolNpcID] then
-					self.patrolMonster3[patrolNpcID] = nil
 					self:dealPet(fightEndResults, patrolNpc)
 				end
 				-- 这个当中已经释放掉呢
@@ -344,13 +301,6 @@ function CatchPet:clear()
 		scene:detachEntity(patrolNpc2)
 		self.patrolMonster2[patrolNpc2:getID()] = nil
 		g_entityMgr:removePatrolNpc(patrolNpc2:getID())
-	end
-
-	for _, patrolNpc3 in pairs(self.patrolMonster3) do
-		local scene = patrolNpc3:getScene()
-		scene:detachEntity(patrolNpc3)
-		self.patrolMonster3[patrolNpc3:getID()] = nil
-		g_entityMgr:removePatrolNpc(patrolNpc3:getID())
 	end
 	-- 传送所有的玩家
 	for playerID, player in pairs(self.playerList) do

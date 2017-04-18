@@ -171,6 +171,8 @@ end
 function MoveSystem:doStopMove(event)
 	local params = event:getParams()
 	local roleID = params[1]
+	local posX = params[2]
+	local posY = params[3]
 	local player = g_entityMgr:getPlayerByID(roleID)
 	if not player then
 		return
@@ -178,7 +180,7 @@ function MoveSystem:doStopMove(event)
 
 	local moveHandler = player:getHandler(HandlerDef_Move)
 	if moveHandler and moveHandler:GetIsInMove() then
-		moveHandler:DoStopMove()
+		moveHandler:DoStopMove(nil, {x = posX, y = posY})
 	end
 end
 

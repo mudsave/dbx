@@ -460,20 +460,20 @@ FightAIDB[101] =
 		},
 	},
 }
-
+---------------------------------------------150-500为副本AI--------------------------------------------
 ---------------------------------------------迷雾林副本ai-----------------------------------------------
 
 FightAIDB[150] = {
-	name  = '每隔一回合施放一次技能 混乱/瘟疫',
+	name  = '每隔二回合施放一次技能混乱,迷雾林第四关头目',
 	type = AIType.Config,
 
 	[1] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
 		},		
 		action = { 
-			actionType = FightUIType.UseSkill,params ={skillID ={1047}},		--使用技能
+			actionType = FightUIType.UseSkill,params ={skillID ={1078}},	  --神魂颠倒	
 			
 		},
 		chooseTarget = {
@@ -483,10 +483,23 @@ FightAIDB[150] = {
         [2] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},
+				type=AIConditionType.Prob,params={prob= 0.5},
 		},		
 		action = { 
-			actionType = FightUIType.UseSkill,params ={skillID ={ 1013,1014}},		--使用技能
+			actionType = FightUIType.UseSkill,params ={skillID ={1013}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1014}},		--玄冰刺
 			
 		},
 		chooseTarget = {
@@ -496,27 +509,28 @@ FightAIDB[150] = {
 }
 
 FightAIDB[151] = {
-	name  = '每两回合施放一次治疗 ',
+	name  = '每两回合施放一次治疗，迷雾林第四关医生小怪 ',
 	type = AIType.Config,
 
 
 	[1] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},   ---每两回合施放一次
+				--type=AIConditionType.Prob,params={prob= 1},
 		},		
 		action = { 
-			actionType = FightUIType.UseSkill,params ={skillID ={ 1001}},		--使用技能
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1090}},  --慈航普度		--使用技能
 			
 		},
 		chooseTarget = {
-			 type = AnyOfFriend,
+			 type = AITargetType.AnyOfFriend,
 		},
 	},
         [2] = {
 	
 		condition = {
-				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},
+				type=AIConditionType.Prob,params={prob= 1},
 		},		
 		action = { 
 			actionType = FightUIType.UseSkill,params ={skillID ={ 1025}},		--使用技能
@@ -527,8 +541,9 @@ FightAIDB[151] = {
 		},
 	},
 	}
+-------------------------特殊AI-----------------------------------
 FightAIDB[152] = {
-	name  = '每两回合施放一次治疗 ',
+	name  = '每回合防御，活动专属 ',
 	type = AIType.Config,
 
 
@@ -544,6 +559,1436 @@ FightAIDB[152] = {
 		chooseTarget = {
 			 type = AITargetType.Me,
 		},
-	},
-        
+	},     
 	}
+---------------------------------黄风岭副本AI-------------------------
+FightAIDB[155] = {
+	name  = '每隔三回合施放一次技能嘲讽,黄风岭第一关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1058}},	  --一骑当千	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				--type=AIConditionType.RoundInterval,params={period = 3,startRound = 1}, ---每隔3回合沉默
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1015}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[156] = {
+	name  = '每隔三回合施放一次技能昏睡,黄风岭第二关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1068}},	  --魂飞魄散	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				--type=AIConditionType.RoundInterval,params={period = 3,startRound = 1}, ---每隔3回合沉默
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1012}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[157] = {
+	name  = '每隔二回合施放一次技能加血,黄风岭第二关小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1090}},	  --慈航普度	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,					--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				--type=AIConditionType.RoundInterval,params={period = 3,startRound = 1}, ---每隔3回合沉默
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1021}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[158] = {
+	name  = '每隔三回合施放一次技能加攻,黄风岭第三关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1070}},	  --气吞山河	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,
+								
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1022}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[159] = {
+	name  = '每隔三回合施放一次技能加双防,黄风岭第四关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1060}},	  --渊停岳峙	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.Me,
+		             					
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1013}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1012}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[160] = {
+	name  = '每隔三回合施放一次技能魂飞魄散,黄风岭BOSS',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1078}},	  --魂飞魄散	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.Me,
+		             					
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1009}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1008}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+------------------------------------------鬼凤峡副本AI-----------------------------
+FightAIDB[165] = {
+	name  = '每两回合施放一次治疗，鬼凤峡第一关医生小怪 ',
+	type = AIType.Config,
+
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},   ---每两回合施放一次
+				--type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1090}},  --慈航普度		--使用技能
+			
+		},
+		chooseTarget = {
+			 type = AITargetType.AnyOfFriend,
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1014}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	}
+FightAIDB[166] = {
+	name  = '每三回合施放一次护盾，鬼凤峡第三关头目 ',
+	type = AIType.Config,
+
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   ---每两回合施放一次
+				--type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1085}},  --神农护佑		--使用技能
+			
+		},
+		chooseTarget = {
+			 type = AITargetType.Me,
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1012}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1013}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	}
+FightAIDB[167] = {
+	name  = '每隔三回合施放一次技能加攻,鬼凤峡第四关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1070}},	  --气吞山河	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,					--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1008}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1009}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[168] = {
+	name  = '每隔三回合施放一次技能嘲讽,鬼凤峡第四关小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1058}},	  --一骑当千	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1016}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[169] = {
+	name  = '特殊怪死亡前防御,鬼凤峡BOSS',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.AttrPercent,params={ ID = 30460,type = AIAttrType.Hp,relation =">=",value = 0},  
+		},		
+		action = { 
+			actionType = FightUIType.Defense,							--防御	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.Me,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				--type=AIConditionType.RoundInterval,params={period = 3,startRound = 1}, ---每隔3回合沉默
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1108}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1018}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[4] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1019}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	}
+FightAIDB[170] = {
+	name  = '每隔二回合施放一次技能中毒,鬼凤峡BOSS小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1098}},	  --一骑当千	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1024}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+
+----------------------------碧波岛副本AI-------------------------------------------
+FightAIDB[175] = {
+	name  = '每隔三回合施放一次技能加双抗,碧波岛第二关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1060}},	  --渊停岳峙	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.Me,					--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1020}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1021}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[176] = {
+	name  = '每隔三回合施放一次技能加攻,碧波岛第一关小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1070}},	  --气吞山河	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,   ---随机友方						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1024}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[177] = {
+	name  = '每三回合施放一次护盾，碧波岛第三关小怪 ',
+	type = AIType.Config,
+
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   ---每两回合施放一次
+				--type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={ 1085}},  --神农护佑		--使用技能
+			
+		},
+		chooseTarget = {
+			 type = AITargetType.AnyOfFriend,   ---随机友方
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1018}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[178] = {
+	name  = '每隔三回合施放一次技能加攻,碧波岛第三关小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1070}},	  --气吞山河	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,   ---随机友方						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1004}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[179] = {
+	name  = '每隔三回合施放一次技能沉默,碧波岛BOSS小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1108}},	  --气吞山河	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,   ---随机友方						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1014}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[180] = {
+	name  = '每隔三回合施放一次技能消蓝,碧波岛BOSS小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1106}},	  --	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1004}},		--潜龙勿用
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+-----------------------------------------冰风谷副本AI-----------------------------
+FightAIDB[185] = {
+	name  = '每隔三回合施放一次技能冰冻,冰风谷第二关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1088}},	  --冰封万里	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1017}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1019}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[186] = {
+	name  = '每隔三回合施放一次技能双抗,冰风谷第五关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1060}},	  --渊停岳峙	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.Me,					--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1012}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1013}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[187] = {
+	name  = '每隔三回合施放一次技能冰冻,冰风谷BOSS分身冰',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1088}},	  --冰封万里	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1014}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[188] = {
+	name  = '每隔三回合施放一次技能冰冻,冰风谷BOSS分身奶',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1090}},	  --慈航普度	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,					--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1015}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+
+------------------------------------------魔罗峰副本AI-----------------------------
+FightAIDB[195] = {
+	name  = '每隔三回合施放一次技能昏睡,魔罗峰第一关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1068}},	  --魂飞魄散	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1012}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1013}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[196] = {
+	name  = '每隔四回合施放一次技能护盾,魔罗峰第五关头目',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 4,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1085}},	  --神农护体	
+			
+		},
+		chooseTarget = {
+			         type = AITargetType.Me,					--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1014}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1015}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[197] = {
+	name  = '每隔三回合施放一次技能加攻,魔罗峰boss小怪攻',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1070}},	  --神农护体	
+			
+		},
+		chooseTarget = {
+			         type = AITargetType.AnyOfFriend,			--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1017}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1016}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[198] = {
+	name  = '每隔二回合施放一次技能奶,魔罗峰boss小怪奶',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1090}},	  --神农护体	
+			
+		},
+		chooseTarget = {
+			         type = AITargetType.AnyOfFriend,			--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1016}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1017}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[199] = {
+	name  = '每隔二回合施放一次技能魂飞魄散,魔罗峰boss',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1068}},	  --
+			
+		},
+		chooseTarget = {
+			         type = AITargetType.AnyOfEnemy,				--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1026}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1027}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+FightAIDB[210] = {
+	name  = '每隔三回合施放一次技能加双防,魔罗峰第五关小怪',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 2},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1060}},	  --渊停岳峙	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.Me,
+		             					
+		},
+	},
+	[2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1010}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+
+
+------------------------------------------魔魂峰副本AI------------------------------------------------------
+FightAIDB[200] = {
+	name  = '主怪出场施放群体护盾（不消耗回合数）',
+	type = AIType.Config,
+
+	[1] = {
+	
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 3,startRound = 1},   
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1068}},	  --魂飞魄散	
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+        [2] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 0.5},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1012}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+	[3] = {
+	
+		condition = {
+				type=AIConditionType.Prob,params={prob= 1},
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1013}},		--玄冰刺
+			
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,						--目标
+		},
+	},
+}
+
+
+
+------------------------------------------封神台AI（1001——1100）-------------------
+FightAIDB[1001] = {
+	name  = '天枢守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+			type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1073}},	
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1057}},		--嘲讽
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[3] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1067}},		--昏睡
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[4] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1077}},		--混乱
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[5] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1087}},		--冰冻
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[6] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1097}},		--中毒
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[7] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1107}},		--沉默
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1002] = {
+	name  = '天玑守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1103}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1104}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1003] = {
+	name  = '玉衡守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1083}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1084}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1004] = {
+	name  = '开阳守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1053}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1054}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1005] = {
+	name  = '天璇守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+		},	
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1065}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1063}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1006] = {
+	name  = '摇光守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+		},		
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1093}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1007] = {
+	name  = '天权守卫AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1073}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1074}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+}
+FightAIDB[1021] = {
+	name  = '青龙AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1073}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1201}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,
+		},
+	},
+}
+FightAIDB[1022] = {
+	name  = '白虎AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1103}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1202}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,
+		},
+	},
+}
+FightAIDB[1023] = {
+	name  = '朱雀AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1083}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1203}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,
+		},
+	},
+}
+FightAIDB[1024] = {
+	name  = '玄武AI',
+	type = AIType.Config,
+	[1] = {
+		condition = {
+				type=AIConditionType.RoundInterval,params={period = 2,startRound = 2},
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1053}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfEnemy,
+		},
+	},
+	[2] = {
+		condition = {
+		},
+		action = { 
+			actionType = FightUIType.UseSkill,params ={skillID ={1201}},
+		},
+		chooseTarget = {
+			type = AITargetType.AnyOfFriend,
+		},
+	},
+}

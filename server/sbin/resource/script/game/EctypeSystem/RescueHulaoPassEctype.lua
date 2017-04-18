@@ -209,6 +209,7 @@ function RescueHulaoPassEctype:onFightEnd( player, scriptID, fightResult )
 			-- 如果没有战斗失败动作，就返回上一步骤，以便能重新打开对话框进入战斗
 			self.curProgress = self.curProgress - 1
 		end
+		self:sendEctypeMessageTip(31)
 	end
 	if not bValid then
 		local fightEnd = curProcedure.Goto.FightEnd

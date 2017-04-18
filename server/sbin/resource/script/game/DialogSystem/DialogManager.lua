@@ -29,6 +29,27 @@ function DialogManager:removeDialog(playerID)
 	end
 end
 
+function DialogManager:onPlayerOffline(player)
+	-- 如果在对话功能中有创建呢新的对话，和之前的对话ID不相同的话
+	local dialog = self:getDialog(player:getID())
+	if dialog then
+		local teamHandler = player:getHandler(HandlerDef_Team)
+		local teamID = teamHandler:getTeamID()
+		if teamID > 0 then
+			local team = g_teamMgr:getTeam(teamID)
+			local teamMemberList = team:getMemberList()
+			for i = 1, table.getn(teamMemberList) do
+				local teamMember = g_entityMgr:getPlayerByID(teamMemberList[i].memberID)
+				self:removeDialog(teamMember:getID())
+				g_dialogSym:closeDialog(teamMember)
+			end
+		else
+			self:removeDialog(player:getID())
+			g_dialogSym:closeDialog(player)
+		end
+	end
+end
+
 --获取指定对话
 function DialogManager:getDialog(playerID)
 	return self.dialogs[playerID]

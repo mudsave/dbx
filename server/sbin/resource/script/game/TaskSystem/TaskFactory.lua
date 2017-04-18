@@ -251,7 +251,7 @@ function TaskFactory:createLoopTaskData(player, taskID, tarType)
 	-- 再根据等级随那个等级段
 	local levelIdx = GetLevelIndex(player, RandDataSectionDB[taskID])
 	local ringIdx =  GetRingIndex(player, TaskRingSectionDB[taskID], taskID)
-	print("随机到的任务数据为>>>>>>>>>>>>>>>>",toString(LoopTaskTargetsDB[taskID][targetType]))
+	--print("随机到的任务数据为>>>>>>>>>>>>>>>>",toString(LoopTaskTargetsDB[taskID][targetType]))
 	return LoopTaskTargetsDB[taskID][targetType], targetType, levelIdx, ringIdx
 
 end
@@ -338,6 +338,7 @@ function TaskFactory:createDailyTaskFromDB(player, taskData)
 	end
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	taskHandler:setUpdateDB()
+
 	return dailyTask
 
 end

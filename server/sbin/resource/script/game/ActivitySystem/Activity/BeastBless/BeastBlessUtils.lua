@@ -53,26 +53,26 @@ end
 function BeastBlessUtils.getPetBaseRewardFormula(playerLvl,petLvl,value)
 
 end
--- 额外单个奖励公式
--- 钱
-function BeastBlessUtils.getSubMoneyFormula(money,value)
-	return money + 200 
+-- 额外击杀指定小怪的奖励公式
+-- 击杀绑银小仙时绑银
+function BeastBlessUtils.getSubMoneyFormula(subMoney,value)
+	return subMoney + 200 
 end
 
--- 经验
+-- 击杀经验小仙时经验增加
 function BeastBlessUtils.getExpFormula(playerExp,value)
 	return playerExp*(value*0.5)
 end
 
--- 道行
+-- 击杀道行小仙时道行增加
 function BeastBlessUtils.getTaoFormula(playerTao,value)
 	return playerTao*(value*0.5)
 end
 
--- 对对碰公式
--- 钱
-function BeastBlessUtils.getDSubMoneyFormula(money,value)
-	return money + 200 
+-- 同一回合内击杀多个同类型小怪公式
+-- 绑银
+function BeastBlessUtils.getDSubMoneyFormula(subMoney,value)
+	return subMoney + 200 
 end
 -- 经验
 function BeastBlessUtils.getDExpFormula(playerExp,value)
@@ -89,11 +89,11 @@ function BeastBlessUtils.getDItemFormula(ItemValue,nValue,mValue)
 	return ItemValue + nValue*5 + mValue*10
 end
 
--- 固定金钱减少
-function BeastBlessUtils.getDecSubMoneyFormula(money,value)
+-- 击杀守护童子时绑银减少
+function BeastBlessUtils.getDecSubMoneyFormula(subMoney,value)
 	local dec = value*100
-	if dec - money >= 0 then
-		return 0 - money
+	if dec - subMoney >= 0 then
+		return 0 - subMoney
 	end
 	return 0 - dec
 end

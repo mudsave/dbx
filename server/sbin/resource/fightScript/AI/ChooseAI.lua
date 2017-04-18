@@ -52,7 +52,7 @@ function ChooseAIManager:choose(chooseID,role,oldTargets)
 			--随机一个技能,以及是否冷却
 			if bPass and action.actionType == FightUIType.UseSkill then
 				local canSkillIDs = {}
-				for _,ID in pairs(action.params) do
+				for _,ID in pairs(action.params.skillID) do
 					if role:canUseSkill(ID) then
 						table.insert(canSkillIDs,ID)
 					end

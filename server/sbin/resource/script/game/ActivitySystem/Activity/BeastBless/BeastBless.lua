@@ -12,11 +12,11 @@ local BeastBlessActivityDB =
 		name = "BeastBless",
 		dbName = "updateBeastBless",
 		startType = AtyStartType.fixedWeekHour,
-		activityTime = {
-			[1] = {startTime = {week = 1,hour = 15, min = 54},endTime = {week = 1,hour = 21, min = 0},},
+		activityTime = {                                                              --活动开启、结束时间
+			[1] = {startTime = {week = 3,hour = 19, min = 30},endTime = {week = 3,hour = 21, min = 30},}, 
 		},
-		readyPeriod = 0.1,	-- 开启时间
-		preEndPeriod= 0.1,	-- 结束
+		readyPeriod = 10,	-- 开启前10分钟播放广播
+		preEndPeriod= 30,	-- 关闭前30分钟播放广播
 		mapInfo = {
 			-- 瑞兽降福的地图
 			inMapID = {9,10},
@@ -79,7 +79,7 @@ function BeastBless:close()
 	local preEndPeriod = self._config.preEndPeriod
 	--广播
 	if g_serverId == 0 then
-		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,3)
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_BeastBless,3 ,preEndPeriod)
 		-- RemoteEventProxy.broadcast(event)
 		g_eventMgr:broadcastEvent(event)
 	end

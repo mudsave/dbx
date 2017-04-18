@@ -20,7 +20,7 @@ Event = class()
 
 function Event:__init(id, ...)
 	self._id		= id
-	self._params	= varg(...)
+	self._params	= arg--varg(...)
 	self._next		= false
 
 	self.auto_free	= true
@@ -32,6 +32,7 @@ function Event:release()
 	rawset(Event,id,self)
 
 	self.auto_free	= true
+	self._params	= false
 end
 
 function Event:getID()
@@ -43,7 +44,7 @@ function Event:getParams()
 end
 
 function Event:setParams(...)
-	self._params = varg(...)
+	self._params = arg--varg(...)
 end
 
 local function GetEvent(id,...)

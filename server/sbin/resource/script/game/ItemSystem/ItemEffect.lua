@@ -954,7 +954,7 @@ function ItemEffect.openTreasure(targetEntity, medicament, medicamentConfig)
 			itemLevel = targetEntity:getLevel()
 		end
 		local item = g_itemMgr:createItem(medicamentConfig.ReactExtraParam1, 1,itemLevel)
-		packet:removeItemsFromGrid(packIndex, gridIndex, false)
+		packet:removeItemsFromGrid(packIndex, gridIndex, false, true)
 		packet:addItemsToGrid(item, packIndex, gridIndex, true)
 		treasureID = tItemDB[medicamentConfig.ReactExtraParam1].ReactExtraParam1
 		guid = item:getGuid()
@@ -1114,8 +1114,10 @@ function ItemEffect.changeHpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 	if roleCurHp + value >= roleMaxHp then
 		value = value - (roleMaxHp-roleCurHp)
 		role:setHP(roleMaxHp)
+		role:flushPropBatch()
 	else
 		role:setHP(roleCurHp + value)
+		role:flushPropBatch()
 		value = 0
 	end
 	
@@ -1171,8 +1173,10 @@ function ItemEffect.changeMpAndAddBuff(targetEntity,item,itemConfig,targetEntity
 	if roleCurMp + value >= roleMaxMp then
 		value = value - (roleMaxMp-roleCurMp)
 		role:setMP(roleMaxMp)
+		role:flushPropBatch()
 	else
 		role:setMP(roleCurMp + value)
+		role:flushPropBatch()
 		value = 0
 	end
 	
@@ -1200,21 +1204,9 @@ end
 
 -- 添加宠物研发技能
 function ItemEffect.addPetExtend(targetEntity,item,itemConfig,targetEntityID)
-	local handler = targetEntity:getHandler(HandlerDef_Pet)
-	local pet = handler:getPet(targetEntityID) or handler:getPet(handler:getFollowPetID())
-	if not pet then
-		return false,6
-	end
-	local skillID = itemConfig.ReactExtraParam1
-	local skillHandler = pet:getHandler(HandlerDef_PetSkill)
-	local skill = skillHandler:getSkill(skillID) 
-	if skill and not skill:isRemoved() then
-		return false,22
-	end
-	if not skillHandler:canLearnExtend(skillID) then
-		return false,21
-	end
-	skillHandler:addSkill(PetSkill(skillID,PetSkillCategory.Extend,1))
-	skillHandler:sendFreshs(targetEntity)
-	return true
+	local handler	= targetEntity:getHandler(HandlerDef_Pet)
+	local pet		= handler:getPet(targetEntityID) or handler:getPet(handler:getFollowPetID())
+	local skillID	= itemConfig.ReactExtraParam1
+	PetSystem.noticeExtendLearn(targetEntity,pet,itemConfig)
+	return false
 end

@@ -21,20 +21,34 @@ CSession::CSession()
 
 	m_pLinkCtrl			= NULL;
 	m_pThreadsPool		= NULL;
+
+	m_extranetIP		= NULL;
 }
 
 CSession::~CSession()
 {
 	TRACE0_L0("CSession destruct..\n");
+	if(m_extranetIP)
+	{
+		delete[] m_extranetIP;
+		m_extranetIP = 0;
+	}
 }
 
 void CSession::Init(	const char* loginIP,	int loginPort,
 						const char* gateIP,		int gatePort,
 						const char* worldIP,	int worldPort,
-						const char* dbIp,		int dbPort		)
+						const char* dbIp,		int dbPort,
+						const char* extranetIP )
 {
-	HRESULT hr;
-
+	if(extranetIP != 0)
+	{
+		int _len = strlen(extranetIP) + 1;
+		m_extranetIP = new char[_len];
+		memcpy(m_extranetIP, extranetIP, (_len - 1));
+		m_extranetIP[_len - 1] = 0;
+	}
+	
 	m_pLinkCtrl = CreateLinkCtrl();
 	m_pThreadsPool = GlobalThreadsPool();
 
@@ -42,6 +56,7 @@ void CSession::Init(	const char* loginIP,	int loginPort,
 	ILinkSink* pGateSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksGS_L>* >(this);
 	ILinkSink* pWorldSink	= static_cast< IMsgLinksImpl<IID_IMsgLinksWS_L>* >(this);
 
+	HRESULT hr;
 	hr = m_pLinkCtrl->Listen(loginIP,	&loginPort,	pClientSink,	0);	ASSERT_( SUCCEEDED(hr) );
 	hr = m_pLinkCtrl->Listen(gateIP,	&gatePort,	pGateSink,		0);	ASSERT_( SUCCEEDED(hr) );
 	hr = m_pLinkCtrl->Listen(worldIP,	&worldPort,	pWorldSink,		0);	ASSERT_( SUCCEEDED(hr) );

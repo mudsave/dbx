@@ -777,7 +777,7 @@ function BeastBlessManager:dealRewardsTip(fightEndResults)
 								end
 							end
 						else
-							print("背包问题")
+							print("您的背包已满，无法获得物品。")
 						end
 					end
 					if table.size(allItem) > 0 then

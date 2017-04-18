@@ -37,6 +37,7 @@ function PetSystem:__init()
 		[PetEvent_CS_CombinePets]			= PetSystem.onCombinePets,		-- 宠物合成
 		[PetEvent_CS_ReadSkillBook]			= PetSystem.onPetLearn,			-- 宠物学习技能
 		[PetEvent_CS_LearnExtendSkill]		= PetSystem.onLearnExtendSkill,	-- 宠物学习研发技能
+		[PetEvent_CS_ConfirmExtendLearn]	= PetSystem.onAddPetExtend,		-- 宠物添加研发技能
 	}
 end
 
@@ -289,12 +290,13 @@ function PetSystem:onSetPetAttrs(event)
 			Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Pet, errCode), player
 		)
 	else
-		local remain = pet:getAttrValue(pet_attr_point)
+		local attrSet = pet:getAttributeSet()
+		local remain = attrSet:getAttrValue(pet_attr_point)
 		for attrName,value in pairs(distri) do
-			pet:addAttrValue(attrName,value)
+			attrSet:addAttrValue(attrName,value)
 			remain = remain - value
 		end
-		pet:setAttrValue(pet_attr_point,remain)
+		attrSet:setAttrValue(pet_attr_point,remain)
 
 		pet:flushPropBatch(player)
 		g_eventMgr:fireRemoteEvent(
@@ -578,6 +580,7 @@ function PetSystem:onEnchancePet(event)
 		)
 		return
 	end
+	-- 移除物品
 	packet:removeByItemId(pill,need)
 	
 	local growthAttrName		-- 成长属性名称
@@ -592,7 +595,7 @@ function PetSystem:onEnchancePet(event)
 
 	local upLevel = pet:getUpLevel()
 	local rate = PetEnchanceProbability[upLevel]	-- 配置的概率
-	local process = pet:getAttrValue(pet_up_comp)	--  rate*math_random(20,50)/100	--完成度增加公式 完成度+成功率*（20%~50%）
+	local process = pet:getAttrValue(pet_up_comp)	-- rate*math_random(20,50)/100	--完成度增加公式 完成度+成功率*（20%~50%）
 
 	local inc = 1 + 0.08 * upLevel + math_ceil(process / 2000) * 0.01	-- 成长属性的加成
 	local basicGrowth = pet:getAttrValue(pet_at_grow)/inc				-- 原先成长属性值
@@ -674,13 +677,14 @@ local function SetPetPhaseCheck(player,pet,distribution)
 		return PetError.WrongAttrSet
 	end
 	local sum = 0
+	local attrSet = pet:getAttributeSet()
 	for attrName,value in pairs(distribution) do
 		if value < 0 then
 			return PetError.WrongAttrSet
 		end
 		if attrName <= pet_toxicosis_phase_point and
 			attrName >= pet_fir_phase_point then
-			if pet:getAttrValue(attrName) + value > 35 then
+			if attrSet:getAttrValue(attrName) + value > 35 then
 				return PetError.PhaseOver35
 			end
 			sum  = sum + value
@@ -688,7 +692,7 @@ local function SetPetPhaseCheck(player,pet,distribution)
 			return PetError.WrongAttrSet
 		end
 	end
-	if sum > pet:getAttrValue(pet_phase_point) then
+	if sum > attrSet:getAttrValue(pet_phase_point) then
 		return PetError.NoEnoughPoint
 	end
 	return 0
@@ -713,12 +717,13 @@ function PetSystem:onSetPetPhase(event)
 		return
 	end
 
-	local free = pet:getAttrValue(pet_phase_point)
+	local attrSet = pet:getAttributeSet()
+	local free = attrSet:getAttrValue(pet_phase_point)
 	for attrName,value in pairs(distribution) do
-		pet:addAttrValue(attrName,value)
+		attrSet:addAttrValue(attrName,value)
 		free = free - value
 	end
-	pet:setAttrValue(pet_phase_point,free)
+	attrSet:setAttrValue(pet_phase_point,free)
 	pet:flushPropBatch(player)
 	g_eventMgr:fireRemoteEvent(
 		Event.getEvent(
@@ -817,13 +822,15 @@ local function MergeAttrs(survivor,victim)
 	local random = PetCompoundRandom
 	local petType = survivor:getPetType()
 	if petType ~= PetType.Spirit and petType ~= PetType.God then
+		local s_set = survivor:getAttributeSet()
+		local v_set = victim:getAttributeSet()
 		for index,data in ipairs(PetGrowthAttrs) do
 			local growth,growthMax = data[1],data[2]
-			local maxValue = random(Order(survivor:getAttrValue(growthMax),victim:getAttrValue(growthMax)))
-			local from,to = Order(survivor:getAttrValue(growth),victim:getAttrValue(growth))
+			local maxValue = random(Order(s_set:getAttrValue(growthMax),v_set:getAttrValue(growthMax)))
+			local from,to = Order(s_set:getAttrValue(growth),v_set:getAttrValue(growth))
 			local growthValue = random(from,math_min(to,maxValue))
-			survivor:setAttrValue(growthMax,maxValue)
-			survivor:setAttrValue(growth,growthValue)
+			s_set:setAttrValue(growthMax,maxValue)
+			s_set:setAttrValue(growth,growthValue)
 		end
 	end
 end
@@ -982,22 +989,23 @@ local CostValue = {
 local function PetExtendConsume(player,skillID,skillLevel)
 	local skillData = PetSkillLevelUpDB[skillID]
 	local cost = skillData.cost
-	for index,value in pairs(cost) do
+	for index,value in pairs(cost) do -- 应该是 for costType,valueFormula in pairs(cost)
 		local needCost = PetSkillDataDB[value][skillLevel]
 		local curCost = CostType[index](player)
 		if curCost < needCost then
 			print("cost not enough")
 			return false 
 		else
-			CostValue[index](player,curCost - need)
-			player:flushPropBatch()
+			CostValue[index](player,curCost - needCost)
 			return true
 		end
 	end
+	-- 在最后发送一次就可以了,没有必要发送多次
+	player:flushPropBatch()
 end
 
 --研发技能
-function PetSystem.onLearnExtendSkill(event)
+function PetSystem:onLearnExtendSkill(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
 
@@ -1009,19 +1017,94 @@ function PetSystem.onLearnExtendSkill(event)
 	if not pet then print("the pet is empty") return end
 	local skillhandler = pet:getHandler(HandlerDef_PetSkill)
 	
+	print("canlearn",skillhandler:canLearnExtend(skillID,skillLevel))
 	--是否能操作判定
-	if skillhandler:canLearnExtend(skillID,skillLevel) then return end
+	if not skillhandler:canLearnExtend(skillID,skillLevel) then return end
 	--消耗
 	if not PetExtendConsume(player,skillID,skillLevel) then return end
 	--研发技能
-	skillhandler:learnExtendSkill(skillID,skillLevel)
+	skillhandler:addPetExtendLevel(skillID,skillLevel)
+
+	print("this----way")
 	
-	handler:sendFreshs(player)
-	handler:sendChanges(player)
+	skillhandler:sendFreshs(player)
+	skillhandler:sendChanges(player)
 	pet:flushPropBatch(player)
 end
 
+local function AddExtendSkillCheck(player,pet,skillID)
+	local errCode = PetNormalCheck(player,pet)
+	if errCode ~= 0 then return errCode end
+	local handler = pet:getHandler(HandlerDef_PetSkill)
+	local skill = handler:getSkill(skillID)
+	if skill and not skill:isRemoved() then
+		return PetError.DuplicateExtend
+	end
+	if not handler:canLearnExtend(skillID) then
+		return PetError.CantLearnExtend
+	end
+	return 0,handler
+end
 
+local function LearnExtendSkillBookCheck(player,pet,itemID)
+	local detail = tItemDB[itemID]
+	if not detail or
+		detail.SubClass ~= ItemSubClass.ExtendBook then
+		return PetError.NoSuchBook
+	end
+	local pack = player:getHandler(HandlerDef_Packet)
+	if pack:getNumByItemID(itemID) < 1 then
+		return PetError.NoSuchBook
+	end
+	local skillID = detail.ReactExtraParam1
+	return 0,pack,skillID
+end
+
+-- 学习研发技能
+function PetSystem:onAddPetExtend(event)
+	local player	= g_entityMgr:getPlayerByID(event.playerID)
+	local params	= event:getParams()
+	local petID		= params[1]
+	local itemID	= params[2]
+	local errCode
+	repeat
+		local pet = g_entityMgr:getPet(petID)
+		local pack,skillID,handler
+
+		errCode,pack,skillID = LearnExtendSkillBookCheck(player,pet,itemID)
+		if errCode ~= 0 then break end
+
+		errCode,handler = AddExtendSkillCheck(player,pet,skillID)
+		if errCode ~=0 then break end
+
+		pack:removeByItemId(itemID,1)
+		handler:addSkill(
+			PetSkill(skillID,PetSkillCategory.Extend,1)
+		)
+		handler:sendFreshs(player)
+		pet:flushPropBatch(player)
+	until true
+	if errCode ~= 0 then
+		g_eventMgr:fireRemoteEvent(
+			Event.getEvent(
+				ClientEvents_SC_PromptMsg,eventGroup_Pet,errCode
+			),player
+		)
+	end
+end
+
+-- 请求客户端确认学习研发技能
+function PetSystem.noticeExtendLearn(player,pet,itemConfig)
+	local skillID = itemConfig.ReactExtraParam1
+	local errCode = AddExtendSkillCheck(player,pet,skillID)
+	local event
+	if errCode ~= 0 then
+		event = Event.getEvent(ClientEvents_SC_PromptMsg,eventGroup_Pet,errCode)
+	else
+		event = Event.getEvent(PetEvent_SC_ConfirmExtendLearn,pet:getID(),itemConfig.ID)
+	end
+	g_eventMgr:fireRemoteEvent(event,player)
+end
 
 function PetSystem.getInstance()
 	return PetSystem()

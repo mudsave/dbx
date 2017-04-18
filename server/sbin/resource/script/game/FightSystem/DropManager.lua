@@ -374,13 +374,15 @@ function DropManager:getCompareLevel(monsterConfig, role, fightID)
 			if rand >= 1 and rand <= 80 then
 				itemInfo = nil
 			elseif rand > 80 and rand <= 84 then
-				packetHandler:addItemsToPacket(1051005 ,1)
+				--[[packetHandler:addItemsToPacket(1051005 ,1)
 				itemInfo.itemID = 1051005
-				itemInfo.itemNum = 1
+				itemInfo.itemNum = 0]]
+				itemInfo = nil
 			elseif rand > 84 and rand <= 100 then
-				packetHandler:addItemsToPacket(1051006 ,1)
+				--[[packetHandler:addItemsToPacket(1051006 ,1)
 				itemInfo.itemID = 1051006
-				itemInfo.itemNum = 1
+				itemInfo.itemNum = 0]]
+				itemInfo = nil
 			end
 			if table.size(itemInfo) > 0 then
 				table.insert(allItem,itemInfo)
@@ -432,6 +434,9 @@ function DropManager:getPrizeFormula(role, playerNum, value, type)
 			value = value + extraTime * value/100
 			-- 向上取整
 			value = math.ceil(value)
+			if gDoubleRewardFlag == true then
+				value = value*2
+			end
 			return value
 		elseif value == -1 then
 			local num
@@ -451,6 +456,9 @@ function DropManager:getPrizeFormula(role, playerNum, value, type)
 			end
 			num = num + num * extraTime/100
 			num = math.ceil(num)
+			if gDoubleRewardFlag == true then
+				num = num*2
+			end
 			return num
 		end
 	end
@@ -518,11 +526,21 @@ function DropManager:doMonsterValueReword(monsterConfig, role, playerNum,fightID
 		local isXpBoost,BoostValue = buffHandler:getXpBoost() 
 		if isXpBoost and monsterConfig.addDouble == 1 then
 			print("我是有经验丹的人",BoostValue)
-			rewardNode.exp = rewardNode.exp * BoostValue  
-			rewardNode.subMoney = rewardNode.subMoney * BoostValue
-			rewardNode.tao = rewardNode.tao * BoostValue
-			rewardNode.combatNum = rewardNode.combatNum * BoostValue
-			rewardNode.potency = rewardNode.potency * BoostValue
+			if rewardNode.exp then
+				rewardNode.exp = rewardNode.exp * BoostValue  
+			end
+			if rewardNode.subMoney then
+				rewardNode.subMoney = rewardNode.subMoney * BoostValue
+			end
+			if rewardNode.tao then
+				rewardNode.tao = rewardNode.tao * BoostValue
+			end
+			if rewardNode.combatNum then
+				rewardNode.combatNum = rewardNode.combatNum * BoostValue
+			end
+			if rewardNode.potency then
+				rewardNode.potency = rewardNode.potency * BoostValue
+			end
 		end
 	end
 	-- 插入到链表中
@@ -593,7 +611,7 @@ function DropManager:dealRewardsTip(FightEndResults, fightID)
 						self:sendRewardMessageTip(role, 8, allItem)
 					end
 				end
-				role:flushPropBatch()
+				--role:flushPropBatch()
 			end
 		else
 			local pet = g_entityMgr:getPet(roleID)
@@ -619,7 +637,7 @@ function DropManager:dealRewardsTip(FightEndResults, fightID)
 						pet:setAttrValue(pet_tao, tao)
 						self:sendRewardMessageTip(player, 10, roleReward.petTao)
 					end
-					pet:flushPropBatch()
+					--pet:flushPropBatch()
 				end
 			end
 		end
@@ -682,12 +700,6 @@ function DropManager:dealWithPunish(FightEndResults,scriptID, fightID)
 					local buffHandler = player:getHandler(HandlerDef_Buff)
 					g_buffMgr:addBuff(player, PKShieldBuffID)
 		
-				--切磋失败满血满蓝
-				elseif (not isWin) and ( pkInfo.isPK == false)  then
-					local maxHP = player:getAttrValue(player_max_hp)
-					player:setHP(maxHP)
-					local maxMP = player:getAttrValue(player_max_mp)
-					player:setMP(maxMP)
 				--pk失败
 				elseif (not isWin) and (pkInfo.isPK)  then
 					if pkInfo.hasBuff then
@@ -713,10 +725,11 @@ function DropManager:dealWithPunish(FightEndResults,scriptID, fightID)
 					player:setAttrValue(player_kill, curKill+1)
 				end
 			end
-			player:flushPropBatch()
+			--player:flushPropBatch()
 		else
 			local pet = g_entityMgr:getPet(roleID)
-			if pet and pet:getHP() == 0 then
+			local pkInfo = pet:getPkInfo()
+			if pet and pet:getHP() == 0 and pkInfo.hp == nil and  pkInfo.mp == nil then
 				local maxHP = pet:getAttrValue(pet_max_hp)
 				pet:setHP(maxHP)
 				local curTao = pet:getAttrValue(pet_tao)--"pet_tao"
@@ -737,7 +750,7 @@ function DropManager:dealWithPunish(FightEndResults,scriptID, fightID)
 					end
 					deadPets[ownerID][pet:getID()] = reduceTao
 				end
-				pet:flushPropBatch()
+				--pet:flushPropBatch()
 			end
 		end 
 	end

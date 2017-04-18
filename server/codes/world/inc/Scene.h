@@ -5,7 +5,7 @@
 #include "MapInfo.h"
 
 #define _MaxEnumCount 4096
-#define MAX_MAP_COUNT 1024
+#define MAX_MAP_COUNT 9999
 
 class CoScene
 {

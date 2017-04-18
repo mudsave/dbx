@@ -9,7 +9,7 @@ require "misc.PetConstant"
 require "game.SystemError"
 
 g_max_fightID = 0
-
+gTestTempTick = 0
 FightManager = class(nil, Singleton)
 
 local math_rand			= math.random
@@ -63,10 +63,10 @@ end
 ]]
 local function SetPlayerAttrInfo(player,info,isPvp)
 	local attrSet = player:getAttributeSet()
-	for attrType,attr in pairs(attrSet) do
+	for attrName,data in ipairs(attrSet) do
 		-- 所有基础属性传过去
-		if not attr:isExpr() then
-			info[attrType] = attr:getValue()
+		if not data:isExpr() then
+			info[attrName] = attrSet:getAttrValue(attrName)
 		end
 	end
 	info.gateID = player:getGatewayID()
@@ -125,9 +125,9 @@ end
 ]]
 local function SetPetAttrInfo(pet,info)
 	local attrSet = pet:getAttributeSet()
-	for attrType,attr in pairs(attrSet) do
-		if not attr:isExpr() then
-			info[attrType] = attr:getValue()
+	for attrName,data in ipairs(attrSet) do
+		if not data:isExpr() then
+			info[attrName] = attrSet:getAttrValue(attrName)
 		end
 	end
 		
@@ -337,7 +337,7 @@ function FightManager:startPveFight(roles, monsters, mapID,type)
 		), worldID
 	)
 	fightIDs[g_max_fightID] = type
-	
+	clearAttrPool()
 	return g_max_fightID
 end
 
@@ -413,6 +413,7 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 		), worldID
 	)
 	fightIDs[g_max_fightID] = type
+	clearAttrPool()
 	return g_max_fightID
 end
 
@@ -491,6 +492,7 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 		), worldID
 	)
 	fightIDs[g_max_fightID] = type
+	clearAttrPool()
 	return g_max_fightID
 end
 

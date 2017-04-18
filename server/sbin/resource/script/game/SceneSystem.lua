@@ -69,10 +69,6 @@ function SceneSystem:doPlayerUnderAttack(event)
 	local realHurtValue = (attackType == 1) and hurtValue or -hurtValue
 
 	local player = g_entityMgr:getPlayerByID(roleID)
-
-	--先通知队长下坐骑
-	g_rideMgr:UpOrDownRide(player)
-
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	local teamID = teamHandler:getTeamID()
 	local team = g_teamMgr:getTeam(teamID)
@@ -83,6 +79,10 @@ function SceneSystem:doPlayerUnderAttack(event)
 			if team:getLeaderID() == memberInfo.memberID then
 				lifeState = (member:getHP() + realHurtValue) > 0 and 1 or 8
 				member:incHp(realHurtValue)
+				--死亡前先通知队长下坐骑
+				if lifeState == 8 then
+					g_rideMgr:UpOrDownRide(member)
+				end
 			else
 				lifeState = 1
 				if member:getHP() ~= 1 then 
@@ -100,9 +100,13 @@ function SceneSystem:doPlayerUnderAttack(event)
 		local lifeState = (player:getHP() + realHurtValue) > 0 and 1 or 8
 		player:incHp(realHurtValue)
 		player:flushPropBatch()
+		--死亡前先通知玩家下坐骑
+		if lifeState == 8 then
+			g_rideMgr:UpOrDownRide(player)
+		end
 		local event = Event.getEvent(SceneEvent_SC_PlayerUnderAttack, roleID, effectID, realHurtValue, lifeState, targetID)
 		g_eventMgr:fireRemoteEvent(event, player)
-	end
+	  end
 	-- 通知副本系统，玩家受到撞击
 	local localEvent = Event.getEvent(SceneEvent_SS_AttackEffect, roleID)
 	g_eventMgr:fireEvent(localEvent)
@@ -190,6 +194,7 @@ function SceneSystem:doPositionRevert(event)
 			player:flushPropBatch()
 			ectype:returnEctypeInitLocs()
 		end
+		ectype:sendEctypeMessageTip(32)
 	end
 end
 

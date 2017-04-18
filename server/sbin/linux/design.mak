@@ -83,7 +83,7 @@ start_server:
 	FAL_PORT=$$((SCL_PORT+6)); \
 	SAL_PORT=$$((SCL_PORT+7)); \
 	set -e; ulimit -c unlimited; \
-	($(WORK_DIR)/Session -loginAddrL $(SERVER_IP):$$SCL_PORT -gateAddrL $(SERVER_IP):$$SGL_PORT -worldAddrL $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) \
+	($(WORK_DIR)/Session -loginAddrL $(SERVER_IP):$$SCL_PORT -gateAddrL $(SERVER_IP):$$SGL_PORT -worldAddrL $(SERVER_IP):$$SWL_PORT -dbAddrC $(DB_IP):$(DB_PORT) -extranetIP 0 \
 		1>$(WORK_DIR)/logs/_session.txt 2>&1 & ); \
 	echo "Session has been runned.."; sleep 2s;\
 	($(WORK_DIR)/Gateway -loginAddrL $(SERVER_IP):$$GCL_PORT -worldAddrL $(SERVER_IP):$$GWL_PORT -sessionAddrC $(SERVER_IP):$$SGL_PORT -gatewayId 0 \

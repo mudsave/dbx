@@ -852,13 +852,14 @@ LoopTaskDB =
 			{
 			    -- 首先来测试等级分段的权重
 				[LoopTaskTargetType.script] = 60,		            -- 悬赏战斗
-				[LoopTaskTargetType.talk] = 40, 		            -- 和NPC对话
-				[LoopTaskTargetType.buyItem] = 50,		            -- 上交物品
-				[LoopTaskTargetType.catchPet] = 50,		            -- 捕捉宠物
-				[LoopTaskTargetType.partrolScript] = 60,	        -- 暗雷战斗
-				[LoopTaskTargetType.deliverLetters] = 40,		    -- 送信
-				[LoopTaskTargetType.brightMine] = 60,		        -- 挑战明雷
+				--[LoopTaskTargetType.talk] = 40, 		            -- 和NPC对话
+				--[LoopTaskTargetType.buyItem] = 50,		            -- 上交物品
+				--[LoopTaskTargetType.catchPet] = 50,		            -- 捕捉宠物
+				--[LoopTaskTargetType.partrolScript] = 60,	        -- 暗雷战斗
+				--[LoopTaskTargetType.deliverLetters] = 40,		    -- 送信
+				--[LoopTaskTargetType.brightMine] = 60,		        -- 挑战明雷
 				--[LoopTaskTargetType.puzzle]		=100,
+				--[LoopTaskTargetType.oldTower]	=50,				-- 古塔驱妖
 			}
 		},
 		-- 公式奖励
@@ -1089,7 +1090,55 @@ LoopTaskDB =
 			},
 		},
 	},
+	[10011] = 
+	{
+		name = "帮会任务2",
+		startDialogID = nil,
+		taskType2 = TaskType2.Faction,
+		-- 用以区分，帮派任务当中上缴装备
+		taskTypeCommon = true,
+		level = {20, 60},
+		school = nil,
+		startNpcID = 30817,		
+		loop = 20,
+		period = TaskPeriod.day,
+		targetLevelSection =
+		{
+			[1] = {1, 150},
+		},
+		targets = 
+		{
+			[1] =
+			{
+				[LoopTaskTargetType.partrolScript] = 60,			-- 巡逻战斗
+				[LoopTaskTargetType.brightMine] = 50,				-- 挑战任务明雷
+				[LoopTaskTargetType.talk] = 50,					-- 对话交谈NPC
+				[LoopTaskTargetType.deliverLetters] = 50,			-- 送行
+				[LoopTaskTargetType.buyItem] = 50,					-- 上缴道具
 
+			},
+		},
+		normalRewards =
+		{
+			-- 帮贡奖励
+			[TaskRewardList.faction_cont] = 4,
+			-- 帮会资金
+			[TaskRewardList.faction_money] = 4,
+			-- 帮会声望
+			[TaskRewardList.faction_Fame] = 4,
+		},
+		formulaRewards =
+		{	
+			--经验
+			[TaskRewardList.player_xp]	= CommonFactionRewardFormula.addXp,
+			-- 道行
+			[TaskRewardList.player_tao] = CommonFactionRewardFormula.addTao,
+		
+			-- 宠物
+			[TaskRewardList.pet_xp] = CommonFactionRewardFormula.addPetXp,
+			[TaskRewardList.pet_tao] = CommonFactionRewardFormula.addPetTao,
+		},
+	},
 
 	[10020] = 
 	{
@@ -1236,6 +1285,37 @@ LoopTaskDB =
 			[1] =
 			{
 				[LoopTaskTargetType.puzzle] = 50,		            -- 拼图
+			},
+		},
+
+		-- 物品奖励
+		itemRewards =
+		{
+			
+		},
+	},
+
+	[60000] = 
+	{
+		name = "古塔驱妖任务",
+		taskType2 = TaskType2.OldTower,
+		-- 等级限制，
+		level = {1, 150},
+		-- 可以单人，可以组队
+		teamType = TeamType.single,
+		-- 组队等级差
+		startNpcID = 29093,		
+		loop = 1,
+		period = TaskPeriod.day,
+		targetLevelSection =
+		{
+			[1] = {1, 150},
+		},
+		targets = 
+		{
+			[1] =
+			{
+				[LoopTaskTargetType.oldTower] = 50,		            -- 古塔驱妖
 			},
 		},
 

@@ -325,7 +325,7 @@ DropDB = {
 				{weight = 5,item ={id = 2040046, number = {1},},},
 			},
 	},
-	[18] = { 
+	[18] = { --猎金场矿石随机掉落
 		dropNumData = {1,2} ,
 		dropType =	{
 				{weight = 80,xp = 500},

@@ -135,18 +135,11 @@ function LuaDBAccess.onPlayerAttrUpdate(player)
 	param["dataBase"]	= 1
 	param["sort"]		= "roleId,buff,num"
 	param["roleId"]		= player:getDBID()
-    local num = 0
-	local buff = ""
-	for attrName,attribute in pairs(player:getAttrSet()) do
-		if attribute:isSaveDB() then
-			num = num + 1
-			buff = buff..tostring(attrName)..","..tostring(attribute:getValue())..","
-			
-		end
-	end
-	if num > 0 then
-		param["buff"] = buff
-		param["num"] = num
+
+	local len,lstr = player:getAttributeSet():onSave()
+	if len > 0 then
+		param["num"] = len
+		param["buff"] = lstr
         LuaDBAccess.exeSP(params,true)
 	end
 end
@@ -339,14 +332,6 @@ function LuaDBAccess.OnPetSaved(recordList,pet)
 	end
 end
 
-local function SavePetAttr(param,attrName,attrValue)
-	if not attrName then return false end
-	param['attrName'] = attrName
-	param['attrValue'] = attrValue
-	LuaDBAccess.exeSP(params,true)
-	return true
-end
-
 -- 保存宠物属性集合
 function LuaDBAccess.SavePetAttrs(pet)
 	clearParams()
@@ -356,17 +341,11 @@ function LuaDBAccess.SavePetAttrs(pet)
 	param['spName'] = 'sp_UpdatePetAttributeBatch'
 	param['sort'] = "id,buff,num"
 	param['id'] = pet:getDBID()
-	local num = 0
-	local buff = ""
-	for attrName,attribute in pairs(pet:getAttributeSet()) do
-		if attribute:isSaveDB() then
-			buff = buff..tostring(attrName)..","..tostring(attribute:getValue())..","
-			num = num + 1
-		end
-	end
-	if num > 0 then
-		param["buff"] = buff
-		param["num"] = num
+
+	local len,lstr = pet:getAttributeSet():onSave()
+	if len > 0 then
+		param["buff"] = lstr
+		param["num"] = len
         LuaDBAccess.exeSP(params,true)
 	end
 
@@ -479,14 +458,15 @@ function LuaDBAccess.updateLoopTaskRing(playerDBID, taskID, taskInfo)
 	clearParams()
 	params[1]["spName"] = "sp_UpdateLoopTaskRing"
 	params[1]["dataBase"] = 1
-	params[1]["sort"] = '_RoleID,_TaskID,_CountRing,_CurrentRing,_ReceiveTaskTime,_finishTimes'
+	params[1]["sort"] = '_RoleID,_TaskID,_CountRing,_CurrentRing,_ReceiveTaskTime,_FinishTimes,_ReceiveTimes'
 
 	params[1]["_RoleID"] = playerDBID
 	params[1]["_TaskID"] = taskID
 	params[1]["_CountRing"] = taskInfo.countRing
 	params[1]["_CurrentRing"] = taskInfo.currentRing
 	params[1]["_ReceiveTaskTime"] = taskInfo.receiveTaskTime
-	params[1]["_finishTimes"] = taskInfo.finishTimes
+	params[1]["_FinishTimes"] = taskInfo.finishTimes
+	params[1]["_ReceiveTimes"] = taskInfo.receiveTimes
 	LuaDBAccess.exeSP(params, true)
 
 end
@@ -894,6 +874,18 @@ function LuaDBAccess.updateGoldHuntActivity(player)
 	end
 end
 
+--清空玩家的猎金场总积分
+function LuaDBAccess.clearGoldHuntActivity()
+		clearParams()
+		params[1]["spName"]			= "sp_DeleteGoldHunt"
+		params[1]["dataBase"]		= 1
+		params[1]["sort"]			= "ID"
+		params[1]["ID"]			= -1
+				
+		LuaDBAccess.exeSP(params, true)
+	
+end
+
 function LuaDBAccess.updateBeastBless(player,activityId)
 	local handler = player:getHandler(HandlerDef_Activity)
 	if handler then
@@ -945,6 +937,8 @@ function LuaDBAccess.deleteSchoolActivity()
 	clearParams()
 	params[1]["spName"]			= "sp_DeleteSchoolActivity"
 	params[1]["dataBase"]		= 1
+	params[1]["sort"]			= "_roleID"
+	params[1]["_roleID"]		= 1
 	LuaDBAccess.exeSP(params, true)
 end
 

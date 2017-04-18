@@ -32,7 +32,7 @@ function CatchPetManager:startOpen()
 	for mapID, catchPet in pairs(self.catchPetList) do
 		if catchPet then
 			-- 先创建NPC
-			catchPet:createMonster()
+			catchPet:createAllMonster()
 			-- 每个当中创建一个定时器
 			catchPet:createTimer()
 		end
@@ -183,6 +183,7 @@ end
 
 -- 发送副本消息提示
 function CatchPetManager:sendCatchPetMessageTip(player, msgID)
+	print("<<<<<<<<<<<<<<<<<<<<<<<<<<<", eventGroup_CatchPet, msgID)
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, msgID)
 	g_eventMgr:fireRemoteEvent(event, player)
 end

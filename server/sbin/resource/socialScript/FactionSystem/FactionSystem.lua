@@ -55,7 +55,8 @@ function FactionSystem:__init(  )
         [FactionEvent_BB_ContributeFaction]         = FactionSystem.onShowFactionContributeWin,
         [FactionEvent_CB_ContributeFaction]         = FactionSystem.onContributeFaction,
         [FactionEvent_CB_ExtendFactionSkill]        = FactionSystem.onExtendFactionSKill,
-        [FactionEvent_CB_GetSalaryFromFaction]      = FactionSystem.onGetSalaryFromFaction,   
+        [FactionEvent_CB_GetSalaryFromFaction]      = FactionSystem.onGetSalaryFromFaction,
+        [FactionEvent_CB_FactionNotify]             = FactionSystem.onFactionNotify,
 
     }
 
@@ -80,6 +81,8 @@ function FactionSystem:onLeaderDismissFaction( event )
 
             local event_UpdateWorldServerData = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,memberDBID,UpdateWorldServerDataCode.ExitFaction,factionDBID)
             g_eventMgr:fireWorldsEvent(event_UpdateWorldServerData,CurWorldID)
+
+            member:getHandler(HandlerDef_Faction):exitFaction()
 
             if memberInfo.memberPosition ~= FactionPosition.Leader then
                 local notifyParams = {msg = FactionMsgTextKeyTable.DismissFaction}
@@ -183,7 +186,6 @@ function FactionSystem:onAdmitPlayerJoin( event )
                 local factionInfo = FactionSysMgr.sendFactionInfoOnMember(factionDBID)
 
                 faction:deleteStandByPlayerInStandByPlayerList(playerDBID)
-                
                 factionHandler:initializeFactionDBID(g_encodeSysMgr.decodeDBID(factionInfo.factionInfo["_factionDBID"]))
                 g_socialEntityManager:updateFactionMembers(factionDBID,playerDBID,UpdateCode.Add)
 
@@ -197,6 +199,7 @@ function FactionSystem:onAdmitPlayerJoin( event )
                 local playerOnline = g_playerMgr:getPlayerByDBID(playerDBID)
                 local memberOnlineJudge = 0
                 if playerOnline then
+
                     local notifyParams = {msg = "",factionDBID = factionDBID,factionName = faction:getFactionName()}
                     local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.CancelFactionApply,notifyParams)
                     g_eventMgr:fireRemoteEvent(event_Notify,playerOnline)
@@ -234,7 +237,7 @@ function FactionSystem:onAdmitPlayerJoin( event )
                         local event_UpdateFactionMemberList = Event.getEvent(FactionEvent_BC_UpdateFactionMemberList,factionInfo)
                         g_eventMgr:fireRemoteEvent(event_UpdateFactionMemberList,member)
                         local memberName =  player:getName()
-                        local notifyParams = {msg = FactionMsgTextKeyTable.FactionMemberJoin,memberName = memberName}
+                        local notifyParams = {msg = FactionMsgTextKeyTable.FactionMemberJoin,params = {memberName}}
                         local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
                         g_eventMgr:fireRemoteEvent(event_Notify,member)
                     end
@@ -339,7 +342,7 @@ function FactionSystem:onFireFactionMember( event )
                 local event_UpdateFactionMemberList = Event.getEvent(FactionEvent_BC_UpdateFactionMemberList,factionInfo)
                 g_eventMgr:fireRemoteEvent(event_UpdateFactionMemberList,member)
                 local memberName =  player:getName()
-                local notifyParams = {msg = FactionMsgTextKeyTable.FireFactionMember,memberName = memberName}
+                local notifyParams = {msg = FactionMsgTextKeyTable.FireFactionMember,params = {memberName}}
                 local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
                 g_eventMgr:fireRemoteEvent(event_Notify,member)
             end
@@ -374,8 +377,7 @@ function FactionSystem:onUpdateFactionMemberList( event )
     if updateCode == UpdateCode.Add then
         
         local factionInfo = FactionSysMgr.sendFactionInfoOnMember(factionDBID)
-
-        factionHandler:initializeFactionDBID(factionInfo["factionDBID"])
+        factionHandler:initializeFactionDBID(factionDBID)
         g_socialEntityManager:updateFactionMembers(factionDBID,playerDBID,UpdateCode.Add)
         local event_UpdateWorldServerData = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,playerDBID,UpdateWorldServerDataCode.JoinFaction,factionDBID)
         g_eventMgr:fireWorldsEvent(event_UpdateWorldServerData,CurWorldID)
@@ -414,11 +416,17 @@ function FactionSystem:onUpdateFactionMemberList( event )
                 local event_UpdateFactionMemberList = Event.getEvent(FactionEvent_BC_UpdateFactionMemberList,factionInfo)
                 g_eventMgr:fireRemoteEvent(event_UpdateFactionMemberList,member)
                 local memberName =  player:getName()
-                local notifyParams = {msg = FactionMsgTextKeyTable.FactionMemberJoin,memberName = memberName}
+                local notifyParams = {msg = FactionMsgTextKeyTable.FactionMemberJoin,params = {memberName}}
                 local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
                 g_eventMgr:fireRemoteEvent(event_Notify,member)
             end
         end
+        
+        local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
+        local extendSkill = faction:getExtendSkillList() 
+
+        local event = Event.getEvent(FactionEvent_BC_UpdateExtendSkill,extendSkill)
+        g_eventMgr:fireRemoteEvent(event,player)
 
     elseif updateCode == UpdateCode.Delete then
 
@@ -444,14 +452,13 @@ function FactionSystem:onUpdateFactionMemberList( event )
         end
 
     end
-
-
+    
 end
 
 
 function FactionSystem:onUpdateFactionInfo( event )
-
     local params = event:getParams()
+    local playerDBID = event.playerID
     local factionDBID = g_encodeSysMgr.decodeDBID(params[1])
     local infoCount = params[2]
     local factionInfoList = {}
@@ -462,6 +469,12 @@ function FactionSystem:onUpdateFactionInfo( event )
     local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
     for key,info in pairs(factionInfoList) do
         UpdateFactionInfoInServer[info.name](faction,info.value)
+        --更新世界服相关数据
+        if playerDBID then
+            local infoTable = { name = info.name,value = info.value}
+            local event_UpdateFactionInfoInWorldServer = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,playerDBID,UpdateWorldServerDataCode.UpdateFactionInfo,infoTable)
+            g_eventMgr:fireWorldsEvent(event_UpdateFactionInfoInWorldServer,CurWorldID)
+        end
     end
 
     for key,table in pairs(factionInfoList) do
@@ -553,8 +566,6 @@ function FactionSystem:onShowFactionList( event )
 
         local event_ShowFactionList = Event.getEvent(FactionEvent_BC_ShowFactionList,factionListShowInfos)
         g_eventMgr:fireRemoteEvent(event_ShowFactionList,player)
-    else
-        print("玩家不存在>>>>>>>>>>>>>")
     end
 
 end
@@ -739,25 +750,37 @@ function FactionSystem:onUpdateFactionInfoByGM( event )
     local updateInfo = params[1]
     local playerDBID = params[2]
     local updateValue = params[3]
-    local player = g_playerMgr:getPlayerByDBID(playerDBID)
-    if player then
-        local factionHandler = player:getHandler(HandlerDef_Faction)
-        local factionDBID = factionHandler:getFactionDBID()
-        if factionDBID then
-            local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
-            UpdateFactionInfoInServer[updateInfo](faction,updateValue)
-             if type(updateValue) == "number" then
-                LuaDBAccess.updateFactionInfo(factionDBID,updateInfo,"",updateValue)
-            else
-                LuaDBAccess.updateFactionInfo(factionDBID,updateInfo,updateValue,0)
-            end
-            local memberList = faction:getMemberList()
-            for _,memberInfo in pairs(memberList) do
-                local member = g_playerMgr:getPlayerByDBID(memberInfo.memberDBID)
-                if member then
-                    local factionInfoList = {{name = updateInfo,value = updateValue}}
-                    local event_UpdateFactionInfo = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfoList)
-                    g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
+    if playerDBID then
+
+        local player = g_playerMgr:getPlayerByDBID(playerDBID)
+        if player then
+            local factionHandler = player:getHandler(HandlerDef_Faction)
+            local factionDBID = factionHandler:getFactionDBID()
+            if factionDBID then
+
+                local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
+                if faction then
+                    UpdateFactionInfoInServer[updateInfo](faction,updateValue)
+                    
+                    local infoTable = { name = updateInfo,value = updateValue}
+                    local event_UpdateFactionInfoInWorldServer = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,playerDBID,UpdateWorldServerDataCode.UpdateFactionInfo,infoTable)
+                    g_eventMgr:fireWorldsEvent(event_UpdateFactionInfoInWorldServer,CurWorldID)
+
+                    if type(updateValue) == "number" then
+                        LuaDBAccess.updateFactionInfo(factionDBID,updateInfo,"",updateValue)
+                    else
+                        LuaDBAccess.updateFactionInfo(factionDBID,updateInfo,updateValue,0)
+                    end
+
+                    local memberList = faction:getMemberList()
+                    for _,memberInfo in pairs(memberList) do
+                        local member = g_playerMgr:getPlayerByDBID(memberInfo.memberDBID)
+                        if member then
+                            local factionInfoList = {{name = updateInfo,value = updateValue}}
+                            local event_UpdateFactionInfo = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfoList)
+                            g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
+                        end
+                    end
                 end
             end
         end
@@ -869,7 +892,7 @@ function FactionSystem:onContributeFaction( event )
 end
 
 --帮主研发技能
-function FactionSystem.onExtendFactionSKill(event)
+function FactionSystem:onExtendFactionSKill(event)
     local params = event:getParams()
     local playerDBID = params[1]
     local skillID = params[2]
@@ -889,27 +912,30 @@ function FactionSystem.onExtendFactionSKill(event)
     --更新数据库
     local extendSkill = faction:getExtendSkillList()
     local level = extendSkill[skillID]
-    LuaDBAccess.updateFactionExtendSkillInfo(factionDBID,skillID,level)
-    
+    if level == 1 then
+        LuaDBAccess.createFactionExtendSkillInfo(factionDBID,skillID,level)
+    else
+        LuaDBAccess.updateFactionExtendSkillInfo(factionDBID,skillID,level)
+    end
     --向在线帮众发送技能数据,以及帮派资金更改
-    local memberList = factionHandler:getMemberList()
+    local memberList = faction:getMemberList()
     for memberDBID,memberInfo in pairs(memberList) do
         local member = g_playerMgr:getPlayerByDBID(memberDBID)
         if  member then
             local event = Event.getEvent(FactionEvent_BC_UpdateExtendSkill,extendSkill)
             g_eventMgr:fireRemoteEvent(event,member)
-            
             --通知客户端帮派资金、名望更改
-            local factionInfo = {{name = factionMoney,value = faction:getFactionMoney()}}
+            local factionInfo = {{name = "factionMoney",value = faction:getFactionMoney()}}
             event = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfo)
-            g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
+            g_eventMgr:fireRemoteEvent(event,member)
 
-            factionInfo = {{name = factionFame,value = faction:getFactionFame()}}
+            factionInfo = {{name = "factionFame",value = faction:getFactionFame()}}
             event = Event.getEvent(FactionEvent_BC_UpdateFactionInfo,factionInfo)
-            g_eventMgr:fireRemoteEvent(event_UpdateFactionInfo,member)
+            g_eventMgr:fireRemoteEvent(event,member)
 
         end
     end
+    
 end
 
 function FactionSystem:onGetSalaryFromFaction( event )
@@ -920,6 +946,7 @@ function FactionSystem:onGetSalaryFromFaction( event )
         local factionDBID = player:getHandler(HandlerDef_Faction):getFactionDBID()
         local factionInfo = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
         if factionInfo then
+
             local factionLevel = factionInfo:getFactionLevel()
             local basicSalary = 600000 + (factionLevel - 1)*200000
             local factionContribute = player:getHandler(HandlerDef_Faction):getLastWeekContribute()
@@ -930,11 +957,41 @@ function FactionSystem:onGetSalaryFromFaction( event )
             LuaDBAccess.updateFactionMemberInfo(factionDBID,playerDBID,"FactionConfiguration",data,0)
             local event_GetSalary = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,playerDBID,UpdateWorldServerDataCode.GetSalary,finalSalary)
             g_eventMgr:fireWorldsEvent(event_GetSalary,CurWorldID)
+
+            local salaryTxt = finalSalary/10000
+            local notifyParams = {msg = FactionMsgTextKeyTable.GetSalary,params = {salaryTxt}}
+            
+            local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
+            g_eventMgr:fireRemoteEvent(event_Notify,player)
+            local event_ChatClientNotify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionChatChannel,notifyParams)
+            g_eventMgr:fireRemoteEvent(event_ChatClientNotify,player)
+
         end
     end
 
-
 end
+
+function FactionSystem:onFactionNotify( event )
+
+    local params = event:getParams()
+    local factionDBID = g_encodeSysMgr.decodeDBID(params[1])
+    local notifyKind = params[2]
+    local notifyParams = params[3]
+    local faction = g_socialEntityManager:getFactionInFactionListByDBID(factionDBID)
+    if faction then
+        local memberList = faction:getMemberList()
+        --向帮派里成员发送消息
+        for memberDBID,memberInfo in pairs(memberList) do
+            local member = g_playerMgr:getPlayerByDBID(memberDBID)
+            if member then
+                local event_factionNotify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,notifyKind,notifyParams)
+                g_eventMgr:fireRemoteEvent(event_factionNotify,member)
+            end
+        end
+    end
+end
+
+
 
 
 function FactionSystem.getInstance()

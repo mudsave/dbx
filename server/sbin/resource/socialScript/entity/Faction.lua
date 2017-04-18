@@ -231,7 +231,6 @@ function Faction:getMemberJoinDate( memberDBID )
 end
 
 function Faction:updateMemberMoney( memberDBID,money )
-
     g_playerMgr:getLoadedPlayerByDBID(memberDBID):getHandler(HandlerDef_Faction):setFactionMoney(money)
     self._memberList[memberDBID]["memberMoney"] = money
     LuaDBAccess.updateFactionMemberInfo(self._factionDBID,memberDBID,"memberMoney","",self._memberList[memberDBID]["memberMoney"])
@@ -272,9 +271,7 @@ function Faction:updateMemberPosition( memberDBID,position )
             LuaDBAccess.updateFactionInfo(self._factionDBID,"factionOwnerName",self._factionOwnerName,0)
         end
     end
-
     self._memberList[memberDBID]["memberPosition"] = position
-
 end
 
 function Faction:updateMemberJoinDate( memberDBID,joinDate )
@@ -351,6 +348,9 @@ function Faction:skillLvlUp(skillID,cost,playerName)
     end
 
     local curSkillLvl = self._extendSkillList[skillID]
+    if not curSkillLvl then
+        curSkillLvl = 0
+    end
     self._extendSkillList[skillID] = curSkillLvl + 1
     self:addFactionMoney(-costMoney)
     self:addFactionFame(-costFame)

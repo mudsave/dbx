@@ -51,7 +51,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                                        {type="openDialog", param={dialogID =4600},},
+                    {type="openDialog", param={dialogID =4600},},
 
 				},
 				-- 在上缴物品的时候改变任务状态为Done
@@ -240,7 +240,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-                                        {type="openDialog", param={dialogID = 4780},},
+                    {type="openDialog", param={dialogID = 4780},},
 				},
 			},
 		},
@@ -1510,6 +1510,7 @@ LoopTaskTargetsDB =
               [LoopTaskTargetType.catchPet] = 
               {		
 	       -- 无需配置任务目标
+	                limitTime = 30*60,
 	                triggers = 
 	                {
 		             -- 这是获取物品的指引发给客户端
@@ -1547,7 +1548,7 @@ LoopTaskTargetsDB =
 		--送信
 		[LoopTaskTargetType.deliverLetters] =
 		{
-		limitTime = 30*60,
+		        limitTime = 30*60,
 			triggers = --任务触发器
 			{
 				[TaskStatus.Active]		=      ---完成目标状态
@@ -1927,33 +1928,106 @@ LoopTaskTargetsDB =
 			},
 		},
 	},
-	-- 讨逆任务
-	[10010] =
+	
+	-- 帮会任务2
+	[10011] =
 	{
-		--创建私有NPC，
-		[LoopTaskTargetType.script] = 
+		[LoopTaskTargetType.partrolScript] = 
 		{
-			-- 明雷战斗NPCID是随机的，坐标是从固定当中随机。
-			targets = 
-			{	
+			triggers = --任务触发器
+			{
+				[TaskStatus.Active]		=      ---接任务状态
+				{
+					-- 发送一个随机坐标脚本战斗指引，在动态添加任务目标
+					{type = "addSpecialArea", param = {}},
+					{type="openDialog", param={dialogID = 4235},},
+				},
+				[TaskStatus.Done]		=      ---完成目标状态
+				{
+					{type = "removeSpecialArea", param = {}},
+					{type = "finishLoopTask", param = {}},
+				},
 			},
+		},
+	
+		--挑战明雷NPCID是固定随机的		
+		[LoopTaskTargetType.brightMine] = 
+		{
 			triggers = 
 			{
 				[TaskStatus.Active] = 
 				{
 					-- 随机NPC  一种指定NPC，不指定坐标。一种不指定NPC，不指定坐标
-					{type = "createRandomNpc", param = {index = 1}},
-					--{type="openDialog", param={dialogID = 4031},},
+					{type = "brightMine", param = {}},
+					{type = "openDialog", param={dialogID = 4270},}, --在任务时打开一个对话
 				},
 				-- 任务完成时候
 				[TaskStatus.Done] =
 				{
-					{type = "removeRandomNpc", param = {index = 1}},
 					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
 				},
 			},
 		},
+		
+		-- 和NPC 对话
+		[LoopTaskTargetType.talk] = 
+		{		
+			triggers = 
+			{
+				-- 这是获取物品的指引发给客户端
+				[TaskStatus.Done] = 
+				{
+					-- 给一个指引给客户端
+					{type = "createPosition", param = {}},
+					{type="openDialog", param={dialogID = 4350},},
+					
+				},
+			},
+
+		},
+		--送信
+		[LoopTaskTargetType.deliverLetters] =
+		{
+			triggers = --任务触发器
+			{
+				[TaskStatus.Active]		=      ---完成目标状态
+				{
+					{type = "deliverTrace" , param	= {}},
+					{type="openDialog", param={dialogID = 4450},},
+				},
+				[TaskStatus.Done] = 
+				{
+					{type = "finishLoopTask", param = {}},
+				},
+		
+			},
+		},
+
+		-- 上交道具,首先要找NPC 买物品，z上缴物品
+		[LoopTaskTargetType.buyItem] = 
+		{
+			-- 在本配置当中来等级区分
+			triggers = 
+			{
+				-- 这是获取物品的指引发给客户端
+				[TaskStatus.Active] = 
+				{
+					-- 给一个指引给客户端
+					{type = "createBuyItemData", param = {}},
+					{type="openDialog", param={dialogID =4600},},
+
+				},
+				-- 在上缴物品的时候改变任务状态为Done
+				-- 任务完成时候发个指引给客户端
+				[TaskStatus.Done] =
+				{
+					{type = "createPaidItemTrace", param = {}},
+				},
+			},
+		},
+
 	},
+
 	[50000] =
 	{
 		[LoopTaskTargetType.puzzle] = 
@@ -1974,6 +2048,26 @@ LoopTaskTargetsDB =
 				{
 					--随机拼图
 					{type = "finishPuzzle", param = {npcID = 1, x = 98, y = 76, mapID = 9}},
+				},
+			},
+		},
+	},
+
+	[60000] =
+	{
+		[LoopTaskTargetType.oldTower] = 
+		{
+			limitTime = 5*60,
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					
+					{type = "createOldTowerEliminate", param = {}},
+					
 				},
 			},
 		},

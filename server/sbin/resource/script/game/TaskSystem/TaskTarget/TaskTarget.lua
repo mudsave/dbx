@@ -48,6 +48,7 @@ function TaskTarget:addWatcher(eventName)
 end
 
 function TaskTarget:removeWatcher(eventName)
+
 	local eventHandler = self._entity:getHandler(HandlerDef_Event)
 	if eventHandler then
 		eventHandler:removeWatcher(eventName, self)

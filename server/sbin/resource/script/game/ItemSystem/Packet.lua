@@ -357,14 +357,20 @@ function Packet:addItemsToGrid(item, packIndex, gridIndex, bUpdateClient)
 end
 
 -- 从指定物品格移除道具，并不销毁道具
-function Packet:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient)
+function Packet:removeItemsFromGrid(packIndex, gridIndex, bUpdateClient, isDestory)
 	if packIndex < PacketPackIndex.Default or packIndex >= PacketPackIndex.MaxNum then
 		-- 逻辑错误
 		return false
 	end
 
 	if self.packs[packIndex] then
-		return self.packs[packIndex]:removeItemsFromGrid(gridIndex, bUpdateClient)
+		local item = self.packs[packIndex]:getGridItem(gridIndex)
+		local result = self.packs[packIndex]:removeItemsFromGrid(gridIndex, bUpdateClient)
+		if result and item and isDestory then
+			-- 销毁源道具，不可用了
+			g_itemMgr:destroyItem(self.owner,item:getGuid())
+		end
+		return result
 	else
 		-- 包裹还未开启
 		return false

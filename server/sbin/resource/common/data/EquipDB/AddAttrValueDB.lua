@@ -17,91 +17,91 @@ AddAttrValueDB =
          [10] =
          {
            lower_limit = 1,
-           upper_limit = 2,
+           upper_limit = 3,
            fluctuate = 1,
          },
          [20] =
          {
            lower_limit = 1,
-           upper_limit = 3,
+           upper_limit = 5,
            fluctuate = 1,
          },
          [30] =
          {
            lower_limit = 1,
-           upper_limit = 4,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [40] =
          {
            lower_limit = 1,
-           upper_limit = 6,
+           upper_limit = 8,
            fluctuate = 1,
          },
          [50] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 10,
            fluctuate = 1,
          },
          [60] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [70] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [80] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [90] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [100] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [110] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [120] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [130] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [140] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [150] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
      },
@@ -117,92 +117,92 @@ AddAttrValueDB =
          [10] =
          {
            lower_limit = 1,
-           upper_limit = 2,
-           fluctuate = 1,
+           upper_limit = 3,
+           fluctuate = 2,
          },
          [20] =
          {
            lower_limit = 1,
-           upper_limit = 3,
-           fluctuate = 1,
+           upper_limit = 5,
+           fluctuate = 3,
          },
          [30] =
          {
            lower_limit = 1,
-           upper_limit = 4,
-           fluctuate = 1,
+           upper_limit = 6,
+           fluctuate = 4,
          },
          [40] =
          {
            lower_limit = 1,
-           upper_limit = 6,
-           fluctuate = 1,
+           upper_limit = 8,
+           fluctuate = 5,
          },
          [50] =
          {
            lower_limit = 1,
-           upper_limit = 7,
-           fluctuate = 1,
+           upper_limit = 10,
+           fluctuate = 6,
          },
          [60] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [70] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [80] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [90] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [100] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [110] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [120] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [130] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [140] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
          [150] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
+           upper_limit = 11,
+           fluctuate = 7,
          },
      },
      [player_add_sta]=
@@ -217,91 +217,91 @@ AddAttrValueDB =
          [10] =
          {
            lower_limit = 1,
-           upper_limit = 2,
+           upper_limit = 3,
            fluctuate = 1,
          },
          [20] =
          {
            lower_limit = 1,
-           upper_limit = 3,
+           upper_limit = 5,
            fluctuate = 1,
          },
          [30] =
          {
            lower_limit = 1,
-           upper_limit = 4,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [40] =
          {
            lower_limit = 1,
-           upper_limit = 6,
+           upper_limit = 8,
            fluctuate = 1,
          },
          [50] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 10,
            fluctuate = 1,
          },
          [60] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [70] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [80] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [90] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [100] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [110] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [120] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [130] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [140] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [150] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
      },
@@ -317,91 +317,91 @@ AddAttrValueDB =
          [10] =
          {
            lower_limit = 1,
-           upper_limit = 2,
+           upper_limit = 3,
            fluctuate = 1,
          },
          [20] =
          {
            lower_limit = 1,
-           upper_limit = 3,
+           upper_limit = 5,
            fluctuate = 1,
          },
          [30] =
          {
            lower_limit = 1,
-           upper_limit = 4,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [40] =
          {
            lower_limit = 1,
-           upper_limit = 6,
+           upper_limit = 8,
            fluctuate = 1,
          },
          [50] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 10,
            fluctuate = 1,
          },
          [60] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [70] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [80] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [90] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [100] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [110] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [120] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [130] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [140] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [150] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
      },
@@ -417,191 +417,91 @@ AddAttrValueDB =
          [10] =
          {
            lower_limit = 1,
-           upper_limit = 2,
+           upper_limit = 3,
            fluctuate = 1,
          },
          [20] =
          {
            lower_limit = 1,
-           upper_limit = 3,
+           upper_limit = 5,
            fluctuate = 1,
          },
          [30] =
          {
            lower_limit = 1,
-           upper_limit = 4,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [40] =
          {
            lower_limit = 1,
-           upper_limit = 6,
+           upper_limit = 8,
            fluctuate = 1,
          },
          [50] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 10,
            fluctuate = 1,
          },
          [60] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [70] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [80] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [90] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [100] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [110] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [120] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [130] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [140] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
          [150] =
          {
            lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-     },
-     [player_add_base_attr]=
-     {
-         takingValueUnit = 1,
-         [1] =
-         {
-           lower_limit = 1,
-           upper_limit = 1,
-           fluctuate = 1,
-         },
-         [10] =
-         {
-           lower_limit = 1,
-           upper_limit = 2,
-           fluctuate = 1,
-         },
-         [20] =
-         {
-           lower_limit = 1,
-           upper_limit = 3,
-           fluctuate = 1,
-         },
-         [30] =
-         {
-           lower_limit = 1,
-           upper_limit = 4,
-           fluctuate = 1,
-         },
-         [40] =
-         {
-           lower_limit = 1,
-           upper_limit = 6,
-           fluctuate = 1,
-         },
-         [50] =
-         {
-           lower_limit = 1,
-           upper_limit = 7,
-           fluctuate = 1,
-         },
-         [60] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [70] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [80] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [90] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [100] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [110] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [120] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [130] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [140] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
-           fluctuate = 1,
-         },
-         [150] =
-         {
-           lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 11,
            fluctuate = 1,
          },
      },
@@ -610,99 +510,99 @@ AddAttrValueDB =
          takingValueUnit = 1,
          [1] =
          {
-           lower_limit = 54,
-           upper_limit = 64,
+           lower_limit = 48,
+           upper_limit = 58,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 227,
-           upper_limit = 327,
-           fluctuate = 10,
+           lower_limit = 93,
+           upper_limit = 143,
+           fluctuate = 5,
          },
          [20] =
          {
-           lower_limit = 450,
-           upper_limit = 650,
-           fluctuate = 20,
+           lower_limit = 138,
+           upper_limit = 238,
+           fluctuate = 10,
          },
          [30] =
          {
-           lower_limit = 825,
-           upper_limit = 1125,
-           fluctuate = 30,
+           lower_limit = 184,
+           upper_limit = 334,
+           fluctuate = 15,
          },
          [40] =
          {
-           lower_limit = 1161,
-           upper_limit = 1561,
-           fluctuate = 40,
+           lower_limit = 229,
+           upper_limit = 429,
+           fluctuate = 20,
          },
          [50] =
          {
-           lower_limit = 1415,
-           upper_limit = 1915,
-           fluctuate = 50,
+           lower_limit = 274,
+           upper_limit = 524,
+           fluctuate = 25,
          },
          [60] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [70] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [80] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [90] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [100] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [110] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [120] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [130] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [140] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [150] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
      },
      [player_add_max_mp]=
@@ -710,99 +610,99 @@ AddAttrValueDB =
          takingValueUnit = 1,
          [1] =
          {
-           lower_limit = 54,
-           upper_limit = 64,
+           lower_limit = 48,
+           upper_limit = 58,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 227,
-           upper_limit = 327,
-           fluctuate = 10,
+           lower_limit = 93,
+           upper_limit = 143,
+           fluctuate = 5,
          },
          [20] =
          {
-           lower_limit = 450,
-           upper_limit = 650,
-           fluctuate = 20,
+           lower_limit = 138,
+           upper_limit = 238,
+           fluctuate = 10,
          },
          [30] =
          {
-           lower_limit = 825,
-           upper_limit = 1125,
-           fluctuate = 30,
+           lower_limit = 184,
+           upper_limit = 334,
+           fluctuate = 15,
          },
          [40] =
          {
-           lower_limit = 1161,
-           upper_limit = 1561,
-           fluctuate = 40,
+           lower_limit = 229,
+           upper_limit = 429,
+           fluctuate = 20,
          },
          [50] =
          {
-           lower_limit = 1415,
-           upper_limit = 1915,
-           fluctuate = 50,
+           lower_limit = 274,
+           upper_limit = 524,
+           fluctuate = 25,
          },
          [60] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [70] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [80] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [90] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [100] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [110] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [120] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [130] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [140] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
          [150] =
          {
-           lower_limit = 1683,
-           upper_limit = 2283,
-           fluctuate = 60,
+           lower_limit = 319,
+           upper_limit = 619,
+           fluctuate = 30,
          },
      },
      [player_add_max_hm]=
@@ -810,99 +710,99 @@ AddAttrValueDB =
          takingValueUnit = 1,
          [1] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 19,
+           upper_limit = 29,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 114,
-           upper_limit = 164,
-           fluctuate = 5,
+           lower_limit = 42,
+           upper_limit = 72,
+           fluctuate = 3,
          },
          [20] =
          {
-           lower_limit = 225,
-           upper_limit = 325,
-           fluctuate = 10,
+           lower_limit = 69,
+           upper_limit = 119,
+           fluctuate = 5,
          },
          [30] =
          {
-           lower_limit = 413,
-           upper_limit = 563,
-           fluctuate = 15,
+           lower_limit = 87,
+           upper_limit = 167,
+           fluctuate = 8,
          },
          [40] =
          {
-           lower_limit = 581,
-           upper_limit = 781,
-           fluctuate = 20,
+           lower_limit = 115,
+           upper_limit = 215,
+           fluctuate = 10,
          },
          [50] =
          {
-           lower_limit = 708,
-           upper_limit = 958,
-           fluctuate = 25,
+           lower_limit = 132,
+           upper_limit = 262,
+           fluctuate = 13,
          },
          [60] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [70] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [80] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [90] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [100] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [110] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [120] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [130] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [140] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
          [150] =
          {
-           lower_limit = 842,
-           upper_limit = 1142,
-           fluctuate = 30,
+           lower_limit = 160,
+           upper_limit = 310,
+           fluctuate = 15,
          },
      },
      [player_add_at]=
@@ -911,98 +811,98 @@ AddAttrValueDB =
          [1] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 4,
+           upper_limit = 14,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 53,
-           upper_limit = 63,
+           lower_limit = 13,
+           upper_limit = 23,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 89,
-           upper_limit = 109,
+           lower_limit = 13,
+           upper_limit = 33,
            fluctuate = 2,
          },
          [40] =
          {
-           lower_limit = 131,
-           upper_limit = 151,
+           lower_limit = 22,
+           upper_limit = 42,
            fluctuate = 2,
          },
          [50] =
          {
-           lower_limit = 165,
-           upper_limit = 185,
-           fluctuate = 2,
+           lower_limit = 21,
+           upper_limit = 51,
+           fluctuate = 3,
          },
          [60] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [70] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [80] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [90] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [100] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [110] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [120] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [130] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [140] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [150] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
      },
      [player_add_mt]=
@@ -1011,98 +911,98 @@ AddAttrValueDB =
          [1] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 4,
+           upper_limit = 14,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 53,
-           upper_limit = 63,
+           lower_limit = 13,
+           upper_limit = 23,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 89,
-           upper_limit = 109,
+           lower_limit = 13,
+           upper_limit = 33,
            fluctuate = 2,
          },
          [40] =
          {
-           lower_limit = 131,
-           upper_limit = 151,
+           lower_limit = 22,
+           upper_limit = 42,
            fluctuate = 2,
          },
          [50] =
          {
-           lower_limit = 165,
-           upper_limit = 185,
-           fluctuate = 2,
+           lower_limit = 21,
+           upper_limit = 51,
+           fluctuate = 3,
          },
          [60] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [70] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [80] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [90] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [100] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [110] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [120] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [130] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [140] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [150] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
      },
      [player_add_at_mt]=
@@ -1111,97 +1011,97 @@ AddAttrValueDB =
          [1] =
          {
            lower_limit = 1,
-           upper_limit = 4,
+           upper_limit = 3,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 6,
-           upper_limit = 16,
+           lower_limit = 1,
+           upper_limit = 7,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 2,
+           upper_limit = 12,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 45,
-           upper_limit = 55,
+           lower_limit = 7,
+           upper_limit = 17,
            fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 66,
-           upper_limit = 76,
+           lower_limit = 11,
+           upper_limit = 21,
            fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 83,
-           upper_limit = 93,
+           lower_limit = 16,
+           upper_limit = 26,
            fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
      },
@@ -1211,98 +1111,98 @@ AddAttrValueDB =
          [1] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 4,
+           upper_limit = 14,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 53,
-           upper_limit = 63,
+           lower_limit = 13,
+           upper_limit = 23,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 89,
-           upper_limit = 109,
+           lower_limit = 13,
+           upper_limit = 33,
            fluctuate = 2,
          },
          [40] =
          {
-           lower_limit = 131,
-           upper_limit = 151,
+           lower_limit = 22,
+           upper_limit = 42,
            fluctuate = 2,
          },
          [50] =
          {
-           lower_limit = 165,
-           upper_limit = 185,
-           fluctuate = 2,
+           lower_limit = 21,
+           upper_limit = 51,
+           fluctuate = 3,
          },
          [60] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [70] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [80] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [90] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [100] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [110] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [120] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [130] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [140] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [150] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
      },
      [player_add_mf]=
@@ -1311,98 +1211,98 @@ AddAttrValueDB =
          [1] =
          {
            lower_limit = 1,
-           upper_limit = 7,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 4,
+           upper_limit = 14,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 53,
-           upper_limit = 63,
+           lower_limit = 13,
+           upper_limit = 23,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 89,
-           upper_limit = 109,
+           lower_limit = 13,
+           upper_limit = 33,
            fluctuate = 2,
          },
          [40] =
          {
-           lower_limit = 131,
-           upper_limit = 151,
+           lower_limit = 22,
+           upper_limit = 42,
            fluctuate = 2,
          },
          [50] =
          {
-           lower_limit = 165,
-           upper_limit = 185,
-           fluctuate = 2,
+           lower_limit = 21,
+           upper_limit = 51,
+           fluctuate = 3,
          },
          [60] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [70] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [80] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [90] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [100] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [110] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [120] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [130] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [140] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
          [150] =
          {
-           lower_limit = 200,
-           upper_limit = 220,
-           fluctuate = 2,
+           lower_limit = 20,
+           upper_limit = 60,
+           fluctuate = 4,
          },
      },
      [player_add_af_mf]=
@@ -1411,97 +1311,97 @@ AddAttrValueDB =
          [1] =
          {
            lower_limit = 1,
-           upper_limit = 4,
+           upper_limit = 3,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 6,
-           upper_limit = 16,
+           lower_limit = 1,
+           upper_limit = 7,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 22,
-           upper_limit = 32,
+           lower_limit = 2,
+           upper_limit = 12,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 45,
-           upper_limit = 55,
+           lower_limit = 7,
+           upper_limit = 17,
            fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 66,
-           upper_limit = 76,
+           lower_limit = 11,
+           upper_limit = 21,
            fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 83,
-           upper_limit = 93,
+           lower_limit = 16,
+           upper_limit = 26,
            fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 100,
-           upper_limit = 110,
+           lower_limit = 20,
+           upper_limit = 30,
            fluctuate = 1,
          },
      },
@@ -1516,93 +1416,93 @@ AddAttrValueDB =
          },
          [10] =
          {
-           lower_limit = 4,
-           upper_limit = 14,
+           lower_limit = 1,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 8,
-           upper_limit = 28,
-           fluctuate = 2,
+           lower_limit = 1,
+           upper_limit = 10,
+           fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 17,
-           upper_limit = 47,
-           fluctuate = 3,
+           lower_limit = 4,
+           upper_limit = 14,
+           fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 26,
-           upper_limit = 66,
-           fluctuate = 4,
+           lower_limit = 8,
+           upper_limit = 18,
+           fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 30,
-           upper_limit = 80,
-           fluctuate = 5,
+           lower_limit = 12,
+           upper_limit = 22,
+           fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
      },
      [player_add_dodge]=
@@ -1616,93 +1516,93 @@ AddAttrValueDB =
          },
          [10] =
          {
-           lower_limit = 4,
-           upper_limit = 14,
+           lower_limit = 1,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 8,
-           upper_limit = 28,
-           fluctuate = 2,
+           lower_limit = 1,
+           upper_limit = 10,
+           fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 17,
-           upper_limit = 47,
-           fluctuate = 3,
+           lower_limit = 4,
+           upper_limit = 14,
+           fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 26,
-           upper_limit = 66,
-           fluctuate = 4,
+           lower_limit = 8,
+           upper_limit = 18,
+           fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 30,
-           upper_limit = 80,
-           fluctuate = 5,
+           lower_limit = 12,
+           upper_limit = 22,
+           fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
      },
      [player_add_critical]=
@@ -1716,93 +1616,93 @@ AddAttrValueDB =
          },
          [10] =
          {
-           lower_limit = 4,
-           upper_limit = 14,
+           lower_limit = 1,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 8,
-           upper_limit = 28,
-           fluctuate = 2,
+           lower_limit = 1,
+           upper_limit = 10,
+           fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 17,
-           upper_limit = 47,
-           fluctuate = 3,
+           lower_limit = 4,
+           upper_limit = 14,
+           fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 26,
-           upper_limit = 66,
-           fluctuate = 4,
+           lower_limit = 8,
+           upper_limit = 18,
+           fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 30,
-           upper_limit = 80,
-           fluctuate = 5,
+           lower_limit = 12,
+           upper_limit = 22,
+           fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
      },
      [player_add_tenacity]=
@@ -1816,93 +1716,93 @@ AddAttrValueDB =
          },
          [10] =
          {
-           lower_limit = 4,
-           upper_limit = 14,
+           lower_limit = 1,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 8,
-           upper_limit = 28,
-           fluctuate = 2,
+           lower_limit = 1,
+           upper_limit = 10,
+           fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 17,
-           upper_limit = 47,
-           fluctuate = 3,
+           lower_limit = 4,
+           upper_limit = 14,
+           fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 26,
-           upper_limit = 66,
-           fluctuate = 4,
+           lower_limit = 8,
+           upper_limit = 18,
+           fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 30,
-           upper_limit = 80,
-           fluctuate = 5,
+           lower_limit = 12,
+           upper_limit = 22,
+           fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 36,
-           upper_limit = 96,
-           fluctuate = 6,
+           lower_limit = 16,
+           upper_limit = 26,
+           fluctuate = 1,
          },
      },
      [player_add_speed]=
@@ -1917,92 +1817,92 @@ AddAttrValueDB =
          [10] =
          {
            lower_limit = 1,
-           upper_limit = 8,
+           upper_limit = 4,
            fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 6,
-           upper_limit = 16,
+           lower_limit = 1,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 8,
-           upper_limit = 28,
-           fluctuate = 2,
+           lower_limit = 1,
+           upper_limit = 9,
+           fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 18,
-           upper_limit = 38,
-           fluctuate = 2,
+           lower_limit = 1,
+           upper_limit = 11,
+           fluctuate = 1,
          },
          [50] =
          {
-           lower_limit = 17,
-           upper_limit = 47,
-           fluctuate = 3,
+           lower_limit = 3,
+           upper_limit = 13,
+           fluctuate = 1,
          },
          [60] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [70] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [80] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [90] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [100] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [110] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [120] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [130] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [140] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
          [150] =
          {
-           lower_limit = 26,
-           upper_limit = 56,
-           fluctuate = 3,
+           lower_limit = 5,
+           upper_limit = 15,
+           fluctuate = 1,
          },
      },
      [player_add_health]=
@@ -2010,99 +1910,99 @@ AddAttrValueDB =
          takingValueUnit = 1,
          [1] =
          {
-           lower_limit = 6,
-           upper_limit = 16,
+           lower_limit = 1,
+           upper_limit = 6,
            fluctuate = 1,
          },
          [10] =
          {
-           lower_limit = 52,
-           upper_limit = 82,
-           fluctuate = 3,
+           lower_limit = 4,
+           upper_limit = 14,
+           fluctuate = 1,
          },
          [20] =
          {
-           lower_limit = 113,
-           upper_limit = 163,
-           fluctuate = 5,
+           lower_limit = 13,
+           upper_limit = 23,
+           fluctuate = 1,
          },
          [30] =
          {
-           lower_limit = 212,
-           upper_limit = 282,
-           fluctuate = 7,
+           lower_limit = 23,
+           upper_limit = 33,
+           fluctuate = 1,
          },
          [40] =
          {
-           lower_limit = 301,
-           upper_limit = 391,
-           fluctuate = 9,
+           lower_limit = 22,
+           upper_limit = 42,
+           fluctuate = 2,
          },
          [50] =
          {
-           lower_limit = 369,
-           upper_limit = 479,
-           fluctuate = 11,
+           lower_limit = 31,
+           upper_limit = 51,
+           fluctuate = 2,
          },
          [60] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [70] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [80] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [90] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [100] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [110] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [120] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [130] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [140] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
          [150] =
          {
-           lower_limit = 441,
-           upper_limit = 571,
-           fluctuate = 13,
+           lower_limit = 30,
+           upper_limit = 60,
+           fluctuate = 3,
          },
      },
      [player_add_win_phase]=

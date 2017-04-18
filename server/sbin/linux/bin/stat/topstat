@@ -1,0 +1,93 @@
+#! /bin/bash
+#
+# desc :
+#	对top信息的自动化统计
+#
+# usage :
+#	./topstat -u root
+#	./topstat -p 1 2 3
+#
+
+
+# 日志文件
+workdir=`pwd`
+logfile=$workdir/top.stat
+
+# 刷新间隔
+period=10s
+#period=10m
+#period=10h
+#period=10d
+
+# 目标进程id
+pids="1,2,3"
+
+# 目标用户id
+#user="root"
+
+echo "参数个数 = $#"
+echo "参数内容 = $*"
+echo "日志文件 = $logfile"
+echo "刷新间隔 = $period"
+
+# 解析参数
+echo "解析参数开始.."
+pr=0
+ur=0
+argc=$#
+for(( i=1;i<=$argc;i++ ))
+do
+	echo -e "\t解析第$i个参数: $1"
+	if [ "$1" == "-p" ]; then
+		unset pids
+		pr=1
+		echo -e "\t\tbegin -p"
+	elif [ "$1" == "-u" ]; then
+		unset user
+		ur=1
+		echo -e "\t\tbegin -u"
+	else
+		if [ "$ur" == "1" ]; then
+			user=$1
+			echo -e "\t\tuser = $user"
+			break
+		fi
+		
+		if [ "$pr" == "1" ]; then
+			if [[ $1 =~ ^[0-9]+$ ]]; then
+				pids="$pids $1"
+				echo -e "\t\tpids = $pids"
+			fi
+		fi
+	fi
+	shift
+done
+echo "解析参数结束.."
+
+# 处理pids
+if [ $pr == "1" ] && [[ $ur == "0" ]]; then
+	pids=`echo $pids | awk '{ for(i=1;i<=NF;i++){ if(i<NF){printf $i","} else{printf $i} } }'`
+	echo "从参数获得的pids = $pids"
+fi
+
+# 删除旧的日志文件
+rm -rf $logfile
+
+
+# 定时调用top
+while [ true ]; do
+
+title="-----------------------"`date`"-----------------------"
+echo $title >> $logfile
+
+if [ -n "$user" ]; then
+	echo "top -u $user"
+	/usr/bin/top -b -n 1 -u $user >> $logfile
+else
+	echo "top -p$pids"
+	/usr/bin/top -b -n 1 -p$pids >> $logfile
+fi
+
+/bin/sleep $period 
+
+done

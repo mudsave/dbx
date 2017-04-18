@@ -46,7 +46,7 @@ TaskType2 = {
 	Heaven			= 0x1000,	--天道任务
 	Babel			= 0x2000,	--通天塔任务
 	Puzzle			= 0x4000,	--拼图任务
-
+	OldTower		= 0x5000,	--古塔驱妖任务
 }
 
 -- 指引的类型
@@ -77,13 +77,15 @@ LoopTaskTargetType =
 
 	collectMaterials	= 16,		-- 收集材料
 	puzzle				= 17,		-- 拼图玩法
+	oldTower			= 18,		-- 古塔驱妖玩法
 }
 
 CanRecetiveLoopTaskLvl = 
 {
 	[1] = 20,
 	[2] = 30,
-	[3] = 40,
+	[3] = 35,
+	[4] = 40,
 }
 
 -- 队伍条件

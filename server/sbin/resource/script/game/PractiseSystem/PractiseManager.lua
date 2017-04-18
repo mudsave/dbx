@@ -158,6 +158,8 @@ function PractiseManager:loadPractiseFromDB(player, recordList)
 			),
 			player
 		)
+	else
+		player:setStoreXp(storeXp)
 	end
 
 	player:flushPropBatch()

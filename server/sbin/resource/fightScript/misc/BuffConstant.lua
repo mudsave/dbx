@@ -140,15 +140,6 @@ DeBuff = {
 	BuffKind.MpDot,
 }
 
--- 障碍buff
-DisorderBuffMap = {
-	[BuffKind.ChaosObstacle] 	= {"startChaosObstacle"},
-	[BuffKind.PoisonObstacle]	= {"startPoisonObstacle"},
-	[BuffKind.FreezeObstacle]	= {"startFreezeObstacle"},
-	[BuffKind.SilenceObstacle]	= {"startSilenceObstacle"},
-	[BuffKind.TauntObstacle]	= {"startTauntObstacle"},
-	[BuffKind.SoporObstacle]	= {"startSoporObstacle"},
-}
 
 -- 添加buff的位置
 BuffBindPoint = {
@@ -255,7 +246,7 @@ disorderChaos = {
 	[toEnemy] = {
 		can = 1,
 		normal_at = 1,
-		mpSkill = 0,
+		mpSkill = 1,
 		nonmpSkill = 0,
 		joinUnionAt = 0,
 	},
@@ -279,7 +270,7 @@ disorderSilence = {
 		can = 1,
 		normal_at = 1,
 		mpSkill = 0,
-		nonmpSkill = 1,
+		nonmpSkill = 0,
 		joinUnionAt = 1,
 
 	},
@@ -347,6 +338,16 @@ SkillAttrType =
 	defenseAndIgnoreControl	= 0x08,--防+免控
 }
 
+-- 战斗中对应的障碍buff
+DisorderBuffMap = {
+	[BuffKind.ChaosObstacle] 	= {"startChaosObstacle"},
+	[BuffKind.PoisonObstacle]	= {"startPoisonObstacle"},
+	[BuffKind.FreezeObstacle]	= {"startFreezeObstacle"},
+	[BuffKind.SilenceObstacle]	= {"startSilenceObstacle"},
+	[BuffKind.TauntObstacle]	= {"startTauntObstacle"},
+	[BuffKind.SoporObstacle]	= {"startSoporObstacle"},
+}
+
 -- 战斗中的buff集对应的方法
 FightBuffMap = {
 	[BuffKind.AddPhase]			= {"startAddPhase", "calcAddPhase", "stopAddPhase"},
@@ -404,4 +405,11 @@ AssistBuffKindMap = {
 	BuffKind.RestoreMp,
 	BuffKind.RestoreHp,
 	BuffKind.CouterDmg,
+}
+-- buff的持续类型
+BuffStayType = {
+	Time	= 0x01, --持续时间
+	Bout	= 0x02, --回合计算
+	Value	= 0x03, --数值计算
+	Tao		= 0x04, --道行波动
 }

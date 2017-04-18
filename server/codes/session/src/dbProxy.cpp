@@ -188,6 +188,18 @@ void CDBProxy::doLoginResult(int operId, handle hLink)
                     pRoleMsg->role[row].remouldAttr[len] = '\0';
                     break;
                 }
+				case 8:
+				{
+					int value = *(int*)attr;
+					pRoleMsg->role[row].showDrama = value;
+					break;
+				}
+				case 9:
+				{
+					bool value = *(bool*)attr;
+					pRoleMsg->role[row].sex = value;
+					break;
+				}
             }   // end switch
             safeFree(attrName);
         }

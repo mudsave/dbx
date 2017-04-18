@@ -9,6 +9,7 @@ require "game.FightSystem.DropManager"
 
 local function notice(format,... )
 	print( ("FightRelaySystem:%s"):format((format or ""):format(...)) )
+	
 end
 
 FightRelaySystem = class(EventSetDoer, Singleton, Timer)
@@ -25,7 +26,7 @@ function FightRelaySystem:__init()
 end
 
 function FightRelaySystem.onCollectGarbage()
-	notice("onCollectGarbage():%s %s %s",collectgarbage("count"),collectgarbage("collect"),collectgarbage("count"))
+	print("onCollectGarbage():begin, result, end",collectgarbage("count"),collectgarbage("collect"),collectgarbage("count"))
 end
 
 -- 战斗服通知世界服 战斗开始
@@ -89,12 +90,12 @@ function FightRelaySystem:FightEnd(event)
 				local teamHandler = player:getHandler(HandlerDef_Team)
 				if teamHandler:isTeam() then
 					if teamHandler:isLeader() then
-						player:setActionState(PlayerStates.Team)
+						player:setActionState(PlayerStates.Team , true)
 					else
-						player:setActionState(PlayerStates.Follow)
+						player:setActionState(PlayerStates.Follow, true)
 					end
 				else
-					player:setActionState(player:getOldActionState())
+					player:setActionState(player:getOldActionState(), true)
 				end
 			end
 		elseif entityType == 0 then	--宠物
@@ -143,15 +144,16 @@ function FightRelaySystem:FightEnd(event)
 	end
 
 	for playerID,player in pairs(rolelist) do
-		player:onWarEnded(resultMap[playerID])
+		player:onWarEnded(resultMap[playerID], true)
 		g_world:send_MsgWS_StopFight(player:getAccountID(), player:getVersion())
 	end
 
 	for petID,pet in pairs(petlist) do
-		pet:onWarEnded(resultMap[petID])
+		pet:onWarEnded(resultMap[petID], true)
 	end
 	
 	--先通知各系统做各自的善后
+	
 	g_eventMgr:fireEvent(
 		Event.getEvent(
 			FightEvents_SS_FightEnd_beforeClient,FightEndResults,scriptID,monsterDBIDs,fightID,fightInfo
@@ -291,7 +293,7 @@ print("FightRelaySystem:QuitFight")
 					g_teamMgr:changeLeader(eid)
 					g_teamMgr:quitTeam(eid)
 				else
-					player:setActionState(PlayerStates.Team)
+					player:setActionState(PlayerStates.Team, true)
 					g_ectypeMgr:exitEctype(player)
 				end
 			else
@@ -302,27 +304,27 @@ print("FightRelaySystem:QuitFight")
 							g_teamMgr:changeLeader(eid)
 							g_teamMgr:stepOutTeam(eid)
 						else
-							player:setActionState(PlayerStates.Team)
+							player:setActionState(PlayerStates.Team, true)
 						end
 					else
 						g_teamMgr:stepOutTeam(eid)
-						player:setActionState(PlayerStates.Normal)
+						player:setActionState(PlayerStates.Normal, true)
 					end
 
 				else
-					player:setActionState(PlayerStates.Team)
+					player:setActionState(PlayerStates.Team, true)
 				end
 			end
 		else
-			player:setActionState(player:getOldActionState())
+			player:setActionState(player:getOldActionState(), true)
 		end
-		player:onWarEnded(resultMap[eid])
+		player:onWarEnded(resultMap[eid], true)
 		g_world:send_MsgWS_StopFight(player:getAccountID(), player:getVersion())
 		notice("$$$$$ %s",eid)
 	end
 
 	for petID,pet in pairs(petlist) do
-		pet:onWarEnded(resultMap[petID])
+		pet:onWarEnded(resultMap[petID] , true)
 	end
 			
 	--先通知各系统做各自的善后

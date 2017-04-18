@@ -31,7 +31,8 @@ function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
 					local player = g_entityMgr:getPlayerByID( memberInfo.memberID )
 					local playerLevel = player:getLevel()
 					local handler = player:getHandler(HandlerDef_Activity)
-					handler:setDekaronIntegral(handler:getDekaronIntegral()+ monsterInteral)
+					local interal = handler:getDekaronIntegral() or 0
+					handler:setDekaronIntegral(interal+ monsterInteral)
 					local addexp = DekaronSchoolReward.getFightExpFormula(playerLevel,teamProcess)
 					local addtao = DekaronSchoolReward.getFightTaoFormula(playerLevel,teamProcess)
 					local addpot = DekaronSchoolReward.getFightPotFormula(playerLevel,teamProcess)
@@ -39,7 +40,7 @@ function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
 					--经验
 					if addexp then
 						local temp_xp_ratio = player:getAttrValue(player_xp_ratio)
-						local tempExp = math.floor(reward.exp * temp_xp_ratio / 100)
+						local tempExp = math.floor(addexp * temp_xp_ratio / 100)
 						player:addXp(tempExp)
 						g_dekaronSchoolMgr:sendRewardMessageTip(player, 2, tempExp)
 					end

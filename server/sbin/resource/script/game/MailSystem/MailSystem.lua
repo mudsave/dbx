@@ -12,6 +12,7 @@ function MailSystem:__init()
 		[MailEvent_CS_RemoveMails]		= MailSystem.onRemoveMails,	--客户端删除邮件请求
 		[MailEvent_CS_PickMailItem]		= MailSystem.onPickMailItem,--客户端领取邮件附件请求
 		[MailEvent_SS_NewMail]			= MailSystem.onNewMail,		--新邮件事件
+		--[MailEvent_BS_NewMail]			= MailSystem.onBNewMail,	--社会服创建邮件
 		[MailEvent_CS_RequireMoreMails] = MailSystem.onMoreMailsRequired,--客户端请求更多邮件
 	}
 end
@@ -100,6 +101,20 @@ function MailSystem:onNewMail(event)
 		LuaDBAccess.MailNew(Mail.MailFromTable(mdata),dbID)
 	else
 		print "玩家不在线，没有指定玩家的ID，无法发送邮件"
+	end
+end
+
+function MailSystem:onBNewMail(event)
+	local params = event:getParams()
+	local dbID,mdata = unpack(params)
+	local player = g_entityMgr:getPlayerByDBID(dbID)
+
+	if player then
+		g_mailMgr:addFluidMail(dbID,mdata) --添加浮动邮件，会通过mdata返回动态的邮件ID，新邮件ID是字符串，在服务器中使用
+		local event = Event.getEvent(MailEvent_SC_MailsDelieved,g_mailMgr:getMailsCount(player:getDBID()),nil)
+		g_eventMgr:fireRemoteEvent(event,player)
+	elseif dbID then
+		LuaDBAccess.MailNew(Mail.MailFromTable(mdata),dbID)
 	end
 end
 

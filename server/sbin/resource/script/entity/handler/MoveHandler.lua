@@ -24,6 +24,13 @@ function MoveHandler:SetIsInMove(value)
 	self.m_isMoving = value
 end
 
+--服务器移动的话 路径可以长一点
+function MoveHandler:ServerMoveEntity(pPosData, paths)
+	local player = self.m_entity
+	local peer = player:getPeer()
+    peer:moveByPath(pPosData, paths)
+end
+
 function MoveHandler:MoveEntity(pPosData, paths)
 	local player = self.m_entity
 	local peer = player:getPeer()
@@ -66,7 +73,7 @@ function MoveHandler:MoveEntity(pPosData, paths)
 end
 
 function MoveHandler:Move(tarTile)
-	self.m_entity:getPeer():move(tarTile[1], tarTile[2])
+	self.m_entity:getPeer():move(tarTile[1], tarTile[2], 0x01)
 end
 
 --这里注意 如果传targetPos的话 那么所有的实体都会在同一个位置

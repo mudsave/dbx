@@ -3,9 +3,11 @@
 --]]
 
 --战斗胜利后获得宝盒的概率
-rewardProbability = 90
+rewardProbability = 45
 --活动所能获得宝盒的上限
 rewardBoxLimit = 50
+--能参与活动的等级限制
+roleLevelLimit = 10
 
 SkyFallBoxUtils = {}
 

@@ -84,6 +84,7 @@ end
 
 function ChatSystem:_checkWorld(player)
 	local level = player:getLevel()
+	print("level>>>>>>>>>>>>",level)
 	if level < WorldChannelMinLevel then
 		return 2
 	end

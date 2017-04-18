@@ -204,10 +204,15 @@ function TaskHandler:getNextID()
 	return self.nextTaskID
 end
 
+function TaskHandler:getReceiveTimes(taskID)
+	return self.loopTaskInfo[taskID].receiveTimes
+end
+
 -- 接任务的时候，当前函数+ 1 
 function TaskHandler:updateLoopCount(taskID)
 	self:checkTaskData(taskID)
 	self.loopTaskInfo[taskID].currentRing = self.loopTaskInfo[taskID].currentRing + 1
+	self.loopTaskInfo[taskID].receiveTimes = self.loopTaskInfo[taskID].receiveTimes + 1
 end
 
 -- 服务器定时扫描定时器， 结束时间到，循环任务结束
@@ -293,6 +298,7 @@ function TaskHandler:checkTaskData(taskID)
 		taskData.currentRing = 0
 		taskData.finishTimes = 0
 		taskData.receiveTaskTime = 0
+		taskData.receiveTimes = 0
 		-- print("taskData.finishTimes",taskData.finishTimes)
 		self.loopTaskInfo[taskID] = taskData
 	end
@@ -491,6 +497,8 @@ function TaskHandler:finishLoopTask(taskID)
 						local taskHandler = entity:getHandler(HandlerDef_Task)
 						taskHandler:resetCurrentRing(taskID)
 					end
+					-- 提示客户端消息
+					self:sendTaskMessage(taskID)
 				end
 			end	
 		else
@@ -499,13 +507,20 @@ function TaskHandler:finishLoopTask(taskID)
 			else
 				-- 重置当前环数，不需要转盘奖励
 				self:resetCurrentRing(taskID)
+				self:sendTaskMessage(taskID)
 			end
 		end
 	-- 如果是帮会任务
 	elseif LoopTaskDB[taskID].taskType2 == TaskType2.Faction then
 		-- 不自动接不奖励
+		local taskTypeCommon = LoopTaskDB[taskID].taskTypeCommon
+		-- 到达指定环数，重置当前环数, bu neng zidong jieshu 
 		if TaskCondition.isMaxRing(player, taskID) then
 			self:resetCurrentRing(taskID)
+		else
+			if taskTypeCommon then
+				g_taskDoer:doRecetiveTask(player, taskID)
+			end
 		end
 	else 
 		-- 其他循环任务不涉及到组队的问题
@@ -515,8 +530,10 @@ function TaskHandler:finishLoopTask(taskID)
 		else
 			self:resetCurrentRing(taskID)
 			-- 完成所有环打开奖励界面
+			--[[
 			local event = Event.getEvent(TaskEvent_SC_OpenRewardUI)
 			g_eventMgr:fireRemoteEvent(event, player)
+			--]]
 		end
 	end
 end
@@ -675,6 +692,7 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 					-- 不是同一天，重新设置当前可做的次数，
 					loopTask.countRing = 0
 					loopTask.finishTimes = 0
+					loopTask.receiveTimes = 0
 				end
 			else
 				-- 判断记录日期跟现在是不是同一周
@@ -682,6 +700,7 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 					-- 不是同一周，算是新CD了，重置完成次数和副本进度
 					loopTask.countRing = 0
 					loopTask.finishTimes = 0
+					loopTask.receiveTimes = 0
 				end
 			end
 			if not self.loopTaskInfo[loopTask.taskID] then
@@ -690,6 +709,8 @@ function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
 				self.loopTaskInfo[loopTask.taskID].finishTimes = loopTask.finishTimes
 				self.loopTaskInfo[loopTask.taskID].currentRing = loopTask.currentRing
 				self.loopTaskInfo[loopTask.taskID].receiveTaskTime = loopTask.receiveTaskTime
+				self.loopTaskInfo[loopTask.taskID].receiveTimes = loopTask.receiveTimes
+				--print("self.loopTaskInfo[loopTask.taskID].receiveTimes__",loopTask.receiveTimes,self.loopTaskInfo[loopTask.taskID].receiveTimes)
 				self.loopTaskInfo[loopTask.taskID].isSaveDB = false
 				-- 把循环任务的消息给客户端
 				self:loadLoopTaskInfoToClient()
@@ -750,6 +771,7 @@ function TaskHandler:checkBabelTask(taskID)
 		taskData.receiveTime = 0
 		taskData.faildTimes = 0
 		taskData.finishFlag = 0	
+		taskData.receiveTimes = 0
 		self.babelTaskInfo[taskID] = taskData
 	end
 end
@@ -826,6 +848,7 @@ function TaskHandler:loadBabelTask(taskData)
 				-- 不是同一天，重新设置当前可做的次数，
 				taskData.faildTimes = 0
 				taskData.finishFlag = 0
+				taskData.receiveTimes = 0
 			else
 				-- 如果是同一天， 判断不是完成标志
 				if taskData.finishFlag ~= 1 then
@@ -840,6 +863,7 @@ function TaskHandler:loadBabelTask(taskData)
 		babelTaskInfo.receiveTime = taskData.receiveTime
 		babelTaskInfo.faildTimes = taskData.faildTimes
 		babelTaskInfo.finishFlag = taskData.finishFlag
+		babelTaskInfo.receiveTimes = taskData.receiveTimes
 	else
 		print("数据初始化出错，任务id是",taskData.taskID)
 	end
@@ -853,4 +877,18 @@ function TaskHandler:endFinishBabelTask(taskID)
 		g_sceneMgr:doSwitchScence(self._entity:getID(), 10, 123, 265)
 	end
 	self:finishBabelTask(taskID)
+end
+
+-- 这个主要是讨逆任务，完成10环，
+function TaskHandler:sendTaskMessage(taskID)
+	local msgID = 0
+	if taskID == 10008 then
+		msgID = 27
+	elseif taskID == 10010 then
+		msgID = 28
+	elseif tsakID == 10011 then
+		msgID = 29
+	end
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, msgID)
+	g_eventMgr:fireRemoteEvent(event, self._entity)
 end

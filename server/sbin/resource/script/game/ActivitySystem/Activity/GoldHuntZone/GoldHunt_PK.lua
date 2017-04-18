@@ -43,6 +43,7 @@ function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	curScore1 = curScore1 + reward
 	if curScore1 > maxScore then
 		curScore1 = maxScore
+		reward = maxScore - data1.curScore
 	end
 	data1.curScore = curScore1
 	g_goldHuntMgr:setIconValue(winner, curScore1)
@@ -51,12 +52,19 @@ function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	curScore2 = curScore2 - reward
 	if curScore2 < 0 then
 		curScore2 = 0
+		reward = 0 - data2.curScore
 	end
 	data2.curScore = curScore2
 	g_goldHuntMgr:setIconValue(loser, curScore2)
 	print("输方结算",toString(loser),curScore2)
 	g_goldHuntMgr:informClientScore(winner)
 	g_goldHuntMgr:informClientScore(loser)
+	local ore = tostring(reward)
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 16,loser:getName(),ore)
+	g_eventMgr:fireRemoteEvent(event, winner)
+	event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 17,winner:getName(),ore)
+	g_eventMgr:fireRemoteEvent(event, loser)
+
 
 end
 

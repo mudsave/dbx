@@ -116,7 +116,8 @@ DialogActionType =
 	DiscussHeroFight	= 64,		-- 进入战斗
 	OpenPuzzle			= 65,		-- 打开拼图
 	ChangePlayerMoney   = 66,		--金钱管理
-	
+	FactionEctype		= 67,	
+	OldTowerEliminate   = 67,		--进入古塔驱妖
 }
 
 --对话框图标类型

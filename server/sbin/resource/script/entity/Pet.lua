@@ -1,6 +1,6 @@
 -- Pet.lua
 
-require "attribute.Attribute"
+require "entity.Attribute"
 require "misc.PetConstant"
 
 local function notice(str,...) print( ("Pet:%s"):format( str and str:format(...) or "" ) ) end
@@ -29,7 +29,7 @@ function Pet:__init(owner)
 	self.isnew		= true					-- 新建与否
 	self.removed	= false					-- 删除与否
 	self.visible	= false					-- 宠物可视性
-	self.attrSet	= {}					-- 属性集合
+	self.attrSet	= PetAttributeSet(self)	-- 宠物属性集合
 
 	self:setOwner(owner)					-- 所有者ID
 	self:__logic_init()
@@ -38,6 +38,9 @@ end
 function Pet:__release()
 	self:__logic_release()
 	self:setVisible(false)
+
+	self.attrSet:release()
+	self.attrSet = nil
 end
 
 -- 所有者相关ID
@@ -81,52 +84,24 @@ function Pet:isRemoved()
 end
 
 -- 属性集合
-
-function Pet:createAttributeSet()
-	local attrSet = self.attrSet
-	for attrName,detail in pairs(PetAttrDefine) do
-		if not attrSet[attrName] then
-			attrSet[attrName] = PetAttribute(self,attrName,detail.expr,0)
-		end
-	end
-end
-
 function Pet:getAttributeSet()
 	return self.attrSet
 end
 
 function Pet:getAttribute(attrName)
-	return attrName and self.attrSet[attrName]
+	return rawget(self.attrSet,attrName)
 end
 
 function Pet:setAttrValue(attrName,value)
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		notice("尝试设置一个不存在的属性 %s",attrName or "nil")
-		return
-	end
-	if attribute:isExpr() then
-		notice("不能给公式属性设值 %s",attribute:getName())
-		return
-	end
-	attribute:setValue(value)
+	self.attrSet:setAttrValue(attrName,value)
 end
 
 function Pet:addAttrValue(attrName,value)
-	if not attrName then
-		notice("宠物加值错误 %s %s ",attrName or "nil",debug.traceback())
-	end
-	local attribute = attrName and self.attrSet[attrName]
-	if not attribute then
-		notice("不能操作不存在的属性 %s",attrName or "nil")
-		return
-	end
-	attribute:addValue(value)
+	self.attrSet:addAttrValue(attrName,value)
 end
 
 function Pet:getAttrValue(attrName)
-	local attribute = attrName and self.attrSet[attrName]
-	return attribute and attribute:getValue()
+	return self.attrSet:getAttrValue(attrName)
 end
 
 -- 创建时间
@@ -249,8 +224,8 @@ end
 function Pet:getUpLevel()
 	return self.upLevel
 end
--- 血量&蓝量
 
+-- 血量&蓝量
 function Pet:setHP(hp)
 	self:setAttrValue(pet_hp,hp)
 end
@@ -281,17 +256,9 @@ function Pet:fill()
 	self:setMP(self:getMaxMP())
 end
 
--- 确保所有脏属性被更新
-function Pet:freshProps()
-	local attrSet = self.attrSet
-	for attrName,_ in pairs(g_AttributePetToProp) do
-		attrSet[attrName]:getValue()
-	end
-end
-
 -- 发送所有改动了的属性
 function Pet:flushPropBatch(player)
-	self:freshProps()
+	self.attrSet:updateAll()
 
 	if not player then
 		player = g_entityMgr:getPlayerByID(self:getOwnerID())
@@ -303,7 +270,7 @@ end
 
 -- 绑定宠物到某个实体
 function Pet:attachTo(player)
-	self:freshProps()
+	self.attrSet:updateAll()
 	attachEntity(self:getPeer(),player:getID())
 end
 

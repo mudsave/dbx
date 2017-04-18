@@ -40,7 +40,8 @@ public:
 	void Init(	const char* loginIP,	int loginPort,
 				const char* gateIP,		int gatePort,
 				const char* worldIP,	int worldPort,
-				const char* dbIp,       int dbPort	);
+				const char* dbIp,       int dbPort,
+				const char* extranetIP);
 
 	void Close();
 	
@@ -273,6 +274,7 @@ public:
 		    strcpy(msg->roleList[i].name, pRet->role[i].name);
 			strcpy(msg->roleList[i].remouldAttr, pRet->role[i].remouldAttr);
 			msg->roleList[i].showDrama = pRet->role[i].showDrama ;
+			msg->roleList[i].sex = pRet->role[i].sex;
 		}
 		IMsgLinksImpl<IID_IMsgLinksCS_L>::SendMsg(hLink, msg);
 	}
@@ -294,7 +296,14 @@ public:
 		{
 			if( iter->second->gatewayId == gatewayId )
 			{
-				strcpy(msg.addr, iter->second->addr_client);
+				if(m_extranetIP)
+				{
+					strcpy(msg.addr, m_extranetIP);
+				}
+				else
+				{
+					strcpy(msg.addr, iter->second->addr_client);
+				}
 				msg.port = iter->second->port_client;
 				isExit = true;
 				break;
@@ -671,6 +680,9 @@ private:
 private:
 	ILinkCtrl*		m_pLinkCtrl;
 	IThreadsPool*	m_pThreadsPool;
+
+private:
+	char* m_extranetIP;
 };
 
 extern CSession g_session;

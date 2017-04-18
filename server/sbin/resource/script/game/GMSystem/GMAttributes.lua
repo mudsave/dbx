@@ -1,6 +1,6 @@
 -- GMAttributes.lua
 
-require "attribute.Attribute"
+require "entity.Attribute"
 
 local PlayerAttributes = {
 	[player_xp] = {
@@ -205,7 +205,12 @@ local PlayerAttributes = {
 		alias				= "model",
 		set_func			= Player.setModelID,
 		comments			= "玩家模型(不要随意设置!!!)",
-	}
+	},
+	[-1018] = {
+		alias				= "all",
+		set_func			= Player.setAll,
+		comments			= "同时更改五个基础属性",
+	},
 }
 
 local PetAttributes = {
@@ -273,6 +278,73 @@ local PetAttributes = {
 		alias				= "maxskill",
 		comments			= "宠物最大技能数量",
 	},
+	[pet_at] = {
+		alias				= "at",
+		delta_attr			= pet_add_at,
+		multi_attr			= pet_inc_at,
+		comments			= "宠物物理攻击",
+	},
+	[pet_af] = {
+		alias				= "af",
+		delta_attr			= pet_add_af,
+		multi_attr			= pet_inc_af,
+		comments			= "宠物物理防御",
+	},
+	[pet_mt] = {
+		alias				= "mt",
+		delta_attr			= pet_add_mt,
+		multi_attr			= pet_inc_mt,
+		comments			= "宠物魔法攻击",
+	},
+	[pet_mf] = {
+		alias				= "mf",
+		delta_attr			= pet_add_mf,
+		multi_attr			= pet_inc_mf,
+		comments			= "宠物魔法防御",
+	},
+	[pet_speed] = {
+		alias				= "sp",
+		delta_attr			= pet_add_speed,
+		multi_attr			= pet_inc_speed,
+		comments			= "宠物攻击速度",
+	},
+	[pet_str] = {
+		alias				= "str",
+		delta_attr			= pet_add_str,
+		comments			= "宠物武力",
+	},
+	[pet_int] = {
+		alias				= "int",
+		delta_attr			= pet_add_str,
+		comments			= "宠物智力",
+	},
+	[pet_sta] = {
+		alias				= "sta",
+		delta_attr			= pet_add_sta,
+		comments			= "宠物根骨",
+	},
+	[pet_spi] = {
+		alias				= "spi",
+		delta_attr			= pet_add_spi,
+		comments			= "宠物敏锐",
+	},
+	[pet_dex] = {
+		alias				= "dex",
+		delta_attr			= pet_add_dex,
+		comments			= "宠物身法",
+	},
+	[pet_critical] = {
+		alias				= "crt",
+		delta_attr			= pet_add_critical,
+		multi_attr			= pet_inc_critical,
+		comments			= "宠物暴击",
+	},
+	[pet_tenacity] = {
+		alias				= "ten",
+		delta_attr			= pet_add_tenacity,
+		multi_attr			= pet_inc_critical,
+		comments			= "宠物抗暴",
+	},
 	[-1023] = {
 		alias				= "model",
 		set_func			= Pet.setModelID,
@@ -305,6 +377,11 @@ local PetAttributes = {
 		get_func			= Pet.getUpLevel,
 		set_func			= Pet.setUpLevel,
 		comments			= "宠物强化等级",
+	},
+	[-1017] = {
+		alias				= "all",
+		set_func			= Pet.setAll,
+		comments			= "同时改变5个基础属性",
 	},
 }
 

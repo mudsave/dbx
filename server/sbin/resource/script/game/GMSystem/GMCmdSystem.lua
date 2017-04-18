@@ -29,9 +29,19 @@ end
 end
 
 function GMSystem:addXP(player,xpValue)
-	print "玩家设置经验"
 	player:addAttrValue(player_xp,tonumber(xpValue))
 	player:flushPropBatch()
+end
+
+function GMSystem:testCHL(player,...)
+
+		local resoureData = {}
+		local dailyTaskID = toNumber(select(1,...))
+		resoureData.count = toNumber(select(2,...))
+		resoureData.finishTimes = 1
+		local event_NotifyClient = Event.getEvent(ActivityEvent_SC_ActivityPageDaliy,dailyTaskID,resoureData)
+		g_eventMgr:fireRemoteEvent(event_NotifyClient,player)
+
 end
 
 --测试goto传送指令
@@ -48,6 +58,11 @@ end
 --测试猎金场
 function GMSystem:openGoldHunt( player)
 	ActivityManager.getInstance():openActivity(4, "GoldHuntZone1")
+end
+
+--测试猎金场
+function GMSystem:openDouble( player)
+	ActivityManager.getInstance():openActivity(9, "DoubleReward")
 end
 
 -- 增加道具指令
@@ -152,36 +167,64 @@ function GMSystem:factionectype(player, factionEctypeID)
 	g_ectypeMgr:enterFactionEctype(player, factionEctypeID)
 end
 
--- 设置玩家所有属性 + 战斗外可以，战斗内没处理
-function GMSystem:set_all(player, value, targetID)
-	player:setAttrValue(player_add_str, value)
-	player:setAttrValue(player_add_int, value)
-	player:setAttrValue(player_add_sta, value)
-	player:setAttrValue(player_add_spi, value)
-	player:setAttrValue(player_add_dex, value)
-end
+--设置玩家/宠物生命法力全满，战斗内和战斗外都可以用
+function GMSystem:full( player,targetID,entityType )
+	-- 实体ID和实体类型是字符串格式的
+	targetID = tonumber(targetID)
+	entityType = tonumber(entityType)
 
---设置玩家生命法力全满，战斗内和战斗外都可以用
-function GMSystem:full( player)
+	if not player:isFighting() then
+		if entityType == eLogicPlayer then
+			if targetID ~= player:getID() then
+				return	-- 只能给玩家自己设置满状态
+			end
+			player:setHP(player:getMaxHP())
+			player:setMP(player:getMaxMP())
+			player:flushPropBatch()
+		elseif entityType == eLogicPet then
+			local pet = g_entityMgr:getPet(targetID)
+			if pet:getOwnerID() ~= player:getID() then
+				return	-- 只能给玩家自己的宠物设置满状态
+			end
+			pet:fill()
+			-- 或者需要满忠诚度和寿命?
+			pet:flushPropBatch(player)
+		else
+			-- 在世界服中的其他实体还不支持设置满状态
+		end
+		return
+	end
+
 	local fightServerID = player:getFightServerID()
-	local bFighting = player:isFighting()
-	if bFighting and fightServerID then
-		local event = Event.getEvent(FightEvents_SF_SetAttr, player:getDBID(), player_hp, player:getMaxHP())
-		g_eventMgr:fireWorldsEvent(event, fightServerID)
-		event = Event.getEvent(FightEvents_SF_SetAttr, player:getDBID(), player_mp, player:getMaxMP())
-		g_eventMgr:fireWorldsEvent(event, fightServerID)
-	else
-		local curHp = player:getHP()
-		local maxHp = player:getMaxHP()
-		if curHp < maxHp then
-			player:setHP(maxHp)
-		end
-		local curMp = player:getMP()
-		local maxMp = player:getMaxMP()
-		if curMp < maxMp then
-			player:setMP(maxMp)
-		end
-		player:flushPropBatch()
+	if not fightServerID then
+		print "战斗状态下的玩家没有战斗服ID"
+		return
+	end
+	
+	-- 发送请求到战斗服设置实体属性
+	if entityType == eLogicPlayer then
+		local id = player:getDBID()
+		g_eventMgr:fireWorldsEvent(
+			Event.getEvent(
+				FightEvents_SF_SetAttr, id, player_hp, player:getMaxHP()
+			), fightServerID
+		)
+		g_eventMgr:fireWorldsEvent(
+			Event.getEvent(
+				FightEvents_SF_SetAttr, id, player_mp, player:getMaxMP()
+			), fightServerID
+		)
+	elseif entityType == eLogicPet then
+		Event.fireWorldsEvent(
+			Event.getEvent(
+				FightEvents_SF_SetAttr,targetID,pet_hp,100000
+			),fightServerID
+		)
+		Event.fireWorldsEvent(
+			Event.getEvent(
+				FightEvents_SF_SetAttr,targetID,pet_mp,100000
+			),fightServerID
+		)
 	end
 end
 

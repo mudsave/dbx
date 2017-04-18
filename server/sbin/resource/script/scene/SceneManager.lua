@@ -117,6 +117,21 @@ function SceneManager:getRandomPosition(mapID)
 	return vect.x, vect.y
 end
 
+-- 获取帮会场景随机坐标
+function SceneManager:getFactionRandomPosition(factionID, mapID)
+	local scene = self.factionScene[factionID]
+	if not scene then
+		print("随机地图没有配置")
+	end
+	local peer = scene:getPeer()
+	local vect = peer:FindRandomTile(mapID)
+	-- 返回一个x,y`
+	if vect.x == 0 and vect.y == 0 then
+		print("$$ error getRandomPosition()")
+	end
+	return vect.x, vect.y
+end
+
 -- 切换场景
 function SceneManager:doSwitchScence(roleID,tarMapID,x,y)
 	local player = g_entityMgr:getPlayerByID(roleID)
@@ -230,6 +245,8 @@ function SceneManager:enterGoldHuntScene(activityID, role,x ,y)
 	if role and x and y then
 		local prevPos = role:getPrevPos()
 		local pos = role:getPos()
+		local activityHandler = role:getHandler(HandlerDef_Activity)
+		activityHandler:setEnterPos(pos[1],pos[2],pos[3])
 		prevPos[1],prevPos[2],prevPos[3] = pos[1],pos[2],pos[3]
 
 		toScene:attachEntity(role, x, y)

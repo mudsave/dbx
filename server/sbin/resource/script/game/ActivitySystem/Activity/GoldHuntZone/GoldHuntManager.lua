@@ -5,7 +5,7 @@
 local monsterTargetIndex = 1
 local ItemTargetIndex = 2
 local pkTargetIndex = 3
-
+local maxPlayerCount = 100
 GoldHuntManager = class(EventSetDoer, Singleton)
 
 local FightIDs ={}--[ID]=monsterID or pked ID
@@ -22,7 +22,10 @@ function GoldHuntManager:__init()
 		[FrameEvents_SS_leaveScene]				= GoldHuntManager.onLeaveScene,
 		[ActivityEvent_CS_GoldHunt_leave]		= GoldHuntManager.onGetLeaveCmd,
 	}
-	
+	self.curRoleCount_1 = 0
+	self.curRoleCount_2 = 0
+	self.curRoleCount_3 = 0
+	self.openStatus = false
 end
 
 function GoldHuntManager:__release()
@@ -129,16 +132,20 @@ function GoldHuntManager:commitScore(player)
 	local activityID = handler:getGoldHuntData().ID
 	local data = handler:getPriData(activityID)
 	if data.curScore == 0 then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 23)
+	g_eventMgr:fireRemoteEvent(event, player)
 		return
 	end
 	local curTotal = handler:getGoldHuntData().totalScore
 	curTotal = curTotal + data.curScore
 	handler:getGoldHuntData().totalScore = curTotal
-	data.curScore = 0
+	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 22, data.curScore, data.curScore)
+	g_eventMgr:fireRemoteEvent(event, player)	
 	LuaDBAccess.updateGoldHuntActivity(player)
 	self:setIconValue(player,data.curScore)
 	self:informClientScore(player)
 	self:_orderScoreAndSend(player)
+	data.curScore = 0
 end
 
 function GoldHuntManager:informClientScore(player)
@@ -217,7 +224,7 @@ function GoldHuntManager:onPk(event)
 		table.insert(roles2,pet)
 	end
 
-	local fightID = g_fightMgr:startPvpFight(roles1, roles2, 2,FightBussinessType.GoldHunt)
+	local fightID = g_fightMgr:startPvpFight(roles1, roles2, nil,FightBussinessType.GoldHunt)
 	FightIDs[fightID] = targetID
 
 	curPkedCount = curPkedCount + 1
@@ -402,6 +409,10 @@ function GoldHuntManager:onFightEnd(event)
 	else
 		if not loser then
 			loser = g_entityMgr:getPlayerByID(loserIDs[fightID])
+			local maxHP = loser:getAttrValue(player_max_hp)
+			local maxMP = loser:getAttrValue(player_max_mp)
+			loser:setHP(maxHP)		
+			loser:setMP(maxMP)
 			loserIDs[fightID] = nil
 		end
 		local targetID = FightIDs[fightID]
@@ -437,17 +448,62 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	local x,y = posInfo.x,posInfo.y
 	
 	local activity
-	
-	local activityID = self:getPlayerActivityID(player)
-	if not activityID then
+	if not self.openStatus then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 18)
+		g_eventMgr:fireRemoteEvent(event, player)
 		return
+	end
+	local level = player:getLevel()
+	if level < 30 then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 19)
+		g_eventMgr:fireRemoteEvent(event, player)
+		return
+	end
+	local teamHandler = player:getHandler(HandlerDef_Team)
+	local teamID = teamHandler:getTeamID()
+	if teamID > 0 then
+		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 20)
+		g_eventMgr:fireRemoteEvent(event, player)
+		return
+	end
+	local activityID = 4
+	if level < 40 then
+		activityID = 4
+	elseif level < 50 then
+		activityID = 5
+	else
+		activityID = 6
 	end
 	local bResult = g_sceneMgr:enterGoldHuntScene(activityID, player, x , y)
 	if not bResult then
 		return
 	end
 	FinalPos[player:getDBID()] = nil
-	
+	if level < 40 then
+		if self.curRoleCount_1 < maxPlayerCount then
+			self.curRoleCount_1 = self.curRoleCount_1 + 1
+		else
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 21)
+			g_eventMgr:fireRemoteEvent(event, player)
+			return
+		end
+	elseif level < 50 then
+		if self.curRoleCount_2 < maxPlayerCount then
+			self.curRoleCount_2 = self.curRoleCount_2 + 1
+		else
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 21)
+			g_eventMgr:fireRemoteEvent(event, player)
+			return
+		end
+	else
+		if self.curRoleCount_3 < maxPlayerCount then
+			self.curRoleCount_3 = self.curRoleCount_3 + 1
+		else
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 21)
+			g_eventMgr:fireRemoteEvent(event, player)
+			return
+		end
+	end
 	--发送进入事件(倒计时和总积分和階段)
 	local activity = g_activityMgr:getActivity(activityID) 
 	local phaseID = activity:getPhaseID()
@@ -487,7 +543,6 @@ function GoldHuntManager:enterHuntZone(player,posInfo)
 	handler:addActivityTarget(activityID, monsterTargetIndex, monsterTarget)
 	handler:addActivityTarget(activityID, ItemTargetIndex, itemTarget)
 	handler:addActivityTarget(activityID, pkTargetIndex, pkTarget)
-
 end
 
 function GoldHuntManager:getIconValue(score)
@@ -670,17 +725,22 @@ function GoldHuntManager:onOffline(player,activityID)
 end
 
 function GoldHuntManager:onOnline(player)
-	local DBID = player:getDBID()
-	local pos = FinalPos[DBID]
-	if pos then
-		self:enterHuntZone(player,{x= pos.x, y = pos.y})
-		local prevPos = player:getPrevPos()
-		prevPos[1],prevPos[2],prevPos[3] = RightPos4Error.mapID,RightPos4Error.x,RightPos4Error.y
-		
-	end
+
 end
 
 function GoldHuntManager:clearFinalPos()
+	self.curRoleCount_1 = 0
+	self.curRoleCount_2 = 0
+	self.curRoleCount_3 = 0
+	self.openStatus = false
+	table.clear(FinalPos)
+end
+
+function GoldHuntManager:openActivity()
+	self.curRoleCount_1 = 0
+	self.curRoleCount_2 = 0
+	self.curRoleCount_3 = 0
+	self.openStatus = true
 	table.clear(FinalPos)
 end
 
