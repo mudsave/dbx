@@ -6,3 +6,45 @@ python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py exec_sp -h
 
 # 测试stress_test
 python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py stress_test -h 172.16.2.230 -p 3002
+
+# 从dbx日志中提取测试用例
+grep  "call sp_" dbxLog.txt > wsf.txt
+
+echo "[10:14:22] DBInterfaceMysql::Query p_dbInterfaceID(call sp_UpdateFactionMemberInfo(115, 4668, 'memberHistoryMoney', '', 0);)." | sed 's/\(.*\)\(call sp_.*;\)\(.*\)/\2/g'
+命令解释
+s： 表示替换命令
+\(.*\)": 表示第一个引号前的内容
+\(call sp_.*;\): 表示call sp_开头，以;结尾的内容
+\(.*\): 表示引号后的内容
+\2: 表示第二对括号里面的内容
+括号里的表达式匹配的内容，可以用\1，\2等进行引用，第n个括号对内的内容，就用\n引用。
+这个命令的意思是：
+用\2代表的第二个括号的内容（\(call sp_.*;\)）去替换整个字符串，这样就得到了我们所需要的子字符串了。
+
+grep和sed合并起来使用就是grep "call sp_" dbxLog.txt|sed 's/\(.*\)\(call sp_.*;\)\(.*\)/\2/g' > wsf.txt
+得到配置文件。
+
+注意：需要把文件编码修改为utf-8然后再提取配置，否则linux无法辨别中文字符导致字符串提取执行失败。
+
+# 正则表达式提取字符串"()"小括号表示里面是提取的匹配字符串
+import re
+s = r"[10:14:22] DBInterfaceMysql::Query p_dbInterfaceID(call sp_UpdateFactionMemberInfo(115, 4668, 'memberHistoryMoney', '', 0);)."
+re.findall(r"(call sp.+?;)",s)
+输出：["call sp_UpdateFactionMemberInfo(115, 4668, 'memberHistoryMoney', '', 0);"]
+
+
+
+登陆用例：
+message = dbx_build_msg.default_sp_message("sp_Login", sort="usn,pwd,offTime", others={"usn": "xxt", "pwd": "1", "offTime": 1})
+
+下线用例：
+call sp_UpdatePlayer('IntradayFactionContribute', 0, '', 0, 5013);
+call sp_UpdatePlayerAttrBatch(16, '43,1560,44,1935,', 2);
+call sp_UpdatePlayerBatch(16, 10, 183, 159, 30, 10, 11021, 23510, 0, 0, 0, '{1,1}', 3, 6);
+call sp_ItemSaveEx(5050, 1, '1032021-1-1-1-1-1-0-0-nil-');
+call sp_EquipSave(5051, 1, '2001095-1-3-1-8-0-4996-nil-{{80, 2}, {63, 7}}-{{17, 1, 0}, {18, 1, 0}, {19, 1, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}-{{46, 50}, {49, 50}}-nil-1-');
+call sp_updateItem(5043, 3, '833696-1-1-1-9-1-0-0-nil-833695-5-1-1-10-1-0-0-nil-833694-5-1-1-11-1-0-0-nil-');
+call sp_updateEquip(5043, 2, '272185-1-1-1-2-0-5000-nil-{{63, 11}, {49, 76}}-{{17, 1, 0}, {18, 1, 0}, {19, 1, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}-{{46, 50}, {49, 50}}-nil-1-272182-1-1-1-3-0-5000-nil-{{60, 11}, {46, 76}}-{{17, 1, 0}, {18, 1, 0}, {19, 1, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}-{{46, 50}, {49, 50}}-nil-1-');
+call sp_DeleteItem(5043, 5, '0-0-0-0-0-');
+
+message = dbx_build_msg.default_sp_message("sp_Login", sort="usn,pwd,offTime", others={"usn": "xxt", "pwd": "1", "offTime": 1})
