@@ -246,11 +246,11 @@ def exec_sp(*args):
 	print("params =", params)
 	message = dbx_build_msg.default_sp_message(sp_name, database, sort, params)
 	
-	if showMsg:
-		showMessage(message)
+	showMessage(message)
 	
 	c = client.Client()
 	c.connect(host, port)
+	print("message m_bNeedCallback %i" % message.m_bNeedCallback)
 	c.send(message.getIOBytes())
 	c.recvMessage(on_exec_sp_recv, 3)
 

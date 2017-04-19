@@ -19,6 +19,7 @@ class Test:
 		self.message = message
 		self.expectSuccess = expectSuccess
 		self.connector = client.Client()
+		print("message m_bNeedCallback %i" % message.m_bNeedCallback)
 
 	def test(self):
 		self.connector.connect(self.host, int(self.port))
@@ -109,7 +110,7 @@ def test_all(*args):
 	Usage: test_all [-h 172.16.2.230] [-p 3010] 
 	"""
 	host = "172.16.2.230"
-	port = 3010
+	port = 3002
 	
 	connect_args = []
 	index = -1

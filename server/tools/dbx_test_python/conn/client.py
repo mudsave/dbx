@@ -95,7 +95,7 @@ class Client:
 		
 		return msgReady
 		
-	def recvMessage(self, callbackFunc, timeout = 3.0, showLog = True):
+	def recvMessage(self, callbackFunc, timeout = 3.0, blockTime = 1.0):
 		XDebug.DEBUG_MSG("Client %s receiving message ..." % self._socket.fileno())
 		
 		self._recvbuffer = b""
@@ -105,7 +105,8 @@ class Client:
 		
 		self._status = STATUS_RECVING
 		while True:
-			rlist, wlist, xlist = select.select(rl, [], [], 1.0)
+			rlist, wlist, xlist = select.select(rl, [], [], blockTime)
+			#print("rlist, wlist, xlist", rlist, wlist, xlist)
 			if rlist:
 				XDebug.DEBUG_MSG("Client %s begin receive." % rlist)
 				msg = self._socket.recv( 4096 )
@@ -114,6 +115,7 @@ class Client:
 					return
 			
 				ms = self.parseMessage( msg )
+				#print("for m in ms:len(ms)", len(ms))
 				for m in ms:
 					callbackFunc( m )
 				
