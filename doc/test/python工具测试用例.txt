@@ -1,14 +1,15 @@
-call sp_Login('testfight', '1', 5);
-
-
+1. python工具命令
 # 使用exec_sp调用某个存储过程：call sp_Login('xxt', '1', 1); 
 python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py exec_sp -h 172.16.2.230 -p 3002 -m sp_Login sort="usn,pwd,offTime" usn='xxt' pwd=1 offTime=1
 
 # 测试stress_test
-python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py stress_test -h 172.16.2.230 -p 3002
+python E:\workfor3\dbx_bitbucket\server\tools\dbx_test_python\main.py stress_test -h 172.16.2.230 -p 3002 -z 20
 
-# 从dbx日志中提取测试用例
+
+2. 从dbx日志中提取测试用例
 grep  "call sp_" dbxLog.txt > wsf.txt
+grep和sed合并起来使用就是grep "call sp_" dbxLog.txt|sed 's/\(.*\)\(call sp_.*;\)\(.*\)/\2/g' > wsf.txt
+得到配置文件。注意：需要把文件编码修改为utf-8然后再提取配置，否则linux无法辨别中文字符导致字符串提取执行失败。
 
 echo "[10:14:22] DBInterfaceMysql::Query p_dbInterfaceID(call sp_UpdateFactionMemberInfo(115, 4668, 'memberHistoryMoney', '', 0);)." | sed 's/\(.*\)\(call sp_.*;\)\(.*\)/\2/g'
 命令解释
@@ -21,20 +22,17 @@ s： 表示替换命令
 这个命令的意思是：
 用\2代表的第二个括号的内容（\(call sp_.*;\)）去替换整个字符串，这样就得到了我们所需要的子字符串了。
 
-grep和sed合并起来使用就是grep "call sp_" dbxLog.txt|sed 's/\(.*\)\(call sp_.*;\)\(.*\)/\2/g' > wsf.txt
-得到配置文件。
-
-注意：需要把文件编码修改为utf-8然后再提取配置，否则linux无法辨别中文字符导致字符串提取执行失败。
-
 # 正则表达式提取字符串"()"小括号表示里面是提取的匹配字符串
 import re
 s = r"[10:14:22] DBInterfaceMysql::Query p_dbInterfaceID(call sp_UpdateFactionMemberInfo(115, 4668, 'memberHistoryMoney', '', 0);)."
 re.findall(r"(call sp.+?;)",s)
 输出：["call sp_UpdateFactionMemberInfo(115, 4668, 'memberHistoryMoney', '', 0);"]
 
+# re.findall(r"call sp(.+?);",s)是提取call sp和;字符之间的字符串。
 
-
+3. 测试用例
 登陆用例：
+call sp_Login('testfight', '1', 5);
 message = dbx_build_msg.default_sp_message("sp_Login", sort="usn,pwd,offTime", others={"usn": "xxt", "pwd": "1", "offTime": 1})
 
 下线用例：
