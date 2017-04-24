@@ -19,7 +19,7 @@ import os
 @operation.resgisterOperation("stress_test")
 def stress_test(*args):
 	"""
-	use case: python main.py stress_test [-h 172.16.2.230] [-p 3002] [-t 10] [-z 10]
+	use case: python main.py stress_test [-h 172.16.2.230] [-p 3002] [-t 10] [-z 10] [-c 0]
 	"""
 	print("stress_test args:", args)
 
@@ -27,6 +27,7 @@ def stress_test(*args):
 	port = 3002
 	interval = 0
 	hz = 10
+	count = 0
 
 	skip_next = False
 	index = -1
@@ -49,15 +50,22 @@ def stress_test(*args):
 		elif arg == "-z":
 			hz = int(args[index+1])
 			skip_next = True
+		elif arg == "-c":
+			count = int(args[index+1])
+			skip_next = True
 		else:
 			print("stress_test command::garbage arg:", arg)
 
 	print("connect info:", host, port)
 
 	pool = Pool()
-	for i in range(multiprocessing.cpu_count()):
+	progressNum = multiprocessing.cpu_count()
+	if count > 0:
+		count = int(count/progressNum)
+
+	for i in range(progressNum):
 		c = DBXClient(host, port)
-		pool.apply_async(c.run, args=(interval, hz))
+		pool.apply_async(c.run, args=(interval, hz, count))
 	print('Waiting for all subprocesses done...')
 
 	while True:
@@ -83,24 +91,28 @@ class DBXClient:
 		self.timeInterval = 0
 		self.startTime = 0
 		self.isDestroyed = False
+		self.maxQueryNum = 0
+		self.currQueryNum = 0
 
 	def setDestroyed(self):
 		print("%s setDestroyed..." % os.getpid())
 		self.isDestroyed = True
 
-	def run(self, p_timeInterval = 0, p_hz = 1):
-		print("%s start..." % os.getpid())
+	def run(self, p_timeInterval = 0, p_hz = 1, maxQueryNum = 0):
+		print("%s start...max query number(%i)." % (os.getpid(), maxQueryNum))
 		self.timeInterval = p_timeInterval
 		self.sendHZ = p_hz
 		self.startTime = time.time()
 		self.connector.connect(self.host, int(self.port))
+		self.maxQueryNum = maxQueryNum
 		while self.isDestroyed != True:
 			startTime = time.time()
 			self.send()
 			self.recv()
+			print("%s run-------------------------------->>>passtime(%f),currQueryNum(%i)." % (os.getpid(), time.time() - startTime, self.currQueryNum))
 			if self.check() == False:
 				break
-			print("%s run---------------------------------------passtime(%f)." % (os.getpid(), time.time() - startTime))
+			
 
 	def getQueryNum(self):
 		self.currentQueryOrder = (self.currentQueryOrder + 1) % 0x7FFFFFFF
@@ -113,6 +125,7 @@ class DBXClient:
 				self.callbacks[message.m_nTempObjId] = QueryResult(time.time(), message.m_nTempObjId)
 				#print( "DBXClient send %i." % ( message.m_nTempObjId ) )
 				self.connector.send(message.getIOBytes())
+			self.currQueryNum += 1
 
 	def recv(self):
 		self.connector.recvMessage(self.onRecv, 0.1)
@@ -121,6 +134,11 @@ class DBXClient:
 		if self.timeInterval > 0 and time.time() - self.startTime > self.timeInterval:
 			self.close()
 			return False
+
+		if self.maxQueryNum > 0 and self.currQueryNum > self.maxQueryNum:
+			self.close()
+			return False
+
 		return True
 
 	def reset(self):
