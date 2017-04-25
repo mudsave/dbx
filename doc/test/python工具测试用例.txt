@@ -46,3 +46,28 @@ call sp_updateEquip(5043, 2, '272185-1-1-1-2-0-5000-nil-{{63, 11}, {49, 76}}-{{1
 call sp_DeleteItem(5043, 5, '0-0-0-0-0-');
 
 message = dbx_build_msg.default_sp_message("sp_Login", sort="usn,pwd,offTime", others={"usn": "xxt", "pwd": "1", "offTime": 1})
+
+
+4. 测试问题处理：  
+- 直接kill -9杀掉dbx导致连接没有正确关闭，因此后续无法连接dbx。还是需要正常关闭。  
+`show processlist;`
+如果是root帐号，你能看到所有用户的当前连接。如果是其它普通帐号，只能看到自己占用的连接。`show processlist;`只列出前100条，如果想全列出请使用`show full processlist;`  
+
+补救方法，在linxu关闭用户为`unauthenticated`的连接，这个会导致关闭其它ip的连接，不可取:  
+`for i in $(mysql -h172.16.2.218 -uroot -plinux3 -se "show processlist" | awk '{if($2=="unauthenticated")print $1}');do mysql -h172.16.2.218 -uroot -plinux3 -e "kill $i";done`
+
+关闭所有172.16.2.230的连接，
+使用grep过滤出所有172.16.2.230的行
+mysql -h172.16.2.218 -uroot -plinux3 -e "show processlist;"|grep 172.16.2.230|awk '{print $1}';do mysql -h172.16.2.218 -uroot -plinux3 -e "kill $i";done
+使用awk匹配172.16.2.230则是这样：
+mysql -h172.16.2.218 -uroot -plinux3 -e "show processlist;" | awk '{if($3~/172.16.2.230/)print $1}';do mysql -h172.16.2.218 -uroot -plinux3 -e "kill $i";done
+
+5. 
+shell命令中，$i则表示整行文本。对于for循环，需要用do和done来开始和结束。
+
+awk命令用于按列处理文本，用法：
+1. -F指定分隔符，不指定则默认空格和Tab。例如使用":"分隔符，格式为-F:。  
+2. 分割文本后，可以$1,$2...等方式获得每一列文本。awk也是对每一行进行列处理的。  
+3. 除了命令选项，还可以对文本进行处理，使用单引号和{}把处理指令包含起来。  
+4. 模糊匹配：awk '{if($3~/172.16.2.230/)print $3}'，模糊匹配含有172.16.2.230的项。正则表达式需要用`//`包含起来，例如/*172.16.2.230/  
+

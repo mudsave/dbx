@@ -19,7 +19,6 @@ class Test:
 		self.message = message
 		self.expectSuccess = expectSuccess
 		self.connector = client.Client()
-		print("message m_bNeedCallback %i" % message.m_bNeedCallback)
 
 	def test(self):
 		self.connector.connect(self.host, int(self.port))
