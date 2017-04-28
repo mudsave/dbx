@@ -52,7 +52,8 @@ function EntityFactory:createPlayer(roleId, gatewayId, hClientLink, hGateLink)
 	player:addHandler(HandlerDef_Mine,MineHandler(player))
 	player:addHandler(HandlerDef_Activity, ActivityHandler(player))
 	player:addHandler(HandlerDef_Faction, FactionHandler(player))
-
+	player:addHandler(HandlerDef_Mix, MixHandler(player))
+	
 	return player
 end
 
@@ -95,24 +96,31 @@ function EntityFactory:createDynamicNpc(dbID)
 	return npc
 end
 
+-- 创建宠物
+function EntityFactory:createRawPet()
+	local pet = Pet()
+	pet:setPeer(CoEntity:Create(eLogicPet, eClsTypePet))
+	pet:setEntityType(eLogicPet)
+
+	pet:addHandler(HandlerDef_Move, MoveHandler(pet))
+	pet:addHandler(HandlerDef_PetSkill,PetSkillHandler(pet))
+	pet:addHandler(HandlerDef_AutoPoint,AutoPointHandler(pet))
+
+	g_entityMgr:addPet(pet)
+	return pet
+end
+
+-- 通过配置ID创建宠物
 function EntityFactory:createPet(configID)
-	if not configID or not PetDB[configID] then
-		print ("ERROR: can not get pet config data", configID)
+	if not PetDB[configID] then
+		print("找不到该配置ID对应的宠物", configID)
 		return nil
 	end
 
-	local pet = Pet()
-
-	pet:setPeer(CoEntity:Create(eLogicPet, eClsTypePet))
+	local pet = self:createRawPet()
 	pet:onCreate(configID)
-	pet:setEntityType(eLogicPet)
-
-	local skillHandler = PetSkillHandler(pet)
-	skillHandler:initDefault()
-	pet:addHandler(HandlerDef_Move, MoveHandler(pet))
-	pet:addHandler(HandlerDef_PetSkill, skillHandler)
-	pet:addHandler(HandlerDef_AutoPoint,AutoPointHandler(pet))
-	g_entityMgr:addPet(pet)
+	pet:getHandler(HandlerDef_PetSkill):initDefault()
+	pet:getHandler(HandlerDef_AutoPoint):init(pet,nil)
 	
 	return pet
 end

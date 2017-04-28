@@ -223,6 +223,21 @@ function TradeManager:ptoNSellGoods(player, itemGuid, itemNum, moveItemInfo)
 					local money = saleMoneyNum * itemNum
 					self:sendTradeMessage(player, 12, money,itemNum,itemID)
 					player:flushPropBatch()
+				elseif saleMoneyType == ItemPriceType.FacContrib then
+					money = player:getFactionMoney() + saleMoneyNum*itemNum
+					player:setFactionMoney(money)
+					--之后可能要发消息给客户端做一些提示处理
+					local money = saleMoneyNum * itemNum
+					self:sendTradeMessage(player, 21, money,itemNum,itemID)
+
+					--更新社会服帮贡
+					local event_FactionContribManage = Event.getEvent(
+							FactionEvent_CB_UpdateFactionMemberInfo,player:getFactionDBID(),player:getDBID(),1,
+							{name = "memberMoney",value = player:getFactionMoney()}
+						)
+					g_eventMgr:fireWorldsEvent(event_FactionContribManage,SocialWorldID)
+
+					player:flushPropBatch()
 				end			
 			else
 				self:sendTradeMessage(player, result)
@@ -249,7 +264,7 @@ function TradeManager:getItemPrice(itemID)
 end
 
 --服务器处理玩家和Npc货架买东西
-function TradeManager:ptoNBuyGoods(player, itemID, itemNum, npcPackID)
+function TradeManager:ptoNBuyGoods(player, itemID, itemNum, npcPackID,curSelectIndex)
 	local packetHandler = player:getHandler(HandlerDef_Packet)
 	local emptyGrids = packetHandler:getPacketEmptyGridsNum(PacketPackType.Normal)
 	local orderItemNum = packetHandler:getNumByItemID(itemID) 
@@ -278,13 +293,20 @@ function TradeManager:ptoNBuyGoods(player, itemID, itemNum, npcPackID)
 		else
 			-- 获取购买类型
 			local buyPriceType = NpcPackDB[npcPackID].buyPriceType
-			local buyPrice = P2NTrade_Multiple * saleMoney
+			local buyPrice = 0 
+			if curSelectIndex then
+				buyPrice = NpcPackDB[npcPackID].items[curSelectIndex].buyPrice
+			else
+				buyPrice = P2NTrade_Multiple * itemConfig.SaleMoneyNum
+			end
 			-- 留下金钱处理接口
 			local totalPrice = buyPrice*itemNum
 			local playerMoney = player:getMoney()
+			local playerFacContrib = player:getFactionMoney()
 			local playerSubMoney = player:getSubMoney()
 			local costSubMoney =0
 			local costMoney = 0
+			local costFacContrib = 0
 			
 			if buyPriceType == ItemPriceType.Money then
 				if playerMoney >= totalPrice then
@@ -295,6 +317,13 @@ function TradeManager:ptoNBuyGoods(player, itemID, itemNum, npcPackID)
 					return
 				end
 			elseif buyPriceType == ItemPriceType.FacContrib then
+
+				if playerFacContrib >= totalPrice then
+					costFacContrib = totalPrice
+				else
+					self:sendTradeMessage(player, 19)
+					return
+				end
 
 			elseif buyPriceType == ItemPriceType.BindMoney then
 				-- 支付方式是绑银
@@ -371,20 +400,34 @@ function TradeManager:ptoNBuyGoods(player, itemID, itemNum, npcPackID)
 		local costPrice = buyPrice*itemNum
 		if costMoney > 0 then 
 			costMoney = costPrice
-		else 
+		elseif costSubMoney > 0 then 
 			costSubMoney = costPrice
+		elseif costFacContrib > 0 then
+			costFacContrib = costPrice
 		end
 		player:setMoney(player:getMoney()-costMoney)
 		player:setSubMoney(player:getSubMoney()-costSubMoney)
+		player:setFactionMoney(player:getFactionMoney() - costFacContrib)
+		--更新社会服帮贡
+		local event_FactionContribManage = Event.getEvent(
+                FactionEvent_CB_UpdateFactionMemberInfo,player:getFactionDBID(),player:getDBID(),1,
+                {name = "memberMoney",value = player:getFactionMoney()}
+            )
+        g_eventMgr:fireWorldsEvent(event_FactionContribManage,SocialWorldID)
+
+
 		player:flushPropBatch()
 		--最后可能要发一个消息给客户端做提示	
 		if costSubMoney > 0 then
-				self:sendTradeMessage(player, 1, costSubMoney,itemNum,itemID)
-			end
+			self:sendTradeMessage(player, 1, costSubMoney,itemNum,itemID)
+		end
 
-			if costMoney > 0 then
-				self:sendTradeMessage(player, 2, costMoney,itemNum,itemID)
-			end
+		if costMoney > 0 then
+			self:sendTradeMessage(player, 2, costMoney,itemNum,itemID)
+		end
+		if costFacContrib > 0 then
+			self:sendTradeMessage(player, 20, costFacContrib,itemNum,itemID)
+		end
 		end
 	end
 end

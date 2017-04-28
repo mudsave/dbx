@@ -20,7 +20,7 @@ function Triggers.RecetiveTask(roleID, param, task, fromDB)
 	if param.taskID then
 		if type(param.taskIDs) == "table" then
 			for _,taskID in pairs(param.taskIDs) do
-				if TaskCondition.normalTask(player, taskID) then
+				if TaskCondition.normalTask(player, taskID) or TaskCondition.guideTask(player, taskID) then
 					RecetiveTaskID = taskID
 					break
 				end
@@ -47,7 +47,7 @@ function Triggers.finishTask(roleID, param, task, fromDB)
 			recetiveTaskID = param.recetiveTaskID
 		elseif type(param.recetiveTaskID) == "table" then
 			for _,taskID in pairs(param.recetiveTaskID) do
-				if TaskCondition.normalTask(player, taskID) then
+				if TaskCondition.normalTask(player, taskID) or TaskCondition.guideTask(player, taskID) then
 					recetiveTaskID = taskID
 					break
 				end

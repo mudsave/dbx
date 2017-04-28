@@ -1514,13 +1514,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61301, scriptID = 10015, mapID = 1101, x = 30, y = 34},
-				{npcID = 61302, scriptID = 10015, mapID = 1101, x = 24, y = 31},
-				{npcID = 61303, scriptID = 10016, mapID = 1101, x = 22, y = 24},
-				{npcID = 61304, scriptID = 10015, mapID = 1101, x = 26, y = 15},
-				{npcID = 61305, scriptID = 10016, mapID = 1101, x = 33, y = 15},
-				{npcID = 61306, scriptID = 10015, mapID = 1101, x = 39, y = 21},
-				{npcID = 61607, scriptID = 10016, mapID = 1101, x = 36, y = 34},
+				{npcID = 61301, scriptID = 10701, mapID = 1101, x = 30, y = 34},
+				{npcID = 61302, scriptID = 10702, mapID = 1101, x = 24, y = 31},
+				{npcID = 61303, scriptID = 10703, mapID = 1101, x = 22, y = 24},
+				{npcID = 61304, scriptID = 10704, mapID = 1101, x = 26, y = 15},
+				{npcID = 61305, scriptID = 10705, mapID = 1101, x = 33, y = 15},
+				{npcID = 61306, scriptID = 10706, mapID = 1101, x = 39, y = 21},
+				{npcID = 61307, scriptID = 10707, mapID = 1101, x = 36, y = 34},
 			},
 		},
 		[102] =
@@ -1529,13 +1529,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61309, scriptID = 10015, mapID = 1102, x = 30, y = 34},
-				{npcID = 61310, scriptID = 10015, mapID = 1102, x = 24, y = 31},
-				{npcID = 61311, scriptID = 10016, mapID = 1102, x = 22, y = 24},
-				{npcID = 61312, scriptID = 10015, mapID = 1102, x = 26, y = 15},
-				{npcID = 61313, scriptID = 10016, mapID = 1102, x = 33, y = 15},
-				{npcID = 61314, scriptID = 10015, mapID = 1102, x = 39, y = 21},
-				{npcID = 61315, scriptID = 10016, mapID = 1102, x = 36, y = 34},
+				{npcID = 61309, scriptID = 10708, mapID = 1102, x = 30, y = 34},
+				{npcID = 61310, scriptID = 10709, mapID = 1102, x = 24, y = 31},
+				{npcID = 61311, scriptID = 10710, mapID = 1102, x = 22, y = 24},
+				{npcID = 61312, scriptID = 10711, mapID = 1102, x = 26, y = 15},
+				{npcID = 61313, scriptID = 10712, mapID = 1102, x = 33, y = 15},
+				{npcID = 61314, scriptID = 10713, mapID = 1102, x = 39, y = 21},
+				{npcID = 61315, scriptID = 10714, mapID = 1102, x = 36, y = 34},
 			},
 		},
 		[103] =
@@ -1544,13 +1544,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61317, scriptID = 10015, mapID = 1103, x = 30, y = 34},
-				{npcID = 61318, scriptID = 10015, mapID = 1103, x = 24, y = 31},
-				{npcID = 61319, scriptID = 10016, mapID = 1103, x = 22, y = 24},
-				{npcID = 61320, scriptID = 10015, mapID = 1103, x = 26, y = 15},
-				{npcID = 61321, scriptID = 10016, mapID = 1103, x = 33, y = 15},
-				{npcID = 61322, scriptID = 10015, mapID = 1103, x = 39, y = 21},
-				{npcID = 61323, scriptID = 10016, mapID = 1103, x = 36, y = 34},
+				{npcID = 61317, scriptID = 10715, mapID = 1103, x = 30, y = 34},
+				{npcID = 61318, scriptID = 10716, mapID = 1103, x = 24, y = 31},
+				{npcID = 61319, scriptID = 10717, mapID = 1103, x = 22, y = 24},
+				{npcID = 61320, scriptID = 10718, mapID = 1103, x = 26, y = 15},
+				{npcID = 61321, scriptID = 10719, mapID = 1103, x = 33, y = 15},
+				{npcID = 61322, scriptID = 10720, mapID = 1103, x = 39, y = 21},
+				{npcID = 61323, scriptID = 10721, mapID = 1103, x = 36, y = 34},
 			},
 		},
 		[104] =
@@ -1559,13 +1559,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61325, scriptID = 10015, mapID = 1104, x = 30, y = 34},
-				{npcID = 61326, scriptID = 10015, mapID = 1104, x = 24, y = 31},
-				{npcID = 61327, scriptID = 10016, mapID = 1104, x = 22, y = 24},
-				{npcID = 61328, scriptID = 10015, mapID = 1104, x = 26, y = 15},
-				{npcID = 61329, scriptID = 10016, mapID = 1104, x = 33, y = 15},
-				{npcID = 61330, scriptID = 10015, mapID = 1104, x = 39, y = 21},
-				{npcID = 60631, scriptID = 10016, mapID = 1104, x = 36, y = 34},
+				{npcID = 61325, scriptID = 10722, mapID = 1104, x = 30, y = 34},
+				{npcID = 61326, scriptID = 10723, mapID = 1104, x = 24, y = 31},
+				{npcID = 61327, scriptID = 10724, mapID = 1104, x = 22, y = 24},
+				{npcID = 61328, scriptID = 10725, mapID = 1104, x = 26, y = 15},
+				{npcID = 61329, scriptID = 10726, mapID = 1104, x = 33, y = 15},
+				{npcID = 61330, scriptID = 10727, mapID = 1104, x = 39, y = 21},
+				{npcID = 60631, scriptID = 10728, mapID = 1104, x = 36, y = 34},
 			},
 		},
 		[105] =
@@ -1574,13 +1574,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61333, scriptID = 10015, mapID = 1105, x = 30, y = 34},
-				{npcID = 61334, scriptID = 10015, mapID = 1105, x = 24, y = 31},
-				{npcID = 61335, scriptID = 10016, mapID = 1105, x = 22, y = 24},
-				{npcID = 61336, scriptID = 10015, mapID = 1105, x = 26, y = 15},
-				{npcID = 61337, scriptID = 10016, mapID = 1105, x = 33, y = 15},
-				{npcID = 61338, scriptID = 10015, mapID = 1105, x = 39, y = 21},
-				{npcID = 61339, scriptID = 10016, mapID = 1105, x = 36, y = 34},
+				{npcID = 61333, scriptID = 10729, mapID = 1105, x = 30, y = 34},
+				{npcID = 61334, scriptID = 10730, mapID = 1105, x = 24, y = 31},
+				{npcID = 61335, scriptID = 10731, mapID = 1105, x = 22, y = 24},
+				{npcID = 61336, scriptID = 10732, mapID = 1105, x = 26, y = 15},
+				{npcID = 61337, scriptID = 10733, mapID = 1105, x = 33, y = 15},
+				{npcID = 61338, scriptID = 10734, mapID = 1105, x = 39, y = 21},
+				{npcID = 61339, scriptID = 10735, mapID = 1105, x = 36, y = 34},
 			},
 		},
 		[106] =
@@ -1589,13 +1589,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61341, scriptID = 10015, mapID = 1106, x = 30, y = 34},
-				{npcID = 61342, scriptID = 10015, mapID = 1106, x = 24, y = 31},
-				{npcID = 61343, scriptID = 10016, mapID = 1106, x = 22, y = 24},
-				{npcID = 61344, scriptID = 10015, mapID = 1106, x = 26, y = 15},
-				{npcID = 61345, scriptID = 10016, mapID = 1106, x = 33, y = 15},
-				{npcID = 61346, scriptID = 10015, mapID = 1106, x = 39, y = 21},
-				{npcID = 61347, scriptID = 10016, mapID = 1106, x = 36, y = 34},
+				{npcID = 61341, scriptID = 10736, mapID = 1106, x = 30, y = 34},
+				{npcID = 61342, scriptID = 10737, mapID = 1106, x = 24, y = 31},
+				{npcID = 61343, scriptID = 10738, mapID = 1106, x = 22, y = 24},
+				{npcID = 61344, scriptID = 10739, mapID = 1106, x = 26, y = 15},
+				{npcID = 61345, scriptID = 10740, mapID = 1106, x = 33, y = 15},
+				{npcID = 61346, scriptID = 10741, mapID = 1106, x = 39, y = 21},
+				{npcID = 61347, scriptID = 10742, mapID = 1106, x = 36, y = 34},
 			},
 		},
 		[107] =
@@ -1604,13 +1604,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61349, scriptID = 10015, mapID = 1107, x = 30, y = 34},
-				{npcID = 61350, scriptID = 10015, mapID = 1107, x = 24, y = 31},
-				{npcID = 61351, scriptID = 10016, mapID = 1107, x = 22, y = 24},
-				{npcID = 61352, scriptID = 10015, mapID = 1107, x = 26, y = 15},
-				{npcID = 61353, scriptID = 10016, mapID = 1107, x = 33, y = 15},
-				{npcID = 61354, scriptID = 10015, mapID = 1107, x = 39, y = 21},
-				{npcID = 61355, scriptID = 10016, mapID = 1107, x = 36, y = 34},
+				{npcID = 61349, scriptID = 10743, mapID = 1107, x = 30, y = 34},
+				{npcID = 61350, scriptID = 10744, mapID = 1107, x = 24, y = 31},
+				{npcID = 61351, scriptID = 10745, mapID = 1107, x = 22, y = 24},
+				{npcID = 61352, scriptID = 10746, mapID = 1107, x = 26, y = 15},
+				{npcID = 61353, scriptID = 10747, mapID = 1107, x = 33, y = 15},
+				{npcID = 61354, scriptID = 10748, mapID = 1107, x = 39, y = 21},
+				{npcID = 61355, scriptID = 10749, mapID = 1107, x = 36, y = 34},
 			},
 		},
 		[108] =
@@ -1619,13 +1619,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61357, scriptID = 10015, mapID = 1108, x = 30, y = 34},
-				{npcID = 61358, scriptID = 10015, mapID = 1108, x = 24, y = 31},
-				{npcID = 61359, scriptID = 10016, mapID = 1108, x = 22, y = 24},
-				{npcID = 61360, scriptID = 10015, mapID = 1108, x = 26, y = 15},
-				{npcID = 61361, scriptID = 10016, mapID = 1108, x = 33, y = 15},
-				{npcID = 61362, scriptID = 10015, mapID = 1108, x = 39, y = 21},
-				{npcID = 61363, scriptID = 10016, mapID = 1108, x = 36, y = 34},
+				{npcID = 61357, scriptID = 10750, mapID = 1108, x = 30, y = 34},
+				{npcID = 61358, scriptID = 10751, mapID = 1108, x = 24, y = 31},
+				{npcID = 61359, scriptID = 10752, mapID = 1108, x = 22, y = 24},
+				{npcID = 61360, scriptID = 10723, mapID = 1108, x = 26, y = 15},
+				{npcID = 61361, scriptID = 10754, mapID = 1108, x = 33, y = 15},
+				{npcID = 61362, scriptID = 10755, mapID = 1108, x = 39, y = 21},
+				{npcID = 61363, scriptID = 10756, mapID = 1108, x = 36, y = 34},
 			},
 		},
 		[109] =
@@ -1634,13 +1634,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61365, scriptID = 10015, mapID = 1109, x = 30, y = 34},
-				{npcID = 61366, scriptID = 10015, mapID = 1109, x = 24, y = 31},
-				{npcID = 61367, scriptID = 10016, mapID = 1109, x = 22, y = 24},
-				{npcID = 61368, scriptID = 10015, mapID = 1109, x = 26, y = 15},
-				{npcID = 61369, scriptID = 10016, mapID = 1109, x = 33, y = 15},
-				{npcID = 61370, scriptID = 10015, mapID = 1109, x = 39, y = 21},
-				{npcID = 61371, scriptID = 10016, mapID = 1109, x = 36, y = 34},
+				{npcID = 61365, scriptID = 10757, mapID = 1109, x = 30, y = 34},
+				{npcID = 61366, scriptID = 10758, mapID = 1109, x = 24, y = 31},
+				{npcID = 61367, scriptID = 10759, mapID = 1109, x = 22, y = 24},
+				{npcID = 61368, scriptID = 10760, mapID = 1109, x = 26, y = 15},
+				{npcID = 61369, scriptID = 10761, mapID = 1109, x = 33, y = 15},
+				{npcID = 61370, scriptID = 10762, mapID = 1109, x = 39, y = 21},
+				{npcID = 61371, scriptID = 10763, mapID = 1109, x = 36, y = 34},
 			},
 		},
 		[110] =
@@ -1649,13 +1649,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61373, scriptID = 10015, mapID = 1110, x = 30, y = 34},
-				{npcID = 61374, scriptID = 10015, mapID = 1110, x = 24, y = 31},
-				{npcID = 61375, scriptID = 10016, mapID = 1110, x = 22, y = 24},
-				{npcID = 61376, scriptID = 10015, mapID = 1110, x = 26, y = 15},
-				{npcID = 61377, scriptID = 10016, mapID = 1110, x = 33, y = 15},
-				{npcID = 61378, scriptID = 10015, mapID = 1110, x = 39, y = 21},
-				{npcID = 61379, scriptID = 10016, mapID = 1110, x = 36, y = 34},
+				{npcID = 61373, scriptID = 10764, mapID = 1110, x = 30, y = 34},
+				{npcID = 61374, scriptID = 10765, mapID = 1110, x = 24, y = 31},
+				{npcID = 61375, scriptID = 10766, mapID = 1110, x = 22, y = 24},
+				{npcID = 61376, scriptID = 10767, mapID = 1110, x = 26, y = 15},
+				{npcID = 61377, scriptID = 10768, mapID = 1110, x = 33, y = 15},
+				{npcID = 61378, scriptID = 10769, mapID = 1110, x = 39, y = 21},
+				{npcID = 61379, scriptID = 10770, mapID = 1110, x = 36, y = 34},
 			},
 		},
 		[111] =
@@ -1664,13 +1664,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61381, scriptID = 10015, mapID = 1111, x = 30, y = 34},
-				{npcID = 61382, scriptID = 10015, mapID = 1111, x = 24, y = 31},
-				{npcID = 61383, scriptID = 10016, mapID = 1111, x = 22, y = 24},
-				{npcID = 61384, scriptID = 10015, mapID = 1111, x = 26, y = 15},
-				{npcID = 61385, scriptID = 10016, mapID = 1111, x = 33, y = 15},
-				{npcID = 61386, scriptID = 10015, mapID = 1111, x = 39, y = 21},
-				{npcID = 61387, scriptID = 10016, mapID = 1111, x = 36, y = 34},
+				{npcID = 61381, scriptID = 10771, mapID = 1111, x = 30, y = 34},
+				{npcID = 61382, scriptID = 10772, mapID = 1111, x = 24, y = 31},
+				{npcID = 61383, scriptID = 10773, mapID = 1111, x = 22, y = 24},
+				{npcID = 61384, scriptID = 10774, mapID = 1111, x = 26, y = 15},
+				{npcID = 61385, scriptID = 10775, mapID = 1111, x = 33, y = 15},
+				{npcID = 61386, scriptID = 10776, mapID = 1111, x = 39, y = 21},
+				{npcID = 61387, scriptID = 10777, mapID = 1111, x = 36, y = 34},
 			},
 		},
 		[112] =
@@ -1679,13 +1679,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61389, scriptID = 10015, mapID = 1112, x = 30, y = 34},
-				{npcID = 61390, scriptID = 10015, mapID = 1112, x = 24, y = 31},
-				{npcID = 61391, scriptID = 10016, mapID = 1112, x = 22, y = 24},
-				{npcID = 61392, scriptID = 10015, mapID = 1112, x = 26, y = 15},
-				{npcID = 61393, scriptID = 10016, mapID = 1112, x = 33, y = 15},
-				{npcID = 61394, scriptID = 10015, mapID = 1112, x = 39, y = 21},
-				{npcID = 61395, scriptID = 10016, mapID = 1112, x = 36, y = 34},
+				{npcID = 61389, scriptID = 10778, mapID = 1112, x = 30, y = 34},
+				{npcID = 61390, scriptID = 10779, mapID = 1112, x = 24, y = 31},
+				{npcID = 61391, scriptID = 10780, mapID = 1112, x = 22, y = 24},
+				{npcID = 61392, scriptID = 10781, mapID = 1112, x = 26, y = 15},
+				{npcID = 61393, scriptID = 10782, mapID = 1112, x = 33, y = 15},
+				{npcID = 61394, scriptID = 10783, mapID = 1112, x = 39, y = 21},
+				{npcID = 61395, scriptID = 10784, mapID = 1112, x = 36, y = 34},
 			},
 		},
 		[113] =
@@ -1694,13 +1694,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61397, scriptID = 10015, mapID = 1113, x = 30, y = 34},
-				{npcID = 61398, scriptID = 10015, mapID = 1113, x = 24, y = 31},
-				{npcID = 61399, scriptID = 10016, mapID = 1113, x = 22, y = 24},
-				{npcID = 61400, scriptID = 10015, mapID = 1113, x = 26, y = 15},
-				{npcID = 61401, scriptID = 10016, mapID = 1113, x = 33, y = 15},
-				{npcID = 61402, scriptID = 10015, mapID = 1113, x = 39, y = 21},
-				{npcID = 61403, scriptID = 10016, mapID = 1113, x = 36, y = 34},
+				{npcID = 61397, scriptID = 10785, mapID = 1113, x = 30, y = 34},
+				{npcID = 61398, scriptID = 10786, mapID = 1113, x = 24, y = 31},
+				{npcID = 61399, scriptID = 10787, mapID = 1113, x = 22, y = 24},
+				{npcID = 61400, scriptID = 10788, mapID = 1113, x = 26, y = 15},
+				{npcID = 61401, scriptID = 10789, mapID = 1113, x = 33, y = 15},
+				{npcID = 61402, scriptID = 10790, mapID = 1113, x = 39, y = 21},
+				{npcID = 61403, scriptID = 10791, mapID = 1113, x = 36, y = 34},
 			},
 		},
 		[114] =
@@ -1709,13 +1709,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61405, scriptID = 10015, mapID = 1114, x = 30, y = 34},
-				{npcID = 61406, scriptID = 10015, mapID = 1114, x = 24, y = 31},
-				{npcID = 61407, scriptID = 10016, mapID = 1114, x = 22, y = 24},
-				{npcID = 61408, scriptID = 10015, mapID = 1114, x = 26, y = 15},
-				{npcID = 61409, scriptID = 10016, mapID = 1114, x = 33, y = 15},
-				{npcID = 61410, scriptID = 10015, mapID = 1114, x = 39, y = 21},
-				{npcID = 61411, scriptID = 10016, mapID = 1114, x = 36, y = 34},
+				{npcID = 61405, scriptID = 10792, mapID = 1114, x = 30, y = 34},
+				{npcID = 61406, scriptID = 10793, mapID = 1114, x = 24, y = 31},
+				{npcID = 61407, scriptID = 10794, mapID = 1114, x = 22, y = 24},
+				{npcID = 61408, scriptID = 10795, mapID = 1114, x = 26, y = 15},
+				{npcID = 61409, scriptID = 10796, mapID = 1114, x = 33, y = 15},
+				{npcID = 61410, scriptID = 10797, mapID = 1114, x = 39, y = 21},
+				{npcID = 61411, scriptID = 10798, mapID = 1114, x = 36, y = 34},
 			},
 		},
 		[115] =
@@ -1724,13 +1724,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61413, scriptID = 10015, mapID = 1115, x = 30, y = 34},
-				{npcID = 61414, scriptID = 10015, mapID = 1115, x = 24, y = 31},
-				{npcID = 61415, scriptID = 10016, mapID = 1115, x = 22, y = 24},
-				{npcID = 61416, scriptID = 10015, mapID = 1115, x = 26, y = 15},
-				{npcID = 61417, scriptID = 10016, mapID = 1115, x = 33, y = 15},
-				{npcID = 61418, scriptID = 10015, mapID = 1115, x = 39, y = 21},
-				{npcID = 61419, scriptID = 10016, mapID = 1115, x = 36, y = 34},
+				{npcID = 61413, scriptID = 10799, mapID = 1115, x = 30, y = 34},
+				{npcID = 61414, scriptID = 10800, mapID = 1115, x = 24, y = 31},
+				{npcID = 61415, scriptID = 10801, mapID = 1115, x = 22, y = 24},
+				{npcID = 61416, scriptID = 10802, mapID = 1115, x = 26, y = 15},
+				{npcID = 61417, scriptID = 10803, mapID = 1115, x = 33, y = 15},
+				{npcID = 61418, scriptID = 10804, mapID = 1115, x = 39, y = 21},
+				{npcID = 61419, scriptID = 10805, mapID = 1115, x = 36, y = 34},
 			},
 		},
 		[116] =
@@ -1739,13 +1739,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61421, scriptID = 10015, mapID = 1116, x = 30, y = 34},
-				{npcID = 61422, scriptID = 10015, mapID = 1116, x = 24, y = 31},
-				{npcID = 61423, scriptID = 10016, mapID = 1116, x = 22, y = 24},
-				{npcID = 61424, scriptID = 10015, mapID = 1116, x = 26, y = 15},
-				{npcID = 61425, scriptID = 10016, mapID = 1116, x = 33, y = 15},
-				{npcID = 61426, scriptID = 10015, mapID = 1116, x = 39, y = 21},
-				{npcID = 61427, scriptID = 10016, mapID = 1116, x = 36, y = 34},
+				{npcID = 61421, scriptID = 10806, mapID = 1116, x = 30, y = 34},
+				{npcID = 61422, scriptID = 10807, mapID = 1116, x = 24, y = 31},
+				{npcID = 61423, scriptID = 10808, mapID = 1116, x = 22, y = 24},
+				{npcID = 61424, scriptID = 10809, mapID = 1116, x = 26, y = 15},
+				{npcID = 61425, scriptID = 10810, mapID = 1116, x = 33, y = 15},
+				{npcID = 61426, scriptID = 10811, mapID = 1116, x = 39, y = 21},
+				{npcID = 61427, scriptID = 10812, mapID = 1116, x = 36, y = 34},
 			},
 		},
 		[117] =
@@ -1754,13 +1754,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61429, scriptID = 10015, mapID = 1117, x = 30, y = 34},
-				{npcID = 61430, scriptID = 10015, mapID = 1117, x = 24, y = 31},
-				{npcID = 61431, scriptID = 10016, mapID = 1117, x = 22, y = 24},
-				{npcID = 61432, scriptID = 10015, mapID = 1117, x = 26, y = 15},
-				{npcID = 61433, scriptID = 10016, mapID = 1117, x = 33, y = 15},
-				{npcID = 61434, scriptID = 10015, mapID = 1117, x = 39, y = 21},
-				{npcID = 61435, scriptID = 10016, mapID = 1117, x = 36, y = 34},
+				{npcID = 61429, scriptID = 10813, mapID = 1117, x = 30, y = 34},
+				{npcID = 61430, scriptID = 10814, mapID = 1117, x = 24, y = 31},
+				{npcID = 61431, scriptID = 10815, mapID = 1117, x = 22, y = 24},
+				{npcID = 61432, scriptID = 10816, mapID = 1117, x = 26, y = 15},
+				{npcID = 61433, scriptID = 10817, mapID = 1117, x = 33, y = 15},
+				{npcID = 61434, scriptID = 10818, mapID = 1117, x = 39, y = 21},
+				{npcID = 61435, scriptID = 10819, mapID = 1117, x = 36, y = 34},
 			},
 		},
 		[118] =
@@ -1769,13 +1769,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61437, scriptID = 10015, mapID = 1118, x = 30, y = 34},
-				{npcID = 61438, scriptID = 10015, mapID = 1118, x = 24, y = 31},
-				{npcID = 61439, scriptID = 10016, mapID = 1118, x = 22, y = 24},
-				{npcID = 61440, scriptID = 10015, mapID = 1118, x = 26, y = 15},
-				{npcID = 61441, scriptID = 10016, mapID = 1118, x = 33, y = 15},
-				{npcID = 61442, scriptID = 10015, mapID = 1118, x = 39, y = 21},
-				{npcID = 61443, scriptID = 10016, mapID = 1118, x = 36, y = 34},
+				{npcID = 61437, scriptID = 10820, mapID = 1118, x = 30, y = 34},
+				{npcID = 61438, scriptID = 10821, mapID = 1118, x = 24, y = 31},
+				{npcID = 61439, scriptID = 10822, mapID = 1118, x = 22, y = 24},
+				{npcID = 61440, scriptID = 10826, mapID = 1118, x = 26, y = 15},
+				{npcID = 61441, scriptID = 10824, mapID = 1118, x = 33, y = 15},
+				{npcID = 61442, scriptID = 10825, mapID = 1118, x = 39, y = 21},
+				{npcID = 61443, scriptID = 10826, mapID = 1118, x = 36, y = 34},
 			},
 		},
 		[119] =
@@ -1784,13 +1784,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61445, scriptID = 10015, mapID = 1119, x = 30, y = 34},
-				{npcID = 61446, scriptID = 10015, mapID = 1119, x = 24, y = 31},
-				{npcID = 61447, scriptID = 10016, mapID = 1119, x = 22, y = 24},
-				{npcID = 61448, scriptID = 10015, mapID = 1119, x = 26, y = 15},
-				{npcID = 61449, scriptID = 10016, mapID = 1119, x = 33, y = 15},
-				{npcID = 61450, scriptID = 10015, mapID = 1119, x = 39, y = 21},
-				{npcID = 61451, scriptID = 10016, mapID = 1119, x = 36, y = 34},
+				{npcID = 61445, scriptID = 10827, mapID = 1119, x = 30, y = 34},
+				{npcID = 61446, scriptID = 10828, mapID = 1119, x = 24, y = 31},
+				{npcID = 61447, scriptID = 10829, mapID = 1119, x = 22, y = 24},
+				{npcID = 61448, scriptID = 10830, mapID = 1119, x = 26, y = 15},
+				{npcID = 61449, scriptID = 10831, mapID = 1119, x = 33, y = 15},
+				{npcID = 61450, scriptID = 10832, mapID = 1119, x = 39, y = 21},
+				{npcID = 61451, scriptID = 10833, mapID = 1119, x = 36, y = 34},
 			},
 		},
 		[120] =
@@ -1799,13 +1799,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61453, scriptID = 10015, mapID = 1120, x = 30, y = 34},
-				{npcID = 61454, scriptID = 10015, mapID = 1120, x = 24, y = 31},
-				{npcID = 61455, scriptID = 10016, mapID = 1120, x = 22, y = 24},
-				{npcID = 61456, scriptID = 10015, mapID = 1120, x = 26, y = 15},
-				{npcID = 61457, scriptID = 10016, mapID = 1120, x = 33, y = 15},
-				{npcID = 61458, scriptID = 10015, mapID = 1120, x = 39, y = 21},
-				{npcID = 61459, scriptID = 10016, mapID = 1120, x = 36, y = 34},
+				{npcID = 61453, scriptID = 10834, mapID = 1120, x = 30, y = 34},
+				{npcID = 61454, scriptID = 10835, mapID = 1120, x = 24, y = 31},
+				{npcID = 61455, scriptID = 10836, mapID = 1120, x = 22, y = 24},
+				{npcID = 61456, scriptID = 10837, mapID = 1120, x = 26, y = 15},
+				{npcID = 61457, scriptID = 10838, mapID = 1120, x = 33, y = 15},
+				{npcID = 61458, scriptID = 10839, mapID = 1120, x = 39, y = 21},
+				{npcID = 61459, scriptID = 10840, mapID = 1120, x = 36, y = 34},
 			},
 		},
 		[121] =
@@ -1814,13 +1814,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61461, scriptID = 10015, mapID = 1121, x = 30, y = 34},
-				{npcID = 61462, scriptID = 10015, mapID = 1121, x = 24, y = 31},
-				{npcID = 61463, scriptID = 10016, mapID = 1121, x = 22, y = 24},
-				{npcID = 61464, scriptID = 10015, mapID = 1121, x = 26, y = 15},
-				{npcID = 61465, scriptID = 10016, mapID = 1121, x = 33, y = 15},
-				{npcID = 61466, scriptID = 10015, mapID = 1121, x = 39, y = 21},
-				{npcID = 61467, scriptID = 10016, mapID = 1121, x = 36, y = 34},
+				{npcID = 61461, scriptID = 10841, mapID = 1121, x = 30, y = 34},
+				{npcID = 61462, scriptID = 10842, mapID = 1121, x = 24, y = 31},
+				{npcID = 61463, scriptID = 10843, mapID = 1121, x = 22, y = 24},
+				{npcID = 61464, scriptID = 10844, mapID = 1121, x = 26, y = 15},
+				{npcID = 61465, scriptID = 10845, mapID = 1121, x = 33, y = 15},
+				{npcID = 61466, scriptID = 10846, mapID = 1121, x = 39, y = 21},
+				{npcID = 61467, scriptID = 10847, mapID = 1121, x = 36, y = 34},
 			},
 		},
 		[122] =
@@ -1829,13 +1829,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61469, scriptID = 10015, mapID = 1122, x = 30, y = 34},
-				{npcID = 61470, scriptID = 10015, mapID = 1122, x = 24, y = 31},
-				{npcID = 61471, scriptID = 10016, mapID = 1122, x = 22, y = 24},
-				{npcID = 61472, scriptID = 10015, mapID = 1122, x = 26, y = 15},
-				{npcID = 61473, scriptID = 10016, mapID = 1122, x = 33, y = 15},
-				{npcID = 61474, scriptID = 10015, mapID = 1122, x = 39, y = 21},
-				{npcID = 61475, scriptID = 10016, mapID = 1122, x = 36, y = 34},
+				{npcID = 61469, scriptID = 10848, mapID = 1122, x = 30, y = 34},
+				{npcID = 61470, scriptID = 10849, mapID = 1122, x = 24, y = 31},
+				{npcID = 61471, scriptID = 10850, mapID = 1122, x = 22, y = 24},
+				{npcID = 61472, scriptID = 10851, mapID = 1122, x = 26, y = 15},
+				{npcID = 61473, scriptID = 10852, mapID = 1122, x = 33, y = 15},
+				{npcID = 61474, scriptID = 10853, mapID = 1122, x = 39, y = 21},
+				{npcID = 61475, scriptID = 10854, mapID = 1122, x = 36, y = 34},
 			},
 		},
 		[123] =
@@ -1844,13 +1844,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61477, scriptID = 10015, mapID = 1123, x = 30, y = 34},
-				{npcID = 61478, scriptID = 10015, mapID = 1123, x = 24, y = 31},
-				{npcID = 61479, scriptID = 10016, mapID = 1123, x = 22, y = 24},
-				{npcID = 61480, scriptID = 10015, mapID = 1123, x = 26, y = 15},
-				{npcID = 61481, scriptID = 10016, mapID = 1123, x = 33, y = 15},
-				{npcID = 61482, scriptID = 10015, mapID = 1123, x = 39, y = 21},
-				{npcID = 61483, scriptID = 10016, mapID = 1123, x = 36, y = 34},
+				{npcID = 61477, scriptID = 10855, mapID = 1123, x = 30, y = 34},
+				{npcID = 61478, scriptID = 10856, mapID = 1123, x = 24, y = 31},
+				{npcID = 61479, scriptID = 10857, mapID = 1123, x = 22, y = 24},
+				{npcID = 61480, scriptID = 10857, mapID = 1123, x = 26, y = 15},
+				{npcID = 61481, scriptID = 10859, mapID = 1123, x = 33, y = 15},
+				{npcID = 61482, scriptID = 10860, mapID = 1123, x = 39, y = 21},
+				{npcID = 61483, scriptID = 10861, mapID = 1123, x = 36, y = 34},
 			},
 		},
 		[124] =
@@ -1859,13 +1859,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61485, scriptID = 10015, mapID = 1124, x = 30, y = 34},
-				{npcID = 61486, scriptID = 10015, mapID = 1124, x = 24, y = 31},
-				{npcID = 61487, scriptID = 10016, mapID = 1124, x = 22, y = 24},
-				{npcID = 61488, scriptID = 10015, mapID = 1124, x = 26, y = 15},
-				{npcID = 61489, scriptID = 10016, mapID = 1124, x = 33, y = 15},
-				{npcID = 61490, scriptID = 10015, mapID = 1124, x = 39, y = 21},
-				{npcID = 61491, scriptID = 10016, mapID = 1124, x = 36, y = 34},
+				{npcID = 61485, scriptID = 10862, mapID = 1124, x = 30, y = 34},
+				{npcID = 61486, scriptID = 10863, mapID = 1124, x = 24, y = 31},
+				{npcID = 61487, scriptID = 10864, mapID = 1124, x = 22, y = 24},
+				{npcID = 61488, scriptID = 10865, mapID = 1124, x = 26, y = 15},
+				{npcID = 61489, scriptID = 10866, mapID = 1124, x = 33, y = 15},
+				{npcID = 61490, scriptID = 10867, mapID = 1124, x = 39, y = 21},
+				{npcID = 61491, scriptID = 10868, mapID = 1124, x = 36, y = 34},
 			},
 		},
 		[125] =
@@ -1874,13 +1874,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61493, scriptID = 10015, mapID = 1125, x = 30, y = 34},
-				{npcID = 61494, scriptID = 10015, mapID = 1125, x = 24, y = 31},
-				{npcID = 61495, scriptID = 10016, mapID = 1125, x = 22, y = 24},
-				{npcID = 61496, scriptID = 10015, mapID = 1125, x = 26, y = 15},
-				{npcID = 61497, scriptID = 10016, mapID = 1125, x = 33, y = 15},
-				{npcID = 61498, scriptID = 10015, mapID = 1125, x = 39, y = 21},
-				{npcID = 61499, scriptID = 10016, mapID = 1125, x = 36, y = 34},
+				{npcID = 61493, scriptID = 10869, mapID = 1125, x = 30, y = 34},
+				{npcID = 61494, scriptID = 10870, mapID = 1125, x = 24, y = 31},
+				{npcID = 61495, scriptID = 10871, mapID = 1125, x = 22, y = 24},
+				{npcID = 61496, scriptID = 10872, mapID = 1125, x = 26, y = 15},
+				{npcID = 61497, scriptID = 10873, mapID = 1125, x = 33, y = 15},
+				{npcID = 61498, scriptID = 10874, mapID = 1125, x = 39, y = 21},
+				{npcID = 61499, scriptID = 10875, mapID = 1125, x = 36, y = 34},
 			},
 		},
 		[126] =
@@ -1889,13 +1889,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61501, scriptID = 10015, mapID = 1126, x = 30, y = 34},
-				{npcID = 61502, scriptID = 10015, mapID = 1126, x = 24, y = 31},
-				{npcID = 61503, scriptID = 10016, mapID = 1126, x = 22, y = 24},
-				{npcID = 61504, scriptID = 10015, mapID = 1126, x = 26, y = 15},
-				{npcID = 61505, scriptID = 10016, mapID = 1126, x = 33, y = 15},
-				{npcID = 61506, scriptID = 10015, mapID = 1126, x = 39, y = 21},
-				{npcID = 61507, scriptID = 10016, mapID = 1126, x = 36, y = 34},
+				{npcID = 61501, scriptID = 10876, mapID = 1126, x = 30, y = 34},
+				{npcID = 61502, scriptID = 10877, mapID = 1126, x = 24, y = 31},
+				{npcID = 61503, scriptID = 10878, mapID = 1126, x = 22, y = 24},
+				{npcID = 61504, scriptID = 10879, mapID = 1126, x = 26, y = 15},
+				{npcID = 61505, scriptID = 10880, mapID = 1126, x = 33, y = 15},
+				{npcID = 61506, scriptID = 10881, mapID = 1126, x = 39, y = 21},
+				{npcID = 61507, scriptID = 10882, mapID = 1126, x = 36, y = 34},
 			},
 		},
 		[127] =
@@ -1904,13 +1904,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61509, scriptID = 10015, mapID = 1127, x = 30, y = 34},
-				{npcID = 61510, scriptID = 10015, mapID = 1127, x = 24, y = 31},
-				{npcID = 61511, scriptID = 10016, mapID = 1127, x = 22, y = 24},
-				{npcID = 61512, scriptID = 10015, mapID = 1127, x = 26, y = 15},
-				{npcID = 61513, scriptID = 10016, mapID = 1127, x = 33, y = 15},
-				{npcID = 61514, scriptID = 10015, mapID = 1127, x = 39, y = 21},
-				{npcID = 61515, scriptID = 10016, mapID = 1127, x = 36, y = 34},
+				{npcID = 61509, scriptID = 10883, mapID = 1127, x = 30, y = 34},
+				{npcID = 61510, scriptID = 10884, mapID = 1127, x = 24, y = 31},
+				{npcID = 61511, scriptID = 10885, mapID = 1127, x = 22, y = 24},
+				{npcID = 61512, scriptID = 10886, mapID = 1127, x = 26, y = 15},
+				{npcID = 61513, scriptID = 10887, mapID = 1127, x = 33, y = 15},
+				{npcID = 61514, scriptID = 10888, mapID = 1127, x = 39, y = 21},
+				{npcID = 61515, scriptID = 10889, mapID = 1127, x = 36, y = 34},
 			},
 		},
 		[128] =
@@ -1919,13 +1919,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61517, scriptID = 10015, mapID = 1128, x = 30, y = 34},
-				{npcID = 61518, scriptID = 10015, mapID = 1128, x = 24, y = 31},
-				{npcID = 61519, scriptID = 10016, mapID = 1128, x = 22, y = 24},
-				{npcID = 61520, scriptID = 10015, mapID = 1128, x = 26, y = 15},
-				{npcID = 61521, scriptID = 10016, mapID = 1128, x = 33, y = 15},
-				{npcID = 61522, scriptID = 10015, mapID = 1128, x = 39, y = 21},
-				{npcID = 61523, scriptID = 10016, mapID = 1128, x = 36, y = 34},
+				{npcID = 61517, scriptID = 10890, mapID = 1128, x = 30, y = 34},
+				{npcID = 61518, scriptID = 10891, mapID = 1128, x = 24, y = 31},
+				{npcID = 61519, scriptID = 10892, mapID = 1128, x = 22, y = 24},
+				{npcID = 61520, scriptID = 10893, mapID = 1128, x = 26, y = 15},
+				{npcID = 61521, scriptID = 10894, mapID = 1128, x = 33, y = 15},
+				{npcID = 61522, scriptID = 10895, mapID = 1128, x = 39, y = 21},
+				{npcID = 61523, scriptID = 10896, mapID = 1128, x = 36, y = 34},
 			},
 		},
 		[129] =
@@ -1934,13 +1934,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61525, scriptID = 10015, mapID = 1129, x = 30, y = 34},
-				{npcID = 61526, scriptID = 10015, mapID = 1129, x = 24, y = 31},
-				{npcID = 61527, scriptID = 10016, mapID = 1129, x = 22, y = 24},
-				{npcID = 61528, scriptID = 10015, mapID = 1129, x = 26, y = 15},
-				{npcID = 61529, scriptID = 10016, mapID = 1129, x = 33, y = 15},
-				{npcID = 61530, scriptID = 10015, mapID = 1129, x = 39, y = 21},
-				{npcID = 61531, scriptID = 10016, mapID = 1129, x = 36, y = 34},
+				{npcID = 61525, scriptID = 10897, mapID = 1129, x = 30, y = 34},
+				{npcID = 61526, scriptID = 10898, mapID = 1129, x = 24, y = 31},
+				{npcID = 61527, scriptID = 10899, mapID = 1129, x = 22, y = 24},
+				{npcID = 61528, scriptID = 10900, mapID = 1129, x = 26, y = 15},
+				{npcID = 61529, scriptID = 10901, mapID = 1129, x = 33, y = 15},
+				{npcID = 61530, scriptID = 10902, mapID = 1129, x = 39, y = 21},
+				{npcID = 61531, scriptID = 10903, mapID = 1129, x = 36, y = 34},
 			},
 		},
 		[130] =
@@ -1949,13 +1949,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61533, scriptID = 10015, mapID = 1130, x = 30, y = 34},
-				{npcID = 61534, scriptID = 10015, mapID = 1130, x = 24, y = 31},
-				{npcID = 61535, scriptID = 10016, mapID = 1130, x = 22, y = 24},
-				{npcID = 61536, scriptID = 10015, mapID = 1130, x = 26, y = 15},
-				{npcID = 61537, scriptID = 10016, mapID = 1130, x = 33, y = 15},
-				{npcID = 61538, scriptID = 10015, mapID = 1130, x = 39, y = 21},
-				{npcID = 61539, scriptID = 10016, mapID = 1130, x = 36, y = 34},
+				{npcID = 61533, scriptID = 10904, mapID = 1130, x = 30, y = 34},
+				{npcID = 61534, scriptID = 10905, mapID = 1130, x = 24, y = 31},
+				{npcID = 61535, scriptID = 10906, mapID = 1130, x = 22, y = 24},
+				{npcID = 61536, scriptID = 10907, mapID = 1130, x = 26, y = 15},
+				{npcID = 61537, scriptID = 10908, mapID = 1130, x = 33, y = 15},
+				{npcID = 61538, scriptID = 10909, mapID = 1130, x = 39, y = 21},
+				{npcID = 61539, scriptID = 10910, mapID = 1130, x = 36, y = 34},
 			},
 		},
 		[131] =
@@ -1964,13 +1964,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61541, scriptID = 10015, mapID = 1131, x = 30, y = 34},
-				{npcID = 61542, scriptID = 10015, mapID = 1131, x = 24, y = 31},
-				{npcID = 61543, scriptID = 10016, mapID = 1131, x = 22, y = 24},
-				{npcID = 61544, scriptID = 10015, mapID = 1131, x = 26, y = 15},
-				{npcID = 61545, scriptID = 10016, mapID = 1131, x = 33, y = 15},
-				{npcID = 61546, scriptID = 10015, mapID = 1131, x = 39, y = 21},
-				{npcID = 61547, scriptID = 10016, mapID = 1131, x = 36, y = 34},
+				{npcID = 61541, scriptID = 10911, mapID = 1131, x = 30, y = 34},
+				{npcID = 61542, scriptID = 10912, mapID = 1131, x = 24, y = 31},
+				{npcID = 61543, scriptID = 10913, mapID = 1131, x = 22, y = 24},
+				{npcID = 61544, scriptID = 10914, mapID = 1131, x = 26, y = 15},
+				{npcID = 61545, scriptID = 10915, mapID = 1131, x = 33, y = 15},
+				{npcID = 61546, scriptID = 10916, mapID = 1131, x = 39, y = 21},
+				{npcID = 61547, scriptID = 10917, mapID = 1131, x = 36, y = 34},
 			},
 		},
 		[132] =
@@ -1979,13 +1979,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61549, scriptID = 10015, mapID = 1132, x = 30, y = 34},
-				{npcID = 61550, scriptID = 10015, mapID = 1132, x = 24, y = 31},
-				{npcID = 61551, scriptID = 10016, mapID = 1132, x = 22, y = 24},
-				{npcID = 61552, scriptID = 10015, mapID = 1132, x = 26, y = 15},
-				{npcID = 61553, scriptID = 10016, mapID = 1132, x = 33, y = 15},
-				{npcID = 61554, scriptID = 10015, mapID = 1132, x = 39, y = 21},
-				{npcID = 61555, scriptID = 10016, mapID = 1132, x = 36, y = 34},
+				{npcID = 61549, scriptID = 10918, mapID = 1132, x = 30, y = 34},
+				{npcID = 61550, scriptID = 10919, mapID = 1132, x = 24, y = 31},
+				{npcID = 61551, scriptID = 10920, mapID = 1132, x = 22, y = 24},
+				{npcID = 61552, scriptID = 10921, mapID = 1132, x = 26, y = 15},
+				{npcID = 61553, scriptID = 10922, mapID = 1132, x = 33, y = 15},
+				{npcID = 61554, scriptID = 10923, mapID = 1132, x = 39, y = 21},
+				{npcID = 61555, scriptID = 10924, mapID = 1132, x = 36, y = 34},
 			},
 		},
 		[133] =
@@ -1994,13 +1994,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61557, scriptID = 10015, mapID = 1133, x = 30, y = 34},
-				{npcID = 61558, scriptID = 10015, mapID = 1133, x = 24, y = 31},
-				{npcID = 61559, scriptID = 10016, mapID = 1133, x = 22, y = 24},
-				{npcID = 61560, scriptID = 10015, mapID = 1133, x = 26, y = 15},
-				{npcID = 61561, scriptID = 10016, mapID = 1133, x = 33, y = 15},
-				{npcID = 61562, scriptID = 10015, mapID = 1133, x = 39, y = 21},
-				{npcID = 61563, scriptID = 10016, mapID = 1133, x = 36, y = 34},
+				{npcID = 61557, scriptID = 10925, mapID = 1133, x = 30, y = 34},
+				{npcID = 61558, scriptID = 10926, mapID = 1133, x = 24, y = 31},
+				{npcID = 61559, scriptID = 10927, mapID = 1133, x = 22, y = 24},
+				{npcID = 61560, scriptID = 10928, mapID = 1133, x = 26, y = 15},
+				{npcID = 61561, scriptID = 10929, mapID = 1133, x = 33, y = 15},
+				{npcID = 61562, scriptID = 10930, mapID = 1133, x = 39, y = 21},
+				{npcID = 61563, scriptID = 10931, mapID = 1133, x = 36, y = 34},
 			},
 		},
 		[134] =
@@ -2009,13 +2009,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61565, scriptID = 10015, mapID = 1134, x = 30, y = 34},
-				{npcID = 61566, scriptID = 10015, mapID = 1134, x = 24, y = 31},
-				{npcID = 61567, scriptID = 10016, mapID = 1134, x = 22, y = 24},
-				{npcID = 61568, scriptID = 10015, mapID = 1134, x = 26, y = 15},
-				{npcID = 61569, scriptID = 10016, mapID = 1134, x = 33, y = 15},
-				{npcID = 61570, scriptID = 10015, mapID = 1134, x = 39, y = 21},
-				{npcID = 61571, scriptID = 10016, mapID = 1134, x = 36, y = 34},
+				{npcID = 61565, scriptID = 10932, mapID = 1134, x = 30, y = 34},
+				{npcID = 61566, scriptID = 10933, mapID = 1134, x = 24, y = 31},
+				{npcID = 61567, scriptID = 10934, mapID = 1134, x = 22, y = 24},
+				{npcID = 61568, scriptID = 10935, mapID = 1134, x = 26, y = 15},
+				{npcID = 61569, scriptID = 10936, mapID = 1134, x = 33, y = 15},
+				{npcID = 61570, scriptID = 10937, mapID = 1134, x = 39, y = 21},
+				{npcID = 61571, scriptID = 10938, mapID = 1134, x = 36, y = 34},
 			},
 		},
 		[135] =
@@ -2024,13 +2024,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61573, scriptID = 10015, mapID = 1135, x = 30, y = 34},
-				{npcID = 61574, scriptID = 10015, mapID = 1135, x = 24, y = 31},
-				{npcID = 61575, scriptID = 10016, mapID = 1135, x = 22, y = 24},
-				{npcID = 61576, scriptID = 10015, mapID = 1135, x = 26, y = 15},
-				{npcID = 61577, scriptID = 10016, mapID = 1135, x = 33, y = 15},
-				{npcID = 61578, scriptID = 10015, mapID = 1135, x = 39, y = 21},
-				{npcID = 61579, scriptID = 10016, mapID = 1135, x = 36, y = 34},
+				{npcID = 61573, scriptID = 10939, mapID = 1135, x = 30, y = 34},
+				{npcID = 61574, scriptID = 10940, mapID = 1135, x = 24, y = 31},
+				{npcID = 61575, scriptID = 10941, mapID = 1135, x = 22, y = 24},
+				{npcID = 61576, scriptID = 10942, mapID = 1135, x = 26, y = 15},
+				{npcID = 61577, scriptID = 10943, mapID = 1135, x = 33, y = 15},
+				{npcID = 61578, scriptID = 10944, mapID = 1135, x = 39, y = 21},
+				{npcID = 61579, scriptID = 10945, mapID = 1135, x = 36, y = 34},
 			},
 		},
 		[136] =
@@ -2039,13 +2039,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61581, scriptID = 10015, mapID = 1136, x = 30, y = 34},
-				{npcID = 61582, scriptID = 10015, mapID = 1136, x = 24, y = 31},
-				{npcID = 61583, scriptID = 10016, mapID = 1136, x = 22, y = 24},
-				{npcID = 61584, scriptID = 10015, mapID = 1136, x = 26, y = 15},
-				{npcID = 61585, scriptID = 10016, mapID = 1136, x = 33, y = 15},
-				{npcID = 61586, scriptID = 10015, mapID = 1136, x = 39, y = 21},
-				{npcID = 61587, scriptID = 10016, mapID = 1136, x = 36, y = 34},
+				{npcID = 61581, scriptID = 10946, mapID = 1136, x = 30, y = 34},
+				{npcID = 61582, scriptID = 10947, mapID = 1136, x = 24, y = 31},
+				{npcID = 61583, scriptID = 10948, mapID = 1136, x = 22, y = 24},
+				{npcID = 61584, scriptID = 10949, mapID = 1136, x = 26, y = 15},
+				{npcID = 61585, scriptID = 10950, mapID = 1136, x = 33, y = 15},
+				{npcID = 61586, scriptID = 10951, mapID = 1136, x = 39, y = 21},
+				{npcID = 61587, scriptID = 10952, mapID = 1136, x = 36, y = 34},
 			},
 		},
 		[137] =
@@ -2054,13 +2054,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61589, scriptID = 10015, mapID = 1137, x = 30, y = 34},
-				{npcID = 61590, scriptID = 10015, mapID = 1137, x = 24, y = 31},
-				{npcID = 61591, scriptID = 10016, mapID = 1137, x = 22, y = 24},
-				{npcID = 61592, scriptID = 10015, mapID = 1137, x = 26, y = 15},
-				{npcID = 61593, scriptID = 10016, mapID = 1137, x = 33, y = 15},
-				{npcID = 61594, scriptID = 10015, mapID = 1137, x = 39, y = 21},
-				{npcID = 61595, scriptID = 10016, mapID = 1137, x = 36, y = 34},
+				{npcID = 61589, scriptID = 10953, mapID = 1137, x = 30, y = 34},
+				{npcID = 61590, scriptID = 10954, mapID = 1137, x = 24, y = 31},
+				{npcID = 61591, scriptID = 10955, mapID = 1137, x = 22, y = 24},
+				{npcID = 61592, scriptID = 10956, mapID = 1137, x = 26, y = 15},
+				{npcID = 61593, scriptID = 10957, mapID = 1137, x = 33, y = 15},
+				{npcID = 61594, scriptID = 10958, mapID = 1137, x = 39, y = 21},
+				{npcID = 61595, scriptID = 10959, mapID = 1137, x = 36, y = 34},
 			},
 		},
 		[138] =
@@ -2069,13 +2069,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61597, scriptID = 10015, mapID = 1138, x = 30, y = 34},
-				{npcID = 61598, scriptID = 10015, mapID = 1138, x = 24, y = 31},
-				{npcID = 61599, scriptID = 10016, mapID = 1138, x = 22, y = 24},
-				{npcID = 61600, scriptID = 10015, mapID = 1138, x = 26, y = 15},
-				{npcID = 61601, scriptID = 10016, mapID = 1138, x = 33, y = 15},
-				{npcID = 61602, scriptID = 10015, mapID = 1138, x = 39, y = 21},
-				{npcID = 61603, scriptID = 10016, mapID = 1138, x = 36, y = 34},
+				{npcID = 61597, scriptID = 10960, mapID = 1138, x = 30, y = 34},
+				{npcID = 61598, scriptID = 10961, mapID = 1138, x = 24, y = 31},
+				{npcID = 61599, scriptID = 10962, mapID = 1138, x = 22, y = 24},
+				{npcID = 61600, scriptID = 10963, mapID = 1138, x = 26, y = 15},
+				{npcID = 61601, scriptID = 10964, mapID = 1138, x = 33, y = 15},
+				{npcID = 61602, scriptID = 10965, mapID = 1138, x = 39, y = 21},
+				{npcID = 61603, scriptID = 10966, mapID = 1138, x = 36, y = 34},
 			},
 		},
 		[139] =
@@ -2084,13 +2084,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61605, scriptID = 10015, mapID = 1139, x = 30, y = 34},
-				{npcID = 61606, scriptID = 10015, mapID = 1139, x = 24, y = 31},
-				{npcID = 61607, scriptID = 10016, mapID = 1139, x = 22, y = 24},
-				{npcID = 61608, scriptID = 10015, mapID = 1139, x = 26, y = 15},
-				{npcID = 61609, scriptID = 10016, mapID = 1139, x = 33, y = 15},
-				{npcID = 61610, scriptID = 10015, mapID = 1139, x = 39, y = 21},
-				{npcID = 61611, scriptID = 10016, mapID = 1139, x = 36, y = 34},
+				{npcID = 61605, scriptID = 10967, mapID = 1139, x = 30, y = 34},
+				{npcID = 61606, scriptID = 10968, mapID = 1139, x = 24, y = 31},
+				{npcID = 61607, scriptID = 10969, mapID = 1139, x = 22, y = 24},
+				{npcID = 61608, scriptID = 10970, mapID = 1139, x = 26, y = 15},
+				{npcID = 61609, scriptID = 10971, mapID = 1139, x = 33, y = 15},
+				{npcID = 61610, scriptID = 10972, mapID = 1139, x = 39, y = 21},
+				{npcID = 61611, scriptID = 10973, mapID = 1139, x = 36, y = 34},
 			},
 		},
 		[140] =
@@ -2099,13 +2099,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61613, scriptID = 10015, mapID = 1140, x = 30, y = 34},
-				{npcID = 61614, scriptID = 10015, mapID = 1140, x = 24, y = 31},
-				{npcID = 61615, scriptID = 10016, mapID = 1140, x = 22, y = 24},
-				{npcID = 61616, scriptID = 10015, mapID = 1140, x = 26, y = 15},
-				{npcID = 61617, scriptID = 10016, mapID = 1140, x = 33, y = 15},
-				{npcID = 61618, scriptID = 10015, mapID = 1140, x = 39, y = 21},
-				{npcID = 61619, scriptID = 10016, mapID = 1140, x = 36, y = 34},
+				{npcID = 61613, scriptID = 10974, mapID = 1140, x = 30, y = 34},
+				{npcID = 61614, scriptID = 10975, mapID = 1140, x = 24, y = 31},
+				{npcID = 61615, scriptID = 10976, mapID = 1140, x = 22, y = 24},
+				{npcID = 61616, scriptID = 10977, mapID = 1140, x = 26, y = 15},
+				{npcID = 61617, scriptID = 10978, mapID = 1140, x = 33, y = 15},
+				{npcID = 61618, scriptID = 10979, mapID = 1140, x = 39, y = 21},
+				{npcID = 61619, scriptID = 10980, mapID = 1140, x = 36, y = 34},
 			},
 		},
 		[141] =
@@ -2114,13 +2114,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61621, scriptID = 10015, mapID = 1141, x = 30, y = 34},
-				{npcID = 61622, scriptID = 10015, mapID = 1141, x = 24, y = 31},
-				{npcID = 61623, scriptID = 10016, mapID = 1141, x = 22, y = 24},
-				{npcID = 61624, scriptID = 10015, mapID = 1141, x = 26, y = 15},
-				{npcID = 61625, scriptID = 10016, mapID = 1141, x = 33, y = 15},
-				{npcID = 61626, scriptID = 10015, mapID = 1141, x = 39, y = 21},
-				{npcID = 61627, scriptID = 10016, mapID = 1141, x = 36, y = 34},
+				{npcID = 61621, scriptID = 10981, mapID = 1141, x = 30, y = 34},
+				{npcID = 61622, scriptID = 10982, mapID = 1141, x = 24, y = 31},
+				{npcID = 61623, scriptID = 10983, mapID = 1141, x = 22, y = 24},
+				{npcID = 61624, scriptID = 10984, mapID = 1141, x = 26, y = 15},
+				{npcID = 61625, scriptID = 10985, mapID = 1141, x = 33, y = 15},
+				{npcID = 61626, scriptID = 10986, mapID = 1141, x = 39, y = 21},
+				{npcID = 61627, scriptID = 10987, mapID = 1141, x = 36, y = 34},
 			},
 		},
 		[142] =
@@ -2129,13 +2129,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61629, scriptID = 10015, mapID = 1142, x = 30, y = 34},
-				{npcID = 61630, scriptID = 10015, mapID = 1142, x = 24, y = 31},
-				{npcID = 61631, scriptID = 10016, mapID = 1142, x = 22, y = 24},
-				{npcID = 61632, scriptID = 10015, mapID = 1142, x = 26, y = 15},
-				{npcID = 61633, scriptID = 10016, mapID = 1142, x = 33, y = 15},
-				{npcID = 61634, scriptID = 10015, mapID = 1142, x = 39, y = 21},
-				{npcID = 61635, scriptID = 10016, mapID = 1142, x = 36, y = 34},
+				{npcID = 61629, scriptID = 10988, mapID = 1142, x = 30, y = 34},
+				{npcID = 61630, scriptID = 10989, mapID = 1142, x = 24, y = 31},
+				{npcID = 61631, scriptID = 10990, mapID = 1142, x = 22, y = 24},
+				{npcID = 61632, scriptID = 10991, mapID = 1142, x = 26, y = 15},
+				{npcID = 61633, scriptID = 10992, mapID = 1142, x = 33, y = 15},
+				{npcID = 61634, scriptID = 10993, mapID = 1142, x = 39, y = 21},
+				{npcID = 61635, scriptID = 10994, mapID = 1142, x = 36, y = 34},
 			},
 		},
 		[143] =
@@ -2144,13 +2144,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61637, scriptID = 10015, mapID = 1143, x = 30, y = 34},
-				{npcID = 61638, scriptID = 10015, mapID = 1143, x = 24, y = 31},
-				{npcID = 61639, scriptID = 10016, mapID = 1143, x = 22, y = 24},
-				{npcID = 61640, scriptID = 10015, mapID = 1143, x = 26, y = 15},
-				{npcID = 61641, scriptID = 10016, mapID = 1143, x = 33, y = 15},
-				{npcID = 61642, scriptID = 10015, mapID = 1143, x = 39, y = 21},
-				{npcID = 61643, scriptID = 10016, mapID = 1143, x = 36, y = 34},
+				{npcID = 61637, scriptID = 10995, mapID = 1143, x = 30, y = 34},
+				{npcID = 61638, scriptID = 10996, mapID = 1143, x = 24, y = 31},
+				{npcID = 61639, scriptID = 10997, mapID = 1143, x = 22, y = 24},
+				{npcID = 61640, scriptID = 10998, mapID = 1143, x = 26, y = 15},
+				{npcID = 61641, scriptID = 10999, mapID = 1143, x = 33, y = 15},
+				{npcID = 61642, scriptID = 11000, mapID = 1143, x = 39, y = 21},
+				{npcID = 61643, scriptID = 11001, mapID = 1143, x = 36, y = 34},
 			},
 		},
 		[144] =
@@ -2159,13 +2159,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61645, scriptID = 10015, mapID = 1144, x = 30, y = 34},
-				{npcID = 61646, scriptID = 10015, mapID = 1144, x = 24, y = 31},
-				{npcID = 61647, scriptID = 10016, mapID = 1144, x = 22, y = 24},
-				{npcID = 61648, scriptID = 10015, mapID = 1144, x = 26, y = 15},
-				{npcID = 61649, scriptID = 10016, mapID = 1144, x = 33, y = 15},
-				{npcID = 61650, scriptID = 10015, mapID = 1144, x = 39, y = 21},
-				{npcID = 61651, scriptID = 10016, mapID = 1144, x = 36, y = 34},
+				{npcID = 61645, scriptID = 11002, mapID = 1144, x = 30, y = 34},
+				{npcID = 61646, scriptID = 11003, mapID = 1144, x = 24, y = 31},
+				{npcID = 61647, scriptID = 11004, mapID = 1144, x = 22, y = 24},
+				{npcID = 61648, scriptID = 11005, mapID = 1144, x = 26, y = 15},
+				{npcID = 61649, scriptID = 11006, mapID = 1144, x = 33, y = 15},
+				{npcID = 61650, scriptID = 11007, mapID = 1144, x = 39, y = 21},
+				{npcID = 61651, scriptID = 11008, mapID = 1144, x = 36, y = 34},
 			},
 		},
 		[145] =
@@ -2174,13 +2174,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61653, scriptID = 10015, mapID = 1145, x = 30, y = 34},
-				{npcID = 61654, scriptID = 10015, mapID = 1145, x = 24, y = 31},
-				{npcID = 61655, scriptID = 10016, mapID = 1145, x = 22, y = 24},
-				{npcID = 61656, scriptID = 10015, mapID = 1145, x = 26, y = 15},
-				{npcID = 61657, scriptID = 10016, mapID = 1145, x = 33, y = 15},
-				{npcID = 61658, scriptID = 10015, mapID = 1145, x = 39, y = 21},
-				{npcID = 61659, scriptID = 10016, mapID = 1145, x = 36, y = 34},
+				{npcID = 61653, scriptID = 11009, mapID = 1145, x = 30, y = 34},
+				{npcID = 61654, scriptID = 11010, mapID = 1145, x = 24, y = 31},
+				{npcID = 61655, scriptID = 11011, mapID = 1145, x = 22, y = 24},
+				{npcID = 61656, scriptID = 11012, mapID = 1145, x = 26, y = 15},
+				{npcID = 61657, scriptID = 11013, mapID = 1145, x = 33, y = 15},
+				{npcID = 61658, scriptID = 11014, mapID = 1145, x = 39, y = 21},
+				{npcID = 61659, scriptID = 11015, mapID = 1145, x = 36, y = 34},
 			},
 		},
 		[146] =
@@ -2189,13 +2189,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61661, scriptID = 10015, mapID = 1146, x = 30, y = 34},
-				{npcID = 61662, scriptID = 10015, mapID = 1146, x = 24, y = 31},
-				{npcID = 61663, scriptID = 10016, mapID = 1146, x = 22, y = 24},
-				{npcID = 61664, scriptID = 10015, mapID = 1146, x = 26, y = 15},
-				{npcID = 61665, scriptID = 10016, mapID = 1146, x = 33, y = 15},
-				{npcID = 61666, scriptID = 10015, mapID = 1146, x = 39, y = 21},
-				{npcID = 61667, scriptID = 10016, mapID = 1146, x = 36, y = 34},
+				{npcID = 61661, scriptID = 11016, mapID = 1146, x = 30, y = 34},
+				{npcID = 61662, scriptID = 11017, mapID = 1146, x = 24, y = 31},
+				{npcID = 61663, scriptID = 11018, mapID = 1146, x = 22, y = 24},
+				{npcID = 61664, scriptID = 11019, mapID = 1146, x = 26, y = 15},
+				{npcID = 61665, scriptID = 11020, mapID = 1146, x = 33, y = 15},
+				{npcID = 61666, scriptID = 11021, mapID = 1146, x = 39, y = 21},
+				{npcID = 61667, scriptID = 11022, mapID = 1146, x = 36, y = 34},
 			},
 		},
 		[147] =
@@ -2204,13 +2204,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61669, scriptID = 10015, mapID = 1147, x = 30, y = 34},
-				{npcID = 61670, scriptID = 10015, mapID = 1147, x = 24, y = 31},
-				{npcID = 61671, scriptID = 10016, mapID = 1147, x = 22, y = 24},
-				{npcID = 61672, scriptID = 10015, mapID = 1147, x = 26, y = 15},
-				{npcID = 61673, scriptID = 10016, mapID = 1147, x = 33, y = 15},
-				{npcID = 61674, scriptID = 10015, mapID = 1147, x = 39, y = 21},
-				{npcID = 61675, scriptID = 10016, mapID = 1147, x = 36, y = 34},
+				{npcID = 61669, scriptID = 11023, mapID = 1147, x = 30, y = 34},
+				{npcID = 61670, scriptID = 11024, mapID = 1147, x = 24, y = 31},
+				{npcID = 61671, scriptID = 11025, mapID = 1147, x = 22, y = 24},
+				{npcID = 61672, scriptID = 11026, mapID = 1147, x = 26, y = 15},
+				{npcID = 61673, scriptID = 11027, mapID = 1147, x = 33, y = 15},
+				{npcID = 61674, scriptID = 11028, mapID = 1147, x = 39, y = 21},
+				{npcID = 61675, scriptID = 11029, mapID = 1147, x = 36, y = 34},
 			},
 		},
 		[148] =
@@ -2219,13 +2219,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61677, scriptID = 10015, mapID = 1148, x = 30, y = 34},
-				{npcID = 61678, scriptID = 10015, mapID = 1148, x = 24, y = 31},
-				{npcID = 61679, scriptID = 10016, mapID = 1148, x = 22, y = 24},
-				{npcID = 61680, scriptID = 10015, mapID = 1148, x = 26, y = 15},
-				{npcID = 61681, scriptID = 10016, mapID = 1148, x = 33, y = 15},
-				{npcID = 61682, scriptID = 10015, mapID = 1148, x = 39, y = 21},
-				{npcID = 61683, scriptID = 10016, mapID = 1148, x = 36, y = 34},
+				{npcID = 61677, scriptID = 11030, mapID = 1148, x = 30, y = 34},
+				{npcID = 61678, scriptID = 11031, mapID = 1148, x = 24, y = 31},
+				{npcID = 61679, scriptID = 11032, mapID = 1148, x = 22, y = 24},
+				{npcID = 61680, scriptID = 11033, mapID = 1148, x = 26, y = 15},
+				{npcID = 61681, scriptID = 11034, mapID = 1148, x = 33, y = 15},
+				{npcID = 61682, scriptID = 11035, mapID = 1148, x = 39, y = 21},
+				{npcID = 61683, scriptID = 11036, mapID = 1148, x = 36, y = 34},
 			},
 		},
 		[149] =
@@ -2234,13 +2234,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61685, scriptID = 10015, mapID = 1149, x = 30, y = 34},
-				{npcID = 61686, scriptID = 10015, mapID = 1149, x = 24, y = 31},
-				{npcID = 61687, scriptID = 10016, mapID = 1149, x = 22, y = 24},
-				{npcID = 61688, scriptID = 10015, mapID = 1149, x = 26, y = 15},
-				{npcID = 61689, scriptID = 10016, mapID = 1149, x = 33, y = 15},
-				{npcID = 61690, scriptID = 10015, mapID = 1149, x = 39, y = 21},
-				{npcID = 61691, scriptID = 10016, mapID = 1149, x = 36, y = 34},
+				{npcID = 61685, scriptID = 11037, mapID = 1149, x = 30, y = 34},
+				{npcID = 61686, scriptID = 11038, mapID = 1149, x = 24, y = 31},
+				{npcID = 61687, scriptID = 11039, mapID = 1149, x = 22, y = 24},
+				{npcID = 61688, scriptID = 11040, mapID = 1149, x = 26, y = 15},
+				{npcID = 61689, scriptID = 11041, mapID = 1149, x = 33, y = 15},
+				{npcID = 61690, scriptID = 11042, mapID = 1149, x = 39, y = 21},
+				{npcID = 61691, scriptID = 11043, mapID = 1149, x = 36, y = 34},
 			},
 		},
 		[150] =
@@ -2249,13 +2249,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61693, scriptID = 10015, mapID = 1150, x = 30, y = 34},
-				{npcID = 61694, scriptID = 10015, mapID = 1150, x = 24, y = 31},
-				{npcID = 61695, scriptID = 10016, mapID = 1150, x = 22, y = 24},
-				{npcID = 61696, scriptID = 10015, mapID = 1150, x = 26, y = 15},
-				{npcID = 61697, scriptID = 10016, mapID = 1150, x = 33, y = 15},
-				{npcID = 61698, scriptID = 10015, mapID = 1150, x = 39, y = 21},
-				{npcID = 61699, scriptID = 10016, mapID = 1150, x = 36, y = 34},
+				{npcID = 61693, scriptID = 11044, mapID = 1150, x = 30, y = 34},
+				{npcID = 61694, scriptID = 11045, mapID = 1150, x = 24, y = 31},
+				{npcID = 61695, scriptID = 11046, mapID = 1150, x = 22, y = 24},
+				{npcID = 61696, scriptID = 11047, mapID = 1150, x = 26, y = 15},
+				{npcID = 61697, scriptID = 11045, mapID = 1150, x = 33, y = 15},
+				{npcID = 61698, scriptID = 11049, mapID = 1150, x = 39, y = 21},
+				{npcID = 61699, scriptID = 11050, mapID = 1150, x = 36, y = 34},
 			},
 		},
 		[151] =
@@ -2264,13 +2264,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61701, scriptID = 10015, mapID = 1151, x = 30, y = 34},
-				{npcID = 61702, scriptID = 10015, mapID = 1151, x = 24, y = 31},
-				{npcID = 61703, scriptID = 10016, mapID = 1151, x = 22, y = 24},
-				{npcID = 61704, scriptID = 10015, mapID = 1151, x = 26, y = 15},
-				{npcID = 61705, scriptID = 10016, mapID = 1151, x = 33, y = 15},
-				{npcID = 61706, scriptID = 10015, mapID = 1151, x = 39, y = 21},
-				{npcID = 61707, scriptID = 10016, mapID = 1151, x = 36, y = 34},
+				{npcID = 61701, scriptID = 11051, mapID = 1151, x = 30, y = 34},
+				{npcID = 61702, scriptID = 11052, mapID = 1151, x = 24, y = 31},
+				{npcID = 61703, scriptID = 11053, mapID = 1151, x = 22, y = 24},
+				{npcID = 61704, scriptID = 11054, mapID = 1151, x = 26, y = 15},
+				{npcID = 61705, scriptID = 11055, mapID = 1151, x = 33, y = 15},
+				{npcID = 61706, scriptID = 11056, mapID = 1151, x = 39, y = 21},
+				{npcID = 61707, scriptID = 11057, mapID = 1151, x = 36, y = 34},
 			},
 		},
 		[152] =
@@ -2279,13 +2279,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61709, scriptID = 10015, mapID = 1152, x = 30, y = 34},
-				{npcID = 61710, scriptID = 10015, mapID = 1152, x = 24, y = 31},
-				{npcID = 61711, scriptID = 10016, mapID = 1152, x = 22, y = 24},
-				{npcID = 61712, scriptID = 10015, mapID = 1152, x = 26, y = 15},
-				{npcID = 61713, scriptID = 10016, mapID = 1152, x = 33, y = 15},
-				{npcID = 61714, scriptID = 10015, mapID = 1152, x = 39, y = 21},
-				{npcID = 61715, scriptID = 10016, mapID = 1152, x = 36, y = 34},
+				{npcID = 61709, scriptID = 11058, mapID = 1152, x = 30, y = 34},
+				{npcID = 61710, scriptID = 11059, mapID = 1152, x = 24, y = 31},
+				{npcID = 61711, scriptID = 11060, mapID = 1152, x = 22, y = 24},
+				{npcID = 61712, scriptID = 11061, mapID = 1152, x = 26, y = 15},
+				{npcID = 61713, scriptID = 11062, mapID = 1152, x = 33, y = 15},
+				{npcID = 61714, scriptID = 11063, mapID = 1152, x = 39, y = 21},
+				{npcID = 61715, scriptID = 11064, mapID = 1152, x = 36, y = 34},
 			},
 		},
 		[153] =
@@ -2294,13 +2294,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61717, scriptID = 10015, mapID = 1153, x = 30, y = 34},
-				{npcID = 61718, scriptID = 10015, mapID = 1153, x = 24, y = 31},
-				{npcID = 61719, scriptID = 10016, mapID = 1153, x = 22, y = 24},
-				{npcID = 61720, scriptID = 10015, mapID = 1153, x = 26, y = 15},
-				{npcID = 61721, scriptID = 10016, mapID = 1153, x = 33, y = 15},
-				{npcID = 61722, scriptID = 10015, mapID = 1153, x = 39, y = 21},
-				{npcID = 61723, scriptID = 10016, mapID = 1153, x = 36, y = 34},
+				{npcID = 61717, scriptID = 11065, mapID = 1153, x = 30, y = 34},
+				{npcID = 61718, scriptID = 11066, mapID = 1153, x = 24, y = 31},
+				{npcID = 61719, scriptID = 11067, mapID = 1153, x = 22, y = 24},
+				{npcID = 61720, scriptID = 11068, mapID = 1153, x = 26, y = 15},
+				{npcID = 61721, scriptID = 11069, mapID = 1153, x = 33, y = 15},
+				{npcID = 61722, scriptID = 11070, mapID = 1153, x = 39, y = 21},
+				{npcID = 61723, scriptID = 11071, mapID = 1153, x = 36, y = 34},
 			},
 		},
 		[154] =
@@ -2309,13 +2309,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61725, scriptID = 10015, mapID = 1154, x = 30, y = 34},
-				{npcID = 61726, scriptID = 10015, mapID = 1154, x = 24, y = 31},
-				{npcID = 61727, scriptID = 10016, mapID = 1154, x = 22, y = 24},
-				{npcID = 61728, scriptID = 10015, mapID = 1154, x = 26, y = 15},
-				{npcID = 61729, scriptID = 10016, mapID = 1154, x = 33, y = 15},
-				{npcID = 61730, scriptID = 10015, mapID = 1154, x = 39, y = 21},
-				{npcID = 61731, scriptID = 10016, mapID = 1154, x = 36, y = 34},
+				{npcID = 61725, scriptID = 11072, mapID = 1154, x = 30, y = 34},
+				{npcID = 61726, scriptID = 11073, mapID = 1154, x = 24, y = 31},
+				{npcID = 61727, scriptID = 11074, mapID = 1154, x = 22, y = 24},
+				{npcID = 61728, scriptID = 11075, mapID = 1154, x = 26, y = 15},
+				{npcID = 61729, scriptID = 11076, mapID = 1154, x = 33, y = 15},
+				{npcID = 61730, scriptID = 11077, mapID = 1154, x = 39, y = 21},
+				{npcID = 61731, scriptID = 11078, mapID = 1154, x = 36, y = 34},
 			},
 		},
 		[155] =
@@ -2324,13 +2324,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61733, scriptID = 10015, mapID = 1155, x = 30, y = 34},
-				{npcID = 61734, scriptID = 10015, mapID = 1155, x = 24, y = 31},
-				{npcID = 61735, scriptID = 10016, mapID = 1155, x = 22, y = 24},
-				{npcID = 61736, scriptID = 10015, mapID = 1155, x = 26, y = 15},
-				{npcID = 61737, scriptID = 10016, mapID = 1155, x = 33, y = 15},
-				{npcID = 61738, scriptID = 10015, mapID = 1155, x = 39, y = 21},
-				{npcID = 61739, scriptID = 10016, mapID = 1155, x = 36, y = 34},
+				{npcID = 61733, scriptID = 11079, mapID = 1155, x = 30, y = 34},
+				{npcID = 61734, scriptID = 11080, mapID = 1155, x = 24, y = 31},
+				{npcID = 61735, scriptID = 11081, mapID = 1155, x = 22, y = 24},
+				{npcID = 61736, scriptID = 11082, mapID = 1155, x = 26, y = 15},
+				{npcID = 61737, scriptID = 11083, mapID = 1155, x = 33, y = 15},
+				{npcID = 61738, scriptID = 11084, mapID = 1155, x = 39, y = 21},
+				{npcID = 61739, scriptID = 11085, mapID = 1155, x = 36, y = 34},
 			},
 		},
 		[156] =
@@ -2339,13 +2339,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61741, scriptID = 10015, mapID = 1156, x = 30, y = 34},
-				{npcID = 61742, scriptID = 10015, mapID = 1156, x = 24, y = 31},
-				{npcID = 61743, scriptID = 10016, mapID = 1156, x = 22, y = 24},
-				{npcID = 61744, scriptID = 10015, mapID = 1156, x = 26, y = 15},
-				{npcID = 61745, scriptID = 10016, mapID = 1156, x = 33, y = 15},
-				{npcID = 61746, scriptID = 10015, mapID = 1156, x = 39, y = 21},
-				{npcID = 61747, scriptID = 10016, mapID = 1156, x = 36, y = 34},
+				{npcID = 61741, scriptID = 11086, mapID = 1156, x = 30, y = 34},
+				{npcID = 61742, scriptID = 11087, mapID = 1156, x = 24, y = 31},
+				{npcID = 61743, scriptID = 11088, mapID = 1156, x = 22, y = 24},
+				{npcID = 61744, scriptID = 11089, mapID = 1156, x = 26, y = 15},
+				{npcID = 61745, scriptID = 11090, mapID = 1156, x = 33, y = 15},
+				{npcID = 61746, scriptID = 11091, mapID = 1156, x = 39, y = 21},
+				{npcID = 61747, scriptID = 11092, mapID = 1156, x = 36, y = 34},
 			},
 		},
 		[157] =
@@ -2354,13 +2354,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61749, scriptID = 10015, mapID = 1157, x = 30, y = 34},
-				{npcID = 61750, scriptID = 10015, mapID = 1157, x = 24, y = 31},
-				{npcID = 61751, scriptID = 10016, mapID = 1157, x = 22, y = 24},
-				{npcID = 61752, scriptID = 10015, mapID = 1157, x = 26, y = 15},
-				{npcID = 61753, scriptID = 10016, mapID = 1157, x = 33, y = 15},
-				{npcID = 61754, scriptID = 10015, mapID = 1157, x = 39, y = 21},
-				{npcID = 61755, scriptID = 10016, mapID = 1157, x = 36, y = 34},
+				{npcID = 61749, scriptID = 11093, mapID = 1157, x = 30, y = 34},
+				{npcID = 61750, scriptID = 11094, mapID = 1157, x = 24, y = 31},
+				{npcID = 61751, scriptID = 11095,mapID = 1157, x = 22, y = 24},
+				{npcID = 61752, scriptID = 11096, mapID = 1157, x = 26, y = 15},
+				{npcID = 61753, scriptID = 11097, mapID = 1157, x = 33, y = 15},
+				{npcID = 61754, scriptID = 11098, mapID = 1157, x = 39, y = 21},
+				{npcID = 61755, scriptID = 11099, mapID = 1157, x = 36, y = 34},
 			},
 		},
 		[158] =
@@ -2369,13 +2369,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61757, scriptID = 10015, mapID = 1158, x = 30, y = 34},
-				{npcID = 61758, scriptID = 10015, mapID = 1158, x = 24, y = 31},
-				{npcID = 61759, scriptID = 10016, mapID = 1158, x = 22, y = 24},
-				{npcID = 61760, scriptID = 10015, mapID = 1158, x = 26, y = 15},
-				{npcID = 61761, scriptID = 10016, mapID = 1158, x = 33, y = 15},
-				{npcID = 61762, scriptID = 10015, mapID = 1158, x = 39, y = 21},
-				{npcID = 61763, scriptID = 10016, mapID = 1158, x = 36, y = 34},
+				{npcID = 61757, scriptID = 11100, mapID = 1158, x = 30, y = 34},
+				{npcID = 61758, scriptID = 11101, mapID = 1158, x = 24, y = 31},
+				{npcID = 61759, scriptID = 11102, mapID = 1158, x = 22, y = 24},
+				{npcID = 61760, scriptID = 11103, mapID = 1158, x = 26, y = 15},
+				{npcID = 61761, scriptID = 11104, mapID = 1158, x = 33, y = 15},
+				{npcID = 61762, scriptID = 11105, mapID = 1158, x = 39, y = 21},
+				{npcID = 61763, scriptID = 11106, mapID = 1158, x = 36, y = 34},
 			},
 		},
 		[159] =
@@ -2384,13 +2384,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61765, scriptID = 10015, mapID = 1159, x = 30, y = 34},
-				{npcID = 61766, scriptID = 10015, mapID = 1159, x = 24, y = 31},
-				{npcID = 61767, scriptID = 10016, mapID = 1159, x = 22, y = 24},
-				{npcID = 61768, scriptID = 10015, mapID = 1159, x = 26, y = 15},
-				{npcID = 61769, scriptID = 10016, mapID = 1159, x = 33, y = 15},
-				{npcID = 61770, scriptID = 10015, mapID = 1159, x = 39, y = 21},
-				{npcID = 61771, scriptID = 10016, mapID = 1159, x = 36, y = 34},
+				{npcID = 61765, scriptID = 11107, mapID = 1159, x = 30, y = 34},
+				{npcID = 61766, scriptID = 11108, mapID = 1159, x = 24, y = 31},
+				{npcID = 61767, scriptID = 11109, mapID = 1159, x = 22, y = 24},
+				{npcID = 61768, scriptID = 11110, mapID = 1159, x = 26, y = 15},
+				{npcID = 61769, scriptID = 11111, mapID = 1159, x = 33, y = 15},
+				{npcID = 61770, scriptID = 11112, mapID = 1159, x = 39, y = 21},
+				{npcID = 61771, scriptID = 11113, mapID = 1159, x = 36, y = 34},
 			},
 		},
 		[160] =
@@ -2399,13 +2399,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61773, scriptID = 10015, mapID = 1160, x = 30, y = 34},
-				{npcID = 61774, scriptID = 10015, mapID = 1160, x = 24, y = 31},
-				{npcID = 61775, scriptID = 10016, mapID = 1160, x = 22, y = 24},
-				{npcID = 61776, scriptID = 10015, mapID = 1160, x = 26, y = 15},
-				{npcID = 61777, scriptID = 10016, mapID = 1160, x = 33, y = 15},
-				{npcID = 61778, scriptID = 10015, mapID = 1160, x = 39, y = 21},
-				{npcID = 61779, scriptID = 10016, mapID = 1160, x = 36, y = 34},
+				{npcID = 61773, scriptID = 11114, mapID = 1160, x = 30, y = 34},
+				{npcID = 61774, scriptID = 11115, mapID = 1160, x = 24, y = 31},
+				{npcID = 61775, scriptID = 11116, mapID = 1160, x = 22, y = 24},
+				{npcID = 61776, scriptID = 11117, mapID = 1160, x = 26, y = 15},
+				{npcID = 61777, scriptID = 11118, mapID = 1160, x = 33, y = 15},
+				{npcID = 61778, scriptID = 11119, mapID = 1160, x = 39, y = 21},
+				{npcID = 61779, scriptID = 11120, mapID = 1160, x = 36, y = 34},
 			},
 		},
 		[161] =
@@ -2414,13 +2414,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61781, scriptID = 10015, mapID = 1161, x = 30, y = 34},
-				{npcID = 61782, scriptID = 10015, mapID = 1161, x = 24, y = 31},
-				{npcID = 61783, scriptID = 10016, mapID = 1161, x = 22, y = 24},
-				{npcID = 61784, scriptID = 10015, mapID = 1161, x = 26, y = 15},
-				{npcID = 61785, scriptID = 10016, mapID = 1161, x = 33, y = 15},
-				{npcID = 61786, scriptID = 10015, mapID = 1161, x = 39, y = 21},
-				{npcID = 61787, scriptID = 10016, mapID = 1161, x = 36, y = 34},
+				{npcID = 61781, scriptID = 11121, mapID = 1161, x = 30, y = 34},
+				{npcID = 61782, scriptID = 11122, mapID = 1161, x = 24, y = 31},
+				{npcID = 61783, scriptID = 11123, mapID = 1161, x = 22, y = 24},
+				{npcID = 61784, scriptID = 11124, mapID = 1161, x = 26, y = 15},
+				{npcID = 61785, scriptID = 11125, mapID = 1161, x = 33, y = 15},
+				{npcID = 61786, scriptID = 11126, mapID = 1161, x = 39, y = 21},
+				{npcID = 61787, scriptID = 11127, mapID = 1161, x = 36, y = 34},
 			},
 		},
 		[162] =
@@ -2429,13 +2429,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61789, scriptID = 10015, mapID = 1162, x = 30, y = 34},
-				{npcID = 61790, scriptID = 10015, mapID = 1162, x = 24, y = 31},
-				{npcID = 61791, scriptID = 10016, mapID = 1162, x = 22, y = 24},
-				{npcID = 61792, scriptID = 10015, mapID = 1162, x = 26, y = 15},
-				{npcID = 61793, scriptID = 10016, mapID = 1162, x = 33, y = 15},
-				{npcID = 61794, scriptID = 10015, mapID = 1162, x = 39, y = 21},
-				{npcID = 61795, scriptID = 10016, mapID = 1162, x = 36, y = 34},
+				{npcID = 61789, scriptID = 11128, mapID = 1162, x = 30, y = 34},
+				{npcID = 61790, scriptID = 11129, mapID = 1162, x = 24, y = 31},
+				{npcID = 61791, scriptID = 11130, mapID = 1162, x = 22, y = 24},
+				{npcID = 61792, scriptID = 11131, mapID = 1162, x = 26, y = 15},
+				{npcID = 61793, scriptID = 11132, mapID = 1162, x = 33, y = 15},
+				{npcID = 61794, scriptID = 11133, mapID = 1162, x = 39, y = 21},
+				{npcID = 61795, scriptID = 11134, mapID = 1162, x = 36, y = 34},
 			},
 		},
 		[163] =
@@ -2444,13 +2444,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61797, scriptID = 10015, mapID = 1163, x = 30, y = 34},
-				{npcID = 61798, scriptID = 10015, mapID = 1163, x = 24, y = 31},
-				{npcID = 61799, scriptID = 10016, mapID = 1163, x = 22, y = 24},
-				{npcID = 61800, scriptID = 10015, mapID = 1163, x = 26, y = 15},
-				{npcID = 61801, scriptID = 10016, mapID = 1163, x = 33, y = 15},
-				{npcID = 61802, scriptID = 10015, mapID = 1163, x = 39, y = 21},
-				{npcID = 61803, scriptID = 10016, mapID = 1163, x = 36, y = 34},
+				{npcID = 61797, scriptID = 11135, mapID = 1163, x = 30, y = 34},
+				{npcID = 61798, scriptID = 11136, mapID = 1163, x = 24, y = 31},
+				{npcID = 61799, scriptID = 11137, mapID = 1163, x = 22, y = 24},
+				{npcID = 61800, scriptID = 11138, mapID = 1163, x = 26, y = 15},
+				{npcID = 61801, scriptID = 11139, mapID = 1163, x = 33, y = 15},
+				{npcID = 61802, scriptID = 11140, mapID = 1163, x = 39, y = 21},
+				{npcID = 61803, scriptID = 11141, mapID = 1163, x = 36, y = 34},
 			},
 		},
 		[164] =
@@ -2459,13 +2459,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61802, scriptID = 10015, mapID = 1164, x = 30, y = 34},
-				{npcID = 61806, scriptID = 10015, mapID = 1164, x = 24, y = 31},
-				{npcID = 61807, scriptID = 10016, mapID = 1164, x = 22, y = 24},
-				{npcID = 61808, scriptID = 10015, mapID = 1164, x = 26, y = 15},
-				{npcID = 61809, scriptID = 10016, mapID = 1164, x = 33, y = 15},
-				{npcID = 61810, scriptID = 10015, mapID = 1164, x = 39, y = 21},
-				{npcID = 61811, scriptID = 10016, mapID = 1164, x = 36, y = 34},
+				{npcID = 61802, scriptID = 11142, mapID = 1164, x = 30, y = 34},
+				{npcID = 61806, scriptID = 11143, mapID = 1164, x = 24, y = 31},
+				{npcID = 61807, scriptID = 11144, mapID = 1164, x = 22, y = 24},
+				{npcID = 61808, scriptID = 11145, mapID = 1164, x = 26, y = 15},
+				{npcID = 61809, scriptID = 11146, mapID = 1164, x = 33, y = 15},
+				{npcID = 61810, scriptID = 11147, mapID = 1164, x = 39, y = 21},
+				{npcID = 61811, scriptID = 11148, mapID = 1164, x = 36, y = 34},
 			},
 		},
 		[165] =
@@ -2474,13 +2474,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61813, scriptID = 10015, mapID = 1165, x = 30, y = 34},
-				{npcID = 61814, scriptID = 10015, mapID = 1165, x = 24, y = 31},
-				{npcID = 61815, scriptID = 10016, mapID = 1165, x = 22, y = 24},
-				{npcID = 61816, scriptID = 10015, mapID = 1165, x = 26, y = 15},
-				{npcID = 61817, scriptID = 10016, mapID = 1165, x = 33, y = 15},
-				{npcID = 61818, scriptID = 10015, mapID = 1165, x = 39, y = 21},
-				{npcID = 61819, scriptID = 10016, mapID = 1165, x = 36, y = 34},
+				{npcID = 61813, scriptID = 11149, mapID = 1165, x = 30, y = 34},
+				{npcID = 61814, scriptID = 11150, mapID = 1165, x = 24, y = 31},
+				{npcID = 61815, scriptID = 11151, mapID = 1165, x = 22, y = 24},
+				{npcID = 61816, scriptID = 11152, mapID = 1165, x = 26, y = 15},
+				{npcID = 61817, scriptID = 11153, mapID = 1165, x = 33, y = 15},
+				{npcID = 61818, scriptID = 11154, mapID = 1165, x = 39, y = 21},
+				{npcID = 61819, scriptID = 11155, mapID = 1165, x = 36, y = 34},
 			},
 		},
 		[166] =
@@ -2489,13 +2489,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61821, scriptID = 10015, mapID = 1166, x = 30, y = 34},
-				{npcID = 61822, scriptID = 10015, mapID = 1166, x = 24, y = 31},
-				{npcID = 61823, scriptID = 10016, mapID = 1166, x = 22, y = 24},
-				{npcID = 61824, scriptID = 10015, mapID = 1166, x = 26, y = 15},
-				{npcID = 61825, scriptID = 10016, mapID = 1166, x = 33, y = 15},
-				{npcID = 61826, scriptID = 10015, mapID = 1166, x = 39, y = 21},
-				{npcID = 61827, scriptID = 10016, mapID = 1166, x = 36, y = 34},
+				{npcID = 61821, scriptID = 11156, mapID = 1166, x = 30, y = 34},
+				{npcID = 61822, scriptID = 11157, mapID = 1166, x = 24, y = 31},
+				{npcID = 61823, scriptID = 11158, mapID = 1166, x = 22, y = 24},
+				{npcID = 61824, scriptID = 11159, mapID = 1166, x = 26, y = 15},
+				{npcID = 61825, scriptID = 11160, mapID = 1166, x = 33, y = 15},
+				{npcID = 61826, scriptID = 11161, mapID = 1166, x = 39, y = 21},
+				{npcID = 61827, scriptID = 11162, mapID = 1166, x = 36, y = 34},
 			},
 		},
 		[167] =
@@ -2504,13 +2504,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61829, scriptID = 10015, mapID = 1167, x = 30, y = 34},
-				{npcID = 61830, scriptID = 10015, mapID = 1167, x = 24, y = 31},
-				{npcID = 61831, scriptID = 10016, mapID = 1167, x = 22, y = 24},
-				{npcID = 61832, scriptID = 10015, mapID = 1167, x = 26, y = 15},
-				{npcID = 61833, scriptID = 10016, mapID = 1167, x = 33, y = 15},
-				{npcID = 61834, scriptID = 10015, mapID = 1167, x = 39, y = 21},
-				{npcID = 61835, scriptID = 10016, mapID = 1167, x = 36, y = 34},
+				{npcID = 61829, scriptID = 11163, mapID = 1167, x = 30, y = 34},
+				{npcID = 61830, scriptID = 11164, mapID = 1167, x = 24, y = 31},
+				{npcID = 61831, scriptID = 11165, mapID = 1167, x = 22, y = 24},
+				{npcID = 61832, scriptID = 11166, mapID = 1167, x = 26, y = 15},
+				{npcID = 61833, scriptID = 11167, mapID = 1167, x = 33, y = 15},
+				{npcID = 61834, scriptID = 11168, mapID = 1167, x = 39, y = 21},
+				{npcID = 61835, scriptID = 11169, mapID = 1167, x = 36, y = 34},
 			},
 		},
 		[168] =
@@ -2519,13 +2519,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61837, scriptID = 10015, mapID = 1168, x = 30, y = 34},
-				{npcID = 61838, scriptID = 10015, mapID = 1168, x = 24, y = 31},
-				{npcID = 61839, scriptID = 10016, mapID = 1168, x = 22, y = 24},
-				{npcID = 61840, scriptID = 10015, mapID = 1168, x = 26, y = 15},
-				{npcID = 61841, scriptID = 10016, mapID = 1168, x = 33, y = 15},
-				{npcID = 61842, scriptID = 10015, mapID = 1168, x = 39, y = 21},
-				{npcID = 61843, scriptID = 10016, mapID = 1168, x = 36, y = 34},
+				{npcID = 61837, scriptID = 11170, mapID = 1168, x = 30, y = 34},
+				{npcID = 61838, scriptID = 11171, mapID = 1168, x = 24, y = 31},
+				{npcID = 61839, scriptID = 11172, mapID = 1168, x = 22, y = 24},
+				{npcID = 61840, scriptID = 11173, mapID = 1168, x = 26, y = 15},
+				{npcID = 61841, scriptID = 11174, mapID = 1168, x = 33, y = 15},
+				{npcID = 61842, scriptID = 11175, mapID = 1168, x = 39, y = 21},
+				{npcID = 61843, scriptID = 11176, mapID = 1168, x = 36, y = 34},
 			},
 		},
 		[169] =
@@ -2534,13 +2534,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61845, scriptID = 10015, mapID = 1169, x = 30, y = 34},
-				{npcID = 61846, scriptID = 10015, mapID = 1169, x = 24, y = 31},
-				{npcID = 61847, scriptID = 10016, mapID = 1169, x = 22, y = 24},
-				{npcID = 61848, scriptID = 10015, mapID = 1169, x = 26, y = 15},
-				{npcID = 61849, scriptID = 10016, mapID = 1169, x = 33, y = 15},
-				{npcID = 61850, scriptID = 10015, mapID = 1169, x = 39, y = 21},
-				{npcID = 61851, scriptID = 10016, mapID = 1169, x = 36, y = 34},
+				{npcID = 61845, scriptID = 11177, mapID = 1169, x = 30, y = 34},
+				{npcID = 61846, scriptID = 11178, mapID = 1169, x = 24, y = 31},
+				{npcID = 61847, scriptID = 11179, mapID = 1169, x = 22, y = 24},
+				{npcID = 61848, scriptID = 11180, mapID = 1169, x = 26, y = 15},
+				{npcID = 61849, scriptID = 11181, mapID = 1169, x = 33, y = 15},
+				{npcID = 61850, scriptID = 11182, mapID = 1169, x = 39, y = 21},
+				{npcID = 61851, scriptID = 11183, mapID = 1169, x = 36, y = 34},
 			},
 		},
 		[170] =
@@ -2549,13 +2549,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61853, scriptID = 10015, mapID = 1170, x = 30, y = 34},
-				{npcID = 61854, scriptID = 10015, mapID = 1170, x = 24, y = 31},
-				{npcID = 61855, scriptID = 10016, mapID = 1170, x = 22, y = 24},
-				{npcID = 61856, scriptID = 10015, mapID = 1170, x = 26, y = 15},
-				{npcID = 61857, scriptID = 10016, mapID = 1170, x = 33, y = 15},
-				{npcID = 61858, scriptID = 10015, mapID = 1170, x = 39, y = 21},
-				{npcID = 61859, scriptID = 10016, mapID = 1170, x = 36, y = 34},
+				{npcID = 61853, scriptID = 11184, mapID = 1170, x = 30, y = 34},
+				{npcID = 61854, scriptID = 11185, mapID = 1170, x = 24, y = 31},
+				{npcID = 61855, scriptID = 11186, mapID = 1170, x = 22, y = 24},
+				{npcID = 61856, scriptID = 11187, mapID = 1170, x = 26, y = 15},
+				{npcID = 61857, scriptID = 11188, mapID = 1170, x = 33, y = 15},
+				{npcID = 61858, scriptID = 11189, mapID = 1170, x = 39, y = 21},
+				{npcID = 61859, scriptID = 11190, mapID = 1170, x = 36, y = 34},
 			},
 		},
 		[171] =
@@ -2564,13 +2564,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61861, scriptID = 10015, mapID = 1171, x = 30, y = 34},
-				{npcID = 61862, scriptID = 10015, mapID = 1171, x = 24, y = 31},
-				{npcID = 61863, scriptID = 10016, mapID = 1171, x = 22, y = 24},
-				{npcID = 61864, scriptID = 10015, mapID = 1171, x = 26, y = 15},
-				{npcID = 61865, scriptID = 10016, mapID = 1171, x = 33, y = 15},
-				{npcID = 61866, scriptID = 10015, mapID = 1171, x = 39, y = 21},
-				{npcID = 61867, scriptID = 10016, mapID = 1171, x = 36, y = 34},
+				{npcID = 61861, scriptID = 11191, mapID = 1171, x = 30, y = 34},
+				{npcID = 61862, scriptID = 11192, mapID = 1171, x = 24, y = 31},
+				{npcID = 61863, scriptID = 11193, mapID = 1171, x = 22, y = 24},
+				{npcID = 61864, scriptID = 11194, mapID = 1171, x = 26, y = 15},
+				{npcID = 61865, scriptID = 11195, mapID = 1171, x = 33, y = 15},
+				{npcID = 61866, scriptID = 11196, mapID = 1171, x = 39, y = 21},
+				{npcID = 61867, scriptID = 11197, mapID = 1171, x = 36, y = 34},
 			},
 		},
 		[172] =
@@ -2579,13 +2579,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61869, scriptID = 10015, mapID = 1172, x = 30, y = 34},
-				{npcID = 61870, scriptID = 10015, mapID = 1172, x = 24, y = 31},
-				{npcID = 61871, scriptID = 10016, mapID = 1172, x = 22, y = 24},
-				{npcID = 61872, scriptID = 10015, mapID = 1172, x = 26, y = 15},
-				{npcID = 61873, scriptID = 10016, mapID = 1172, x = 33, y = 15},
-				{npcID = 61874, scriptID = 10015, mapID = 1172, x = 39, y = 21},
-				{npcID = 61875, scriptID = 10016, mapID = 1172, x = 36, y = 34},
+				{npcID = 61869, scriptID = 11198, mapID = 1172, x = 30, y = 34},
+				{npcID = 61870, scriptID = 11199, mapID = 1172, x = 24, y = 31},
+				{npcID = 61871, scriptID = 11200, mapID = 1172, x = 22, y = 24},
+				{npcID = 61872, scriptID = 11201, mapID = 1172, x = 26, y = 15},
+				{npcID = 61873, scriptID = 11202, mapID = 1172, x = 33, y = 15},
+				{npcID = 61874, scriptID = 11203, mapID = 1172, x = 39, y = 21},
+				{npcID = 61875, scriptID = 11204, mapID = 1172, x = 36, y = 34},
 			},
 		},
 		[173] =
@@ -2594,13 +2594,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61877, scriptID = 10015, mapID = 1173, x = 30, y = 34},
-				{npcID = 61878, scriptID = 10015, mapID = 1173, x = 24, y = 31},
-				{npcID = 61879, scriptID = 10016, mapID = 1173, x = 22, y = 24},
-				{npcID = 61880, scriptID = 10015, mapID = 1173, x = 26, y = 15},
-				{npcID = 61881, scriptID = 10016, mapID = 1173, x = 33, y = 15},
-				{npcID = 61882, scriptID = 10015, mapID = 1173, x = 39, y = 21},
-				{npcID = 61883, scriptID = 10016, mapID = 1173, x = 36, y = 34},
+				{npcID = 61877, scriptID = 11205, mapID = 1173, x = 30, y = 34},
+				{npcID = 61878, scriptID = 11206, mapID = 1173, x = 24, y = 31},
+				{npcID = 61879, scriptID = 11207, mapID = 1173, x = 22, y = 24},
+				{npcID = 61880, scriptID = 11208, mapID = 1173, x = 26, y = 15},
+				{npcID = 61881, scriptID = 11209, mapID = 1173, x = 33, y = 15},
+				{npcID = 61882, scriptID = 11210, mapID = 1173, x = 39, y = 21},
+				{npcID = 61883, scriptID = 11211, mapID = 1173, x = 36, y = 34},
 			},
 		},
 		[174] =
@@ -2609,13 +2609,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61885, scriptID = 10015, mapID = 1174, x = 30, y = 34},
-				{npcID = 61886, scriptID = 10015, mapID = 1174, x = 24, y = 31},
-				{npcID = 61887, scriptID = 10016, mapID = 1174, x = 22, y = 24},
-				{npcID = 61888, scriptID = 10015, mapID = 1174, x = 26, y = 15},
-				{npcID = 61889, scriptID = 10016, mapID = 1174, x = 33, y = 15},
-				{npcID = 61890, scriptID = 10015, mapID = 1174, x = 39, y = 21},
-				{npcID = 61891, scriptID = 10016, mapID = 1174, x = 36, y = 34},
+				{npcID = 61885, scriptID = 11212, mapID = 1174, x = 30, y = 34},
+				{npcID = 61886, scriptID = 11213, mapID = 1174, x = 24, y = 31},
+				{npcID = 61887, scriptID = 11214, mapID = 1174, x = 22, y = 24},
+				{npcID = 61888, scriptID = 11215, mapID = 1174, x = 26, y = 15},
+				{npcID = 61889, scriptID = 11216, mapID = 1174, x = 33, y = 15},
+				{npcID = 61890, scriptID = 11217, mapID = 1174, x = 39, y = 21},
+				{npcID = 61891, scriptID = 11218, mapID = 1174, x = 36, y = 34},
 			},
 		},
 		[175] =
@@ -2624,13 +2624,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61893, scriptID = 10015, mapID = 1175, x = 30, y = 34},
-				{npcID = 61894, scriptID = 10015, mapID = 1175, x = 24, y = 31},
-				{npcID = 61895, scriptID = 10016, mapID = 1175, x = 22, y = 24},
-				{npcID = 61896, scriptID = 10015, mapID = 1175, x = 26, y = 15},
-				{npcID = 61897, scriptID = 10016, mapID = 1175, x = 33, y = 15},
-				{npcID = 61898, scriptID = 10015, mapID = 1175, x = 39, y = 21},
-				{npcID = 61899, scriptID = 10016, mapID = 1175, x = 36, y = 34},
+				{npcID = 61893, scriptID = 11219, mapID = 1175, x = 30, y = 34},
+				{npcID = 61894, scriptID = 11220, mapID = 1175, x = 24, y = 31},
+				{npcID = 61895, scriptID = 11221, mapID = 1175, x = 22, y = 24},
+				{npcID = 61896, scriptID = 11222, mapID = 1175, x = 26, y = 15},
+				{npcID = 61897, scriptID = 11223, mapID = 1175, x = 33, y = 15},
+				{npcID = 61898, scriptID = 11224, mapID = 1175, x = 39, y = 21},
+				{npcID = 61899, scriptID = 11225, mapID = 1175, x = 36, y = 34},
 			},
 		},
 		[176] =
@@ -2639,13 +2639,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61901, scriptID = 10015, mapID = 1176, x = 30, y = 34},
-				{npcID = 61902, scriptID = 10015, mapID = 1176, x = 24, y = 31},
-				{npcID = 61903, scriptID = 10016, mapID = 1176, x = 22, y = 24},
-				{npcID = 61904, scriptID = 10015, mapID = 1176, x = 26, y = 15},
-				{npcID = 61905, scriptID = 10016, mapID = 1176, x = 33, y = 15},
-				{npcID = 61906, scriptID = 10015, mapID = 1176, x = 39, y = 21},
-				{npcID = 61907, scriptID = 10016, mapID = 1176, x = 36, y = 34},
+				{npcID = 61901, scriptID = 11226, mapID = 1176, x = 30, y = 34},
+				{npcID = 61902, scriptID = 11227, mapID = 1176, x = 24, y = 31},
+				{npcID = 61903, scriptID = 11228, mapID = 1176, x = 22, y = 24},
+				{npcID = 61904, scriptID = 11229, mapID = 1176, x = 26, y = 15},
+				{npcID = 61905, scriptID = 11230, mapID = 1176, x = 33, y = 15},
+				{npcID = 61906, scriptID = 11231, mapID = 1176, x = 39, y = 21},
+				{npcID = 61907, scriptID = 11232, mapID = 1176, x = 36, y = 34},
 			},
 		},
 		[177] =
@@ -2654,13 +2654,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61909, scriptID = 10015, mapID = 1177, x = 30, y = 34},
-				{npcID = 61910, scriptID = 10015, mapID = 1177, x = 24, y = 31},
-				{npcID = 61911, scriptID = 10016, mapID = 1177, x = 22, y = 24},
-				{npcID = 61912, scriptID = 10015, mapID = 1177, x = 26, y = 15},
-				{npcID = 61913, scriptID = 10016, mapID = 1177, x = 33, y = 15},
-				{npcID = 61914, scriptID = 10015, mapID = 1177, x = 39, y = 21},
-				{npcID = 61915, scriptID = 10016, mapID = 1177, x = 36, y = 34},
+				{npcID = 61909, scriptID = 11233, mapID = 1177, x = 30, y = 34},
+				{npcID = 61910, scriptID = 11234, mapID = 1177, x = 24, y = 31},
+				{npcID = 61911, scriptID = 11235, mapID = 1177, x = 22, y = 24},
+				{npcID = 61912, scriptID = 11236, mapID = 1177, x = 26, y = 15},
+				{npcID = 61913, scriptID = 11237, mapID = 1177, x = 33, y = 15},
+				{npcID = 61914, scriptID = 11238, mapID = 1177, x = 39, y = 21},
+				{npcID = 61915, scriptID = 11239, mapID = 1177, x = 36, y = 34},
 			},
 		},
 		[178] =
@@ -2669,13 +2669,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61917, scriptID = 10015, mapID = 1178, x = 30, y = 34},
-				{npcID = 61918, scriptID = 10015, mapID = 1178, x = 24, y = 31},
-				{npcID = 61919, scriptID = 10016, mapID = 1178, x = 22, y = 24},
-				{npcID = 61920, scriptID = 10015, mapID = 1178, x = 26, y = 15},
-				{npcID = 61921, scriptID = 10016, mapID = 1178, x = 33, y = 15},
-				{npcID = 61922, scriptID = 10015, mapID = 1178, x = 39, y = 21},
-				{npcID = 61923, scriptID = 10016, mapID = 1178, x = 36, y = 34},
+				{npcID = 61917, scriptID = 11240, mapID = 1178, x = 30, y = 34},
+				{npcID = 61918, scriptID = 11241, mapID = 1178, x = 24, y = 31},
+				{npcID = 61919, scriptID = 11242, mapID = 1178, x = 22, y = 24},
+				{npcID = 61920, scriptID = 11243, mapID = 1178, x = 26, y = 15},
+				{npcID = 61921, scriptID = 11244, mapID = 1178, x = 33, y = 15},
+				{npcID = 61922, scriptID = 11245, mapID = 1178, x = 39, y = 21},
+				{npcID = 61923, scriptID = 11246, mapID = 1178, x = 36, y = 34},
 			},
 		},
 		[179] =
@@ -2684,13 +2684,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61925, scriptID = 10015, mapID = 1179, x = 30, y = 34},
-				{npcID = 61926, scriptID = 10015, mapID = 1179, x = 24, y = 31},
-				{npcID = 61927, scriptID = 10016, mapID = 1179, x = 22, y = 24},
-				{npcID = 61928, scriptID = 10015, mapID = 1179, x = 26, y = 15},
-				{npcID = 61929, scriptID = 10016, mapID = 1179, x = 33, y = 15},
-				{npcID = 61930, scriptID = 10015, mapID = 1179, x = 39, y = 21},
-				{npcID = 61931, scriptID = 10016, mapID = 1179, x = 36, y = 34},
+				{npcID = 61925, scriptID = 11247, mapID = 1179, x = 30, y = 34},
+				{npcID = 61926, scriptID = 11248, mapID = 1179, x = 24, y = 31},
+				{npcID = 61927, scriptID = 11249, mapID = 1179, x = 22, y = 24},
+				{npcID = 61928, scriptID = 11250, mapID = 1179, x = 26, y = 15},
+				{npcID = 61929, scriptID = 11251, mapID = 1179, x = 33, y = 15},
+				{npcID = 61930, scriptID = 11252, mapID = 1179, x = 39, y = 21},
+				{npcID = 61931, scriptID = 11253, mapID = 1179, x = 36, y = 34},
 			},
 		},
 		[180] =
@@ -2699,13 +2699,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61933, scriptID = 10015, mapID = 1180, x = 30, y = 34},
-				{npcID = 61934, scriptID = 10015, mapID = 1180, x = 24, y = 31},
-				{npcID = 61935, scriptID = 10016, mapID = 1180, x = 22, y = 24},
-				{npcID = 61936, scriptID = 10015, mapID = 1180, x = 26, y = 15},
-				{npcID = 61937, scriptID = 10016, mapID = 1180, x = 33, y = 15},
-				{npcID = 61938, scriptID = 10015, mapID = 1180, x = 39, y = 21},
-				{npcID = 61939, scriptID = 10016, mapID = 1180, x = 36, y = 34},
+				{npcID = 61933, scriptID = 11254, mapID = 1180, x = 30, y = 34},
+				{npcID = 61934, scriptID = 11255, mapID = 1180, x = 24, y = 31},
+				{npcID = 61935, scriptID = 11256, mapID = 1180, x = 22, y = 24},
+				{npcID = 61936, scriptID = 11257, mapID = 1180, x = 26, y = 15},
+				{npcID = 61937, scriptID = 11258, mapID = 1180, x = 33, y = 15},
+				{npcID = 61938, scriptID = 11259, mapID = 1180, x = 39, y = 21},
+				{npcID = 61939, scriptID = 11260, mapID = 1180, x = 36, y = 34},
 			},
 		},
 		[181] =
@@ -2714,13 +2714,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61941, scriptID = 10015, mapID = 1181, x = 30, y = 34},
-				{npcID = 61942, scriptID = 10015, mapID = 1181, x = 24, y = 31},
-				{npcID = 61943, scriptID = 10016, mapID = 1181, x = 22, y = 24},
-				{npcID = 61944, scriptID = 10015, mapID = 1181, x = 26, y = 15},
-				{npcID = 61945, scriptID = 10016, mapID = 1181, x = 33, y = 15},
-				{npcID = 61946, scriptID = 10015, mapID = 1181, x = 39, y = 21},
-				{npcID = 61947, scriptID = 10016, mapID = 1181, x = 36, y = 34},
+				{npcID = 61941, scriptID = 11261, mapID = 1181, x = 30, y = 34},
+				{npcID = 61942, scriptID = 11262, mapID = 1181, x = 24, y = 31},
+				{npcID = 61943, scriptID = 11263, mapID = 1181, x = 22, y = 24},
+				{npcID = 61944, scriptID = 11264, mapID = 1181, x = 26, y = 15},
+				{npcID = 61945, scriptID = 11265, mapID = 1181, x = 33, y = 15},
+				{npcID = 61946, scriptID = 11266, mapID = 1181, x = 39, y = 21},
+				{npcID = 61947, scriptID = 11267, mapID = 1181, x = 36, y = 34},
 			},
 		},
 		[182] =
@@ -2729,13 +2729,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61949, scriptID = 10015, mapID = 1182, x = 30, y = 34},
-				{npcID = 61950, scriptID = 10015, mapID = 1182, x = 24, y = 31},
-				{npcID = 61951, scriptID = 10016, mapID = 1182, x = 22, y = 24},
-				{npcID = 61952, scriptID = 10015, mapID = 1182, x = 26, y = 15},
-				{npcID = 61953, scriptID = 10016, mapID = 1182, x = 33, y = 15},
-				{npcID = 61954, scriptID = 10015, mapID = 1182, x = 39, y = 21},
-				{npcID = 61955, scriptID = 10016, mapID = 1182, x = 36, y = 34},
+				{npcID = 61949, scriptID = 11268, mapID = 1182, x = 30, y = 34},
+				{npcID = 61950, scriptID = 11269, mapID = 1182, x = 24, y = 31},
+				{npcID = 61951, scriptID = 11270, mapID = 1182, x = 22, y = 24},
+				{npcID = 61952, scriptID = 11271, mapID = 1182, x = 26, y = 15},
+				{npcID = 61953, scriptID = 11272, mapID = 1182, x = 33, y = 15},
+				{npcID = 61954, scriptID = 11273, mapID = 1182, x = 39, y = 21},
+				{npcID = 61955, scriptID = 11274, mapID = 1182, x = 36, y = 34},
 			},
 		},
 		[183] =
@@ -2744,13 +2744,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61957, scriptID = 10015, mapID = 1183, x = 30, y = 34},
-				{npcID = 61958, scriptID = 10015, mapID = 1183, x = 24, y = 31},
-				{npcID = 61959, scriptID = 10016, mapID = 1183, x = 22, y = 24},
-				{npcID = 61960, scriptID = 10015, mapID = 1183, x = 26, y = 15},
-				{npcID = 61961, scriptID = 10016, mapID = 1183, x = 33, y = 15},
-				{npcID = 61962, scriptID = 10015, mapID = 1183, x = 39, y = 21},
-				{npcID = 61963, scriptID = 10016, mapID = 1183, x = 36, y = 34},
+				{npcID = 61957, scriptID = 11275, mapID = 1183, x = 30, y = 34},
+				{npcID = 61958, scriptID = 11276, mapID = 1183, x = 24, y = 31},
+				{npcID = 61959, scriptID = 11277, mapID = 1183, x = 22, y = 24},
+				{npcID = 61960, scriptID = 11278, mapID = 1183, x = 26, y = 15},
+				{npcID = 61961, scriptID = 11279, mapID = 1183, x = 33, y = 15},
+				{npcID = 61962, scriptID = 11280, mapID = 1183, x = 39, y = 21},
+				{npcID = 61963, scriptID = 11281, mapID = 1183, x = 36, y = 34},
 			},
 		},
 		[184] =
@@ -2759,13 +2759,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61965, scriptID = 10015, mapID = 1184, x = 30, y = 34},
-				{npcID = 61966, scriptID = 10015, mapID = 1184, x = 24, y = 31},
-				{npcID = 61967, scriptID = 10016, mapID = 1184, x = 22, y = 24},
-				{npcID = 61968, scriptID = 10015, mapID = 1184, x = 26, y = 15},
-				{npcID = 61969, scriptID = 10016, mapID = 1184, x = 33, y = 15},
-				{npcID = 61970, scriptID = 10015, mapID = 1184, x = 39, y = 21},
-				{npcID = 61971, scriptID = 10016, mapID = 1184, x = 36, y = 34},
+				{npcID = 61965, scriptID = 11282, mapID = 1184, x = 30, y = 34},
+				{npcID = 61966, scriptID = 11283, mapID = 1184, x = 24, y = 31},
+				{npcID = 61967, scriptID = 11284, mapID = 1184, x = 22, y = 24},
+				{npcID = 61968, scriptID = 11285, mapID = 1184, x = 26, y = 15},
+				{npcID = 61969, scriptID = 11286, mapID = 1184, x = 33, y = 15},
+				{npcID = 61970, scriptID = 11287, mapID = 1184, x = 39, y = 21},
+				{npcID = 61971, scriptID = 11288, mapID = 1184, x = 36, y = 34},
 			},
 		},
 		[185] =
@@ -2774,13 +2774,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61973, scriptID = 10015, mapID = 1185, x = 30, y = 34},
-				{npcID = 61974, scriptID = 10015, mapID = 1185, x = 24, y = 31},
-				{npcID = 61975, scriptID = 10016, mapID = 1185, x = 22, y = 24},
-				{npcID = 61976, scriptID = 10015, mapID = 1185, x = 26, y = 15},
-				{npcID = 61977, scriptID = 10016, mapID = 1185, x = 33, y = 15},
-				{npcID = 61978, scriptID = 10015, mapID = 1185, x = 39, y = 21},
-				{npcID = 61979, scriptID = 10016, mapID = 1185, x = 36, y = 34},
+				{npcID = 61973, scriptID = 11289, mapID = 1185, x = 30, y = 34},
+				{npcID = 61974, scriptID = 11290, mapID = 1185, x = 24, y = 31},
+				{npcID = 61975, scriptID = 11291, mapID = 1185, x = 22, y = 24},
+				{npcID = 61976, scriptID = 11292, mapID = 1185, x = 26, y = 15},
+				{npcID = 61977, scriptID = 11293, mapID = 1185, x = 33, y = 15},
+				{npcID = 61978, scriptID = 11294, mapID = 1185, x = 39, y = 21},
+				{npcID = 61979, scriptID = 11295, mapID = 1185, x = 36, y = 34},
 			},
 		},
 		[186] =
@@ -2789,13 +2789,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61981, scriptID = 10015, mapID = 1186, x = 30, y = 34},
-				{npcID = 61982, scriptID = 10015, mapID = 1186, x = 24, y = 31},
-				{npcID = 61983, scriptID = 10016, mapID = 1186, x = 22, y = 24},
-				{npcID = 61984, scriptID = 10015, mapID = 1186, x = 26, y = 15},
-				{npcID = 61985, scriptID = 10016, mapID = 1186, x = 33, y = 15},
-				{npcID = 61986, scriptID = 10015, mapID = 1186, x = 39, y = 21},
-				{npcID = 61987, scriptID = 10016, mapID = 1186, x = 36, y = 34},
+				{npcID = 61981, scriptID = 11296, mapID = 1186, x = 30, y = 34},
+				{npcID = 61982, scriptID = 11297, mapID = 1186, x = 24, y = 31},
+				{npcID = 61983, scriptID = 11298, mapID = 1186, x = 22, y = 24},
+				{npcID = 61984, scriptID = 11299, mapID = 1186, x = 26, y = 15},
+				{npcID = 61985, scriptID = 11300, mapID = 1186, x = 33, y = 15},
+				{npcID = 61986, scriptID = 11301, mapID = 1186, x = 39, y = 21},
+				{npcID = 61987, scriptID = 11302, mapID = 1186, x = 36, y = 34},
 			},
 		},
 		[187] =
@@ -2804,13 +2804,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61989, scriptID = 10015, mapID = 1187, x = 30, y = 34},
-				{npcID = 61990, scriptID = 10015, mapID = 1187, x = 24, y = 31},
-				{npcID = 61991, scriptID = 10016, mapID = 1187, x = 22, y = 24},
-				{npcID = 61992, scriptID = 10015, mapID = 1187, x = 26, y = 15},
-				{npcID = 61993, scriptID = 10016, mapID = 1187, x = 33, y = 15},
-				{npcID = 61994, scriptID = 10015, mapID = 1187, x = 39, y = 21},
-				{npcID = 61995, scriptID = 10016, mapID = 1187, x = 36, y = 34},
+				{npcID = 61989, scriptID = 11303, mapID = 1187, x = 30, y = 34},
+				{npcID = 61990, scriptID = 11304, mapID = 1187, x = 24, y = 31},
+				{npcID = 61991, scriptID = 11305, mapID = 1187, x = 22, y = 24},
+				{npcID = 61992, scriptID = 11306, mapID = 1187, x = 26, y = 15},
+				{npcID = 61993, scriptID = 11307, mapID = 1187, x = 33, y = 15},
+				{npcID = 61994, scriptID = 11308, mapID = 1187, x = 39, y = 21},
+				{npcID = 61995, scriptID = 11309, mapID = 1187, x = 36, y = 34},
 			},
 		},
 		[188] =
@@ -2819,13 +2819,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 61997, scriptID = 10015, mapID = 1188, x = 30, y = 34},
-				{npcID = 61998, scriptID = 10015, mapID = 1188, x = 24, y = 31},
-				{npcID = 61999, scriptID = 10016, mapID = 1188, x = 22, y = 24},
-				{npcID = 62000, scriptID = 10015, mapID = 1188, x = 26, y = 15},
-				{npcID = 62001, scriptID = 10016, mapID = 1188, x = 33, y = 15},
-				{npcID = 62002, scriptID = 10015, mapID = 1188, x = 39, y = 21},
-				{npcID = 62003, scriptID = 10016, mapID = 1188, x = 36, y = 34},
+				{npcID = 61997, scriptID = 11310, mapID = 1188, x = 30, y = 34},
+				{npcID = 61998, scriptID = 11311, mapID = 1188, x = 24, y = 31},
+				{npcID = 61999, scriptID = 11312, mapID = 1188, x = 22, y = 24},
+				{npcID = 62000, scriptID = 11313, mapID = 1188, x = 26, y = 15},
+				{npcID = 62001, scriptID = 11314, mapID = 1188, x = 33, y = 15},
+				{npcID = 62002, scriptID = 11315, mapID = 1188, x = 39, y = 21},
+				{npcID = 62003, scriptID = 11316, mapID = 1188, x = 36, y = 34},
 			},
 		},
 		[189] =
@@ -2834,13 +2834,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62005, scriptID = 10015, mapID = 1189, x = 30, y = 34},
-				{npcID = 62006, scriptID = 10015, mapID = 1189, x = 24, y = 31},
-				{npcID = 62007, scriptID = 10016, mapID = 1189, x = 22, y = 24},
-				{npcID = 62008, scriptID = 10015, mapID = 1189, x = 26, y = 15},
-				{npcID = 62009, scriptID = 10016, mapID = 1189, x = 33, y = 15},
-				{npcID = 62010, scriptID = 10015, mapID = 1189, x = 39, y = 21},
-				{npcID = 62011, scriptID = 10016, mapID = 1189, x = 36, y = 34},
+				{npcID = 62005, scriptID = 11317, mapID = 1189, x = 30, y = 34},
+				{npcID = 62006, scriptID = 11318, mapID = 1189, x = 24, y = 31},
+				{npcID = 62007, scriptID = 11319, mapID = 1189, x = 22, y = 24},
+				{npcID = 62008, scriptID = 11320, mapID = 1189, x = 26, y = 15},
+				{npcID = 62009, scriptID = 11321, mapID = 1189, x = 33, y = 15},
+				{npcID = 62010, scriptID = 11322, mapID = 1189, x = 39, y = 21},
+				{npcID = 62011, scriptID = 11323, mapID = 1189, x = 36, y = 34},
 			},
 		},
 		[190] =
@@ -2849,13 +2849,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62013, scriptID = 10015, mapID = 1190, x = 30, y = 34},
-				{npcID = 62014, scriptID = 10015, mapID = 1190, x = 24, y = 31},
-				{npcID = 62015, scriptID = 10016, mapID = 1190, x = 22, y = 24},
-				{npcID = 62016, scriptID = 10015, mapID = 1190, x = 26, y = 15},
-				{npcID = 62017, scriptID = 10016, mapID = 1190, x = 33, y = 15},
-				{npcID = 62018, scriptID = 10015, mapID = 1190, x = 39, y = 21},
-				{npcID = 62019, scriptID = 10016, mapID = 1190, x = 36, y = 34},
+				{npcID = 62013, scriptID = 11324, mapID = 1190, x = 30, y = 34},
+				{npcID = 62014, scriptID = 11325, mapID = 1190, x = 24, y = 31},
+				{npcID = 62015, scriptID = 11326, mapID = 1190, x = 22, y = 24},
+				{npcID = 62016, scriptID = 11327, mapID = 1190, x = 26, y = 15},
+				{npcID = 62017, scriptID = 11328, mapID = 1190, x = 33, y = 15},
+				{npcID = 62018, scriptID = 11329, mapID = 1190, x = 39, y = 21},
+				{npcID = 62019, scriptID = 11330, mapID = 1190, x = 36, y = 34},
 			},
 		},
 		[191] =
@@ -2864,13 +2864,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62021, scriptID = 10015, mapID = 1191, x = 30, y = 34},
-				{npcID = 62022, scriptID = 10015, mapID = 1191, x = 24, y = 31},
-				{npcID = 62023, scriptID = 10016, mapID = 1191, x = 22, y = 24},
-				{npcID = 62024, scriptID = 10015, mapID = 1191, x = 26, y = 15},
-				{npcID = 62025, scriptID = 10016, mapID = 1191, x = 33, y = 15},
-				{npcID = 62026, scriptID = 10015, mapID = 1191, x = 39, y = 21},
-				{npcID = 62027, scriptID = 10016, mapID = 1191, x = 36, y = 34},
+				{npcID = 62021, scriptID = 11331, mapID = 1191, x = 30, y = 34},
+				{npcID = 62022, scriptID = 11332, mapID = 1191, x = 24, y = 31},
+				{npcID = 62023, scriptID = 11333, mapID = 1191, x = 22, y = 24},
+				{npcID = 62024, scriptID = 11334, mapID = 1191, x = 26, y = 15},
+				{npcID = 62025, scriptID = 11335, mapID = 1191, x = 33, y = 15},
+				{npcID = 62026, scriptID = 11336, mapID = 1191, x = 39, y = 21},
+				{npcID = 62027, scriptID = 11337, mapID = 1191, x = 36, y = 34},
 			},
 		},
 		[192] =
@@ -2879,13 +2879,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62029, scriptID = 10015, mapID = 1192, x = 30, y = 34},
-				{npcID = 62030, scriptID = 10015, mapID = 1192, x = 24, y = 31},
-				{npcID = 62031, scriptID = 10016, mapID = 1192, x = 22, y = 24},
-				{npcID = 62032, scriptID = 10015, mapID = 1192, x = 26, y = 15},
-				{npcID = 62033, scriptID = 10016, mapID = 1192, x = 33, y = 15},
-				{npcID = 62034, scriptID = 10015, mapID = 1192, x = 39, y = 21},
-				{npcID = 62035, scriptID = 10016, mapID = 1192, x = 36, y = 34},
+				{npcID = 62029, scriptID = 11338, mapID = 1192, x = 30, y = 34},
+				{npcID = 62030, scriptID = 11339, mapID = 1192, x = 24, y = 31},
+				{npcID = 62031, scriptID = 11340, mapID = 1192, x = 22, y = 24},
+				{npcID = 62032, scriptID = 11341, mapID = 1192, x = 26, y = 15},
+				{npcID = 62033, scriptID = 11342, mapID = 1192, x = 33, y = 15},
+				{npcID = 62034, scriptID = 11343, mapID = 1192, x = 39, y = 21},
+				{npcID = 62035, scriptID = 11344, mapID = 1192, x = 36, y = 34},
 			},
 		},
 		[193] =
@@ -2894,13 +2894,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62037, scriptID = 10015, mapID = 1193, x = 30, y = 34},
-				{npcID = 62038, scriptID = 10015, mapID = 1193, x = 24, y = 31},
-				{npcID = 62039, scriptID = 10016, mapID = 1193, x = 22, y = 24},
-				{npcID = 62040, scriptID = 10015, mapID = 1193, x = 26, y = 15},
-				{npcID = 62041, scriptID = 10016, mapID = 1193, x = 33, y = 15},
-				{npcID = 62042, scriptID = 10015, mapID = 1193, x = 39, y = 21},
-				{npcID = 62043, scriptID = 10016, mapID = 1193, x = 36, y = 34},
+				{npcID = 62037, scriptID = 11345, mapID = 1193, x = 30, y = 34},
+				{npcID = 62038, scriptID = 11346, mapID = 1193, x = 24, y = 31},
+				{npcID = 62039, scriptID = 11347, mapID = 1193, x = 22, y = 24},
+				{npcID = 62040, scriptID = 11348, mapID = 1193, x = 26, y = 15},
+				{npcID = 62041, scriptID = 11349, mapID = 1193, x = 33, y = 15},
+				{npcID = 62042, scriptID = 11350, mapID = 1193, x = 39, y = 21},
+				{npcID = 62043, scriptID = 11351, mapID = 1193, x = 36, y = 34},
 			},
 		},
 		[194] =
@@ -2909,13 +2909,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62045, scriptID = 10015, mapID = 1194, x = 30, y = 34},
-				{npcID = 62046, scriptID = 10015, mapID = 1194, x = 24, y = 31},
-				{npcID = 62047, scriptID = 10016, mapID = 1194, x = 22, y = 24},
-				{npcID = 62048, scriptID = 10015, mapID = 1194, x = 26, y = 15},
-				{npcID = 62049, scriptID = 10016, mapID = 1194, x = 33, y = 15},
-				{npcID = 62050, scriptID = 10015, mapID = 1194, x = 39, y = 21},
-				{npcID = 62051, scriptID = 10016, mapID = 1194, x = 36, y = 34},
+				{npcID = 62045, scriptID = 11352, mapID = 1194, x = 30, y = 34},
+				{npcID = 62046, scriptID = 11353, mapID = 1194, x = 24, y = 31},
+				{npcID = 62047, scriptID = 11354, mapID = 1194, x = 22, y = 24},
+				{npcID = 62048, scriptID = 11355, mapID = 1194, x = 26, y = 15},
+				{npcID = 62049, scriptID = 11356, mapID = 1194, x = 33, y = 15},
+				{npcID = 62050, scriptID = 11357, mapID = 1194, x = 39, y = 21},
+				{npcID = 62051, scriptID = 11358, mapID = 1194, x = 36, y = 34},
 			},
 		},
 		[195] =
@@ -2924,13 +2924,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62053, scriptID = 10015, mapID = 1195, x = 30, y = 34},
-				{npcID = 62054, scriptID = 10015, mapID = 1195, x = 24, y = 31},
-				{npcID = 62055, scriptID = 10016, mapID = 1195, x = 22, y = 24},
-				{npcID = 62056, scriptID = 10015, mapID = 1195, x = 26, y = 15},
-				{npcID = 62057, scriptID = 10016, mapID = 1195, x = 33, y = 15},
-				{npcID = 62058, scriptID = 10015, mapID = 1195, x = 39, y = 21},
-				{npcID = 62059, scriptID = 10016, mapID = 1195, x = 36, y = 34},
+				{npcID = 62053, scriptID = 11359, mapID = 1195, x = 30, y = 34},
+				{npcID = 62054, scriptID = 11360, mapID = 1195, x = 24, y = 31},
+				{npcID = 62055, scriptID = 11361, mapID = 1195, x = 22, y = 24},
+				{npcID = 62056, scriptID = 11362, mapID = 1195, x = 26, y = 15},
+				{npcID = 62057, scriptID = 11363, mapID = 1195, x = 33, y = 15},
+				{npcID = 62058, scriptID = 11664, mapID = 1195, x = 39, y = 21},
+				{npcID = 62059, scriptID = 11365, mapID = 1195, x = 36, y = 34},
 			},
 		},
 		[196] =
@@ -2939,13 +2939,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62061, scriptID = 10015, mapID = 1196, x = 30, y = 34},
-				{npcID = 62062, scriptID = 10015, mapID = 1196, x = 24, y = 31},
-				{npcID = 62063, scriptID = 10016, mapID = 1196, x = 22, y = 24},
-				{npcID = 62064, scriptID = 10015, mapID = 1196, x = 26, y = 15},
-				{npcID = 62065, scriptID = 10016, mapID = 1196, x = 33, y = 15},
-				{npcID = 62066, scriptID = 10015, mapID = 1196, x = 39, y = 21},
-				{npcID = 62067, scriptID = 10016, mapID = 1196, x = 36, y = 34},
+				{npcID = 62061, scriptID = 11366, mapID = 1196, x = 30, y = 34},
+				{npcID = 62062, scriptID = 11367, mapID = 1196, x = 24, y = 31},
+				{npcID = 62063, scriptID = 11368, mapID = 1196, x = 22, y = 24},
+				{npcID = 62064, scriptID = 11369, mapID = 1196, x = 26, y = 15},
+				{npcID = 62065, scriptID = 11370, mapID = 1196, x = 33, y = 15},
+				{npcID = 62066, scriptID = 11371, mapID = 1196, x = 39, y = 21},
+				{npcID = 62067, scriptID = 11372, mapID = 1196, x = 36, y = 34},
 			},
 		},
 		[197] =
@@ -2954,13 +2954,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62069, scriptID = 10015, mapID = 1197, x = 30, y = 34},
-				{npcID = 62070, scriptID = 10015, mapID = 1197, x = 24, y = 31},
-				{npcID = 62071, scriptID = 10016, mapID = 1197, x = 22, y = 24},
-				{npcID = 62072, scriptID = 10015, mapID = 1197, x = 26, y = 15},
-				{npcID = 62073, scriptID = 10016, mapID = 1197, x = 33, y = 15},
-				{npcID = 62074, scriptID = 10015, mapID = 1197, x = 39, y = 21},
-				{npcID = 62075, scriptID = 10016, mapID = 1197, x = 36, y = 34},
+				{npcID = 62069, scriptID = 11373, mapID = 1197, x = 30, y = 34},
+				{npcID = 62070, scriptID = 11374, mapID = 1197, x = 24, y = 31},
+				{npcID = 62071, scriptID = 11375, mapID = 1197, x = 22, y = 24},
+				{npcID = 62072, scriptID = 11376, mapID = 1197, x = 26, y = 15},
+				{npcID = 62073, scriptID = 11377, mapID = 1197, x = 33, y = 15},
+				{npcID = 62074, scriptID = 11378, mapID = 1197, x = 39, y = 21},
+				{npcID = 62075, scriptID = 11379, mapID = 1197, x = 36, y = 34},
 			},
 		},
 		[198] =
@@ -2969,13 +2969,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62077, scriptID = 10015, mapID = 1198, x = 30, y = 34},
-				{npcID = 62078, scriptID = 10015, mapID = 1198, x = 24, y = 31},
-				{npcID = 62079, scriptID = 10016, mapID = 1198, x = 22, y = 24},
-				{npcID = 62080, scriptID = 10015, mapID = 1198, x = 26, y = 15},
-				{npcID = 62081, scriptID = 10016, mapID = 1198, x = 33, y = 15},
-				{npcID = 62082, scriptID = 10015, mapID = 1198, x = 39, y = 21},
-				{npcID = 62083, scriptID = 10016, mapID = 1198, x = 36, y = 34},
+				{npcID = 62077, scriptID = 11380, mapID = 1198, x = 30, y = 34},
+				{npcID = 62078, scriptID = 11381, mapID = 1198, x = 24, y = 31},
+				{npcID = 62079, scriptID = 11382, mapID = 1198, x = 22, y = 24},
+				{npcID = 62080, scriptID = 11383, mapID = 1198, x = 26, y = 15},
+				{npcID = 62081, scriptID = 11384, mapID = 1198, x = 33, y = 15},
+				{npcID = 62082, scriptID = 11385, mapID = 1198, x = 39, y = 21},
+				{npcID = 62083, scriptID = 11386, mapID = 1198, x = 36, y = 34},
 			},
 		},
 		[199] =
@@ -2984,13 +2984,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62085, scriptID = 10015, mapID = 1199, x = 30, y = 34},
-				{npcID = 62086, scriptID = 10015, mapID = 1199, x = 24, y = 31},
-				{npcID = 62087, scriptID = 10016, mapID = 1199, x = 22, y = 24},
-				{npcID = 62088, scriptID = 10015, mapID = 1199, x = 26, y = 15},
-				{npcID = 62089, scriptID = 10016, mapID = 1199, x = 33, y = 15},
-				{npcID = 62090, scriptID = 10015, mapID = 1199, x = 39, y = 21},
-				{npcID = 62091, scriptID = 10016, mapID = 1199, x = 36, y = 34},
+				{npcID = 62085, scriptID = 11387, mapID = 1199, x = 30, y = 34},
+				{npcID = 62086, scriptID = 11388, mapID = 1199, x = 24, y = 31},
+				{npcID = 62087, scriptID = 11389, mapID = 1199, x = 22, y = 24},
+				{npcID = 62088, scriptID = 11390, mapID = 1199, x = 26, y = 15},
+				{npcID = 62089, scriptID = 11391, mapID = 1199, x = 33, y = 15},
+				{npcID = 62090, scriptID = 11392, mapID = 1199, x = 39, y = 21},
+				{npcID = 62091, scriptID = 11393, mapID = 1199, x = 36, y = 34},
 			},
 		},
 		[200] =
@@ -2999,13 +2999,13 @@ BabelEachLayerDB =
 			-- 挑战NPC随机库
 			challengeNpcTrace = 
 			{
-				{npcID = 62093, scriptID = 10015, mapID = 1200, x = 30, y = 34},
-				{npcID = 62094, scriptID = 10015, mapID = 1200, x = 24, y = 31},
-				{npcID = 62095, scriptID = 10016, mapID = 1200, x = 22, y = 24},
-				{npcID = 62096, scriptID = 10015, mapID = 1200, x = 26, y = 15},
-				{npcID = 62097, scriptID = 10016, mapID = 1200, x = 33, y = 15},
-				{npcID = 62098, scriptID = 10015, mapID = 1200, x = 39, y = 21},
-				{npcID = 62099, scriptID = 10016, mapID = 1200, x = 36, y = 34},
+				{npcID = 62093, scriptID = 11394, mapID = 1200, x = 30, y = 34},
+				{npcID = 62094, scriptID = 11395, mapID = 1200, x = 24, y = 31},
+				{npcID = 62095, scriptID = 11396, mapID = 1200, x = 22, y = 24},
+				{npcID = 62096, scriptID = 11397, mapID = 1200, x = 26, y = 15},
+				{npcID = 62097, scriptID = 11398, mapID = 1200, x = 33, y = 15},
+				{npcID = 62098, scriptID = 11399, mapID = 1200, x = 39, y = 21},
+				{npcID = 62099, scriptID = 11400, mapID = 1200, x = 36, y = 34},
 			},
 		},		
 	},

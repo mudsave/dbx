@@ -7,22 +7,22 @@ ArticlesDB =
 
 	[10001] = {
 		condition = {taskID = 1510},
-				dropID = 1,
-				scriptID = 12345,
+				dropID = 19,
 	},
 	[10002] = {
 		condition = {taskID = 1514},
-				dropID = 2,
-				scriptID = 67890,
+				dropID = 20,
 	},
 	[10003] = {
 		condition = {taskID = 1515},
+				dropID = 21,
 	},
 	[10004] = {
 		condition = {taskID = 1306},
 	},
 	[10005] = {
 		condition = {taskID = 1323},
+				dropID = 22,
 	},
 	[10006] = {
 		condition = {taskID = 1308},
@@ -50,54 +50,6 @@ ArticlesDB =
 	[10013] = {
 		condition = {lowLevel = 150},
 				dropID = 5,
-	},
-	[10014] = {
-		condition = {lowLevel = 150},
-				dropID = 6,
-	},
-	[10015] = {
-		condition = {lowLevel = 150},
-				dropID = 7,
-	},
-	[10016] = {
-		condition = {lowLevel = 150},
-				dropID = 8,
-	},
-	[10017] = {
-		condition = {lowLevel = 150},
-				dropID = 9,
-	},
-	[10018] = {
-		condition = {lowLevel = 150},
-				dropID = 10,
-	},
-	[10019] = {
-		condition = {lowLevel = 150},
-				dropID = 11,
-	},
-	[10020] = {
-		condition = {lowLevel = 150},
-				dropID = 12,
-	},
-	[10021] = {
-		condition = {lowLevel = 150},
-				dropID = 13,
-	},
-	[10022] = {
-		condition = {lowLevel = 150},
-				dropID = 14,
-	},
-	[10023] = {
-		condition = {lowLevel = 150},
-				dropID = 15,
-	},
-	[10024] = {
-		condition = {lowLevel = 150},
-				dropID = 16,
-	},
-	[10025] = {
-		condition = {lowLevel = 150},
-				dropID = 17,
 	},
 	[10026] = {
 		condition = {lowLevel = 150},

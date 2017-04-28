@@ -60,43 +60,48 @@ function DekaronSchool:close()
 	--结算奖励遍历前三名的 发广播
 	local BroadCastMsgID = BroadCastMsgGroupID.Group_DekaronSchool
 	local event = Event.getEvent(BroadCastSystem_SC_DekaronSchool,BroadCastMsgID.EventID,BroadCastMsgID.ActivityTopThree,rankList[1] and rankList[1][3] or nil,rankList[2] and rankList[2][3] or nil,rankList[3] and rankList[3][3] or nil)
-	-- RemoteEventProxy.broadcast(event)
 	g_eventMgr:broadcastEvent(event)
-	for i,rankInfo in pairs(rankList or {}) do
+	for i, rankInfo in pairs(rankList or {}) do
 		local teamID = rankInfo[1]
 		local team = g_teamMgr:getTeam(teamID)
-		if i < 100 then
-			for _,memberInfo in pairs(team:getMemberList()) do
-				local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
-				local playerLevel = member:getLevel()
-				local activityHandler = member:getHandler(HandlerDef_Activity)
-				local integral = activityHandler:getDekaronIntegral() or 0
-				local exp = DekaronSchoolReward.getExpFormula(playerLevel,integral)
-				local tao = DekaronSchoolReward.getTaoFormula(playerLevel,integral)
-				if exp then
-					local temp_xp_ratio = member:getAttrValue(player_xp_ratio)
-					local tempExp = math.floor(exp * temp_xp_ratio / 100)
-					member:addXp(tempExp)
-					g_dekaronSchoolMgr:sendRewardMessageTip(member, 2, tempExp)
-				end
-				--道行
-				if tao then
-					local tao = tao + member:getAttrValue(player_tao)
-					member:setAttrValue(player_tao, tao)
-					g_dekaronSchoolMgr:sendRewardMessageTip(member, 5, tao)
+		if team then 
+			if i < 100 then
+				for _,memberInfo in pairs(team:getMemberList()) do
+					local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+					local playerLevel = member:getLevel()
+					local activityHandler = member:getHandler(HandlerDef_Activity)
+					local integral = activityHandler:getDekaronIntegral() or 0
+					local exp = DekaronSchoolReward.getExpFormula(playerLevel,integral)
+					local tao = DekaronSchoolReward.getTaoFormula(playerLevel,integral)
+					if exp then
+						local temp_xp_ratio = member:getAttrValue(player_xp_ratio)
+						local tempExp = math.floor(exp * temp_xp_ratio / 100)
+						member:addXp(tempExp)
+						g_dekaronSchoolMgr:sendRewardMessageTip(member, 2, tempExp)
+					end
+					--道行
+					if tao then
+						local tao = tao + member:getAttrValue(player_tao)
+						member:setAttrValue(player_tao, tao)
+						g_dekaronSchoolMgr:sendRewardMessageTip(member, 5, tao)
+					end
 				end
 			end
+			team:setProcess(0)
+			team:setRandList(false)
+			-- 释放队伍当中的任务目标对
+			team:removeActivityTarget()
 		end
-		team:setDekaronActivityTarget(nil)
-		team:setProcess(0)
 	end
 	--清除所有信息
 	for playerID, player in pairs(g_entityMgr:getPlayers()) do
 		player:getHandler(HandlerDef_Activity):setDekaronIntegral(nil)
 		--关闭UI
 	end
+	g_dekaronSchoolMgr:cleanRankList()
 	self.state = ActivityState.Close
 	LuaDBAccess.deleteSchoolActivity()
+	-- 释放当前活动对象
 	g_activityMgr:removeActivity(self._id)
 end
 

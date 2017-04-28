@@ -441,9 +441,15 @@ void CSession::OnWorldMsg(AppMsg* pMsg, HANDLE hLinkContext)
 					if (!g_accountMgr.isRegistered(pInfo->accountId))
 						return;
 					AccountInfo& account = g_accountMgr.getAccount(pInfo->accountId);
-					ASSERT_(account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT ||
-							account.status == ACCOUNT_STATE_LOADED ||
-							account.status == ACCOUNT_STATE_RECONNECTING_FIGHT);
+					if(account.status != ACCOUNT_STATE_OFFLINE_IN_FIGHT &&
+							account.status != ACCOUNT_STATE_LOADED &&
+							account.status != ACCOUNT_STATE_RECONNECTING_FIGHT)
+					{
+						TRACE0_L0("[ERROR] account.status wrong! in (MSG_W_S_CLEAR_OFF_FIGHT)\n");
+						TRACE1_L2("Account: %d\n", pInfo->accountId);
+						TRACE1_L2("Status: %d\n", account.status);
+						return;
+					}
 					account.setIsOffline(false);
 					if (account.status == ACCOUNT_STATE_OFFLINE_IN_FIGHT)
 						g_accountMgr.unregAccount(pInfo->accountId);

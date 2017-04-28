@@ -1,0 +1,37 @@
+<div ng-show ="{{isShow}}">
+    <div class="horizontal-scroll">
+    <table class="table table-hover" st-table="facMembersData">
+        <thead>
+        <tr class="sortable">
+        <th class="table-id" st-sort="RoleID" st-sort-default="true">ID</th>
+        <th st-sort="RoleName">名字</th>
+        <th st-sort="RoleLvl">等级</th>
+        <th st-sort="RoleJob">职务</th>
+        <th st-sort="RoleMoney">帮贡</th>
+        <th st-sort="LastOnline">最后在线</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="roleInfo in facMembersData" class="editable-tr-wrap">
+        <td class="table-id">{{roleInfo.ID}}</td>
+        <td><span>{{roleInfo.Name}}</span></td>
+        <td><span editable-text="roleInfo.Level" blur="cancel">{{roleInfo.Level}}</span></td>
+        <td><span editable-text="roleInfo.Job" blur="cancel">{{roleInfo.Job}}</span></td>
+        <td><span editable-text="roleInfo.Money">{{roleInfo.Money}}</span></td>
+        <td><span>{{roleInfo.Online}}</span></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+        <td colspan="6" class="text-center">
+            <div st-pagination="" st-items-by-page="12" st-displayed-pages="5"></div>
+        </td>
+        </tr>
+        </tfoot>
+    </table>
+    </div>
+</div>
+
+<div ng-hide="{{isShow}}">
+    <p style= "color:red;"><strong>{{message}}</strong></p>    
+</div> 

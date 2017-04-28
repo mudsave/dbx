@@ -35,3 +35,9 @@ end
 function AppStart()
 	App.load()
 end
+
+function printError(msg)
+	print ("[ERROR] " .. msg)
+	print (debug.traceback())
+	return 0;
+end

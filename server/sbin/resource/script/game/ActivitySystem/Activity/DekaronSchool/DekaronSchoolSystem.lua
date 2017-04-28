@@ -40,7 +40,9 @@ function DekaronSchoolSystem:onFightEnd(event)
 		if team then
 			local activityTarget = team:getDekaronActivityTarget()
 			if activityTarget then
-				activityTarget:onScriptDone(scriptID,bWin,monsterDBIDs)
+				if activityTarget:onScriptDone(scriptID, bWin, monsterDBIDs) then
+					team:removeActivityTarget()
+				end
 			end
 		end
 	end

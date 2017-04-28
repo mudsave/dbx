@@ -10,7 +10,7 @@ require "game.SystemError"
 
 g_max_fightID = 0
 gTestTempTick = 0
-FightManager = class(nil, Singleton)
+FightManager = class(nil, Singleton, Timer)
 
 local math_rand			= math.random
 local tb_clear			= table.clear
@@ -18,7 +18,8 @@ local CirticalLoyalty	= PetLoyaltyFightParam	-- 宠物逃离战斗的临界忠�
 local MaxPetLoyalty		= MaxPetLoyalty			-- 宠物的最大忠诚值
 
 local fightIDs = {}--[ID]=type
-
+local timerIDs = {}--[timerID] = {playerID1,playerID2}
+local FightTimerOut = 10
 -- 实体进入战斗失败的原因
 local BattleFail_Duplicate	= 1	-- 已经出战了
 local BattleFail_PetDying	= 2	-- 宠物垂死
@@ -366,6 +367,7 @@ end
 function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 	print("FightManager:startScriptFight",scriptFightID,mapID)
 	clearAttrPool()
+	local playerIDs = {}
 	local curMapID
 	local failedEntites,count = TeamCheck(roles)
 	if count < 1 then
@@ -374,7 +376,8 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 	end
 
 	local worldID = serverLoad:getMinLoadWorldID()
-
+	local isOnce = true
+	local flagPlayer
 	for key,role in ipairs(roles) do
 		local failure = failedEntites[key]
 		if failure then
@@ -393,7 +396,11 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 				--local moveHandler = role:getHandler(HandlerDef_Move)
 				--moveHandler:doStopMove()
 				role:setFightServerID(worldID)
-
+				table.insert(playerIDs,role:getID())
+				if isOnce then
+					flagPlayer = role
+					isOnce = false
+				end
 				-- 进入战斗要在正确的地图位置中
 				if not curMapID then
 					curMapID = role:getPos()[1]
@@ -414,13 +421,16 @@ function FightManager:startScriptFight(roles, scriptFightID, mapID,type)
 	)
 	fightIDs[g_max_fightID] = type
 	clearAttrPool()
+	local timerID = g_timerMgr:regTimer(self, 1000 * FightTimerOut,0, "FightManager:startScriptFight")
+	timerIDs[timerID] = playerIDs
+	flagPlayer:setFightTimerID(timerID)
 	return g_max_fightID
 end
 
 -- roles1:{player1,player2},roles2:{player1,player2}
 function FightManager:startPvpFight(roles1, roles2, mapID,type)
 	clearAttrPool()
-	
+	local playerIDs = {}
 	local curMapID
 	local failedOffenceEntites,offenceCount = TeamCheck(roles1)
 	if offenceCount < 1 then
@@ -435,7 +445,8 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 	end
 
 	local worldID = serverLoad:getMinLoadWorldID()
-
+	local isOnce = true
+	local flagPlayer
 	for key,role in ipairs(roles1) do
 		local failure = failedOffenceEntites[key]
 		if failure then
@@ -456,6 +467,11 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 				if not curMapID then
 					curMapID = role:getPos()[1]
 				end
+				if isOnce then
+					flagPlayer = role
+					isOnce = false
+				end
+				table.insert(playerIDs,role:getID())
 			end
 		end
 	end
@@ -476,6 +492,7 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 				--local moveHandler = role:getHandler(HandlerDef_Move)
 				--moveHandler:doStopMove()
 				role:setFightServerID(worldID)
+				table.insert(playerIDs,role:getID())
 			end
 		end
 	end
@@ -492,7 +509,10 @@ function FightManager:startPvpFight(roles1, roles2, mapID,type)
 		), worldID
 	)
 	fightIDs[g_max_fightID] = type
+	local timerID = g_timerMgr:regTimer(self, 1000 * FightTimerOut,0, "FightManager:startPvpFight")
+	timerIDs[timerID] = playerIDs
 	clearAttrPool()
+	flagPlayer:setFightTimerID(timerID)
 	return g_max_fightID
 end
 
@@ -506,6 +526,23 @@ end
 
 FightManager.setPlayerAttrInfo = SetPlayerAttrInfo
 FightManager.setPetAttrInfo = SetPetAttrInfo
+
+function FightManager:update(timerID)
+		local playerIDs = timerIDs[timerID]
+		timerIDs[timerID] = nil
+		for _,playerID in ipairs(playerIDs) do
+			local player = g_entityMgr:getPlayerByID(playerID)
+			if player  then
+				player:setStatus(ePlayerNormal)
+				player:setActionState(player:getOldActionState())
+			end
+		end
+end
+
+function FightManager:clearTimerContext(timerID)
+	g_timerMgr:unRegTimer(timerID)
+	timerIDs[timerID] = nil
+end
 
 function FightManager.getInstance()
 	return FightManager()

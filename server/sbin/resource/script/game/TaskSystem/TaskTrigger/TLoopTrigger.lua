@@ -329,7 +329,7 @@ function Triggers.addSpecialArea(roleID, curParam, task, isRandom)
 		{
 			scriptID = config.scriptID,
 			count = 1,
-			ignoreResult = true,
+			ignoreResult = false,
 			bor = true,
 		}
 		local target = createDynamicTarget(player, task, "Tscript", targetParam)
@@ -400,7 +400,7 @@ function Triggers.createRandomNpc(roleID, curParam, task, isRandom)
 		{
 			scriptID = npcConfig.scriptID,
 			count = 1,
-			ignoreResult = true,
+			ignoreResult = false,
 			bor = true,
 		}
 		local target = createDynamicTarget(player, task, "Tscript", targetParam)
@@ -572,11 +572,11 @@ function Triggers.removeFollowNpc(roleID, curParam, task, isRandom)
 	local followHandler = player:getHandler(HandlerDef_Follow)
 	local follow = followHandler:getMember(followNpcID)
 	if follow then
-		followHandler:removeMember(followNpcID)
 		table.insert(npcsData,{follow:getID(), followNpcID})
 		--if sceneType == MapType.Task or sceneType == MapType.Wild then
 		scene:detachEntity(follow)
-		release(follow)
+		--release(follow)
+		followHandler:removeMember(followNpcID)
 		--end
 	end
 	g_taskSystem:removeFollowEntity(player, npcsData)
@@ -967,6 +967,15 @@ function Triggers.createRandomPuzzle(roleID, curParam, task, isRandom)
 	--通知客户端
 	local event = Event.getEvent(TaskEvent_SC_BeginPuzzle, task:getID(), curParam.puzzleID)
 	g_eventMgr:fireRemoteEvent(event, player)
+	local config =
+	{	
+		taskID = task:getID(),
+		npcID = curParam.npcID,
+		mapID = curParam.mapID,
+		x = curParam.x,
+		y = curParam.y,
+	}
+	g_taskSystem:onSetDirect(player, config)
 end
 
 function Triggers.finishPuzzle(roleID, curParam, task, isRandom)
@@ -1027,4 +1036,36 @@ function Triggers.createBuyPetTrace(roleID, curParam, task, isRandom)
 	}
 	g_taskSystem:onSetDirect(player, config)
 	task:refresh()
+end
+
+function Triggers.createOldTowerEliminate(roleID, curParam, task, isRandom)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	if not isRandom then
+		curParam.clearTimes = 20
+		local target = createDynamicTarget(player, task, "ToldTower", curParam)
+		task:addTarget(1, target)
+		local targets = {}
+		targets[1] = {}
+		targets[1].type = "ToldTower"
+		targets[1].param = curParam
+		task:setTargetsConfig(targets)
+	end
+	print("createOldTowerEliminate:mapID",oldTowerMapID)
+	--任务开始的时候创建场景
+	g_sceneMgr:createOldTowerScene(oldTowerMapID,roleID)
+end
+
+function Triggers.finishOldTowerEliminate(roleID, curParam, task, isRandom)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	--完成古塔驱妖任务
+	local config =
+	{		
+		taskID = task:getID(),
+		mapID = curParam.mapID,
+		x = curParam.x,
+		y = curParam.y,
+	}
+	g_oldTowerSym:onFinishOldTower(player, config)
+	print("finishOldTowerEliminate")
+
 end

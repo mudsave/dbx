@@ -17,15 +17,15 @@ SocialSystem = class(EventSetDoer, Singleton)
 
 UpdatePlayerAttrList = {
 
-	["Level"] = function(infoValue) player:setLevel(infoValue) end,
-	["ModelID"] = function(infoValue) player:setModelID(infoValue) end,
-	["Vigor"] = function(infoValue) player:setVigor(infoValue) end,
-	["OfflineDate"] = function(infoValue) player:setOfflineDate(infoValue) end,
-	["CurHeadTex"] = function(infoValue) player:setCurHeadTex(infoValue) end,
-	["CurBodyTex"] = function(infoValue) player:setCurBodyTex(infoValue) end,
-	["School"] = function(infoValue) player:setSchool(infoValue) end,
-	["Name"] = function(infoValue) player:setName(infoValue) end,
-	["Sex"] = function(infoValue) player:setSex(infoValue) end,
+	["Level"] = function(player,infoValue) player:setLevel(infoValue) end,
+	["ModelID"] = function(player,infoValue) player:setModelID(infoValue) end,
+	["Vigor"] = function(player,infoValue) player:setVigor(infoValue) end,
+	["OfflineDate"] = function(player,infoValue) player:setOfflineDate(infoValue) end,
+	["CurHeadTex"] = function(player,infoValue) player:setCurHeadTex(infoValue) end,
+	["CurBodyTex"] = function(player,infoValue) player:setCurBodyTex(infoValue) end,
+	["School"] = function(player,infoValue) player:setSchool(infoValue) end,
+	["Name"] = function(player,infoValue) player:setName(infoValue) end,
+	["Sex"] = function(player,infoValue) player:setSex(infoValue) end,
 
 }
 
@@ -134,7 +134,7 @@ function SocialSystem:onUpdatePlayerAttr( event )
 	local player = g_playerMgr:getPlayerByDBID(playerDBID)
 	if player then
 		for infoName,infoValue in pairs(attributeList) do
-			UpdatePlayerAttrList[infoName](infoValue)
+			UpdatePlayerAttrList[infoName](player,infoValue)
 		end
 	end
 

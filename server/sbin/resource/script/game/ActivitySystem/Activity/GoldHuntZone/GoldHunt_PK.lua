@@ -30,6 +30,7 @@ function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	local activityID2 = handler2:getGoldHuntData().ID
 	local data2 = handler2:getPriData(activityID2)
 	local curScore2 = data2.curScore
+	local oldScore = curScore2
 
 	local rand = math.random(GoldHuntZone_PK_punish.percent[1], GoldHuntZone_PK_punish.percent[2])
 	local reward = math.floor(curScore2*(rand/100))
@@ -64,7 +65,16 @@ function GoldHunt_PK:onPKDone(winner,loser, targetID)
 	g_eventMgr:fireRemoteEvent(event, winner)
 	event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 17,winner:getName(),ore)
 	g_eventMgr:fireRemoteEvent(event, loser)
-
+	--输方加失败次数
+	if oldScore > curScore2 then
+		local curPkedCount = (data2.pkedCount or 0) + 1
+		data2.pkedCount = curPkedCount
+		if curPkedCount >= GoldHuntZone_PKed_limit then
+			local peer = loser:getPeer()
+			setPropValue(peer, PLAYER_GOLD_HUNT_MINE, GoldHuntZone_Protected_iconValue)
+			loser:flushPropBatch()
+		end
+	end
 
 end
 

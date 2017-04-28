@@ -41,16 +41,11 @@ function PetHandler:loadDB(recordSet)
 	end
 
 	for _,data in pairs(recordSet) do
-		local pet = Pet(owner)
-
-		pet:setPeer( CoEntity:Create( eLogicPet,eClsTypePet ) )
-
+		local pet = g_entityFct:createRawPet()
+		pet:setOwner(owner)
 		pet:onLoad(data)
 
 		remains = remains + 1
-
-		pet:setEntityType(eLogicPet)
-		g_entityMgr:addPet(pet)
 
 		LuaDBAccess.LoadPet(pet,__callback)
 	end
@@ -90,9 +85,7 @@ function PetHandler:getAll()
 end
 
 -- 删除一个宠物
-
 local _tClear = {0}
-
 function PetHandler:removePet(petID)
 	local map = self.pet_map
 	local pet = petID and map[petID]
@@ -121,24 +114,20 @@ end
 
 -- 宠物所有数据加载完毕
 function PetHandler:onPetLoaded(pet,recordList)
-	pet:loadAttrs(recordList[1])
-
-	local skillHandler = PetSkillHandler(pet)
-	pet:addHandler(HandlerDef_Move,MoveHandler(pet))
-	-- pet:addHandler(HandlerDef_Buff,BuffHandler(pet))
-	pet:addHandler(HandlerDef_PetSkill,skillHandler)
-	skillHandler:loadDB(recordList[2])
-	pet:addHandler(HandlerDef_AutoPoint,AutoPointHandler(pet))
-	-- 自动加点
-	local pointHandler = pet:getHandler(HandlerDef_AutoPoint)
-		toDo "添加自动加点"
-
-	pointHandler:loadDB(recordList[3])
-	if self:canAddPet() then
-		self:addPet(pet)
-	else
-		notice "宠物数量超过最大数"
+	if not self:canAddPet() then
+		print(("%s已经不能添加宠物了,是数据库的问题吗?玩家的数据库ID是%d"):format(
+			string.gbkToUtf8(self.owner:getName()),
+			self.owner:getDBID()
+		))
+		g_entityMgr:removePet(pet:getID())
+		return
 	end
+
+	pet:loadAttrs(recordList[1])	-- 加载宠物的属性集合
+	pet:getHandler(HandlerDef_PetSkill):loadDB(recordList[2])	-- 加载宠物的技能集合
+	pet:getHandler(HandlerDef_AutoPoint):init(pet,recordList[3])	-- 加载宠物的自动加点
+
+	self:addPet(pet)
 end
 
 -- 所有宠物加载完毕
@@ -190,9 +179,14 @@ function PetHandler:getLastCaught(configID)
 end
 
 -- 跟随宠物,在场景中显示的宠物
-
 function PetHandler:setFollowPetID(id)
 	self.follow = id
+
+	--如果是组队状态，且为队长发送给客户端一份
+	local teamHandler = self.owner:getHandler(HandlerDef_Team)
+	if teamHandler then
+		teamHandler:setLeaderFollowPetID(self.owner:getID())
+	end
 end
 
 function PetHandler:getFollowPetID()
@@ -200,7 +194,6 @@ function PetHandler:getFollowPetID()
 end
 
 -- 出战宠物
-
 function PetHandler:setFightPetID(id)
 	self.fight = id
 end
@@ -210,7 +203,6 @@ function PetHandler:getFightPetID()
 end
 
 -- 掠阵宠物
-
 function PetHandler:setReadyPetID(id)
 	self.ready = id
 end

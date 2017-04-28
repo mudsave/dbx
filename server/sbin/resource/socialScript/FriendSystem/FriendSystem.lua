@@ -59,14 +59,12 @@ function FriendSystem:onGetFriendInfo(event)
 	if friend then
 		local event_GetFriendInfoOnline = Event.getEvent(FriendEvent_BC_GetFriendInfoOnline,roleDBID)
 		g_eventMgr:fireRemoteEvent(event_GetFriendInfoOnline,friend)
-
 	else--离线
 		--判断在服务器中是否存有玩家数据，如果存在，则调用服务器中的数据，提高效率
 		local friendLoaded  = g_playerMgr:getLoadedPlayerByDBID(playerDBID)
 		friendLoaded = friendLoaded or g_playerMgr:getLoadedPlayerByName(playerName)
 
 		if  friendLoaded then
-
 			local factionHandler = friendLoaded:getHandler(HandlerDef_Faction)
 			local factionDBID = factionHandler:getFactionDBID()
 			local factionName = nil
@@ -133,16 +131,22 @@ function FriendSystem.onGetFriendInfoOffline(recordList,info)
 					end
 				end
 			end
-
+			local adjustSex = nil
+			if infoDatabase[1].sex then
+				adjustSex = 1
+			else
+				adjustSex = 0
+			end
 			local friendInfo = {ID = infoDatabase[1].ID,name = infoDatabase[1].name,
 							school = infoDatabase[1].school,level = infoDatabase[1].level,
-							faction = factionName,position = nil,sex = infoDatabase[1].sex }
+							faction = factionName,position = nil,sex = adjustSex }
 			--将固定不变的数据库信息和随内存变化的信息传递
+			print("infoInserver",infoDatabase[1].sex)
 			local event = Event.getEvent(FriendEvent_BC_ShowFriendInfo,friendInfo)
 			g_eventMgr:fireRemoteEvent(event,role)
 
 		elseif info.infoFunc == friendInfoFunc.showInChat then
-
+			print("infoInserverdddddddddddd",infoDatabase[1].sex)
 			local friendInfo = {DBID = infoDatabase[1].ID,name = infoDatabase[1].name,level = infoDatabase[1].level,school = infoDatabase[1].school,sex = infoDatabase[1].sex,state =PlayerOnlineState.Offline}
 			local event = Event.getEvent(FriendEvent_BC_ShowFriendInfoInChat,friendInfo)
 			g_eventMgr:fireRemoteEvent(event,role)

@@ -27,9 +27,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 4900,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 64000,    --绑银
+			[TaskRewardList.player_pot] = 7700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 6400,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -104,9 +104,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 4900,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 65000,    --绑银
+			[TaskRewardList.player_pot] = 7700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 6500,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -177,9 +177,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 4900,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 66000,    --绑银
+			[TaskRewardList.player_pot] = 7700,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 6600,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -210,7 +210,7 @@ MainTaskDB21_30 =
 				param={
 						npcs =
 						{
-							[1] = {npcID = 20312, mapID = 107, x = 166, y = 97,dir = Direction. South,},--董越
+							[1] = {npcID = 20312, mapID = 107, x = 166, y = 94,dir = Direction. South,},--董越
 							[2] = {npcID = 20307, mapID = 107, x = 163, y = 100,dir = Direction. WestSouth,},
 							[3] = {npcID = 20319, mapID = 107, x = 166, y = 97,dir = Direction. WestNorth,},
 							[4] = {npcID = 20320, mapID = 107, x = 163, y = 94,dir = Direction. EastNorth,},
@@ -248,16 +248,16 @@ MainTaskDB21_30 =
 		preTaskData = {1103},	--任务前置任务没有填nil
 		nextTaskID = 1105,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID = 1013,	--交任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5000,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 67000,    --绑银
+			[TaskRewardList.player_pot] = 7800,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 6700,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -358,9 +358,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 4900,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 68000,    --绑银
+			[TaskRewardList.player_pot] = 7800,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 6800,    --绑银
 		},
 		consume =--任务消耗没有填{}		
 		{
@@ -443,9 +443,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5000,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 69000,    --绑银
+			[TaskRewardList.player_pot] = 7800,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 6900,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -491,9 +491,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5000,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 70000,    --绑银
+			[TaskRewardList.player_pot] = 7800,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 7000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -539,9 +539,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5000,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 71000,    --绑银
+			[TaskRewardList.player_pot] = 7800,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 7100,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -595,9 +595,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 5000,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 72000,    --绑银
+			[TaskRewardList.player_pot] = 7800,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 7200,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -628,12 +628,12 @@ MainTaskDB21_30 =
 					param={
 						npcs =
 						{
-								[1] = {npcID = 20322,mapID = 109, x = 251, y = 91,dir = Direction. EastNorth,},--关羽
-								[2] = {npcID = 20321,mapID = 109, x = 250, y = 96,dir = Direction. EastNorth,},--李蒙
-								[3] = {npcID = 20338,mapID = 109, x = 246, y = 95,dir = Direction. EastNorth,},--小怪
-								[4] = {npcID = 20339,mapID = 109, x = 247, y = 97,dir = Direction. EastNorth,},--小怪
-								[5] = {npcID = 20340,mapID = 109, x = 253, y = 97,dir = Direction. EastNorth,},--小怪
-								[6] = {npcID = 20341,mapID = 109, x = 254, y = 95,dir = Direction. EastNorth,},--小怪
+								[1] = {npcID = 20322,mapID = 109, x = 251, y = 91,dir = Direction. EastSouth,},--关羽
+								[2] = {npcID = 20321,mapID = 109, x = 250, y = 96,dir = Direction. EastSouth,},--李蒙
+								[3] = {npcID = 20338,mapID = 109, x = 246, y = 95,dir = Direction. EastSouth,},--小怪
+								[4] = {npcID = 20339,mapID = 109, x = 247, y = 97,dir = Direction. EastSouth,},--小怪
+								[5] = {npcID = 20340,mapID = 109, x = 253, y = 97,dir = Direction. EastSouth,},--小怪
+								[6] = {npcID = 20341,mapID = 109, x = 254, y = 95,dir = Direction. EastSouth,},--小怪
 						},
 					},
 				},
@@ -672,9 +672,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 5100,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 73000,    --绑银
+			[TaskRewardList.player_pot] = 7900,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 7300,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -757,9 +757,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5100,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 74000,    --绑银
+			[TaskRewardList.player_pot] = 7900,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 7400,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -786,16 +786,6 @@ MainTaskDB21_30 =
 			},
 			[TaskStatus.Done]		=      ---完成目标状态
 			{
-			{type="createFollow", param = {npcs = {20326,20327},}},				--添加刘备、张飞跟随
-			{type="deletePrivateNpc",
-					param={
-						npcs =
-						{
-							{npcID = 20326,	taskID = {1111}, index = 1}, --删除刘备
-							{npcID = 20327,	taskID = {1111}, index = 2}, --删除张飞
-						},
-					},
-				},
 			{type="openDialog", param={dialogID = 1030},}, --在任务结束时打开一个对话框
 			},
 			[TaskStatus.Finished]	=      ---完成任务状态
@@ -808,20 +798,20 @@ MainTaskDB21_30 =
 
 		name = "降服张辽",	--任务名字
 		startNpcID = 20326,	--任务起始npc
-		endNpcID = nil,	--任务结束npc
+		endNpcID = 20327,	--任务结束npc
 		preTaskData = {1111},	--任务前置任务没有填nil
 		nextTaskID = 1113,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID = 1034,	--交任务对话ID没有填nil
+		endDialogID = 1036,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 5100,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 75000,    --绑银
+			[TaskRewardList.player_pot] = 7900,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 7500,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -848,6 +838,16 @@ MainTaskDB21_30 =
 		{
 			[TaskStatus.Active]		=      ---接任务状态
 			{
+			{type="deletePrivateNpc",
+					param={
+						npcs =
+						{
+							{npcID = 20326,	taskID = {1111}, index = 1}, --删除刘备
+							{npcID = 20327,	taskID = {1111}, index = 2}, --删除张飞
+						},
+					},
+				},
+				{type="createFollow", param = {npcs = {20326,20327},}},				--添加刘备、张飞跟随
 			{type="createPrivateNpc", ----------创建私有袁绍
 					param={
 						npcs =
@@ -860,7 +860,6 @@ MainTaskDB21_30 =
 						},
 					},
 			},
-			{type="createFollow", param = {npcs = {20326,20327},}},				--添加刘备、张飞跟随
 			},
 			[TaskStatus.Done]		=      ---完成目标状态
 			{
@@ -884,20 +883,20 @@ MainTaskDB21_30 =
 
 		name = "三英战吕布",	--任务名字
 		startNpcID = nil,	--任务起始npc
-		endNpcID = 20335,	--任务结束npc
+		endNpcID = nil,	--任务结束npc
 		preTaskData = {1112},	--任务前置任务没有填nil
-		nextTaskID = 1151,	--任务后置任务没有填nil
+		nextTaskID = 1114,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID = 1039,	--交任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 5100,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 76000,    --绑银
+			[TaskRewardList.player_pot] = 7900,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 7600,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -955,19 +954,19 @@ MainTaskDB21_30 =
 		name = "大战魔化吕布",	--任务名字
 		startNpcID = 20335,	--任务起始npc
 		endNpcID = nil,	--任务结束npc
-		preTaskData = {1112},	--任务前置任务没有填nil
-		nextTaskID = 1114,	--任务后置任务没有填nil
+		preTaskData = {1113},	--任务前置任务没有填nil
+		nextTaskID = 1115,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID = 1041,	--交任务对话ID没有填nil
+		endDialogID = nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8200,   --玩家经验
-			[TaskRewardList.player_pot] = 5100,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4100,      --宠物经验
-			[TaskRewardList.subMoney] = 77000,    --绑银
+			[TaskRewardList.player_pot] = 7900,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8200,      --宠物经验
+			[TaskRewardList.subMoney] = 7700,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -1018,13 +1017,14 @@ MainTaskDB21_30 =
 						npcs =
 						{
 								[1] = {npcID = 20326,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建刘备
-								[1] = {npcID = 20322,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建关羽
-								[1] = {npcID = 20327,mapID = 109, x = 87, y = 291,dir = Direction. WestSouth,}, --创建展飞
+								[2] = {npcID = 20322,mapID = 109, x = 89, y = 291,dir = Direction. WestSouth,}, --创建关羽
+								[3] = {npcID = 20327,mapID = 109, x = 85, y = 291,dir = Direction. WestSouth,}, --创建张飞
 						},
 					},
 			},
 			{type="deleteFollow", param = {npcs = {20322,20326,20327},}}, --在交任务状态删除指定ID的npc跟随
 			{type="openDialog", param={dialogID = 1041},},
+			{type="finishTask", param = {recetiveTaskID = 1115}},
 			},
 		},
 	},
@@ -1034,8 +1034,8 @@ MainTaskDB21_30 =
 		name = "回禀曹操",	--任务名字
 		startNpcID = nil,	--任务起始npc
 		endNpcID = 20313,	--任务结束npc
-		preTaskData = {1113},	--任务前置任务没有填nil
-		nextTaskID = 1115,	--任务后置任务没有填nil
+		preTaskData = {1114},	--任务前置任务没有填nil
+		nextTaskID = 1116,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = 1043,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -1044,9 +1044,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5200,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 78000,    --绑银
+			[TaskRewardList.player_pot] = 8000,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 7800,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -1085,7 +1085,7 @@ MainTaskDB21_30 =
 		name = "返回东郡",	--任务名字
 		startNpcID = 20313,	--任务起始npc
 		endNpcID = 20318,	--任务结束npc
-		preTaskData = {1114},	--任务前置任务没有填nil
+		preTaskData = {1115},	--任务前置任务没有填nil
 		nextTaskID = 1117,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = 1045,	--交任务对话ID没有填nil
@@ -1095,9 +1095,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5200,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 79000,    --绑银
+			[TaskRewardList.player_pot] = 8000,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 7900,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -1151,9 +1151,9 @@ MainTaskDB21_30 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5200,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 80000,    --绑银
+			[TaskRewardList.player_pot] = 8000,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 8000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -1198,10 +1198,10 @@ MainTaskDB21_30 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.pet_xp] = 8000,      --宠物经验
-			[TaskRewardList.subMoney] = 30000,    --绑银
-			[TaskRewardList.player_pot] = 9000,  	--人物潜能
+			[TaskRewardList.player_xp] = 0,   --玩家经验
+			[TaskRewardList.pet_xp] = 0,      --宠物经验
+			[TaskRewardList.subMoney] = 0,--绑银
+			[TaskRewardList.player_pot] = 0,  	--人物潜能
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -1227,7 +1227,7 @@ MainTaskDB21_30 =
 						},
 					},
 			},
-			{type="openDialog", param={dialogID = 1050},},
+			{type="openDialog", param={dialogID = 1054},},
 			},
 		},
 	},

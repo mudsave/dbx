@@ -10,10 +10,6 @@
 
   /** @ngInject */
   function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings) {
-    var whatToWait = [
-      preloader.loadAmCharts(),
-      $timeout(3000)
-    ];
 
     var theme = themeLayoutSettings;
     if (theme.blur) {
@@ -24,7 +20,7 @@
         whatToWait.unshift(preloader.loadImg(layoutPaths.images.root + 'blur-bg-blurred.jpg'));
       }
     }
-
+/*
     $q.all(whatToWait).then(function () {
       $rootScope.$pageFinishedLoading = true;
     });
@@ -34,7 +30,8 @@
         $rootScope.$pageFinishedLoading = true;
       }
     }, 7000);
-
+*/
+    $rootScope.$pageFinishedLoading = true;
     $rootScope.$baSidebarService = baSidebarService;
   }
 

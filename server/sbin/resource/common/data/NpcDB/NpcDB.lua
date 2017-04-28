@@ -1651,7 +1651,7 @@ NpcDB = {
      [20601] = {
 	     name = "吴明",
 	     modelID =189,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 9,
 	     phaseType = PhaseType.Wind,
@@ -1660,17 +1660,16 @@ NpcDB = {
      [20602] = {
 	     name = "杨定",
 	     modelID =114,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1022,1023},
-	     dialogIDs = {1104},
      },
      [20603] = {
 	     name = "潼关隘口小卒",
 	     modelID =100,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Thunder,
@@ -1679,7 +1678,7 @@ NpcDB = {
      [20604] = {
 	     name = "潼关隘口守卫",
 	     modelID =184,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Soil,
@@ -1688,7 +1687,7 @@ NpcDB = {
      [20605] = {
 	     name = "徐荣",
 	     modelID =178,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 9,
 	     phaseType = PhaseType.Fire,
@@ -1697,17 +1696,16 @@ NpcDB = {
      [20606] = {
 	     name = "祖茂",
 	     modelID =703,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1020,1021},
-	     dialogIDs = {1110},
      },
      [20607] = {
 	     name = "朱治",
 	     modelID =519,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Fire,
@@ -1716,7 +1714,7 @@ NpcDB = {
      [20608] = {
 	     name = "吴景",
 	     modelID =607,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Fire,
@@ -1725,7 +1723,7 @@ NpcDB = {
      [20609] = {
 	     name = "周恒",
 	     modelID =175,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Thunder,
@@ -1734,7 +1732,7 @@ NpcDB = {
      [20610] = {
 	     name = "伍习",
 	     modelID =514,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 9,
 	     phaseType = PhaseType.Wind,
@@ -1743,7 +1741,7 @@ NpcDB = {
      [20611] = {
 	     name = "潼关巡逻兵",
 	     modelID =189,
-	     desc = "主线31-33",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Ice,
@@ -1752,7 +1750,7 @@ NpcDB = {
      [20612] = {
 	     name = "潼关守关大将",
 	     modelID =514,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 14,
 	     phaseType = PhaseType.Soil,
@@ -1761,7 +1759,7 @@ NpcDB = {
      [20613] = {
 	     name = "梁兴",
 	     modelID =130,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Thunder,
@@ -1770,7 +1768,7 @@ NpcDB = {
      [20614] = {
 	     name = "黄盖看守",
 	     modelID =177,
-	     desc = "主线31-33",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Soil,
@@ -1779,7 +1777,7 @@ NpcDB = {
      [20615] = {
 	     name = "张济",
 	     modelID =117,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 9,
 	     phaseType = PhaseType.Fire,
@@ -1788,7 +1786,7 @@ NpcDB = {
      [20616] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Thunder,
@@ -1797,7 +1795,7 @@ NpcDB = {
      [20617] = {
 	     name = "张横",
 	     modelID =112,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 9,
 	     phaseType = PhaseType.Ice,
@@ -1806,7 +1804,7 @@ NpcDB = {
      [20618] = {
 	     name = "妖阵守将",
 	     modelID =145,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Ice,
@@ -1815,7 +1813,7 @@ NpcDB = {
      [20619] = {
 	     name = "吕岳",
 	     modelID =199,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 32,
 	     attrID = 9,
 	     phaseType = PhaseType.Poison,
@@ -1825,7 +1823,7 @@ NpcDB = {
      [20620] = {
 	     name = "金缠",
 	     modelID =558,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Poison,
@@ -1834,7 +1832,7 @@ NpcDB = {
      [20621] = {
 	     name = "烬枝",
 	     modelID =200,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Soil,
@@ -1843,7 +1841,7 @@ NpcDB = {
      [20622] = {
 	     name = "火魁",
 	     modelID =202,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Fire,
@@ -1852,7 +1850,7 @@ NpcDB = {
      [20623] = {
 	     name = "天禄",
 	     modelID =569,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 11,
 	     phaseType = PhaseType.Thunder,
@@ -1861,7 +1859,7 @@ NpcDB = {
      [20624] = {
 	     name = "吕岳",
 	     modelID =585,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 32,
 	     attrID = 11,
 	     phaseType = PhaseType.Poison,
@@ -1871,27 +1869,25 @@ NpcDB = {
      [20625] = {
 	     name = "孙坚",
 	     modelID =622,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1011},
-	     dialogIDs = {1120},
      },
      [20626] = {
 	     name = "黄盖",
 	     modelID =180,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1011},
-	     dialogIDs = {1177},
      },
      [20627] = {
 	     name = "黄盖",
 	     modelID =180,
-	     desc = "主线31-33",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Thunder,
@@ -1900,7 +1896,7 @@ NpcDB = {
      [20628] = {
 	     name = "卢植",
 	     modelID =514,
-	     desc = "主线31-34",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Thunder,
@@ -1909,7 +1905,7 @@ NpcDB = {
      [20629] = {
 	     name = "潼关隘口守卫",
 	     modelID =184,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Thunder,
@@ -1918,7 +1914,7 @@ NpcDB = {
      [20630] = {
 	     name = "潼关隘口守卫",
 	     modelID =184,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Ice,
@@ -1927,7 +1923,7 @@ NpcDB = {
      [20631] = {
 	     name = "潼关隘口守卫",
 	     modelID =184,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Soil,
@@ -1937,7 +1933,7 @@ NpcDB = {
      [20632] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Poison,
@@ -1946,7 +1942,7 @@ NpcDB = {
      [20633] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Poison,
@@ -1955,7 +1951,7 @@ NpcDB = {
      [20634] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Poison,
@@ -1964,7 +1960,7 @@ NpcDB = {
      [20635] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Poison,
@@ -1973,7 +1969,7 @@ NpcDB = {
      [20636] = {
 	     name = "潼关隘口小卒",
 	     modelID =100,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Soil,
@@ -1982,7 +1978,7 @@ NpcDB = {
      [20637] = {
 	     name = "妖阵守将",
 	     modelID =145,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Ice,
@@ -1991,7 +1987,7 @@ NpcDB = {
      [20638] = {
 	     name = "黄盖看守",
 	     modelID =177,
-	     desc = "主线31-33",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Soil,
@@ -2000,18 +1996,17 @@ NpcDB = {
      [20639] = {
 	     name = "吕岳",
 	     modelID =199,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 32,
 	     attrID = 9,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1026,1027},
-	     dialogIDs = {1172},
 	     modelScale =14,
      },
      [20640] = {
 	     name = "张横",
 	     modelID =112,
-	     desc = "主线31-32",
+	     desc = "主线31-32BOSS",
 	     level = 30,
 	     attrID = 9,
 	     phaseType = PhaseType.Ice,
@@ -2020,7 +2015,7 @@ NpcDB = {
      [20641] = {
 	     name = "孙坚",
 	     modelID =622,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Thunder,
@@ -2029,7 +2024,7 @@ NpcDB = {
      [20642] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Poison,
@@ -2038,7 +2033,7 @@ NpcDB = {
      [20643] = {
 	     name = "妖阵精兵",
 	     modelID =157,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Poison,
@@ -2047,7 +2042,7 @@ NpcDB = {
      [20644] = {
 	     name = "妖阵守将",
 	     modelID =145,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Ice,
@@ -2056,7 +2051,7 @@ NpcDB = {
      [20645] = {
 	     name = "妖阵守将",
 	     modelID =145,
-	     desc = "主线31-32",
+	     desc = "主线31-32小怪",
 	     level = 30,
 	     attrID = 13,
 	     phaseType = PhaseType.Ice,
@@ -2065,7 +2060,7 @@ NpcDB = {
      [20646] = {
 	     name = "孙坚",
 	     modelID =622,
-	     desc = "主线31-32",
+	     desc = "主线31-32NPC",
 	     level = -1,
 	     attrID = 16,
 	     phaseType = PhaseType.Thunder,
@@ -2079,6 +2074,7 @@ NpcDB = {
 	     attrID = 16,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1014,1015},
+	     dialogIDs = {20364},
      },
      [20702] = {
 	     name = "貂蝉",
@@ -2301,6 +2297,7 @@ NpcDB = {
 	     attrID = 15,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
+	     dialogIDs = {1298},
      },
      [20727] = {
 	     name = "魔蛟右护法",
@@ -3780,6 +3777,24 @@ NpcDB = {
 	     dialogIDs = {1575},
 	     modelTextures =4,
      },
+     [21040] = {
+	     name = "江夏步兵",
+	     modelID =100,
+	     desc = "主线39-40",
+	     level = 39,
+	     attrID = 16,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017},
+     },
+     [21041] = {
+	     name = "江夏枪卫",
+	     modelID =116,
+	     desc = "主线39-40",
+	     level = 39,
+	     attrID = 19,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1008},
+     },
      [21101] = {
 	     name = "陈留守卫",
 	     modelID =100,
@@ -4816,7 +4831,7 @@ NpcDB = {
      },
      [21247] = {
 	     name = "营地首领",
-	     modelID =140,
+	     modelID =162,
 	     desc = "主线43-44",
 	     level = 43,
 	     attrID = 14,
@@ -5768,7 +5783,7 @@ NpcDB = {
      [21421] = {
 	     name = "刘协",
 	     title = "汉献帝",
-	     modelID =705,
+	     modelID =543,
 	     desc = "47-48主线NPC",
 	     level = -1,
 	     attrID = 16,
@@ -8898,6 +8913,28 @@ NpcDB = {
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005},
      },
+     [27152] = {
+	     name = "古塔接引人",
+	     title = "测试用",
+	     modelID =713,
+	     desc = "古塔驱妖发布人",
+	     dialogIDs = {36097},
+     },
+     [27153] = {
+	     name = "蝶妖",
+	     modelID =188,
+	     desc = "古塔妖怪",
+     },
+     [27154] = {
+	     name = "骨精",
+	     modelID =185,
+	     desc = "古塔妖怪",
+     },
+     [27155] = {
+	     name = "幻魔",
+	     modelID =182,
+	     desc = "古塔妖怪",
+     },
      [28001] = {
 	     name = "羌族大王",
 	     modelID =183,
@@ -9214,7 +9251,7 @@ NpcDB = {
 	     desc = "讨逆任务发布NPC",
 	     level = -1,
 	     attrID = 1,
-	     dialogIDs = {30060},
+	     dialogIDs = {20263},
      },
      [29001] = {
 	     name = "周霍兴",
@@ -9778,16 +9815,16 @@ NpcDB = {
 	     dialogIDs = {20036},
      },
      [29084] = {
-	     name = "炆凯",
-	     title = "帮派总管",
+	     name = "帮派总管",
 	     modelID =512,
-	     dialogIDs = {38003},
+	     dialogIDs = {30114},
      },
      [29085] = {
 	     name = "小九九",
 	     title = "帮派侍女",
 	     modelID =721,
 	     desc = "帮会商店",
+	     dialogIDs = {30113},
      },
      [29086] = {
 	     name = "玄都玉京传送人",
@@ -10771,6 +10808,7 @@ NpcDB = {
 	     attrID = 8,
 	     phaseType = PhaseType.Ice,
 	     skillCfg = {1012,1013},
+	     fightAI = {200},
 	     modelTextures =2,
      },
      [30161] = {
@@ -10819,6 +10857,7 @@ NpcDB = {
 	     attrID = 8,
 	     phaseType = PhaseType.Fire,
 	     skillCfg = {1021,1020},
+	     fightAI = {201},
 	     modelScale =15,
      },
      [30166] = {
@@ -10878,7 +10917,7 @@ NpcDB = {
 	     level = 42,
 	     attrID = 7,
 	     phaseType = PhaseType.Thunder,
-	     skillCfg = {1010},
+	     skillCfg = {1058},
 	     modelTextures =3,
      },
      [30172] = {
@@ -10888,7 +10927,7 @@ NpcDB = {
 	     level = 42,
 	     attrID = 7,
 	     phaseType = PhaseType.Thunder,
-	     skillCfg = {1010},
+	     skillCfg = {1058},
 	     modelTextures =3,
      },
      [30173] = {
@@ -10898,7 +10937,7 @@ NpcDB = {
 	     level = 42,
 	     attrID = 7,
 	     phaseType = PhaseType.Soil,
-	     skillCfg = {1016},
+	     skillCfg = {1058},
      },
      [30174] = {
 	     name = "魔魂峰暗卫",
@@ -10907,7 +10946,7 @@ NpcDB = {
 	     level = 42,
 	     attrID = 7,
 	     phaseType = PhaseType.Soil,
-	     skillCfg = {1016},
+	     skillCfg = {1058},
      },
      [30175] = {
 	     name = "魔魂峰副帅",
@@ -10965,6 +11004,7 @@ NpcDB = {
 	     attrID = 8,
 	     phaseType = PhaseType.Thunder,
 	     skillCfg = {1008,1011},
+	     fightAI = {203},
 	     modelScale =16,
      },
      [30181] = {
@@ -13311,7 +13351,7 @@ NpcDB = {
 	     skillCfg = {1012,1013},
 	     modelTextures =4,
 	     modelScale =15,
-	     unhitRate = 0.8,
+	     unhitRate = .8,
 	     unhitSkills = {10121013},
      },
      [30651] = {
@@ -14053,7 +14093,7 @@ NpcDB = {
 	     attrID = 8,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1006,1007},
-	     unhitRate = 0.5,
+	     unhitRate = .5,
 	     unhitSkills = {10061007},
      },
      [30765] = {
@@ -14352,8 +14392,7 @@ NpcDB = {
 	     modelID =2000,
      },
      [30817] = {
-	     name = "基坤",
-	     title = "帮派使者",
+	     name = "帮派使者",
 	     modelID =149,
 	     dialogIDs = {30100,30101},
      },
@@ -16805,7 +16844,7 @@ NpcDB = {
 	     skillCfg = {1022,1023},
 	     dialogIDs = {10111},
 	     modelScale =16,
-	     unhitRate = 0.5,
+	     unhitRate = .5,
 	     unhitSkills = {1022},
      },
      [31215] = {
@@ -17120,7 +17159,7 @@ NpcDB = {
 	     attrID = 8,
 	     phaseType = PhaseType.Soil,
 	     skillCfg = {1017,1018},
-	     unhitRate = 0.5,
+	     unhitRate = .5,
 	     unhitSkills = {1018},
      },
      [31267] = {
@@ -17329,7 +17368,7 @@ NpcDB = {
 	     level = 35,
 	     attrID = 8,
 	     phaseType = PhaseType.Fire,
-	     skillCfg = {1021,1022,1085},
+	     skillCfg = {1021,1022},
 	     modelScale =16,
      },
      [31301] = {
@@ -17411,6 +17450,7 @@ NpcDB = {
 	     attrID = 7,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1090},
+	     fightAI = {1035},
 	     modelTextures =1,
      },
      [31310] = {
@@ -17420,6 +17460,7 @@ NpcDB = {
 	     attrID = 7,
 	     phaseType = PhaseType.Poison,
 	     skillCfg = {1024,1090},
+	     fightAI = {1035},
 	     modelTextures =1,
      },
      [31311] = {
@@ -17546,6 +17587,7 @@ NpcDB = {
 	     attrID = 8,
 	     phaseType = PhaseType.Wind,
 	     skillCfg = {1004,1005,1060},
+	     fightAI = {1036},
 	     modelScale =16,
      },
      [31325] = {
@@ -17743,6 +17785,46 @@ NpcDB = {
      [31363] = {
 	     name = "滚石",
 	     modelID =2012,
+     },
+     [31364] = {
+	     name = "水灵",
+	     modelID =182,
+	     desc = "BOSS召唤小怪",
+	     level = 35,
+	     attrID = 8,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016,1017,1070},
+	     modelTextures =2,
+     },
+     [31365] = {
+	     name = "火灵",
+	     modelID =182,
+	     desc = "BOSS召唤小怪",
+	     level = 35,
+	     attrID = 8,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1022,1023,1068},
+	     modelTextures =3,
+     },
+     [31366] = {
+	     name = "冰灵",
+	     modelID =182,
+	     desc = "BOSS召唤小怪",
+	     level = 35,
+	     attrID = 8,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1012,1013,1090},
+	     modelTextures =1,
+     },
+     [31367] = {
+	     name = "土灵",
+	     modelID =182,
+	     desc = "BOSS召唤小怪",
+	     level = 35,
+	     attrID = 8,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016,1017,1058},
+	     modelTextures =4,
      },
      [31370] = {
 	     name = "黄风岭巡逻队长",
@@ -19032,8 +19114,8 @@ NpcDB = {
 	     fightAI = {153},
      },
      [40036] = {
-	     name = "陈冬",
-	     title = "1",
+	     name = "陈闵",
+	     title = "帮会休闲副本入口",
 	     modelID =158,
 	     desc = "帮会休闲副本接口人",
 	     funcFlag = 1,
@@ -21127,204 +21209,238 @@ NpcDB = {
 	     title = "变异",
 	     modelID =116,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =3,
      },
      [60102] = {
 	     name = "妖道",
 	     title = "变异",
 	     modelID =192,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =4,
      },
      [60103] = {
 	     name = "古魔",
 	     title = "变异",
 	     modelID =223,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =3,
      },
      [60104] = {
 	     name = "护法神",
 	     title = "变异",
 	     modelID =559,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60105] = {
 	     name = "蝠妖",
 	     title = "变异",
 	     modelID =193,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60106] = {
 	     name = "幽灵",
 	     title = "变异",
 	     modelID =204,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60107] = {
 	     name = "门客",
 	     title = "变异",
 	     modelID =160,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =3,
      },
      [60108] = {
 	     name = "守卫",
 	     title = "变异",
 	     modelID =100,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60109] = {
 	     name = "流寇",
 	     title = "变异",
 	     modelID =137,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =3,
      },
      [60110] = {
 	     name = "刺客",
 	     title = "变异",
 	     modelID =576,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60111] = {
 	     name = "关将",
 	     title = "变异",
 	     modelID =117,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =3,
      },
      [60112] = {
 	     name = "刀盾手",
 	     title = "变异",
 	     modelID =189,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60113] = {
 	     name = "虎妖",
 	     title = "变异",
 	     modelID =195,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =3,
      },
      [60114] = {
 	     name = "中原乱兵",
 	     title = "变异",
 	     modelID =184,
 	     desc = "抓宠玩法（30级）",
+	     modelTextures =2,
      },
      [60115] = {
 	     name = "采药妖童",
 	     title = "变异",
 	     modelID =165,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =3,
      },
      [60116] = {
 	     name = "双头狼妖",
 	     title = "变异",
 	     modelID =197,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =4,
      },
      [60117] = {
 	     name = "冰妖",
 	     title = "变异",
 	     modelID =182,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =2,
      },
      [60118] = {
 	     name = "西凉兵",
 	     title = "变异",
 	     modelID =157,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =3,
      },
      [60119] = {
 	     name = "游方妖师",
 	     title = "变异",
 	     modelID =586,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =2,
      },
      [60120] = {
 	     name = "魔犬",
 	     title = "变异",
 	     modelID =566,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =2,
      },
      [60121] = {
 	     name = "海怪",
 	     title = "变异",
 	     modelID =213,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =2,
      },
      [60122] = {
 	     name = "鲛妖",
 	     title = "变异",
 	     modelID =567,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =2,
      },
      [60123] = {
 	     name = "河盗",
 	     title = "变异",
 	     modelID =156,
 	     desc = "抓宠玩法（40级）",
+	     modelTextures =3,
      },
      [60124] = {
 	     name = "弓手",
 	     title = "变异",
 	     modelID =126,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =3,
      },
      [60125] = {
 	     name = "妖灵",
 	     title = "变异",
 	     modelID =188,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =4,
      },
      [60126] = {
 	     name = "狐姬",
 	     title = "变异",
 	     modelID =681,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60127] = {
 	     name = "死士",
 	     title = "变异",
 	     modelID =594,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60128] = {
 	     name = "蛮族",
 	     title = "变异",
 	     modelID =218,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60129] = {
 	     name = "虎将",
 	     title = "变异",
 	     modelID =162,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60130] = {
 	     name = "谋士",
 	     title = "变异",
 	     modelID =221,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60131] = {
 	     name = "牛头",
 	     title = "变异",
 	     modelID =202,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =4,
      },
      [60132] = {
 	     name = "马面",
 	     title = "变异",
 	     modelID =555,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60133] = {
 	     name = "骷髅将",
 	     title = "变异",
 	     modelID =206,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =2,
      },
      [60134] = {
 	     name = "魔兵",
 	     title = "变异",
 	     modelID =200,
 	     desc = "抓宠玩法（50级）",
+	     modelTextures =3,
      },
      [60201] = {
 	     name = "魔化妖道",
@@ -21599,7 +21715,7 @@ NpcDB = {
      [60508] = {
 	     name = "层主",
 	     title = "第1层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第一层",
 	     dialogIDs = {80025},
      },
@@ -21697,7 +21813,7 @@ NpcDB = {
      [60516] = {
 	     name = "层主",
 	     title = "第2层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第二层",
 	     dialogIDs = {80050},
      },
@@ -21795,7 +21911,7 @@ NpcDB = {
      [60524] = {
 	     name = "层主",
 	     title = "第3层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第三层",
 	     dialogIDs = {80075},
      },
@@ -21893,7 +22009,7 @@ NpcDB = {
      [60532] = {
 	     name = "层主",
 	     title = "第4层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第四层",
 	     dialogIDs = {80100},
      },
@@ -21991,7 +22107,7 @@ NpcDB = {
      [60540] = {
 	     name = "层主",
 	     title = "第5层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第五层",
 	     dialogIDs = {80125},
      },
@@ -22089,7 +22205,7 @@ NpcDB = {
      [60548] = {
 	     name = "层主",
 	     title = "第6层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第六层",
 	     dialogIDs = {80150},
      },
@@ -22187,7 +22303,7 @@ NpcDB = {
      [60556] = {
 	     name = "层主",
 	     title = "第7层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第七层",
 	     dialogIDs = {80175},
      },
@@ -22285,7 +22401,7 @@ NpcDB = {
      [60564] = {
 	     name = "层主",
 	     title = "第8层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第八层",
 	     dialogIDs = {80200},
      },
@@ -22383,7 +22499,7 @@ NpcDB = {
      [60572] = {
 	     name = "层主",
 	     title = "第9层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第九层",
 	     dialogIDs = {80225},
      },
@@ -22481,7 +22597,7 @@ NpcDB = {
      [60580] = {
 	     name = "层主",
 	     title = "第10层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第十层",
 	     phaseType = PhaseType.Wind,
 	     dialogIDs = {80250},
@@ -22580,7 +22696,7 @@ NpcDB = {
      [60588] = {
 	     name = "层主",
 	     title = "第11层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第11层",
 	     dialogIDs = {80275},
      },
@@ -22678,7 +22794,7 @@ NpcDB = {
      [60596] = {
 	     name = "层主",
 	     title = "第12层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第12层",
 	     dialogIDs = {80300},
      },
@@ -22776,7 +22892,7 @@ NpcDB = {
      [60604] = {
 	     name = "层主",
 	     title = "第13层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第13层",
 	     dialogIDs = {80325},
      },
@@ -22874,7 +22990,7 @@ NpcDB = {
      [60612] = {
 	     name = "层主",
 	     title = "第14层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第14层",
 	     dialogIDs = {80350},
      },
@@ -22972,7 +23088,7 @@ NpcDB = {
      [60620] = {
 	     name = "层主",
 	     title = "第15层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第15层",
 	     dialogIDs = {80375},
      },
@@ -23070,7 +23186,7 @@ NpcDB = {
      [60628] = {
 	     name = "层主",
 	     title = "第16层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第16层",
 	     dialogIDs = {80400},
      },
@@ -23168,7 +23284,7 @@ NpcDB = {
      [60636] = {
 	     name = "层主",
 	     title = "第17层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第17层",
 	     dialogIDs = {80425},
      },
@@ -23266,7 +23382,7 @@ NpcDB = {
      [60644] = {
 	     name = "层主",
 	     title = "第18层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第18层",
 	     dialogIDs = {80450},
      },
@@ -23364,7 +23480,7 @@ NpcDB = {
      [60652] = {
 	     name = "层主",
 	     title = "第19层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第19层",
 	     dialogIDs = {80475},
      },
@@ -23462,7 +23578,7 @@ NpcDB = {
      [60660] = {
 	     name = "层主",
 	     title = "第20层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第20层",
 	     dialogIDs = {80500},
      },
@@ -23560,7 +23676,7 @@ NpcDB = {
      [60668] = {
 	     name = "层主",
 	     title = "第21层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第21层",
 	     dialogIDs = {80525},
      },
@@ -23658,7 +23774,7 @@ NpcDB = {
      [60676] = {
 	     name = "层主",
 	     title = "第22层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第22层",
 	     dialogIDs = {80550},
      },
@@ -23756,7 +23872,7 @@ NpcDB = {
      [60684] = {
 	     name = "层主",
 	     title = "第23层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第23层",
 	     dialogIDs = {80575},
      },
@@ -23854,7 +23970,7 @@ NpcDB = {
      [60692] = {
 	     name = "层主",
 	     title = "第24层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第24层",
 	     dialogIDs = {80600},
      },
@@ -23952,7 +24068,7 @@ NpcDB = {
      [60700] = {
 	     name = "层主",
 	     title = "第25层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第25层",
 	     dialogIDs = {80625},
      },
@@ -24050,7 +24166,7 @@ NpcDB = {
      [60708] = {
 	     name = "层主",
 	     title = "第26层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第26层",
 	     dialogIDs = {80650},
      },
@@ -24148,7 +24264,7 @@ NpcDB = {
      [60716] = {
 	     name = "层主",
 	     title = "第27层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第27层",
 	     dialogIDs = {80675},
      },
@@ -24246,7 +24362,7 @@ NpcDB = {
      [60724] = {
 	     name = "层主",
 	     title = "第28层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第28层",
 	     dialogIDs = {80700},
      },
@@ -24344,7 +24460,7 @@ NpcDB = {
      [60732] = {
 	     name = "层主",
 	     title = "第29层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第29层",
 	     dialogIDs = {80725},
      },
@@ -24442,7 +24558,7 @@ NpcDB = {
      [60740] = {
 	     name = "层主",
 	     title = "第30层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第30层",
 	     dialogIDs = {80750},
      },
@@ -24540,7 +24656,7 @@ NpcDB = {
      [60748] = {
 	     name = "层主",
 	     title = "第31层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第31层",
 	     dialogIDs = {80775},
      },
@@ -24638,7 +24754,7 @@ NpcDB = {
      [60756] = {
 	     name = "层主",
 	     title = "第32层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第32层",
 	     dialogIDs = {80800},
      },
@@ -24736,7 +24852,7 @@ NpcDB = {
      [60764] = {
 	     name = "层主",
 	     title = "第33层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第33层",
 	     dialogIDs = {80825},
      },
@@ -24834,7 +24950,7 @@ NpcDB = {
      [60772] = {
 	     name = "层主",
 	     title = "第34层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第34层",
 	     dialogIDs = {80850},
      },
@@ -24932,7 +25048,7 @@ NpcDB = {
      [60780] = {
 	     name = "层主",
 	     title = "第35层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第35层",
 	     dialogIDs = {80875},
      },
@@ -25030,7 +25146,7 @@ NpcDB = {
      [60788] = {
 	     name = "层主",
 	     title = "第36层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第36层",
 	     dialogIDs = {80900},
      },
@@ -25128,7 +25244,7 @@ NpcDB = {
      [60796] = {
 	     name = "层主",
 	     title = "第37层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第37层",
 	     dialogIDs = {80925},
      },
@@ -25226,7 +25342,7 @@ NpcDB = {
      [60804] = {
 	     name = "层主",
 	     title = "第38层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第38层",
 	     dialogIDs = {80950},
      },
@@ -25324,7 +25440,7 @@ NpcDB = {
      [60812] = {
 	     name = "层主",
 	     title = "第39层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第39层",
 	     dialogIDs = {80975},
      },
@@ -25422,7 +25538,7 @@ NpcDB = {
      [60820] = {
 	     name = "层主",
 	     title = "第40层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第40层",
 	     dialogIDs = {81000},
      },
@@ -25520,7 +25636,7 @@ NpcDB = {
      [60828] = {
 	     name = "层主",
 	     title = "第41层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第41层",
 	     dialogIDs = {81025},
      },
@@ -25618,7 +25734,7 @@ NpcDB = {
      [60836] = {
 	     name = "层主",
 	     title = "第42层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第42层",
 	     dialogIDs = {81050},
      },
@@ -25716,7 +25832,7 @@ NpcDB = {
      [60844] = {
 	     name = "层主",
 	     title = "第43层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第43层",
 	     dialogIDs = {81075},
      },
@@ -25814,7 +25930,7 @@ NpcDB = {
      [60852] = {
 	     name = "层主",
 	     title = "第44层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第44层",
 	     dialogIDs = {81100},
      },
@@ -25912,7 +26028,7 @@ NpcDB = {
      [60860] = {
 	     name = "层主",
 	     title = "第45层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第45层",
 	     dialogIDs = {81125},
      },
@@ -26010,7 +26126,7 @@ NpcDB = {
      [60868] = {
 	     name = "层主",
 	     title = "第46层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第46层",
 	     dialogIDs = {81150},
      },
@@ -26108,7 +26224,7 @@ NpcDB = {
      [60876] = {
 	     name = "层主",
 	     title = "第47层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第47层",
 	     dialogIDs = {81175},
      },
@@ -26206,7 +26322,7 @@ NpcDB = {
      [60884] = {
 	     name = "层主",
 	     title = "第48层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第48层",
 	     dialogIDs = {81200},
      },
@@ -26304,7 +26420,7 @@ NpcDB = {
      [60892] = {
 	     name = "层主",
 	     title = "第49层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第49层",
 	     dialogIDs = {81225},
      },
@@ -26402,7 +26518,7 @@ NpcDB = {
      [60900] = {
 	     name = "层主",
 	     title = "第50层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第50层",
 	     dialogIDs = {81250},
      },
@@ -26500,7 +26616,7 @@ NpcDB = {
      [60908] = {
 	     name = "层主",
 	     title = "第51层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第51层",
 	     dialogIDs = {81275},
      },
@@ -26598,7 +26714,7 @@ NpcDB = {
      [60916] = {
 	     name = "层主",
 	     title = "第52层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第52层",
 	     dialogIDs = {81300},
      },
@@ -26696,7 +26812,7 @@ NpcDB = {
      [60924] = {
 	     name = "层主",
 	     title = "第53层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第53层",
 	     dialogIDs = {81325},
      },
@@ -26794,7 +26910,7 @@ NpcDB = {
      [60932] = {
 	     name = "层主",
 	     title = "第54层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第54层",
 	     dialogIDs = {81350},
      },
@@ -26892,7 +27008,7 @@ NpcDB = {
      [60940] = {
 	     name = "层主",
 	     title = "第55层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第55层",
 	     dialogIDs = {81375},
      },
@@ -26990,7 +27106,7 @@ NpcDB = {
      [60948] = {
 	     name = "层主",
 	     title = "第56层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第56层",
 	     dialogIDs = {81400},
      },
@@ -27088,7 +27204,7 @@ NpcDB = {
      [60956] = {
 	     name = "层主",
 	     title = "第57层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第57层",
 	     dialogIDs = {81425},
      },
@@ -27186,7 +27302,7 @@ NpcDB = {
      [60964] = {
 	     name = "层主",
 	     title = "第58层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第58层",
 	     dialogIDs = {81450},
      },
@@ -27284,7 +27400,7 @@ NpcDB = {
      [60972] = {
 	     name = "层主",
 	     title = "第59层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第59层",
 	     dialogIDs = {81475},
      },
@@ -27382,7 +27498,7 @@ NpcDB = {
      [60980] = {
 	     name = "层主",
 	     title = "第60层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第60层",
 	     dialogIDs = {81500},
      },
@@ -27480,7 +27596,7 @@ NpcDB = {
      [60988] = {
 	     name = "层主",
 	     title = "第61层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第61层",
 	     dialogIDs = {81525},
      },
@@ -27578,7 +27694,7 @@ NpcDB = {
      [60996] = {
 	     name = "层主",
 	     title = "第62层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第62层",
 	     dialogIDs = {81550},
      },
@@ -27676,7 +27792,7 @@ NpcDB = {
      [61004] = {
 	     name = "层主",
 	     title = "第63层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第63层",
 	     dialogIDs = {81575},
      },
@@ -27774,7 +27890,7 @@ NpcDB = {
      [61012] = {
 	     name = "层主",
 	     title = "第64层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第64层",
 	     dialogIDs = {81600},
      },
@@ -27872,7 +27988,7 @@ NpcDB = {
      [61020] = {
 	     name = "层主",
 	     title = "第65层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第65层",
 	     dialogIDs = {81625},
      },
@@ -27970,7 +28086,7 @@ NpcDB = {
      [61028] = {
 	     name = "层主",
 	     title = "第66层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第66层",
 	     dialogIDs = {81650},
      },
@@ -28068,7 +28184,7 @@ NpcDB = {
      [61036] = {
 	     name = "层主",
 	     title = "第67层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第67层",
 	     dialogIDs = {81675},
      },
@@ -28166,7 +28282,7 @@ NpcDB = {
      [61044] = {
 	     name = "层主",
 	     title = "第68层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第68层",
 	     dialogIDs = {81700},
      },
@@ -28264,7 +28380,7 @@ NpcDB = {
      [61052] = {
 	     name = "层主",
 	     title = "第69层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第69层",
 	     dialogIDs = {81725},
      },
@@ -28362,7 +28478,7 @@ NpcDB = {
      [61060] = {
 	     name = "层主",
 	     title = "第70层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第70层",
 	     dialogIDs = {81750},
      },
@@ -28460,7 +28576,7 @@ NpcDB = {
      [61068] = {
 	     name = "层主",
 	     title = "第71层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第71层",
 	     dialogIDs = {81775},
      },
@@ -28558,7 +28674,7 @@ NpcDB = {
      [61076] = {
 	     name = "层主",
 	     title = "第72层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第72层",
 	     dialogIDs = {81800},
      },
@@ -28656,7 +28772,7 @@ NpcDB = {
      [61084] = {
 	     name = "层主",
 	     title = "第73层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第73层",
 	     dialogIDs = {81825},
      },
@@ -28754,7 +28870,7 @@ NpcDB = {
      [61092] = {
 	     name = "层主",
 	     title = "第74层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第74层",
 	     dialogIDs = {81850},
      },
@@ -28852,7 +28968,7 @@ NpcDB = {
      [61100] = {
 	     name = "层主",
 	     title = "第75层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第75层",
 	     dialogIDs = {81875},
      },
@@ -28950,7 +29066,7 @@ NpcDB = {
      [61108] = {
 	     name = "层主",
 	     title = "第76层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第76层",
 	     dialogIDs = {81900},
      },
@@ -29048,7 +29164,7 @@ NpcDB = {
      [61116] = {
 	     name = "层主",
 	     title = "第77层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第77层",
 	     dialogIDs = {81925},
      },
@@ -29146,7 +29262,7 @@ NpcDB = {
      [61124] = {
 	     name = "层主",
 	     title = "第78层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第78层",
 	     dialogIDs = {81950},
      },
@@ -29244,7 +29360,7 @@ NpcDB = {
      [61132] = {
 	     name = "层主",
 	     title = "第79层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第79层",
 	     dialogIDs = {81975},
      },
@@ -29342,7 +29458,7 @@ NpcDB = {
      [61140] = {
 	     name = "层主",
 	     title = "第80层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第80层",
 	     dialogIDs = {82000},
      },
@@ -29440,7 +29556,7 @@ NpcDB = {
      [61148] = {
 	     name = "层主",
 	     title = "第81层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第81层",
 	     dialogIDs = {82025},
      },
@@ -29538,7 +29654,7 @@ NpcDB = {
      [61156] = {
 	     name = "层主",
 	     title = "第82层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第82层",
 	     dialogIDs = {82050},
      },
@@ -29636,7 +29752,7 @@ NpcDB = {
      [61164] = {
 	     name = "层主",
 	     title = "第83层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第83层",
 	     dialogIDs = {82075},
      },
@@ -29734,7 +29850,7 @@ NpcDB = {
      [61172] = {
 	     name = "层主",
 	     title = "第84层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第84层",
 	     dialogIDs = {82100},
      },
@@ -29832,7 +29948,7 @@ NpcDB = {
      [61180] = {
 	     name = "层主",
 	     title = "第85层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第85层",
 	     dialogIDs = {82125},
      },
@@ -29930,7 +30046,7 @@ NpcDB = {
      [61188] = {
 	     name = "层主",
 	     title = "第86层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第86层",
 	     dialogIDs = {82150},
      },
@@ -30028,7 +30144,7 @@ NpcDB = {
      [61196] = {
 	     name = "层主",
 	     title = "第87层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第87层",
 	     dialogIDs = {82175},
      },
@@ -30126,7 +30242,7 @@ NpcDB = {
      [61204] = {
 	     name = "层主",
 	     title = "第88层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第88层",
 	     dialogIDs = {82200},
      },
@@ -30224,7 +30340,7 @@ NpcDB = {
      [61212] = {
 	     name = "层主",
 	     title = "第89层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第89层",
 	     dialogIDs = {82225},
      },
@@ -30322,7 +30438,7 @@ NpcDB = {
      [61220] = {
 	     name = "层主",
 	     title = "第90层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第90层",
 	     dialogIDs = {82250},
      },
@@ -30420,7 +30536,7 @@ NpcDB = {
      [61228] = {
 	     name = "层主",
 	     title = "第91层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第91层",
 	     dialogIDs = {82275},
      },
@@ -30518,7 +30634,7 @@ NpcDB = {
      [61236] = {
 	     name = "层主",
 	     title = "第92层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第92层",
 	     dialogIDs = {82300},
      },
@@ -30616,7 +30732,7 @@ NpcDB = {
      [61244] = {
 	     name = "层主",
 	     title = "第93层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第93层",
 	     dialogIDs = {82325},
      },
@@ -30714,7 +30830,7 @@ NpcDB = {
      [61252] = {
 	     name = "层主",
 	     title = "第94层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第94层",
 	     dialogIDs = {82350},
      },
@@ -30812,7 +30928,7 @@ NpcDB = {
      [61260] = {
 	     name = "层主",
 	     title = "第95层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第95层",
 	     dialogIDs = {82375},
      },
@@ -30910,7 +31026,7 @@ NpcDB = {
      [61268] = {
 	     name = "层主",
 	     title = "第96层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第96层",
 	     dialogIDs = {82400},
      },
@@ -31008,7 +31124,7 @@ NpcDB = {
      [61276] = {
 	     name = "层主",
 	     title = "第97层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第97层",
 	     dialogIDs = {82425},
      },
@@ -31106,7 +31222,7 @@ NpcDB = {
      [61284] = {
 	     name = "层主",
 	     title = "第98层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第98层",
 	     dialogIDs = {82450},
      },
@@ -31204,7 +31320,7 @@ NpcDB = {
      [61292] = {
 	     name = "层主",
 	     title = "第99层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第99层",
 	     dialogIDs = {82475},
      },
@@ -31302,7 +31418,7 @@ NpcDB = {
      [61300] = {
 	     name = "层主",
 	     title = "第100层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第100层",
 	     dialogIDs = {82500},
      },
@@ -31393,7 +31509,7 @@ NpcDB = {
      [61308] = {
 	     name = "层主",
 	     title = "第101层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第101层",
      },
      [61309] = {
@@ -31483,7 +31599,7 @@ NpcDB = {
      [61316] = {
 	     name = "层主",
 	     title = "第102层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第102层",
      },
      [61317] = {
@@ -31573,7 +31689,7 @@ NpcDB = {
      [61324] = {
 	     name = "层主",
 	     title = "第103层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第103层",
      },
      [61325] = {
@@ -31663,7 +31779,7 @@ NpcDB = {
      [61332] = {
 	     name = "层主",
 	     title = "第104层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第104层",
      },
      [61333] = {
@@ -31753,7 +31869,7 @@ NpcDB = {
      [61340] = {
 	     name = "层主",
 	     title = "第105层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第105层",
      },
      [61341] = {
@@ -31843,7 +31959,7 @@ NpcDB = {
      [61348] = {
 	     name = "层主",
 	     title = "第106层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第106层",
      },
      [61349] = {
@@ -31933,7 +32049,7 @@ NpcDB = {
      [61356] = {
 	     name = "层主",
 	     title = "第107层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第107层",
      },
      [61357] = {
@@ -32023,7 +32139,7 @@ NpcDB = {
      [61364] = {
 	     name = "层主",
 	     title = "第108层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第108层",
      },
      [61365] = {
@@ -32113,7 +32229,7 @@ NpcDB = {
      [61372] = {
 	     name = "层主",
 	     title = "第109层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第109层",
      },
      [61373] = {
@@ -32203,7 +32319,7 @@ NpcDB = {
      [61380] = {
 	     name = "层主",
 	     title = "第110层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第110层",
      },
      [61381] = {
@@ -32293,7 +32409,7 @@ NpcDB = {
      [61388] = {
 	     name = "层主",
 	     title = "第111层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第111层",
      },
      [61389] = {
@@ -32383,7 +32499,7 @@ NpcDB = {
      [61396] = {
 	     name = "层主",
 	     title = "第112层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第112层",
      },
      [61397] = {
@@ -32473,7 +32589,7 @@ NpcDB = {
      [61404] = {
 	     name = "层主",
 	     title = "第113层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第113层",
      },
      [61405] = {
@@ -32563,7 +32679,7 @@ NpcDB = {
      [61412] = {
 	     name = "层主",
 	     title = "第114层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第114层",
      },
      [61413] = {
@@ -32653,7 +32769,7 @@ NpcDB = {
      [61420] = {
 	     name = "层主",
 	     title = "第115层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第115层",
      },
      [61421] = {
@@ -32743,7 +32859,7 @@ NpcDB = {
      [61428] = {
 	     name = "层主",
 	     title = "第116层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第116层",
      },
      [61429] = {
@@ -32833,7 +32949,7 @@ NpcDB = {
      [61436] = {
 	     name = "层主",
 	     title = "第117层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第117层",
      },
      [61437] = {
@@ -32923,7 +33039,7 @@ NpcDB = {
      [61444] = {
 	     name = "层主",
 	     title = "第118层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第118层",
      },
      [61445] = {
@@ -33013,7 +33129,7 @@ NpcDB = {
      [61452] = {
 	     name = "层主",
 	     title = "第119层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第119层",
      },
      [61453] = {
@@ -33103,7 +33219,7 @@ NpcDB = {
      [61460] = {
 	     name = "层主",
 	     title = "第120层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第120层",
      },
      [61461] = {
@@ -33193,7 +33309,7 @@ NpcDB = {
      [61468] = {
 	     name = "层主",
 	     title = "第121层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第121层",
      },
      [61469] = {
@@ -33283,7 +33399,7 @@ NpcDB = {
      [61476] = {
 	     name = "层主",
 	     title = "第122层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第122层",
      },
      [61477] = {
@@ -33373,7 +33489,7 @@ NpcDB = {
      [61484] = {
 	     name = "层主",
 	     title = "第123层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第123层",
      },
      [61485] = {
@@ -33463,7 +33579,7 @@ NpcDB = {
      [61492] = {
 	     name = "层主",
 	     title = "第124层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第124层",
      },
      [61493] = {
@@ -33553,7 +33669,7 @@ NpcDB = {
      [61500] = {
 	     name = "层主",
 	     title = "第125层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第125层",
      },
      [61501] = {
@@ -33643,7 +33759,7 @@ NpcDB = {
      [61508] = {
 	     name = "层主",
 	     title = "第126层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第126层",
      },
      [61509] = {
@@ -33733,7 +33849,7 @@ NpcDB = {
      [61516] = {
 	     name = "层主",
 	     title = "第127层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第127层",
      },
      [61517] = {
@@ -33823,7 +33939,7 @@ NpcDB = {
      [61524] = {
 	     name = "层主",
 	     title = "第128层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第128层",
      },
      [61525] = {
@@ -33913,7 +34029,7 @@ NpcDB = {
      [61532] = {
 	     name = "层主",
 	     title = "第129层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第129层",
      },
      [61533] = {
@@ -34003,7 +34119,7 @@ NpcDB = {
      [61540] = {
 	     name = "层主",
 	     title = "第130层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第130层",
      },
      [61541] = {
@@ -34093,7 +34209,7 @@ NpcDB = {
      [61548] = {
 	     name = "层主",
 	     title = "第131层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第131层",
      },
      [61549] = {
@@ -34183,7 +34299,7 @@ NpcDB = {
      [61556] = {
 	     name = "层主",
 	     title = "第132层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第132层",
      },
      [61557] = {
@@ -34273,7 +34389,7 @@ NpcDB = {
      [61564] = {
 	     name = "层主",
 	     title = "第133层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第133层",
      },
      [61565] = {
@@ -34363,7 +34479,7 @@ NpcDB = {
      [61572] = {
 	     name = "层主",
 	     title = "第134层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第134层",
      },
      [61573] = {
@@ -34453,7 +34569,7 @@ NpcDB = {
      [61580] = {
 	     name = "层主",
 	     title = "第135层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第135层",
      },
      [61581] = {
@@ -34543,7 +34659,7 @@ NpcDB = {
      [61588] = {
 	     name = "层主",
 	     title = "第136层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第136层",
      },
      [61589] = {
@@ -34633,7 +34749,7 @@ NpcDB = {
      [61596] = {
 	     name = "层主",
 	     title = "第137层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第137层",
      },
      [61597] = {
@@ -34723,7 +34839,7 @@ NpcDB = {
      [61604] = {
 	     name = "层主",
 	     title = "第138层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第138层",
      },
      [61605] = {
@@ -34813,7 +34929,7 @@ NpcDB = {
      [61612] = {
 	     name = "层主",
 	     title = "第139层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第139层",
      },
      [61613] = {
@@ -34903,7 +35019,7 @@ NpcDB = {
      [61620] = {
 	     name = "层主",
 	     title = "第140层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第140层",
      },
      [61621] = {
@@ -34993,7 +35109,7 @@ NpcDB = {
      [61628] = {
 	     name = "层主",
 	     title = "第141层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第141层",
      },
      [61629] = {
@@ -35083,7 +35199,7 @@ NpcDB = {
      [61636] = {
 	     name = "层主",
 	     title = "第142层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第142层",
 	     level = 142,
      },
@@ -35174,7 +35290,7 @@ NpcDB = {
      [61644] = {
 	     name = "层主",
 	     title = "第143层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第143层",
      },
      [61645] = {
@@ -35264,7 +35380,7 @@ NpcDB = {
      [61652] = {
 	     name = "层主",
 	     title = "第144层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第144层",
      },
      [61653] = {
@@ -35354,7 +35470,7 @@ NpcDB = {
      [61660] = {
 	     name = "层主",
 	     title = "第145层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第145层",
      },
      [61661] = {
@@ -35444,7 +35560,7 @@ NpcDB = {
      [61668] = {
 	     name = "层主",
 	     title = "第146层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第146层",
      },
      [61669] = {
@@ -35534,7 +35650,7 @@ NpcDB = {
      [61676] = {
 	     name = "层主",
 	     title = "第147层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第147层",
      },
      [61677] = {
@@ -35624,7 +35740,7 @@ NpcDB = {
      [61684] = {
 	     name = "层主",
 	     title = "第148层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第148层",
      },
      [61685] = {
@@ -35714,7 +35830,7 @@ NpcDB = {
      [61692] = {
 	     name = "层主",
 	     title = "第149层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第149层",
      },
      [61693] = {
@@ -35804,7 +35920,7 @@ NpcDB = {
      [61700] = {
 	     name = "层主",
 	     title = "第150层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第150层",
      },
      [61701] = {
@@ -35894,7 +36010,7 @@ NpcDB = {
      [61708] = {
 	     name = "层主",
 	     title = "第151层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第151层",
      },
      [61709] = {
@@ -35984,7 +36100,7 @@ NpcDB = {
      [61716] = {
 	     name = "层主",
 	     title = "第152层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第152层",
      },
      [61717] = {
@@ -36074,7 +36190,7 @@ NpcDB = {
      [61724] = {
 	     name = "层主",
 	     title = "第153层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第153层",
      },
      [61725] = {
@@ -36164,7 +36280,7 @@ NpcDB = {
      [61732] = {
 	     name = "层主",
 	     title = "第154层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第154层",
      },
      [61733] = {
@@ -36254,7 +36370,7 @@ NpcDB = {
      [61740] = {
 	     name = "层主",
 	     title = "第155层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第155层",
      },
      [61741] = {
@@ -36344,7 +36460,7 @@ NpcDB = {
      [61748] = {
 	     name = "层主",
 	     title = "第156层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第156层",
      },
      [61749] = {
@@ -36434,7 +36550,7 @@ NpcDB = {
      [61756] = {
 	     name = "层主",
 	     title = "第157层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第157层",
      },
      [61757] = {
@@ -36524,7 +36640,7 @@ NpcDB = {
      [61764] = {
 	     name = "层主",
 	     title = "第158层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第158层",
      },
      [61765] = {
@@ -36614,7 +36730,7 @@ NpcDB = {
      [61772] = {
 	     name = "层主",
 	     title = "第159层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第159层",
      },
      [61773] = {
@@ -36704,7 +36820,7 @@ NpcDB = {
      [61780] = {
 	     name = "层主",
 	     title = "第160层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第160层",
      },
      [61781] = {
@@ -36794,7 +36910,7 @@ NpcDB = {
      [61788] = {
 	     name = "层主",
 	     title = "第161层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第161层",
      },
      [61789] = {
@@ -36884,7 +37000,7 @@ NpcDB = {
      [61796] = {
 	     name = "层主",
 	     title = "第162层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第162层",
      },
      [61797] = {
@@ -36974,7 +37090,7 @@ NpcDB = {
      [61804] = {
 	     name = "层主",
 	     title = "第163层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第163层",
      },
      [61805] = {
@@ -37064,7 +37180,7 @@ NpcDB = {
      [61812] = {
 	     name = "层主",
 	     title = "第164层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第164层",
      },
      [61813] = {
@@ -37154,7 +37270,7 @@ NpcDB = {
      [61820] = {
 	     name = "层主",
 	     title = "第165层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第165层",
      },
      [61821] = {
@@ -37244,7 +37360,7 @@ NpcDB = {
      [61828] = {
 	     name = "层主",
 	     title = "第166层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第166层",
      },
      [61829] = {
@@ -37334,7 +37450,7 @@ NpcDB = {
      [61836] = {
 	     name = "层主",
 	     title = "第167层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第167层",
      },
      [61837] = {
@@ -37424,7 +37540,7 @@ NpcDB = {
      [61844] = {
 	     name = "层主",
 	     title = "第168层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第168层",
      },
      [61845] = {
@@ -37514,7 +37630,7 @@ NpcDB = {
      [61852] = {
 	     name = "层主",
 	     title = "第169层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第169层",
      },
      [61853] = {
@@ -37604,7 +37720,7 @@ NpcDB = {
      [61860] = {
 	     name = "层主",
 	     title = "第170层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第170层",
      },
      [61861] = {
@@ -37694,7 +37810,7 @@ NpcDB = {
      [61868] = {
 	     name = "层主",
 	     title = "第171层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第171层",
      },
      [61869] = {
@@ -37784,7 +37900,7 @@ NpcDB = {
      [61876] = {
 	     name = "层主",
 	     title = "第172层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第172层",
      },
      [61877] = {
@@ -37874,7 +37990,7 @@ NpcDB = {
      [61884] = {
 	     name = "层主",
 	     title = "第173层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第173层",
      },
      [61885] = {
@@ -37964,7 +38080,7 @@ NpcDB = {
      [61892] = {
 	     name = "层主",
 	     title = "第174层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第174层",
      },
      [61893] = {
@@ -38054,7 +38170,7 @@ NpcDB = {
      [61900] = {
 	     name = "层主",
 	     title = "第175层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第175层",
      },
      [61901] = {
@@ -38144,7 +38260,7 @@ NpcDB = {
      [61908] = {
 	     name = "层主",
 	     title = "第176层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第176层",
      },
      [61909] = {
@@ -38234,7 +38350,7 @@ NpcDB = {
      [61916] = {
 	     name = "层主",
 	     title = "第177层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第177层",
      },
      [61917] = {
@@ -38324,7 +38440,7 @@ NpcDB = {
      [61924] = {
 	     name = "层主",
 	     title = "第178层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第178层",
      },
      [61925] = {
@@ -38414,7 +38530,7 @@ NpcDB = {
      [61932] = {
 	     name = "层主",
 	     title = "第179层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第179层",
      },
      [61933] = {
@@ -38504,7 +38620,7 @@ NpcDB = {
      [61940] = {
 	     name = "层主",
 	     title = "第180层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第180层",
      },
      [61941] = {
@@ -38594,7 +38710,7 @@ NpcDB = {
      [61948] = {
 	     name = "层主",
 	     title = "第181层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第181层",
      },
      [61949] = {
@@ -38684,7 +38800,7 @@ NpcDB = {
      [61956] = {
 	     name = "层主",
 	     title = "第182层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第182层",
      },
      [61957] = {
@@ -38774,7 +38890,7 @@ NpcDB = {
      [61964] = {
 	     name = "层主",
 	     title = "第183层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第183层",
      },
      [61965] = {
@@ -38864,7 +38980,7 @@ NpcDB = {
      [61972] = {
 	     name = "层主",
 	     title = "第184层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第184层",
      },
      [61973] = {
@@ -38954,7 +39070,7 @@ NpcDB = {
      [61980] = {
 	     name = "层主",
 	     title = "第185层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第185层",
      },
      [61981] = {
@@ -39044,7 +39160,7 @@ NpcDB = {
      [61988] = {
 	     name = "层主",
 	     title = "第186层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第186层",
      },
      [61989] = {
@@ -39134,7 +39250,7 @@ NpcDB = {
      [61996] = {
 	     name = "层主",
 	     title = "第187层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第187层",
      },
      [61997] = {
@@ -39224,7 +39340,7 @@ NpcDB = {
      [62004] = {
 	     name = "层主",
 	     title = "第188层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第188层",
      },
      [62005] = {
@@ -39314,7 +39430,7 @@ NpcDB = {
      [62012] = {
 	     name = "层主",
 	     title = "第189层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第189层",
      },
      [62013] = {
@@ -39404,7 +39520,7 @@ NpcDB = {
      [62020] = {
 	     name = "层主",
 	     title = "第190层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第190层",
      },
      [62021] = {
@@ -39494,7 +39610,7 @@ NpcDB = {
      [62028] = {
 	     name = "层主",
 	     title = "第191层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第191层",
      },
      [62029] = {
@@ -39584,7 +39700,7 @@ NpcDB = {
      [62036] = {
 	     name = "层主",
 	     title = "第192层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第192层",
      },
      [62037] = {
@@ -39674,7 +39790,7 @@ NpcDB = {
      [62044] = {
 	     name = "层主",
 	     title = "第193层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第193层",
      },
      [62045] = {
@@ -39764,7 +39880,7 @@ NpcDB = {
      [62052] = {
 	     name = "层主",
 	     title = "第194层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第194层",
      },
      [62053] = {
@@ -39854,7 +39970,7 @@ NpcDB = {
      [62060] = {
 	     name = "层主",
 	     title = "第195层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第195层",
      },
      [62061] = {
@@ -39944,7 +40060,7 @@ NpcDB = {
      [62068] = {
 	     name = "层主",
 	     title = "第196层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第196层",
      },
      [62069] = {
@@ -40034,7 +40150,7 @@ NpcDB = {
      [62076] = {
 	     name = "层主",
 	     title = "第197层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第197层",
      },
      [62077] = {
@@ -40124,7 +40240,7 @@ NpcDB = {
      [62084] = {
 	     name = "层主",
 	     title = "第198层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第198层",
      },
      [62085] = {
@@ -40214,7 +40330,7 @@ NpcDB = {
      [62092] = {
 	     name = "层主",
 	     title = "第199层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第199层",
      },
      [62093] = {
@@ -40304,7 +40420,7 @@ NpcDB = {
      [62100] = {
 	     name = "层主",
 	     title = "第200层",
-	     modelID =162,
+	     modelID =174,
 	     desc = "封神台第200层",
      },
      [70000] = {
@@ -40313,34 +40429,294 @@ NpcDB = {
 	     modelID =624,
 	     desc = "煮酒论英雄活动入口",
 	     level = 150,
-	     dialogIDs = {70000},
+	     dialogIDs = {70100},
      },
      [70001] = {
 	     name = "青梅酒仙",
 	     modelID =585,
 	     desc = "煮酒论英雄活动主怪",
-	     level = -1,
+	     level = 1,
+	     attrID = 16,
 	     phaseType = PhaseType.None,
+	     dialogIDs = {70001},
      },
      [70002] = {
 	     name = "护法童子",
 	     modelID =509,
 	     desc = "煮酒论英雄活动小怪",
-	     level = -1,
+	     level = 1,
+	     attrID = 12,
 	     phaseType = PhaseType.None,
      },
      [70003] = {
 	     name = "试道侠客",
 	     modelID =660,
 	     desc = "煮酒论英雄活动逃脱怪",
-	     level = -1,
+	     level = 1,
+	     attrID = 18,
 	     phaseType = PhaseType.None,
      },
      [70004] = {
 	     name = "古木精灵",
 	     modelID =188,
 	     desc = "煮酒论英雄活动小怪",
-	     level = -1,
+	     level = 1,
+	     attrID = 14,
 	     phaseType = PhaseType.None,
+     },
+     [78000] = {
+	     name = "恶霸头子",
+	     modelID =125,
+	     desc = "暗雷战斗EB",
+	     level = -1,
+	     attrID = 8,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1004,1007},
+	     dialogIDs = {30200},
+     },
+     [78001] = {
+	     name = "恶霸",
+	     modelID =140,
+	     desc = "帮会休闲任务",
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1010},
+     },
+     [78002] = {
+	     name = "恶霸",
+	     modelID =140,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1010},
+     },
+     [78003] = {
+	     name = "恶霸",
+	     modelID =140,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024},
+     },
+     [78004] = {
+	     name = "恶霸",
+	     modelID =140,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024},
+     },
+     [78005] = {
+	     name = "强盗首领",
+	     modelID =115,
+	     desc = "暗雷战斗QD",
+	     level = -1,
+	     attrID = 8,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1021,1022},
+	     dialogIDs = {30201},
+     },
+     [78006] = {
+	     name = "强盗",
+	     modelID =141,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016},
+     },
+     [78007] = {
+	     name = "强盗",
+	     modelID =141,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016},
+     },
+     [78008] = {
+	     name = "强盗",
+	     modelID =141,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1014},
+     },
+     [78009] = {
+	     name = "强盗",
+	     modelID =141,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1014},
+     },
+     [78010] = {
+	     name = "劫匪头领",
+	     modelID =184,
+	     desc = "暗雷战斗JF",
+	     level = -1,
+	     attrID = 8,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1017,1018},
+	     dialogIDs = {30202},
+     },
+     [78011] = {
+	     name = "劫匪",
+	     modelID =116,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1026},
+     },
+     [78012] = {
+	     name = "劫匪",
+	     modelID =116,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1026},
+     },
+     [78013] = {
+	     name = "劫匪",
+	     modelID =116,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024},
+     },
+     [78014] = {
+	     name = "劫匪",
+	     modelID =116,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024},
+     },
+     [78015] = {
+	     name = "小偷头目",
+	     modelID =154,
+	     desc = "暗雷战斗XT",
+	     level = -1,
+	     attrID = 8,
+	     phaseType = PhaseType.Poison,
+	     skillCfg = {1024,1027},
+	     dialogIDs = {30203},
+     },
+     [78016] = {
+	     name = "小偷",
+	     modelID =147,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1006},
+     },
+     [78017] = {
+	     name = "小偷",
+	     modelID =147,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Wind,
+	     skillCfg = {1006},
+     },
+     [78018] = {
+	     name = "小偷",
+	     modelID =147,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1022},
+     },
+     [78019] = {
+	     name = "小偷",
+	     modelID =147,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1022},
+     },
+     [78020] = {
+	     name = "杀手头目",
+	     modelID =576,
+	     desc = "暗雷战斗SS",
+	     level = -1,
+	     attrID = 8,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1010,1011},
+	     dialogIDs = {30204},
+     },
+     [78021] = {
+	     name = "杀手",
+	     modelID =156,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016},
+     },
+     [78022] = {
+	     name = "杀手",
+	     modelID =156,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1016},
+     },
+     [78023] = {
+	     name = "杀手",
+	     modelID =156,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020},
+     },
+     [78024] = {
+	     name = "杀手",
+	     modelID =156,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Fire,
+	     skillCfg = {1020},
+     },
+     [78025] = {
+	     name = "流氓头子",
+	     modelID =138,
+	     desc = "暗雷战斗LM",
+	     level = -1,
+	     attrID = 8,
+	     phaseType = PhaseType.Soil,
+	     skillCfg = {1018,1019},
+	     dialogIDs = {30205},
+     },
+     [78026] = {
+	     name = "流氓",
+	     modelID =137,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1009},
+     },
+     [78027] = {
+	     name = "流氓",
+	     modelID =137,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Thunder,
+	     skillCfg = {1009},
+     },
+     [78028] = {
+	     name = "流氓",
+	     modelID =137,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1012},
+	     modelTextures =2,
+     },
+     [78029] = {
+	     name = "流氓",
+	     modelID =137,
+	     level = -1,
+	     attrID = 7,
+	     phaseType = PhaseType.Ice,
+	     skillCfg = {1012},
+	     modelTextures =2,
      },
 }

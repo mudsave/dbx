@@ -73,7 +73,6 @@ function Pet:onLoad(attrRecord)
 		attrRecord.status = PetStatus.Rest
 	end
 	self._status = attrRecord.status
-	self.attrSet:updateAll( true )
 end
 
 -- 被创建
@@ -99,6 +98,7 @@ end
 function Pet:loadAttrs(attrRecord)
 	self:setLevel(self._level)
 	self.attrSet:loadAttrRecord(attrRecord)
+	self.attrSet:updateAll( true )
 end
 
 -- 等级提升处理
@@ -147,7 +147,7 @@ function Pet:onAdded(player)
 	)
 
 	self:getHandler(HandlerDef_PetSkill):sendFull(player)
-	self:getHandler(HandlerDef_AutoPoint):sendToClient()
+	self:getHandler(HandlerDef_AutoPoint):sendToClient(self,player)
 	if self:isNew() then
 		LuaDBAccess.SavePet(self)
 		LuaDBAccess.SavePet(self)
@@ -339,25 +339,15 @@ end
 function Pet:addAttrPoint(value)
 	self:addAttrValue(pet_attr_point,value)
 	local handler = self:getHandler(HandlerDef_AutoPoint)
-	if handler and handler:isAutoAttr() then
-		handler:distibuteAttrPoints()
-	end
-
-	if not handler then
-		print "没有自动加点管理"
-	elseif not handler:isAutoAttr() then
-		print "没有设定自动加点"
+	if handler then
+		handler:effect( self,AutoPointHandler.Attr )
 	end
 end
 
 -- 添加相性点
 function Pet:addPhasePoint(value)
 	self:addAttrValue(pet_phase_point,value)
-	local handler = self:getHandler(HandlerDef_AutoPoint)
-	if handler and handler:isAutoPhase() then
-		-- 宠物似乎不能自动分配属性点
-		handler:distibutePhasePoints()
-	end
+	-- 宠物的相性没有自动分配需求
 end
 
 -- 设置宠物经验,同时处理宠物升级

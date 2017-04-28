@@ -51,7 +51,7 @@ end
 
 -- 保存数据到数据库
 function RoleConfigManager:saveDataToServer()
-	print("---111111 in database----",toString(self.data))
+
 	LuaDBAccess.SaveRoleConfig(self.roleDBID,self.data)
 end
 

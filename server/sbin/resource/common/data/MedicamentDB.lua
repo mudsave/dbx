@@ -4411,7 +4411,7 @@ tMedicamentDB =
 	},
 	[1062101] = {
 		ID = 1062101 ,
-		Name = "蝎子" ,
+		Name = "魔蝎" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -4436,7 +4436,7 @@ tMedicamentDB =
 	},
 	[1062102] = {
 		ID = 1062102 ,
-		Name = "蝎子" ,
+		Name = "狂阳魔蝎" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -4486,7 +4486,7 @@ tMedicamentDB =
 	},
 	[1062104] = {
 		ID = 1062104 ,
-		Name = "狂阳魔蝎" ,
+		Name = "玲珑魔蝎" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -4636,7 +4636,7 @@ tMedicamentDB =
 	},
 	[1062111] = {
 		ID = 1062111 ,
-		Name = "水牛" ,
+		Name = "神牛" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -4861,7 +4861,7 @@ tMedicamentDB =
 	},
 	[1062121] = {
 		ID = 1062121 ,
-		Name = "仙鹤" ,
+		Name = "羽鹤" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -5086,7 +5086,7 @@ tMedicamentDB =
 	},
 	[1062131] = {
 		ID = 1062131 ,
-		Name = "豹子" ,
+		Name = "豹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -5311,7 +5311,7 @@ tMedicamentDB =
 	},
 	[1062141] = {
 		ID = 1062141 ,
-		Name = "狐狸" ,
+		Name = "灵狐" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -5761,7 +5761,7 @@ tMedicamentDB =
 	},
 	[1062161] = {
 		ID = 1062161 ,
-		Name = "狗熊" ,
+		Name = "战熊" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -6561,7 +6561,7 @@ tMedicamentDB =
 	},
 	[1062201] = {
 		ID = 1062201 ,
-		Name = "青牛灵符" ,
+		Name = "神牛灵符" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 1 ,
@@ -8586,7 +8586,7 @@ tMedicamentDB =
 	},
 	[3021013] = {
 		ID = 3021013 ,
-		Name = "易筋符" ,
+		Name = "高级易筋丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 10 ,
@@ -8711,7 +8711,7 @@ tMedicamentDB =
 	},
 	[3024013] = {
 		ID = 3024013 ,
-		Name = "宠物易筋符" ,
+		Name = "宠物易筋丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 10 ,
@@ -8736,7 +8736,7 @@ tMedicamentDB =
 	},
 	[3024020] = {
 		ID = 3024020 ,
-		Name = "宠物洗髓符" ,
+		Name = "宠物洗髓丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 10 ,
@@ -8761,7 +8761,7 @@ tMedicamentDB =
 	},
 	[3024023] = {
 		ID = 3024023 ,
-		Name = "宠物经验丹" ,
+		Name = "低级宠物经验丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 20 ,
@@ -8786,7 +8786,7 @@ tMedicamentDB =
 	},
 	[3024026] = {
 		ID = 3024026 ,
-		Name = "宠物经验丹" ,
+		Name = "高级宠物经验丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.Function ,
 		MaxPileNum = 20 ,
@@ -9061,7 +9061,7 @@ tMedicamentDB =
 	},
 	[3120003] = {
 		ID = 3120003 ,
-		Name = "高级血玲珑" ,
+		Name = "高级血丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.LinglongPill ,
 		MaxPileNum = 1 ,
@@ -9086,7 +9086,7 @@ tMedicamentDB =
 	},
 	[3120007] = {
 		ID = 3120007 ,
-		Name = "高级法玲珑" ,
+		Name = "高级法丹" ,
 		Class = ItemClass.Medicament ,
 		SubClass = ItemSubClass.LinglongPill ,
 		MaxPileNum = 1 ,

@@ -6,25 +6,27 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.table', [
-    "BlurAdmin.pages.table.table1",
-    "BlurAdmin.pages.table.table2",
-    ])
+    "BlurAdmin.pages.table.roleMgr",
+    "BlurAdmin.pages.table.factionMgr",
+    "BlurAdmin.pages.table.activityManager",
+    "BlurAdmin.pages.table.broadcast",
+  ])
     .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
-    $stateProvider .state(
+    $stateProvider.state(
       'table',
       {
         url: '/table',
-        template : '<ui-view autoscroll="true" autoscroll-body-top></ui-view>',
-        title: 'Table',
+        template: '<ui-view autoscroll="true" autoscroll-body-top></ui-view>',
+        title: '游戏管理',
         sidebarMeta: {
           icon: 'ion-grid',
           order: 20,
         },
       }
-    );
+    )
   }
 
 })();

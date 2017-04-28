@@ -36,3 +36,8 @@ ActivityPageUpdateData =
 {
 	DaliyKill		= 1, -- 每日杀怪	
 }
+
+ActivityNumber =
+{
+	DekaronSchool = 2,	-- 门派闯关活动人数
+}

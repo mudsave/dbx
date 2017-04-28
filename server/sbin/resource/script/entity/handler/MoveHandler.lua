@@ -102,37 +102,43 @@ function MoveHandler:DoStopMove(bCheckTeam, targetTile)
 		x = targetTile.x
 		y = targetTile.y
 	end
-	player:getPeer():stopMove(x, y)
+	--player:getPeer():stopMove(x, y)
 
+	local follows = {} 
 	local followHandler = player:getHandler(HandlerDef_Follow)
 	if followHandler then
 		local followList = followHandler:getMembers()
 		for _, member in pairs(followList) do
 			if member:isVisible() then
-				member:getPeer():stopMove(x, y)										
+				--member:getPeer():stopMove(x, y)										
+				table.insert(follows, member:getID())
 			end
 		end
 	
 		local ectypeFollowList = followHandler:getEctypeMembers()
 		for _, member in pairs(ectypeFollowList) do
 			if member:isVisible() then
-				member:getPeer():stopMove(x, y)
+				--member:getPeer():stopMove(x, y)
+				table.insert(follows, member:getID())
 			end
 		end
 	end
-
+	local petId = nil
 	if player:getEntityType() == eClsTypePlayer then
 		local petID = player:getFollowPetID()
 		if petID then
 			local pet = g_entityMgr:getPet(petID)
 			if pet then
 				if pet:isVisible() then
-					pet:getPeer():stopMove(x, y)
+					table.insert(follows, petID)
+					petId = petID
+					--pet:getPeer():stopMove(x, y)
 				end
 			end
 		end
 	end
 	
+	player:getPeer():stopMoveAndFollow(x, y, follows, petId);
 end
 
 function MoveHandler:moveFollowEntity(offset, pPosData, paths, bTeamLeader, followList)

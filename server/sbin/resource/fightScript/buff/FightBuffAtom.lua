@@ -116,7 +116,7 @@ end
 
 function Buff:stopAddAttr(isStopLight)
 	self:stopChangeAttrEffect()
-	if isStopLight then
+	if not isStopLight then
 		self.handler:addClearBuffLightList(self.buffID)
 	end
 	return true
@@ -279,6 +279,7 @@ function Buff:startAllAttrReduce()
 			if doStr ~= "ft_add_all_attack" and doStr ~= "ft_add_all_defense" then
 				func = self.owner[doStr]		
 				allAttrValue[doStr] = func(self.owner, 0 - effect.effectValue, true)
+				--存一下提升的数值
 				effect.addValue = allAttrValue
 			end
 		end

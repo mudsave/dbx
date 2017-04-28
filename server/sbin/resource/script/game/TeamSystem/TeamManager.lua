@@ -65,6 +65,9 @@ function TeamManager:createTeam(playerID)
 
 		local event = Event.getEvent(TeamEvents_SC_CreateTeam)
 		g_eventMgr:fireRemoteEvent(event,player)
+		--发送给客户端队长跟随宠ID
+		teamHandler:sendLeaderFollowPetID()
+		
 		return team
 	else
 		print("您已经加入队伍,不能创建队伍。")
@@ -261,9 +264,14 @@ function TeamManager:answerInvite(targetID,leaderID,isAccept)
 			local info = {memberID = member:getID(),name = member:getName(),level = member:getLevel(),school = member:getSchool(),modelID = member:getModelID(),mapID = member:getScene():getMapID(),memberState = memberInfo.memberState,maxHp = targetPlayer:getMaxHP(),maxMp = targetPlayer:getMaxMP()}
 			table.insert(memberList,info)
 		end
+
 		--给被邀请玩家发
 		local event = Event.getEvent(TeamEvents_SC_MemberJoinTeam,leaderID,memberList)
 		g_eventMgr:fireRemoteEvent(event,targetPlayer)
+
+		--发送给客户端队长跟随宠ID
+		local teamHandler = player:getHandler(HandlerDef_Team)
+		teamHandler:sendLeaderFollowPetID()
 
 		tTeamHandler:removeTeaminviteList(leaderID)
 		for k,playerID in pairs(tTeamHandler:getTeaminviteList()) do --同意了一个玩家，便拒绝了所有玩家的邀请
@@ -376,6 +384,10 @@ function TeamManager:answerRequest(leaderID,targetID,isAccept)
 		event = Event.getEvent(TeamEvents_SS_MemberJoinTeam,targetID)
 		g_eventMgr:fireEvent(event)
 		
+		--发送给客户端队长跟随宠ID
+		local teamHandler = player:getHandler(HandlerDef_Team)
+		teamHandler:sendLeaderFollowPetID()
+
 		-- 组队成功 通知其他系统
 		self:doJoinTeamNotifyOtherSystem(leaderID)
 	else
@@ -513,6 +525,11 @@ function TeamManager:quitTeam(playerID)
 					break
 				end
 			end
+			--3分钟之内不再加入同一个退出的队伍
+			local leaderID = team:getLeaderID()
+			local moveOutInfo = {ID = playerID,leaderID = leaderID,time = os.time()}
+			table.insert(self.moveOutList,moveOutInfo)
+
 		end
 		localEvent = Event.getEvent(TeamEvents_SS_QuitTeam, playerID)
 		g_eventMgr:fireEvent(localEvent)
@@ -557,6 +574,11 @@ function TeamManager:changeLeader(leaderID,playerID)
 			end
 			local event = Event.getEvent(TeamEvents_SS_ChangeLeader,playerID)
 			g_eventMgr:fireEvent(event)
+			
+			--发送给客户端队长跟随宠ID
+			local teamHandler = g_entityMgr:getPlayerByID(playerID):getHandler(HandlerDef_Team)
+			teamHandler:sendLeaderFollowPetID()
+
 		end
 		--老队长退出队长自动组队队列
 		for k,queueInfo in pairs(self.leaderQueueList) do
@@ -573,6 +595,7 @@ function TeamManager:changeLeader(leaderID,playerID)
 				break
 			end
 		end
+
 	else
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Team, 10)
 		g_eventMgr:fireRemoteEvent(event, targetPlayer)
@@ -866,6 +889,7 @@ function TeamManager:autoTeamAddMember(leader,addPlayer)
 		end
 		local info = {memberID = player:getID(),name = player:getName(),level = player:getLevel(),school = player:getSchool(),modelID = player:getModelID(),mapID = player:getScene():getMapID(),memberState = memberInfo.memberState}
 		table.insert(memberList,info)
+
 	end
 	--给加入的玩家发
 	local event = Event.getEvent(TeamEvents_SC_MemberJoinTeam,leaderID,memberList)

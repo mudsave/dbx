@@ -138,7 +138,7 @@ void CoEntity::moveByPath(_PropPosData* pPosData)
 
 	if (pPosData->len > MAX_PATH_LEN)
 	{
-		TRACE2_ERROR("[CoEntity:MoveByPath] WARNING: entity(%d) move path too long, len=%i\n", m_hand, pPosData->len);
+		//TRACE2_ERROR("[CoEntity:MoveByPath] WARNING: entity(%d) move path too long, len=%i\n", m_hand, pPosData->len);
 	}
 	if (!m_Move)
 	{
@@ -337,6 +337,109 @@ void CoEntity::stopMove(short x, short y )
 	else
 	{
 		setPosition(pos);
+	}
+}
+
+void CoEntity::stopMoveAndFollow(lua_State* pState)
+{
+	int t_idx = lua_gettop(pState);	
+	int petId = lua_tointeger(pState, t_idx);
+	vector<handle> vecEntityList;
+	vecEntityList.clear();
+	//倒数第二个参数，跟随者数组
+	if(lua_istable(pState, t_idx - 1))
+	{
+		lua_pushnil(pState);
+		while (lua_next(pState, t_idx - 1))
+		{
+			vecEntityList.push_back((handle) lua_tointeger(pState, -1));
+			lua_pop(pState, 1);
+		}
+		lua_pop(pState, 1);
+	}
+	int y = lua_tointeger(pState, t_idx - 2);
+	int x = lua_tointeger(pState, t_idx - 3);
+	//printf("stopMove.................x:%d y:%d  m_move:%d  petId:%d size:%d\n", x, y, m_Move, petId, vecEntityList.size());
+
+	if (m_Move)
+	{
+		resetMove();
+		g_MoveManager.RemoveMoveEntity(m_hand);
+		GridVct curPos;
+		curPos.x = x;
+		curPos.y = y;
+		GridVct realPos = curPos;
+		_PropPosData* pPosData = (_PropPosData*)m_propSet.p[UNIT_POS].val.dataVal;
+		int realIdx = -1;
+		if (m_position != curPos)
+		{
+			short curIdx = pPosData->idx;
+			// 往后找
+			for(int i = curIdx + 1; i < pPosData->len; i++)
+			{
+				if ( pPosData->path[i] == curPos )
+				{
+					realIdx = i;
+					break;
+				}
+			}
+			
+			if (realIdx == -1)
+			{
+				// 往前找
+				for(int i = curIdx - 1; i >= 0; i--)
+				{
+					if ( pPosData->path[i] == curPos )
+					{
+						realIdx = i;
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			realIdx = pPosData->idx;
+		}
+		if (realIdx == -1)
+		{
+			stopMove(x, y);
+			for (size_t i = 0; i < vecEntityList.size(); i++)
+			{
+				CoEntity* pFollow = _EntityFromHandle(vecEntityList[i]);
+				pFollow->stopMove(x, y);
+			}
+		}
+		else
+		{
+			size_t i = 0;
+			while(realIdx > 0)
+			{
+				if (i >= vecEntityList.size())
+				{
+					break;
+				}
+				if (petId == (int)vecEntityList[i])
+				{
+					realIdx -= 2;
+				}
+				else
+				{
+					--realIdx;
+				}
+				if (realIdx > 0)
+				{
+					CoEntity* pFollow = _EntityFromHandle(vecEntityList[i]);
+					pFollow->stopMove(pPosData->path[realIdx].x, pPosData->path[realIdx].y);
+					++i;
+				}
+			}
+			for (; i < vecEntityList.size(); ++i)
+			{
+				CoEntity* pFollow = _EntityFromHandle(vecEntityList[i]);
+				pFollow->stopMove(0, 0);
+			}
+		}
 	}
 }
 

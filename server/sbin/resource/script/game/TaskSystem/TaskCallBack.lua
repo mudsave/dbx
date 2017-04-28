@@ -203,3 +203,20 @@ function TaskCallBack.onPuzzleFinish(roleID, puzzleID)
 		eventHandler:notifyWatchers("onPuzzleFinish", puzzleID)
 	end
 end
+
+--古塔驱妖
+function TaskCallBack.onOldTowerClear(roleID, clearTimes)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	local eventHandler = player:getHandler(HandlerDef_Event)
+	if eventHandler then
+		eventHandler:notifyWatchers("onOldTowerClear", clearTimes)
+	end
+end
+
+function TaskCallBack.onOldTowerTimeOut(roleID, isTimeOut)
+	local player = g_entityMgr:getPlayerByID(roleID)
+	local eventHandler = player:getHandler(HandlerDef_Event)
+	if eventHandler then
+		eventHandler:notifyWatchers("onOldTowerTimeOut", isTimeOut)
+	end
+end

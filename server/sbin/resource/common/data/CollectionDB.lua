@@ -17,9 +17,9 @@ CollectionDB ={
 		posData =     {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[102] = {
@@ -29,9 +29,9 @@ CollectionDB ={
 		posData =     {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[104] = {
@@ -41,9 +41,9 @@ CollectionDB ={
 		posData =     {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[106] = {
@@ -53,9 +53,9 @@ CollectionDB ={
 		posData =     {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    interval = 1800,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -63,9 +63,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 		{
 		    itemID = 10002,
@@ -84,9 +84,9 @@ CollectionDB ={
 		posData =     {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    interval = 1800,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -94,9 +94,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[109] = {
@@ -106,9 +106,9 @@ CollectionDB ={
 		posData =     {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    interval = 1800,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -116,9 +116,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[110] = {
@@ -146,9 +146,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    interval = 1800,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -156,9 +156,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 15,
 		},
 	},
 	[115] = {
@@ -177,9 +177,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    interval = 1800,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -187,9 +187,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 15,
 		},
 	},
 	[116] = {
@@ -244,9 +244,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 20,
-		    number = 2,
-		    amount = 50,
+		    interval = 3600,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -254,9 +254,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    interval = 1800,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -264,9 +264,9 @@ CollectionDB ={
 		    posData = {
 			-1
 		    },		    repeatable  = true,
-		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    interval = 60,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[118] = {
@@ -277,8 +277,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -287,8 +287,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -297,8 +297,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[119] = {
@@ -309,8 +309,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -319,8 +319,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -329,8 +329,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[120] = {
@@ -341,8 +341,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -351,8 +351,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -361,8 +361,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[122] = {
@@ -373,8 +373,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -383,8 +383,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -393,8 +393,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[124] = {
@@ -405,8 +405,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -415,8 +415,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -425,8 +425,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[126] = {
@@ -437,8 +437,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -447,8 +447,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -457,8 +457,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[127] = {
@@ -469,8 +469,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -479,8 +479,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -489,8 +489,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
 		},
 	},
 	[128] = {
@@ -501,8 +501,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 2,
-		    amount = 50,
+		    number = 1,
+		    amount = 3,
 		},
 		{
 		    itemID = 10012,
@@ -511,8 +511,8 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 4,
-		    amount = 50,
+		    number = 2,
+		    amount = 5,
 		},
 		{
 		    itemID = 10013,
@@ -521,8 +521,21 @@ CollectionDB ={
 			-1
 		    },		    repeatable  = true,
 		    interval = 10,
-		    number = 6,
-		    amount = 50,
+		    number = 3,
+		    amount = 10,
+		},
+	},
+	[129] = {
+		{
+		    itemID = 10005,
+		    posType = 1,
+		    posData = {
+			{46,126},
+		    },
+		    repeatable  = true,
+		    interval = 10,
+		    number = 1,
+		    amount = 1,
 		},
 	},
 }

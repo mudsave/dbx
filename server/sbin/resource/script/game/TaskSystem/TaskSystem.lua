@@ -207,8 +207,7 @@ function TaskSystem:doDonate(event)
 		g_eventMgr:fireRemoteEvent(event, player)
 
 		--重新自动接循环任务
-		player:getHandler(HandlerDef_Task):finishTaskByID(taskID)
-		g_taskDoer:doRecetiveTask(player, taskID)
+		player:getHandler(HandlerDef_Task):finishLoopTask(taskID)
 	elseif moneyCount < moneyRandom then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, 1)
 		g_eventMgr:fireRemoteEvent(event, player)
@@ -228,6 +227,9 @@ function TaskSystem:onPuzzleFinish(event)
 		return 
 	end
 	TaskCallBack.onPuzzleFinish(playerID, puzzleID)
+	local player = g_entityMgr:getPlayerByID(playerID)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	taskHandler:finishLoopTask(10007)
 end
 
 -- 退出游戏，发送任务追踪所有ID
@@ -325,7 +327,7 @@ function TaskSystem:onFightEnd(event)
 			if teamID > 0 then
 				local team = g_teamMgr:getTeam(teamID)
 				-- 如果任务玩家是队长才能接
-				if team:getLeaderID() ~= player:getID() then
+				if team:getLeaderID() ~= player:getID() and (not teamHandler:isStepOutState()) then
 					TaskCallBack.script(player, fightID, fightResult)
 				else
 					leader = player

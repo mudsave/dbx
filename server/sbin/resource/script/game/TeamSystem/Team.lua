@@ -44,16 +44,24 @@ function Team:__init(teamID,leaderID)
 	self.dekaronProcess = 0
 	self.targetList = {}
 	self.activityTarget = nil
+	self.randListRecord = nil
 end
 
 function Team:__release()
+	if self.randListRecord then
+		g_dekaronSchoolMgr:updateRankList(self, false)
+		self.randListRecord = nil
+	end
 	self.teamID = nil
 	self.leaderID = nil
 	self.allMemberList = nil
 	self.inviteList = nil
 	self.dekaronProcess = nil
 	self.targetList = nil
-	self.activityTarget = nil
+	if self.activityTarget then
+		release(self.activityTarget)
+		self.activityTarget = nil
+	end
 end
 
 --获得队长ID
@@ -111,6 +119,8 @@ function Team:setLeader(playerID)
 	local player = g_entityMgr:getPlayerByID(playerID)
 	player:setActionState(PlayerStates.Team)
 end
+
+
 
 --更换队长
 function Team:changeLeader(leaderID,targetID)
@@ -221,6 +231,14 @@ function Team:leaderQuit()
 				end
 			end
 		end
+		--发送队长跟随宠物信息
+		local leader = g_entityMgr:getPlayerByID(self.leaderID)
+		local followPetID = leader:getFollowPetID()
+		for _,memberInfo in pairs(self.allMemberList) do
+			local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+			local event = Event.getEvent(TeamEvents_CS_SendLeaderFollowID,followPetID)
+			g_eventMgr:fireRemoteEvent(event,member)
+		end
 	else
 		self:release()
 	end
@@ -248,7 +266,7 @@ function Team:addMember(playerID,memberState)
 
 	--modify npc pet hide
 	setFollowVisible(playerID, false)
-	g_dekaronSchoolMgr:joinTeam(player, self.teamID)
+	--g_dekaronSchoolMgr:joinTeam(player, self.teamID)
 end
 
 --移除队员
@@ -316,6 +334,7 @@ function Team:dissolve()
 			g_dekaronSchoolMgr:removeTeam(player)
 		end
 	end
+	-- 此时活动任务目标已经清理
 	self:release()
 end
 
@@ -347,14 +366,15 @@ function Team:getProcess()
 	return self.dekaronProcess
 end
 
+-- 队伍当中设置任务目标，是一个当前对象
 function Team:setDekaronActivityTarget(activityTarget)
 	self.activityTarget = activityTarget
-	for k,memberInfo in pairs(self.allMemberList) do
+	for k, memberInfo in pairs(self.allMemberList) do
 		local player = g_entityMgr:getPlayerByID(memberInfo.memberID)
 		local handler = player:getHandler(HandlerDef_Activity)
 		if activityTarget then
 			local param = activityTarget:getParams()
-			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,self.dekaronProcess,handler:getDekaronIntegral() or 0)
+			local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID, self.dekaronProcess, handler:getDekaronIntegral() or 0)
 			g_eventMgr:fireRemoteEvent(event, player)
 		end
 	end
@@ -363,6 +383,13 @@ function Team:setDekaronActivityTarget(activityTarget)
 		self:addDekaronTargetList(param.school)
 	else
 		table.clear(self.targetList)
+	end
+end
+
+function Team:removeActivityTarget()
+	if self.activityTarget then
+		release(self.activityTarget)
+		self.activityTarget = nil
 	end
 end
 
@@ -377,3 +404,8 @@ end
 function Team:getDekaronActivityTarget()
 	return self.activityTarget
 end
+
+function Team:setRandList(state)
+	self.randListRecord = state
+end
+

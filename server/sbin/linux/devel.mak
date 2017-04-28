@@ -210,20 +210,20 @@ tc_fight : start_fight
 tc_social: START_PORT=39040
 tc_social : start_social
 
-# 后台和前台启动 - 江钰 39050
-jy_start: START_PORT=39050
-jy_start: start_server
+# 后台和前台启动 - 吕登 39050
+lvdeng_start: START_PORT=39050
+lvdeng_start: start_server
 
-jy_session: START_PORT=39050
-jy_session : start_session
-jy_gateway: START_PORT=39050
-jy_gateway : start_gateway
-jy_world: START_PORT=39050
-jy_world : start_world
-jy_fight: START_PORT=39050
-jy_fight : start_fight
-jy_social: START_PORT=39050
-jy_social : start_social
+lvdeng_session: START_PORT=39050
+lvdeng_session : start_session
+lvdeng_gateway: START_PORT=39050
+lvdeng_gateway : start_gateway
+lvdeng_world: START_PORT=39050
+lvdeng_world : start_world
+lvdeng_fight: START_PORT=39050
+lvdeng_fight : start_fight
+lvdeng_social: START_PORT=39050
+lvdeng_social : start_social
 
 # 后台和前台启动 - 冯鹰 39060
 fy_start: START_PORT=39060

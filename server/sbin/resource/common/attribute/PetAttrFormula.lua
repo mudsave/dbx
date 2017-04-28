@@ -249,28 +249,31 @@ function PetAttrbuteFormula.pet_toxicosis_resist(pet)
 	return pet_inc_toxicosis_resist+pet_inc_obstacle_resist + pet_toxicosis_phase_point
 end
 
---生命上限=(根骨*天资*15/400+(等级-2)^2*生命成长/600)*(1+生命上限加成）+生命上限加值
+--生命上限=(（根骨*6+武力*2）*天资/500+(等级+1）^2*生命成长/3000+496)*(1+生命上限加成）+生命上限加值
 function PetAttrbuteFormula.pet_max_hp(pet)
 	local level = pet:getAttrValue(pet_lvl)
+	local pet_str = pet:getAttrValue(pet_str)
 	local pet_sta = pet:getAttrValue(pet_sta)
 	local pet_hp_grow = pet:getAttrValue(pet_hp_grow)
 	local pet_capacity = pet:getAttrValue(pet_capacity)
 	local pet_inc_max_hp = pet:getAttrValue(pet_inc_max_hp) / 1000
 	local pet_add_max_hp = pet:getAttrValue(pet_add_max_hp)
-	return math.floor((pet_sta*pet_capacity*15/400+math.pow(level-2,2)*pet_hp_grow/600)*(1+pet_inc_max_hp)+pet_add_max_hp)
+	--return math.floor((pet_sta*pet_capacity*15/400+math.pow(level-2,2)*pet_hp_grow/600)*(1+pet_inc_max_hp)+pet_add_max_hp)
+	return math.floor(((pet_sta*6+pet_str*2)*pet_capacity/500+math.pow(level+1,2)*pet_hp_grow/3000+496)*(1+pet_inc_max_hp)+pet_add_max_hp)
 end
 
---法力上限=（等级^2/5+智力*10+武力*10）*（1+法力值上限加成）+法力上限加值
+--法力上限=（(等级+8)^2/3+智力*6+身法*1.5+150）*（1+法力值上限加成）+法力上限加值
 function PetAttrbuteFormula.pet_max_mp(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_int = pet:getAttrValue(pet_int)
-	local pet_str = pet:getAttrValue(pet_str)
+	local pet_dex = pet:getAttrValue(pet_dex)
 	local pet_inc_max_mp = pet:getAttrValue(pet_inc_max_mp) / 1000
 	local pet_add_max_mp = pet:getAttrValue(pet_add_max_mp)
-	return math.floor((math.pow(level,2)/5+pet_int*10+pet_str*10)*(1+pet_inc_max_mp)+pet_add_max_mp)
+	--return math.floor((math.pow(level,2)/5+pet_int*10+pet_str*10)*(1+pet_inc_max_mp)+pet_add_max_mp)
+	return math.floor((math.pow(level+8,2)/3+pet_int*6+pet_dex*1.5+150)*(1+pet_inc_max_mp)+pet_add_max_mp)
 end
 
---物理攻击=（武力*天资成长*4/500+(等级-1)^2*物攻成长/1500）*（1+物理攻击力加成）+物理攻击力加值
+--物理攻击=（武力*天资成长*2.5/800+(等级+1)^2*物攻成长/3000+250-等级）*（1+物理攻击力加成）+物理攻击力加值
 function PetAttrbuteFormula.pet_at(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_str = pet:getAttrValue(pet_str)
@@ -278,10 +281,11 @@ function PetAttrbuteFormula.pet_at(pet)
 	local pet_capacity = pet:getAttrValue(pet_capacity)
 	local pet_inc_at = pet:getAttrValue(pet_inc_at) / 1000
 	local pet_add_at = pet:getAttrValue(pet_add_at)
-	return math.floor((pet_str*pet_capacity*4/500+math.pow(level-1,2)*pet_at_grow/1500)*(1+pet_inc_at)+pet_add_at)
+	--return math.floor((pet_str*pet_capacity*4/500+math.pow(level-1,2)*pet_at_grow/1500)*(1+pet_inc_at)+pet_add_at)
+	return math.floor((pet_str*pet_capacity*2.5/800+math.pow(level+1,2)*pet_at_grow/3000+250-level)*(1+pet_inc_at)+pet_add_at)
 end
 
---法术攻击=（智力*天资成长*4/500+(等级-1)^2*法攻成长/1500）*（1+法术攻击力加成）+法术攻击力加值
+--法术攻击=（智力*天资成长*2.5/800+(等级+1)^2*法攻成长/3000+250-等级）*（1+法术攻击力加成）+法术攻击力加值
 function PetAttrbuteFormula.pet_mt(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_int = pet:getAttrValue(pet_int)
@@ -289,32 +293,39 @@ function PetAttrbuteFormula.pet_mt(pet)
 	local pet_capacity = pet:getAttrValue(pet_capacity)
 	local pet_inc_mt = pet:getAttrValue(pet_inc_mt) / 1000
 	local pet_add_mt = pet:getAttrValue(pet_add_mt)
-	return math.floor((pet_int*pet_capacity*4/500+math.pow(level-1,2)*pet_mt_grow/1500)*(1+pet_inc_mt)+pet_add_mt)
+	--return math.floor((pet_int*pet_capacity*4/500+math.pow(level-1,2)*pet_mt_grow/1500)*(1+pet_inc_mt)+pet_add_mt)
+	return math.floor((pet_int*pet_capacity*2.5/800+math.pow(level+1,2)*pet_mt_grow/3000+250-level)*(1+pet_inc_mt)+pet_add_mt)
 end
 
---物理防御=（根骨*天资成长*2.5/500+(等级-1)^2*物防成长/1600+40）*（1+物理防御力加成）+物理防御力加值
+--物理防御=（（根骨*1.5+武力*0.5+敏锐*0.5）*天资成长/800+(等级+1)^2*物防成长/3000+250-等级）*（1+物理防御力加成）+物理防御力加值
 function PetAttrbuteFormula.pet_af(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_sta = pet:getAttrValue(pet_sta)
+	local pet_str = pet:getAttrValue(pet_str)
+	local pet_spi = pet:getAttrValue(pet_spi)
 	local pet_af_grow = pet:getAttrValue(pet_af_grow)
 	local pet_capacity = pet:getAttrValue(pet_capacity)
 	local pet_inc_af = pet:getAttrValue(pet_inc_af) / 1000
 	local pet_add_af = pet:getAttrValue(pet_add_af)
-	return math.floor((pet_sta*pet_capacity*2.5/500+math.pow(level-1,2)*pet_af_grow/1600+40)*(1+pet_inc_af)+pet_add_af)
+	--return math.floor((pet_sta*pet_capacity*2.5/500+math.pow(level-1,2)*pet_af_grow/1600+40)*(1+pet_inc_af)+pet_add_af)
+	return math.floor(((pet_sta*1.5+pet_str*0.5+pet_spi*0.5)*pet_capacity/800+math.pow(level+1,2)*pet_af_grow/3000+250-level)*(1+pet_inc_af)+pet_add_af)
 end
 
---法术防御=（根骨*天资成长*2.5/500+(等级-1)^2*法防成长/1600+40）*（1+法术防御力加成）+法术防御力加值
+--法术防御=（（根骨*1.5+智力*0.5+敏锐*0.5）*天资成长/800+(等级+1)^2*法防成长/3000+250-等级）*（1+法术防御力加成）+法术防御力加值
 function PetAttrbuteFormula.pet_mf(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_sta = pet:getAttrValue(pet_sta)
+	local pet_int = pet:getAttrValue(pet_int)
+	local pet_spi = pet:getAttrValue(pet_spi)
 	local pet_mf_grow = pet:getAttrValue(pet_mf_grow)
 	local pet_capacity = pet:getAttrValue(pet_capacity)
 	local pet_inc_mf = pet:getAttrValue(pet_inc_mf) / 1000
 	local pet_add_mf = pet:getAttrValue(pet_add_mf)
-	return math.floor((pet_sta*pet_capacity*2.5/500+math.pow(level-1,2)*pet_mf_grow/1600+40)*(1+pet_inc_mf)+pet_add_mf)
+	--return math.floor((pet_sta*pet_capacity*2.5/500+math.pow(level-1,2)*pet_mf_grow/1600+40)*(1+pet_inc_mf)+pet_add_mf)
+	return math.floor(((pet_sta*1.5+pet_int*0.5+pet_spi*0.5)*pet_capacity/800+math.pow(level+1,2)*pet_mf_grow/3000+250-level)*(1+pet_inc_mf)+pet_add_mf)
 end
 
---命中=（武力*0.8+智力*0.8+敏锐*1.5+(等级-1)^2/50）*（1+命中加成）+命中加值
+--命中=（武力*0.2+智力*0.1+敏锐*0.7+(等级-1)*0.5+20）*（1+命中加成）+命中加值
 function PetAttrbuteFormula.pet_hit(pet)
 	local level = pet:getAttrValue(pet_lvl)
 	local pet_str = pet:getAttrValue(pet_str)
@@ -322,49 +333,44 @@ function PetAttrbuteFormula.pet_hit(pet)
 	local pet_spi = pet:getAttrValue(pet_spi)
 	local pet_inc_hit = pet:getAttrValue(pet_inc_hit) / 1000
 	local pet_add_hit = pet:getAttrValue(pet_add_hit)
-	return math.floor((pet_str*0.8+pet_int*0.8+pet_spi*1.5+math.pow(level-1,2)/50)*(1+pet_inc_hit)+pet_add_hit)
+	return math.floor((pet_str*0.2+pet_int*0.1+pet_spi*0.7+(level-1)*0.5+20)*(1+pet_inc_hit)+pet_add_hit)
 end
 
---闪避=（身法*1.5+(等级-1)^2/50）*（1+闪避加成）+闪避加值
+--闪避=（敏锐*1+(等级-1)*0.5）*（1+闪避加成）+闪避加值
 function PetAttrbuteFormula.pet_dodge(pet)
 	local level = pet:getAttrValue(pet_lvl)
-	local pet_dex = pet:getAttrValue(pet_dex)
+	local pet_spi = pet:getAttrValue(pet_spi)
 	local pet_inc_dodge = pet:getAttrValue(pet_inc_dodge) / 1000
 	local pet_add_dodge = pet:getAttrValue(pet_add_dodge)
-	return math.floor((pet_dex*1.5+math.pow(level-1,2)/50)*(1+pet_inc_dodge)+pet_add_dodge)
+	return math.floor((pet_spi*1+(level-1)*0.5)*(1+pet_inc_dodge)+pet_add_dodge)
 end
 
---暴击=（敏锐*1.2+(等级-1)^2/50）*（1+暴击加成）+暴击加值
---暴击=（敏锐*0.5）*（1+暴击加成）+暴击加值
+--暴击=（(等级-1)/2*1.2）*（1+暴击加成）+暴击加值
 function PetAttrbuteFormula.pet_critical(pet)
 	local level = pet:getAttrValue(pet_lvl)
-	local pet_spi = pet:getAttrValue(pet_spi)
 	local pet_inc_critical = pet:getAttrValue(pet_inc_critical) / 1000
 	local pet_add_critical = pet:getAttrValue(pet_add_critical)
 	--return math.floor((pet_spi*1.2+math.pow(level-1,2)/50)*(1+pet_inc_critical)+pet_add_critical)
-	return (pet_spi*0.5)*(1+pet_inc_critical)+pet_add_critical
+	return math.floor((level-1)/2*1.2*(1+pet_inc_critical)+pet_add_critical)
 end
 
---抗暴=（敏锐*1.5+(等级-1)^2/100）*（1+抗暴加成）+抗暴加值
---抗暴=（敏锐*0.5）*（1+抗暴加成）+抗暴加值
+--抗暴=（(等级-1)/2）*（1+抗暴加成）+抗暴加值
 function PetAttrbuteFormula.pet_tenacity(pet)
 	local level = pet:getAttrValue(pet_lvl)
-	local pet_spi = pet:getAttrValue(pet_spi)
 	local pet_add_tenacity = pet:getAttrValue(pet_add_tenacity)
 	local pet_inc_tenacity = pet:getAttrValue(pet_inc_tenacity) / 1000
 	--return math.floor((pet_spi*1.5+math.pow(level-1,2)/100)*(1+pet_inc_tenacity)+pet_add_tenacity)
-	return (pet_spi*0.5)*(1+pet_inc_tenacity)+pet_add_tenacity
+	return math.floor((level-1)/2*(1+pet_inc_tenacity)+pet_add_tenacity)
 end
 
---速度=（身法*天资成长*1/1200+等级*速度成长*4/1500+(等级-1)^2/200）*（1+速度加成）+速度加值
+--速度=（身法*天资成长*1.5/800+速度成长*4/800）*（1+速度加成）+速度加值
 function PetAttrbuteFormula.pet_speed(pet)
-	local level = pet:getAttrValue(pet_lvl)
 	local pet_dex = pet:getAttrValue(pet_dex)
 	local pet_at_speed_grow = pet:getAttrValue(pet_at_speed_grow)
 	local pet_capacity = pet:getAttrValue(pet_capacity)
 	local pet_inc_speed = pet:getAttrValue(pet_inc_speed) / 1000
 	local pet_add_speed = pet:getAttrValue(pet_add_speed)
-	return math.floor((pet_dex*pet_capacity*1/1200+level*pet_at_speed_grow*4/1500+math.pow(level-1,2)/200)*(1+pet_inc_speed)+pet_add_speed)
+	return math.floor((pet_dex*pet_capacity*1.5/800+pet_at_speed_grow*4/800)*(1+pet_inc_speed)+pet_add_speed)
 end
 
 --反震

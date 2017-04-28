@@ -106,8 +106,25 @@ function CatchPetManager:enterCatchPet(player, param)
 		return
 	end
 	catchPet:enterCatchPet(curMembers)
+	local leftTime = nil
+	local state = activity:getState()
+	local startTime = activity:getStartTime()
+	local tempTime = os.time()
+	if state == ActivityState.PreOpening and tempTime < startTime then
+		leftTime = startTime - tempTime
+	end
 	for _, playerID in pairs(curMembers) do
+		-- 设置客户端的倒计时
 		SceneManager.getInstance():doSwitchScence(playerID, param.mapID, param.x, param.y)
+		if leftTime then
+			-- 通知客户端倒计时
+			local player = g_entityMgr:getPlayerByID(playerID)
+			if player then
+				local event = Event.getEvent(ActivityEvent_SC_ActivityLeftTime, leftTime)
+				g_eventMgr:fireRemoteEvent(event, player)
+			end
+		end
+		--SceneManager.getInstance():doSwitchScence(playerID, param.mapID, param.x, param.y)
 	end
 end
 

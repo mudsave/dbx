@@ -291,6 +291,7 @@ function Task:createDataForClient(taskStatus)
 		taskData.finishTimes =  taskHandler:getFinishTimes(self._taskID)
 		taskData.receiveTimes	= taskHandler:getReceiveTimes(self._taskID)
 		taskData.targetType = self:getTargetType()
+		print("tempLoopTask data>>>>", self._taskID, taskData.ring, taskData.countRing)
 		--taskData.targetIdx	= self:getTargetIdx()
 		--taskData.gradeIdx = self:getGradeIdx()
 		-- 任务状态

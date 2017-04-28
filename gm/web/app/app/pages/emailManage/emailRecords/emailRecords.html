@@ -1,0 +1,40 @@
+<div class="container">
+    <fieldset style="margin-top:30px">
+        <legend class="text-center"><img src="assets/favicon.png" />邮箱记录查询</legend>
+        <form class="form-hoeizontal">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <input type="text" class="form-control" ng-model="roleID" placeholder="请输入玩家的ID...">
+                        <button class="btn btn-info" ng-click="searchEmailRecords()"><span class ="glyphicon glyphicon-search">搜索</span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+
+    <fieldset style="margin-top:30px">
+        <div class="well well-md" style="box-shadow: 5px 5px 5px">
+            <table class="table table-hover black-muted-bg"  ng-init="index = 0">
+                <thead>
+                    <tr class="browser-icons">
+                        <th class="text-center">#</th>
+                        <th class="text-center">发件人</th>
+                        <th class="text-center">主题</th>
+                        <th class="text-center">时间</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="info in emailrecords" class="text-center" ng-click="checkDetail($index)">
+                        <td>{{$index+1}} </td>
+                        <td>{{info.addresser}}</td>
+                        <td>{{info.theme}}</td>
+                        <td>{{info.time}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </fieldset>
+</div>

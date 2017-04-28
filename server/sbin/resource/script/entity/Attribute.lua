@@ -274,7 +274,31 @@ local function Define(AttrDefine,Exprs,InfRef,SyncRef,PropRef)
 		end
 	end
 
+	function AttributeSet:dump()
+		local entity = self.entity
+		if not entity then
+			print "dump failed,attributeset's entity is nil!"
+			return
+		end
+		local fileName = ("bin/profile/%s-%s.csv"):format(string.gbkToUtf8(entity:getName() or "noname"),os.date "%H%M%S")
+		local file = io.open( fileName,"w")
+		if not file then
+			print( ("could not open %s for writting!"):format(fileName) )
+			return
+		end
+		file:write("Name,Value,Updated,Casted\n")
+		for attrName,detail in ipairs(AttrDefine) do
+			local value = self:getAttrValue( attrName )
+			local attr = rawget( self,attrName )
+			file:write( attr:getName(),",",self:getAttrValue(attrName),",",attr.updated,",",attr.casted ,"\n")
+		end
+		file:close()
+	end
+
 	function AttributeSet:clear()
+		-- 做一次快照
+		-- self:dump()
+
 		self:setEntity(nil)
 		self.silent = true
 		
@@ -309,6 +333,7 @@ local function Define(AttrDefine,Exprs,InfRef,SyncRef,PropRef)
 	-- 返回获得属性集合入口函数
 	return function(entity)
 		if not frees then
+			print "创建新的属性集合"
 			return AttributeSet(entity)
 		end
 		local ret = frees
@@ -316,6 +341,8 @@ local function Define(AttrDefine,Exprs,InfRef,SyncRef,PropRef)
 
 		ret.next = false
 		ret:setEntity(entity)
+		
+		print "复用之前的属性集合"
 
 		return ret
 	end

@@ -101,7 +101,7 @@ function DekaronSchoolManager:updateRank()
 end
 
 --更新排行列表
-function DekaronSchoolManager:updateRankList(team,add)
+function DekaronSchoolManager:updateRankList(team, add)
 	local exist = false
 	local pos = 0
 	for i, teamInfo in pairs(self.rank) do
@@ -111,16 +111,21 @@ function DekaronSchoolManager:updateRankList(team,add)
 			break
 		end
 	end
-
 	if not exist and add then
 		local leaderID = team:getLeaderID()
 		local player = g_entityMgr:getPlayerByID(leaderID)
-		table.insert(self.rank,{team:getTeamID(),team:getProcess(),player:getName()})
+		table.insert(self.rank, {team:getTeamID(), team:getProcess(), player:getName()})
+		-- 此时队伍当中要加一个记录
+		team:setRandList(true)
 	elseif exist and  add then
-		self.rank[pos][2] = self.rank[pos][2] +1
+		self.rank[pos][2] = self.rank[pos][2] + 1
 	elseif exist and not add then
-		table.remove(self.rank,pos)
+		table.remove(self.rank, pos)
 	end
+end
+
+function DekaronSchoolManager:cleanRankList()
+	table.clear(self.rank)
 end
 
 -- 发送给客户端消息
@@ -138,6 +143,7 @@ function DekaronSchoolManager:joinActivity(player)
 	local teamID = teamHandler:getTeamID()
 	local team = g_teamMgr:getTeam(teamID)
 	local activityTarget = team:getDekaronActivityTarget()
+	-- 队长领取活动任务目标，如果之前的队伍当中有活动任务目标，则返回
 	if activityTarget then
 		return
 	end
@@ -145,14 +151,14 @@ function DekaronSchoolManager:joinActivity(player)
 	if activity and activity:isOpening() then
 		--队伍归队玩家等级大于30级，4人组队，队伍中归队玩家等级差距不超过10级才可领取活动参赛资格以及进行NPC挑战。
 		local teamMemNum = team:getMemberCount()
-		if teamMemNum < 2 then
-			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DekaronSchool,5)
+		if teamMemNum < ActivityNumber.DekaronSchool then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DekaronSchool, 5)
 			g_eventMgr:fireRemoteEvent(event, player)
 			return 
 		end
-		local maxLvl,minLvl = team:getMaxAndMinLvl()
-		if minLvl <= 30 or (maxLvl - minLvl) > 10 then
-			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DekaronSchool,6)
+		local maxLvl, minLvl = team:getMaxAndMinLvl()
+		if minLvl < 30 or (maxLvl - minLvl) > 10 then
+			local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_DekaronSchool, 6)
 			g_eventMgr:fireRemoteEvent(event, player)
 			return
 		end
@@ -200,8 +206,8 @@ function DekaronSchoolManager:changeDekaronTarget(team)
 	end
 	while(1) do
 		exist = false
-		school = math.random(1,#schoolActivityTargetDB)
-		for _,targetSchool in pairs(targetList) do
+		school = math.random(1, #schoolActivityTargetDB)
+		for _, targetSchool in pairs(targetList) do
 			if targetSchool == school then
 				exist = true
 			end
@@ -214,11 +220,11 @@ function DekaronSchoolManager:changeDekaronTarget(team)
 	local scriptIndex = 0
 	if teamProcess <= 6 then
 		scriptIndex = 1
-	elseif teamProcess <= 12 then
+	elseif teamProcess > 6 and teamProcess <= 12 then
 		scriptIndex = 2
-	elseif teamProcess <= 18 then
+	elseif teamProcess > 12 and teamProcess <= 18 then
 		scriptIndex = 3
-	elseif teamProcess <= 24 then
+	elseif teamProcess > 18 and teamProcess <= 24 then
 		scriptIndex = 4
 	else
 		scriptIndex = 5
@@ -244,7 +250,7 @@ function DekaronSchoolManager:joinTeam(player, teamID)
 	if activityTarget then
 		local param = activityTarget:getParams()
 		local handler = player:getHandler(HandlerDef_Activity)
-		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID,0,handler:getDekaronIntegral() or 0)
+		local event = Event.getEvent(DekaronSchool_SC_AddActvityTarget, param.npcID, 0, handler:getDekaronIntegral() or 0)
 		g_eventMgr:fireRemoteEvent(event, player)
 	end
 end

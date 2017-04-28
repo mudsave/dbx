@@ -177,6 +177,7 @@ function PlayerManager:onPlayerLogout(roleId,reason)
 end
 
 function PlayerManager.onPlayerLoaded(recordList, dbId)
+
 	print(dbId,"begin load!")
 	local player = g_playerMgr._players[dbId]
 	if not player then
@@ -216,22 +217,28 @@ function PlayerManager.onPlayerLoaded(recordList, dbId)
 	g_taskDoer:loadCanRecetiveTask(player)
 	player:markAllLoaded()
 	print(dbId, "end load!", player._hGateLink)
+
 end
 
 -- 踢整个world所有用户下线
 function PlayerManager:kickAllPlayer()
+
 	g_world:send_MsgWG_WorldPlayersLogout_ResultInfo(g_serverId)
 	for dbId,_ in pairs(self._players) do
 		self:doPlayerLogout(dbId, LOGOUT_REASON_WORLD_KICK_ALL, true)
 	end
+
 end
 
 -- 踢某个用户下线
 function PlayerManager:kickOutPlayer(playerDBID)
+
 	self:doPlayerLogout(playerDBID, LOGOUT_REASON_WORLD_KICK)
+
 end
 
 function PlayerManager:doPlayerLogout(playerDBID, reason, isAll)
+
 	-- 发消息到gateway
 	print(playerDBID,"begin logout!")
 	local player = g_entityMgr:getPlayerByDBID(playerDBID)
@@ -251,16 +258,21 @@ function PlayerManager:doPlayerLogout(playerDBID, reason, isAll)
 	--销毁玩家
 	self._players[playerDBID] = nil
 	g_entityMgr:removePlayer(player:getID())
+
 end
 
 -- 首个玩家登录
 function PlayerManager:loadServerRecord()
+
 	if not loadState then
 		loadState = true
 		LuaDBAccess.loadServer(dataBaseServerID, ServerManager.onServerStart, g_serverMgr)
 	end
+
 end
 
 function PlayerManager.getInstance()
+
 	return PlayerManager()
+	
 end

@@ -21,11 +21,11 @@ GoldHuntZoneActivityDB1 =
 		min_maxPlayerLevel = {30,39},					--等级范围
 		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 20, min = 55},				--结束时间
+		endTime = {hour = 13, min = 20},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
-					period = 2,--min			--阶段持续时间
+					period = 3,--min			--阶段持续时间
 					materialInfo = {
 									{itemID = 10026,centerPos={x=105,y=211},radius = 15,count = 2},					--场景物件,中心,范围,数量,可以多行并列
 									{itemID = 10026,centerPos={x=114,y=218},radius = 15,count = 2},
@@ -48,9 +48,9 @@ GoldHuntZoneActivityDB1 =
 					}
 			},
 			[2] = {
-					period = 2,--min
+					period = 5,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=138,y=212},radius = 25},					--怪物ID,中心,范围,
+									{commonDBID = 39052,centerPos={x=138,y=212},radius = 5},					--怪物ID,中心,范围,
 									updatePeriod = 1,totalMax= 6, curMax = 5,							--刷新间隔,总数量,保持数量
 									eliteDBID = 39053,propability = 30,									--精英怪,概率
 					},
@@ -78,9 +78,9 @@ GoldHuntZoneActivityDB1 =
 					}
 			},
 			[3] = {
-					period = 2,--min
+					period = 5,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=191,y=154},radius = 25},
+									{commonDBID = 39052,centerPos={x=191,y=154},radius = 5},
 									updatePeriod = 1,totalMax= 6, curMax = 5,
 									eliteDBID = 39053,propability = 40,
 					},
@@ -108,9 +108,9 @@ GoldHuntZoneActivityDB1 =
 					}
 			},
 			[4] = {
-					period = 2,--min
+					period = 5,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=239,y=105},radius = 25},
+									{commonDBID = 39052,centerPos={x=239,y=105},radius = 5},
 									updatePeriod = 1,totalMax= 6, curMax = 5,
 									eliteDBID = 39053,propability = 60,
 					},
@@ -146,7 +146,7 @@ GoldHuntZoneActivityDB1 =
 table.copy(GoldHuntZoneActivityDB1,  ActivityDB)
 
 
-GoldHuntZone1 = class(Activity, Singleton, Timer)
+GoldHuntZone1 = class(Activity,  Timer)
 
 local timerContext = {} --[timerID]=context
 local updateTimerContext = {} --[timerID]=doer
@@ -188,6 +188,7 @@ function GoldHuntZone1:open()
 	
 	--创建场景
 	self._scene = g_sceneMgr:createGoldHuntScene(self._config.mapID, self._id)
+	self:openActivity()
 	--广播
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,6)
@@ -202,11 +203,16 @@ end
 
 function GoldHuntZone1:close()
 print("GoldHuntZone1:close()")
+	g_goldHuntMgr:setOpenStatus(false)
 	--播放广播
 	if g_serverId == 0 then
-		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,7)
-		-- RemoteEventProxy.broadcast(event, -1)
-		g_eventMgr:broadcastEvent(event,-1)
+		for entityID , entity in pairs(self._scene:getEntityList()) do
+		--发送消息
+			if entity:getEntityType() == eLogicPlayer then
+				local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,7)
+				g_eventMgr:fireRemoteEvent(event, entity)
+			end
+		end
 		print("print ending info!")
 	end
 	--启动结束定时器
@@ -406,9 +412,11 @@ function GoldHuntZone1:removeMonster(monsterID)
 			if instanceof(role, Player) then
 				local event = Event.getEvent(ActivityEvent_SC_GoldHunt_newPhase_begin, phaseID)
 				g_eventMgr:fireRemoteEvent(event, role)
+				print("playerDBID=",role:getDBID())
 			end
 		end
 		self:sceneBroadcast1()
+		print("ActivityEvent_SC_GoldHunt_newPhase_begin",gGoldHuntID1,phaseID)
 		if phaseID < 4 then
 			self._phaseID = phaseID + 1
 		end
@@ -500,7 +508,7 @@ function GoldHuntZone1:update(timerID)
 		timerContext[timerID] = context
 		if timePhaseID == 1 then
 			self:_refreshMines(timePhaseID)
-			self:openActivity()
+			
 		else
 			if timePhaseID == 2 then
 				self._phaseID = 2

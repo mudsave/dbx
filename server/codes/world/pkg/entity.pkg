@@ -72,6 +72,8 @@ public:
 
 	void stopMove(short x = 0, short y = 0);
 
+	void stopMoveAndFollow(lua_State* pState);
+
 	bool isInView(handle hand);
 
 	void setDBID(int dbId);

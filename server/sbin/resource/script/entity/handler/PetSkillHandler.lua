@@ -619,12 +619,13 @@ function PetSkillHandler:addPetExtendLevel(skillID,level)
 		return false
 	end
 	local owner  = self.owner
-	if level > owner:getLevel() then
+	if level >= owner:getLevel() then
 		-- 研发技能等级超过宠物等级
 		print("erroe lvl")
 		return false
 	end
-	skill:setLevel(level)
+	
+	skill:setLevel(level+1)
 	skill:makeEffect(owner)
 	return true
 end

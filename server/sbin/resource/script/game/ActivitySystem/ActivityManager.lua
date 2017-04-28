@@ -51,7 +51,7 @@ end
 function ActivityManager:closeActivity(id)
 	print("closeActivity----------")
 	self.curActivityList[id]:close()
-	self.curActivityList[id] = nil
+	--self.curActivityList[id] = nil
 	self:notifyAllActivityPageUpdateBtn(id,false)
 end
 
@@ -200,96 +200,13 @@ function ActivityManager:updateActivityByStart()
 					--	日	一	二	三	四	五	六
 					--	1	2	3	4	5	6	7	都加一对应的数值
 					--	0	1	2	3	4	5	6	可以使用这个
-					if data.wday >= startTime.week + 1 and (data.hour > startTime.hour or (data.hour == startTime.hour or data.min >= startTime.min)) and data.wday <= endTime.week + 1 and (data.hour < endTime.hour or (data.hour == endTime.hour and data.min <= endTime.min )) then
+					if data.wday >= startTime.week + 1 and (data.hour > startTime.hour or (data.hour == startTime.hour and data.min >= startTime.min)) and data.wday <= endTime.week + 1 and (data.hour < endTime.hour or (data.hour == endTime.hour and data.min <= endTime.min )) then
 						self:openActivity(id, activityInfo.name)
 						return
 					end
 				end
 			end
 		end
-	end
-end
-
-function ActivityManager:changeInfo()
-end
-
--- 活动所有信息组合
---{{id = "",name = "",state = "",startType = "",activityTime = {startTime = "",endTime	= "",}}}
-function ActivityManager:getActivityInfo()
-	if ActivityDB then
-		local allActivity = {}
-		local curActivityList = self.curActivityList
-		for activityId,data in pairs(ActivityDB) do
-			local activity = {}
-			activity.id = activityId
-			activity.name = data.name
-			activity.state = "未开启"
-			activity.activityTime = {}
-			if data.startType == AtyStartType.fixedDayHour then --每一天
-				local activityTime = {}
-				activity.startType = "每天固定时间"
-				activityTime.startTime = self:timeToString(data.startTime)
-				activityTime.endTime = self:timeToString(data.endTime)
-				table.insert(activity.activityTime,activityTime)
-			elseif data.startType == AtyStartType.fixedWeekHour then --每一周
-				activity.startType = "每周固定时间"
-				local activityTimeTemp = data.activityTime
-				if activityTimeTemp then
-					for _,time in pairs(activityTimeTemp) do
-						local activityTime = {}
-						print("time",toString(time))
-						activityTime.startTime = self:timeToString(time.startTime)
-						activityTime.endTime = self:timeToString(time.endTime)
-						table.insert(activity.activityTime,activityTime)
-						-- activity.startTime = time.startTime
-						-- activity.endTime = time.endTime	
-					end
-					
-				end
-			end
-			table.insert(allActivity,activity)		
-		end
-		
-		if table.size(curActivityList) > 0 then
-			for id,activity in pairs(curActivityList) do
-				for _,data in pairs(allActivity) do
-					if id == data.id then
-						data.state = "开启"
-					end
-				end
-			end
-		end
-		return allActivity
-	end
-	return false
-end
-
-local weekToString = 
-{
-	[0] = "星期天",
-	[1] = "星期一",
-	[2] = "星期二",
-	[3] = "星期三",
-	[4] = "星期四",
-	[5] = "星期五",
-	[6] = "星期六",
-	[7] = "星期天",
-}
-
-function ActivityManager:timeToString(timeData)
-	local timeString = ""
-	if timeData then
-		if timeData.week then 
-			print("timeData.week",timeData.week)
-			timeString = timeString..weekToString[timeData.week]
-		end
-		if timeData.hour then 
-			timeString = timeString..toString(timeData.hour).."时"
-		end
-		if timeData.min then
-			timeString = timeString..toString(timeData.min).."分"
-		end
-		return timeString
 	end
 end
 

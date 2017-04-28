@@ -1,0 +1,204 @@
+<div ng-show="{{isShow}}">
+    <div ba-panel ba-panel-title="玩家信息">
+        <fieldset style="margin-top: 20px;">
+            <legend>基本信息</legend>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="col-md-2"><strong>模型</strong></label>
+                    <img src="app/pages/table/roleMgr/profile/pic-profile.png" alt="no source" style="margin-left:70px; width:150px" class="img-thumbnail"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <lable class="col-md-2">名字</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">玉清神将</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">等级</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">25</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">ID</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">1234</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">门派</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">乾清宫</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">帮会</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">傲娇帮</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">道行</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3456</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <lable class="col-md-2">生命</lable>
+                    <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">2000</p>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <lable class="col-md-2">法力</lable>
+                    <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3000</p>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset style="margin-top: 20px;">
+            <legend>角色属性</legend>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <lable class="col-md-2">物理攻击</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">2000</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">法术攻击</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">400</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">物理防御</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">4000</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">法术防御</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">555</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">速度</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">333</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <lable class="col-md-2">武力</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">智力</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">根骨</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">555</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">敏锐</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">身法</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3333</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div class="progress-info">经验</div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="current" aria-valuemin="0"
+                            aria-valuemax="maxMp" ng-style="style">
+                            <div ng-if="true">{{current + "/" + maxMp}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset style="margin-top: 20px;">
+            <legend>角色相性</legend>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <lable class="col-md-2">冰攻</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">冰抗</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">土攻</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">土抗</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3333</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <lable class="col-md-2">风攻</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">666</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">风抗</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">666</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">雷攻</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">6666</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">雷抗</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">5555</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <lable class="col-md-2">火攻</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">4444</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">火抗</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">444</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">毒攻</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">3333</p>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="col-md-2">毒抗</lable>
+                        <p class="col-md-10" style="border: 1px solid gray;background-color:#9FB6CD;color:white;">333333</p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+    </div>
+</div>
+<div ng-hide="{{isShow}}" class="well well-md ">
+    <h3 class="text-center" style="color:red;"><strong>请求数据出错（{{message}}）！</strong></p>
+</div>

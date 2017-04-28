@@ -191,10 +191,15 @@ function FactionSystem:onAdmitPlayerJoin( event )
 
                 local event_UpdateWorldServerData = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,playerDBID,UpdateWorldServerDataCode.JoinFaction,factionDBID)
                 g_eventMgr:fireWorldsEvent(event_UpdateWorldServerData,CurWorldID)
+
+                local infoTable = { name = "factionLevel",value = faction:getFactionLevel()}
+                local event_UpdateFactionInfoInWorldServer = Event.getEvent(FactionEvent_BB_UpdateWorldServerData,playerDBID,UpdateWorldServerDataCode.UpdateFactionInfo,infoTable)
+                g_eventMgr:fireWorldsEvent(event_UpdateFactionInfoInWorldServer,CurWorldID)
+
                 
                 LuaDBAccess.updatePlayer(playerDBID,"FactionDBID",factionDBID)
-                LuaDBAccess.DeleteApplyFactions(playerDBID)
                 LuaDBAccess.updateFactionMembers(factionDBID,playerDBID,UpdateCode.Add,2,6,time.tostring(os.time()),"")
+                
                 
                 local playerOnline = g_playerMgr:getPlayerByDBID(playerDBID)
                 local memberOnlineJudge = 0
@@ -499,7 +504,12 @@ end
 function FactionSystem:onUpdateFactionMemberInfo( event )
     
     local params = event:getParams()
-    local factionDBID = g_encodeSysMgr.decodeDBID(params[1])
+    local factionDBID = 0 
+    if type(params[1]) == "number" then
+        factionDBID = params[1]
+    else
+        factionDBID = g_encodeSysMgr.decodeDBID(params[1])
+    end
     local memberDBID = params[2]
     local infoCount = params[3]
 
@@ -583,22 +593,25 @@ function FactionSystem:onCreateFaction( event )
         local event_Notify = Event.getEvent(FriendEvent_BC_ShowNotifyInfo,NotifyKind.FactionNotify,notifyParams)
         g_eventMgr:fireRemoteEvent(event_Notify,player)
     else
+        LuaDBAccess.CreateFaction(factionName,factionOwnerName,
+        function() LuaDBAccess.getFactionInfo(0,factionName,FactionSystem.onLoadFactionInfo,factionOwnerDBID) end,'')
+        
+
 		-- 创建帮派成功（用于指引加入帮派的行为）
 		g_eventMgr:fireWorldsEvent(
 			Event.getEvent(
 				TaskEvent_BS_GuideJoinFaction,true,factionOwnerDBID	
 			),CurWorldID
 		)
-        LuaDBAccess.CreateFaction(factionName,factionOwnerName)
-        LuaDBAccess.getFactionInfo(0,factionName,FactionSystem.onLoadFactionInfo,factionOwnerDBID)
     end
 
 end
 
 function FactionSystem.onLoadFactionInfo( recordList,factionOwnerDBID )
-
+    print("得到返回信息.....")
     local factionInfo = recordList[1][1]
     if factionInfo then
+        print("创建帮会成功.....")
         local faction = Faction()
         faction:setFactionDBID(factionInfo["factionDBID"])
         faction:setFactionOwnerName(factionInfo["factionOwnerName"])

@@ -14,7 +14,7 @@ end
 
 FightRelaySystem = class(EventSetDoer, Singleton, Timer)
 --local delayedEvent = {}--任务系统会用到，再通知一次结果
-
+g_flushOnce = false
 function FightRelaySystem:__init()
 	self._doer = {
 		[FightEvents_FS_StartFight]    = FightRelaySystem.Route,
@@ -43,6 +43,11 @@ function FightRelaySystem:Route( event )
 			g_world:send_MsgWS_StartFight(player:getAccountID(), player:getVersion())
 			player:setStatus(ePlayerFight)
 			player:setFighting(true)
+			local fightTimerID = player:getFightTimerID()
+			if fightTimerID then
+				player:setFightTimerID(nil)
+				g_fightMgr:clearTimerContext(fightTimerID)
+			end
 		end
 	end
 
@@ -65,7 +70,9 @@ local FightEndResults = {}
 
 function FightRelaySystem:FightEnd(event)
 	notice("FightEnd(event)")
+	--local t1 = getLuaTick()
 	table.clear(FightEndResults)
+	g_flushOnce = true
 	local newAddedPets= {}--[playerID]={}
 	local params			= event:getParams()
 	local rolesInfo			= params[1]	--{{dbID=1,isPlayer=1,[102]=2,},{},{}}
@@ -142,7 +149,7 @@ function FightRelaySystem:FightEnd(event)
 			end
 		end
 	end
-
+	--local t2 = getLuaTick()
 	for playerID,player in pairs(rolelist) do
 		player:onWarEnded(resultMap[playerID], true)
 		g_world:send_MsgWS_StopFight(player:getAccountID(), player:getVersion())
@@ -151,7 +158,7 @@ function FightRelaySystem:FightEnd(event)
 	for petID,pet in pairs(petlist) do
 		pet:onWarEnded(resultMap[petID], true)
 	end
-	
+	--local t3 = getLuaTick()
 	--先通知各系统做各自的善后
 	
 	g_eventMgr:fireEvent(
@@ -159,7 +166,7 @@ function FightRelaySystem:FightEnd(event)
 			FightEvents_SS_FightEnd_beforeClient,FightEndResults,scriptID,monsterDBIDs,fightID,fightInfo
 		)
 	)
-
+	--local t4 = getLuaTick()
 	for playerID,player in pairs(rolelist) do
 		--local result = FightEndResults[playerID]
 		--delayedEvent[player:getDBID()] = {scriptID,result}
@@ -169,12 +176,13 @@ function FightRelaySystem:FightEnd(event)
 		--TaskCallBack.script(player, scriptID, result, false)--false表示此时客户端还在战斗中
 	end
 	self:_sendAndResetAutoStatus(FightEndResults)
+	--local t5 = getLuaTick()
 	--这个有特殊次序要求(踩雷系统)的插在这
 	local event = Event.getEvent(
 			FightEvents_SS_FightEnd_afterClient,FightEndResults,scriptID,monsterDBIDs,fightID,fightInfo
 		)
 	MineSystem.getInstance():onFightEnd(event)
-
+	--local t6 = getLuaTick()
 	--统一奖励和惩罚
 	g_dropMgr:dealWithPunish(FightEndResults, scriptID, fightID)
 	g_dropMgr:dealWithRewards(FightEndResults, scriptID, monsterDBIDs, fightID,fightInfo)
@@ -182,10 +190,10 @@ function FightRelaySystem:FightEnd(event)
 	for playerID, info in pairs(newAddedPets) do
 		TaskCallBack.onObtainPet(playerID,info)
 	end
-	
+	--local t7 = getLuaTick()
 	g_eventMgr:fireEvent(event)
 
-	
+	--local t8 = getLuaTick()
 	for _,pet in pairs(petlist) do
 		pet:flushPropBatch()
 	end
@@ -199,10 +207,12 @@ function FightRelaySystem:FightEnd(event)
 			FightEvents_SS_FightEnd_ResetState,FightEndResults,scriptID,monsterDBIDs,fightID
 		)
 	)
-	
+	--local t9 = getLuaTick()
 	g_fightMgr:clearFightType(fightID)
 	self:_judgeAndDoOffline(FightEndResults)
-
+	g_flushOnce = false
+	--local t10 = getLuaTick()
+	--print("$$$$$$$$$$$$$$$$$$$$$$$$$$t",t1,t2,t3,t4,t5,t6,t7,t8,t9,t10)
 end
 
 -- 单个玩家退出战斗

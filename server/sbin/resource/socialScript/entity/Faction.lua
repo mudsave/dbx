@@ -232,6 +232,7 @@ end
 
 function Faction:updateMemberMoney( memberDBID,money )
     g_playerMgr:getLoadedPlayerByDBID(memberDBID):getHandler(HandlerDef_Faction):setFactionMoney(money)
+
     self._memberList[memberDBID]["memberMoney"] = money
     LuaDBAccess.updateFactionMemberInfo(self._factionDBID,memberDBID,"memberMoney","",self._memberList[memberDBID]["memberMoney"])
 

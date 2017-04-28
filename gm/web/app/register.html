@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="register" >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.css" />
+    <title>添加GM账号</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <link rel="stylesheet" href="app/auth.css">
+</head>
+
+<body ng-controller="registerCtrl">
+    <main class="auth-main">
+        <div class="auth-block">
+            <h1>天道三国GM注册</h1>            
+            <form class="form-horizontal" >
+                <div class="form-group">
+                    <label for="inputName3" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName3" ng-model="signInfo.userName" ng-blur = "validateInfo('userName')" placeholder="用户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="passKey" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="passward" class="form-control" id="passKey" ng-model="signInfo.passKey" ng-blur = "validateInfo('passKey')" placeholder="密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" ng-model="passWord" ng-blur = "validateInfo('passWord')" placeholder="确认密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">权限选择</label>
+                    <div class="col-sm-10">
+                        <select ng-model="signInfo.admin" style = "color:black" ng-blur = "validateInfo('admin')"  ng-init="signInfo.admin = '2'">                      
+                            <option value = "1">普通用户</option>
+                            <option value = "2">系统管理员</option>
+                            <option value = "3">运维人员</option>                  
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="validate" class="col-sm-2 control-label"><strong>验证码</strong></label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="validate" placeholder="验证码" ng-model="signInfo.code" ng-blur = "validateInfo('code')">
+                    </div>
+                    <div class="col-sm-2">
+                        <a ng-click="changeImg()"><img ng-src="{{myVar}}" class="img-rounded" width="130" height="38" /></a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default btn-auth" ng-click = "signIn()"><span class="glyphicon glyphicon-send" style="color:white;">注册</span></button>
+                    </div>
+                </div>
+            </form>
+            <div class="text-center" style="color:red;height:15px;">{{message}}</div>
+
+            <div class="auth-sep"><span><span>科诗特梦幻工作室</span></span>
+            </div>
+        </div>
+    </main>
+
+    <script src="lib/angular.js"></script>
+    <script src="app/register.js"></script>
+</body>
+
+</html>

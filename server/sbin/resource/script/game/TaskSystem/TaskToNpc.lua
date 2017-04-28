@@ -8,7 +8,7 @@ g_taskRecetiveNpcs = {}
 function createTaskProvider()
 	for taskID, taskData in pairs(NormalTaskDB) do
 		if taskData.startNpcID then
-			if	not g_taskProvideNpcs[taskData.startNpcID] then
+			if not g_taskProvideNpcs[taskData.startNpcID] then
 				g_taskProvideNpcs[taskData.startNpcID] = {}
 			end
 			table.insert(g_taskProvideNpcs[taskData.startNpcID], taskID)

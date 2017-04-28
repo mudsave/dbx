@@ -107,7 +107,7 @@ print("updatePlayerBatch")
 	clearParams()
 	params[1]["spName"] = "sp_UpdatePlayerBatch"
 	params[1]["dataBase"] = 1
-	params[1]["sort"] = "rId,MapID,PosX,PosY,Level,ModelID,Money,SMoney,DMoney,DCap,Cash,Parts,Cap,Bar"
+	params[1]["sort"] = "rId,MapID,PosX,PosY,Level,ModelID,Money,SMoney,DMoney,DCap,Cash,Parts,Cap,Bar,BanTime"
 	params[1]["rId"] = dbId
 	params[1]["MapID"] = values.MapID
 	params[1]["PosX"] = values.PosX
@@ -122,6 +122,7 @@ print("updatePlayerBatch")
 	params[1]["Parts"] = values.Parts
 	params[1]["Cap"] = values.Cap
 	params[1]["Bar"] = values.Bar
+	params[1]["BanTime"] = values.BanTime
 
 	LuaDBAccess.exeSP(params, true)
 
@@ -536,6 +537,17 @@ function LuaDBAccess.updateHisTask(playerDBID, historyList)
 	LuaDBAccess.exeSP(params, true)
 end
 
+-- 保存历史指引任务到数据库
+function LuaDBAccess.updateHisGuideTask(player)
+	clearParams()
+	local param = params[1]
+	param["dataBase"] = 1
+	local taskHandler = player:getHandler(HandlerDef_Task) 
+	while taskHandler:saveGuidedTask2DB(param) do
+		LuaDBAccess.exeSP(params, true)
+	end
+end
+
 function LuaDBAccess.updateRoleTaskPrivate(playerDBID, privateTaskData)
 	clearParams()
 	params[1]["spName"] = "sp_UpdateRoleTaskPrivateData"
@@ -546,13 +558,6 @@ function LuaDBAccess.updateRoleTaskPrivate(playerDBID, privateTaskData)
 	params[1]["sort"] = '_RoleID,_TaskPrivateData'
 	LuaDBAccess.exeSP(params, true)
 end
-
-
-
-
-
-
-
 
 -- 保存玩家挖宝的数据
 function LuaDBAccess.treasureSave(playerDBID,treasuresNum,treasuresBuffer)
@@ -627,12 +632,13 @@ function LuaDBAccess.shortCutKeySave(playerDBID,keyData)
 	local groupData				= bit_or(data1,data2)
 	params[1]["spName"]			= "sp_SaveShortCutKey"
 	params[1]["dataBase"]		= 1
-	params[1]["sort"]			= "roleID,idx,keyType,groupData,skillID"
+	params[1]["sort"]			= "roleID,idx,keyType,groupData,skillID,rideGuid"
 	params[1]["roleID"]			= playerDBID
 	params[1]["idx"]			= keyData.targetSlotIndex							--快捷栏格子索引
 	params[1]["keyType"]		= keyData.type										--快捷栏数据的类型
 	params[1]["groupData"]		= groupData											--包裹、格子的组合数据
-	params[1]["skillID"]		= keyData.skillID
+	params[1]["skillID"]		= keyData.skillID or 0
+	params[1]["rideGuid"]		= keyData.rideGuid or 0
 	LuaDBAccess.exeSP(params, true)
 end
 
@@ -780,7 +786,6 @@ function LuaDBAccess.SaveNewRewards(roleDBID,times,betweenTime,rewardFlag)
 	params[1]["_Times"]			= times
 	params[1]["_BetweenTime"]	= betweenTime
 	LuaDBAccess.exeSP(params, true)
-	print("SaveNewRewards")
 end
 
 -- 保存玩家功能设置
@@ -849,7 +854,7 @@ function LuaDBAccess.SavePointSetting(entity)
 	if handler then
 		clearParams()
 		local param = params[1]
-		if handler:onSave(param) then
+		if handler:onSave(param,entity) then
 			param["dataBase"] = 1
 			LuaDBAccess.exeSP(params, true)
 			print("SavePointSetting")

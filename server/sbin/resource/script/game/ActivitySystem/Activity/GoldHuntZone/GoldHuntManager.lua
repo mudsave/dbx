@@ -227,14 +227,7 @@ function GoldHuntManager:onPk(event)
 	local fightID = g_fightMgr:startPvpFight(roles1, roles2, nil,FightBussinessType.GoldHunt)
 	FightIDs[fightID] = targetID
 
-	curPkedCount = curPkedCount + 1
-	data.pkedCount = curPkedCount
-	if curPkedCount >= GoldHuntZone_PKed_limit then
-		local peer = tgPlayer:getPeer()
-		setPropValue(peer, PLAYER_GOLD_HUNT_MINE, GoldHuntZone_Protected_iconValue)
-		tgPlayer:flushPropBatch()
-	end
-
+	
 	--通知客户端
 	local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 4, tgPlayer:getName())
 	g_eventMgr:fireRemoteEvent(event, player)
@@ -283,7 +276,7 @@ function  GoldHuntManager:canCollectMine(player,mineConfigID)
 		return true
 	end
 end
-function GoldHuntManager:onItemCollected(mineID,mineConfigID,playerID,isRemoved)
+function GoldHuntManager:onItemCollected(mineID,mineConfigID,playerID,isRemoved,x,y)
 	
 	local player = g_entityMgr:getPlayerByID(playerID)
 	if not g_sceneMgr:isInGoldHuntScene(player) then
@@ -304,10 +297,51 @@ function GoldHuntManager:onItemCollected(mineID,mineConfigID,playerID,isRemoved)
 	if isRemoved then
 		activity:removeMine(mineID)
 	end
+
 	local targets = handler:getTargetsById(activityID)
 	local target = targets[ItemTargetIndex]
 	target:onCollectDone(mineConfigID)
 
+	local Info = GoldHuntZone_ResultsOfOre[mineConfigID]
+	if Info then
+		local rand = math.random(1,100)
+		--中奖了
+		if rand < Info.odds then
+			local type = Info.type
+			--挖出来怪了
+			if type == "mo" then
+				local monsterDBID = Info.monsters.ID
+				local count = Info.monsters.count
+				local scene = player:getScene()
+				local peer = scene:getPeer()
+				local radius = 10
+				
+				for i = 1 ,count do
+					local vect = peer:getRandomPos(x, y, radius, 0)
+					local x1 = vect.x
+					local y1 = vect.y
+					local monster = g_entityFct:createDynamicNpc(monsterDBID)
+					scene:attachEntity(monster, x1 , y1)
+				end
+				--广播通知客户端
+				local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,25,player:getName())
+				g_eventMgr:broadcastEvent(event,g_serverId)
+			--多倍奖励
+			elseif type == "or" then
+				local oldValue = GoldHuntZone_MineReward[mineConfigID]
+				local times = Info.times or 1
+				local reward = oldValue * times
+				local handler = player:getHandler(HandlerDef_Activity)
+				local activityID = handler:getGoldHuntData().ID
+				local data = handler:getPriData(activityID)
+				data.curScore = data.curScore + reward
+				g_goldHuntMgr:setIconValue(player, data.curScore)
+				g_goldHuntMgr:informClientScore(player)
+				local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt,24,player:getName(),tostring(reward))
+				g_eventMgr:broadcastEvent(event,g_serverId)
+			end
+		end
+	end
 end
 
 function GoldHuntManager:onFightEnd(event)
@@ -742,6 +776,14 @@ function GoldHuntManager:openActivity()
 	self.curRoleCount_3 = 0
 	self.openStatus = true
 	table.clear(FinalPos)
+end
+
+function GoldHuntManager:getOpenStatus()
+	return self.openStatus
+end
+
+function GoldHuntManager:setOpenStatus( v)
+	self.openStatus = v
 end
 
 function GoldHuntManager.getInstance()

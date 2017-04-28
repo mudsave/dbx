@@ -1,0 +1,64 @@
+<div class="widgets">
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div ba-panel ba-panel-title="活动管理">
+        <div class="horizontal-scroll">
+		<form role="form">
+		<div class="form-group">
+    <table class="table table-hover">
+      <thead>
+        <tr class="black-muted-bg">
+          <th>活动 Id</th>
+          <th class="align-right">活动名字</th>
+          <th class="table-arr"></th>
+          <th class="align-right">即时开启活动按钮</th>
+                <th class="table-arr"></th>
+          <th class="align-right">即时关闭活动按钮</th>
+                <th class="table-arr"></th>
+          <th class="align-right">活动开启时间类型</th>
+                <th class="table-arr"></th>
+          <th class="align-right">活动默认开启-关闭时间</th>
+                <th class="table-arr"></th>
+          <th class="align-right">当前活动状态</th>
+          <th class="table-arr"></th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr ng-repeat="item in activityInfo" class="no-top-border">
+          <td ng-class="nowrap">{{item.id}}</td>
+          <td class="align-right">{{item.name}}</td>
+          <td class="table-arr"></td>
+          <td class="align-right"><button  type="submit" class="btn btn-success"  ng-click = "startActivity(item.id)">开启活动</button></td>
+          <td class="table-arr"></td>
+          <td class="align-right"><button type="submit" class="btn btn-success" ng-click = "closeActivity(item.id)">关闭活动</button></td>
+          <td class="table-arr"></td>
+          <td class="align-right">{{item.startType}}</td>
+          <td class="table-arr"></td>	
+          <td class="align-right">
+              <ul style="list-style-type:none;" >
+                <li ng-show = "item.activityTime[0]">                  
+                  {{item.activityTime[0].startTime}} -- {{item.activityTime[0].endTime}}
+                </li>
+                <li ng-show = "item.activityTime[1]">                  
+                  {{item.activityTime[1].startTime}} -- {{item.activityTime[1].endTime}}
+                </li>
+                <li ng-show = "item.activityTime[2]">                  
+                  {{item.activityTime[2].startTime}} -- {{item.activityTime[2].endTime}}
+                </li>
+              </ul>
+          </td>
+          <td class="table-arr"></td>
+          <td class="align-right">{{item.state}}</td>
+          <td class="table-arr"></td>				
+      </tr>	
+    </tbody>
+          </table>
+		  </div>
+		  <form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

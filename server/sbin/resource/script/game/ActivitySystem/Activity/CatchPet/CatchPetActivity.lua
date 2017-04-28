@@ -14,13 +14,13 @@ local CatchPetActivityDB =
 		startType = AtyStartType.fixedWeekHour,
 		activityTime = 
 		{
-			[1] = {startTime = {week = 6, hour = 19, min = 57}, endTime = {week = 6, hour = 21, min = 27}},
+			[1] = {startTime = {week = 6, hour = 19, min = 55}, endTime = {week = 6, hour = 21, min = 25}},
 		},
 		-- 活动正式开始前
-		beforActivity = {3,2,1},
+		beforActivity = {5,3,2,1},
 		afterActivity = {30, 60},
 		-- 开始后中间广播
-		endActivity = {3,2,1},
+		endActivity = {5,3,2,1},
 	},
 }
 
@@ -30,14 +30,14 @@ CatchPetActivity = class(Activity, Timer)
 
 function CatchPetActivity:__init()
 	self._id = catchPetActivityID
-	print("创建捕宠活动对象》》》》", self._id)
 	self._config = nil
-
 	-- 开启前
 	self.beforActivityTimerIDs = {}
 	self.afterActivityTimerIDs = {}
 	-- 结束前
 	self.endActivityTimerIDs = {}
+	self.state = nil
+	self.startTime = nil
 
 end
 
@@ -48,6 +48,8 @@ function CatchPetActivity:__release()
 	self.beforActivityTimerIDs = nil
 	self.afterActivityTimerIDs = nil
 	self.endActivityTimerIDs = nil
+	self.state = nil
+	self.startTime = nil
 end
 
 function CatchPetActivity:update(timerID)
@@ -145,11 +147,15 @@ function CatchPetActivity:open()
 	-- 注册一个定时器，5分钟之后正式开启
 	-- 活动开启，创建活动对象。
 	self:openActivity()
+	--活动状态(预开启)
+	self.state = ActivityState.PreOpening
 	self._config = CatchPetActivityDB[self._id]
 	local beforActivity = self._config.beforActivity
 	-- 活动开始前广播，还有15分钟正式开启
 	if beforActivity then
 		if #beforActivity > 0 then
+			-- 记录正式开启时间
+			self.startTime = os.time() + beforActivity[1] * 60
 			if g_serverId == 0 then
 				local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 4, beforActivity[1])
 				-- RemoteEventProxy.broadcast(event)
@@ -161,7 +167,6 @@ function CatchPetActivity:open()
 				local timerID = g_timerMgr:regTimer(self, minute*60*1000, minute*60*1000, "CatchPetActivity.update")
 				self.beforActivityTimerIDs[index] = timerID
 			end
-			print(">>>>>>>>>>>>>>>>>>>>", toString(self.beforActivityTimerIDs))
 		else
 			-- 广播活动正式开始
 			self:startActivity()
@@ -172,9 +177,7 @@ function CatchPetActivity:open()
 end
 
 function CatchPetActivity:close()
-	print("catchPetActivity.Close捕宠活动时间到，关闭")
 	self._config = CatchPetActivityDB[self._id]
-	
 	local endActivity = self._config.endActivity
 	if endActivity then
 		if #endActivity > 0 then
@@ -199,11 +202,12 @@ end
 
 -- 创建当中活动对象
 function CatchPetActivity:openActivity()
-	-- 
 	g_catchPetMgr:openActivity()
 end
 
 function CatchPetActivity:startActivity()
+	--活动状态(正式开启)
+	self.state = ActivityState.Opening
 	if g_serverId == 0 then
 		local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_CatchPet, 5)
 		-- RemoteEventProxy.broadcast(event)
@@ -223,6 +227,15 @@ function CatchPetActivity:startActivity()
 		end
 	end
 end
+
+function CatchPetActivity:getState()
+	return self.state
+end
+
+function CatchPetActivity:getStartTime()
+	return self.startTime
+end
+
 -- 点击对话调用这里
 function CatchPetActivity:joinActivity(player)
 	

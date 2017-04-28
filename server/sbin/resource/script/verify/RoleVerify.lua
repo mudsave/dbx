@@ -164,21 +164,21 @@ function RoleVerify:checkLoopTask(player, param)
 	local taskHandler = player:getHandler(HandlerDef_Task)
 	local taskID = param.taskID
 	local loopTaskDB = LoopTaskDB[taskID]
-	-- print("继续做",taskHandler:getCountRing(taskID),loopTaskDB.loop)
-	if taskHandler:getCountRing(taskID) >= loopTaskDB.loop then
+	print("继续做",taskHandler:getCountRing(taskID),loopTaskDB.loop)
+	if taskHandler:getReceiveTimes(taskID) >= loopTaskDB.loop then
 			if loopTaskDB.taskType2 == TaskType2.Master then
 				return false, 31
 			elseif loopTaskDB.taskType2 == TaskType2.Trial then
-				return false, 31
+				return false, 26
 			elseif loopTaskDB.taskType2 == TaskType2.Faction then
-				return false, 32
+				return false, 62
 			end
-			return false, 31
+			return false, 21
 		else
 			-- 没有完成，当前不能再接
 			if taskHandler:getTask(taskID) then
 				print("你已经有这个任务了")
-				return false, 30
+				return false, 21
 			end
 		end
 	return true
@@ -412,7 +412,7 @@ function RoleVerify:checkActivityOpening(player, param)
 	end
 end
 
---检查是否领取了门派闯关活动
+--检查是否领取了门派闯关活动， 单人也可以放弃
 function RoleVerify:haveActivityTarget(player)
 	local teamHandler = player:getHandler(HandlerDef_Team)
 	local teamID = teamHandler:getTeamID()
@@ -431,18 +431,39 @@ end
 --检查现在的活动目标是否跟此NPC的活动目标一样。
 function RoleVerify:checkActivityTarget(player, param)
 	local teamHandler = player:getHandler(HandlerDef_Team)
+	-- 进入战斗的人数
+	local enterFightNumber = ActivityNumber.DekaronSchool
 	if not (teamHandler and teamHandler:isLeader()) then
-		print("不是队长")
-		return false,33
-	end
-
-	local teamID = teamHandler:getTeamID()
-	local team = g_teamMgr:getTeam(teamID)
-	local activityTarget = team:getDekaronActivityTarget()
-	if activityTarget and activityTarget:getActivityTargetId() == param.activityTargetID then
-		return true
+		print("不是队长11111111111")
+		return false,4
 	else
-		return false,34
+		-- 是队长
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		local tempNumber = team:getMemberCount()
+		-- 对员等级》30
+		if tempNumber < enterFightNumber then
+			return false, 33
+		end
+		local maxLvl, minLvl = team:getMaxAndMinLvl()
+		if minLvl < 30 then
+			return false, 34
+		end
+		if (maxLvl - minLvl) > 10 then
+			return false, 35
+		end
+		local activityTarget = team:getDekaronActivityTarget()
+		if activityTarget then
+			if activityTarget:getActivityTargetId() == param.activityTargetID then
+				-- 判断任务和等级
+				return true
+			else
+				return false, 56
+			end
+		else
+			-- 队伍当中没有任务目标
+			return false, 55
+		end
 	end
 end
 

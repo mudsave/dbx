@@ -74,7 +74,7 @@ end
 function FollowHandler:removeMember(memberID)
 	if self._memberList[memberID] then
 		-- 实体销毁在Scene:detachEntity(entity) 
-		--release(self._memberList[memberID])
+		release(self._memberList[memberID])
 		self._memberList[memberID] = nil
 	end
 end

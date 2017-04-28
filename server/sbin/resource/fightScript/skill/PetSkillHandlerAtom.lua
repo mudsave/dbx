@@ -66,15 +66,17 @@ end
 function PetSkillHandler:pPhysicalPursuit(id, level)
 	local value_1, value_2, addType = self:getThreeValue(id, level)
 	value_1 = value_1 / 10
-	value_2 = value_2 / 10
-	self:physicalATKChange(value_2, addType)
-	self.statePassiveList[PetPassiveEffect.PhysicalPursuit] = value_1
+	local tmp = {}
+	tmp.prob = value_1 / 10
+	tmp.value =(100 + value_2 / 10)		--得到连击物理攻为总攻击的百分比
+	tmp.addType = addType
+	self.statePassiveList[PetPassiveEffect.PhysicalPursuit] = tmp
 end
 
 function PetSkillHandler:getPhysicalPursuit()
-	local tmp = self.statePassiveList[PetPassiveEffect.PhysicalPursuit]
-	if tmp and math.random(100) < tmp then
-		return true
+	local tmp = self.statePassiveList[PetPassiveEffect.PhysicalPursuit] print("tmp", toString(tmp))
+	if  tmp and math.random(100) < 100 then
+		return true, tmp.value, tmp.addType
 	end
 	return false
 end

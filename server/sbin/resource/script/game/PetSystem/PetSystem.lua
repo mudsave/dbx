@@ -965,7 +965,7 @@ function PetSystem:onPetLearn(event)
 	handler:sendFreshs(player)
 	pet:flushPropBatch(player)
 	g_eventMgr:fireRemoteEvent(
-		Event.getEvent(PetEvent_CS_SkillBookRead,petID,skillID,replacedID),player
+		Event.getEvent(PetEvent_SC_SkillBookRead,petID,skillID,replacedID),player
 	)
 end
 
@@ -1017,7 +1017,6 @@ function PetSystem:onLearnExtendSkill(event)
 	if not pet then print("the pet is empty") return end
 	local skillhandler = pet:getHandler(HandlerDef_PetSkill)
 	
-	print("canlearn",skillhandler:canLearnExtend(skillID,skillLevel))
 	--是否能操作判定
 	if not skillhandler:canLearnExtend(skillID,skillLevel) then return end
 	--消耗
@@ -1025,7 +1024,6 @@ function PetSystem:onLearnExtendSkill(event)
 	--研发技能
 	skillhandler:addPetExtendLevel(skillID,skillLevel)
 
-	print("this----way")
 	
 	skillhandler:sendFreshs(player)
 	skillhandler:sendChanges(player)

@@ -106,7 +106,7 @@ LoopTaskDB =
 		itemRewards =
 		{
 			-- 等级区间
-			[1] =
+			--[[[1] =
 			{	
 				-- 环数
 				[10] = 
@@ -141,7 +141,7 @@ LoopTaskDB =
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
-			},
+			},]]
 		},
 	},
 	[10002] = 
@@ -244,7 +244,7 @@ LoopTaskDB =
 		itemRewards =
 		{
 			-- 等级区间
-			[1] =
+			--[[[1] =
 			{	
 				-- 环数
 				[10] = 
@@ -279,7 +279,7 @@ LoopTaskDB =
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
-			},
+			},]]
 		},
 	},
 	[10003] = 
@@ -382,7 +382,7 @@ LoopTaskDB =
 		itemRewards =
 		{
 			-- 等级区间
-			[1] =
+			--[[[1] =
 			{	
 				-- 环数
 				[10] = 
@@ -417,7 +417,7 @@ LoopTaskDB =
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
-			},
+			},]]
 		},
 	},
 	[10004] = 
@@ -520,7 +520,7 @@ LoopTaskDB =
 		itemRewards =
 		{
 			-- 等级区间
-			[1] =
+			--[[[1] =
 			{	
 				-- 环数
 				[10] = 
@@ -555,7 +555,7 @@ LoopTaskDB =
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
-			},
+			},]]
 		},
 	},
 	[10005] = 
@@ -658,7 +658,7 @@ LoopTaskDB =
 		itemRewards =
 		{
 			-- 等级区间
-			[1] =
+			--[[[1] =
 			{	
 				-- 环数
 				[10] = 
@@ -693,7 +693,7 @@ LoopTaskDB =
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
-			},
+			},]]
 		},
 	},
 	[10006] = 
@@ -796,7 +796,7 @@ LoopTaskDB =
 		itemRewards =
 		{
 			-- 等级区间
-			[1] =
+			--[[[1] =
 			{	
 				-- 环数
 				[10] = 
@@ -831,7 +831,7 @@ LoopTaskDB =
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1051015, itemNum = 1},
 				},
-			},
+			},]]
 		},
 	},
 	-- 试炼任务
@@ -852,13 +852,13 @@ LoopTaskDB =
 			{
 			    -- 首先来测试等级分段的权重
 				[LoopTaskTargetType.script] = 60,		            -- 悬赏战斗
-				--[LoopTaskTargetType.talk] = 40, 		            -- 和NPC对话
-				--[LoopTaskTargetType.buyItem] = 50,		            -- 上交物品
-				--[LoopTaskTargetType.catchPet] = 50,		            -- 捕捉宠物
-				--[LoopTaskTargetType.partrolScript] = 60,	        -- 暗雷战斗
-				--[LoopTaskTargetType.deliverLetters] = 40,		    -- 送信
-				--[LoopTaskTargetType.brightMine] = 60,		        -- 挑战明雷
-				--[LoopTaskTargetType.puzzle]		=100,
+				[LoopTaskTargetType.talk] = 40, 		            -- 和NPC对话
+				[LoopTaskTargetType.buyItem] = 50,		            -- 上交物品
+				[LoopTaskTargetType.catchPet] = 50,		            -- 捕捉宠物
+				[LoopTaskTargetType.partrolScript] = 60,	        -- 暗雷战斗
+				[LoopTaskTargetType.deliverLetters] = 40,		    -- 送信
+				[LoopTaskTargetType.brightMine] = 60,		        -- 挑战明雷
+				--[LoopTaskTargetType.puzzle]		=100,           --拼图
 				--[LoopTaskTargetType.oldTower]	=50,				-- 古塔驱妖
 			}
 		},
@@ -885,20 +885,20 @@ LoopTaskDB =
 			[1] =
 			{	
 				-- 环数
-				[10] = 
+				[1] = 
 				{
 					-- 支持多种物品,和个数
 					[1] = {itemID = 1031010, itemNum = 1},----铜宝箱
 				},
+				[5] = 
+				{
+					[1] = {itemID = 1031010, itemNum = 1},----铜宝箱
+				},
+				[10] = 
+				{
+					[1] = {itemID = 1031010, itemNum = 1},----铜宝箱
+				},
 				[20] = 
-				{
-					[1] = {itemID = 1031010, itemNum = 1},----铜宝箱
-				},
-				[30] = 
-				{
-					[1] = {itemID = 1031010, itemNum = 1},----铜宝箱
-				},
-				[40] = 
 				{
 					[1] = {itemID = 1031010, itemNum = 1},----铜宝箱
 				},

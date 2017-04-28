@@ -630,7 +630,7 @@ function LuaDBAccess.updateFactionMemberInfo( factionDBID,memberDBID,info,cvalue
 
 end
 
-function LuaDBAccess.CreateFaction( factionName,factionOwnerName)
+function LuaDBAccess.CreateFaction( factionName,factionOwnerName,callbackFunction,callbackArgs )
 
 	clearParams()
 
@@ -640,7 +640,12 @@ function LuaDBAccess.CreateFaction( factionName,factionOwnerName)
 	params[1]["fName"] = factionName
 	params[1]["rName"] = factionOwnerName
 
-	LuaDBAccess.exeSP(params,false)
+	local operationID		= LuaDBAccess.exeSP(params,false)
+	local callback 			= {
+		func = callbackFunction,
+		args = callbackArgs
+	}
+	DB_CallbackContext[operationID]	= callback
 
 end
 
@@ -657,18 +662,6 @@ function LuaDBAccess.DismissFaction( factionDBID )
 
 end
 
-function LuaDBAccess.DeleteApplyFactions( playerDBID )
-
-	clearParams()
-
-	params[1]["spName"] = "sp_DeleteApplyFactions"
-	params[1]["dataBase"] = 1
-	params[1]["sort"] = "rDBID"
-	params[1]["rDBID"] = playerDBID
-
-	LuaDBAccess.exeSP(params,false)
-
-end
 --对全服的玩家的猎金场总积分进行排序,并筛选出前n名的玩家
 function LuaDBAccess.orderGoldHuntActivity(orderCount, callbackFunction, callbackArgs)
 	

@@ -337,7 +337,7 @@ GuideDialogModelDB = {
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 15021}},	
 					{action = DialogActionType.RecetiveTask,param = {taskID = 15022}},	
-					{action = DialogActionType.Goto, param = {dialogID = 30060}},		
+					{action = DialogActionType.Goto, param = {dialogID = 20263}},		
 				},
 			}
 		},	

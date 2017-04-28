@@ -24,6 +24,7 @@ function Player:__init_logic()
 	self._taskMineConfig = nil --任务雷配置
 	-- 开启60秒的定时器，体力值和杀气
 	self.timerID = g_timerMgr:regTimer(self, 1000 * RegularTime.Second, 1000 * RegularTime.Second, "PlayerLogic:Kill")
+	self._fightTimerID = nil
 end
 
 function Player:__release_logic()
@@ -51,6 +52,13 @@ function Player:__release_logic()
 	end
 end
 
+function Player:getFightTimerID()
+	return self._fightTimerID
+end
+
+function Player:setFightTimerID(ID)
+	self._fightTimerID = ID
+end
 
 -- 社会服需要的业务属性
 function Player:setOfflineDate(offlineDate)
@@ -222,8 +230,8 @@ end
 -- 加载自动点数分配方案
 function Player:loadAutoPoint(attrRecord)
 	local handler = self:getHandler(HandlerDef_AutoPoint)
-	handler:loadDB(attrRecord)
-	handler:sendToClient(self)
+	handler:init(self,attrRecord)
+	handler:sendToClient(self,self,AutoPointHandler.Both)
 end
 
 -- 保存玩家的自动点数分配策略

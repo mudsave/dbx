@@ -51,7 +51,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                    {type="openDialog", param={dialogID =4600},},
+                    --{type="openDialog", param={dialogID =4600},},
 
 				},
 				-- 在上缴物品的时候改变任务状态为Done
@@ -187,12 +187,7 @@ LoopTaskTargetsDB =
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4450},},
-				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
-		
+				},		
 			},
 		},
 		--挑战明雷
@@ -295,7 +290,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                                     {type="openDialog", param={dialogID =4602},},
+                                     --{type="openDialog", param={dialogID =4602},},
 				},
 				-- 在上缴物品的时候改变任务状态为Done
 				-- 任务完成时候发个指引给客户端
@@ -428,12 +423,7 @@ LoopTaskTargetsDB =
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4459},},
-				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
-		
+				},		
 			},
 		},
 		--挑战明雷
@@ -535,7 +525,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                                        {type="openDialog", param={dialogID =4604},},
+                                        --{type="openDialog", param={dialogID =4604},},
 				},
 				-- 在上缴物品的时候改变任务状态为Done
 				-- 任务完成时候发个指引给客户端
@@ -668,12 +658,7 @@ LoopTaskTargetsDB =
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4468},},
-				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
-		
+				},		
 			},
 		},
 		--挑战明雷
@@ -775,7 +760,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                    {type="openDialog", param={dialogID =4606},},
+                    --{type="openDialog", param={dialogID =4606},},
 				},
 				-- 在上缴物品的时候改变任务状态为Done
 				-- 任务完成时候发个指引给客户端
@@ -908,12 +893,7 @@ LoopTaskTargetsDB =
 				{
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4477},},
-				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
-		
+				},		
 			},
 		},
 		--挑战明雷
@@ -1015,7 +995,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                                        {type="openDialog", param={dialogID =4608},},
+                                        --{type="openDialog", param={dialogID =4608},},
 				},
 				-- 在上缴物品的时候改变任务状态为Done
 				-- 任务完成时候发个指引给客户端
@@ -1149,11 +1129,6 @@ LoopTaskTargetsDB =
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID = 4486},},
 				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
-		
 			},
 		},
 		--挑战明雷
@@ -1255,7 +1230,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-                                        {type="openDialog", param={dialogID =4610},},
+                                        --{type="openDialog", param={dialogID =4610},},
 				},
 				-- 在上缴物品的时候改变任务状态为Done
 				-- 任务完成时候发个指引给客户端
@@ -1389,11 +1364,6 @@ LoopTaskTargetsDB =
 					{type = "deliverTrace" , param	= {}},
 					{type="openDialog", param={dialogID =4495},},
 				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
-		
 			},
 		},
 		--挑战明雷
@@ -1465,6 +1435,27 @@ LoopTaskTargetsDB =
 				{
 					{type = "removeRandomNpc", param = {index = 1}},
 					{type = "finishLoopTask", param = {}},-- 这个是完成当前任务目标，接下个任务目标
+				},
+			},
+		},
+		[LoopTaskTargetType.puzzle] = 
+		{
+			limitTime = 5*60,
+			targets = 
+			{	
+			},
+			triggers = 
+			{
+				[TaskStatus.Active] = 
+				{
+					
+					{type = "createRandomPuzzle", param = {npcID = 29092, x = 239, y = 78, mapID = 10}},
+					
+				},
+				[TaskStatus.Done] =
+				{
+					--随机拼图
+					{type = "finishPuzzle", param = {npcID = 29092, x = 239, y = 78, mapID = 10}},
 				},
 			},
 		},
@@ -1554,12 +1545,9 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active]		=      ---完成目标状态
 				{
 					{type = "deliverTrace" , param	= {}},
-				    {type = "openDialog", param={dialogID = 5165},}, --在任务时打开一个对话
+					{type = "openDialog", param={dialogID = 5165},}, --在任务时打开一个对话
 				},
-				[TaskStatus.Done] = 
-				{
-					{type = "finishLoopTask", param = {}},
-				},
+				
 			},
 		},
 		--挑战明雷
@@ -1659,8 +1647,8 @@ LoopTaskTargetsDB =
 				{
 					-- 随机NPC  一种指定NPC，不指定坐标。一种不指定NPC，不指定坐标
 					{type = "createRandomNpc", param = {index = 1}},
-					--{type="openDialog", param={dialogID = 4031},},
-				},
+					{type="openDialog", param={dialogID = 4101},},
+				},--
 				-- 任务完成时候
 				[TaskStatus.Done] =
 				{
@@ -1929,7 +1917,7 @@ LoopTaskTargetsDB =
 		},
 	},
 	
-	-- 帮会任务2
+---------- 帮会休闲任务
 	[10011] =
 	{
 		[LoopTaskTargetType.partrolScript] = 
@@ -1940,7 +1928,7 @@ LoopTaskTargetsDB =
 				{
 					-- 发送一个随机坐标脚本战斗指引，在动态添加任务目标
 					{type = "addSpecialArea", param = {}},
-					{type="openDialog", param={dialogID = 4235},},
+					{type="openDialog", param={dialogID = 30280},},
 				},
 				[TaskStatus.Done]		=      ---完成目标状态
 				{
@@ -1959,7 +1947,7 @@ LoopTaskTargetsDB =
 				{
 					-- 随机NPC  一种指定NPC，不指定坐标。一种不指定NPC，不指定坐标
 					{type = "brightMine", param = {}},
-					{type = "openDialog", param={dialogID = 4270},}, --在任务时打开一个对话
+					{type = "openDialog", param={dialogID = 30260},}, --在任务时打开一个对话
 				},
 				-- 任务完成时候
 				[TaskStatus.Done] =
@@ -1979,7 +1967,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createPosition", param = {}},
-					{type="openDialog", param={dialogID = 4350},},
+					{type="openDialog", param={dialogID = 30240},},
 					
 				},
 			},
@@ -1993,7 +1981,7 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active]		=      ---完成目标状态
 				{
 					{type = "deliverTrace" , param	= {}},
-					{type="openDialog", param={dialogID = 4450},},
+					{type="openDialog", param={dialogID = 30220},},
 				},
 				[TaskStatus.Done] = 
 				{
@@ -2014,7 +2002,7 @@ LoopTaskTargetsDB =
 				{
 					-- 给一个指引给客户端
 					{type = "createBuyItemData", param = {}},
-					{type="openDialog", param={dialogID =4600},},
+					--{type="openDialog", param={dialogID = 30210},},
 
 				},
 				-- 在上缴物品的时候改变任务状态为Done
@@ -2041,7 +2029,7 @@ LoopTaskTargetsDB =
 				[TaskStatus.Active] = 
 				{
 					
-					{type = "createRandomPuzzle", param = {}},
+					{type = "createRandomPuzzle", param = {npcID = 29092, x = 239, y = 78, mapID = 10}},
 					
 				},
 				[TaskStatus.Done] =
@@ -2057,17 +2045,19 @@ LoopTaskTargetsDB =
 	{
 		[LoopTaskTargetType.oldTower] = 
 		{
-			limitTime = 5*60,
 			targets = 
 			{	
 			},
 			triggers = 
 			{
 				[TaskStatus.Active] = 
+				{			
+					{type = "createOldTowerEliminate", param = {npcID = 27152, x = 154, y = 74, mapID = 14}},
+					
+				},
+				[TaskStatus.Done] =
 				{
-					
-					{type = "createOldTowerEliminate", param = {}},
-					
+					{type = "finishOldTowerEliminate", param = { x = 154, y = 74, mapID = 14}},
 				},
 			},
 		},

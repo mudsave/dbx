@@ -1,0 +1,40 @@
+<legend>检索结果</legend>
+<div class="well well-md" style="box-shadow:5px 5px 5px;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">id</th>
+                <th class="text-center">姓名</th>
+                <th class="text-center">性别</th>
+                <th class="text-center">等级</th>
+                <th class="text-center">门派</th>
+                <th class="text-center">地图</th>
+                <th class="text-center">金钱</th>
+                <th class="text-center"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="text-align:center">
+                <td>{{roleData.id}}</td>
+                <td>{{roleData.name}}</td>
+                <td>{{roleData.sex}}</td>
+                <td>{{roleData.level}}</td>
+                <td>{{roleData.school}}</td>
+                <td>{{roleData.mapid}}</td>
+                <td class="popover-wrapper"><a href="#" onbeforesave = "sendChangeInfo($data,roleData.id)" editable-text="roleData.money">{{roleData.money}}</a>
+                </td>
+                <td>
+                    <button ng-disabled="offLine" class="btn btn-info btn-xs" style="padding-right: 10px;">
+                                <span class="glyphicon glyphicon-remove-sign" style="color: white;"><span><a ui-sref="roleDetail({roleid:roleData.id})" style = "text-decoration:none; color:white">查看</a></span></span>
+                            </button>
+                    <button ng-disabled="offLine" class="btn btn-danger btn-xs" ng-click="deleteRole(roleData)" style="padding-right: 10px;">
+                                <span class="glyphicon glyphicon-remove-sign" style="color: white;"><span>剔除</span></span>
+                            </button>
+                    <button ng-disabled="noSpeek" class="btn btn-success btn-xs" ng-click="checkRoleInfo(roleData)">
+                                <span class="glyphicon glyphicon-dashboard" style="color: white;"><span>禁言</span></span>
+                            </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

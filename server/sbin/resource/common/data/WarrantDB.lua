@@ -198,7 +198,7 @@ tWarrantDB =
 		CanDestroy = true ,
 		CanWarehouse = true ,
 		TimeLimitHours = 0 ,
-		UseNeedLvl = 1 ,
+		UseNeedLvl = nil ,
 		ReactExtraParam1 = nil ,
 		PickUpSound = nil ,
 	},

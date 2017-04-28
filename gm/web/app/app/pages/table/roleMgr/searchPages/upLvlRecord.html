@@ -1,0 +1,21 @@
+<legend>{{upLvlInfo.name}}升级记录信息</legend>
+<div class="well well-md" style="box-shadow:5px 5px 5px;">
+    <table class= "table table-hover table-striped" >
+        <thead>
+            <tr>
+                <th class="text-center">等级</th>
+                <th class="text-center">升级时间点</th>
+                <th class="text-center">地图</th>
+                <th class="text-center">坐标</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lvlInfo in upLvlData" class="text-center">
+                <td>{{lvlInfo.level}}</td>
+                <td>{{lvlInfo.time}}</td>
+                <td>{{lvlInfo.mapid}}</td>
+                <td>({{lvlInfo.posX}},{{lvlInfo.posY}})</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

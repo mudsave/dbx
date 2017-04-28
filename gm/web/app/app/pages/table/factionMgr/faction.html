@@ -1,0 +1,118 @@
+        <h3 class = "text-center">帮派信息</h3>
+        <div class = "container">
+            <div class = "row">
+                <!--添加查询条件的按钮-->
+                <div class="col-md-6 col-md-offset-3">
+                    <div class = "input-group">                       
+                        <input type="text" class ="form-control" ng-model = "factionID" placeholder = "请输入帮派的id...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-search"  ng-click="searchFac(factionID)">
+                                <span class ="glyphicon glyphicon-search">检索</span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class= "col-md-1">
+                    <button class="btn btn-info btn-xs" ng-click="downloadInfo()">
+                        导出文件<span class="glyphicon glyphicon-save"></span> 
+                    </button>
+                </div>
+            </div>
+
+            <div class = "row">
+                 <fieldset style = "margin-top: 20px;">                 
+                    <legend>筛选条件</legend>
+                        <form class="form-inline" name = "facForm" style="margin-left:40px;">
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editName">帮会名字
+                                    <input type = "text" ng-model="facName" ng-disabled="!editName||factionID">
+                                </label>
+                            </div>
+
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editLevel">帮会等级
+                                    <input type = "text" ng-model="facLevel" ng-disabled="!editLevel||factionID">
+                                </label>
+                            </div>
+
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editOwner">现任帮主
+                                    <input type = "text" ng-model="facOwner" ng-disabled="!editOwner||factionID">
+                                </label>
+                            </div>
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editMoney">帮会资金
+                                    <input type = "text" ng-model="facMoney" ng-disabled="!editMoney||factionID">
+                                </label>
+                            </div>
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label><input type = "checkbox" ng-model="editFame">帮会声望</label>
+                                <input type = "text" ng-model="facFame" ng-disabled="!editFame||factionID">
+                            </div>
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editMag">管理费用
+                                    <input type = "text" ng-model="mgrMoney" ng-disabled="!editMag||factionID">
+                                </label>
+                            </div>
+
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editPeople">帮会人数
+                                    <input type = "text" ng-model="facPeople" ng-disabled="!editPeople||factionID">
+                                </label>
+                            </div>
+
+                            <div class = "checkbox" style="margin-right:10px;margin-bottom:20px;">
+                                <label>
+                                    <input type = "checkbox" ng-model="editCreat">创建时间                              
+                                    <input type = "date" ng-model="data1" ng-disabled="!editCreat||factionID">
+                                    
+                                    <span> —— </span>
+                                    <input type = "date" ng-model="data2" ng-disabled="!editCreat||factionID">
+                                </label>
+                            </div>                            
+                        </form>
+                        <button class= "btn btn-success col-md-1 col-md-offset-5" ng-disabled="factionID" ng-click = "optionSearch()" style="margin-top:20px;" >条件检索</button>
+                 </fieldset>    
+            </div>
+
+            <div style = "margin:20px;">
+                <h3 class="text-center">检索结果</h3> 
+                <table class ="table table-hover table-bordered" st-table="factionsInfo" id="facInfoTab">         
+                    <thead>
+                        <tr>  
+                            <th class="text-center">帮会ID</th>
+                            <th class="text-center">帮会名字</th>
+                            <th class="text-center">现任帮主</th>                            
+                            <th class="text-center">帮会等级</th>
+                            <th class="text-center">帮会声望</th>
+                            <th class="text-center">帮会资金</th>
+                            <th class="text-center">帮会人数</th>
+                            <th class="text-center">管理费用</th>                            
+                            <th class="text-center">创建时间</th>
+                            <th class="text-center">帮会公告</th>                 
+                        </tr>     
+                    </thead>
+                    <tbody>  
+                        <tr style ="text-align:center" ng-repeat="faction in factionsInfo" class="no-top-border editable-tr-wrap">                                                 
+                            <td>{{faction.ID}}</td>
+                            <td>{{faction.Name}}</td>
+                            <td>{{faction.Owner}}</td>
+                            <td><span editable-text="faction.Level" blur="cancel" >{{faction.Level}}</span></td>
+                            <td><span editable-text="faction.Fame" blur="cancel">{{faction.Fame}}</span></td>
+                            <td><span editable-text="faction.Money" blur="cancel">{{faction.Money}}</span></td>
+                            <td><a ui-sref="facMembers({facID:faction.ID})">{{faction.Member}}</a></td>
+                            <td><span editable-text="faction.marMoney" blur="cancel">{{faction.marMoney}}</span></td>
+                            <td><span>{{faction.cTime}}</span></td>
+                            <td><span editable-text="faction.Notice" blur="cancel">{{faction.Notice}}</span></td>
+                        </tr> 
+                    </tbody>                   
+                </table>
+            </div>            
+        </div>  <!--container--> 

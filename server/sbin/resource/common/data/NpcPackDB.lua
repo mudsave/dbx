@@ -173,13 +173,11 @@ NpcPackDB =
 		buyPriceType = ItemPriceType.BindMoney,
 		items = {
 					{id = 1026005,buyPrice = 5000},
-					{id = 1051015,buyPrice = 500},
 					{id = 1024001,buyPrice = 5000},
 					{id = 1024002,buyPrice = 5000},
 					{id = 1024004,buyPrice = 5000},
 					{id = 1024005,buyPrice = 5000},
 					{id = 1024006,buyPrice = 5000},
-					{id = 1024008,buyPrice = 5000},
 					{id = 1024013,buyPrice = 5000},
 					{id = 1024020,buyPrice = 5000},
 					{id = 1024021,buyPrice = 5000},
@@ -608,7 +606,6 @@ NpcPackDB =
 					{id = 1024004,buyPrice = 5000},
 					{id = 1024005,buyPrice = 5000},
 					{id = 1024006,buyPrice = 5000},
-					{id = 1024008,buyPrice = 5000},
 					{id = 1024013,buyPrice = 5000},
 					{id = 1024020,buyPrice = 5000},
 					{id = 1024021,buyPrice = 5000},
@@ -632,7 +629,6 @@ NpcPackDB =
 					{id = 1024004,buyPrice = 5000},
 					{id = 1024005,buyPrice = 5000},
 					{id = 1024006,buyPrice = 5000},
-					{id = 1024008,buyPrice = 5000},
 					{id = 1024013,buyPrice = 5000},
 					{id = 1024020,buyPrice = 5000},
 					{id = 1024021,buyPrice = 5000},
@@ -1005,6 +1001,23 @@ NpcPackDB =
 					{id = 1302,buyPrice = 500},
 					{id = 1303,buyPrice = 500},
 					{id = 1304,buyPrice = 500},
+				},
+	},
+	[23] = 
+	{ 
+		buyPriceType = ItemPriceType.FacContrib,
+		factionItems = {
+			[1] = 2,
+			[2] = 8,
+			[3] = 10,
+			[4] = 12,
+			[5] = 14,
+		},
+		items = {
+					{id = 3024023,buyPrice = 5000},
+					{id = 3024026,buyPrice = 5000},
+					{id = 3027003,buyPrice = 5000},
+					{id = 3025005,buyPrice = 5000},
 				},
 	},
 }

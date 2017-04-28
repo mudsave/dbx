@@ -131,6 +131,7 @@ public:
 	bool move(short x = 0, short y = 0, int flags = 0x10);
 	void moveFollowEntity(lua_State* pState, short offset, _PropPosData* pPropPosData);
 	void stopMove(short x = 0, short y = 0);
+	void stopMoveAndFollow(lua_State* pState);
 	void setIsMove(bool value)
 	{
 		m_Move = value;

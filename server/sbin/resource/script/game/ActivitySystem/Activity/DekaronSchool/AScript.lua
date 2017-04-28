@@ -7,8 +7,12 @@ AScript = class(ActivityTarget)
 
 function AScript:__init(param)
 	self._param = param
-	self:setEntity(self._param.entity)
 	self._activityTargetId = self._param.school
+end
+
+function AScript:__release()
+	self._param = nil
+	self._activityTargetId = nil
 end
 
 function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
@@ -66,9 +70,9 @@ function AScript:onScriptDone(scriptID, isWin,monsterDBIDs)
 			end
 			--刷新排行
 			g_dekaronSchoolMgr:updateRankList(team,true)
-			
 			--重新获取活动目标
 			g_dekaronSchoolMgr:changeDekaronTarget(team)
+			return true
 		end
 	end
 end

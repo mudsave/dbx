@@ -1,22 +1,25 @@
 --[[DialogModelDB.lua
 	对话配置(对话系统)
 	1-100空着不用
-	100-10000 主线对话
-	10001-20000副本 各种副本的对话ID集合
+	100-2175（目前）主线目前用到
+	4001~5320（目前）为循环任务对话
+	10001-20000副本 各种副本的对话ID集合（以前副本用过的ID是3000 ---3100）
 	20001-21000主城固定npc以及默认对话
-	21001-26000通天塔以及其他
+	21001-26000（暂时没用到）
 	27001-27100坐骑任务
 	27101-27150天子猎金场
-	30001-35000循环任务（30100-30300 帮派任务）
+	30001~30099程序测试用过，以后可删除或修改再用
+	30100-30300 帮派任务
 	35001-35099抓宠任务
 	35100-35199瑞兽降福
 	35500-37000为指引任务对话
-	现在副本用到的ID是3000 ---3100
-	这一段跳过，我们配置主线任务的时候注意这个。
+	39900~39999藏宝图
+	40000~50001程序测试用过，可删掉用作其他
 	50100-50199 每日任务（新增）
-	70000~70100 煮酒论英雄
+	70000~      煮酒论英雄
 	80001-90000为封神台对话
 ]]
+
 
 DialogModelDB =
 {
@@ -13082,9 +13085,10 @@ DialogModelDB =
     [5184] =           -----------------送信任务--卢植--------------------
 	{
 		dialogType = DialogType.HasOption,
-		conditions ={
-		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		conditions =
+		{
+			{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
+		        {condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20049,
 		soundID = nil,
@@ -13106,7 +13110,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 30320}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 30320,
 		soundID = nil,
@@ -13128,7 +13132,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20059}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20059,
 		soundID = nil,
@@ -13150,7 +13154,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 29008}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 29008,
 		soundID = nil,
@@ -13172,7 +13176,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27073}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 27073,
 		soundID = nil,
@@ -13194,7 +13198,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27074}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 27074,
 		soundID = nil,
@@ -13216,7 +13220,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20701}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20701,
 		soundID = nil,
@@ -13238,7 +13242,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27075}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 27075,
 		soundID = nil,
@@ -13260,7 +13264,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27076}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 27076,
 		soundID = nil,
@@ -13282,7 +13286,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 27077}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 27077,
 		soundID = nil,
@@ -13304,7 +13308,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20021}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20021,
 		soundID = nil,
@@ -13326,7 +13330,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20022}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20022,
 		soundID = nil,
@@ -13348,7 +13352,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20023}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20023,
 		soundID = nil,
@@ -13370,7 +13374,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20025}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20025,
 		soundID = nil,
@@ -13392,7 +13396,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20024}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20024,
 		soundID = nil,
@@ -13414,7 +13418,7 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions ={
 		{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10007,taskType = LoopTaskTargetType.deliverLetters, npcID = 20026}},
-		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Done, errorID = 52}},
+		{condition = DialogCondition.HasStatusTask, param = {taskID = 10007, taskStatus =  TaskStatus.Active, errorID = 52}},
 		},
 		speakerID = 20026,
 		soundID = nil,
@@ -15385,6 +15389,18 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+                [3] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.deliverLetters, npcID = 20106}},
+				},
+				optionTxt = "帮会休闲任务，送信",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30222}},
+				},
+				icon = DialogIcon.Task4,
+		},
 		},
 	},
 	[20010] =           ----------------------------洛阳点点，杂货店
@@ -15445,7 +15461,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[20012] =        --------洛阳元宝商人
+	--[[[20012] =        --------洛阳元宝商人 已删除
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -15473,7 +15489,7 @@ DialogModelDB =
 				},
 			},
 		},
-	},
+	},]]
 	[20013] =             --洛阳门派传送npc
 	{
 		dialogType = DialogType.HasOption,
@@ -15691,6 +15707,18 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param ={}},
 				},
 			},
+			[9] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.talk,npcID = 20059}},
+				},
+				optionTxt = "帮会休闲任务，对话",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30242}},
+				},
+				icon = DialogIcon.Task4,
+			},
 		},
 	},
 	[20016] =    -----------洛阳卢植
@@ -15808,6 +15836,18 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param = {},},
 				},
 				icon = DialogIcon.Talk,
+			},
+			[10] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.deliverLetters, npcID = 20049}},
+				},
+				optionTxt = "帮会休闲任务，送信",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30221}},
+				},
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -15962,6 +16002,18 @@ DialogModelDB =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
 				},
+			},
+			[3] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.talk,npcID = 29003}},
+				},
+				optionTxt = "帮会休闲任务，对话",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30243}},
+				},
+				icon = DialogIcon.Task4,
 			},
 		},
 	},
@@ -16260,6 +16312,44 @@ DialogModelDB =
 					{action = DialogActionType.CloseDialog, param = {},},
 				},
 			},
+			[9] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.deliverLetters, npcID = 29007}},
+				},
+				optionTxt = "帮会休闲任务，送信",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30225}},
+				},
+				icon = DialogIcon.Task4,
+			},
+			[10] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.talk,npcID = 29007}},
+				},
+				optionTxt = "帮会休闲任务，对话",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30246}},
+				},
+				icon = DialogIcon.Task4,
+			},
+
+			[11] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.deliverLetters, npcID = 29007}},
+				},
+				optionTxt = "帮会休闲任务，送信",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30225}},
+				},
+				icon = DialogIcon.Task4,
+			},
+
 		}
 	},
 	[20024] =            -------------洛阳张道长，天道任务
@@ -16389,6 +16479,7 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Task5,
 			},
+
 		},
 	},
 	[20025] =
@@ -16425,6 +16516,18 @@ DialogModelDB =
 				{
 					{action = DialogActionType.CloseDialog, param = {},},
 				},
+			},
+			[4] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.deliverLetters, npcID = 29065}},
+				},
+				optionTxt = "帮会休闲任务，送信",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30223}},
+				},
+				icon = DialogIcon.Task4,
 			},
 		}
 	},
@@ -16608,11 +16711,11 @@ DialogModelDB =
 			[1] = {
 				showConditions = {
 				},
-				optionTxt = "接受任务（花费10000银两）",
+				optionTxt = "接受任务",
 				actions =
 				{
-				  {action = DialogActionType.ConsumeRecetiveTask ,param = {type  = "money", value = 10000, taskID = 10007}},--花费一定金钱接受任务
-				--{action = DialogActionType.RecetiveTask, param = {taskID = 10007}},
+				--{action = DialogActionType.ConsumeRecetiveTask ,param = {type  = "money", value = 10000, taskID = 10007}},--花费一定金钱接受任务
+				{action = DialogActionType.RecetiveTask, param = {taskID = 10007}},
 				--{action = DialogActionType.Gotos, param = {dialogIDs = {5161,5163,5164,5165,5166,5167 }}},
 				},
 			},
@@ -16789,7 +16892,7 @@ DialogModelDB =
 			},
 		},
 	},
-	[20031] =    ----洛阳测试npc
+	--[[[20031] =    ----洛阳测试npc 已删除
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
@@ -16826,7 +16929,7 @@ DialogModelDB =
 				},
 			},
 		},
-	},
+	},]]
 	[20033] =             --218世界传送npc
 	{
 		dialogType = DialogType.HasOption,
@@ -18099,6 +18202,53 @@ DialogModelDB =
 				{
 				{action = DialogActionType.CloseDialog, param ={}},
 				},
+			},
+		},
+	},
+
+[20263] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 28022,
+		txt = "这位英雄，我观你眉宇间透出一股正派之气，想来必是名门大派入世修行的弟子。如今适逢乱世，天下贼寇横行，他们身手高强，无恶不作，百姓苦不堪言。还望英雄略施援手，铲除这些祸乱百姓的恶人！",
+		options =
+		{
+			[1] =
+			{
+				showConditions =
+				{
+				{condition = DialogCondition.Level, param = {level = 35}},
+				},
+				optionTxt = "接受讨逆任务（35级以上）",
+				actions =
+				{
+				    {action = DialogActionType.RecetiveSpecialTask, param = {taskID = 10010}},
+				},
+
+			},
+			[2] =
+			{
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				    {action = DialogActionType.CloseDialog, param ={}},
+				},
+
+			},
+			[3] = {
+				showConditions =
+				{
+				{condition = DialogCondition.HasTask, param = {taskID = 15021, statue = true}},
+				},
+				optionTxt = "了解讨逆任务",
+				actions =
+				{
+					{action = DialogActionType.Goto, param = {dialogID = 35512}},
+				},
+				icon = DialogIcon.Task5,
 			},
 		},
 	},
@@ -20593,6 +20743,7 @@ DialogModelDB =
 		dialogType = DialogType.NotOption,
 		conditions =
 		{
+	
 		},
 		speakerID = 29076,
 		txt = "紫阳门专于弓射之道，取敌首级与千里之外。",
@@ -21268,37 +21419,36 @@ DialogModelDB =
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
-		{},
+		{
+		},
 		speakerID = 50051,
 		txt = "守护山门安全，乃我辈本分。",
 		options =
 		{
-			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}}},
+			{
+				showConditions = {},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+					{action = DialogActionType.Goto, param ={dialogID = 20867}},
 				},
 			},
 		},
 	},
-
 	[20862] =    -----------金霞山护法
 	{
 		dialogType = DialogType.HasOption,
-		conditions =
-		{},
+		conditions ={},
 		speakerID = 50052,
 		txt = "守护山门安全，乃我辈本分。",
 		options =
 		{
-			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 2}}},
+			{
+				showConditions = {},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 2}},
+					{action = DialogActionType.Goto, param ={dialogID = 20868}},
 				},
 			},
 		},
@@ -21306,18 +21456,17 @@ DialogModelDB =
 	[20863] =    -----------紫阳门护法
 	{
 		dialogType = DialogType.HasOption,
-		conditions =
-		{},
+		conditions ={},
 		speakerID = 50053,
 		txt = "守护山门安全，乃我辈本分。",
 		options =
 		{
-			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 3}}},
+			{
+				showConditions = {},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 3}},
+					{action = DialogActionType.Goto, param ={dialogID = 20869}},
 				},
 			},
 		},
@@ -21325,18 +21474,17 @@ DialogModelDB =
 	[20864] =    -----------云霄宫护法
 	{
 		dialogType = DialogType.HasOption,
-		conditions =
-		{},
+		conditions ={},
 		speakerID = 50054,
 		txt = "守护山门安全，乃我辈本分。",
 		options =
 		{
-			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 4}}},
+			{
+				showConditions = {},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 4}},
+					{action = DialogActionType.Goto, param ={dialogID = 20870}},
 				},
 			},
 		},
@@ -21344,18 +21492,17 @@ DialogModelDB =
 	[20865] =    -----------桃源洞护法
 	{
 		dialogType = DialogType.HasOption,
-		conditions =
-		{},
+		conditions ={},
 		speakerID = 50055,
 		txt = "守护山门安全，乃我辈本分。",
 		options =
 		{
-			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 5}}},
+			{
+				showConditions = {},
 				optionTxt = "请赐教",
 				actions =
 				{
-				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 5}},
+					{action = DialogActionType.Goto, param ={dialogID = 20871}},
 				},
 			},
 		},
@@ -21364,13 +21511,147 @@ DialogModelDB =
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
-		{},
+		{
+		},
 		speakerID = 50056,
 		txt = "守护山门安全，乃我辈本分。",
 		options =
 		{
-			[1] = {
-				showConditions = {{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 6}}},
+			{
+				showConditions = {},
+				optionTxt = "请赐教",
+				actions =
+				{
+					{action = DialogActionType.Goto, param ={dialogID = 20872}},
+				},
+			},
+		},
+	},
+--------------------下一层对话-------------------------------------------------
+	[20867] =    -----------乾元岛护法
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{	
+			{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 1}},
+		},
+		speakerID = 50051,
+		txt = "守护山门安全，乃我辈本分。",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "请赐教",
+				actions =
+				{
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 1}},
+				},
+			},
+		},
+	},
+	[20868] =    -----------乾元岛护法
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 2}},
+		},
+		speakerID = 50052,
+		txt = "守护山门安全，乃我辈本分。",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "请赐教",
+				actions =
+				{
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 2}},
+				},
+			},
+		},
+	},
+	[20869] =    -----------乾元岛护法
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 3}},
+		},
+		speakerID = 50053,
+		txt = "守护山门安全，乃我辈本分。",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "请赐教",
+				actions =
+				{
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 3}},
+				},
+			},
+		},
+	},
+	[20870] =    -----------乾元岛护法
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 4}},
+		},
+		speakerID = 50054,
+		txt = "守护山门安全，乃我辈本分。",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "请赐教",
+				actions =
+				{
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 4}},
+				},
+			},
+		},
+	},
+	[20871] =    -----------乾元岛护法
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 5}},
+		},
+		speakerID = 50055,
+		txt = "守护山门安全，乃我辈本分。",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
+				optionTxt = "请赐教",
+				actions =
+				{
+				{action = DialogActionType.DekaronSchoolFight, param ={activityTargetID = 5}},
+				},
+			},
+		},
+	},
+	[20872] =    -----------乾元岛护法
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.DekaronSchoolActivityTarget, param = {activityTargetID = 6}},
+		},
+		speakerID = 50056,
+		txt = "守护山门安全，乃我辈本分。",
+		options =
+		{
+			[1] = 
+			{
+				showConditions = {},
 				optionTxt = "请赐教",
 				actions =
 				{
@@ -25948,6 +26229,18 @@ DialogModelDB =
 				},
 				icon = DialogIcon.Task5,
 			},
+			[5] = {
+				showConditions =
+				{
+				{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.talk,npcID = 39000}},
+				},
+				optionTxt = "帮会休闲任务，对话",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 30245}},
+				},
+				icon = DialogIcon.Task4,
+			},
 		},
 	},
 	[27091] =					--神算子npc
@@ -25991,7 +26284,6 @@ DialogModelDB =
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
-
 		},
 		speakerID = 39050,
 		soundID =0,
@@ -26110,7 +26402,20 @@ DialogModelDB =
 			},
 		},
 	},
-
+	[27105] =					--人满提示
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		{condition = DialogCondition.PlayerCountInGoldHuntMap},
+		},
+		speakerID = 39050,
+		soundID =nil ,
+		txt = "猎金场活动人数已满",
+		options =
+		{
+		},
+	},
 
 -- 乾元岛师门任务发放人，第一层对话
 [30001] =
@@ -26495,52 +26800,7 @@ DialogModelDB =
 			},
 		},
 	},
-[30060] =
-	{
-		dialogType = DialogType.HasOption,
-		conditions =
-		{},
-		speakerID = 28022,
-		txt = "这位英雄，我观你眉宇间透出一股正派之气，想来必是名门大派入世修行的弟子。如今适逢乱世，天下贼寇横行，他们身手高强，无恶不作，百姓苦不堪言。还望英雄略施援手，铲除这些祸乱百姓的恶人！",
-		options =
-		{
-			[1] =
-			{
-				showConditions =
-				{
-				{condition = DialogCondition.Level, param = {level = 35}},
-				},
-				optionTxt = "接受讨逆任务（35级以上）",
-				actions =
-				{
-				    {action = DialogActionType.RecetiveSpecialTask, param = {taskID = 10010}},
-				},
 
-			},
-			[2] =
-			{
-				showConditions = {},
-				optionTxt = "稍后再说",
-				actions =
-				{
-				    {action = DialogActionType.CloseDialog, param ={}},
-				},
-
-			},
-			[3] = {
-				showConditions =
-				{
-				{condition = DialogCondition.HasTask, param = {taskID = 15021, statue = true}},
-				},
-				optionTxt = "了解讨逆任务",
-				actions =
-				{
-					{action = DialogActionType.Goto, param = {dialogID = 35512}},
-				},
-				icon = DialogIcon.Task5,
-			},
-		},
-	},
 --------------------------------帮派任务，上交装备---------------------
 	--接收帮会任务
 	[30100] =
@@ -26977,6 +27237,936 @@ DialogModelDB =
 			},
 		},
 	},
+-------------------------------------帮会技能---------------
+	[30113] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID = 29085,
+		txt = "斯人若彩虹，遇上方知有",
+		options =
+		{
+			[1] =
+			{	
+				conditions = 
+				{
+					{condition = DialogCondition.CheckFactionConfiguration, param = {type = "CheckFactionLevel",level = 2},statue = true,errorID = 57},
+				},
+				showConditions = {},
+				optionTxt = "研发技能",
+				actions =
+				{
+					{action = DialogActionType.OpenUI ,param = {v = "FactionSkillStudyWin"},},
+				},
+			},
+			[2] =
+			{	
+				conditions = 
+				{
+					--{condition = DialogCondition.CheckFactionConfiguration, param = {type = "CheckFactionLevel",level = 2},statue = true,errorID = 57},
+				},
+				showConditions = {},
+				optionTxt = "学习技能",
+				actions =
+				{
+					{action = DialogActionType.OpenUI ,param = {v = "PetSkillStudyWin"},},
+				},
+			},
+			[3] = {
+				conditions = 
+				{
+					{condition = DialogCondition.CheckFactionConfiguration, param = {type = "CheckFactionLevel",level = 2},statue = true,errorID = 58},
+				},
+				showConditions = {},
+				optionTxt = "帮会商店",
+				actions =
+				{	
+					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 23},},
+				},
+			},
+			[4] =
+			{
+				showConditions = {},
+				optionTxt = "再会",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param = {},},
+
+				},
+			},
+		},
+	},
+-----------------------------------------帮会俸禄-------------------------
+	[30114] =    -----------帮会俸禄
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID = 29084,
+		txt = "玉树临风美少年，揽镜自顾夜不眠",
+		options =
+		{
+			[1] = {
+				showConditions = 
+				{
+					
+				},
+				optionTxt = "领取帮会俸禄",
+				actions =
+				{
+					{action = DialogActionType.Gotos , param = {dialogIDs = {30115,30116,30117,30118}},},
+				},
+			},
+			[2] = {
+				showConditions = 
+				{
+					{condition = DialogCondition.HasTask, param = {taskID = 10011, statue = false}},
+				},
+				optionTxt = "领取帮会休闲任务",
+				actions =
+				{
+					{action = DialogActionType.RecetiveTask, param = {taskID = 10011}},
+				},
+			},
+			[3] =
+			{
+				showConditions = 
+				{
+					{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.buyItem, npcID = 29084}},
+				},
+				optionTxt = "上缴帮会任务物品",
+				actions =
+				{
+					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10011, itemsInfo = {count = 1},},},
+				},
+			},
+			[4] = {
+				showConditions = {},
+				optionTxt = "我还有事,先走一步",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			},
+		},
+	},
+-------帮会玩法对话----------------------------------------------------------------------------------------------------------------
+	[30115] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.CheckNum, param = {type = "CheckFactionContribute",num = 1000}},
+		},
+		speakerID = 0,
+
+		txt = "你上周未能达到发放俸禄的要求,帮会不予发放俸禄",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+
+					{action = DialogActionType.CloseDialog, param = {}},
+
+				},
+			}
+		},
+
+	},
+	[30116] =
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+			{condition = DialogCondition.CheckDate, param = {type = "CheckJoinFactionDate"}},
+		},
+		speakerID = 0,
+		matchSpecialFlag = "factionJoinDate",
+		txt = " 你在%s入帮,未满一周,我还不能发俸禄给你！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+
+					{action = DialogActionType.CloseDialog, param = {}},
+
+				},
+			}
+		},
+
+	},
+	[30117] =
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		},
+		speakerID = 0,
+		matchSpecialFlag = "factionSalary",
+		txt = "你上周累计可获得帮派俸禄%s万绑银,现在领取吗？",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "好，现在就领取",
+				actions =
+				{
+					{action = DialogActionType.ChangePlayerMoney , param ={type = "Add",flag = "factionSalary"}},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "等等，现在还不缺钱",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog , param ={}},
+				},
+			},
+		},
+
+	},
+	[30118] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+			{condition = DialogCondition.CheckFactionConfiguration, param = {type = "CheckGetSalary"}},
+		},
+		speakerID = 0,
+		txt = "你这周已经领取过俸禄了",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					
+					{action = DialogActionType.CloseDialog, param = {}},
+					
+				},
+			}
+		},
+
+	},
+---------------------------------------------------------帮会休闲任务------------------------------------------
+---------------------------------------------------------暗雷战斗----------------------------------------------
+[30300] =          ----恶霸头子  
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 78000,
+		soundID = nil,
+		txt = "既然被发现了，那我只能先下手为强了！看打啊！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7200,mapID = nil}},
+				},
+			}
+		},
+	},
+[30301] =             -----------------暗雷战斗-强盗首领
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 78005,
+		soundID = nil,
+		txt = "既然被发现了，那我只能先下手为强了！看打啊！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7201,mapID = nil}},
+				},
+			}
+		},
+	},
+[30302] =             -----------------暗雷战斗-劫匪头领
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 78010,
+		soundID = nil,
+		txt = "既然被发现了，那我只能先下手为强了！看打啊！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7202,mapID = nil}},
+				},
+			}
+		},
+	},
+[30303] =             -----------------暗雷战斗--小偷头目
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 78015,
+		soundID = nil,
+		txt = "既然被发现了，那我只能先下手为强了！看打啊！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7203,mapID = nil}},
+				},
+			}
+		},
+	},
+[30304] =             -----------------暗雷战斗-杀手头目
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 78025,
+		soundID = nil,
+		txt = "既然被发现了，那我只能先下手为强了！看打啊！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7204,mapID = nil}},
+				},
+			}
+		},
+	},
+[30305] =             -----------------暗雷战斗-流氓头子
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 78025,
+		soundID = nil,
+		txt = "既然被发现了，那我只能先下手为强了！看打啊！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7205,mapID = nil}},
+				},
+			}
+		},
+	},
+-----------------------------------帮会休闲任务任务触发对话---------------------------------------------------
+-----------------------------------上交道具任务触发器---------------------------------------------------------
+[30210] =            
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29084,
+		soundID = nil,
+		txt = "随着帮会成员越来越多，<itemID>的储备也不足了，你辛苦一趟帮我搜集1个<itemID>，拿回来交给我吧！",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		                  {
+		                  {action = DialogActionType.CloseDialog, param ={}},
+			          },
+		    },
+		},
+	},
+	[30211] =            ------------------上交道具
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 29084,
+		txt = "这么快就回来啦？找到我需要的东西了吗？",
+		options =
+        {
+			[1] = {
+				showConditions = {},
+				optionTxt = "上交道具",
+				actions =
+				{
+				{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10011, itemsInfo = {count = 1},},},
+				},
+				icon = DialogIcon.Task4,
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+
+		},
+	},
+------------------------------------------送信任务触发器----------------------------
+[30220] =            
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29084,
+		soundID = nil,
+		txt = "我这里有一封重要的信，需要你辛苦一趟替我交给<mapID,x,y>的<npcID>，有劳少侠了。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.CloseDialog, param ={}},
+					  },
+		    },
+		},
+	},
+	[30221] =            ------------------洛阳卢植送信任务
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20049,
+		soundID = nil,
+		txt = "你将那封信带过来了？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		         actions =
+		              {
+		              {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10011, itemID = 1041016, itemsInfo ={count = 1},},},
+			      },
+		        },
+		},
+	},
+	[30222] =            ------------------洛阳茂婆婆送信任务
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20106,
+		soundID = nil,
+		txt = "你将那封信带过来了？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		               {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10011, itemsInfo ={{count = 1}}}},
+					  },
+		    },
+		},
+	},
+	[30223] =            ------------------洛阳叶鉴送信任务
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29065,
+		soundID = nil,
+		txt = "你将那封信带过来了？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		        actions =
+		              {
+		               {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10011, itemsInfo ={{count = 1}}}},
+					  },
+		    },
+		},
+	},
+	[30224] =            ------------------洛阳家园总管送信任务
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29004,
+		soundID = nil,
+		txt = "你将那封信带过来了？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10011, itemsInfo ={{count = 1}}}},
+			      },
+		    },
+		},
+	},
+	[30225] =            ------------------洛阳鲍素送信任务
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29007,
+		soundID = nil,
+		txt = "你将那封信带过来了？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		               {action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin",taskID = 10011, itemsInfo ={{count = 1}}}},
+					  },
+		    },
+		},
+	},
+------------------------------------------帮会休闲任务--与npc对话任务触发器-----------------------------
+[30240] =            ------------------帮会总管任务指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29084,
+		soundID = nil,
+		txt = "我前些日子托付了一些事情给<npcID>，他目前在<mapID,x,y>，你替我前去询问进度如何？",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.CloseDialog, param ={}
+					  },
+		    },
+			},
+		},
+	},
+[30241] =            ------------------帮会玩家回复
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 0,
+		soundID = nil,
+		txt = "多谢相告，告辞！",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+						{action = DialogActionType.FinishLoopTask, param = {taskID = 10011}},
+					  },
+		    },
+		    },
+		},
+	[30242] =            ------------------洛阳皇甫嵩对话
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 20059,
+		soundID = nil,
+		txt = "帮会总管所交待之事已经完成，请代我转告你师尊。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.Goto, param = {dialogID = 30241}},
+		              },
+		    },
+		},
+	},
+	[30243] =            ------------------洛阳蒋多窍对话
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29003,
+		soundID = nil,
+		txt = "帮会总管所交待之事已经完成，请代我转告你师尊。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.Goto, param = {dialogID = 30241}},
+		              },
+		    },
+		},
+	},
+	[30244] =            ------------------洛阳张道长对话
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29008,
+		soundID = nil,
+		txt = "你师尊所交待之事已经完成，请代我转告你师尊。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.Goto, param = {dialogID = 30241}},
+		              },
+		    },
+		},
+	},
+	[30245] =            ------------------洛阳神算子对话
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 39000,
+		soundID = nil,
+		txt = "你师尊所交待之事还需要些时日才能完成，请代我转告你师尊。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.Goto, param = {dialogID = 30241}},
+		              },
+		    },
+		},
+	},
+	[30246] =            ------------------鲍素对话
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29007,
+		soundID = nil,
+		txt = "帮会总管所交待之事还需要些时日才能完成，请代我转告你师尊。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.Goto, param = {dialogID = 30241}},
+		              },
+		    },
+		},
+	},
+	[30247] =            ------------------庄启年对话
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29005,
+		soundID = nil,
+		txt = "帮会总管所交待之事还需要些时日才能完成，请代我转告你师尊。",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.Goto, param = {dialogID = 30241}},
+		              },
+		    },
+		},
+	},
+------------------------------------------挑战明雷任务触发器-----------------------------------------
+[30260] =            ------------------帮会总管任务指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29084,
+		soundID = nil,
+		txt = "本帮<npcID>武艺高强。你修为如今尚浅，我希望你能前往与其切磋，学习战斗经验，以便更快进步！",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.CloseDialog, param ={}},
+					  },
+		    },
+		},
+	},
+	[30261] =            ------------------帮会守卫---挑战帮会守卫
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 40032,
+		txt = "既然你想要同我切磋，那就开始吧！！",
+		options =
+        {
+			[1] = {
+				showConditions = {},
+				optionTxt = "进入战斗",
+				actions =
+				{
+				{action = DialogActionType.EnterScriptFight, param = {scriptID = 7102,mapID = 7}},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+
+		},
+	},
+	[30262] =            ------------------帮会门徒---智擒真凶
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 40033,
+		txt = "既然你要同我切磋，那就开始吧！！",
+		options =
+        {
+			[1] = {
+				showConditions = {},
+				optionTxt = "进入战斗",
+				actions =
+				{
+				{action = DialogActionType.EnterScriptFight, param = {scriptID = 7101,mapID = 7}},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+
+		},
+	},
+	[30263] =            ------------------帮会童子----积分挑战
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{},
+		speakerID = 40034,
+		txt = "既然你要同我切磋，那就开始吧！！",
+		options =
+        {
+			[1] = {
+				showConditions = {},
+				optionTxt = "进入战斗",
+				actions =
+				{
+				{action = DialogActionType.EnterScriptFight, param = {scriptID = 7103,mapID = 7}},
+				},
+			},
+			[2] = {
+				showConditions = {},
+				optionTxt = "稍后再说",
+				actions =
+				{
+				{action = DialogActionType.CloseDialog, param ={}},
+				},
+			},
+
+		},
+	},
+-----------------------------------------------帮会休闲任务--挑战暗雷任务触发器---------------------
+[30280] =            ------------------帮会总管任务指引
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 29084,
+		soundID = nil,
+		txt = "世道纷乱，连我帮也不能幸免。身为本帮成员，更应以捍卫帮会安危为己任。据帮众来报，<mapID,x,y>附近出现了一些<npcID>，我希望你解决它们！",
+		options =
+		{
+			{
+			 showConditions = {},
+			 optionTxt = "",
+		     actions =
+		              {
+		              {action = DialogActionType.CloseDialog, param ={}},
+					  },
+		    },
+		},
+	},
+    [30281] =             ------------------恶霸
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 78000,
+		soundID = nil,
+		txt = "帮会测试标记eb",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7200,mapID = 7}},
+				},
+			}
+		},
+	},
+    [30282] =             ------------------强盗
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 78005,
+		soundID = nil,
+		txt = "帮会测试标记qd",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7201,mapID = 7}},
+				},
+			}
+		},
+	},
+    [30283] =             ------------------劫匪
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 78010,
+		soundID = nil,
+		txt = "帮会测试标记jf",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7202,mapID = 7}},
+				},
+			}
+		},
+	},
+    [30284] =             ------------------小偷
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 78015,
+		soundID = nil,
+		txt = "帮会测试标记xt",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7203,mapID = 7}},
+				},
+			}
+		},
+	},
+[30285] =             ------------------杀手
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 78020,
+		soundID = nil,
+		txt = "帮会测试标记ss",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7204,mapID = 7}},
+				},
+			}
+		},
+	},
+[30286] =             ------------------流氓
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{},
+		speakerID = 78025,
+		soundID = nil,
+		txt = "帮会测试标记lm",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.EnterScriptFight, param = {scriptID = 7205,mapID = 7}},
+				},
+			}
+		},
+	},
+-------------------30300----30305 已有--------------------
 
 ----------------------抓宠玩法（35001——36000）
 	[35001] =        --------抓宠玩法
@@ -29278,164 +30468,6 @@ DialogModelDB =
 		}
 	},
 
--------帮会玩法对话----------------------------------------------------------------------------------------------------------------
-	[60000] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-			{condition = DialogCondition.CheckNum, param = {type = "CheckFactionContribute",num = 1000}},
-		},
-		speakerID = 0,
-
-		txt = "你上周未能达到发放俸禄的要求,帮会不予发放俸禄",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-
-					{action = DialogActionType.CloseDialog, param = {}},
-
-				},
-			}
-		},
-
-	},
-	[60001] =
-	{
-		dialogType = DialogType.NotOption,
-		conditions =
-		{
-			{condition = DialogCondition.CheckDate, param = {type = "CheckJoinFactionDate"}},
-		},
-		speakerID = 0,
-		matchSpecialFlag = "factionJoinDate",
-		txt = " 你在%s入帮,未满一周,我还不能发俸禄给你！",
-		options =
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-
-					{action = DialogActionType.CloseDialog, param = {}},
-
-				},
-			}
-		},
-
-	},
-	[60002] =
-	{
-		dialogType = DialogType.HasOption,
-		conditions =
-		{
-		},
-		speakerID = 0,
-		matchSpecialFlag = "factionSalary",
-		txt = "你上周累计可获得帮派俸禄%s万绑银,现在领取吗？",
-		options =
-		{
-			[1] = {
-				showConditions = {},
-				optionTxt = "好，现在就领取",
-				actions =
-				{
-					{action = DialogActionType.ChangePlayerMoney , param ={type = "Add",flag = "factionSalary"}},
-				},
-			},
-			[2] = {
-				showConditions = {},
-				optionTxt = "等等，现在还不缺钱",
-				actions =
-				{
-					{action = DialogActionType.CloseDialog , param ={}},
-				},
-			},
-		},
-
-	},
-	[60003] = 
-	{
-		dialogType = DialogType.NotOption,
-		conditions = 
-		{
-			{condition = DialogCondition.CheckFactionConfiguration, param = {type = "CheckGetSalary"}},
-		},
-		speakerID = 0,
-		txt = "你这周已经领取过俸禄了",
-		options = 
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					
-					{action = DialogActionType.CloseDialog, param = {}},
-					
-				},
-			}
-		},
-
-	},
-	[60004] = 
-	{
-		dialogType = DialogType.NotOption,
-		conditions = 
-		{
-			{condition = DialogCondition.CheckFactionConfiguration, param = {type = "CheckFactionLevel",level = 2}},
-		},
-		speakerID = 0,
-		txt = "帮会等级未达到两级，暂时不能开启帮会商店",
-		options = 
-		{
-			{
-				showConditions = {},
-				optionTxt = "",
-				actions =
-				{
-					
-					{action = DialogActionType.CloseDialog, param = {}},
-					
-				},
-			}
-		},
-
-	},
-	[60005] = 
-	{
-		dialogType = DialogType.HasOption,
-		conditions = 
-		{
-			
-		},
-		speakerID = 0,
-		txt = "这里是帮会商店，有什么需要吗？",
-		options = 
-		{
-			[1] = {
-				showConditions = {},
-				optionTxt = "我要买点东西",
-				actions =
-				{	
-					{action = DialogActionType.RequestNpcTrade , param = {npcPackID = 16},},
-				},
-			},
-			[2] = {
-				showConditions = {},
-				optionTxt = "没事",
-				actions =
-				{
-					{action = DialogActionType.CloseDialog , param ={}},
-				},
-			},
-		},
-	},
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -59954,7 +60986,7 @@ DialogModelDB =
 			},
 			[3] = {
 				showConditions = {},
-				optionTxt = "8层(元宝:50000)",
+				optionTxt = "8层<font color = '#FFFF00FF'>(元宝:50000)</font>",
 				actions =
 				{
 					-- 跳转对话
@@ -59963,7 +60995,7 @@ DialogModelDB =
 			},
 			[4] = {
 				showConditions = {},
-				optionTxt = "9层(元宝:70000)",
+				optionTxt = "9层<font color = '#FFFF00FF'>(元宝:70000)</font>",
 				actions =
 				{
 					-- 跳转对话
@@ -59972,7 +61004,7 @@ DialogModelDB =
 			},
 			[5] = {
 				showConditions = {},
-				optionTxt = "10层(元宝:90000)",
+				optionTxt = "10层<font color = '#FFFF00FF'>(元宝:90000)</font>",
 				actions =
 				{
 					-- 跳转对话
@@ -105604,6 +106636,29 @@ DialogModelDB =
 	         },
          },
 
+ 	[36097] =             -------------古塔驱妖任务
+	{
+		dialogType = DialogType.HasOption,
+		conditions =
+		{
+		{condition = DialogCondition.HasTask, param = {taskID = 60000, statue = true}},
+		},
+		speakerID = 29092,
+		soundID = nil,
+		txt = "开启古塔驱妖",
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "古塔驱妖",
+				actions =
+				{
+					{action = DialogActionType.OldTowerEliminate ,param = {taskID = 60000,}},
+			    },
+		    },
+         },
+     },
+
 -- 帮会任务挑战NPC
 	[30200] = 
 	{
@@ -105654,14 +106709,15 @@ DialogModelDB =
 			},
 		},
 	},
-	[38000] =    -----------帮会环任务测试对话
+-----------------------------------------------帮会NPC绑定对话-----------------------------------------------------------
+	[38000] =    -----------帮会守卫绑定对话
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 40032,
-		txt = "上天",
+		txt = "保帮护派，赴汤蹈火！",
 		options =
 		{
 			{
@@ -105672,19 +106728,19 @@ DialogModelDB =
 				optionTxt = "挑战",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 200 ,mapID = nil},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7102 ,mapID = nil},},
 				},
 			}
 		},
 	},
-	[38001] =    -----------帮会环任务测试对话
+	[38001] =    -----------帮会门徒绑定对话
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 40033,
-		txt = "入地",
+		txt = "为帮会效力，某在所不辞！",
 		options =
 		{
 			{
@@ -105695,35 +106751,23 @@ DialogModelDB =
 				optionTxt = "挑战",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 200 ,mapID = nil},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7101 ,mapID = nil},}, ---智擒真凶
 				},
 			}
 		},
 	},
-	[38002] =    -----------帮会环任务测试对话
+	[38002] =    -----------帮会童子绑定对话
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 40034,
-		txt = "日中间",
+		txt = "哎呀呀~帮会内的空气真好呢！",
 		options =
 		{
-			[1] =
-			{
-				showConditions = 
-				{
-					{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.buyItem, npcID = 40034}},
-				},
-				optionTxt = "上缴帮会任务物品",
-				actions =
-				{
-					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10011, itemsInfo = {count = 1},},},
-				},
-			},
 
-			[2] =
+			[1] =
 			{
 				showConditions = 
 				{
@@ -105732,20 +106776,20 @@ DialogModelDB =
 				optionTxt = "挑战",
 				actions =
 				{
-					{action = DialogActionType.EnterScriptFight , param = {scriptID = 200 ,mapID = nil},},
+					{action = DialogActionType.EnterScriptFight , param = {scriptID = 7103 ,mapID = nil},}, -----积分挑战
 				},
 			},
 		},
 	},
 
-	[38003] =    -----------帮会环任务测试对话
+	[38003] =    -----------帮会总管绑定对话
 	{
 		dialogType = DialogType.HasOption,
 		conditions =
 		{
 		},
 		speakerID = 29084,
-		txt = "笃笃笃嘟嘟嘟",
+		txt = "无兄弟不帮会！炆凯邀请你一起征战天下！",
 		options =
 		{
 			[1] = {
@@ -105753,7 +106797,7 @@ DialogModelDB =
 				{
 					{condition = DialogCondition.HasTask, param = {taskID = 10011, statue = false}},
 				},
-				optionTxt = "接受帮会任务2",
+				optionTxt = "领取帮会休闲任务",
 				actions =
 				{
 					{action = DialogActionType.RecetiveTask, param = {taskID = 10011}},
@@ -105769,7 +106813,19 @@ DialogModelDB =
 				{
 					{action = DialogActionType.Gotos , param = {dialogIDs = {60000,60001,60002}},},
 				},
-			}
+			},
+			[3] =
+			{
+				showConditions = 
+				{
+					{condition = DialogCondition.LoopTaskTalk, param = {taskID = 10011, taskType = LoopTaskTargetType.buyItem, npcID = 29084}},
+				},
+				optionTxt = "上缴帮会任务物品",
+				actions =
+				{
+					{action = DialogActionType.OpenUI ,param = {v = "SubmitItemWin", taskID = 10011, itemsInfo = {count = 1},},},
+				},
+			},
 		},
 	},
 	[39000] =    -----------帮会休闲副本npc对话
@@ -105800,52 +106856,85 @@ DialogModelDB =
 	[70000]={
 		dialogType = DialogType.HasOption,
 		txt = "煮酒焚香笑红尘，试剑论法问英雄",
-		
-		[1] = {
-			showConditions = {},
-			optionTxt = "参加煮酒论英雄",
-			actions =
-			{
-				-- 跳转对话
-				{action = DialogActionType.EnterDiscussHero, param = {x=10,y=10},},
-			},
+		conditions =
+		{
+		{condition = DialogCondition.CheckDiscussHero, param = {}},
 		},
-			
-		[2] = {
-			showConditions = {},
-			optionTxt = "告辞",
-			actions =
-			{
-				-- 跳转对话
-				{action = DialogActionType.CloseDialog , param = {},},
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "参加煮酒论英雄",
+				actions =
+				{
+					-- 跳转对话
+					{action = DialogActionType.EnterDiscussHero, param = {x=219,y=110},},
+				},
 			},
+				
+			[2] = {
+				showConditions = {},
+				optionTxt = "告辞",
+				actions =
+				{
+					-- 跳转对话
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
+			},
+			},
+	},      
+	
+
+[70100] =---乾元岛
+	{
+		dialogType = DialogType.NotOption,
+		conditions =
+		{
+		},
+		speakerID = 20002,
+		soundID = nil,
+		txt = "我阐教在人传承有六大仙门，本座已令其中一派乾元岛掌门太极仙翁收你入门，教你降妖伏魔本领！你且去寻莲花童子助你下凡！",
+		options =
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+				{action = DialogActionType.Goto, param = {dialogID = 70000}},
+				},
+			}
 		},
 	},
 
 	[70001]={
 		dialogType = DialogType.HasOption,
 		txt = "煮酒焚香笑红尘，试剑论法问英雄",
-
-		[1] = {
-			showConditions = {},
-			optionTxt = "进入战斗",
-			actions =
-			{
-				-- 跳转对话
-				{action = DialogActionType.DiscussHeroFight,param = {},},
+		conditions =
+		{
+		},
+		options =
+		{
+			[1] = {
+				showConditions = {},
+				optionTxt = "在下乐意奉陪（进入战斗）",
+				actions =
+				{
+					-- 跳转对话
+					{action = DialogActionType.DiscussHeroFight,param = {scriptID = 8990,},},
+				},
+			},
+				
+			[2] = {
+				showConditions = {},
+				optionTxt = "告辞，改日再战",
+				actions =
+				{
+					-- 跳转对话
+					{action = DialogActionType.CloseDialog , param = {},},
+				},
 			},
 		},
-			
-		[2] = {
-			showConditions = {},
-			optionTxt = "告辞",
-			actions =
-			{
-				-- 跳转对话
-				{action = DialogActionType.CloseDialog , param = {},},
-			},
-		},
-
 	},
 
 	-------------------------------------------------------------------------------------------------------------------------

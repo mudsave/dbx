@@ -58,6 +58,15 @@ end
 --测试猎金场
 function GMSystem:openGoldHunt( player)
 	ActivityManager.getInstance():openActivity(4, "GoldHuntZone1")
+	ActivityManager.getInstance():openActivity(5, "GoldHuntZone2")
+	ActivityManager.getInstance():openActivity(6, "GoldHuntZone3")
+end
+
+--关闭猎金场
+function GMSystem:closeGoldHunt( player)
+	ActivityManager.getInstance():closeActivity(4)
+	ActivityManager.getInstance():closeActivity(5)
+	ActivityManager.getInstance():closeActivity(6)
 end
 
 --测试猎金场

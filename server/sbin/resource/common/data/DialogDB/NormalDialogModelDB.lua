@@ -6942,7 +6942,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 430}},
+					{action = DialogActionType.Goto, param = {dialogID = 431}},
 					},
 			}
 		},
@@ -7415,8 +7415,9 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.RecetiveTask, param = {taskID = 1101}},
-					},
+					{action = DialogActionType.FinishTask, param = {taskID = 1384}},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1101}},
+			},
 			}
 		},
 	},
@@ -8287,9 +8288,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1114}},
-				    {action = DialogActionType.RecetiveTask, param = {taskID = 1115}},
-			},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -8459,10 +8459,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1118}},
-				    {action = DialogActionType.RecetiveTask, param = {taskID = 1151}},
-		    {action = DialogActionType.Goto, param = {dialogID = 1101}},
-				},
+					{action = DialogActionType.Goto, param = {dialogID = 1101}},
+					},
 			}
 		},
 	},
@@ -8529,6 +8527,27 @@ NormalDialogModelDB =
 			}
 		},
 	},
+[1054] = 
+	{
+		dialogType = DialogType.NotOption,
+		conditions = 
+		{
+		},
+		speakerID = 20002,
+		soundID = nil,
+		txt = "少侠你已达到三十级，请到玄都玉京来找我，接取下一个任务。",
+		options = 
+		{
+			{
+				showConditions = {},
+				optionTxt = "",
+				actions =
+				{
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
+			}
+		},
+	},
 [1101] = 
 	{
 		dialogType = DialogType.NotOption,
@@ -8545,7 +8564,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.FinishTask, param = {taskID = 1113}},
+					{action = DialogActionType.FinishTask, param = {taskID = 1118}},
 				    {action = DialogActionType.RecetiveTask, param = {taskID = 1151}},
 			},
 			}
@@ -12456,7 +12475,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-						},
+					    {action = DialogActionType.Gotos, param = {dialogIDs = {1332,1337,1342,1347,1352,1357}}},
+					},
 			}
 		},
 	},
@@ -15563,8 +15583,8 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 1501}},
-					},
+					{action = DialogActionType.CloseDialog, param ={}},
+						},
 			}
 		},
 	},
@@ -23435,7 +23455,8 @@ NormalDialogModelDB =
 				actions =
 				{
 					{action = DialogActionType.FinishTask, param = {taskID = 1817}},
-					},
+				    {action = DialogActionType.RecetiveTask, param = {taskID = 1901}},
+			},
 			}
 		},
 	},
@@ -24314,7 +24335,7 @@ NormalDialogModelDB =
 		conditions = 
 		{
 		},
-		speakerID = 0,
+		speakerID = 21401,
 		soundID = nil,
 		txt = "曹操可是听闻我要离去，便避而不见，尔等速速让开，让我进去！",
 		options = 
@@ -24335,7 +24356,7 @@ NormalDialogModelDB =
 		conditions = 
 		{
 		},
-		speakerID = 20401,
+		speakerID = 21401,
 		soundID = nil,
 		txt = "我们这就向曹操辞行，前往河北！",
 		options = 
@@ -24400,7 +24421,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关将军我认输了，莫再动手！",
+		txt = "你速速让开道路，我要面见曹操！",
 		options = 
 		{
 			{
@@ -24408,7 +24429,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 2048}},
+					{action = DialogActionType.Goto, param = {dialogID = 2049}},
 					},
 			}
 		},
@@ -24421,7 +24442,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21433,
 		soundID = nil,
-		txt = "你速速让开道路，我要面见曹操！",
+		txt = "关将军，我家主公确实不在府上，你如此擅闯，着实失礼。",
 		options = 
 		{
 			{
@@ -24442,7 +24463,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关将军，我家主公确实不在府上，你如此擅闯，着实失礼。",
+		txt = "既然曹操不愿见我，那我便自行离去，还望许将军转告曹丞相。",
 		options = 
 		{
 			{
@@ -24464,7 +24485,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "既然曹操不愿见我，那我便自行离去，还望许将军转告曹丞相。",
+		txt = "关某此行前往河北，已向曹丞相辞行。",
 		options = 
 		{
 			{
@@ -24485,7 +24506,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21434,
 		soundID = nil,
-		txt = "关某此行前往河北，已向曹丞相辞行。",
+		txt = "河北袁绍，乃是我家丞相对头，关将军没有丞相的通关文凭，便不可过关！",
 		options = 
 		{
 			{
@@ -24506,7 +24527,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "河北袁绍，乃是我家丞相对头，关将军没有丞相的通关文凭，便不可过关！",
+		txt = "孔秀阻我前往，故杀之，吾等继续前行。",
 		options = 
 		{
 			{
@@ -24527,7 +24548,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21439,
 		soundID = nil,
-		txt = "孔秀阻我前往，故杀之，吾等继续前行。",
+		txt = "关羽休走！汝杀孔秀，随我返回许昌向丞相谢罪！",
 		options = 
 		{
 			{
@@ -24548,7 +24569,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关羽休走！汝杀孔秀，随我返回许昌向丞相谢罪！",
+		txt = "关某此去河北，已向丞相辞行，东岭孔秀已被吾杀，汝亦欲寻死耶？",
 		options = 
 		{
 			{
@@ -24569,7 +24590,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关某此去河北，已向丞相辞行，东岭孔秀已被吾杀，汝亦欲寻死耶？",
+		txt = "继续前行，何人胆敢阻我？",
 		options = 
 		{
 			{
@@ -24590,7 +24611,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21440,
 		soundID = nil,
-		txt = "继续前行，何人胆敢阻我？",
+		txt = "关将军此去何处？可有丞相手信？如无丞相文凭，即为逃窜。",
 		options = 
 		{
 			{
@@ -24611,7 +24632,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关将军此去何处？可有丞相手信？如无丞相文凭，即为逃窜。",
+		txt = "事兀不曾讨得，韩将军休要阻我！",
 		options = 
 		{
 			{
@@ -24632,7 +24653,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "事兀不曾讨得，韩将军休要阻我！",
+		txt = "曹操对我避而不见，沿路守将阻我前行，奈何大哥受困于河北，即使杀光沿路曹将，也要速速到达河北！",
 		options = 
 		{
 			{
@@ -24653,7 +24674,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21441,
 		soundID = nil,
-		txt = "曹操对我避而不见，沿路守将阻我前行，奈何大哥受困于河北，即使杀光沿路曹将，也要速速到达河北！",
+		txt = "关羽你杀我军多位将士，一路闯关，我这就擒住你交由主公定罪！",
 		options = 
 		{
 			{
@@ -24674,7 +24695,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关羽你杀我军多位将士，一路闯关，我这就擒住你交由主公定罪！",
+		txt = "废话少说！休要拦我道路！",
 		options = 
 		{
 			{
@@ -24695,7 +24716,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "废话少说！休要拦我道路！",
+		txt = "此处距离河北已不远，我们继续向河北前进。",
 		options = 
 		{
 			{
@@ -24716,7 +24737,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21442,
 		soundID = nil,
-		txt = "此处距离河北已不远，我们继续向河北前进。",
+		txt = "关羽还不速速束手就擒！",
 		options = 
 		{
 			{
@@ -24737,7 +24758,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关羽还不速速束手就擒！",
+		txt = "关某已向曹操辞行，尔等休要再拦我！",
 		options = 
 		{
 			{
@@ -24758,7 +24779,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关某已向曹操辞行，尔等休要再拦我！",
+		txt = "前方还有最后一名守将，名曰秦琪，其后便是河北地界！",
 		options = 
 		{
 			{
@@ -24779,7 +24800,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "前方还有最后一名守将，名曰秦琪，其后便是河北地界！",
+		txt = "秦将军，吾等一行欲往河北相救兄长刘备，还望放行。",
 		options = 
 		{
 			{
@@ -24800,7 +24821,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21443,
 		soundID = nil,
-		txt = "秦将军，吾等一行欲往河北相救兄长刘备，还望放行。",
+		txt = "关羽汝斩我军五员守将，还妄想我放你离去！还不束手就擒！",
 		options = 
 		{
 			{
@@ -24821,7 +24842,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "关羽汝斩我军五员守将，还妄想我放你离去！还不束手就擒！",
+		txt = "前方乃是河北，我们已经要离开曹操地界了，继续前进。",
 		options = 
 		{
 			{
@@ -24842,7 +24863,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 0,
 		soundID = nil,
-		txt = "前方乃是河北，我们已经要离开曹操地界了，继续前进。",
+		txt = "过五关斩六将，关将军当真勇猛无敌！",
 		options = 
 		{
 			{
@@ -24863,7 +24884,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "过五关斩六将，关将军当真勇猛无敌！",
+		txt = "此处便是河北地界，我们这就前往袁绍军中，救出我兄长玄德！",
 		options = 
 		{
 			{
@@ -24885,7 +24906,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21444,
 		soundID = nil,
-		txt = "此处便是河北地界，我们这就前往袁绍军中，救出我兄长玄德！",
+		txt = "你是何人？此处乃是我周仓大王的地界，交出身上值钱的物件，便让你们通过！",
 		options = 
 		{
 			{
@@ -24904,9 +24925,9 @@ NormalDialogModelDB =
 		conditions = 
 		{
 		},
-		speakerID = 21401,
+		speakerID = 0,
 		soundID = nil,
-		txt = "你是何人？此处乃是我周仓大王的地界，交出身上值钱的物件，便让你们通过！",
+		txt = "区区山贼也敢自称大王，看我为民除害！",
 		options = 
 		{
 			{
@@ -24927,7 +24948,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21444,
 		soundID = nil,
-		txt = "区区山贼也敢自称大王，看我为民除害！",
+		txt = "想必这位便是关羽关将军，吾奉张飞将军之命，在此探查关将军和玄德公下落，张飞将军就在前方不远！",
 		options = 
 		{
 			{
@@ -24935,7 +24956,7 @@ NormalDialogModelDB =
 				optionTxt = "",
 				actions =
 				{
-					{action = DialogActionType.Goto, param = {dialogID = 2073}},
+					{action = DialogActionType.Goto, param = {dialogID = 2074}},
 					},
 			}
 		},
@@ -24948,7 +24969,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "英雄饶命！我认输了！",
+		txt = "原来三弟也已来到河北，我们速去与翼德相见。",
 		options = 
 		{
 			{
@@ -24970,7 +24991,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21401,
 		soundID = nil,
-		txt = "想必这位便是关羽关将军，吾奉张飞将军之命，在此探查关将军和玄德公下落，张飞将军就在前方不远！",
+		txt = "翼德吾弟，自徐州一战，吾等兄弟失散，听闻兄长就在河北袁绍军中，三弟可有兄长消息？",
 		options = 
 		{
 			{
@@ -24991,7 +25012,7 @@ NormalDialogModelDB =
 		},
 		speakerID = 21449,
 		soundID = nil,
-		txt = "原来三弟也已来到河北，我们速去与翼德相见。",
+		txt = "二哥你终于来了，我已打探到袁绍的心腹军师逢纪如今就在河内，其定然知晓刘备的下落，我们即刻便出发吧。",
 		options = 
 		{
 			{

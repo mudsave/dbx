@@ -25,6 +25,7 @@ function Player:__init_basic()
 	self._loginPos		= { false,false,false }		--[1]=mapID,[2]=x,[3]=y
 	self.attrSet		= PlayerAttributeSet(self)
 	self.properties		= false -- 社会服感兴趣的属性
+	self.banSpeechTime	= 0
 end
 
 function Player:__release_basic()
@@ -117,6 +118,14 @@ end
 
 function Player:getLastActive()
 	return self.lastActiveTime
+end
+
+function Player:setBanSpeechTime(banSpeechTime)
+	self.banSpeechTime = banSpeechTime
+end
+
+function Player:getBanSpeechTime()
+	return self.banSpeechTime
 end
 
 -- 玩家的登录位置
@@ -442,8 +451,9 @@ function Player:onLevelUp(level)
 			sessionMgr:createSession(self)
 		end
 	end
-
-	self:flushPropBatch() -- 玩家升级以后同样也发送一次所有属性
+	if not g_flushOnce then
+		self:flushPropBatch() -- 玩家升级以后同样也发送一次所有属性
+	end
 	self:getHandler(HandlerDef_Pet):handlePetLevelUP()
 end
 
@@ -451,8 +461,8 @@ end
 function Player:addAttrPoint(value)
 	self:addAttrValue(player_attr_point,value)
 	local handler = self:getHandler(HandlerDef_AutoPoint)
-	if handler and handler:isAutoAttr() then
-		handler:distibuteAttrPoints()
+	if handler then
+		handler:effect( self,AutoPointHandler.Attr )
 	end
 end
 
@@ -460,8 +470,8 @@ end
 function Player:addPhasePoint(value)
 	self:addAttrValue(player_phase_point,value)
 	local handler = self:getHandler(HandlerDef_AutoPoint)
-	if handler and handler:isAutoPhase() then
-		handler:distibutePhasePoints()
+	if handler then
+		handler:effect( self,AutoPointHandler.Phaz )
 	end
 end
 
@@ -490,24 +500,28 @@ end
 -- 这个函数用来同步属性吗? from:2017年1月3日
 -- 玩家首次登陆初始化属性
 local function initFirstLoginAttr(self)
-	if self:getXp() == 0 then
-		self:setXp(0)
-	end
-	if self:getHP() == 0 then
-		self:setHP(self:getMaxHP())
-	end
-	if self:getHP() > self:getMaxHP() and self.allLoaded then
-		self:setHP(self:getMaxHP())
-	end
-	if self:getMP() == 0 then
-		self:setMP(self:getMaxMP())
-	end
-	if self:getMP() > self:getMaxMP() and self.allLoaded then
-		self:setMP(self:getMaxMP())
-	end
-	-- 获取最大属性值
-	if self:getVigor() == 0 then
-		self:setVigor(self:getMaxVigor())
+
+	if self.level == 1 and self:getXp() == 0 then
+
+		if self:getXp() == 0 then
+			self:setXp(0)
+		end
+		if self:getHP() == 0 then
+			self:setHP(self:getMaxHP())
+		end
+		if self:getHP() > self:getMaxHP() and self.allLoaded then
+			self:setHP(self:getMaxHP())
+		end
+		if self:getMP() == 0 then
+			self:setMP(self:getMaxMP())
+		end
+		if self:getMP() > self:getMaxMP() and self.allLoaded then
+			self:setMP(self:getMaxMP())
+		end
+		-- 获取最大属性值
+		if self:getVigor() == 0 then
+			self:setVigor(self:getMaxVigor())
+		end
 	end
 end
 
@@ -579,7 +593,7 @@ function Player:loadBasicDataFromDB(recordList)
 	self:setPos({rs.mapID, rs.posX, rs.posY})
 	self:setLoginPos({rs.mapID, rs.posX, rs.posY})
 	self:getHandler(HandlerDef_Ride):setRideCapacity(rs.rideBar)
-
+	self:setBanSpeechTime(rs.banSpeechTime)
 	-- 加载玩家属性集合
 	self.attrSet:loadAttrRecord(recordList[2])
 
@@ -668,6 +682,15 @@ function Player:onPlayerLogout(reason)
 		yPos = prevPos[3]
 	end
 
+	--如果在古塔驱妖场景中
+	if self:getScene():getMapID() == oldTowerMapID then
+		local prevPos = g_oldTowerSym:getEnterPos(self:getID())
+		mapID = prevPos[1]
+		xPos = prevPos[2]
+		yPos = prevPos[3]
+		g_oldTowerSym:CleanOldTowerEliminate(self:getID())
+	end
+
 	-- 如果玩家在通天塔场景当中
 	if mapID >= 1001 and mapID <= 1200 then
 		mapID = 10
@@ -689,6 +712,7 @@ function Player:onPlayerLogout(reason)
 	props["Parts"] = self:getShowParts()
 	props["Cap"] = self:getHandler(HandlerDef_PetDepot):getCapacity()
 	props["Bar"] = self:getHandler(HandlerDef_Ride):getRideCapacity()
+	props["BanTime"] = self:getBanSpeechTime()
 	--注意新增要保存的属性需修改存储过程
 	local dbID = self._dbId
 	LuaDBAccess.updatePlayerBatch(dbID, props)

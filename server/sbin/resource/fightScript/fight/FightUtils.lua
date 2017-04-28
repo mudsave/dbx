@@ -712,7 +712,12 @@ function FightUtils.canCatch(player,monster)
 	if not petID then
 		return -1
 	end
-	
+	--怪物等级是否超过玩家的等级
+	local monsterLevel = monster:getLevel()
+	local playerLevel = player:getLevel()
+	if monsterLevel > playerLevel then
+		return -3
+	end
 	--是否超过最大宠物数
 	local curPetNum = player:getPetAmount()
 	local maxNum = player:getAttrValue(player_max_pet)

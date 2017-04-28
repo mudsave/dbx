@@ -44,7 +44,6 @@ function Pet:__release()
 end
 
 -- 所有者相关ID
-
 function Pet:setOwner(owner)
 	if owner then
 		self.ownerID	= owner:getID()
@@ -64,7 +63,6 @@ function Pet:getOwnerDBID()
 end
 
 -- 唯一标识
-
 function Pet:setDBID(dbid)
 	self.dbID = dbid
 end
@@ -105,7 +103,6 @@ function Pet:getAttrValue(attrName)
 end
 
 -- 创建时间
-
 function Pet:setBirth(uTime)
 	self.birthTime = uTime
 end
@@ -115,7 +112,6 @@ function Pet:getBirth()
 end
 
 -- 配置ID
-
 function Pet:setConfigID(configID)
 	if self:initByConfig(configID) then
 		self.configID = configID
@@ -130,7 +126,6 @@ function Pet:getConfigID()
 end
 
 -- 宠物类型
-
 function Pet:setPetType(petType)
 	self.petType = petType
 	setPropValue(self._peer,PET_TYPE,petType)
@@ -141,7 +136,6 @@ function Pet:getPetType()
 end
 
 -- 攻击类型
-
 function Pet:setAttackType(atType)
 	self.atType = atType
 	setPropValue(self._peer,PET_ATTACK_TYPE,atType)
@@ -152,7 +146,6 @@ function Pet:getAttackType()
 end
 
 -- 相性类型
-
 function Pet:setPhaseType(psType)
 	self.psType = psType
 	setPropValue(self._peer,PET_PHASE_TYPE,psType)
@@ -163,7 +156,6 @@ function Pet:getPhaseType()
 end
 
 -- 忠诚度
-
 function Pet:setLoyalty(loyalty)
 	self.loyalty = loyalty
 	setPropValue(self._peer,PET_LOYALTY,loyalty)
@@ -174,7 +166,6 @@ function Pet:getLoyalty()
 end
 
 -- 等级
-
 function Pet:setLevel(level)
 	self:setAttrValue(pet_lvl,level)
 end
@@ -184,13 +175,11 @@ function Pet:getLevel()
 end
 
 -- 出战等级
-
 function Pet:getTakeLevel()
 	return PetDB[self.configID].takeLevel
 end
 
 -- 状态
-
 function Pet:setPetStatus(status)
 	local prev = self.petStatus
 	if prev ~= status then
@@ -205,7 +194,6 @@ function Pet:getPetStatus()
 end
 
 -- 宠物寿命
-
 function Pet:setPetLife(life)
 	self:setAttrValue(pet_life,life)
 end
@@ -215,7 +203,6 @@ function Pet:getPetLife()
 end
 
 -- 强化等级
-
 function Pet:setUpLevel(upLevel)
 	self.upLevel = upLevel
 	setPropValue(self._peer,PET_UPLEVEL,upLevel)
@@ -270,7 +257,7 @@ end
 
 -- 绑定宠物到某个实体
 function Pet:attachTo(player)
-	self.attrSet:updateAll()
+	self.attrSet:updateAll( true )
 	attachEntity(self:getPeer(),player:getID())
 end
 

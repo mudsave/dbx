@@ -15,21 +15,21 @@ DiscussHeroDB = {
 		dbName = "updateDiscussHero",
 		startType = AtyStartType.fixedWeekHour,
 		activityTime = {
-			[1] = {startTime = {week = 1,hour = 15, min = 54},endTime = {week = 1,hour = 21, min = 0},},
+			[1] = {startTime = {week = 1,hour = 19, min = 54},endTime = {week = 1,hour = 23, min = 0},},
 		},
 		preScondBroadcast	= 0.5,	-- 第二次广播
-		readyPeriod			= 0.5,	-- 开始
-		ScondPeriod			= 0.5,	-- 第二阶段
-		ThirdPeriod			= 0.5,
-		preEndPeriod		= 0.5,
+		readyPeriod			= 5,	-- 开始
+		ScondPeriod			= 5,	-- 第二阶段
+		ThirdPeriod			= 5,
+		preEndPeriod		= 5,
 		-- 创建入口NPC位置
 		-- enterNpc = {npcDBID = 100000, mapID = 10, posX = 200,posY = 200},
 		-- 地图信息
 		mapInfo = {
-			[1] = { npcDBID = 70001, mapID = 910,minLevel = 30,maxLevel = 39,},
-			[2] = { npcDBID = 70001, mapID = 910,minLevel = 40,maxLevel = 49,},
-			[3] = { npcDBID = 70001, mapID = 910,minLevel = 50,maxLevel = 59,},
-			[4] = { npcDBID = 70001, mapID = 910,minLevel = 60,maxLevel = 69,},
+			[1] = { npcDBID = 70001, mapID = 912,minLevel = 30,maxLevel = 39,},
+			[2] = { npcDBID = 70001, mapID = 912,minLevel = 40,maxLevel = 49,},
+			[3] = { npcDBID = 70001, mapID = 912,minLevel = 50,maxLevel = 59,},
+			[4] = { npcDBID = 70001, mapID = 912,minLevel = 60,maxLevel = 69,},
 		},
 		-- {exp,subMoney,tao},
 		rewardInfo = {
@@ -37,28 +37,28 @@ DiscussHeroDB = {
 					exp = 100,subMoney = 100,tao = 100, 
 					items = 
 					{
-						{itemID = 1031006,weight = 10},
-						{itemID = 1031007,weight = 40},
-						{itemID = 1311076,weight = 80},
-						{itemID = 1311077,weight = 80},
-						{itemID = 1311078,weight = 80},
-						{itemID = 1311079,weight = 80},
-						{itemID = 1311080,weight = 80},
-						{itemID = 1311081,weight = 80},
+						{itemID = 1031007,weight = 10},--高级藏宝图
+						{itemID = 1031006,weight = 40},--藏宝图
+						{itemID = 1311076,weight = 80},--冰凌石
+						{itemID = 1311077,weight = 80},--烈焰石
+						{itemID = 1311078,weight = 80},--雷鸣石
+						{itemID = 1311079,weight = 80},--厚土石
+						{itemID = 1311080,weight = 80},--疾风石
+						{itemID = 1311081,weight = 80},--毒龙石
 					},
 					-- 这个只有3个 奖励前3的名额
 					rankingItem = {
-						[1] = {itemID = 3120003},
-						[2] = {itemID = 3120007},
-						[3] = {itemID = 3025003},
+						[1] = {itemID = 3120003},--血玲珑
+						[2] = {itemID = 3120007},--法玲珑
+						[3] = {itemID = 3025003},--双倍经验丹
 					},
 				},
 			[2]	= {
 					exp = 200,subMoney = 200,tao = 200, 
 					items = 
 					{
-						{itemID = 1031006,weight = 10},
-						{itemID = 1031007,weight = 40},
+						{itemID = 1031007,weight = 10},
+						{itemID = 1031006,weight = 40},
 						{itemID = 1311076,weight = 80},
 						{itemID = 1311077,weight = 80},
 						{itemID = 1311078,weight = 80},
@@ -76,8 +76,8 @@ DiscussHeroDB = {
 					exp = 300,subMoney = 300,tao = 300, 
 					items = 
 					{
-						{itemID = 1031006,weight = 10},
-						{itemID = 1031007,weight = 40},
+						{itemID = 1031007,weight = 10},
+						{itemID = 1031006,weight = 40},
 						{itemID = 1311076,weight = 80},
 						{itemID = 1311077,weight = 80},
 						{itemID = 1311078,weight = 80},
@@ -95,8 +95,8 @@ DiscussHeroDB = {
 					exp = 400,subMoney = 400,tao = 400, 
 					items = 
 					{
-						{itemID = 1031006,weight = 10},
-						{itemID = 1031007,weight = 40},
+						{itemID = 1031007,weight = 10},
+						{itemID = 1031006,weight = 40},
 						{itemID = 1311076,weight = 80},
 						{itemID = 1311077,weight = 80},
 						{itemID = 1311078,weight = 80},

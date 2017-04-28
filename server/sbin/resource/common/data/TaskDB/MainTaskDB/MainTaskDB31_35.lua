@@ -9,20 +9,20 @@ MainTaskDB31_35 =
 
 		name = "查探孙坚下落",	--任务名字
 		startNpcID = 20002,	--任务起始npc
-		endNpcID = 20601,		--任务结束npc
+		endNpcID = nil,		--任务结束npc
 		preTaskData = {1118},	--任务前置任务没有填nil
 		nextTaskID = 1152,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
-		endDialogID =1104,	--交任务对话ID没有填nil
+		endDialogID =nil,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.player_pot] = 5500,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4000,      --宠物经验
-			[TaskRewardList.subMoney] = 83000,    --绑银
+			[TaskRewardList.player_pot] = 8200,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8000,      --宠物经验
+			[TaskRewardList.subMoney] = 8300,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -78,9 +78,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 		    	[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.player_pot] = 5500,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4000,      --宠物经验 
-			[TaskRewardList.subMoney] = 84000,    --绑银
+			[TaskRewardList.player_pot] = 8200,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8000,      --宠物经验 
+			[TaskRewardList.subMoney] = 8400,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{
@@ -156,9 +156,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6000,   --玩家经验
-			[TaskRewardList.player_pot] = 5500,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3000,      --宠物经验
-			[TaskRewardList.subMoney] = 85000,    --绑银
+			[TaskRewardList.player_pot] = 8200,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6000,      --宠物经验
+			[TaskRewardList.subMoney] = 8500,    --绑银
 		},
 		consume =
 		{
@@ -209,9 +209,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 		    	[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.player_pot] = 5500,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4000,      --宠物经验
-			[TaskRewardList.subMoney] = 86000,    --绑银
+			[TaskRewardList.player_pot] = 8200,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8000,      --宠物经验
+			[TaskRewardList.subMoney] = 8600,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -264,7 +264,6 @@ MainTaskDB31_35 =
 					},
 			},
 			{type="openDialog", param={dialogID = 1114},},
-			{type="finishTask", param = {recetiveTaskID = 1155}},
 			},
 		},
 	},
@@ -283,9 +282,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 8000,   --玩家经验
-			[TaskRewardList.player_pot] = 5500,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4000,      --宠物经验
-			[TaskRewardList.subMoney] = 87000,    --绑银
+			[TaskRewardList.player_pot] = 8200,  	--人物潜能
+			[TaskRewardList.pet_xp] = 8000,      --宠物经验
+			[TaskRewardList.subMoney] = 8700,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -363,9 +362,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 88000,    --绑银
+			[TaskRewardList.player_pot] = 8200,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 8800,    --绑银
 		},
 		consume =
 		{
@@ -390,8 +389,8 @@ MainTaskDB31_35 =
 		name = "探寻黄盖",	--任务名字
 		startNpcID = 20646,	--任务起始npc
 		endNpcID = 20610,		--任务结束npc
-		preTaskData = {1155},	--任务前置任务没有填nil
-		nextTaskID = 1157,	--任务后置任务没有填nil
+		preTaskData = {1156},	--任务前置任务没有填nil
+		nextTaskID = 1158,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = 1124,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -400,9 +399,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 89000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 8900,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -470,8 +469,8 @@ MainTaskDB31_35 =
 		name = "营救黄盖",	--任务名字
 		startNpcID = 20610,	--任务起始npc
 		endNpcID = 20626,		--任务结束npc
-		preTaskData = {1156},	--任务前置任务没有填nil
-		nextTaskID = 1158,	--任务后置任务没有填nil
+		preTaskData = {1157},	--任务前置任务没有填nil
+		nextTaskID = 1159,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = 1130,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
@@ -480,9 +479,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 89000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 8900,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -577,9 +576,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 90000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 9000,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -632,9 +631,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 91000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 9100,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -720,9 +719,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 4600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 92000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 9200,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -811,9 +810,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 93000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 9300,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -856,9 +855,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 94000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 9400,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -892,9 +891,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.pet_xp] = 5600,      --宠物经验
-			[TaskRewardList.subMoney] = 3100,    --绑银
-			[TaskRewardList.player_pot] = 95000,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 9500,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -944,9 +943,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 6200,   --玩家经验
-			[TaskRewardList.player_pot] = 5600,  	--人物潜能
-			[TaskRewardList.pet_xp] = 3100,      --宠物经验
-			[TaskRewardList.subMoney] = 96000,    --绑银
+			[TaskRewardList.player_pot] = 8300,  	--人物潜能
+			[TaskRewardList.pet_xp] = 6200,      --宠物经验
+			[TaskRewardList.subMoney] = 9600,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -992,9 +991,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 9600,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4800,      --宠物经验
-			[TaskRewardList.subMoney] = 97000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 9600,      --宠物经验
+			[TaskRewardList.subMoney] = 9700,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1044,9 +1043,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 9600,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4800,      --宠物经验
-			[TaskRewardList.subMoney] = 98000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 9600,      --宠物经验
+			[TaskRewardList.subMoney] = 9800,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1095,9 +1094,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 100000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 10000,    --绑银
 		},
 		consume =
 		{
@@ -1137,9 +1136,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 101000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 10100,    --绑银
 		},
 		consume =
 		{
@@ -1184,9 +1183,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 9600,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4800,      --宠物经验
-			[TaskRewardList.subMoney] = 102000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 9600,      --宠物经验
+			[TaskRewardList.subMoney] = 10200,    --绑银
 		},
 		consume =
 		{
@@ -1264,9 +1263,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 103000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 10300,    --绑银
 		},
 		consume =
 		{
@@ -1319,9 +1318,9 @@ MainTaskDB31_35 =
 		rewards	= --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 9600,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 4800,      --宠物经验
-			[TaskRewardList.subMoney] = 104000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 9600,      --宠物经验
+			[TaskRewardList.subMoney] = 10400,    --绑银
 		},
 		consume =
 		{
@@ -1394,9 +1393,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 99000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 10500,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1429,7 +1428,7 @@ MainTaskDB31_35 =
 		name = "转告卢植",	--任务名字
 		startNpcID = 20627,	--任务起始npc
 		endNpcID = 20049,		--任务结束npc
-		preTaskData = {1171},	--任务前置任务没有填nil
+		preTaskData = {1173},	--任务前置任务没有填nil
 		nextTaskID = 1200,	--任务后置任务没有填nil
 		startDialogID = nil,	--接任务对话ID没有填nil
 		endDialogID = 1187,	--交任务对话ID没有填nil
@@ -1439,9 +1438,9 @@ MainTaskDB31_35 =
 		rewards = --任务奖励没有填{}
 		{
 			[TaskRewardList.player_xp] = 5000,   --玩家经验
-			[TaskRewardList.player_pot] = 5700,  	--人物潜能
-			[TaskRewardList.pet_xp] = 2500,      --宠物经验
-			[TaskRewardList.subMoney] = 105000,    --绑银
+			[TaskRewardList.player_pot] = 8400,  	--人物潜能
+			[TaskRewardList.pet_xp] = 5000,      --宠物经验
+			[TaskRewardList.subMoney] = 10600,    --绑银
 		},
 		consume =--任务消耗没有填{}
 		{},
@@ -1485,10 +1484,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 6000,   --玩家经验
+                [TaskRewardList.pet_xp] = 6000,      --宠物经验
+                [TaskRewardList.subMoney] = 10700,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =
@@ -1496,7 +1495,7 @@ MainTaskDB31_35 =
 		},
 		targets =
 		{
-		[1] = {type='Tarea',param = {mapID = 13, x = 55, y = 141, bor = true},},-------到达指定坐标
+		[1] = {type='Tarea',param = {mapID = 13, x = 54, y = 145, bor = true},},-------到达指定坐标
 		},
 			triggers = --任务触发器
 			{
@@ -1526,10 +1525,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 8600,   --玩家经验
+                [TaskRewardList.pet_xp] = 8600,      --宠物经验
+                [TaskRewardList.subMoney] = 10800,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -1544,7 +1543,7 @@ MainTaskDB31_35 =
 			dialogID = 1203,        --动作结束打开的对话框
 			npcsData =			--刷出npc数据
 			{
-			                {npcID = 20704, x = 54, y = 98,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
+			        {npcID = 20704, x = 54, y = 98,  noDelete = true,},--(坐标，动作ID，光效ID，)目标完成是否删除npc，
 					{npcID = 20737, x = 52, y = 97,  noDelete = true},
 					{npcID = 20739, x = 56, y = 97,  noDelete = true},
 					{npcID = 20736, x = 52, y = 95,  noDelete = true},
@@ -1562,7 +1561,7 @@ MainTaskDB31_35 =
 				},
 			[TaskStatus.Done] =
 			{
-			{type="autoTrace", param = {tarMapID=13, x =55, y = 141,npcID = 20701,},}, --自动寻路到王允身边
+			{type="autoTrace", param = {tarMapID=13, x =54, y = 145,npcID = 20701,},}, --自动寻路到王允身边
 		        },
 		},
 	},
@@ -1581,10 +1580,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 8600,   --玩家经验
+                [TaskRewardList.pet_xp] = 8600,      --宠物经验
+                [TaskRewardList.subMoney] = 10900,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -1618,7 +1617,7 @@ MainTaskDB31_35 =
 
 			[TaskStatus.Done]		=
 			{ 
-			{type="autoTrace", param = {tarMapID=13, x =55, y = 141,npcID = 20701,},}, --自动寻路到王允身边
+			{type="autoTrace", param = {tarMapID=13, x =54, y = 145,npcID = 20701,},}, --自动寻路到王允身边
 		},
 	},
 	},
@@ -1637,10 +1636,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 6000,   --玩家经验
+                [TaskRewardList.pet_xp] = 6000,      --宠物经验
+                [TaskRewardList.subMoney] = 11000,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =
@@ -1688,10 +1687,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银 
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 8600,   --玩家经验
+                [TaskRewardList.pet_xp] = 8600,      --宠物经验
+                [TaskRewardList.subMoney] = 11100,    --绑银 
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -1751,10 +1750,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 8600,   --玩家经验
+                [TaskRewardList.pet_xp] = 8600,      --宠物经验
+                [TaskRewardList.subMoney] = 11200,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -1835,10 +1834,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 6000,   --玩家经验
+                [TaskRewardList.pet_xp] = 6000,      --宠物经验
+                [TaskRewardList.subMoney] = 11300,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =
@@ -1883,10 +1882,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 8600,   --玩家经验
+                [TaskRewardList.pet_xp] = 8600,      --宠物经验
+                [TaskRewardList.subMoney] = 11400,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -1947,10 +1946,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 33000,    --绑银
-                [TaskRewardList.player_pot] = 9900,  	--人物潜能
+		[TaskRewardList.player_xp] = 8600,   --玩家经验
+                [TaskRewardList.pet_xp] = 8600,      --宠物经验
+                [TaskRewardList.subMoney] = 11500,    --绑银
+                [TaskRewardList.player_pot] = 8500,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -2025,17 +2024,17 @@ MainTaskDB31_35 =
 		endNpcID = 20730,		--任务结束npc
 		preTaskData = {1208},	--任务前置任务没有填nil
 		nextTaskID = {1210,1211,1212,1213,1214,1215},	--任务后置任务没有填nil
-		startDialogID = 1225,	--接任务对话ID没有填nil
-		endDialogID =nil,	--交任务对话ID没有填nil
+		startDialogID = nil,	--接任务对话ID没有填nil
+		endDialogID =1229,	--交任务对话ID没有填nil
 		taskType2 = TaskType2.Main,--任务类型
 		school = nil,	--门派限制没有填nil
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 11600,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -2096,10 +2095,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2142,10 +2141,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2189,10 +2188,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2235,10 +2234,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2281,10 +2280,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2327,10 +2326,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2373,10 +2372,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11800,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2421,10 +2420,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11800,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2469,10 +2468,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11800,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2517,10 +2516,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11800,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2565,10 +2564,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11800,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2613,10 +2612,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 11800,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2662,10 +2661,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 11900,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2719,10 +2718,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 12000,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -2769,8 +2768,8 @@ MainTaskDB31_35 =
 		name = "雪莲下落",	--任务名字
 		startNpcID = 20714,	--任务起始
 		endNpcID = 20713,	--任务结束npc
-		preTaskData = {1217},       --前置任务ID 
-		nextTaskID = 1219,	--任务后置任务没有填nil
+		preTaskData = {1218},       --前置任务ID 
+		nextTaskID = 1220,	--任务后置任务没有填nil
 		startDialogID =nil,	--
 		endDialogID = 1262,	--
 		taskType2 = TaskType2.Main,--任务类型
@@ -2778,10 +2777,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-          	[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+          	[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 12100,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2841,10 +2840,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 12200,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2907,10 +2906,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 12300,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -2996,10 +2995,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 12400,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =
@@ -3042,6 +3041,14 @@ MainTaskDB31_35 =
 						},
 					},
 		           	},
+					{type="deletePrivateNpc",
+				  param={
+						npcs =
+						{
+						[1] ={npcID = 20734, taskID = {1221}, index = 1}, --删除暗影魔姣
+						},
+					},
+			},
 				        {type="getItem", param = {itemID = 1041014, count = 1,}},			--获得指定数量的物品(参数物品ID，数量)
 					{type="openDialog", param={dialogID = 1273},},	
 			},
@@ -3062,10 +3069,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 12500,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -3089,7 +3096,15 @@ MainTaskDB31_35 =
 			             },
 			},
 			[TaskStatus.Done]		=
-			{		
+			{
+			{type = "deletePrivateTransfer", ------删除私有传送阵
+					param={
+							transfers =
+							{
+								{taskID = 1223, index = 1},
+							},
+						},
+				},
 			{type="deletePrivateNpc",
 				  param={
 						npcs =
@@ -3118,10 +3133,10 @@ MainTaskDB31_35 =
 		level = {1,150},--等级限制
 		rewards = --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 5600,   --玩家经验
+                [TaskRewardList.pet_xp] = 5600,      --宠物经验
+                [TaskRewardList.subMoney] = 12600,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =--任务消耗没有填{}
@@ -3164,10 +3179,10 @@ MainTaskDB31_35 =
 		level =	{1,150},--等级限制
 		rewards	= --任务奖励没有填{}
 		{
-		[TaskRewardList.player_xp] = 8000,   --玩家经验
-                [TaskRewardList.pet_xp] = 5000,      --宠物经验
-                [TaskRewardList.subMoney] = 34000,    --绑银
-                [TaskRewardList.player_pot] = 10200,  	--人物潜能
+		[TaskRewardList.player_xp] = 7000,   --玩家经验
+                [TaskRewardList.pet_xp] = 7000,      --宠物经验
+                [TaskRewardList.subMoney] = 12700,    --绑银
+                [TaskRewardList.player_pot] = 8600,  	--人物潜能
 	 
 		},
 		consume =

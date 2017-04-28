@@ -314,7 +314,7 @@ end
 
 -- 获得物品生成的等级
 function Item:getItemLvl()
-	return self.itemLvl
+	return self.itemLvl and self.itemLvl or 0
 end
 
 -- 治疗类道具类型对应表

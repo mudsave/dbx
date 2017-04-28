@@ -915,42 +915,58 @@ function FightSystem:onSetAttr(event)
 		return
 	end
 	local fightEntity = player
+	local type
 	if targetID then
 		targetID = tonumber(targetID)
 		local targetEntity = g_fightEntityMgr:getPlayer(targetID)
 		if not targetEntity then
 			targetEntity = g_fightEntityMgr:getMonster(targetID)
-		end
-		if targetEntity then
+			if targetEntity then
+				fightEntity = targetEntity
+				type = "mo"
+			else
+				targetEntity = g_fightEntityMgr:getPet(targetID)
+				type = "pe"
+				fightEntity = targetEntity
+			end
+		else
+			type = "pl"
 			fightEntity = targetEntity
 		end
+		
 	end
 	if not fightEntity then
 		return
 	end
 	attrType = tonumber(attrType)
 	attrValue = tonumber(attrValue)
-	if attrType == player_hp then
-		fightEntity:setHp(attrValue)
-	elseif attrType == player_mp then
-		fightEntity:setMp(attrValue)
-	elseif attrType == player_add_max_hp then
-		fightEntity:setAttrValue(player_add_max_hp, attrValue)
-	elseif attrType == player_add_max_mp then
-		fightEntity:setAttrValue(player_add_max_mp, attrValue)
-	elseif attrType == player_add_at then
-	elseif attrType == player_add_af then
-	elseif attrType == player_add_mt then
-	elseif attrType == player_add_mf then
-	elseif attrType == player_add_speed then
-	elseif attrType == player_add_str then
-	elseif attrType == player_add_int then
-	elseif attrType == player_add_sta then
-	elseif attrType == player_add_spi then
-	elseif attrType == player_add_dex then
-	elseif attrType == player_add_critical then
-	elseif attrType == player_add_tenacity then
+	if type == "pl" then
+		if attrType == player_hp then
+			fightEntity:setHp(attrValue)
+		elseif attrType == player_mp then
+			fightEntity:setMp(attrValue)
+		else
+			fightEntity:setAttrValue(attrType, attrValue)
+		end
+	elseif type == "mo" then
+		if attrType == monster_hp then
+			fightEntity:setHp(attrValue)
+		elseif attrType == monster_mp then
+			fightEntity:setMp(attrValue)
+		else
+			fightEntity:setAttrValue(attrType, attrValue)
+		end
+	elseif type == "pe" then
+		if attrType == pet_hp then
+			fightEntity:setHp(attrValue)
+		elseif attrType == pet_mp then
+			fightEntity:setMp(attrValue)
+		else
+			fightEntity:setAttrValue(attrType, attrValue)
+		end
+	else
 	end
+	
 	local event = Event(FightEvents_FC_SetAttr, fightEntity:getID(), attrType, attrValue)
 	g_eventMgr:fireRemoteEvent(event, player)
 end

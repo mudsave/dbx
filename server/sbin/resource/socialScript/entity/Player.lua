@@ -28,6 +28,7 @@ function Player:__init()
 	self._hClientLink	= nil
 	self._hGateId		= nil
 	self._id			= nil
+	self._banSpeechTime	= 0
 end
 
 function Player:__release()
@@ -48,6 +49,7 @@ function Player:__release()
 	self._hClientLink	= nil
 	self._hGateId		= nil
 	self._id			= nil
+	self._banSpeechTime	= nil
 end
 
 function Player:setID(id)
@@ -164,6 +166,20 @@ end
 
 function Player:getOfflineDate(  )
 	return self._offlineDate
+end
+
+function Player:getBanSpeechTime()
+	return self._banSpeechTime
+end
+
+function Player:setBanSpeechTime(banSpeechTime)
+	if banSpeechTime then
+		if banSpeechTime < 1 then
+			self._banSpeechTime = 0
+		else
+			self._banSpeechTime = banSpeechTime
+		end
+	end
 end
 
 

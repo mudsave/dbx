@@ -10,6 +10,7 @@ function TaskHandler:__init(entity)
 	self.currentTask = {}			--当前任务
 	self.nextTaskID = 0				--主线下一个任务
 	self.hisTasks = {}				--历史任务
+	self.guideHisTasks = {}			-- 做过的指引任务
 	self.taskTraceList = nil		--任务追踪列表
 	self.canRecetiveLoopTask = {}	--可接循环任务列表
 	self.count = 0					--任务数量
@@ -20,6 +21,7 @@ function TaskHandler:__init(entity)
 	self.dailyTaskConfiguration = {}   --日常任务配置表
 	-- 通天塔任务初
 	self.babelTaskInfo = {}
+	self.DB_index = 1
 
 
 end
@@ -74,12 +76,20 @@ function TaskHandler:addTask(task)
 end
 
 function TaskHandler:loadHistoryTask(hisTasks)
-	self.hisTasks = hisTasks
-	self:loadNextTaskID(hisTasks)
+	if hisTasks then
+		local tempRecord = self.hisTasks
+		tempRecord.hisTasks = hisTasks
+		tempRecord.isSaveDB = false
+		self:loadNextTaskID(hisTasks)
+	end
 end
 
 function TaskHandler:setTaskTraceList(taskTraceList)
 	self.taskTraceList = taskTraceList
+end
+
+function TaskHandler:setGuideHisTasks(guideHisTasks)
+	self.guideHisTasks = guideHisTasks
 end
 
 function TaskHandler:getTaskTraceList()
@@ -99,7 +109,7 @@ function TaskHandler:loadNextTaskID(hisTasks)
 					end
 				elseif type(nextTaskID) == "table" then
 					for _, nexttaskID in pairs(nextTaskID) do
-						if TaskCondition.normalTask(self._entity, nexttaskID) then
+						if TaskCondition.normalTask(self._entity, nexttaskID) or TaskCondition.guideTask(self._entity, nexttaskID) then
 							local taskType = NormalTaskDB[nexttaskID] and NormalTaskDB[nexttaskID].taskType2
 							if taskType == TaskType2.Main and self.nextTaskID < nexttaskID then
 								self.nextTaskID = nexttaskID
@@ -283,6 +293,11 @@ function TaskHandler:getCountRing(taskID)
 	return self.loopTaskInfo[taskID].countRing
 end
 
+function TaskHandler:getReceiveTimes(taskID)
+	self:checkTaskData(taskID)
+	return self.loopTaskInfo[taskID].receiveTimes
+end
+
 -- 得到完成次数
 function TaskHandler:getFinishTimes(taskID)
 	self:checkTaskData(taskID)
@@ -376,34 +391,65 @@ function TaskHandler:getTasks()
 end
 
 function TaskHandler:getHisTasks()
-	return self.hisTasks
+	local tempRecord = self.hisTasks
+	return tempRecord.hisTasks
 end
 
+function TaskHandler:getGuideHisTask()
+	return self.guideHisTasks
+end
+
+-- 跟新当前的历史任务，以前只要完成的主线任务，都记录最后一次完成的主线任务ID
+-- 还有指引任务历史记录单独用一个表来维护, 有关同学在这个接口进行添加
 function TaskHandler:updateHisTask(taskID)
-	if self.currentTask[taskID]:getSubType() == TaskType2.Sub then
-		return
-	end
-	local state = false
-	for _, histaskID in pairs(self.hisTasks) do
-		if histaskID == taskID then
-			state = true
+	if NormalTaskDB[taskID] then
+		-- 如果是主线任务
+		if self.currentTask[taskID]:getSubType() == TaskType2.Main then
+			local tempRecord = self.hisTasks
+			local hisTasks = tempRecord.hisTasks
+			if hisTasks then
+				if table.size(hisTasks)> 0 then
+					table.clear(hisTasks)
+				end
+			else
+				hisTasks = {}
+				tempRecord.hisTasks = hisTasks
+			end
+			table.insert(hisTasks, taskID)
+			tempRecord.isSaveDB = true
+		-- 指引任务接口
+		elseif self.currentTask[taskID]:getSubType() == TaskType2.NewBie then
+			table.insert(self.guideHisTasks,taskID)
 		end
-
-	end
-	if not state then
-		table.insert(self.hisTasks, taskID)
+		
 	end
 end
 
+-- 判断是否是主线任务
 function TaskHandler:isHisTask(taskID)
-	for _, histaskID in pairs(self.hisTasks) do
+	local tempRecord = self.hisTasks
+	local hisTasks = tempRecord.hisTasks
+	if hisTasks then
+		for _, histaskID in pairs(hisTasks) do
+			if histaskID == taskID then
+				return true
+			end
+		end
+		return false
+	else
+		return false
+	end
+end
+
+-- 判断是否是做过的指引任务
+function TaskHandler:isGuideHisTask(taskID)
+	for _,histaskID in pairs(self.guideHisTasks) do
 		if histaskID == taskID then
 			return true
 		end
 	end
 	return false
 end
-
 -- 删除任务
 function TaskHandler:removeTaskByID(taskID)
 	if self.currentTask[taskID] then
@@ -473,11 +519,11 @@ end
 -- 完成循环任务的接口,如果是天道任务。都完成之后才能接任务, 帮会任务不用这个接口
 function TaskHandler:finishLoopTask(taskID)
 	-- 完成当前任务，
+	self:updateFinishTimes(taskID)
 	self:finishTaskByID(taskID)
 	self.loopTaskInfo[taskID].isSaveDB = true
 	local player = self._entity
 	-- 完成循环任务的时候向活动界面发一个接口
-	self:updateFinishTimes(taskID)
 	local activityEvent = Event.getEvent(TaskEvent_SS_AddActivityPractise, player:getID(), taskID)
 	g_eventMgr:fireEvent(activityEvent)
 	-- 自动交接, 天道任务和其他任务处理方式不一样， 天道任务处理
@@ -551,7 +597,6 @@ function TaskHandler:finishTaskByID(taskID)
 		local taskPrivateHandler = self._entity:getHandler(HandlerDef_TaskPrData)
 		taskPrivateHandler:removeTraceInfo(taskID)
 		self:updateHisTask(taskID)
-		self:updateHisTaskToDB()
 		--最好不要在这个地方重新设置
 		self.currentTask[taskID]:stateChange(TaskStatus.Finished)
 		-- 完成之后环数+1
@@ -584,7 +629,7 @@ function TaskHandler:createNextTaskID(taskID)
 				end
 			elseif type(nextTaskID) == "table" then
 				for _, nexttaskID in pairs(nextTaskID) do
-					if TaskCondition.normalTask(self._entity, nexttaskID) then
+					if TaskCondition.normalTask(self._entity, nexttaskID) or TaskCondition.guideTask(self._entity, nexttaskID) then
 						local taskType = NormalTaskDB[nexttaskID].taskType2
 						if taskType == TaskType2.Main then
 							self.nextTaskID = nexttaskID
@@ -613,10 +658,31 @@ function TaskHandler:deleteTaskToDB(taskID)
 end
 
 function TaskHandler:updateHisTaskToDB()
-	if type(self.hisTasks) ~= "table" then
-		print("历史任务存储出错",self.hisTasks)
+	-- 跟新历史任务
+	local tempRecord = self.hisTasks
+	local hisTasks = tempRecord.hisTasks
+	if tempRecord.isSaveDB and type(hisTasks) == "table" then
+		LuaDBAccess.updateHisTask(self._entity:getDBID(), hisTasks)
 	end
-	LuaDBAccess.updateHisTask(self._entity:getDBID(), self.hisTasks)
+end
+
+-- 保存做完的是因任务到数据库
+function TaskHandler:checkHisGuideTask2DB()
+	LuaDBAccess.updateHisGuideTask(self._entity)
+end
+
+function TaskHandler:saveGuidedTask2DB(param)
+	if not param then return false end
+	local result = self.guideHisTasks[self.DB_index]
+	if self.DB_index > #(self.guideHisTasks) or not result then
+		return false 
+	end
+	param["spName"]			= "sp_saveGuidedTasks"
+	param["sort"]			= "_RoleID,_TaskID"
+	param["_RoleID"]		= self._entity:getDBID()
+	param["_TaskID"]		= result
+	self.DB_index			= self.DB_index + 1
+	return true
 end
 
 --检测玩家是否满足任务条件，如果是的话，则显示任务对话
@@ -628,8 +694,15 @@ function TaskHandler:checkTaskProvider(npcID)
 			if TaskCondition.normalTask(self._entity, taskID) then
 				return taskID, TaskType.normal
 			end
-
 		end
+		
+		-- 检测指引任务
+		for _, taskID in pairs(taskList) do
+			if TaskCondition.guideTask(self._entity, taskID) then
+				return taskID, TaskType.normal
+			end
+		end
+
 		--其他任务继续监测
 		for _, taskID in pairs(taskList) do
 			if TaskCondition.loopTask(self._entity, taskID, true) then
@@ -680,6 +753,7 @@ end
 
 -- 设置循环任务的环数
 function TaskHandler:loadLoopTaskInfo(loopTaskRecord)
+	print("load datebase:loadLoopTaskInfo", toString(loopTaskRecord))
 	for _, loopTask in pairs(loopTaskRecord or {}) do
 		local receiveTaskTime = loopTask.receiveTaskTime
 		-- 如果副本数据是上一个CD周期的，则要重置完成次数

@@ -14,14 +14,20 @@ int CClient::Init()
 		printf("Load script failed! %s\n", lua_tostring(m_pLuaState, -1));
 		return -1;
 	}
+	lua_getglobal(m_pLuaState, "printError");
 	lua_getglobal(m_pLuaState, "AppStart");
-	lua_pcall(m_pLuaState, 0, 0, 0);
+	int rt = lua_pcall(m_pLuaState, 0, 0, -2);
+	if(rt)
+	{
+		printf ("pushRequest error![%d]\n", rt);
+		return -1;
+	}
 	HRESULT hr;
 	m_pLinkCtrl = CreateLinkCtrl();
 	m_pThreadsPool = GlobalThreadsPool();
 	
 	ILinkSink* pAdminSink = static_cast<IMsgLinksImpl<IID_IMsgLinksAW_C>*>(this);
-	hr = m_pLinkCtrl->Connect("172.16.2.218", 30005, pAdminSink, 0);
+	hr = m_pLinkCtrl->Connect("172.16.2.217", 39015, pAdminSink, 0);
 	ASSERT_( SUCCEEDED(hr) );
 
 	RPCEngine::init(m_pLuaState);

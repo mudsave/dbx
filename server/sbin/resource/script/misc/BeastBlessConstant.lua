@@ -8,7 +8,7 @@ BeastBlessPlayerLvlRange= 10	--	等级差
 -- 特殊物品和特殊怪
 
 BeastBlessSpecialMonster = 25507
-BeastBlessSpecialItem = 3031006
+BeastBlessSpecialItem = 3120003
 
 -- 得到正常奖励
 BeastBlessReword		= 5

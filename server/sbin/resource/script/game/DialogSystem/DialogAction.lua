@@ -566,6 +566,23 @@ function DialogAction:doOpenPuzzle(player)
 	CactionSystem.getInstance():doOpenPuzzle(player)
 end
 
+--打开古塔驱妖
+function DialogAction:doOldTower(player, param)
+	--进入古塔驱妖
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local task = taskHandler:getTask(param.taskID)
+	if task then
+		local teamHandler = player:getHandler(HandlerDef_Team)
+		local teamID = teamHandler:getTeamID()
+		local team = g_teamMgr:getTeam(teamID)
+		if team then
+			print("组队玩家不能进入古塔驱妖")
+			return
+		end
+		g_oldTowerSym:initOldTowerData(player:getID())
+	end
+end
+
 --物品兑换
 function DialogAction:doExchangeProps(player)
 	print("兑换道具。")
@@ -702,7 +719,7 @@ function DialogAction:doDekaronSchoolFight(player,param)
 			local bPass = g_fightMgr:checkStartScriptFight(finalList, scriptID)
 			print("进入脚本战斗战斗，scriptID，bPass",scriptID,bPass)
 			if bPass then
-				g_dekaronSchoolMgr:addFightFlagList(teamID,scriptID)
+				--g_dekaronSchoolMgr:addFightFlagList(teamID,scriptID)
 				g_fightMgr:startScriptFight(finalList, scriptID,  nil ,FightBussinessType.Wild)
 			end
 		end

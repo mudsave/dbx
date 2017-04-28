@@ -1,415 +1,407 @@
 -- AutoPointHandler.lua
 -- 自动点数分配
 
+--[[
+	2017/4/20 改动:
+	1,数据库表改动
+		表petattrsetting更名为petattrplan
+		表roleattrsetting更名为roleattrplan
+		函数sp_LoadRoleAttrSetting更名为sp_LoadRoleAttrPlan,同时更新sp_LoadAll
+		函数sp_LoadPetAttrSetting更名为sp_LoadPetAttrPlan,同时更新sp_LoadPet
+		函数sp_UpdateRoleAttrSetting更名为sp_UpdateRoleAttrPlan
+		函数sp_UpdatePetAttrSetting更名为sp_UpdatePetPlan
+]]
 local math_floor		= math.floor
 local math_min			= math.min
-local table_concat		= table.concat
+local rawget			= rawget
+local rawset			= rawset
 local MaxPhasePoint		= 35	-- 在一个相性上最多分配的点数
-local DefaultPlanID		= 0		-- 添加一个默认的自动加点的id
 
--- 实体类型能否分配属性点 
-local CanAlloc = {
-	[eClsTypePlayer] = true,
-	[eClsTypePet]	 = true,
+-- 发送加点方案时候的选项
+local PlanNone = 1
+local PlanAttr = 2
+local PlanPhaz = 3
+local PlanBoth = 4
+
+-- 玩家属性方案
+local PlayerAttrPlan ={
+	[SchoolType.QYD] = { 4,0,1,0,0, },
+	[SchoolType.JXS] = { 3,0,2,0,0, },
+	[SchoolType.ZYM] = { 3,0,0,2,0, },
+	[SchoolType.YXG] = { 0,4,0,1,0, },
+	[SchoolType.TYD] = { 0,3,1,0,1, },
+	[SchoolType.PLG] = { 0,3,1,0,1, },
 }
 
--- 系统分配方案
-local PreDefinePlans = {
-	[eClsTypePlayer] ={
-		[SchoolType.QYD] = {
-			4,0,1,0,0,
-		},
-		[SchoolType.JXS] = {
-			3,0,2,0,0,
-		},
-		[SchoolType.ZYM] = {
-			3,0,0,2,0,
-		},
-		[SchoolType.YXG] = {
-			0,4,0,1,0,
-		},
-		[SchoolType.TYD] = {
-			0,3,1,0,1,
-		},
-		[SchoolType.PLG] = {
-			0,3,1,0,1,
-		},
-	},
-	[eClsTypePet] = {
-		[PetAttackType.Physics] = {
-			4,0,1,0,0,
-		}, 
-		[PetAttackType.Magic]	= {
-			0,4,1,0,0,
-		},
-	},
-	[DefaultPlanID] = {
-		0,0,0,0,0,
-	},
+-- 宠物属性分配方案
+local PetAttrPlan = {
+	[PetAttackType.Physics] = { 4,0,1,0,0, }, 
+	[PetAttackType.Magic]	= { 0,4,1,0,0, },
 }
+
+-- 返回某一个实体的默认属性点分配方案
+local function GetPreDefinePlan( entity )
+	local entityType = entity:getEntityType()
+	if entityType == eClsTypePlayer then
+		return PlayerAttrPlan[ entity:getSchool() ]
+	end
+	if entityType == eClsTypePet then
+		return PetAttrPlan[ entity:getAttackType() ]
+	end
+	print("不支持的实体类型调用GetPreDefinePlan",tostring(entity))
+	return nil
+end
+
+-- 数据库存储过程中属性方案的字段名称,不要更改顺序
+local DBAttrKey = { "str","int","sta","spi","dex" }
+-- 数据库存储过程中相性方案的字段名称,同上
+local DBPhazKey = { "one","two","three"}
+
+-- 根据实体类型填充param
+local function FillPlanSQLConfig( param,entity )
+	local entityType = entity:getEntityType()
+	if entityType == eClsTypePlayer then
+		param['spName'] = 'sp_UpdateRoleAttrPlan'
+		param['sort']	= 'id,autoattr,str,int,sta,spi,dex,autophaz,one,two,three'
+		param['id']		= entity:getDBID()
+		return DBAttrKey,DBPhazKey
+	elseif entityType == eClsTypePet then
+		param['spName']	= 'sp_UpdatePetAttrPlan'
+		param['sort']	= 'id,autoattr,str,int,sta,spi,dex'
+		param['id']		= entity:getDBID()
+		return DBAttrKey
+	else
+		return
+	end
+end
+
+-- 玩家属性点配置
+local PlayerAttrPntConf = { 
+	[1] = player_str_point,
+	[2] = player_int_point,
+	[3] = player_sta_point,
+	[4] = player_spi_point,
+	[5] = player_dex_point,
+
+	base = player_attr_point,
+}
+-- 宠物属性点配置
+local PetAttrPntConf = {
+	[1] = pet_str_point,
+	[2] = pet_int_point,
+	[3] = pet_sta_point,
+	[4] = pet_spi_point,
+	[5] = pet_dex_point,
+
+	base = pet_attr_point,
+}
+
+-- 获得实体的属性点配置
+local function GetAttrPntConf( entity )
+	local entityType = entity:getEntityType()
+	if entityType == eClsTypePlayer then
+		return PlayerAttrPntConf
+	elseif entityType == eClsTypePet then
+		return PetAttrPntConf
+	else
+		return nil
+	end
+end
+
+-- 玩家的相性点配置,这个是一个代理,负责将所有转换成具体的属性名称
+local PlayerPhazPntConf = {
+	[1] = player_win_phase_point,
+	[2] = player_thu_phase_point,
+	[3] = player_ice_phase_point,
+	[4] = player_soi_phase_point,
+	[5] = player_fir_phase_point,
+	[6] = player_poi_phase_point,
+
+	base = player_phase_point,
+}
+
+-- 获得实体的相性点配置
+local function GetPhazPntConf( entity )
+	local entityType = entity:getEntityType()
+
+	if entityType == eClsTypePlayer then
+		return PlayerPhazPntConf
+	end
+	return nil
+end
+
+-- 方案是否是一样的
+local function PlanEquals( alpha,delta )
+	if not alpha or not delta then
+		return false
+	end
+	for index = 1,5 do
+		local a = rawget(alpha,index)
+		if not a then return false end
+		local b = rawget(delta,index)
+		if not b then return false end
+
+		if a ~= b then return false end
+	end
+	return true
+end
+
+-- 是否是一个有效的属性点分配方案
+local function ValidAttrPlan( plan )
+	if not plan then return false end
+	local sum = 0
+	for index = 1,5 do
+		local value = rawget( plan,index )
+		if not value then return false end
+		if value < 0 then return false end
+		sum = sum + value
+	end
+	return sum < 6
+end
+
+-- 确保是有效的相性索引
+local function ValidatePhazIndex( index )
+	if index > 0 and index < 7 then
+		return index
+	end
+	return nil
+end
+
+-- 是否是一个有效的相性点分配方案
+local function ValidPhazPlan( plan )
+	if not plan then return false end
+	local a = ValidatePhazIndex( rawget( plan,1 ) )
+	if not a then return false end
+	local b = ValidatePhazIndex( rawget( plan,2 ) )
+	if not b then return false end
+	local c = ValidatePhazIndex( rawget( plan,3 ) )
+	if not c then return false end
+
+	return a ~= b and a ~= c and b ~= c
+end
 
 AutoPointHandler = class()
 
-local EntityConfig = {
-	[eClsTypePlayer] = {
-		baseAttrStart	= player_str_point,			-- 第一个属性加点属性名称
-		freeAttrPoint	= player_attr_point,		-- 可分配属性点属性名称
-		freePhasePoint	= player_phase_point,		-- 可分配相性点属性名称
-		phaseAttrStart	= player_win_phase_point,	-- 加值相性属性范围开始
-		phaseAttrEnd	= player_poi_phase_point,	-- 加值相性属性范围结尾
-	},
-	[eClsTypePet] = {
-		baseAttrStart	= pet_str_point,
-		freeAttrPoint	= pet_attr_point,
-	}
-}
+AutoPointHandler.None = PlanNone
+AutoPointHandler.Attr = PlanAttr
+AutoPointHandler.Phaz = PlanPhaz
+AutoPointHandler.Both = PlanBoth
 
--- 数据库记录的武力、智力、根骨等属性的名称
-local DBAttrNames = {
-	"str","int","sta","spi","dex"
-}
-
--- 数据库记录中的三个相性的字段
-local DBPhaseNames = {
-	"phaseOne","phaseTwo","phaseThree"
-}
-
--- 默认相性点分配顺序
-local DefOrder = {0,0,0}
-
-function AutoPointHandler:__init(entity)
-	self.entity			= entity						-- 实体
-	self.auto_attr		= false							-- 是否自动分配属性
-	self.auto_phase		= false							-- 是否自动分配相性
-	self.order			= DefOrder						-- 相性属性分配顺序
-	self.planID			= entity:getEntityType()		-- 属性点分配方案
-	self.distribution	= false							-- 每个属性的分配比例，总值不能超过五
-	self.changed		= false
+function AutoPointHandler:__init()
+	self.attrPlan = { 0,0,0,0,0,auto = false }	-- 属性点分配方案
+	self.phazPlan = { 0,0,0,auto = false }	-- 相性点分配方案
+	self.needCommit	= false
 end
 
 function AutoPointHandler:__release()
-	self.entity = nil
 end
 
--- 从数据库中加载
-function AutoPointHandler:loadDB(attrRecord)
-	local setting = attrRecord and attrRecord[1]
-	if not setting then
+function AutoPointHandler:markCommit()
+	if not self.needCommit then
+		self.needCommit = true
+	end
+end
+
+-- 设置属性点分配方案
+function AutoPointHandler:setAttrPlan( param,fromDB )
+	if not ValidAttrPlan( param ) then
+		print( "不是一个有效的属性点分配方案",toString( param ) )
 		return false
 	end
 
-	local planID = setting.planID
-	local distribution
-	if CanAlloc[planID] then
-		self.planID = planID
-	else
-		distribution = {0,0,0,0,0}
-		for index,dbAttrName in ipairs(DBAttrNames) do
-			distribution[index] = setting[dbAttrName] or 0
-		end
-		planID = DefaultPlanID
-	end
-
-	if distribution then
-		self.distribution = distribution
-		self.planID = planID
-	end
-
-	local order = {0,0,0}
-	for index,name in ipairs(DBPhaseNames) do
-		order[index] = setting[name] or 0
-	end
-	self.order = order
-
-	self.auto_attr	= (setting["autoApply"] == 1)
-	self.auto_phase	= (setting["autoPhase"] == 1)
-end
-
--- 保存到数据库
-function AutoPointHandler:onSave(param)
-	if not self.changed then return false end
-
-	local entity	= self.entity
-	local eType		= entity:getEntityType()
-	if eClsTypePlayer == eType then
-		param["spName"]		= "sp_UpdateRoleAttrSetting"
-		param["sort"]		= ("rid,autoattr,%s,plan,autophase,%s"):format(table_concat(DBAttrNames,","),table_concat(DBPhaseNames,","))
-		param["rid"]		= entity:getDBID()
-		param["autoattr"]	= self:isAutoAttr() and 1 or 0
-		param["autophase"]	= self:isAutoPhase() and 1 or 0
-		param["plan"]		= self:getPlanID()
-
-		local distribution = self.distribution
-		if not distribution then return end
-		for index,name in ipairs(DBAttrNames) do
-			param[name] = distribution[index]
-		end
-
-		local order = self.order
-		for index,name in ipairs(DBPhaseNames) do
-			param[name] = order[index]
-		end
-		return true
-	elseif eClsTypePet == eType then
-		param["spName"]		= "sp_UpdatePetAttrSetting"
-		param["sort"]		= ("pid,autoattr,%s,plan"):format(table_concat(DBAttrNames,","))
-		param["pid"]		= entity:getDBID()
-		param["autoattr"]	= self:isAutoAttr() and 1 or 0
-		param["plan"]		= self:getPlanID()
-
-		local distribution = self.distribution
-		if not distribution then return end
-		for index,name in ipairs(DBAttrNames) do
-			param[name] = distribution[index]
-		end
-		return true
-	end
-	return false
-end
-
--- 是否自动分配属性
-function AutoPointHandler:isAutoAttr()
-	return self.auto_attr
-end
-
-function AutoPointHandler:setAuto(name,bValue)
-	if self[name] ~= bValue then
-		self[name] = bValue
-		self.changed = true
-	end
-end
-
-function AutoPointHandler:setAutoAttr(b)
-	return self:setAuto("auto_attr",not not b)
-end
-
--- 是否自动分配相性
-function AutoPointHandler:isAutoPhase()
-	return self["auto_phase"]
-end
-
-function AutoPointHandler:setAutoPhase(b)
-	return self:setAuto("auto_phase",not not b)
-end
-
-function AutoPointHandler:getPlanID()
-	return self.planID
-end
-
--- 分配属性
-function AutoPointHandler:distibuteAttrPoints()
-	local entity = self.entity
-	local config = EntityConfig[entity:getEntityType()]
-	if not config then return end
-
-	local baseAttrStart = config.baseAttrStart	-- 第一个加点属性的属性名称<<属性名称是数字
-	local freePointAttr = config.freeAttrPoint	-- 自由属性点的属性名称
-
-	local attrSet = entity:getAttributeSet()
-	local totalPoint = attrSet:getAttrValue(freePointAttr)
-	local freePoint = totalPoint	-- 剩余属性点
-	local _index,_value = 1,0		-- 最大值的索引和最大值
-	local allocted = false			-- 属性点是否已经分配
-	local distribution = self.distribution
+	local plan = self.attrPlan
 	for index = 1,5 do
-		local value = distribution[index]
-
-		if _value < value then
-			_index,_value = index,value
-		end
-
-		local point = math_floor(totalPoint * value / 5)
-		if point > 0 then
-			attrSet:addAttrValue(baseAttrStart + index - 1,point)
-			freePoint = freePoint - point
-			allocted = true
-		end
+		rawset( plan,index,rawget( param,index ) )
 	end
-	if freePoint > 0 then	-- 将剩余的点数加到最多的属性上
-		attrSet:addAttrValue(baseAttrStart + _index - 1,freePoint)
-		allocted = true
-	end
-
-	if allocted then		-- 没有剩余属性点了
-		attrSet:setAttrValue(freePointAttr,0)
-		self:onAttrAllocated()
-	end
-
-	return allocted
+	plan.auto = param.auto or false
+	if not fromDB then self:markCommit() end
+	return true
 end
 
--- 分配相性
-function AutoPointHandler:distibutePhasePoints()
-	local entity = self.entity
-	local config = EntityConfig[entity:getEntityType()]
-	local pntAttr = config and config.freePhasePoint
-	if not pntAttr then return end
-
-	local attrSet = entity:getAttributeSet()
-	local freePoint = attrSet:getAttrValue(pntAttr)
-	if freePoint < 1 then
-		print "自动分配相性点:没有多余点数"
+-- 设置相性点分配方案
+function AutoPointHandler:setPhazPlan( param,fromDB )
+	if not ValidPhazPlan( param ) then
+		print("不是一个有效的相性点分配方案",toString( param ))
 		return
 	end
-	
-	local allocted = false
-	local order = self.order
+	local plan = self.phazPlan
 	for index = 1,3 do
-		local attrName = order[index]
-		if attrName and attrName > 0 then
-			local point2add = math_min(
-				freePoint,MaxPhasePoint - entity:getAttrValue(attrName)
-			)
-			if point2add > 0 then
-				attrSet:addAttrValue(attrName,point2add)
-				freePoint = freePoint - point2add
-				allocted = true
-			end
-			if freePoint < 1 then
-				break
-			end
-		end
+		rawset( plan,index,rawget( param,index) )
 	end
-	if allocted then
-		attrSet:setAttrValue(pntAttr,freePoint)
-		self:onPhaseAllocated()
-	end
-	return allocted
-end
-
---设置属性分配
---分配的属性是一个数组{0,0,0,0,0} = {武力,智力,...}
-function AutoPointHandler:setDistribution(planID,data)
-	local distribution
-	if planID and planID ~= 0 then
-		if planID == eClsTypePlayer then
-			distribution = PreDefinePlans[planID][self.entity:getSchool()]
-		elseif planID == eClsTypePet then
-			local attackType = self.entity:getAttackType()
-			distribution = PreDefinePlans[planID][attackType]
-		end
-	elseif type(data) == 'table' then
-		local total = 0
-		distribution = {0,0,0,0,0}
-		for index = 1,5 do
-			local value = data[index]
-			total = total + value
-			distribution[index] = value
-		end
-		if total ~= 5 then
-			distribution = nil
-		end
-	end
-	if not distribution then
-		return false
-	end
-	self.planID = planID
-	self.distribution = distribution
-	self.changed = true
+	plan.auto = param.auto or false
+	if not fromDB then self:markCommit() end
 	return true
 end
 
---设置相性分配
-function AutoPointHandler:setOrder(order)
-	local etype = self.entity:getEntityType()
-	if etype ~= eLogicPlayer or type(order) ~= "table" then
-		return false
-	end
-	local config	= EntityConfig[etype]
-	local from		= config.phaseAttrStart
-	local to		= config.phaseAttrEnd
-	local t = {0,0,0}
-	local len = 1
-	for index = 1,3 do
-		local attrName = order[index]
-		if attrName > 0 then
-			if attrName < from or attrName > to then
-				return false
-			end
-			t[len] = attrName
-			len = len + 1
+-- 共用的一个代理数组,免得重复创建
+local common = {0,0,0,0,0,auto = false}
+-- 加载数据库记录
+function AutoPointHandler:init( entity,records )
+	local record = records and records[1]
+	-- 数据库记录是否有效
+	local valid = true
+	if record then
+		for index,key in ipairs( DBAttrKey ) do
+			local value = rawget( record,key )
+			if not value then valid = false	break end
+			rawset( common,index,value )
 		end
-	end
-	self.order = t
-	self.changed = true
-	return true
-end
-
--- 发送属性点分配方案
-function AutoPointHandler:sendDistribution(player)
-	local entity = self.entity   
-	local eType = entity:getEntityType()
-	local planID = self.planID or eType
-	local event
-
-	if CanAlloc[planID] then
-		event = Event.getEvent(
-			AutoPointEvent_SC_DistributionComfirmed,
-			entity:getID(),planID,self:isAutoAttr()
-		)
 	else
-		event = Event.getEvent(
-			AutoPointEvent_SC_DistributionComfirmed,
-			entity:getID(),self.distribution,self:isAutoAttr()
-		)
+		valid = false
 	end
-	g_eventMgr:fireRemoteEvent(event, player)
+	print("加点方案",toString( record ))
 
-	if not self.distribution then
-		if eType == eClsTypePlayer then
-			self.distribution = PreDefinePlans[eClsTypePlayer][entity:getSchool()]
-		elseif eType == eClsTypePet then
-			self.distribution = PreDefinePlans[eClsTypePet][entity:getAttackType()]
+	if valid then
+		common.auto = rawget( record,'autoAttr' ) == 1
+		if not self:setAttrPlan( common,true ) then
+			print("加载属性加点方案失败",toString(record),entity:getDBID())
+		end
+	else
+		print "使用默认的属性点分配方案"
+		self:setAttrPlan( GetPreDefinePlan( entity),true )
+	end
+
+	valid = true
+	if record then
+		for index,key in ipairs( DBPhazKey ) do
+			local value = rawget( record,key )
+			if not value then valid = false break end
+			rawset( common,index,value )
+		end
+	else
+		valid = false 
+	end
+
+	if valid then
+		common.auto = rawget( record,'autoPhaz' ) == 1
+		if not self:setPhazPlan( common,true ) then
+			print("设置相性加点方案失败",toString(record),entity:getDBID())
 		end
 	end
 end
 
--- 发送相性点分配顺序
-function AutoPointHandler:sendOrder(player)
-	local entity = self.entity
-	if eClsTypePlayer == entity:getEntityType() then
-		g_eventMgr:fireRemoteEvent(
-			Event.getEvent(
-				AutoPointEvent_SC_OrderComfirmed,
-				entity:getID(),self.order,self:isAutoPhase()
-			), player
-		 )
+-- 离线数据库记录
+function AutoPointHandler:onSave( param,entity )
+	if not self.needCommit then
+		-- print( ("%s不需要提交加点方案"):format( string.gbkToUtf8(entity:getName()) ) )
+		return false
 	end
+
+	local attrKey,phazKey= FillPlanSQLConfig( param,entity )
+	if not attrKey and not phazKey then
+		-- print( ("%s没有加点方案配置"):format( string.gbkToUtf8(entity:getName()) ) )
+		return false
+	end
+
+	if attrKey then
+		local plan = self.attrPlan
+		for index,key in ipairs( attrKey ) do
+			param[key] = rawget( plan,index )
+		end
+		param[ 'autoattr' ] = plan.auto and 1 or 0
+	end
+
+	if phazKey then
+		local plan = self.phazPlan
+		for index,key in ipairs( phazKey ) do
+			param[key] = rawget( plan,index )
+		end
+		param[ 'autophaz' ] = plan.auto and 1 or 0
+	end
+
+	self.needCommit = false
+	return true	-- 目前不提交
 end
 
--- 发送到客户端
-function AutoPointHandler:sendToClient(player)
+-- 自动加点方案生效
+function AutoPointHandler:effect( entity,choose )
+	local effective = false	-- 属性加点方案是否生效
+	local attrSet = entity:getAttributeSet()	-- 属性集合
+
+	-- 分配属性点
+	local plan,conf = self.attrPlan,GetAttrPntConf( entity )
+	while (choose == PlanAttr or choose == PlanBoth) and conf and plan.auto do
+		local free = attrSet:getAttrValue( conf.base )	-- 自由属性点
+		if free < 1 then print "实体没有多余的自由属性点" break end
+
+		local used = 0
+		local mindex = 1
+		local mvalue = rawget( plan,1 )
+
+		for index = 1,5 do
+			-- 没有剩余属性点
+			if used >= free then break end
+			-- 在某一项上需要增加的属性点数量
+			local value = math_floor( free * rawget( plan,index ) / 5)
+			-- 属性点属性加值
+			if value > 0 then
+				used = used + value
+				attrSet:addAttrValue( conf[index], value )
+			end
+			-- 找出最大的属性项
+			if mvalue < value then
+				mvalue = value
+				mindex = index
+			end
+		end
+
+		-- 还有剩余的属性点
+		if free - used > 0 then
+			-- 把剩余点数加到权最大的属性上
+			attrSet:addAttrValue( conf[index],free - used )
+		end
+		-- 分配完就没有自由属性点了 
+		attrSet:setAttrValue( conf.base,0 )
+		effective = true
+		break
+	end
+
+	-- 分配相性点
+	plan,conf = self.phazPlan,GetPhazPntConf( entity )
+	while ( choose == PlanPhaz or choose == PlanBoth ) and conf and plan.auto do
+		local free = attrSet:getAttrValue( conf.base )
+		if free < 1 then break end
+		local used = 0
+
+		for index = 1,3 do
+			if used >= free then break end
+
+			local attrName = rawget( conf,rawget( plan,index ) )
+			if attrName then
+				-- 在一个相性点上的加值不能超过 1,自由相性点数,2,最大相性点数
+				local addValue = math_min( free - used,MaxPhasePoint - attrSet:getAttrValue( attrName ) )
+				if addValue > 0 then
+					used = used + addValue
+					attrSet:addAttrValue( attrName,addValue )
+				end
+			end
+		end
+		if used > 0 then
+			attrSet:setAttrValue( conf.base,free - used)
+			effective = true
+		end
+		break
+	end
+
+	return effective
+end
+
+-- 发送给客户端
+function AutoPointHandler:sendToClient( entity,player,plan )
 	if not player then
-		local entity = self.entity
-		local eType = entity:getEntityType()
-		if eType == eClsTypePlayer then
-			player = entity
-		elseif eType == eClsTypePet then
-			player = g_entityMgr:getPlayerByID(entity:getOwnerID())
-		else
-			--对其他的可以配置自动分配方案的实体的支持
-		end
+		print "自动加点方案发送,没有指定发送给谁"
+		return
 	end
-	if not player then return false end
-	self:sendDistribution(player)
-	self:sendOrder(player)
-end
-
--- 属性分配完毕后的操作
-function AutoPointHandler:onAttrAllocated()
-	local entity = self.entity
-	local eType = entity:getEntityType()
-	if eType == eClsTypePet then
-		entity:flushPropBatch(g_entityMgr:getPlayerByID(entity:getOwnerID()))
-	elseif eType == eClsTypePlayer then
-		entity:flushPropBatch()
+	if not plan then plan = PlanAttr end
+	local event
+	if plan == PlanBoth then
+		event = Event.getEvent( AutoPointEvent_SC_PlanConfirmed,entity:getID(),self.attrPlan,self.phazPlan )
+	elseif plan == PlanAttr then
+		event = Event.getEvent( AutoPointEvent_SC_PlanConfirmed,entity:getID(),self.attrPlan)
+	elseif plan == PlanPhaz then
+		event = Event.getEvent( AutoPointEvent_SC_PlanConfirmed,entity:getID(),nil,self.phazPlan )
 	end
-end
-
---相性点分配完毕后的操作
-function AutoPointHandler:onPhaseAllocated()
-	local entity = self.entity
-	if entity:getEntityType() == eClsTypePlayer then
-		entity:flushPropBatch()
+	if event then
+		g_eventMgr:fireRemoteEvent( event,player )
 	end
 end

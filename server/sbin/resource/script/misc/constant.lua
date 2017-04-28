@@ -81,6 +81,7 @@ require "misc.ActivityConstant"
 require "misc.GoldHuntZoneConstant"
 require "misc.BeastBlessConstant"
 require "misc.RevivePointConstant"
+require "misc.AdminConstant"
 
 
 

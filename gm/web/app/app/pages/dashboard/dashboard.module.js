@@ -16,7 +16,7 @@
         .state('dashboard', {
           url: '/dashboard',
           templateUrl: 'app/pages/dashboard/dashboard.html',
-          title: 'Dashboard',
+          title: '主页',
           sidebarMeta: {
             icon: 'ion-android-home',
             order: 0,
@@ -76,7 +76,7 @@
   function chartJs2DCtrl($scope, $http) {
     $http({
       method: 'POST',
-      url: 'http://172.16.2.218/index.php?c=index&a=player_online_count',
+      url: 'http://172.16.2.218/php/index.php?c=index&a=player_online_count',
     }).then(
       function(response){
         $scope.data = response.data.data;

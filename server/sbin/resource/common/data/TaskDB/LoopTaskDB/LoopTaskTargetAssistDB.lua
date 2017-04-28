@@ -893,7 +893,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.escort] =
 				{
 					-- 巡逻出对话
-					escortTrace =
+					escortTalkTrace =
 					{
 						-- dialogID 绑定的npcID和followNpcID要对应
 						[1] = {dialogID = 4811, followNpcID = 26021},
@@ -5660,7 +5660,7 @@ LoopTaskTargetAssistDB =
 				[LoopTaskTargetType.catchPet] =
 				{
 					-- 购买宠物指引
-                                        createBuyPetTrace =
+                    createBuyPetTrace =
 					{
 						[1] = 
 						{
@@ -5668,17 +5668,91 @@ LoopTaskTargetAssistDB =
 							count = 1,
 							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
 						},
-					
-                                        },
-					-- 捕捉宠物指引
-					--[[createCatchPetData =
-					{
-						[1] = {petID = 1009, scriptID = 5161},--河内守卫
-						[2] = {petID = 1013, scriptID = 5162},--刀盾手
-						[3] = {petID = 1017, scriptID = 5163},--冰妖
-						[4] = {petID = 1021, scriptID = 5164},--鲛妖
-						[5] = {petID = 1023, scriptID = 5165},--游方妖师
-					},]]
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -5739,6 +5813,10 @@ LoopTaskTargetAssistDB =
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
 				},
+				[LoopTaskTargetType.puzzle] =
+				{
+					
+				},			
 			},
     -- 51 - 100 环
     [2] =
@@ -5889,15 +5967,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--河内守卫
-						[2] = {petID = 1013, scriptID = 5162},--刀盾手
-						[3] = {petID = 1017, scriptID = 5163},--冰妖
-						[4] = {petID = 1021, scriptID = 5164},--鲛妖
-						[5] = {petID = 1023, scriptID = 5165},--游方妖师
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -5956,6 +6119,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+				[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
     -- 101 - 150 环
@@ -6107,15 +6274,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--河内守卫
-						[2] = {petID = 1013, scriptID = 5162},--刀盾手
-						[3] = {petID = 1017, scriptID = 5163},--冰妖
-						[4] = {petID = 1021, scriptID = 5164},--鲛妖
-						[5] = {petID = 1023, scriptID = 5165},--游方妖师
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -6174,6 +6426,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+				[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
 		-- 151 - 200 环
@@ -6325,15 +6581,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1009, scriptID = 5161},--河内守卫
-						[2] = {petID = 1013, scriptID = 5162},--刀盾手
-						[3] = {petID = 1017, scriptID = 5163},--冰妖
-						[4] = {petID = 1021, scriptID = 5164},--鲛妖
-						[5] = {petID = 1023, scriptID = 5165},--游方妖师
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -6392,6 +6733,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			   [LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
 		},
@@ -6547,16 +6892,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--女贼
-						[2] = {petID = 1024, scriptID = 5167},--河盗
-						[3] = {petID = 1026, scriptID = 5168},--琴魔女
-						[4] = {petID = 1027, scriptID = 5169},--妖灵
-						[5] = {petID = 1028, scriptID = 5170},--死士
-						[6] = {petID = 1029, scriptID = 5171},--蛮族
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -6615,6 +7044,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
     -- 51 - 100 环
@@ -6766,16 +7199,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--女贼
-						[2] = {petID = 1024, scriptID = 5167},--河盗
-						[3] = {petID = 1026, scriptID = 5168},--琴魔女
-						[4] = {petID = 1027, scriptID = 5169},--妖灵
-						[5] = {petID = 1028, scriptID = 5170},--死士
-						[6] = {petID = 1029, scriptID = 5171},--蛮族
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -6834,6 +7351,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
     -- 101 - 150 环
@@ -6985,16 +7506,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--女贼
-						[2] = {petID = 1024, scriptID = 5167},--河盗
-						[3] = {petID = 1026, scriptID = 5168},--琴魔女
-						[4] = {petID = 1027, scriptID = 5169},--妖灵
-						[5] = {petID = 1028, scriptID = 5170},--死士
-						[6] = {petID = 1029, scriptID = 5171},--蛮族
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -7053,6 +7658,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
 		-- 151 - 200 环
@@ -7204,16 +7813,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1025, scriptID = 5166},--女贼
-						[2] = {petID = 1024, scriptID = 5167},--河盗
-						[3] = {petID = 1026, scriptID = 5168},--琴魔女
-						[4] = {petID = 1027, scriptID = 5169},--妖灵
-						[5] = {petID = 1028, scriptID = 5170},--死士
-						[6] = {petID = 1029, scriptID = 5171},--蛮族
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -7272,6 +7965,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
 		},
@@ -7427,16 +8124,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--虎将
-						[2] = {petID = 1031, scriptID = 5173},--谋士
-						[3] = {petID = 1032, scriptID = 5174},--牛头
-						[4] = {petID = 1033, scriptID = 5175},--马面
-						[5] = {petID = 1034, scriptID = 5176},--骷髅将
-						[6] = {petID = 1035, scriptID = 5177},--魔兵
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -7495,6 +8276,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
     -- 51 - 100 环
@@ -7646,16 +8431,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--虎将
-						[2] = {petID = 1031, scriptID = 5173},--谋士
-						[3] = {petID = 1032, scriptID = 5174},--牛头
-						[4] = {petID = 1033, scriptID = 5175},--马面
-						[5] = {petID = 1034, scriptID = 5176},--骷髅将
-						[6] = {petID = 1035, scriptID = 5177},--魔兵
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -7714,6 +8583,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
     -- 101 - 150 环
@@ -7865,16 +8738,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--虎将
-						[2] = {petID = 1031, scriptID = 5173},--谋士
-						[3] = {petID = 1032, scriptID = 5174},--牛头
-						[4] = {petID = 1033, scriptID = 5175},--马面
-						[5] = {petID = 1034, scriptID = 5176},--骷髅将
-						[6] = {petID = 1035, scriptID = 5177},--魔兵
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -7933,6 +8890,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
 		-- 151 - 200 环
@@ -8084,16 +9045,100 @@ LoopTaskTargetAssistDB =
 				-- 上交宠物
 				[LoopTaskTargetType.catchPet] =
 				{
-					-- 捕捉宠物指引
-					createCatchPetData =
+					-- 购买宠物指引
+                    createBuyPetTrace =
 					{
-						[1] = {petID = 1030, scriptID = 5172},--虎将
-						[2] = {petID = 1031, scriptID = 5173},--谋士
-						[3] = {petID = 1032, scriptID = 5174},--牛头
-						[4] = {petID = 1033, scriptID = 5175},--马面
-						[5] = {petID = 1034, scriptID = 5176},--骷髅将
-						[6] = {petID = 1035, scriptID = 5177},--魔兵
-					},
+						[1] = 
+						{
+							petID = 1001,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[2] = 
+						{
+							petID = 1002,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[3] = 
+						{
+							petID = 1003,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[4] = 
+						{
+							petID = 1004,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[5] = 
+						{
+							petID = 1005,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[6] = 
+						{
+							petID = 1006,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[7] = 
+						{
+							petID = 1007,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[8] = 
+						{
+							petID = 1008,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[9] = 
+						{
+							petID = 1009,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[10] = 
+						{
+							petID = 1010,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[11] = 
+						{
+							petID = 1011,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[12] = 
+						{
+							petID = 1012,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[13] = 
+						{
+							petID = 1013,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[14] = 
+						{
+							petID = 1014,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},
+						[15] = 
+						{
+							petID = 1015,
+							count = 1,
+							buyPosition = {npcID = 29082, mapID = 10, x = 194, y = 190},
+						},						
+                    },
 					-- 上缴宠物指引
 					createPaidPetTrace = 
 					{
@@ -8152,6 +9197,10 @@ LoopTaskTargetAssistDB =
 						[15] = {itemID = 1041017, npcID = 20024, mapID = 5, x = 33, y = 77},--玄素
 						[16] = {itemID = 1041017, npcID = 20026, mapID = 6, x = 43, y = 112},--殿飞白
 					},
+				},
+			[LoopTaskTargetType.puzzle] =
+				{
+					
 				},
 			},
 		},
@@ -8506,6 +9555,21 @@ LoopTaskTargetAssistDB =
 			[1] =
 			{
 				[LoopTaskTargetType.puzzle] =
+				{
+					
+				},
+			},
+		},
+	},
+
+	[60000] =
+	{
+		[1] =
+		{
+			-- 一道10环
+			[1] =
+			{
+				[LoopTaskTargetType.oldTower] =
 				{
 					
 				},

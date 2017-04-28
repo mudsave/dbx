@@ -10,6 +10,7 @@ function loadSystem()
 	require "game.TeamSystem.TeamSystem"
 	require "game.TradeSystem.TradeSystem"
 	require "game.TaskSystem.TaskSystem"
+	require "game.OldTowerEliminateSystem.OldTowerEliminateSystem"
 
 	require "game.TaskSystem.LoopTaskReward"
 	require "game.PKSystem.PKSystem"
@@ -53,6 +54,7 @@ function loadSystem()
 	require "game.ExchangeItemSystem.ExchangeItemSystem"
 	require "game.AdminSystem.AdminSystem"
 	require "game.AdminSystem.AdminManager"
+	require "game.AdminSystem.AdminDoer"
 
 	g_itemFct			= ItemFactory.getInstance()
 	g_itemMgr			= ItemManager.getInstance()
@@ -90,7 +92,6 @@ function loadSystem()
 	g_RoleConfigMgr		= RoleConfigManager.getInstance()
 	g_dropMgr			= DropManager.getInstance()
 	g_mailMgr			= MailManager.getInstance()
-	--g_oldTowerSym		= OldTowerEliminateSystem.getInstance()
 	
 	-- 瑞兽降临活动
 	g_beastBlessMgr		= BeastBlessManager.getInstance()
@@ -105,4 +106,5 @@ function loadSystem()
 	g_exchangeItemMgr = ExchangeItemManager.getInstance()
 	g_discussHeroMgr	= DiscussHeroManager.getInstance() 
 	
+	g_oldTowerSym 		= OldTowerEliminateSystem.getInstance()
 end

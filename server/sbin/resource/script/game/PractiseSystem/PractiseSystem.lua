@@ -153,11 +153,11 @@ end
 
 function PractiseSystem:addPractise(player,practiseReward)
 	if practiseReward > 0 then
-		player:addPractise(valueReward)
+		player:addPractise(practiseReward)
 		-- 通知给客户端里的界面
 		g_eventMgr:fireRemoteEvent(
 			Event.getEvent(
-				ClientEvents_SC_PromptMsg,eventGroup_Practise,3,valueReward
+				ClientEvents_SC_PromptMsg, eventGroup_Practise, 3, practiseReward
 			),
 			player
 		)

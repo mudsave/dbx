@@ -12,52 +12,124 @@ GoldHuntZoneActivityDB2 =
 		name = "GoldHuntZone2",
 		dbName = "updateGoldHuntActivity",
 		startType = AtyStartType.fixedDayHour,
-		startTime = {hour = 20, min = 06},
-		min_maxPlayerLevel = {40,49},
-		readyPeriod = 1,
+		startTime = {hour = 11, min = 50},				--开始时间
+		min_maxPlayerLevel = {40,49},					--等级范围
+		readyPeriod = 1,						--广播延迟后开始活动
 		
-		endTime = {hour = 20, min = 30},				--结束时间
+		endTime = {hour = 13, min = 20},				--结束时间
 		mapID = 909,							--地图ID
 		phaseInfo = {
 			[1] = {
 					period = 3,--min			--阶段持续时间
 					materialInfo = {
-									{itemID = 10026,centerPos={x=109,y=216},radius = 5,count = 2},					--场景物件,中心,范围,数量,可以多行并列
-									{itemID = 10027,centerPos={x=109,y=215},radius = 5,count = 2},	
-									updatePeriod = 1,totalMax= 6, curMax = 5,							--刷新间隔,总数量,保持数量
+									{itemID = 10026,centerPos={x=105,y=211},radius = 15,count = 2},					--场景物件,中心,范围,数量,可以多行并列
+									{itemID = 10026,centerPos={x=114,y=218},radius = 15,count = 2},
+									{itemID = 10027,centerPos={x=106,y=211},radius = 15,count = 2},
+									{itemID = 10027,centerPos={x=115,y=218},radius = 15,count = 2},
+									{itemID = 10026,centerPos={x=119,y=232},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=121,y=234},radius = 15,count = 3},
+									{itemID = 10026,centerPos={x=128,y=210},radius = 15,count = 2},
+									{itemID = 10027,centerPos={x=128,y=213},radius = 15,count = 2},
+									{itemID = 10026,centerPos={x=103,y=192},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=106,y=192},radius = 15,count = 3},
+									{itemID = 10026,centerPos={x=88,y=202},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=88,y=205},radius = 15,count = 3},
+									{itemID = 10026,centerPos={x=98,y=230},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=97,y=229},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=101,y=216},radius = 5,count = 1},
+									{itemID = 10028,centerPos={x=121,y=209},radius = 5,count = 2},
+									{itemID = 10028,centerPos={x=116,y=221},radius = 5,count = 1},
+									updatePeriod = 1,totalMax= 150, curMax = 40,							--刷新间隔,总数量,保持数量
 					}
 			},
 			[2] = {
-					period = 3,--min
+					period = 5,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=109,y=216},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,	--怪物ID,中心,范围,刷新间隔,总数量,保持数量
-									eliteDBID = 39053,propability = 20,									--精英怪,概率
+									{commonDBID = 39052,centerPos={x=138,y=212},radius = 5},					--怪物ID,中心,范围,
+									updatePeriod = 1,totalMax= 6, curMax = 5,							--刷新间隔,总数量,保持数量
+									eliteDBID = 39053,propability = 30,									--精英怪,概率
 					},
 					materialInfo = {
-									{itemID = 10028,centerPos={x=186,y=201},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 6, curMax = 4,
+									{itemID = 10027,centerPos={x=181,y=196},radius = 20,count = 2},
+									{itemID = 10028,centerPos={x=180,y=196},radius = 20,count = 2},
+									{itemID = 10027,centerPos={x=191,y=204},radius = 20,count = 2},
+									{itemID = 10028,centerPos={x=191,y=204},radius = 20,count = 2},
+									{itemID = 10027,centerPos={x=174,y=229},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=172,y=229},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=206,y=200},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=206,y=197},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=197,y=175},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=193,y=174},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=174,y=184},radius = 15,count = 3},	
+									{itemID = 10028,centerPos={x=174,y=180},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=181,y=214},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=182,y=214},radius = 15,count = 3},
+									{itemID = 10027,centerPos={x=169,y=205},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=171,y=206},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=190,y=190},radius = 15,count = 1},
+									{itemID = 10029,centerPos={x=186,y=209},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=177,y=205},radius = 15,count = 1},
+									updatePeriod = 1,totalMax= 150, curMax = 40,
 					}
 			},
 			[3] = {
-					period = 3,--min
+					period = 5,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=186,y=201},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,
+									{commonDBID = 39052,centerPos={x=191,y=154},radius = 5},
+									updatePeriod = 1,totalMax= 6, curMax = 5,
 									eliteDBID = 39053,propability = 40,
 					},
 					materialInfo = {
-									{itemID = 10029,centerPos={x=201,y=117},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 6, curMax = 4,
+									{itemID = 10028,centerPos={x=197,y=111},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=198,y=111},radius = 15,count = 2},
+									{itemID = 10028,centerPos={x=206,y=119},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=207,y=119},radius = 15,count = 2},
+									{itemID = 10028,centerPos={x=172,y=122},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=173,y=124},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=185,y=90},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=186,y=91},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=218,y=89},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=220,y=89},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=224,y=123},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=223,y=123},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=229,y=107},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=228,y=106},radius = 15,count = 3},
+									{itemID = 10028,centerPos={x=190,y=129},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=190,y=130},radius = 15,count = 3},
+									{itemID = 10030,centerPos={x=195,y=114},radius = 15,count = 1},
+									{itemID = 10030,centerPos={x=209,y=114},radius = 15,count = 2},
+									{itemID = 10030,centerPos={x=217,y=100},radius = 15,count = 1},
+									updatePeriod = 1,totalMax= 150, curMax = 40,
 					}
 			},
 			[4] = {
-					period = 3,--min
+					period = 5,--min
 					monsterInfo ={
-									{commonDBID = 39052,centerPos={x=201,y=117},radius = 5},updatePeriod = 2,totalMax= 5, curMax = 3,
+									{commonDBID = 39052,centerPos={x=239,y=105},radius = 5},
+									updatePeriod = 1,totalMax= 6, curMax = 5,
 									eliteDBID = 39053,propability = 60,
 					},
 					materialInfo = {
-									{itemID = 10030,centerPos={x=279,y=101},radius = 5,count = 1},
-									updatePeriod = 1,totalMax= 6, curMax = 4,
+									{itemID = 10029,centerPos={x=275,y=96},radius = 15,count = 2},
+									{itemID = 10030,centerPos={x=248,y=103},radius = 15,count = 2},
+									{itemID = 10029,centerPos={x=280,y=100},radius = 10,count = 2},
+									{itemID = 10030,centerPos={x=280,y=99},radius = 10,count = 2},
+									{itemID = 10029,centerPos={x=260,y=114},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=260,y=115},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=279,y=119},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=280,y=119},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=302,y=103},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=301,y=103},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=298,y=83},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=298,y=84},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=282,y=75},radius = 15,count = 3},
+									{itemID = 10030,centerPos={x=283,y=75},radius = 15,count = 3},
+									{itemID = 10029,centerPos={x=260,y=96},radius = 25,count = 2},
+									{itemID = 10030,centerPos={x=260,y=97},radius = 25,count = 2},
+									{itemID = 10029,centerPos={x=262,y=50},radius = 15,count = 3},
+									{itemID = 10030,centerPos={x=261,y=47},radius = 15,count = 4},
+									{itemID = 10030,centerPos={x=269,y=65},radius = 15,count = 4},
+									updatePeriod = 1,totalMax= 150, curMax = 45,
 					}
 			}
 		},
@@ -69,7 +141,7 @@ GoldHuntZoneActivityDB2 =
 table.copy(GoldHuntZoneActivityDB2,  ActivityDB)
 
 
-GoldHuntZone2 = class(Activity, Singleton, Timer)
+GoldHuntZone2 = class(Activity,  Timer)
 
 local timerContext = {} --[timerID]=context
 local updateTimerContext = {} --[timerID]=doer
@@ -110,6 +182,7 @@ function GoldHuntZone2:open()
 		
 		--创建场景
 		self._scene = g_sceneMgr:createGoldHuntScene(self._config.mapID, self._id)
+		self:openActivity()
 		--创建npc
 		--local npc = g_entityFct:createDynamicNpc(GoldHuntZone_scoreNpcID)
 		--self._scene:attachEntity(npc, GoldHuntZone_scoreNpcPos.x , GoldHuntZone_scoreNpcPos.y)
@@ -117,6 +190,7 @@ end
 
 function GoldHuntZone2:close()
 print("GoldHuntZone2:close()")
+	g_goldHuntMgr:setOpenStatus(false)
 	--启动结束定时器
 	endTimerID = g_timerMgr:regTimer(self, GoldHuntZone_ReadyPeriodBeforeEnd*60*1000, GoldHuntZone_ReadyPeriodBeforeEnd*60*1000, "GoldHuntZone2.update")
 
@@ -289,7 +363,7 @@ function GoldHuntZone2:removeMonster(monsterID)
 	if info[monsterID] then
 		info[monsterID] = nil
 	end
-	self:sceneBroadcast1()
+	
 	local curTotal = self._monsters.total[phaseID]
 	local totalMax = self._config.phaseInfo[phaseID].monsterInfo.totalMax
 	if (table.size(info) == 0) and (curTotal == totalMax) then
@@ -301,8 +375,11 @@ function GoldHuntZone2:removeMonster(monsterID)
 			if instanceof(role, Player) then
 				local event = Event.getEvent(ActivityEvent_SC_GoldHunt_newPhase_begin, phaseID)
 				g_eventMgr:fireRemoteEvent(event, role)
+				print("playerDBID=",role:getDBID())
 			end
 		end
+		self:sceneBroadcast1()
+		print("ActivityEvent_SC_GoldHunt_newPhase_begin",gGoldHuntID2,phaseID)
 		if phaseID < 4 then
 			self._phaseID = phaseID + 1
 		end
@@ -397,7 +474,7 @@ function GoldHuntZone2:update(timerID)
 		timerContext[timerID] = context
 		if timePhaseID == 1 then
 			self:_refreshMines(timePhaseID)
-			self:openActivity()
+			
 			
 		else
 			if timePhaseID == 2 then

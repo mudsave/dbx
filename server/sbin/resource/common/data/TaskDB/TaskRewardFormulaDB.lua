@@ -145,7 +145,7 @@ BabelRewardFormula = {}
 
 -- 经验公式
 function BabelRewardFormula.addXp(level, layer)
-	return math.pow(layer,2)+80
+	return math.floor (math.pow(layer,3)/30+80)
 end
 
 -- 道行公式
@@ -155,7 +155,7 @@ end
 
 -- 宠物经验
 function BabelRewardFormula.addPetXp(level, layer)
-	return math.pow(layer,2)+80
+	return math.floor (math.pow(layer,3)/30+80)
 end
 
 -- 宠物道行

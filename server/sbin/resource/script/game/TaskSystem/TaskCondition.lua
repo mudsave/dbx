@@ -3,24 +3,8 @@
 ]]
 
 TaskCondition = {}
-
-function TaskCondition.hasPreTask(player, taskID)
-	local taskHandler = player:getHandler(HandlerDef_Task)
-	local hisTask = taskHandler:isHisTask(taskID)
-	if hisTask then
-		return true
-	end
-	return false
-end
-
-function TaskCondition.normalTask(player, taskID, needDebug, GM)
+local checkCondition = function(player, taskID, needDebug)
 	local taskData = NormalTaskDB[taskID]
-	if not taskData then
-		return false
-	end
-	if GM then
-		return true
-	end
 	local levelLimit = taskData.level
 	local consume = taskData.consume
 	local school = taskData.school
@@ -38,7 +22,7 @@ function TaskCondition.normalTask(player, taskID, needDebug, GM)
 		end
 		return false
 	end
-	--
+	
 	local preTaskData = taskData.preTaskData
 	if preTaskData then
 		if preTaskData.condition == "and" then
@@ -73,9 +57,9 @@ function TaskCondition.normalTask(player, taskID, needDebug, GM)
 			end
 		end
 	end
-
+	
 	local taskHandler = player:getHandler(HandlerDef_Task)
-	local hisTask = taskHandler:isHisTask(taskID)
+	local hisTask = taskHandler:isHisTask(taskID) or taskHandler:isGuideHisTask(taskID)
 	if hisTask then
 		if needDebug then
 			print("你已经做过这个任务了")
@@ -89,8 +73,48 @@ function TaskCondition.normalTask(player, taskID, needDebug, GM)
 		end
 		return false
 	end
-
 	return true
+end
+
+
+function TaskCondition.hasPreTask(player, taskID)
+	local taskHandler = player:getHandler(HandlerDef_Task)
+	local hisTask = taskHandler:isHisTask(taskID) or taskHandler:isGuideHisTask(taskID)
+	if hisTask then
+		return true
+	end
+	return false
+end
+
+-- 检测主线任务
+function TaskCondition.normalTask(player, taskID, needDebug, GM)
+	local taskData = NormalTaskDB[taskID]
+	if not taskData then
+		return false
+	end
+	if GM then
+		return true
+	end
+	if taskData.taskType2 ~= TaskType2.Main then
+		return false
+	end
+	return checkCondition(player, taskID, needDebug)
+end
+
+-- 检测指引任务
+function TaskCondition.guideTask(player, taskID, needDebug, GM)
+	local taskData = NormalTaskDB[taskID]
+	if not taskData then
+		return false
+	end
+	if GM then
+		return true
+	end
+	if taskData.taskType2 ~= TaskType2.NewBie then
+		return false
+	end
+	
+	return checkCondition(player, taskID, needDebug)
 end
 
 --接任务消耗
@@ -275,6 +299,15 @@ function TaskCondition.SpecialTask(playerList, taskID, teamID)
 		end
 		if taskData.condition.teamerCount then
 			if table.size(playerList) < taskData.condition.teamerCount then
+				-- 有可能在组队战斗当中，有玩家逃跑，变为暂离玩家，导致人数不足，给个提示
+				local team = g_teamMgr:getTeam(teamID)
+				if team then
+					local leaderID = team:getLeaderID()
+					local leader = g_entityMgr:getPlayerByID(leaderID)
+					local msgID = 36
+					local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_Task, msgID)
+					g_eventMgr:fireRemoteEvent(event, leader)
+				end
 				return 44
 			end
 		end

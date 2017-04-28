@@ -1,0 +1,41 @@
+<div class="container">
+    <fieldset style="margin-top: 30px;">
+        <legend class="text-center"><img src="assets/favicon.png"> 天道三国</legend>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>检索内容</label>
+                    <select ng-model="searchKey" ng-init=" searchKey = '1'" style="width:100px;height:30px;">
+                        <option value = "1">基本信息(ID)</option>
+                        <option value = "2">角色位置(name)</option>
+                        <option value = "3">升级记录(name)</option>
+                    </select>
+                </div>
+                <div class="col-lg-9">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <input type="text" class="form-control" ng-model="condition">
+                            <button class="btn btn-info" ng-click="searchRole()">
+                                <span class ="glyphicon glyphicon-send">搜索</span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </form>
+    </fieldset>
+
+    <fieldset ng-show="isShow" style="margin-top: 30px;">
+        <div ng-include="'app/pages/table/roleMgr/searchPages/kickRole.html'"></div>
+    </fieldset>
+
+    <fieldset ng-show="beShow" style="margin-top: 30px;">
+        <div ng-include="'app/pages/table/roleMgr/searchPages/changePos.html'"></div>
+    </fieldset>
+    
+    <fieldset ng-show = "hasShow" style="margin-top: 30px;">
+        <div ng-include="'app/pages/table/roleMgr/searchPages/upLvlRecord.html'"></div>
+    </fieldset>
+</div>
+

@@ -43,11 +43,11 @@ function Triggers.deleteFollow(roleID, param, task, fromDB)
 	for _, npcID in pairs(param.npcs) do	
 		local follow = followHandler:getMember(npcID)
 		if follow then
-			followHandler:removeMember(npcID)
 			table.insert(npcsData,{follow:getID(), npcID})
 			if sceneType == MapType.Task or sceneType == MapType.Wild then
 				scene:detachEntity(follow)
 			end
+			followHandler:removeMember(npcID)
 		end
 	end
 	g_taskSystem:removeFollowEntity(player, npcsData)

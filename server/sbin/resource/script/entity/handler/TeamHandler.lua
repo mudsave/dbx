@@ -1,5 +1,5 @@
 --[[TeamHandler.lua
-描述�?
+描述��?
 	实体的组队handler
 --]]
 
@@ -53,7 +53,7 @@ function TeamHandler:removeTeaminviteList(playerID)
 	end
 end
 
---判断自己是否在暂离状�?
+--判断自己是否在暂离状��?
 function TeamHandler:isStepOutState()
 	local team = g_teamMgr:getTeam(self.teamID)
 	if not team then
@@ -68,7 +68,7 @@ function TeamHandler:isStepOutState()
 	return false
 end
 
---不带暂离�?
+--不带暂离��?
 function TeamHandler:getTeamPlayerList(isAll)
 	local team = g_teamMgr:getTeam(self.teamID)
 	if not team then
@@ -104,13 +104,13 @@ function TeamHandler:getTeamAllPlayerList()
 end
 
 
--- 非暂离人员的最�? 最小等级比
+-- 非暂离人员的最��? 最小等级比
 function TeamHandler:getCurMaxAndMinLvl()
 	local playerList = self:getTeamPlayerList()
 	local maxLvl = self._entity:getLevel()
 	local minLvl = maxLvl
 	local curLvl = 0
-	-- 求最大最小�?
+	-- 求最大最小��?
 	for _,player in pairs(playerList) do
 		curLvl = player:getLevel()
 		if curLvl > maxLvl then
@@ -141,4 +141,35 @@ function TeamHandler:isExistStepOut()
 		end
 	end
 	return false
+end
+
+--跟随宠改变调用
+function TeamHandler:setLeaderFollowPetID(playerID)
+	local team = g_teamMgr:getTeam(self.teamID)
+	if not team then return end 
+	local leaderID = team:getLeaderID()
+	if leaderID ~= playerID then return end
+	local leader = g_entityMgr:getPlayerByID(leaderID)
+	local memberList = team:getMemberList()
+	local followPetID = leader:getFollowPetID()
+	for _,memberInfo in pairs(memberList) do
+		local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+		local event = Event.getEvent(TeamEvents_CS_SendLeaderFollowID,followPetID)
+		g_eventMgr:fireRemoteEvent(event,member)
+	end
+end
+
+--队长变更调用
+function TeamHandler:sendLeaderFollowPetID()
+	local team = g_teamMgr:getTeam(self.teamID)
+	if not team then return end 
+	local leaderID = team:getLeaderID()
+	local leader = g_entityMgr:getPlayerByID(leaderID)
+	local memberList = team:getMemberList()
+	local followPetID = leader:getFollowPetID()
+	for _,memberInfo in pairs(memberList) do
+		local member = g_entityMgr:getPlayerByID(memberInfo.memberID)
+		local event = Event.getEvent(TeamEvents_CS_SendLeaderFollowID,followPetID)
+		g_eventMgr:fireRemoteEvent(event,member)
+	end
 end

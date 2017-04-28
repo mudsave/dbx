@@ -12,8 +12,8 @@ function PlayerMiscSystem:__init()
 		[PlayerSysEvent_CS_AttrPointChanged]	= PlayerMiscSystem.doAttributePointChanged,
 		[PlayerSysEvent_CS_PhasePointChanged]	= PlayerMiscSystem.doPhasePointChanged,
 		[PlayerSysEvent_CS_RoleUpgrade]			= PlayerMiscSystem.doRoleUpgrade, 
-		[AutoPointEvent_CS_ModifyDistribution]	= PlayerMiscSystem.doModifyDistribution,
-		[AutoPointEvent_CS_ModifyOrder]			= PlayerMiscSystem.doModifyOrders,
+		[AutoPointEvent_CS_ModifyAttrPlan]		= PlayerMiscSystem.doModifyDistribution,
+		[AutoPointEvent_CS_ModifyPhazPlan]		= PlayerMiscSystem.doModifyOrders,
 		[PlayerSysEvent_CS_ShowDramaChanged]    = PlayerMiscSystem.doChangeShowDrama,
 	}
 end
@@ -105,57 +105,52 @@ function PlayerMiscSystem:doRoleUpgrade(event)
 
 end
 
---[[
-	变更玩家或者宠物的属性自动分配方案
-]]
+-- 变更玩家或者宠物的属性自动分配方案
 function PlayerMiscSystem:doModifyDistribution(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
 	local entityID	= params[1]
-	local data		= params[2]
-	local auto		= params[3]
-	local handler = nil
-	if entityID == player:getID() then
-		handler = player:getHandler(HandlerDef_AutoPoint)
-	else
-		local pet = player:getPet(entityID)
-		handler = pet and pet:getHandler(HandlerDef_AutoPoint)
-	end
-	if not handler then return false end
+	local plan = params[2]
 
-	local planID,planData
-	if type(data) == 'number' and data ~= 0 then
-		planID = data
+	local entity
+	if entityID == event.playerID then
+		entity  = player
 	else
-		planID = 0
-		planData = data
+		entity = player:getPet(entityID)
 	end
-	if not handler:setDistribution(planID,planData) then
-		return false
+	if not entity then
+		print "没有实体可以设置自动加点方案"
+		return
 	end
-	handler:setAutoAttr(auto)
-	handler:sendDistribution(player)
-	if auto then handler:distibuteAttrPoints() end
+	local handler = entity:getHandler( HandlerDef_AutoPoint )
+	if handler:setAttrPlan( plan ) then
+		print "设置加点方案成功"
+		local effective = handler:effect( entity,AutoPointHandler.Attr )
+		handler:sendToClient( entity,player,AutoPointHandler.Attr )
+		if effective then
+			print "分配属性点成功"
+			entity:flushPropBatch( player )
+		end
+	else
+		print( ("设置%s的加点方案失败"):format( string.gbkToUtf8( entity:getName() ) ) )
+	end
 end
 
---[[
-	变更玩家的相性点自动分配方案
-]]
+-- 变更玩家的相性点自动分配方案
 function PlayerMiscSystem:doModifyOrders(event)
 	local player = g_entityMgr:getPlayerByID(event.playerID)
 	local params = event:getParams()
 
 	local entityID	= params[1]
-	local order		= params[2]
-	local auto		= params[3]
+	local plan		= params[2]
 
-	if entityID == player:getID() then
+	if entityID == event.playerID then
 		local handler = player:getHandler(HandlerDef_AutoPoint)
-		if handler and handler:setOrder(order) then
-			handler:setAutoPhase(auto)
-			handler:sendOrder(player)
-			if auto then
-				handler:distibutePhasePoints()
+		if handler and handler:setPhazPlan( plan ) then
+			local effective =  handler:effect( player, AutoPointHandler.Phaz )
+			handler:sendToClient( player,player,AutoPointHandler.Phaz )
+			if effective then
+				player:flushPropBatch()
 			end
 		end
 	else

@@ -27,6 +27,7 @@ require "game.TaskSystem.TaskTarget.TguideTask"
 require "game.TaskSystem.TaskTarget.TjoinFaction"
 require "game.TaskSystem.TaskTarget.TrandomFightScript"
 require "game.TaskSystem.TaskTarget.Tpuzzle"
+require "game.TaskSystem.TaskTarget.ToldTower"
 require "game.TaskSystem.TaskTarget.TpaidPet"
 
 local targetList =
@@ -57,6 +58,7 @@ local targetList =
 	["TrandomFightScript"]  = TrandomFightScript, --随机脚本战斗	
 	["TpaidPet"]			= TpaidPet,
 	["Tpuzzle"]				= Tpuzzle,		--拼图
+	["ToldTower"]			= ToldTower,	--古塔驱妖
 }
 
 -- 构造任务目标的函数

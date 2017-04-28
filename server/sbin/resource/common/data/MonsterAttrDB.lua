@@ -263,7 +263,7 @@ AttributeList = {
 	     obstacleDefense = .01,
 	     attrBenefit1 = monster_max_hp,
 	     attrAddType1 = MonAttrAddType.Value,
-	     attrEffVal1 =1000000,
+	     attrEffVal1 =20000,
      },
      [11] = {
 	     attrDesc = "Ò»°ã",

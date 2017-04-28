@@ -15,6 +15,11 @@ GoldHuntZone_MonsterReward = {			--守卫怪物积分
 	[39053] = 100,
 	
 }
+
+GoldHuntZone_ResultsOfOre = {			--挖矿刷出来的怪设置
+	[10030] = {odds = 10,type = "mo",monsters={ID = 39052,count = 1}},
+	[10029] = {odds = 10,type = "or",times = 3 },
+}
 GoldHuntZoneIconValue = {--[score]=value	--积分不同图标不同
 	{600, 1},
 	{1000 , 2},
@@ -29,7 +34,7 @@ GoldHuntZone_PKed_limit = 3			--pk上限后进入保护
 GoldHuntZone_Protected_iconValue = 0
 GoldHuntZone_mine_protect_limit = 30		--少于30%资源不能被pk
 GoldHuntZone_MineCollectLimit = {1,2}		--物件可采集次数
-GoldHuntZone_MapPlayerLimit	= 300		--地图最大人数
+GoldHuntZone_MapPlayerLimit	= 3		--地图最大人数
 GoldHuntZone_ReadyPeriodBeforeEnd = 3--min
 GoldHuntZone_RankLimit	= 100
 GoldHuntZone_ClientRankLimit	= 5

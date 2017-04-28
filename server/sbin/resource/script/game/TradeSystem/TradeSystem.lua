@@ -194,6 +194,7 @@ function TradeSystem:doPtoNBuyGoods(event)
 	local itemID = params[1]
 	local itemNum = params[2]
 	local npcPackID = params[3]
+	local curSelectIndex = params[4]
 	local playerID = event.playerID
 	if not playerID then
 		return
@@ -203,7 +204,7 @@ function TradeSystem:doPtoNBuyGoods(event)
 		return
 	end
 	--服务器处理玩家和Npc商店交易
-	g_tradeMgr:ptoNBuyGoods(player, itemID, itemNum, npcPackID)
+	g_tradeMgr:ptoNBuyGoods(player, itemID, itemNum, npcPackID,curSelectIndex)
 
 end
 

@@ -1,0 +1,17 @@
+<div  ba-panel ba-panel-class="with-scroll">
+<form>
+  <div class="form-group">
+	<label>roleid</label>
+    <textarea class="form-control" ng-model = "formData.ids" placeholder="格式 DBID;DBID;DBID"></textarea>
+  </div>
+  <div class="form-group">
+	<label>content文字信息</label>
+    <textarea  class="form-control" ng-model = "formData.content" placeholder="文字信息"></textarea>
+  </div>
+  	<div class="form-group">
+	<label>物品id,物品数量</label>
+    <textarea class="form-control" ng-model = "formData.items" placeholder="itemID,itemNum;itemID,itemNum"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success" ng-click = "sendmail()" >Send</button>
+</form>
+</div>

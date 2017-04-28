@@ -46,9 +46,11 @@ function CollectSystem:onRemoveGoods(event)
 				g_eventMgr:fireRemoteEvent(event_notice,player)
 				return
 			end
+			local pos = goodsNpc:getPos()
+			local x,y = pos[2],pos[3]
 			isRemoved = collectionRefresher:collect(goodsNpcID)
 			CollectSystem:openGoodsPack(goodsNpcID,playerID)
-			g_goldHuntMgr:onItemCollected(goodsNpcID,packID,playerID,isRemoved)
+			g_goldHuntMgr:onItemCollected(goodsNpcID,packID,playerID,isRemoved,x,y)
 			return
 		end
 		if not isGridsNumFull then 
@@ -83,10 +85,6 @@ function CollectSystem:onRemoveGoods(event)
 						
 						--采集完成，通知任务系统
 						TaskCallBack.onContactSeal(playerID, packID)
-						else 
-							local noticeID_2 =  2
-							local event_notice =Event.getEvent(GoodsEvents_SC_NoticeMSG, noticeID_2)
-							g_eventMgr:fireRemoteEvent(event_notice,player)
 						end
 					-- 处理消耗物品
 					else

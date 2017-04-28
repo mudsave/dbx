@@ -64,7 +64,7 @@ function SkyFallBoxSystem:onFightEnd(event)
 
 				local BroadCastMsgID = BroadCastMsgGroupID.Group_SkyFallBox
 				local event = Event.getEvent(ClientEvents_SC_PromptMsg, BroadCastMsgID.EventID, 3, itemName)
-				g_eventMgr:broadcastEvent(event)
+				g_eventMgr:fireRemoteEvent(event, player)
 
 				--更新活动期间所获宝盒总数				
 				local newBoxNum = handler:getSkyFallBoxNum() + 1

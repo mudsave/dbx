@@ -13,7 +13,8 @@ function SceneManager:__init()
 	self.ectypeScene = {}
 	self.factionScene = {}
 	self._GoldHuntZone = {}
-	self._DiscussHero = {} 
+	self._DiscussHero = {}
+	self._OldTower = {}  
 end
 
 function SceneManager:__release()
@@ -266,10 +267,17 @@ function SceneManager:enterGoldHuntScene(activityID, role,x ,y)
 end
 
 function SceneManager:isInGoldHuntScene(player)
+	
 	local curScene = player:getScene()
 	for _ ,scene in pairs(self._GoldHuntZone) do
 		if curScene == scene then
-			return true
+			if g_goldHuntMgr:getOpenStatus() == true then
+				return true
+			else
+				local event = Event.getEvent(ClientEvents_SC_PromptMsg, eventGroup_GoldHunt, 26)
+				g_eventMgr:fireRemoteEvent(event, player)
+				return false
+			end
 		end
 	end
 	return false
@@ -322,6 +330,80 @@ function SceneManager:checkPlayerCountInGoldHuntMap(player)
 		end
 	end
 	return false
+end
+
+-- 创建古塔驱妖场景
+function SceneManager:createOldTowerScene(mapID,roleID)
+	local toScene = self._OldTower[roleID]
+	if toScene then
+		return toScene
+	end
+	local mapConfig = mapDB[mapID]
+	if not mapConfig then
+		return -1
+	end
+	local scene = Scene()
+	local peer = CoScene:Create(mapConfig.sceneType, mapID, mapConfig.map)
+	scene:setPeer(peer)
+	scene:setMapID(mapID)
+	self._OldTower[roleID] = scene
+	return scene
+end
+
+-- 进入古塔驱妖场景 
+function SceneManager:enterOldTowerScene(role,x ,y)
+	local playerID = role:getID()
+	local toScene = self._OldTower[playerID]
+	if not toScene then
+		local taskHandler = role:getHandler(HandlerDef_Task)
+		if taskHandler:getTask(60000) then
+			toScene = self:createOldTowerScene(800,playerID)
+		end
+	end
+	if role and x and y then
+		local prevPos = role:getPrevPos()
+		local pos = role:getPos()
+		--记录进入前的位置
+		prevPos[1],prevPos[2],prevPos[3] = pos[1],pos[2],pos[3]
+		g_oldTowerSym:setEnterPos(role:getID(),prevPos[1],prevPos[2],prevPos[3])
+
+		toScene:attachEntity(role, x, y)
+		if role:getEntityType() == eClsTypePlayer then
+			
+			local petID = role:getFollowPetID()
+			local pet = petID and g_entityMgr:getPet(petID)
+			if pet and pet:isVisible() then
+				pet:setVisible(false)
+				pet:setVisible(true) 
+				toScene:attachEntity(pet, x -1 , y - 1 )
+			end
+			return true
+		end
+	end
+	return false
+end
+
+-- 销毁古塔驱妖场景
+function SceneManager:releaseOldTowerScene(playerID, mapID, xPos, yPox)
+	local scene = self._OldTower[playerID]
+	if not scene then
+		print("SceneManager:releaseOldTowerScene:::scene is none")
+		return
+	end
+	--遣返还在的玩家
+	local entityList = scene:getEntityList()
+	for ID, role in pairs(entityList) do
+		if instanceof(role, Player) and role:getStatus() ~= ePlayerFight then
+			self:doSwitchScence(role:getID(),mapID,xPos,yPox)
+		end
+	end
+	-- 释放场景
+	local peer = scene:getPeer()
+	if peer then
+		--peer:close()
+	end
+	release(scene)
+	self._OldTower[playerID] = nil
 end
 
 -- 创建煮酒论英雄场景

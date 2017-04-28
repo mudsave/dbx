@@ -14,7 +14,8 @@ local PlayerWorldCoolInfo = {}--[DBID]=expireTime
 local PlayerCoolInfo = {}--[ID]=expireTime
 function ChatSystem:__init()
 	self._doer = {
-		[ChatEvents_CS_SendChatMsg]    = ChatSystem.onGetMessage,
+		[ChatEvents_CS_SendChatMsg]		= ChatSystem.onGetMessage,
+		[ChatEvents_SB_BanSpeech]		= ChatSystem.onBanSpeech,
 	}
 end
 
@@ -107,13 +108,21 @@ function ChatSystem:onGetMessage(event)
 	if not generalCheck(event) then
 		return
 	end
-
+	
 	local params = event:getParams()
 	local channelType = params[1]
 	local msg = params[2]
 	local sign = params[3]
 	local DBID = params[4]
 	local player = g_playerMgr:getPlayerByDBID(DBID)
+	-- 是否禁言
+	if player then
+		if player:getBanSpeechTime() > 0 then
+			-- 你已经被禁言 --- 还有--
+			print(" 你已经被禁言 --- 还有--分钟",player:getBanSpeechTime())
+			return 
+		end
+	end
 	--帮会频道
 	if channelType == ChatChannelType.Faction then
 		local errorCode = self:_checkFaction(player)
@@ -200,6 +209,16 @@ function ChatSystem:onGetMessage(event)
 		g_chatMgr:sendHornMessage(msg, player , sign)
 	end
 
+end
+
+function ChatSystem:onBanSpeech(event)
+	local params = event:getParams()
+	local DBID = params[1]
+	local banSpeechTime = params[2]
+	local player = g_playerMgr:getPlayerByDBID(DBID)
+	if player then
+		player:setBanSpeechTime(banSpeechTime)
+	end
 end
 
 function ChatSystem.getInstance()
